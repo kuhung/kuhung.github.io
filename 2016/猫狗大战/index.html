@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷洪,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  <link rel="prev" href="http://kuhungio.me/2014/creating-a-new-theme/" />
+  
+  <link rel="canonical" href="http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Cats VS. Dogs 图像分类之猫狗大战 | Kuhung&#39;s Blog
+       
+  </title>
+  <meta name="title" content="Cats VS. Dogs 图像分类之猫狗大战 | Kuhung&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "Cats VS. Dogs 图像分类之猫狗大战",
+    "headline" : "Cats VS. Dogs 图像分类之猫狗大战",
+    "description" : "我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）
+个人介绍 华中科技大学机械学院的大二（准大三）学生，接触数据挖掘快有一年了。早期在学生团队做过一些D3数据可视化方面的工作，今年上半年开始数据挖掘实践。想把这个爱好发展成事业。做过阿里的天池竞赛，也有在kaggle混迹。算个数据新手，但一直不承认：你是新人，所以成绩不好看没啥关系。
+初识比赛 第一次接触数据集，就感觉有些难度。因为以前没做过图片分类的比赛，更没想过要用深度学习的神经网络进行识别。思索一番，还是觉得特征提取后，使用决策树靠谱。自己也下去找过资料，发现并不容易实现。期间，还曾一度想过肉眼识别。但打开文件，看到那1400+图片，就觉得这时间花在肉眼识别上不值。中间一度消停。
+初见曙光——yinjh战队分享 后来上论坛逛过几次。一次偶然的机会，让我看到了yinjh团队分享的vgg16模型。乍一看，代码简单、效果不错。更为重要的是，这个模型自己以前从未见过。于是抱着验证学习的态度，我把代码扣了下来，打算自己照着做一遍。
+过程艰难 一开始，我就把一屏的代码放进了我的jupyter notebook中，一步一步试水。很明显，我的很多依赖包都没安装，所以也是错误不断。早先是在Windows系统下，使用python2.7，需要什么包，就安装什么包。在安装keras过程中，我发现了Anaconda——很好用的一个科学计算环境，集成了各种数据挖掘包。即使是这样，仍然是满屏的错误，亟待排查。
+步步优化 离比赛截止就还只有几天，一边准备期末考试，一边焦急地排查bug。Windows系统下仍有个别难以解决的错误，我索性切换到了做NAO机器人时装的Ubuntu系统下。结合keras给的官方文档，我对原代码进行了函数拆分解耦，又在循环体部分增加了异常检测。综合考虑性能，稍微修改了循环结构。下载好训练的vgg16_weights，在没有错误之后，焦急地等待25分钟后，屏幕开始打印结果。
+欣喜万分 第一次提交，随便截取了前面一段，没成绩。折腾了几次，才发现是提交的格式出了问题。后面取p=0.99+部分，提交结果在0.58左右，数据集大概有90个。估计了下，狗狗总数应该在180左右。第二次提交，取了180左右，结果0.97多一点。第三次，也是最后一次提交，取了result前189个，结果0.98639，一举升到第一。
+比赛总结 这次比赛，首先还得感谢yinjh团队的yin前辈。如果没有您分享的代码，就不会有我今天的成绩。感谢您分享的代码，感想您在我写这篇分享时提供的代码指导。 再者，感谢我的女票晶晶，谢谢你一直陪在我身边，谢谢你包容我写代码时不那么快的回复手速。我是新手，但我一直不觉得成绩低是理所当。立志从事这一行，就需要快速地学习、快速地成长。新人，也需要做到最好。当然，自己目前还存在很多问题。一些基本的概念只是模糊掌握，需要更多的实践，需要更多的理论积淀，而不是简单地做一个调包侠。
+给新手的建议  善用搜索引擎，多读官方文档，不要一开始就依赖Google。 Google Groups、Stack Overflow、GitHub是好东西。 干！就是干！  完整代码  *以下操作均在Ubuntu14.04+Anaconda中进行 *
+导入python标准包  import os # 处理字符串路径 import glob # 用于查找文件  导入相关库  keras
+ keras是基于Theano的深度学习(Deep Learning)框架
+ 详细信息请见keras官方文档
+   安装过程  conda update conda
+conda update &ndash;all
+conda install mingw libpython
+pip install git+git://github.com/Theano/Theano.git
+pip install git+git://github.com/fchollet/keras.git",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2016",
+    "datePublished": "2016-07-06 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2016-07-06 00:00:00 &#43;0000 UTC",
+    "url" : "http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/",
+    "wordCount" : "434",
+    "keywords" : [ "图像分类","机器学习入门", "Kuhung&#39;s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://kuhungio.me">Kuhung&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Cats VS. Dogs 图像分类之猫狗大战</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2016-07-06 itemprop="datePublished">July 6, 2016</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://kuhungio.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"> 计算机视觉 </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#个人介绍">个人介绍</a></li>
+<li><a href="#初识比赛">初识比赛</a></li>
+<li><a href="#初见曙光-yinjh战队分享">初见曙光——yinjh战队分享</a></li>
+<li><a href="#过程艰难">过程艰难</a></li>
+<li><a href="#步步优化">步步优化</a></li>
+<li><a href="#欣喜万分">欣喜万分</a>
+<ul>
+<li><a href="#比赛总结">比赛总结</a></li>
+<li><a href="#给新手的建议">给新手的建议</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#完整代码">完整代码</a>
+<ul>
+<li>
+<ul>
+<li><a href="#导入python标准包">导入python标准包</a></li>
+<li><a href="#导入相关库">导入相关库</a>
+<ul>
+<li>
+<ul>
+<li><a href="#安装过程">安装过程</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#使用keras建立vgg16模型">使用keras建立vgg16模型</a></li>
+<li><a href="#引入训练好的vgg16-weights模型">引入训练好的vgg16_weights模型</a></li>
+<li><a href="#猫和狗的特征">猫和狗的特征</a></li>
+<li><a href="#待处理文件导入">待处理文件导入</a></li>
+<li><a href="#定义几个变量">定义几个变量</a></li>
+<li><a href="#定义图像加载函数">定义图像加载函数</a></li>
+<li><a href="#定义预测函数">定义预测函数</a></li>
+<li><a href="#开始预测">开始预测</a></li>
+<li><a href="#对结果进行排序">对结果进行排序</a></li>
+<li><a href="#打印预测结果与相应概率">打印预测结果与相应概率</a></li>
+<li><a href="#预测结果">预测结果</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）</p>
+
+<h2 id="个人介绍">个人介绍</h2>
+
+<p>华中科技大学机械学院的大二（准大三）学生，接触数据挖掘快有一年了。早期在学生团队做过一些D3数据可视化方面的工作，今年上半年开始数据挖掘实践。想把这个爱好发展成事业。做过阿里的天池竞赛，也有在kaggle混迹。算个数据新手，但一直不承认：你是新人，所以成绩不好看没啥关系。</p>
+
+<!-- more -->
+
+<h2 id="初识比赛">初识比赛</h2>
+
+<p>第一次接触数据集，就感觉有些难度。因为以前没做过图片分类的比赛，更没想过要用深度学习的神经网络进行识别。思索一番，还是觉得特征提取后，使用决策树靠谱。自己也下去找过资料，发现并不容易实现。期间，还曾一度想过肉眼识别。但打开文件，看到那1400+图片，就觉得这时间花在肉眼识别上不值。中间一度消停。</p>
+
+<h2 id="初见曙光-yinjh战队分享">初见曙光——yinjh战队分享</h2>
+
+<p>后来上论坛逛过几次。一次偶然的机会，让我看到了yinjh团队分享的vgg16模型。乍一看，代码简单、效果不错。更为重要的是，这个模型自己以前从未见过。于是抱着验证学习的态度，我把代码扣了下来，打算自己照着做一遍。</p>
+
+<h2 id="过程艰难">过程艰难</h2>
+
+<p>一开始，我就把一屏的代码放进了我的jupyter notebook中，一步一步试水。很明显，我的很多依赖包都没安装，所以也是错误不断。早先是在Windows系统下，使用python2.7，需要什么包，就安装什么包。在安装keras过程中，我发现了Anaconda——很好用的一个科学计算环境，集成了各种数据挖掘包。即使是这样，仍然是满屏的错误，亟待排查。</p>
+
+<h2 id="步步优化">步步优化</h2>
+
+<p>离比赛截止就还只有几天，一边准备期末考试，一边焦急地排查bug。Windows系统下仍有个别难以解决的错误，我索性切换到了做NAO机器人时装的Ubuntu系统下。结合keras给的官方文档，我对原代码进行了函数拆分解耦，又在循环体部分增加了异常检测。综合考虑性能，稍微修改了循环结构。下载好训练的vgg16_weights，在没有错误之后，焦急地等待25分钟后，屏幕开始打印结果。</p>
+
+<h2 id="欣喜万分">欣喜万分</h2>
+
+<p>第一次提交，随便截取了前面一段，没成绩。折腾了几次，才发现是提交的格式出了问题。后面取p=0.99+部分，提交结果在0.58左右，数据集大概有90个。估计了下，狗狗总数应该在180左右。第二次提交，取了180左右，结果0.97多一点。第三次，也是最后一次提交，取了result前189个，结果0.98639，一举升到第一。</p>
+
+<hr />
+
+<h3 id="比赛总结">比赛总结</h3>
+
+<p>这次比赛，首先还得感谢yinjh团队的yin前辈。如果没有您分享的代码，就不会有我今天的成绩。感谢您分享的代码，感想您在我写这篇分享时提供的代码指导。
+再者，感谢我的女票晶晶，谢谢你一直陪在我身边，谢谢你包容我写代码时不那么快的回复手速。我是新手，但我一直不觉得成绩低是理所当。立志从事这一行，就需要快速地学习、快速地成长。新人，也需要做到最好。当然，自己目前还存在很多问题。一些基本的概念只是模糊掌握，需要更多的实践，需要更多的理论积淀，而不是简单地做一个调包侠。</p>
+
+<h3 id="给新手的建议">给新手的建议</h3>
+
+<ul>
+<li>善用搜索引擎，多读官方文档，不要一开始就依赖Google。</li>
+<li>Google Groups、Stack Overflow、GitHub是好东西。</li>
+<li>干！就是干！</li>
+</ul>
+
+<hr />
+
+<h1 id="完整代码">完整代码</h1>
+
+<ul>
+<li><p>*<em>以下操作均在Ubuntu14.04+Anaconda中进行</em> *</p>
+
+<h3 id="导入python标准包">导入python标准包</h3></li>
+</ul>
+
+<pre><code class="language-python">import os   # 处理字符串路径
+import glob  # 用于查找文件
+</code></pre>
+
+<h3 id="导入相关库">导入相关库</h3>
+
+<ul>
+<li><p>keras</p>
+
+<ul>
+<li><p>keras是基于Theano的深度学习(Deep Learning)框架</p></li>
+
+<li><p>详细信息请见<a href="http://keras.io/" rel="nofollow noreferrer" target="_blank">keras官方文档</a></p></li>
+</ul></li>
+</ul>
+
+<h5 id="安装过程">安装过程</h5>
+
+<blockquote>
+<p>conda update conda</p>
+
+<p>conda update &ndash;all</p>
+
+<p>conda install mingw libpython</p>
+
+<p>pip install git+git://github.com/Theano/Theano.git</p>
+
+<p>pip install git+git://github.com/fchollet/keras.git</p>
+</blockquote>
+
+<ul>
+<li><p>cv2</p>
+
+<ul>
+<li>OpenCV库</li>
+</ul>
+
+<blockquote>
+<p>conda isntall opnecv</p>
+</blockquote></li>
+
+<li><p>numpy</p>
+
+<ul>
+<li>Anaconda自带</li>
+</ul></li>
+</ul>
+
+<pre><code class="language-python">from keras.models import Sequential
+from keras.layers.core import Flatten, Dense, Dropout
+from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
+from keras.optimizers import SGD
+import cv2, numpy as np
+</code></pre>
+
+<h3 id="使用keras建立vgg16模型">使用keras建立vgg16模型</h3>
+
+<ul>
+<li>参考官方示例</li>
+</ul>
+
+<pre><code class="language-python">def VGG_16(weights_path=None):
+    model = Sequential()
+    model.add(ZeroPadding2D((1,1),input_shape=(3,224,224)))
+    model.add(Convolution2D(64, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(64, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2,2), strides=(2,2)))
+
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(128, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(128, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2,2), strides=(2,2)))
+
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2,2), strides=(2,2)))
+
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2,2), strides=(2,2)))
+
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(ZeroPadding2D((1,1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu'))
+    model.add(MaxPooling2D((2,2), strides=(2,2)))
+
+    model.add(Flatten())
+    model.add(Dense(4096, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(4096, activation='relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(1000, activation='softmax'))
+
+    if weights_path:
+        model.load_weights(weights_path)
+
+    return model
+</code></pre>
+
+<h3 id="引入训练好的vgg16-weights模型">引入训练好的vgg16_weights模型</h3>
+
+<p>** Note： **
+- vgg16_weights.h5需单独下载，并与代码文件处于同一文件夹下，否则会报错。
+ - 网上有资源 附百度云盘链接 <a href="http://pan.baidu.com/s/1qX0CJSC" rel="nofollow noreferrer" target="_blank">vgg16_weights.h5下载</a></p>
+
+<pre><code class="language-python">model = VGG_16('vgg16_weights.h5')
+</code></pre>
+
+<pre><code class="language-python">sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
+model.compile(optimizer=sgd, loss='categorical_crossentropy')
+</code></pre>
+
+<h3 id="猫和狗的特征">猫和狗的特征</h3>
+
+<pre><code class="language-python">dogs=[251, 268, 256, 253, 255, 254, 257, 159, 211, 210, 212, 214, 213, 216, 215, 219, 220, 221, 217, 218, 207, 209, 206, 205, 208, 193, 202, 194, 191, 204, 187, 203, 185, 192, 183, 199, 195, 181, 184, 201, 186, 200, 182, 188, 189, 190, 197, 196, 198, 179, 180, 177, 178, 175, 163, 174, 176, 160, 162, 161, 164, 168, 173, 170, 169, 165, 166, 167, 172, 171, 264, 263, 266, 265, 267, 262, 246, 242, 243, 248, 247, 229, 233, 234, 228, 231, 232, 230, 227, 226, 235, 225, 224, 223, 222, 236, 252, 237, 250, 249, 241, 239, 238, 240, 244, 245, 259, 261, 260, 258, 154, 153, 158, 152, 155, 151, 157, 156]
+cats=[281,282,283,284,285,286,287]
+</code></pre>
+
+<h3 id="待处理文件导入">待处理文件导入</h3>
+
+<p>** Note: **
+- 将测试集改名为test，放入imgs文件夹下，imgs文件夹又与此代码处于同一文件夹下。
+- 当然，你也可以修改下面的路径。</p>
+
+<pre><code class="language-python">path = os.path.join('imgs', 'test', '*.jpg')  #拼接路径
+files = glob.glob(path) #返回路径
+</code></pre>
+
+<h3 id="定义几个变量">定义几个变量</h3>
+
+<pre><code class="language-python">result=[]
+</code></pre>
+
+<pre><code class="language-python">flbase=0
+p=0
+temp=0
+</code></pre>
+
+<h3 id="定义图像加载函数">定义图像加载函数</h3>
+
+<pre><code class="language-python">def load_image(imageurl):
+    im = cv2.resize(temp ,(224,224)).astype(np.float32)
+    im[:,:,0] -= 103.939
+    im[:,:,1] -= 116.779
+    im[:,:,2] -= 123.68
+    im = im.transpose((2,0,1))
+    im = np.expand_dims(im,axis=0)
+    return im    
+</code></pre>
+
+<h3 id="定义预测函数">定义预测函数</h3>
+
+<pre><code class="language-python">def predict(url):
+    im = load_image(url)        
+    out = model.predict(im)
+    flbase = os.path.basename(url)
+    p = np.sum(out[0,dogs]) / (np.sum(out[0,dogs]) + np.sum(out[0,cats]))
+    result.append((flbase,p))
+</code></pre>
+
+<h3 id="开始预测">开始预测</h3>
+
+<p>** Note： **
+- 此处的if,else异常检测很重要，因为cv2.imread(fl)在遇到某几张图时会为空，抛出错误，程序中途停止，图片集得不到完全检测。
+- 一般配置电脑跑这部分时，大约需要20～30分钟，不是程序没有工作，请耐心等待。</p>
+
+<pre><code class="language-python">for fl in files:
+    temp=cv2.imread(fl) 
+    if  temp ==None:  
+        pass
+    else:
+        predict(fl)    
+</code></pre>
+
+<h3 id="对结果进行排序">对结果进行排序</h3>
+
+<pre><code class="language-python">result=sorted(result, key=lambda x:x[1], reverse=True)
+</code></pre>
+
+<h3 id="打印预测结果与相应概率">打印预测结果与相应概率</h3>
+
+<pre><code class="language-python">for x in result:
+    print x[0],x[1]
+</code></pre>
+
+<h3 id="预测结果">预测结果</h3>
+
+<ul>
+<li>根据上面的概率，选择相应的前多少张图片</li>
+<li>复制进csv文件，使用一般编辑器将&rdquo;.jpg&rdquo;以空格替代</li>
+</ul>
+
+<pre><code class="language-python">for x in result:
+    print x[0]
+</code></pre>
+
+<hr />
+
+<ul>
+<li>此篇文章为原创，转载请注明出处。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="http://kuhungio.me/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">
+                    #图像分类</a></span>
+            
+            <span class="tag"><a href="http://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/">
+                    #机器学习入门</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="http://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://kuhungio.me/2014/creating-a-new-theme/" class="prev" rel="prev" title="Creating a New Theme"><i class="iconfont icon-left"></i>&nbsp;Creating a New Theme</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: 'e70502eacd747ce9c790d91f3a6865f4',
+        title: 'Cats VS. Dogs 图像分类之猫狗大战',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2015 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
