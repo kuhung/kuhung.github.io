@@ -9,7 +9,7 @@
   <meta name="description" content="数据挖掘/机器学习工程师">
   <meta name="keywords" content="华中科技大学,谷洪,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
-  <link rel="prev" href="http://kuhungio.me/2014/creating-a-new-theme/" />
+  
   
   <link rel="canonical" href="http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -54,7 +54,7 @@
 步步优化 离比赛截止就还只有几天，一边准备期末考试，一边焦急地排查bug。Windows系统下仍有个别难以解决的错误，我索性切换到了做NAO机器人时装的Ubuntu系统下。结合keras给的官方文档，我对原代码进行了函数拆分解耦，又在循环体部分增加了异常检测。综合考虑性能，稍微修改了循环结构。下载好训练的vgg16_weights，在没有错误之后，焦急地等待25分钟后，屏幕开始打印结果。
 欣喜万分 第一次提交，随便截取了前面一段，没成绩。折腾了几次，才发现是提交的格式出了问题。后面取p=0.99+部分，提交结果在0.58左右，数据集大概有90个。估计了下，狗狗总数应该在180左右。第二次提交，取了180左右，结果0.97多一点。第三次，也是最后一次提交，取了result前189个，结果0.98639，一举升到第一。
 比赛总结 这次比赛，首先还得感谢yinjh团队的yin前辈。如果没有您分享的代码，就不会有我今天的成绩。感谢您分享的代码，感想您在我写这篇分享时提供的代码指导。 再者，感谢我的女票晶晶，谢谢你一直陪在我身边，谢谢你包容我写代码时不那么快的回复手速。我是新手，但我一直不觉得成绩低是理所当。立志从事这一行，就需要快速地学习、快速地成长。新人，也需要做到最好。当然，自己目前还存在很多问题。一些基本的概念只是模糊掌握，需要更多的实践，需要更多的理论积淀，而不是简单地做一个调包侠。
-给新手的建议  善用搜索引擎，多读官方文档，不要一开始就依赖Google。 Google Groups、Stack Overflow、GitHub是好东西。 干！就是干！  完整代码  *以下操作均在Ubuntu14.04+Anaconda中进行 *
+给新手的建议  善用搜索引擎，多读官方文档，不要一开始就依赖Google。 Google Groups、Stack Overflow、GitHub是好东西。 干！就是干！  完整代码  以下操作均在Ubuntu14.04+Anaconda中进行
 导入python标准包  import os # 处理字符串路径 import glob # 用于查找文件  导入相关库  keras
  keras是基于Theano的深度学习(Deep Learning)框架
  详细信息请见keras官方文档
@@ -62,7 +62,8 @@
 conda update &ndash;all
 conda install mingw libpython
 pip install git+git://github.com/Theano/Theano.git
-pip install git+git://github.com/fchollet/keras.git",
+pip install git+git://github.com/fchollet/keras.git
+  cv2",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -73,7 +74,7 @@ pip install git+git://github.com/fchollet/keras.git",
     "datePublished": "2016-07-06 00:00:00 &#43;0000 UTC",
     "dateModified" : "2016-07-06 00:00:00 &#43;0000 UTC",
     "url" : "http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/",
-    "wordCount" : "434",
+    "wordCount" : "426",
     "keywords" : [ "图像分类","机器学习入门", "Kuhung&#39;s Blog"]
 }
 </script>
@@ -99,6 +100,8 @@ pip install git+git://github.com/fchollet/keras.git",
                 
                 <a class="menu-item" href="/tags/" title="">Tags</a>
                 
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
         </div>
     </div>
 </nav>
@@ -119,6 +122,8 @@ pip install git+git://github.com/fchollet/keras.git",
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
                 <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
                 
         </div>
     </div>
@@ -295,7 +300,7 @@ pip install git+git://github.com/fchollet/keras.git",
 <h1 id="完整代码">完整代码</h1>
 
 <ul>
-<li><p>*<em>以下操作均在Ubuntu14.04+Anaconda中进行</em> *</p>
+<li><p><strong>以下操作均在Ubuntu14.04+Anaconda中进行</strong></p>
 
 <h3 id="导入python标准包">导入python标准包</h3></li>
 </ul>
@@ -414,9 +419,15 @@ import cv2, numpy as np
 
 <h3 id="引入训练好的vgg16-weights模型">引入训练好的vgg16_weights模型</h3>
 
-<p>** Note： **
-- vgg16_weights.h5需单独下载，并与代码文件处于同一文件夹下，否则会报错。
- - 网上有资源 附百度云盘链接 <a href="http://pan.baidu.com/s/1qX0CJSC" rel="nofollow noreferrer" target="_blank">vgg16_weights.h5下载</a></p>
+<p>**Note： **</p>
+
+<ul>
+<li>vgg16_weights.h5需单独下载，并与代码文件处于同一文件夹下，否则会报错。
+
+<ul>
+<li>网上有资源 附百度云盘链接 <a href="http://pan.baidu.com/s/1qX0CJSC" rel="nofollow noreferrer" target="_blank">vgg16_weights.h5下载</a></li>
+</ul></li>
+</ul>
 
 <pre><code class="language-python">model = VGG_16('vgg16_weights.h5')
 </code></pre>
@@ -433,9 +444,12 @@ cats=[281,282,283,284,285,286,287]
 
 <h3 id="待处理文件导入">待处理文件导入</h3>
 
-<p>** Note: **
-- 将测试集改名为test，放入imgs文件夹下，imgs文件夹又与此代码处于同一文件夹下。
-- 当然，你也可以修改下面的路径。</p>
+<p>**Note: **</p>
+
+<ul>
+<li>将测试集改名为test，放入imgs文件夹下，imgs文件夹又与此代码处于同一文件夹下。</li>
+<li>当然，你也可以修改下面的路径。</li>
+</ul>
 
 <pre><code class="language-python">path = os.path.join('imgs', 'test', '*.jpg')  #拼接路径
 files = glob.glob(path) #返回路径
@@ -475,7 +489,7 @@ temp=0
 
 <h3 id="开始预测">开始预测</h3>
 
-<p>** Note： **
+<p>**Note： **
 - 此处的if,else异常检测很重要，因为cv2.imread(fl)在遇到某几张图时会为空，抛出错误，程序中途停止，图片集得不到完全检测。
 - 一般配置电脑跑这部分时，大约需要20～30分钟，不是程序没有工作，请耐心等待。</p>
 
@@ -563,8 +577,6 @@ temp=0
     </div>
 
     <div class="post-nav">
-        
-        <a href="http://kuhungio.me/2014/creating-a-new-theme/" class="prev" rel="prev" title="Creating a New Theme"><i class="iconfont icon-left"></i>&nbsp;Creating a New Theme</a>
         
         
     </div>
