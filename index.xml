@@ -88,6 +88,107 @@
     </item>
     
     <item>
+      <title>Single Shot MultiBox Detector Keras version</title>
+      <link>http://kuhungio.me/2017/ssd/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://kuhungio.me/2017/ssd/</guid>
+      <description>
+
+&lt;h1 id=&#34;ssd目标检测keras版&#34;&gt;SSD目标检测Keras版&lt;/h1&gt;
+
+&lt;p&gt;SSD是一种Object Detection方法。本文是基于论文&lt;a href=&#34;http://arxiv.org/abs/1512.02325&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;SSD: Single Shot MultiBox Detector&lt;/a&gt;，实现的keras版本。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。
+SSD将输出一系列离散化（discretization）的bounding boxes，这些bounding boxes是在不同层次（layers）上的feature maps上生成的，并且有着不同的aspect ratio。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;模型效果&#34;&gt;模型效果&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;模型对载具的检测
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Aeroplane.png&#34; height=&#34;300&#34;&gt;
+&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Bicycle.png&#34; height=&#34;300&#34;&gt;
+&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模型对动物的检测
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Dog.png&#34; height=&#34;300&#34;&gt;
+&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Cat.png&#34; height=&#34;300&#34;&gt;
+&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模型的视频检测
+&lt;p align=&#34;center&#34;&gt;
+&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/car.gif&#34;&gt;
+&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;如何使用&#34;&gt;如何使用&lt;/h2&gt;
+
+&lt;p&gt;项目地址&lt;a href=&#34;https://github.com/kuhung/SSD_keras&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;kuhung/SSD_keras&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;所需依赖&#34;&gt;所需依赖&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cv2==3.3.0
+keras==1.2.2
+matplotlib==2.1.0
+tensorflow==1.3.0
+numpy==1.13.3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果想跑通视频模块，则需额外&lt;code&gt;pip install scikit-video&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;具体操作&#34;&gt;具体操作&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone git@github.com:kuhung/SSD_keras.git
+cd SSD_keras
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Download model weight &lt;code&gt;weights_SSD300.hdf5&lt;/code&gt;&lt;a href=&#34;https://github.com/kuhung/SSD_keras/releases&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp weights_SSD300.hdf5 into SSD_keras
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于图片的检测&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考SSD.ipynb&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;若要剪切图片为下一步处理做准备&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;参考SSD_crop.py&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;检测视频
+&lt;code&gt;bash
+cd video_utils
+python videotest_example.py hy.mp4
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参考资料&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://arxiv.org/abs/1512.02325&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;SSD: Single Shot MultiBox Detector&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/u010167269/article/details/52563573&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;论文阅读：SSD: Single Shot MultiBox Detector&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/rykov8/ssd_keras&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;rykov8/ssd_keras&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Cats VS. Dogs 图像分类之猫狗大战</title>
       <link>http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link>
       <pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate>
