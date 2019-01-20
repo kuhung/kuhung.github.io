@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数学 on Kuhung&#39;s Blog</title>
+    <link>http://kuhungio.me/tags/%E6%95%B0%E5%AD%A6/</link>
+    <description>Recent content in 数学 on Kuhung&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 18 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://kuhungio.me/tags/%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>速查表 | Probabilities Statistics 数理统计</title>
+      <link>http://kuhungio.me/2018/probabilities-statistics/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://kuhungio.me/2018/probabilities-statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>速查表| Linear Algebra and Calculus 线代与微积分</title>
+      <link>http://kuhungio.me/2018/algebra-calculus/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://kuhungio.me/2018/algebra-calculus/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

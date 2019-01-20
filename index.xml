@@ -20,58 +20,9 @@
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;笔名：谷粒&lt;/li&gt;
-&lt;li&gt;英文名：kuhung&lt;/li&gt;
-&lt;li&gt;毕业院校：华中科技大学&lt;/li&gt;
+&lt;li&gt;笔名：谷粒 | kuhung&lt;/li&gt;
+&lt;li&gt;毕业院校：华中科技大学 | 机械学院 | 本科18届&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h2 id=&#34;工作履历&#34;&gt;工作履历&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2018.07~至今 网易游戏 数据挖掘工程师&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;研究方向&#34;&gt;研究方向&lt;/h2&gt;
-
-&lt;p&gt;推动机器学习、深度学习等技术，落地于真实应用场景。成果导向，最大化技术的价值。&lt;/p&gt;
-
-&lt;p&gt;关注以下内容：&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;机器视觉&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;目标检测&lt;/li&gt;
-&lt;li&gt;图像描述&lt;/li&gt;
-&lt;li&gt;图像分类&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自然语言处理&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;情感分析&lt;/li&gt;
-&lt;li&gt;文本检索&lt;/li&gt;
-&lt;li&gt;聊天机器人&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;计算广告&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;推荐系统&lt;/li&gt;
-&lt;li&gt;点击率预估&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;后端平台&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;AutoML&lt;/li&gt;
-&lt;li&gt;Docker&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;数据可视化&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;过往成果&#34;&gt;过往成果&lt;/h2&gt;
 
@@ -83,9 +34,79 @@
 &lt;li&gt;2016-10 |  第五届全国社会媒体处理大会 | 用户画像技术测评 | &lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;373&lt;/sub&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;工作履历&#34;&gt;工作履历&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2018.07~至今 网易游戏 数据挖掘工程师&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;工作方向&#34;&gt;工作方向&lt;/h2&gt;
+
+&lt;p&gt;数据挖掘工程师，机器学习方向。推动机器学习、深度学习等技术，落地于真实游戏运营场景。&lt;/p&gt;
+
+&lt;p&gt;关注以下内容：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;机器视觉&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;目标检测 | 图像描述 | 图像分类&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;自然语言处理&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;情感分析 | 文本检索 | 聊天机器人&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;计算广告&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;推荐系统 | 点击率预估&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;后端平台&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AutoML | Docker&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据可视化&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;兴趣方向&#34;&gt;兴趣方向&lt;/h2&gt;
+
 &lt;h2 id=&#34;联系方式&#34;&gt;联系方式&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/post/wechat.JPG&#34; alt=&#34;扫码加我&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>速查表 | Probabilities Statistics 数理统计</title>
+      <link>http://kuhungio.me/2018/probabilities-statistics/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://kuhungio.me/2018/probabilities-statistics/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/probabilities-statistics-1.png&#34; alt=&#34;数理统计速查表·一&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/probabilities-statistics-2.png&#34; alt=&#34;数理统计速查表·二&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/probabilities-statistics-3.png&#34; alt=&#34;数理统计速查表·三&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>速查表| Linear Algebra and Calculus 线代与微积分</title>
+      <link>http://kuhungio.me/2018/algebra-calculus/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://kuhungio.me/2018/algebra-calculus/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/algebra-calculus-1.png&#34; alt=&#34;线代与微积分速查表·一&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/algebra-calculus-2.png&#34; alt=&#34;线代与微积分速查表·二&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
