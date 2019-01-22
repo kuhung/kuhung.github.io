@@ -23,9 +23,9 @@ if (!doNotTrack) {
 }
 </script>
 
-  <link rel="prev" href="http://kuhungio.me/2018/time-series-problem-summary/" />
-  <link rel="next" href="http://kuhungio.me/2018/algebra-calculus/" />
-  <link rel="canonical" href="http://kuhungio.me/2018/probabilities-statistics/" />
+  <link rel="prev" href="http://kuhungio.me/2017/ssd/" />
+  <link rel="next" href="http://kuhungio.me/2018/probabilities-statistics/" />
+  <link rel="canonical" href="http://kuhungio.me/2018/time-series-problem-summary/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -36,10 +36,10 @@ if (!doNotTrack) {
   <title>
        
        
-           速查表 | Probabilities Statistics 数理统计 | Kuhung&#39;s Blog
+           时序小结 | time series problem summary 时间序列问题处理 | Kuhung&#39;s Blog
        
   </title>
-  <meta name="title" content="速查表 | Probabilities Statistics 数理统计 | Kuhung&#39;s Blog">
+  <meta name="title" content="时序小结 | time series problem summary 时间序列问题处理 | Kuhung&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,15 @@ if (!doNotTrack) {
          "@id": "http://kuhungio.me"
     },
     "articleSection" : "posts",
-    "name" : "速查表 | Probabilities Statistics 数理统计",
-    "headline" : "速查表 | Probabilities Statistics 数理统计",
-    "description" : "",
+    "name" : "时序小结 | time series problem summary 时间序列问题处理",
+    "headline" : "时序小结 | time series problem summary 时间序列问题处理",
+    "description" : "Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
+总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
+ 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &ldquo;golden week&rdquo; 与 &ldquo;new year&rdquo; 类比，选取 &ldquo;new year&rdquo; 段作为验证集。  tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。
+总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &ldquo;golden week&rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。
+ 方式一:：等同法   The rules:
+Treat holiday as Saturday
+If the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -68,11 +74,11 @@ if (!doNotTrack) {
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2018",
-    "datePublished": "2018-10-18 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-10-18 00:00:00 &#43;0000 UTC",
-    "url" : "http://kuhungio.me/2018/probabilities-statistics/",
-    "wordCount" : "0",
-    "keywords" : [ "数学", "Kuhung&#39;s Blog"]
+    "datePublished": "2018-02-08 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-02-08 00:00:00 &#43;0000 UTC",
+    "url" : "http://kuhungio.me/2018/time-series-problem-summary/",
+    "wordCount" : "237",
+    "keywords" : [ "时序问题", "Kuhung&#39;s Blog"]
 }
 </script>
 
@@ -130,16 +136,16 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">速查表 | Probabilities Statistics 数理统计</h1>
+        <h1 class="post-title" itemprop="name headline">时序小结 | time series problem summary 时间序列问题处理</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="http://kuhungio.me" rel="author">谷粒</a> with ♥
                 <span class="post-time">
-                on <time datetime=2018-10-18 itemprop="datePublished">October 18, 2018</time>
+                on <time datetime=2018-02-08 itemprop="datePublished">February 8, 2018</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="http://kuhungio.me/categories/%E9%80%9F%E6%9F%A5%E8%A1%A8/"> 速查表 </a>
+                        <a href="http://kuhungio.me/categories/%E9%A1%B9%E7%9B%AE%E5%B0%8F%E7%BB%93/"> 项目小结 </a>
                         
                 </span>
 
@@ -155,7 +161,23 @@ if (!doNotTrack) {
   <h2 class="post-toc-title"></h2>
   
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#总结一-保证数据同分布">总结一：保证数据同分布</a></li>
+<li><a href="#总结二-异常值特殊处理">总结二：异常值特殊处理</a></li>
+<li><a href="#总结三-特征构造靠倒推">总结三：特征构造靠倒推</a></li>
+<li><a href="#总结四-独立建模">总结四：独立建模</a>
+<ul>
+<li><a href="#个人感想">个人感想</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
 
@@ -194,8 +216,6 @@ if (!doNotTrack) {
         
 
         
-            
-        
 
         
         
@@ -208,11 +228,87 @@ if (!doNotTrack) {
           
           
 
-          <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/cheatsheets/probabilities-statistics-1.png" alt="数理统计速查表·一" class="lazyload"><figcaption class="image-caption">数理统计速查表·一</figcaption></figure></p>
+          
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/cheatsheets/probabilities-statistics-2.png" alt="数理统计速查表·二" class="lazyload"><figcaption class="image-caption">数理统计速查表·二</figcaption></figure></p>
+<p>Source <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion" rel="nofollow noreferrer" target="_blank">https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion</a></p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/cheatsheets/probabilities-statistics-3.png" alt="数理统计速查表·三" class="lazyload"><figcaption class="image-caption">数理统计速查表·三</figcaption></figure></p>
+<h3 id="总结一-保证数据同分布">总结一：保证数据同分布</h3>
+
+<p>验证集的选取，分布上应尽量靠近测试集。</p>
+
+<ul>
+<li>方式一:：对抗验证集的生成。</li>
+<li>方式二： 就近选取相同天数。</li>
+<li>方式三:：类比属性。如本赛题 &ldquo;golden week&rdquo; 与 &ldquo;new year&rdquo; 类比，选取 &ldquo;new year&rdquo; 段作为验证集。</li>
+</ul>
+
+<p>tips: <strong>kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。</strong></p>
+
+<h3 id="总结二-异常值特殊处理">总结二：异常值特殊处理</h3>
+
+<p>一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &ldquo;golden week&rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。</p>
+
+<!-- more -->
+
+<ul>
+<li>方式一:：等同法</li>
+</ul>
+
+<blockquote>
+<p>The rules:</p>
+
+<p>Treat holiday as Saturday</p>
+
+<p>If the day before holiday is weekday ,treat the day before holiday as Friday
+If the day after holiday is weekday ,treat the day after holiday as Monday
+it work not only golden week but also a lot other holidays.</p>
+
+<p>So the trick is from careful EDA and CV rather than luck</p>
+</blockquote>
+
+<ul>
+<li>方式二:：标记法</li>
+</ul>
+
+<blockquote>
+<p>days-from-holiday or days-to-holiday
+or
+0/1 flags whether the previous/next day and second-to-last/next-but-one day is a holiday.</p>
+</blockquote>
+
+<pre><code class="language-Python">#Source https://github.com/MaxHalford/kaggle-recruit-restaurant/blob/master/Solution.ipynb
+
+date_info = pd.read_csv('data/kaggle/date_info.csv')
+date_info.rename(columns={'holiday_flg': 'is_holiday', 'calendar_date': 'visit_date'}, inplace=True)
+date_info['prev_day_is_holiday'] = date_info['is_holiday'].shift().fillna(0)
+date_info['next_day_is_holiday'] = date_info['is_holiday'].shift(-1).fillna(0)
+
+date_info.head()
+</code></pre>
+
+<h3 id="总结三-特征构造靠倒推">总结三：特征构造靠倒推</h3>
+
+<p>时间序列的特征生成，还是多靠 lagging 往前推的手法。</p>
+
+<p>Source <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174" rel="nofollow noreferrer" target="_blank">https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174</a></p>
+
+<blockquote>
+<p>lagging visitors features 1-14 (by &lsquo;air_store_id&rsquo; and by dayOfWeek), lagging visitors features 1-14 (by &lsquo;air_store_id&rsquo; only), the lagging-difference visitors features 1-13, the lagging-difference-delta4 visitors features 1-10, WeightedMovingAverage for the lagging lagging visitors features, mean/median/min/max/(percentile10,30,70,90)/sum/count visitor stats features for past 14 days, 28 days, 60 days, 90 days, 120 days, 180 days, 364 days (by &lsquo;air_store_id&rsquo; and by dayOfWeek), mean/median/min/max/(percentile10,30,70,90)/sum/count visitor stats features for past 14 days, 28 days, 60 days, 90 days, 120 days, 180 days, 364 days (by &lsquo;air_store_id&rsquo; only).
+or
+mean weekly visitors up to lag 20 and for mean monthly visitors up to lag 8 or so&hellip;</p>
+</blockquote>
+
+<h3 id="总结四-独立建模">总结四：独立建模</h3>
+
+<p>模型训练。时间序列问题，一般是预测未来一段时间的情况。针对总结三中的特征生成方法，为避免过拟合，宜采用每天分开建模的方法。原因在于：靠后的时间，其特征依赖前面的预测结果来生成。</p>
+
+<hr />
+
+<h4 id="个人感想">个人感想</h4>
+
+<p>取得好效果，大多数时间靠的不是复杂的模型、不是复杂的CV方式，而是<strong>对数据的观察</strong>（如： holiday trick 加公开的 kernel， 就可以取得银牌的成绩）以及<strong>特征构造方面的实践</strong>。</p>
+
+<p><strong>Top solutions are rather simple.</strong></p>
 
     </div>
 
@@ -227,7 +323,7 @@ if (!doNotTrack) {
             
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=http://kuhungio.me/2018/probabilities-statistics/>
+                    <a href=http://kuhungio.me/2018/time-series-problem-summary/>
                         <script>
                             document.write(decodeURI(location.origin + location.pathname))
                         </script>
@@ -247,8 +343,8 @@ if (!doNotTrack) {
             <section>
             <i class="iconfont icon-tag"></i>Tag(s):
             
-            <span class="tag"><a href="http://kuhungio.me/tags/%E6%95%B0%E5%AD%A6/">
-                    #数学</a></span>
+            <span class="tag"><a href="http://kuhungio.me/tags/%E6%97%B6%E5%BA%8F%E9%97%AE%E9%A2%98/">
+                    #时序问题</a></span>
             
             </section>
         
@@ -260,10 +356,10 @@ if (!doNotTrack) {
 
     <div class="post-nav">
         
-        <a href="http://kuhungio.me/2018/time-series-problem-summary/" class="prev" rel="prev" title="时序小结 | time series problem summary 时间序列问题处理"><i class="iconfont icon-left"></i>&nbsp;时序小结 | time series problem summary 时间序列问题处理</a>
+        <a href="http://kuhungio.me/2017/ssd/" class="prev" rel="prev" title="Single Shot MultiBox Detector Keras version"><i class="iconfont icon-left"></i>&nbsp;Single Shot MultiBox Detector Keras version</a>
         
         
-        <a href="http://kuhungio.me/2018/algebra-calculus/" class="next" rel="next" title="速查表 | Linear Algebra and Calculus 线代与微积分">速查表 | Linear Algebra and Calculus 线代与微积分&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="http://kuhungio.me/2018/probabilities-statistics/" class="next" rel="next" title="速查表 | Probabilities Statistics 数理统计">速查表 | Probabilities Statistics 数理统计&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
@@ -273,8 +369,8 @@ if (!doNotTrack) {
     <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: 'bad12819075996072f830e6623e6985b',
-        title: '速查表 | Probabilities Statistics 数理统计',
+        id: '41c8cc48b32480a5431b14adfc54104e',
+        title: '时序小结 | time series problem summary 时间序列问题处理',
         clientID: '7e5b8bd7063e5315e349',
         clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
         repo: 'kuhung.github.io',
@@ -338,9 +434,8 @@ if (!doNotTrack) {
 
 
     
-     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
-      
-     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
     
   
 

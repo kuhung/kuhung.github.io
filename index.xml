@@ -85,6 +85,18 @@
     </item>
     
     <item>
+      <title>速查表 | Linear Algebra and Calculus 线代与微积分</title>
+      <link>http://kuhungio.me/2018/algebra-calculus/</link>
+      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://kuhungio.me/2018/algebra-calculus/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/algebra-calculus-1.png&#34; alt=&#34;线代与微积分速查表·一&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/algebra-calculus-2.png&#34; alt=&#34;线代与微积分速查表·二&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>速查表 | Probabilities Statistics 数理统计</title>
       <link>http://kuhungio.me/2018/probabilities-statistics/</link>
       <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
@@ -99,14 +111,92 @@
     </item>
     
     <item>
-      <title>速查表| Linear Algebra and Calculus 线代与微积分</title>
-      <link>http://kuhungio.me/2018/algebra-calculus/</link>
-      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
+      <title>时序小结 | time series problem summary 时间序列问题处理</title>
+      <link>http://kuhungio.me/2018/time-series-problem-summary/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://kuhungio.me/2018/algebra-calculus/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/algebra-calculus-1.png&#34; alt=&#34;线代与微积分速查表·一&#34; /&gt;&lt;/p&gt;
+      <guid>http://kuhungio.me/2018/time-series-problem-summary/</guid>
+      <description>
 
-&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/cheatsheets/algebra-calculus-2.png&#34; alt=&#34;线代与微积分速查表·二&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Source &lt;a href=&#34;https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;总结一-保证数据同分布&#34;&gt;总结一：保证数据同分布&lt;/h3&gt;
+
+&lt;p&gt;验证集的选取，分布上应尽量靠近测试集。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方式一:：对抗验证集的生成。&lt;/li&gt;
+&lt;li&gt;方式二： 就近选取相同天数。&lt;/li&gt;
+&lt;li&gt;方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;tips: &lt;strong&gt;kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;总结二-异常值特殊处理&#34;&gt;总结二：异常值特殊处理&lt;/h3&gt;
+
+&lt;p&gt;一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &amp;ldquo;golden week&amp;rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方式一:：等同法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The rules:&lt;/p&gt;
+
+&lt;p&gt;Treat holiday as Saturday&lt;/p&gt;
+
+&lt;p&gt;If the day before holiday is weekday ,treat the day before holiday as Friday
+If the day after holiday is weekday ,treat the day after holiday as Monday
+it work not only golden week but also a lot other holidays.&lt;/p&gt;
+
+&lt;p&gt;So the trick is from careful EDA and CV rather than luck&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方式二:：标记法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;days-from-holiday or days-to-holiday
+or
+0/1 flags whether the previous/next day and second-to-last/next-but-one day is a holiday.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;#Source https://github.com/MaxHalford/kaggle-recruit-restaurant/blob/master/Solution.ipynb
+
+date_info = pd.read_csv(&#39;data/kaggle/date_info.csv&#39;)
+date_info.rename(columns={&#39;holiday_flg&#39;: &#39;is_holiday&#39;, &#39;calendar_date&#39;: &#39;visit_date&#39;}, inplace=True)
+date_info[&#39;prev_day_is_holiday&#39;] = date_info[&#39;is_holiday&#39;].shift().fillna(0)
+date_info[&#39;next_day_is_holiday&#39;] = date_info[&#39;is_holiday&#39;].shift(-1).fillna(0)
+
+date_info.head()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;总结三-特征构造靠倒推&#34;&gt;总结三：特征构造靠倒推&lt;/h3&gt;
+
+&lt;p&gt;时间序列的特征生成，还是多靠 lagging 往前推的手法。&lt;/p&gt;
+
+&lt;p&gt;Source &lt;a href=&#34;https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;lagging visitors features 1-14 (by &amp;lsquo;air_store_id&amp;rsquo; and by dayOfWeek), lagging visitors features 1-14 (by &amp;lsquo;air_store_id&amp;rsquo; only), the lagging-difference visitors features 1-13, the lagging-difference-delta4 visitors features 1-10, WeightedMovingAverage for the lagging lagging visitors features, mean/median/min/max/(percentile10,30,70,90)/sum/count visitor stats features for past 14 days, 28 days, 60 days, 90 days, 120 days, 180 days, 364 days (by &amp;lsquo;air_store_id&amp;rsquo; and by dayOfWeek), mean/median/min/max/(percentile10,30,70,90)/sum/count visitor stats features for past 14 days, 28 days, 60 days, 90 days, 120 days, 180 days, 364 days (by &amp;lsquo;air_store_id&amp;rsquo; only).
+or
+mean weekly visitors up to lag 20 and for mean monthly visitors up to lag 8 or so&amp;hellip;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;总结四-独立建模&#34;&gt;总结四：独立建模&lt;/h3&gt;
+
+&lt;p&gt;模型训练。时间序列问题，一般是预测未来一段时间的情况。针对总结三中的特征生成方法，为避免过拟合，宜采用每天分开建模的方法。原因在于：靠后的时间，其特征依赖前面的预测结果来生成。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&#34;个人感想&#34;&gt;个人感想&lt;/h4&gt;
+
+&lt;p&gt;取得好效果，大多数时间靠的不是复杂的模型、不是复杂的CV方式，而是&lt;strong&gt;对数据的观察&lt;/strong&gt;（如： holiday trick 加公开的 kernel， 就可以取得银牌的成绩）以及&lt;strong&gt;特征构造方面的实践&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Top solutions are rather simple.&lt;/strong&gt;&lt;/p&gt;
 </description>
     </item>
     
