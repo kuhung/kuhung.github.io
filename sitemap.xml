@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>http://kuhungio.me/2019/12306bypass-server/</loc>
+      
+      <lastmod>2019-01-26T15:52:08+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>http://kuhungio.me/about/</loc>
       
       <lastmod>2019-01-09T00:14:04+08:00</lastmod>
@@ -95,7 +105,7 @@
     <url>
       <loc>http://kuhungio.me/</loc>
       
-      <lastmod>2019-01-09T00:14:04+08:00</lastmod>
+      <lastmod>2019-01-26T15:52:08+08:00</lastmod>
       
       
       
@@ -107,7 +117,7 @@
     <url>
       <loc>http://kuhungio.me/posts/</loc>
       
-      <lastmod>2018-10-18T00:00:00+00:00</lastmod>
+      <lastmod>2019-01-26T15:52:08+08:00</lastmod>
       
       
       
@@ -187,6 +197,18 @@
     </url>
   
     <url>
+      <loc>http://kuhungio.me/categories/%E6%97%A5%E5%B8%B8%E5%B7%A5%E5%85%B7/</loc>
+      
+      <lastmod>2019-01-26T15:52:08+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>http://kuhungio.me/tags/%E6%97%B6%E5%BA%8F%E9%97%AE%E9%A2%98/</loc>
       
       <lastmod>2018-02-08T00:00:00+00:00</lastmod>
@@ -214,6 +236,18 @@
       <loc>http://kuhungio.me/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/</loc>
       
       <lastmod>2017-12-08T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>http://kuhungio.me/tags/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/</loc>
+      
+      <lastmod>2019-01-26T15:52:08+08:00</lastmod>
       
       
       

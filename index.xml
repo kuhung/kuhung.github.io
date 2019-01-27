@@ -6,8 +6,108 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 09 Jan 2019 00:14:04 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Jan 2019 15:52:08 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>12306Bypass Server 给抢票神器加上微信提醒</title>
+      <link>http://kuhungio.me/2019/12306bypass-server/</link>
+      <pubDate>Sat, 26 Jan 2019 15:52:08 +0800</pubDate>
+      
+      <guid>http://kuhungio.me/2019/12306bypass-server/</guid>
+      <description>
+
+&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+
+&lt;p&gt;春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。&lt;/p&gt;
+
+&lt;p&gt;网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。&lt;/p&gt;
+
+&lt;p&gt;以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。&lt;/p&gt;
+
+&lt;p&gt;前几日逛某论坛，有人向分流开发者传达了增加 Server 酱的请求。开发者还是很给力，在最近的几次版本迭代中实现了该功能。简单的来说，Server 酱就是一个提醒服务。在这里，我们把它用在抢票软件中。当软件抢到票时，通过该服务，给到微信提醒。通知我们及时付款。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/File_wechat.jpg&#34; alt=&#34;微信推送&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/File.jpg&#34; alt=&#34;最终效果&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过这样的形式，即可在微信端第一时间收到下订单的信息。那么如何配置这样的一个服务呢？我们只需要以下步骤。&lt;/p&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;h1 id=&#34;准备工作&#34;&gt;准备工作&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;最新版本的分流软件 搜索关键词：12306Bypass
+
+&lt;ul&gt;
+&lt;li&gt;这里使用的版本号是&lt;code&gt;1.13.30&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;没用过？&lt;a href=&#34;https://www.12306bypass.com/?utm_source=kuhungio.me&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;下载链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Github 账号 这里用做 Server 酱的登陆认证
+
+&lt;ul&gt;
+&lt;li&gt;不知道？&lt;a href=&#34;https://github.com/?utm_source=kuhungio.me&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;注册链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;实操阶段&#34;&gt;实操阶段&lt;/h1&gt;
+
+&lt;h2 id=&#34;server-酱&#34;&gt;Server 酱&lt;/h2&gt;
+
+&lt;p&gt;用于获取认证的接口&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;登入：用GitHub账号 &lt;a href=&#34;http://sc.ftqq.com/?c=github&amp;amp;a=login?utm_source=kuhungio.me&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;登入网站&lt;/a&gt;，获取&lt;a href=&#34;http://sc.ftqq.com/?c=code&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;SCKEY&lt;/a&gt;（在「&lt;a href=&#34;http://sc.ftqq.com/?c=code&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;发送消息&lt;/a&gt;」页面）&lt;/li&gt;
+&lt;li&gt;绑定：点击「&lt;a href=&#34;http://sc.ftqq.com/?c=wechat&amp;amp;a=bind&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;微信推送&lt;/a&gt;」，扫码关注同时即完成绑定&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/Screenshot_1.jpg&#34; alt=&#34;SCKEY&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;记住 &lt;strong&gt;SCKEY&lt;/strong&gt; ，我们接下来会用着。&lt;/p&gt;
+
+&lt;h2 id=&#34;分流&#34;&gt;分流&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;启动分流，按正常流程配置票务信息。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;点选主界面左下角的推送&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/Screenshot_2.jpg&#34; alt=&#34;分流推送功能&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;填入以下信息&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;通知地址 `&lt;a href=&#34;https://sc.ftqq.com/[SCKEY].send&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://sc.ftqq.com/[SCKEY].send&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;通知参数  &lt;code&gt;text=#bypass#&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/Screenshot_3.jpg&#34; alt=&#34;推送配置&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;点击测试发送，即可在微信端，收到本文一开始的推送测试提醒啦&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;实际效果&#34;&gt;实际效果&lt;/h1&gt;
+
+&lt;p&gt;就在配置完成不久后，分流帮我抢到了回家的车票。同时在微信端，Server 酱强制推送。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/IMG_0330.jpg&#34; alt=&#34;成功推送&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kuhungio.me/images/12306bypass/File_succeed.jpg&#34; alt=&#34;成功详情&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+
+&lt;p&gt;通过这样的一番配置，我们终于能够安稳的玩耍手机，而不用担心错过订单付款时间。事实上，分流本身的基础功能，也自带了一些提醒服务。但是他们大多较为繁琐。以 QQ 提醒为例，有被顶掉下线的风险。自带的微信提醒，模拟的微信桌面登陆，理论上需要2个微信号。按照上面的操作，我们只需要简单的配置，即可实现强制推送，错过的几率大大减小。&lt;/p&gt;
+
+&lt;p&gt;这样的推送服务，其应用场景不局限于此。这也是我琢磨它的原因之一——应用场景广泛。只要需要推送的地方，都可以嵌入这样一套服务。例如网站新增评论、或是按秒计费的服务器上模型训练结束等等。&lt;/p&gt;
+
+&lt;p&gt;Server 酱实现的功能有限，仅针对微信推送。但这也是它针对国内业务的一种优化。类似这样的推送服务很多，国外的 Slack 功能组件也很丰富。在一些涉及敏感信息的领域，构建一套自己的推送服务，也是不错的主意。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>About</title>
