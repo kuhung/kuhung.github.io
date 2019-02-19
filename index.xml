@@ -622,6 +622,67 @@ python videotest_example.py hy.mp4
     </item>
     
     <item>
+      <title>yysGAN 生成对抗网络，在游戏角色生成中的尝试</title>
+      <link>http://kuhungio.me/2017/yysgan/</link>
+      <pubDate>Tue, 21 Nov 2017 09:02:35 +0800</pubDate>
+      
+      <guid>http://kuhungio.me/2017/yysgan/</guid>
+      <description>
+
+&lt;h1 id=&#34;使用gan生成新的游戏角色&#34;&gt;使用GAN生成新的游戏角色&lt;/h1&gt;
+
+&lt;h2 id=&#34;摘要&#34;&gt;摘要&lt;/h2&gt;
+
+&lt;p&gt;Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。
+&lt;img src=&#34;http://ww2.sinaimg.cn/large/006r3PQBjw1fd4qrdkq2fj305k074jrk.jpg&#34; alt=&#34;image1&#34; /&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&#34;依赖-pip-install&#34;&gt;依赖 （pip install）&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;cv2
+tensorflow( &amp;gt;=1.0)
+scipy
+numpy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;使用方法&#34;&gt;使用方法&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;cd yysGAN
+python yysGAN.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;5000次迭代训练结果&#34;&gt;5000次迭代训练结果&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://github.com/kuhung/yysGAN/raw/master/output/epoch4950.jpg&#34; alt=&#34;image2&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;了解更多gan的知识&#34;&gt;了解更多GAN的知识&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/kuhung/yysGAN/blob/master/Generative%20Adversarial%20Networks.ipynb&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Generative Adversarial Networks.ipynb&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/bo-ToTdhgew&#34; frameborder=&#34;0&#34; gesture=&#34;media&#34; allow=&#34;encrypted-media&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://youtu.be/yz6dNf7X7SA&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Siraj Raval&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/moxiegushi/pokeGAN&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;moxiegushi/pokeGAN&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;项目地址&#34;&gt;项目地址&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/kuhung/yysGAN&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/kuhung/yysGAN&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;定制你的gan图片生成器&#34;&gt;定制你的GAN图片生成器&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;# 拆包即用，修改input下文件，改为对应的jpg素材即可。
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Cats VS. Dogs 图像分类之猫狗大战</title>
       <link>http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link>
       <pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate>
