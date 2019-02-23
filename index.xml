@@ -159,6 +159,10 @@ python run_classifier.py \
 
 &lt;p&gt;Bert 预训练后的 finetune，是一种很高效的方式，节省时间，同时提高模型在垂直语料的表现。finetune 过程，实际上不难。较大的难点在于数据准备和 pipeline 的设计。从商业角度讲，应着重考虑 finetune 之后，模型有效性的证明，以及在业务场景中的应用。如果评估指标和业务场景都已缕清，那么不妨一试。&lt;/p&gt;
 
+&lt;ul&gt;
+&lt;li&gt;Github 地址：&lt;a href=&#34;https://github.com/kuhung/bert_finetune&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/kuhung/bert_finetune&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&#34;参考资料&#34;&gt;参考资料&lt;/h1&gt;
 
 &lt;ul&gt;
