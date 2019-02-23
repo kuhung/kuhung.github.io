@@ -6,8 +6,234 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 17 Feb 2019 00:40:20 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 11:30:26 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Bert Chinese Finetune 中文语料的 Bert 微调</title>
+      <link>http://kuhungio.me/2019/bert-chinese-finetune/</link>
+      <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
+      
+      <guid>http://kuhungio.me/2019/bert-chinese-finetune/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;# Finetune Bert for Chinese&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/google-research/bert&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Bert&lt;/a&gt; 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 &lt;a href=&#34;https://github.com/hanxiao/bert-as-service&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Bert as service&lt;/a&gt; 代码的开源，使用 Bert 分类或阅读理解的副产物&amp;ndash;词空间，成为一个更具实用价值的方向。&lt;/p&gt;
+
+&lt;p&gt;因而，此文档着重以一个例子，梳理 &lt;strong&gt;&lt;em&gt;*finetune 垂直语料，获得微调后的模型*&lt;/em&gt;&lt;/strong&gt; 这一过程。Bert 原理或 Bert as service 还请移步官方文档。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;## 依赖&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;``` bash&lt;/p&gt;
+
+&lt;p&gt;python==3.6&lt;/p&gt;
+
+&lt;p&gt;tensorflow&amp;gt;=1.11.0&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;### 预训练模型&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;*   下载 &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt;*[*&lt;strong&gt;&lt;em&gt;&lt;code&gt;BERT-Base, Chinese&lt;/code&gt;&lt;/em&gt;&lt;/strong&gt;*]**&lt;strong&gt;(&lt;/strong&gt;&lt;a href=&#34;https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip**)****:&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip**)****:&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;​    Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M&lt;/p&gt;
+
+&lt;p&gt;​    parameters&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;### 数据准备&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;- &lt;code&gt;train.tsv&lt;/code&gt; 训练集&lt;/p&gt;
+
+&lt;p&gt;- &lt;code&gt;dev.tsv&lt;/code&gt; 验证集&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#### 数据格式&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。&lt;/p&gt;
+
+&lt;p&gt;``` csv&lt;/p&gt;
+
+&lt;p&gt;fashion 衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;houseliving 95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;game  赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各位小伙&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;样例数据位置：&lt;a href=&#34;https://github.com/kuhung/bert_finetune/tree/master/data&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;data&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;数据格式取决于业务场景，后面也可根据格式调整代码里的数据导入方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;## 操作&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;``` shell&lt;/p&gt;
+
+&lt;p&gt;git clone &lt;a href=&#34;https://github.com/google-research/bert.git&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/google-research/bert.git&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;cd bert&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;bert 的 finetune 主要存在两类应用场景：分类和阅读理解。因分类较为容易获得样本，以下以分类为例，做模型微调：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;### 修改 &lt;code&gt;run_classifier.py&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#### 自定义 DataProcessor&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;``` python&lt;/p&gt;
+
+&lt;p&gt;class DemoProcessor(&lt;em&gt;DataProcessor&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​    &amp;ldquo;&amp;rdquo;&amp;ldquo;Processor for Demo data set.&amp;rdquo;&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;​    def &lt;strong&gt;init&lt;/strong&gt;(&lt;em&gt;self&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​        &lt;em&gt;self&lt;/em&gt;.labels = &lt;em&gt;set&lt;/em&gt;()&lt;/p&gt;
+
+&lt;p&gt;​&lt;/p&gt;
+
+&lt;p&gt;​    def get_train_examples(&lt;em&gt;self&lt;/em&gt;, &lt;em&gt;data_dir&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​        &amp;ldquo;&amp;rdquo;&amp;ldquo;See base class.&amp;rdquo;&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;​        return &lt;em&gt;self&lt;/em&gt;._create_examples(&lt;/p&gt;
+
+&lt;p&gt;​            &lt;em&gt;self&lt;/em&gt;._read_tsv(os.path.join(data_dir, &amp;ldquo;train.tsv&amp;rdquo;)), &amp;ldquo;train&amp;rdquo;)&lt;/p&gt;
+
+&lt;p&gt;​    def get_dev_examples(&lt;em&gt;self&lt;/em&gt;, &lt;em&gt;data_dir&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​        &amp;ldquo;&amp;rdquo;&amp;ldquo;See base class.&amp;rdquo;&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;​        return &lt;em&gt;self&lt;/em&gt;._create_examples(&lt;/p&gt;
+
+&lt;p&gt;​            &lt;em&gt;self&lt;/em&gt;._read_tsv(os.path.join(data_dir, &amp;ldquo;dev.tsv&amp;rdquo;)), &amp;ldquo;dev&amp;rdquo;)&lt;/p&gt;
+
+&lt;p&gt;​    def get_test_examples(&lt;em&gt;self&lt;/em&gt;, &lt;em&gt;data_dir&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​      &amp;ldquo;&amp;rdquo;&amp;ldquo;See base class.&amp;rdquo;&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;​      return &lt;em&gt;self&lt;/em&gt;._create_examples(&lt;/p&gt;
+
+&lt;p&gt;​          &lt;em&gt;self&lt;/em&gt;._read_tsv(os.path.join(data_dir, &amp;ldquo;test.tsv&amp;rdquo;)), &amp;ldquo;test&amp;rdquo;)&lt;/p&gt;
+
+&lt;p&gt;​    def get_labels(&lt;em&gt;self&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​        &amp;ldquo;&amp;rdquo;&amp;ldquo;See base class.&amp;rdquo;&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;​        # return list(self.labels)&lt;/p&gt;
+
+&lt;p&gt;​        return [&amp;ldquo;fashion&amp;rdquo;, &amp;ldquo;houseliving&amp;rdquo;,&amp;ldquo;game&amp;rdquo;] # 根据 label 自定义&lt;/p&gt;
+
+&lt;p&gt;​    def _create_examples(&lt;em&gt;self&lt;/em&gt;, &lt;em&gt;lines&lt;/em&gt;, &lt;em&gt;set_type&lt;/em&gt;):&lt;/p&gt;
+
+&lt;p&gt;​        &amp;ldquo;&amp;rdquo;&amp;ldquo;Creates examples for the training and dev sets.&amp;rdquo;&amp;ldquo;&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;​        examples = []&lt;/p&gt;
+
+&lt;p&gt;​        for (i, line) in enumerate(lines):&lt;/p&gt;
+
+&lt;p&gt;​            guid = &amp;ldquo;%s-%s&amp;rdquo; % (set_type, i)&lt;/p&gt;
+
+&lt;p&gt;​            text_a = tokenization.convert_to_unicode(line[1])&lt;/p&gt;
+
+&lt;p&gt;​            label = tokenization.convert_to_unicode(line[0])&lt;/p&gt;
+
+&lt;p&gt;​            &lt;em&gt;self&lt;/em&gt;.labels.add(label)&lt;/p&gt;
+
+&lt;p&gt;​            examples.append(&lt;/p&gt;
+
+&lt;p&gt;​                InputExample(&lt;em&gt;guid&lt;/em&gt;=guid, &lt;em&gt;text_a&lt;/em&gt;=text_a, &lt;em&gt;text_b&lt;/em&gt;=None, &lt;em&gt;label&lt;/em&gt;=label))&lt;/p&gt;
+
+&lt;p&gt;​        return examples&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;#### 添加 DemoProcessor&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;``` python&lt;/p&gt;
+
+&lt;p&gt;processors = {&lt;/p&gt;
+
+&lt;p&gt;​      &amp;ldquo;cola&amp;rdquo;: ColaProcessor,&lt;/p&gt;
+
+&lt;p&gt;​      &amp;ldquo;mnli&amp;rdquo;: MnliProcessor,&lt;/p&gt;
+
+&lt;p&gt;​      &amp;ldquo;mrpc&amp;rdquo;: MrpcProcessor,&lt;/p&gt;
+
+&lt;p&gt;​      &amp;ldquo;xnli&amp;rdquo;: XnliProcessor,&lt;/p&gt;
+
+&lt;p&gt;​      &amp;ldquo;demo&amp;rdquo;: DemoProcessor,&lt;/p&gt;
+
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;## 启动训练&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;``` shell&lt;/p&gt;
+
+&lt;p&gt;export BERT_Chinese_DIR=/path/to/bert/chinese_L-12_H-768_A-12&lt;/p&gt;
+
+&lt;p&gt;export Demo_DIR=/path/to/DemoDate&lt;/p&gt;
+
+&lt;p&gt;python run_classifier.py &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;task_name=demo &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;do_train=true &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;do_eval=true &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;data_dir=$Demo_DIR &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;vocab_file=$BERT_Chinese_DIR/vocab.txt &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;bert_config_file=$BERT_Chinese_DIR/bert_config.json &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;init_checkpoint=$BERT_Chinese_DIR/bert_model.ckpt &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;max_seq_length=128 &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;train_batch_size=32 &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;learning_rate=2e-5 &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;num_train_epochs=3.0 &lt;/p&gt;
+
+&lt;p&gt;&amp;ndash;output_dir=/tmp/Demo_output/&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;若一切顺利，将会有以下输出:&lt;/p&gt;
+
+&lt;p&gt;``` shell&lt;/p&gt;
+
+&lt;p&gt;***** Eval results *****&lt;/p&gt;
+
+&lt;p&gt;eval_accuracy = xx&lt;/p&gt;
+
+&lt;p&gt;eval_loss = xx&lt;/p&gt;
+
+&lt;p&gt;global_step = xx&lt;/p&gt;
+
+&lt;p&gt;loss = xx&lt;/p&gt;
+
+&lt;p&gt;```&lt;/p&gt;
+
+&lt;p&gt;最终，微调后的模型保存在&lt;strong&gt;&lt;em&gt;*output_dir*&lt;/em&gt;&lt;/strong&gt;指向的文件夹中。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;## 总结&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bert 预训练后的 finetune，是一种很高效的方式，节省时间，同时提高模型在垂直语料的表现。finetune 过程，实际上不难。较大的难点在于数据准备和 pipeline 的设计。从商业角度讲，应着重考虑 finetune 之后，模型有效性的证明，以及在业务场景中的应用。如果评估指标和业务场景都已缕清，那么不妨一试。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;# 参考资料&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;- &lt;a href=&#34;https://github.com/NLPScott/bert-Chinese-classification-task&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/NLPScott/bert-Chinese-classification-task&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;- &lt;a href=&#34;https://www.jianshu.com/p/aa2eff7ec5c1&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.jianshu.com/p/aa2eff7ec5c1&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>What is Data Mining 什么是数据挖掘</title>

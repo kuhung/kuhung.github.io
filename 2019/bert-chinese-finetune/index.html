@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷洪,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-76017508-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <link rel="prev" href="http://kuhungio.me/2019/what-is-data-mining/" />
+  
+  <link rel="canonical" href="http://kuhungio.me/2019/bert-chinese-finetune/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Bert Chinese Finetune 中文语料的 Bert 微调 | Kuhung&#39;s Blog
+       
+  </title>
+  <meta name="title" content="Bert Chinese Finetune 中文语料的 Bert 微调 | Kuhung&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http://kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "Bert Chinese Finetune 中文语料的 Bert 微调",
+    "headline" : "Bert Chinese Finetune 中文语料的 Bert 微调",
+    "description" : "# Finetune Bert for Chinese
+NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。
+Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 Bert as service 代码的开源，使用 Bert 分类或阅读理解的副产物&ndash;词空间，成为一个更具实用价值的方向。
+因而，此文档着重以一个例子，梳理 *finetune 垂直语料，获得微调后的模型* 这一过程。Bert 原理或 Bert as service 还请移步官方文档。
+## 依赖
+``` bash
+python==3.6
+tensorflow&gt;=1.11.0
+```
+### 预训练模型
+* 下载 **[*BERT-Base, Chinese*]**(https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip**)****:
+​ Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M
+​ parameters
+### 数据准备
+- train.tsv 训练集
+- dev.tsv 验证集
+#### 数据格式
+第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-02-17 11:30:26 &#43;0800 CST",
+    "dateModified" : "2019-02-17 11:30:26 &#43;0800 CST",
+    "url" : "http://kuhungio.me/2019/bert-chinese-finetune/",
+    "wordCount" : "322",
+    "keywords" : [ "NLP","tutorial", "Kuhung&#39;s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://kuhungio.me">Kuhung&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Bert Chinese Finetune 中文语料的 Bert 微调</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2019-02-17 itemprop="datePublished">February 17, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="http://kuhungio.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"> 自然语言处理 </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p><strong># Finetune Bert for Chinese</strong></p>
+
+<p>NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。</p>
+
+<p><a href="https://github.com/google-research/bert" rel="nofollow noreferrer" target="_blank">Bert</a> 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 <a href="https://github.com/hanxiao/bert-as-service" rel="nofollow noreferrer" target="_blank">Bert as service</a> 代码的开源，使用 Bert 分类或阅读理解的副产物&ndash;词空间，成为一个更具实用价值的方向。</p>
+
+<p>因而，此文档着重以一个例子，梳理 <strong><em>*finetune 垂直语料，获得微调后的模型*</em></strong> 这一过程。Bert 原理或 Bert as service 还请移步官方文档。</p>
+
+<p><strong>## 依赖</strong></p>
+
+<p>``` bash</p>
+
+<p>python==3.6</p>
+
+<p>tensorflow&gt;=1.11.0</p>
+
+<p>```</p>
+
+<p><strong>### 预训练模型</strong></p>
+
+<p>*   下载 <strong><em>*</em></strong>*[*<strong><em><code>BERT-Base, Chinese</code></em></strong>*]**<strong>(</strong><a href="https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip**)****:" rel="nofollow noreferrer" target="_blank">https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip**)****:</a></p>
+
+<p>​    Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M</p>
+
+<p>​    parameters</p>
+
+<p><strong>### 数据准备</strong></p>
+
+<p>- <code>train.tsv</code> 训练集</p>
+
+<p>- <code>dev.tsv</code> 验证集</p>
+
+<p><strong>#### 数据格式</strong></p>
+
+<p>第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。</p>
+
+<p>``` csv</p>
+
+<p>fashion 衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!&hellip;</p>
+
+<p>houseliving 95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客&hellip;</p>
+
+<p>game  赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各位小伙&hellip;</p>
+
+<p>```</p>
+
+<p>样例数据位置：<a href="https://github.com/kuhung/bert_finetune/tree/master/data" rel="nofollow noreferrer" target="_blank">data</a></p>
+
+<p>数据格式取决于业务场景，后面也可根据格式调整代码里的数据导入方式。</p>
+
+<p><strong>## 操作</strong></p>
+
+<p>``` shell</p>
+
+<p>git clone <a href="https://github.com/google-research/bert.git" rel="nofollow noreferrer" target="_blank">https://github.com/google-research/bert.git</a></p>
+
+<p>cd bert</p>
+
+<p>```</p>
+
+<p>bert 的 finetune 主要存在两类应用场景：分类和阅读理解。因分类较为容易获得样本，以下以分类为例，做模型微调：</p>
+
+<p><strong>### 修改 <code>run_classifier.py</code></strong></p>
+
+<p><strong>#### 自定义 DataProcessor</strong></p>
+
+<p>``` python</p>
+
+<p>class DemoProcessor(<em>DataProcessor</em>):</p>
+
+<p>​    &ldquo;&rdquo;&ldquo;Processor for Demo data set.&rdquo;&ldquo;&rdquo;</p>
+
+<p>​    def <strong>init</strong>(<em>self</em>):</p>
+
+<p>​        <em>self</em>.labels = <em>set</em>()</p>
+
+<p>​</p>
+
+<p>​    def get_train_examples(<em>self</em>, <em>data_dir</em>):</p>
+
+<p>​        &ldquo;&rdquo;&ldquo;See base class.&rdquo;&ldquo;&rdquo;</p>
+
+<p>​        return <em>self</em>._create_examples(</p>
+
+<p>​            <em>self</em>._read_tsv(os.path.join(data_dir, &ldquo;train.tsv&rdquo;)), &ldquo;train&rdquo;)</p>
+
+<p>​    def get_dev_examples(<em>self</em>, <em>data_dir</em>):</p>
+
+<p>​        &ldquo;&rdquo;&ldquo;See base class.&rdquo;&ldquo;&rdquo;</p>
+
+<p>​        return <em>self</em>._create_examples(</p>
+
+<p>​            <em>self</em>._read_tsv(os.path.join(data_dir, &ldquo;dev.tsv&rdquo;)), &ldquo;dev&rdquo;)</p>
+
+<p>​    def get_test_examples(<em>self</em>, <em>data_dir</em>):</p>
+
+<p>​      &ldquo;&rdquo;&ldquo;See base class.&rdquo;&ldquo;&rdquo;</p>
+
+<p>​      return <em>self</em>._create_examples(</p>
+
+<p>​          <em>self</em>._read_tsv(os.path.join(data_dir, &ldquo;test.tsv&rdquo;)), &ldquo;test&rdquo;)</p>
+
+<p>​    def get_labels(<em>self</em>):</p>
+
+<p>​        &ldquo;&rdquo;&ldquo;See base class.&rdquo;&ldquo;&rdquo;</p>
+
+<p>​        # return list(self.labels)</p>
+
+<p>​        return [&ldquo;fashion&rdquo;, &ldquo;houseliving&rdquo;,&ldquo;game&rdquo;] # 根据 label 自定义</p>
+
+<p>​    def _create_examples(<em>self</em>, <em>lines</em>, <em>set_type</em>):</p>
+
+<p>​        &ldquo;&rdquo;&ldquo;Creates examples for the training and dev sets.&rdquo;&ldquo;&rdquo;</p>
+
+<p>​        examples = []</p>
+
+<p>​        for (i, line) in enumerate(lines):</p>
+
+<p>​            guid = &ldquo;%s-%s&rdquo; % (set_type, i)</p>
+
+<p>​            text_a = tokenization.convert_to_unicode(line[1])</p>
+
+<p>​            label = tokenization.convert_to_unicode(line[0])</p>
+
+<p>​            <em>self</em>.labels.add(label)</p>
+
+<p>​            examples.append(</p>
+
+<p>​                InputExample(<em>guid</em>=guid, <em>text_a</em>=text_a, <em>text_b</em>=None, <em>label</em>=label))</p>
+
+<p>​        return examples</p>
+
+<p>```</p>
+
+<p><strong>#### 添加 DemoProcessor</strong></p>
+
+<p>``` python</p>
+
+<p>processors = {</p>
+
+<p>​      &ldquo;cola&rdquo;: ColaProcessor,</p>
+
+<p>​      &ldquo;mnli&rdquo;: MnliProcessor,</p>
+
+<p>​      &ldquo;mrpc&rdquo;: MrpcProcessor,</p>
+
+<p>​      &ldquo;xnli&rdquo;: XnliProcessor,</p>
+
+<p>​      &ldquo;demo&rdquo;: DemoProcessor,</p>
+
+<p>}</p>
+
+<p>```</p>
+
+<p><strong>## 启动训练</strong></p>
+
+<p>``` shell</p>
+
+<p>export BERT_Chinese_DIR=/path/to/bert/chinese_L-12_H-768_A-12</p>
+
+<p>export Demo_DIR=/path/to/DemoDate</p>
+
+<p>python run_classifier.py </p>
+
+<p>&ndash;task_name=demo </p>
+
+<p>&ndash;do_train=true </p>
+
+<p>&ndash;do_eval=true </p>
+
+<p>&ndash;data_dir=$Demo_DIR </p>
+
+<p>&ndash;vocab_file=$BERT_Chinese_DIR/vocab.txt </p>
+
+<p>&ndash;bert_config_file=$BERT_Chinese_DIR/bert_config.json </p>
+
+<p>&ndash;init_checkpoint=$BERT_Chinese_DIR/bert_model.ckpt </p>
+
+<p>&ndash;max_seq_length=128 </p>
+
+<p>&ndash;train_batch_size=32 </p>
+
+<p>&ndash;learning_rate=2e-5 </p>
+
+<p>&ndash;num_train_epochs=3.0 </p>
+
+<p>&ndash;output_dir=/tmp/Demo_output/</p>
+
+<p>```</p>
+
+<p>若一切顺利，将会有以下输出:</p>
+
+<p>``` shell</p>
+
+<p>***** Eval results *****</p>
+
+<p>eval_accuracy = xx</p>
+
+<p>eval_loss = xx</p>
+
+<p>global_step = xx</p>
+
+<p>loss = xx</p>
+
+<p>```</p>
+
+<p>最终，微调后的模型保存在<strong><em>*output_dir*</em></strong>指向的文件夹中。</p>
+
+<p><strong>## 总结</strong></p>
+
+<p>Bert 预训练后的 finetune，是一种很高效的方式，节省时间，同时提高模型在垂直语料的表现。finetune 过程，实际上不难。较大的难点在于数据准备和 pipeline 的设计。从商业角度讲，应着重考虑 finetune 之后，模型有效性的证明，以及在业务场景中的应用。如果评估指标和业务场景都已缕清，那么不妨一试。</p>
+
+<p><strong># 参考资料</strong></p>
+
+<p>- <a href="https://github.com/NLPScott/bert-Chinese-classification-task" rel="nofollow noreferrer" target="_blank">https://github.com/NLPScott/bert-Chinese-classification-task</a></p>
+
+<p>- <a href="https://www.jianshu.com/p/aa2eff7ec5c1" rel="nofollow noreferrer" target="_blank">https://www.jianshu.com/p/aa2eff7ec5c1</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://kuhungio.me/2019/bert-chinese-finetune/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="http://kuhungio.me/tags/nlp/">
+                    #NLP</a></span>
+            
+            <span class="tag"><a href="http://kuhungio.me/tags/tutorial/">
+                    #tutorial</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="http://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://kuhungio.me/2019/what-is-data-mining/" class="prev" rel="prev" title="What is Data Mining 什么是数据挖掘"><i class="iconfont icon-left"></i>&nbsp;What is Data Mining 什么是数据挖掘</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: 'a2b71e2bbe8c6f50be25facda34d9d63',
+        title: 'Bert Chinese Finetune 中文语料的 Bert 微调',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2015 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -6,9 +6,19 @@
     <description>Recent content in Tags on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <lastBuildDate>Sun, 17 Feb 2019 11:30:26 +0800</lastBuildDate>
     
 	<atom:link href="http://kuhungio.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>NLP</title>
+      <link>http://kuhungio.me/tags/nlp/</link>
+      <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
+      
+      <guid>http://kuhungio.me/tags/nlp/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>demo</title>
@@ -16,6 +26,15 @@
       <pubDate>Tue, 21 Nov 2017 09:02:35 +0800</pubDate>
       
       <guid>http://kuhungio.me/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>http://kuhungio.me/tags/tutorial/</link>
+      <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
+      
+      <guid>http://kuhungio.me/tags/tutorial/</guid>
       <description></description>
     </item>
     

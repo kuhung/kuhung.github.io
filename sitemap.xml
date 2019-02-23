@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>http://kuhungio.me/2019/bert-chinese-finetune/</loc>
+      
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>http://kuhungio.me/2019/what-is-data-mining/</loc>
       
       <lastmod>2019-02-17T00:40:20+08:00</lastmod>
@@ -125,7 +135,19 @@
     <url>
       <loc>http://kuhungio.me/</loc>
       
-      <lastmod>2019-02-17T00:40:20+08:00</lastmod>
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>http://kuhungio.me/tags/nlp/</loc>
+      
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
       
       
       
@@ -137,7 +159,7 @@
     <url>
       <loc>http://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-02-17T00:40:20+08:00</lastmod>
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
       
       
       
@@ -148,6 +170,8 @@
   
     <url>
       <loc>http://kuhungio.me/tags/</loc>
+      
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
       
       
       
@@ -160,6 +184,18 @@
       <loc>http://kuhungio.me/tags/demo/</loc>
       
       <lastmod>2017-11-21T09:02:35+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>http://kuhungio.me/tags/tutorial/</loc>
+      
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
       
       
       
@@ -292,6 +328,18 @@
       <loc>http://kuhungio.me/tags/%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1/</loc>
       
       <lastmod>2019-01-26T15:52:08+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>http://kuhungio.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/</loc>
+      
+      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
       
       
       
