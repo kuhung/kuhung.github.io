@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>行业观察 on Kuhung&#39;s Blog</title>
-    <link>http://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
+    <link>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
     <description>Recent content in 行业观察 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 30 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Why is Data Hard 为啥说做数据这行不容易</title>
-      <link>http://kuhungio.me/2018/why-is-data-hard/</link>
+      <link>https://kuhungio.me/2018/why-is-data-hard/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://kuhungio.me/2018/why-is-data-hard/</guid>
+      <guid>https://kuhungio.me/2018/why-is-data-hard/</guid>
       <description>原文链接 Slack 工程师 : why-is-data-hard?
 做数据挖掘时，常常需要考虑很多方面。其中一个方面，常常会涉及到跨功能，复杂且琐碎的一些事项。数据准备以及评价指标的制定，就是这些事项之一。
 等等，似乎干数据这一行，并不容易？

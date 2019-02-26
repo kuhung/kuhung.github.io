@@ -7,7 +7,7 @@
   <meta name="robots" content="noodp"/>
   <meta name="author" content="谷粒">
   <meta name="description" content="数据挖掘/机器学习工程师">
-  <meta name="keywords" content="华中科技大学,谷洪,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  <meta name="keywords" content="华中科技大学,谷粒,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
 <script type="application/javascript">
@@ -23,9 +23,9 @@ if (!doNotTrack) {
 }
 </script>
 
-  <link rel="prev" href="http://kuhungio.me/2019/what-is-data-mining/" />
-  
-  <link rel="canonical" href="http://kuhungio.me/2019/bert-chinese-finetune/" />
+  <link rel="prev" href="https://kuhungio.me/2019/what-is-data-mining/" />
+  <link rel="next" href="https://kuhungio.me/2019/the-next-step-for-machine-learning/" />
+  <link rel="canonical" href="https://kuhungio.me/2019/bert-chinese-finetune/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -55,7 +55,7 @@ if (!doNotTrack) {
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "http://kuhungio.me"
+         "@id": "https://kuhungio.me"
     },
     "articleSection" : "posts",
     "name" : "Bert Chinese Finetune 中文语料的 Bert 微调",
@@ -74,7 +74,7 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
     "copyrightYear" : "2019",
     "datePublished": "2019-02-17 11:30:26 &#43;0800 CST",
     "dateModified" : "2019-02-17 11:30:26 &#43;0800 CST",
-    "url" : "http://kuhungio.me/2019/bert-chinese-finetune/",
+    "url" : "https://kuhungio.me/2019/bert-chinese-finetune/",
     "wordCount" : "260",
     "keywords" : [ "NLP","tutorial", "Kuhung&#39;s Blog"]
 }
@@ -90,7 +90,7 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://kuhungio.me">Kuhung&#39;s Blog</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -109,7 +109,7 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -136,14 +136,14 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Bert Chinese Finetune 中文语料的 Bert 微调</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="http://kuhungio.me" rel="author">谷粒</a> with ♥
+                Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
                 <span class="post-time">
                 on <time datetime=2019-02-17 itemprop="datePublished">February 17, 2019</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="http://kuhungio.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"> 自然语言处理 </a>
+                        <a href="https://kuhungio.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"> 自然语言处理 </a>
                         
                 </span>
 
@@ -403,7 +403,7 @@ python run_classifier.py \
             
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=http://kuhungio.me/2019/bert-chinese-finetune/>
+                    <a href=https://kuhungio.me/2019/bert-chinese-finetune/>
                         <script>
                             document.write(decodeURI(location.origin + location.pathname))
                         </script>
@@ -423,24 +423,26 @@ python run_classifier.py \
             <section>
             <i class="iconfont icon-tag"></i>Tag(s):
             
-            <span class="tag"><a href="http://kuhungio.me/tags/nlp/">
+            <span class="tag"><a href="https://kuhungio.me/tags/nlp/">
                     #NLP</a></span>
             
-            <span class="tag"><a href="http://kuhungio.me/tags/tutorial/">
+            <span class="tag"><a href="https://kuhungio.me/tags/tutorial/">
                     #tutorial</a></span>
             
             </section>
         
         <section>
                 <a href="javascript:window.history.back();">back</a></span> ·
-                <span><a href="http://kuhungio.me">home</a></span>
+                <span><a href="https://kuhungio.me">home</a></span>
         </section>
     </div>
 
     <div class="post-nav">
         
-        <a href="http://kuhungio.me/2019/what-is-data-mining/" class="prev" rel="prev" title="What is Data Mining 什么是数据挖掘"><i class="iconfont icon-left"></i>&nbsp;What is Data Mining 什么是数据挖掘</a>
+        <a href="https://kuhungio.me/2019/what-is-data-mining/" class="prev" rel="prev" title="What is Data Mining 什么是数据挖掘"><i class="iconfont icon-left"></i>&nbsp;What is Data Mining 什么是数据挖掘</a>
         
+        
+        <a href="https://kuhungio.me/2019/the-next-step-for-machine-learning/" class="next" rel="next" title="The Next Step for Machine Learning 机器学习落地需攻破的9个难题">The Next Step for Machine Learning 机器学习落地需攻破的9个难题&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
@@ -489,13 +491,13 @@ python run_classifier.py \
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2015 - 2019</span>
+        <span itemprop="copyrightYear">2016 - 2019</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i>
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="http://kuhungio.me">谷粒</a> | </span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhungio.me">谷粒</a> | </span>
          
 
          

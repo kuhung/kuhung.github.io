@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: http://kuhungio.me/sitemap.xml
+Sitemap: https://kuhungio.me/sitemap.xml

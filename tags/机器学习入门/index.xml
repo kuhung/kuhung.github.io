@@ -2,21 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>机器学习入门 on Kuhung&#39;s Blog</title>
-    <link>http://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</link>
+    <link>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/</link>
     <description>Recent content in 机器学习入门 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Feb 2019 23:31:58 +0800</lastBuildDate>
     
-	<atom:link href="http://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>The Next Step for Machine Learning 机器学习落地需攻破的9个难题</title>
+      <link>https://kuhungio.me/2019/the-next-step-for-machine-learning/</link>
+      <pubDate>Sun, 24 Feb 2019 23:31:58 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/the-next-step-for-machine-learning/</guid>
+      <description>机器学习在前两年的时间里，一下子就爆火了起来。很多公司也跟着这个趋势，招募了很多算法工程师、数据挖掘工程师。但是，在实践中，企业发现要落地，实际上还有很多问题需解决。以至于在大部分项目，还是规则主导。算法工程师的日常，也不过是清洗数据，调整规则。所以，机器学习技术，在真实的应用中到底缺少些什么呢？
+在国立台湾大学《机器学习》2019春季班，李宏毅老师给出了他的观察。以下的内容，结合李老师的最新讲义、加上我本身工作的理解，给大家梳理机器学习落地急需解决的9个难题。
+拒绝回答与可解释性（哲学层面） 1. Anomaly Detection 机器能不能知道“我不知道” 机器能不能知道自己的识别范围，还是说生硬地给出模型内的东西，或者说抛出无法识别。在猫狗分类里，现有的模型已经到达很高的精度，甚至能给出猫狗的品种。
+但是正式上线后，用户真的会乖乖给到猫狗的图片吗？如果用户丢一张妹子图，机器能够知道自己不知道吗？目前这个领域的研究叫做 Anomaly Detection。知道自己不知道，对于一些异常的情况，十分重要。
+2. Explainable AI 说出为什么“我知道” 神马汉斯的故事：
+18世纪德国，一匹名叫汉斯的马成为当地网红。他能够计算简单的算术题，并用蹄子敲出正确回答。这在当时一度引起轰动。后来，有人做了个实验，把汉斯和周围的人完全隔绝，这匹马就完全蒙圈了。时事证明，这匹马的神奇能力不在于他的算数能力，而在于他的观察能力。当给到正确答案时，周围的人会有不一样的反应，汉斯也就随即停止敲马蹄。
+机器学习的成果，是否同汉斯一样，通过一些意想不到的渠道，获得的答案。在 GCPR 2017 Tutorial 的研究中，研究者通过注意力机制，研究机器判断的依据。
+实验者测试了两个模型，两个模型均为马匹识别。DNN 模型的焦点集中在马匹身上，是一个正常的模型。但 FV 的交点却集中在图片左下角。原来，图片的左下角有图片的出处，所有的包含马匹的图都有这个标记。所以，FV 模型学到的重点在于这些标记。同样的表现，却是不一样的判断依据。显然，FV 模型的判断依据是滑稽和不可靠的。
+我们需要一些技术，让 AI 不仅给出结果，同时要给出判断的依据。即：模型的可解释性。
+抵御恶意攻击 3. 防止 Adversarial Attack 人有错觉，机器是否也会有错觉。我们来做一个认知实验。以下两个圈圈，哪个的颜色更深？好，记住你的答案。结果将在稍后揭晓。
+对于机器，有研究表明，通过改变图像中的个别像素，可以起到迷惑机器的作用。改变一个像素，就可以让模型的判断结果从熊猫到长臂猿。该技术名叫 Adversarial Attack。
+这样的技术相当危险。举个例子，当自动驾驶的车辆行驶在路上时，可能路边的人挥舞下旗子，机器的判断就会被干扰，做出不当的举动。
+回到开头的例子，正确答案是左边。这其实是一个计中计。你以为这是视觉认知实验，其实这也是某种形式的“心理攻击”。 学习模式 4. Life-long learning 终身学习 终身学习是一个人类行为的概念。活到老学到老，大家都知道只有不断更新自己的知识，才能跟上社会发展的步伐。同时呢，先前学到的东西，对后面的学习仍有帮助。举个例子：学完线性代数之后，对学习和理解机器学习就大有帮助。
+但是，机器不一样。今天的我们，一般只让一个模型学习一个任务。但这样会存在一些问题。首先是随着建模的增多，模型数量将无限增长。其次，模型之前学到的技能，对之后的学习没有帮助。就像 Alphastar 它玩星际争霸很棒，但让他同时学下围棋，目前来说是不行的。它和 Alphazero 是两个不同的模型 。
+那么，自然而然的，我们就会抛出这样一个疑问，机器能否终身学习呢？这里的相关研究，提个关键词 Catastrophic Forgetting 。
+5. Meta-learning / Learn to learn 学习如何学习 现有的机器学习模型设计，都遵循着这样一个范式——在特定领域人工设计一套算法，让机器去学习。我们就想，能不能设计一套算法，让机器自己去设计自己的学习算法呢？
+这样的范式，我们称之为 meta-learning 元学习，或者叫 learn to learn，学习如何学习。</description>
+    </item>
+    
+    <item>
       <title>Single Shot MultiBox Detector Keras version</title>
-      <link>http://kuhungio.me/2017/ssd/</link>
+      <link>https://kuhungio.me/2017/ssd/</link>
       <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://kuhungio.me/2017/ssd/</guid>
+      <guid>https://kuhungio.me/2017/ssd/</guid>
       <description>SSD目标检测Keras版 SSD是一种Object Detection方法。本文是基于论文SSD: Single Shot MultiBox Detector，实现的keras版本。
  该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。 SSD将输出一系列离散化（discretization）的bounding boxes，这些bounding boxes是在不同层次（layers）上的feature maps上生成的，并且有着不同的aspect ratio。
  模型效果  模型对载具的检测  模型对动物的检测  模型的视频检测   如何使用 项目地址kuhung/SSD_keras
@@ -28,10 +53,10 @@
     
     <item>
       <title>Cats VS. Dogs 图像分类之猫狗大战</title>
-      <link>http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link>
+      <link>https://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link>
       <pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</guid>
+      <guid>https://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</guid>
       <description>我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）
 个人介绍 华中科技大学机械学院的大二（准大三）学生，接触数据挖掘快有一年了。早期在学生团队做过一些D3数据可视化方面的工作，今年上半年开始数据挖掘实践。想把这个爱好发展成事业。做过阿里的天池竞赛，也有在kaggle混迹。算个数据新手，但一直不承认：你是新人，所以成绩不好看没啥关系。
 初识比赛 第一次接触数据集，就感觉有些难度。因为以前没做过图片分类的比赛，更没想过要用深度学习的神经网络进行识别。思索一番，还是觉得特征提取后，使用决策树靠谱。自己也下去找过资料，发现并不容易实现。期间，还曾一度想过肉眼识别。但打开文件，看到那1400+图片，就觉得这时间花在肉眼识别上不值。中间一度消停。
