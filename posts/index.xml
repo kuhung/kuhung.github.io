@@ -6,10 +6,27 @@
     <description>Recent content in Posts on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Feb 2019 23:31:58 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 Mar 2019 22:48:45 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prophet in 000300 我把算法模型套在了股市上，发现...</title>
+      <link>https://kuhungio.me/2019/prophet-in-000300/</link>
+      <pubDate>Fri, 08 Mar 2019 22:48:45 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/prophet-in-000300/</guid>
+      <description>跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。
+时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。
+为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。
+时序预测的原理 对于时间序列问题，常用的手法是时间序列的分解：这里有些类似于傅里叶变换的意味。将一个函数分解为多个规律函数的和积。时间序列的常见组成成分包括：季节项、趋势项以及噪声。在 Prophet 中，结合实际情况，他们又加入了节假日项目。之前在一次 kaggle 的比赛中，我们也发现节假日的数据波动，其实是类似于周末效应的。即：节假日的前后数据，类似于周六的前后数据。对数据进行修正后，评价指标会好很多。
+废话不多说，咱们开干。
+Prophet in 沪深300 工具包安装 pip install fbprophet
+数据准备与清洗 import pandas as pd import numpy as np from fbprophet import Prophet  数据准备
+ 数据来源为网易财经，沪深三百指数。  data = pd.read_csv(&#39;../data/000300.csv&#39;,encoding=&#39;GB2312&#39;) data.head()  数据清洗
+ 选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。  df = data[[u&#39;日期&#39;,u&#39;收盘价&#39;]] df.columns = [&#39;ds&#39;,&#39;y&#39;] df[&#39;y&#39;] = df[&#39;y&#39;].apply(lambda x: np.log(int(x)))  模型拟合与预测 简单定义，然后拟合。</description>
+    </item>
     
     <item>
       <title>The Next Step for Machine Learning 机器学习落地需攻破的9个难题</title>
