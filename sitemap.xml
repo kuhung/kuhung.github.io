@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2019/competing-on-analytics/</loc>
+      
+      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2019/prophet-in-000300/</loc>
       
       <lastmod>2019-03-08T22:48:45+08:00</lastmod>
@@ -155,7 +165,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2019-03-08T22:48:45+08:00</lastmod>
+      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
       
       
       
@@ -179,7 +189,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-03-08T22:48:45+08:00</lastmod>
+      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
       
       
       
@@ -237,6 +247,30 @@
     </url>
   
     <url>
+      <loc>https://kuhungio.me/tags/%E5%95%86%E4%B8%9A/</loc>
+      
+      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/%E5%95%86%E4%B8%9A%E7%9F%A5%E8%AF%86/</loc>
+      
+      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/</loc>
       
       <lastmod>2016-07-06T00:00:00+00:00</lastmod>
@@ -264,6 +298,18 @@
       <loc>https://kuhungio.me/tags/%E6%95%B0%E5%AD%A6/</loc>
       
       <lastmod>2018-10-18T00:00:00+00:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
+      
+      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
       
       
       
@@ -393,9 +439,9 @@
     </url>
   
     <url>
-      <loc>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
+      <loc>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
       
-      <lastmod>2018-03-30T00:00:00+00:00</lastmod>
+      <lastmod>2019-02-24T23:31:58+08:00</lastmod>
       
       
       
@@ -405,9 +451,9 @@
     </url>
   
     <url>
-      <loc>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
+      <loc>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
       
-      <lastmod>2019-02-24T23:31:58+08:00</lastmod>
+      <lastmod>2018-03-30T00:00:00+00:00</lastmod>
       
       
       
