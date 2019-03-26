@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2019/slack-gpt2-bot/</loc>
+      
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2019/competing-on-analytics/</loc>
       
       <lastmod>2019-03-12T10:48:59+08:00</lastmod>
@@ -165,7 +175,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
       
       
       
@@ -177,7 +187,7 @@
     <url>
       <loc>https://kuhungio.me/tags/nlp/</loc>
       
-      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
       
       
       
@@ -189,7 +199,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
       
       
       
@@ -201,7 +211,19 @@
     <url>
       <loc>https://kuhungio.me/tags/</loc>
       
-      <lastmod>2019-02-17T11:30:26+08:00</lastmod>
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/bot/</loc>
+      
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
       
       
       
@@ -214,6 +236,18 @@
       <loc>https://kuhungio.me/tags/demo/</loc>
       
       <lastmod>2017-11-21T09:02:35+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/sideproject/</loc>
+      
+      <lastmod>2019-03-25T22:36:06+08:00</lastmod>
       
       
       

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NLP on Kuhung&#39;s Blog</title>
-    <link>https://kuhungio.me/tags/nlp/</link>
-    <description>Recent content in NLP on Kuhung&#39;s Blog</description>
+    <title>bot on Kuhung&#39;s Blog</title>
+    <link>https://kuhungio.me/tags/bot/</link>
+    <description>Recent content in bot on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 25 Mar 2019 22:36:06 +0800</lastBuildDate>
     
-	<atom:link href="https://kuhungio.me/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kuhungio.me/tags/bot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -25,19 +25,6 @@
 言归正传，我们回到在slack上面。我们的核心就以下代码：
 核心代码解读 导入一些基础配置
 import os import time import re from slackclient import SlackClient import sys from gpt2.src import generate_unconditional_samples # instantiate Slackk client slack_client = SlackClient(&#39;&#39;) # 认证口令 # starterbot&#39;s user ID in Slack: value is ssigned after the bot starts up starterbot_id = None  延迟配置以及样例和匹配模式</description>
-    </item>
-    
-    <item>
-      <title>Bert Chinese Finetune 中文语料的 Bert 微调</title>
-      <link>https://kuhungio.me/2019/bert-chinese-finetune/</link>
-      <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2019/bert-chinese-finetune/</guid>
-      <description>Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。
-Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 Bert as service 代码的开源，使用 Bert 分类或阅读理解的副产物&amp;ndash;词空间，成为一个更具实用价值的方向。
-因而，此文档着重以一个例子，梳理 finetune 垂直语料，获得微调后的模型 这一过程。Bert 原理或 Bert as service 还请移步官方文档。
-依赖 python==3.6 tensorflow&amp;gt;=1.11.0  预训练模型  下载 BERT-Base, Chinese: Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M parameters  数据准备  train.tsv 训练集 dev.tsv 验证集   数据格式 第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。
-fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... houseliving	95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客... game	赛季末用他们两天上一段，7.</description>
     </item>
     
   </channel>
