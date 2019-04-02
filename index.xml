@@ -6,8 +6,241 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 25 Mar 2019 22:36:06 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Apr 2019 19:28:32 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hands On Machine Learning in Industry 一文看懂机器学习项目的完整生命周期</title>
+      <link>https://kuhungio.me/2019/hands-on_machine_learning_in_industry/</link>
+      <pubDate>Mon, 01 Apr 2019 19:28:32 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/hands-on_machine_learning_in_industry/</guid>
+      <description>
+
+&lt;p&gt;机器学习这东西，在学术界产出颇多，但在工业界，却很少落地。究其原因，是理念落地不够彻底，很多从业者和相关上下游不理解所致。这次就这这个机会，梳理下一个机器学习，从立项到落地再到结束，他的完整生命周期该是什么样子的。这里参考了《Hands-On Machine Learning with Scikit-Learn and Tensorflow》，值得一提的是这本书写的很不错，和《群体智慧编程》有一拼，建议阅读英文原著或东南大学出的影印版。&lt;/p&gt;
+
+&lt;h1 id=&#34;机器学习项目的生命周期&#34;&gt;机器学习项目的生命周期&lt;/h1&gt;
+
+&lt;ol class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;p&gt;问题定义&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 定义问题，并关注大局&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;数据处理&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 获取数据&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 探索性的数据分析&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 清洗数据，为接下来的模型做准备&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;模型方案&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 探索不同的模型并挑选合适的模型&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 对模型进行微调，并集成为更好的模型&lt;/label&gt;&lt;/li&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 解决方案呈现&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;部署维护&lt;/p&gt;
+
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;label&gt;&lt;input type=&#34;checkbox&#34; checked disabled class=&#34;task-list-item&#34;&gt; 部署、监控并维护系统
+
+&lt;br /&gt;&lt;/label&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;定义问题-从大局出发&#34;&gt;定义问题，从大局出发&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;和业务团队一起定义问题目标&lt;/li&gt;
+&lt;li&gt;我们的解决方案将会如何发挥作用&lt;/li&gt;
+&lt;li&gt;现在的解决方案是什么样的（如果有）&lt;/li&gt;
+&lt;li&gt;你将如何定义这个问题（有监督、无监督，在线还是离线）&lt;/li&gt;
+&lt;li&gt;结果该如何衡量&lt;/li&gt;
+&lt;li&gt;衡量方法是否和商业目标一致&lt;/li&gt;
+&lt;li&gt;要达成这一目标，至少的表现该是什么样子的&lt;/li&gt;
+&lt;li&gt;类似的问题是什么？有无可复用的经验与工具&lt;/li&gt;
+&lt;li&gt;我们有专家知识吗&lt;/li&gt;
+&lt;li&gt;你将如何着手解决这个问题&lt;/li&gt;
+&lt;li&gt;列出你或者别人目前所作的努力&lt;/li&gt;
+&lt;li&gt;如果可能，对假说进行验证&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;获取数据&#34;&gt;获取数据&lt;/h2&gt;
+
+&lt;p&gt;建议：尽量自动化以更容易地方式获取最新的数据&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;列出你所需的数据以及体量&lt;/li&gt;
+&lt;li&gt;找寻并记录下获取数据的方式&lt;/li&gt;
+&lt;li&gt;检查数据将占据多少空间&lt;/li&gt;
+&lt;li&gt;检查是否有法律风险，如有必要请获得许可&lt;/li&gt;
+&lt;li&gt;获取许可&lt;/li&gt;
+&lt;li&gt;创建工作空间，确保存储足够大&lt;/li&gt;
+&lt;li&gt;获取数据&lt;/li&gt;
+&lt;li&gt;转换数据的格式以便能够方便操作（不需要改变数据本身）&lt;/li&gt;
+&lt;li&gt;确保敏感信息被删除或保护加密（匿名）&lt;/li&gt;
+&lt;li&gt;检查数据的大小和类型（时间序列、采样、地理信息等）&lt;/li&gt;
+&lt;li&gt;划分测试集，把他放一边，并且不再去动他（防止数据泄露）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;探索数据&#34;&gt;探索数据&lt;/h2&gt;
+
+&lt;p&gt;建议：在该阶段尽量获取领域专家的意见&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;创建数据的副本以便做数据探索（如果数据量太大，做降采样处理）&lt;/li&gt;
+&lt;li&gt;创建 Jupyter notebook 以便保存探索记录&lt;/li&gt;
+&lt;li&gt;研究每个属性及其特征
+
+&lt;ul&gt;
+&lt;li&gt;名称&lt;/li&gt;
+&lt;li&gt;类型（类别，整型/浮点，有无上下界，文本，结构化等）&lt;/li&gt;
+&lt;li&gt;缺失值&lt;/li&gt;
+&lt;li&gt;噪声数据（随机数，异常值，四舍五入的误差）&lt;/li&gt;
+&lt;li&gt;对本任务可能有用的数据&lt;/li&gt;
+&lt;li&gt;分布类型（高斯分布，均匀分布，指数分布）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;对于有监督问题：确定目标对象&lt;/li&gt;
+&lt;li&gt;可视化数据&lt;/li&gt;
+&lt;li&gt;研究变量间的相关性&lt;/li&gt;
+&lt;li&gt;研究你将如何着手解决此问题&lt;/li&gt;
+&lt;li&gt;确认比较有希望的解决方案&lt;/li&gt;
+&lt;li&gt;确认有用的外部数据&lt;/li&gt;
+&lt;li&gt;将以上信息存档记录下来&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;准备数据&#34;&gt;准备数据&lt;/h2&gt;
+
+&lt;p&gt;建议：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;在数据的副本上操作（保持原始数据不被影响）&lt;/li&gt;
+&lt;li&gt;将你所作的数据变换写成函数，有以下5个原因
+
+&lt;ul&gt;
+&lt;li&gt;便于在本项目的新数据上复用&lt;/li&gt;
+&lt;li&gt;便于在别的项目中复用&lt;/li&gt;
+&lt;li&gt;快速清洗和准备测试集&lt;/li&gt;
+&lt;li&gt;在立项后，能够及时对数据进行处理&lt;/li&gt;
+&lt;li&gt;让数据变换过程也能作为超参数的一份子，进行调参&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据清洗
+
+&lt;ul&gt;
+&lt;li&gt;调整或移除异常值（可选）&lt;/li&gt;
+&lt;li&gt;填补缺失值（0，平均数、中位数），或者简单的去掉缺失的样本或特征&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;特征选择（可选）
+
+&lt;ul&gt;
+&lt;li&gt;去掉对本任务无用的信息&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;特征工程，适度
+
+&lt;ul&gt;
+&lt;li&gt;连续数值离散化&lt;/li&gt;
+&lt;li&gt;特征分解（分类特征、时间特征等）&lt;/li&gt;
+&lt;li&gt;特征变换（log(x),sqrt(x),x^2等）&lt;/li&gt;
+&lt;li&gt;特征组合&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;特征尺度变换：标准化或归一化&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;挑选合适的模型&#34;&gt;挑选合适的模型&lt;/h2&gt;
+
+&lt;p&gt;建议：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;如果数据很大，做降采样，以便能够在合理时间内尝试多个模型（不过要注意，这样的操作对于复杂模型不太友好，比如神经网络和随机森林）&lt;/li&gt;
+&lt;li&gt;再一次的，尽量自动化以上流程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;训练很多模型，快且原始地使用模型参数，训练尽可能多的模型（线性模型、朴素贝叶斯、SVM、随机森林、神经网络等等）&lt;/li&gt;
+&lt;li&gt;测量并评估他们的表现
+
+&lt;ul&gt;
+&lt;li&gt;对于每个模型，使用 N-fold 交叉验证，计算表现的均值与方差&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;分析每个模型上最为显著的特征&lt;/li&gt;
+&lt;li&gt;分析模型所犯的错误类型
+
+&lt;ul&gt;
+&lt;li&gt;如果是人类，会采用什么样的方法避免犯错？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;快速地做一波特征选择和特征工程&lt;/li&gt;
+&lt;li&gt;前面步骤重复一两次&lt;/li&gt;
+&lt;li&gt;列出表现最好的3-5个模型，最好他们的错误情况不同以便集成&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;微调系统&#34;&gt;微调系统&lt;/h2&gt;
+
+&lt;p&gt;建议：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;随着微调的进行，你将会使用尽可能多的数据&lt;/li&gt;
+&lt;li&gt;总是使你的操作自动化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用交叉验证进行超参数的微调
+
+&lt;ul&gt;
+&lt;li&gt;将你的数据变换也变成超参数的一部分，特别是当你对数据不熟悉的时候（比如：我应该用0还是中位数填补缺失值，还是仅仅去掉那个样本？）&lt;/li&gt;
+&lt;li&gt;除非超参数非常少，使用随机搜索而不是网格搜索。如果训练耗时非常久，你可能会想用贝叶斯优化方法。（比如使用高斯过程）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;采用集成方法。集成最优的方案，往往表现会超过单独模型方案。&lt;/li&gt;
+&lt;li&gt;一旦你对自己的模型很有信心，那就在测试集上验证其泛化误差。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;方案呈现&#34;&gt;方案呈现&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;记下你所做的努力，文档化&lt;/li&gt;
+&lt;li&gt;起草一份漂亮的展示稿
+
+&lt;ul&gt;
+&lt;li&gt;确保先强调大局&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;解释为何你的方案达到了商业目标&lt;/li&gt;
+&lt;li&gt;不要忘记展现整个过程中你认为的有趣部分
+
+&lt;ul&gt;
+&lt;li&gt;讲述什么有效、以及什么没起作用&lt;/li&gt;
+&lt;li&gt;列出你的前提条件，并说明边界&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;通过可视乎，确保你的关键发现易于理解和传播；或是利用容易记住的表达&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;部署&#34;&gt;部署&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;准备将你的解决方案接入生产环境（接入生产环境的数据，写单元测试等）&lt;/li&gt;
+&lt;li&gt;写监控代码以监测系统的表现，当系统宕机时发出警告
+
+&lt;ul&gt;
+&lt;li&gt;要意识到，随着数据的更新，模型的效果也会衰减&lt;/li&gt;
+&lt;li&gt;可能需要人工检测数据的表现&lt;/li&gt;
+&lt;li&gt;同样监控输入数据（例如：失灵的传感器会传回随机的数据，而其他的传感器的输出会是一个稳定值）这对于在线学习系统尤为重要&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;当模型达到一定偏差时，重新在新数据上训练（尽可能自动化）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上，我们从立项、数据准备、模型准备到模型的部署，全面梳理的真实项目中的机器学习模型生命周期。在真实的工业场景中，我们所作的可能有些许差别，但都差不多。例如：我们会对问题定义、会对数据进行探索、会给需求方呈现我们的解决方案、会监控我们的模型表现。&lt;/p&gt;
+
+&lt;p&gt;在梳理过程中我也发现自身团队的不足：对大背景商业目标的认识不到位、很多时候是拿着锤子（模型）去找钉子（场景）、方案呈现上理工科思维偏重、系统迭代不足。除此之外，还有些细节不是很规范。简单来说就是有些跑马圈地、急功近利的感觉。业务向较重，算法模型潜力并未完全释放，在团队内推行以上规范非常有必要。&lt;/p&gt;
+
+&lt;p&gt;不知道看本文的读者，你们的团队会有这样的情况吗？欢迎就此在评论区发表你的看法。喜欢本文的读者，别忘了点赞、喜欢、加关注哦，你的鼓励，将是我写作分享的动力(&lt;em&gt;^_^&lt;/em&gt;)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Slack gpt2 Bot 机器人写文已经到了如此地步？邀你一同测评史上最强 GPT2 模型</title>
@@ -145,8 +378,6 @@ python starterbot.py
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 
 &lt;p&gt;如同大多数应用场景一样，数据挖掘的算法需要落地，最好的办法就是封装成一个接口，给到前后端去调用。这其中还有很多性能优化的东西，但作为一个 sideproject，以上操作足够让你给别人眼前一亮的感觉。&lt;/p&gt;
-
-&lt;p&gt;。&lt;/p&gt;
 </description>
     </item>
     
@@ -1299,293 +1530,6 @@ python yysGAN.py
 
 &lt;pre&gt;&lt;code&gt;# 拆包即用，修改input下文件，改为对应的jpg素材即可。
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Cats VS. Dogs 图像分类之猫狗大战</title>
-      <link>https://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link>
-      <pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/2016/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</guid>
-      <description>
-
-&lt;p&gt;我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）&lt;/p&gt;
-
-&lt;h2 id=&#34;个人介绍&#34;&gt;个人介绍&lt;/h2&gt;
-
-&lt;p&gt;华中科技大学机械学院的大二（准大三）学生，接触数据挖掘快有一年了。早期在学生团队做过一些D3数据可视化方面的工作，今年上半年开始数据挖掘实践。想把这个爱好发展成事业。做过阿里的天池竞赛，也有在kaggle混迹。算个数据新手，但一直不承认：你是新人，所以成绩不好看没啥关系。&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&#34;初识比赛&#34;&gt;初识比赛&lt;/h2&gt;
-
-&lt;p&gt;第一次接触数据集，就感觉有些难度。因为以前没做过图片分类的比赛，更没想过要用深度学习的神经网络进行识别。思索一番，还是觉得特征提取后，使用决策树靠谱。自己也下去找过资料，发现并不容易实现。期间，还曾一度想过肉眼识别。但打开文件，看到那1400+图片，就觉得这时间花在肉眼识别上不值。中间一度消停。&lt;/p&gt;
-
-&lt;h2 id=&#34;初见曙光-yinjh战队分享&#34;&gt;初见曙光——yinjh战队分享&lt;/h2&gt;
-
-&lt;p&gt;后来上论坛逛过几次。一次偶然的机会，让我看到了yinjh团队分享的vgg16模型。乍一看，代码简单、效果不错。更为重要的是，这个模型自己以前从未见过。于是抱着验证学习的态度，我把代码扣了下来，打算自己照着做一遍。&lt;/p&gt;
-
-&lt;h2 id=&#34;过程艰难&#34;&gt;过程艰难&lt;/h2&gt;
-
-&lt;p&gt;一开始，我就把一屏的代码放进了我的jupyter notebook中，一步一步试水。很明显，我的很多依赖包都没安装，所以也是错误不断。早先是在Windows系统下，使用python2.7，需要什么包，就安装什么包。在安装keras过程中，我发现了Anaconda——很好用的一个科学计算环境，集成了各种数据挖掘包。即使是这样，仍然是满屏的错误，亟待排查。&lt;/p&gt;
-
-&lt;h2 id=&#34;步步优化&#34;&gt;步步优化&lt;/h2&gt;
-
-&lt;p&gt;离比赛截止就还只有几天，一边准备期末考试，一边焦急地排查bug。Windows系统下仍有个别难以解决的错误，我索性切换到了做NAO机器人时装的Ubuntu系统下。结合keras给的官方文档，我对原代码进行了函数拆分解耦，又在循环体部分增加了异常检测。综合考虑性能，稍微修改了循环结构。下载好训练的vgg16_weights，在没有错误之后，焦急地等待25分钟后，屏幕开始打印结果。&lt;/p&gt;
-
-&lt;h2 id=&#34;欣喜万分&#34;&gt;欣喜万分&lt;/h2&gt;
-
-&lt;p&gt;第一次提交，随便截取了前面一段，没成绩。折腾了几次，才发现是提交的格式出了问题。后面取p=0.99+部分，提交结果在0.58左右，数据集大概有90个。估计了下，狗狗总数应该在180左右。第二次提交，取了180左右，结果0.97多一点。第三次，也是最后一次提交，取了result前189个，结果0.98639，一举升到第一。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;比赛总结&#34;&gt;比赛总结&lt;/h3&gt;
-
-&lt;p&gt;这次比赛，首先还得感谢yinjh团队的yin前辈。如果没有您分享的代码，就不会有我今天的成绩。感谢您分享的代码，感想您在我写这篇分享时提供的代码指导。
-再者，感谢我的女票晶晶，谢谢你一直陪在我身边，谢谢你包容我写代码时不那么快的回复手速。我是新手，但我一直不觉得成绩低是理所当。立志从事这一行，就需要快速地学习、快速地成长。新人，也需要做到最好。当然，自己目前还存在很多问题。一些基本的概念只是模糊掌握，需要更多的实践，需要更多的理论积淀，而不是简单地做一个调包侠。&lt;/p&gt;
-
-&lt;h3 id=&#34;给新手的建议&#34;&gt;给新手的建议&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;善用搜索引擎，多读官方文档，不要一开始就依赖Google。&lt;/li&gt;
-&lt;li&gt;Google Groups、Stack Overflow、GitHub是好东西。&lt;/li&gt;
-&lt;li&gt;干！就是干！&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;完整代码&#34;&gt;完整代码&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;以下操作均在Ubuntu14.04+Anaconda中进行&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;导入python标准包&#34;&gt;导入python标准包&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import os   # 处理字符串路径
-import glob  # 用于查找文件
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;导入相关库&#34;&gt;导入相关库&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;keras&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;keras是基于Theano的深度学习(Deep Learning)框架&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;详细信息请见&lt;a href=&#34;http://keras.io/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;keras官方文档&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&#34;安装过程&#34;&gt;安装过程&lt;/h5&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;conda update conda&lt;/p&gt;
-
-&lt;p&gt;conda update &amp;ndash;all&lt;/p&gt;
-
-&lt;p&gt;conda install mingw libpython&lt;/p&gt;
-
-&lt;p&gt;pip install git+git://github.com/Theano/Theano.git&lt;/p&gt;
-
-&lt;p&gt;pip install git+git://github.com/fchollet/keras.git&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;cv2&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OpenCV库&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;conda isntall opnecv&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;numpy&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Anaconda自带&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from keras.models import Sequential
-from keras.layers.core import Flatten, Dense, Dropout
-from keras.layers.convolutional import Convolution2D, MaxPooling2D, ZeroPadding2D
-from keras.optimizers import SGD
-import cv2, numpy as np
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;使用keras建立vgg16模型&#34;&gt;使用keras建立vgg16模型&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;参考官方示例&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def VGG_16(weights_path=None):
-    model = Sequential()
-    model.add(ZeroPadding2D((1,1),input_shape=(3,224,224)))
-    model.add(Convolution2D(64, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(64, 3, 3, activation=&#39;relu&#39;))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
-
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(128, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(128, 3, 3, activation=&#39;relu&#39;))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
-
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(256, 3, 3, activation=&#39;relu&#39;))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
-
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation=&#39;relu&#39;))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
-
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation=&#39;relu&#39;))
-    model.add(ZeroPadding2D((1,1)))
-    model.add(Convolution2D(512, 3, 3, activation=&#39;relu&#39;))
-    model.add(MaxPooling2D((2,2), strides=(2,2)))
-
-    model.add(Flatten())
-    model.add(Dense(4096, activation=&#39;relu&#39;))
-    model.add(Dropout(0.5))
-    model.add(Dense(4096, activation=&#39;relu&#39;))
-    model.add(Dropout(0.5))
-    model.add(Dense(1000, activation=&#39;softmax&#39;))
-
-    if weights_path:
-        model.load_weights(weights_path)
-
-    return model
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;引入训练好的vgg16-weights模型&#34;&gt;引入训练好的vgg16_weights模型&lt;/h3&gt;
-
-&lt;p&gt;**Note： **&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;vgg16_weights.h5需单独下载，并与代码文件处于同一文件夹下，否则会报错。
-
-&lt;ul&gt;
-&lt;li&gt;网上有资源 附百度云盘链接 &lt;a href=&#34;http://pan.baidu.com/s/1qX0CJSC&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;vgg16_weights.h5下载&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;model = VGG_16(&#39;vgg16_weights.h5&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)
-model.compile(optimizer=sgd, loss=&#39;categorical_crossentropy&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;猫和狗的特征&#34;&gt;猫和狗的特征&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dogs=[251, 268, 256, 253, 255, 254, 257, 159, 211, 210, 212, 214, 213, 216, 215, 219, 220, 221, 217, 218, 207, 209, 206, 205, 208, 193, 202, 194, 191, 204, 187, 203, 185, 192, 183, 199, 195, 181, 184, 201, 186, 200, 182, 188, 189, 190, 197, 196, 198, 179, 180, 177, 178, 175, 163, 174, 176, 160, 162, 161, 164, 168, 173, 170, 169, 165, 166, 167, 172, 171, 264, 263, 266, 265, 267, 262, 246, 242, 243, 248, 247, 229, 233, 234, 228, 231, 232, 230, 227, 226, 235, 225, 224, 223, 222, 236, 252, 237, 250, 249, 241, 239, 238, 240, 244, 245, 259, 261, 260, 258, 154, 153, 158, 152, 155, 151, 157, 156]
-cats=[281,282,283,284,285,286,287]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;待处理文件导入&#34;&gt;待处理文件导入&lt;/h3&gt;
-
-&lt;p&gt;**Note: **&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;将测试集改名为test，放入imgs文件夹下，imgs文件夹又与此代码处于同一文件夹下。&lt;/li&gt;
-&lt;li&gt;当然，你也可以修改下面的路径。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;path = os.path.join(&#39;imgs&#39;, &#39;test&#39;, &#39;*.jpg&#39;)  #拼接路径
-files = glob.glob(path) #返回路径
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;定义几个变量&#34;&gt;定义几个变量&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result=[]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;flbase=0
-p=0
-temp=0
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;定义图像加载函数&#34;&gt;定义图像加载函数&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def load_image(imageurl):
-    im = cv2.resize(temp ,(224,224)).astype(np.float32)
-    im[:,:,0] -= 103.939
-    im[:,:,1] -= 116.779
-    im[:,:,2] -= 123.68
-    im = im.transpose((2,0,1))
-    im = np.expand_dims(im,axis=0)
-    return im    
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;定义预测函数&#34;&gt;定义预测函数&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def predict(url):
-    im = load_image(url)        
-    out = model.predict(im)
-    flbase = os.path.basename(url)
-    p = np.sum(out[0,dogs]) / (np.sum(out[0,dogs]) + np.sum(out[0,cats]))
-    result.append((flbase,p))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;开始预测&#34;&gt;开始预测&lt;/h3&gt;
-
-&lt;p&gt;**Note： **
-- 此处的if,else异常检测很重要，因为cv2.imread(fl)在遇到某几张图时会为空，抛出错误，程序中途停止，图片集得不到完全检测。
-- 一般配置电脑跑这部分时，大约需要20～30分钟，不是程序没有工作，请耐心等待。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for fl in files:
-    temp=cv2.imread(fl) 
-    if  temp ==None:  
-        pass
-    else:
-        predict(fl)    
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;对结果进行排序&#34;&gt;对结果进行排序&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;result=sorted(result, key=lambda x:x[1], reverse=True)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;打印预测结果与相应概率&#34;&gt;打印预测结果与相应概率&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for x in result:
-    print x[0],x[1]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;预测结果&#34;&gt;预测结果&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;根据上面的概率，选择相应的前多少张图片&lt;/li&gt;
-&lt;li&gt;复制进csv文件，使用一般编辑器将&amp;rdquo;.jpg&amp;rdquo;以空格替代&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for x in result:
-    print x[0]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;此篇文章为原创，转载请注明出处。&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

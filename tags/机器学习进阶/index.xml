@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>速查表 on Kuhung&#39;s Blog</title>
-    <link>https://kuhungio.me/categories/%E9%80%9F%E6%9F%A5%E8%A1%A8/</link>
-    <description>Recent content in 速查表 on Kuhung&#39;s Blog</description>
+    <title>机器学习进阶 on Kuhung&#39;s Blog</title>
+    <link>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6/</link>
+    <description>Recent content in 机器学习进阶 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 01 Apr 2019 19:28:32 +0800</lastBuildDate>
     
-	<atom:link href="https://kuhungio.me/categories/%E9%80%9F%E6%9F%A5%E8%A1%A8/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -25,24 +25,6 @@
 部署、监控并维护系统    定义问题，从大局出发  和业务团队一起定义问题目标 我们的解决方案将会如何发挥作用 现在的解决方案是什么样的（如果有） 你将如何定义这个问题（有监督、无监督，在线还是离线） 结果该如何衡量 衡量方法是否和商业目标一致 要达成这一目标，至少的表现该是什么样子的 类似的问题是什么？有无可复用的经验与工具 我们有专家知识吗 你将如何着手解决这个问题 列出你或者别人目前所作的努力 如果可能，对假说进行验证  获取数据 建议：尽量自动化以更容易地方式获取最新的数据
  列出你所需的数据以及体量 找寻并记录下获取数据的方式 检查数据将占据多少空间 检查是否有法律风险，如有必要请获得许可 获取许可 创建工作空间，确保存储足够大 获取数据 转换数据的格式以便能够方便操作（不需要改变数据本身） 确保敏感信息被删除或保护加密（匿名） 检查数据的大小和类型（时间序列、采样、地理信息等） 划分测试集，把他放一边，并且不再去动他（防止数据泄露）  探索数据 建议：在该阶段尽量获取领域专家的意见
  创建数据的副本以便做数据探索（如果数据量太大，做降采样处理） 创建 Jupyter notebook 以便保存探索记录 研究每个属性及其特征  名称 类型（类别，整型/浮点，有无上下界，文本，结构化等） 缺失值 噪声数据（随机数，异常值，四舍五入的误差） 对本任务可能有用的数据 分布类型（高斯分布，均匀分布，指数分布）  对于有监督问题：确定目标对象 可视化数据 研究变量间的相关性 研究你将如何着手解决此问题 确认比较有希望的解决方案 确认有用的外部数据 将以上信息存档记录下来  准备数据 建议：</description>
-    </item>
-    
-    <item>
-      <title>速查表 | Linear Algebra and Calculus 线代与微积分</title>
-      <link>https://kuhungio.me/2018/algebra-calculus/</link>
-      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/2018/algebra-calculus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>速查表 | Probabilities Statistics 数理统计</title>
-      <link>https://kuhungio.me/2018/probabilities-statistics/</link>
-      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/2018/probabilities-statistics/</guid>
-      <description></description>
     </item>
     
   </channel>
