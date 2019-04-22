@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷粒,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-76017508-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <link rel="prev" href="https://kuhungio.me/2019/vgc-it/" />
+  
+  <link rel="canonical" href="https://kuhungio.me/2019/flask_vue_ml/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           机器学习模型部署--打通前后端任督二脉 | Kuhung&#39;s Blog
+       
+  </title>
+  <meta name="title" content="机器学习模型部署--打通前后端任督二脉 | Kuhung&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "机器学习模型部署--打通前后端任督二脉",
+    "headline" : "机器学习模型部署--打通前后端任督二脉",
+    "description" : "前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个小本就工作的人，没有较为丰富的实战经验，有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。
+模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。
+ 关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。
+ 这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung/flask_vue_ML
+后端 flask 相关依赖的安装 pip install -r requirements.txt
+核心函数  导入函数包  from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence   准备工作  app = Flask(__name__) # 声明准备 app.",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-04-20 14:31:26 &#43;0800 CST",
+    "dateModified" : "2019-04-20 14:31:26 &#43;0800 CST",
+    "url" : "https://kuhungio.me/2019/flask_vue_ml/",
+    "wordCount" : "543",
+    "keywords" : [ "全栈","机器学习进阶", "Kuhung&#39;s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">机器学习模型部署--打通前后端任督二脉</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2019-04-20 itemprop="datePublished">April 20, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhungio.me/categories/sideproject/"> Sideproject </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a>
+<ul>
+<li><a href="#学历与定位">学历与定位</a></li>
+<li><a href="#模型算法的实用主义">模型算法的实用主义</a></li>
+</ul></li>
+<li><a href="#后端-flask">后端 flask</a>
+<ul>
+<li><a href="#相关依赖的安装">相关依赖的安装</a></li>
+<li><a href="#核心函数">核心函数</a></li>
+<li><a href="#启动服务">启动服务</a></li>
+</ul></li>
+<li><a href="#前端-vue">前端 vue</a>
+<ul>
+<li><a href="#相关依赖的安装-1">相关依赖的安装</a></li>
+<li><a href="#自定义组件">自定义组件</a>
+<ul>
+<li><a href="#index-html">index.html</a></li>
+<li><a href="#src-文件夹">src 文件夹</a>
+<ul>
+<li><a href="#index-js">index.js</a></li>
+<li><a href="#app-vue">App.vue</a></li>
+<li><a href="#main-js">main.js</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#启动服务-1">启动服务</a></li>
+</ul></li>
+<li><a href="#模型-flair">模型 flair</a>
+<ul>
+<li><a href="#模型调用">模型调用</a></li>
+</ul></li>
+<li><a href="#效果展示">效果展示</a>
+<ul>
+<li><a href="#终端端网站访问">终端端网站访问</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="前言">前言</h2>
+
+<h3 id="学历与定位">学历与定位</h3>
+
+<p>近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个小本就工作的人，没有较为丰富的实战经验，有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/flask_vue_ML/mobile.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<h3 id="模型算法的实用主义">模型算法的实用主义</h3>
+
+<p>机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。</p>
+
+<blockquote>
+<p>关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。</p>
+</blockquote>
+
+<p>这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 <a href="https://github.com/kuhung/flask_vue_ML" rel="nofollow noreferrer" target="_blank">kuhung/flask_vue_ML</a></p>
+
+<h2 id="后端-flask">后端 flask</h2>
+
+<h3 id="相关依赖的安装">相关依赖的安装</h3>
+
+<p><code>pip install -r requirements.txt</code></p>
+
+<h3 id="核心函数">核心函数</h3>
+
+<ol>
+<li>导入函数包</li>
+</ol>
+
+<pre><code class="language-python">from flask import Flask, jsonify, request
+from flask_cors import CORS # 做跨域的准备
+from flask import session # 追踪客户端会话
+
+from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类
+from flair.data import Sentence
+
+</code></pre>
+
+<ol>
+<li>准备工作</li>
+</ol>
+
+<pre><code class="language-python">app = Flask(__name__) # 声明准备
+app.secret_key = &quot;super_secret_key&quot;
+
+CORS(app)
+classifier = TextClassifier.load_from_file('models/best-model.pt') # 模型加载
+
+</code></pre>
+
+<ol>
+<li>配置 flask 的路由</li>
+</ol>
+
+<pre><code class="language-python"># 根路由配置
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify(&quot;welcome to Kuhung API&quot;)
+
+# GET 方法，这里 session 的作用是追踪客户端会话，防止重复请求模型
+@app.route('/api/tasks', methods=['GET'])
+def get_result():
+    result = []
+    try:
+        data_result = session['my_result']
+        result.append ({'title': data_result['title'], 'tag': data_result['tag'] })
+    except:
+        result.append ({'title': 'The txt you input', 'tag': 'spam or ham' })
+    return jsonify(result)
+
+# POST 方法
+@app.route('/api/task', methods=['POST'])
+def input_predict_text():
+
+    title = request.get_json()['title'] # 解析请求
+
+    sentence = Sentence(title) # 对请求做数据预处理
+    classifier.predict(sentence) # 调用模型，做预测，返回带标签的数据
+
+    text = sentence.to_plain_string() # 解析出原始数据
+    label = sentence.labels[0] # 解析出标签
+    result = {'title' : text, 'tag' : label.value} # 拼接成字典格式
+    session['my_result'] = result # 存入 session ，以减少重复请求对模型的压力
+    
+    return jsonify(result) # 返回 json 格式的数据
+
+if __name__ == '__main__':
+    app.run(debug=True)  # 开发过程中开启 debug 调试模式
+</code></pre>
+
+<h3 id="启动服务">启动服务</h3>
+
+<p><code>python app.py</code></p>
+
+<h2 id="前端-vue">前端 vue</h2>
+
+<p>前端采用 Vue 框架，与后端分离。使用 Webpack 进行资源管理与打包。</p>
+
+<h3 id="相关依赖的安装-1">相关依赖的安装</h3>
+
+<pre><code class="language-shell">npm install -g vue-cli
+npm install
+</code></pre>
+
+<h3 id="自定义组件">自定义组件</h3>
+
+<p>通过 <code>vue init webpack flask_vue_ML</code> 后，进入项目文件夹，增加自定义内容。</p>
+
+<h4 id="index-html">index.html</h4>
+
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
+    &lt;title&gt;exposemodel&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+    &lt;!-- 其它文件会自动注入这里 --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<h4 id="src-文件夹">src 文件夹</h4>
+
+<ul>
+<li>components
+
+<ul>
+<li>Home.vue  // 自定义组件，增加</li>
+</ul></li>
+<li>router
+
+<ul>
+<li>index.js  // 路由，修改</li>
+</ul></li>
+<li>App.vue  // 主组件，修改</li>
+<li>main.js  // 入口文件，修改</li>
+</ul>
+
+<p>##### Home.vue</p>
+
+<p>这里定义页面的基本样式，以及获取数据的逻辑。</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div id=&quot;todo-list-example&quot; class=&quot;container&quot;&gt;
+    &lt;!-- 我是进度条，最上方的 --&gt;
+    &lt;vue-progress-bar&gt;&lt;/vue-progress-bar&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-md-6 mx-auto&quot;&gt;
+        &lt;h1 class=&quot;text-center&quot;&gt;Natural Language Processing (NLP)&lt;/h1&gt;
+        &lt;form v-on:submit.prevent=&quot;addNewTask&quot;&gt;
+          &lt;label for=&quot;tasknameinput&quot;&gt;Spam Classification&lt;/label&gt;
+          &lt;input v-model=&quot;taskname&quot; type=&quot;text&quot; id=&quot;tasknameinput&quot; class=&quot;form-control&quot; placeholder=&quot;Enter Sentence&quot;&gt;
+          &lt;button type=&quot;submit&quot; class=&quot;btn btn-success btn-block mt-3&quot;&gt;
+            Submit
+          &lt;/button&gt;
+        &lt;/form&gt;
+          
+&lt;!-- 省略表格定义内容 --&gt;
+
+
+&lt;script&gt;
+// 这里解决跨域请求问题，向后端发起请求
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      textClassify: [],
+      id: '',
+      taskname: '',
+      isEdit: false
+    }
+  },
+  mounted () {
+    this.getTasks()
+  },
+    
+// 省略进度条内容
+    
+// 请求任务相关操作
+    getTasks () {
+      axios({ method: 'GET', url: '/api/tasks' }).then(
+        result =&gt; {
+          console.log(result.data)
+          this.textClassify = result.data
+        },
+        error =&gt; {
+          console.error(error)
+        }
+      )
+    },
+&lt;/script&gt;
+​```
+</code></pre>
+
+<h5 id="index-js">index.js</h5>
+
+<p>定义路由，设定访问路径，并将路径和组件关联</p>
+
+<pre><code class="language-js">import Vue from 'vue'
+import Router from 'vue-router'
+import Home from '@/components/Home'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home
+    }
+  ]
+})
+</code></pre>
+
+<h5 id="app-vue">App.vue</h5>
+
+<p>主组件</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;router-view/&gt;
+    &lt;!-- 植入一波广告：微信搜索：谷粒先生，关注我的公众号 --&gt;
+    &lt;img src=&quot;./assets/wechat.jpg&quot;&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'App'
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&lt;/style&gt;
+</code></pre>
+
+<h5 id="main-js">main.js</h5>
+
+<p>初始化实例并加载必要插件</p>
+
+<pre><code class="language-js">// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+import VueProgressBar from 'vue-progressbar'
+require('../node_modules/bootstrap/dist/css/bootstrap.css')
+
+Vue.config.productionTip = false
+
+// 这是进度条
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '10px'
+})
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '&lt;App/&gt;'
+})
+
+</code></pre>
+
+<h3 id="启动服务-1">启动服务</h3>
+
+<p><code>npm run dev</code></p>
+
+<h2 id="模型-flair">模型 flair</h2>
+
+<p>模型这里采用 fair 框架，该框架在 2018 年底发布，易用性和效果都较前方案有了较大提升。这里直接采用官方样例训练好的垃圾邮件分类模型的权重，也就是在上文后端所读取的文件。关注我的公众号：谷粒先生，回复<strong>权重</strong>，即可获得权重文件🔗链接。</p>
+
+<h3 id="模型调用">模型调用</h3>
+
+<pre><code class="language-python">
+from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类
+from flair.data import Sentence
+
+classifier = TextClassifier.load_from_file('models/best-model.pt') # 模型加载
+
+sentence = Sentence(title) # 对请求做数据预处理
+classifier.predict(sentence) # 调用模型，做预测，返回带标签的数据
+</code></pre>
+
+<h2 id="效果展示">效果展示</h2>
+
+<p>本教程针对文本分类这个场景，构建了一套前后端分离的“完整”框架，能够给到一个最直观的感受。当然，这里还有很多优化空间，还有后续部署等事宜没有详细展开，有心的同学可以自行检索学习。通过这套流程，可以在测试服搭建一套实用主义哲学的算法模型。给到领导做展示或是公司内部使用，已经足够。项目地址 <a href="https://github.com/kuhung/flask_vue_ML" rel="nofollow noreferrer" target="_blank">kuhung/flask_vue_ML</a></p>
+
+<h3 id="终端端网站访问">终端端网站访问</h3>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/flask_vue_ML/flask_vue_ml.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<blockquote>
+<p>关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。</p>
+</blockquote>
+
+<p>喜欢我的朋友，别忘了点赞 👍、喜欢 ❤ +关注 🔔哦，你的鼓励是对我最大的支持~💪</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhungio.me/2019/flask_vue_ml/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E5%85%A8%E6%A0%88/">
+                    #全栈</a></span>
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6/">
+                    #机器学习进阶</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhungio.me/2019/vgc-it/" class="prev" rel="prev" title="如何设计一套类似视觉中国鹰眼的技术"><i class="iconfont icon-left"></i>&nbsp;如何设计一套类似视觉中国鹰眼的技术</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '59f6ded98949c0c4daaf298b11f49288',
+        title: '机器学习模型部署--打通前后端任督二脉',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

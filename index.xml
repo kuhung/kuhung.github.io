@@ -6,8 +6,335 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2019 14:31:26 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>机器学习模型部署--打通前后端任督二脉</title>
+      <link>https://kuhungio.me/2019/flask_vue_ml/</link>
+      <pubDate>Sat, 20 Apr 2019 14:31:26 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/flask_vue_ml/</guid>
+      <description>
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;h3 id=&#34;学历与定位&#34;&gt;学历与定位&lt;/h3&gt;
+
+&lt;p&gt;近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个小本就工作的人，没有较为丰富的实战经验，有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/flask_vue_ML/mobile.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;模型算法的实用主义&#34;&gt;模型算法的实用主义&lt;/h3&gt;
+
+&lt;p&gt;机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 &lt;a href=&#34;https://github.com/kuhung/flask_vue_ML&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;kuhung/flask_vue_ML&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;后端-flask&#34;&gt;后端 flask&lt;/h2&gt;
+
+&lt;h3 id=&#34;相关依赖的安装&#34;&gt;相关依赖的安装&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;pip install -r requirements.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;核心函数&#34;&gt;核心函数&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;导入函数包&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from flask import Flask, jsonify, request
+from flask_cors import CORS # 做跨域的准备
+from flask import session # 追踪客户端会话
+
+from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类
+from flair.data import Sentence
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;准备工作&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;app = Flask(__name__) # 声明准备
+app.secret_key = &amp;quot;super_secret_key&amp;quot;
+
+CORS(app)
+classifier = TextClassifier.load_from_file(&#39;models/best-model.pt&#39;) # 模型加载
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;配置 flask 的路由&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 根路由配置
+@app.route(&#39;/&#39;, methods=[&#39;GET&#39;])
+def index():
+    return jsonify(&amp;quot;welcome to Kuhung API&amp;quot;)
+
+# GET 方法，这里 session 的作用是追踪客户端会话，防止重复请求模型
+@app.route(&#39;/api/tasks&#39;, methods=[&#39;GET&#39;])
+def get_result():
+    result = []
+    try:
+        data_result = session[&#39;my_result&#39;]
+        result.append ({&#39;title&#39;: data_result[&#39;title&#39;], &#39;tag&#39;: data_result[&#39;tag&#39;] })
+    except:
+        result.append ({&#39;title&#39;: &#39;The txt you input&#39;, &#39;tag&#39;: &#39;spam or ham&#39; })
+    return jsonify(result)
+
+# POST 方法
+@app.route(&#39;/api/task&#39;, methods=[&#39;POST&#39;])
+def input_predict_text():
+
+    title = request.get_json()[&#39;title&#39;] # 解析请求
+
+    sentence = Sentence(title) # 对请求做数据预处理
+    classifier.predict(sentence) # 调用模型，做预测，返回带标签的数据
+
+    text = sentence.to_plain_string() # 解析出原始数据
+    label = sentence.labels[0] # 解析出标签
+    result = {&#39;title&#39; : text, &#39;tag&#39; : label.value} # 拼接成字典格式
+    session[&#39;my_result&#39;] = result # 存入 session ，以减少重复请求对模型的压力
+    
+    return jsonify(result) # 返回 json 格式的数据
+
+if __name__ == &#39;__main__&#39;:
+    app.run(debug=True)  # 开发过程中开启 debug 调试模式
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;启动服务&#34;&gt;启动服务&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;python app.py&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;前端-vue&#34;&gt;前端 vue&lt;/h2&gt;
+
+&lt;p&gt;前端采用 Vue 框架，与后端分离。使用 Webpack 进行资源管理与打包。&lt;/p&gt;
+
+&lt;h3 id=&#34;相关依赖的安装-1&#34;&gt;相关依赖的安装&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;npm install -g vue-cli
+npm install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;自定义组件&#34;&gt;自定义组件&lt;/h3&gt;
+
+&lt;p&gt;通过 &lt;code&gt;vue init webpack flask_vue_ML&lt;/code&gt; 后，进入项目文件夹，增加自定义内容。&lt;/p&gt;
+
+&lt;h4 id=&#34;index-html&#34;&gt;index.html&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+    &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1.0&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;exposemodel&amp;lt;/title&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;!-- 其它文件会自动注入这里 --&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;src-文件夹&#34;&gt;src 文件夹&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;components
+
+&lt;ul&gt;
+&lt;li&gt;Home.vue  // 自定义组件，增加&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;router
+
+&lt;ul&gt;
+&lt;li&gt;index.js  // 路由，修改&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;App.vue  // 主组件，修改&lt;/li&gt;
+&lt;li&gt;main.js  // 入口文件，修改&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;##### Home.vue&lt;/p&gt;
+
+&lt;p&gt;这里定义页面的基本样式，以及获取数据的逻辑。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div id=&amp;quot;todo-list-example&amp;quot; class=&amp;quot;container&amp;quot;&amp;gt;
+    &amp;lt;!-- 我是进度条，最上方的 --&amp;gt;
+    &amp;lt;vue-progress-bar&amp;gt;&amp;lt;/vue-progress-bar&amp;gt;
+    &amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt;
+      &amp;lt;div class=&amp;quot;col-md-6 mx-auto&amp;quot;&amp;gt;
+        &amp;lt;h1 class=&amp;quot;text-center&amp;quot;&amp;gt;Natural Language Processing (NLP)&amp;lt;/h1&amp;gt;
+        &amp;lt;form v-on:submit.prevent=&amp;quot;addNewTask&amp;quot;&amp;gt;
+          &amp;lt;label for=&amp;quot;tasknameinput&amp;quot;&amp;gt;Spam Classification&amp;lt;/label&amp;gt;
+          &amp;lt;input v-model=&amp;quot;taskname&amp;quot; type=&amp;quot;text&amp;quot; id=&amp;quot;tasknameinput&amp;quot; class=&amp;quot;form-control&amp;quot; placeholder=&amp;quot;Enter Sentence&amp;quot;&amp;gt;
+          &amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn btn-success btn-block mt-3&amp;quot;&amp;gt;
+            Submit
+          &amp;lt;/button&amp;gt;
+        &amp;lt;/form&amp;gt;
+          
+&amp;lt;!-- 省略表格定义内容 --&amp;gt;
+
+
+&amp;lt;script&amp;gt;
+// 这里解决跨域请求问题，向后端发起请求
+import axios from &#39;axios&#39;
+
+export default {
+  data () {
+    return {
+      textClassify: [],
+      id: &#39;&#39;,
+      taskname: &#39;&#39;,
+      isEdit: false
+    }
+  },
+  mounted () {
+    this.getTasks()
+  },
+    
+// 省略进度条内容
+    
+// 请求任务相关操作
+    getTasks () {
+      axios({ method: &#39;GET&#39;, url: &#39;/api/tasks&#39; }).then(
+        result =&amp;gt; {
+          console.log(result.data)
+          this.textClassify = result.data
+        },
+        error =&amp;gt; {
+          console.error(error)
+        }
+      )
+    },
+&amp;lt;/script&amp;gt;
+​```
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;index-js&#34;&gt;index.js&lt;/h5&gt;
+
+&lt;p&gt;定义路由，设定访问路径，并将路径和组件关联&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;import Vue from &#39;vue&#39;
+import Router from &#39;vue-router&#39;
+import Home from &#39;@/components/Home&#39;
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: &#39;/&#39;,
+      name: &#39;Home&#39;,
+      component: Home
+    }
+  ]
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;app-vue&#34;&gt;App.vue&lt;/h5&gt;
+
+&lt;p&gt;主组件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-vue&#34;&gt;&amp;lt;template&amp;gt;
+  &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;router-view/&amp;gt;
+    &amp;lt;!-- 植入一波广告：微信搜索：谷粒先生，关注我的公众号 --&amp;gt;
+    &amp;lt;img src=&amp;quot;./assets/wechat.jpg&amp;quot;&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/template&amp;gt;
+
+&amp;lt;script&amp;gt;
+export default {
+  name: &#39;App&#39;
+}
+&amp;lt;/script&amp;gt;
+
+&amp;lt;style&amp;gt;
+#app {
+  font-family: &#39;Avenir&#39;, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;main-js&#34;&gt;main.js&lt;/h5&gt;
+
+&lt;p&gt;初始化实例并加载必要插件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from &#39;vue&#39;
+import App from &#39;./App&#39;
+import router from &#39;./router&#39;
+import VueProgressBar from &#39;vue-progressbar&#39;
+require(&#39;../node_modules/bootstrap/dist/css/bootstrap.css&#39;)
+
+Vue.config.productionTip = false
+
+// 这是进度条
+Vue.use(VueProgressBar, {
+  color: &#39;rgb(143, 255, 199)&#39;,
+  failedColor: &#39;red&#39;,
+  height: &#39;10px&#39;
+})
+
+/* eslint-disable no-new */
+new Vue({
+  el: &#39;#app&#39;,
+  router,
+  components: { App },
+  template: &#39;&amp;lt;App/&amp;gt;&#39;
+})
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;启动服务-1&#34;&gt;启动服务&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;npm run dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;模型-flair&#34;&gt;模型 flair&lt;/h2&gt;
+
+&lt;p&gt;模型这里采用 fair 框架，该框架在 2018 年底发布，易用性和效果都较前方案有了较大提升。这里直接采用官方样例训练好的垃圾邮件分类模型的权重，也就是在上文后端所读取的文件。关注我的公众号：谷粒先生，回复&lt;strong&gt;权重&lt;/strong&gt;，即可获得权重文件🔗链接。&lt;/p&gt;
+
+&lt;h3 id=&#34;模型调用&#34;&gt;模型调用&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
+from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类
+from flair.data import Sentence
+
+classifier = TextClassifier.load_from_file(&#39;models/best-model.pt&#39;) # 模型加载
+
+sentence = Sentence(title) # 对请求做数据预处理
+classifier.predict(sentence) # 调用模型，做预测，返回带标签的数据
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;效果展示&#34;&gt;效果展示&lt;/h2&gt;
+
+&lt;p&gt;本教程针对文本分类这个场景，构建了一套前后端分离的“完整”框架，能够给到一个最直观的感受。当然，这里还有很多优化空间，还有后续部署等事宜没有详细展开，有心的同学可以自行检索学习。通过这套流程，可以在测试服搭建一套实用主义哲学的算法模型。给到领导做展示或是公司内部使用，已经足够。项目地址 &lt;a href=&#34;https://github.com/kuhung/flask_vue_ML&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;kuhung/flask_vue_ML&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;终端端网站访问&#34;&gt;终端端网站访问&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/flask_vue_ML/flask_vue_ml.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;喜欢我的朋友，别忘了点赞 👍、喜欢 ❤ +关注 🔔哦，你的鼓励是对我最大的支持~💪&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>如何设计一套类似视觉中国鹰眼的技术</title>
@@ -1422,107 +1749,6 @@ mean weekly visitors up to lag 20 and for mean monthly visitors up to lag 8 or s
 &lt;p&gt;取得好效果，大多数时间靠的不是复杂的模型、不是复杂的CV方式，而是&lt;strong&gt;对数据的观察&lt;/strong&gt;（如： holiday trick 加公开的 kernel， 就可以取得银牌的成绩）以及&lt;strong&gt;特征构造方面的实践&lt;/strong&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Top solutions are rather simple.&lt;/strong&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Single Shot MultiBox Detector Keras version</title>
-      <link>https://kuhungio.me/2017/ssd/</link>
-      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/2017/ssd/</guid>
-      <description>
-
-&lt;h1 id=&#34;ssd目标检测keras版&#34;&gt;SSD目标检测Keras版&lt;/h1&gt;
-
-&lt;p&gt;SSD是一种Object Detection方法。本文是基于论文&lt;a href=&#34;http://arxiv.org/abs/1512.02325&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;SSD: Single Shot MultiBox Detector&lt;/a&gt;，实现的keras版本。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。
-SSD将输出一系列离散化（discretization）的bounding boxes，这些bounding boxes是在不同层次（layers）上的feature maps上生成的，并且有着不同的aspect ratio。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;模型效果&#34;&gt;模型效果&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;模型对载具的检测
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Aeroplane.png&#34; height=&#34;300&#34;&gt;
-&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Bicycle.png&#34; height=&#34;300&#34;&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;模型对动物的检测
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Dog.png&#34; height=&#34;300&#34;&gt;
-&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/Cat.png&#34; height=&#34;300&#34;&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;模型的视频检测
-&lt;p align=&#34;center&#34;&gt;
-&lt;img src=&#34;https://github.com/kuhung/SSD_keras/raw/master/output/car.gif&#34;&gt;
-&lt;/p&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;如何使用&#34;&gt;如何使用&lt;/h2&gt;
-
-&lt;p&gt;项目地址&lt;a href=&#34;https://github.com/kuhung/SSD_keras&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;kuhung/SSD_keras&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;所需依赖&#34;&gt;所需依赖&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cv2==3.3.0
-keras==1.2.2
-matplotlib==2.1.0
-tensorflow==1.3.0
-numpy==1.13.3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果想跑通视频模块，则需额外&lt;code&gt;pip install scikit-video&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;具体操作&#34;&gt;具体操作&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone git@github.com:kuhung/SSD_keras.git
-cd SSD_keras
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Download model weight &lt;code&gt;weights_SSD300.hdf5&lt;/code&gt;&lt;a href=&#34;https://github.com/kuhung/SSD_keras/releases&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cp weights_SSD300.hdf5 into SSD_keras
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;对于图片的检测&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;参考SSD.ipynb&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;若要剪切图片为下一步处理做准备&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;参考SSD_crop.py&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;检测视频
-&lt;code&gt;bash
-cd video_utils
-python videotest_example.py hy.mp4
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;参考资料&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://arxiv.org/abs/1512.02325&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;SSD: Single Shot MultiBox Detector&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/u010167269/article/details/52563573&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;论文阅读：SSD: Single Shot MultiBox Detector&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/rykov8/ssd_keras&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;rykov8/ssd_keras&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
