@@ -1463,41 +1463,87 @@ python run_classifier.py \
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;笔名：谷粒 | kuhung&lt;/li&gt;
+&lt;li&gt;笔名：谷粒 kuhung&lt;/li&gt;
 &lt;li&gt;毕业院校：华中科技大学 机械学院&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;过往成果&#34;&gt;过往成果&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;2018-08 | 第七届全国媒体技术处理大会 | 文本溯源技术测评 | &lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;95&lt;/sub&gt;&lt;/li&gt;
-&lt;li&gt;2017-06 | Kaggle | Intel&amp;amp;MobileODTCervicalCancerScreening  | top10%&lt;/li&gt;
-&lt;li&gt;2017-02 | DataCastle | 精准资助预测赛 | &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;124&lt;/sub&gt;&lt;/li&gt;
-&lt;li&gt;2016-12 | 2016 BYTE CUP | 国际机器学习竞赛 | &lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1029&lt;/sub&gt;&lt;/li&gt;
-&lt;li&gt;2016-10 |  第五届全国社会媒体处理大会 | 用户画像技术测评 | &lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;373&lt;/sub&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th&gt;平台&lt;/th&gt;
+&lt;th&gt;项目&lt;/th&gt;
+&lt;th&gt;名次&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
 
-&lt;h2 id=&#34;工作履历&#34;&gt;工作履历&lt;/h2&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2018-08&lt;/td&gt;
+&lt;td&gt;第七届全国媒体技术处理大会&lt;/td&gt;
+&lt;td&gt;文本溯源技术测评&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;http://smp2018.cips-smp.org/rewards.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;95&lt;/sub&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2017-06&lt;/td&gt;
+&lt;td&gt;Kaggle&lt;/td&gt;
+&lt;td&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
+&lt;td&gt;top10%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2017-02&lt;/td&gt;
+&lt;td&gt;DataCastle&lt;/td&gt;
+&lt;td&gt;精准资助预测赛&lt;/td&gt;
+&lt;td&gt;&lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;124&lt;/sub&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2016-12&lt;/td&gt;
+&lt;td&gt;2016 BYTE CUP&lt;/td&gt;
+&lt;td&gt;国际机器学习竞赛&lt;/td&gt;
+&lt;td&gt;&lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1029&lt;/sub&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2016-10&lt;/td&gt;
+&lt;td&gt;第五届全国社会媒体处理大会&lt;/td&gt;
+&lt;td&gt;用户画像技术测评&lt;/td&gt;
+&lt;td&gt;&lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;373&lt;/sub&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;工作经历&#34;&gt;工作经历&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;2018.07~至今 网易游戏 &lt;a href=&#34;https://kuhungio.me/2019/what-is-data-mining/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;数据挖掘&lt;/a&gt;工程师&lt;/li&gt;
+&lt;li&gt;2018.07~至今 网易游戏&lt;a href=&#34;https://kuhungio.me/2019/what-is-data-mining/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;数据挖掘工程师&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2017.07~2017.09 微众银行数据科学实习生&lt;/li&gt;
+&lt;li&gt;2017.03~2017.06 武汉安天数据挖掘实习生&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;工作方向&#34;&gt;工作方向&lt;/h2&gt;
 
-&lt;p&gt;数据挖掘工程师，机器学习方向。从事数据平台建设和机器学习应用项目开发。包括数据应用开发、数据建模等。赋能游戏运营。&lt;/p&gt;
+&lt;p&gt;数据挖掘工程师，机器学习方向。从事数据平台建设和机器学习应用项目开发。&lt;/p&gt;
 
 &lt;h2 id=&#34;兴趣方向&#34;&gt;兴趣方向&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Docker、AutoML 、数据可视化&lt;/li&gt;
-&lt;li&gt;机器视觉、自然语言处理、计算广告&lt;/li&gt;
-&lt;li&gt;经济学、项目管理、科幻小说&lt;/li&gt;
+&lt;li&gt;机器学习前后端及交付落地所涉及技术：Docker、AutoML 、数据可视化等。&lt;/li&gt;
+&lt;li&gt;泛领域学界研究及工程化进展：包括机器视觉、自然语言处理、计算广告等。&lt;/li&gt;
+&lt;li&gt;其它兴趣爱好：经济学社会学读物、写作分享&amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;微信关注&#34;&gt;微信关注&lt;/h2&gt;
+&lt;h2 id=&#34;社交平台&#34;&gt;社交平台&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/me/wechat.jpg&#34; alt=&#34;扫码关注公众号&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;微信公众号、头条、知乎搜索【谷粒先生】&lt;/p&gt;
+
+&lt;h2 id=&#34;联系方式&#34;&gt;联系方式&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/post/wechat.JPG&#34; alt=&#34;个人微信&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
