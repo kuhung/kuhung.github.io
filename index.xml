@@ -19,7 +19,7 @@
 
 &lt;h1 id=&#34;深度强化学习技巧-hacks-for-training-deep-rl&#34;&gt;深度强化学习技巧 hacks for training deep RL&lt;/h1&gt;
 
-&lt;p&gt;这是一篇旧文，&lt;a href=&#34;http://joschu.net/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;John Schulman&lt;/a&gt; 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。  &lt;/p&gt;
+&lt;p&gt;这是一篇旧文，&lt;a href=&#34;http://joschu.net/?utm_source=kuhungio&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;John Schulman&lt;/a&gt; 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。  &lt;/p&gt;
 
 &lt;h2 id=&#34;测试新算法的技巧&#34;&gt;测试新算法的技巧&lt;/h2&gt;
 
@@ -127,7 +127,7 @@
 &lt;ul&gt;
 &lt;li&gt;交叉熵&lt;/li&gt;
 &lt;li&gt;策略更新&lt;/li&gt;
-&lt;li&gt;一些类型的 Q-learning 算法: &lt;a href=&#34;https://github.com/openai/baselines&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;OpenAI Baselines&lt;/a&gt;或者 &lt;a href=&#34;https://github.com/rll/rllab&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;RLLab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;一些类型的 Q-learning 算法: &lt;a href=&#34;https://github.com/openai/baselines&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;OpenAI Baselines&lt;/a&gt; 或者 &lt;a href=&#34;https://github.com/rll/rllab&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;RLLab&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -430,12 +430,11 @@
 
 &lt;hr /&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;关注微信公众号【谷粒先生】，回复【强化学习】获取原版 PPT &lt;a href=&#34;http://joschu.net/docs/nuts-and-bolts.pdf&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;The Nuts and Bolts of Deep RL Research
-  &lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/deepRL/deepRL.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://link.zhihu.com/?target=https%3A//kuhungio.me/about/%3Futm_source%3Dzhihu%26utm_campaign%3Dsubtitle&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://link.zhihu.com/?target=https%3A//kuhungio.me/about/%3Futm_source%3Dzhihu%26utm_campaign%3Dsubtitle&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;关注微信公众号【谷粒先生】，回复【强化学习】获取 PPT 原版&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
