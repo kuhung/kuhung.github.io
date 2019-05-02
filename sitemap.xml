@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2019/training_rl_systems_hacks/</loc>
+      
+      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2019/flask_vue_ml/</loc>
       
       <lastmod>2019-04-20T14:31:26+08:00</lastmod>
@@ -205,7 +215,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2019-04-20T14:31:26+08:00</lastmod>
+      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
       
       
       
@@ -229,7 +239,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-04-20T14:31:26+08:00</lastmod>
+      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
       
       
       
@@ -395,6 +405,30 @@
     </url>
   
     <url>
+      <loc>https://kuhungio.me/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+      
+      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/%E6%8A%80%E5%B7%A7/</loc>
+      
+      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/tags/%E6%95%B0%E5%AD%A6/</loc>
       
       <lastmod>2018-10-18T00:00:00+00:00</lastmod>
@@ -494,6 +528,18 @@
       <loc>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%BF%9B%E9%98%B6/</loc>
       
       <lastmod>2019-04-20T14:31:26+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+      
+      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
       
       
       
