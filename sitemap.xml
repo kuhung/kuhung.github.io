@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2019/book-list-for-ds/</loc>
+      
+      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2019/training_rl_systems_hacks/</loc>
       
       <lastmod>2019-05-02T11:59:48+08:00</lastmod>
@@ -215,7 +225,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
+      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
       
       
       
@@ -239,7 +249,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-05-02T11:59:48+08:00</lastmod>
+      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
       
       
       
@@ -324,6 +334,18 @@
       <loc>https://kuhungio.me/categories/%E4%B8%AA%E4%BA%BA%E7%AE%A1%E7%90%86/</loc>
       
       <lastmod>2019-02-17T00:40:20+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/%E4%B9%A6%E5%8D%95/</loc>
+      
+      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
       
       
       
@@ -455,7 +477,7 @@
     <url>
       <loc>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/</loc>
       
-      <lastmod>2019-02-24T23:31:58+08:00</lastmod>
+      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
       
       
       
@@ -504,6 +526,18 @@
       <loc>https://kuhungio.me/tags/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97/</loc>
       
       <lastmod>2019-03-08T22:48:45+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+      
+      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
       
       
       
@@ -609,9 +643,9 @@
     </url>
   
     <url>
-      <loc>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
+      <loc>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
       
-      <lastmod>2018-03-30T00:00:00+00:00</lastmod>
+      <lastmod>2019-02-24T23:31:58+08:00</lastmod>
       
       
       
@@ -621,9 +655,9 @@
     </url>
   
     <url>
-      <loc>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
+      <loc>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
       
-      <lastmod>2019-02-24T23:31:58+08:00</lastmod>
+      <lastmod>2018-03-30T00:00:00+00:00</lastmod>
       
       
       
