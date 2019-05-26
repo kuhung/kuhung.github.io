@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据科学 on Kuhung&#39;s Blog</title>
+    <link>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</link>
+    <description>Recent content in 数据科学 on Kuhung&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 24 May 2019 09:02:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AB 测试之概览</title>
+      <link>https://kuhungio.me/2019/abtest/</link>
+      <pubDate>Fri, 24 May 2019 09:02:00 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/abtest/</guid>
+      <description>A/B test 总览 Q：什么是 A/B test？ A：A/B test 是一种用来测试新产品或新功能的在线测试常规方法。一般分为两组用户，一组对照组，一组实验组。对照组采用已有的产品或功能，实验组采用新功能。要做的是找到他们的不同反应，并以此确定哪个版本更好。
+Q：A/B test 是否有适用范围，还是说所有情况都适用？ A：A/B test 能帮助你爬上前面的山峰，但如果想弄清楚是爬这座还是另一座，A/B test 可能不太有效。A/B test 能对很大范围的事情进行测试。
+ 例如：  亚马逊个性化推荐的 A/B test，发现个推能显著提升收益。 领英对首页流排序的测试，谷歌的搜索广告排名。 此外还可以对用户难以察觉的东西进行测试，如网站响应速度。亚马逊在07年发现：页面每增加100ms延迟，收入将会下降1个百分点。   Q：A/B test 不能做什么事情？ A：上线新的版本，带来完全不同的交互体验；或是低频长周期的产品；以及 A/B test 并不能发现被遗漏了什么。
+测试新的交互体验时，A/B test 可能不太奏效。原因有两个：一、厌恶改变，不是每个人都喜欢改变，这可能导致用户的厌恶和抵触情绪。二、新奇效应，对于新鲜事物，用户可能会挨个尝试所有东西。
+于此同时，这里会有两个问题，一个是你的比较基准是什么？另一个是需要花多少时间得出结论？举个例子：像低频的房屋租赁，在测试推荐流的时候，很难确定用户是为啥回来的。因为这要花的时间太长了，也许是半年，甚至是更久。
+A/B test 无法告诉你是否有遗漏。当我们在某个产品测试信息推荐流时，仅凭 A/B test，无法知道是否该给这个用户推荐地理信息的资讯。于此同时，也无法确定别的产品是否需要推荐流。
+Q：对于 A/B test 难以胜任的事情，该如何解决？ A：通过其它数据源来补充，对日志进行分析假设验证。或是通过其它技术，如用户研究来定性分析。
+Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能是农业领域。人们将土地分为不同部分，测试哪块地适合哪种作物作物或是作物如何生长。在科研领域。假设检验是确定创新的关键方法。医学上的 A/B test 被称为临床试验，通过此种方法来确定新的治疗方法是否有效。
+Q：传统实验和在线的 A/B test 有何异同呢？ A：在线上，拥有更多的数据，但是分辨率低。像传统医学试验或用户体验研究，对象可能有10个、50个或100个，对每个参与者的基本信息都很了解。但在线上，我们的用户可能是数百万、上千万的点击交互行为，我们无法确定数据的另一端是谁。是一个人还是几个人，是网吧学校还是别的什么。通过 A/B test，目的是确认用户是否喜欢这个新产品或新功能。所以做 A/B test 的人的目标是设计一个合理且可复现的结果，用来帮助决策。A/B test 无处不在，FLAG 都在不同程度地使用 A/B test，甚至有专门地公司帮助小公司提供这些服务。</description>
+    </item>
+    
+  </channel>
+</rss>

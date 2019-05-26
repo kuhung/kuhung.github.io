@@ -6,11 +6,63 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 07 May 2019 23:34:54 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2019 09:02:00 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>机器学习、数据挖掘从业者的7本书 Booklist for MLE</title>
+      <title>AB 测试之概览</title>
+      <link>https://kuhungio.me/2019/abtest/</link>
+      <pubDate>Fri, 24 May 2019 09:02:00 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/abtest/</guid>
+      <description>
+
+&lt;h1 id=&#34;a-b-test-总览&#34;&gt;A/B test 总览&lt;/h1&gt;
+
+&lt;h3 id=&#34;q-什么是-a-b-test&#34;&gt;Q：什么是 A/B test？&lt;/h3&gt;
+
+&lt;p&gt;A：A/B test 是一种用来测试新产品或新功能的在线测试常规方法。一般分为两组用户，一组对照组，一组实验组。对照组采用已有的产品或功能，实验组采用新功能。要做的是找到他们的不同反应，并以此确定哪个版本更好。&lt;/p&gt;
+
+&lt;h3 id=&#34;q-a-b-test-是否有适用范围-还是说所有情况都适用&#34;&gt;Q：A/B test 是否有适用范围，还是说所有情况都适用？&lt;/h3&gt;
+
+&lt;p&gt;A：A/B test 能帮助你爬上前面的山峰，但如果想弄清楚是爬这座还是另一座，A/B test 可能不太有效。A/B test 能对很大范围的事情进行测试。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;例如：
+
+&lt;ul&gt;
+&lt;li&gt;亚马逊个性化推荐的 A/B test，发现个推能显著提升收益。&lt;/li&gt;
+&lt;li&gt;领英对首页流排序的测试，谷歌的搜索广告排名。&lt;/li&gt;
+&lt;li&gt;此外还可以对用户难以察觉的东西进行测试，如网站响应速度。亚马逊在07年发现：页面每增加100ms延迟，收入将会下降1个百分点。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;q-a-b-test-不能做什么事情&#34;&gt;Q：A/B test 不能做什么事情？&lt;/h3&gt;
+
+&lt;p&gt;A：上线新的版本，带来完全不同的交互体验；或是低频长周期的产品；以及 A/B test 并不能发现被遗漏了什么。&lt;/p&gt;
+
+&lt;p&gt;测试新的交互体验时，A/B test 可能不太奏效。原因有两个：一、厌恶改变，不是每个人都喜欢改变，这可能导致用户的厌恶和抵触情绪。二、新奇效应，对于新鲜事物，用户可能会挨个尝试所有东西。&lt;/p&gt;
+
+&lt;p&gt;于此同时，这里会有两个问题，一个是你的比较基准是什么？另一个是需要花多少时间得出结论？举个例子：像低频的房屋租赁，在测试推荐流的时候，很难确定用户是为啥回来的。因为这要花的时间太长了，也许是半年，甚至是更久。&lt;/p&gt;
+
+&lt;p&gt;A/B test 无法告诉你是否有遗漏。当我们在某个产品测试信息推荐流时，仅凭 A/B test，无法知道是否该给这个用户推荐地理信息的资讯。于此同时，也无法确定别的产品是否需要推荐流。&lt;/p&gt;
+
+&lt;h3 id=&#34;q-对于-a-b-test-难以胜任的事情-该如何解决&#34;&gt;Q：对于 A/B test 难以胜任的事情，该如何解决？&lt;/h3&gt;
+
+&lt;p&gt;A：通过其它数据源来补充，对日志进行分析假设验证。或是通过其它技术，如用户研究来定性分析。&lt;/p&gt;
+
+&lt;h3 id=&#34;q-a-b-test-的历史是什么样的&#34;&gt;Q：A/B test 的历史是什么样的？&lt;/h3&gt;
+
+&lt;p&gt;A：最先使用 A/B test 的，可能是农业领域。人们将土地分为不同部分，测试哪块地适合哪种作物作物或是作物如何生长。在科研领域。假设检验是确定创新的关键方法。医学上的 A/B test 被称为临床试验，通过此种方法来确定新的治疗方法是否有效。&lt;/p&gt;
+
+&lt;h3 id=&#34;q-传统实验和在线的-a-b-test-有何异同呢&#34;&gt;Q：传统实验和在线的 A/B test 有何异同呢？&lt;/h3&gt;
+
+&lt;p&gt;A：在线上，拥有更多的数据，但是分辨率低。像传统医学试验或用户体验研究，对象可能有10个、50个或100个，对每个参与者的基本信息都很了解。但在线上，我们的用户可能是数百万、上千万的点击交互行为，我们无法确定数据的另一端是谁。是一个人还是几个人，是网吧学校还是别的什么。通过 A/B test，目的是确认用户是否喜欢这个新产品或新功能。所以做 A/B test 的人的目标是设计一个合理且可复现的结果，用来帮助决策。A/B test 无处不在，FLAG 都在不同程度地使用 A/B test，甚至有专门地公司帮助小公司提供这些服务。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>数据从业者必读的7本书 Booklist for DE</title>
       <link>https://kuhungio.me/2019/book-list-for-ds/</link>
       <pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate>
       
@@ -132,6 +184,8 @@
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 
 &lt;p&gt;以上是给大家推荐的从业者的7本书，都是经过本人检验的。从通识到基础概念，从工具到学科思想，最后又回到普罗大众，思考和呈现我们的工作。希望能帮助诸位更进一步，在职业生涯上大放光彩。&lt;/p&gt;
+
+&lt;p&gt;豆瓣书单 &lt;a href=&#34;https://www.douban.com/doulist/113972160/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.douban.com/doulist/113972160/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -2111,20 +2165,6 @@ python run_classifier.py \
       <description>&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/cheatsheets/algebra-calculus-1.png&#34; alt=&#34;线代与微积分速查表·一&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/cheatsheets/algebra-calculus-2.png&#34; alt=&#34;线代与微积分速查表·二&#34; /&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>速查表 | Probabilities Statistics 数理统计</title>
-      <link>https://kuhungio.me/2018/probabilities-statistics/</link>
-      <pubDate>Thu, 18 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/2018/probabilities-statistics/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/cheatsheets/probabilities-statistics-1.png&#34; alt=&#34;数理统计速查表·一&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/cheatsheets/probabilities-statistics-2.png&#34; alt=&#34;数理统计速查表·二&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/cheatsheets/probabilities-statistics-3.png&#34; alt=&#34;数理统计速查表·三&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
