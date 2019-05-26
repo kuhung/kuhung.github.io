@@ -10,14 +10,16 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>AB 测试之概览</title>
+      <title>A/B test 揭秘之什么是 A/B test</title>
       <link>https://kuhungio.me/2019/abtest/</link>
       <pubDate>Fri, 24 May 2019 09:02:00 +0800</pubDate>
       
       <guid>https://kuhungio.me/2019/abtest/</guid>
       <description>
 
-&lt;h1 id=&#34;a-b-test-总览&#34;&gt;A/B test 总览&lt;/h1&gt;
+&lt;p&gt;此文总结自 Udacity 的课程：A/B test，详细而系统地讲述了 Google，Amazon 以及 Netflix 等公司是如何在商业问题中设计 A/B test 并评估效果的，对于国内的业务也有很强的参考意义。这里是总结的的一部分：什么是 A/B test，讲述 A/B Test 的定义、适用范围以及和传统方法的异同。指标选择、实验设计与评估将在后面陆续放出。&lt;/p&gt;
+
+&lt;h2 id=&#34;a-b-概览&#34;&gt;A/B 概览&lt;/h2&gt;
 
 &lt;h3 id=&#34;q-什么是-a-b-test&#34;&gt;Q：什么是 A/B test？&lt;/h3&gt;
 
@@ -58,6 +60,12 @@
 &lt;h3 id=&#34;q-传统实验和在线的-a-b-test-有何异同呢&#34;&gt;Q：传统实验和在线的 A/B test 有何异同呢？&lt;/h3&gt;
 
 &lt;p&gt;A：在线上，拥有更多的数据，但是分辨率低。像传统医学试验或用户体验研究，对象可能有10个、50个或100个，对每个参与者的基本信息都很了解。但在线上，我们的用户可能是数百万、上千万的点击交互行为，我们无法确定数据的另一端是谁。是一个人还是几个人，是网吧学校还是别的什么。通过 A/B test，目的是确认用户是否喜欢这个新产品或新功能。所以做 A/B test 的人的目标是设计一个合理且可复现的结果，用来帮助决策。A/B test 无处不在，FLAG 都在不同程度地使用 A/B test，甚至有专门地公司帮助小公司提供这些服务。&lt;/p&gt;
+
+&lt;p&gt;##总结&lt;/p&gt;
+
+&lt;p&gt;通过以上内容，我们知道了 A/B test的定义，明白他是为了更好决策的系统性方法。该方法在很多场景都适用，但在对于一些大的改动和低频次长周期的产品功能，A/B test并不能很好解决。通过数据互补，用户调研等方法，我们一定程度上弥补了 A/B test的短板。相较于传统的控制变量方法，线上的 A/B test数据量更大，但也难以确定真实的数据产生者。这些问题，在使用 A/B test时都要考虑。&lt;/p&gt;
+
+&lt;p&gt;A/B test到底如何做，指标如何设定，如何说明新产品或新功能确实有效或无效？带着这些疑问，我们将进入到下期的内容。&lt;/p&gt;
 </description>
     </item>
     
