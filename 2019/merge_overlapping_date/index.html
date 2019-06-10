@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷粒,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-76017508-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <link rel="prev" href="https://kuhungio.me/2019/abtest/" />
+  
+  <link rel="canonical" href="https://kuhungio.me/2019/merge_overlapping_date/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           HIVE 技巧积累之合并重叠日期 | Kuhung&#39;s Blog
+       
+  </title>
+  <meta name="title" content="HIVE 技巧积累之合并重叠日期 | Kuhung&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "HIVE 技巧积累之合并重叠日期",
+    "headline" : "HIVE 技巧积累之合并重叠日期",
+    "description" : "目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT girl。当然艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
+这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。
+在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。
+问题定义： 在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。
+对于日期情况的定义 这里采用穷举法，可以得出以下13类情况：
+问题简化 解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。
+对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。
+数据准备 这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。
+drop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values ('01:precedes',to_date('01','DD'),to_date('02','DD')); Insert into t values ('01:precedes',to_date('03','DD'),to_date('04','DD')); Insert into t values ('02:meets',to_date('01','DD'),to_date('02','DD')); Insert into t values ('02:meets',to_date('02','DD'),to_date('03','DD')); Insert into t values ('03:overlaps',to_date('01','DD'),to_date('03','DD')); Insert into t values ('03:overlaps',to_date('02','DD'),to_date('04','DD')); Insert into t values ('04:finished by',to_date('01','DD'),to_date('03','DD')); Insert into t values ('04:finished by',to_date('02','DD'),to_date('03','DD')); Insert into t values ('05:contains',to_date('01','DD'),to_date('04','DD')); Insert into t values ('05:contains',to_date('02','DD'),to_date('03','DD')); Insert into t values ('06:starts',to_date('01','DD'),to_date('02','DD')); Insert into t values ('06:starts',to_date('01','DD'),to_date('03','DD')); Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD')); Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD')); Insert into t values ('08:started by',to_date('01','DD'),to_date('03','DD')); Insert into t values ('08:started by',to_date('01','DD'),to_date('02','DD')); Insert into t values ('09:during',to_date('02','DD'),to_date('03','DD')); Insert into t values ('09:during',to_date('01','DD'),to_date('04','DD')); Insert into t values ('10:finishes',to_date('02','DD'),to_date('03','DD')); Insert into t values ('10:finishes',to_date('01','DD'),to_date('03','DD')); Insert into t values ('11:overlapped by',to_date('02','DD'),to_date('04','DD')); Insert into t values ('11:overlapped by',to_date('01','DD'),to_date('03','DD')); Insert into t values ('12:met by',to_date('02','DD'),to_date('03','DD')); Insert into t values ('12:met by',to_date('01','DD'),to_date('02','DD')); Insert into t values ('13:preceded by',to_date('03','DD'),to_date('04','DD')); Insert into t values ('13:preceded by',to_date('01','DD'),to_date('02','DD')); commit;  定义出来的数据如下",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-06-09 00:17:05 &#43;0800 CST",
+    "dateModified" : "2019-06-09 00:17:05 &#43;0800 CST",
+    "url" : "https://kuhungio.me/2019/merge_overlapping_date/",
+    "wordCount" : "309",
+    "keywords" : [ "SQL","技巧", "Kuhung&#39;s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">HIVE 技巧积累之合并重叠日期</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2019-06-09 itemprop="datePublished">June 9, 2019</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhungio.me/categories/sql/"> SQL </a>
+                        <a href="https://kuhungio.me/categories/hive/"> HIVE </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#问题定义">问题定义：</a>
+<ul>
+<li><a href="#对于日期情况的定义">对于日期情况的定义</a></li>
+<li><a href="#问题简化">问题简化</a></li>
+</ul></li>
+<li><a href="#数据准备">数据准备</a></li>
+<li><a href="#解决方案">解决方案</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT girl。当然艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。</p>
+
+<p>这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。</p>
+
+<p>在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：<a href="https://stewashton.wordpress.com/2015/06/08/merging-overlapping-date-ranges/" rel="nofollow noreferrer" target="_blank">🔗</a>。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。</p>
+
+<h2 id="问题定义">问题定义：</h2>
+
+<p>在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。</p>
+
+<h3 id="对于日期情况的定义">对于日期情况的定义</h3>
+
+<p>这里采用穷举法，可以得出以下13类情况：</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/merge_date/date_merge.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<h3 id="问题简化">问题简化</h3>
+
+<p>解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。</p>
+
+<p>对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。</p>
+
+<h2 id="数据准备">数据准备</h2>
+
+<p>这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。</p>
+
+<pre><code class="language-sql">drop table t purge;
+create table t (
+  test_case varchar2(32) not null,
+  start_date date not null,
+  end_date date not null
+);
+Insert into t values ('01:precedes',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('01:precedes',to_date('03','DD'),to_date('04','DD'));
+Insert into t values ('02:meets',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('02:meets',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('03:overlaps',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('03:overlaps',to_date('02','DD'),to_date('04','DD'));
+Insert into t values ('04:finished by',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('04:finished by',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('05:contains',to_date('01','DD'),to_date('04','DD'));
+Insert into t values ('05:contains',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('06:starts',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('06:starts',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('08:started by',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('08:started by',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('09:during',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('09:during',to_date('01','DD'),to_date('04','DD'));
+Insert into t values ('10:finishes',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('10:finishes',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('11:overlapped by',to_date('02','DD'),to_date('04','DD'));
+Insert into t values ('11:overlapped by',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('12:met by',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('12:met by',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('13:preceded by',to_date('03','DD'),to_date('04','DD'));
+Insert into t values ('13:preceded by',to_date('01','DD'),to_date('02','DD'));
+commit;
+</code></pre>
+
+<p>定义出来的数据如下</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/merge_date/date_sample.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<h2 id="解决方案">解决方案</h2>
+
+<pre><code class="language-sql">with grp_starts as (
+  select test_case, start_date, end_date,
+  case
+    when start_date &gt; max(end_date) over(
+      partition by test_case order by start_date, end_date
+      rows between unbounded preceding and 1 preceding
+    )
+    then 1 else 0
+  end grp_start
+  from t
+)
+, grps as (
+  select test_case, start_date, end_date,
+  sum(grp_start) over(
+    partition by test_case order by start_date, end_date
+    rows between unbounded preceding and current row
+  ) grp
+  from grp_starts
+)
+select test_case,
+min(start_date) start_date,
+max(end_date) end_date
+from grps
+group by test_case, grp
+order by 1, 2;
+</code></pre>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/merge_date/date_merge_result.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
+<p>这里的的核心思想同上：<strong>判断日期是否重叠，重叠日期取最大最小的日期，非重叠日期分段取</strong></p>
+
+<p>这里使用了 <code>with</code> 技巧，通过该技巧，将数据临时存储至内存，加速了执行速度。这句话是网上能直接搜到的，但实际上它还有另一个功能上的作用。即抛开性能作用来说，<code>with</code> 语法能够对先前的查询结果进行下一步的处理。这意味着不用频繁的建立中间表，省去空间或是简化了逻辑的复杂度。</p>
+
+<p>这里主要分为三段：</p>
+
+<ol>
+<li><p>判断日期是否重叠：对数据以 test_case 为划分依据，按开始日期和结束日期排序。比较当前开始日期和之前的结束日期，若开始日期大于最大的结束日期，说明两日期无重叠，grp_start 标志位记为1，反之记为0。</p></li>
+
+<li><p>对相邻重叠日期做区分：按同样的划分排序方式。对当前日期及以前的 grp_start 求和，由于重叠日期被标记为0，因而最后相邻重叠日期的 grp 标志位将相同，其余日期各不相同。起到区分不重叠日期，合并重叠日期的作用。</p></li>
+
+<li><p>分组选取最大最小值，得到结果：按 test_case 与 grp 分组，选取各组最小和最大的日期，最后按第一列和第二列排序，得到目标结果。</p></li>
+</ol>
+
+<p>小结：通过拆分的思想+窗口函数的帮助，出色完成组织交代的任务，在 HIVE 中实现了合并重叠日期这一任务。但同时也要注意，在功能保证的同时，该脚本如同算法一样，也是有边界的。比如当 end_date 为空时，将会出现错误。这种情况最好先把空值填充为特殊值 ‘9999-12-31’，结束后再转换为空值</p>
+
+<h2 id="总结">总结</h2>
+
+<p>在 HIVE 中合并重叠日期，一开始看起来很难，但实际上学会分析问题，分解问题，简化问题，其实不难。网上有很多有用的资源，要学会合理利用。在实现基本需求的同时，给自己留些时间，深挖背后的原理，将会给自己、同时也是给组织带来持续性的效率提升。</p>
+
+<p>比如：搞完这一套后，重写祖传代码不太现实，但对于新的需求，可能会思考 <code>with</code> 语法带来的好处，将其运用到业务中去，减少中间表冗余，简化逻辑，增强 sql 代码可读性。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhungio.me/2019/merge_overlapping_date/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/sql/">
+                    #SQL</a></span>
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E6%8A%80%E5%B7%A7/">
+                    #技巧</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhungio.me/2019/abtest/" class="prev" rel="prev" title="A/B test 揭秘之什么是 A/B test"><i class="iconfont icon-left"></i>&nbsp;A/B test 揭秘之什么是 A/B test</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: 'bf453196832606832d9feda7663430f8',
+        title: 'HIVE 技巧积累之合并重叠日期',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

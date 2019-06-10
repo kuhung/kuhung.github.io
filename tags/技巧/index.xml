@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技巧 on Kuhung&#39;s Blog</title>
+    <link>https://kuhungio.me/tags/%E6%8A%80%E5%B7%A7/</link>
+    <description>Recent content in 技巧 on Kuhung&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://kuhungio.me/tags/%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HIVE 技巧积累之合并重叠日期</title>
+      <link>https://kuhungio.me/2019/merge_overlapping_date/</link>
+      <pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/merge_overlapping_date/</guid>
+      <description>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT girl。当然艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
+这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。
+在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。
+问题定义： 在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。
+对于日期情况的定义 这里采用穷举法，可以得出以下13类情况：
+问题简化 解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。
+对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。
+数据准备 这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。
+drop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values (&#39;01:precedes&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;01:precedes&#39;,to_date(&#39;03&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;02:meets&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;02:meets&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;03:overlaps&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;03:overlaps&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;04:finished by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;04:finished by&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;05:contains&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;05:contains&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;06:starts&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;06:starts&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;07:equals&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;07:equals&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;08:started by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;08:started by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;09:during&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;09:during&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;10:finishes&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;10:finishes&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;11:overlapped by&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;11:overlapped by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;12:met by&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;12:met by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;13:preceded by&#39;,to_date(&#39;03&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;13:preceded by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); commit;  定义出来的数据如下</description>
+    </item>
+    
+  </channel>
+</rss>
