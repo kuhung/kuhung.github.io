@@ -6,8 +6,199 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2019 15:28:01 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A/B test 评价指标的选择</title>
+      <link>https://kuhungio.me/2019/abtest-2/</link>
+      <pubDate>Sat, 22 Jun 2019 15:28:01 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/abtest-2/</guid>
+      <description>
+
+&lt;h2 id=&#34;如何定义一个评价指标&#34;&gt;如何定义一个评价指标&lt;/h2&gt;
+
+&lt;p&gt;这是上一篇文章&lt;a href=&#34;https://kuhungio.me/2019/abtest/?utm_source=self&amp;amp;utm_campaign=abtest2&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;什么是 A/B test&lt;/a&gt;的续集，上一篇主要讲述 A/B 测试的历史，这里接着讲如何选择指标。&lt;/p&gt;
+
+&lt;p&gt;从本人的经验来看，一个指标怎么选择确实重要，但更重要的是需要自上而下理解且落实科学实验。而不是拍脑袋想指标，中途随意更换指标，汇报时仅罗列有利的指标。&lt;/p&gt;
+
+&lt;p&gt;如果要用一句话解释，如何定义一个评价指标，那一定是“以始为终”。在定义一个指标的时候，要想一想为什么要定义这个指标，这个指标的定义是为了说明什么情况，如果这个指标发生变化，将需要怎么去解释它。&lt;/p&gt;
+
+&lt;h3 id=&#34;指标定义的两种情况&#34;&gt;指标定义的两种情况&lt;/h3&gt;
+
+&lt;p&gt;在这里，定义指标的时候有两类：一是不变量，即变量组和对照组的都应该相同；另一个是变量，即需要观察改变的量。&lt;/p&gt;
+
+&lt;p&gt;对于不变量，需要注意两者的总量是否相同，数据的分布是否相同。以上保证实验的正常进行。对于变量，首先思考高层次的商业指标。诸如收益、市场份额、用户量等。接下来就是细节的指标，如用户体验，网页停留时长。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;例如，在游戏中，新手教程没完成的玩家，虽然不能直接知道原因，但根据经验，可能是引导时间太长、网络卡顿或者是别的原因。类似这样的情况，是用户体验上的问题。后面也会有一些方法提到如何去评估它。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在实验中，可能得到的不是想要的信息、或者实验时间太短，得到的结果不准确。甚至有些东西无法衡量，这种情况又该如何去评估它呢。别急，下面的内容会给你回答。&lt;/p&gt;
+
+&lt;h2 id=&#34;自顶向下设计评价指标&#34;&gt;自顶向下设计评价指标&lt;/h2&gt;
+
+&lt;p&gt;如何确定指标来做健全性检验&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;高层次的指标（如：活跃用户数、点击转化率 CTR）&lt;/li&gt;
+&lt;li&gt;指标细节（如：如何定义用户活跃）&lt;/li&gt;
+&lt;li&gt;使用一组指标，并将他们整合为一个单一指标（如：总体评价指标（OEC））&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对于评估，可以选择一个指标或一套指标。如果是使用一套指标，可以把他们聚合成一个指标，比如构造一个目标函数，或者是简单的加权指标。&lt;/p&gt;
+
+&lt;p&gt;最后一点需要考虑的是：指标的普适性有多少。如果你在运用 A/B 测试，最好能有一个指标能够贯穿整个体系。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;举个例子：用户漏斗。&lt;/p&gt;
+
+&lt;p&gt;它表示用户通过站点执行的一系列步骤。 之所以被称为漏斗，是因为每个后续阶段的用户数都少于上面的阶段。 每个阶段都是一个指标——总数，比率和概率。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;数据不足怎么办&#34;&gt;数据不足怎么办&lt;/h2&gt;
+
+&lt;p&gt;有些数据可能难以获得，主要原因如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;没有数据的权限&lt;/li&gt;
+&lt;li&gt;需要较长时间去收集数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;使用外部数据&#34;&gt;使用外部数据&lt;/h3&gt;
+
+&lt;p&gt;其它数据收集的技巧：3种公司常用的方法&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;数据中间商&lt;/li&gt;
+&lt;li&gt;调研公司&lt;/li&gt;
+&lt;li&gt;学术文章&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上能够帮助你依照整个行业设定指标。&lt;/p&gt;
+
+&lt;h3 id=&#34;额外的内部数据&#34;&gt;额外的内部数据&lt;/h3&gt;
+
+&lt;p&gt;额外的内部数据也可被使用，例如：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;回溯性分析：查看历史数据以找寻改变并进行评估&lt;/li&gt;
+&lt;li&gt;调研与用户研究：这个帮助你找到你想研究的点&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上办法的缺点是它只告诉了你相关性、没有告诉你因果性，而实验一定程度上可以解释因果。&lt;/p&gt;
+
+&lt;p&gt;最后，别忘了与你的同事交换意见，看看他们认为重要的指标有哪些。&lt;/p&gt;
+
+&lt;p&gt;附：&lt;a href=&#34;https://s3-us-west-2.amazonaws.com/gae-supplemental-media/additional-techniquespdf/additional_techniques.pdf&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;其它获得额外数据的方法&lt;/a&gt;：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;用户体验研究（UER）——高深度少用户。这也适用于头脑风暴，在 UER 中也可以使用诸如眼动相机的设备，同时回溯历史进行分析。&lt;/li&gt;
+&lt;li&gt;焦点小组——中等深度中等规模用户。能够在一些假设上获得反馈，但也容易陷入集体思想的情况（即真正的个人意见难以获得表达）&lt;/li&gt;
+&lt;li&gt;调研报告——深度较低但用户规模大。对于一些难以直接衡量的指标很有用。不能用于直接和其它指标比较，因为调研的对象和指标很可能与大盘不同。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;指标的实际例子&#34;&gt;指标的实际例子&lt;/h2&gt;
+
+&lt;p&gt;高层次指标：点击率&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定义一：Cookie 的总点击次数除以 Cookie 去重后的总数&lt;/li&gt;
+&lt;li&gt;定义二：被点击的页面数除以总页面数&lt;/li&gt;
+&lt;li&gt;定义三：总的页面点击次数除以总页面数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;可能还需要过滤爬虫、牟利等行为以消除数据偏差。通过切片来判断数据是需要偏置还是过分偏置。在过滤掉数据后，计算每个切片的评价指标表现。如果数据表现有偏差，那说明数据里可能还需要调整。&lt;/p&gt;
+
+&lt;p&gt;为了消除数据周期带来的周末效应，最好按周或者按年进行数据的划分。&lt;/p&gt;
+
+&lt;h2 id=&#34;指标的特性&#34;&gt;指标的特性&lt;/h2&gt;
+
+&lt;h3 id=&#34;指标的敏感性和鲁棒性&#34;&gt;指标的敏感性和鲁棒性&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;敏感性和鲁棒性：敏感性是指指标对所关系的事物是否足够敏感，而鲁棒性性是指对不关心的事物是否足够不敏感。这可以通过预先小规模实验，来验证指标是否符合直觉。另一个方法是使用 A/A 测试，也就是什么都不改变，以此来排除一些伪关系。&lt;/li&gt;
+&lt;li&gt;分布：通过对历史数据的分析得到。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;指标的分类&#34;&gt;指标的分类&lt;/h3&gt;
+
+&lt;p&gt;4类指标&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;计数或者求和（如：访问页面的用户数）&lt;/li&gt;
+&lt;li&gt;指标的分布-平均数、中位数和百分位&lt;/li&gt;
+&lt;li&gt;概率与比率（rates）&lt;/li&gt;
+&lt;li&gt;比例（ratios）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;绝对指标与相对指标的选取&#34;&gt;绝对指标与相对指标的选取&lt;/h3&gt;
+
+&lt;p&gt;比较测试组和控制组的最简单方法是做差。&lt;/p&gt;
+
+&lt;p&gt;如果在做大量的实验，比较好的方法是多做相对的比较。比如百分比的变化情况。&lt;/p&gt;
+
+&lt;p&gt;计算百分比指标的优势在于，你有一个明确的边界，该边界不会随着时间变化。如果同时在运行多组指标，那么你的绝对数据很可能经常变动。这时，使用相对指标的好处就显现出来了，数据不会随着系统的变化发生大幅度的改变。&lt;/p&gt;
+
+&lt;p&gt;相对指标的主要缺点是：其灵活性和比例的相对差异不如绝对指标明显。&lt;/p&gt;
+
+&lt;h3 id=&#34;参数估计&#34;&gt;参数估计&lt;/h3&gt;
+
+&lt;p&gt;在实验前，需要检查指标的分布情况，以决定实验的规模、评估的置信区间以及支撑最后的结论。&lt;/p&gt;
+
+&lt;p&gt;如果要检查的指标分布区间很大，那么最后的结果意义可能不大。&lt;/p&gt;
+
+&lt;p&gt;为了计算置信区间，需要&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;方差（或者标准差）&lt;/li&gt;
+&lt;li&gt;分布&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于二项分布，估计的方差为 p(1−p)/N。估计的均值方差为σ^2/N。如果原始数据是正常的，则中位数将是正常的。但如果原始数据不正常，则中位数可能不正常。由于中心极限定理，平均值通常是正态分布的，而与原始数据的分布无关。&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-R&#34;&gt;x &amp;lt;- c(87029, 113407, 84843, 104994, 99327, 92052, 60684)
+stder &amp;lt;- sd(x)/sqrt(length(x))
+conf95_min = mean(x) -1.96*stder
+conf95_max = mean(x) + 1.96*stder
+conf95_min
+## [1] 79157.54
+conf95_max
+## [1] 104367
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;非参数方法&#34;&gt;非参数方法&lt;/h3&gt;
+
+&lt;p&gt;这是一种在不对分布进行假设的情况下分析数据的方法。 在谷歌，很少使用上面参数估计的方式，他们使用基于 A/A 测试的结果来评估方差。 如果在 A/A 测试中发现指标存在很多变化，则该指标可能过于敏感，无法使用。&lt;/p&gt;
+
+&lt;p&gt;比起进行多组 A/A 测试，一种方法是进行大量的 A/A 测试，然后进行自助（bootstrap）来生成多组样本并测试变化范围。&lt;/p&gt;
+
+&lt;p&gt;通过 A/A 测试，可以&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;将结果与期望进行比较（健全性检验）&lt;/li&gt;
+&lt;li&gt;根据经验估计方差，并使用对分布的假设来计算置信度&lt;/li&gt;
+&lt;li&gt;直接估计置信区间而不用做任何数据假设&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;总之，不同的指标具有不同的变化范围。某些指标的变化范围可能很大，即使它们具有商业或产品意义，也会使它们无法使用。对待他们，需要非常小心。&lt;/p&gt;
+
+&lt;p&gt;对于许多分析师而言，与实际运行实验相比，大部分时间用于验证和选择指标。能够标准化定义指标在测试中至关重要。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;例如：网站延迟测试&lt;/p&gt;
+
+&lt;p&gt;定义：是在谈论加载第一个字节和加载最后一个字节的时间，还是说别的什么东西呢。&lt;/p&gt;
+
+&lt;p&gt;数据分布：此外，对于延迟，平均值可能根本不会改变。信号（例如慢速/快速连接或浏览器）会导致分布中十分集中，并且没有对应的调整方法。&lt;/p&gt;
+
+&lt;p&gt;对策：在这种情况下，就需要查看百分位分布。这里的关键是要建立起直觉，必须了解数据和业务，并与工程师一起理解数据是如何被记录的。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>HIVE 技巧积累之合并重叠日期</title>
@@ -17,7 +208,7 @@
       <guid>https://kuhungio.me/2019/merge_overlapping_date/</guid>
       <description>
 
-&lt;p&gt;目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT girl。当然艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。&lt;/p&gt;
+&lt;p&gt;目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。&lt;/p&gt;
 
 &lt;p&gt;这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。&lt;/p&gt;
 
@@ -127,13 +318,13 @@ order by 1, 2;
 &lt;li&gt;&lt;p&gt;分组选取最大最小值，得到结果：按 test_case 与 grp 分组，选取各组最小和最大的日期，最后按第一列和第二列排序，得到目标结果。&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;小结：通过拆分的思想+窗口函数的帮助，出色完成组织交代的任务，在 HIVE 中实现了合并重叠日期这一任务。但同时也要注意，在功能保证的同时，该脚本如同算法一样，也是有边界的。比如当 end_date 为空时，将会出现错误。这种情况最好先把空值填充为特殊值 ‘9999-12-31’，结束后再转换为空值&lt;/p&gt;
+&lt;p&gt;小结：通过拆分的思想+窗口函数的帮助，出色完成组织交代的任务，在 HIVE 中实现了合并重叠日期这一任务。但同时也要注意，在功能保证的同时，该脚本如同算法一样，也是有边界的。比如当 end_date 为空时，将会出现错误。这种情况最好先把空值填充为特殊值 ‘9999-12-31’，结束后再转换为空值。&lt;/p&gt;
 
 &lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
 
 &lt;p&gt;在 HIVE 中合并重叠日期，一开始看起来很难，但实际上学会分析问题，分解问题，简化问题，其实不难。网上有很多有用的资源，要学会合理利用。在实现基本需求的同时，给自己留些时间，深挖背后的原理，将会给自己、同时也是给组织带来持续性的效率提升。&lt;/p&gt;
 
-&lt;p&gt;比如：搞完这一套后，重写祖传代码不太现实，但对于新的需求，可能会思考 &lt;code&gt;with&lt;/code&gt; 语法带来的好处，将其运用到业务中去，减少中间表冗余，简化逻辑，增强 sql 代码可读性。&lt;/p&gt;
+&lt;p&gt;例如：搞完这一套后，虽说重写祖传代码不太现实，但对于新的需求，可能会思考 &lt;code&gt;with&lt;/code&gt; 语法带来的好处，将其运用到业务中去，减少中间表冗余，简化逻辑，增强 sql 代码可读性。&lt;/p&gt;
 </description>
     </item>
     
@@ -2194,101 +2385,6 @@ python run_classifier.py \
 &lt;p&gt;这样的推送服务，其应用场景不局限于此。这也是我琢磨它的原因之一——应用场景广泛。只要需要推送的地方，都可以嵌入这样一套服务。例如网站新增评论、或是按秒计费的服务器上模型训练结束等等。&lt;/p&gt;
 
 &lt;p&gt;Server 酱实现的功能有限，仅针对微信推送。但这也是它针对国内业务的一种优化。类似这样的推送服务很多，国外的 Slack 功能组件也很丰富。在一些涉及敏感信息的领域，构建一套自己的推送服务，也是不错的主意。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://kuhungio.me/about/</link>
-      <pubDate>Wed, 09 Jan 2019 00:14:04 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/about/</guid>
-      <description>
-
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;笔名：谷粒 kuhung&lt;/li&gt;
-&lt;li&gt;毕业院校：华中科技大学 机械学院&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;过往成果&#34;&gt;过往成果&lt;/h2&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;时间&lt;/th&gt;
-&lt;th&gt;平台&lt;/th&gt;
-&lt;th&gt;项目&lt;/th&gt;
-&lt;th&gt;名次&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;2018-08&lt;/td&gt;
-&lt;td&gt;第七届全国媒体技术处理大会&lt;/td&gt;
-&lt;td&gt;文本溯源技术测评&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;http://smp2018.cips-smp.org/rewards.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;95&lt;/sub&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;2017-06&lt;/td&gt;
-&lt;td&gt;Kaggle&lt;/td&gt;
-&lt;td&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
-&lt;td&gt;top10%&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;2017-02&lt;/td&gt;
-&lt;td&gt;DataCastle&lt;/td&gt;
-&lt;td&gt;精准资助预测赛&lt;/td&gt;
-&lt;td&gt;&lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;124&lt;/sub&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;2016-12&lt;/td&gt;
-&lt;td&gt;2016 BYTE CUP&lt;/td&gt;
-&lt;td&gt;国际机器学习竞赛&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://biendata.com/competition/bytecup2016/final-leaderboard/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;sup&gt;8&lt;/sup&gt;&amp;frasl;&lt;sub&gt;1029&lt;/sub&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;2016-10&lt;/td&gt;
-&lt;td&gt;第五届全国社会媒体处理大会&lt;/td&gt;
-&lt;td&gt;用户画像技术测评&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;http://www.cips-smp.org/smp2016/public/cup.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&amp;frasl;&lt;sub&gt;373&lt;/sub&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;工作经历&#34;&gt;工作经历&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2018.07~至今 网易游戏&lt;a href=&#34;https://kuhungio.me/2019/what-is-data-mining/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;数据挖掘工程师&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;2017.07~2017.09 微众银行数据科学实习生&lt;/li&gt;
-&lt;li&gt;2017.03~2017.06 武汉安天数据挖掘实习生&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;工作方向&#34;&gt;工作方向&lt;/h2&gt;
-
-&lt;p&gt;数据挖掘工程师，机器学习方向。从事数据平台建设和机器学习应用项目开发。&lt;/p&gt;
-
-&lt;h2 id=&#34;兴趣方向&#34;&gt;兴趣方向&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;机器学习前后端及交付落地所涉及技术：Docker、AutoML 、数据可视化等。&lt;/li&gt;
-&lt;li&gt;泛领域学界研究及工程化进展：包括机器视觉、自然语言处理、计算广告等。&lt;/li&gt;
-&lt;li&gt;其它兴趣爱好：经济学社会学读物、写作分享&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;社交平台&#34;&gt;社交平台&lt;/h2&gt;
-
-&lt;p&gt;微信公众号、头条、知乎搜索【谷粒先生】&lt;/p&gt;
-
-&lt;h2 id=&#34;联系方式&#34;&gt;联系方式&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/post/wechat.JPG&#34; alt=&#34;个人微信&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

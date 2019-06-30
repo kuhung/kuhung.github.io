@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 24 May 2019 09:02:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2019 15:28:01 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>AB测试</title>
       <link>https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/</link>
-      <pubDate>Fri, 24 May 2019 09:02:00 +0800</pubDate>
+      <pubDate>Sat, 22 Jun 2019 15:28:01 +0800</pubDate>
       
       <guid>https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HIVE</title>
+      <link>https://kuhungio.me/tags/hive/</link>
+      <pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/tags/hive/</guid>
       <description></description>
     </item>
     
@@ -158,7 +167,7 @@
     <item>
       <title>数据科学</title>
       <link>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</link>
-      <pubDate>Fri, 24 May 2019 09:02:00 +0800</pubDate>
+      <pubDate>Sat, 22 Jun 2019 15:28:01 +0800</pubDate>
       
       <guid>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/</guid>
       <description></description>
