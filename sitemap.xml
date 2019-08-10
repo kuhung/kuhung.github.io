@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2019/scrum/</loc>
+      
+      <lastmod>2019-08-10T00:54:34+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2019/manadement/</loc>
       
       <lastmod>2019-07-17T17:02:56+08:00</lastmod>
@@ -289,7 +299,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2019-07-17T17:02:56+08:00</lastmod>
+      <lastmod>2019-08-10T00:54:34+08:00</lastmod>
       
       
       
@@ -313,7 +323,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-07-17T17:02:56+08:00</lastmod>
+      <lastmod>2019-08-10T00:54:34+08:00</lastmod>
       
       
       
@@ -374,6 +384,18 @@
       <loc>https://kuhungio.me/tags/demo/</loc>
       
       <lastmod>2017-11-21T09:02:35+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/mindmap/</loc>
+      
+      <lastmod>2019-08-10T00:54:34+08:00</lastmod>
       
       
       
@@ -506,6 +528,30 @@
       <loc>https://kuhungio.me/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
       
       <lastmod>2019-05-02T11:59:48+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</loc>
+      
+      <lastmod>2019-08-10T00:54:34+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</loc>
+      
+      <lastmod>2019-08-10T00:54:34+08:00</lastmod>
       
       
       
