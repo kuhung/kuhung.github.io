@@ -6,10 +6,19 @@
     <description>Recent content in mindmap on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Aug 2019 00:54:34 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 00:47:36 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/mindmap/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>金字塔原理思维导图</title>
+      <link>https://kuhungio.me/2019/pyramid/</link>
+      <pubDate>Thu, 15 Aug 2019 00:47:36 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/pyramid/</guid>
+      <description>关于作者</description>
+    </item>
     
     <item>
       <title>敏捷革命思维导图</title>
