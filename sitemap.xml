@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2019/tdd_drive_ml/</loc>
+      
+      <lastmod>2019-08-25T00:22:07+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2019/tdd_with_ml/</loc>
       
       <lastmod>2019-08-22T00:56:13+08:00</lastmod>
@@ -319,7 +329,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2019-08-22T00:56:13+08:00</lastmod>
+      <lastmod>2019-08-25T00:22:07+08:00</lastmod>
       
       
       
@@ -343,7 +353,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2019-08-22T00:56:13+08:00</lastmod>
+      <lastmod>2019-08-25T00:22:07+08:00</lastmod>
       
       
       
@@ -368,6 +378,18 @@
       <loc>https://kuhungio.me/categories/sideproject/</loc>
       
       <lastmod>2019-04-20T14:31:26+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/tdd/</loc>
+      
+      <lastmod>2019-08-25T00:22:07+08:00</lastmod>
       
       
       
@@ -524,6 +546,18 @@
       <loc>https://kuhungio.me/tags/%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2/</loc>
       
       <lastmod>2019-04-14T11:51:09+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/%E5%AE%9E%E8%B7%B5/</loc>
+      
+      <lastmod>2019-08-25T00:22:07+08:00</lastmod>
       
       
       
@@ -703,7 +737,7 @@
     <url>
       <loc>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
       
-      <lastmod>2019-05-07T23:34:54+08:00</lastmod>
+      <lastmod>2019-08-25T00:22:07+08:00</lastmod>
       
       
       

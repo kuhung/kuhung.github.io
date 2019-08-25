@@ -6,11 +6,143 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Aug 2019 00:56:13 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 00:22:07 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>测试驱动的机器学习</title>
+      <title>机器学习实践--测试驱动开发</title>
+      <link>https://kuhungio.me/2019/tdd_drive_ml/</link>
+      <pubDate>Sun, 25 Aug 2019 00:22:07 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/tdd_drive_ml/</guid>
+      <description>
+
+&lt;h2 id=&#34;机器学习现状与问题&#34;&gt;机器学习现状与问题&lt;/h2&gt;
+
+&lt;p&gt;2012，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/baidu_index.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这一效应，一直持续到今年：在2019这一年，高考志愿填报金融遇冷，计算机一跃成为抢手专业，在各大工科院校中，有取代传统电气、机械之势；各学院的研究生院，纷纷开始往人工智能、深度学习上贴近。&lt;/p&gt;
+
+&lt;p&gt;这从一个侧面，反应了民众对于计算机、人工智能、机器学习的就业预期。但是，随着原来越多的从业者涌入，项目落地越来越多，机器学习这一领域的问题也开始暴露，亟需解决。&lt;/p&gt;
+
+&lt;h3 id=&#34;机器学习中的常见问题&#34;&gt;机器学习中的常见问题&lt;/h3&gt;
+
+&lt;p&gt;机器学习的问题，由其特性所致。众所周知，机器学习的发展，离不开大数据技术。海量数据的收集、存储，让算法有了更强大的生命力。通过对大量数据的挖掘、学习，机器学习能够猜你所想，提升购物网站的转化率；能够识别障碍，让自动驾驶成为可能；能够识别风险，扩大业务同时减轻坏账。&lt;/p&gt;
+
+&lt;p&gt;由此，针对模型和数据的关系，大致可以分为三类问题。第一种：数据量不足，模型过拟合。算法学习的过程就犹如考前刷题，过拟合相当于只刷一套题，这样的后果就是上一套不同的卷子，算法就懵逼了。第二种：数据量充足，模型欠拟合。欠拟合的算法就像是心思不在学习上的孩子，报再多的补习班，结果也不会太好。最后一种：数据不稳定。算法前期可能很好的学到精髓，但是随着数据的变化，时间的流逝，模型很可能将变得不可预测。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/problem-in-ml.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;测试驱动开发的解决之道&#34;&gt;测试驱动开发的解决之道&lt;/h2&gt;
+
+&lt;p&gt;机器学习的实现方式还是通过软件工程、代码实现，既然是代码，那就存在应对范式。这里，就不得不提 Test Driven Development（测试驱动开发），简称 TDD。TDD 是一种很朴实的想法，在编码开始前，评估需要交付的功能点并写测试用例，一开始的时候测试会失败，接着编写代码修复测试，最后测试通过，修复代码。这里的方式，通俗来讲就是：&lt;strong&gt;目标导向，先成事，再迭代。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/tdd.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;测试驱动有一个明显的好处就是，能够加快产品发布速度。以往的项目，需求讨论会占据很大时间，讨论完之后，开发方案一旦定下来，后续变更就很难。而现实却是需求常常变更，这往往会导致产品发布的延期。而在机器学习上，测试驱动好处更多体现在保证模型质量上。具体来讲，常通过以下办法：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;交叉验证    通过交叉验证来验证拟合效果&lt;/li&gt;
+&lt;li&gt;运行速度测试    根据奥卡姆剃刀原则：”如无必要，勿增实体“；简单模型胜过复杂模型&lt;/li&gt;
+&lt;li&gt;衔接测试    对数据的输入输入进行检测，以防止数据异常波动对模型影响&lt;/li&gt;
+&lt;li&gt;指标追踪    监控关键指标，不断追踪模型的性能，防止失效模型继续运行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/tddsolution.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;机器学习的债务危机&#34;&gt;机器学习的债务危机&lt;/h2&gt;
+
+&lt;p&gt;测试驱动开发一定程度上能减轻机器学习中的问题，但是它只是一种表象。测试通过了，不代表算法模型就没有问题了。魔鬼藏在细节中。机器学习目前仍存在一些技术债务，仍需按特定原则对代码修复，迭代演进。&lt;/p&gt;
+
+&lt;h3 id=&#34;什么是技术债务&#34;&gt;什么是技术债务&lt;/h3&gt;
+
+&lt;p&gt;技术债务是一个比方，类比的金融领域的债务。一般指为了加快软件开发速度，折中妥协，选择易于实现的方式，结果是短期加速了软件开发，但长期来讲，开发负担累计，发布逐渐停滞。债务不都是有害的。在业务扩张，市场抢占时期，适当的债务有助于公司扩张。但是若一直不管不顾，最后只能花更大的成本去维护它，直至无法维护。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/debt.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;机器学习中的技术债务&#34;&gt;机器学习中的技术债务&lt;/h3&gt;
+
+&lt;p&gt;机器学习项目中同样存在债务危机，Google 还就此写了篇文章 《Machine Learning: The High interest Credit Card of Technical Debt》。总结起来有三种：一、边界模糊，数据之间彼此依赖关联。二、没有系统级别代码分离，胶水代码处理一切。三、机器学习系统随着外部世界的改变而彻底改变。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/debt-in-ml.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;偿还债务&#34;&gt;偿还债务&lt;/h2&gt;
+
+&lt;p&gt;代码重构，就犹如对你的资产进行一次清点盘算：清除不良资产、偿还债务、进行资产上的重新配置。重构能够有效减缓技术债务带来的负面影响。&lt;/p&gt;
+
+&lt;h3 id=&#34;面向对象的-solid-原则&#34;&gt;面向对象的 SOLID 原则&lt;/h3&gt;
+
+&lt;p&gt;SOLID 原则由罗伯特·C·马丁提出，是五项原则&amp;ndash;单一职责、开闭原则、替换原则、接口隔离、依赖倒置的缩写，是面向对象设计与开发的五个基本原则。通过这五项原则，写出来的程序可读性、可扩展性都大大提高，软件维护和系统扩展变得更加容易。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SRP 单一职责原则：一片代码只做一件事，及一块代码只实现某一特定功能，尽量减少逻辑的交叉堆叠。&lt;/li&gt;
+&lt;li&gt;OCP 开闭原则：对象对于扩展开放，对于修改关闭。即保持最小单元，写完后不去修改它，而是通过扩展或者配置的方式补充功能。&lt;/li&gt;
+&lt;li&gt;LSP 替换原则：任何的子类应该轻松由同一对象树的其它对象替代。&lt;/li&gt;
+&lt;li&gt;ISP 接口隔离原则：不同的接口做不同的事，软件开发没有银弹，接口也是。解耦能解决掉开发过程中“牵一发而动全身”的情况。&lt;/li&gt;
+&lt;li&gt;DIP 依赖倒置原则：抽象来自于细节、来自于底层，开发依赖抽象。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/solid.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;机器学习与-solid-原则&#34;&gt;机器学习与 SOLID 原则&lt;/h3&gt;
+
+&lt;p&gt;将 SOLID 原则应用于机器学习，会发现：机器学习与 SOLID 原则相互交织。诸如机器学习中的降维，是在减少耦合；胶水代码、数据依赖又与 SOLID 原则相抵触。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;单一职责
+
+&lt;ul&gt;
+&lt;li&gt;机器学习中的数据相互依赖，更有利用 GBDT 生成特征，这一情况与单一职责冲突。所幸可通过降维、正则化的手段减轻影响。&lt;/li&gt;
+&lt;li&gt;数据获取、数据处理、特征工程、模型训练、模型预测、数据监控，各模块无系统级代码分离，胶水代码处理一切。开发时应小心谨慎。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;开闭原则
+
+&lt;ul&gt;
+&lt;li&gt;代码上可以做到开闭，但机器学习会作用于真实世界，引起的反馈将传导至模型内部。如模型预测出一批”潜在犯罪“，于是加大警力盯住这些人，最后发现他们的犯罪率果然高于常人。但他们就真的比别人更”坏“吗？这里有一个”预测、实施、证实“的偏差存在，算法无形中放大了偏见。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;替换原则
+
+&lt;ul&gt;
+&lt;li&gt;机器学习的模型效果常由强特征决定，且特征众多。应用尽可能少的特征和数据，取得稳定结果。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;接口隔离
+
+&lt;ul&gt;
+&lt;li&gt;模型的数据上游，可能会多个部门共用，数据源的人为变化，可能会导致模型的突然失效。因而需要对数据输入进行监控。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;依赖倒置
+
+&lt;ul&gt;
+&lt;li&gt;测试代码、中间数据大量堆积，各个部分相互依赖。应定时对遗留代码和中间数据进行清理。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/tdd_ml/solid-in-ml.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;机器学习、人工智能在经历这几年的爆发之后，出现了很多病症。测试驱动开发、SOLID 原则重构能够有效的缓解病症，还系统健康。如果你的项目已经落地，用 SOLID原则进行一次检查；如果项目还未实施，不妨尝试下测试驱动开发。系统更好的可读性、可维护性，不仅是程序员的责任，更是评判机器学习从业者的一把尺子。&lt;/p&gt;
+
+&lt;p&gt;不知道读者朋友对此怎么看，欢迎就此在评论区发表你的看法。喜欢本文的读者，别忘了点赞、喜欢、加关注哦，你的鼓励，将是我写作分享的动力💪&lt;/p&gt;
+
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/SOLID_(面向对象设计)&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;wikipedia SOLID 原则 &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;《Python 机器学习实战&amp;ndash; 测试驱动的开发方法》&lt;/li&gt;
+&lt;li&gt;《高效程序员的45个习惯&amp;ndash;敏捷开发修炼之道》&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;关于作者-about&#34;&gt;&lt;a href=&#34;https://kuhungio.me/about/&#34;&gt;关于作者&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;谷粒，华中科技大学毕业，某游戏公司从事数据挖掘工作，常与机器学习、数据系统打交道。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>测试驱动的机器学习思维导图</title>
       <link>https://kuhungio.me/2019/tdd_with_ml/</link>
       <pubDate>Thu, 22 Aug 2019 00:56:13 +0800</pubDate>
       
@@ -1903,119 +2035,6 @@ python starterbot.py
 &lt;/ul&gt;
 
 &lt;p&gt;最后，数据竞争型选手，如何说明他确实有效。很简单，以始为终点，检视最初的目标。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Prophet in 000300 我把算法模型套在了股市上，发现...</title>
-      <link>https://kuhungio.me/2019/prophet-in-000300/</link>
-      <pubDate>Fri, 08 Mar 2019 22:48:45 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2019/prophet-in-000300/</guid>
-      <description>
-
-&lt;h2 id=&#34;跑步进场&#34;&gt;跑步进场&lt;/h2&gt;
-
-&lt;p&gt;最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。&lt;/p&gt;
-
-&lt;h2 id=&#34;时序预测的价值&#34;&gt;时序预测的价值&lt;/h2&gt;
-
-&lt;p&gt;时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。&lt;/p&gt;
-
-&lt;p&gt;为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。&lt;/p&gt;
-
-&lt;h2 id=&#34;时序预测的原理&#34;&gt;时序预测的原理&lt;/h2&gt;
-
-&lt;p&gt;对于时间序列问题，常用的手法是时间序列的分解：这里有些类似于傅里叶变换的意味。将一个函数分解为多个规律函数的和积。时间序列的常见组成成分包括：季节项、趋势项以及噪声。在 Prophet 中，结合实际情况，他们又加入了节假日项目。之前在一次 kaggle 的比赛中，我们也发现节假日的数据波动，其实是类似于周末效应的。即：节假日的前后数据，类似于周六的前后数据。对数据进行修正后，评价指标会好很多。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;废话不多说，咱们开干。&lt;/p&gt;
-
-&lt;h2 id=&#34;prophet-in-沪深300&#34;&gt;Prophet in 沪深300&lt;/h2&gt;
-
-&lt;h3 id=&#34;工具包安装&#34;&gt;工具包安装&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;pip install fbprophet&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;数据准备与清洗&#34;&gt;数据准备与清洗&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Python&#34;&gt;import pandas as pd
-import numpy as np
-from fbprophet import Prophet
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;数据准备&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;数据来源为网易财经，&lt;a href=&#34;http://quotes.money.163.com/0000300.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;沪深三百&lt;/a&gt;指数。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;data = pd.read_csv(&#39;../data/000300.csv&#39;,encoding=&#39;GB2312&#39;) 
-data.head()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/prophet/300_1.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;数据清洗&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;df = data[[u&#39;日期&#39;,u&#39;收盘价&#39;]]
-df.columns = [&#39;ds&#39;,&#39;y&#39;]
-df[&#39;y&#39;] = df[&#39;y&#39;].apply(lambda x: np.log(int(x)))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;模型拟合与预测&#34;&gt;模型拟合与预测&lt;/h3&gt;
-
-&lt;p&gt;简单定义，然后拟合。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;m = Prophet()
-m.fit(df)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;预测未来一年的行情&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;future = m.make_future_dataframe(periods=365)
-forecast = m.predict(future)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;详细看最后15天的数据&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;forecast[[&#39;ds&#39;, &#39;yhat&#39;, &#39;yhat_lower&#39;, &#39;yhat_upper&#39;]].tail(15)
-future_predict[&#39;yhat&#39;] = future_predict[&#39;yhat&#39;].apply(lambda x:np.exp(x))
-future_predict[&#39;yhat_lower&#39;] = future_predict[&#39;yhat_lower&#39;].apply(lambda x:np.exp(x))
-future_predict[&#39;yhat_upper&#39;] = future_predict[&#39;yhat_upper&#39;].apply(lambda x:np.exp(x))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/prophet/300_2.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;yhat 预测比较保守，20200307 相较于目前20190308 的大盘涨了100个点。预期最大收益：(6536-3658)/3658≈ 78%，预期最大亏损：(2158-3658)/3658≈-41%&lt;/p&gt;
-
-&lt;h3 id=&#34;模型看到了什么&#34;&gt;模型看到了什么&lt;/h3&gt;
-
-&lt;p&gt;Prophet 有个功能是成分拆分，咱们来看看国内股市的趋势以及季节性因素是什么。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;fig1 = m.plot(forecast)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;模型拟合情况&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/prophet/300_3.png&#34; alt=&#34;模型拟合情况&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;趋势项&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/prophet/300_4.png&#34; alt=&#34;整体趋势、周趋势和年趋势&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;模型数据表明，沪深股市短期看可能有波动，长期看上扬可能性更大。短期对于我们这种投资方式的参考意义不大，长期来看，稳中向好，我也将持续沪深300。当然，话说回来，投资有风险，决策需谨慎。不要只看狼吃肉，不见狼挨打。去年最差的时候，本人累计亏损15%&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;另外再强调一下，模型并非万能。这里使用的信息单一，但真实世界，可是有多种信息共同作用于市场。模型也还未经过充分调参，没有划分数据做验证，实际使用价值有限。&lt;/p&gt;
-
-&lt;p&gt;对此，你怎么看？欢迎在留言区写下你的看法。&lt;/p&gt;
 </description>
     </item>
     
