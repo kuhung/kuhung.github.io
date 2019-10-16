@@ -6,10 +6,19 @@
     <description>Recent content in mindmap on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Aug 2019 00:56:13 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 Oct 2019 07:56:13 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/mindmap/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>《学习之道》笔记思维导图</title>
+      <link>https://kuhungio.me/2019/the_way_to_learn/</link>
+      <pubDate>Wed, 16 Oct 2019 07:56:13 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/the_way_to_learn/</guid>
+      <description>关于作者</description>
+    </item>
     
     <item>
       <title>测试驱动的机器学习思维导图</title>
