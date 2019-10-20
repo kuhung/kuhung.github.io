@@ -6,8 +6,111 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Oct 2019 07:56:13 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 11:33:09 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>数据分析师写接口竟成一种前沿模式--看 DataOps 如何提升公司数据科学力</title>
+      <link>https://kuhungio.me/2019/dataops/</link>
+      <pubDate>Sat, 19 Oct 2019 11:33:09 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/dataops/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;翻译自：《What is DataOps? Everything You Need to Know》 From Oracle Data Science Blog&lt;/p&gt;
+
+&lt;p&gt;图片自：《DataOps is Not Just DevOps for Data》By DataKitchen in Medium&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;DataOps, 看到它的第一眼，大多数人会觉得陌生。但是提到另一个词——DevOps，做开发的同学可能会有些熟悉。DataOps 的理念与 DevOps 类似：&lt;strong&gt;将开发或者说是数据，与运维、测试相结合，自动化业务的交付以及架构的变更，使得构建、测试和发布能够更加快捷、频繁且可靠。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/dataops/dataops.PNG&#34; alt=&#34;DevOps&amp;amp;DataOps&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;DataOps，全称 Data Operations，是一种敏捷运维方法，无感知地将IT基础设施和大数据分析技术结合起来。它的目的是通过结合数据管理的目标与过程，加快分析的速度与准确度。&lt;strong&gt;而这一过程，通常会涉及数据的多个流程：数据获取、数据质量检查、自动化、集成，以及最终的模型部署与管理。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/dataops/dataopspipeline.PNG&#34; alt=&#34;DataOps pipeline&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最核心的，DataOps 是为了方便管理数据、特别是当你有了一个特定的数据目标的时候。举个例子：为了&lt;strong&gt;降低客户的流失率&lt;/strong&gt;，可以通过利用客户数据构建一个&lt;strong&gt;推荐引擎&lt;/strong&gt;，推荐客户相关的东西，以此来减少浏览到下单的时间，减少客户流失。&lt;/p&gt;
+
+&lt;p&gt;这是一个很自然的想法，但是却并不是一件容易的事情。上面的设想需要以下条件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;你的数据科学团队能够获取到他们需要的数据，同时能够有工具去部署模型。&lt;/li&gt;
+&lt;li&gt;除此之外，还需要能够将模型集成到你的网站中去，在新数据上训练以持续的改进。&lt;/li&gt;
+&lt;li&gt;最后，需要一套报表系统来监控其表现。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;现在比较流行的做法，做好上面的事情，需要多个部门的合作，包括工程师、IT运维人员以及业务团队。&lt;/p&gt;
+
+&lt;h2 id=&#34;谁能从-dataops-中获利&#34;&gt;谁能从 DataOps 中获利？&lt;/h2&gt;
+
+&lt;p&gt;总的来说，&lt;strong&gt;几乎所有人都会从 DataOps 中获利&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;更好的数据管理将会带来更多可利用的数据；&lt;/li&gt;
+&lt;li&gt;越好的数据质量会有更准确的分析，与之相伴的就是更好的 insights、商业策略以及更高的利润。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;DataOps 起一个润滑剂的作用，使数据团队、工程师团队和技术专家之间的工作更加紧密、更加自动化，以此来充分发掘数据价值、减少时间。&lt;/p&gt;
+
+&lt;p&gt;Ashish Thusoo，Qubole 的联合创始人曾在书籍《Creating a Data-Driven Enterprise with DataOps》写道：我在2007年的夏天加入 FaceBook 的数据团队。像平常一样，公司里的任何人想获取无论多小的数据，都不得不找到数据团队，并发起流程。我们的数据团队很优秀，但是他们的精力也有上限。很明显，这是一个&lt;strong&gt;瓶颈&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/dataops/operations.PNG&#34; alt=&#34;业务团队与数据团队需要频繁对接&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;dataops-这一概念从何而来&#34;&gt;DataOps 这一概念从何而来？&lt;/h2&gt;
+
+&lt;p&gt;DataOps 起源于 &lt;strong&gt;DevOps&lt;/strong&gt; 这一概念。据了解，财富1000强的公司里，80%的公司已经采用了 DevOps 这一方法。DevOps 的成功主要仰仗于：它把之前独立的两个部门联合在了一起——开发和运维。在 DevOps 的世界里，软件的发布是迅速且持续的，因为整个团队都被整合在了一起，用来检查并处理当下的问题。&lt;/p&gt;
+
+&lt;p&gt;DataOps 继承了这一观念，并将之应用在数据生命周期里。DevOps 的持续集成、交付和运维的理念在数据的处理和产品化过程中也有所体现。具体来讲：&lt;strong&gt;数据科学团队利用软件版本控制工具 git、svn 来记录代码的变更，同时使用 Docker 和 Kubernetes 等容器技术来创建分析和部署模型。将数据科学与 DevOps 相结合的过程，也可被称之为“持续分析”。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;如何在组织中应用-dataops&#34;&gt;如何在组织中应用 DataOps？&lt;/h2&gt;
+
+&lt;p&gt;正如你所看到的，DataOps 的应用，并非某种特定方法，而是一些&lt;strong&gt;关键领域的聚焦&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;以下是相关领域：&lt;/p&gt;
+
+&lt;h3 id=&#34;data-democratization&#34;&gt;Data Democratization&lt;/h3&gt;
+
+&lt;p&gt;根据 Experian Data Quality 调查显示：&lt;strong&gt;96%&lt;/strong&gt; 的首席数据官认为相关人员需要比以往更多的数据权限，&lt;strong&gt;53%&lt;/strong&gt;的人认为数据权限是最大的决策障碍。与之相反的是，我们当下有大量的数据在产生、存储。据测算。截至2020年，我们将会产生 &lt;strong&gt;40 zettabytes&lt;/strong&gt; 的数据，相当于地球上的人每人拥有 &lt;strong&gt;5200 GB&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;正如 thusso 在他 Facebook 工作期间看到的一样，缺少数据权限将是创新的极大障碍。自助的数据权限和相关的基础设施显得尤为重要。机器学习和深度学习应用需要持续不断的新数据以训练和改进；而想成为顶尖公司则需要其数据真正容易获取。&lt;/p&gt;
+
+&lt;h3 id=&#34;leverage-platforms-and-open-source-tools&#34;&gt;Leverage Platforms and Open Source Tools&lt;/h3&gt;
+
+&lt;p&gt;在一期 Forbes 中，Technology Strategy Crystal Valentine 的 VP MapR 描述道这一层次的 DataOps：“首先，在工具层面，DataOps 需要一个社区主导、支持主流语言和框架的&lt;strong&gt;数据科学平台&lt;/strong&gt;。”除此之外，数据迁移、编排、集成、性能监控的平台也同样重要。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/dataops/tools.PNG&#34; alt=&#34;数据科学平台&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;敏捷并不意味着需要浪费时间开发非必须的东西，或者是重复造一些已经开源的工具轮子。综合考虑你的数据需求且评估你的技术栈，选择合适的开源工具即可。&lt;/p&gt;
+
+&lt;h3 id=&#34;automate-automate-automate&#34;&gt;Automate, Automate,Automate&lt;/h3&gt;
+
+&lt;p&gt;这一理念直接取自 DevOps：为了更及时的评估数据集成的价值，自动化一些步骤是非常重要的。比如说&lt;strong&gt;质量保证测试&lt;/strong&gt;和&lt;strong&gt;数据分析的管道监控&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/dataops/monitoring.PNG&#34; alt=&#34;自动化监测&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;采用&lt;strong&gt;微服务自给自足&lt;/strong&gt;也是同样的道理。 举个例子：让你的数据分析师能够以 &lt;strong&gt;API&lt;/strong&gt; 的方式自行部署模型，这意味着开发团队能够在不重构的基础上集成该功能。这将带来生产力的提升。&lt;/p&gt;
+
+&lt;h3 id=&#34;govern-with-care&#34;&gt;Govern With Care&lt;/h3&gt;
+
+&lt;p&gt;越来越多的公司开始采用 Center of Excellence 的方法来实现数据科学管理，这并非是偶然。只有在建立一套数据的处理、工具平台、基础设施、权限划分以及性能监控后，才能真正获取数据科学、或者说是 DataOps 的投资回报。&lt;/p&gt;
+
+&lt;p&gt;因此，在该领域&lt;strong&gt;62%&lt;/strong&gt;的优秀人士有一个清晰且正确的数据科学发展计划。与之相对应的是仅仅28%的普通人和29%的公司有这么一个想法。&lt;/p&gt;
+
+&lt;h3 id=&#34;smash-silos&#34;&gt;Smash Silos&lt;/h3&gt;
+
+&lt;p&gt;除上面列到的4项以外，&lt;strong&gt;跨部门合作&lt;/strong&gt;也是应用 DataOps 非常重要的一点。DataOps 化过程中引进的工具和平台应该服务于更大的目标：&lt;strong&gt;整合不同的团队以更高效的使用数据。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/dataops/collaboration.PNG&#34; alt=&#34;跨部门合作&#34; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;“注意：数据并不属于 IT、数据科学家或者数据分析师。”Thusso 写道：“它属于业务中的所有人。所以，&lt;strong&gt;你的工具应该允许雇员创造他们自己的分析与可视化报告，并且能够在同事间分享他们的发现。&lt;/strong&gt;”&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://kuhungio.me/about/&#34;&gt;关于译者&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>《学习之道》笔记思维导图</title>
@@ -1818,145 +1921,6 @@ classifier.predict(sentence) # 调用模型，做预测，返回带标签的数�
 &lt;p&gt;在梳理过程中我也发现自身团队的不足：对大背景商业目标的认识不到位、很多时候是拿着锤子（模型）去找钉子（场景）、方案呈现上理工科思维偏重、系统迭代不足。除此之外，还有些细节不是很规范。简单来说就是有些跑马圈地、急功近利的感觉。业务向较重，算法模型潜力并未完全释放，在团队内推行以上规范非常有必要。&lt;/p&gt;
 
 &lt;p&gt;不知道看本文的读者，你们的团队会有这样的情况吗？欢迎就此在评论区发表你的看法。喜欢本文的读者，别忘了点赞、喜欢、加关注哦，你的鼓励，将是我写作分享的动力(&lt;em&gt;^_^&lt;/em&gt;)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Slack gpt2 Bot 机器人写文已经到了如此地步？邀你一同测评史上最强 GPT2 模型</title>
-      <link>https://kuhungio.me/2019/slack-gpt2-bot/</link>
-      <pubDate>Mon, 25 Mar 2019 22:36:06 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2019/slack-gpt2-bot/</guid>
-      <description>
-
-&lt;p&gt;记得在校的时候，某岩做过一个app，讲接龙故事的。类似于我写一段，另一个人写接下来的一段，最后凑成一个完整的故事。当时，可产生了不少有意思的段子。最近，GPT2 模型的发布，让人不禁想到，有没有可能让机器来完成这个任务呢？机器写十四行诗、机器写莎士比亚风格的文章，机器写对联，这些都已经成为了现实。人工智能虽然没有带来突飞猛进的质变，但着实催生了很多有意思的小玩意儿。对于GPT2，一个字概括来说就是：壕——数据量大，算力能够 cover 住。这套算法模型网罗了几乎现有的所有文本数据，成功“过拟合“地屠榜，刷新多个 NLP 任务榜单排行。作者为了预防滥用模型、同时让别的研究者能够有个初步地认识，开源了一个小一些地模型。该模型的能力之一，就是我们今天的主题：接着别人地话写故事。今天我们要通过算法来实现。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/slack-gpt2/slack.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;虽然作者有在尽力简化复现难度，但对于很多不是这行的人，让他去敲命令行来走完整个流程，还是困难重重。能够将深奥的原理讲给普通人听，并且简单易懂，是一项科学传播的必备能力。做为技术向的工程师，在产品处于雏形阶段时，能够通过一个 MVP 最小价值产品，实现核心功能，也是一项大大的加分项。对于今天的任务，我们选取容易上手，接口丰富的 slack 作为我们的前端交互窗口。&lt;/p&gt;
-
-&lt;p&gt;如何构建一个 MVP 产品；或者具体的来讲，在我们的这个任务中，如何将数据挖掘工程师的模型成果，转化为可落地、可感知的产品或服务呢。操起斧子直接开干，依葫芦画瓢撸个前后端出来吗？这，其实是很多技术人员的一个误区——认为什么都可以从技术层面解决，”少废话别bb，bb is cheap，show me the code“。但从一个商业产品或服务商的角度来看，客户与渠道是前台，我们的客户是谁、如何触达客户以及选用何种渠道维系客户，是一个一开始就要考虑的事情。&lt;/p&gt;
-
-&lt;p&gt;以这个 GPT2 bot 为例，我希望的客户是对 GPT感兴趣，但又没基础去折腾的学生或是其他领域的人士，抑或是没时间去跑 demo 的专业同行。如何触达客户：你看的这篇文章的平台，就是我的触达媒介。我最后选择用 slack 交付我的服务，而不是 qq 或 微信，是因为他成本更低，虽然阻挡了部分潜在客户，但权衡后是可以接受的。最后的工作才是依葫芦画瓢，照撸一个出来。本文参照了&lt;a href=&#34;https://github.com/EdwardHuCS/slack-gpt2&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;EdwardHuCS&lt;/a&gt;,并在其基础上做了部分改动。&lt;/p&gt;
-
-&lt;p&gt;虽然这波 AI 热潮，让很多像我这样的非科班得以上车。但在实际生产环境中，我们还是暴露了诸多问题。其中之一，便是工程能力薄弱。会写 SQL 、会手推算法、会调包，但是就是不会写能跑的整个小系统。在业务变化快的公司中，这可能不是一个好事情。你的模型也许还在细调参数，但突然整个业务就没了。如果你能拿出一个能跑的马儿，兴许能影响这个业务。这就是前面提到的加分项。&lt;/p&gt;
-
-&lt;p&gt;言归正传，我们回到在slack上面。我们的核心就以下代码：&lt;/p&gt;
-
-&lt;h2 id=&#34;核心代码解读&#34;&gt;核心代码解读&lt;/h2&gt;
-
-&lt;p&gt;导入一些基础配置&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import os
-import time
-import re
-from slackclient import SlackClient
-import sys
-from gpt2.src import generate_unconditional_samples
-# instantiate Slackk client
-slack_client = SlackClient(&#39;&#39;) # 认证口令
-# starterbot&#39;s user ID in Slack: value is ssigned after the bot starts up
-starterbot_id = None
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;延迟配置以及样例和匹配模式&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# constants
-RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
-EXAMPLE_COMMAND = &amp;quot;God, to me, is like a &amp;quot;
-MENTION_REGEX = &amp;quot;^&amp;lt;@(|[WU].+?)&amp;gt;(.*)&amp;quot; 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;通过 slack 的事件，解析出我们的消息和对应的频道
-def parse_bot_commands(slack_events):
-    &amp;quot;&amp;quot;&amp;quot;
-        Parses a list of events coming from the Slack RTM API to find bot commands.
-        If a bot command is found, this function returns a tuple of command and channel.
-        If its not found, then this function returns None, None.
-    &amp;quot;&amp;quot;&amp;quot;
-    for event in slack_events:
-        if event[&amp;quot;type&amp;quot;] == &amp;quot;message&amp;quot; and not &amp;quot;subtype&amp;quot; in event:
-            user_id, message = parse_direct_mention(event[&amp;quot;text&amp;quot;])
-            if user_id == starterbot_id:
-                return message, event[&amp;quot;channel&amp;quot;]
-    return None, None
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;消息解析&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def parse_direct_mention(message_text):
-    &amp;quot;&amp;quot;&amp;quot;
-        Finds a direct mention (a mention that is at the beginning) in message text
-        and returns the user ID which was mentioned. If there is no direct mention, returns None
-    &amp;quot;&amp;quot;&amp;quot;
-    matches = re.search(MENTION_REGEX, message_text)
-    # the first group contains the username, the second group contains the remaining message
-    return (matches.group(1), matches.group(2).strip()) if matches else (None, None)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;核心的模型导入&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def handle_command(command, channel):
-    &amp;quot;&amp;quot;&amp;quot;
-        Executes bot command if the command is known
-    &amp;quot;&amp;quot;&amp;quot;
-    # Default response is help text for the user
-    response = &amp;quot;Not sure what you mean. Try *{}*.&amp;quot;.format(EXAMPLE_COMMAND)
-
-    # This is where you start to implement more commands!
-    if len(command) &amp;lt; 2:
-        response = &amp;quot;Sure...write some more text then I can do that!&amp;quot;
-    else:
-        # 这里可以替换成任何你想要的模型
-        response = &#39;&amp;quot;&#39;+command+generate_unconditional_samples.sample_model(nsamples=1, length=6*len(command), top_k=len(command), command=command)[0]
-
-
-    # Sends the response back to the channel
-    slack_client.api_call(
-        &amp;quot;chat.postMessage&amp;quot;,
-        channel=channel,
-        text=response)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;主函数入口&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;if __name__ == &amp;quot;__main__&amp;quot;:
-    if slack_client.rtm_connect(with_team_state=False):
-        print(&amp;quot;Starter Bot connected and running!&amp;quot;)
-        # Read bot&#39;s user ID by calling Web API method `auth.test`
-        starterbot_id = slack_client.api_call(&amp;quot;auth.test&amp;quot;)[&amp;quot;user_id&amp;quot;]
-        while True:
-            command, channel = parse_bot_commands(slack_client.rtm_read())
-            if command:
-                handle_command(command, channel)
-            time.sleep(RTM_READ_DELAY)
-    else:
-        print(&amp;quot;Connection failed. Exception traceback printed above.&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;开始安装并运行&#34;&gt;开始安装并运行&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git clone git@github.com:kuhung/slack-gpt2.git
-cd slack-gpt2
-获取 slack app 的 token，并填充进上面的 slack_client
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;conda create -n slackbot python=3.6
-source activate slackbot
-pip install -r requirements.txt
-cd gpt2
-pip install -r requirements.txt
-python download_model.py 117M
-cd ..
-python starterbot.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果你不熟悉或从来没用过slack，也没关系，还记得开头说的交付吗？直接加入我的 workspace，一起测评 GPT2 bot。链接：&lt;a href=&#34;https://join.slack.com/t/kuhung/shared_invite/enQtNTc4ODcxNDUwNzA1LTI4ODNlODRhMjc1NGY2M2IwYjNhNmUzYmNiMzMyNTliN2E2ZWMxNWIzZjMzMzVkOTlkNzExNWVhYzZkNmYzMjI&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;加入我的 slack workspace&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
-
-&lt;p&gt;如同大多数应用场景一样，数据挖掘的算法需要落地，最好的办法就是封装成一个接口，给到前后端去调用。这其中还有很多性能优化的东西，但作为一个 sideproject，以上操作足够让你给别人眼前一亮的感觉。&lt;/p&gt;
 </description>
     </item>
     

@@ -6,10 +6,29 @@
     <description>Recent content in 行业观察 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Feb 2019 23:31:58 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 11:33:09 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据分析师写接口竟成一种前沿模式--看 DataOps 如何提升公司数据科学力</title>
+      <link>https://kuhungio.me/2019/dataops/</link>
+      <pubDate>Sat, 19 Oct 2019 11:33:09 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/dataops/</guid>
+      <description>翻译自：《What is DataOps? Everything You Need to Know》 From Oracle Data Science Blog
+图片自：《DataOps is Not Just DevOps for Data》By DataKitchen in Medium
+ DataOps, 看到它的第一眼，大多数人会觉得陌生。但是提到另一个词——DevOps，做开发的同学可能会有些熟悉。DataOps 的理念与 DevOps 类似：将开发或者说是数据，与运维、测试相结合，自动化业务的交付以及架构的变更，使得构建、测试和发布能够更加快捷、频繁且可靠。
+DataOps，全称 Data Operations，是一种敏捷运维方法，无感知地将IT基础设施和大数据分析技术结合起来。它的目的是通过结合数据管理的目标与过程，加快分析的速度与准确度。而这一过程，通常会涉及数据的多个流程：数据获取、数据质量检查、自动化、集成，以及最终的模型部署与管理。
+最核心的，DataOps 是为了方便管理数据、特别是当你有了一个特定的数据目标的时候。举个例子：为了降低客户的流失率，可以通过利用客户数据构建一个推荐引擎，推荐客户相关的东西，以此来减少浏览到下单的时间，减少客户流失。
+这是一个很自然的想法，但是却并不是一件容易的事情。上面的设想需要以下条件：
+ 你的数据科学团队能够获取到他们需要的数据，同时能够有工具去部署模型。 除此之外，还需要能够将模型集成到你的网站中去，在新数据上训练以持续的改进。 最后，需要一套报表系统来监控其表现。  现在比较流行的做法，做好上面的事情，需要多个部门的合作，包括工程师、IT运维人员以及业务团队。
+谁能从 DataOps 中获利？ 总的来说，几乎所有人都会从 DataOps 中获利。
+ 更好的数据管理将会带来更多可利用的数据； 越好的数据质量会有更准确的分析，与之相伴的就是更好的 insights、商业策略以及更高的利润。  DataOps 起一个润滑剂的作用，使数据团队、工程师团队和技术专家之间的工作更加紧密、更加自动化，以此来充分发掘数据价值、减少时间。
+Ashish Thusoo，Qubole 的联合创始人曾在书籍《Creating a Data-Driven Enterprise with DataOps》写道：我在2007年的夏天加入 FaceBook 的数据团队。像平常一样，公司里的任何人想获取无论多小的数据，都不得不找到数据团队，并发起流程。我们的数据团队很优秀，但是他们的精力也有上限。很明显，这是一个瓶颈。
+DataOps 这一概念从何而来？ DataOps 起源于 DevOps 这一概念。据了解，财富1000强的公司里，80%的公司已经采用了 DevOps 这一方法。DevOps 的成功主要仰仗于：它把之前独立的两个部门联合在了一起——开发和运维。在 DevOps 的世界里，软件的发布是迅速且持续的，因为整个团队都被整合在了一起，用来检查并处理当下的问题。</description>
+    </item>
     
     <item>
       <title>The Next Step for Machine Learning 机器学习落地需攻破的9个难题</title>
