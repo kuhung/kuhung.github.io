@@ -10,7 +10,7 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>机器学习年年推陈出新，但解决问题的模式一直未变--论如何设计好的机器学习系统</title>
+      <title>机器学习日新月异，解决思路却从未变过--论如何设计机器学习系统</title>
       <link>https://kuhungio.me/2019/machine_learning_system_design/</link>
       <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
       
@@ -195,7 +195,7 @@
 
 &lt;h2 id=&#34;服务部署&#34;&gt;服务部署&lt;/h2&gt;
 
-&lt;p&gt;模型走到最后一步，就是 Serving。这里我将其翻译为服务部署。类似的文章我也写过，主要是技术层面，可参考：&lt;/p&gt;
+&lt;p&gt;模型走到最后一步，就是 Serving。这里我将其翻译为服务部署。类似的文章我也写过，主要是技术层面，可参考：&lt;a href=&#34;https://kuhungio.me/2019/flask_vue_ml/?utm_source=website&amp;amp;utm_campaign=ml_sys_design&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://kuhungio.me/2019/flask_vue_ml/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;这里从逻辑层面讲述，主要分为两个部分，以交付用户为分割点。&lt;/p&gt;
 
@@ -243,11 +243,16 @@
 
 &lt;p&gt;俗话说，学而不思则殆。作者也总结了27道系统设计的练习题，但感觉没有网页看着爽，于是便捣鼓上线了网站，后续将引入评论功能，欢迎贡献答案。合适的答案将整理署名后，反馈给原作者。&lt;/p&gt;
 
-&lt;p&gt;练习网站：&lt;a href=&#34;https://kuhungio.me/machine-learning-systems-design/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://kuhungio.me/machine-learning-systems-design/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;练习网站：&lt;a href=&#34;https://kuhungio.me/machine-learning-systems-design/?utm_source=website&amp;amp;utm_campaign=ml_sys_design&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://kuhungio.me/machine-learning-systems-design/&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/ml_sys_design/website.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://kuhungio.me/about/&#34;&gt;关于我&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;不知道对于机器学习系统设计，你有什么想法呢？欢迎在屏幕下方留言。&lt;/p&gt;
+
+&lt;p&gt;喜欢我的朋友，别忘了点赞 👍、喜欢 ❤ +关注 🔔哦，你的鼓励是对我最大的支持~💪
+&lt;a href=&#34;https://kuhungio.me/about/&#34;&gt;关于我&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
