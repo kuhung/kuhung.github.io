@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>机器学习日新月异，解决思路却从未变过--论如何设计机器学习系统</title>
+      <title>机器学习系统设计 Machine learning system design</title>
       <link>https://kuhungio.me/2019/machine_learning_system_design/</link>
       <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
       
@@ -40,7 +40,7 @@
     </item>
     
     <item>
-      <title>数据分析师写接口竟成一种前沿模式--看 DataOps 如何提升公司数据科学力</title>
+      <title>Dataops 数据化运维实践</title>
       <link>https://kuhungio.me/2019/dataops/</link>
       <pubDate>Sat, 19 Oct 2019 11:33:09 +0800</pubDate>
       
@@ -251,7 +251,7 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
     </item>
     
     <item>
-      <title>机器学习模型部署--打通前后端任督二脉</title>
+      <title>机器学习模型部署--结合前后端的垃圾消息识别</title>
       <link>https://kuhungio.me/2019/flask_vue_ml/</link>
       <pubDate>Sat, 20 Apr 2019 14:31:26 +0800</pubDate>
       
@@ -291,7 +291,7 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
     </item>
     
     <item>
-      <title>Hands On Machine Learning in Industry 一文看懂机器学习项目的完整生命周期</title>
+      <title>一文看懂机器学习项目的完整生命周期 Hands On Machine Learning in Industry </title>
       <link>https://kuhungio.me/2019/hands-on_machine_learning_in_industry/</link>
       <pubDate>Mon, 01 Apr 2019 19:28:32 +0800</pubDate>
       
@@ -307,7 +307,7 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
     </item>
     
     <item>
-      <title>Slack gpt2 Bot 机器人写文已经到了如此地步？邀你一同测评史上最强 GPT2 模型</title>
+      <title>GPT2 模型生成假正经文稿 Slack gpt2 Bot </title>
       <link>https://kuhungio.me/2019/slack-gpt2-bot/</link>
       <pubDate>Mon, 25 Mar 2019 22:36:06 +0800</pubDate>
       
@@ -323,7 +323,7 @@ import os import time import re from slackclient import SlackClient import sys f
     </item>
     
     <item>
-      <title>Competing on Analytics 凭什么打败竞争对手？基于数据、基于分析的商业竞争</title>
+      <title>凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </title>
       <link>https://kuhungio.me/2019/competing-on-analytics/</link>
       <pubDate>Tue, 12 Mar 2019 10:48:59 +0800</pubDate>
       
@@ -360,7 +360,7 @@ import os import time import re from slackclient import SlackClient import sys f
     </item>
     
     <item>
-      <title>Prophet in 000300 我把算法模型套在了股市上，发现...</title>
+      <title>我把算法模型套在了股市上，发现... Prophet in 000300 </title>
       <link>https://kuhungio.me/2019/prophet-in-000300/</link>
       <pubDate>Fri, 08 Mar 2019 22:48:45 +0800</pubDate>
       
@@ -377,7 +377,7 @@ Prophet in 沪深300 工具包安装 pip install fbprophet
     </item>
     
     <item>
-      <title>The Next Step for Machine Learning 机器学习落地需攻破的9个难题</title>
+      <title>机器学习落地需攻破的9个难题 The Next Step for Machine Learning</title>
       <link>https://kuhungio.me/2019/the-next-step-for-machine-learning/</link>
       <pubDate>Sun, 24 Feb 2019 23:31:58 +0800</pubDate>
       
@@ -464,7 +464,7 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
     </item>
     
     <item>
-      <title>Why is Data Hard 为啥说做数据这行不容易</title>
+      <title>为啥说数据这行不容易 Why is Data Hard </title>
       <link>https://kuhungio.me/2018/why-is-data-hard/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       
