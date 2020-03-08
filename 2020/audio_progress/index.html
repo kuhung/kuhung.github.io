@@ -24,7 +24,7 @@ if (!doNotTrack) {
 </script>
 
   <link rel="prev" href="https://kuhungio.me/2019/lifetimes/" />
-  
+  <link rel="next" href="https://kuhungio.me/2020/remote/" />
   <link rel="canonical" href="https://kuhungio.me/2020/audio_progress/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -62,7 +62,7 @@ if (!doNotTrack) {
     "headline" : "音频处理之人声提取：分离音频背景声，过滤空白",
     "description" : "背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
 问题界定 这里将问题进行界定，进行子任务拆分：
- 将音频的背景声音去除， 去除“无声”阶段。  解决方案 以保持最高的信噪比。这以需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
+ 将音频的背景声音去除， 去除“无声”阶段。  解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
 在使用本领域“高深”的技术前，一定要思考，切莫手上有锤子，就看啥都像钉子。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。
 背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。
 背景声分离 但是若只有一个音轨呢？别担心，机器学习来帮助你。spleeter 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。
@@ -243,7 +243,7 @@ from pydub import AudioSegment from pydub.utils import db_to_float # Let's load 
 
 <h1 id="解决方案">解决方案</h1>
 
-<p>以保持最高的信噪比。这以需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。</p>
+<p>要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。</p>
 
 <p>在使用本领域“高深”的技术前，一定要思考，<strong>切莫手上有锤子，就看啥都像钉子</strong>。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。</p>
 
@@ -255,8 +255,7 @@ from pydub import AudioSegment from pydub.utils import db_to_float # Let's load 
 
 <p>该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下</p>
 
-<pre><code class="language-python">
-# Use audio loader explicitly for loading audio waveform :
+<pre><code class="language-python"># Use audio loader explicitly for loading audio waveform :
 from spleeter.audio.adapter import get_default_audio_adapter
 
 audio_loader = get_default_audio_adapter()
@@ -363,6 +362,8 @@ podcast.export(&quot;podcast_processed.mp3&quot;, format=&quot;mp3&quot;)
         
         <a href="https://kuhungio.me/2019/lifetimes/" class="prev" rel="prev" title="如何计算用户生命周期价值（CLV）"><i class="iconfont icon-left"></i>&nbsp;如何计算用户生命周期价值（CLV）</a>
         
+        
+        <a href="https://kuhungio.me/2020/remote/" class="next" rel="next" title="更高效的远程工作之道--给老板看的 REMOTE 手册">更高效的远程工作之道--给老板看的 REMOTE 手册&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>

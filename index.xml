@@ -6,8 +6,66 @@
     <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2020 17:43:44 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>更高效的远程工作之道--给老板看的 REMOTE 手册</title>
+      <link>https://kuhungio.me/2020/remote/</link>
+      <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/remote/</guid>
+      <description>
+
+&lt;h1 id=&#34;大规模远程工作实践&#34;&gt;大规模远程工作实践&lt;/h1&gt;
+
+&lt;p&gt;远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。&lt;/p&gt;
+
+&lt;p&gt;虽然朋友圈已经有人发帖，渴望在办公室中办公，但是，也不能因此，就放弃思考远程工作的这么个事物。一成不变往往很简单，但变化之中，才有契机。&lt;/p&gt;
+
+&lt;h1 id=&#34;远程工作契机&#34;&gt;远程工作契机&lt;/h1&gt;
+
+&lt;p&gt;什么阻挡了远程工作的推行，我们无从说起。但何不把这次当作一种契机，去学习其中的脉络。&lt;/p&gt;
+
+&lt;p&gt;关于远程工作，找到了一本小册子《Remote》，专门介绍远程工作的。作者也写过另一本书《Rework》，中文名重来 。写书虽说门槛不高，但是写出有说服力的书，具备条件的人往往很少。作者以其自己的公司 Basecamp 为例，说明了远程工作的优点，也向我们介绍了远程工作的注意事项。读懂它，你的远程工作事半功倍。&lt;/p&gt;
+
+&lt;h1 id=&#34;远程工作迷思&#34;&gt;远程工作迷思&lt;/h1&gt;
+
+&lt;p&gt;在书中，你可能到达自己的影子，也可以看到老板的影子。无论你是老板，还是打工者，其中的内容都值得细细理解。&lt;/p&gt;
+
+&lt;h2 id=&#34;我拒绝远程工作&#34;&gt;我拒绝远程工作&lt;/h2&gt;
+
+&lt;h3 id=&#34;做好工作-而不是死守工作时间&#34;&gt;做好工作，而不是死守工作时间。&lt;/h3&gt;
+
+&lt;p&gt;远程工作，不是一个新鲜事物。至少在作者这个书出版之时，到2020年，已经过去了7年。远程工作改变了集中式办公的缺点，时间被切割，无穷无尽的会议。但其自身也有适用范围，比如写作、编程、设计和客户支持等工作。像制造业，可能就不太现实。很多人对远程工作嗤之以鼻，常抱着努力干活，等我退休了，再来享受生活的态度。老板们顾及远程工作，很可能是担心没了约束，员工的拖延症很可能无限放大，毕竟谁都有拖延的时候。做好工作，而不是死守工作时间。&lt;/p&gt;
+
+&lt;h3 id=&#34;如果我能看见他-我就能控制他&#34;&gt;如果我能看见他，我就能控制他。&lt;/h3&gt;
+
+&lt;p&gt;远程工作，在2020春节之前，一定是有很多反对声音的。比如，缺乏讨论的氛围，公司没有源源不断的点子，这怎么行。没准下一个点子就能颠覆乔布斯。但实际上，我们知道，很多人还在执行几个月甚至几年前的一个点子。有员工认为，家里的干扰太多，琐事不断打扰。但实际上一份有成就感的工作，不会让你轻易被打断。而管理者，会觉得，没有盯着他们，怎么知道他们是在干活，还是躺在床上玩手机。但实际上，就在眼皮子底下，员工也有无数种方法摸鱼。如果不信任他，一开始就不该雇佣他。&lt;/p&gt;
+
+&lt;h3 id=&#34;不这样做-就没有机会&#34;&gt;不这样做，就没有机会。&lt;/h3&gt;
+
+&lt;p&gt;在团队内部，一个组这样做了，另一个组会嫉妒。但跳出这个逻辑，整个组织目标一致，效率最高才是最终的赢家。再一个，业务部门或者上级会觉得，我现在就要答案，现场能有更高的压迫感。但实际上，并不是所有事情同等重要。再一个，中小型企业会认为，BAT 大公司都没远程工作，肯定有他的不好，马某人都是聪明人，不可能没调研过。但实际上，你跟着大公司的脚步，永远成不了第二个马某人。远程工作能不受地域限制，网罗到世界各地的人才；有些时候，性价比更高。&lt;/p&gt;
+
+&lt;h2 id=&#34;远程工作精要&#34;&gt;远程工作精要&lt;/h2&gt;
+
+&lt;p&gt;远程工作，在2020春节之后，大伙儿已经有了足够多体会。作者的公司长期远程且稳定盈利，他总结了以下内容。&lt;/p&gt;
+
+&lt;h3 id=&#34;及时同步进度&#34;&gt;及时同步进度&lt;/h3&gt;
+
+&lt;p&gt;重要资料公开，而不是让人到处询问，让被询问人工作量加倍。展现工作进度，以成果导向。及时向团队内部公开。承诺往往有更高的约束力，而且，同行肯定比非技术领导更懂所需的工作时长。于此同时，做防灾的准备，诸如数据备份等工作。如果工作需要同客户合作，还需注意，及时将进度同步给客户。&lt;/p&gt;
+
+&lt;h3 id=&#34;打造良好团队氛围&#34;&gt;打造良好团队氛围&lt;/h3&gt;
+
+&lt;p&gt;对于团队内部，保持正向的氛围，阻止消极负面的情绪在团队内部蔓延。聪明且及完成任务，才是合适的好员工。用当地最好的薪水留住他们，而不是因地施策。关心员工的身心健康，担心过度劳累，而不是懒惰，因为可持续才能走更远。最后，保持一个强劲的动力，鼓励员工从事自己喜欢的事物。&lt;/p&gt;
+
+&lt;h3 id=&#34;员工同样可以出众&#34;&gt;员工同样可以出众&lt;/h3&gt;
+
+&lt;p&gt;而对于员工，如果你想在团队内出众，往往有两种方法。一个是在保持活跃，另一个就是高质量的交付任务。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://kuhungio.me/about/&#34;&gt;关于作者&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>音频处理之人声提取：分离音频背景声，过滤空白</title>
@@ -32,7 +90,7 @@
 
 &lt;h1 id=&#34;解决方案&#34;&gt;解决方案&lt;/h1&gt;
 
-&lt;p&gt;以保持最高的信噪比。这以需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。&lt;/p&gt;
+&lt;p&gt;要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。&lt;/p&gt;
 
 &lt;p&gt;在使用本领域“高深”的技术前，一定要思考，&lt;strong&gt;切莫手上有锤子，就看啥都像钉子&lt;/strong&gt;。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。&lt;/p&gt;
 
@@ -44,8 +102,7 @@
 
 &lt;p&gt;该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;
-# Use audio loader explicitly for loading audio waveform :
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Use audio loader explicitly for loading audio waveform :
 from spleeter.audio.adapter import get_default_audio_adapter
 
 audio_loader = get_default_audio_adapter()
@@ -1516,435 +1573,6 @@ order by 1, 2;
 &lt;p&gt;以上是给大家推荐的从业者的7本书，都是经过本人检验的。从通识到基础概念，从工具到学科思想，最后又回到普罗大众，思考和呈现我们的工作。希望能帮助诸位更进一步，在职业生涯上大放光彩。&lt;/p&gt;
 
 &lt;p&gt;豆瓣书单 &lt;a href=&#34;https://www.douban.com/doulist/113972160/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.douban.com/doulist/113972160/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>深度强化学习技巧 hacks for training deep RL</title>
-      <link>https://kuhungio.me/2019/training_rl_systems_hacks/</link>
-      <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2019/training_rl_systems_hacks/</guid>
-      <description>
-
-&lt;h1 id=&#34;深度强化学习技巧-hacks-for-training-deep-rl&#34;&gt;深度强化学习技巧 hacks for training deep RL&lt;/h1&gt;
-
-&lt;p&gt;这是一篇旧文，&lt;a href=&#34;http://joschu.net/?utm_source=kuhungio&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;John Schulman&lt;/a&gt; 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。  &lt;/p&gt;
-
-&lt;h2 id=&#34;测试新算法的技巧&#34;&gt;测试新算法的技巧&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;简化问题，使用低维变量。
-
-&lt;ul&gt;
-&lt;li&gt;使用类似只有角度和速度两个变量的 &lt;a href=&#34;https://gym.openai.com/envs/Pendulum-v0&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Pendulum problem&lt;/a&gt; 问题。&lt;/li&gt;
-&lt;li&gt;这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。&lt;/li&gt;
-&lt;li&gt;当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。
-   &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;构造一个 demo 来测试你的算法&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。&lt;/li&gt;
-&lt;li&gt;这样能够轻易地发现那里出了问题。&lt;/li&gt;
-&lt;li&gt;注意：不要在这样的小问题上过分的尝试。
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;在熟悉的场景中测试&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;随着时间的推移，你将能预估训练所需的时间。&lt;/li&gt;
-&lt;li&gt;明白你的奖赏是如何变化的。&lt;/li&gt;
-&lt;li&gt;能够设定一个基线，以便让你知道相对过去改进了多少。&lt;/li&gt;
-&lt;li&gt;作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;快速上手新任务的技巧&#34;&gt;快速上手新任务的技巧&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;简化问题
-
-&lt;ul&gt;
-&lt;li&gt;从简单的开始，直到回到问题。&lt;/li&gt;
-&lt;li&gt;途径1： 简化特征空间
-
-&lt;ul&gt;
-&lt;li&gt;举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。&lt;/li&gt;
-&lt;li&gt;一旦起步，逐步还原问题直到解决问题。&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;途径2：简化奖赏函数
-
-&lt;ul&gt;
-&lt;li&gt;简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。&lt;/li&gt;
-&lt;li&gt;比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;将一个问题转化为强化学习的技巧&#34;&gt;将一个问题转化为强化学习的技巧&lt;/h2&gt;
-
-&lt;p&gt;可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;第一步：将这个问题使用随机策略可视化出来。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;看看那些部分吸引了你。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果这个随机策略在某些情况下做了正确的事，那么很大概率，强化学习也可以做到。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;策略的更新将会发现这里面的行为，并促使稳定下来。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果随机策略永远都做不到，那么强化学习也不可能。
-   &lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;确保可观测&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;确保你能够掌控系统，且给 agent 的也是同样的系统环境。
-
-&lt;ul&gt;
-&lt;li&gt;举个例子： 亲自查看处理过图片，以确保你没有移出掉关键信息或者是在某种程度上阻碍算法。
- &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;确保所有的事物都在合理的尺度&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;经验法则：
-
-&lt;ul&gt;
-&lt;li&gt;观测环境： 确保均值为0，方差为1。&lt;/li&gt;
-&lt;li&gt;奖赏： 如果你能控制它，就把他缩放到一个合理的维度。&lt;/li&gt;
-&lt;li&gt;在所有的数据上都做同样的处理。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;检查所有的观测环境以及奖赏，以确保没有特别离奇的异常值。
-   &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;建立一个好的基线&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;一开始并不清楚哪些算法会起作用，所以设定一系列的基线（从其他方法）。
-
-&lt;ul&gt;
-&lt;li&gt;交叉熵&lt;/li&gt;
-&lt;li&gt;策略更新&lt;/li&gt;
-&lt;li&gt;一些类型的 Q-learning 算法: &lt;a href=&#34;https://github.com/openai/baselines&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;OpenAI Baselines&lt;/a&gt; 或者 &lt;a href=&#34;https://github.com/rll/rllab&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;RLLab&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;复现论文&#34;&gt;复现论文&lt;/h2&gt;
-
-&lt;p&gt;某些时候（经常的事），复现论文结果特别困难。有如下一些技巧：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;使用比预计更多的样本。&lt;/li&gt;
-&lt;li&gt;策略正确，但又不完全正确。
-
-&lt;ul&gt;
-&lt;li&gt;尝试让模型运行更久一点。&lt;/li&gt;
-&lt;li&gt;调整超参数以达到公开的效果。&lt;/li&gt;
-&lt;li&gt;如果想让他在所有数据上都奏效，使用更大的 batch sizes。
-
-&lt;ul&gt;
-&lt;li&gt;如果 batch size 太小，噪声将会压过真正有用的信号。&lt;/li&gt;
-&lt;li&gt;比如： TRPO，作者使用了一个特别小的 batch size，然后不得不训练10万次迭代。&lt;/li&gt;
-&lt;li&gt;对于 DQN，最好的参数：一万次迭代，10亿左右的缓存存储。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;对于训练中的一些处理&#34;&gt;对于训练中的一些处理&lt;/h2&gt;
-
-&lt;p&gt;检查你的训练是否正常：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;检查每个超参数的鲁棒性&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;如果一个算法太过敏感，那么它可能不太鲁棒，并且不容乐观。&lt;/li&gt;
-&lt;li&gt;有些时候，某个策略生效，可能仅仅是因为巧合而已，它并不足以推广。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;关注优化过程是否正常的指标&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;变动情况&lt;/li&gt;
-&lt;li&gt;关注目标函数是否正确
-
-&lt;ul&gt;
-&lt;li&gt;是否预测正确？&lt;/li&gt;
-&lt;li&gt;它的返回是否正确？&lt;/li&gt;
-&lt;li&gt;每次的更新有多大？&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;一些标准的深度神经网络的诊断方法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;有一套能够连续记录代码的系统&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;有成型的规则。&lt;/li&gt;
-&lt;li&gt;注意过去所作的所有尝试。
-
-&lt;ul&gt;
-&lt;li&gt;有些时候，我们关注一个问题，最后却把注意力放在了其他问题上。&lt;/li&gt;
-&lt;li&gt;对于一个问题，很容易过拟合。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;有一大推之前时不时测试的基准。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;有时候会觉得系统运行正常，但很可能只是巧合。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;例如： 有3套算法处理7个任务，可能会有一个算法看起来能很好地处理所有问题，但实际上，它们不过是一套算法，不同的仅仅是随机种子而已。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;使用不同的随机种子&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;运行多次取平均。&lt;/li&gt;
-&lt;li&gt;在多个种子的基础上运行多次。
-
-&lt;ul&gt;
-&lt;li&gt;如果不这样做，那你很有可能是过拟合了。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;额外的算法修改可能并不重要&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;大部分的技巧都是在正则化处理某些对象，或者是在改进你的优化算法。&lt;/li&gt;
-&lt;li&gt;许多技巧有相同的效果&amp;hellip;&amp;hellip;所以，你可以通过移除它们，来简化你的算法（很关键）。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;简化你的算法&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;将会取得更好的泛化效果。
-   &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;自动化你的实验&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不要整天盯着你的代码读取和写入数据。&lt;/li&gt;
-&lt;li&gt;将实验部署在云端并分析结果。&lt;/li&gt;
-&lt;li&gt;追踪实验与结果的框架：
-
-&lt;ul&gt;
-&lt;li&gt;大部分使用 iPython notebooks。&lt;/li&gt;
-&lt;li&gt;数据库对于存储结果来说不是很重要。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;总的训练策略&#34;&gt;总的训练策略&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;数据的白化与标准化（一开始就这样做，对所有数据）&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;训练数据（Obervation）：
-
-&lt;ul&gt;
-&lt;li&gt;计算均值与标准差，然后做标准化转变。&lt;/li&gt;
-&lt;li&gt;对于全体数据（不仅仅是当前的数据）。
-
-&lt;ul&gt;
-&lt;li&gt;至少它减轻了随时间的变化波动情况。&lt;/li&gt;
-&lt;li&gt;如果不断地改变对象的话，可能会使优化器迷糊。&lt;/li&gt;
-&lt;li&gt;缩放（仅最近的数据）意味着你的优化器不知道这个情况，训练将会失败。&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;奖赏（Rewards）：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;缩放但不要转变对象。
-
-&lt;ul&gt;
-&lt;li&gt;影响 agent 的继续下去的可能。&lt;/li&gt;
-&lt;li&gt;将会改变问题（你想让它持续多久）。
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;归一化目标（Standardize targets）&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;与 rewards 相同。
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;PCA 白化&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;可以起作用。&lt;/li&gt;
-&lt;li&gt;开始时的时候要看看它是否真的对神经网络起作用。&lt;/li&gt;
-&lt;li&gt;大规模的缩放（-1000，1000）到（-0.001，0.001）必然会使学习减缓。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;衰减因子的调参&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;判断分配多少权重。&lt;/li&gt;
-&lt;li&gt;举个例子：如果因子是0.99，那么你将忽略100步以前的事情，这意味着某种程度的短视。
-
-&lt;ul&gt;
-&lt;li&gt;最好是看看对应多少的现实时间。
-
-&lt;ul&gt;
-&lt;li&gt;直觉上，我们通常在强化学习中离散时间。&lt;/li&gt;
-&lt;li&gt;换句话说，100步是指3秒前吗？&lt;/li&gt;
-&lt;li&gt;在这个过程中发生了什么？&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;如果是用于 fx 估计的策略更新 TD 算法，gamma 可以选择靠近1（比如0.999）。
-
-&lt;ul&gt;
-&lt;li&gt;算法将非常稳健。
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;观察问题是否真的能被离散化处理&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;例如：在一个游戏有跳帧。&lt;/li&gt;
-&lt;li&gt;作为一个人类，你能控制还是不能控制。&lt;/li&gt;
-&lt;li&gt;查看随机情况是怎么样的。
-
-&lt;ul&gt;
-&lt;li&gt;离散化程度决定了你的随机布朗运动能有多远。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;如果连续性地运动，往往模型会走很远。&lt;/li&gt;
-&lt;li&gt;选择一个起作用的时间离散化分。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;密切关注返回的 episode&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;不仅仅是均值，还包括极大极小值
-
-&lt;ul&gt;
-&lt;li&gt;最大返回是你的策略能做到的最好程度&lt;/li&gt;
-&lt;li&gt;看看你的策略是否工作正常？&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;查看 episode 时长（有时比 episode reward 更为重要）
-
-&lt;ul&gt;
-&lt;li&gt;在一场游戏中你场场都输，从未赢过，但是 episode 时长可以告诉你是不是输得越来越慢&lt;/li&gt;
-&lt;li&gt;一开始可能看见 episode 时长有改进，但 reward 无反应&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;策略优化诊断&#34;&gt;策略优化诊断&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;仔仔细细地观察 entropy&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;action 层面的 entropy
-
-&lt;ul&gt;
-&lt;li&gt;留意状态空间 entropy 的变化，虽然没有好的计量办法&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;如果快速地下降，策略很快便会固定然后失效&lt;/li&gt;
-&lt;li&gt;如果没有下降，那么这个策略可能不是很好，因为它是随机的&lt;/li&gt;
-&lt;li&gt;通过以下方式补救：
-
-&lt;ul&gt;
-&lt;li&gt;KL penalty
-
-&lt;ul&gt;
-&lt;li&gt;使 entropy 远离快速下降&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;增加 entropy bonus&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;如何测量 entropy
-
-&lt;ul&gt;
-&lt;li&gt;对于大部分策略，可以采用分析式方法
-
-&lt;ul&gt;
-&lt;li&gt;对于连续变量，通常使用高斯分布，这样可以通过微分计算 entropy&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;观察 KL 散度&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;观察 KL 散度的更新尺度&lt;/li&gt;
-&lt;li&gt;例如：
-
-&lt;ul&gt;
-&lt;li&gt;如果 KL 是0.01，那它是相当小的。&lt;/li&gt;
-&lt;li&gt;如果是10，那它又非常的大。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;通过基线解释方差&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;查看价值函数是不是好的预测或者给予回报
-
-&lt;ul&gt;
-&lt;li&gt;如果是负数，可能是过拟合了或者是噪声
-
-&lt;ul&gt;
-&lt;li&gt;可能需要超参数调节
- &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;初始化策略&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;非常重要（比监督学习更重要）&lt;/li&gt;
-&lt;li&gt;最后一层取0或者是一个很小的值来最大化 entropy
-
-&lt;ul&gt;
-&lt;li&gt;初始最大化随机 exploration&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;q-learning-策略&#34;&gt;Q-Learning 策略&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;留意 replay buffer 存储的使用情况&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;你可能需要一个非常大的 buffer，依代码而定&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;手边常备 learing rate 表&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;如果收敛很慢或者一开始有一个很慢的启动&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;保持耐心，DQNs 收敛非常慢&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;em&gt;Translated by &lt;a href=&#34;https://github.com/kuhung&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;kuhung&lt;/a&gt; 2017/08/29&lt;/em&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://kuhungio.me/images/deepRL/deepRL.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;关注微信公众号【谷粒先生】，回复【强化学习】获取 PPT 原版&lt;/p&gt;
-&lt;/blockquote&gt;
 </description>
     </item>
     
