@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Kuhung&#39;s Blog</title>
+    <title>Python on Kuhung&#39;s Blog</title>
     <link>https://kuhungio.me/tags/python/</link>
-    <description>Recent content in python on Kuhung&#39;s Blog</description>
+    <description>Recent content in Python on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>音频处理之人声提取：分离音频背景声，过滤空白</title>
+      <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
       <link>https://kuhungio.me/2020/audio_progress/</link>
       <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
       

@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>更高效的远程工作之道--给老板看的 REMOTE 手册</title>
+      <title>更高效的远程工作之道--REMOTE 手册精要</title>
       <link>https://kuhungio.me/2020/remote/</link>
       <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
       
@@ -33,7 +33,7 @@
     </item>
     
     <item>
-      <title>音频处理之人声提取：分离音频背景声，过滤空白</title>
+      <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
       <link>https://kuhungio.me/2020/audio_progress/</link>
       <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
       
@@ -322,7 +322,7 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
     </item>
     
     <item>
-      <title>机器学习模型部署--结合前后端的垃圾消息识别</title>
+      <title>机器学习建模与部署--以垃圾消息识别为例</title>
       <link>https://kuhungio.me/2019/flask_vue_ml/</link>
       <pubDate>Sat, 20 Apr 2019 14:31:26 +0800</pubDate>
       
@@ -336,7 +336,7 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
     </item>
     
     <item>
-      <title>如何设计一套类似视觉中国鹰眼的技术</title>
+      <title>如何设计一套类似视觉中国“鹰眼”的技术</title>
       <link>https://kuhungio.me/2019/vgc-it/</link>
       <pubDate>Sun, 14 Apr 2019 11:51:09 +0800</pubDate>
       
@@ -362,7 +362,7 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
     </item>
     
     <item>
-      <title>一文看懂机器学习项目的完整生命周期 Hands On Machine Learning in Industry </title>
+      <title>机器学习项目的完整生命周期 Hands On Machine Learning in Industry </title>
       <link>https://kuhungio.me/2019/hands-on_machine_learning_in_industry/</link>
       <pubDate>Mon, 01 Apr 2019 19:28:32 +0800</pubDate>
       
@@ -432,7 +432,7 @@ import os import time import re from slackclient import SlackClient import sys f
     </item>
     
     <item>
-      <title>我把算法模型套在了股市上，发现... Prophet in 000300 </title>
+      <title>用先知模型预测股市 Prophet in 000300 </title>
       <link>https://kuhungio.me/2019/prophet-in-000300/</link>
       <pubDate>Fri, 08 Mar 2019 22:48:45 +0800</pubDate>
       
@@ -474,7 +474,7 @@ Prophet in 沪深300 工具包安装 pip install fbprophet
     </item>
     
     <item>
-      <title>Bert Chinese Finetune 中文语料的 Bert 微调</title>
+      <title>中文语料的 Bert 微调 Bert Chinese Finetune </title>
       <link>https://kuhungio.me/2019/bert-chinese-finetune/</link>
       <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
       
@@ -496,7 +496,17 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
     </item>
     
     <item>
-      <title>12306Bypass Server 给抢票神器加上微信提醒</title>
+      <title>Add SSL to Your Websites</title>
+      <link>https://kuhungio.me/2019/add-ssl-to-your-websites/</link>
+      <pubDate>Mon, 28 Jan 2019 00:32:18 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/add-ssl-to-your-websites/</guid>
+      <description>https://poplite.xyz/post/2018/05/03/how-to-enable-https-for-custom-domain-on-github-pages.html
+https://www.v2ex.com/t/451406</description>
+    </item>
+    
+    <item>
+      <title>12306Bypass Server 抢票神器&#43;微信提醒</title>
       <link>https://kuhungio.me/2019/12306bypass-server/</link>
       <pubDate>Sat, 26 Jan 2019 15:52:08 +0800</pubDate>
       
@@ -561,7 +571,7 @@ fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... h
     </item>
     
     <item>
-      <title>时序小结 | time series problem summary 时间序列问题处理</title>
+      <title>一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </title>
       <link>https://kuhungio.me/2018/time-series-problem-summary/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       

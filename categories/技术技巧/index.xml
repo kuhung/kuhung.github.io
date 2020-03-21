@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术技巧 on Kuhung&#39;s Blog</title>
+    <link>https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</link>
+    <description>Recent content in 技术技巧 on Kuhung&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HIVE 技巧积累之合并重叠日期</title>
+      <link>https://kuhungio.me/2019/merge_overlapping_date/</link>
+      <pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/merge_overlapping_date/</guid>
+      <description>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
+这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。
+在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。
+问题定义： 在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。
+对于日期情况的定义 这里采用穷举法，可以得出以下13类情况：
+问题简化 解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。
+对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。
+数据准备 这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。
+drop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values (&#39;01:precedes&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;01:precedes&#39;,to_date(&#39;03&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;02:meets&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;02:meets&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;03:overlaps&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;03:overlaps&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;04:finished by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;04:finished by&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;05:contains&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;05:contains&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;06:starts&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;06:starts&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;07:equals&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;07:equals&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;08:started by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;08:started by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;09:during&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;09:during&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;10:finishes&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;10:finishes&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;11:overlapped by&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;11:overlapped by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;12:met by&#39;,to_date(&#39;02&#39;,&#39;DD&#39;),to_date(&#39;03&#39;,&#39;DD&#39;)); Insert into t values (&#39;12:met by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); Insert into t values (&#39;13:preceded by&#39;,to_date(&#39;03&#39;,&#39;DD&#39;),to_date(&#39;04&#39;,&#39;DD&#39;)); Insert into t values (&#39;13:preceded by&#39;,to_date(&#39;01&#39;,&#39;DD&#39;),to_date(&#39;02&#39;,&#39;DD&#39;)); commit;  定义出来的数据如下</description>
+    </item>
+    
+    <item>
+      <title>深度强化学习技巧 hacks for training deep RL</title>
+      <link>https://kuhungio.me/2019/training_rl_systems_hacks/</link>
+      <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/training_rl_systems_hacks/</guid>
+      <description>深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧  简化问题，使用低维变量。  使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。 当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。   构造一个 demo 来测试你的算法
+ 比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。 这样能够轻易地发现那里出了问题。 注意：不要在这样的小问题上过分的尝试。   在熟悉的场景中测试
+ 随着时间的推移，你将能预估训练所需的时间。 明白你的奖赏是如何变化的。 能够设定一个基线，以便让你知道相对过去改进了多少。 作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。   快速上手新任务的技巧  简化问题  从简单的开始，直到回到问题。 途径1： 简化特征空间  举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。 一旦起步，逐步还原问题直到解决问题。
+  途径2：简化奖赏函数  简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。 比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。    将一个问题转化为强化学习的技巧 可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。
+ 第一步：将这个问题使用随机策略可视化出来。
+ 看看那些部分吸引了你。 如果这个随机策略在某些情况下做了正确的事，那么很大概率，强化学习也可以做到。</description>
+    </item>
+    
+    <item>
+      <title>Add SSL to Your Websites</title>
+      <link>https://kuhungio.me/2019/add-ssl-to-your-websites/</link>
+      <pubDate>Mon, 28 Jan 2019 00:32:18 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/add-ssl-to-your-websites/</guid>
+      <description>https://poplite.xyz/post/2018/05/03/how-to-enable-https-for-custom-domain-on-github-pages.html
+https://www.v2ex.com/t/451406</description>
+    </item>
+    
+    <item>
+      <title>12306Bypass Server 抢票神器&#43;微信提醒</title>
+      <link>https://kuhungio.me/2019/12306bypass-server/</link>
+      <pubDate>Sat, 26 Jan 2019 15:52:08 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2019/12306bypass-server/</guid>
+      <description>前言 春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。
+网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。
+以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。
+前几日逛某论坛，有人向分流开发者传达了增加 Server 酱的请求。开发者还是很给力，在最近的几次版本迭代中实现了该功能。简单的来说，Server 酱就是一个提醒服务。在这里，我们把它用在抢票软件中。当软件抢到票时，通过该服务，给到微信提醒。通知我们及时付款。
+通过这样的形式，即可在微信端第一时间收到下订单的信息。那么如何配置这样的一个服务呢？我们只需要以下步骤。
+​
+准备工作  最新版本的分流软件 搜索关键词：12306Bypass  这里使用的版本号是1.13.30。 没用过？下载链接  Github 账号 这里用做 Server 酱的登陆认证  不知道？注册链接   实操阶段 Server 酱 用于获取认证的接口
+ 登入：用GitHub账号 登入网站，获取SCKEY（在「发送消息」页面） 绑定：点击「微信推送」，扫码关注同时即完成绑定  记住 SCKEY ，我们接下来会用着。
+分流  启动分流，按正常流程配置票务信息。
+ 点选主界面左下角的推送
+   填入以下信息
+ 通知地址 `https://sc.ftqq.com/[SCKEY].send
+ 通知参数 text=#bypass#    点击测试发送，即可在微信端，收到本文一开始的推送测试提醒啦  实际效果 就在配置完成不久后，分流帮我抢到了回家的车票。同时在微信端，Server 酱强制推送。
+总结 通过这样的一番配置，我们终于能够安稳的玩耍手机，而不用担心错过订单付款时间。事实上，分流本身的基础功能，也自带了一些提醒服务。但是他们大多较为繁琐。以 QQ 提醒为例，有被顶掉下线的风险。自带的微信提醒，模拟的微信桌面登陆，理论上需要2个微信号。按照上面的操作，我们只需要简单的配置，即可实现强制推送，错过的几率大大减小。</description>
+    </item>
+    
+    <item>
+      <title>一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </title>
+      <link>https://kuhungio.me/2018/time-series-problem-summary/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhungio.me/2018/time-series-problem-summary/</guid>
+      <description>Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
+总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
+ 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。  tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。
+总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &amp;ldquo;golden week&amp;rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。
+ 方式一:：等同法   The rules:
+Treat holiday as Saturday
+If the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.</description>
+    </item>
+    
+  </channel>
+</rss>

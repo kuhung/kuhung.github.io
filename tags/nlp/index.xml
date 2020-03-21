@@ -29,7 +29,7 @@ import os import time import re from slackclient import SlackClient import sys f
     </item>
     
     <item>
-      <title>Bert Chinese Finetune 中文语料的 Bert 微调</title>
+      <title>中文语料的 Bert 微调 Bert Chinese Finetune </title>
       <link>https://kuhungio.me/2019/bert-chinese-finetune/</link>
       <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
       
