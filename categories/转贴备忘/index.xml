@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>转贴备忘 on Kuhung&#39;s Blog</title>
+    <link>https://kuhungio.me/categories/%E8%BD%AC%E8%B4%B4%E5%A4%87%E5%BF%98/</link>
+    <description>Recent content in 转贴备忘 on Kuhung&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Jan 1970 23:44:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://kuhungio.me/categories/%E8%BD%AC%E8%B4%B4%E5%A4%87%E5%BF%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Flask 部署到 heroku</title>
+      <link>https://kuhungio.me/1970/web_deploy/</link>
+      <pubDate>Thu, 01 Jan 1970 23:44:32 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/1970/web_deploy/</guid>
+      <description>链接🔗：
+ Flask补充系列–将应用部署在Heroku上  实际部署样例：
+ 以图搜图  </description>
+    </item>
+    
+  </channel>
+</rss>

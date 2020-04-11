@@ -696,5 +696,16 @@ pip install git+git://github.com/fchollet/keras.git
  三种决定论  基因决定论 心理决定论 环境决定论  人类的四种天赋  选择的自由(freedom to choose) 想象力(imagination) 良知(conscience) 独立意志(independent conscience)  积极主动是人类的天性</description>
     </item>
     
+    <item>
+      <title>Flask 部署到 heroku</title>
+      <link>https://kuhungio.me/1970/web_deploy/</link>
+      <pubDate>Thu, 01 Jan 1970 23:44:32 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/1970/web_deploy/</guid>
+      <description>链接🔗：
+ Flask补充系列–将应用部署在Heroku上  实际部署样例：
+ 以图搜图  </description>
+    </item>
+    
   </channel>
 </rss>
