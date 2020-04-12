@@ -62,10 +62,9 @@ if (!doNotTrack) {
     "headline" : "机器学习建模与部署--以垃圾消息识别为例",
     "description" : "前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个小本就工作的人，没有较为丰富的实战经验，有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。
 模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。
- 关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。
- 这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung/flask_vue_ML
+这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung/flask_vue_ML
 后端 flask 相关依赖的安装 pip install -r requirements.txt
-核心函数  导入函数包  from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence   准备工作  app = Flask(__name__) # 声明准备 app.",
+核心函数  导入函数包  from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence   准备工作  app = Flask(__name__) # 声明准备 app.secret_key = &quot;super_secret_key&quot; CORS(app) classifier = TextClassifier.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -76,7 +75,7 @@ if (!doNotTrack) {
     "datePublished": "2019-04-20 14:31:26 &#43;0800 CST",
     "dateModified" : "2019-04-20 14:31:26 &#43;0800 CST",
     "url" : "https://kuhungio.me/2019/flask_vue_ml/",
-    "wordCount" : "543",
+    "wordCount" : "541",
     "keywords" : [ "全栈","机器学习进阶","app", "Kuhung&#39;s Blog"]
 }
 </script>
@@ -267,10 +266,6 @@ if (!doNotTrack) {
 <h3 id="模型算法的实用主义">模型算法的实用主义</h3>
 
 <p>机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。</p>
-
-<blockquote>
-<p>关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。</p>
-</blockquote>
 
 <p>这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 <a href="https://github.com/kuhung/flask_vue_ML" rel="nofollow noreferrer" target="_blank">kuhung/flask_vue_ML</a></p>
 
@@ -485,7 +480,7 @@ export default new Router({
 <pre><code class="language-vue">&lt;template&gt;
   &lt;div id=&quot;app&quot;&gt;
     &lt;router-view/&gt;
-    &lt;!-- 植入一波广告：微信搜索：谷粒先生，关注我的公众号 --&gt;
+    &lt;!-- 植入一波广告：微信搜索：谷粒说数，关注我的公众号 --&gt;
     &lt;img src=&quot;./assets/wechat.jpg&quot;&gt;
   &lt;/div&gt;
 &lt;/template&gt;
@@ -545,7 +540,7 @@ new Vue({
 
 <h2 id="模型-flair">模型 flair</h2>
 
-<p>模型这里采用 fair 框架，该框架在 2018 年底发布，易用性和效果都较前方案有了较大提升。这里直接采用官方样例训练好的垃圾邮件分类模型的权重，也就是在上文后端所读取的文件。关注我的公众号：谷粒先生，回复<strong>权重</strong>，即可获得权重文件🔗链接。</p>
+<p>模型这里采用 fair 框架，该框架在 2018 年底发布，易用性和效果都较前方案有了较大提升。这里直接采用官方样例训练好的垃圾邮件分类模型的权重，也就是在上文后端所读取的文件。关注我的公众号：谷粒说数，回复<strong>权重</strong>，即可获得权重文件🔗链接。</p>
 
 <h3 id="模型调用">模型调用</h3>
 
@@ -566,10 +561,6 @@ classifier.predict(sentence) # 调用模型，做预测，返回带标签的数�
 <h3 id="终端端网站访问">终端端网站访问</h3>
 
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/flask_vue_ML/flask_vue_ml.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
-
-<blockquote>
-<p>关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。</p>
-</blockquote>
 
 <p>喜欢我的朋友，别忘了点赞 👍、喜欢 ❤ +关注 🔔哦，你的鼓励是对我最大的支持~💪</p>
 

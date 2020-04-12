@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Mar 2020 00:12:28 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 17:42:17 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>计算广告思维导图</title>
+      <link>https://kuhungio.me/2020/computational-advertising/</link>
+      <pubDate>Sun, 05 Apr 2020 17:42:17 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/computational-advertising/</guid>
+      <description> 思维导图获取  .xmind .pdf .png  关于作者  </description>
+    </item>
     
     <item>
       <title>互联网风控思维导图</title>
@@ -374,10 +383,9 @@ Q：A/B test 的历史是什么样的？ A：最先使用 A/B test 的，可能�
       <guid>https://kuhungio.me/2019/flask_vue_ml/</guid>
       <description>前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个小本就工作的人，没有较为丰富的实战经验，有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。
 模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。
- 关注微信公众号：谷粒先生，下载权重文件并第一时间获取更新。
- 这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung/flask_vue_ML
+这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung/flask_vue_ML
 后端 flask 相关依赖的安装 pip install -r requirements.txt
-核心函数  导入函数包  from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence   准备工作  app = Flask(__name__) # 声明准备 app.</description>
+核心函数  导入函数包  from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence   准备工作  app = Flask(__name__) # 声明准备 app.secret_key = &amp;quot;super_secret_key&amp;quot; CORS(app) classifier = TextClassifier.</description>
     </item>
     
     <item>
