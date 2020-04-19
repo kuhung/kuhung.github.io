@@ -239,7 +239,7 @@ if (!doNotTrack) {
 
           <p>最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNeh46Fa21kHmBnunialciaib5eJ9o5KqxicxjrDuz1JCUljA4x12yAic8biataQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/dog.jpg" alt="狗头" class="lazyload"><figcaption class="image-caption">狗头</figcaption></figure></p>
 
 <p>各位绅士可别想歪，我说的是动漫。</p>
 
@@ -247,11 +247,11 @@ if (!doNotTrack) {
 
 <p>说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehJfohGIMxsBR7x3Y324hYw6sLx0IUuv4aGsafr64HIEQTvlYDspYmjg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/google-img-search.jpg" alt="谷歌搜图" class="lazyload"><figcaption class="image-caption">谷歌搜图</figcaption></figure></p>
 
 <p>但是当你满怀期待上传一张图时，你会发现，他返回的结果要么是同风格作品，要么是图片的描述。摔，我不是让你做抽象阅读理解哇。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehwWQalzKMWticpfSEmSBfTnSxXb0rKqGiabRlws8cbK1fMIcawj5wibNPw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/google-img-search-result.jpg" alt="谷歌搜图效果" class="lazyload"><figcaption class="image-caption">谷歌搜图效果</figcaption></figure></p>
 
 <p>这样的现象，实际是个性化需求与规模化需求的矛盾。对于公司，能规模化的，成本越低；定制带来存储成本，远高于能带来的回报。</p>
 
@@ -269,7 +269,7 @@ if (!doNotTrack) {
 <li>图像检索</li>
 </ul>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehL8ia5SCy5TD7VnZq2YWHQXfFJWXRvtbIv57uRZNFbnxtbic2Zb0DSicpg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/pipeline.jpg" alt="图像检索" class="lazyload"><figcaption class="image-caption">图像检索</figcaption></figure></p>
 
 <p>图像预处理，一般是尺寸、色调的调整、以及去除明显的噪声。</p>
 
@@ -277,7 +277,7 @@ if (!doNotTrack) {
 
 <p>这里先用简单的，构建一个 MVP（最小可行性产品），就采用谷歌的 MobileNet 啦。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehnDQbs3GZHXfYU7XmjMCWxZMhzMVEfEe1bs8WowjbxjatDS6QW9qFTw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/mobileNet2.png" alt="mobileNet2" class="lazyload"><figcaption class="image-caption">mobileNet2</figcaption></figure></p>
 
 <p>该模型尺寸仅数十M，放在服务器或是部署到手机移动端，完全绰绰有余。（实不相瞒，其实一开始上的VGG16，但是模型太大了，服务器放不下。）</p>
 
@@ -291,29 +291,29 @@ if (!doNotTrack) {
 
 <p>这可是个好东西，恰好知乎时间线上，总有一个问题干扰学习——#什么样的腿才叫好看的腿#</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehibHc61CkcGRb8xeeDJ0xoFe2JhDgTGUBRIRicC2cXxG1Q4icDwqjSkBvw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/img-set.jpg" alt="img-set" class="lazyload"><figcaption class="image-caption">img-set</figcaption></figure></p>
 
 <p>就拿这个问题为例，将图片在离线创建索引，随后通过服务端部署。（服务端部署也可以讲一集，但不在这里，别挡住我看腿。）</p>
 
 <p>当当当，随着周末两天的操作，舍弃了俺在的 pubg mobile 战友，谷粒粒的第一个搜图app上线咯。喜大普奔。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNeh739ibnZjtYvoLYnArhU4wEibGGdROsNNT8WMAJaucCFfUGMUJ8sANZBw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/niubi.jpg" alt="叉腰" class="lazyload"><figcaption class="image-caption">叉腰</figcaption></figure></p>
 
 <p>让我们赶紧试试，</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNeh6ZEsicSZsy7WJNp4Es0ictmia88gzobaHdqeHkd0fY9zsiaqxQY5fW37kg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/img-search-1.jpg" alt="效果一" class="lazyload"><figcaption class="image-caption">效果一</figcaption></figure></p>
 
 <p>嗯，还不错</p>
 
 <p>再来一张，</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehClk6M60owTTg5xDOay132vIDoQhjXIwBZydwXibjHnXcCly1b31ZEVQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/img-search-2.jpg" alt="效果二" class="lazyload"><figcaption class="image-caption">效果二</figcaption></figure></p>
 
 <p>原图秒匹配好吗，还给配上了类似风格的照片。</p>
 
 <p>到这里，咱们的以图搜图小应用，就算开发上线完毕啦。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/xmiavfrPm1uaTZvodVkibRaLFJwq57mNehTEibBdGDvGvSwCFbGPjnz7Bc7BCUWynCqsMNLgzWqDWocMGMVfUZibAA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img" class="lazyload"><figcaption class="image-caption">img</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/img-search/img-search-3.jpg" alt="效果三" class="lazyload"><figcaption class="image-caption">效果三</figcaption></figure></p>
 
 <p>学习效率上升N个档次有没有⬆</p>
 
