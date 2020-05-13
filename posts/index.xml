@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 25 Apr 2020 17:22:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 22:18:50 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据分析思维导图</title>
+      <link>https://kuhungio.me/2020/data_analytics_mindmap/</link>
+      <pubDate>Wed, 06 May 2020 22:18:50 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/data_analytics_mindmap/</guid>
+      <description>详情展开
+ 思维导图获取  .xmind .pdf .png   关于作者</description>
+    </item>
     
     <item>
       <title>结构化知识整理——以15张思维导图为例</title>
@@ -791,14 +801,15 @@ pip install git+git://github.com/fchollet/keras.git
     </item>
     
     <item>
-      <title>Flask 部署到 heroku</title>
+      <title>产品实践之应用部署</title>
       <link>https://kuhungio.me/1970/web_deploy/</link>
       <pubDate>Thu, 01 Jan 1970 23:44:32 +0800</pubDate>
       
       <guid>https://kuhungio.me/1970/web_deploy/</guid>
-      <description>链接🔗：
- Flask补充系列–将应用部署在Heroku上  实际部署样例：
- 以图搜图  </description>
+      <description>   项目名 简介 相关资料 参考     以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis
+Flask补充系列–将应用部署在Heroku上   spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_ML
+single-page-apps-with-vue-js-and-flask-deployment   机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例
+chiphuyen/machine-learning-systems-design    </description>
     </item>
     
   </channel>
