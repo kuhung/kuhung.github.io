@@ -6,9 +6,19 @@
     <description>Recent content in Categories on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Jan 1970 23:44:32 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>App</title>
+      <link>https://kuhungio.me/categories/app/</link>
+      <pubDate>Thu, 01 Jan 1970 23:44:32 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/categories/app/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Side Project</title>
