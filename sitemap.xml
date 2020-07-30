@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://kuhungio.me/2020/statistics-tell-lies/</loc>
+      
+      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://kuhungio.me/2020/game_anti-cheat/</loc>
       
       <lastmod>2020-06-18T23:18:26+08:00</lastmod>
@@ -525,7 +535,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2020-06-18T23:18:26+08:00</lastmod>
+      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
       
       
       
@@ -549,7 +559,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2020-06-18T23:18:26+08:00</lastmod>
+      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
       
       
       
@@ -729,7 +739,7 @@
     <url>
       <loc>https://kuhungio.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</loc>
       
-      <lastmod>2020-05-13T00:41:54+08:00</lastmod>
+      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
       
       
       
@@ -933,7 +943,7 @@
     <url>
       <loc>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
       
-      <lastmod>2019-03-12T10:48:59+08:00</lastmod>
+      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
       
       
       
@@ -1294,6 +1304,18 @@
       <loc>https://kuhungio.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/</loc>
       
       <lastmod>1970-01-01T23:44:32+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/%E9%AB%98%E8%80%83/</loc>
+      
+      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
       
       
       
