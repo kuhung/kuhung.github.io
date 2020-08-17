@@ -55,12 +55,20 @@ if (!doNotTrack) {
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/kuhungio.me"
+         "@id": "https://kuhungio.me"
     },
     "articleSection" : "posts",
     "name" : "HIVE 技巧积累之合并重叠日期",
     "headline" : "HIVE 技巧积累之合并重叠日期",
-    "description" : "目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。\n这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。\n在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。\n问题定义： 在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。\n对于日期情况的定义 这里采用穷举法，可以得出以下13类情况：\n问题简化 解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。\n对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。\n数据准备 这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。\ndrop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values (\u0026#39;01:precedes\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;01:precedes\u0026#39;,to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;04\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;02:meets\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;02:meets\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;03:overlaps\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;03:overlaps\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;04\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;04:finished by\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;04:finished by\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;05:contains\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;04\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;05:contains\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;06:starts\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;06:starts\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;07:equals\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;07:equals\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;08:started by\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;08:started by\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;09:during\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;09:during\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;04\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;10:finishes\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;10:finishes\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;11:overlapped by\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;04\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;11:overlapped by\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;12:met by\u0026#39;,to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;12:met by\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;13:preceded by\u0026#39;,to_date(\u0026#39;03\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;04\u0026#39;,\u0026#39;DD\u0026#39;)); Insert into t values (\u0026#39;13:preceded by\u0026#39;,to_date(\u0026#39;01\u0026#39;,\u0026#39;DD\u0026#39;),to_date(\u0026#39;02\u0026#39;,\u0026#39;DD\u0026#39;)); commit; 定义出来的数据如下",
+    "description" : "目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
+这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。
+在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。
+问题定义： 在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。
+对于日期情况的定义 这里采用穷举法，可以得出以下13类情况：
+问题简化 解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。
+对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。
+数据准备 这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。
+drop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values ('01:precedes',to_date('01','DD'),to_date('02','DD')); Insert into t values ('01:precedes',to_date('03','DD'),to_date('04','DD')); Insert into t values ('02:meets',to_date('01','DD'),to_date('02','DD')); Insert into t values ('02:meets',to_date('02','DD'),to_date('03','DD')); Insert into t values ('03:overlaps',to_date('01','DD'),to_date('03','DD')); Insert into t values ('03:overlaps',to_date('02','DD'),to_date('04','DD')); Insert into t values ('04:finished by',to_date('01','DD'),to_date('03','DD')); Insert into t values ('04:finished by',to_date('02','DD'),to_date('03','DD')); Insert into t values ('05:contains',to_date('01','DD'),to_date('04','DD')); Insert into t values ('05:contains',to_date('02','DD'),to_date('03','DD')); Insert into t values ('06:starts',to_date('01','DD'),to_date('02','DD')); Insert into t values ('06:starts',to_date('01','DD'),to_date('03','DD')); Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD')); Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD')); Insert into t values ('08:started by',to_date('01','DD'),to_date('03','DD')); Insert into t values ('08:started by',to_date('01','DD'),to_date('02','DD')); Insert into t values ('09:during',to_date('02','DD'),to_date('03','DD')); Insert into t values ('09:during',to_date('01','DD'),to_date('04','DD')); Insert into t values ('10:finishes',to_date('02','DD'),to_date('03','DD')); Insert into t values ('10:finishes',to_date('01','DD'),to_date('03','DD')); Insert into t values ('11:overlapped by',to_date('02','DD'),to_date('04','DD')); Insert into t values ('11:overlapped by',to_date('01','DD'),to_date('03','DD')); Insert into t values ('12:met by',to_date('02','DD'),to_date('03','DD')); Insert into t values ('12:met by',to_date('01','DD'),to_date('02','DD')); Insert into t values ('13:preceded by',to_date('03','DD'),to_date('04','DD')); Insert into t values ('13:preceded by',to_date('01','DD'),to_date('02','DD')); commit;  定义出来的数据如下",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -68,11 +76,11 @@ if (!doNotTrack) {
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2019",
-    "datePublished": "2019-06-09 00:17:05 \u002b0800 CST",
-    "dateModified" : "2019-06-09 00:17:05 \u002b0800 CST",
-    "url" : "https:\/\/kuhungio.me\/2019\/merge_overlapping_date\/",
+    "datePublished": "2019-06-09 00:17:05 &#43;0800 CST",
+    "dateModified" : "2019-06-09 00:17:05 &#43;0800 CST",
+    "url" : "https://kuhungio.me/2019/merge_overlapping_date/",
     "wordCount" : "309",
-    "keywords" : [ "HIVE","技巧","SQL", "Kuhung\u0027s Blog"]
+    "keywords" : [ "HIVE","技巧","SQL", "Kuhung&#39;s Blog"]
 }
 </script>
 
@@ -156,18 +164,19 @@ if (!doNotTrack) {
   
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#问题定义">问题定义：</a>
-      <ul>
-        <li><a href="#对于日期情况的定义">对于日期情况的定义</a></li>
-        <li><a href="#问题简化">问题简化</a></li>
-      </ul>
-    </li>
-    <li><a href="#数据准备">数据准备</a></li>
-    <li><a href="#解决方案">解决方案</a></li>
-    <li><a href="#总结">总结</a></li>
-    <li><a href="#heading"></a></li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li><a href="#问题定义">问题定义：</a>
+<ul>
+<li><a href="#对于日期情况的定义">对于日期情况的定义</a></li>
+<li><a href="#问题简化">问题简化</a></li>
+</ul></li>
+<li><a href="#数据准备">数据准备</a></li>
+<li><a href="#解决方案">解决方案</a></li>
+<li><a href="#总结">总结</a></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -221,100 +230,125 @@ if (!doNotTrack) {
           
           
 
-          <p>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。</p>
+          
+
+<p>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。</p>
+
 <p>这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。</p>
-<p>在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：<a href="https://stewashton.wordpress.com/2015/06/08/merging-overlapping-date-ranges/">🔗</a>。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。</p>
+
+<p>在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：<a href="https://stewashton.wordpress.com/2015/06/08/merging-overlapping-date-ranges/" rel="nofollow noreferrer" target="_blank">🔗</a>。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。</p>
+
 <h2 id="问题定义">问题定义：</h2>
+
 <p>在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。</p>
+
 <h3 id="对于日期情况的定义">对于日期情况的定义</h3>
+
 <p>这里采用穷举法，可以得出以下13类情况：</p>
-<p><img src="/images/merge_date/date_merge.jpg" alt=""></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/merge_date/date_merge.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
 <h3 id="问题简化">问题简化</h3>
+
 <p>解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。</p>
+
 <p>对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。</p>
+
 <h2 id="数据准备">数据准备</h2>
+
 <p>这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">drop</span> <span style="color:#66d9ef">table</span> t purge;
-<span style="color:#66d9ef">create</span> <span style="color:#66d9ef">table</span> t (
-  test_case varchar2(<span style="color:#ae81ff">32</span>) <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
-  start_date date <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>,
-  end_date date <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">null</span>
+
+<pre><code class="language-sql">drop table t purge;
+create table t (
+  test_case varchar2(32) not null,
+  start_date date not null,
+  end_date date not null
 );
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;01:precedes&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;01:precedes&#39;</span>,to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;04&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;02:meets&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;02:meets&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;03:overlaps&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;03:overlaps&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;04&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;04:finished by&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;04:finished by&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;05:contains&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;04&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;05:contains&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;06:starts&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;06:starts&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;07:equals&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;07:equals&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;08:started by&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;08:started by&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;09:during&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;09:during&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;04&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;10:finishes&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;10:finishes&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;11:overlapped by&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;04&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;11:overlapped by&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;12:met by&#39;</span>,to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;12:met by&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;13:preceded by&#39;</span>,to_date(<span style="color:#e6db74">&#39;03&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;04&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">Insert</span> <span style="color:#66d9ef">into</span> t <span style="color:#66d9ef">values</span> (<span style="color:#e6db74">&#39;13:preceded by&#39;</span>,to_date(<span style="color:#e6db74">&#39;01&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>),to_date(<span style="color:#e6db74">&#39;02&#39;</span>,<span style="color:#e6db74">&#39;DD&#39;</span>));
-<span style="color:#66d9ef">commit</span>;
-</code></pre></div><p>定义出来的数据如下</p>
-<p><img src="/images/merge_date/date_sample.jpg" alt=""></p>
+Insert into t values ('01:precedes',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('01:precedes',to_date('03','DD'),to_date('04','DD'));
+Insert into t values ('02:meets',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('02:meets',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('03:overlaps',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('03:overlaps',to_date('02','DD'),to_date('04','DD'));
+Insert into t values ('04:finished by',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('04:finished by',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('05:contains',to_date('01','DD'),to_date('04','DD'));
+Insert into t values ('05:contains',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('06:starts',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('06:starts',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('07:equals',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('08:started by',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('08:started by',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('09:during',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('09:during',to_date('01','DD'),to_date('04','DD'));
+Insert into t values ('10:finishes',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('10:finishes',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('11:overlapped by',to_date('02','DD'),to_date('04','DD'));
+Insert into t values ('11:overlapped by',to_date('01','DD'),to_date('03','DD'));
+Insert into t values ('12:met by',to_date('02','DD'),to_date('03','DD'));
+Insert into t values ('12:met by',to_date('01','DD'),to_date('02','DD'));
+Insert into t values ('13:preceded by',to_date('03','DD'),to_date('04','DD'));
+Insert into t values ('13:preceded by',to_date('01','DD'),to_date('02','DD'));
+commit;
+</code></pre>
+
+<p>定义出来的数据如下</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/merge_date/date_sample.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
 <h2 id="解决方案">解决方案</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">with</span> grp_starts <span style="color:#66d9ef">as</span> (
-  <span style="color:#66d9ef">select</span> test_case, start_date, end_date,
-  <span style="color:#66d9ef">case</span>
-    <span style="color:#66d9ef">when</span> start_date <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">max</span>(end_date) over(
-      partition <span style="color:#66d9ef">by</span> test_case <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> start_date, end_date
-      <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">between</span> unbounded preceding <span style="color:#66d9ef">and</span> <span style="color:#ae81ff">1</span> preceding
+
+<pre><code class="language-sql">with grp_starts as (
+  select test_case, start_date, end_date,
+  case
+    when start_date &gt; max(end_date) over(
+      partition by test_case order by start_date, end_date
+      rows between unbounded preceding and 1 preceding
     )
-    <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>
-  <span style="color:#66d9ef">end</span> grp_start
-  <span style="color:#66d9ef">from</span> t
+    then 1 else 0
+  end grp_start
+  from t
 )
-, grps <span style="color:#66d9ef">as</span> (
-  <span style="color:#66d9ef">select</span> test_case, start_date, end_date,
-  <span style="color:#66d9ef">sum</span>(grp_start) over(
-    partition <span style="color:#66d9ef">by</span> test_case <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> start_date, end_date
-    <span style="color:#66d9ef">rows</span> <span style="color:#66d9ef">between</span> unbounded preceding <span style="color:#66d9ef">and</span> <span style="color:#66d9ef">current</span> <span style="color:#66d9ef">row</span>
+, grps as (
+  select test_case, start_date, end_date,
+  sum(grp_start) over(
+    partition by test_case order by start_date, end_date
+    rows between unbounded preceding and current row
   ) grp
-  <span style="color:#66d9ef">from</span> grp_starts
+  from grp_starts
 )
-<span style="color:#66d9ef">select</span> test_case,
-<span style="color:#66d9ef">min</span>(start_date) start_date,
-<span style="color:#66d9ef">max</span>(end_date) end_date
-<span style="color:#66d9ef">from</span> grps
-<span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> test_case, grp
-<span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>;
-</code></pre></div><p><img src="/images/merge_date/date_merge_result.jpg" alt=""></p>
+select test_case,
+min(start_date) start_date,
+max(end_date) end_date
+from grps
+group by test_case, grp
+order by 1, 2;
+</code></pre>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/merge_date/date_merge_result.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+
 <p>这里的的核心思想同上：<strong>判断日期是否重叠，重叠日期取最大最小的日期，非重叠日期分段取</strong></p>
+
 <p>这里使用了 <code>with</code> 技巧，通过该技巧，将数据临时存储至内存，加速了执行速度。这句话是网上能直接搜到的，但实际上它还有另一个功能上的作用。即抛开性能作用来说，<code>with</code> 语法能够对先前的查询结果进行下一步的处理。这意味着不用频繁的建立中间表，省去空间或是简化了逻辑的复杂度。</p>
+
 <p>这里主要分为三段：</p>
+
 <ol>
-<li>
-<p>判断日期是否重叠：对数据以 test_case 为划分依据，按开始日期和结束日期排序。比较当前开始日期和之前的结束日期，若开始日期大于最大的结束日期，说明两日期无重叠，grp_start 标志位记为1，反之记为0。</p>
-</li>
-<li>
-<p>对相邻重叠日期做区分：按同样的划分排序方式。对当前日期及以前的 grp_start 求和，由于重叠日期被标记为0，因而最后相邻重叠日期的 grp 标志位将相同，其余日期各不相同。起到区分不重叠日期，合并重叠日期的作用。</p>
-</li>
-<li>
-<p>分组选取最大最小值，得到结果：按 test_case 与 grp 分组，选取各组最小和最大的日期，最后按第一列和第二列排序，得到目标结果。</p>
-</li>
+<li><p>判断日期是否重叠：对数据以 test_case 为划分依据，按开始日期和结束日期排序。比较当前开始日期和之前的结束日期，若开始日期大于最大的结束日期，说明两日期无重叠，grp_start 标志位记为1，反之记为0。</p></li>
+
+<li><p>对相邻重叠日期做区分：按同样的划分排序方式。对当前日期及以前的 grp_start 求和，由于重叠日期被标记为0，因而最后相邻重叠日期的 grp 标志位将相同，其余日期各不相同。起到区分不重叠日期，合并重叠日期的作用。</p></li>
+
+<li><p>分组选取最大最小值，得到结果：按 test_case 与 grp 分组，选取各组最小和最大的日期，最后按第一列和第二列排序，得到目标结果。</p></li>
 </ol>
+
 <p>小结：通过拆分的思想+窗口函数的帮助，出色完成组织交代的任务，在 HIVE 中实现了合并重叠日期这一任务。但同时也要注意，在功能保证的同时，该脚本如同算法一样，也是有边界的。比如当 end_date 为空时，将会出现错误。这种情况最好先把空值填充为特殊值 ‘9999-12-31’，结束后再转换为空值。</p>
+
 <h2 id="总结">总结</h2>
+
 <p>在 HIVE 中合并重叠日期，一开始看起来很难，但实际上学会分析问题，分解问题，简化问题，其实不难。网上有很多有用的资源，要学会合理利用。在实现基本需求的同时，给自己留些时间，深挖背后的原理，将会给自己、同时也是给组织带来持续性的效率提升。</p>
+
 <p>例如：搞完这一套后，虽说重写祖传代码不太现实，但对于新的需求，可能会思考 <code>with</code> 语法带来的好处，将其运用到业务中去，减少中间表冗余，简化逻辑，增强 sql 代码可读性。</p>
-<h2 id="heading"></h2>
 
     </div>
 

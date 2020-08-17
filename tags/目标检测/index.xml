@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>目标检测 on Kuhung&#39;s Blog</title>
@@ -19,11 +19,11 @@
       <guid>https://kuhungio.me/2017/ssd/</guid>
       <description>SSD目标检测Keras版 SSD是一种Object Detection方法。本文是基于论文SSD: Single Shot MultiBox Detector，实现的keras版本。
  该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。 SSD将输出一系列离散化（discretization）的bounding boxes，这些bounding boxes是在不同层次（layers）上的feature maps上生成的，并且有着不同的aspect ratio。
- 模型效果  模型对载具的检测   模型对动物的检测   模型的视频检测  如何使用 项目地址kuhung/SSD_keras
-所需依赖 cv2==3.3.0 keras==1.2.2 matplotlib==2.1.0 tensorflow==1.3.0 numpy==1.13.3 如果想跑通视频模块，则需额外pip install scikit-video
-具体操作 git clone git@github.com:kuhung/SSD_keras.git cd SSD_keras  Download model weight weights_SSD300.hdf5here  cp weights_SSD300.hdf5 into SSD_keras  对于图片的检测  参考SSD.ipynb
+ 模型效果  模型对载具的检测  模型对动物的检测  模型的视频检测   如何使用 项目地址kuhung/SSD_keras
+所需依赖 cv2==3.3.0 keras==1.2.2 matplotlib==2.1.0 tensorflow==1.3.0 numpy==1.13.3  如果想跑通视频模块，则需额外pip install scikit-video
+具体操作 git clone git@github.com:kuhung/SSD_keras.git cd SSD_keras   Download model weight weights_SSD300.hdf5here  cp weights_SSD300.hdf5 into SSD_keras   对于图片的检测  参考SSD.ipynb
  若要剪切图片为下一步处理做准备  参考SSD_crop.py
- 检测视频  cd video_utils python videotest_example.py hy.</description>
+ 检测视频 bash cd video_utils python videotest_example.</description>
     </item>
     
   </channel>

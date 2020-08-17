@@ -55,12 +55,25 @@ if (!doNotTrack) {
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/kuhungio.me"
+         "@id": "https://kuhungio.me"
     },
     "articleSection" : "posts",
-    "name" : "12306Bypass Server 抢票神器\u002b微信提醒",
-    "headline" : "12306Bypass Server 抢票神器\u002b微信提醒",
-    "description" : "前言 春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。\n网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。\n以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。\n前几日逛某论坛，有人向分流开发者传达了增加 Server 酱的请求。开发者还是很给力，在最近的几次版本迭代中实现了该功能。简单的来说，Server 酱就是一个提醒服务。在这里，我们把它用在抢票软件中。当软件抢到票时，通过该服务，给到微信提醒。通知我们及时付款。\n通过这样的形式，即可在微信端第一时间收到下订单的信息。那么如何配置这样的一个服务呢？我们只需要以下步骤。\n​\n准备工作  最新版本的分流软件 搜索关键词：12306Bypass  这里使用的版本号是1.13.30。 没用过？下载链接   Github 账号 这里用做 Server 酱的登陆认证  不知道？注册链接    实操阶段 Server 酱 用于获取认证的接口\n 登入：用GitHub账号 登入网站，获取SCKEY（在「发送消息」页面） 绑定：点击「微信推送」，扫码关注同时即完成绑定  记住 SCKEY ，我们接下来会用着。\n分流   启动分流，按正常流程配置票务信息。\n  点选主界面左下角的推送\n  填入以下信息\n 通知地址 `https:\/\/sc.ftqq.com\/[SCKEY].send 通知参数 text=#bypass#    点击测试发送，即可在微信端，收到本文一开始的推送测试提醒啦\n  实际效果 就在配置完成不久后，分流帮我抢到了回家的车票。同时在微信端，Server 酱强制推送。",
+    "name" : "12306Bypass Server 抢票神器&#43;微信提醒",
+    "headline" : "12306Bypass Server 抢票神器&#43;微信提醒",
+    "description" : "前言 春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。
+网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。
+以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。
+前几日逛某论坛，有人向分流开发者传达了增加 Server 酱的请求。开发者还是很给力，在最近的几次版本迭代中实现了该功能。简单的来说，Server 酱就是一个提醒服务。在这里，我们把它用在抢票软件中。当软件抢到票时，通过该服务，给到微信提醒。通知我们及时付款。
+通过这样的形式，即可在微信端第一时间收到下订单的信息。那么如何配置这样的一个服务呢？我们只需要以下步骤。
+​
+准备工作  最新版本的分流软件 搜索关键词：12306Bypass  这里使用的版本号是1.13.30。 没用过？下载链接  Github 账号 这里用做 Server 酱的登陆认证  不知道？注册链接   实操阶段 Server 酱 用于获取认证的接口
+ 登入：用GitHub账号 登入网站，获取SCKEY（在「发送消息」页面） 绑定：点击「微信推送」，扫码关注同时即完成绑定  记住 SCKEY ，我们接下来会用着。
+分流  启动分流，按正常流程配置票务信息。
+ 点选主界面左下角的推送
+   填入以下信息
+ 通知地址 `https://sc.ftqq.com/[SCKEY].send
+ 通知参数 text=#bypass#    点击测试发送，即可在微信端，收到本文一开始的推送测试提醒啦  实际效果 就在配置完成不久后，分流帮我抢到了回家的车票。同时在微信端，Server 酱强制推送。
+总结 通过这样的一番配置，我们终于能够安稳的玩耍手机，而不用担心错过订单付款时间。事实上，分流本身的基础功能，也自带了一些提醒服务。但是他们大多较为繁琐。以 QQ 提醒为例，有被顶掉下线的风险。自带的微信提醒，模拟的微信桌面登陆，理论上需要2个微信号。按照上面的操作，我们只需要简单的配置，即可实现强制推送，错过的几率大大减小。",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -68,11 +81,11 @@ if (!doNotTrack) {
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2019",
-    "datePublished": "2019-01-26 15:52:08 \u002b0800 CST",
-    "dateModified" : "2019-01-26 15:52:08 \u002b0800 CST",
-    "url" : "https:\/\/kuhungio.me\/2019\/12306bypass-server\/",
+    "datePublished": "2019-01-26 15:52:08 &#43;0800 CST",
+    "dateModified" : "2019-01-26 15:52:08 &#43;0800 CST",
+    "url" : "https://kuhungio.me/2019/12306bypass-server/",
     "wordCount" : "57",
-    "keywords" : [ "Server","Wechat", "Kuhung\u0027s Blog"]
+    "keywords" : [ "Server","Wechat", "Kuhung&#39;s Blog"]
 }
 </script>
 
@@ -156,10 +169,17 @@ if (!doNotTrack) {
   
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#server-酱">Server 酱</a></li>
-    <li><a href="#分流">分流</a></li>
-  </ul>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#准备工作">准备工作</a></li>
+<li><a href="#实操阶段">实操阶段</a>
+<ul>
+<li><a href="#server-酱">Server 酱</a></li>
+<li><a href="#分流">分流</a></li>
+</ul></li>
+<li><a href="#实际效果">实际效果</a></li>
+<li><a href="#总结">总结</a></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -213,66 +233,96 @@ if (!doNotTrack) {
           
           
 
-          <h1 id="前言">前言</h1>
+          
+
+<h1 id="前言">前言</h1>
+
 <p>春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。</p>
+
 <p>网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。</p>
+
 <p>以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。</p>
+
 <p>前几日逛某论坛，有人向分流开发者传达了增加 Server 酱的请求。开发者还是很给力，在最近的几次版本迭代中实现了该功能。简单的来说，Server 酱就是一个提醒服务。在这里，我们把它用在抢票软件中。当软件抢到票时，通过该服务，给到微信提醒。通知我们及时付款。</p>
-<p><img src="/images/12306bypass/File_wechat.jpg" alt="微信推送"></p>
-<p><img src="/images/12306bypass/File.jpg" alt="最终效果"></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/File_wechat.jpg" alt="微信推送" class="lazyload"><figcaption class="image-caption">微信推送</figcaption></figure></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/File.jpg" alt="最终效果" class="lazyload"><figcaption class="image-caption">最终效果</figcaption></figure></p>
+
 <p>通过这样的形式，即可在微信端第一时间收到下订单的信息。那么如何配置这样的一个服务呢？我们只需要以下步骤。</p>
+
 <p>​</p>
+
 <h1 id="准备工作">准备工作</h1>
+
 <ul>
 <li>最新版本的分流软件 搜索关键词：12306Bypass
+
 <ul>
 <li>这里使用的版本号是<code>1.13.30</code>。</li>
-<li>没用过？<a href="https://www.12306bypass.com/?utm_source=kuhungio.me">下载链接</a></li>
-</ul>
-</li>
+<li>没用过？<a href="https://www.12306bypass.com/?utm_source=kuhungio.me" rel="nofollow noreferrer" target="_blank">下载链接</a></li>
+</ul></li>
 <li>Github 账号 这里用做 Server 酱的登陆认证
+
 <ul>
-<li>不知道？<a href="https://github.com/?utm_source=kuhungio.me">注册链接</a></li>
+<li>不知道？<a href="https://github.com/?utm_source=kuhungio.me" rel="nofollow noreferrer" target="_blank">注册链接</a></li>
+</ul></li>
 </ul>
-</li>
-</ul>
+
 <h1 id="实操阶段">实操阶段</h1>
+
 <h2 id="server-酱">Server 酱</h2>
+
 <p>用于获取认证的接口</p>
+
 <ul>
-<li>登入：用GitHub账号 <a href="http://sc.ftqq.com/?c=github&amp;a=login?utm_source=kuhungio.me">登入网站</a>，获取<a href="http://sc.ftqq.com/?c=code">SCKEY</a>（在「<a href="http://sc.ftqq.com/?c=code">发送消息</a>」页面）</li>
-<li>绑定：点击「<a href="http://sc.ftqq.com/?c=wechat&amp;a=bind">微信推送</a>」，扫码关注同时即完成绑定</li>
+<li>登入：用GitHub账号 <a href="http://sc.ftqq.com/?c=github&amp;a=login?utm_source=kuhungio.me" rel="nofollow noreferrer" target="_blank">登入网站</a>，获取<a href="http://sc.ftqq.com/?c=code" rel="nofollow noreferrer" target="_blank">SCKEY</a>（在「<a href="http://sc.ftqq.com/?c=code" rel="nofollow noreferrer" target="_blank">发送消息</a>」页面）</li>
+<li>绑定：点击「<a href="http://sc.ftqq.com/?c=wechat&amp;a=bind" rel="nofollow noreferrer" target="_blank">微信推送</a>」，扫码关注同时即完成绑定</li>
 </ul>
-<p><img src="/images/12306bypass/Screenshot_1.jpg" alt="SCKEY"></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/Screenshot_1.jpg" alt="SCKEY" class="lazyload"><figcaption class="image-caption">SCKEY</figcaption></figure></p>
+
 <p>记住 <strong>SCKEY</strong> ，我们接下来会用着。</p>
+
 <h2 id="分流">分流</h2>
+
 <ul>
-<li>
-<p>启动分流，按正常流程配置票务信息。</p>
-</li>
-<li>
-<p>点选主界面左下角的推送</p>
-<p><img src="/images/12306bypass/Screenshot_2.jpg" alt="分流推送功能"></p>
-</li>
-<li>
-<p>填入以下信息</p>
+<li><p>启动分流，按正常流程配置票务信息。</p></li>
+
+<li><p>点选主界面左下角的推送</p></li>
+</ul>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/Screenshot_2.jpg" alt="分流推送功能" class="lazyload"><figcaption class="image-caption">分流推送功能</figcaption></figure></p>
+
 <ul>
-<li>通知地址 `<a href="https://sc.ftqq.com/%5BSCKEY%5D.send">https://sc.ftqq.com/[SCKEY].send</a></li>
+<li><p>填入以下信息</p>
+
+<ul>
+<li>通知地址 `<a href="https://sc.ftqq.com/[SCKEY].send" rel="nofollow noreferrer" target="_blank">https://sc.ftqq.com/[SCKEY].send</a><br /></li>
 <li>通知参数  <code>text=#bypass#</code></li>
+</ul></li>
 </ul>
-<p><img src="/images/12306bypass/Screenshot_3.jpg" alt="推送配置"></p>
-</li>
-<li>
-<p>点击测试发送，即可在微信端，收到本文一开始的推送测试提醒啦</p>
-</li>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/Screenshot_3.jpg" alt="推送配置" class="lazyload"><figcaption class="image-caption">推送配置</figcaption></figure></p>
+
+<ul>
+<li>点击测试发送，即可在微信端，收到本文一开始的推送测试提醒啦</li>
 </ul>
+
 <h1 id="实际效果">实际效果</h1>
+
 <p>就在配置完成不久后，分流帮我抢到了回家的车票。同时在微信端，Server 酱强制推送。</p>
-<p><img src="/images/12306bypass/IMG_0330.jpg" alt="成功推送"></p>
-<p><img src="/images/12306bypass/File_succeed.jpg" alt="成功详情"></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/IMG_0330.jpg" alt="成功推送" class="lazyload"><figcaption class="image-caption">成功推送</figcaption></figure></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/12306bypass/File_succeed.jpg" alt="成功详情" class="lazyload"><figcaption class="image-caption">成功详情</figcaption></figure></p>
+
 <h1 id="总结">总结</h1>
+
 <p>通过这样的一番配置，我们终于能够安稳的玩耍手机，而不用担心错过订单付款时间。事实上，分流本身的基础功能，也自带了一些提醒服务。但是他们大多较为繁琐。以 QQ 提醒为例，有被顶掉下线的风险。自带的微信提醒，模拟的微信桌面登陆，理论上需要2个微信号。按照上面的操作，我们只需要简单的配置，即可实现强制推送，错过的几率大大减小。</p>
+
 <p>这样的推送服务，其应用场景不局限于此。这也是我琢磨它的原因之一——应用场景广泛。只要需要推送的地方，都可以嵌入这样一套服务。例如网站新增评论、或是按秒计费的服务器上模型训练结束等等。</p>
+
 <p>Server 酱实现的功能有限，仅针对微信推送。但这也是它针对国内业务的一种优化。类似这样的推送服务很多，国外的 Slack 功能组件也很丰富。在一些涉及敏感信息的领域，构建一套自己的推送服务，也是不错的主意。</p>
 
     </div>
@@ -338,7 +388,7 @@ if (!doNotTrack) {
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: '414aba975a2dfbc86d7982bf39fd37b3',
-        title: '12306Bypass Server 抢票神器\u002b微信提醒',
+        title: '12306Bypass Server 抢票神器\x2b微信提醒',
         clientID: '7e5b8bd7063e5315e349',
         clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
         repo: 'kuhung.github.io',

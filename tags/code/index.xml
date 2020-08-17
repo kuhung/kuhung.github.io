@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Code on Kuhung&#39;s Blog</title>
@@ -24,9 +24,9 @@
 背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。
 背景声分离 但是若只有一个音轨呢？别担心，机器学习来帮助你。spleeter 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。
 该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下
-# Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load(&amp;#39;/path/to/audio/file&amp;#39;, sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform) 空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。
+# Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load(&#39;/path/to/audio/file&#39;, sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform)  空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。
 这里参考 stackoverflow 的代码
-from pydub import AudioSegment from pydub.utils import db_to_float # Let&amp;#39;s load up the audio we need.</description>
+from pydub import AudioSegment from pydub.utils import db_to_float # Let&#39;s load up the audio we need.</description>
     </item>
     
   </channel>

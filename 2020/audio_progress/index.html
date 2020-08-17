@@ -55,12 +55,21 @@ if (!doNotTrack) {
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/kuhungio.me"
+         "@id": "https://kuhungio.me"
     },
     "articleSection" : "posts",
-    "name" : "人声提取两大步骤：分离音频背景声\u002b过滤空白",
-    "headline" : "人声提取两大步骤：分离音频背景声\u002b过滤空白",
-    "description" : "背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。\n问题界定 这里将问题进行界定，进行子任务拆分：\n 将音频的背景声音去除， 去除“无声”阶段。  解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。\n在使用本领域“高深”的技术前，一定要思考，切莫手上有锤子，就看啥都像钉子。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。\n背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。\n背景声分离 但是若只有一个音轨呢？别担心，机器学习来帮助你。spleeter 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。\n该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下\n# Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load(\u0026#39;\/path\/to\/audio\/file\u0026#39;, sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform) 空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。\n这里参考 stackoverflow 的代码\nfrom pydub import AudioSegment from pydub.utils import db_to_float # Let\u0026#39;s load up the audio we need.",
+    "name" : "人声提取两大步骤：分离音频背景声&#43;过滤空白",
+    "headline" : "人声提取两大步骤：分离音频背景声&#43;过滤空白",
+    "description" : "背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
+问题界定 这里将问题进行界定，进行子任务拆分：
+ 将音频的背景声音去除， 去除“无声”阶段。  解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
+在使用本领域“高深”的技术前，一定要思考，切莫手上有锤子，就看啥都像钉子。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。
+背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。
+背景声分离 但是若只有一个音轨呢？别担心，机器学习来帮助你。spleeter 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。
+该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下
+# Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load('/path/to/audio/file', sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform)  空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。
+这里参考 stackoverflow 的代码
+from pydub import AudioSegment from pydub.utils import db_to_float # Let's load up the audio we need.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -68,11 +77,11 @@ if (!doNotTrack) {
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2020",
-    "datePublished": "2020-01-12 23:52:45 \u002b0800 CST",
-    "dateModified" : "2020-01-12 23:52:45 \u002b0800 CST",
-    "url" : "https:\/\/kuhungio.me\/2020\/audio_progress\/",
+    "datePublished": "2020-01-12 23:52:45 &#43;0800 CST",
+    "dateModified" : "2020-01-12 23:52:45 &#43;0800 CST",
+    "url" : "https://kuhungio.me/2020/audio_progress/",
     "wordCount" : "173",
-    "keywords" : [ "机器学习","音频处理","Python","Code", "Kuhung\u0027s Blog"]
+    "keywords" : [ "机器学习","音频处理","Python","Code", "Kuhung&#39;s Blog"]
 }
 </script>
 
@@ -156,10 +165,16 @@ if (!doNotTrack) {
   
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li><a href="#背景声分离">背景声分离</a></li>
-    <li><a href="#空白切割">空白切割</a></li>
-  </ul>
+<ul>
+<li><a href="#背景需求">背景需求</a></li>
+<li><a href="#问题界定">问题界定</a></li>
+<li><a href="#解决方案">解决方案</a>
+<ul>
+<li><a href="#背景声分离">背景声分离</a></li>
+<li><a href="#空白切割">空白切割</a></li>
+</ul></li>
+<li><a href="#其它参考">其它参考</a></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -211,61 +226,86 @@ if (!doNotTrack) {
           
           
 
-          <h1 id="背景需求">背景需求</h1>
+          
+
+<h1 id="背景需求">背景需求</h1>
+
 <p>在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。</p>
+
 <h1 id="问题界定">问题界定</h1>
+
 <p>这里将问题进行界定，进行子任务拆分：</p>
+
 <ol>
 <li>将音频的背景声音去除，</li>
 <li>去除“无声”阶段。</li>
 </ol>
+
 <h1 id="解决方案">解决方案</h1>
+
 <p>要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。</p>
+
 <p>在使用本领域“高深”的技术前，一定要思考，<strong>切莫手上有锤子，就看啥都像钉子</strong>。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。</p>
+
 <p>背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。</p>
+
 <h2 id="背景声分离">背景声分离</h2>
-<p>但是若只有一个音轨呢？别担心，机器学习来帮助你。<a href="https://github.com/deezer/spleeter">spleeter</a> 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。</p>
+
+<p>但是若只有一个音轨呢？别担心，机器学习来帮助你。<a href="https://github.com/deezer/spleeter" rel="nofollow noreferrer" target="_blank">spleeter</a> 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。</p>
+
 <p>该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Use audio loader explicitly for loading audio waveform :</span>
-<span style="color:#f92672">from</span> spleeter.audio.adapter <span style="color:#f92672">import</span> get_default_audio_adapter
 
-audio_loader <span style="color:#f92672">=</span> get_default_audio_adapter()
-sample_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">44100</span>
-waveform, _ <span style="color:#f92672">=</span> audio_loader<span style="color:#f92672">.</span>load(<span style="color:#e6db74">&#39;/path/to/audio/file&#39;</span>, sample_rate<span style="color:#f92672">=</span>sample_rate)
+<pre><code class="language-python"># Use audio loader explicitly for loading audio waveform :
+from spleeter.audio.adapter import get_default_audio_adapter
 
-<span style="color:#75715e"># Perform the separation :</span>
-prediction <span style="color:#f92672">=</span> separator<span style="color:#f92672">.</span>separate(waveform)
-</code></pre></div><h2 id="空白切割">空白切割</h2>
+audio_loader = get_default_audio_adapter()
+sample_rate = 44100
+waveform, _ = audio_loader.load('/path/to/audio/file', sample_rate=sample_rate)
+
+# Perform the separation :
+prediction = separator.separate(waveform)
+</code></pre>
+
+<h2 id="空白切割">空白切割</h2>
+
 <p>在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。</p>
-<p>这里参考 <a href="https://stackoverflow.com/questions/23730796/using-pydub-to-chop-up-a-long-audio-file">stackoverflow</a> 的代码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pydub <span style="color:#f92672">import</span> AudioSegment
-<span style="color:#f92672">from</span> pydub.utils <span style="color:#f92672">import</span> db_to_float
 
-<span style="color:#75715e"># Let&#39;s load up the audio we need...</span>
-podcast <span style="color:#f92672">=</span> AudioSegment<span style="color:#f92672">.</span>from_mp3(<span style="color:#e6db74">&#34;podcast.mp3&#34;</span>)
-intro <span style="color:#f92672">=</span> AudioSegment<span style="color:#f92672">.</span>from_wav(<span style="color:#e6db74">&#34;intro.wav&#34;</span>)
-outro <span style="color:#f92672">=</span> AudioSegment<span style="color:#f92672">.</span>from_wav(<span style="color:#e6db74">&#34;outro.wav&#34;</span>)
+<p>这里参考 <a href="https://stackoverflow.com/questions/23730796/using-pydub-to-chop-up-a-long-audio-file" rel="nofollow noreferrer" target="_blank">stackoverflow</a> 的代码</p>
 
-<span style="color:#75715e"># Let&#39;s consider anything that is 30 decibels quieter than</span>
-<span style="color:#75715e"># the average volume of the podcast to be silence</span>
-average_loudness <span style="color:#f92672">=</span> podcast<span style="color:#f92672">.</span>rms
-silence_threshold <span style="color:#f92672">=</span> average_loudness <span style="color:#f92672">*</span> db_to_float(<span style="color:#f92672">-</span><span style="color:#ae81ff">30</span>)
+<pre><code class="language-python">from pydub import AudioSegment
+from pydub.utils import db_to_float
 
-<span style="color:#75715e"># filter out the silence</span>
-podcast_parts <span style="color:#f92672">=</span> (ms <span style="color:#66d9ef">for</span> ms <span style="color:#f92672">in</span> podcast <span style="color:#66d9ef">if</span> ms<span style="color:#f92672">.</span>rms <span style="color:#f92672">&gt;</span> silence_threshold)
+# Let's load up the audio we need...
+podcast = AudioSegment.from_mp3(&quot;podcast.mp3&quot;)
+intro = AudioSegment.from_wav(&quot;intro.wav&quot;)
+outro = AudioSegment.from_wav(&quot;outro.wav&quot;)
 
-<span style="color:#75715e"># combine all the chunks back together</span>
-podcast <span style="color:#f92672">=</span> reduce(<span style="color:#66d9ef">lambda</span> a, b: a <span style="color:#f92672">+</span> b, podcast_parts)
+# Let's consider anything that is 30 decibels quieter than
+# the average volume of the podcast to be silence
+average_loudness = podcast.rms
+silence_threshold = average_loudness * db_to_float(-30)
 
-<span style="color:#75715e"># add on the bumpers</span>
-podcast <span style="color:#f92672">=</span> intro <span style="color:#f92672">+</span> podcast <span style="color:#f92672">+</span> outro
+# filter out the silence
+podcast_parts = (ms for ms in podcast if ms.rms &gt; silence_threshold)
 
-<span style="color:#75715e"># save the result</span>
-podcast<span style="color:#f92672">.</span>export(<span style="color:#e6db74">&#34;podcast_processed.mp3&#34;</span>, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mp3&#34;</span>)
-</code></pre></div><p>最后，得到完整的人声部分。</p>
+# combine all the chunks back together
+podcast = reduce(lambda a, b: a + b, podcast_parts)
+
+# add on the bumpers
+podcast = intro + podcast + outro
+
+# save the result
+podcast.export(&quot;podcast_processed.mp3&quot;, format=&quot;mp3&quot;)
+</code></pre>
+
+<p>最后，得到完整的人声部分。</p>
+
 <h1 id="其它参考">其它参考</h1>
-<p><a href="https://timsainburg.com/noise-reduction-python.html">Noise reduction using spectral gating in python</a></p>
-<p><a href="https://github.com/mikesmales/Udacity-ML-Capstone">Udacity 2018 Machine Learning Nanodegree Capstone project</a></p>
+
+<p><a href="https://timsainburg.com/noise-reduction-python.html" rel="nofollow noreferrer" target="_blank">Noise reduction using spectral gating in python</a></p>
+
+<p><a href="https://github.com/mikesmales/Udacity-ML-Capstone" rel="nofollow noreferrer" target="_blank">Udacity 2018 Machine Learning Nanodegree Capstone project</a></p>
+
 <p><a href="/about/">关于作者</a></p>
 
     </div>
@@ -337,7 +377,7 @@ podcast<span style="color:#f92672">.</span>export(<span style="color:#e6db74">&#
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: 'aca1303e279917cdf2cc6be9be460e6c',
-        title: '人声提取两大步骤：分离音频背景声\u002b过滤空白',
+        title: '人声提取两大步骤：分离音频背景声\x2b过滤空白',
         clientID: '7e5b8bd7063e5315e349',
         clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
         repo: 'kuhung.github.io',

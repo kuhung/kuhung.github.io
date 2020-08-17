@@ -55,12 +55,18 @@ if (!doNotTrack) {
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https:\/\/kuhungio.me"
+         "@id": "https://kuhungio.me"
     },
     "articleSection" : "posts",
     "name" : "一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary ",
     "headline" : "一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary ",
-    "description" : "Source https:\/\/www.kaggle.com\/c\/recruit-restaurant-visitor-forecasting\/discussion\n总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。\n 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 \u0026ldquo;golden week\u0026rdquo; 与 \u0026ldquo;new year\u0026rdquo; 类比，选取 \u0026ldquo;new year\u0026rdquo; 段作为验证集。  tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。\n总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 \u0026ldquo;golden week\u0026rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。\n 方式一:：等同法   The rules:\nTreat holiday as Saturday\nIf the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.",
+    "description" : "Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
+总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
+ 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &ldquo;golden week&rdquo; 与 &ldquo;new year&rdquo; 类比，选取 &ldquo;new year&rdquo; 段作为验证集。  tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。
+总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &ldquo;golden week&rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。
+ 方式一:：等同法   The rules:
+Treat holiday as Saturday
+If the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -68,11 +74,11 @@ if (!doNotTrack) {
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2018",
-    "datePublished": "2018-02-08 00:00:00 \u002b0000 UTC",
-    "dateModified" : "2018-02-08 00:00:00 \u002b0000 UTC",
-    "url" : "https:\/\/kuhungio.me\/2018\/time-series-problem-summary\/",
+    "datePublished": "2018-02-08 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-02-08 00:00:00 &#43;0000 UTC",
+    "url" : "https://kuhungio.me/2018/time-series-problem-summary/",
     "wordCount" : "237",
-    "keywords" : [ "时序问题", "Kuhung\u0027s Blog"]
+    "keywords" : [ "时序问题", "Kuhung&#39;s Blog"]
 }
 </script>
 
@@ -139,7 +145,7 @@ if (!doNotTrack) {
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhungio.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
+                        <a href="https://kuhungio.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
                         <a href="https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
                         
                 </span>
@@ -157,16 +163,21 @@ if (!doNotTrack) {
   
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#总结一保证数据同分布">总结一：保证数据同分布</a></li>
-        <li><a href="#总结二异常值特殊处理">总结二：异常值特殊处理</a></li>
-        <li><a href="#总结三特征构造靠倒推">总结三：特征构造靠倒推</a></li>
-        <li><a href="#总结四独立建模">总结四：独立建模</a></li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#总结一-保证数据同分布">总结一：保证数据同分布</a></li>
+<li><a href="#总结二-异常值特殊处理">总结二：异常值特殊处理</a></li>
+<li><a href="#总结三-特征构造靠倒推">总结三：特征构造靠倒推</a></li>
+<li><a href="#总结四-独立建模">总结四：独立建模</a>
+<ul>
+<li><a href="#个人感想">个人感想</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 </nav>
   </div>
 </div>
@@ -218,58 +229,86 @@ if (!doNotTrack) {
           
           
 
-          <p>Source <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion">https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion</a></p>
-<h3 id="总结一保证数据同分布">总结一：保证数据同分布</h3>
+          
+
+<p>Source <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion" rel="nofollow noreferrer" target="_blank">https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion</a></p>
+
+<h3 id="总结一-保证数据同分布">总结一：保证数据同分布</h3>
+
 <p>验证集的选取，分布上应尽量靠近测试集。</p>
+
 <ul>
 <li>方式一:：对抗验证集的生成。</li>
 <li>方式二： 就近选取相同天数。</li>
 <li>方式三:：类比属性。如本赛题 &ldquo;golden week&rdquo; 与 &ldquo;new year&rdquo; 类比，选取 &ldquo;new year&rdquo; 段作为验证集。</li>
 </ul>
+
 <p>tips: <strong>kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。</strong></p>
-<h3 id="总结二异常值特殊处理">总结二：异常值特殊处理</h3>
+
+<h3 id="总结二-异常值特殊处理">总结二：异常值特殊处理</h3>
+
 <p>一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &ldquo;golden week&rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。</p>
-<!-- raw HTML omitted -->
+
+<!-- more -->
+
 <ul>
 <li>方式一:：等同法</li>
 </ul>
+
 <blockquote>
 <p>The rules:</p>
+
 <p>Treat holiday as Saturday</p>
+
 <p>If the day before holiday is weekday ,treat the day before holiday as Friday
 If the day after holiday is weekday ,treat the day after holiday as Monday
 it work not only golden week but also a lot other holidays.</p>
+
 <p>So the trick is from careful EDA and CV rather than luck</p>
 </blockquote>
+
 <ul>
 <li>方式二:：标记法</li>
 </ul>
+
 <blockquote>
 <p>days-from-holiday or days-to-holiday
 or
 0/1 flags whether the previous/next day and second-to-last/next-but-one day is a holiday.</p>
 </blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#75715e">#Source https://github.com/MaxHalford/kaggle-recruit-restaurant/blob/master/Solution.ipynb</span>
 
-date_info <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data/kaggle/date_info.csv&#39;</span>)
-date_info<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;holiday_flg&#39;</span>: <span style="color:#e6db74">&#39;is_holiday&#39;</span>, <span style="color:#e6db74">&#39;calendar_date&#39;</span>: <span style="color:#e6db74">&#39;visit_date&#39;</span>}, inplace<span style="color:#f92672">=</span>True)
-date_info[<span style="color:#e6db74">&#39;prev_day_is_holiday&#39;</span>] <span style="color:#f92672">=</span> date_info[<span style="color:#e6db74">&#39;is_holiday&#39;</span>]<span style="color:#f92672">.</span>shift()<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
-date_info[<span style="color:#e6db74">&#39;next_day_is_holiday&#39;</span>] <span style="color:#f92672">=</span> date_info[<span style="color:#e6db74">&#39;is_holiday&#39;</span>]<span style="color:#f92672">.</span>shift(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+<pre><code class="language-Python">#Source https://github.com/MaxHalford/kaggle-recruit-restaurant/blob/master/Solution.ipynb
 
-date_info<span style="color:#f92672">.</span>head()
-</code></pre></div><h3 id="总结三特征构造靠倒推">总结三：特征构造靠倒推</h3>
+date_info = pd.read_csv('data/kaggle/date_info.csv')
+date_info.rename(columns={'holiday_flg': 'is_holiday', 'calendar_date': 'visit_date'}, inplace=True)
+date_info['prev_day_is_holiday'] = date_info['is_holiday'].shift().fillna(0)
+date_info['next_day_is_holiday'] = date_info['is_holiday'].shift(-1).fillna(0)
+
+date_info.head()
+</code></pre>
+
+<h3 id="总结三-特征构造靠倒推">总结三：特征构造靠倒推</h3>
+
 <p>时间序列的特征生成，还是多靠 lagging 往前推的手法。</p>
-<p>Source <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174">https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174</a></p>
+
+<p>Source <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174" rel="nofollow noreferrer" target="_blank">https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49174</a></p>
+
 <blockquote>
 <p>lagging visitors features 1-14 (by &lsquo;air_store_id&rsquo; and by dayOfWeek), lagging visitors features 1-14 (by &lsquo;air_store_id&rsquo; only), the lagging-difference visitors features 1-13, the lagging-difference-delta4 visitors features 1-10, WeightedMovingAverage for the lagging lagging visitors features, mean/median/min/max/(percentile10,30,70,90)/sum/count visitor stats features for past 14 days, 28 days, 60 days, 90 days, 120 days, 180 days, 364 days (by &lsquo;air_store_id&rsquo; and by dayOfWeek), mean/median/min/max/(percentile10,30,70,90)/sum/count visitor stats features for past 14 days, 28 days, 60 days, 90 days, 120 days, 180 days, 364 days (by &lsquo;air_store_id&rsquo; only).
 or
 mean weekly visitors up to lag 20 and for mean monthly visitors up to lag 8 or so&hellip;</p>
 </blockquote>
-<h3 id="总结四独立建模">总结四：独立建模</h3>
+
+<h3 id="总结四-独立建模">总结四：独立建模</h3>
+
 <p>模型训练。时间序列问题，一般是预测未来一段时间的情况。针对总结三中的特征生成方法，为避免过拟合，宜采用每天分开建模的方法。原因在于：靠后的时间，其特征依赖前面的预测结果来生成。</p>
-<hr>
+
+<hr />
+
 <h4 id="个人感想">个人感想</h4>
+
 <p>取得好效果，大多数时间靠的不是复杂的模型、不是复杂的CV方式，而是<strong>对数据的观察</strong>（如： holiday trick 加公开的 kernel， 就可以取得银牌的成绩）以及<strong>特征构造方面的实践</strong>。</p>
+
 <p><strong>Top solutions are rather simple.</strong></p>
 
     </div>
