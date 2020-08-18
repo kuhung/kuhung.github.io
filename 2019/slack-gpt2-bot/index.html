@@ -55,20 +55,12 @@ if (!doNotTrack) {
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://kuhungio.me"
+         "@id": "https:\/\/kuhungio.me"
     },
     "articleSection" : "posts",
     "name" : "GPT2 模型生成假正经文稿 Slack gpt2 Bot ",
     "headline" : "GPT2 模型生成假正经文稿 Slack gpt2 Bot ",
-    "description" : "slack app：slack workspace
-记得在校的时候，冰岩作坊做过一个app，讲接龙故事的。类似于我写一段，另一个人写接下来的一段，最后凑成一个完整的故事。当时，可产生了不少有意思的段子。最近，GPT2 模型的发布，让人不禁想到，有没有可能让机器来完成这个任务呢？机器写十四行诗、机器写莎士比亚风格的文章，机器写对联，这些都已经成为了现实。人工智能虽然没有带来突飞猛进的质变，但着实催生了很多有意思的小玩意儿。对于GPT2，一个字概括来说就是：壕——数据量大，算力能够 cover 住。这套算法模型网罗了几乎现有的所有文本数据，成功“过拟合“地屠榜，刷新多个 NLP 任务榜单排行。作者为了预防滥用模型、同时让别的研究者能够有个初步地认识，开源了一个小一些地模型。该模型的能力之一，就是我们今天的主题：接着别人地话写故事。今天我们要通过算法来实现。
-虽然作者有在尽力简化复现难度，但对于很多不是这行的人，让他去敲命令行来走完整个流程，还是困难重重。能够将深奥的原理讲给普通人听，并且简单易懂，是一项科学传播的必备能力。做为技术向的工程师，在产品处于雏形阶段时，能够通过一个 MVP 最小价值产品，实现核心功能，也是一项大大的加分项。对于今天的任务，我们选取容易上手，接口丰富的 slack 作为我们的前端交互窗口。
-如何构建一个 MVP 产品；或者具体的来讲，在我们的这个任务中，如何将数据挖掘工程师的模型成果，转化为可落地、可感知的产品或服务呢。操起斧子直接开干，依葫芦画瓢撸个前后端出来吗？这，其实是很多技术人员的一个误区——认为什么都可以从技术层面解决，”少废话别bb，bb is cheap，show me the code“。但从一个商业产品或服务商的角度来看，客户与渠道是前台，我们的客户是谁、如何触达客户以及选用何种渠道维系客户，是一个一开始就要考虑的事情。
-以这个 GPT2 bot 为例，我希望的客户是对 GPT感兴趣，但又没基础去折腾的学生或是其他领域的人士，抑或是没时间去跑 demo 的专业同行。如何触达客户：你看的这篇文章的平台，就是我的触达媒介。我最后选择用 slack 交付我的服务，而不是 qq 或 微信，是因为他成本更低，虽然阻挡了部分潜在客户，但权衡后是可以接受的。最后的工作才是依葫芦画瓢，照撸一个出来。本文参照了EdwardHuCS,并在其基础上做了部分改动。
-虽然这波 AI 热潮，让很多像我这样的非科班得以上车。但在实际生产环境中，我们还是暴露了诸多问题。其中之一，便是工程能力薄弱。会写 SQL 、会手推算法、会调包，但是就是不会写能跑的整个小系统。在业务变化快的公司中，这可能不是一个好事情。你的模型也许还在细调参数，但突然整个业务就没了。如果你能拿出一个能跑的马儿，兴许能影响这个业务。这就是前面提到的加分项。
-言归正传，我们回到在slack上面。我们的核心就以下代码：
-核心代码解读 导入一些基础配置
-import os import time import re from slackclient import SlackClient import sys from gpt2.src import generate_unconditional_samples # instantiate Slackk client slack_client = SlackClient('') # 认证口令 # starterbot's user ID in Slack: value is ssigned after the bot starts up starterbot_id = None  延迟配置以及样例和匹配模式",
+    "description" : "slack app：slack workspace\n 记得在校的时候，冰岩作坊做过一个app，讲接龙故事的。类似于我写一段，另一个人写接下来的一段，最后凑成一个完整的故事。当时，可产生了不少有意思的段子。最近，GPT2 模型的发布，让人不禁想到，有没有可能让机器来完成这个任务呢？机器写十四行诗、机器写莎士比亚风格的文章，机器写对联，这些都已经成为了现实。人工智能虽然没有带来突飞猛进的质变，但着实催生了很多有意思的小玩意儿。对于GPT2，一个字概括来说就是：壕——数据量大，算力能够 cover 住。这套算法模型网罗了几乎现有的所有文本数据，成功“过拟合“地屠榜，刷新多个 NLP 任务榜单排行。作者为了预防滥用模型、同时让别的研究者能够有个初步地认识，开源了一个小一些地模型。该模型的能力之一，就是我们今天的主题：接着别人地话写故事。今天我们要通过算法来实现。\n虽然作者有在尽力简化复现难度，但对于很多不是这行的人，让他去敲命令行来走完整个流程，还是困难重重。能够将深奥的原理讲给普通人听，并且简单易懂，是一项科学传播的必备能力。做为技术向的工程师，在产品处于雏形阶段时，能够通过一个 MVP 最小价值产品，实现核心功能，也是一项大大的加分项。对于今天的任务，我们选取容易上手，接口丰富的 slack 作为我们的前端交互窗口。\n如何构建一个 MVP 产品；或者具体的来讲，在我们的这个任务中，如何将数据挖掘工程师的模型成果，转化为可落地、可感知的产品或服务呢。操起斧子直接开干，依葫芦画瓢撸个前后端出来吗？这，其实是很多技术人员的一个误区——认为什么都可以从技术层面解决，”少废话别bb，bb is cheap，show me the code“。但从一个商业产品或服务商的角度来看，客户与渠道是前台，我们的客户是谁、如何触达客户以及选用何种渠道维系客户，是一个一开始就要考虑的事情。\n以这个 GPT2 bot 为例，我希望的客户是对 GPT感兴趣，但又没基础去折腾的学生或是其他领域的人士，抑或是没时间去跑 demo 的专业同行。如何触达客户：你看的这篇文章的平台，就是我的触达媒介。我最后选择用 slack 交付我的服务，而不是 qq 或 微信，是因为他成本更低，虽然阻挡了部分潜在客户，但权衡后是可以接受的。最后的工作才是依葫芦画瓢，照撸一个出来。本文参照了EdwardHuCS,并在其基础上做了部分改动。\n虽然这波 AI 热潮，让很多像我这样的非科班得以上车。但在实际生产环境中，我们还是暴露了诸多问题。其中之一，便是工程能力薄弱。会写 SQL 、会手推算法、会调包，但是就是不会写能跑的整个小系统。在业务变化快的公司中，这可能不是一个好事情。你的模型也许还在细调参数，但突然整个业务就没了。如果你能拿出一个能跑的马儿，兴许能影响这个业务。这就是前面提到的加分项。\n言归正传，我们回到在slack上面。我们的核心就以下代码：\n核心代码解读 导入一些基础配置\nimport os import time import re from slackclient import SlackClient import sys from gpt2.src import generate_unconditional_samples # instantiate Slackk client slack_client = SlackClient(\u0026#39;\u0026#39;) # 认证口令 # starterbot\u0026#39;s user ID in Slack: value is ssigned after the bot starts up starterbot_id = None 延迟配置以及样例和匹配模式",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -76,11 +68,11 @@ import os import time import re from slackclient import SlackClient import sys f
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-25 22:36:06 &#43;0800 CST",
-    "dateModified" : "2019-03-25 22:36:06 &#43;0800 CST",
-    "url" : "https://kuhungio.me/2019/slack-gpt2-bot/",
+    "datePublished": "2019-03-25 22:36:06 \u002b0800 CST",
+    "dateModified" : "2019-03-25 22:36:06 \u002b0800 CST",
+    "url" : "https:\/\/kuhungio.me\/2019\/slack-gpt2-bot\/",
     "wordCount" : "413",
-    "keywords" : [ "NLP","bot","app", "Kuhung&#39;s Blog"]
+    "keywords" : [ "NLP","bot","app", "Kuhung\u0027s Blog"]
 }
 </script>
 
@@ -165,14 +157,11 @@ import os import time import re from slackclient import SlackClient import sys f
   
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#核心代码解读">核心代码解读</a></li>
-<li><a href="#开始安装并运行">开始安装并运行</a></li>
-<li><a href="#总结">总结</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#核心代码解读">核心代码解读</a></li>
+    <li><a href="#开始安装并运行">开始安装并运行</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
 </nav>
   </div>
 </div>
@@ -226,126 +215,94 @@ import os import time import re from slackclient import SlackClient import sys f
           
           
 
-          
-
-<p><strong>slack app：<a href="https://join.slack.com/t/kuhung/shared_invite/enQtNTc4ODcxNDUwNzA1LTI4ODNlODRhMjc1NGY2M2IwYjNhNmUzYmNiMzMyNTliN2E2ZWMxNWIzZjMzMzVkOTlkNzExNWVhYzZkNmYzMjI" rel="nofollow noreferrer" target="_blank">slack workspace</a></strong></p>
-
-<hr />
-
+          <p><strong>slack app：<a href="https://join.slack.com/t/kuhung/shared_invite/enQtNTc4ODcxNDUwNzA1LTI4ODNlODRhMjc1NGY2M2IwYjNhNmUzYmNiMzMyNTliN2E2ZWMxNWIzZjMzMzVkOTlkNzExNWVhYzZkNmYzMjI">slack workspace</a></strong></p>
+<hr>
 <p>记得在校的时候，冰岩作坊做过一个app，讲接龙故事的。类似于我写一段，另一个人写接下来的一段，最后凑成一个完整的故事。当时，可产生了不少有意思的段子。最近，GPT2 模型的发布，让人不禁想到，有没有可能让机器来完成这个任务呢？机器写十四行诗、机器写莎士比亚风格的文章，机器写对联，这些都已经成为了现实。人工智能虽然没有带来突飞猛进的质变，但着实催生了很多有意思的小玩意儿。对于GPT2，一个字概括来说就是：壕——数据量大，算力能够 cover 住。这套算法模型网罗了几乎现有的所有文本数据，成功“过拟合“地屠榜，刷新多个 NLP 任务榜单排行。作者为了预防滥用模型、同时让别的研究者能够有个初步地认识，开源了一个小一些地模型。该模型的能力之一，就是我们今天的主题：接着别人地话写故事。今天我们要通过算法来实现。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/slack-gpt2/slack.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
-
+<p><img src="/images/slack-gpt2/slack.jpg" alt=""></p>
 <p>虽然作者有在尽力简化复现难度，但对于很多不是这行的人，让他去敲命令行来走完整个流程，还是困难重重。能够将深奥的原理讲给普通人听，并且简单易懂，是一项科学传播的必备能力。做为技术向的工程师，在产品处于雏形阶段时，能够通过一个 MVP 最小价值产品，实现核心功能，也是一项大大的加分项。对于今天的任务，我们选取容易上手，接口丰富的 slack 作为我们的前端交互窗口。</p>
-
 <p>如何构建一个 MVP 产品；或者具体的来讲，在我们的这个任务中，如何将数据挖掘工程师的模型成果，转化为可落地、可感知的产品或服务呢。操起斧子直接开干，依葫芦画瓢撸个前后端出来吗？这，其实是很多技术人员的一个误区——认为什么都可以从技术层面解决，”少废话别bb，bb is cheap，show me the code“。但从一个商业产品或服务商的角度来看，客户与渠道是前台，我们的客户是谁、如何触达客户以及选用何种渠道维系客户，是一个一开始就要考虑的事情。</p>
-
-<p>以这个 GPT2 bot 为例，我希望的客户是对 GPT感兴趣，但又没基础去折腾的学生或是其他领域的人士，抑或是没时间去跑 demo 的专业同行。如何触达客户：你看的这篇文章的平台，就是我的触达媒介。我最后选择用 slack 交付我的服务，而不是 qq 或 微信，是因为他成本更低，虽然阻挡了部分潜在客户，但权衡后是可以接受的。最后的工作才是依葫芦画瓢，照撸一个出来。本文参照了<a href="https://github.com/EdwardHuCS/slack-gpt2" rel="nofollow noreferrer" target="_blank">EdwardHuCS</a>,并在其基础上做了部分改动。</p>
-
+<p>以这个 GPT2 bot 为例，我希望的客户是对 GPT感兴趣，但又没基础去折腾的学生或是其他领域的人士，抑或是没时间去跑 demo 的专业同行。如何触达客户：你看的这篇文章的平台，就是我的触达媒介。我最后选择用 slack 交付我的服务，而不是 qq 或 微信，是因为他成本更低，虽然阻挡了部分潜在客户，但权衡后是可以接受的。最后的工作才是依葫芦画瓢，照撸一个出来。本文参照了<a href="https://github.com/EdwardHuCS/slack-gpt2">EdwardHuCS</a>,并在其基础上做了部分改动。</p>
 <p>虽然这波 AI 热潮，让很多像我这样的非科班得以上车。但在实际生产环境中，我们还是暴露了诸多问题。其中之一，便是工程能力薄弱。会写 SQL 、会手推算法、会调包，但是就是不会写能跑的整个小系统。在业务变化快的公司中，这可能不是一个好事情。你的模型也许还在细调参数，但突然整个业务就没了。如果你能拿出一个能跑的马儿，兴许能影响这个业务。这就是前面提到的加分项。</p>
-
 <p>言归正传，我们回到在slack上面。我们的核心就以下代码：</p>
-
 <h2 id="核心代码解读">核心代码解读</h2>
-
 <p>导入一些基础配置</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> re
+<span style="color:#f92672">from</span> slackclient <span style="color:#f92672">import</span> SlackClient
+<span style="color:#f92672">import</span> sys
+<span style="color:#f92672">from</span> gpt2.src <span style="color:#f92672">import</span> generate_unconditional_samples
+<span style="color:#75715e"># instantiate Slackk client</span>
+slack_client <span style="color:#f92672">=</span> SlackClient(<span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#75715e"># 认证口令</span>
+<span style="color:#75715e"># starterbot&#39;s user ID in Slack: value is ssigned after the bot starts up</span>
+starterbot_id <span style="color:#f92672">=</span> None
 
-<pre><code class="language-python">import os
-import time
-import re
-from slackclient import SlackClient
-import sys
-from gpt2.src import generate_unconditional_samples
-# instantiate Slackk client
-slack_client = SlackClient('') # 认证口令
-# starterbot's user ID in Slack: value is ssigned after the bot starts up
-starterbot_id = None
+</code></pre></div><p>延迟配置以及样例和匹配模式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># constants</span>
+RTM_READ_DELAY <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e"># 1 second delay between reading from RTM</span>
+EXAMPLE_COMMAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;God, to me, is like a &#34;</span>
+MENTION_REGEX <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;^&lt;@(|[WU].+?)&gt;(.*)&#34;</span> 
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">通过</span> slack <span style="color:#960050;background-color:#1e0010">的事件，解析出我们的消息和对应的频道</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_bot_commands</span>(slack_events):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Parses a list of events coming from the Slack RTM API to find bot commands.
+</span><span style="color:#e6db74">        If a bot command is found, this function returns a tuple of command and channel.
+</span><span style="color:#e6db74">        If its not found, then this function returns None, None.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">for</span> event <span style="color:#f92672">in</span> slack_events:
+        <span style="color:#66d9ef">if</span> event[<span style="color:#e6db74">&#34;type&#34;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">and</span> <span style="color:#f92672">not</span> <span style="color:#e6db74">&#34;subtype&#34;</span> <span style="color:#f92672">in</span> event:
+            user_id, message <span style="color:#f92672">=</span> parse_direct_mention(event[<span style="color:#e6db74">&#34;text&#34;</span>])
+            <span style="color:#66d9ef">if</span> user_id <span style="color:#f92672">==</span> starterbot_id:
+                <span style="color:#66d9ef">return</span> message, event[<span style="color:#e6db74">&#34;channel&#34;</span>]
+    <span style="color:#66d9ef">return</span> None, None
+</code></pre></div><p>消息解析</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_direct_mention</span>(message_text):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Finds a direct mention (a mention that is at the beginning) in message text
+</span><span style="color:#e6db74">        and returns the user ID which was mentioned. If there is no direct mention, returns None
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    matches <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(MENTION_REGEX, message_text)
+    <span style="color:#75715e"># the first group contains the username, the second group contains the remaining message</span>
+    <span style="color:#66d9ef">return</span> (matches<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>), matches<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>strip()) <span style="color:#66d9ef">if</span> matches <span style="color:#66d9ef">else</span> (None, None)
+</code></pre></div><p><strong>核心的模型导入</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_command</span>(command, channel):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Executes bot command if the command is known
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#75715e"># Default response is help text for the user</span>
+    response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Not sure what you mean. Try *{}*.&#34;</span><span style="color:#f92672">.</span>format(EXAMPLE_COMMAND)
 
-</code></pre>
-
-<p>延迟配置以及样例和匹配模式</p>
-
-<pre><code class="language-python"># constants
-RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
-EXAMPLE_COMMAND = &quot;God, to me, is like a &quot;
-MENTION_REGEX = &quot;^&lt;@(|[WU].+?)&gt;(.*)&quot; 
-</code></pre>
-
-<pre><code class="language-python">通过 slack 的事件，解析出我们的消息和对应的频道
-def parse_bot_commands(slack_events):
-    &quot;&quot;&quot;
-        Parses a list of events coming from the Slack RTM API to find bot commands.
-        If a bot command is found, this function returns a tuple of command and channel.
-        If its not found, then this function returns None, None.
-    &quot;&quot;&quot;
-    for event in slack_events:
-        if event[&quot;type&quot;] == &quot;message&quot; and not &quot;subtype&quot; in event:
-            user_id, message = parse_direct_mention(event[&quot;text&quot;])
-            if user_id == starterbot_id:
-                return message, event[&quot;channel&quot;]
-    return None, None
-</code></pre>
-
-<p>消息解析</p>
-
-<pre><code class="language-python">def parse_direct_mention(message_text):
-    &quot;&quot;&quot;
-        Finds a direct mention (a mention that is at the beginning) in message text
-        and returns the user ID which was mentioned. If there is no direct mention, returns None
-    &quot;&quot;&quot;
-    matches = re.search(MENTION_REGEX, message_text)
-    # the first group contains the username, the second group contains the remaining message
-    return (matches.group(1), matches.group(2).strip()) if matches else (None, None)
-</code></pre>
-
-<p><strong>核心的模型导入</strong></p>
-
-<pre><code class="language-python">def handle_command(command, channel):
-    &quot;&quot;&quot;
-        Executes bot command if the command is known
-    &quot;&quot;&quot;
-    # Default response is help text for the user
-    response = &quot;Not sure what you mean. Try *{}*.&quot;.format(EXAMPLE_COMMAND)
-
-    # This is where you start to implement more commands!
-    if len(command) &lt; 2:
-        response = &quot;Sure...write some more text then I can do that!&quot;
-    else:
-        # 这里可以替换成任何你想要的模型
-        response = '&quot;'+command+generate_unconditional_samples.sample_model(nsamples=1, length=6*len(command), top_k=len(command), command=command)[0]
+    <span style="color:#75715e"># This is where you start to implement more commands!</span>
+    <span style="color:#66d9ef">if</span> len(command) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+        response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Sure...write some more text then I can do that!&#34;</span>
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#75715e"># 这里可以替换成任何你想要的模型</span>
+        response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#34;&#39;</span><span style="color:#f92672">+</span>command<span style="color:#f92672">+</span>generate_unconditional_samples<span style="color:#f92672">.</span>sample_model(nsamples<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, length<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span><span style="color:#f92672">*</span>len(command), top_k<span style="color:#f92672">=</span>len(command), command<span style="color:#f92672">=</span>command)[<span style="color:#ae81ff">0</span>]
 
 
-    # Sends the response back to the channel
-    slack_client.api_call(
-        &quot;chat.postMessage&quot;,
-        channel=channel,
-        text=response)
-</code></pre>
-
-<p>主函数入口</p>
-
-<pre><code class="language-python">if __name__ == &quot;__main__&quot;:
-    if slack_client.rtm_connect(with_team_state=False):
-        print(&quot;Starter Bot connected and running!&quot;)
-        # Read bot's user ID by calling Web API method `auth.test`
-        starterbot_id = slack_client.api_call(&quot;auth.test&quot;)[&quot;user_id&quot;]
-        while True:
-            command, channel = parse_bot_commands(slack_client.rtm_read())
-            if command:
+    <span style="color:#75715e"># Sends the response back to the channel</span>
+    slack_client<span style="color:#f92672">.</span>api_call(
+        <span style="color:#e6db74">&#34;chat.postMessage&#34;</span>,
+        channel<span style="color:#f92672">=</span>channel,
+        text<span style="color:#f92672">=</span>response)
+</code></pre></div><p>主函数入口</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#66d9ef">if</span> slack_client<span style="color:#f92672">.</span>rtm_connect(with_team_state<span style="color:#f92672">=</span>False):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Starter Bot connected and running!&#34;</span>)
+        <span style="color:#75715e"># Read bot&#39;s user ID by calling Web API method `auth.test`</span>
+        starterbot_id <span style="color:#f92672">=</span> slack_client<span style="color:#f92672">.</span>api_call(<span style="color:#e6db74">&#34;auth.test&#34;</span>)[<span style="color:#e6db74">&#34;user_id&#34;</span>]
+        <span style="color:#66d9ef">while</span> True:
+            command, channel <span style="color:#f92672">=</span> parse_bot_commands(slack_client<span style="color:#f92672">.</span>rtm_read())
+            <span style="color:#66d9ef">if</span> command:
                 handle_command(command, channel)
-            time.sleep(RTM_READ_DELAY)
-    else:
-        print(&quot;Connection failed. Exception traceback printed above.&quot;)
-</code></pre>
-
-<h2 id="开始安装并运行">开始安装并运行</h2>
-
-<pre><code class="language-shell">git clone git@github.com:kuhung/slack-gpt2.git
+            time<span style="color:#f92672">.</span>sleep(RTM_READ_DELAY)
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Connection failed. Exception traceback printed above.&#34;</span>)
+</code></pre></div><h2 id="开始安装并运行">开始安装并运行</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone git@github.com:kuhung/slack-gpt2.git
 cd slack-gpt2
 获取 slack app 的 token，并填充进上面的 slack_client
-</code></pre>
-
-<pre><code class="language-shell">conda create -n slackbot python=3.6
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">conda create -n slackbot python<span style="color:#f92672">=</span>3.6
 source activate slackbot
 pip install -r requirements.txt
 cd gpt2
@@ -353,12 +310,8 @@ pip install -r requirements.txt
 python download_model.py 117M
 cd ..
 python starterbot.py
-</code></pre>
-
-<p>如果你不熟悉或从来没用过slack，也没关系，还记得开头说的交付吗？直接加入我的 workspace，一起测评 GPT2 bot。链接：<a href="https://join.slack.com/t/kuhung/shared_invite/enQtNTc4ODcxNDUwNzA1LTI4ODNlODRhMjc1NGY2M2IwYjNhNmUzYmNiMzMyNTliN2E2ZWMxNWIzZjMzMzVkOTlkNzExNWVhYzZkNmYzMjI" rel="nofollow noreferrer" target="_blank">加入我的 slack workspace</a></p>
-
+</code></pre></div><p>如果你不熟悉或从来没用过slack，也没关系，还记得开头说的交付吗？直接加入我的 workspace，一起测评 GPT2 bot。链接：<a href="https://join.slack.com/t/kuhung/shared_invite/enQtNTc4ODcxNDUwNzA1LTI4ODNlODRhMjc1NGY2M2IwYjNhNmUzYmNiMzMyNTliN2E2ZWMxNWIzZjMzMzVkOTlkNzExNWVhYzZkNmYzMjI">加入我的 slack workspace</a></p>
 <h2 id="总结">总结</h2>
-
 <p>如同大多数应用场景一样，数据挖掘的算法需要落地，最好的办法就是封装成一个接口，给到前后端去调用。这其中还有很多性能优化的东西，但作为一个 sideproject，以上操作足够让你给别人眼前一亮的感觉。</p>
 
     </div>
