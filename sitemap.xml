@@ -2,19 +2,9 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://kuhungio.me/2020/statistics-tell-lies/</loc>
-      
-      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://kuhungio.me/categories/</loc>
       
-      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
       
       
       
@@ -24,7 +14,7 @@
     <url>
       <loc>https://kuhungio.me/</loc>
       
-      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
       
       
       
@@ -34,7 +24,7 @@
     <url>
       <loc>https://kuhungio.me/posts/</loc>
       
-      <lastmod>2020-07-25T20:43:52+08:00</lastmod>
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
       
       
       
@@ -43,6 +33,46 @@
   
     <url>
       <loc>https://kuhungio.me/tags/</loc>
+      
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/2020/data-engineering-in-2020/</loc>
+      
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
+      
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</loc>
+      
+      <lastmod>2020-09-17T21:51:46+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhungio.me/2020/statistics-tell-lies/</loc>
       
       <lastmod>2020-07-25T20:43:52+08:00</lastmod>
       
@@ -103,16 +133,6 @@
   
     <url>
       <loc>https://kuhungio.me/tags/%E7%AD%96%E7%95%A5/</loc>
-      
-      <lastmod>2020-06-18T23:18:26+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</loc>
       
       <lastmod>2020-06-18T23:18:26+08:00</lastmod>
       
@@ -283,16 +303,6 @@
   
     <url>
       <loc>https://kuhungio.me/2020/remote/</loc>
-      
-      <lastmod>2020-03-07T17:43:44+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</loc>
       
       <lastmod>2020-03-07T17:43:44+08:00</lastmod>
       

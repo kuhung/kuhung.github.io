@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 25 Jul 2020 20:43:52 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2020 21:51:46 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>行业观察</title>
+      <link>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
+      <pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>数据分析</title>
@@ -107,15 +116,6 @@
       <pubDate>Mon, 13 Apr 2020 21:17:08 +0800</pubDate>
       
       <guid>https://kuhungio.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>行业观察</title>
-      <link>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
-      <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</guid>
       <description></description>
     </item>
     
