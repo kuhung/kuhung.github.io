@@ -6,10 +6,33 @@
     <description>Recent content in Side Project on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 13 Apr 2020 21:17:08 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2020 00:37:39 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/categories/side-project/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>原神放置类小游戏反馈收集</title>
+      <link>https://kuhungio.me/2020/yuanshen-idle-feedback/</link>
+      <pubDate>Mon, 16 Nov 2020 00:37:39 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/yuanshen-idle-feedback/</guid>
+      <description>很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。
+游戏模板来源于 Couy69 的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。
+对这款放置挂类游戏的任何建议，欢迎通过以下三种方式联系。
+ 拥有 GitHub 账号，可直接下方留言。 关注我万年不发一条的微信公众号【谷粒说数】，留言反馈。 发送电子邮件至 kuhung#foxmail.com(@替换#)，进行反馈。  请选择你最方便的形式。
+为答谢各位的支持，计划于12月1号，送出三份原神周边。自掏腰包😂，抽取三位提出宝贵建议的同学，快递上门。
+另寻前端高手，迭代优化交互逻辑。
+目前的更新计划：
+  完成全部副本的文字描述替换
+  加入深镜螺旋无尽模式
+  调整增益道具UI
+  增加道具洗练，将摩拉进行消耗
+  调整暴击逻辑，增加随机性
+  将增益扩充至5个，对齐圣遗物
+   游戏 Tip：
+ 点击保存，保存的游戏进度在本地，离开再回来，仍能继续。  </description>
+    </item>
     
     <item>
       <title>自制以图搜图引擎，居家学习必备</title>

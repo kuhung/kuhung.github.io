@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷粒,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-76017508-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <link rel="prev" href="https://kuhungio.me/2020/pmp/" />
+  
+  <link rel="canonical" href="https://kuhungio.me/2020/yuanshen-idle-feedback/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           原神放置类小游戏反馈收集 | Kuhung&#39;s Blog
+       
+  </title>
+  <meta name="title" content="原神放置类小游戏反馈收集 | Kuhung&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "原神放置类小游戏反馈收集",
+    "headline" : "原神放置类小游戏反馈收集",
+    "description" : "很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。\n游戏模板来源于 Couy69 的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。\n对这款放置挂类游戏的任何建议，欢迎通过以下三种方式联系。\n 拥有 GitHub 账号，可直接下方留言。 关注我万年不发一条的微信公众号【谷粒说数】，留言反馈。 发送电子邮件至 kuhung#foxmail.com(@替换#)，进行反馈。  请选择你最方便的形式。\n为答谢各位的支持，计划于12月1号，送出三份原神周边。自掏腰包😂，抽取三位提出宝贵建议的同学，快递上门。\n另寻前端高手，迭代优化交互逻辑。\n目前的更新计划：\n  完成全部副本的文字描述替换\n  加入深镜螺旋无尽模式\n  调整增益道具UI\n  增加道具洗练，将摩拉进行消耗\n  调整暴击逻辑，增加随机性\n  将增益扩充至5个，对齐圣遗物\n   游戏 Tip：\n 点击保存，保存的游戏进度在本地，离开再回来，仍能继续。  ",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-11-16 00:37:39 \u002b0800 CST",
+    "dateModified" : "2020-11-16 00:37:39 \u002b0800 CST",
+    "url" : "https:\/\/kuhungio.me\/2020\/yuanshen-idle-feedback\/",
+    "wordCount" : "25",
+    "keywords" : [ "反馈收集","游戏设计", "Kuhung\u0027s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/app/" title="">App</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/app/" title="">App</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">原神放置类小游戏反馈收集</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-11-16 itemprop="datePublished">November 16, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhungio.me/categories/side-project/"> Side Project </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。</p>
+<p>游戏模板来源于 Couy69  的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。</p>
+<p>对<strong>这款放置挂类</strong>游戏的任何建议，欢迎通过以下三种方式联系。</p>
+<ol>
+<li>拥有 GitHub 账号，可直接下方留言。</li>
+<li>关注我万年不发一条的微信公众号【谷粒说数】，留言反馈。</li>
+<li>发送电子邮件至 kuhung#foxmail.com(@替换#)，进行反馈。</li>
+</ol>
+<p>请选择你最方便的形式。</p>
+<p>为答谢各位的支持，计划于12月1号，送出三份原神周边。自掏腰包😂，抽取三位提出宝贵建议的同学，快递上门。</p>
+<p>另寻前端高手，迭代优化交互逻辑。</p>
+<p>目前的更新计划：</p>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"> 完成全部副本的文字描述替换</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> 加入深镜螺旋无尽模式</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> 调整增益道具UI</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> 增加道具洗练，将摩拉进行消耗</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> 调整暴击逻辑，增加随机性</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> 将增益扩充至5个，对齐圣遗物</p>
+</li>
+</ul>
+<hr>
+<p>游戏 Tip：</p>
+<ol>
+<li>点击保存，保存的游戏进度在本地，离开再回来，仍能继续。</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhungio.me/2020/yuanshen-idle-feedback/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E5%8F%8D%E9%A6%88%E6%94%B6%E9%9B%86/">
+                    #反馈收集</a></span>
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                    #游戏设计</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhungio.me/2020/pmp/" class="prev" rel="prev" title="不可不知的项目推进与团队建设之道"><i class="iconfont icon-left"></i>&nbsp;不可不知的项目推进与团队建设之道</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: 'acffda3846acce9e3c436d1f2cc60a37',
+        title: '原神放置类小游戏反馈收集',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
