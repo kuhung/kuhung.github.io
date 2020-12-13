@@ -6,10 +6,33 @@
     <description>Recent content in Posts on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 16 Nov 2020 00:37:39 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Dec 2020 10:57:25 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【手动置顶】文章发布计划</title>
+      <link>https://kuhungio.me/2020/article-publishing-plan/</link>
+      <pubDate>Sat, 12 Dec 2020 10:57:25 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/article-publishing-plan/</guid>
+      <description>文章发布计划：
+前言 拟定此文的目的，是为了监督文章产出。类似与 OKR，先自我设定目标，进行 SMART 拆解，防止文章输出流产。
+事实上，在计划中的文章，远多于实际发布。因而，如何保证其稳步推进，保证“流水线”式的生产，显得尤为重要。
+这条在商业中应用广泛：稳定的商业模式，除了可盈利外，另一项便是保证批量化、工业化生产，以期带来持续性的收益。
+虽说文章这种东西，说它是流水线生产的结果，有降低其逼格的嫌疑。但对于我来说，实际上，每篇文章的写作，确实都是类似的流程。
+ 广泛阅读/社交互动察觉
+  确定立意
+  收集资料/代码
+  构建思维导图，确定大纲
+  内容填充
+  反复阅读，修改表达
+  内容多平台发布
+  反馈收集：曝光、点击、停留、点赞、收藏、评论
+  几个月后重读，修改再发布（个人网站）
+     文章名称 耗时预估 计划发布 实际发布 优先级 备注     游戏机制设计 6h 2020.12.13  ⭐⭐⭐    高绩效教练        机器学习的可解释性        选择        真规则         关于作者</description>
+    </item>
     
     <item>
       <title>为度过原神长草期，我写了个原神放置类单机小游戏</title>
