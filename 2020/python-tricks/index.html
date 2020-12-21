@@ -23,9 +23,9 @@ if (!doNotTrack) {
 }
 </script>
 
-  <link rel="prev" href="https://kuhungio.me/2020/pmp/" />
-  <link rel="next" href="https://kuhungio.me/2020/management-101-vol-1/" />
-  <link rel="canonical" href="https://kuhungio.me/2020/yuanshen-idle-feedback/" />
+  <link rel="prev" href="https://kuhungio.me/2020/pandas-tricks/" />
+  <link rel="next" href="https://kuhungio.me/2020/hive-tricks/" />
+  <link rel="canonical" href="https://kuhungio.me/2020/python-tricks/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -36,10 +36,10 @@ if (!doNotTrack) {
   <title>
        
        
-           为度过原神长草期，我写了个原神放置类单机小游戏 | Kuhung&#39;s Blog
+           Python 常见问题速查 | Kuhung&#39;s Blog
        
   </title>
-  <meta name="title" content="为度过原神长草期，我写了个原神放置类单机小游戏 | Kuhung&#39;s Blog">
+  <meta name="title" content="Python 常见问题速查 | Kuhung&#39;s Blog">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -58,9 +58,9 @@ if (!doNotTrack) {
          "@id": "https:\/\/kuhungio.me"
     },
     "articleSection" : "posts",
-    "name" : "为度过原神长草期，我写了个原神放置类单机小游戏",
-    "headline" : "为度过原神长草期，我写了个原神放置类单机小游戏",
-    "description" : "游戏地址：https:\/\/kuhungio.me\/yuanshen-idle\/\n很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。\n游戏模板来源于 Couy69 的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。\n对这款放置挂类游戏的任何建议，欢迎通过以下三种方式联系。\n 拥有 GitHub 账号，可直接下方留言。 关注我万年不发一条的微信公众号【谷粒说数】，留言反馈。 发送电子邮件至 kuhung#foxmail.com(@替换#)，进行反馈。  请选择你最方便的形式。\n为答谢各位的支持，将于12月1号，送出三份原神周边。抽取三位提出宝贵建议的同学，快递上门。\n另寻前端高手，优化移动端布局，以及迭代整体交互逻辑。\n目前的更新计划：\n   项目 预计耗时 预期上线时间 实际上线时间 备注 最后一次修改时间     原神放置类小游戏 7x10h 已上线 2020.11 项目整体概况 2020.12.10   完成全部副本的文字描述替换 4h 2020.12.13  1116 完成蒙德区副本文字描述 2020.11.16   增加新手引导 1h 已上线 2020.11 增加文字描述引导 2020.11.19   调整增益道具UI        增加道具洗练，将摩拉进行消耗        调整暴击逻辑，增加随机性          游戏 Tip：",
+    "name" : "Python 常见问题速查",
+    "headline" : "Python 常见问题速查",
+    "description" : "获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(\u0026#34;%Y-%m-%d\u0026#34;, time.localtime()) 对list元素进行判断 # source: https:\/\/thispointer.com\/python-count-elements-in-a-list-that-satisfy-certain-conditions\/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x\u0026gt;5, listOfElems)) # lambda 函数可替换 print(\u0026#39;Count of numbers in a list which are greater than 5: \u0026#39;, count) str类型的array转array def str2array(current_str): \u0026#39;\u0026#39;\u0026#39; 返回数值数组 \u0026#39;\u0026#39;\u0026#39; current_array = current_str.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -68,11 +68,11 @@ if (!doNotTrack) {
     "accountablePerson" : "谷粒",
     "copyrightHolder" : "谷粒",
     "copyrightYear" : "2020",
-    "datePublished": "2020-11-16 00:37:39 \u002b0800 CST",
-    "dateModified" : "2020-11-16 00:37:39 \u002b0800 CST",
-    "url" : "https:\/\/kuhungio.me\/2020\/yuanshen-idle-feedback\/",
-    "wordCount" : "48",
-    "keywords" : [ "反馈收集","游戏设计", "Kuhung\u0027s Blog"]
+    "datePublished": "2020-08-04 11:39:43 \u002b0800 CST",
+    "dateModified" : "2020-08-04 11:39:43 \u002b0800 CST",
+    "url" : "https:\/\/kuhungio.me\/2020\/python-tricks\/",
+    "wordCount" : "122",
+    "keywords" : [ "python","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
 
@@ -130,16 +130,16 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">为度过原神长草期，我写了个原神放置类单机小游戏</h1>
+        <h1 class="post-title" itemprop="name headline">Python 常见问题速查</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
                 <span class="post-time">
-                on <time datetime=2020-11-16 itemprop="datePublished">November 16, 2020</time>
+                on <time datetime=2020-08-04 itemprop="datePublished">August 4, 2020</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhungio.me/categories/side-project/"> Side Project </a>
+                        <a href="https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
                         
                 </span>
 
@@ -155,7 +155,15 @@ if (!doNotTrack) {
   <h2 class="post-toc-title"></h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
   </div>
 </div>
 
@@ -206,87 +214,56 @@ if (!doNotTrack) {
           
           
 
-          <p>游戏地址：<a href="https://kuhungio.me/yuanshen-idle/?utm_campaign=top&amp;utm_source=feedback">https://kuhungio.me/yuanshen-idle/</a></p>
-<p>很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。</p>
-<p>游戏模板来源于 Couy69  的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。</p>
-<p>对<strong>这款放置挂类</strong>游戏的任何建议，欢迎通过以下三种方式联系。</p>
-<ol>
-<li>拥有 GitHub 账号，可直接下方留言。</li>
-<li>关注我万年不发一条的微信公众号【谷粒说数】，留言反馈。</li>
-<li>发送电子邮件至 kuhung#foxmail.com(@替换#)，进行反馈。</li>
-</ol>
-<p>请选择你最方便的形式。</p>
-<p>为答谢各位的支持，将于12月1号，送出三份原神周边。抽取三位提出宝贵建议的同学，快递上门。</p>
-<p>另寻前端高手，优化移动端布局，以及迭代整体交互逻辑。</p>
-<p>目前的更新计划：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>预计耗时</th>
-<th>预期上线时间</th>
-<th>实际上线时间</th>
-<th>备注</th>
-<th>最后一次修改时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>原神放置类小游戏</td>
-<td>7x10h</td>
-<td>已上线</td>
-<td>2020.11</td>
-<td>项目整体概况</td>
-<td>2020.12.10</td>
-</tr>
-<tr>
-<td>完成全部副本的文字描述替换</td>
-<td>4h</td>
-<td>2020.12.13</td>
-<td></td>
-<td>1116 完成蒙德区副本文字描述</td>
-<td>2020.11.16</td>
-</tr>
-<tr>
-<td>增加新手引导</td>
-<td>1h</td>
-<td>已上线</td>
-<td>2020.11</td>
-<td>增加文字描述引导</td>
-<td>2020.11.19</td>
-</tr>
-<tr>
-<td>调整增益道具UI</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>增加道具洗练，将摩拉进行消耗</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>调整暴击逻辑，增加随机性</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>游戏 Tip：</p>
-<ol>
-<li>点击保存，保存的游戏进度在本地，离开再回来，仍能继续。</li>
-</ol>
-<p><a href="https://kuhungio.me/yuanshen-idle/?utm_campaign=bottom&amp;utm_source=feedback">◀返回游戏</a></p>
+          <h4 id="获取日期参数输入或者默认日期">获取日期参数输入，或者默认日期</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<span style="color:#f92672">import</span> time
+
+<span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv)<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>:
+    today <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]
+<span style="color:#66d9ef">else</span>:
+    today <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>, time<span style="color:#f92672">.</span>localtime())
+</code></pre></div><h4 id="对list元素进行判断">对list元素进行判断</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/</span>
+
+listOfElems <span style="color:#f92672">=</span> [<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">77</span>, <span style="color:#ae81ff">88</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">101</span>]
+<span style="color:#75715e"># count numbers in the list which are greater than 5</span>
+count <span style="color:#f92672">=</span> sum(map(<span style="color:#66d9ef">lambda</span> x : x<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">5</span>, listOfElems)) <span style="color:#75715e"># lambda 函数可替换</span>
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Count of numbers in a list which are greater than 5: &#39;</span>, count)
+</code></pre></div><h4 id="str类型的array转array">str类型的array转array</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">str2array</span>(current_str):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    返回数值数组
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    current_array <span style="color:#f92672">=</span> current_str<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;]&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;[&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;&#34;&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;,&#34;</span>)
+    current_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(current_array)
+    <span style="color:#66d9ef">return</span> [int(numeric_string) <span style="color:#66d9ef">for</span> numeric_string <span style="color:#f92672">in</span> current_array]
+  
+current_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;[&#34;1&#34;,&#34;2&#34;]&#39;</span>
+str2array(current_str)
+<span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
+</code></pre></div><h4 id="python-取整">python 取整</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: http://kuanghy.github.io/2016/09/07/python-trunc</span>
+
+<span style="color:#f92672">import</span> math
+<span style="color:#75715e"># 向上取整</span>
+math<span style="color:#f92672">.</span>ceil(<span style="color:#ae81ff">2.25</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">3</span>
+
+<span style="color:#75715e"># 向下取整</span>
+int(<span style="color:#ae81ff">3.4</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">3</span>
+math<span style="color:#f92672">.</span>floor(<span style="color:#ae81ff">2.75</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span>
+
+<span style="color:#75715e"># 特别注意⚠️ round 取整</span>
+round(<span style="color:#ae81ff">3.5</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">4</span>
+round(<span style="color:#ae81ff">2.5</span>)
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span>
+
+<span style="color:#75715e"># 为何会这样：是为了保证整体分布和均值不变。如果每遇*.5进一，则整体均值会上移，带来误差。</span>
+</code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
 
@@ -301,7 +278,7 @@ if (!doNotTrack) {
             
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://kuhungio.me/2020/yuanshen-idle-feedback/>
+                    <a href=https://kuhungio.me/2020/python-tricks/>
                         <script>
                             document.write(decodeURI(location.origin + location.pathname))
                         </script>
@@ -321,11 +298,11 @@ if (!doNotTrack) {
             <section>
             <i class="iconfont icon-tag"></i>Tag(s):
             
-            <span class="tag"><a href="https://kuhungio.me/tags/%E5%8F%8D%E9%A6%88%E6%94%B6%E9%9B%86/">
-                    #反馈收集</a></span>
+            <span class="tag"><a href="https://kuhungio.me/tags/python/">
+                    #python</a></span>
             
-            <span class="tag"><a href="https://kuhungio.me/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
-                    #游戏设计</a></span>
+            <span class="tag"><a href="https://kuhungio.me/tags/%E9%AB%98%E9%A2%91%E9%97%AE%E9%A2%98/">
+                    #高频问题</a></span>
             
             </section>
         
@@ -337,10 +314,10 @@ if (!doNotTrack) {
 
     <div class="post-nav">
         
-        <a href="https://kuhungio.me/2020/pmp/" class="prev" rel="prev" title="不可不知的项目推进与团队建设之道"><i class="iconfont icon-left"></i>&nbsp;不可不知的项目推进与团队建设之道</a>
+        <a href="https://kuhungio.me/2020/pandas-tricks/" class="prev" rel="prev" title="Pandas 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Pandas 常见问题速查</a>
         
         
-        <a href="https://kuhungio.me/2020/management-101-vol-1/" class="next" rel="next" title="技术领导者之路｜01 技术管理入门 （上）">技术领导者之路｜01 技术管理入门 （上）&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhungio.me/2020/hive-tricks/" class="next" rel="next" title="Hive 常见问题速查">Hive 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
@@ -350,8 +327,8 @@ if (!doNotTrack) {
     <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
     <script type="text/javascript">
       var gitalk = new Gitalk({
-        id: 'acffda3846acce9e3c436d1f2cc60a37',
-        title: '为度过原神长草期，我写了个原神放置类单机小游戏',
+        id: '8fc13cb99baee9cdb711757c9d93350d',
+        title: 'Python 常见问题速查',
         clientID: '7e5b8bd7063e5315e349',
         clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
         repo: 'kuhung.github.io',

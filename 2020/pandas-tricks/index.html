@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷粒,数据挖掘,网易游戏,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-76017508-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  <link rel="prev" href="https://kuhungio.me/2020/statistics-tell-lies/" />
+  <link rel="next" href="https://kuhungio.me/2020/python-tricks/" />
+  <link rel="canonical" href="https://kuhungio.me/2020/pandas-tricks/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Pandas 常见问题速查 | Kuhung&#39;s Blog
+       
+  </title>
+  <meta name="title" content="Pandas 常见问题速查 | Kuhung&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "Pandas 常见问题速查",
+    "headline" : "Pandas 常见问题速查",
+    "description" : "一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.rename(columns={\u0026#34;A\u0026#34;: \u0026#34;a\u0026#34;, \u0026#34;B\u0026#34;: \u0026#34;c\u0026#34;}) 强制关闭 copy warning # source: https:\/\/zhuanlan.zhihu.com\/p\/41202576 链接中有其他更优解决方案 pd.set_option(\u0026#39;mode.chained_assignment\u0026#39;, None) 控制 pandas to csv 输出结果顺序 # source: https:\/\/stackoverflow.",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-08-04 10:47:23 \u002b0800 CST",
+    "dateModified" : "2020-08-04 10:47:23 \u002b0800 CST",
+    "url" : "https:\/\/kuhungio.me\/2020\/pandas-tricks\/",
+    "wordCount" : "549",
+    "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/app/" title="">App</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">Kuhung&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/app/" title="">App</a>
+                
+                <a class="menu-item" href="/about/" title="About">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Pandas 常见问题速查</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-08-04 itemprop="datePublished">August 4, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h4 id="一个-dataframe-重复多次复制内容-n-遍">一个 dataframe 重复多次，复制内容 n 遍</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+df_repeated <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([df1]<span style="color:#f92672">*</span>n, ignore_index<span style="color:#f92672">=</span>True)
+</code></pre></div><h4 id="日期分箱">日期分箱</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">date_bins <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#39;2000-01-01&#39;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;3D&#39;</span>, periods<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e">#3天一个步长，总计6个分箱</span>
+pd<span style="color:#f92672">.</span>cut(df<span style="color:#f92672">.</span>Date,bins<span style="color:#f92672">=</span>date_bins)
+</code></pre></div><h4 id="pandas-去重求差集">pandas 去重求差集</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_a <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(aa)
+df_b <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(bb)
+df_a <span style="color:#f92672">=</span> df_a<span style="color:#f92672">.</span>append(df_b)
+
+df_a<span style="color:#f92672">.</span>drop_duplicates(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;col_1&#39;</span>,<span style="color:#e6db74">&#39;col_2&#39;</span>],keep<span style="color:#f92672">=</span>False)
+</code></pre></div><h4 id="特征相关性热力图绘制">特征相关性热力图绘制</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">feature_df<span style="color:#f92672">.</span>corr()<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>)
+</code></pre></div><h4 id="pandas-不折叠行与列">pandas 不折叠行与列</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_rows&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大行数</span>
+pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_columns&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大列数</span>
+</code></pre></div><h4 id="pandas-rename-列名">pandas rename 列名</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#34;A&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#e6db74">&#34;B&#34;</span>: [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]})
+df<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;A&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>: <span style="color:#e6db74">&#34;c&#34;</span>})
+</code></pre></div><h4 id="强制关闭-copy-warning">强制关闭 copy warning</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://zhuanlan.zhihu.com/p/41202576 链接中有其他更优解决方案</span>
+pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;mode.chained_assignment&#39;</span>, None)
+</code></pre></div><h4 id="控制-pandas-to-csv-输出结果顺序">控制 pandas to csv 输出结果顺序</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/11067027/re-ordering-columns-in-pandas-dataframe-based-on-column-name</span>
+
+<span style="color:#75715e"># 直接排序法</span>
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>sort_index(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+
+<span style="color:#75715e"># 重写col顺序</span>
+col <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;xx&#39;</span>,<span style="color:#e6db74">&#39;yy&#39;</span>,<span style="color:#e6db74">&#39;zz&#39;</span>]
+df[col]
+
+<span style="color:#75715e"># 调整单个col顺序</span>
+col<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#39;xx&#39;</span>)
+col<span style="color:#f92672">.</span>insert(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;xx&#39;</span>)
+</code></pre></div><h4 id="批量读取文件夹下的文件">批量读取文件夹下的文件</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/20906474/import-multiple-csv-files-into-pandas-and-concatenate-into-one-dataframe</span>
+
+<span style="color:#75715e"># 常规简洁</span>
+<span style="color:#f92672">import</span> glob<span style="color:#f92672">,</span>os
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat(map(pd<span style="color:#f92672">.</span>read_csv, glob<span style="color:#f92672">.</span>glob(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#34;my_files*.csv&#34;</span>))))
+
+<span style="color:#75715e"># dask 包</span>
+<span style="color:#75715e"># dask 介绍: https://www.datalearner.com/blog/1051585624649623</span>
+<span style="color:#f92672">import</span> dask.dataframe <span style="color:#f92672">as</span> dd
+df <span style="color:#f92672">=</span> dd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data*.csv&#39;</span>)
+df<span style="color:#f92672">.</span>compute()
+</code></pre></div><h4 id="pandas-grouby-value_counts-统计出现最多的组合">pandas grouby value_counts 统计出现最多的组合</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/15222754/groupby-pandas-dataframe-and-select-most-common-value</span>
+source<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Country&#39;</span>,<span style="color:#e6db74">&#39;City&#39;</span>])[<span style="color:#e6db74">&#39;Short name&#39;</span>]<span style="color:#f92672">.</span>agg(pd<span style="color:#f92672">.</span>Series<span style="color:#f92672">.</span>mode)
+</code></pre></div><h4 id="将-es-的搜索结果py接口转化为dataframe">将 es 的搜索结果（py接口）转化为dataframe</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://medium.com/@patni.sonal/elasticsearch-convert-your-index-data-into-pandas-dataframe-30c44ada2407</span>
+<span style="color:#75715e"># 其他方案: https://stackoverflow.com/questions/25186148/creating-dataframe-from-elasticsearch-results</span>
+
+<span style="color:#f92672">from</span> elasticsearch <span style="color:#f92672">import</span> Elasticsearch
+<span style="color:#f92672">from</span> pandasticsearch <span style="color:#f92672">import</span> Select
+
+es <span style="color:#f92672">=</span> Elasticsearch([<span style="color:#e6db74">&#39;http://localhost:9200&#39;</span>],timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">600</span>)
+documents <span style="color:#f92672">=</span> es<span style="color:#f92672">.</span>search(index<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">’</span>myindex<span style="color:#960050;background-color:#1e0010">’</span>,body<span style="color:#f92672">=</span>{})
+
+<span style="color:#75715e"># 核心</span>
+pandas_df <span style="color:#f92672">=</span> Select<span style="color:#f92672">.</span>from_dict(documents)<span style="color:#f92672">.</span>to_pandas()
+</code></pre></div><h4 id="python-分页-提取es的大量数据">python “分页” 提取es的大量数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: </span>
+<span style="color:#75715e"># https://gist.github.com/drorata/146ce50807d16fd4a6aa#gistcomment-2400782</span>
+<span style="color:#75715e"># https://www.cnblogs.com/WessonStar/p/8360659.html</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scroll</span>(index, doc_type, query_body, page_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, debug<span style="color:#f92672">=</span>False, scroll<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2m&#39;</span>):
+    page <span style="color:#f92672">=</span> es<span style="color:#f92672">.</span>search(index<span style="color:#f92672">=</span>index, doc_type<span style="color:#f92672">=</span>doc_type, scroll<span style="color:#f92672">=</span>scroll, size<span style="color:#f92672">=</span>page_size, body<span style="color:#f92672">=</span>query_body)
+    sid <span style="color:#f92672">=</span> page[<span style="color:#e6db74">&#39;_scroll_id&#39;</span>]
+    scroll_size <span style="color:#f92672">=</span> page[<span style="color:#e6db74">&#39;hits&#39;</span>][<span style="color:#e6db74">&#39;total&#39;</span>]
+    total_pages <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>ceil(scroll_size<span style="color:#f92672">/</span>page_size)
+    page_counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">if</span> debug: 
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Total items : {}&#39;</span><span style="color:#f92672">.</span>format(scroll_size))
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Total pages : {}&#39;</span><span style="color:#f92672">.</span>format( math<span style="color:#f92672">.</span>ceil(scroll_size<span style="color:#f92672">/</span>page_size) ) )
+    <span style="color:#75715e"># Start scrolling</span>
+    <span style="color:#66d9ef">while</span> (scroll_size <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>):
+        <span style="color:#75715e"># Get the number of results that we returned in the last scroll</span>
+        scroll_size <span style="color:#f92672">=</span> len(page[<span style="color:#e6db74">&#39;hits&#39;</span>][<span style="color:#e6db74">&#39;hits&#39;</span>])
+        <span style="color:#66d9ef">if</span> scroll_size<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">if</span> debug: 
+                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;&gt; Scrolling page {} : {} items&#39;</span><span style="color:#f92672">.</span>format(page_counter, scroll_size))
+            <span style="color:#66d9ef">yield</span> total_pages, page_counter, scroll_size, page
+        <span style="color:#75715e"># get next page</span>
+        page <span style="color:#f92672">=</span> es<span style="color:#f92672">.</span>scroll(scroll_id <span style="color:#f92672">=</span> sid, scroll <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2m&#39;</span>)
+        page_counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#75715e"># Update the scroll ID</span>
+        sid <span style="color:#f92672">=</span> page[<span style="color:#e6db74">&#39;_scroll_id&#39;</span>]
+        
+
+index <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cases_*&#39;</span>
+doc_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;detail&#39;</span>
+query <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;query&#34;</span>: { <span style="color:#e6db74">&#34;match_all&#34;</span>: {} }, <span style="color:#e6db74">&#34;_source&#34;</span>: [<span style="color:#e6db74">&#39;caseId&#39;</span>] }
+page_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+
+<span style="color:#66d9ef">for</span> total_pages, page_counter, page_items, page_data <span style="color:#f92672">in</span> scroll(index, doc_type, query, page_size<span style="color:#f92672">=</span>page_size):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;total_pages={}, page_counter={}, page_items={}&#39;</span><span style="color:#f92672">.</span>format(total_pages, page_counter, page_items))
+    <span style="color:#75715e"># do what you need with page_data</span>
+
+</code></pre></div><h4 id="pandas-groupby-agg-获得最大最小数据">pandas groupby agg 获得最大最小数据</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/25024797/max-and-min-date-in-pandas-groupby</span>
+df<span style="color:#f92672">.</span>groupby([key_field])<span style="color:#f92672">.</span>agg({<span style="color:#e6db74">&#39;time_field&#39;</span>: [np<span style="color:#f92672">.</span>min,np<span style="color:#f92672">.</span>max]})
+</code></pre></div><h4 id="pandas-object-to-datetime">pandas object to datetime</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;DateTime&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;DateTime&#39;</span>])
+</code></pre></div><h4 id="pandas-multiindex-to-single-index">pandas multiindex to single index</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.thetopsites.net/article/51868061.shtml</span>
+df2<span style="color:#f92672">.</span>set_axis(df2<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>map(<span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span>False)<span style="color:#f92672">.</span>add_suffix(<span style="color:#e6db74">&#39;_MPG&#39;</span>)
+</code></pre></div><h4 id="panda-科学记数法关闭设置显示精度">panda 科学记数法关闭/设置显示精度</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>options<span style="color:#f92672">.</span>display<span style="color:#f92672">.</span>float_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{:.2f}&#39;</span><span style="color:#f92672">.</span>format
+</code></pre></div><h4 id="类-tqdm-定制化进度条">类 tqdm 定制化进度条</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://clay-atlas.com/blog/2019/11/11/python-chinese-tutorial-tqdm-progress-and-ourself/</span>
+<span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+
+temp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+total <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
+
+<span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+    temp <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;[Progress]:[</span><span style="color:#e6db74">%s%s</span><span style="color:#e6db74">]</span><span style="color:#e6db74">%.2f%%</span><span style="color:#e6db74">;&#39;</span> <span style="color:#f92672">%</span> (
+    <span style="color:#e6db74">&#39;█&#39;</span> <span style="color:#f92672">*</span> int(temp<span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#f92672">/</span>total), <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">20</span><span style="color:#f92672">-</span>int(temp<span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#f92672">/</span>total)),
+    float(temp<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>)), end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>)
+    sleep(<span style="color:#ae81ff">0.01</span>)
+    
+<span style="color:#75715e"># TODO：如果 n 在其他地方自增，如何不嵌套 tqdm 实现进度条？</span>
+</code></pre></div><h4 id="计算最近坐标点">计算最近坐标点</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/62482609/find-nearest-index-in-one-dataframe-to-another</span>
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+a <span style="color:#f92672">=</span> {
+   <span style="color:#e6db74">&#39;X&#39;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">21</span>],
+   <span style="color:#e6db74">&#39;Y&#39;</span>: [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">7</span>],
+   <span style="color:#e6db74">&#39;Z&#39;</span>: [<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">19</span>]
+ }
+b <span style="color:#f92672">=</span> {
+   <span style="color:#e6db74">&#39;X&#39;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">32</span>],
+   <span style="color:#e6db74">&#39;Y&#39;</span>: [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">32</span>],
+   <span style="color:#e6db74">&#39;Z&#39;</span>: [<span style="color:#ae81ff">52</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">31</span>]
+ }
+df1 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(a)
+df2 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(b)
+
+dist <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> dx,dy,dz: np<span style="color:#f92672">.</span>sqrt(dx<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span>dy<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span>dz<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">closest</span>(row):
+    darr <span style="color:#f92672">=</span> dist(df1[<span style="color:#e6db74">&#39;X&#39;</span>]<span style="color:#f92672">-</span>row[<span style="color:#e6db74">&#39;X&#39;</span>], df1[<span style="color:#e6db74">&#39;Y&#39;</span>]<span style="color:#f92672">-</span>row[<span style="color:#e6db74">&#39;Y&#39;</span>], df1[<span style="color:#e6db74">&#39;Z&#39;</span>]<span style="color:#f92672">-</span>row[<span style="color:#e6db74">&#39;Z&#39;</span>])
+    idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(darr <span style="color:#f92672">==</span> np<span style="color:#f92672">.</span>amin(darr))[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+    <span style="color:#66d9ef">return</span> df1[<span style="color:#e6db74">&#39;X&#39;</span>][idx], df1[<span style="color:#e6db74">&#39;Y&#39;</span>][idx], df1[<span style="color:#e6db74">&#39;Z&#39;</span>][idx]
+
+df2[<span style="color:#e6db74">&#39;closest&#39;</span>] <span style="color:#f92672">=</span> df2<span style="color:#f92672">.</span>apply(closest, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#66d9ef">print</span>(df2)
+</code></pre></div><h4 id="pandas-加速">pandas 加速</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html</span>
+<span style="color:#75715e"># https://medium.com/swlh/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230</span>
+</code></pre></div><h4 id="pandas-读-json-dict">pandas 读 json dict</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/56951109/python-data-frame-read-json-and-filter-data-from-dataframe</span>
+</code></pre></div><h4 id="pandas-读取-excel">pandas 读取 excel</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://medium.com/@chiayinchen/%E4%BD%BF%E7%94%A8-python-pandas-%E5%BE%9E%E5%8C%85%E5%90%AB%E5%A4%9A%E5%80%8B%E5%B7%A5%E4%BD%9C%E8%A1%A8%E7%9A%84-excel-%E4%B8%AD%E6%93%B7%E5%8F%96%E6%95%B8%E6%93%9A-f9fcf507e05b</span>
+
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+
+data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;https://storage.googleapis.com/medium_demo/y0s700000.xls&#39;</span>, skiprows <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, sheet_name <span style="color:#f92672">=</span> None) <span style="color:#75715e"># &#34;data&#34; are all sheets as a dictionary</span>
+
+xls <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>ExcelFile(<span style="color:#e6db74">&#39;https://storage.googleapis.com/medium_demo/y0s700000.xls&#39;</span>)
+xls<span style="color:#f92672">.</span>sheet_names <span style="color:#75715e"># see all sheet names</span>
+data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;YOUR_SHEET_NAME_HERE&#39;</span>) <span style="color:#75715e"># get a specific sheet to DataFrame</span>
+</code></pre></div><p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhungio.me/2020/pandas-tricks/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/pandas/">
+                    #pandas</a></span>
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E9%AB%98%E9%A2%91%E9%97%AE%E9%A2%98/">
+                    #高频问题</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhungio.me/2020/statistics-tell-lies/" class="prev" rel="prev" title="2020高考志愿填报中的数据误导与价值机会"><i class="iconfont icon-left"></i>&nbsp;2020高考志愿填报中的数据误导与价值机会</a>
+        
+        
+        <a href="https://kuhungio.me/2020/python-tricks/" class="next" rel="next" title="Python 常见问题速查">Python 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: 'e2fab81f5f573459a4e52a5f8f594fca',
+        title: 'Pandas 常见问题速查',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

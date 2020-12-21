@@ -6,10 +6,19 @@
     <description>Recent content in Python on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2020 11:39:43 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python 常见问题速查</title>
+      <link>https://kuhungio.me/2020/python-tricks/</link>
+      <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/python-tricks/</guid>
+      <description>获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
+    </item>
     
     <item>
       <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>

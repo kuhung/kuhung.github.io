@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>HIVE on Kuhung&#39;s Blog</title>
+    <title>hive on Kuhung&#39;s Blog</title>
     <link>https://kuhungio.me/tags/hive/</link>
-    <description>Recent content in HIVE on Kuhung&#39;s Blog</description>
+    <description>Recent content in hive on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2020 11:13:05 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/hive/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hive 常见问题速查</title>
+      <link>https://kuhungio.me/2020/hive-tricks/</link>
+      <pubDate>Tue, 25 Aug 2020 11:13:05 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/hive-tricks/</guid>
+      <description>函数大全 https://www.iteblog.com/archives/2258.html
+Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ 计算时间差 --- https://blog.csdn.net/kent7306/article/details/50441967 --- 计算前后差  --- https://blog.csdn.net/qq_33290422/article/details/81204532 --- 直接计算时间差 json 提取 --- refer: https://www.cnblogs.com/drjava/p/10486134.html --- [{&amp;#34;name&amp;#34;:&amp;#34;张三&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;},{&amp;#34;name&amp;#34;:&amp;#34;李&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;47&amp;#34;}]  SELECT get_json_object(xjson,&amp;#34;$.[0]&amp;#34;) FROM person; --- {&amp;#34;name&amp;#34;:&amp;#34;王二狗&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;}  --- 按字段提取 SELECT get_json_object(xjson,&amp;#34;$.[0].age&amp;#34;) FROM person; --- 25  --- **通配提取，不带索引即可** SELECT get_json_object(xjson,&amp;#34;$.[].age&amp;#34;) FROM person; --- [&amp;#34;25&amp;#34;,&amp;#34;47&amp;#34;]  临时表运用 --- refer: https://www.jianshu.com/p/d518e9f5d5f9 --- note: hive 嵌套使用不支持  with temp as ( select * from xxx ) select * from temp; 行转列 select user , concat_ws(&amp;#39;,&amp;#39;, collect_set(item)) as item_list -- collect set list 最后结果不同 from user_item_table group by user; 结果存储 --- https://www.</description>
+    </item>
     
     <item>
       <title>HIVE 技巧积累之合并重叠日期</title>
