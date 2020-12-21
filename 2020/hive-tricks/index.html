@@ -159,7 +159,12 @@ if (!doNotTrack) {
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#函数大全">函数大全</a></li>
+        <li><a href="#计算时间差">计算时间差</a></li>
+        <li><a href="#json-提取">json 提取</a></li>
+        <li><a href="#临时表运用">临时表运用</a></li>
+        <li><a href="#行转列">行转列</a></li>
+        <li><a href="#结果存储">结果存储</a></li>
       </ul>
     </li>
   </ul>
@@ -202,8 +207,6 @@ if (!doNotTrack) {
         
 
         
-            
-        
 
         
         
@@ -216,8 +219,7 @@ if (!doNotTrack) {
           
           
 
-          <p><img src="/images/mindmap/scrum.jpg" alt=""></p>
-<h4 id="函数大全">函数大全</h4>
+          <h3 id="函数大全">函数大全</h3>
 <p><a href="https://www.iteblog.com/archives/2258.html">https://www.iteblog.com/archives/2258.html</a></p>
 <h4 id="hive-结果采样">Hive 结果采样</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_table
@@ -227,13 +229,13 @@ sort <span style="color:#66d9ef">by</span> rand()
 <span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">10000</span>;
 
 <span style="color:#75715e">--- source: http://www.joefkelley.com/736/
-</span></code></pre></div><h4 id="计算时间差">计算时间差</h4>
+</span></code></pre></div><h3 id="计算时间差">计算时间差</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://blog.csdn.net/kent7306/article/details/50441967
 </span><span style="color:#75715e">--- 计算前后差
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">--- https://blog.csdn.net/qq_33290422/article/details/81204532
 </span><span style="color:#75715e">--- 直接计算时间差
-</span></code></pre></div><h4 id="json-提取">json 提取</h4>
+</span></code></pre></div><h3 id="json-提取">json 提取</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- refer: https://www.cnblogs.com/drjava/p/10486134.html
 </span><span style="color:#75715e">--- [{&#34;name&#34;:&#34;张三&#34;,&#34;sex&#34;:&#34;男&#34;,&#34;age&#34;:&#34;25&#34;},{&#34;name&#34;:&#34;李&#34;,&#34;sex&#34;:&#34;男&#34;,&#34;age&#34;:&#34;47&#34;}]
 </span><span style="color:#75715e"></span>
@@ -248,7 +250,7 @@ sort <span style="color:#66d9ef">by</span> rand()
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> get_json_object(xjson,<span style="color:#e6db74">&#34;$.[].age&#34;</span>) <span style="color:#66d9ef">FROM</span> person;
 <span style="color:#75715e">--- [&#34;25&#34;,&#34;47&#34;]
 </span><span style="color:#75715e"></span>
-</code></pre></div><h4 id="临时表运用">临时表运用</h4>
+</code></pre></div><h3 id="临时表运用">临时表运用</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- refer: https://www.jianshu.com/p/d518e9f5d5f9
 </span><span style="color:#75715e">--- note: hive 嵌套使用不支持
 </span><span style="color:#75715e"></span>
@@ -256,12 +258,12 @@ sort <span style="color:#66d9ef">by</span> rand()
     <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> xxx
 )
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> temp;
-</code></pre></div><h4 id="行转列">行转列</h4>
+</code></pre></div><h3 id="行转列">行转列</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#66d9ef">user</span>
    , concat_ws(<span style="color:#e6db74">&#39;,&#39;</span>, collect_set(item)) <span style="color:#66d9ef">as</span> item_list <span style="color:#75715e">-- collect set list 最后结果不同
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">from</span> user_item_table
 <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">user</span>;
-</code></pre></div><h4 id="结果存储">结果存储</h4>
+</code></pre></div><h3 id="结果存储">结果存储</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://www.cnblogs.com/Allen-rg/p/9295615.html
 </span><span style="color:#75715e"></span>
 </code></pre></div><p><a href="/about/">关于作者</a></p>
@@ -394,9 +396,8 @@ sort <span style="color:#66d9ef">by</span> rand()
 
 
     
-     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
-      
-     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
     
   
 
