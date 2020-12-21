@@ -23,7 +23,7 @@ if (!doNotTrack) {
 }
 </script>
 
-  <link rel="prev" href="https://kuhungio.me/2020/python-tricks/" />
+  <link rel="prev" href="https://kuhungio.me/2020/model-tricks/" />
   <link rel="next" href="https://kuhungio.me/2020/eda-tricks/" />
   <link rel="canonical" href="https://kuhungio.me/2020/hive-tricks/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Hive 常见问题速查",
     "headline" : "Hive 常见问题速查",
-    "description" : "函数大全 https:\/\/www.iteblog.com\/archives\/2258.html\nHive 结果采样 select * from my_table where rand() \u0026lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http:\/\/www.joefkelley.com\/736\/ 计算时间差 --- https:\/\/blog.csdn.net\/kent7306\/article\/details\/50441967 --- 计算前后差  --- https:\/\/blog.csdn.net\/qq_33290422\/article\/details\/81204532 --- 直接计算时间差 json 提取 --- refer: https:\/\/www.cnblogs.com\/drjava\/p\/10486134.html --- [{\u0026#34;name\u0026#34;:\u0026#34;张三\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;},{\u0026#34;name\u0026#34;:\u0026#34;李\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;47\u0026#34;}]  SELECT get_json_object(xjson,\u0026#34;$.[0]\u0026#34;) FROM person; --- {\u0026#34;name\u0026#34;:\u0026#34;王二狗\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;}  --- 按字段提取 SELECT get_json_object(xjson,\u0026#34;$.[0].age\u0026#34;) FROM person; --- 25  --- **通配提取，不带索引即可** SELECT get_json_object(xjson,\u0026#34;$.[].age\u0026#34;) FROM person; --- [\u0026#34;25\u0026#34;,\u0026#34;47\u0026#34;]  临时表运用 --- refer: https:\/\/www.jianshu.com\/p\/d518e9f5d5f9 --- note: hive 嵌套使用不支持  with temp as ( select * from xxx ) select * from temp; 行转列 select user , concat_ws(\u0026#39;,\u0026#39;, collect_set(item)) as item_list -- collect set list 最后结果不同 from user_item_table group by user; 结果存储 --- https:\/\/www.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2020.12.21 \/     函数大全 https:\/\/www.iteblog.com\/archives\/2258.html\nHive 结果采样 select * from my_table where rand() \u0026lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http:\/\/www.joefkelley.com\/736\/ 计算时间差 --- https:\/\/blog.csdn.net\/kent7306\/article\/details\/50441967 --- 计算前后差  --- https:\/\/blog.csdn.net\/qq_33290422\/article\/details\/81204532 --- 直接计算时间差 json 提取 --- refer: https:\/\/www.cnblogs.com\/drjava\/p\/10486134.html --- [{\u0026#34;name\u0026#34;:\u0026#34;张三\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;},{\u0026#34;name\u0026#34;:\u0026#34;李\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;47\u0026#34;}]  SELECT get_json_object(xjson,\u0026#34;$.[0]\u0026#34;) FROM person; --- {\u0026#34;name\u0026#34;:\u0026#34;王二狗\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;}  --- 按字段提取 SELECT get_json_object(xjson,\u0026#34;$.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-25 11:13:05 \u002b0800 CST",
     "dateModified" : "2020-08-25 11:13:05 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/hive-tricks\/",
-    "wordCount" : "104",
+    "wordCount" : "115",
     "keywords" : [ "hive","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -160,6 +160,7 @@ if (!doNotTrack) {
     <li>
       <ul>
         <li><a href="#函数大全">函数大全</a></li>
+        <li><a href="#hive-结果采样">Hive 结果采样</a></li>
         <li><a href="#计算时间差">计算时间差</a></li>
         <li><a href="#json-提取">json 提取</a></li>
         <li><a href="#临时表运用">临时表运用</a></li>
@@ -219,9 +220,30 @@ if (!doNotTrack) {
           
           
 
-          <h3 id="函数大全">函数大全</h3>
+          <table>
+<thead>
+<tr>
+<th align="left">标题</th>
+<th align="left">创建时间</th>
+<th align="left">发布时间</th>
+<th align="left">最后一次修改</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Hive 常见问题速查</td>
+<td align="left">2020.08.25</td>
+<td align="left">2020.12.21</td>
+<td align="left">2020.12.21</td>
+<td align="left">/</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="函数大全">函数大全</h3>
 <p><a href="https://www.iteblog.com/archives/2258.html">https://www.iteblog.com/archives/2258.html</a></p>
-<h4 id="hive-结果采样">Hive 结果采样</h4>
+<h3 id="hive-结果采样">Hive 结果采样</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> my_table
 <span style="color:#66d9ef">where</span> rand() <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0001</span>
 distribute <span style="color:#66d9ef">by</span> rand()
@@ -317,7 +339,7 @@ sort <span style="color:#66d9ef">by</span> rand()
 
     <div class="post-nav">
         
-        <a href="https://kuhungio.me/2020/python-tricks/" class="prev" rel="prev" title="Python 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Python 常见问题速查</a>
+        <a href="https://kuhungio.me/2020/model-tricks/" class="prev" rel="prev" title="Model 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Model 常见问题速查</a>
         
         
         <a href="https://kuhungio.me/2020/eda-tricks/" class="next" rel="next" title="EDA 常见问题速查">EDA 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>

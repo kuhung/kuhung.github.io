@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "EDA 常见问题速查",
     "headline" : "EDA 常见问题速查",
-    "description" : "EDA 数据探索技巧总结\n可视化工具   seaborn\n  bokeh\n  pyplot\n  降维\n t-SNE    三维坐标二维化 #Seaborn pair plot # source: https:\/\/stackoverflow.com\/questions\/52285104\/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[\u0026#39;x\u0026#39;] = x df_3d[\u0026#39;y\u0026#39;] = y df_3d[\u0026#39;z\u0026#39;] = z sns.pairplot(df_3d) 韦恩图绘制   matplotlib-venn\nfrom matplotlib_venn import venn2 venn2([set([\u0026#39;A\u0026#39;, \u0026#39;B\u0026#39;, \u0026#39;C\u0026#39;, \u0026#39;D\u0026#39;]), set([\u0026#39;D\u0026#39;, \u0026#39;E\u0026#39;, \u0026#39;F\u0026#39;])]) def plot_venn(col_1,col_2): set_1 = set(col_1) print(len(set_1)) set_2 = set(col_2) print(len(set_2)) venn2([set_1,set_2])   关于作者",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     EDA 常见问题速查 2020.09.01 2020.12.21 2020.12.21 \/     可视化工具   seaborn\n  bokeh\n  pyplot\n  降维\n t-SNE    三维坐标二维化 #Seaborn pair plot # source: https:\/\/stackoverflow.com\/questions\/52285104\/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[\u0026#39;x\u0026#39;] = x df_3d[\u0026#39;y\u0026#39;] = y df_3d[\u0026#39;z\u0026#39;] = z sns.pairplot(df_3d) 韦恩图绘制   matplotlib-venn",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-09-01 12:04:49 \u002b0800 CST",
     "dateModified" : "2020-09-01 12:04:49 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/eda-tricks\/",
-    "wordCount" : "61",
+    "wordCount" : "70",
     "keywords" : [ "eda","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -159,7 +159,9 @@ if (!doNotTrack) {
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#可视化工具">可视化工具</a></li>
+        <li><a href="#三维坐标二维化">三维坐标二维化</a></li>
+        <li><a href="#韦恩图绘制">韦恩图绘制</a></li>
       </ul>
     </li>
   </ul>
@@ -214,8 +216,28 @@ if (!doNotTrack) {
           
           
 
-          <p>EDA 数据探索技巧总结</p>
-<h4 id="可视化工具">可视化工具</h4>
+          <table>
+<thead>
+<tr>
+<th align="left">标题</th>
+<th align="left">创建时间</th>
+<th align="left">发布时间</th>
+<th align="left">最后一次修改</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">EDA 常见问题速查</td>
+<td align="left">2020.09.01</td>
+<td align="left">2020.12.21</td>
+<td align="left">2020.12.21</td>
+<td align="left">/</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="可视化工具">可视化工具</h3>
 <ul>
 <li>
 <p>seaborn</p>
@@ -233,7 +255,7 @@ if (!doNotTrack) {
 </ul>
 </li>
 </ul>
-<h4 id="三维坐标二维化">三维坐标二维化</h4>
+<h3 id="三维坐标二维化">三维坐标二维化</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Seaborn pair plot</span>
 <span style="color:#75715e"># source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend</span>
 <span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
@@ -245,7 +267,7 @@ df_3d[<span style="color:#e6db74">&#39;y&#39;</span>] <span style="color:#f92672
 df_3d[<span style="color:#e6db74">&#39;z&#39;</span>] <span style="color:#f92672">=</span> z
 
 sns<span style="color:#f92672">.</span>pairplot(df_3d)
-</code></pre></div><h4 id="韦恩图绘制">韦恩图绘制</h4>
+</code></pre></div><h3 id="韦恩图绘制">韦恩图绘制</h3>
 <ul>
 <li>
 <p>matplotlib-venn</p>

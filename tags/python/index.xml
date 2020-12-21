@@ -17,7 +17,7 @@
       <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/python-tricks/</guid>
-      <description>获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
+      <description>标题 创建时间 发布时间 最后一次修改 备注     Python 常见问题速查 2020.08.04 2020.12.21 2020.12.21 /     获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
     </item>
     
     <item>

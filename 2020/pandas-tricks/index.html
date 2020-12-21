@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Pandas 常见问题速查",
     "headline" : "Pandas 常见问题速查",
-    "description" : "一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.rename(columns={\u0026#34;A\u0026#34;: \u0026#34;a\u0026#34;, \u0026#34;B\u0026#34;: \u0026#34;c\u0026#34;}) 强制关闭 copy warning # source: https:\/\/zhuanlan.zhihu.com\/p\/41202576 链接中有其他更优解决方案 pd.set_option(\u0026#39;mode.chained_assignment\u0026#39;, None) 控制 pandas to csv 输出结果顺序 # source: https:\/\/stackoverflow.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Pandas 常见问题速查 2020.08.04 2020.12.21 2020.12.21 \/     一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 10:47:23 \u002b0800 CST",
     "dateModified" : "2020-08-04 10:47:23 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/pandas-tricks\/",
-    "wordCount" : "549",
+    "wordCount" : "560",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -159,7 +159,27 @@ if (!doNotTrack) {
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#一个-dataframe-重复多次复制内容-n-遍">一个 dataframe 重复多次，复制内容 n 遍</a></li>
+        <li><a href="#日期分箱">日期分箱</a></li>
+        <li><a href="#pandas-去重求差集">pandas 去重求差集</a></li>
+        <li><a href="#特征相关性热力图绘制">特征相关性热力图绘制</a></li>
+        <li><a href="#pandas-不折叠行与列">pandas 不折叠行与列</a></li>
+        <li><a href="#pandas-rename-列名">pandas rename 列名</a></li>
+        <li><a href="#强制关闭-copy-warning">强制关闭 copy warning</a></li>
+        <li><a href="#控制-pandas-to-csv-输出结果顺序">控制 pandas to csv 输出结果顺序</a></li>
+        <li><a href="#批量读取文件夹下的文件">批量读取文件夹下的文件</a></li>
+        <li><a href="#pandas-grouby-value_counts-统计出现最多的组合">pandas grouby value_counts 统计出现最多的组合</a></li>
+        <li><a href="#将-es-的搜索结果py接口转化为dataframe">将 es 的搜索结果（py接口）转化为dataframe</a></li>
+        <li><a href="#python-分页-提取es的大量数据">python “分页” 提取es的大量数据</a></li>
+        <li><a href="#pandas-groupby-agg-获得最大最小数据">pandas groupby agg 获得最大最小数据</a></li>
+        <li><a href="#pandas-object-to-datetime">pandas object to datetime</a></li>
+        <li><a href="#pandas-multiindex-to-single-index">pandas multiindex to single index</a></li>
+        <li><a href="#panda-科学记数法关闭设置显示精度">panda 科学记数法关闭/设置显示精度</a></li>
+        <li><a href="#类-tqdm-定制化进度条">类 tqdm 定制化进度条</a></li>
+        <li><a href="#计算最近坐标点">计算最近坐标点</a></li>
+        <li><a href="#pandas-加速">pandas 加速</a></li>
+        <li><a href="#pandas-读-json-dict">pandas 读 json dict</a></li>
+        <li><a href="#pandas-读取-excel">pandas 读取 excel</a></li>
       </ul>
     </li>
   </ul>
@@ -214,30 +234,51 @@ if (!doNotTrack) {
           
           
 
-          <h4 id="一个-dataframe-重复多次复制内容-n-遍">一个 dataframe 重复多次，复制内容 n 遍</h4>
+          <table>
+<thead>
+<tr>
+<th align="left">标题</th>
+<th align="left">创建时间</th>
+<th align="left">发布时间</th>
+<th align="left">最后一次修改</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Pandas 常见问题速查</td>
+<td align="left">2020.08.04</td>
+<td align="left">2020.12.21</td>
+<td align="left">2020.12.21</td>
+<td align="left">/</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="一个-dataframe-重复多次复制内容-n-遍">一个 dataframe 重复多次，复制内容 n 遍</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
 df_repeated <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([df1]<span style="color:#f92672">*</span>n, ignore_index<span style="color:#f92672">=</span>True)
-</code></pre></div><h4 id="日期分箱">日期分箱</h4>
+</code></pre></div><h3 id="日期分箱">日期分箱</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">date_bins <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#39;2000-01-01&#39;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;3D&#39;</span>, periods<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e">#3天一个步长，总计6个分箱</span>
 pd<span style="color:#f92672">.</span>cut(df<span style="color:#f92672">.</span>Date,bins<span style="color:#f92672">=</span>date_bins)
-</code></pre></div><h4 id="pandas-去重求差集">pandas 去重求差集</h4>
+</code></pre></div><h3 id="pandas-去重求差集">pandas 去重求差集</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_a <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(aa)
 df_b <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(bb)
 df_a <span style="color:#f92672">=</span> df_a<span style="color:#f92672">.</span>append(df_b)
 
 df_a<span style="color:#f92672">.</span>drop_duplicates(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;col_1&#39;</span>,<span style="color:#e6db74">&#39;col_2&#39;</span>],keep<span style="color:#f92672">=</span>False)
-</code></pre></div><h4 id="特征相关性热力图绘制">特征相关性热力图绘制</h4>
+</code></pre></div><h3 id="特征相关性热力图绘制">特征相关性热力图绘制</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">feature_df<span style="color:#f92672">.</span>corr()<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>)
-</code></pre></div><h4 id="pandas-不折叠行与列">pandas 不折叠行与列</h4>
+</code></pre></div><h3 id="pandas-不折叠行与列">pandas 不折叠行与列</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_rows&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大行数</span>
 pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_columns&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大列数</span>
-</code></pre></div><h4 id="pandas-rename-列名">pandas rename 列名</h4>
+</code></pre></div><h3 id="pandas-rename-列名">pandas rename 列名</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#34;A&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#e6db74">&#34;B&#34;</span>: [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]})
 df<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;A&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>: <span style="color:#e6db74">&#34;c&#34;</span>})
-</code></pre></div><h4 id="强制关闭-copy-warning">强制关闭 copy warning</h4>
+</code></pre></div><h3 id="强制关闭-copy-warning">强制关闭 copy warning</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://zhuanlan.zhihu.com/p/41202576 链接中有其他更优解决方案</span>
 pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;mode.chained_assignment&#39;</span>, None)
-</code></pre></div><h4 id="控制-pandas-to-csv-输出结果顺序">控制 pandas to csv 输出结果顺序</h4>
+</code></pre></div><h3 id="控制-pandas-to-csv-输出结果顺序">控制 pandas to csv 输出结果顺序</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/11067027/re-ordering-columns-in-pandas-dataframe-based-on-column-name</span>
 
 <span style="color:#75715e"># 直接排序法</span>
@@ -250,7 +291,7 @@ df[col]
 <span style="color:#75715e"># 调整单个col顺序</span>
 col<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#39;xx&#39;</span>)
 col<span style="color:#f92672">.</span>insert(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;xx&#39;</span>)
-</code></pre></div><h4 id="批量读取文件夹下的文件">批量读取文件夹下的文件</h4>
+</code></pre></div><h3 id="批量读取文件夹下的文件">批量读取文件夹下的文件</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/20906474/import-multiple-csv-files-into-pandas-and-concatenate-into-one-dataframe</span>
 
 <span style="color:#75715e"># 常规简洁</span>
@@ -263,10 +304,10 @@ df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>co
 <span style="color:#f92672">import</span> dask.dataframe <span style="color:#f92672">as</span> dd
 df <span style="color:#f92672">=</span> dd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data*.csv&#39;</span>)
 df<span style="color:#f92672">.</span>compute()
-</code></pre></div><h4 id="pandas-grouby-value_counts-统计出现最多的组合">pandas grouby value_counts 统计出现最多的组合</h4>
+</code></pre></div><h3 id="pandas-grouby-value_counts-统计出现最多的组合">pandas grouby value_counts 统计出现最多的组合</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/15222754/groupby-pandas-dataframe-and-select-most-common-value</span>
 source<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Country&#39;</span>,<span style="color:#e6db74">&#39;City&#39;</span>])[<span style="color:#e6db74">&#39;Short name&#39;</span>]<span style="color:#f92672">.</span>agg(pd<span style="color:#f92672">.</span>Series<span style="color:#f92672">.</span>mode)
-</code></pre></div><h4 id="将-es-的搜索结果py接口转化为dataframe">将 es 的搜索结果（py接口）转化为dataframe</h4>
+</code></pre></div><h3 id="将-es-的搜索结果py接口转化为dataframe">将 es 的搜索结果（py接口）转化为dataframe</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://medium.com/@patni.sonal/elasticsearch-convert-your-index-data-into-pandas-dataframe-30c44ada2407</span>
 <span style="color:#75715e"># 其他方案: https://stackoverflow.com/questions/25186148/creating-dataframe-from-elasticsearch-results</span>
 
@@ -278,7 +319,7 @@ documents <span style="color:#f92672">=</span> es<span style="color:#f92672">.</
 
 <span style="color:#75715e"># 核心</span>
 pandas_df <span style="color:#f92672">=</span> Select<span style="color:#f92672">.</span>from_dict(documents)<span style="color:#f92672">.</span>to_pandas()
-</code></pre></div><h4 id="python-分页-提取es的大量数据">python “分页” 提取es的大量数据</h4>
+</code></pre></div><h3 id="python-分页-提取es的大量数据">python “分页” 提取es的大量数据</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: </span>
 <span style="color:#75715e"># https://gist.github.com/drorata/146ce50807d16fd4a6aa#gistcomment-2400782</span>
 <span style="color:#75715e"># https://www.cnblogs.com/WessonStar/p/8360659.html</span>
@@ -316,17 +357,17 @@ page_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000<
     <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;total_pages={}, page_counter={}, page_items={}&#39;</span><span style="color:#f92672">.</span>format(total_pages, page_counter, page_items))
     <span style="color:#75715e"># do what you need with page_data</span>
 
-</code></pre></div><h4 id="pandas-groupby-agg-获得最大最小数据">pandas groupby agg 获得最大最小数据</h4>
+</code></pre></div><h3 id="pandas-groupby-agg-获得最大最小数据">pandas groupby agg 获得最大最小数据</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/25024797/max-and-min-date-in-pandas-groupby</span>
 df<span style="color:#f92672">.</span>groupby([key_field])<span style="color:#f92672">.</span>agg({<span style="color:#e6db74">&#39;time_field&#39;</span>: [np<span style="color:#f92672">.</span>min,np<span style="color:#f92672">.</span>max]})
-</code></pre></div><h4 id="pandas-object-to-datetime">pandas object to datetime</h4>
+</code></pre></div><h3 id="pandas-object-to-datetime">pandas object to datetime</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;DateTime&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;DateTime&#39;</span>])
-</code></pre></div><h4 id="pandas-multiindex-to-single-index">pandas multiindex to single index</h4>
+</code></pre></div><h3 id="pandas-multiindex-to-single-index">pandas multiindex to single index</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.thetopsites.net/article/51868061.shtml</span>
 df2<span style="color:#f92672">.</span>set_axis(df2<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>map(<span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span>False)<span style="color:#f92672">.</span>add_suffix(<span style="color:#e6db74">&#39;_MPG&#39;</span>)
-</code></pre></div><h4 id="panda-科学记数法关闭设置显示精度">panda 科学记数法关闭/设置显示精度</h4>
+</code></pre></div><h3 id="panda-科学记数法关闭设置显示精度">panda 科学记数法关闭/设置显示精度</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>options<span style="color:#f92672">.</span>display<span style="color:#f92672">.</span>float_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{:.2f}&#39;</span><span style="color:#f92672">.</span>format
-</code></pre></div><h4 id="类-tqdm-定制化进度条">类 tqdm 定制化进度条</h4>
+</code></pre></div><h3 id="类-tqdm-定制化进度条">类 tqdm 定制化进度条</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://clay-atlas.com/blog/2019/11/11/python-chinese-tutorial-tqdm-progress-and-ourself/</span>
 <span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
 
@@ -341,7 +382,7 @@ total <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</spa
     sleep(<span style="color:#ae81ff">0.01</span>)
     
 <span style="color:#75715e"># TODO：如果 n 在其他地方自增，如何不嵌套 tqdm 实现进度条？</span>
-</code></pre></div><h4 id="计算最近坐标点">计算最近坐标点</h4>
+</code></pre></div><h3 id="计算最近坐标点">计算最近坐标点</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/62482609/find-nearest-index-in-one-dataframe-to-another</span>
 <span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
 <span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
@@ -367,12 +408,12 @@ dist <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</sp
 
 df2[<span style="color:#e6db74">&#39;closest&#39;</span>] <span style="color:#f92672">=</span> df2<span style="color:#f92672">.</span>apply(closest, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
 <span style="color:#66d9ef">print</span>(df2)
-</code></pre></div><h4 id="pandas-加速">pandas 加速</h4>
+</code></pre></div><h3 id="pandas-加速">pandas 加速</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html</span>
 <span style="color:#75715e"># https://medium.com/swlh/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230</span>
-</code></pre></div><h4 id="pandas-读-json-dict">pandas 读 json dict</h4>
+</code></pre></div><h3 id="pandas-读-json-dict">pandas 读 json dict</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/56951109/python-data-frame-read-json-and-filter-data-from-dataframe</span>
-</code></pre></div><h4 id="pandas-读取-excel">pandas 读取 excel</h4>
+</code></pre></div><h3 id="pandas-读取-excel">pandas 读取 excel</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://medium.com/@chiayinchen/%E4%BD%BF%E7%94%A8-python-pandas-%E5%BE%9E%E5%8C%85%E5%90%AB%E5%A4%9A%E5%80%8B%E5%B7%A5%E4%BD%9C%E8%A1%A8%E7%9A%84-excel-%E4%B8%AD%E6%93%B7%E5%8F%96%E6%95%B8%E6%93%9A-f9fcf507e05b</span>
 
 <span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd

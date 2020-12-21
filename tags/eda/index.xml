@@ -17,13 +17,11 @@
       <pubDate>Tue, 01 Sep 2020 12:04:49 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/eda-tricks/</guid>
-      <description>EDA 数据探索技巧总结
-可视化工具   seaborn
+      <description>标题 创建时间 发布时间 最后一次修改 备注     EDA 常见问题速查 2020.09.01 2020.12.21 2020.12.21 /     可视化工具   seaborn
   bokeh
   pyplot
   降维
- t-SNE    三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[&amp;#39;x&amp;#39;] = x df_3d[&amp;#39;y&amp;#39;] = y df_3d[&amp;#39;z&amp;#39;] = z sns.pairplot(df_3d) 韦恩图绘制   matplotlib-venn
-from matplotlib_venn import venn2 venn2([set([&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;]), set([&amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;, &amp;#39;F&amp;#39;])]) def plot_venn(col_1,col_2): set_1 = set(col_1) print(len(set_1)) set_2 = set(col_2) print(len(set_2)) venn2([set_1,set_2])   关于作者</description>
+ t-SNE    三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[&amp;#39;x&amp;#39;] = x df_3d[&amp;#39;y&amp;#39;] = y df_3d[&amp;#39;z&amp;#39;] = z sns.pairplot(df_3d) 韦恩图绘制   matplotlib-venn</description>
     </item>
     
   </channel>
