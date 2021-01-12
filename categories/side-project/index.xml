@@ -52,20 +52,6 @@
     </item>
     
     <item>
-      <title>【手动置顶】文章发布计划</title>
-      <link>https://kuhungio.me/2020/article-publishing-plan/</link>
-      <pubDate>Thu, 24 Dec 2020 21:57:25 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/article-publishing-plan/</guid>
-      <description>描述 预计耗时 预计发布 实际发布 最后一次修改     文章发布计划 / / 2020.12.12 2021.01.07     背景 拟定此文的目的，是为了监督文章产出，防止眼高手低。
-事实上，脑子里想发的文章，远多于读者所看到的。因而，如何保证其“流水线”式的生产，显得尤为重要。
-这条在商业中应用广泛：稳定的商业模式，除了可盈利外，另一项便是保证批量化、工业化生产，以期带来持续性的收益。
-虽说文章这种东西，说是流水线的结果，有降低其逼格的嫌疑。但其实，每篇文章的写作，都能提炼出以下 PDCA 流程：
-广泛阅读/社交互动察觉 确定立意 收集资料/代码 构建思维导图，确定大纲 内容填充 反复阅读，修改表达 内容多平台发布 反馈收集：曝光、点击、点赞、收藏、评论等 几个月后重读，修改再发布（个人网站）  因而，如果能有效的拆分目标，设定时间节点，将会是稳定输出的一大保证。
- 排期计划    文章代号 耗时预估 计划发布 实际发布 优先级 备注     技术领导之路01（上） / / 2020.12.19 ✅ 累计耗时约10h   游戏机制设计 6h 2020.12.13 2020.12.24 ✅ 游戏可玩性的来源介绍   ticks 整理发布 1h 2020.</description>
-    </item>
-    
-    <item>
       <title>技术领导者之路｜01 技术管理入门 （上）</title>
       <link>https://kuhungio.me/2020/management-101-vol-1/</link>
       <pubDate>Sat, 19 Dec 2020 15:32:37 +0800</pubDate>
@@ -213,6 +199,20 @@
 言归正传，我们回到在slack上面。我们的核心就以下代码：
 核心代码解读 导入一些基础配置
 import os import time import re from slackclient import SlackClient import sys from gpt2.src import generate_unconditional_samples # instantiate Slackk client slack_client = SlackClient(&amp;#39;&amp;#39;) # 认证口令 # starterbot&amp;#39;s user ID in Slack: value is ssigned after the bot starts up starterbot_id = None 延迟配置以及样例和匹配模式</description>
+    </item>
+    
+    <item>
+      <title>【手动置顶】文章发布计划</title>
+      <link>https://kuhungio.me/1/article-publishing-plan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhungio.me/1/article-publishing-plan/</guid>
+      <description>描述 预计耗时 预计发布 实际发布 最后一次修改     文章发布计划 / / 2020.12.12 2021.01.07     背景 拟定此文的目的，是为了监督文章产出，防止眼高手低。
+事实上，脑子里想发的文章，远多于读者所看到的。因而，如何保证其“流水线”式的生产，显得尤为重要。
+这条在商业中应用广泛：稳定的商业模式，除了可盈利外，另一项便是保证批量化、工业化生产，以期带来持续性的收益。
+虽说文章这种东西，说是流水线的结果，有降低其逼格的嫌疑。但其实，每篇文章的写作，都能提炼出以下 PDCA 流程：
+广泛阅读/社交互动察觉 确定立意 收集资料/代码 构建思维导图，确定大纲 内容填充 反复阅读，修改表达 内容多平台发布 反馈收集：曝光、点击、点赞、收藏、评论等 几个月后重读，修改再发布（个人网站）  因而，如果能有效的拆分目标，设定时间节点，将会是稳定输出的一大保证。
+ 排期计划    文章代号 耗时预估 计划发布 实际发布 优先级 备注     技术领导之路01（上） / / 2020.12.19 ✅ 累计耗时约10h   游戏机制设计 6h 2020.12.13 2020.12.24 ✅ 游戏可玩性的来源介绍   ticks 整理发布 1h 2020.</description>
     </item>
     
   </channel>
