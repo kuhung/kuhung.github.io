@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-21 11:41:15 \u002b0800 CST",
     "dateModified" : "2020-08-21 11:41:15 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/model-tricks\/",
-    "wordCount" : "246",
+    "wordCount" : "255",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -166,6 +166,7 @@ if (!doNotTrack) {
         <li><a href="#simhash-相似度匹配">Simhash 相似度匹配</a></li>
         <li><a href="#cat2vec-特征-embedding">cat2vec 特征 embedding</a></li>
         <li><a href="#正则匹配特定字符后的数字">正则匹配特定字符后的数字</a></li>
+        <li><a href="#特征筛选">特征筛选</a></li>
       </ul>
     </li>
   </ul>
@@ -323,6 +324,11 @@ result <span style="color:#f92672">=</span> pattern<span style="color:#f92672">.
 
 <span style="color:#75715e"># 结果转 float</span>
 list(map(float, result))
+</code></pre></div><h3 id="特征筛选">特征筛选</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 共线性剔除
+<span style="color:#66d9ef">2.</span> 特征重要性排序
+<span style="color:#66d9ef">3.</span> 去除该特征，判断模型准确率变化情况
+<span style="color:#66d9ef">4.</span> 将该特征同分布生成，随机配给
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
