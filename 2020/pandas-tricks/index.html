@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Pandas 常见问题速查",
     "headline" : "Pandas 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Pandas 常见问题速查 2020.08.04 2020.12.21 2020.12.21 \/     一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Pandas 常见问题速查 2020.08.04 2020.12.21 2021.01.29 \/     一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 10:47:23 \u002b0800 CST",
     "dateModified" : "2020-08-04 10:47:23 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/pandas-tricks\/",
-    "wordCount" : "560",
+    "wordCount" : "587",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -249,7 +249,7 @@ if (!doNotTrack) {
 <td align="left">Pandas 常见问题速查</td>
 <td align="left">2020.08.04</td>
 <td align="left">2020.12.21</td>
-<td align="left">2020.12.21</td>
+<td align="left">2021.01.29</td>
 <td align="left">/</td>
 </tr>
 </tbody>
@@ -307,6 +307,16 @@ df<span style="color:#f92672">.</span>compute()
 </code></pre></div><h3 id="pandas-grouby-value_counts-统计出现最多的组合">pandas grouby value_counts 统计出现最多的组合</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/15222754/groupby-pandas-dataframe-and-select-most-common-value</span>
 source<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Country&#39;</span>,<span style="color:#e6db74">&#39;City&#39;</span>])[<span style="color:#e6db74">&#39;Short name&#39;</span>]<span style="color:#f92672">.</span>agg(pd<span style="color:#f92672">.</span>Series<span style="color:#f92672">.</span>mode)
+
+<span style="color:#75715e"># agg 一次计算多个对象</span>
+data<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;month&#39;</span>, as_index<span style="color:#f92672">=</span>False)<span style="color:#f92672">.</span>agg({<span style="color:#e6db74">&#34;duration&#34;</span>: <span style="color:#e6db74">&#34;sum&#34;</span>})
+
+<span style="color:#75715e"># 行转列</span>
+data<span style="color:#f92672">.</span>set_index([<span style="color:#e6db74">&#39;xx&#39;</span>,<span style="color:#e6db74">&#39;yy&#39;</span>])<span style="color:#f92672">.</span>unstack()
+
+<span style="color:#75715e">## multiindex become columns</span>
+<span style="color:#75715e">## source: https://stackoverflow.com/questions/14507794/pandas-how-to-flatten-a-hierarchical-index-in-columns</span>
+pd<span style="color:#f92672">.</span>DataFrame(df<span style="color:#f92672">.</span>to_records()) <span style="color:#75715e"># multiindex become columns and new index is integers only</span>
 </code></pre></div><h3 id="将-es-的搜索结果py接口转化为dataframe">将 es 的搜索结果（py接口）转化为dataframe</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://medium.com/@patni.sonal/elasticsearch-convert-your-index-data-into-pandas-dataframe-30c44ada2407</span>
 <span style="color:#75715e"># 其他方案: https://stackoverflow.com/questions/25186148/creating-dataframe-from-elasticsearch-results</span>
