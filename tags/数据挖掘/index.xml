@@ -6,10 +6,30 @@
     <description>Recent content in 数据挖掘 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 13 May 2020 00:41:54 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Mar 2021 21:09:31 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Xgboost 三种特征重要性计算方法对比与扩展</title>
+      <link>https://kuhungio.me/2021/three-feature-importances-in-xgb/</link>
+      <pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2021/three-feature-importances-in-xgb/</guid>
+      <description>简单描述 实际发布 最后一次修改     xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09    特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然的认为，它是重要的。
+这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
+另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。
+在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。
+XGB 遇到的问题 XGB 很方便，不仅是比赛的大杀器，甚至贴心的内置了重要性函数。但在实际使用过程中，常常陷入迷思。
+有如下几个点的顾虑：
+ 这些特征重要性是如何计算得到的？ 为什么特征重要性不同？ 什么情况下采用何种特征重要性合适？   今天我们就借这篇文章梳理一下。
+XGB 中常用的三种特征重要性计算方法，以及它的使用场景。除此之外，再看两个第三方的特征重要性计算方法，跳出内置函数，思考其中的差异。
+最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。
+以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。
+XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。
+ ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为frequency2。</description>
+    </item>
     
     <item>
       <title>我为何离开网易游戏</title>

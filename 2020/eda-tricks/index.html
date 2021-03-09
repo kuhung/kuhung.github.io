@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "EDA 常见问题速查",
     "headline" : "EDA 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     EDA 常见问题速查 2020.09.01 2020.12.21 2020.12.21 \/     可视化工具   seaborn\n  bokeh\n  pyplot\n  降维\n t-SNE    三维坐标二维化 #Seaborn pair plot # source: https:\/\/stackoverflow.com\/questions\/52285104\/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[\u0026#39;x\u0026#39;] = x df_3d[\u0026#39;y\u0026#39;] = y df_3d[\u0026#39;z\u0026#39;] = z sns.pairplot(df_3d) 韦恩图绘制   matplotlib-venn",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     EDA 常见问题速查 2020.09.01 2020.12.21 2020.12.21 \/     可视化工具   seaborn\n  bokeh\n  pyplot\n  plotly\n  降维\n t-SNE    三维坐标二维化 #Seaborn pair plot # source: https:\/\/stackoverflow.com\/questions\/52285104\/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[\u0026#39;x\u0026#39;] = x df_3d[\u0026#39;y\u0026#39;] = y df_3d[\u0026#39;z\u0026#39;] = z sns.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-09-01 12:04:49 \u002b0800 CST",
     "dateModified" : "2020-09-01 12:04:49 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/eda-tricks\/",
-    "wordCount" : "70",
+    "wordCount" : "109",
     "keywords" : [ "eda","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -162,6 +162,9 @@ if (!doNotTrack) {
         <li><a href="#可视化工具">可视化工具</a></li>
         <li><a href="#三维坐标二维化">三维坐标二维化</a></li>
         <li><a href="#韦恩图绘制">韦恩图绘制</a></li>
+        <li><a href="#seaborn-加-title">seaborn 加 title</a></li>
+        <li><a href="#seaboard-存-png">seaboard 存 png</a></li>
+        <li><a href="#绘制3d图">绘制3D图</a></li>
       </ul>
     </li>
   </ul>
@@ -240,13 +243,16 @@ if (!doNotTrack) {
 <h3 id="可视化工具">可视化工具</h3>
 <ul>
 <li>
-<p>seaborn</p>
+<p><a href="https://seaborn.pydata.org/examples/index.html">seaborn</a></p>
 </li>
 <li>
 <p>bokeh</p>
 </li>
 <li>
 <p>pyplot</p>
+</li>
+<li>
+<p>plotly</p>
 </li>
 <li>
 <p>降维</p>
@@ -282,7 +288,24 @@ venn2([set([<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#
     venn2([set_1,set_2])
 </code></pre></div></li>
 </ul>
-<p><a href="/about/">关于作者</a></p>
+<h3 id="seaborn-加-title">seaborn 加 title</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer https://stackoverflow.com/questions/42406233/how-to-add-title-to-seaborn-boxplot</span>
+<span style="color:#f92672">import</span> seaborn <span style="color:#f92672">as</span> sns
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+
+tips <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;tips&#34;</span>)
+sns<span style="color:#f92672">.</span>boxplot(x<span style="color:#f92672">=</span>tips[<span style="color:#e6db74">&#34;total_bill&#34;</span>])<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;LaLaLa&#34;</span>)
+
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><h3 id="seaboard-存-png">seaboard 存 png</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer https://stackoverflow.com/questions/32244753/how-to-save-a-seaborn-plot-into-a-file</span>
+df <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#39;iris&#39;</span>)
+sns_plot <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>pairplot(df, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;species&#39;</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">2.5</span>)
+sns_plot<span style="color:#f92672">.</span>figure<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;output.png&#34;</span>)
+</code></pre></div><h3 id="绘制3d图">绘制3D图</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 3D 二维化，热力图</span>
+
+</code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
 

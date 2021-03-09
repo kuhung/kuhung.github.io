@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 11:39:43 \u002b0800 CST",
     "dateModified" : "2020-08-04 11:39:43 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/python-tricks\/",
-    "wordCount" : "133",
+    "wordCount" : "161",
     "keywords" : [ "python","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -163,6 +163,7 @@ if (!doNotTrack) {
         <li><a href="#对list元素进行判断">对list元素进行判断</a></li>
         <li><a href="#str类型的array转array">str类型的array转array</a></li>
         <li><a href="#python-取整">python 取整</a></li>
+        <li><a href="#hmac-sha256-加密">HMAC SHA256 加密</a></li>
       </ul>
     </li>
   </ul>
@@ -287,6 +288,18 @@ round(<span style="color:#ae81ff">2.5</span>)
 <span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span>
 
 <span style="color:#75715e"># 为何会这样：是为了保证整体分布和均值不变。如果每遇*.5进一，则整体均值会上移，带来误差。</span>
+</code></pre></div><h3 id="hmac-sha256-加密">HMAC SHA256 加密</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.gauravvjn.com/generate-hmac-sha256-signature-in-python/</span>
+<span style="color:#f92672">import</span> hmac
+<span style="color:#f92672">import</span> hashlib 
+<span style="color:#f92672">import</span> binascii
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_sha256_signature</span>(key, message):
+    byte_key <span style="color:#f92672">=</span> binascii<span style="color:#f92672">.</span>unhexlify(key)
+    message <span style="color:#f92672">=</span> message<span style="color:#f92672">.</span>encode()
+    <span style="color:#66d9ef">return</span> hmac<span style="color:#f92672">.</span>new(byte_key, message, hashlib<span style="color:#f92672">.</span>sha256)<span style="color:#f92672">.</span>hexdigest()<span style="color:#f92672">.</span>upper()
+
+create_sha256_signature(<span style="color:#e6db74">&#34;E49756B4C8FAB4E48222A3E7F3B97CC3&#34;</span>, <span style="color:#e6db74">&#34;TEST STRING&#34;</span>)
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>

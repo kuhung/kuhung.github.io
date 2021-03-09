@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 10:47:23 \u002b0800 CST",
     "dateModified" : "2020-08-04 10:47:23 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/pandas-tricks\/",
-    "wordCount" : "587",
+    "wordCount" : "616",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -180,6 +180,8 @@ if (!doNotTrack) {
         <li><a href="#pandas-加速">pandas 加速</a></li>
         <li><a href="#pandas-读-json-dict">pandas 读 json dict</a></li>
         <li><a href="#pandas-读取-excel">pandas 读取 excel</a></li>
+        <li><a href="#dataframe-导出为图片">dataframe 导出为图片</a></li>
+        <li><a href="#获取特定条件下的top数据">获取特定条件下的top数据</a></li>
       </ul>
     </li>
   </ul>
@@ -433,6 +435,16 @@ data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>
 xls <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>ExcelFile(<span style="color:#e6db74">&#39;https://storage.googleapis.com/medium_demo/y0s700000.xls&#39;</span>)
 xls<span style="color:#f92672">.</span>sheet_names <span style="color:#75715e"># see all sheet names</span>
 data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;YOUR_SHEET_NAME_HERE&#39;</span>) <span style="color:#75715e"># get a specific sheet to DataFrame</span>
+</code></pre></div><h3 id="dataframe-导出为图片">dataframe 导出为图片</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png</span>
+<span style="color:#f92672">import</span> dataframe_image <span style="color:#f92672">as</span> dfi
+
+df_styled <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient() <span style="color:#75715e">#adding a gradient based on values in cell</span>
+dfi<span style="color:#f92672">.</span>export(df_styled,<span style="color:#e6db74">&#34;mytable.png&#34;</span>)
+</code></pre></div><h3 id="获取特定条件下的top数据">获取特定条件下的top数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/41330749/pandas-sort-and-head-inside-groupby</span>
+
+df<span style="color:#f92672">.</span>groupby(pd<span style="color:#f92672">.</span>TimeGrouper(<span style="color:#e6db74">&#39;D&#39;</span>))<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>nlargest(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;value&#39;</span>))<span style="color:#f92672">.</span>reset_index(level<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, drop<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
