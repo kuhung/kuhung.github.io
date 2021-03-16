@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 08 Mar 2021 21:09:31 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Mar 2021 21:57:25 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Side Project</title>
+      <link>https://kuhungio.me/categories/side-project/</link>
+      <pubDate>Tue, 09 Mar 2021 21:57:25 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/categories/side-project/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>技术技巧</title>
@@ -17,15 +26,6 @@
       <pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate>
       
       <guid>https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Side Project</title>
-      <link>https://kuhungio.me/categories/side-project/</link>
-      <pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/categories/side-project/</guid>
       <description></description>
     </item>
     

@@ -24,7 +24,7 @@ if (!doNotTrack) {
 </script>
 
   <link rel="prev" href="https://kuhungio.me/2021/what-i-learned-from-little-game-xiao/" />
-  
+  <link rel="next" href="https://kuhungio.me/2021/article-publishing-plan/" />
   <link rel="canonical" href="https://kuhungio.me/2021/three-feature-importances-in-xgb/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Xgboost 三种特征重要性计算方法对比与扩展",
     "headline" : "Xgboost 三种特征重要性计算方法对比与扩展",
-    "description" : "简单描述 实际发布 最后一次修改     xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09    特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然的认为，它是重要的。\n这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。\n另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。\n在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。\nXGB 遇到的问题 XGB 很方便，不仅是比赛的大杀器，甚至贴心的内置了重要性函数。但在实际使用过程中，常常陷入迷思。\n有如下几个点的顾虑：\n 这些特征重要性是如何计算得到的？ 为什么特征重要性不同？ 什么情况下采用何种特征重要性合适？   今天我们就借这篇文章梳理一下。\nXGB 中常用的三种特征重要性计算方法，以及它的使用场景。除此之外，再看两个第三方的特征重要性计算方法，跳出内置函数，思考其中的差异。\n最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。\n以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。\nXGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。\n ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为frequency2。",
+    "description" : "简单描述 实际发布 最后一次修改     xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09    特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。\n这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。\n另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。\n在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。\nXGB 遇到的问题 XGB 很方便，不仅是比赛的大杀器，甚至贴心的内置了重要性函数。但在实际使用过程中，常常陷入迷思。\n有如下几个点的顾虑：\n 这些特征重要性是如何计算得到的？ 为什么特征重要性不同？ 什么情况下采用何种特征重要性合适？   今天我们就借这篇文章梳理一下。\nXGB 中常用的三种特征重要性计算方法，以及它的使用场景。除此之外，再看两个第三方的特征重要性计算方法，跳出内置函数，思考其中的差异。\n最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。\n以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。\nXGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。\n ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为frequency2。",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -252,7 +252,7 @@ if (!doNotTrack) {
 </table>
 <h2 id="特征重要性">特征重要性</h2>
 <h3 id="作用与来源">作用与来源</h3>
-<p>特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然的认为，它是重要的。</p>
+<p>特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。</p>
 <p>这一思路，通常被用来做<strong>特征筛选</strong>。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。</p>
 <p>另一个方面，则是用来做<strong>模型的可解释性</strong>。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。</p>
 <p>在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。</p>
@@ -306,7 +306,7 @@ XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color
 <p>这里介绍两种，一个是 <a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-importance">permutation importance</a><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>，另一个是 shap<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>。</p>
 <h3 id="permutation">permutation</h3>
 <p>Permutation 的逻辑<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>是：如果这个特征很重要，那么我们打散所有样本中的该特征，则最后的优化目标将折损。这里的折损程度，就是特征的重要程度。</p>
-<p>由于其计算依赖单一特征，所以对非线形模型更友好。同时，如果特征中存在多重共线性，共线的特征重要性都将非常靠后。这是因为混淆单一特征，不影响另一个特征的贡献。这样的结果是，即使特征很重要，也会排得很靠后。</p>
+<p>由于其计算依赖单一特征，所以对非线性模型更友好。同时，如果特征中存在多重共线性，共线的特征重要性都将非常靠后。这是因为混淆单一特征，不影响另一个特征的贡献。这样的结果是，即使特征很重要，也会排得很靠后。</p>
 <p>针对多重共线特征，<a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features">sklearn</a> 文档中提到了一种解决方法<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>：计算特征间的 spearman rank-order correlations，取得每一组中的头部特征，再进行特征重要性计算。这种方法，实际上是在解决特征共线的问题。</p>
 <h3 id="shap">shap</h3>
 <p>另一个特征重要性计算方法 shap，在之前的文章：<a href="/interpretable-machine-learning.md">机器学习模型的两种解释方法</a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>有过介绍。其计算方法，利用了博弈论的知识，即特征的边际递减效应。通俗来说，就是轮流去掉每一个特征，算出剩下特征的贡献情况，以此来推导出被去除特征的边际贡献。该方法是目前唯一的逻辑严密的特征解释方法（但实际使用体感一般，详情可参见上篇文章）。</p>
@@ -315,10 +315,10 @@ XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color
 <p>randomforest 使用 <code>rf.feature_importances_</code> 得到特征重要性<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>。其中，分类任务计算的是 gini 不纯度/信息熵。回归任务计算的是树的方差。</p>
 <p>这种基于<strong>不纯度</strong>（Mean Decrease in Impurity）的方法，实际上会有两个问题存在：一：会给予变量空间更大的特征更多关注，而二分类特征则会靠后。二：结果的拟合是基于训练集的，存在过拟合风险，没有验证集数据做验证。</p>
 <p>针对上述的问题，建议通过out-of-bag（OOB）方法<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup><sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>，在剩下数据上做验证，结合 permutation<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup> 计算特征重要性。</p>
-<p>此外，gbdt 也是基于<strong>不纯度</strong>计算的特征重要性，不过其在单棵树上，是回归树<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>，所以不是基于gini系数，而是 MSE 或 MAE</p>
+<p>此外，gbdt 也是基于<strong>不纯度</strong>计算的特征重要性，不过其在单棵树上，是回归树<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>，所以不是基于gini系数，而是 MSE 或 MAE。</p>
 <p>至于为什么它们同为树模型，且都是基于不纯度计算的重要性，但结果不同。主要有两个，一个是它们的树结构不同；第二个则是，它们的优化对象不同。</p>
 <h2 id="特征重要性小结">特征重要性小结</h2>
-<p>总结起来，我们可以可以发现，这里特征重要性的计算，其实分为了两类。一类是<strong>基于优化过程</strong>的，如树模型都在采用的不纯度。另一类则是<strong>基于外部结果</strong>，通过调整或引入变量，观察对目标的影响。</p>
+<p>总结起来，我们可以发现，这里特征重要性的计算，其实分为了两类。一类是<strong>基于优化过程</strong>的，如树模型都在采用的不纯度。另一类则是<strong>基于外部结果</strong>，通过调整或引入变量，观察对目标的影响。</p>
 <p>目前的趋势是，不纯度的局限被大家认识到，越来越多地采用外部结果的方式，来保证特征重要性的一致性和稳定性<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>。</p>
 <p>对于不稳定性，可以观察到的一个现象是，新特征的加入，很可能打乱（而不是插入）头部特征的排名。如何减缓这个现象？打乱，其实说明了两个问题。一：特征重要性排名的工具有问题，不具有鲁棒性，应当采用多种特征重要性工具对比。二：特征间存在相关性，树模型在解释时，也应当进行相关性剔除。</p>
 <hr>
@@ -326,7 +326,7 @@ XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color
 <ol>
 <li>将特征随机打散，其实就是 permutation 的计算方式。</li>
 <li>引入随机变量列，观察其他特征相对于它的位置排序。</li>
-<li>去掉特征，观察目标函数的升降情况。</li>
+<li>去掉特征<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>，观察目标函数的升降情况。</li>
 </ol>
 <p><a href="/about/">关于作者</a></p>
 <p>参考资料：</p>
@@ -438,6 +438,8 @@ XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color
         
         <a href="https://kuhungio.me/2021/what-i-learned-from-little-game-xiao/" class="prev" rel="prev" title="我上线了一款小游戏，并收获了三点思考"><i class="iconfont icon-left"></i>&nbsp;我上线了一款小游戏，并收获了三点思考</a>
         
+        
+        <a href="https://kuhungio.me/2021/article-publishing-plan/" class="next" rel="next" title="【手动置顶】文章发布计划">【手动置顶】文章发布计划&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
