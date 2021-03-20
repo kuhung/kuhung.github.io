@@ -297,7 +297,7 @@ if (!doNotTrack) {
 f <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gain&#39;</span>
 XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color:#f92672">.</span>get_score(importance_type<span style="color:#f92672">=</span> f)
 </code></pre></div><p>举个例子，我们来做西瓜分类任务。西瓜有颜色、重量、声音、品种、产地等各类特征。其中，生活（业务）经验告诉我们，声音响的瓜甜。我们构建了这么一个模型，判断西瓜甜不甜。输出三类特征重要性。这时会看到一些矛盾的现象<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
-<p><img src="https://miro.medium.com/max/1000/1*qdvN5WQhN33hO4wWG7RtDw.png" alt="be-careful-when-interpreting-your-features-importance-in-xgboost"></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://miro.medium.com/max/1000/1*qdvN5WQhN33hO4wWG7RtDw.png" alt="be-careful-when-interpreting-your-features-importance-in-xgboost" class="lazyload"><figcaption class="image-caption">be-careful-when-interpreting-your-features-importance-in-xgboost</figcaption></figure></p>
 <p>在 <code>weight</code> 解释下，声音这类枚举值特征并不会很靠前。反而是重量这类连续特征会靠前。为什么会这样子，是因为连续特征提供了<strong>更多的切分状态空间</strong>，这样的结果，势必导致它在树模型的分裂点上占据多个位置。与此同时，<strong>重要的枚举值特征靠后</strong>了。而且我们还能预见的是，同一个量纲下，上下界越大的特征，更有可能靠前。</p>
 <p>如何解决这个矛盾点，那就是采用 <code>gain</code> 或者 <code>cover</code> 方法。因为声音这个特征，必然能带来更多的信息增益，减少系统的熵，所以它在信息增益数值上，一定是一个大值。在树模型的分类节点上，也一定是优先作为分裂点，靠近根部的。</p>
 <p>在实践中，也会发现，<code>gain</code> 排出来的顺序的<strong>头尾部值差距较大</strong>，这是因为信息增益计算时，后续的优化可能都不是一个量级。类似于神经网络在优化损失函数时，后续的量纲可能是十倍、百倍的差异。所以，综上而言，如果<strong>有下游业务方</strong>，更建议用 <code>cover</code> 的特征重要性计算方法。当然，如果是单纯的模型调优，<code>gain</code> 能指出最重要的特征。这些特征，某些场景下还能总结成硬规则。</p>
@@ -501,6 +501,13 @@ XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color
         <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
         
     </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
 </footer>
 
 

@@ -222,7 +222,7 @@ if (!doNotTrack) {
           <h1 id="使用gan生成新的游戏角色">使用GAN生成新的游戏角色</h1>
 <h2 id="摘要">摘要</h2>
 <p>Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。
-<img src="http://ww2.sinaimg.cn/large/006r3PQBjw1fd4qrdkq2fj305k074jrk.jpg" alt="image1"></p>
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="http://ww2.sinaimg.cn/large/006r3PQBjw1fd4qrdkq2fj305k074jrk.jpg" alt="image1" class="lazyload"><figcaption class="image-caption">image1</figcaption></figure></p>
 <!-- raw HTML omitted -->
 <h2 id="依赖-pip-install">依赖 （pip install）</h2>
 <pre><code>cv2
@@ -233,7 +233,7 @@ numpy
 <pre><code>cd yysGAN
 python yysGAN.py
 </code></pre><h2 id="5000次迭代训练结果">5000次迭代训练结果</h2>
-<p><img src="https://github.com/kuhung/yysGAN/raw/master/output/epoch4950.jpg" alt="image2"></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://github.com/kuhung/yysGAN/raw/master/output/epoch4950.jpg" alt="image2" class="lazyload"><figcaption class="image-caption">image2</figcaption></figure></p>
 <h2 id="了解更多gan的知识">了解更多GAN的知识</h2>
 <p><a href="https://github.com/kuhung/yysGAN/blob/master/Generative%20Adversarial%20Networks.ipynb">Generative Adversarial Networks.ipynb</a></p>
 <hr>
@@ -362,6 +362,13 @@ python yysGAN.py
         <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
         
     </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
 </footer>
 
 

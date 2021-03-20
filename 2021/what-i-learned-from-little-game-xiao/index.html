@@ -251,7 +251,7 @@ if (!doNotTrack) {
 </table>
 <hr>
 <p>2月初，我上线了一款小游戏，整活小游戏——合成魈大人<a href="https://xiao.kuhungio.cn/?utm_source=personal_website_xiao">（移动端访问）</a>。</p>
-<p><img src="/images/xiao/xiao.jpg" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/xiao.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>这一过程，收到了很多反馈。</p>
 <p>同时，也有如下三点思考：</p>
 <ol>
@@ -298,20 +298,20 @@ if (!doNotTrack) {
 <h3 id="潜在风险迭代">潜在风险迭代</h3>
 <p>周日的中午，项目已经和最终版基本无差，在交付种子用户体验后，收集到了正向的反馈。但是，小力觉得还应该做得更好。于是替换掉了项目中的引流链接，删除了循环玩法流程。</p>
 <p>在调试过程中，小力发现，资源加载缓慢，平均首次加载耗时超过2分钟，部分时间甚至出现卡顿。根据亚马逊的实验报告，网站每多加载100ms，将损失巨量的成交。小游戏也是，根据微信的报告，小游戏的加载过程，将会影响至少一半的潜在玩家。总而言之，<strong>加载的延迟问题很大</strong>。</p>
-<p><img src="/images/xiao/load_info.png" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/load_info.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>要解决这个问题，有多种方法。其一，压缩素材。其二，换自建服务器。这些，都是技术人员正常的想法。不过，这里忽略了一个最重要的事情，就是客户：客户关心这个问题吗？后续的结果证明，<strong>延迟的负面影响没有预想的大。</strong></p>
 <p>又是一个下午的时间，小力尝试压缩图片质量，通过 tinypng 缩小了图片资源到原来的1/4。而加载问题，始终有概率在98%处卡住。这个现象，有两个原因：一个是资源所处位置 GitHub 本身的不稳定性；第二个是，前端代码里对进度条进行了调整，98%时，实际加载的资源只有50%🐶。</p>
 <h3 id="交付与反馈收集">交付与反馈收集</h3>
 <p>当天晚上，小力在米游社发帖，开始曝光自己的游戏。当晚的浏览量在200上下，第一次收到玩家的反馈。其中，正向的居多。而反应加载不出来的，十条大概只有一条。给这个比例加上“沉默螺旋”加成，也就是那些受阻的玩家会直接关闭而不是反馈，估计约有2成玩家受阻。这一数量，在可接受范围。</p>
-<p><img src="/images/xiao/bbs_mihoyo.jpeg" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/bbs_mihoyo.jpeg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>第二天，周一的中午，小力在NGA发帖，曝光自己的游戏。</p>
-<p><img src="/images/xiao/bbs_nga.jpeg" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/bbs_nga.jpeg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>随即，浏览量“暴增”，顶峰半小时 UV 在800以上。</p>
-<p><img src="/images/xiao/google_analytics_online_info.jpg" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/google_analytics_online_info.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>后面几天，流量趋于平稳。累计的PV在13000以上，UV在7000+。这个数据单独看没什么概念，但要知道，小力个人网站2020年的 UV 是2890，PV 是3690。而小游戏，不到一天就超过了这个数。</p>
-<p><img src="/images/xiao/baidu_total_info.jpeg" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/baidu_total_info.jpeg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>随后，小利在外网 Reddit 社区，也发出了帖子，进行游戏曝光，同样收到正面反馈。</p>
-<p><img src="/images/xiao/bbs_reddit.jpeg" alt=""></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/xiao/bbs_reddit.jpeg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>两天后，小力计划采用视频曝光方式。<strong>计划延期未交付。</strong></p>
 <p>再两天，小力观察到米游社有一个首页推荐贴，合成史莱姆。获得了合成魈的十倍曝光。观察下来有如下特点：</p>
 <ul>
@@ -476,6 +476,13 @@ if (!doNotTrack) {
         <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
         
     </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
 </footer>
 
 

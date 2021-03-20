@@ -208,7 +208,7 @@ if (!doNotTrack) {
           
           
 
-          <p><img src="/images/mindmap/data_analytics.jpg" alt=""></p>
+          <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/mindmap/data_analytics.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <ul>
 <li><a href="https://github.com/kuhung/mindmap">思维导图获取</a>
 <ul>
@@ -334,6 +334,13 @@ if (!doNotTrack) {
         <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
         
     </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
 </footer>
 
 

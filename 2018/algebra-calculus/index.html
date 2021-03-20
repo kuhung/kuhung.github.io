@@ -208,8 +208,8 @@ if (!doNotTrack) {
           
           
 
-          <p><img src="/images/cheatsheets/algebra-calculus-1.png" alt="线代与微积分速查表·一"></p>
-<p><img src="/images/cheatsheets/algebra-calculus-2.png" alt="线代与微积分速查表·二"></p>
+          <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/cheatsheets/algebra-calculus-1.png" alt="线代与微积分速查表·一" class="lazyload"><figcaption class="image-caption">线代与微积分速查表·一</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/cheatsheets/algebra-calculus-2.png" alt="线代与微积分速查表·二" class="lazyload"><figcaption class="image-caption">线代与微积分速查表·二</figcaption></figure></p>
 
     </div>
 
@@ -322,6 +322,13 @@ if (!doNotTrack) {
         <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
         
     </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
 </footer>
 
 

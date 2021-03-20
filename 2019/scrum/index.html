@@ -208,7 +208,7 @@ if (!doNotTrack) {
           
           
 
-          <p><img src="/images/mindmap/scrum.jpg" alt=""></p>
+          <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/mindmap/scrum.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p><a href="/about/">关于作者</a></p>
 
     </div>
@@ -325,6 +325,13 @@ if (!doNotTrack) {
         <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
         
     </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
 </footer>
 
 
