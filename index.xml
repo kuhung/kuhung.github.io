@@ -9,24 +9,35 @@
     <atom:link href="https://kuhungio.me/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Posts</title>
-      <link>https://kuhungio.me/posts/</link>
-      <pubDate>Tue, 16 Mar 2021 00:35:38 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://kuhungio.me/about/</link>
-      <pubDate>Wed, 09 Jan 2019 00:14:04 +0800</pubDate>
+      <pubDate>Sat, 17 Apr 2021 00:14:04 +0800</pubDate>
       
       <guid>https://kuhungio.me/about/</guid>
       <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;笔名：谷粒 kuhung&lt;/li&gt;
 &lt;li&gt;毕业院校：&lt;a href=&#34;https://www.hust.edu.cn/&#34;&gt;华中科技大学&lt;/a&gt; &lt;a href=&#34;http://mse.hust.edu.cn/&#34;&gt;机械学院&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##理念&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使命
+&lt;ul&gt;
+&lt;li&gt;持续交付客户乐意买单的产品或服务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;愿景
+&lt;ul&gt;
+&lt;li&gt;（待补充）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;价值观
+&lt;ul&gt;
+&lt;li&gt;对世界保持好奇&lt;/li&gt;
+&lt;li&gt;对信息秉持批判&lt;/li&gt;
+&lt;li&gt;对事态积极看待&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;工作经历&#34;&gt;工作经历&lt;/h2&gt;
 &lt;ul&gt;
@@ -162,6 +173,15 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Posts</title>
+      <link>https://kuhungio.me/posts/</link>
+      <pubDate>Tue, 16 Mar 2021 00:35:38 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/posts/</guid>
+      <description></description>
     </item>
     
   </channel>

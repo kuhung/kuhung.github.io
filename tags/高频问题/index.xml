@@ -17,12 +17,13 @@
       <pubDate>Tue, 01 Sep 2020 12:04:49 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/eda-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     EDA 常见问题速查 2020.09.01 2020.12.21 2021.03.17 /     可视化工具   seaborn
+      <description>标题 创建时间 发布时间 最后一次修改 备注     EDA 常见问题速查 2020.09.01 2020.12.21 2021.03.30 /     参考网站  python-graph-gallery 图之典 AntV visualcinnamon  可视化工具   seaborn
   bokeh
+  chord
   pyplot
   plotly
   降维
- t-SNE    三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[&amp;#39;x&amp;#39;] = x df_3d[&amp;#39;y&amp;#39;] = y df_3d[&amp;#39;z&amp;#39;] = z sns.</description>
+ t-SNE    三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.</description>
     </item>
     
     <item>
@@ -31,7 +32,7 @@
       <pubDate>Tue, 25 Aug 2020 11:13:05 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/hive-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.01.15 /     函数大全 https://www.iteblog.com/archives/2258.html
+      <description>标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.04.13 /     函数大全 https://www.iteblog.com/archives/2258.html
 Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ 计算时间差 --- https://blog.csdn.net/kent7306/article/details/50441967 --- 计算前后差  --- https://blog.csdn.net/qq_33290422/article/details/81204532 --- 直接计算时间差 json 提取 --- refer: https://www.cnblogs.com/drjava/p/10486134.html --- [{&amp;#34;name&amp;#34;:&amp;#34;张三&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;},{&amp;#34;name&amp;#34;:&amp;#34;李&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;47&amp;#34;}]  SELECT get_json_object(xjson,&amp;#34;$.[0]&amp;#34;) FROM person; --- {&amp;#34;name&amp;#34;:&amp;#34;王二狗&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;}  --- 按字段提取 SELECT get_json_object(xjson,&amp;#34;$.</description>
     </item>
     
@@ -50,7 +51,7 @@ Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribut
       <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/python-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Python 常见问题速查 2020.08.04 2020.12.21 2020.12.21 /     获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
+      <description>标题 创建时间 发布时间 最后一次修改 备注     Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 /     获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
     </item>
     
     <item>
