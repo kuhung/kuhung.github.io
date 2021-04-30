@@ -22,6 +22,8 @@
   chord
   pyplot
   plotly
+  Datapane
+  Altair
   降维
  t-SNE    三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.</description>
     </item>

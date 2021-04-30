@@ -18,8 +18,8 @@
       
       <guid>https://kuhungio.me/2021/performance-coaching/</guid>
       <description>简单描述 实际发布 最后一次修改     高绩效教练思维导图 2021-03-17 2021-03-17     核心观点：
-  教练对象
- 自主 胜任 联结    教练
+  让教练对象产生如下感觉
+ 自主 胜任 联结    教练需要做到
   察觉
   提问
   倾听
@@ -412,6 +412,8 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
   chord
   pyplot
   plotly
+  Datapane
+  Altair
   降维
  t-SNE    三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.</description>
     </item>
