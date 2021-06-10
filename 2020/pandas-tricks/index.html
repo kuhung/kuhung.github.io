@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Pandas 常见问题速查",
     "headline" : "Pandas 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Pandas 常见问题速查 2020.08.04 2020.12.21 2021.01.29 \/     一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Pandas 常见问题速查 2020.08.04 2020.12.21 2021.06.09 \/     一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(\u0026#39;2000-01-01\u0026#39;, freq=\u0026#39;3D\u0026#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[\u0026#39;col_1\u0026#39;,\u0026#39;col_2\u0026#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=\u0026#39;coolwarm\u0026#39;) pandas 不折叠行与列 pd.set_option(\u0026#39;display.max_rows\u0026#39;, 500) #最大行数 pd.set_option(\u0026#39;display.max_columns\u0026#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({\u0026#34;A\u0026#34;: [1, 2, 3], \u0026#34;B\u0026#34;: [4, 5, 6]}) df.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 10:47:23 \u002b0800 CST",
     "dateModified" : "2020-08-04 10:47:23 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/pandas-tricks\/",
-    "wordCount" : "616",
+    "wordCount" : "662",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -182,6 +182,7 @@ if (!doNotTrack) {
         <li><a href="#pandas-读取-excel">pandas 读取 excel</a></li>
         <li><a href="#dataframe-导出为图片">dataframe 导出为图片</a></li>
         <li><a href="#获取特定条件下的top数据">获取特定条件下的top数据</a></li>
+        <li><a href="#合并多个-dataframe">合并多个 dataframe</a></li>
       </ul>
     </li>
   </ul>
@@ -251,7 +252,7 @@ if (!doNotTrack) {
 <td align="left">Pandas 常见问题速查</td>
 <td align="left">2020.08.04</td>
 <td align="left">2020.12.21</td>
-<td align="left">2021.01.29</td>
+<td align="left">2021.06.09</td>
 <td align="left">/</td>
 </tr>
 </tbody>
@@ -445,6 +446,22 @@ dfi<span style="color:#f92672">.</span>export(df_styled,<span style="color:#e6db
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/41330749/pandas-sort-and-head-inside-groupby</span>
 
 df<span style="color:#f92672">.</span>groupby(pd<span style="color:#f92672">.</span>TimeGrouper(<span style="color:#e6db74">&#39;D&#39;</span>))<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>nlargest(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;value&#39;</span>))<span style="color:#f92672">.</span>reset_index(level<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, drop<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><h3 id="合并多个-dataframe">合并多个 dataframe</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/44327999/python-pandas-merge-multiple-dataframes</span>
+
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+
+df1 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_table(<span style="color:#e6db74">&#39;file1.csv&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>)
+df2 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_table(<span style="color:#e6db74">&#39;file2.csv&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>)
+df3 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_table(<span style="color:#e6db74">&#39;file3.csv&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>)
+
+<span style="color:#75715e"># compile the list of dataframes you want to merge</span>
+data_frames <span style="color:#f92672">=</span> [df1, df2, df3]
+
+df_merged <span style="color:#f92672">=</span> reduce(<span style="color:#66d9ef">lambda</span>  left,right: pd<span style="color:#f92672">.</span>merge(left,right,on<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;DATE&#39;</span>],
+                                            how<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;outer&#39;</span>), data_frames)
+
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
