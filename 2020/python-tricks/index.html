@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Python 常见问题速查",
     "headline" : "Python 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 \/     获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(\u0026#34;%Y-%m-%d\u0026#34;, time.localtime()) 对list元素进行判断 # source: https:\/\/thispointer.com\/python-count-elements-in-a-list-that-satisfy-certain-conditions\/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x\u0026gt;5, listOfElems)) # lambda 函数可替换 print(\u0026#39;Count of numbers in a list which are greater than 5: \u0026#39;, count) str类型的array转array def str2array(current_str): \u0026#39;\u0026#39;\u0026#39; 返回数值数组 \u0026#39;\u0026#39;\u0026#39; current_array = current_str.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 \/     获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(\u0026#34;%Y-%m-%d\u0026#34;, time.localtime()) 日期加减操作 from datetime import datetime, timedelta def date_transfer(today): today = datetime.strptime(today, \u0026#34;%Y-%m-%d\u0026#34;) yesterday = today - timedelta(days=1) return today.strftime( \u0026#34;%Y-%m-%d\u0026#34;),yesterday.strftime( \u0026#34;%Y-%m-%d\u0026#34;) 对list元素进行判断 # source: https:\/\/thispointer.com\/python-count-elements-in-a-list-that-satisfy-certain-conditions\/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x\u0026gt;5, listOfElems)) # lambda 函数可替换 print(\u0026#39;Count of numbers in a list which are greater than 5: \u0026#39;, count) str类型的array转array def str2array(current_str): \u0026#39;\u0026#39;\u0026#39; 返回数值数组 \u0026#39;\u0026#39;\u0026#39; current_array = current_str.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 11:39:43 \u002b0800 CST",
     "dateModified" : "2020-08-04 11:39:43 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/python-tricks\/",
-    "wordCount" : "264",
+    "wordCount" : "322",
     "keywords" : [ "python","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -160,6 +160,7 @@ if (!doNotTrack) {
     <li>
       <ul>
         <li><a href="#获取日期参数输入或者默认日期">获取日期参数输入，或者默认日期</a></li>
+        <li><a href="#日期加减操作">日期加减操作</a></li>
         <li><a href="#对list元素进行判断">对list元素进行判断</a></li>
         <li><a href="#str类型的array转array">str类型的array转array</a></li>
         <li><a href="#python-取整">python 取整</a></li>
@@ -172,6 +173,7 @@ if (!doNotTrack) {
     <li><a href="#读取-txt-文本文件">读取 txt 文本文件</a>
       <ul>
         <li><a href="#每-n-个距离截断-string">每 n 个距离截断 string</a></li>
+        <li><a href="#optionparser-获取命令行参数">OptionParser 获取命令行参数</a></li>
       </ul>
     </li>
   </ul>
@@ -255,6 +257,14 @@ if (!doNotTrack) {
     today <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>argv[<span style="color:#ae81ff">1</span>]
 <span style="color:#66d9ef">else</span>:
     today <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>, time<span style="color:#f92672">.</span>localtime())
+</code></pre></div><h3 id="日期加减操作">日期加减操作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">date_transfer</span>(today):
+  today <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>strptime(today, <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)
+  yesterday <span style="color:#f92672">=</span> today <span style="color:#f92672">-</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+
+  <span style="color:#66d9ef">return</span> today<span style="color:#f92672">.</span>strftime( <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>),yesterday<span style="color:#f92672">.</span>strftime( <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div><h3 id="对list元素进行判断">对list元素进行判断</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/</span>
 
@@ -343,6 +353,19 @@ line <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;12345
 n <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
 [line[i:i<span style="color:#f92672">+</span>n] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(line), n)]
 <span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#e6db74">&#39;12&#39;</span>, <span style="color:#e6db74">&#39;34&#39;</span>, <span style="color:#e6db74">&#39;56&#39;</span>, <span style="color:#e6db74">&#39;78&#39;</span>, <span style="color:#e6db74">&#39;90&#39;</span>]
+</code></pre></div><h3 id="optionparser-获取命令行参数">OptionParser 获取命令行参数</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># http://www.ttlsa.com/python/python-optionparser-usage/</span>
+<span style="color:#75715e"># https://docs.python.org/3/library/optparse.html</span>
+<span style="color:#f92672">from</span> optparse <span style="color:#f92672">import</span> OptionParser
+<span style="color:#f92672">...</span>
+parser <span style="color:#f92672">=</span> OptionParser()
+parser<span style="color:#f92672">.</span>add_option(<span style="color:#e6db74">&#34;-f&#34;</span>, <span style="color:#e6db74">&#34;--file&#34;</span>, dest<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;filename&#34;</span>,
+                  help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;write report to FILE&#34;</span>, metavar<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;FILE&#34;</span>)
+parser<span style="color:#f92672">.</span>add_option(<span style="color:#e6db74">&#34;-q&#34;</span>, <span style="color:#e6db74">&#34;--quiet&#34;</span>,
+                  action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_false&#34;</span>, dest<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;verbose&#34;</span>, default<span style="color:#f92672">=</span>True,
+                  help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;don&#39;t print status messages to stdout&#34;</span>)
+
+(options, args) <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>

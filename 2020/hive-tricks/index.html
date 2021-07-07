@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-25 11:13:05 \u002b0800 CST",
     "dateModified" : "2020-08-25 11:13:05 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/hive-tricks\/",
-    "wordCount" : "234",
+    "wordCount" : "287",
     "keywords" : [ "hive","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -164,8 +164,8 @@ if (!doNotTrack) {
         <li><a href="#计算时间差">计算时间差</a></li>
         <li><a href="#json-提取">json 提取</a></li>
         <li><a href="#临时表运用">临时表运用</a></li>
-        <li><a href="#行转列">行转列</a></li>
-        <li><a href="#列转行">列转行</a></li>
+        <li><a href="#行转列-pivot">行转列 pivot</a></li>
+        <li><a href="#列转行-unpivot">列转行 unpivot</a></li>
         <li><a href="#结果存储">结果存储</a></li>
         <li><a href="#取尾数">取尾数</a></li>
         <li><a href="#left-join-注意事项">left join 注意事项</a></li>
@@ -289,7 +289,7 @@ sort <span style="color:#66d9ef">by</span> rand()
     <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> xxx
 )
 <span style="color:#66d9ef">select</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">from</span> temp;
-</code></pre></div><h3 id="行转列">行转列</h3>
+</code></pre></div><h3 id="行转列-pivot">行转列 pivot</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- 合并多行结果到一列
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">user</span>
@@ -298,16 +298,34 @@ sort <span style="color:#66d9ef">by</span> rand()
 <span style="color:#66d9ef">group</span> <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">user</span>;
 
 
-<span style="color:#75715e">--- 
-</span></code></pre></div><h3 id="列转行">列转行</h3>
+<span style="color:#75715e">--- https://stackoverflow.com/questions/23025380/how-to-transpose-pivot-data-in-hive
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span>
+  uid,
+  kv[<span style="color:#e6db74">&#39;c1&#39;</span>] <span style="color:#66d9ef">AS</span> c1,
+  kv[<span style="color:#e6db74">&#39;c2&#39;</span>] <span style="color:#66d9ef">AS</span> c2,
+  kv[<span style="color:#e6db74">&#39;c3&#39;</span>] <span style="color:#66d9ef">AS</span> c3
+<span style="color:#66d9ef">FROM</span> (
+  <span style="color:#66d9ef">SELECT</span> uid, to_map(<span style="color:#66d9ef">key</span>, value) kv
+  <span style="color:#66d9ef">FROM</span> vtable
+  <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> uid
+) t
+</code></pre></div><h3 id="列转行-unpivot">列转行 unpivot</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- refer: https://stackoverflow.com/questions/39353425/how-to-convert-columns-into-rows-in-hive
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">select</span>
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span>
   col1,
   col2,
   value
 <span style="color:#66d9ef">from</span>
   orig_table <span style="color:#66d9ef">lateral</span> <span style="color:#66d9ef">view</span> explode(array(col3, col4, col5)) orig_table_alias <span style="color:#66d9ef">as</span> value;
+  
+ <span style="color:#75715e">--- unpivot https://stackoverflow.com/questions/23025380/how-to-transpose-pivot-data-in-hive
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> t1.uid, t2.<span style="color:#66d9ef">key</span>, t2.value
+  <span style="color:#66d9ef">FROM</span> htable t1
+  <span style="color:#66d9ef">LATERAL</span> <span style="color:#66d9ef">VIEW</span> explode (<span style="color:#66d9ef">map</span>(
+    <span style="color:#e6db74">&#39;c1&#39;</span>, c1,
+    <span style="color:#e6db74">&#39;c2&#39;</span>, c2,
+    <span style="color:#e6db74">&#39;c3&#39;</span>, c3
+  )) t2 <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">key</span>, value
 </code></pre></div><h3 id="结果存储">结果存储</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://www.cnblogs.com/Allen-rg/p/9295615.html
 </span><span style="color:#75715e"></span>

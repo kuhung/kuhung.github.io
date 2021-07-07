@@ -67,7 +67,7 @@ XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这�
     </item>
     
     <item>
-      <title>从 QQ 扫描用户数据，到 LIME 与 SHAP 两类机器学习解释方法的比较</title>
+      <title>如何打造用户不再恐惧的算法模型</title>
       <link>https://kuhungio.me/2021/interpretable-machine-learning/</link>
       <pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate>
       
