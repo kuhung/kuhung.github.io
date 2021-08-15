@@ -60,7 +60,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Hive 常见问题速查",
     "headline" : "Hive 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.05.21 \/     函数大全 https:\/\/www.iteblog.com\/archives\/2258.html\nHive 结果采样 select * from my_table where rand() \u0026lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http:\/\/www.joefkelley.com\/736\/ 计算时间差 --- https:\/\/blog.csdn.net\/kent7306\/article\/details\/50441967 --- 计算前后差  --- https:\/\/blog.csdn.net\/qq_33290422\/article\/details\/81204532 --- 直接计算时间差 json 提取 --- refer: https:\/\/www.cnblogs.com\/drjava\/p\/10486134.html --- [{\u0026#34;name\u0026#34;:\u0026#34;张三\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;},{\u0026#34;name\u0026#34;:\u0026#34;李\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;47\u0026#34;}]  SELECT get_json_object(xjson,\u0026#34;$.[0]\u0026#34;) FROM person; --- {\u0026#34;name\u0026#34;:\u0026#34;王二狗\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;}  --- 按字段提取 SELECT get_json_object(xjson,\u0026#34;$.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 \/     函数大全 https:\/\/www.iteblog.com\/archives\/2258.html\nHive 结果采样 select * from my_table where rand() \u0026lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http:\/\/www.joefkelley.com\/736\/ 计算时间差 --- https:\/\/blog.csdn.net\/kent7306\/article\/details\/50441967 --- 计算前后差  --- https:\/\/blog.csdn.net\/qq_33290422\/article\/details\/81204532 --- 直接计算时间差 json 提取 --- refer: https:\/\/www.cnblogs.com\/drjava\/p\/10486134.html --- [{\u0026#34;name\u0026#34;:\u0026#34;张三\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;},{\u0026#34;name\u0026#34;:\u0026#34;李\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;47\u0026#34;}]  SELECT get_json_object(xjson,\u0026#34;$.[0]\u0026#34;) FROM person; --- {\u0026#34;name\u0026#34;:\u0026#34;王二狗\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;}  --- 按字段提取 SELECT get_json_object(xjson,\u0026#34;$.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-25 11:13:05 \u002b0800 CST",
     "dateModified" : "2020-08-25 11:13:05 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/hive-tricks\/",
-    "wordCount" : "299",
+    "wordCount" : "318",
     "keywords" : [ "hive","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -173,6 +173,7 @@ if (!doNotTrack) {
         <li><a href="#rlike-匹配多个条件">rlike 匹配多个条件</a></li>
         <li><a href="#partition-排序">partition 排序</a></li>
         <li><a href="#hive-timestamp-to-date">hive timestamp to date</a></li>
+        <li><a href="#hdfs-操作">hdfs 操作</a></li>
       </ul>
     </li>
   </ul>
@@ -242,7 +243,7 @@ if (!doNotTrack) {
 <td align="left">Hive 常见问题速查</td>
 <td align="left">2020.08.25</td>
 <td align="left">2020.12.21</td>
-<td align="left">2021.05.21</td>
+<td align="left">2021.08.10</td>
 <td align="left">/</td>
 </tr>
 </tbody>
@@ -365,6 +366,11 @@ sort <span style="color:#66d9ef">by</span> rand()
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://stackoverflow.com/questions/7211224/how-to-convert-unix-epoch-time-to-date-string-in-hive
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">select</span> date_format(from_unixtime(epoch_datetime),<span style="color:#e6db74">&#39;yyyyMM&#39;</span>) <span style="color:#66d9ef">as</span> formatted_date <span style="color:#66d9ef">from</span> myHiveTable;
+</code></pre></div><h3 id="hdfs-操作">hdfs 操作</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># https://www.cnblogs.com/lizm166/p/13355183.html</span>
+hdfs dfs -ls
+hdfs dfs -mkdir <span style="color:#f92672">[</span>-p<span style="color:#f92672">]</span> &lt;paths&gt;
+hdfs dfs -get <span style="color:#f92672">[</span>-ignoreCrc<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-crc<span style="color:#f92672">]</span> &lt;src&gt; &lt;localdst&gt;
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>

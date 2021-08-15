@@ -17,7 +17,7 @@
       <pubDate>Tue, 25 Aug 2020 11:13:05 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/hive-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.05.21 /     函数大全 https://www.iteblog.com/archives/2258.html
+      <description>标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 /     函数大全 https://www.iteblog.com/archives/2258.html
 Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ 计算时间差 --- https://blog.csdn.net/kent7306/article/details/50441967 --- 计算前后差  --- https://blog.csdn.net/qq_33290422/article/details/81204532 --- 直接计算时间差 json 提取 --- refer: https://www.cnblogs.com/drjava/p/10486134.html --- [{&amp;#34;name&amp;#34;:&amp;#34;张三&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;},{&amp;#34;name&amp;#34;:&amp;#34;李&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;47&amp;#34;}]  SELECT get_json_object(xjson,&amp;#34;$.[0]&amp;#34;) FROM person; --- {&amp;#34;name&amp;#34;:&amp;#34;王二狗&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;}  --- 按字段提取 SELECT get_json_object(xjson,&amp;#34;$.</description>
     </item>
     
