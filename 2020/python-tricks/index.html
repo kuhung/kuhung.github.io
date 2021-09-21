@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 11:39:43 \u002b0800 CST",
     "dateModified" : "2020-08-04 11:39:43 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/python-tricks\/",
-    "wordCount" : "322",
+    "wordCount" : "346",
     "keywords" : [ "python","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -174,6 +174,7 @@ if (!doNotTrack) {
       <ul>
         <li><a href="#每-n-个距离截断-string">每 n 个距离截断 string</a></li>
         <li><a href="#optionparser-获取命令行参数">OptionParser 获取命令行参数</a></li>
+        <li><a href="#从链接中下载数据">从链接中下载数据</a></li>
       </ul>
     </li>
   </ul>
@@ -366,6 +367,18 @@ parser<span style="color:#f92672">.</span>add_option(<span style="color:#e6db74"
                   help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;don&#39;t print status messages to stdout&#34;</span>)
 
 (options, args) <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</code></pre></div><h3 id="从链接中下载数据">从链接中下载数据</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/22676/how-to-download-a-file-over-http</span>
+<span style="color:#75715e"># https://www.tutorialspoint.com/downloading-files-from-web-using-python</span>
+
+<span style="color:#f92672">import</span> requests
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://www.facebook.com/favicon.ico&#39;</span>
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, allow_redirects<span style="color:#f92672">=</span>True)
+s <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>content
+open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="color:#e6db74">&#39;wb&#39;</span>)<span style="color:#f92672">.</span>write(s)
+
+<span style="color:#75715e"># pandas 读取</span>
+<span style="color:#75715e"># pd.read_csv(io.StringIO(s.decode(&#39;utf-8&#39;)),header=None)</span>
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
