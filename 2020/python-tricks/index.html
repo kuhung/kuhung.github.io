@@ -24,7 +24,7 @@ if (!doNotTrack) {
 </script>
 
   <link rel="prev" href="https://kuhungio.me/2020/pandas-tricks/" />
-  <link rel="next" href="https://kuhungio.me/2020/model-tricks/" />
+  <link rel="next" href="https://kuhungio.me/2020/hive-tricks/" />
   <link rel="canonical" href="https://kuhungio.me/2020/python-tricks/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -71,7 +71,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 11:39:43 \u002b0800 CST",
     "dateModified" : "2020-08-04 11:39:43 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/python-tricks\/",
-    "wordCount" : "346",
+    "wordCount" : "363",
     "keywords" : [ "python","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -175,6 +175,7 @@ if (!doNotTrack) {
         <li><a href="#每-n-个距离截断-string">每 n 个距离截断 string</a></li>
         <li><a href="#optionparser-获取命令行参数">OptionParser 获取命令行参数</a></li>
         <li><a href="#从链接中下载数据">从链接中下载数据</a></li>
+        <li><a href="#时间戳差值">时间戳差值</a></li>
       </ul>
     </li>
   </ul>
@@ -379,6 +380,15 @@ open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="col
 
 <span style="color:#75715e"># pandas 读取</span>
 <span style="color:#75715e"># pd.read_csv(io.StringIO(s.decode(&#39;utf-8&#39;)),header=None)</span>
+</code></pre></div><h3 id="时间戳差值">时间戳差值</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">timestamp_diff</span>(x,y):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    x：后值
+</span><span style="color:#e6db74">    y：前值
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    dt1 <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>utcfromtimestamp(x)
+    dt2 <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>utcfromtimestamp(y)
+    <span style="color:#66d9ef">return</span> (dt1 <span style="color:#f92672">-</span> dt2)<span style="color:#f92672">.</span>days
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
@@ -433,7 +443,7 @@ open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="col
         <a href="https://kuhungio.me/2020/pandas-tricks/" class="prev" rel="prev" title="Pandas 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Pandas 常见问题速查</a>
         
         
-        <a href="https://kuhungio.me/2020/model-tricks/" class="next" rel="next" title="Model 常见问题速查">Model 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhungio.me/2020/hive-tricks/" class="next" rel="next" title="Hive 常见问题速查">Hive 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>

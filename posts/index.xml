@@ -664,15 +664,6 @@ Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribut
     </item>
     
     <item>
-      <title>Model 常见问题速查</title>
-      <link>https://kuhungio.me/2020/model-tricks/</link>
-      <pubDate>Fri, 21 Aug 2020 11:41:15 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/model-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.01.21 /     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.predict_proba(test[feature])[:,1:] # 生成探查 dataframe pre_recall_curve = pd.</description>
-    </item>
-    
-    <item>
       <title>Python 常见问题速查</title>
       <link>https://kuhungio.me/2020/python-tricks/</link>
       <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
@@ -1634,6 +1625,16 @@ If the day before holiday is weekday ,treat the day before holiday as Friday If 
 阶段小结 显而易见、触手可及，如果你想养成好习惯，就他们具备这样的特质。坏习惯则反之。给自己的习惯加上执行的明确意图，什么时候做什么事情，将增强行动的动力。关联现在的习惯，在现有习惯之间穿插需要养成的习惯，让习惯更加流畅。
 喜欢这个频道的朋友，别忘了转发你的朋友，和朋友一起成长。关注并订阅这个系列，习惯培养体系，咱们接着讲。
  关于作者</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kuhungio.me/1/model-tricks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhungio.me/1/model-tricks/</guid>
+      <description>title: &amp;ldquo;Model 常见问题速查&amp;rdquo; date: 2020-08-21T11:41:15+08:00 draft: false tags: [&amp;ldquo;pandas&amp;rdquo;, &amp;ldquo;高频问题&amp;rdquo;] categories: [&amp;ldquo;技术技巧&amp;rdquo;]
+   标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.01.21 /     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.</description>
     </item>
     
   </channel>

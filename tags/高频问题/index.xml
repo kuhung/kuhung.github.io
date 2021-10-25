@@ -39,15 +39,6 @@ Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribut
     </item>
     
     <item>
-      <title>Model 常见问题速查</title>
-      <link>https://kuhungio.me/2020/model-tricks/</link>
-      <pubDate>Fri, 21 Aug 2020 11:41:15 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/model-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.01.21 /     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.predict_proba(test[feature])[:,1:] # 生成探查 dataframe pre_recall_curve = pd.</description>
-    </item>
-    
-    <item>
       <title>Python 常见问题速查</title>
       <link>https://kuhungio.me/2020/python-tricks/</link>
       <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>

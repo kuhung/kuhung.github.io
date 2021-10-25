@@ -23,7 +23,7 @@ if (!doNotTrack) {
 }
 </script>
 
-  <link rel="prev" href="https://kuhungio.me/2020/model-tricks/" />
+  <link rel="prev" href="https://kuhungio.me/2020/python-tricks/" />
   <link rel="next" href="https://kuhungio.me/2020/eda-tricks/" />
   <link rel="canonical" href="https://kuhungio.me/2020/hive-tricks/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -172,7 +172,7 @@ if (!doNotTrack) {
         <li><a href="#hive-日期处理">hive 日期处理</a></li>
         <li><a href="#rlike-匹配多个条件">rlike 匹配多个条件</a></li>
         <li><a href="#partition-排序">partition 排序</a></li>
-        <li><a href="#hive-timestamp-to-date">hive timestamp to date</a></li>
+        <li><a href="#时间戳-timestamp-to-date">时间戳 timestamp to date</a></li>
         <li><a href="#hdfs-操作">hdfs 操作</a></li>
       </ul>
     </li>
@@ -362,7 +362,7 @@ sort <span style="color:#66d9ef">by</span> rand()
 <span style="color:#75715e">--- ROW_NUMBER 不出现重复数字 1 2 3 4 
 </span><span style="color:#75715e">--- RANK 同一组数字相同，但后续会跳过 1 1 3 4
 </span><span style="color:#75715e">--- DENSE_RANK 同一组数字相同，后续不跳过 1 1 2 3
-</span></code></pre></div><h3 id="hive-timestamp-to-date">hive timestamp to date</h3>
+</span></code></pre></div><h3 id="时间戳-timestamp-to-date">时间戳 timestamp to date</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://stackoverflow.com/questions/7211224/how-to-convert-unix-epoch-time-to-date-string-in-hive
 </span><span style="color:#75715e"></span>
 <span style="color:#66d9ef">select</span> date_format(from_unixtime(epoch_datetime),<span style="color:#e6db74">&#39;yyyyMM&#39;</span>) <span style="color:#66d9ef">as</span> formatted_date <span style="color:#66d9ef">from</span> myHiveTable;
@@ -422,7 +422,7 @@ hdfs dfs -get <span style="color:#f92672">[</span>-ignoreCrc<span style="color:#
 
     <div class="post-nav">
         
-        <a href="https://kuhungio.me/2020/model-tricks/" class="prev" rel="prev" title="Model 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Model 常见问题速查</a>
+        <a href="https://kuhungio.me/2020/python-tricks/" class="prev" rel="prev" title="Python 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Python 常见问题速查</a>
         
         
         <a href="https://kuhungio.me/2020/eda-tricks/" class="next" rel="next" title="EDA 常见问题速查">EDA 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
