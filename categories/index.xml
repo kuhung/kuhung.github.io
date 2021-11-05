@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 19 Oct 2021 21:57:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 23 Oct 2021 15:56:41 +0800</lastBuildDate>
     
 	<atom:link href="https://kuhungio.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Side Project</title>
       <link>https://kuhungio.me/categories/side-project/</link>
-      <pubDate>Tue, 19 Oct 2021 21:57:25 +0800</pubDate>
+      <pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate>
       
       <guid>https://kuhungio.me/categories/side-project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>个人进步</title>
+      <link>https://kuhungio.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</link>
+      <pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</guid>
       <description></description>
     </item>
     
@@ -35,15 +44,6 @@
       <pubDate>Mon, 13 Sep 2021 09:03:51 +0800</pubDate>
       
       <guid>https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>个人进步</title>
-      <link>https://kuhungio.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</link>
-      <pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</guid>
       <description></description>
     </item>
     
