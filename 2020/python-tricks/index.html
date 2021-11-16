@@ -22,9 +22,8 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2020/pandas-tricks/" />
-  <link rel="next" href="https://kuhungio.me/2020/hive-tricks/" />
+  <link rel="next" href="https://kuhungio.me/2020/model-tricks/" />
   <link rel="canonical" href="https://kuhungio.me/2020/python-tricks/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -233,26 +232,26 @@ if (!doNotTrack) {
           <table>
 <thead>
 <tr>
-<th align="left">标题</th>
-<th align="left">创建时间</th>
-<th align="left">发布时间</th>
-<th align="left">最后一次修改</th>
-<th align="left">备注</th>
+<th style="text-align:left">标题</th>
+<th style="text-align:left">创建时间</th>
+<th style="text-align:left">发布时间</th>
+<th style="text-align:left">最后一次修改</th>
+<th style="text-align:left">备注</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Python 常见问题速查</td>
-<td align="left">2020.08.04</td>
-<td align="left">2020.12.21</td>
-<td align="left">2021.03.30</td>
-<td align="left">/</td>
+<td style="text-align:left">Python 常见问题速查</td>
+<td style="text-align:left">2020.08.04</td>
+<td style="text-align:left">2020.12.21</td>
+<td style="text-align:left">2021.03.30</td>
+<td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h3 id="获取日期参数输入或者默认日期">获取日期参数输入，或者默认日期</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
 <span style="color:#f92672">import</span> time
 
 <span style="color:#66d9ef">if</span> len(sys<span style="color:#f92672">.</span>argv)<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>:
@@ -260,7 +259,7 @@ if (!doNotTrack) {
 <span style="color:#66d9ef">else</span>:
     today <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>, time<span style="color:#f92672">.</span>localtime())
 </code></pre></div><h3 id="日期加减操作">日期加减操作</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">date_transfer</span>(today):
   today <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>strptime(today, <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)
@@ -268,15 +267,15 @@ if (!doNotTrack) {
 
   <span style="color:#66d9ef">return</span> today<span style="color:#f92672">.</span>strftime( <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>),yesterday<span style="color:#f92672">.</span>strftime( <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)
 </code></pre></div><h3 id="对list元素进行判断">对list元素进行判断</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/</span>
 
 listOfElems <span style="color:#f92672">=</span> [<span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">33</span>, <span style="color:#ae81ff">45</span>, <span style="color:#ae81ff">66</span>, <span style="color:#ae81ff">77</span>, <span style="color:#ae81ff">88</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">101</span>]
 <span style="color:#75715e"># count numbers in the list which are greater than 5</span>
 count <span style="color:#f92672">=</span> sum(map(<span style="color:#66d9ef">lambda</span> x : x<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">5</span>, listOfElems)) <span style="color:#75715e"># lambda 函数可替换</span>
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Count of numbers in a list which are greater than 5: &#39;</span>, count)
+print(<span style="color:#e6db74">&#39;Count of numbers in a list which are greater than 5: &#39;</span>, count)
 </code></pre></div><h3 id="str类型的array转array">str类型的array转array</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">str2array</span>(current_str):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">str2array</span>(current_str):
     <span style="color:#e6db74">&#39;&#39;&#39;
 </span><span style="color:#e6db74">    返回数值数组
 </span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
@@ -288,7 +287,7 @@ current_str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#3
 str2array(current_str)
 <span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]
 </code></pre></div><h3 id="python-取整">python 取整</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: http://kuanghy.github.io/2016/09/07/python-trunc</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: http://kuanghy.github.io/2016/09/07/python-trunc</span>
 
 <span style="color:#f92672">import</span> math
 <span style="color:#75715e"># 向上取整</span>
@@ -309,7 +308,7 @@ round(<span style="color:#ae81ff">2.5</span>)
 
 <span style="color:#75715e"># 为何会这样：是为了保证整体分布和均值不变。如果每遇*.5进一，则整体均值会上移，带来误差。</span>
 </code></pre></div><h3 id="hmac-sha256-加密">HMAC SHA256 加密</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.gauravvjn.com/generate-hmac-sha256-signature-in-python/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.gauravvjn.com/generate-hmac-sha256-signature-in-python/</span>
 <span style="color:#f92672">import</span> hmac
 <span style="color:#f92672">import</span> hashlib 
 <span style="color:#f92672">import</span> binascii
@@ -321,7 +320,7 @@ round(<span style="color:#ae81ff">2.5</span>)
 
 create_sha256_signature(<span style="color:#e6db74">&#34;E49756B4C8FAB4E48222A3E7F3B97CC3&#34;</span>, <span style="color:#e6db74">&#34;TEST STRING&#34;</span>)
 </code></pre></div><h3 id="str类型的dict转dict">str类型的dict转dict</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary</span>
 s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;{&#39;muffin&#39; : &#39;lolz&#39;, &#39;foo&#39; : &#39;kitty&#39;}&#34;</span>
 
 <span style="color:#f92672">import</span> ast
@@ -329,7 +328,7 @@ ast<span style="color:#f92672">.</span>literal_eval(s)
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> {<span style="color:#e6db74">&#39;muffin&#39;</span>: <span style="color:#e6db74">&#39;lolz&#39;</span>, <span style="color:#e6db74">&#39;foo&#39;</span>: <span style="color:#e6db74">&#39;kitty&#39;</span>}
 </code></pre></div><h3 id="list-两两配对-pairwise">list 两两配对 pairwise</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/40092474/get-all-pairwise-combinations-from-a-list</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/40092474/get-all-pairwise-combinations-from-a-list</span>
 
 <span style="color:#f92672">import</span> itertools
 x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
@@ -337,26 +336,26 @@ list(itertools<span style="color:#f92672">.</span>combinations(x, <span style="c
 
 <span style="color:#f92672">&gt;&gt;&gt;</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)]
 </code></pre></div><h3 id="list-count-item">list count item</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/2600191/how-can-i-count-the-occurrences-of-a-list-item</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/2600191/how-can-i-count-the-occurrences-of-a-list-item</span>
 
 l <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>,<span style="color:#e6db74">&#34;b&#34;</span>]
 <span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> Counter
 Counter(l)
 <span style="color:#f92672">&gt;&gt;&gt;</span> Counter({<span style="color:#e6db74">&#39;b&#39;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#ae81ff">1</span>})
 </code></pre></div><h2 id="读取-txt-文本文件">读取 txt 文本文件</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/8369219/how-to-read-a-text-file-into-a-string-variable-and-strip-newlines</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/8369219/how-to-read-a-text-file-into-a-string-variable-and-strip-newlines</span>
 
 <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;data.txt&#39;</span>, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> file:
     data <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>)
 </code></pre></div><h3 id="每-n-个距离截断-string">每 n 个距离截断 string</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/9475241/split-string-every-nth-character</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/9475241/split-string-every-nth-character</span>
 
 line <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1234567890&#39;</span>
 n <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
 [line[i:i<span style="color:#f92672">+</span>n] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(line), n)]
 <span style="color:#f92672">&gt;&gt;&gt;</span> [<span style="color:#e6db74">&#39;12&#39;</span>, <span style="color:#e6db74">&#39;34&#39;</span>, <span style="color:#e6db74">&#39;56&#39;</span>, <span style="color:#e6db74">&#39;78&#39;</span>, <span style="color:#e6db74">&#39;90&#39;</span>]
 </code></pre></div><h3 id="optionparser-获取命令行参数">OptionParser 获取命令行参数</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># http://www.ttlsa.com/python/python-optionparser-usage/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># http://www.ttlsa.com/python/python-optionparser-usage/</span>
 <span style="color:#75715e"># https://docs.python.org/3/library/optparse.html</span>
 <span style="color:#f92672">from</span> optparse <span style="color:#f92672">import</span> OptionParser
 <span style="color:#f92672">...</span>
@@ -364,24 +363,24 @@ parser <span style="color:#f92672">=</span> OptionParser()
 parser<span style="color:#f92672">.</span>add_option(<span style="color:#e6db74">&#34;-f&#34;</span>, <span style="color:#e6db74">&#34;--file&#34;</span>, dest<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;filename&#34;</span>,
                   help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;write report to FILE&#34;</span>, metavar<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;FILE&#34;</span>)
 parser<span style="color:#f92672">.</span>add_option(<span style="color:#e6db74">&#34;-q&#34;</span>, <span style="color:#e6db74">&#34;--quiet&#34;</span>,
-                  action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_false&#34;</span>, dest<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;verbose&#34;</span>, default<span style="color:#f92672">=</span>True,
+                  action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_false&#34;</span>, dest<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;verbose&#34;</span>, default<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
                   help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;don&#39;t print status messages to stdout&#34;</span>)
 
 (options, args) <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
 </code></pre></div><h3 id="从链接中下载数据">从链接中下载数据</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/22676/how-to-download-a-file-over-http</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/22676/how-to-download-a-file-over-http</span>
 <span style="color:#75715e"># https://www.tutorialspoint.com/downloading-files-from-web-using-python</span>
 
 <span style="color:#f92672">import</span> requests
 url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://www.facebook.com/favicon.ico&#39;</span>
-r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, allow_redirects<span style="color:#f92672">=</span>True)
+r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, allow_redirects<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 s <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>content
 open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="color:#e6db74">&#39;wb&#39;</span>)<span style="color:#f92672">.</span>write(s)
 
 <span style="color:#75715e"># pandas 读取</span>
 <span style="color:#75715e"># pd.read_csv(io.StringIO(s.decode(&#39;utf-8&#39;)),header=None)</span>
 </code></pre></div><h3 id="时间戳差值">时间戳差值</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">timestamp_diff</span>(x,y):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">timestamp_diff</span>(x,y):
     <span style="color:#e6db74">&#39;&#39;&#39;
 </span><span style="color:#e6db74">    x：后值
 </span><span style="color:#e6db74">    y：前值
@@ -443,7 +442,7 @@ open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="col
         <a href="https://kuhungio.me/2020/pandas-tricks/" class="prev" rel="prev" title="Pandas 常见问题速查"><i class="iconfont icon-left"></i>&nbsp;Pandas 常见问题速查</a>
         
         
-        <a href="https://kuhungio.me/2020/hive-tricks/" class="next" rel="next" title="Hive 常见问题速查">Hive 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhungio.me/2020/model-tricks/" class="next" rel="next" title="Model 常见问题速查">Model 常见问题速查&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>

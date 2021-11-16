@@ -6,11 +6,7 @@
     <description>Recent content in 时事 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/%E6%97%B6%E4%BA%8B/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E6%97%B6%E4%BA%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何设计一套类似视觉中国“鹰眼”的技术</title>
       <link>https://kuhungio.me/2019/vgc-it/</link>

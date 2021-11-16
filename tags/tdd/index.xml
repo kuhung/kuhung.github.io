@@ -6,11 +6,7 @@
     <description>Recent content in TDD on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Aug 2019 00:22:07 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 25 Aug 2019 00:22:07 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机器学习实践--测试驱动开发</title>
       <link>https://kuhungio.me/2019/tdd_drive_ml/</link>

@@ -6,10 +6,15 @@
     <description>Recent content in pandas on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 04 Aug 2020 10:47:23 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Fri, 21 Aug 2020 11:41:15 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Model 常见问题速查</title>
+      <link>https://kuhungio.me/2020/model-tricks/</link>
+      <pubDate>Fri, 21 Aug 2020 11:41:15 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/model-tricks/</guid>
+      <description>标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.11.12 /     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[&amp;#39;randNumCol&amp;#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.</description>
+    </item>
     
     <item>
       <title>Pandas 常见问题速查</title>

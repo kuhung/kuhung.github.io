@@ -6,11 +6,7 @@
     <description>Recent content in SQL on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HIVE 技巧积累之合并重叠日期</title>
       <link>https://kuhungio.me/2019/merge_overlapping_date/</link>

@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2020/hive-tricks/" />
   <link rel="next" href="https://kuhungio.me/2020/data-engineering-in-2020/" />
   <link rel="canonical" href="https://kuhungio.me/2020/eda-tricks/" />
@@ -225,20 +224,20 @@ if (!doNotTrack) {
           <table>
 <thead>
 <tr>
-<th align="left">标题</th>
-<th align="left">创建时间</th>
-<th align="left">发布时间</th>
-<th align="left">最后一次修改</th>
-<th align="left">备注</th>
+<th style="text-align:left">标题</th>
+<th style="text-align:left">创建时间</th>
+<th style="text-align:left">发布时间</th>
+<th style="text-align:left">最后一次修改</th>
+<th style="text-align:left">备注</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">EDA 常见问题速查</td>
-<td align="left">2020.09.01</td>
-<td align="left">2020.12.21</td>
-<td align="left">2021.03.30</td>
-<td align="left">/</td>
+<td style="text-align:left">EDA 常见问题速查</td>
+<td style="text-align:left">2020.09.01</td>
+<td style="text-align:left">2020.12.21</td>
+<td style="text-align:left">2021.03.30</td>
+<td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
@@ -281,10 +280,10 @@ if (!doNotTrack) {
 </li>
 </ul>
 <h3 id="三维坐标二维化">三维坐标二维化</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Seaborn pair plot</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Seaborn pair plot</span>
 <span style="color:#75715e"># source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend</span>
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-<span style="color:#f92672">import</span> seaborn <span style="color:#f92672">as</span> sns
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
 
 df_3d <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame()
 df_3d[<span style="color:#e6db74">&#39;x&#39;</span>] <span style="color:#f92672">=</span> x
@@ -296,37 +295,37 @@ sns<span style="color:#f92672">.</span>pairplot(df_3d)
 <ul>
 <li>
 <p>matplotlib-venn</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> matplotlib_venn <span style="color:#f92672">import</span> venn2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> matplotlib_venn <span style="color:#f92672">import</span> venn2
 venn2([set([<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;D&#39;</span>]), set([<span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;E&#39;</span>, <span style="color:#e6db74">&#39;F&#39;</span>])])
-    
+
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_venn</span>(col_1,col_2):
     set_1 <span style="color:#f92672">=</span> set(col_1)
-    <span style="color:#66d9ef">print</span>(len(set_1))
+    print(len(set_1))
     set_2 <span style="color:#f92672">=</span> set(col_2)
-    <span style="color:#66d9ef">print</span>(len(set_2))
+    print(len(set_2))
     venn2([set_1,set_2])
 </code></pre></div></li>
 </ul>
 <h3 id="seaborn-加-title">seaborn 加 title</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer https://stackoverflow.com/questions/42406233/how-to-add-title-to-seaborn-boxplot</span>
-<span style="color:#f92672">import</span> seaborn <span style="color:#f92672">as</span> sns
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer https://stackoverflow.com/questions/42406233/how-to-add-title-to-seaborn-boxplot</span>
+<span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
 
 tips <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;tips&#34;</span>)
 sns<span style="color:#f92672">.</span>boxplot(x<span style="color:#f92672">=</span>tips[<span style="color:#e6db74">&#34;total_bill&#34;</span>])<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;LaLaLa&#34;</span>)
 
 plt<span style="color:#f92672">.</span>show()
 </code></pre></div><h3 id="seaboard-存-png">seaboard 存 png</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer https://stackoverflow.com/questions/32244753/how-to-save-a-seaborn-plot-into-a-file</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer https://stackoverflow.com/questions/32244753/how-to-save-a-seaborn-plot-into-a-file</span>
 df <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#39;iris&#39;</span>)
 sns_plot <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>pairplot(df, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;species&#39;</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">2.5</span>)
 sns_plot<span style="color:#f92672">.</span>figure<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;output.png&#34;</span>)
 </code></pre></div><h3 id="绘制3d图">绘制3D图</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 3D 二维化，热力图</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 3D 二维化，热力图</span>
 </code></pre></div><h3 id="层次聚类">层次聚类</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features</span>
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features</span>
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 
 <span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> spearmanr
 <span style="color:#f92672">from</span> scipy.cluster <span style="color:#f92672">import</span> hierarchy
@@ -353,9 +352,9 @@ iris <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span
 species <span style="color:#f92672">=</span> iris<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#34;species&#34;</span>)
 g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>clustermap(iris)
 </code></pre></div><h3 id="chord-diagram">Chord diagram</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 方式一 bokeh</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 方式一 bokeh</span>
 <span style="color:#75715e"># http://holoviews.org/gallery/demos/matplotlib/route_chord.html</span>
-<span style="color:#f92672">import</span> holoviews <span style="color:#f92672">as</span> hv
+<span style="color:#f92672">import</span> holoviews <span style="color:#66d9ef">as</span> hv
 <span style="color:#f92672">from</span> holoviews <span style="color:#f92672">import</span> opts, dim
 <span style="color:#f92672">from</span> bokeh.sampledata.airport_routes <span style="color:#f92672">import</span> routes, airports
 

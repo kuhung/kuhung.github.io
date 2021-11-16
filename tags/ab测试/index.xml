@@ -6,11 +6,7 @@
     <description>Recent content in AB测试 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Jun 2019 15:28:01 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 22 Jun 2019 15:28:01 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A/B test 评价指标的选择</title>
       <link>https://kuhungio.me/2019/abtest-2/</link>

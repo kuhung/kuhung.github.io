@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/lifetimes/" />
   <link rel="next" href="https://kuhungio.me/2020/remote/" />
   <link rel="canonical" href="https://kuhungio.me/2020/audio_progress/" />
@@ -226,7 +225,7 @@ if (!doNotTrack) {
 <h2 id="背景声分离">背景声分离</h2>
 <p>但是若只有一个音轨呢？别担心，机器学习来帮助你。<a href="https://github.com/deezer/spleeter">spleeter</a> 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。</p>
 <p>该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Use audio loader explicitly for loading audio waveform :</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Use audio loader explicitly for loading audio waveform :</span>
 <span style="color:#f92672">from</span> spleeter.audio.adapter <span style="color:#f92672">import</span> get_default_audio_adapter
 
 audio_loader <span style="color:#f92672">=</span> get_default_audio_adapter()
@@ -238,7 +237,7 @@ prediction <span style="color:#f92672">=</span> separator<span style="color:#f92
 </code></pre></div><h2 id="空白切割">空白切割</h2>
 <p>在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。</p>
 <p>这里参考 <a href="https://stackoverflow.com/questions/23730796/using-pydub-to-chop-up-a-long-audio-file">stackoverflow</a> 的代码</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pydub <span style="color:#f92672">import</span> AudioSegment
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pydub <span style="color:#f92672">import</span> AudioSegment
 <span style="color:#f92672">from</span> pydub.utils <span style="color:#f92672">import</span> db_to_float
 
 <span style="color:#75715e"># Let&#39;s load up the audio we need...</span>

@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/what-is-data-mining/" />
   <link rel="next" href="https://kuhungio.me/2019/the-next-step-for-machine-learning/" />
   <link rel="canonical" href="https://kuhungio.me/2019/bert-chinese-finetune/" />
@@ -227,7 +226,7 @@ if (!doNotTrack) {
 <p><a href="https://github.com/google-research/bert">Bert</a> 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 <a href="https://github.com/hanxiao/bert-as-service">Bert as service</a> 代码的开源，使用 Bert 分类或阅读理解的副产物&ndash;词空间，成为一个更具实用价值的方向。</p>
 <p>因而，此文档着重以一个例子，梳理 <strong>finetune 垂直语料，获得微调后的模型</strong> 这一过程。Bert 原理或 Bert as service 还请移步官方文档。</p>
 <h2 id="依赖">依赖</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python<span style="color:#f92672">==</span>3.6
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python<span style="color:#f92672">==</span>3.6
 tensorflow&gt;<span style="color:#f92672">=</span>1.11.0
 </code></pre></div><h3 id="预训练模型">预训练模型</h3>
 <ul>
@@ -242,18 +241,18 @@ parameters</li>
 </ul>
 <h4 id="数据格式">数据格式</h4>
 <p>第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。</p>
-<pre><code class="language-csv" data-lang="csv">fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!...
+<pre tabindex="0"><code class="language-csv" data-lang="csv">fashion	衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!...
 houseliving	95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客...
 game	赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各位小伙...
 </code></pre><p>样例数据位置：<a href="https://github.com/kuhung/bert_finetune/tree/master/data">data</a></p>
 <p>数据格式取决于业务场景，后面也可根据格式调整代码里的数据导入方式。</p>
 <h2 id="操作">操作</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/google-research/bert.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/google-research/bert.git
 cd bert
 </code></pre></div><p>bert 的 finetune 主要存在两类应用场景：分类和阅读理解。因分类较为容易获得样本，以下以分类为例，做模型微调：</p>
 <h3 id="修改-run_classifierpy">修改 <code>run_classifier.py</code></h3>
 <h4 id="自定义-dataprocessor">自定义 DataProcessor</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoProcessor</span>(DataProcessor):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoProcessor</span>(DataProcessor):
     <span style="color:#e6db74">&#34;&#34;&#34;Processor for Demo data set.&#34;&#34;&#34;</span>
 
     <span style="color:#66d9ef">def</span> __init__(self):
@@ -289,11 +288,11 @@ cd bert
             label <span style="color:#f92672">=</span> tokenization<span style="color:#f92672">.</span>convert_to_unicode(line[<span style="color:#ae81ff">0</span>])
             self<span style="color:#f92672">.</span>labels<span style="color:#f92672">.</span>add(label)
             examples<span style="color:#f92672">.</span>append(
-                InputExample(guid<span style="color:#f92672">=</span>guid, text_a<span style="color:#f92672">=</span>text_a, text_b<span style="color:#f92672">=</span>None, label<span style="color:#f92672">=</span>label))
+                InputExample(guid<span style="color:#f92672">=</span>guid, text_a<span style="color:#f92672">=</span>text_a, text_b<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, label<span style="color:#f92672">=</span>label))
         <span style="color:#66d9ef">return</span> examples
 
 </code></pre></div><h4 id="添加-demoprocessor">添加 DemoProcessor</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">  processors <span style="color:#f92672">=</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">  processors <span style="color:#f92672">=</span> {
       <span style="color:#e6db74">&#34;cola&#34;</span>: ColaProcessor,
       <span style="color:#e6db74">&#34;mnli&#34;</span>: MnliProcessor,
       <span style="color:#e6db74">&#34;mrpc&#34;</span>: MrpcProcessor,
@@ -301,7 +300,7 @@ cd bert
       <span style="color:#e6db74">&#34;demo&#34;</span>: DemoProcessor,
   }
 </code></pre></div><h2 id="启动训练">启动训练</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export BERT_Chinese_DIR<span style="color:#f92672">=</span>/path/to/bert/chinese_L-12_H-768_A-12
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export BERT_Chinese_DIR<span style="color:#f92672">=</span>/path/to/bert/chinese_L-12_H-768_A-12
 export Demo_DIR<span style="color:#f92672">=</span>/path/to/DemoDate
 
 python run_classifier.py <span style="color:#ae81ff">\
@@ -318,7 +317,7 @@ python run_classifier.py <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --num_train_epochs<span style="color:#f92672">=</span>3.0 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>  --output_dir<span style="color:#f92672">=</span>/tmp/Demo_output/
 </code></pre></div><p>若一切顺利，将会有以下输出:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">***** Eval results *****
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">***** Eval results *****
   eval_accuracy <span style="color:#f92672">=</span> xx
   eval_loss <span style="color:#f92672">=</span> xx
   global_step <span style="color:#f92672">=</span> xx

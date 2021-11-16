@@ -6,11 +6,7 @@
     <description>Recent content in 特征工程 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 08 Mar 2021 21:09:31 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 08 Mar 2021 21:09:31 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Xgboost 三种特征重要性计算方法对比与扩展</title>
       <link>https://kuhungio.me/2021/three-feature-importances-in-xgb/</link>
@@ -28,7 +24,7 @@ XGB 中常用的三种特征重要性计算方法，以及它的使用场景。�
 最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。
 以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。
 XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。
- ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为frequency2。</description>
+ ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**frequency**2。</description>
     </item>
     
   </channel>

@@ -6,11 +6,7 @@
     <description>Recent content in 网站 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Dec 2019 18:26:43 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/%E7%BD%91%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 01 Dec 2019 18:26:43 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E7%BD%91%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机器学习系统设计 Machine learning system design</title>
       <link>https://kuhungio.me/2019/machine_learning_system_design/</link>

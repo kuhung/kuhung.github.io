@@ -6,13 +6,9 @@
     <description>Recent content in Posts on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 23 Oct 2021 15:56:41 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 23 Oct 2021 15:56:41 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>技术领导｜03 技术负责人（tech lead）该知道的事情</title>
+      <title>技术领导｜03 techlead 该知道的事情</title>
       <link>https://kuhungio.me/2021/techlead-vol-1/</link>
       <pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate>
       
@@ -457,7 +453,7 @@ XGB 中常用的三种特征重要性计算方法，以及它的使用场景。�
 最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。
 以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。
 XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。
- ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为frequency2。</description>
+ ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**frequency**2。</description>
     </item>
     
     <item>
@@ -826,6 +822,15 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
       <guid>https://kuhungio.me/2020/hive-tricks/</guid>
       <description>标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 /     函数大全 https://www.iteblog.com/archives/2258.html
 Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ 计算时间差 --- https://blog.csdn.net/kent7306/article/details/50441967 --- 计算前后差  --- https://blog.csdn.net/qq_33290422/article/details/81204532 --- 直接计算时间差 json 提取 --- refer: https://www.cnblogs.com/drjava/p/10486134.html --- [{&amp;#34;name&amp;#34;:&amp;#34;张三&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;},{&amp;#34;name&amp;#34;:&amp;#34;李&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;47&amp;#34;}]  SELECT get_json_object(xjson,&amp;#34;$.[0]&amp;#34;) FROM person; --- {&amp;#34;name&amp;#34;:&amp;#34;王二狗&amp;#34;,&amp;#34;sex&amp;#34;:&amp;#34;男&amp;#34;,&amp;#34;age&amp;#34;:&amp;#34;25&amp;#34;}  --- 按字段提取 SELECT get_json_object(xjson,&amp;#34;$.</description>
+    </item>
+    
+    <item>
+      <title>Model 常见问题速查</title>
+      <link>https://kuhungio.me/2020/model-tricks/</link>
+      <pubDate>Fri, 21 Aug 2020 11:41:15 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2020/model-tricks/</guid>
+      <description>标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.11.12 /     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[&amp;#39;randNumCol&amp;#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.</description>
     </item>
     
     <item>
@@ -1761,7 +1766,7 @@ If the day before holiday is weekday ,treat the day before holiday as Friday If 
       <description>第一部分：认识自我  一切探索的尽头，就是重回起点。——艾略特
  以原则为中心的思维  公平的原则 诚实与善良  以原则为中心，以品德为基础  由内而外强调，先追求个人的成功，才能有人际关系的成就;先信守对自己的承诺，才能信守对他人的承诺。  七个习惯&amp;ndash;大纲  习惯一：积极主动（BE PROACTIVE) 习惯二：以终为始(BEGIN WITH THE END IN MIND) 习惯三：要事第一(PUT FIRST THINGS FIRST) 习惯四：双赢思维(THINK WIN) 习惯五：知彼解己(SEEK FIRST TOUNDERSTAND,THEN TOBE UNDERSTOOD) 习惯六：统合综效(SYNERGIZE) 习惯七：不断更新(SHARPEN THE SAW)  第二部分：个人的成功：从依赖到独立 习惯一：积极主动 三种决定论  基因决定论 心理决定论 环境决定论  人类的四种天赋  选择的自由(freedom to choose) 想象力(imagination) 良知(conscience) 独立意志(independent conscience)  积极主动是人类的天性
 积极主动与积极思考不同。积极主动不仅承认现实，也肯定人有权选择对现实环境做出积极回应。
-人生的三种价值  经验价值 创造价值 态度价值  言语态度对照表  消极被动  我已无能为力 我就是这样一个人 他是我怒不可遏   积极主动  试试看有没有其他可能性 我可以选择不同的作风 我可以控制自己的情绪    关注圈与影响圈  在关注圈中把个人可以控制的圈起来，形成&amp;quot;影响圈&amp;rdquo;。  习惯二：以终为始 | 自我领导的原则 在做任何事之前，都得认清方向。（该方向由个人最重要的期许或价值观来决定）</description>
+人生的三种价值  经验价值 创造价值 态度价值  言语态度对照表  消极被动  我已无能为力 我就是这样一个人 他是我怒不可遏   积极主动  试试看有没有其他可能性 我可以选择不同的作风 我可以控制自己的情绪    关注圈与影响圈  在关注圈中把个人可以控制的圈起来，形成&amp;quot;影响圈&amp;quot;。  习惯二：以终为始 | 自我领导的原则 在做任何事之前，都得认清方向。（该方向由个人最重要的期许或价值观来决定）</description>
     </item>
     
     <item>
@@ -1790,16 +1795,6 @@ If the day before holiday is weekday ,treat the day before holiday as Friday If 
 阶段小结 显而易见、触手可及，如果你想养成好习惯，就他们具备这样的特质。坏习惯则反之。给自己的习惯加上执行的明确意图，什么时候做什么事情，将增强行动的动力。关联现在的习惯，在现有习惯之间穿插需要养成的习惯，让习惯更加流畅。
 喜欢这个频道的朋友，别忘了转发你的朋友，和朋友一起成长。关注并订阅这个系列，习惯培养体系，咱们接着讲。
  关于作者</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://kuhungio.me/1/model-tricks/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/1/model-tricks/</guid>
-      <description>title: &amp;ldquo;Model 常见问题速查&amp;rdquo; date: 2020-08-21T11:41:15+08:00 draft: false tags: [&amp;ldquo;pandas&amp;rdquo;, &amp;ldquo;高频问题&amp;rdquo;] categories: [&amp;ldquo;技术技巧&amp;rdquo;]
-   标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.01.21 /     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.</description>
     </item>
     
   </channel>

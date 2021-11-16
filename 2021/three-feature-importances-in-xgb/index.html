@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2021/what-i-learned-from-little-game-xiao/" />
   <link rel="next" href="https://kuhungio.me/2021/performance-coaching/" />
   <link rel="canonical" href="https://kuhungio.me/2021/three-feature-importances-in-xgb/" />
@@ -60,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Xgboost 三种特征重要性计算方法对比与扩展",
     "headline" : "Xgboost 三种特征重要性计算方法对比与扩展",
-    "description" : "简单描述 实际发布 最后一次修改     xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09    特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。\n这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。\n另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。\n在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。\nXGB 遇到的问题 XGB 很方便，不仅是比赛的大杀器，甚至贴心的内置了重要性函数。但在实际使用过程中，常常陷入迷思。\n有如下几个点的顾虑：\n 这些特征重要性是如何计算得到的？ 为什么特征重要性不同？ 什么情况下采用何种特征重要性合适？   今天我们就借这篇文章梳理一下。\nXGB 中常用的三种特征重要性计算方法，以及它的使用场景。除此之外，再看两个第三方的特征重要性计算方法，跳出内置函数，思考其中的差异。\n最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。\n以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。\nXGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。\n ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为frequency2。",
+    "description" : "简单描述 实际发布 最后一次修改     xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09    特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。\n这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。\n另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。\n在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。\nXGB 遇到的问题 XGB 很方便，不仅是比赛的大杀器，甚至贴心的内置了重要性函数。但在实际使用过程中，常常陷入迷思。\n有如下几个点的顾虑：\n 这些特征重要性是如何计算得到的？ 为什么特征重要性不同？ 什么情况下采用何种特征重要性合适？   今天我们就借这篇文章梳理一下。\nXGB 中常用的三种特征重要性计算方法，以及它的使用场景。除此之外，再看两个第三方的特征重要性计算方法，跳出内置函数，思考其中的差异。\n最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。\n以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。\nXGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。\n ‘weight’ - the number of times a feature is used to split the data across all trees.  简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**frequency**2。",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2021-03-08 21:09:31 \u002b0800 CST",
     "dateModified" : "2021-03-08 21:09:31 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2021\/three-feature-importances-in-xgb\/",
-    "wordCount" : "252",
+    "wordCount" : "236",
     "keywords" : [ "数据挖掘","总结","特征工程", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -275,7 +274,7 @@ if (!doNotTrack) {
 <ul>
 <li>‘weight’ - the number of times a feature is used to split the data across all trees.</li>
 </ul>
-<p>简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为<strong><code>frequency</code></strong><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<p>简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**<code>frequency</code>**<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
 <h3 id="gain">gain</h3>
 <p><code>model.feature_importances_</code> 这是我们调用特征重要性数值时，用到的默认函数方法。其背后用到的贡献度计算方法为<code>gain</code>。</p>
 <ul>
@@ -293,7 +292,7 @@ if (!doNotTrack) {
 <p>gain 用到了熵增的概念，它可以方便的找出最直接的特征。即如果某个特征的下的0，在label下全是0，则这个特征一定会排得靠前。</p>
 <p>cover 对于枚举特征，会更友好。同时，它也没有过度拟合目标函数，不受目标函数的量纲影响。</p>
 <p>调用它们的方式如下<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Available importance_types = [&#39;weight&#39;, &#39;gain&#39;, &#39;cover&#39;, &#39;total_gain&#39;, &#39;total_cover&#39;]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Available importance_types = [&#39;weight&#39;, &#39;gain&#39;, &#39;cover&#39;, &#39;total_gain&#39;, &#39;total_cover&#39;]</span>
 f <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gain&#39;</span>
 XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color:#f92672">.</span>get_score(importance_type<span style="color:#f92672">=</span> f)
 </code></pre></div><p>举个例子，我们来做西瓜分类任务。西瓜有颜色、重量、声音、品种、产地等各类特征。其中，生活（业务）经验告诉我们，声音响的瓜甜。我们构建了这么一个模型，判断西瓜甜不甜。输出三类特征重要性。这时会看到一些矛盾的现象<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
@@ -334,52 +333,52 @@ XGBClassifier<span style="color:#f92672">.</span>get_booster()<span style="color
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p><a href="https://stackoverflow.com/questions/37627923/how-to-get-feature-importance-in-xgboost">How to get feature importance in xgboost?  &ndash;  stackoverflow</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://stackoverflow.com/questions/37627923/how-to-get-feature-importance-in-xgboost">How to get feature importance in xgboost?  &ndash;  stackoverflow</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><a href="https://datascience.stackexchange.com/questions/12318/how-to-interpret-the-output-of-xgboost-importance">how-to-interpret-the-output-of-xgboost-importance  &ndash;  stackexchange</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://datascience.stackexchange.com/questions/12318/how-to-interpret-the-output-of-xgboost-importance">how-to-interpret-the-output-of-xgboost-importance  &ndash;  stackexchange</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p><a href="https://towardsdatascience.com/be-careful-when-interpreting-your-features-importance-in-xgboost-6e16132588e7">be-careful-when-interpreting-your-features-importance-in-xgboost</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://towardsdatascience.com/be-careful-when-interpreting-your-features-importance-in-xgboost-6e16132588e7">be-careful-when-interpreting-your-features-importance-in-xgboost</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4" role="doc-endnote">
-<p><a href="https://stackoverflow.com/questions/57323555/get-individual-features-importance-with-xgboost">Get individual features importance with XGBoost  &ndash;  stackoverflow</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://stackoverflow.com/questions/57323555/get-individual-features-importance-with-xgboost">Get individual features importance with XGBoost  &ndash;  stackoverflow</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5" role="doc-endnote">
-<p><a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-importance">https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-importance</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-importance">https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-importance</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6" role="doc-endnote">
-<p><a href="http://rasbt.github.io/mlxtend/user_guide/evaluate/feature_importance_permutation/">http://rasbt.github.io/mlxtend/user_guide/evaluate/feature_importance_permutation/</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="http://rasbt.github.io/mlxtend/user_guide/evaluate/feature_importance_permutation/">http://rasbt.github.io/mlxtend/user_guide/evaluate/feature_importance_permutation/</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:7" role="doc-endnote">
-<p><a href="https://shap.readthedocs.io/en/latest/">https://shap.readthedocs.io/en/latest/</a> <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://shap.readthedocs.io/en/latest/">https://shap.readthedocs.io/en/latest/</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:8" role="doc-endnote">
-<p><a href="https://www.kaggle.com/dansbecker/permutation-importance#Interpreting-Permutation-Importances">permutation-importance#Interpreting-Permutation-Importances  &ndash; kaggle</a> <a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://www.kaggle.com/dansbecker/permutation-importance#Interpreting-Permutation-Importances">permutation-importance#Interpreting-Permutation-Importances  &ndash; kaggle</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:9" role="doc-endnote">
-<p><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features">plot_permutation_importance_multicollinear.html#handling-multicollinear-features</a> <a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features">plot_permutation_importance_multicollinear.html#handling-multicollinear-features</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:10" role="doc-endnote">
-<p><a href="https://kuhungio.me/2021/interpretable-machine-learning/#shap">https://kuhungio.me/2021/interpretable-machine-learning/#shap</a> <a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://kuhungio.me/2021/interpretable-machine-learning/#shap">https://kuhungio.me/2021/interpretable-machine-learning/#shap</a>&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:11" role="doc-endnote">
-<p><a href="https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e">explaining-feature-importance-by-example-of-a-random-forest  &ndash;  towardsdatascience</a> <a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://towardsdatascience.com/explaining-feature-importance-by-example-of-a-random-forest-d9166011959e">explaining-feature-importance-by-example-of-a-random-forest  &ndash;  towardsdatascience</a>&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:12" role="doc-endnote">
-<p><a href="https://mljar.com/blog/feature-importance-in-random-forest/">https://mljar.com/blog/feature-importance-in-random-forest/</a> <a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://mljar.com/blog/feature-importance-in-random-forest/">https://mljar.com/blog/feature-importance-in-random-forest/</a>&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:13" role="doc-endnote">
-<p><a href="https://stackoverflow.com/questions/18541923/what-is-out-of-bag-error-in-random-forests">https://stackoverflow.com/questions/18541923/what-is-out-of-bag-error-in-random-forests</a> <a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://stackoverflow.com/questions/18541923/what-is-out-of-bag-error-in-random-forests">https://stackoverflow.com/questions/18541923/what-is-out-of-bag-error-in-random-forests</a>&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:14" role="doc-endnote">
-<p><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Permutation Importance vs Random Forest Feature Importance (MDI)</a> <a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html">Permutation Importance vs Random Forest Feature Importance (MDI)</a>&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:15" role="doc-endnote">
-<p><a href="https://zhuanlan.zhihu.com/p/64759172">https://zhuanlan.zhihu.com/p/64759172</a> <a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/64759172">https://zhuanlan.zhihu.com/p/64759172</a>&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:16" role="doc-endnote">
-<p><a href="https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27">Interpretable Machine Learning with XGBoost  &ndash;  towardsdatascience</a> <a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://towardsdatascience.com/interpretable-machine-learning-with-xgboost-9ec80d148d27">Interpretable Machine Learning with XGBoost  &ndash;  towardsdatascience</a>&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

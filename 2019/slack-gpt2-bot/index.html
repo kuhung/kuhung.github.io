@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/competing-on-analytics/" />
   <link rel="next" href="https://kuhungio.me/2019/hands-on_machine_learning_in_industry/" />
   <link rel="canonical" href="https://kuhungio.me/2019/slack-gpt2-bot/" />
@@ -226,7 +225,7 @@ if (!doNotTrack) {
 <p>言归正传，我们回到在slack上面。我们的核心就以下代码：</p>
 <h2 id="核心代码解读">核心代码解读</h2>
 <p>导入一些基础配置</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
 <span style="color:#f92672">import</span> time
 <span style="color:#f92672">import</span> re
 <span style="color:#f92672">from</span> slackclient <span style="color:#f92672">import</span> SlackClient
@@ -235,14 +234,14 @@ if (!doNotTrack) {
 <span style="color:#75715e"># instantiate Slackk client</span>
 slack_client <span style="color:#f92672">=</span> SlackClient(<span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#75715e"># 认证口令</span>
 <span style="color:#75715e"># starterbot&#39;s user ID in Slack: value is ssigned after the bot starts up</span>
-starterbot_id <span style="color:#f92672">=</span> None
+starterbot_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
 
 </code></pre></div><p>延迟配置以及样例和匹配模式</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># constants</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># constants</span>
 RTM_READ_DELAY <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e"># 1 second delay between reading from RTM</span>
 EXAMPLE_COMMAND <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;God, to me, is like a &#34;</span>
 MENTION_REGEX <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;^&lt;@(|[WU].+?)&gt;(.*)&#34;</span> 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">通过</span> slack <span style="color:#960050;background-color:#1e0010">的事件，解析出我们的消息和对应的频道</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">通过 slack 的事件<span style="color:#960050;background-color:#1e0010">，</span>解析出我们的消息和对应的频道
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_bot_commands</span>(slack_events):
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">        Parses a list of events coming from the Slack RTM API to find bot commands.
@@ -254,23 +253,23 @@ MENTION_REGEX <span style="color:#f92672">=</span> <span style="color:#e6db74">&
             user_id, message <span style="color:#f92672">=</span> parse_direct_mention(event[<span style="color:#e6db74">&#34;text&#34;</span>])
             <span style="color:#66d9ef">if</span> user_id <span style="color:#f92672">==</span> starterbot_id:
                 <span style="color:#66d9ef">return</span> message, event[<span style="color:#e6db74">&#34;channel&#34;</span>]
-    <span style="color:#66d9ef">return</span> None, None
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>
 </code></pre></div><p>消息解析</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_direct_mention</span>(message_text):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parse_direct_mention</span>(message_text):
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">        Finds a direct mention (a mention that is at the beginning) in message text
 </span><span style="color:#e6db74">        and returns the user ID which was mentioned. If there is no direct mention, returns None
 </span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
     matches <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(MENTION_REGEX, message_text)
     <span style="color:#75715e"># the first group contains the username, the second group contains the remaining message</span>
-    <span style="color:#66d9ef">return</span> (matches<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>), matches<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>strip()) <span style="color:#66d9ef">if</span> matches <span style="color:#66d9ef">else</span> (None, None)
+    <span style="color:#66d9ef">return</span> (matches<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>), matches<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>strip()) <span style="color:#66d9ef">if</span> matches <span style="color:#66d9ef">else</span> (<span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>)
 </code></pre></div><p><strong>核心的模型导入</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_command</span>(command, channel):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle_command</span>(command, channel):
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">        Executes bot command if the command is known
 </span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
     <span style="color:#75715e"># Default response is help text for the user</span>
-    response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Not sure what you mean. Try *{}*.&#34;</span><span style="color:#f92672">.</span>format(EXAMPLE_COMMAND)
+    response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Not sure what you mean. Try *</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">*.&#34;</span><span style="color:#f92672">.</span>format(EXAMPLE_COMMAND)
 
     <span style="color:#75715e"># This is where you start to implement more commands!</span>
     <span style="color:#66d9ef">if</span> len(command) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
@@ -286,23 +285,23 @@ MENTION_REGEX <span style="color:#f92672">=</span> <span style="color:#e6db74">&
         channel<span style="color:#f92672">=</span>channel,
         text<span style="color:#f92672">=</span>response)
 </code></pre></div><p>主函数入口</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    <span style="color:#66d9ef">if</span> slack_client<span style="color:#f92672">.</span>rtm_connect(with_team_state<span style="color:#f92672">=</span>False):
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Starter Bot connected and running!&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    <span style="color:#66d9ef">if</span> slack_client<span style="color:#f92672">.</span>rtm_connect(with_team_state<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+        print(<span style="color:#e6db74">&#34;Starter Bot connected and running!&#34;</span>)
         <span style="color:#75715e"># Read bot&#39;s user ID by calling Web API method `auth.test`</span>
         starterbot_id <span style="color:#f92672">=</span> slack_client<span style="color:#f92672">.</span>api_call(<span style="color:#e6db74">&#34;auth.test&#34;</span>)[<span style="color:#e6db74">&#34;user_id&#34;</span>]
-        <span style="color:#66d9ef">while</span> True:
+        <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
             command, channel <span style="color:#f92672">=</span> parse_bot_commands(slack_client<span style="color:#f92672">.</span>rtm_read())
             <span style="color:#66d9ef">if</span> command:
                 handle_command(command, channel)
             time<span style="color:#f92672">.</span>sleep(RTM_READ_DELAY)
     <span style="color:#66d9ef">else</span>:
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Connection failed. Exception traceback printed above.&#34;</span>)
+        print(<span style="color:#e6db74">&#34;Connection failed. Exception traceback printed above.&#34;</span>)
 </code></pre></div><h2 id="开始安装并运行">开始安装并运行</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone git@github.com:kuhung/slack-gpt2.git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone git@github.com:kuhung/slack-gpt2.git
 cd slack-gpt2
 获取 slack app 的 token，并填充进上面的 slack_client
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">conda create -n slackbot python<span style="color:#f92672">=</span>3.6
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">conda create -n slackbot python<span style="color:#f92672">=</span>3.6
 source activate slackbot
 pip install -r requirements.txt
 cd gpt2

@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/machine_learning_system_design/" />
   <link rel="next" href="https://kuhungio.me/2020/audio_progress/" />
   <link rel="canonical" href="https://kuhungio.me/2019/lifetimes/" />
@@ -279,7 +278,7 @@ if (!doNotTrack) {
 <p>用户一段时间不交互，即为流失</p>
 <h3 id="lifetims-工具包引入">lifetims 工具包引入</h3>
 <p>安装 python 的工具包：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install lifetimes
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install lifetimes
 </code></pre></div><h2 id="clv-数据挖掘">CLV 数据挖掘</h2>
 <p>用户生命周期判定，需要三个指标</p>
 <ol>
@@ -290,7 +289,7 @@ if (!doNotTrack) {
 <p>对于付费预测，还需要用户的平均付费金额。</p>
 <h3 id="数据获取">数据获取</h3>
 <h4 id="从数据库获取">从数据库获取</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">    <span style="color:#66d9ef">SELECT</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">    <span style="color:#66d9ef">SELECT</span>
       customer_id,
       <span style="color:#66d9ef">COUNT</span>(<span style="color:#66d9ef">distinct</span> date(transaction_at)) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">as</span> frequency,
       datediff(<span style="color:#e6db74">&#39;day&#39;</span>, <span style="color:#66d9ef">MIN</span>(transaction_at), <span style="color:#66d9ef">MAX</span>(transaction_at)) <span style="color:#66d9ef">as</span> recency,
@@ -299,11 +298,11 @@ if (!doNotTrack) {
     <span style="color:#66d9ef">FROM</span> orders
     <span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> customer_id
 </code></pre></div><h4 id="python-处理">python 处理</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#f92672">from</span> lifetimes.datasets <span style="color:#f92672">import</span> load_transaction_data
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#f92672">from</span> lifetimes.datasets <span style="color:#f92672">import</span> load_transaction_data
     <span style="color:#f92672">from</span> lifetimes.utils <span style="color:#f92672">import</span> summary_data_from_transaction_data
     
     transaction_data <span style="color:#f92672">=</span> load_transaction_data()
-    <span style="color:#66d9ef">print</span>(transaction_data<span style="color:#f92672">.</span>head())
+    print(transaction_data<span style="color:#f92672">.</span>head())
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">                      date  id
 </span><span style="color:#e6db74">    0  2014-03-08 00:00:00   0
@@ -315,7 +314,7 @@ if (!doNotTrack) {
     
     summary <span style="color:#f92672">=</span> summary_data_from_transaction_data(transaction_data, <span style="color:#e6db74">&#39;id&#39;</span>, <span style="color:#e6db74">&#39;date&#39;</span>, observation_period_end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2014-12-31&#39;</span>)
     
-    <span style="color:#66d9ef">print</span>(summary<span style="color:#f92672">.</span>head())
+    print(summary<span style="color:#f92672">.</span>head())
     <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">    frequency  recency      T
 </span><span style="color:#e6db74">    id
@@ -333,7 +332,7 @@ if (!doNotTrack) {
 <span style="color:#f92672">from</span> lifetimes.datasets <span style="color:#f92672">import</span> load_cdnow_summary
 data <span style="color:#f92672">=</span> load_cdnow_summary(index_col<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0</span>])
 
-<span style="color:#66d9ef">print</span>(data<span style="color:#f92672">.</span>head())
+print(data<span style="color:#f92672">.</span>head())
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">     frequency   recency      T
 </span><span style="color:#e6db74">ID
@@ -349,25 +348,25 @@ and Related Expressions</a></p>
 <p>该模型有如下假设：</p>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/lifetimes/assumptions.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>通过模型拟合，得到4个参数。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes <span style="color:#f92672">import</span> BetaGeoFitter
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes <span style="color:#f92672">import</span> BetaGeoFitter
 
 <span style="color:#75715e"># similar API to scikit-learn and lifelines.</span>
 bgf <span style="color:#f92672">=</span> BetaGeoFitter(penalizer_coef<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>)
 bgf<span style="color:#f92672">.</span>fit(data[<span style="color:#e6db74">&#39;frequency&#39;</span>], data[<span style="color:#e6db74">&#39;recency&#39;</span>], data[<span style="color:#e6db74">&#39;T&#39;</span>])
-<span style="color:#66d9ef">print</span>(bgf)
+print(bgf)
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">&lt;lifetimes.BetaGeoFitter: fitted with 2357 subjects, a: 0.79, alpha: 4.41, b: 2.43, r: 0.24&gt;
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 bgf<span style="color:#f92672">.</span>summary
 </code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/lifetimes/bgm.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <h4 id="效果可视化">效果可视化</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes.plotting <span style="color:#f92672">import</span> plot_probability_alive_matrix
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes.plotting <span style="color:#f92672">import</span> plot_probability_alive_matrix
 
 plot_probability_alive_matrix(bgf)
 </code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/lifetimes/frequency_recency.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>右下角为最佳客户，交易频率高。交易跨度大；右上的客户短时多次交易，极可能已流失。</p>
 <h3 id="预测单个用户的购买行为">预测单个用户的购买行为</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">t <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#75715e">#predict purchases in 10 periods</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">t <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#75715e">#predict purchases in 10 periods</span>
 individual <span style="color:#f92672">=</span> summary<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">20</span>]
 <span style="color:#75715e"># The below function is an alias to `bfg.conditional_expected_number_of_purchases_up_to_time`</span>
 bgf<span style="color:#f92672">.</span>predict(t, individual[<span style="color:#e6db74">&#39;frequency&#39;</span>], individual[<span style="color:#e6db74">&#39;recency&#39;</span>], individual[<span style="color:#e6db74">&#39;T&#39;</span>])
@@ -376,13 +375,13 @@ bgf<span style="color:#f92672">.</span>predict(t, individual[<span style="color:
 <p>在预测价值时，需要第四个参数：用户交易的次均金额。</p>
 <p>该模型有个重要前提：购买频次和购买金额无相关性。具体可参考 <a href="http://www.brucehardie.com/notes/025/gamma_gamma.pdf">The Gamma-Gamma Model of Monetary
 Value</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes.datasets <span style="color:#f92672">import</span> load_cdnow_summary_data_with_monetary_value
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes.datasets <span style="color:#f92672">import</span> load_cdnow_summary_data_with_monetary_value
 
 summary_with_money_value <span style="color:#f92672">=</span> load_cdnow_summary_data_with_monetary_value()
 summary_with_money_value<span style="color:#f92672">.</span>head()
 returning_customers_summary <span style="color:#f92672">=</span> summary_with_money_value[summary_with_money_value[<span style="color:#e6db74">&#39;frequency&#39;</span>]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>]
 
-<span style="color:#66d9ef">print</span>(returning_customers_summary<span style="color:#f92672">.</span>head())
+print(returning_customers_summary<span style="color:#f92672">.</span>head())
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">             frequency  recency      T  monetary_value
 </span><span style="color:#e6db74">customer_id
@@ -393,23 +392,23 @@ returning_customers_summary <span style="color:#f92672">=</span> summary_with_mo
 </span><span style="color:#e6db74">9                    2    35.71  38.86           25.55
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </code></pre></div><h4 id="相关性检验"><strong>相关性检验</strong></h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">returning_customers_summary[[<span style="color:#e6db74">&#39;monetary_value&#39;</span>, <span style="color:#e6db74">&#39;frequency&#39;</span>]]<span style="color:#f92672">.</span>corr()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">returning_customers_summary[[<span style="color:#e6db74">&#39;monetary_value&#39;</span>, <span style="color:#e6db74">&#39;frequency&#39;</span>]]<span style="color:#f92672">.</span>corr()
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">                monetary_value  frequency
 </span><span style="color:#e6db74">monetary_value        1.000000   0.113884
 </span><span style="color:#e6db74">frequency             0.113884   1.000000
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes <span style="color:#f92672">import</span> GammaGammaFitter
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> lifetimes <span style="color:#f92672">import</span> GammaGammaFitter
 
 ggf <span style="color:#f92672">=</span> GammaGammaFitter(penalizer_coef <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
 ggf<span style="color:#f92672">.</span>fit(returning_customers_summary[<span style="color:#e6db74">&#39;frequency&#39;</span>],
         returning_customers_summary[<span style="color:#e6db74">&#39;monetary_value&#39;</span>])
-<span style="color:#66d9ef">print</span>(ggf)
+print(ggf)
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">&lt;lifetimes.GammaGammaFitter: fitted with 946 subjects, p: 6.25, q: 3.74, v: 15.45&gt;
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </code></pre></div><h4 id="次均估计">次均估计</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(ggf<span style="color:#f92672">.</span>conditional_expected_average_profit(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print(ggf<span style="color:#f92672">.</span>conditional_expected_average_profit(
         summary_with_money_value[<span style="color:#e6db74">&#39;frequency&#39;</span>],
         summary_with_money_value[<span style="color:#e6db74">&#39;monetary_value&#39;</span>]
     )<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">3</span>))
@@ -420,10 +419,10 @@ ggf<span style="color:#f92672">.</span>fit(returning_customers_summary[<span sty
 </span><span style="color:#e6db74">3     35.170981
 </span></code></pre></div><h4 id="总价值估计">总价值估计</h4>
 <p>最后，使用 DCF 现金流折现，得到用户总体价值的当下估值。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refit the BG model to the summary_with_money_value dataset</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refit the BG model to the summary_with_money_value dataset</span>
 bgf<span style="color:#f92672">.</span>fit(summary_with_money_value[<span style="color:#e6db74">&#39;frequency&#39;</span>], summary_with_money_value[<span style="color:#e6db74">&#39;recency&#39;</span>], summary_with_money_value[<span style="color:#e6db74">&#39;T&#39;</span>])
 
-<span style="color:#66d9ef">print</span>(ggf<span style="color:#f92672">.</span>customer_lifetime_value(
+print(ggf<span style="color:#f92672">.</span>customer_lifetime_value(
     bgf, <span style="color:#75715e">#the model to use to predict the number of future transactions</span>
     summary_with_money_value[<span style="color:#e6db74">&#39;frequency&#39;</span>],
     summary_with_money_value[<span style="color:#e6db74">&#39;recency&#39;</span>],

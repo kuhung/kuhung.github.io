@@ -6,11 +6,7 @@
     <description>Recent content in tutorial on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 17 Feb 2019 11:30:26 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 17 Feb 2019 11:30:26 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>中文语料的 Bert 微调 Bert Chinese Finetune </title>
       <link>https://kuhungio.me/2019/bert-chinese-finetune/</link>

@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/vgc-it/" />
   <link rel="next" href="https://kuhungio.me/2019/training_rl_systems_hacks/" />
   <link rel="canonical" href="https://kuhungio.me/2019/flask_vue_ml/" />
@@ -257,7 +256,7 @@ if (!doNotTrack) {
 <ol>
 <li>导入函数包</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify, request
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify, request
 <span style="color:#f92672">from</span> flask_cors <span style="color:#f92672">import</span> CORS <span style="color:#75715e"># 做跨域的准备</span>
 <span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> session <span style="color:#75715e"># 追踪客户端会话</span>
 
@@ -267,7 +266,7 @@ if (!doNotTrack) {
 </code></pre></div><ol start="2">
 <li>准备工作</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">app <span style="color:#f92672">=</span> Flask(__name__) <span style="color:#75715e"># 声明准备</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">app <span style="color:#f92672">=</span> Flask(__name__) <span style="color:#75715e"># 声明准备</span>
 app<span style="color:#f92672">.</span>secret_key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;super_secret_key&#34;</span>
 
 CORS(app)
@@ -276,13 +275,13 @@ classifier <span style="color:#f92672">=</span> TextClassifier<span style="color
 </code></pre></div><ol start="3">
 <li>配置 flask 的路由</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 根路由配置</span>
-<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 根路由配置</span>
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
     <span style="color:#66d9ef">return</span> jsonify(<span style="color:#e6db74">&#34;welcome to Kuhung API&#34;</span>)
 
 <span style="color:#75715e"># GET 方法，这里 session 的作用是追踪客户端会话，防止重复请求模型</span>
-<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/api/tasks&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/api/tasks&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_result</span>():
     result <span style="color:#f92672">=</span> []
     <span style="color:#66d9ef">try</span>:
@@ -293,7 +292,7 @@ classifier <span style="color:#f92672">=</span> TextClassifier<span style="color
     <span style="color:#66d9ef">return</span> jsonify(result)
 
 <span style="color:#75715e"># POST 方法</span>
-<span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/api/task&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/api/task&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">input_predict_text</span>():
 
     title <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>get_json()[<span style="color:#e6db74">&#39;title&#39;</span>] <span style="color:#75715e"># 解析请求</span>
@@ -309,18 +308,18 @@ classifier <span style="color:#f92672">=</span> TextClassifier<span style="color
     <span style="color:#66d9ef">return</span> jsonify(result) <span style="color:#75715e"># 返回 json 格式的数据</span>
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span>True)  <span style="color:#75715e"># 开发过程中开启 debug 调试模式</span>
+    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 开发过程中开启 debug 调试模式</span>
 </code></pre></div><h3 id="启动服务">启动服务</h3>
 <p><code>python app.py</code></p>
 <h2 id="前端-vue">前端 vue</h2>
 <p>前端采用 Vue 框架，与后端分离。使用 Webpack 进行资源管理与打包。</p>
 <h3 id="相关依赖的安装-1">相关依赖的安装</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install -g vue-cli
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install -g vue-cli
 npm install
 </code></pre></div><h3 id="自定义组件">自定义组件</h3>
 <p>通过 <code>vue init webpack flask_vue_ML</code> 后，进入项目文件夹，增加自定义内容。</p>
 <h4 id="indexhtml">index.html</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
 <span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
 &lt;<span style="color:#f92672">html</span>&gt;
   &lt;<span style="color:#f92672">head</span>&gt;
@@ -351,7 +350,7 @@ npm install
 </ul>
 <h5 id="homevue">Home.vue</h5>
 <p>这里定义页面的基本样式，以及获取数据的逻辑。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vue" data-lang="vue">&lt;<span style="color:#f92672">template</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vue" data-lang="vue">&lt;<span style="color:#f92672">template</span>&gt;
   &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo-list-example&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
     <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">我是进度条</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">最上方的</span> <span style="color:#f92672">--&gt;</span>
     &lt;<span style="color:#f92672">vue-progress-bar</span>&gt;<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/vue-progress-bar&gt;</span>
@@ -404,7 +403,7 @@ npm install
 <span style="color:#960050;background-color:#1e0010">​</span><span style="color:#e6db74">```
 </span></code></pre></div><h5 id="indexjs">index.js</h5>
 <p>定义路由，设定访问路径，并将路径和组件关联</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Router</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Home</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/components/Home&#39;</span>
 
@@ -421,7 +420,7 @@ npm install
 })
 </code></pre></div><h5 id="appvue">App.vue</h5>
 <p>主组件</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vue" data-lang="vue">&lt;<span style="color:#f92672">template</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vue" data-lang="vue">&lt;<span style="color:#f92672">template</span>&gt;
   &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
     &lt;<span style="color:#f92672">router-view</span>/&gt;
     <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">植入一波广告</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">微信搜索</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">谷粒说数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">关注我的公众号</span> <span style="color:#f92672">--&gt;</span>
@@ -447,7 +446,7 @@ npm install
 &lt;/<span style="color:#f92672">style</span>&gt;
 </code></pre></div><h5 id="mainjs">main.js</h5>
 <p>初始化实例并加载必要插件</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// The Vue build version to load with the `import` command
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// The Vue build version to load with the `import` command
 </span><span style="color:#75715e">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App&#39;</span>
@@ -477,7 +476,7 @@ npm install
 <h2 id="模型-flair">模型 flair</h2>
 <p>模型这里采用 fair 框架，该框架在 2018 年底发布，易用性和效果都较前方案有了较大提升。这里直接采用官方样例训练好的垃圾邮件分类模型的权重，也就是在上文后端所读取的文件。关注我的公众号：谷粒说数，回复<strong>权重</strong>，即可获得权重文件🔗链接。</p>
 <h3 id="模型调用">模型调用</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 <span style="color:#f92672">from</span> flair.models <span style="color:#f92672">import</span> TextClassifier <span style="color:#75715e"># 模型导入，采用前不久开源的 flair 做文本分类</span>
 <span style="color:#f92672">from</span> flair.data <span style="color:#f92672">import</span> Sentence
 

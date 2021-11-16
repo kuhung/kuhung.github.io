@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2020/statistics-tell-lies/" />
   <link rel="next" href="https://kuhungio.me/2020/python-tricks/" />
   <link rel="canonical" href="https://kuhungio.me/2020/pandas-tricks/" />
@@ -71,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 10:47:23 \u002b0800 CST",
     "dateModified" : "2020-08-04 10:47:23 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/pandas-tricks\/",
-    "wordCount" : "662",
+    "wordCount" : "660",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -240,49 +239,49 @@ if (!doNotTrack) {
           <table>
 <thead>
 <tr>
-<th align="left">标题</th>
-<th align="left">创建时间</th>
-<th align="left">发布时间</th>
-<th align="left">最后一次修改</th>
-<th align="left">备注</th>
+<th style="text-align:left">标题</th>
+<th style="text-align:left">创建时间</th>
+<th style="text-align:left">发布时间</th>
+<th style="text-align:left">最后一次修改</th>
+<th style="text-align:left">备注</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Pandas 常见问题速查</td>
-<td align="left">2020.08.04</td>
-<td align="left">2020.12.21</td>
-<td align="left">2021.06.09</td>
-<td align="left">/</td>
+<td style="text-align:left">Pandas 常见问题速查</td>
+<td style="text-align:left">2020.08.04</td>
+<td style="text-align:left">2020.12.21</td>
+<td style="text-align:left">2021.06.09</td>
+<td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h3 id="一个-dataframe-重复多次复制内容-n-遍">一个 dataframe 重复多次，复制内容 n 遍</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-df_repeated <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([df1]<span style="color:#f92672">*</span>n, ignore_index<span style="color:#f92672">=</span>True)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">n <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+df_repeated <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([df1]<span style="color:#f92672">*</span>n, ignore_index<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </code></pre></div><h3 id="日期分箱">日期分箱</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">date_bins <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#39;2000-01-01&#39;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;3D&#39;</span>, periods<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e">#3天一个步长，总计6个分箱</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">date_bins <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(<span style="color:#e6db74">&#39;2000-01-01&#39;</span>, freq<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;3D&#39;</span>, periods<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>) <span style="color:#75715e">#3天一个步长，总计6个分箱</span>
 pd<span style="color:#f92672">.</span>cut(df<span style="color:#f92672">.</span>Date,bins<span style="color:#f92672">=</span>date_bins)
 </code></pre></div><h3 id="pandas-去重求差集">pandas 去重求差集</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_a <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(aa)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_a <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(aa)
 df_b <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(bb)
 df_a <span style="color:#f92672">=</span> df_a<span style="color:#f92672">.</span>append(df_b)
 
-df_a<span style="color:#f92672">.</span>drop_duplicates(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;col_1&#39;</span>,<span style="color:#e6db74">&#39;col_2&#39;</span>],keep<span style="color:#f92672">=</span>False)
+df_a<span style="color:#f92672">.</span>drop_duplicates(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;col_1&#39;</span>,<span style="color:#e6db74">&#39;col_2&#39;</span>],keep<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
 </code></pre></div><h3 id="特征相关性热力图绘制">特征相关性热力图绘制</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">feature_df<span style="color:#f92672">.</span>corr()<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">feature_df<span style="color:#f92672">.</span>corr()<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>)
 </code></pre></div><h3 id="pandas-不折叠行与列">pandas 不折叠行与列</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_rows&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大行数</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_rows&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大行数</span>
 pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;display.max_columns&#39;</span>, <span style="color:#ae81ff">500</span>) <span style="color:#75715e">#最大列数</span>
 </code></pre></div><h3 id="pandas-rename-列名">pandas rename 列名</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#34;A&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#e6db74">&#34;B&#34;</span>: [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]})
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#34;A&#34;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#e6db74">&#34;B&#34;</span>: [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]})
 df<span style="color:#f92672">.</span>rename(columns<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;A&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>: <span style="color:#e6db74">&#34;c&#34;</span>})
 </code></pre></div><h3 id="强制关闭-copy-warning">强制关闭 copy warning</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://zhuanlan.zhihu.com/p/41202576 链接中有其他更优解决方案</span>
-pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;mode.chained_assignment&#39;</span>, None)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://zhuanlan.zhihu.com/p/41202576 链接中有其他更优解决方案</span>
+pd<span style="color:#f92672">.</span>set_option(<span style="color:#e6db74">&#39;mode.chained_assignment&#39;</span>, <span style="color:#66d9ef">None</span>)
 </code></pre></div><h3 id="控制-pandas-to-csv-输出结果顺序">控制 pandas to csv 输出结果顺序</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/11067027/re-ordering-columns-in-pandas-dataframe-based-on-column-name</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/11067027/re-ordering-columns-in-pandas-dataframe-based-on-column-name</span>
 
 <span style="color:#75715e"># 直接排序法</span>
 df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>sort_index(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
@@ -295,24 +294,24 @@ df[col]
 col<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#39;xx&#39;</span>)
 col<span style="color:#f92672">.</span>insert(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#39;xx&#39;</span>)
 </code></pre></div><h3 id="批量读取文件夹下的文件">批量读取文件夹下的文件</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/20906474/import-multiple-csv-files-into-pandas-and-concatenate-into-one-dataframe</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/20906474/import-multiple-csv-files-into-pandas-and-concatenate-into-one-dataframe</span>
 
 <span style="color:#75715e"># 常规简洁</span>
 <span style="color:#f92672">import</span> glob<span style="color:#f92672">,</span>os
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
 df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat(map(pd<span style="color:#f92672">.</span>read_csv, glob<span style="color:#f92672">.</span>glob(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#e6db74">&#34;my_files*.csv&#34;</span>))))
 
 <span style="color:#75715e"># dask 包</span>
 <span style="color:#75715e"># dask 介绍: https://www.datalearner.com/blog/1051585624649623</span>
-<span style="color:#f92672">import</span> dask.dataframe <span style="color:#f92672">as</span> dd
+<span style="color:#f92672">import</span> dask.dataframe <span style="color:#66d9ef">as</span> dd
 df <span style="color:#f92672">=</span> dd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;data*.csv&#39;</span>)
 df<span style="color:#f92672">.</span>compute()
 </code></pre></div><h3 id="pandas-grouby-value_counts-统计出现最多的组合">pandas grouby value_counts 统计出现最多的组合</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/15222754/groupby-pandas-dataframe-and-select-most-common-value</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://stackoverflow.com/questions/15222754/groupby-pandas-dataframe-and-select-most-common-value</span>
 source<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;Country&#39;</span>,<span style="color:#e6db74">&#39;City&#39;</span>])[<span style="color:#e6db74">&#39;Short name&#39;</span>]<span style="color:#f92672">.</span>agg(pd<span style="color:#f92672">.</span>Series<span style="color:#f92672">.</span>mode)
 
 <span style="color:#75715e"># agg 一次计算多个对象</span>
-data<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;month&#39;</span>, as_index<span style="color:#f92672">=</span>False)<span style="color:#f92672">.</span>agg({<span style="color:#e6db74">&#34;duration&#34;</span>: <span style="color:#e6db74">&#34;sum&#34;</span>})
+data<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;month&#39;</span>, as_index<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)<span style="color:#f92672">.</span>agg({<span style="color:#e6db74">&#34;duration&#34;</span>: <span style="color:#e6db74">&#34;sum&#34;</span>})
 
 <span style="color:#75715e"># 行转列</span>
 data<span style="color:#f92672">.</span>set_index([<span style="color:#e6db74">&#39;xx&#39;</span>,<span style="color:#e6db74">&#39;yy&#39;</span>])<span style="color:#f92672">.</span>unstack()
@@ -321,7 +320,7 @@ data<span style="color:#f92672">.</span>set_index([<span style="color:#e6db74">&
 <span style="color:#75715e">## source: https://stackoverflow.com/questions/14507794/pandas-how-to-flatten-a-hierarchical-index-in-columns</span>
 pd<span style="color:#f92672">.</span>DataFrame(df<span style="color:#f92672">.</span>to_records()) <span style="color:#75715e"># multiindex become columns and new index is integers only</span>
 </code></pre></div><h3 id="将-es-的搜索结果py接口转化为dataframe">将 es 的搜索结果（py接口）转化为dataframe</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://medium.com/@patni.sonal/elasticsearch-convert-your-index-data-into-pandas-dataframe-30c44ada2407</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://medium.com/@patni.sonal/elasticsearch-convert-your-index-data-into-pandas-dataframe-30c44ada2407</span>
 <span style="color:#75715e"># 其他方案: https://stackoverflow.com/questions/25186148/creating-dataframe-from-elasticsearch-results</span>
 
 <span style="color:#f92672">from</span> elasticsearch <span style="color:#f92672">import</span> Elasticsearch
@@ -333,26 +332,26 @@ documents <span style="color:#f92672">=</span> es<span style="color:#f92672">.</
 <span style="color:#75715e"># 核心</span>
 pandas_df <span style="color:#f92672">=</span> Select<span style="color:#f92672">.</span>from_dict(documents)<span style="color:#f92672">.</span>to_pandas()
 </code></pre></div><h3 id="python-分页-提取es的大量数据">python “分页” 提取es的大量数据</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: </span>
 <span style="color:#75715e"># https://gist.github.com/drorata/146ce50807d16fd4a6aa#gistcomment-2400782</span>
 <span style="color:#75715e"># https://www.cnblogs.com/WessonStar/p/8360659.html</span>
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scroll</span>(index, doc_type, query_body, page_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, debug<span style="color:#f92672">=</span>False, scroll<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2m&#39;</span>):
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scroll</span>(index, doc_type, query_body, page_size<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, scroll<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2m&#39;</span>):
     page <span style="color:#f92672">=</span> es<span style="color:#f92672">.</span>search(index<span style="color:#f92672">=</span>index, doc_type<span style="color:#f92672">=</span>doc_type, scroll<span style="color:#f92672">=</span>scroll, size<span style="color:#f92672">=</span>page_size, body<span style="color:#f92672">=</span>query_body)
     sid <span style="color:#f92672">=</span> page[<span style="color:#e6db74">&#39;_scroll_id&#39;</span>]
     scroll_size <span style="color:#f92672">=</span> page[<span style="color:#e6db74">&#39;hits&#39;</span>][<span style="color:#e6db74">&#39;total&#39;</span>]
     total_pages <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>ceil(scroll_size<span style="color:#f92672">/</span>page_size)
     page_counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
     <span style="color:#66d9ef">if</span> debug: 
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Total items : {}&#39;</span><span style="color:#f92672">.</span>format(scroll_size))
-        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Total pages : {}&#39;</span><span style="color:#f92672">.</span>format( math<span style="color:#f92672">.</span>ceil(scroll_size<span style="color:#f92672">/</span>page_size) ) )
+        print(<span style="color:#e6db74">&#39;Total items : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(scroll_size))
+        print(<span style="color:#e6db74">&#39;Total pages : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format( math<span style="color:#f92672">.</span>ceil(scroll_size<span style="color:#f92672">/</span>page_size) ) )
     <span style="color:#75715e"># Start scrolling</span>
     <span style="color:#66d9ef">while</span> (scroll_size <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>):
         <span style="color:#75715e"># Get the number of results that we returned in the last scroll</span>
         scroll_size <span style="color:#f92672">=</span> len(page[<span style="color:#e6db74">&#39;hits&#39;</span>][<span style="color:#e6db74">&#39;hits&#39;</span>])
         <span style="color:#66d9ef">if</span> scroll_size<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>:
             <span style="color:#66d9ef">if</span> debug: 
-                <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;&gt; Scrolling page {} : {} items&#39;</span><span style="color:#f92672">.</span>format(page_counter, scroll_size))
+                print(<span style="color:#e6db74">&#39;&gt; Scrolling page </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> : </span><span style="color:#e6db74">{}</span><span style="color:#e6db74"> items&#39;</span><span style="color:#f92672">.</span>format(page_counter, scroll_size))
             <span style="color:#66d9ef">yield</span> total_pages, page_counter, scroll_size, page
         <span style="color:#75715e"># get next page</span>
         page <span style="color:#f92672">=</span> es<span style="color:#f92672">.</span>scroll(scroll_id <span style="color:#f92672">=</span> sid, scroll <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2m&#39;</span>)
@@ -367,21 +366,21 @@ query <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;qu
 page_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>
 
 <span style="color:#66d9ef">for</span> total_pages, page_counter, page_items, page_data <span style="color:#f92672">in</span> scroll(index, doc_type, query, page_size<span style="color:#f92672">=</span>page_size):
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;total_pages={}, page_counter={}, page_items={}&#39;</span><span style="color:#f92672">.</span>format(total_pages, page_counter, page_items))
+    print(<span style="color:#e6db74">&#39;total_pages=</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, page_counter=</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">, page_items=</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(total_pages, page_counter, page_items))
     <span style="color:#75715e"># do what you need with page_data</span>
 
 </code></pre></div><h3 id="pandas-groupby-agg-获得最大最小数据">pandas groupby agg 获得最大最小数据</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/25024797/max-and-min-date-in-pandas-groupby</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/25024797/max-and-min-date-in-pandas-groupby</span>
 df<span style="color:#f92672">.</span>groupby([key_field])<span style="color:#f92672">.</span>agg({<span style="color:#e6db74">&#39;time_field&#39;</span>: [np<span style="color:#f92672">.</span>min,np<span style="color:#f92672">.</span>max]})
 </code></pre></div><h3 id="pandas-object-to-datetime">pandas object to datetime</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;DateTime&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;DateTime&#39;</span>])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#e6db74">&#39;DateTime&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;DateTime&#39;</span>])
 </code></pre></div><h3 id="pandas-multiindex-to-single-index">pandas multiindex to single index</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.thetopsites.net/article/51868061.shtml</span>
-df2<span style="color:#f92672">.</span>set_axis(df2<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>map(<span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span>False)<span style="color:#f92672">.</span>add_suffix(<span style="color:#e6db74">&#39;_MPG&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.thetopsites.net/article/51868061.shtml</span>
+df2<span style="color:#f92672">.</span>set_axis(df2<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>map(<span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)<span style="color:#f92672">.</span>add_suffix(<span style="color:#e6db74">&#39;_MPG&#39;</span>)
 </code></pre></div><h3 id="panda-科学记数法关闭设置显示精度">panda 科学记数法关闭/设置显示精度</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>options<span style="color:#f92672">.</span>display<span style="color:#f92672">.</span>float_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{:.2f}&#39;</span><span style="color:#f92672">.</span>format
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">pd<span style="color:#f92672">.</span>options<span style="color:#f92672">.</span>display<span style="color:#f92672">.</span>float_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{:.2f}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format
 </code></pre></div><h3 id="类-tqdm-定制化进度条">类 tqdm 定制化进度条</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://clay-atlas.com/blog/2019/11/11/python-chinese-tutorial-tqdm-progress-and-ourself/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://clay-atlas.com/blog/2019/11/11/python-chinese-tutorial-tqdm-progress-and-ourself/</span>
 <span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
 
 temp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
@@ -389,16 +388,16 @@ total <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</spa
 
 <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
     temp <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;[Progress]:[</span><span style="color:#e6db74">%s%s</span><span style="color:#e6db74">]</span><span style="color:#e6db74">%.2f%%</span><span style="color:#e6db74">;&#39;</span> <span style="color:#f92672">%</span> (
+    print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;[Progress]:[</span><span style="color:#e6db74">%s%s</span><span style="color:#e6db74">]</span><span style="color:#e6db74">%.2f%%</span><span style="color:#e6db74">;&#39;</span> <span style="color:#f92672">%</span> (
     <span style="color:#e6db74">&#39;█&#39;</span> <span style="color:#f92672">*</span> int(temp<span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#f92672">/</span>total), <span style="color:#e6db74">&#39; &#39;</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">20</span><span style="color:#f92672">-</span>int(temp<span style="color:#f92672">*</span><span style="color:#ae81ff">20</span><span style="color:#f92672">/</span>total)),
     float(temp<span style="color:#f92672">/</span>total<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>)), end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>)
     sleep(<span style="color:#ae81ff">0.01</span>)
     
 <span style="color:#75715e"># TODO：如果 n 在其他地方自增，如何不嵌套 tqdm 实现进度条？</span>
 </code></pre></div><h3 id="计算最近坐标点">计算最近坐标点</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/62482609/find-nearest-index-in-one-dataframe-to-another</span>
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/62482609/find-nearest-index-in-one-dataframe-to-another</span>
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 a <span style="color:#f92672">=</span> {
    <span style="color:#e6db74">&#39;X&#39;</span>: [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">21</span>],
    <span style="color:#e6db74">&#39;Y&#39;</span>: [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">15</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">23</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">7</span>],
@@ -420,36 +419,36 @@ dist <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</sp
     <span style="color:#66d9ef">return</span> df1[<span style="color:#e6db74">&#39;X&#39;</span>][idx], df1[<span style="color:#e6db74">&#39;Y&#39;</span>][idx], df1[<span style="color:#e6db74">&#39;Z&#39;</span>][idx]
 
 df2[<span style="color:#e6db74">&#39;closest&#39;</span>] <span style="color:#f92672">=</span> df2<span style="color:#f92672">.</span>apply(closest, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-<span style="color:#66d9ef">print</span>(df2)
+print(df2)
 </code></pre></div><h3 id="pandas-加速">pandas 加速</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://pandas.pydata.org/pandas-docs/stable/user_guide/enhancingperf.html</span>
 <span style="color:#75715e"># https://medium.com/swlh/6-ways-to-significantly-speed-up-pandas-with-a-couple-lines-of-code-part-1-2c2dfb0de230</span>
 </code></pre></div><h3 id="pandas-读-json-dict">pandas 读 json dict</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/56951109/python-data-frame-read-json-and-filter-data-from-dataframe</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/56951109/python-data-frame-read-json-and-filter-data-from-dataframe</span>
 </code></pre></div><h3 id="pandas-读取-excel">pandas 读取 excel</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://medium.com/@chiayinchen/%E4%BD%BF%E7%94%A8-python-pandas-%E5%BE%9E%E5%8C%85%E5%90%AB%E5%A4%9A%E5%80%8B%E5%B7%A5%E4%BD%9C%E8%A1%A8%E7%9A%84-excel-%E4%B8%AD%E6%93%B7%E5%8F%96%E6%95%B8%E6%93%9A-f9fcf507e05b</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://medium.com/@chiayinchen/%E4%BD%BF%E7%94%A8-python-pandas-%E5%BE%9E%E5%8C%85%E5%90%AB%E5%A4%9A%E5%80%8B%E5%B7%A5%E4%BD%9C%E8%A1%A8%E7%9A%84-excel-%E4%B8%AD%E6%93%B7%E5%8F%96%E6%95%B8%E6%93%9A-f9fcf507e05b</span>
 
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
 
-data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;https://storage.googleapis.com/medium_demo/y0s700000.xls&#39;</span>, skiprows <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, sheet_name <span style="color:#f92672">=</span> None) <span style="color:#75715e"># &#34;data&#34; are all sheets as a dictionary</span>
+data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_excel(<span style="color:#e6db74">&#39;https://storage.googleapis.com/medium_demo/y0s700000.xls&#39;</span>, skiprows <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>, sheet_name <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>) <span style="color:#75715e"># &#34;data&#34; are all sheets as a dictionary</span>
 
 xls <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>ExcelFile(<span style="color:#e6db74">&#39;https://storage.googleapis.com/medium_demo/y0s700000.xls&#39;</span>)
 xls<span style="color:#f92672">.</span>sheet_names <span style="color:#75715e"># see all sheet names</span>
 data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;YOUR_SHEET_NAME_HERE&#39;</span>) <span style="color:#75715e"># get a specific sheet to DataFrame</span>
 </code></pre></div><h3 id="dataframe-导出为图片">dataframe 导出为图片</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png</span>
-<span style="color:#f92672">import</span> dataframe_image <span style="color:#f92672">as</span> dfi
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/35634238/how-to-save-a-pandas-dataframe-table-as-a-png</span>
+<span style="color:#f92672">import</span> dataframe_image <span style="color:#66d9ef">as</span> dfi
 
 df_styled <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient() <span style="color:#75715e">#adding a gradient based on values in cell</span>
 dfi<span style="color:#f92672">.</span>export(df_styled,<span style="color:#e6db74">&#34;mytable.png&#34;</span>)
 </code></pre></div><h3 id="获取特定条件下的top数据">获取特定条件下的top数据</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/41330749/pandas-sort-and-head-inside-groupby</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/41330749/pandas-sort-and-head-inside-groupby</span>
 
 df<span style="color:#f92672">.</span>groupby(pd<span style="color:#f92672">.</span>TimeGrouper(<span style="color:#e6db74">&#39;D&#39;</span>))<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">.</span>nlargest(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#39;value&#39;</span>))<span style="color:#f92672">.</span>reset_index(level<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, drop<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
 </code></pre></div><h3 id="合并多个-dataframe">合并多个 dataframe</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/44327999/python-pandas-merge-multiple-dataframes</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/44327999/python-pandas-merge-multiple-dataframes</span>
 
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
 <span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
 
 df1 <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_table(<span style="color:#e6db74">&#39;file1.csv&#39;</span>, sep<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span>)

@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/the-next-step-for-machine-learning/" />
   <link rel="next" href="https://kuhungio.me/2019/competing-on-analytics/" />
   <link rel="canonical" href="https://kuhungio.me/2019/prophet-in-000300/" />
@@ -236,32 +235,32 @@ if (!doNotTrack) {
 <h3 id="工具包安装">工具包安装</h3>
 <p><code>pip install fbprophet</code></p>
 <h3 id="数据准备与清洗">数据准备与清洗</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">from</span> fbprophet <span style="color:#f92672">import</span> Prophet
 </code></pre></div><p>数据准备</p>
 <ul>
 <li>数据来源为网易财经，<a href="http://quotes.money.163.com/0000300.html">沪深三百</a>指数。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;../data/000300.csv&#39;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GB2312&#39;</span>) 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;../data/000300.csv&#39;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GB2312&#39;</span>) 
 data<span style="color:#f92672">.</span>head()
 </code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_1.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>数据清洗</p>
 <ul>
 <li>选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> data[[<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;日期&#39;</span>,<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;收盘价&#39;</span>]]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> data[[<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;日期&#39;</span>,<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;收盘价&#39;</span>]]
 df<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ds&#39;</span>,<span style="color:#e6db74">&#39;y&#39;</span>]
 df[<span style="color:#e6db74">&#39;y&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;y&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: np<span style="color:#f92672">.</span>log(int(x)))
 </code></pre></div><h3 id="模型拟合与预测">模型拟合与预测</h3>
 <p>简单定义，然后拟合。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">m <span style="color:#f92672">=</span> Prophet()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">m <span style="color:#f92672">=</span> Prophet()
 m<span style="color:#f92672">.</span>fit(df)
 </code></pre></div><p>预测未来一年的行情</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">future <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>make_future_dataframe(periods<span style="color:#f92672">=</span><span style="color:#ae81ff">365</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">future <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>make_future_dataframe(periods<span style="color:#f92672">=</span><span style="color:#ae81ff">365</span>)
 forecast <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>predict(future)
 </code></pre></div><p>详细看最后15天的数据</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">forecast[[<span style="color:#e6db74">&#39;ds&#39;</span>, <span style="color:#e6db74">&#39;yhat&#39;</span>, <span style="color:#e6db74">&#39;yhat_lower&#39;</span>, <span style="color:#e6db74">&#39;yhat_upper&#39;</span>]]<span style="color:#f92672">.</span>tail(<span style="color:#ae81ff">15</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">forecast[[<span style="color:#e6db74">&#39;ds&#39;</span>, <span style="color:#e6db74">&#39;yhat&#39;</span>, <span style="color:#e6db74">&#39;yhat_lower&#39;</span>, <span style="color:#e6db74">&#39;yhat_upper&#39;</span>]]<span style="color:#f92672">.</span>tail(<span style="color:#ae81ff">15</span>)
 future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
 future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
 future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
@@ -269,7 +268,7 @@ future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>] <span st
 <p>yhat 预测比较保守，20200307 相较于目前20190308 的大盘涨了100个点。预期最大收益：(6536-3658)/3658≈ 78%，预期最大亏损：(2158-3658)/3658≈-41%</p>
 <h3 id="模型看到了什么">模型看到了什么</h3>
 <p>Prophet 有个功能是成分拆分，咱们来看看国内股市的趋势以及季节性因素是什么。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig1 <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>plot(forecast)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig1 <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>plot(forecast)
 </code></pre></div><p>模型拟合情况</p>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_3.png" alt="模型拟合情况" class="lazyload"><figcaption class="image-caption">模型拟合情况</figcaption></figure></p>
 <p>趋势项</p>

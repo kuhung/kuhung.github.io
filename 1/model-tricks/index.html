@@ -22,8 +22,7 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
-  
+  <link rel="prev" href="https://kuhungio.me/1/techlead-vol-2/" />
   <link rel="next" href="https://kuhungio.me/1/atomic-habits-03/" />
   <link rel="canonical" href="https://kuhungio.me/1/model-tricks/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -60,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "",
     "headline" : "",
-    "description" : "title: \u0026ldquo;Model 常见问题速查\u0026rdquo; date: 2020-08-21T11:41:15\u002b08:00 draft: false tags: [\u0026ldquo;pandas\u0026rdquo;, \u0026ldquo;高频问题\u0026rdquo;] categories: [\u0026ldquo;技术技巧\u0026rdquo;]\n   标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.01.21 \/     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) 模型的保存与加载 import pickle pickle.dump(model, open(\u0026#34;model.pickle.dat\u0026#34;, \u0026#34;wb\u0026#34;)) model = pickle.load(open(model_path, \u0026#34;rb\u0026#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.",
+    "description" : "title: \u0026ldquo;Model 常见问题速查\u0026rdquo; date: 2020-08-21T11:41:15\u002b08:00 draft: false tags: [\u0026ldquo;pandas\u0026rdquo;, \u0026ldquo;高频问题\u0026rdquo;] categories: [\u0026ldquo;技术技巧\u0026rdquo;]\n   标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.11.12 \/     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[\u0026#39;randNumCol\u0026#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -71,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "0001-01-01 00:00:00 \u002b0000 UTC",
     "dateModified" : "0001-01-01 00:00:00 \u002b0000 UTC",
     "url" : "https:\/\/kuhungio.me\/1\/model-tricks\/",
-    "wordCount" : "267",
+    "wordCount" : "278",
     "keywords" : [  "Kuhung\u0027s Blog"]
 }
 </script>
@@ -225,41 +224,45 @@ categories: [&ldquo;技术技巧&rdquo;]</p>
 <table>
 <thead>
 <tr>
-<th align="left">标题</th>
-<th align="left">创建时间</th>
-<th align="left">发布时间</th>
-<th align="left">最后一次修改</th>
-<th align="left">备注</th>
+<th style="text-align:left">标题</th>
+<th style="text-align:left">创建时间</th>
+<th style="text-align:left">发布时间</th>
+<th style="text-align:left">最后一次修改</th>
+<th style="text-align:left">备注</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Model 常见问题速查</td>
-<td align="left">2020.08.21</td>
-<td align="left">2020.12.21</td>
-<td align="left">2021.01.21</td>
-<td align="left">/</td>
+<td style="text-align:left">Model 常见问题速查</td>
+<td style="text-align:left">2020.08.21</td>
+<td style="text-align:left">2020.12.21</td>
+<td style="text-align:left">2021.11.12</td>
+<td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
 <hr>
 <h3 id="xgb-特征重要性">xgb 特征重要性</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(model<span style="color:#f92672">.</span>feature_importances_)[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(model<span style="color:#f92672">.</span>feature_importances_)[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
 
 <span style="color:#75715e">## 按重要性排序</span>
 <span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> sorted_idx:
-    <span style="color:#66d9ef">print</span>([train[feature]<span style="color:#f92672">.</span>columns[index], model<span style="color:#f92672">.</span>feature_importances_[index]]) 
+    print([train[feature]<span style="color:#f92672">.</span>columns[index], model<span style="color:#f92672">.</span>feature_importances_[index]]) 
     
 <span style="color:#75715e">## 绘制结果</span>
 <span style="color:#f92672">from</span> xgboost <span style="color:#f92672">import</span> plot_importance
 plot_importance(model, max_num_features <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+
+<span style="color:#75715e">## ps：引入随机列</span>
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+df1[<span style="color:#e6db74">&#39;randNumCol&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>, df1<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
 </code></pre></div><h3 id="模型的保存与加载">模型的保存与加载</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pickle
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pickle
 
 pickle<span style="color:#f92672">.</span>dump(model, open(<span style="color:#e6db74">&#34;model.pickle.dat&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>))
 model <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>load(open(model_path, <span style="color:#e6db74">&#34;rb&#34;</span>))
 </code></pre></div><h3 id="召回准确率与阈值探查">召回、准确率与阈值探查</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> precision_recall_curve,plot_precision_recall_curve
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> precision_recall_curve,plot_precision_recall_curve
 
 <span style="color:#75715e"># 生成预测概率</span>
 predict_pro <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict_proba(test[feature])[:,<span style="color:#ae81ff">1</span>:]
@@ -272,12 +275,12 @@ pre_recall_curve[pre_recall_curve[<span style="color:#e6db74">&#39;precision&#39
 <span style="color:#75715e"># 绘制 precision recall 曲线</span>
 plot_precision_recall_curve(model,test[feature],test[label])
 </code></pre></div><h3 id="模型归因之-shap">模型归因之 shap</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># shap 方法</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># shap 方法</span>
 <span style="color:#75715e">## 解决版本 xgb1.10 兼容问题 </span>
 <span style="color:#75715e">## refer: https://github.com/slundberg/shap/issues/1215#issuecomment-641102855</span>
 mybooster <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>get_booster()    
 model_bytearray <span style="color:#f92672">=</span> mybooster<span style="color:#f92672">.</span>save_raw()[<span style="color:#ae81ff">4</span>:]
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">myfun</span>(self<span style="color:#f92672">=</span>None):
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">myfun</span>(self<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
     <span style="color:#66d9ef">return</span> model_bytearray
 mybooster<span style="color:#f92672">.</span>save_raw <span style="color:#f92672">=</span> myfun
 
@@ -289,7 +292,7 @@ X <span style="color:#f92672">=</span> data_df[features]
 shap_values <span style="color:#f92672">=</span> explainer<span style="color:#f92672">.</span>shap_values(X)
 shap<span style="color:#f92672">.</span>summary_plot(shap_values, X)
 </code></pre></div><h3 id="simhash-相似度匹配">Simhash 相似度匹配</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://leons.im/posts/a-python-implementation-of-simhash-algorithm/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://leons.im/posts/a-python-implementation-of-simhash-algorithm/</span>
 
 <span style="color:#f92672">from</span> simhash <span style="color:#f92672">import</span> Simhash,SimhashIndex
 
@@ -306,7 +309,7 @@ index <span style="color:#f92672">=</span> SimhashIndex(objs, k<span style="colo
 s1 <span style="color:#f92672">=</span> Simhash(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar thank&#39;</span>)
 index<span style="color:#f92672">.</span>get_near_dups(s1)
 </code></pre></div><h3 id="cat2vec-特征-embedding">cat2vec 特征 embedding</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://github.com/jaume-ferrarons/paratus</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://github.com/jaume-ferrarons/paratus</span>
 <span style="color:#75715e"># https://github.com/jaume-ferrarons/paratus/blob/master/tests/cat2vec_test.py</span>
 <span style="color:#75715e"># 需注意：进行向量化的特征需 labelencode 过，不能为单独的数字</span>
 
@@ -314,7 +317,7 @@ index<span style="color:#f92672">.</span>get_near_dups(s1)
 <span style="color:#75715e"># https://towardsdatascience.com/deep-embeddings-for-categorical-variables-cat2vec-b05c8ab63ac0</span>
 <span style="color:#75715e"># https://towardsdatascience.com/categorical-embedding-and-transfer-learning-dd3c4af6345d</span>
 </code></pre></div><h3 id="正则匹配特定字符后的数字">正则匹配特定字符后的数字</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.jb51.net/article/166939.htm</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.jb51.net/article/166939.htm</span>
 <span style="color:#f92672">import</span> re
 
 logs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tensorflow:Final best valid   0 loss=0.20478513836860657 norm_loss=0.767241849151384 roc=0.8262403011322021 pr=0.39401692152023315 calibration=0.9863265752792358 rate=0.0&#39;</span>
@@ -326,7 +329,7 @@ result <span style="color:#f92672">=</span> pattern<span style="color:#f92672">.
 <span style="color:#75715e"># 结果转 float</span>
 list(map(float, result))
 </code></pre></div><h3 id="特征筛选">特征筛选</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 共线性剔除
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 共线性剔除
 <span style="color:#66d9ef">2.</span> 特征重要性排序
 <span style="color:#66d9ef">3.</span> 去除该特征，判断模型准确率变化情况
 <span style="color:#66d9ef">4.</span> 将该特征同分布生成，随机配给
@@ -369,6 +372,8 @@ list(map(float, result))
     </div>
 
     <div class="post-nav">
+        
+        <a href="https://kuhungio.me/1/techlead-vol-2/" class="prev" rel="prev" title="技术领导｜03 techlead 项目管理技能成为必须"><i class="iconfont icon-left"></i>&nbsp;技术领导｜03 techlead 项目管理技能成为必须</a>
         
         
         <a href="https://kuhungio.me/1/atomic-habits-03/" class="next" rel="next" title="">&nbsp;<i class="iconfont icon-right"></i></a>

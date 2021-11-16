@@ -6,11 +6,7 @@
     <description>Recent content in Code on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/tags/code/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
       <link>https://kuhungio.me/2020/audio_progress/</link>

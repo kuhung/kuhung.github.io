@@ -22,7 +22,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
   <link rel="prev" href="https://kuhungio.me/2019/merge_overlapping_date/" />
   <link rel="next" href="https://kuhungio.me/2019/manadement/" />
   <link rel="canonical" href="https://kuhungio.me/2019/abtest-2/" />
@@ -321,7 +320,7 @@ if (!doNotTrack) {
 </ul>
 <p>对于二项分布，估计的方差为 p(1−p)/N。估计的均值方差为σ^2/N。如果原始数据是正常的，则中位数将是正常的。但如果原始数据不正常，则中位数可能不正常。由于中心极限定理，平均值通常是正态分布的，而与原始数据的分布无关。</p>
 <p>例如：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">87029</span>, <span style="color:#ae81ff">113407</span>, <span style="color:#ae81ff">84843</span>, <span style="color:#ae81ff">104994</span>, <span style="color:#ae81ff">99327</span>, <span style="color:#ae81ff">92052</span>, <span style="color:#ae81ff">60684</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">87029</span>, <span style="color:#ae81ff">113407</span>, <span style="color:#ae81ff">84843</span>, <span style="color:#ae81ff">104994</span>, <span style="color:#ae81ff">99327</span>, <span style="color:#ae81ff">92052</span>, <span style="color:#ae81ff">60684</span>)
 stder <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sd</span>(x)<span style="color:#f92672">/</span><span style="color:#a6e22e">sqrt</span>(<span style="color:#a6e22e">length</span>(x))
 conf95_min <span style="color:#f92672">=</span> <span style="color:#a6e22e">mean</span>(x) <span style="color:#ae81ff">-1.96</span><span style="color:#f92672">*</span>stder
 conf95_max <span style="color:#f92672">=</span> <span style="color:#a6e22e">mean</span>(x) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1.96</span><span style="color:#f92672">*</span>stder

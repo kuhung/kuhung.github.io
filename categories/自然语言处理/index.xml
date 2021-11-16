@@ -6,11 +6,7 @@
     <description>Recent content in 自然语言处理 on Kuhung&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate>
-    
-	<atom:link href="https://kuhungio.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate><atom:link href="https://kuhungio.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
       <link>https://kuhungio.me/2020/audio_progress/</link>
