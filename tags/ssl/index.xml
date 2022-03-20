@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SSL on Kuhung&#39;s Blog</title>
+    <title>SSL on 谷粒的博客</title>
     <link>https://kuhungio.me/tags/ssl/</link>
-    <description>Recent content in SSL on Kuhung&#39;s Blog</description>
+    <description>Recent content in SSL on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 28 Jan 2019 00:32:18 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/ssl/index.xml" rel="self" type="application/rss+xml" />

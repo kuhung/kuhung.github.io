@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kuhung&#39;s Blog on Kuhung&#39;s Blog</title>
+    <title>谷粒的博客 on 谷粒的博客</title>
     <link>https://kuhungio.me/</link>
-    <description>Recent content in Kuhung&#39;s Blog on Kuhung&#39;s Blog</description>
+    <description>Recent content in 谷粒的博客 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 23 Nov 2021 15:56:41 +0800</lastBuildDate>
@@ -18,21 +18,63 @@
     </item>
     
     <item>
-      <title>About</title>
+      <title>关于我</title>
       <link>https://kuhungio.me/about/</link>
       <pubDate>Sat, 17 Apr 2021 00:14:04 +0800</pubDate>
       
       <guid>https://kuhungio.me/about/</guid>
-      <description>&lt;h2 id=&#34;米哈游内推&#34;&gt;米哈游内推&lt;/h2&gt;
+      <description>&lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
+&lt;h2 id=&#34;个人简介&#34;&gt;个人简介&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;扫描二维码，内推直达
-&lt;img src=&#34;https://kuhungio.me/images/post/neitui.jpg&#34; alt=&#34;内推二维码&#34;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;笔名：谷粒 kuhung&lt;/li&gt;
+&lt;li&gt;笔名：谷粒 (kuhung)&lt;/li&gt;
 &lt;li&gt;毕业院校：&lt;a href=&#34;https://www.hust.edu.cn/&#34;&gt;华中科技大学&lt;/a&gt; &lt;a href=&#34;http://mse.hust.edu.cn/&#34;&gt;机械学院&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;兴趣方向&#34;&gt;兴趣方向&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;喜欢读书，读各种类型的书。喜欢在阅读中对话，以及整理后变得条理清晰的感觉。
+&lt;ul&gt;
+&lt;li&gt;今年的目标是保持住50本年阅读量，并尽可能多的输出思维导图。&lt;/li&gt;
+&lt;li&gt;参加了公司的读书大逃杀活动，并有信心苟到最后。&lt;/li&gt;
+&lt;li&gt;您可以在豆瓣上关注我的最新阅读动向。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;由于工作需要，会关心一些算法技术。例如用户画像、反作弊、计算广告等应用技术及其理论基础。&lt;/li&gt;
+&lt;li&gt;研究如何&lt;strong&gt;为自己的梦想工作&lt;/strong&gt;，将工作变为自我实现的一个路径，而非单纯货币驱动。
+&lt;ul&gt;
+&lt;li&gt;会尝试一些小的技术 demo ，来验证商业化的可行性。&lt;/li&gt;
+&lt;li&gt;关注财务、投资等知识，实践一些资本增值的方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;认识自己，以及在人际互动进行自我察觉。
+&lt;ul&gt;
+&lt;li&gt;在独处中认识自己的真实需求，并调整内在秩序。&lt;/li&gt;
+&lt;li&gt;希望能与他人建立联系，在积极尝试建立亲密关系。&lt;/li&gt;
+&lt;li&gt;寻求&lt;strong&gt;建设性结果&lt;/strong&gt;的社会观察者。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;日常理念&#34;&gt;日常理念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mission
+&lt;ul&gt;
+&lt;li&gt;Discover the hidden patterns in the complex data and realize the value of the information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Vision
+&lt;ul&gt;
+&lt;li&gt;Liberate human productivity to creative activity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Values
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Doing the right things rather than doing things right.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Be curious, critical and positive about the world.&lt;/li&gt;
+&lt;li&gt;提出高质量的问题并倾听客户真实需求。&lt;/li&gt;
+&lt;li&gt;持续交付客户乐意买单的产品或服务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;职业发展&#34;&gt;职业发展&lt;/h1&gt;
 &lt;h2 id=&#34;工作经历&#34;&gt;工作经历&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;2020.05~至今 &lt;a href=&#34;https://www.mihayo.com/&#34;&gt;米哈游&lt;/a&gt; &lt;a href=&#34;https://kuhungio.me/2019/what-is-data-mining/&#34;&gt;数据挖掘工程师&lt;/a&gt;&lt;/li&gt;
@@ -41,139 +83,108 @@
 &lt;li&gt;2017.07~2017.09 &lt;a href=&#34;https://webank.com/&#34;&gt;微众银行&lt;/a&gt; 数据科学实习生&lt;/li&gt;
 &lt;li&gt;2017.03~2017.06 &lt;a href=&#34;https://www.avlsec.com/zh-hans/home&#34;&gt;武汉安天&lt;/a&gt; 数据挖掘实习生&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;工作理念&#34;&gt;工作理念&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Mission
-&lt;ul&gt;
-&lt;li&gt;发现庞杂数据中的隐含模式，落地放大信息价值。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Vision
-&lt;ul&gt;
-&lt;li&gt;让每个人都享受到算法红利。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Values
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Doing the right things rather than doing things right.&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;对世界保持好奇、积极看待事态、批判接收信息。&lt;/li&gt;
-&lt;li&gt;提出高质量的问题并倾听客户真实需求。&lt;/li&gt;
-&lt;li&gt;持续交付客户乐意买单的产品或服务。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;工作方向&#34;&gt;工作方向&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;数据挖掘工程师，机器学习方向，熟悉常见机器学习工具，对大数据有一定了解。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;从事数据平台建设和机器学习应用开发，帮助企业获得数据洞察，促进增长；利用机器智能解放人力、控制风险。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;数据产品以 web app  形式交付；机器学习应用通过代码或接口交付。部分代码已开源，详情可见下方 &lt;a href=&#34;#github&#34;&gt;Github&lt;/a&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;无论你是企业主，希望通过算法释放人力，通过数据洞察机会；&lt;/p&gt;
-&lt;p&gt;或者是工程师，希望探讨方案实现，均可通过邮件 &lt;a href=&#34;mailto:kuhung@foxmail.com&#34;&gt;kuhung@foxmail.com&lt;/a&gt; 联系。&lt;/p&gt;
+&lt;h2 id=&#34;早期竞赛成果&#34;&gt;早期竞赛成果&lt;/h2&gt;
 &lt;!-- raw HTML omitted --&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;时间&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;项目&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;名次&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201808&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;第七届全国媒体技术处理大会&lt;!-- raw HTML omitted --&gt;文本溯源技术测评&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NLP 问题，判断文本是否改编自其它文本，用于学术查重&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://smp2018.cips-smp.org/rewards.html&#34;&gt;5/95&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201706&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;https://kaggle.com&#34;&gt;Kaggle&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;图像识别，宫颈癌的早期诊断与分型，公益医疗&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;top10%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201702&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DataCastle&lt;!-- raw HTML omitted --&gt;精准资助预测赛&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用户分群，识别高校内真正需要资助的人群&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7/124&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201612&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2016 BYTE CUP&lt;!-- raw HTML omitted --&gt;国际机器学习竞赛&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;推荐系统，推荐头条问答上的问题给合适专家，加快 PGC 产出&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://biendata.com/competition/bytecup2016/final-leaderboard/&#34;&gt;8/1029&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201610&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;第五届全国社会媒体处理大会&lt;!-- raw HTML omitted --&gt;用户画像技术测评&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用户画像，通过文本等特征，挖掘微博用户性别、居住地和年龄段属性&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://www.cips-smp.org/smp2016/public/cup.html&#34;&gt;5/373&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;!-- raw HTML omitted --&gt;
-&lt;h2 id=&#34;过往竞赛成果&#34;&gt;过往竞赛成果&lt;/h2&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;span-idgithubgithub-关注span&#34;&gt;&lt;!-- raw HTML omitted --&gt;Github 关注&lt;!-- raw HTML omitted --&gt;&lt;/h2&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;时间&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;项目&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;简介&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;名次&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;项目&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Stars&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;201808&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;第七届全国媒体技术处理大会&lt;!-- raw HTML omitted --&gt;文本溯源技术测评&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;NLP 问题，判断文本是否改编自其它文本，用于学术查重&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://smp2018.cips-smp.org/rewards.html&#34;&gt;5/95&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SSD_keras&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;简明 SSD 目标检测模型 keras version&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/SSD_keras&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/SSD_keras&#34; alt=&#34;131&#34;&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;201706&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://kaggle.com&#34;&gt;Kaggle&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;图像识别，宫颈癌的早期诊断与分型，公益医疗&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;top10%&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DateCastle&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;图像识别与推荐系统两类&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/DateCastle&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/DateCastle&#34; alt=&#34;68&#34;&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;201702&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;DataCastle&lt;!-- raw HTML omitted --&gt;精准资助预测赛&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;用户分群，识别高校内真正需要资助的人群&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;7/124&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;bert_finetune&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;中文语料 Bert finetune&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/bert_finetune&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/bert_finetune&#34; alt=&#34;51&#34;&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;201612&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;2016 BYTE CUP&lt;!-- raw HTML omitted --&gt;国际机器学习竞赛&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;推荐系统，推荐头条问答上的问题给合适专家，加快 PGC 产出&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://biendata.com/competition/bytecup2016/final-leaderboard/&#34;&gt;8/1029&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;flask_vue_ML&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;前后端+算法模型的结合&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/flask_vue_ML&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/flask_vue_ML&#34; alt=&#34;42&#34;&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;201610&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;第五届全国社会媒体处理大会&lt;!-- raw HTML omitted --&gt;用户画像技术测评&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;用户画像，通过文本等特征，挖掘微博用户性别、居住地和年龄段属性&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://www.cips-smp.org/smp2016/public/cup.html&#34;&gt;5/373&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;yysGAN&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;GAN 使用生成对抗网络生成新的图片&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/yysGAN&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/yysGAN&#34; alt=&#34;33&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ML-systems-design&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;机器学习系统设计&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/machine-learning-systems-design&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/machine-learning-systems-design&#34; alt=&#34;10&#34;&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id=&#34;span-idgithubgithub-上关注我span&#34;&gt;&lt;!-- raw HTML omitted --&gt;Github 上关注我&lt;!-- raw HTML omitted --&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/kuhung&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/followers/kuhung.svg?&amp;amp;label=Follow&amp;amp;maxAge=2592000&#34; alt=&#34;GitHub followers&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;项目&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;简介&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;Stars&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;SSD_keras&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;简明 SSD 目标检测模型 keras version&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/SSD_keras&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/SSD_keras&#34; alt=&#34;131&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;DateCastle&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;图像识别与推荐系统两类&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/DateCastle&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/DateCastle&#34; alt=&#34;68&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;bert_finetune&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;中文语料 Bert finetune&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/bert_finetune&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/bert_finetune&#34; alt=&#34;51&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;flask_vue_ML&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;前后端+算法模型的结合&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/flask_vue_ML&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/flask_vue_ML&#34; alt=&#34;42&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;yysGAN&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;GAN 使用生成对抗网络生成新的图片&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/yysGAN&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/yysGAN&#34; alt=&#34;33&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;ML-systems-design&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;机器学习系统设计&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/machine-learning-systems-design&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/machine-learning-systems-design&#34; alt=&#34;10&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id=&#34;社交媒体上关注我&#34;&gt;社交媒体上关注我&lt;/h2&gt;
+&lt;h1 id=&#34;建立联系&#34;&gt;建立联系&lt;/h1&gt;
+&lt;h2 id=&#34;社交媒体&#34;&gt;社交媒体&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;微信公众号、头条号、知乎
-&lt;img src=&#34;https://kuhungio.me/images/post/social.jpg&#34; alt=&#34;social&#34;&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;微信公众号、头条、知乎。
+&lt;img src=&#34;https://kuhungio.me/images/post/social.jpg&#34; alt=&#34;social&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上述后台的留言都会及时回复，请放心留言。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;邮箱📮 &lt;a href=&#34;mailto:kuhung@foxmail.com&#34;&gt;kuhung@foxmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
