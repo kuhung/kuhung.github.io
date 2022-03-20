@@ -70,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-04 11:39:43 \u002b0800 CST",
     "dateModified" : "2020-08-04 11:39:43 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/python-tricks\/",
-    "wordCount" : "363",
+    "wordCount" : "436",
     "keywords" : [ "python","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -175,6 +175,9 @@ if (!doNotTrack) {
         <li><a href="#optionparser-获取命令行参数">OptionParser 获取命令行参数</a></li>
         <li><a href="#从链接中下载数据">从链接中下载数据</a></li>
         <li><a href="#时间戳差值">时间戳差值</a></li>
+        <li><a href="#小时差">小时差</a></li>
+        <li><a href="#运行时间统计">运行时间统计</a></li>
+        <li><a href="#运行内存统计">运行内存统计</a></li>
       </ul>
     </li>
   </ul>
@@ -388,6 +391,38 @@ open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="col
     dt1 <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>utcfromtimestamp(x)
     dt2 <span style="color:#f92672">=</span> datetime<span style="color:#f92672">.</span>utcfromtimestamp(y)
     <span style="color:#66d9ef">return</span> (dt1 <span style="color:#f92672">-</span> dt2)<span style="color:#f92672">.</span>days
+</code></pre></div><h3 id="小时差">小时差</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://www.jianshu.com/p/4600c119051b</span>
+<span style="color:#75715e"># https://www.programminghunter.com/article/3233584997/</span>
+
+<span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime,timedelta
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dateDiffInHours</span>(t1, t2):
+    td <span style="color:#f92672">=</span> t2 <span style="color:#f92672">-</span> t1
+    <span style="color:#66d9ef">return</span> td<span style="color:#f92672">.</span>days <span style="color:#f92672">*</span> <span style="color:#ae81ff">24</span> <span style="color:#f92672">+</span> td<span style="color:#f92672">.</span>seconds<span style="color:#f92672">/</span><span style="color:#ae81ff">3600</span>
+  
+a1<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2017-10-04 09:01:04&#39;</span>
+a2<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2017-10-05 10:02:50&#39;</span>
+t1<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>strptime(a1, <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#34;</span>)
+t2<span style="color:#f92672">=</span>datetime<span style="color:#f92672">.</span>strptime(a2, <span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> %H:%M:%S&#34;</span>)
+
+dateDiffInHours(t1, t2)
+</code></pre></div><h3 id="运行时间统计">运行时间统计</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/1557571/how-do-i-get-time-of-a-python-programs-execution</span>
+
+<span style="color:#f92672">import</span> time
+start_time <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+main()
+print(<span style="color:#e6db74">&#34;--- </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> seconds ---&#34;</span> <span style="color:#f92672">%</span> (time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> start_time))
+</code></pre></div><h3 id="运行内存统计">运行内存统计</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://juejin.cn/post/6844904201621864461</span>
+<span style="color:#f92672">import</span> tracemalloc
+
+tracemalloc<span style="color:#f92672">.</span>start()
+my_complex_analysis_method()
+current, peak <span style="color:#f92672">=</span> tracemalloc<span style="color:#f92672">.</span>get_traced_memory()
+print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Current memory usage is </span><span style="color:#e6db74">{</span>current <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span><span style="color:#e6db74">}</span><span style="color:#e6db74">MB; Peak was </span><span style="color:#e6db74">{</span>peak <span style="color:#f92672">/</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span><span style="color:#e6db74">}</span><span style="color:#e6db74">MB&#34;</span>)
+tracemalloc<span style="color:#f92672">.</span>stop()
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
@@ -491,7 +526,7 @@ open(<span style="color:#e6db74">&#39;facebook.ico&#39;</span>, <span style="col
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2016 - 2021</span>
+        <span itemprop="copyrightYear">2016 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i>

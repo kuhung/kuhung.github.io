@@ -59,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Model 常见问题速查",
     "headline" : "Model 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2021.11.12 \/     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: print([train[feature].columns[index], model.feature_importances_[index]]) ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[\u0026#39;randNumCol\u0026#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.dump(model, open(\u0026#34;model.pickle.dat\u0026#34;, \u0026#34;wb\u0026#34;)) model = pickle.load(open(model_path, \u0026#34;rb\u0026#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2022.01.03 \/     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: # print([train[feature].columns[index], model.feature_importances_[index]])  print([features[index], model.feature_importances_[index]]) ## 打印结果 [round(elem, 3) for elem in model.feature_importances_] ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[\u0026#39;randNumCol\u0026#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -70,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-21 11:41:15 \u002b0800 CST",
     "dateModified" : "2020-08-21 11:41:15 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/model-tricks\/",
-    "wordCount" : "266",
+    "wordCount" : "378",
     "keywords" : [ "pandas","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -161,11 +161,14 @@ if (!doNotTrack) {
         <li><a href="#xgb-特征重要性">xgb 特征重要性</a></li>
         <li><a href="#模型的保存与加载">模型的保存与加载</a></li>
         <li><a href="#召回准确率与阈值探查">召回、准确率与阈值探查</a></li>
+        <li><a href="#模型结果的个性化要求">模型结果的个性化要求</a></li>
         <li><a href="#模型归因之-shap">模型归因之 shap</a></li>
         <li><a href="#simhash-相似度匹配">Simhash 相似度匹配</a></li>
         <li><a href="#cat2vec-特征-embedding">cat2vec 特征 embedding</a></li>
         <li><a href="#正则匹配特定字符后的数字">正则匹配特定字符后的数字</a></li>
+        <li><a href="#模型调优">模型调优</a></li>
         <li><a href="#特征筛选">特征筛选</a></li>
+        <li><a href="#指标集">指标集</a></li>
       </ul>
     </li>
   </ul>
@@ -235,7 +238,7 @@ if (!doNotTrack) {
 <td style="text-align:left">Model 常见问题速查</td>
 <td style="text-align:left">2020.08.21</td>
 <td style="text-align:left">2020.12.21</td>
-<td style="text-align:left">2021.11.12</td>
+<td style="text-align:left">2022.01.03</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
@@ -246,8 +249,12 @@ if (!doNotTrack) {
 
 <span style="color:#75715e">## 按重要性排序</span>
 <span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> sorted_idx:
-    print([train[feature]<span style="color:#f92672">.</span>columns[index], model<span style="color:#f92672">.</span>feature_importances_[index]]) 
-    
+    <span style="color:#75715e"># print([train[feature].columns[index], model.feature_importances_[index]]) </span>
+    print([features[index], model<span style="color:#f92672">.</span>feature_importances_[index]]) 
+
+<span style="color:#75715e">## 打印结果</span>
+[round(elem, <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>feature_importances_]
+
 <span style="color:#75715e">## 绘制结果</span>
 <span style="color:#f92672">from</span> xgboost <span style="color:#f92672">import</span> plot_importance
 plot_importance(model, max_num_features <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
@@ -273,6 +280,19 @@ pre_recall_curve[pre_recall_curve[<span style="color:#e6db74">&#39;precision&#39
 
 <span style="color:#75715e"># 绘制 precision recall 曲线</span>
 plot_precision_recall_curve(model,test[feature],test[label])
+</code></pre></div><h3 id="模型结果的个性化要求">模型结果的个性化要求</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 输出概率</span>
+<span style="color:#75715e"># https://stackoverflow.com/questions/903853/how-do-you-extract-a-column-from-a-multi-dimensional-array</span>
+
+<span style="color:#75715e"># 保留小数点x位</span>
+<span style="color:#75715e"># https://stackoverflow.com/questions/2762058/format-all-elements-of-a-list/2762087</span>
+
+<span style="color:#75715e"># 分箱 https://www.cnblogs.com/wzdly/p/9853209.html</span>
+<span style="color:#75715e"># 等频</span>
+train[<span style="color:#e6db74">&#34;age_bin&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>qcut(train[<span style="color:#e6db74">&#34;age&#34;</span>],<span style="color:#ae81ff">10</span>)
+
+<span style="color:#75715e"># 等宽</span>
+train[<span style="color:#e6db74">&#34;age_bin&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>cut(train[<span style="color:#e6db74">&#34;age&#34;</span>],<span style="color:#ae81ff">10</span>)
 </code></pre></div><h3 id="模型归因之-shap">模型归因之 shap</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># shap 方法</span>
 <span style="color:#75715e">## 解决版本 xgb1.10 兼容问题 </span>
@@ -327,11 +347,47 @@ result <span style="color:#f92672">=</span> pattern<span style="color:#f92672">.
 
 <span style="color:#75715e"># 结果转 float</span>
 list(map(float, result))
+</code></pre></div><h3 id="模型调优">模型调优</h3>
+<h4 id="xgb-imbalance-data">xgb imbalance data</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/67868420/xgboost-for-multiclassification-and-imbalanced-data</span>
+<span style="color:#f92672">from</span> sklearn.utils.class_weight <span style="color:#f92672">import</span> compute_sample_weight
+sample_weights <span style="color:#f92672">=</span> compute_sample_weight(
+    class_weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;balanced&#39;</span>,
+    y<span style="color:#f92672">=</span>train_df[<span style="color:#e6db74">&#39;class&#39;</span>] <span style="color:#75715e">#provide your own target name</span>
+)
+
+xgb_classifier<span style="color:#f92672">.</span>fit(X, y, sample_weight<span style="color:#f92672">=</span>sample_weights)
+</code></pre></div><h4 id="聚类手肘法">聚类手肘法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://www.cxybb.com/article/Totoro1745/117884008</span>
+<span style="color:#f92672">from</span> sklearn.cluster <span style="color:#f92672">import</span> KMeans
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_elbow</span>(X):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    手肘法判断聚类个数
+</span><span style="color:#e6db74">    :param X: data
+</span><span style="color:#e6db74">    :param mode: 1使用KShape, 其他则是kmeans+DTW
+</span><span style="color:#e6db74">    :return:
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    distortions <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">30</span>):
+        ks <span style="color:#f92672">=</span> KMeans(n_clusters<span style="color:#f92672">=</span>i,random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)<span style="color:#f92672">.</span>fit(X)
+        distortions<span style="color:#f92672">.</span>append(ks<span style="color:#f92672">.</span>inertia_)
+    plt<span style="color:#f92672">.</span>plot(range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">30</span>), distortions, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Number of clusters&#39;</span>)
+    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Distortion Line&#39;</span>)
+    plt<span style="color:#f92672">.</span>show()
 </code></pre></div><h3 id="特征筛选">特征筛选</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 共线性剔除
 <span style="color:#66d9ef">2.</span> 特征重要性排序
 <span style="color:#66d9ef">3.</span> 去除该特征，判断模型准确率变化情况
 <span style="color:#66d9ef">4.</span> 将该特征同分布生成，随机配给
+</code></pre></div><h3 id="指标集">指标集</h3>
+<h4 id="混淆矩阵">混淆矩阵</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html</span>
+<span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html</span>
+</code></pre></div><h4 id="auc">auc</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html</span>
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
@@ -435,7 +491,7 @@ list(map(float, result))
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2016 - 2021</span>
+        <span itemprop="copyrightYear">2016 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i>

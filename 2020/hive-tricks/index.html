@@ -59,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Hive 常见问题速查",
     "headline" : "Hive 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 \/     函数大全 https:\/\/www.iteblog.com\/archives\/2258.html\nHive 结果采样 select * from my_table where rand() \u0026lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http:\/\/www.joefkelley.com\/736\/ 计算时间差 --- https:\/\/blog.csdn.net\/kent7306\/article\/details\/50441967 --- 计算前后差  --- https:\/\/blog.csdn.net\/qq_33290422\/article\/details\/81204532 --- 直接计算时间差 json 提取 --- refer: https:\/\/www.cnblogs.com\/drjava\/p\/10486134.html --- [{\u0026#34;name\u0026#34;:\u0026#34;张三\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;},{\u0026#34;name\u0026#34;:\u0026#34;李\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;47\u0026#34;}]  SELECT get_json_object(xjson,\u0026#34;$.[0]\u0026#34;) FROM person; --- {\u0026#34;name\u0026#34;:\u0026#34;王二狗\u0026#34;,\u0026#34;sex\u0026#34;:\u0026#34;男\u0026#34;,\u0026#34;age\u0026#34;:\u0026#34;25\u0026#34;}  --- 按字段提取 SELECT get_json_object(xjson,\u0026#34;$.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 \/     函数大全 https:\/\/www.iteblog.com\/archives\/2258.html\nHive 结果采样 select * from my_table where rand() \u0026lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http:\/\/www.joefkelley.com\/736\/ hive 填补空值 --- https:\/\/stackoverflow.com\/questions\/63891981\/sql-hive-replace-null-values-with-0-hadoop-hive select coalesce(t2.Apple, 0) as apple from table; hive 分箱 # https:\/\/www.jianshu.com\/p\/a67280db6b33 -- Ntile(n) over(order by col)：分块函数 -- 备注：NULL值的处理，是否需要单独为1组。  select col -- NULL默认为最小值  , ntile(2) over( order by col) as group1 -- 将NULL单独为1组  , if(col is null, null, ntile(2) over( partition by if(col is null, 1, 0) order by col) as group2 from( select cast(col as int) as col from( select stack(5, \u0026#39;NULL\u0026#39;, \u0026#39;1\u0026#39;, \u0026#39;2\u0026#39;, \u0026#39;3\u0026#39;, \u0026#39;4\u0026#39;) as col ) as a ) as a 计算时间差 --- https:\/\/blog.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -70,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-25 11:13:05 \u002b0800 CST",
     "dateModified" : "2020-08-25 11:13:05 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/hive-tricks\/",
-    "wordCount" : "318",
+    "wordCount" : "406",
     "keywords" : [ "hive","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -160,6 +160,8 @@ if (!doNotTrack) {
       <ul>
         <li><a href="#函数大全">函数大全</a></li>
         <li><a href="#hive-结果采样">Hive 结果采样</a></li>
+        <li><a href="#hive-填补空值">hive 填补空值</a></li>
+        <li><a href="#hive-分箱">hive 分箱</a></li>
         <li><a href="#计算时间差">计算时间差</a></li>
         <li><a href="#json-提取">json 提取</a></li>
         <li><a href="#临时表运用">临时表运用</a></li>
@@ -258,7 +260,30 @@ sort <span style="color:#66d9ef">by</span> rand()
 <span style="color:#66d9ef">limit</span> <span style="color:#ae81ff">10000</span>;
 
 <span style="color:#75715e">--- source: http://www.joefkelley.com/736/
-</span></code></pre></div><h3 id="计算时间差">计算时间差</h3>
+</span></code></pre></div><h3 id="hive-填补空值">hive 填补空值</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://stackoverflow.com/questions/63891981/sql-hive-replace-null-values-with-0-hadoop-hive
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span>
+	coalesce(t2.Apple, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">as</span> apple
+<span style="color:#66d9ef">from</span>
+	<span style="color:#66d9ef">table</span>;
+</code></pre></div><h3 id="hive-分箱">hive 分箱</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#f92672">#</span> https:<span style="color:#f92672">//</span>www.jianshu.com<span style="color:#f92672">/</span>p<span style="color:#f92672">/</span>a67280db6b33
+
+<span style="color:#75715e">-- Ntile(n) over(order by col)：分块函数
+</span><span style="color:#75715e">-- 备注：NULL值的处理，是否需要单独为1组。
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">select</span>  col
+        <span style="color:#75715e">-- NULL默认为最小值
+</span><span style="color:#75715e"></span>        , ntile(<span style="color:#ae81ff">2</span>) over( <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> col) <span style="color:#66d9ef">as</span> group1
+        <span style="color:#75715e">-- 将NULL单独为1组
+</span><span style="color:#75715e"></span>        , <span style="color:#66d9ef">if</span>(col <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span>, <span style="color:#66d9ef">null</span>, ntile(<span style="color:#ae81ff">2</span>) over( partition <span style="color:#66d9ef">by</span> <span style="color:#66d9ef">if</span>(col <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">null</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">order</span> <span style="color:#66d9ef">by</span> col) <span style="color:#66d9ef">as</span> group2
+<span style="color:#66d9ef">from</span>(
+    <span style="color:#66d9ef">select</span> <span style="color:#66d9ef">cast</span>(col <span style="color:#66d9ef">as</span> int) <span style="color:#66d9ef">as</span> col
+    <span style="color:#66d9ef">from</span>(
+        <span style="color:#66d9ef">select</span> stack(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#39;NULL&#39;</span>, <span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>, <span style="color:#e6db74">&#39;3&#39;</span>, <span style="color:#e6db74">&#39;4&#39;</span>) <span style="color:#66d9ef">as</span> col
+    ) <span style="color:#66d9ef">as</span> a
+) <span style="color:#66d9ef">as</span> a
+</code></pre></div><h3 id="计算时间差">计算时间差</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- https://blog.csdn.net/kent7306/article/details/50441967
 </span><span style="color:#75715e">--- 计算前后差
 </span><span style="color:#75715e"></span>
@@ -351,7 +376,11 @@ sort <span style="color:#66d9ef">by</span> rand()
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- refer https://my.oschina.net/u/4308120/blog/3321350
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> date_add(<span style="color:#e6db74">&#39;2020-01-01&#39;</span>,<span style="color:#ae81ff">1</span>)  <span style="color:#75715e">-- 日期加一
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> date_sub(<span style="color:#e6db74">&#39;2020-01-01&#39;</span>,<span style="color:#ae81ff">1</span>)  <span style="color:#75715e">-- 日期减一
-</span></code></pre></div><h3 id="rlike-匹配多个条件">rlike 匹配多个条件</h3>
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">--- refer https://sqlandhadoop.com/hive-date-functions-all-possible-date-operations/
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">select</span> date_format(<span style="color:#66d9ef">current_date</span>,<span style="color:#e6db74">&#39;u&#39;</span>); <span style="color:#75715e">-- Day of the Week
+</span><span style="color:#75715e"></span>
+</code></pre></div><h3 id="rlike-匹配多个条件">rlike 匹配多个条件</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#75715e">--- refer https://stackoverflow.com/questions/33626645/hive-query-with-multiple-like-operators
 </span><span style="color:#75715e"></span><span style="color:#f92672">***</span>
 <span style="color:#66d9ef">WHERE</span> some_col rlike <span style="color:#e6db74">&#39;abc|pqr|xyz&#39;</span> <span style="color:#75715e">--- 默认前后通配 %*%
@@ -473,7 +502,7 @@ hdfs dfs -get <span style="color:#f92672">[</span>-ignoreCrc<span style="color:#
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2016 - 2021</span>
+        <span itemprop="copyrightYear">2016 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i>

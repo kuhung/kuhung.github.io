@@ -70,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2020-09-01 12:04:49 \u002b0800 CST",
     "dateModified" : "2020-09-01 12:04:49 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/eda-tricks\/",
-    "wordCount" : "265",
+    "wordCount" : "276",
     "keywords" : [ "eda","高频问题", "Kuhung\u0027s Blog"]
 }
 </script>
@@ -167,6 +167,7 @@ if (!doNotTrack) {
         <li><a href="#绘制3d图">绘制3D图</a></li>
         <li><a href="#层次聚类">层次聚类</a></li>
         <li><a href="#chord-diagram">Chord diagram</a></li>
+        <li><a href="#matplot-mac中文字符处理">matplot mac中文字符处理</a></li>
       </ul>
     </li>
   </ul>
@@ -324,6 +325,8 @@ sns_plot<span style="color:#f92672">.</span>figure<span style="color:#f92672">.<
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 3D 二维化，热力图</span>
 </code></pre></div><h3 id="层次聚类">层次聚类</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features</span>
+
+<span style="color:#75715e"># 参数说：https://haojunsui.github.io/2016/07/16/scipy-hac/</span>
 <span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
 <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 
@@ -378,6 +381,9 @@ busiest_airports<span style="color:#f92672">.</span>opts(
 matrix <span style="color:#f92672">=</span> vis_df<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>tolist()
 names <span style="color:#f92672">=</span> list(vis_df<span style="color:#f92672">.</span>index)
 Chord(matrix, names)<span style="color:#f92672">.</span>to_html(<span style="color:#e6db74">&#34;chord-diagram-chord-library.html&#34;</span>)
+</code></pre></div><h3 id="matplot-mac中文字符处理">matplot mac中文字符处理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://www.cnblogs.com/cymwill/p/10554916.html</span>
+plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;font.sans-serif&#39;</span>] <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Arial Unicode MS&#39;</span>]
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
@@ -481,7 +487,7 @@ Chord(matrix, names)<span style="color:#f92672">.</span>to_html(<span style="col
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2016 - 2021</span>
+        <span itemprop="copyrightYear">2016 - 2022</span>
         
         <span class="with-love">
     	 <i class="iconfont icon-love"></i>
