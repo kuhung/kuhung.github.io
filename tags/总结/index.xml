@@ -91,7 +91,7 @@ XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这�
     </item>
     
     <item>
-      <title>如何打造用户不再恐惧的算法模型</title>
+      <title>算法模型需要可解释性</title>
       <link>https://kuhungio.me/2021/interpretable-machine-learning/</link>
       <pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate>
       
