@@ -70,7 +70,7 @@ if (!doNotTrack) {
     "datePublished": "2020-08-21 11:41:15 \u002b0800 CST",
     "dateModified" : "2020-08-21 11:41:15 \u002b0800 CST",
     "url" : "https:\/\/kuhungio.me\/2020\/model-tricks\/",
-    "wordCount" : "378",
+    "wordCount" : "487",
     "keywords" : [ "pandas","高频问题", "谷粒的博客"]
 }
 </script>
@@ -163,7 +163,9 @@ if (!doNotTrack) {
         <li><a href="#cat2vec-特征-embedding">cat2vec 特征 embedding</a></li>
         <li><a href="#正则匹配特定字符后的数字">正则匹配特定字符后的数字</a></li>
         <li><a href="#模型调优">模型调优</a></li>
+        <li><a href="#特征构造">特征构造</a></li>
         <li><a href="#特征筛选">特征筛选</a></li>
+        <li><a href="#模型包">模型包</a></li>
         <li><a href="#指标集">指标集</a></li>
       </ul>
     </li>
@@ -373,17 +375,63 @@ xgb_classifier<span style="color:#f92672">.</span>fit(X, y, sample_weight<span s
     plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Number of clusters&#39;</span>)
     plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Distortion Line&#39;</span>)
     plt<span style="color:#f92672">.</span>show()
+</code></pre></div><h3 id="特征构造">特征构造</h3>
+<h4 id="onehot">onehot</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encode_and_bind</span>(original_dataframe, feature_to_encode):
+    dummies <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(original_dataframe[[feature_to_encode]])
+    res <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([original_dataframe, dummies], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">return</span>(res)
+</code></pre></div><h4 id="gbdt-构造">gbdt 构造</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://towardsdatascience.com/feature-generation-with-gradient-boosted-decision-trees-21d4946d6ab5</span>
+
+<span style="color:#f92672">from</span> sktools <span style="color:#f92672">import</span> GradientBoostingFeatureGenerator
+<span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> load_boston
+<span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> Pipeline
+<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
+<span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
+
+X <span style="color:#f92672">=</span> load_boston()[<span style="color:#e6db74">&#34;data&#34;</span>]
+y <span style="color:#f92672">=</span> load_boston()[<span style="color:#e6db74">&#34;target&#34;</span>]
+
+gbf <span style="color:#f92672">=</span> GradientBoostingFeatureGenerator(regression<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+lr <span style="color:#f92672">=</span> LinearRegression()
+
+pipe <span style="color:#f92672">=</span> Pipeline([(<span style="color:#e6db74">&#34;gb_features&#34;</span>, gbf), (<span style="color:#e6db74">&#34;logistic&#34;</span>, lr)])
+
+pipe<span style="color:#f92672">.</span>fit(X, y)
+mean_absolute_error(pipe<span style="color:#f92672">.</span>predict(X),y)
 </code></pre></div><h3 id="特征筛选">特征筛选</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 共线性剔除
 <span style="color:#66d9ef">2.</span> 特征重要性排序
 <span style="color:#66d9ef">3.</span> 去除该特征，判断模型准确率变化情况
 <span style="color:#66d9ef">4.</span> 将该特征同分布生成，随机配给
+</code></pre></div><h4 id="面向比赛的特征筛选">面向比赛的特征筛选</h4>
+<pre tabindex="0"><code class="language-markdo" data-lang="markdo">1. train-test GAN
+	- 去掉训练集和测试集原有的标签，按训练与测试赋予新标签
+	- 训练模型，并观察AUC指标，设定AUC阈值
+		- Do train
+			- while auc-online &gt; auc-threshold
+				- 剔除特征重要性排名第一的特征
+		- end train
+	- 获得当前特征集，该集合在训练与测试数据集上接近，不易造成过拟合
+</code></pre><h3 id="模型包">模型包</h3>
+<h4 id="catboost">catboost</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://zhuanlan.zhihu.com/p/37916954</span>
+<span style="color:#75715e"># https://catboost.ai/en/docs/concepts/spark-quickstart-python</span>
+<span style="color:#75715e"># https://stackoverflow.com/questions/64988694/how-can-i-get-the-feature-importance-of-a-catboost-in-a-pandas-dataframe</span>
 </code></pre></div><h3 id="指标集">指标集</h3>
 <h4 id="混淆矩阵">混淆矩阵</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html</span>
 <span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html</span>
 </code></pre></div><h4 id="auc">auc</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html</span>
+</code></pre></div><h4 id="聚类中心距离">聚类中心距离</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># https://stackoverflow.com/questions/40871186/python-dataframe-matrix-of-euclidean-distance</span>
+<span style="color:#f92672">from</span> scipy.spatial.distance <span style="color:#f92672">import</span> pdist, squareform
+
+dist <span style="color:#f92672">=</span> pdist(df[[<span style="color:#e6db74">&#39;x1&#39;</span>, <span style="color:#e6db74">&#39;x2&#39;</span>]], <span style="color:#e6db74">&#39;euclidean&#39;</span>)
+df_dist <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(squareform(dist))
 </code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
