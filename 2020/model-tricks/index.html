@@ -59,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "Model 常见问题速查",
     "headline" : "Model 常见问题速查",
-    "description" : "标题 创建时间 发布时间 最后一次修改 备注     Model 常见问题速查 2020.08.21 2020.12.21 2022.01.03 \/     xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: # print([train[feature].columns[index], model.feature_importances_[index]])  print([features[index], model.feature_importances_[index]]) ## 打印结果 [round(elem, 3) for elem in model.feature_importances_] ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[\u0026#39;randNumCol\u0026#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注 Model 常见问题速查 2020.08.21 2020.12.21 2022.01.03 \/ xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: # print([train[feature].columns[index], model.feature_importances_[index]]) print([features[index], model.feature_importances_[index]]) ## 打印结果 [round(elem, 3) for elem in model.feature_importances_] ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[\u0026#39;randNumCol\u0026#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.dump(model, open(\u0026#34;model.pickle.dat\u0026#34;, \u0026#34;wb\u0026#34;)) model = pickle.load(open(model_path, \u0026#34;rb\u0026#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -243,170 +243,170 @@ if (!doNotTrack) {
 </table>
 <hr>
 <h3 id="xgb-特征重要性">xgb 特征重要性</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(model<span style="color:#f92672">.</span>feature_importances_)[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-
-<span style="color:#75715e">## 按重要性排序</span>
-<span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> sorted_idx:
-    <span style="color:#75715e"># print([train[feature].columns[index], model.feature_importances_[index]]) </span>
-    print([features[index], model<span style="color:#f92672">.</span>feature_importances_[index]]) 
-
-<span style="color:#75715e">## 打印结果</span>
-[round(elem, <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>feature_importances_]
-
-<span style="color:#75715e">## 绘制结果</span>
-<span style="color:#f92672">from</span> xgboost <span style="color:#f92672">import</span> plot_importance
-plot_importance(model, max_num_features <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
-
-<span style="color:#75715e">## ps：引入随机列</span>
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-df1[<span style="color:#e6db74">&#39;randNumCol&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>, df1<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
-</code></pre></div><h3 id="模型的保存与加载">模型的保存与加载</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pickle
-
-pickle<span style="color:#f92672">.</span>dump(model, open(<span style="color:#e6db74">&#34;model.pickle.dat&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>))
-model <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>load(open(model_path, <span style="color:#e6db74">&#34;rb&#34;</span>))
-</code></pre></div><h3 id="召回准确率与阈值探查">召回、准确率与阈值探查</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> precision_recall_curve,plot_precision_recall_curve
-
-<span style="color:#75715e"># 生成预测概率</span>
-predict_pro <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict_proba(test[feature])[:,<span style="color:#ae81ff">1</span>:]
-
-<span style="color:#75715e"># 生成探查 dataframe</span>
-pre_recall_curve <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(precision_recall_curve(test[label],predict_pro))<span style="color:#f92672">.</span>T
-pre_recall_curve<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;precision&#39;</span>,<span style="color:#e6db74">&#39;recall&#39;</span>,<span style="color:#e6db74">&#39;thresholds&#39;</span>]
-pre_recall_curve[pre_recall_curve[<span style="color:#e6db74">&#39;precision&#39;</span>]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0.95</span>]
-
-<span style="color:#75715e"># 绘制 precision recall 曲线</span>
-plot_precision_recall_curve(model,test[feature],test[label])
-</code></pre></div><h3 id="模型结果的个性化要求">模型结果的个性化要求</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 输出概率</span>
-<span style="color:#75715e"># https://stackoverflow.com/questions/903853/how-do-you-extract-a-column-from-a-multi-dimensional-array</span>
-
-<span style="color:#75715e"># 保留小数点x位</span>
-<span style="color:#75715e"># https://stackoverflow.com/questions/2762058/format-all-elements-of-a-list/2762087</span>
-
-<span style="color:#75715e"># 分箱 https://www.cnblogs.com/wzdly/p/9853209.html</span>
-<span style="color:#75715e"># 等频</span>
-train[<span style="color:#e6db74">&#34;age_bin&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>qcut(train[<span style="color:#e6db74">&#34;age&#34;</span>],<span style="color:#ae81ff">10</span>)
-
-<span style="color:#75715e"># 等宽</span>
-train[<span style="color:#e6db74">&#34;age_bin&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>cut(train[<span style="color:#e6db74">&#34;age&#34;</span>],<span style="color:#ae81ff">10</span>)
-</code></pre></div><h3 id="模型归因之-shap">模型归因之 shap</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># shap 方法</span>
-<span style="color:#75715e">## 解决版本 xgb1.10 兼容问题 </span>
-<span style="color:#75715e">## refer: https://github.com/slundberg/shap/issues/1215#issuecomment-641102855</span>
-mybooster <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>get_booster()    
-model_bytearray <span style="color:#f92672">=</span> mybooster<span style="color:#f92672">.</span>save_raw()[<span style="color:#ae81ff">4</span>:]
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">myfun</span>(self<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-    <span style="color:#66d9ef">return</span> model_bytearray
-mybooster<span style="color:#f92672">.</span>save_raw <span style="color:#f92672">=</span> myfun
-
-<span style="color:#75715e">## shap 分析</span>
-<span style="color:#f92672">import</span> shap
-
-explainer <span style="color:#f92672">=</span> shap<span style="color:#f92672">.</span>TreeExplainer(mybooster)
-X <span style="color:#f92672">=</span> data_df[features]
-shap_values <span style="color:#f92672">=</span> explainer<span style="color:#f92672">.</span>shap_values(X)
-shap<span style="color:#f92672">.</span>summary_plot(shap_values, X)
-</code></pre></div><h3 id="simhash-相似度匹配">Simhash 相似度匹配</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://leons.im/posts/a-python-implementation-of-simhash-algorithm/</span>
-
-<span style="color:#f92672">from</span> simhash <span style="color:#f92672">import</span> Simhash,SimhashIndex
-
-data <span style="color:#f92672">=</span> {
-        <span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#39;How are you? I Am fine. blar blar blar blar blar Thanks.&#39;</span>,
-        <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar than&#39;</span>,
-        <span style="color:#ae81ff">3</span>: <span style="color:#e6db74">&#39;This is simhash test.&#39;</span>,
-        <span style="color:#ae81ff">4</span>: <span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar thank1&#39;</span>,
-    }
-
-objs <span style="color:#f92672">=</span> [(str(k), Simhash(v)) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items()]
-index <span style="color:#f92672">=</span> SimhashIndex(objs, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
-
-s1 <span style="color:#f92672">=</span> Simhash(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar thank&#39;</span>)
-index<span style="color:#f92672">.</span>get_near_dups(s1)
-</code></pre></div><h3 id="cat2vec-特征-embedding">cat2vec 特征 embedding</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># source: https://github.com/jaume-ferrarons/paratus</span>
-<span style="color:#75715e"># https://github.com/jaume-ferrarons/paratus/blob/master/tests/cat2vec_test.py</span>
-<span style="color:#75715e"># 需注意：进行向量化的特征需 labelencode 过，不能为单独的数字</span>
-
-<span style="color:#75715e"># 其他参考</span>
-<span style="color:#75715e"># https://towardsdatascience.com/deep-embeddings-for-categorical-variables-cat2vec-b05c8ab63ac0</span>
-<span style="color:#75715e"># https://towardsdatascience.com/categorical-embedding-and-transfer-learning-dd3c4af6345d</span>
-</code></pre></div><h3 id="正则匹配特定字符后的数字">正则匹配特定字符后的数字</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://www.jb51.net/article/166939.htm</span>
-<span style="color:#f92672">import</span> re
-
-logs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tensorflow:Final best valid   0 loss=0.20478513836860657 norm_loss=0.767241849151384 roc=0.8262403011322021 pr=0.39401692152023315 calibration=0.9863265752792358 rate=0.0&#39;</span>
-
-<span style="color:#75715e"># 匹配“calibration=”后面的数字</span>
-pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(?&lt;=calibration=)\d+\.?\d*&#39;</span>)
-result <span style="color:#f92672">=</span> pattern<span style="color:#f92672">.</span>findall(logs)
-
-<span style="color:#75715e"># 结果转 float</span>
-list(map(float, result))
-</code></pre></div><h3 id="模型调优">模型调优</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sorted_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(model<span style="color:#f92672">.</span>feature_importances_)[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 按重要性排序</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> sorted_idx:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print([train[feature].columns[index], model.feature_importances_[index]]) </span>
+</span></span><span style="display:flex;"><span>    print([features[index], model<span style="color:#f92672">.</span>feature_importances_[index]]) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 打印结果</span>
+</span></span><span style="display:flex;"><span>[round(elem, <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>feature_importances_]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 绘制结果</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> xgboost <span style="color:#f92672">import</span> plot_importance
+</span></span><span style="display:flex;"><span>plot_importance(model, max_num_features <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## ps：引入随机列</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>df1[<span style="color:#e6db74">&#39;randNumCol&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">6</span>, df1<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span></code></pre></div><h3 id="模型的保存与加载">模型的保存与加载</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pickle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pickle<span style="color:#f92672">.</span>dump(model, open(<span style="color:#e6db74">&#34;model.pickle.dat&#34;</span>, <span style="color:#e6db74">&#34;wb&#34;</span>))
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> pickle<span style="color:#f92672">.</span>load(open(model_path, <span style="color:#e6db74">&#34;rb&#34;</span>))
+</span></span></code></pre></div><h3 id="召回准确率与阈值探查">召回、准确率与阈值探查</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> precision_recall_curve,plot_precision_recall_curve
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 生成预测概率</span>
+</span></span><span style="display:flex;"><span>predict_pro <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict_proba(test[feature])[:,<span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 生成探查 dataframe</span>
+</span></span><span style="display:flex;"><span>pre_recall_curve <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(precision_recall_curve(test[label],predict_pro))<span style="color:#f92672">.</span>T
+</span></span><span style="display:flex;"><span>pre_recall_curve<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;precision&#39;</span>,<span style="color:#e6db74">&#39;recall&#39;</span>,<span style="color:#e6db74">&#39;thresholds&#39;</span>]
+</span></span><span style="display:flex;"><span>pre_recall_curve[pre_recall_curve[<span style="color:#e6db74">&#39;precision&#39;</span>]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0.95</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 绘制 precision recall 曲线</span>
+</span></span><span style="display:flex;"><span>plot_precision_recall_curve(model,test[feature],test[label])
+</span></span></code></pre></div><h3 id="模型结果的个性化要求">模型结果的个性化要求</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 输出概率</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://stackoverflow.com/questions/903853/how-do-you-extract-a-column-from-a-multi-dimensional-array</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 保留小数点x位</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://stackoverflow.com/questions/2762058/format-all-elements-of-a-list/2762087</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 分箱 https://www.cnblogs.com/wzdly/p/9853209.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 等频</span>
+</span></span><span style="display:flex;"><span>train[<span style="color:#e6db74">&#34;age_bin&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>qcut(train[<span style="color:#e6db74">&#34;age&#34;</span>],<span style="color:#ae81ff">10</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 等宽</span>
+</span></span><span style="display:flex;"><span>train[<span style="color:#e6db74">&#34;age_bin&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>cut(train[<span style="color:#e6db74">&#34;age&#34;</span>],<span style="color:#ae81ff">10</span>)
+</span></span></code></pre></div><h3 id="模型归因之-shap">模型归因之 shap</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># shap 方法</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 解决版本 xgb1.10 兼容问题 </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## refer: https://github.com/slundberg/shap/issues/1215#issuecomment-641102855</span>
+</span></span><span style="display:flex;"><span>mybooster <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>get_booster()    
+</span></span><span style="display:flex;"><span>model_bytearray <span style="color:#f92672">=</span> mybooster<span style="color:#f92672">.</span>save_raw()[<span style="color:#ae81ff">4</span>:]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">myfun</span>(self<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> model_bytearray
+</span></span><span style="display:flex;"><span>mybooster<span style="color:#f92672">.</span>save_raw <span style="color:#f92672">=</span> myfun
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## shap 分析</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> shap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>explainer <span style="color:#f92672">=</span> shap<span style="color:#f92672">.</span>TreeExplainer(mybooster)
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> data_df[features]
+</span></span><span style="display:flex;"><span>shap_values <span style="color:#f92672">=</span> explainer<span style="color:#f92672">.</span>shap_values(X)
+</span></span><span style="display:flex;"><span>shap<span style="color:#f92672">.</span>summary_plot(shap_values, X)
+</span></span></code></pre></div><h3 id="simhash-相似度匹配">Simhash 相似度匹配</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># source: https://leons.im/posts/a-python-implementation-of-simhash-algorithm/</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> simhash <span style="color:#f92672">import</span> Simhash,SimhashIndex
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#39;How are you? I Am fine. blar blar blar blar blar Thanks.&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar than&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">3</span>: <span style="color:#e6db74">&#39;This is simhash test.&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">4</span>: <span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar thank1&#39;</span>,
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>objs <span style="color:#f92672">=</span> [(str(k), Simhash(v)) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>items()]
+</span></span><span style="display:flex;"><span>index <span style="color:#f92672">=</span> SimhashIndex(objs, k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>s1 <span style="color:#f92672">=</span> Simhash(<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;How are you i am fine. blar blar blar blar blar thank&#39;</span>)
+</span></span><span style="display:flex;"><span>index<span style="color:#f92672">.</span>get_near_dups(s1)
+</span></span></code></pre></div><h3 id="cat2vec-特征-embedding">cat2vec 特征 embedding</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># source: https://github.com/jaume-ferrarons/paratus</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://github.com/jaume-ferrarons/paratus/blob/master/tests/cat2vec_test.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 需注意：进行向量化的特征需 labelencode 过，不能为单独的数字</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 其他参考</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://towardsdatascience.com/deep-embeddings-for-categorical-variables-cat2vec-b05c8ab63ac0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://towardsdatascience.com/categorical-embedding-and-transfer-learning-dd3c4af6345d</span>
+</span></span></code></pre></div><h3 id="正则匹配特定字符后的数字">正则匹配特定字符后的数字</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># refer: https://www.jb51.net/article/166939.htm</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>logs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;tensorflow:Final best valid   0 loss=0.20478513836860657 norm_loss=0.767241849151384 roc=0.8262403011322021 pr=0.39401692152023315 calibration=0.9863265752792358 rate=0.0&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 匹配“calibration=”后面的数字</span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;(?&lt;=calibration=)\d+\.?\d*&#39;</span>)
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> pattern<span style="color:#f92672">.</span>findall(logs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 结果转 float</span>
+</span></span><span style="display:flex;"><span>list(map(float, result))
+</span></span></code></pre></div><h3 id="模型调优">模型调优</h3>
 <h4 id="xgb-imbalance-data">xgb imbalance data</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://stackoverflow.com/questions/67868420/xgboost-for-multiclassification-and-imbalanced-data</span>
-<span style="color:#f92672">from</span> sklearn.utils.class_weight <span style="color:#f92672">import</span> compute_sample_weight
-sample_weights <span style="color:#f92672">=</span> compute_sample_weight(
-    class_weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;balanced&#39;</span>,
-    y<span style="color:#f92672">=</span>train_df[<span style="color:#e6db74">&#39;class&#39;</span>] <span style="color:#75715e">#provide your own target name</span>
-)
-
-xgb_classifier<span style="color:#f92672">.</span>fit(X, y, sample_weight<span style="color:#f92672">=</span>sample_weights)
-</code></pre></div><h4 id="聚类手肘法">聚类手肘法</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://www.cxybb.com/article/Totoro1745/117884008</span>
-<span style="color:#f92672">from</span> sklearn.cluster <span style="color:#f92672">import</span> KMeans
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_elbow</span>(X):
-    <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">    手肘法判断聚类个数
-</span><span style="color:#e6db74">    :param X: data
-</span><span style="color:#e6db74">    :param mode: 1使用KShape, 其他则是kmeans+DTW
-</span><span style="color:#e6db74">    :return:
-</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-    distortions <span style="color:#f92672">=</span> []
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">30</span>):
-        ks <span style="color:#f92672">=</span> KMeans(n_clusters<span style="color:#f92672">=</span>i,random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)<span style="color:#f92672">.</span>fit(X)
-        distortions<span style="color:#f92672">.</span>append(ks<span style="color:#f92672">.</span>inertia_)
-    plt<span style="color:#f92672">.</span>plot(range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">30</span>), distortions, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
-    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Number of clusters&#39;</span>)
-    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Distortion Line&#39;</span>)
-    plt<span style="color:#f92672">.</span>show()
-</code></pre></div><h3 id="特征构造">特征构造</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://stackoverflow.com/questions/67868420/xgboost-for-multiclassification-and-imbalanced-data</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.utils.class_weight <span style="color:#f92672">import</span> compute_sample_weight
+</span></span><span style="display:flex;"><span>sample_weights <span style="color:#f92672">=</span> compute_sample_weight(
+</span></span><span style="display:flex;"><span>    class_weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;balanced&#39;</span>,
+</span></span><span style="display:flex;"><span>    y<span style="color:#f92672">=</span>train_df[<span style="color:#e6db74">&#39;class&#39;</span>] <span style="color:#75715e">#provide your own target name</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>xgb_classifier<span style="color:#f92672">.</span>fit(X, y, sample_weight<span style="color:#f92672">=</span>sample_weights)
+</span></span></code></pre></div><h4 id="聚类手肘法">聚类手肘法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://www.cxybb.com/article/Totoro1745/117884008</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.cluster <span style="color:#f92672">import</span> KMeans
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_elbow</span>(X):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    手肘法判断聚类个数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    :param X: data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    :param mode: 1使用KShape, 其他则是kmeans+DTW
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    :return:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    distortions <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">30</span>):
+</span></span><span style="display:flex;"><span>        ks <span style="color:#f92672">=</span> KMeans(n_clusters<span style="color:#f92672">=</span>i,random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)<span style="color:#f92672">.</span>fit(X)
+</span></span><span style="display:flex;"><span>        distortions<span style="color:#f92672">.</span>append(ks<span style="color:#f92672">.</span>inertia_)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>plot(range(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">30</span>), distortions, marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Number of clusters&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Distortion Line&#39;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><h3 id="特征构造">特征构造</h3>
 <h4 id="onehot">onehot</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># refer: https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encode_and_bind</span>(original_dataframe, feature_to_encode):
-    dummies <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(original_dataframe[[feature_to_encode]])
-    res <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([original_dataframe, dummies], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-    <span style="color:#66d9ef">return</span>(res)
-</code></pre></div><h4 id="gbdt-构造">gbdt 构造</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://towardsdatascience.com/feature-generation-with-gradient-boosted-decision-trees-21d4946d6ab5</span>
-
-<span style="color:#f92672">from</span> sktools <span style="color:#f92672">import</span> GradientBoostingFeatureGenerator
-<span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> load_boston
-<span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> Pipeline
-<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
-<span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
-
-X <span style="color:#f92672">=</span> load_boston()[<span style="color:#e6db74">&#34;data&#34;</span>]
-y <span style="color:#f92672">=</span> load_boston()[<span style="color:#e6db74">&#34;target&#34;</span>]
-
-gbf <span style="color:#f92672">=</span> GradientBoostingFeatureGenerator(regression<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-lr <span style="color:#f92672">=</span> LinearRegression()
-
-pipe <span style="color:#f92672">=</span> Pipeline([(<span style="color:#e6db74">&#34;gb_features&#34;</span>, gbf), (<span style="color:#e6db74">&#34;logistic&#34;</span>, lr)])
-
-pipe<span style="color:#f92672">.</span>fit(X, y)
-mean_absolute_error(pipe<span style="color:#f92672">.</span>predict(X),y)
-</code></pre></div><h3 id="特征筛选">特征筛选</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> 共线性剔除
-<span style="color:#66d9ef">2.</span> 特征重要性排序
-<span style="color:#66d9ef">3.</span> 去除该特征，判断模型准确率变化情况
-<span style="color:#66d9ef">4.</span> 将该特征同分布生成，随机配给
-</code></pre></div><h4 id="面向比赛的特征筛选">面向比赛的特征筛选</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># refer: https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encode_and_bind</span>(original_dataframe, feature_to_encode):
+</span></span><span style="display:flex;"><span>    dummies <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(original_dataframe[[feature_to_encode]])
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([original_dataframe, dummies], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>(res)
+</span></span></code></pre></div><h4 id="gbdt-构造">gbdt 构造</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://towardsdatascience.com/feature-generation-with-gradient-boosted-decision-trees-21d4946d6ab5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sktools <span style="color:#f92672">import</span> GradientBoostingFeatureGenerator
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> load_boston
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> Pipeline
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> load_boston()[<span style="color:#e6db74">&#34;data&#34;</span>]
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> load_boston()[<span style="color:#e6db74">&#34;target&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gbf <span style="color:#f92672">=</span> GradientBoostingFeatureGenerator(regression<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>lr <span style="color:#f92672">=</span> LinearRegression()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pipe <span style="color:#f92672">=</span> Pipeline([(<span style="color:#e6db74">&#34;gb_features&#34;</span>, gbf), (<span style="color:#e6db74">&#34;logistic&#34;</span>, lr)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pipe<span style="color:#f92672">.</span>fit(X, y)
+</span></span><span style="display:flex;"><span>mean_absolute_error(pipe<span style="color:#f92672">.</span>predict(X),y)
+</span></span></code></pre></div><h3 id="特征筛选">特征筛选</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 共线性剔除
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 特征重要性排序
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 去除该特征，判断模型准确率变化情况
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> 将该特征同分布生成，随机配给
+</span></span></code></pre></div><h4 id="面向比赛的特征筛选">面向比赛的特征筛选</h4>
 <pre tabindex="0"><code class="language-markdo" data-lang="markdo">1. train-test GAN
 	- 去掉训练集和测试集原有的标签，按训练与测试赋予新标签
 	- 训练模型，并观察AUC指标，设定AUC阈值
@@ -417,22 +417,22 @@ mean_absolute_error(pipe<span style="color:#f92672">.</span>predict(X),y)
 	- 获得当前特征集，该集合在训练与测试数据集上接近，不易造成过拟合
 </code></pre><h3 id="模型包">模型包</h3>
 <h4 id="catboost">catboost</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://zhuanlan.zhihu.com/p/37916954</span>
-<span style="color:#75715e"># https://catboost.ai/en/docs/concepts/spark-quickstart-python</span>
-<span style="color:#75715e"># https://stackoverflow.com/questions/64988694/how-can-i-get-the-feature-importance-of-a-catboost-in-a-pandas-dataframe</span>
-</code></pre></div><h3 id="指标集">指标集</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://zhuanlan.zhihu.com/p/37916954</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://catboost.ai/en/docs/concepts/spark-quickstart-python</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://stackoverflow.com/questions/64988694/how-can-i-get-the-feature-importance-of-a-catboost-in-a-pandas-dataframe</span>
+</span></span></code></pre></div><h3 id="指标集">指标集</h3>
 <h4 id="混淆矩阵">混淆矩阵</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html</span>
-<span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html</span>
-</code></pre></div><h4 id="auc">auc</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html</span>
-</code></pre></div><h4 id="聚类中心距离">聚类中心距离</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-py" data-lang="py"><span style="color:#75715e"># https://stackoverflow.com/questions/40871186/python-dataframe-matrix-of-euclidean-distance</span>
-<span style="color:#f92672">from</span> scipy.spatial.distance <span style="color:#f92672">import</span> pdist, squareform
-
-dist <span style="color:#f92672">=</span> pdist(df[[<span style="color:#e6db74">&#39;x1&#39;</span>, <span style="color:#e6db74">&#39;x2&#39;</span>]], <span style="color:#e6db74">&#39;euclidean&#39;</span>)
-df_dist <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(squareform(dist))
-</code></pre></div><p><a href="/about/">关于作者</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_confusion_matrix.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html</span>
+</span></span></code></pre></div><h4 id="auc">auc</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://scikit-learn.org/stable/modules/generated/sklearn.metrics.auc.html</span>
+</span></span></code></pre></div><h4 id="聚类中心距离">聚类中心距离</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e"># https://stackoverflow.com/questions/40871186/python-dataframe-matrix-of-euclidean-distance</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.spatial.distance <span style="color:#f92672">import</span> pdist, squareform
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dist <span style="color:#f92672">=</span> pdist(df[[<span style="color:#e6db74">&#39;x1&#39;</span>, <span style="color:#e6db74">&#39;x2&#39;</span>]], <span style="color:#e6db74">&#39;euclidean&#39;</span>)
+</span></span><span style="display:flex;"><span>df_dist <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(squareform(dist))
+</span></span></code></pre></div><p><a href="/about/">关于作者</a></p>
 
     </div>
 

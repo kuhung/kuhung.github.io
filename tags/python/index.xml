@@ -13,7 +13,7 @@
       <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/python-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 /     获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 日期加减操作 from datetime import datetime, timedelta def date_transfer(today): today = datetime.strptime(today, &amp;#34;%Y-%m-%d&amp;#34;) yesterday = today - timedelta(days=1) return today.strftime( &amp;#34;%Y-%m-%d&amp;#34;),yesterday.strftime( &amp;#34;%Y-%m-%d&amp;#34;) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
+      <description>标题 创建时间 发布时间 最后一次修改 备注 Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 / 获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 日期加减操作 from datetime import datetime, timedelta def date_transfer(today): today = datetime.strptime(today, &amp;#34;%Y-%m-%d&amp;#34;) yesterday = today - timedelta(days=1) return today.strftime( &amp;#34;%Y-%m-%d&amp;#34;),yesterday.strftime( &amp;#34;%Y-%m-%d&amp;#34;) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
     </item>
     
     <item>
@@ -24,14 +24,14 @@
       <guid>https://kuhungio.me/2020/audio_progress/</guid>
       <description>背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
 问题界定 这里将问题进行界定，进行子任务拆分：
- 将音频的背景声音去除， 去除“无声”阶段。  解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
+将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
 在使用本领域“高深”的技术前，一定要思考，切莫手上有锤子，就看啥都像钉子。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。
 背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。
 背景声分离 但是若只有一个音轨呢？别担心，机器学习来帮助你。spleeter 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。
 该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下
 # Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load(&amp;#39;/path/to/audio/file&amp;#39;, sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform) 空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。
 这里参考 stackoverflow 的代码
-from pydub import AudioSegment from pydub.utils import db_to_float # Let&amp;#39;s load up the audio we need.</description>
+from pydub import AudioSegment from pydub.utils import db_to_float # Let&amp;#39;s load up the audio we need... podcast = AudioSegment.</description>
     </item>
     
   </channel>

@@ -14,7 +14,7 @@
       
       <guid>https://kuhungio.me/2017/yysgan/</guid>
       <description>使用GAN生成新的游戏角色 摘要 Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。 依赖 （pip install） cv2 tensorflow( &amp;gt;=1.0) scipy numpy 使用方法 cd yysGAN python yysGAN.py 5000次迭代训练结果 了解更多GAN的知识 Generative Adversarial Networks.ipynb
- 参考资料  Siraj Raval moxiegushi/pokeGAN  项目地址 https://github.com/kuhung/yysGAN
+参考资料 Siraj Raval moxiegushi/pokeGAN 项目地址 https://github.com/kuhung/yysGAN
 定制你的GAN图片生成器 # 拆包即用，修改input下文件，改为对应的jpg素材即可。 </description>
     </item>
     

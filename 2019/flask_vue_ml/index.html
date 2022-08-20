@@ -59,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "机器学习建模与部署--以垃圾消息识别为例",
     "headline" : "机器学习建模与部署--以垃圾消息识别为例",
-    "description" : "前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。\n如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个本科就业的人，如果没有较为丰富的实战经验；有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。\n模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。\n这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung\/flask_vue_ML\n后端 flask 相关依赖的安装 pip install -r requirements.txt\n核心函数  导入函数包  from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence 准备工作  app = Flask(__name__) # 声明准备 app.secret_key = \u0026#34;super_secret_key\u0026#34; CORS(app) classifier = TextClassifier.",
+    "description" : "前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。\n如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个本科就业的人，如果没有较为丰富的实战经验；有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。\n模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。\n这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung\/flask_vue_ML\n后端 flask 相关依赖的安装 pip install -r requirements.txt\n核心函数 导入函数包 from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence 准备工作 app = Flask(__name__) # 声明准备 app.secret_key = \u0026#34;super_secret_key\u0026#34; CORS(app) classifier = TextClassifier.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -252,84 +252,81 @@ if (!doNotTrack) {
 <ol>
 <li>导入函数包</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify, request
-<span style="color:#f92672">from</span> flask_cors <span style="color:#f92672">import</span> CORS <span style="color:#75715e"># 做跨域的准备</span>
-<span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> session <span style="color:#75715e"># 追踪客户端会话</span>
-
-<span style="color:#f92672">from</span> flair.models <span style="color:#f92672">import</span> TextClassifier <span style="color:#75715e"># 模型导入，采用前不久开源的 flair 做文本分类</span>
-<span style="color:#f92672">from</span> flair.data <span style="color:#f92672">import</span> Sentence
-
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, jsonify, request
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flask_cors <span style="color:#f92672">import</span> CORS <span style="color:#75715e"># 做跨域的准备</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> session <span style="color:#75715e"># 追踪客户端会话</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flair.models <span style="color:#f92672">import</span> TextClassifier <span style="color:#75715e"># 模型导入，采用前不久开源的 flair 做文本分类</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flair.data <span style="color:#f92672">import</span> Sentence
+</span></span></code></pre></div><ol start="2">
 <li>准备工作</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">app <span style="color:#f92672">=</span> Flask(__name__) <span style="color:#75715e"># 声明准备</span>
-app<span style="color:#f92672">.</span>secret_key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;super_secret_key&#34;</span>
-
-CORS(app)
-classifier <span style="color:#f92672">=</span> TextClassifier<span style="color:#f92672">.</span>load_from_file(<span style="color:#e6db74">&#39;models/best-model.pt&#39;</span>) <span style="color:#75715e"># 模型加载</span>
-
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__) <span style="color:#75715e"># 声明准备</span>
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>secret_key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;super_secret_key&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CORS(app)
+</span></span><span style="display:flex;"><span>classifier <span style="color:#f92672">=</span> TextClassifier<span style="color:#f92672">.</span>load_from_file(<span style="color:#e6db74">&#39;models/best-model.pt&#39;</span>) <span style="color:#75715e"># 模型加载</span>
+</span></span></code></pre></div><ol start="3">
 <li>配置 flask 的路由</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 根路由配置</span>
-<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
-    <span style="color:#66d9ef">return</span> jsonify(<span style="color:#e6db74">&#34;welcome to Kuhung API&#34;</span>)
-
-<span style="color:#75715e"># GET 方法，这里 session 的作用是追踪客户端会话，防止重复请求模型</span>
-<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/api/tasks&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_result</span>():
-    result <span style="color:#f92672">=</span> []
-    <span style="color:#66d9ef">try</span>:
-        data_result <span style="color:#f92672">=</span> session[<span style="color:#e6db74">&#39;my_result&#39;</span>]
-        result<span style="color:#f92672">.</span>append ({<span style="color:#e6db74">&#39;title&#39;</span>: data_result[<span style="color:#e6db74">&#39;title&#39;</span>], <span style="color:#e6db74">&#39;tag&#39;</span>: data_result[<span style="color:#e6db74">&#39;tag&#39;</span>] })
-    <span style="color:#66d9ef">except</span>:
-        result<span style="color:#f92672">.</span>append ({<span style="color:#e6db74">&#39;title&#39;</span>: <span style="color:#e6db74">&#39;The txt you input&#39;</span>, <span style="color:#e6db74">&#39;tag&#39;</span>: <span style="color:#e6db74">&#39;spam or ham&#39;</span> })
-    <span style="color:#66d9ef">return</span> jsonify(result)
-
-<span style="color:#75715e"># POST 方法</span>
-<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/api/task&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">input_predict_text</span>():
-
-    title <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>get_json()[<span style="color:#e6db74">&#39;title&#39;</span>] <span style="color:#75715e"># 解析请求</span>
-
-    sentence <span style="color:#f92672">=</span> Sentence(title) <span style="color:#75715e"># 对请求做数据预处理</span>
-    classifier<span style="color:#f92672">.</span>predict(sentence) <span style="color:#75715e"># 调用模型，做预测，返回带标签的数据</span>
-
-    text <span style="color:#f92672">=</span> sentence<span style="color:#f92672">.</span>to_plain_string() <span style="color:#75715e"># 解析出原始数据</span>
-    label <span style="color:#f92672">=</span> sentence<span style="color:#f92672">.</span>labels[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># 解析出标签</span>
-    result <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;title&#39;</span> : text, <span style="color:#e6db74">&#39;tag&#39;</span> : label<span style="color:#f92672">.</span>value} <span style="color:#75715e"># 拼接成字典格式</span>
-    session[<span style="color:#e6db74">&#39;my_result&#39;</span>] <span style="color:#f92672">=</span> result <span style="color:#75715e"># 存入 session ，以减少重复请求对模型的压力</span>
-    
-    <span style="color:#66d9ef">return</span> jsonify(result) <span style="color:#75715e"># 返回 json 格式的数据</span>
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 开发过程中开启 debug 调试模式</span>
-</code></pre></div><h3 id="启动服务">启动服务</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 根路由配置</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jsonify(<span style="color:#e6db74">&#34;welcome to Kuhung API&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># GET 方法，这里 session 的作用是追踪客户端会话，防止重复请求模型</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/api/tasks&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;GET&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_result</span>():
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        data_result <span style="color:#f92672">=</span> session[<span style="color:#e6db74">&#39;my_result&#39;</span>]
+</span></span><span style="display:flex;"><span>        result<span style="color:#f92672">.</span>append ({<span style="color:#e6db74">&#39;title&#39;</span>: data_result[<span style="color:#e6db74">&#39;title&#39;</span>], <span style="color:#e6db74">&#39;tag&#39;</span>: data_result[<span style="color:#e6db74">&#39;tag&#39;</span>] })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>        result<span style="color:#f92672">.</span>append ({<span style="color:#e6db74">&#39;title&#39;</span>: <span style="color:#e6db74">&#39;The txt you input&#39;</span>, <span style="color:#e6db74">&#39;tag&#39;</span>: <span style="color:#e6db74">&#39;spam or ham&#39;</span> })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jsonify(result)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># POST 方法</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>route(<span style="color:#e6db74">&#39;/api/task&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;POST&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">input_predict_text</span>():
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    title <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>get_json()[<span style="color:#e6db74">&#39;title&#39;</span>] <span style="color:#75715e"># 解析请求</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sentence <span style="color:#f92672">=</span> Sentence(title) <span style="color:#75715e"># 对请求做数据预处理</span>
+</span></span><span style="display:flex;"><span>    classifier<span style="color:#f92672">.</span>predict(sentence) <span style="color:#75715e"># 调用模型，做预测，返回带标签的数据</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> sentence<span style="color:#f92672">.</span>to_plain_string() <span style="color:#75715e"># 解析出原始数据</span>
+</span></span><span style="display:flex;"><span>    label <span style="color:#f92672">=</span> sentence<span style="color:#f92672">.</span>labels[<span style="color:#ae81ff">0</span>] <span style="color:#75715e"># 解析出标签</span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;title&#39;</span> : text, <span style="color:#e6db74">&#39;tag&#39;</span> : label<span style="color:#f92672">.</span>value} <span style="color:#75715e"># 拼接成字典格式</span>
+</span></span><span style="display:flex;"><span>    session[<span style="color:#e6db74">&#39;my_result&#39;</span>] <span style="color:#f92672">=</span> result <span style="color:#75715e"># 存入 session ，以减少重复请求对模型的压力</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jsonify(result) <span style="color:#75715e"># 返回 json 格式的数据</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 开发过程中开启 debug 调试模式</span>
+</span></span></code></pre></div><h3 id="启动服务">启动服务</h3>
 <p><code>python app.py</code></p>
 <h2 id="前端-vue">前端 vue</h2>
 <p>前端采用 Vue 框架，与后端分离。使用 Webpack 进行资源管理与打包。</p>
 <h3 id="相关依赖的安装-1">相关依赖的安装</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install -g vue-cli
-npm install
-</code></pre></div><h3 id="自定义组件">自定义组件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>npm install -g vue-cli
+</span></span><span style="display:flex;"><span>npm install
+</span></span></code></pre></div><h3 id="自定义组件">自定义组件</h3>
 <p>通过 <code>vue init webpack flask_vue_ML</code> 后，进入项目文件夹，增加自定义内容。</p>
 <h4 id="indexhtml">index.html</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">
-<span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-&lt;<span style="color:#f92672">html</span>&gt;
-  &lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
-    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width,initial-scale=1.0&#34;</span>&gt;
-    &lt;<span style="color:#f92672">title</span>&gt;exposemodel&lt;/<span style="color:#f92672">title</span>&gt;
-  &lt;/<span style="color:#f92672">head</span>&gt;
-  &lt;<span style="color:#f92672">body</span>&gt;
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-    <span style="color:#75715e">&lt;!-- 其它文件会自动注入这里 --&gt;</span>
-  &lt;/<span style="color:#f92672">body</span>&gt;
-&lt;/<span style="color:#f92672">html</span>&gt;
-
-</code></pre></div><h4 id="src-文件夹">src 文件夹</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;utf-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width,initial-scale=1.0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;exposemodel&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 其它文件会自动注入这里 --&gt;</span>
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h4 id="src-文件夹">src 文件夹</h4>
 <ul>
 <li>components
 <ul>
@@ -346,141 +343,140 @@ npm install
 </ul>
 <h5 id="homevue">Home.vue</h5>
 <p>这里定义页面的基本样式，以及获取数据的逻辑。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vue" data-lang="vue">&lt;<span style="color:#f92672">template</span>&gt;
-  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo-list-example&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
-    <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">我是进度条</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">最上方的</span> <span style="color:#f92672">--&gt;</span>
-    &lt;<span style="color:#f92672">vue-progress-bar</span>&gt;<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/vue-progress-bar&gt;</span>
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;row&#34;</span>&gt;
-      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;col-md-6 mx-auto&#34;</span>&gt;
-        &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-center&#34;</span>&gt;<span style="color:#a6e22e">Natural</span> <span style="color:#a6e22e">Language</span> <span style="color:#a6e22e">Processing</span> (<span style="color:#a6e22e">NLP</span>)&lt;/<span style="color:#f92672">h1</span>&gt;
-        &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">v</span><span style="color:#f92672">-on:submit.prevent</span><span style="color:#e6db74">=&#34;addNewTask&#34;</span>&gt;
-          &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tasknameinput&#34;</span>&gt;<span style="color:#a6e22e">Spam</span> <span style="color:#a6e22e">Classification</span>&lt;/<span style="color:#f92672">label</span>&gt;
-          &lt;<span style="color:#f92672">input</span> <span style="color:#f92672">v-model</span><span style="color:#e6db74">=&#34;taskname&#34; type=&#34;text&#34; id=&#34;tasknameinput&#34; class=&#34;form-control&#34; placeholder=&#34;Enter Sentence&#34;&gt;
-</span><span style="color:#e6db74">          &lt;button type=&#34;submit&#34; class=&#34;btn btn-success btn-block mt-3&#34;</span>&gt;
-            <span style="color:#a6e22e">Submit</span>
-          &lt;/<span style="color:#f92672">button</span>&gt;
-        &lt;/<span style="color:#f92672">form</span>&gt;
-          
-<span style="color:#960050;background-color:#1e0010">&lt;!--</span> <span style="color:#a6e22e">省略表格定义内容</span> <span style="color:#960050;background-color:#1e0010">--</span>&gt;
-
-
-&lt;<span style="color:#f92672">script</span>&gt;
-<span style="color:#75715e">// 这里解决跨域请求问题，向后端发起请求
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">axios</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;axios&#39;</span>
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
-  <span style="color:#a6e22e">data</span> () {
-    <span style="color:#66d9ef">return</span> {
-      <span style="color:#a6e22e">textClassify</span><span style="color:#f92672">:</span> [],
-      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
-      <span style="color:#a6e22e">taskname</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
-      <span style="color:#a6e22e">isEdit</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
-    }
-  },
-  <span style="color:#a6e22e">mounted</span> () {
-    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getTasks</span>()
-  },
-    
-<span style="color:#75715e">// 省略进度条内容
-</span><span style="color:#75715e"></span>    
-<span style="color:#75715e">// 请求任务相关操作
-</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">getTasks</span> () {
-      <span style="color:#a6e22e">axios</span>({ <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>, <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/api/tasks&#39;</span> }).<span style="color:#a6e22e">then</span>(
-        <span style="color:#a6e22e">result</span> =&gt; {
-          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">data</span>)
-          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">textClassify</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">data</span>
-        },
-        <span style="color:#a6e22e">error</span> =&gt; {
-          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>)
-        }
-      )
-    },
-&lt;/<span style="color:#f92672">script</span>&gt;
-<span style="color:#960050;background-color:#1e0010">​</span><span style="color:#e6db74">```
-</span></code></pre></div><h5 id="indexjs">index.js</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vue" data-lang="vue"><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo-list-example&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">我是进度条</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">最上方的</span> <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">vue-progress-bar</span>&gt;<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/vue-progress-bar&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;row&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;col-md-6 mx-auto&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-center&#34;</span>&gt;<span style="color:#a6e22e">Natural</span> <span style="color:#a6e22e">Language</span> <span style="color:#a6e22e">Processing</span> (<span style="color:#a6e22e">NLP</span>)&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">v</span><span style="color:#f92672">-on:submit.prevent</span><span style="color:#e6db74">=&#34;addNewTask&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">label</span> <span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tasknameinput&#34;</span>&gt;<span style="color:#a6e22e">Spam</span> <span style="color:#a6e22e">Classification</span>&lt;/<span style="color:#f92672">label</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">input</span> <span style="color:#f92672">v-model</span><span style="color:#e6db74">=&#34;taskname&#34; type=&#34;text&#34; id=&#34;tasknameinput&#34; class=&#34;form-control&#34; placeholder=&#34;Enter Sentence&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &lt;button type=&#34;submit&#34; class=&#34;btn btn-success btn-block mt-3&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Submit</span>
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;!--</span> <span style="color:#a6e22e">省略表格定义内容</span> <span style="color:#960050;background-color:#1e0010">--</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 这里解决跨域请求问题，向后端发起请求
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">axios</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;axios&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">textClassify</span><span style="color:#f92672">:</span> [],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">taskname</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">isEdit</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mounted</span> () {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getTasks</span>()
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 省略进度条内容
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 请求任务相关操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">getTasks</span> () {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">axios</span>({ <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;GET&#39;</span>, <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/api/tasks&#39;</span> }).<span style="color:#a6e22e">then</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">result</span> =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">data</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">textClassify</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">data</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">error</span> =&gt; {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">​</span><span style="color:#e6db74">```
+</span></span></span></code></pre></div><h5 id="indexjs">index.js</h5>
 <p>定义路由，设定访问路径，并将路径和组件关联</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Router</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Home</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/components/Home&#39;</span>
-
-<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">Router</span>)
-
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Router</span>({
-  <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span> [
-    {
-      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/&#39;</span>,
-      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Home&#39;</span>,
-      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Home</span>
-    }
-  ]
-})
-</code></pre></div><h5 id="appvue">App.vue</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Router</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Home</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/components/Home&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">Router</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Router</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Home&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Home</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h5 id="appvue">App.vue</h5>
 <p>主组件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vue" data-lang="vue">&lt;<span style="color:#f92672">template</span>&gt;
-  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
-    &lt;<span style="color:#f92672">router-view</span>/&gt;
-    <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">植入一波广告</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">微信搜索</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">谷粒说数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">关注我的公众号</span> <span style="color:#f92672">--&gt;</span>
-    &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./assets/wechat.jpg&#34;</span>&gt;
-  &lt;/<span style="color:#f92672">div</span>&gt;
-&lt;/<span style="color:#f92672">template</span>&gt;
-
-&lt;<span style="color:#f92672">script</span>&gt;
-<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
-  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;App&#39;</span>
-}
-&lt;/<span style="color:#f92672">script</span>&gt;
-
-&lt;<span style="color:#f92672">style</span>&gt;
-<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">app</span> {
-  <span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">family</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Avenir&#39;</span>, <span style="color:#a6e22e">Helvetica</span>, <span style="color:#a6e22e">Arial</span>, <span style="color:#a6e22e">sans</span><span style="color:#f92672">-</span><span style="color:#a6e22e">serif</span>;
-  <span style="color:#f92672">-</span><span style="color:#a6e22e">webkit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">smoothing</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">antialiased</span>;
-  <span style="color:#f92672">-</span><span style="color:#a6e22e">moz</span><span style="color:#f92672">-</span><span style="color:#a6e22e">osx</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">smoothing</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">grayscale</span>;
-  <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">align</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">center</span>;
-  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">c3e50</span>;
-  <span style="color:#a6e22e">margin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">top</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">60</span><span style="color:#a6e22e">px</span>;
-}
-&lt;/<span style="color:#f92672">style</span>&gt;
-</code></pre></div><h5 id="mainjs">main.js</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vue" data-lang="vue"><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">router-view</span>/&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">植入一波广告</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">微信搜索</span><span style="color:#960050;background-color:#1e0010">：</span><span style="color:#a6e22e">谷粒说数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">关注我的公众号</span> <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;./assets/wechat.jpg&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;App&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">app</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">family</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Avenir&#39;</span>, <span style="color:#a6e22e">Helvetica</span>, <span style="color:#a6e22e">Arial</span>, <span style="color:#a6e22e">sans</span><span style="color:#f92672">-</span><span style="color:#a6e22e">serif</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span><span style="color:#a6e22e">webkit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">smoothing</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">antialiased</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span><span style="color:#a6e22e">moz</span><span style="color:#f92672">-</span><span style="color:#a6e22e">osx</span><span style="color:#f92672">-</span><span style="color:#a6e22e">font</span><span style="color:#f92672">-</span><span style="color:#a6e22e">smoothing</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">grayscale</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">align</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">center</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">2</span><span style="color:#a6e22e">c3e50</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">margin</span><span style="color:#f92672">-</span><span style="color:#a6e22e">top</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">60</span><span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span></code></pre></div><h5 id="mainjs">main.js</h5>
 <p>初始化实例并加载必要插件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// The Vue build version to load with the `import` command
-</span><span style="color:#75715e">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App&#39;</span>
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">router</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./router&#39;</span>
-<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">VueProgressBar</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-progressbar&#39;</span>
-<span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../node_modules/bootstrap/dist/css/bootstrap.css&#39;</span>)
-
-<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">productionTip</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
-
-<span style="color:#75715e">// 这是进度条
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">VueProgressBar</span>, {
-  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgb(143, 255, 199)&#39;</span>,
-  <span style="color:#a6e22e">failedColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;red&#39;</span>,
-  <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10px&#39;</span>
-})
-
-<span style="color:#75715e">/* eslint-disable no-new */</span>
-<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
-  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
-  <span style="color:#a6e22e">router</span>,
-  <span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">App</span> },
-  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;App/&gt;&#39;</span>
-})
-
-</code></pre></div><h3 id="启动服务-1">启动服务</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// The Vue build version to load with the `import` command
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">router</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./router&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">VueProgressBar</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-progressbar&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;../node_modules/bootstrap/dist/css/bootstrap.css&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">productionTip</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 这是进度条
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">VueProgressBar</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">color</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;rgb(143, 255, 199)&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">failedColor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;red&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">height</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;10px&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* eslint-disable no-new */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">router</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">App</span> },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&lt;App/&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><h3 id="启动服务-1">启动服务</h3>
 <p><code>npm run dev</code></p>
 <h2 id="模型-flair">模型 flair</h2>
 <p>模型这里采用 fair 框架，该框架在 2018 年底发布，易用性和效果都较前方案有了较大提升。这里直接采用官方样例训练好的垃圾邮件分类模型的权重，也就是在上文后端所读取的文件。关注我的公众号：谷粒说数，回复<strong>权重</strong>，即可获得权重文件🔗链接。</p>
 <h3 id="模型调用">模型调用</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-<span style="color:#f92672">from</span> flair.models <span style="color:#f92672">import</span> TextClassifier <span style="color:#75715e"># 模型导入，采用前不久开源的 flair 做文本分类</span>
-<span style="color:#f92672">from</span> flair.data <span style="color:#f92672">import</span> Sentence
-
-classifier <span style="color:#f92672">=</span> TextClassifier<span style="color:#f92672">.</span>load_from_file(<span style="color:#e6db74">&#39;models/best-model.pt&#39;</span>) <span style="color:#75715e"># 模型加载</span>
-
-sentence <span style="color:#f92672">=</span> Sentence(title) <span style="color:#75715e"># 对请求做数据预处理</span>
-classifier<span style="color:#f92672">.</span>predict(sentence) <span style="color:#75715e"># 调用模型，做预测，返回带标签的数据</span>
-</code></pre></div><h2 id="效果展示">效果展示</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flair.models <span style="color:#f92672">import</span> TextClassifier <span style="color:#75715e"># 模型导入，采用前不久开源的 flair 做文本分类</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flair.data <span style="color:#f92672">import</span> Sentence
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>classifier <span style="color:#f92672">=</span> TextClassifier<span style="color:#f92672">.</span>load_from_file(<span style="color:#e6db74">&#39;models/best-model.pt&#39;</span>) <span style="color:#75715e"># 模型加载</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sentence <span style="color:#f92672">=</span> Sentence(title) <span style="color:#75715e"># 对请求做数据预处理</span>
+</span></span><span style="display:flex;"><span>classifier<span style="color:#f92672">.</span>predict(sentence) <span style="color:#75715e"># 调用模型，做预测，返回带标签的数据</span>
+</span></span></code></pre></div><h2 id="效果展示">效果展示</h2>
 <p>本教程针对文本分类这个场景，构建了一套前后端分离的“完整”框架，能够给到一个最直观的感受。当然，这里还有很多优化空间，还有后续部署等事宜没有详细展开，有心的同学可以自行检索学习。通过这套流程，可以在测试服搭建一套实用主义哲学的算法模型。给到领导做展示或是公司内部使用，已经足够。项目地址 <a href="https://github.com/kuhung/flask_vue_ML">kuhung/flask_vue_ML</a></p>
 <h3 id="终端端网站访问">终端端网站访问</h3>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/flask_vue_ML/flask_vue_ml.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>

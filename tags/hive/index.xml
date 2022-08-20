@@ -13,8 +13,8 @@
       <pubDate>Tue, 25 Aug 2020 11:13:05 +0800</pubDate>
       
       <guid>https://kuhungio.me/2020/hive-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注     Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 /     函数大全 https://www.iteblog.com/archives/2258.html
-Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ hive 填补空值 --- https://stackoverflow.com/questions/63891981/sql-hive-replace-null-values-with-0-hadoop-hive select coalesce(t2.Apple, 0) as apple from table; hive 分箱 # https://www.jianshu.com/p/a67280db6b33 -- Ntile(n) over(order by col)：分块函数 -- 备注：NULL值的处理，是否需要单独为1组。  select col -- NULL默认为最小值  , ntile(2) over( order by col) as group1 -- 将NULL单独为1组  , if(col is null, null, ntile(2) over( partition by if(col is null, 1, 0) order by col) as group2 from( select cast(col as int) as col from( select stack(5, &amp;#39;NULL&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;) as col ) as a ) as a 计算时间差 --- https://blog.</description>
+      <description>标题 创建时间 发布时间 最后一次修改 备注 Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 / 函数大全 https://www.iteblog.com/archives/2258.html
+Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ hive 填补空值 --- https://stackoverflow.com/questions/63891981/sql-hive-replace-null-values-with-0-hadoop-hive select coalesce(t2.Apple, 0) as apple from table; hive 分箱 # https://www.jianshu.com/p/a67280db6b33 -- Ntile(n) over(order by col)：分块函数 -- 备注：NULL值的处理，是否需要单独为1组。 select col -- NULL默认为最小值 , ntile(2) over( order by col) as group1 -- 将NULL单独为1组 , if(col is null, null, ntile(2) over( partition by if(col is null, 1, 0) order by col) as group2 from( select cast(col as int) as col from( select stack(5, &amp;#39;NULL&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;) as col ) as a ) as a 计算时间差 --- https://blog.</description>
     </item>
     
     <item>

@@ -15,9 +15,9 @@
       <guid>https://kuhungio.me/2018/time-series-problem-summary/</guid>
       <description>Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
 总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
- 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。  tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。
+方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。 tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。
 总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &amp;ldquo;golden week&amp;rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。
- 方式一:：等同法   The rules:
+方式一:：等同法 The rules:
 Treat holiday as Saturday
 If the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.</description>
     </item>

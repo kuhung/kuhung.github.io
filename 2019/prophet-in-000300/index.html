@@ -59,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "用先知模型预测股市 Prophet in 000300 ",
     "headline" : "用先知模型预测股市 Prophet in 000300 ",
-    "description" : "跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。\n时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。\n为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。\n时序预测的原理 对于时间序列问题，常用的手法是时间序列的分解：这里有些类似于傅里叶变换的意味。将一个函数分解为多个规律函数的和积。时间序列的常见组成成分包括：季节项、趋势项以及噪声。在 Prophet 中，结合实际情况，他们又加入了节假日项目。之前在一次 kaggle 的比赛中，我们也发现节假日的数据波动，其实是类似于周末效应的。即：节假日的前后数据，类似于周六的前后数据。对数据进行修正后，评价指标会好很多。\n 废话不多说，咱们开干。\nProphet in 沪深300 工具包安装 pip install fbprophet\n数据准备与清洗 import pandas as pd import numpy as np from fbprophet import Prophet 数据准备\n 数据来源为网易财经，沪深三百指数。  data = pd.read_csv(\u0026#39;..\/data\/000300.csv\u0026#39;,encoding=\u0026#39;GB2312\u0026#39;) data.head() 数据清洗\n 选取需要的数据，并对数据做 log \/ box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。  df = data[[u\u0026#39;日期\u0026#39;,u\u0026#39;收盘价\u0026#39;]] df.columns = [\u0026#39;ds\u0026#39;,\u0026#39;y\u0026#39;] df[\u0026#39;y\u0026#39;] = df[\u0026#39;y\u0026#39;].apply(lambda x: np.log(int(x))) 模型拟合与预测 简单定义，然后拟合。\nm = Prophet() m.",
+    "description" : "跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。\n时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。\n为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。\n时序预测的原理 对于时间序列问题，常用的手法是时间序列的分解：这里有些类似于傅里叶变换的意味。将一个函数分解为多个规律函数的和积。时间序列的常见组成成分包括：季节项、趋势项以及噪声。在 Prophet 中，结合实际情况，他们又加入了节假日项目。之前在一次 kaggle 的比赛中，我们也发现节假日的数据波动，其实是类似于周末效应的。即：节假日的前后数据，类似于周六的前后数据。对数据进行修正后，评价指标会好很多。\n废话不多说，咱们开干。\nProphet in 沪深300 工具包安装 pip install fbprophet\n数据准备与清洗 import pandas as pd import numpy as np from fbprophet import Prophet 数据准备\n数据来源为网易财经，沪深三百指数。 data = pd.read_csv(\u0026#39;..\/data\/000300.csv\u0026#39;,encoding=\u0026#39;GB2312\u0026#39;) data.head() 数据清洗\n选取需要的数据，并对数据做 log \/ box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。 df = data[[u\u0026#39;日期\u0026#39;,u\u0026#39;收盘价\u0026#39;]] df.columns = [\u0026#39;ds\u0026#39;,\u0026#39;y\u0026#39;] df[\u0026#39;y\u0026#39;] = df[\u0026#39;y\u0026#39;].apply(lambda x: np.log(int(x))) 模型拟合与预测 简单定义，然后拟合。\nm = Prophet() m.fit(df) 预测未来一年的行情\nfuture = m.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -231,41 +231,41 @@ if (!doNotTrack) {
 <h3 id="工具包安装">工具包安装</h3>
 <p><code>pip install fbprophet</code></p>
 <h3 id="数据准备与清洗">数据准备与清洗</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">from</span> fbprophet <span style="color:#f92672">import</span> Prophet
-</code></pre></div><p>数据准备</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> fbprophet <span style="color:#f92672">import</span> Prophet
+</span></span></code></pre></div><p>数据准备</p>
 <ul>
 <li>数据来源为网易财经，<a href="http://quotes.money.163.com/0000300.html">沪深三百</a>指数。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;../data/000300.csv&#39;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GB2312&#39;</span>) 
-data<span style="color:#f92672">.</span>head()
-</code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_1.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;../data/000300.csv&#39;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GB2312&#39;</span>) 
+</span></span><span style="display:flex;"><span>data<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_1.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>数据清洗</p>
 <ul>
 <li>选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> data[[<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;日期&#39;</span>,<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;收盘价&#39;</span>]]
-df<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ds&#39;</span>,<span style="color:#e6db74">&#39;y&#39;</span>]
-df[<span style="color:#e6db74">&#39;y&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;y&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: np<span style="color:#f92672">.</span>log(int(x)))
-</code></pre></div><h3 id="模型拟合与预测">模型拟合与预测</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> data[[<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;日期&#39;</span>,<span style="color:#e6db74">u</span><span style="color:#e6db74">&#39;收盘价&#39;</span>]]
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;ds&#39;</span>,<span style="color:#e6db74">&#39;y&#39;</span>]
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;y&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;y&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: np<span style="color:#f92672">.</span>log(int(x)))
+</span></span></code></pre></div><h3 id="模型拟合与预测">模型拟合与预测</h3>
 <p>简单定义，然后拟合。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">m <span style="color:#f92672">=</span> Prophet()
-m<span style="color:#f92672">.</span>fit(df)
-</code></pre></div><p>预测未来一年的行情</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">future <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>make_future_dataframe(periods<span style="color:#f92672">=</span><span style="color:#ae81ff">365</span>)
-forecast <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>predict(future)
-</code></pre></div><p>详细看最后15天的数据</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">forecast[[<span style="color:#e6db74">&#39;ds&#39;</span>, <span style="color:#e6db74">&#39;yhat&#39;</span>, <span style="color:#e6db74">&#39;yhat_lower&#39;</span>, <span style="color:#e6db74">&#39;yhat_upper&#39;</span>]]<span style="color:#f92672">.</span>tail(<span style="color:#ae81ff">15</span>)
-future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
-future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
-future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
-</code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> Prophet()
+</span></span><span style="display:flex;"><span>m<span style="color:#f92672">.</span>fit(df)
+</span></span></code></pre></div><p>预测未来一年的行情</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>future <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>make_future_dataframe(periods<span style="color:#f92672">=</span><span style="color:#ae81ff">365</span>)
+</span></span><span style="display:flex;"><span>forecast <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>predict(future)
+</span></span></code></pre></div><p>详细看最后15天的数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>forecast[[<span style="color:#e6db74">&#39;ds&#39;</span>, <span style="color:#e6db74">&#39;yhat&#39;</span>, <span style="color:#e6db74">&#39;yhat_lower&#39;</span>, <span style="color:#e6db74">&#39;yhat_upper&#39;</span>]]<span style="color:#f92672">.</span>tail(<span style="color:#ae81ff">15</span>)
+</span></span><span style="display:flex;"><span>future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
+</span></span><span style="display:flex;"><span>future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
+</span></span><span style="display:flex;"><span>future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
+</span></span></code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>yhat 预测比较保守，20200307 相较于目前20190308 的大盘涨了100个点。预期最大收益：(6536-3658)/3658≈ 78%，预期最大亏损：(2158-3658)/3658≈-41%</p>
 <h3 id="模型看到了什么">模型看到了什么</h3>
 <p>Prophet 有个功能是成分拆分，咱们来看看国内股市的趋势以及季节性因素是什么。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig1 <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>plot(forecast)
-</code></pre></div><p>模型拟合情况</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig1 <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>plot(forecast)
+</span></span></code></pre></div><p>模型拟合情况</p>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_3.png" alt="模型拟合情况" class="lazyload"><figcaption class="image-caption">模型拟合情况</figcaption></figure></p>
 <p>趋势项</p>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_4.png" alt="整体趋势、周趋势和年趋势" class="lazyload"><figcaption class="image-caption">整体趋势、周趋势和年趋势</figcaption></figure></p>

@@ -17,12 +17,13 @@
 时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。
 为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。
 时序预测的原理 对于时间序列问题，常用的手法是时间序列的分解：这里有些类似于傅里叶变换的意味。将一个函数分解为多个规律函数的和积。时间序列的常见组成成分包括：季节项、趋势项以及噪声。在 Prophet 中，结合实际情况，他们又加入了节假日项目。之前在一次 kaggle 的比赛中，我们也发现节假日的数据波动，其实是类似于周末效应的。即：节假日的前后数据，类似于周六的前后数据。对数据进行修正后，评价指标会好很多。
- 废话不多说，咱们开干。
+废话不多说，咱们开干。
 Prophet in 沪深300 工具包安装 pip install fbprophet
 数据准备与清洗 import pandas as pd import numpy as np from fbprophet import Prophet 数据准备
- 数据来源为网易财经，沪深三百指数。  data = pd.read_csv(&amp;#39;../data/000300.csv&amp;#39;,encoding=&amp;#39;GB2312&amp;#39;) data.head() 数据清洗
- 选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。  df = data[[u&amp;#39;日期&amp;#39;,u&amp;#39;收盘价&amp;#39;]] df.columns = [&amp;#39;ds&amp;#39;,&amp;#39;y&amp;#39;] df[&amp;#39;y&amp;#39;] = df[&amp;#39;y&amp;#39;].apply(lambda x: np.log(int(x))) 模型拟合与预测 简单定义，然后拟合。
-m = Prophet() m.</description>
+数据来源为网易财经，沪深三百指数。 data = pd.read_csv(&amp;#39;../data/000300.csv&amp;#39;,encoding=&amp;#39;GB2312&amp;#39;) data.head() 数据清洗
+选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。 df = data[[u&amp;#39;日期&amp;#39;,u&amp;#39;收盘价&amp;#39;]] df.columns = [&amp;#39;ds&amp;#39;,&amp;#39;y&amp;#39;] df[&amp;#39;y&amp;#39;] = df[&amp;#39;y&amp;#39;].apply(lambda x: np.log(int(x))) 模型拟合与预测 简单定义，然后拟合。
+m = Prophet() m.fit(df) 预测未来一年的行情
+future = m.</description>
     </item>
     
   </channel>

@@ -59,7 +59,7 @@ if (!doNotTrack) {
     "articleSection" : "posts",
     "name" : "中文语料的 Bert 微调 Bert Chinese Finetune ",
     "headline" : "中文语料的 Bert 微调 Bert Chinese Finetune ",
-    "description" : "Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。\nBert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 Bert as service 代码的开源，使用 Bert 分类或阅读理解的副产物\u0026ndash;词空间，成为一个更具实用价值的方向。\n因而，此文档着重以一个例子，梳理 finetune 垂直语料，获得微调后的模型 这一过程。Bert 原理或 Bert as service 还请移步官方文档。\n依赖 python==3.6 tensorflow\u0026gt;=1.11.0 预训练模型  下载 BERT-Base, Chinese: Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M parameters  数据准备  train.tsv 训练集 dev.tsv 验证集  数据格式 第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。\nfashion\t衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... houseliving\t95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客... game\t赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各位小伙... 样例数据位置：data",
+    "description" : "Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。\nBert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 Bert as service 代码的开源，使用 Bert 分类或阅读理解的副产物\u0026ndash;词空间，成为一个更具实用价值的方向。\n因而，此文档着重以一个例子，梳理 finetune 垂直语料，获得微调后的模型 这一过程。Bert 原理或 Bert as service 还请移步官方文档。\n依赖 python==3.6 tensorflow\u0026gt;=1.11.0 预训练模型 下载 BERT-Base, Chinese: Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M parameters 数据准备 train.tsv 训练集 dev.tsv 验证集 数据格式 第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。\nfashion\t衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... houseliving\t95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客... game\t赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各位小伙... 样例数据位置：data\n数据格式取决于业务场景，后面也可根据格式调整代码里的数据导入方式。\n操作 git clone https:\/\/github.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
     "creator" : "谷粒",
@@ -222,9 +222,9 @@ if (!doNotTrack) {
 <p><a href="https://github.com/google-research/bert">Bert</a> 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 <a href="https://github.com/hanxiao/bert-as-service">Bert as service</a> 代码的开源，使用 Bert 分类或阅读理解的副产物&ndash;词空间，成为一个更具实用价值的方向。</p>
 <p>因而，此文档着重以一个例子，梳理 <strong>finetune 垂直语料，获得微调后的模型</strong> 这一过程。Bert 原理或 Bert as service 还请移步官方文档。</p>
 <h2 id="依赖">依赖</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">python<span style="color:#f92672">==</span>3.6
-tensorflow&gt;<span style="color:#f92672">=</span>1.11.0
-</code></pre></div><h3 id="预训练模型">预训练模型</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python<span style="color:#f92672">==</span>3.6
+</span></span><span style="display:flex;"><span>tensorflow&gt;<span style="color:#f92672">=</span>1.11.0
+</span></span></code></pre></div><h3 id="预训练模型">预训练模型</h3>
 <ul>
 <li>下载 <strong><a href="https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip"><code>BERT-Base, Chinese</code></a></strong>:
 Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M
@@ -243,82 +243,81 @@ game	赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各�
 </code></pre><p>样例数据位置：<a href="https://github.com/kuhung/bert_finetune/tree/master/data">data</a></p>
 <p>数据格式取决于业务场景，后面也可根据格式调整代码里的数据导入方式。</p>
 <h2 id="操作">操作</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/google-research/bert.git
-cd bert
-</code></pre></div><p>bert 的 finetune 主要存在两类应用场景：分类和阅读理解。因分类较为容易获得样本，以下以分类为例，做模型微调：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone https://github.com/google-research/bert.git
+</span></span><span style="display:flex;"><span>cd bert
+</span></span></code></pre></div><p>bert 的 finetune 主要存在两类应用场景：分类和阅读理解。因分类较为容易获得样本，以下以分类为例，做模型微调：</p>
 <h3 id="修改-run_classifierpy">修改 <code>run_classifier.py</code></h3>
 <h4 id="自定义-dataprocessor">自定义 DataProcessor</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoProcessor</span>(DataProcessor):
-    <span style="color:#e6db74">&#34;&#34;&#34;Processor for Demo data set.&#34;&#34;&#34;</span>
-
-    <span style="color:#66d9ef">def</span> __init__(self):
-        self<span style="color:#f92672">.</span>labels <span style="color:#f92672">=</span> set()
-    
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_train_examples</span>(self, data_dir):
-        <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_create_examples(
-            self<span style="color:#f92672">.</span>_read_tsv(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(data_dir, <span style="color:#e6db74">&#34;train.tsv&#34;</span>)), <span style="color:#e6db74">&#34;train&#34;</span>)
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_dev_examples</span>(self, data_dir):
-        <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_create_examples(
-            self<span style="color:#f92672">.</span>_read_tsv(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(data_dir, <span style="color:#e6db74">&#34;dev.tsv&#34;</span>)), <span style="color:#e6db74">&#34;dev&#34;</span>)
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_test_examples</span>(self, data_dir):
-      <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
-      <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_create_examples(
-          self<span style="color:#f92672">.</span>_read_tsv(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(data_dir, <span style="color:#e6db74">&#34;test.tsv&#34;</span>)), <span style="color:#e6db74">&#34;test&#34;</span>)
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_labels</span>(self):
-        <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
-        <span style="color:#75715e"># return list(self.labels)</span>
-        <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;fashion&#34;</span>, <span style="color:#e6db74">&#34;houseliving&#34;</span>,<span style="color:#e6db74">&#34;game&#34;</span>] <span style="color:#75715e"># 根据 label 自定义</span>
-
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_create_examples</span>(self, lines, set_type):
-        <span style="color:#e6db74">&#34;&#34;&#34;Creates examples for the training and dev sets.&#34;&#34;&#34;</span>
-        examples <span style="color:#f92672">=</span> []
-        <span style="color:#66d9ef">for</span> (i, line) <span style="color:#f92672">in</span> enumerate(lines):
-            guid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">-</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (set_type, i)
-            text_a <span style="color:#f92672">=</span> tokenization<span style="color:#f92672">.</span>convert_to_unicode(line[<span style="color:#ae81ff">1</span>])
-            label <span style="color:#f92672">=</span> tokenization<span style="color:#f92672">.</span>convert_to_unicode(line[<span style="color:#ae81ff">0</span>])
-            self<span style="color:#f92672">.</span>labels<span style="color:#f92672">.</span>add(label)
-            examples<span style="color:#f92672">.</span>append(
-                InputExample(guid<span style="color:#f92672">=</span>guid, text_a<span style="color:#f92672">=</span>text_a, text_b<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, label<span style="color:#f92672">=</span>label))
-        <span style="color:#66d9ef">return</span> examples
-
-</code></pre></div><h4 id="添加-demoprocessor">添加 DemoProcessor</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">  processors <span style="color:#f92672">=</span> {
-      <span style="color:#e6db74">&#34;cola&#34;</span>: ColaProcessor,
-      <span style="color:#e6db74">&#34;mnli&#34;</span>: MnliProcessor,
-      <span style="color:#e6db74">&#34;mrpc&#34;</span>: MrpcProcessor,
-      <span style="color:#e6db74">&#34;xnli&#34;</span>: XnliProcessor,
-      <span style="color:#e6db74">&#34;demo&#34;</span>: DemoProcessor,
-  }
-</code></pre></div><h2 id="启动训练">启动训练</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">export BERT_Chinese_DIR<span style="color:#f92672">=</span>/path/to/bert/chinese_L-12_H-768_A-12
-export Demo_DIR<span style="color:#f92672">=</span>/path/to/DemoDate
-
-python run_classifier.py <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --task_name<span style="color:#f92672">=</span>demo <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --do_train<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --do_eval<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --data_dir<span style="color:#f92672">=</span>$Demo_DIR <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --vocab_file<span style="color:#f92672">=</span>$BERT_Chinese_DIR/vocab.txt <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --bert_config_file<span style="color:#f92672">=</span>$BERT_Chinese_DIR/bert_config.json <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --init_checkpoint<span style="color:#f92672">=</span>$BERT_Chinese_DIR/bert_model.ckpt <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --max_seq_length<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --train_batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --learning_rate<span style="color:#f92672">=</span>2e-5 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --num_train_epochs<span style="color:#f92672">=</span>3.0 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>  --output_dir<span style="color:#f92672">=</span>/tmp/Demo_output/
-</code></pre></div><p>若一切顺利，将会有以下输出:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">***** Eval results *****
-  eval_accuracy <span style="color:#f92672">=</span> xx
-  eval_loss <span style="color:#f92672">=</span> xx
-  global_step <span style="color:#f92672">=</span> xx
-  loss <span style="color:#f92672">=</span> xx
-</code></pre></div><p>最终，微调后的模型保存在<strong>output_dir</strong>指向的文件夹中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DemoProcessor</span>(DataProcessor):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Processor for Demo data set.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>labels <span style="color:#f92672">=</span> set()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_train_examples</span>(self, data_dir):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_create_examples(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_read_tsv(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(data_dir, <span style="color:#e6db74">&#34;train.tsv&#34;</span>)), <span style="color:#e6db74">&#34;train&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_dev_examples</span>(self, data_dir):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_create_examples(
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_read_tsv(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(data_dir, <span style="color:#e6db74">&#34;dev.tsv&#34;</span>)), <span style="color:#e6db74">&#34;dev&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_test_examples</span>(self, data_dir):
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_create_examples(
+</span></span><span style="display:flex;"><span>          self<span style="color:#f92672">.</span>_read_tsv(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(data_dir, <span style="color:#e6db74">&#34;test.tsv&#34;</span>)), <span style="color:#e6db74">&#34;test&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_labels</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;See base class.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># return list(self.labels)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#34;fashion&#34;</span>, <span style="color:#e6db74">&#34;houseliving&#34;</span>,<span style="color:#e6db74">&#34;game&#34;</span>] <span style="color:#75715e"># 根据 label 自定义</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_create_examples</span>(self, lines, set_type):
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;Creates examples for the training and dev sets.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        examples <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (i, line) <span style="color:#f92672">in</span> enumerate(lines):
+</span></span><span style="display:flex;"><span>            guid <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">-</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (set_type, i)
+</span></span><span style="display:flex;"><span>            text_a <span style="color:#f92672">=</span> tokenization<span style="color:#f92672">.</span>convert_to_unicode(line[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>            label <span style="color:#f92672">=</span> tokenization<span style="color:#f92672">.</span>convert_to_unicode(line[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>labels<span style="color:#f92672">.</span>add(label)
+</span></span><span style="display:flex;"><span>            examples<span style="color:#f92672">.</span>append(
+</span></span><span style="display:flex;"><span>                InputExample(guid<span style="color:#f92672">=</span>guid, text_a<span style="color:#f92672">=</span>text_a, text_b<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, label<span style="color:#f92672">=</span>label))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> examples
+</span></span></code></pre></div><h4 id="添加-demoprocessor">添加 DemoProcessor</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>  processors <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;cola&#34;</span>: ColaProcessor,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;mnli&#34;</span>: MnliProcessor,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;mrpc&#34;</span>: MrpcProcessor,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;xnli&#34;</span>: XnliProcessor,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;demo&#34;</span>: DemoProcessor,
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><h2 id="启动训练">启动训练</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export BERT_Chinese_DIR<span style="color:#f92672">=</span>/path/to/bert/chinese_L-12_H-768_A-12
+</span></span><span style="display:flex;"><span>export Demo_DIR<span style="color:#f92672">=</span>/path/to/DemoDate
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>python run_classifier.py <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --task_name<span style="color:#f92672">=</span>demo <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --do_train<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --do_eval<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --data_dir<span style="color:#f92672">=</span>$Demo_DIR <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --vocab_file<span style="color:#f92672">=</span>$BERT_Chinese_DIR/vocab.txt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --bert_config_file<span style="color:#f92672">=</span>$BERT_Chinese_DIR/bert_config.json <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --init_checkpoint<span style="color:#f92672">=</span>$BERT_Chinese_DIR/bert_model.ckpt <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --max_seq_length<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --train_batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --learning_rate<span style="color:#f92672">=</span>2e-5 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --num_train_epochs<span style="color:#f92672">=</span>3.0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --output_dir<span style="color:#f92672">=</span>/tmp/Demo_output/
+</span></span></code></pre></div><p>若一切顺利，将会有以下输出:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>***** Eval results *****
+</span></span><span style="display:flex;"><span>  eval_accuracy <span style="color:#f92672">=</span> xx
+</span></span><span style="display:flex;"><span>  eval_loss <span style="color:#f92672">=</span> xx
+</span></span><span style="display:flex;"><span>  global_step <span style="color:#f92672">=</span> xx
+</span></span><span style="display:flex;"><span>  loss <span style="color:#f92672">=</span> xx
+</span></span></code></pre></div><p>最终，微调后的模型保存在<strong>output_dir</strong>指向的文件夹中。</p>
 <h2 id="总结">总结</h2>
 <p>Bert 预训练后的 finetune，是一种很高效的方式，节省时间，同时提高模型在垂直语料的表现。finetune 过程，实际上不难。较大的难点在于数据准备和 pipeline 的设计。从商业角度讲，应着重考虑 finetune 之后，模型有效性的证明，以及在业务场景中的应用。如果评估指标和业务场景都已缕清，那么不妨一试。</p>
 <ul>
