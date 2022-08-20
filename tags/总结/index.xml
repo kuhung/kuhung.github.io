@@ -100,7 +100,7 @@ gain model.feature_importances_ 这是我们调用特征重要性数值时，用
     </item>
     
     <item>
-      <title>算法模型需要可解释性</title>
+      <title>算法模型的可解释性</title>
       <link>https://kuhungio.me/2021/interpretable-machine-learning/</link>
       <pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate>
       
