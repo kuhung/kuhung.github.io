@@ -233,51 +233,6 @@
     </item>
     
     <item>
-      <title>eda</title>
-      <link>https://kuhungio.me/tags/eda/</link>
-      <pubDate>Tue, 01 Sep 2020 12:04:49 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/eda/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>高频问题</title>
-      <link>https://kuhungio.me/tags/%E9%AB%98%E9%A2%91%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Tue, 01 Sep 2020 12:04:49 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/%E9%AB%98%E9%A2%91%E9%97%AE%E9%A2%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hive</title>
-      <link>https://kuhungio.me/tags/hive/</link>
-      <pubDate>Tue, 25 Aug 2020 11:13:05 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/hive/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pandas</title>
-      <link>https://kuhungio.me/tags/pandas/</link>
-      <pubDate>Fri, 21 Aug 2020 11:41:15 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/pandas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://kuhungio.me/tags/python/</link>
-      <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>数据分析</title>
       <link>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Sat, 25 Jul 2020 20:43:52 +0800</pubDate>
@@ -346,6 +301,15 @@
       <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
       
       <guid>https://kuhungio.me/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://kuhungio.me/tags/python/</link>
+      <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/tags/python/</guid>
       <description></description>
     </item>
     
@@ -472,6 +436,15 @@
       <pubDate>Sat, 22 Jun 2019 15:28:01 +0800</pubDate>
       
       <guid>https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HIVE</title>
+      <link>https://kuhungio.me/tags/hive/</link>
+      <pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/tags/hive/</guid>
       <description></description>
     </item>
     

@@ -1067,61 +1067,6 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     </item>
     
     <item>
-      <title>EDA 常见问题速查</title>
-      <link>https://kuhungio.me/2020/eda-tricks/</link>
-      <pubDate>Tue, 01 Sep 2020 12:04:49 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/eda-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注 EDA 常见问题速查 2020.09.01 2020.12.21 2021.03.30 / 参考网站 python-graph-gallery 图之典 AntV visualcinnamon 可视化工具 seaborn
-bokeh
-chord
-pyplot
-plotly
-Datapane
-Altair
-降维
-t-SNE 三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.DataFrame() df_3d[&amp;#39;x&amp;#39;] = x df_3d[&amp;#39;y&amp;#39;] = y df_3d[&amp;#39;z&amp;#39;] = z sns.pairplot(df_3d) 韦恩图绘制 matplotlib-venn
-from matplotlib_venn import venn2 venn2([set([&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;]), set([&amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;, &amp;#39;F&amp;#39;])]) def plot_venn(col_1,col_2): set_1 = set(col_1) print(len(set_1)) set_2 = set(col_2) print(len(set_2)) venn2([set_1,set_2]) seaborn 加 title # refer https://stackoverflow.</description>
-    </item>
-    
-    <item>
-      <title>Hive 常见问题速查</title>
-      <link>https://kuhungio.me/2020/hive-tricks/</link>
-      <pubDate>Tue, 25 Aug 2020 11:13:05 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/hive-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注 Hive 常见问题速查 2020.08.25 2020.12.21 2021.08.10 / 函数大全 https://www.iteblog.com/archives/2258.html
-Hive 结果采样 select * from my_table where rand() &amp;lt;= 0.0001 distribute by rand() sort by rand() limit 10000; --- source: http://www.joefkelley.com/736/ hive 填补空值 --- https://stackoverflow.com/questions/63891981/sql-hive-replace-null-values-with-0-hadoop-hive select coalesce(t2.Apple, 0) as apple from table; hive 分箱 # https://www.jianshu.com/p/a67280db6b33 -- Ntile(n) over(order by col)：分块函数 -- 备注：NULL值的处理，是否需要单独为1组。 select col -- NULL默认为最小值 , ntile(2) over( order by col) as group1 -- 将NULL单独为1组 , if(col is null, null, ntile(2) over( partition by if(col is null, 1, 0) order by col) as group2 from( select cast(col as int) as col from( select stack(5, &amp;#39;NULL&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;) as col ) as a ) as a 计算时间差 --- https://blog.</description>
-    </item>
-    
-    <item>
-      <title>Model 常见问题速查</title>
-      <link>https://kuhungio.me/2020/model-tricks/</link>
-      <pubDate>Fri, 21 Aug 2020 11:41:15 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/model-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注 Model 常见问题速查 2020.08.21 2020.12.21 2022.01.03 / xgb 特征重要性 sorted_idx = np.argsort(model.feature_importances_)[::-1] ## 按重要性排序 for index in sorted_idx: # print([train[feature].columns[index], model.feature_importances_[index]]) print([features[index], model.feature_importances_[index]]) ## 打印结果 [round(elem, 3) for elem in model.feature_importances_] ## 绘制结果 from xgboost import plot_importance plot_importance(model, max_num_features = 15) ## ps：引入随机列 import numpy as np df1[&amp;#39;randNumCol&amp;#39;] = np.random.randint(1, 6, df1.shape[0]) 模型的保存与加载 import pickle pickle.dump(model, open(&amp;#34;model.pickle.dat&amp;#34;, &amp;#34;wb&amp;#34;)) model = pickle.load(open(model_path, &amp;#34;rb&amp;#34;)) 召回、准确率与阈值探查 from sklearn.metrics import precision_recall_curve,plot_precision_recall_curve # 生成预测概率 predict_pro = model.</description>
-    </item>
-    
-    <item>
-      <title>Python 常见问题速查</title>
-      <link>https://kuhungio.me/2020/python-tricks/</link>
-      <pubDate>Tue, 04 Aug 2020 11:39:43 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/python-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注 Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 / 获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&amp;#34;%Y-%m-%d&amp;#34;, time.localtime()) 日期加减操作 from datetime import datetime, timedelta def date_transfer(today): today = datetime.strptime(today, &amp;#34;%Y-%m-%d&amp;#34;) yesterday = today - timedelta(days=1) return today.strftime( &amp;#34;%Y-%m-%d&amp;#34;),yesterday.strftime( &amp;#34;%Y-%m-%d&amp;#34;) 对list元素进行判断 # source: https://thispointer.com/python-count-elements-in-a-list-that-satisfy-certain-conditions/ listOfElems = [11, 22, 33, 45, 66, 77, 88, 99, 101] # count numbers in the list which are greater than 5 count = sum(map(lambda x : x&amp;gt;5, listOfElems)) # lambda 函数可替换 print(&amp;#39;Count of numbers in a list which are greater than 5: &amp;#39;, count) str类型的array转array def str2array(current_str): &amp;#39;&amp;#39;&amp;#39; 返回数值数组 &amp;#39;&amp;#39;&amp;#39; current_array = current_str.</description>
-    </item>
-    
-    <item>
-      <title>Pandas 常见问题速查</title>
-      <link>https://kuhungio.me/2020/pandas-tricks/</link>
-      <pubDate>Tue, 04 Aug 2020 10:47:23 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2020/pandas-tricks/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注 Pandas 常见问题速查 2020.08.04 2020.12.21 2021.06.09 / 一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = pd.date_range(&amp;#39;2000-01-01&amp;#39;, freq=&amp;#39;3D&amp;#39;, periods=6) #3天一个步长，总计6个分箱 pd.cut(df.Date,bins=date_bins) pandas 去重求差集 df_a = pd.DataFrame(aa) df_b = pd.DataFrame(bb) df_a = df_a.append(df_b) df_a.drop_duplicates(subset=[&amp;#39;col_1&amp;#39;,&amp;#39;col_2&amp;#39;],keep=False) 特征相关性热力图绘制 feature_df.corr().style.background_gradient(cmap=&amp;#39;coolwarm&amp;#39;) pandas 不折叠行与列 pd.set_option(&amp;#39;display.max_rows&amp;#39;, 500) #最大行数 pd.set_option(&amp;#39;display.max_columns&amp;#39;, 500) #最大列数 pandas rename 列名 df = pd.DataFrame({&amp;#34;A&amp;#34;: [1, 2, 3], &amp;#34;B&amp;#34;: [4, 5, 6]}) df.rename(columns={&amp;#34;A&amp;#34;: &amp;#34;a&amp;#34;, &amp;#34;B&amp;#34;: &amp;#34;c&amp;#34;}) 强制关闭 copy warning # source: https://zhuanlan.</description>
-    </item>
-    
-    <item>
       <title>2020高考志愿填报中的数据误导与价值机会</title>
       <link>https://kuhungio.me/2020/statistics-tell-lies/</link>
       <pubDate>Sat, 25 Jul 2020 20:43:52 +0800</pubDate>
@@ -2099,25 +2044,6 @@ from keras.models import Sequential from keras.layers.core import Flatten, Dense
       
       <guid>https://kuhungio.me/1970/web_deploy/</guid>
       <description> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_MLsingle-page-apps-with-vue-js-and-flask-deployment 机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例chiphuyen/machine-learning-systems-design </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://kuhungio.me/1/atomic-habits-03/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/1/atomic-habits-03/</guid>
-      <description>title: &amp;ldquo;Atomic Habits 03&amp;rdquo; date: 2021-07-07T23:35:01+08:00 draft: true tags: [&amp;ldquo;mindmap&amp;rdquo;, &amp;ldquo;思维导图&amp;rdquo;] categories: [&amp;ldquo;图表专栏&amp;rdquo;]
-概述 预计耗时 预计发布 实际发布 最后一次修改 让习惯的信号显而易见 位置决定价值 家里有开店铺的朋友可能知道，店铺的选址对于店的客流量影响是有多大。你的店越靠近路边与核心商圈，就能有更高的人气，进而有更高的营业额。这也是为什么商圈位置很关键的原因。习惯也是如此，一个信号越明显，它就更可能形成习惯。
-每个人都想养成好习惯，但并非每个习惯都沉淀了下来。我们想得很好，但却做得很糟糕。可能，你只是缺少了一些要领。今天我们进来学习如何掌控习惯，养成好习惯，并戒掉坏习惯。
-之前我们讲到，要养成好习惯，一共可以从四个点出发，分别对应习惯的四个组成部分：提示、渴求、反应以及奖励。今天我们就先从提示出发，构建稳定的习惯。
-某时某地做某事 很多时候，我们有一大串想法，却很少实际去做到。不少人会抱怨到，哎没动力去做呀，想想就很好啦。其实大家缺少的不是执行的动力，而是明确的时间节点。我将要在何时何地做某事。在工作中，我将这个方法拆到了天维度。一周前规划下周的大致工作内容，然后是每天的工作计划。这样的方式保证了项目的顺利推进。每天打开编辑器，要做的第一件事就是写下今天的执行目标。这个方法很有效，当给自己一个“人设”的承诺后，将更有可能按计划实现目标。习惯也是如此，给自己想要成的习惯定下时间地点和行为，将有助于习惯的养成。
-关联习惯 另外一个方法能够有效培养习惯的是：关联习惯。日常生活中，我们肯定有很多稳定路线。比如下班回家第一件事，是打开电脑还是插上主机。如果在这时，插入一个习惯，检查厨房的垃圾桶有无需要清洁，清理完之后再继续之前的习惯，这样子将很快形成新习惯。想想每天早上第一件事是什么？如果把喝水插进去，当检查信息结束后，安排上检查水杯的行为，将喝水作为上一个习惯的奖励绑定，也将很轻松地形成新习惯。我们要做的就是分析并明确现有的习惯，将现有习惯整体作为线索，当习惯发生时，马上获得提示进入我们想培养的习惯流程。
-环境隔离 有人曾做过实验，改变售货架的布局，消费者的选购将会产生很大差别。想想看结账处货架上的东西，虽然不是你本次购物想买的，但你还是会选购一些商品。我们做出这样的决定，不是因为我们做个充分的准备，而是因为它刚好在手边。习惯就是这样子的。因而要改变习惯，也得要改变环境。孟母三迁的故事都烂了，如果想培养好习惯，则选择一个充满你想培养习惯的人的环境，也将加快习惯的培养。另一个方面，在同样的环境，我们也会有多个习惯叠加。我们会在卧室看B站，也会在卧室看书学习。这种场合下，应当避免他们的混合。你在书桌上就应该学习，看视频则应当去客厅。不然下次，你坐到书桌前时，想的也许还是上次看视频的场景。因为你混淆了各个习惯的场景，而容易达成、短期内让人更愉悦的习惯，更容易占上风。所以，下次别再书桌前打游戏了。
-构建自律环境 由于路径依赖的存在，新环境将是养成好习惯的绝佳场所。同时，新场所也将会更多地激发灵感，当学不下去时，试试换换场所会是个不错的主意。很多人会以为，取得成就的人是因为他们更自律、更有勇气和恒心，其实并不完全如此。如果你也想提升自己这方面的特质，单纯的期望自己是这样的人是不够的，你应该去构建对应的自律环境。尽量隔绝坏习惯的信号。比如晚上睡觉前总是爱刷手机，那就将手机放到看不见的地方，隔绝各类推送消息的信号，自然不会有手机的依赖。
-阶段小结 显而易见、触手可及，如果你想养成好习惯，就他们具备这样的特质。坏习惯则反之。给自己的习惯加上执行的明确意图，什么时候做什么事情，将增强行动的动力。关联现在的习惯，在现有习惯之间穿插需要养成的习惯，让习惯更加流畅。
-喜欢这个频道的朋友，别忘了转发你的朋友，和朋友一起成长。关注并订阅这个系列，习惯培养体系，咱们接着讲。
-关于作者</description>
     </item>
     
   </channel>
