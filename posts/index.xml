@@ -6,7 +6,24 @@
     <description>Recent content in Posts on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 28 Jan 2023 22:46:53 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Feb 2023 00:19:40 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>思维导图｜《凤凰项目》</title>
+      <link>https://kuhungio.me/2023/the-phoenix-project/</link>
+      <pubDate>Wed, 08 Feb 2023 00:19:40 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2023/the-phoenix-project/</guid>
+      <description>这本书的妙处在于，你能在它身上看到工作的影子。虽然说有爽文的嫌疑，devops也不是银弹，但其中提到的约束理论、控制半成品的要求，还是很有启发意义的。跳开具体的管理理论，本书传达的向成熟行业学习的思路，也值得借鉴学习。
+对于一位工程师，或者说工程师团队负责人来说，你所做的该是与公司目标息息相关的事。构建一个合适的工作流，保护你的时间、保护你的工程师，确保达到目标。与反馈源保持密切接触，缩短反馈时间，尽可能扩大项目的影响。多探索（但是要控制半成品数），多实践（无交付的脑暴没有意义）。
+最后说说局限与思考，本书构建的场景中，主角和CEO有紧密的联系、还有外部的支持，这在很多公司里面是不一样的。团队内有项目管理的专家，有支持主角的下级管理者，也有能干活出活的工程师，很难说这种组合对于项目结果没帮助。最后，拯救公司于水火之中的独角兽项目可不常见，对于日常的工作，如何发动变革，如何带来结果，是《凤凰项目》回答不了的。
+![](/images/mindmap/凤凰项目/origin/画布 1&amp;ndash;凤凰项目.png)
+![](/images/mindmap/凤凰项目/origin/画布 1-2-故事背景.png)
+![](/images/mindmap/凤凰项目/origin/画布 1-3-故事展开.png)
+![](/images/mindmap/凤凰项目/origin/画布 1-4-主角线-实践.png)
+![](/images/mindmap/凤凰项目/origin/画布 1-5-导师线-理论.png)
+关于作者</description>
+    </item>
+    
     <item>
       <title>思维导图｜《刘擎西方现代思想讲义》</title>
       <link>https://kuhungio.me/2023/modern-western-thought/</link>
