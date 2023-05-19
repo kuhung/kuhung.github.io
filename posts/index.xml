@@ -8,7 +8,7 @@
     <language>zh-CN</language>
     <lastBuildDate>Wed, 17 May 2023 21:38:16 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PrivateGPT 尝鲜体验与中文技巧</title>
+      <title>全面了解 PrivateGPT：中文技巧和功能实测</title>
       <link>https://kuhungio.me/2023/privategpt/</link>
       <pubDate>Wed, 17 May 2023 21:38:16 +0800</pubDate>
       
@@ -25,15 +25,6 @@ PERSIST_DIRECTORY=db MODEL_TYPE=GPT4All MODEL_PATH=models/ggml-gpt4all-j-v1.3-gr
 我们以《Generative Agents: Interactive Simulacra of Human Behavior》AI小镇这篇论文为例：
 cd source_documents curl -o x.pdf https://arxiv.org/pdf/2304.03442.pdf cd .. mkdir models cd models curl -o ggml-gpt4all-j-v1.3-groovy.bin https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin 向量化数据
 python ingest.py 如果502失败，可以尝试shell中直接调起python，输入下面的代码。下载完成后退出。</description>
-    </item>
-    
-    <item>
-      <title>如何在最短时间亏钱</title>
-      <link>https://kuhungio.me/2023/ten-financial-moments-in-five-years-3/</link>
-      <pubDate>Wed, 03 May 2023 16:56:03 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2023/ten-financial-moments-in-five-years-3/</guid>
-      <description>概述 预计耗时 预计发布 实际发布 最后一次修改 财务总结第三篇 财务常识 财务板块 自动化 关于作者</description>
     </item>
     
     <item>
