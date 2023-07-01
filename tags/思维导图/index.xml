@@ -6,27 +6,7 @@
     <description>Recent content in 思维导图 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 May 2023 21:38:16 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>全面了解 PrivateGPT：中文技巧和功能实测</title>
-      <link>https://kuhungio.me/2023/privategpt/</link>
-      <pubDate>Wed, 17 May 2023 21:38:16 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2023/privategpt/</guid>
-      <description>近日，GitHub上开源了privateGPT，声称能够断网的情况下，借助GPT和文档进行交互。这一场景对于大语言模型来说，意义重大。因为很多公司或者个人的资料，无论是出于数据安全还是隐私的考量，是不方便联网的。为此，我也进行了些许体验，跑完了整个流程，希望给读者朋友一些有用信息。
-原作仓库地址：https://github.com/imartinez/privateGPT
-先说结论：可用，但还有进步空间。特别是对于简单询问语句，该模型不像ChatGPT回答有来有回，而是提供若干可能性进行回答。而数据预处理环节的容错性、embedding向量的生成方法以及大语言模型的基底模型，每一个环节的质量都会影响最终的使用体验。可期待的是，每一个环节都有可能逐步改善，并最终带来质的飞跃。
-原理解析 这套方法使用了 LangChain, GPT4All, LlamaCpp, Chroma and SentenceTransformers.
-LangChain 用来生成文本向量，Chroma 存储向量。GPT4All、LlamaCpp用来理解问题，匹配答案。基本原理是：问题到来，向量化。检索语料中的向量，给到最相似的原始语料。语料塞给大语言模型，模型回答问题。基本原理和chatpdf没大差别。
-环境配置复现 首先是环境，后文采用的是ubuntu环境。mac环境也能支持，不过在安装过程中需要调整部分参数。家里有ubuntu系统，图省事就用它了。
-conda create -n gpt python=3.10 # 其他python版本不行，后续有个3.10的语法糖 conda activate gpt pip install -r requirements.txt 配置环境
-cp example.env .env vi .env 具体配置如下
-PERSIST_DIRECTORY=db MODEL_TYPE=GPT4All MODEL_PATH=models/ggml-gpt4all-j-v1.3-groovy.bin EMBEDDINGS_MODEL_NAME=all-MiniLM-L6-v2 MODEL_N_CTX=1000 下载资料与模型权重
-我们以《Generative Agents: Interactive Simulacra of Human Behavior》AI小镇这篇论文为例：
-cd source_documents curl -o x.pdf https://arxiv.org/pdf/2304.03442.pdf cd .. mkdir models cd models curl -o ggml-gpt4all-j-v1.3-groovy.bin https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin 向量化数据
-python ingest.py 如果502失败，可以尝试shell中直接调起python，输入下面的代码。下载完成后退出。</description>
-    </item>
-    
+    <lastBuildDate>Mon, 20 Feb 2023 23:50:53 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>思维导图｜《过去预测未来》胜任力模型</title>
       <link>https://kuhungio.me/2023/behavioural-based-interview/</link>

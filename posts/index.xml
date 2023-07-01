@@ -535,7 +535,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
     </item>
     
     <item>
-      <title>如何在最短时间亏钱</title>
+      <title>五年十个财务瞬间｜02 如何在2021年最短时间亏钱</title>
       <link>https://kuhungio.me/2021/ten-financial-moments-in-five-years-2/</link>
       <pubDate>Wed, 07 Jul 2021 22:56:03 +0800</pubDate>
       
@@ -2219,6 +2219,27 @@ from keras.models import Sequential from keras.layers.core import Flatten, Dense
       
       <guid>https://kuhungio.me/1970/web_deploy/</guid>
       <description> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_MLsingle-page-apps-with-vue-js-and-flask-deployment 机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例chiphuyen/machine-learning-systems-design </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kuhungio.me/1/radar_202306/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhungio.me/1/radar_202306/</guid>
+      <description>radar 202306 https://docs.google.com/spreadsheets/d/1ZV1IQmuDVMWksQobdW2VNgch3MJtus6cXN65Rb8R_dU/edit#gid=0
+样表 name ring quadrant isNew description Composer adopt tools TRUE Although the idea of dependency management &amp;hellip; Canary builds trial techniques FALSE Many projects have external code dependencies &amp;hellip; Apache Kylin assess platforms TRUE Apache Kylin is an open source analytics solution &amp;hellip; JSF hold languages &amp;amp; frameworks FALSE We continue to see teams run into trouble using JSF &amp;hellip; name ring quadrant isNew description 采纳 技术 实验 阅读 评估 理财 暂缓 思考🤔 </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://kuhungio.me/1/competition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhungio.me/1/competition/</guid>
+      <description>竞赛相关
+https://towardsdatascience.com/12-data-science-ai-competitions-to-advance-your-skills-in-2021-32e3fcb95d8c https://www.nishika.com/ 工具相关
+https://autokeras.com/tutorial/image_classification/ 数据版本管理 pip install dvc </description>
     </item>
     
   </channel>
