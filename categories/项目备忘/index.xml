@@ -13,7 +13,10 @@
       <pubDate>Thu, 01 Jan 1970 23:44:32 +0800</pubDate>
       
       <guid>https://kuhungio.me/1970/web_deploy/</guid>
-      <description> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_MLsingle-page-apps-with-vue-js-and-flask-deployment 机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例chiphuyen/machine-learning-systems-design </description>
+      <description> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis
+Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_ML
+single-page-apps-with-vue-js-and-flask-deployment 机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例
+chiphuyen/machine-learning-systems-design </description>
     </item>
     
   </channel>
