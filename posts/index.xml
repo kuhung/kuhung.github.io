@@ -6,16 +6,7 @@
     <description>Recent content in Posts on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 24 Jul 2023 22:17:32 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>新猫狗分类——在线服务：让宠物识别更准确</title>
-      <link>https://kuhungio.me/2023/new-dogs-and-cats/</link>
-      <pubDate>Mon, 24 Jul 2023 22:17:32 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/2023/new-dogs-and-cats/</guid>
-      <description>关于作者</description>
-    </item>
-    
+    <lastBuildDate>Wed, 17 May 2023 21:38:16 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>全面了解 PrivateGPT：中文技巧和功能实测</title>
       <link>https://kuhungio.me/2023/privategpt/</link>
@@ -2231,49 +2222,6 @@ from keras.models import Sequential from keras.layers.core import Flatten, Dense
 Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_ML
 single-page-apps-with-vue-js-and-flask-deployment 机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例
 chiphuyen/machine-learning-systems-design </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://kuhungio.me/1/radar_202306/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/1/radar_202306/</guid>
-      <description>radar 202306 https://docs.google.com/spreadsheets/d/1ZV1IQmuDVMWksQobdW2VNgch3MJtus6cXN65Rb8R_dU/edit#gid=0
-服务 $ docker run --rm -p 8080:80 -e SERVER_NAMES=&amp;#34;localhost 127.0.0.1&amp;#34; -v /home/kuhung/project_n1p8/build-your-own-radar/files:/opt/build-your-own-radar/files -e RINGS=&amp;#39;[&amp;#34;采纳&amp;#34;, &amp;#34;实验&amp;#34;, &amp;#34;评估&amp;#34;, &amp;#34;暂缓&amp;#34;]&amp;#39; -e QUADRANTS=&amp;#39;[&amp;#34;技术&amp;#34;, &amp;#34;阅读&amp;#34;, &amp;#34;理财&amp;#34;, &amp;#34;想法&amp;#34;]&amp;#39; wwwthoughtworks/build-your-own-radar:latest $ open http://localhost:8080 $ http://localhost:8080/files/test.csv // 可通过删除页面元素，调整可打印内容 样表 name ring quadrant isNew description Composer adopt tools TRUE Although the idea of dependency management &amp;hellip; Canary builds trial techniques FALSE Many projects have external code dependencies &amp;hellip; Apache Kylin assess platforms TRUE Apache Kylin is an open source analytics solution &amp;hellip; JSF hold languages &amp;amp; frameworks FALSE We continue to see teams run into trouble using JSF &amp;hellip; name ring quadrant isNew description 采纳 技术 实验 阅读 评估 理财 暂缓 想法 参考 export RINGS=&amp;#39;[&amp;#34;采纳&amp;#34;, &amp;#34;实验&amp;#34;, &amp;#34;评估&amp;#34;, &amp;#34;暂缓&amp;#34;]&amp;#39; export QUADRANTS=&amp;#39;[&amp;#34;技术&amp;#34;, &amp;#34;阅读&amp;#34;, &amp;#34;理财&amp;#34;, &amp;#34;想法&amp;#34;]&amp;#39; export API_KEY=AIzaSyBJ11-hnCO6rI5b2uatvoGQyHSKX_5YCpc export CLIENT_ID=713396271279-gidflorecfp7ragbarogphcicqu6g560.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://kuhungio.me/1/competition/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/1/competition/</guid>
-      <description>竞赛相关
-https://towardsdatascience.com/12-data-science-ai-competitions-to-advance-your-skills-in-2021-32e3fcb95d8c
-https://www.nishika.com/
-https://bitgrit.net/competition/
-https://quest.signate.jp/
-https://mlcontests.com/
-工具相关
-https://autokeras.com/tutorial/image_classification/ 数据版本管理 pip install dvc </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://kuhungio.me/1/eval/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhungio.me/1/eval/</guid>
-      <description>工具评估进度 gradio
-steamlit
-整体体验不是很好，特别图生图场景。兼容性没有想象中好。常出现权重找不到，或者说明不清楚的情况。
-https://vercel.com/new
-huggingface heroku
-https://tabbyml.github.io/tabby/docs/self-hosting/docker/ 代码生成工具
-https://cml.dev/?ref=mlnews 版本控制工具
-https://wandb.ai/site 代码性能调优
-https://github.com/deepchecks/deepchecks 模型全套</description>
     </item>
     
   </channel>

@@ -6,25 +6,7 @@
     <description>Recent content in Tags on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 24 Jul 2023 22:17:32 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>机器学习</title>
-      <link>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Mon, 24 Jul 2023 22:17:32 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>算法服务</title>
-      <link>https://kuhungio.me/tags/%E7%AE%97%E6%B3%95%E6%9C%8D%E5%8A%A1/</link>
-      <pubDate>Mon, 24 Jul 2023 22:17:32 +0800</pubDate>
-      
-      <guid>https://kuhungio.me/tags/%E7%AE%97%E6%B3%95%E6%9C%8D%E5%8A%A1/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Wed, 17 May 2023 21:38:16 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>交付</title>
       <link>https://kuhungio.me/tags/%E4%BA%A4%E4%BB%98/</link>
@@ -346,6 +328,15 @@
       <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
       
       <guid>https://kuhungio.me/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>机器学习</title>
+      <link>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     
