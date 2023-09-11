@@ -26,15 +26,21 @@
       <description>&lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
 &lt;h2 id=&#34;个人简介&#34;&gt;个人简介&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;笔名：谷粒 (kuhung)&lt;/li&gt;
+&lt;li&gt;笔名：谷粒（kuhung）&lt;/li&gt;
 &lt;li&gt;毕业院校：华中科技大学 机械学院&lt;/li&gt;
+&lt;li&gt;人格测试（202309）
+&lt;ul&gt;
+&lt;li&gt;Big-Five：高外向性、高宜人性、高尽责性、低神经质、高开放性。&lt;/li&gt;
+&lt;li&gt;MBTI：ENFJ-A。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;兴趣方向&#34;&gt;兴趣方向&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;喜欢读书，读各种类型的书。喜欢在阅读中对话，以及整理后变得条理清晰的感觉。
 &lt;ul&gt;
-&lt;li&gt;去年的目标是保持住50本年阅读量（实际38本），并尽可能多的输出思维导图。&lt;/li&gt;
-&lt;li&gt;参加了公司的读书大逃杀活动，已苟到最后。&lt;/li&gt;
+&lt;li&gt;年目标是保持住50本年阅读量，并尽可能多的输出思维导图。&lt;/li&gt;
+&lt;li&gt;欢迎关注&lt;a href=&#34;https://www.douban.com/people/KuHung&#34;&gt;我的豆瓣&lt;/a&gt;，以交流最新阅读动向。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;由于工作需要，会关心一些算法技术的理论依据以及应用场景。
@@ -92,7 +98,6 @@
 &lt;li&gt;持续交付客户乐意买单的产品或服务。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;早期竞赛成果&#34;&gt;早期竞赛成果&lt;/h2&gt;
-&lt;center&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -135,7 +140,6 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;/center&gt;
 &lt;h2 id=&#34;span-idgithubgithub-关注span&#34;&gt;&lt;span id=&#34;github&#34;&gt;Github 关注&lt;/span&gt;&lt;/h2&gt;
 &lt;!--
 [![GitHub followers](https://img.shields.io/github/followers/kuhung.svg?&amp;label=Follow&amp;maxAge=2592000)](https://github.com/kuhung)
