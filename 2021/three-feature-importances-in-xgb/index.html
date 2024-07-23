@@ -304,7 +304,7 @@ if (!doNotTrack) {
 <p>由于其计算依赖单一特征，所以对非线性模型更友好。同时，如果特征中存在多重共线性，共线的特征重要性都将非常靠后。这是因为混淆单一特征，不影响另一个特征的贡献。这样的结果是，即使特征很重要，也会排得很靠后。</p>
 <p>针对多重共线特征，<a href="https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features">sklearn</a> 文档中提到了一种解决方法<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>：计算特征间的 spearman rank-order correlations，取得每一组中的头部特征，再进行特征重要性计算。这种方法，实际上是在解决特征共线的问题。</p>
 <h3 id="shap">shap</h3>
-<p>另一个特征重要性计算方法 shap，在之前的文章：<a href="/interpretable-machine-learning.md">机器学习模型的两种解释方法</a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>有过介绍。其计算方法，利用了博弈论的知识，即特征的边际递减效应。通俗来说，就是轮流去掉每一个特征，算出剩下特征的贡献情况，以此来推导出被去除特征的边际贡献。该方法是目前唯一的逻辑严密的特征解释方法（但实际使用体感一般，详情可参见上篇文章）。</p>
+<p>另一个特征重要性计算方法 shap，在之前的文章：<a href="/2021/interpretable-machine-learning.md">机器学习模型的两种解释方法</a><sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>有过介绍。其计算方法，利用了博弈论的知识，即特征的边际递减效应。通俗来说，就是轮流去掉每一个特征，算出剩下特征的贡献情况，以此来推导出被去除特征的边际贡献。该方法是目前唯一的逻辑严密的特征解释方法（但实际使用体感一般，详情可参见上篇文章）。</p>
 <h2 id="其他模型的特征重要性计算方法">其他模型的特征重要性计算方法</h2>
 <p>对于同样的树模型，randomforest 和 gbdt，同样也有内置的特征重要性。</p>
 <p>randomforest 使用 <code>rf.feature_importances_</code> 得到特征重要性<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup>。其中，分类任务计算的是 gini 不纯度/信息熵。回归任务计算的是树的方差。</p>
