@@ -8,7 +8,7 @@
     <language>zh-CN</language>
     <lastBuildDate>Thu, 06 Feb 2025 13:06:59 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>自己动手将米家接入Homekit</title>
+      <title>自己动手将米家接入Homekit，构建低成本智能家居系统</title>
       <link>https://kuhungio.me/2025/iot-home/</link>
       <pubDate>Thu, 06 Feb 2025 13:06:59 +0800</pubDate>
       
@@ -45,7 +45,7 @@ curl -fsSL &amp;lt;https://get.docker.com&amp;gt; -o get-docker.sh sudo sh get-d
     </item>
     
     <item>
-      <title>我的2023年度总结雷达</title>
+      <title>2023年度总结</title>
       <link>https://kuhungio.me/2024/radar-in-2024/</link>
       <pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate>
       

@@ -35,10 +35,10 @@ if (!doNotTrack) {
   <title>
        
        
-           自己动手将米家接入Homekit | 谷粒的博客
+           自己动手将米家接入Homekit，构建低成本智能家居系统 | 谷粒的博客
        
   </title>
-  <meta name="title" content="自己动手将米家接入Homekit | 谷粒的博客">
+  <meta name="title" content="自己动手将米家接入Homekit，构建低成本智能家居系统 | 谷粒的博客">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -57,8 +57,8 @@ if (!doNotTrack) {
          "@id": "https:\/\/kuhungio.me"
     },
     "articleSection" : "posts",
-    "name" : "自己动手将米家接入Homekit",
-    "headline" : "自己动手将米家接入Homekit",
+    "name" : "自己动手将米家接入Homekit，构建低成本智能家居系统",
+    "headline" : "自己动手将米家接入Homekit，构建低成本智能家居系统",
     "description" : "大概在三年前，作者通过树莓派\u002b小米智能家居\u002b苹果设备，实现了通过iPhone控制家庭智能设备的功能。通过苹果生态，即可实现若干智能化：根据所在位置，开关电器；通过Siri控制灯光亮度和开关等功能。外出时，再也不用担心家里哪个电器没关；回家前，还能提前打开空调；睡觉前也不用起来给每个房间单独按开关，直接Siri指令。这大大方便了用户。\n因为使用的是小米的智能家居，相较于单纯的苹果生态，降低了智能家居的接入成本。以插座为例，HomeKit生态相关的产品需要几百元，而米家相关的产品仅需要数十元，即可实现类似效果。\n当然，米家相关的配置并不是没有缺点。因为引入了更多的中转设施，其出故障的可能性会比单纯的HomeKit接入会更高。这不，近期HomeKit突然完全失联（后来确认是修改路由配置导致的连锁反应），于是借机重新走了一遍流程。刚好小米在一个月前，也发布了官方的插件，以支持跨平台的控制接入。我们来看看米家官方的插件到底如何。\n以下，从树莓派开始讲起，着手构建通过家庭App即能控制的低成本智能家居系统。\n涉及资源 硬件 树莓派4B（服务器，包含SD卡） 米家智能家居（各类实际硬件，包含多模网关） Apple homepod mini \/ Apple TV \/ iPad（Apple控制中枢） 软件 Raspbian 系统 Docker HACS（docker版本） xiaomi插件 配置过程 连接树莓派 对于一个全新的树莓派，我们需要初始化它，以便进行后续操作。参考以下信息：\n# \u0026lt;https:\/\/ost.51cto.com\/posts\/4179\u0026gt; ## 创建账号，解决没有权限的问题 \u0026lt;https:\/\/www.cnblogs.com\/melodicule\/p\/16212711.html\u0026gt; ## 连接ssh ssh pi@192.168.x.x password: xx ## 配置 sudo raspi-config #设置登录方式、屏幕 ## VNC 可视化界面 \u0026lt;https:\/\/www.jianshu.com\/p\/5e4d64c2ceaf\u0026gt; ## 查看温度 vcgencmd measure_temp ## 引脚信息 \u0026lt;http:\/\/www.raspigeek.com\/index.php?c=read\u0026amp;id=126\u0026amp;page=1\u0026gt; 安装docker docker安装，需要留意源信息的变更。\ncurl -fsSL \u0026lt;https:\/\/get.docker.com\u0026gt; -o get-docker.sh sudo sh get-docker.sh --mirror Aliyun sudo docker version # 修改docker源与dns解析，留意是否失效ustc的源已失效 sudo tee \/etc\/docker\/daemon.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
@@ -125,7 +125,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">自己动手将米家接入Homekit</h1>
+        <h1 class="post-title" itemprop="name headline">自己动手将米家接入Homekit，构建低成本智能家居系统</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -420,7 +420,7 @@ docker cp xiaomi_miot_raw/ homeassistant:/config/custom_components/
     <script type="text/javascript">
       var gitalk = new Gitalk({
         id: 'd82174a51d3eed808b77dfaad3370085',
-        title: '自己动手将米家接入Homekit',
+        title: '自己动手将米家接入Homekit，构建低成本智能家居系统',
         clientID: '7e5b8bd7063e5315e349',
         clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
         repo: 'kuhung.github.io',
