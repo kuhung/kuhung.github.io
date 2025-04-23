@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="华中科技大学,谷粒,谷粒粒,机器学习,社交网络，数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-76017508-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  <link rel="prev" href="https://kuhungio.me/2025/iot-home/" />
+  <link rel="next" href="https://kuhungio.me/2025/amap-mcp/" />
+  <link rel="canonical" href="https://kuhungio.me/2025/numerai-guide/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Numerai量化101 | 谷粒的博客
+       
+  </title>
+  <meta name="title" content="Numerai量化101 | 谷粒的博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhungio.me"
+    },
+    "articleSection" : "posts",
+    "name" : "Numerai量化101",
+    "headline" : "Numerai量化101",
+    "description" : "一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：\n持仓规模为3.6亿美元（现金部分未披露）\n基金持仓头寸数为389支\n为什么要关注它，是因为它的噱头集成实在是太多了：机器学习\u002b加密货币\u002b对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市场走势，并提交自己的预测结果\/模型。平台再根据参赛者的质押金额，对模型预测结果做集成，以此来指导投资。\n在该平台上，截至20250312：平台上的活跃参与者（有提交并且质押本金）用户有490位，模型数为3851个。质押55万枚NMR，约合440万美元。平均每位用户质押约9千美元，质押中位数为8百美元。年回报率约为46%。\n由于增加了质押和回报计算部分，相较于一般量化比赛会稍显复杂。本文将在评价指标和回报计算方面，做着重介绍。此外还将给出一个初步的执行流程，以及作者的实盘线上反馈。\n评价指标：如何评判和分配收益 数据情况：数据分布\u0026amp;数据生成机制 模型构建：如何构建基本模型 线上反馈：提交后的数据情况和可能的改进方向 如果读者对于量化的基本知识还不甚了解，可参考作者的思维导图：谷粒的博客 思维导图｜《量化交易》\n二、评估指标参考 核心指标与回报计算 一句话概括：既关注模型的预测效果，也关注模型的额外信息增益。预测效果：关注的是模型对于特定标的未来20天的预测相关性，使用相关系数计算。额外信息增益：关注单个模型对于最后的加权模型预测的贡献度，越独特越准确越好。\n另外，平台增加了本金的概念：你需要对自己的模型下注，下注的标的物便是NMR，平台发行的加密货币。\n最后的收益计算如下：payout = stake * clip(payout_factor * (corr * 0.5 \u002b mmc * 2), -0.05, 0.05)\n其中：payout指平台支付给你的回报，stake是下注的本金。clip的作用是限制最大最小范围到0.05上下。其中corr和mmc是需要重点关注的指标。平台希望提交的模型关注相关性，更关心模型的额外贡献情况。\n相关系数 (CORR) 相关系数衡量预测值与实际目标值之间的相关性。\nimport numpy as np from scipy import stats def numerai_corr(preds, target): \u0026#34;\u0026#34;\u0026#34; 计算转换后的预测值和目标值之间的皮尔逊相关系数 Args: preds: 预测值 target: 目标值 Returns: float: 相关系数 \u0026#34;\u0026#34;\u0026#34; # 对预测值进行排名和高斯化 ranked_preds = (preds.rank(method=\u0026#34;average\u0026#34;).values - 0.5) \/ preds.count() gauss_ranked_preds = stats.",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2025",
+    "datePublished": "2025-03-11 15:38:38 \u002b0800 CST",
+    "dateModified" : "2025-03-11 15:38:38 \u002b0800 CST",
+    "url" : "https:\/\/kuhungio.me\/2025\/numerai-guide\/",
+    "wordCount" : "530",
+    "keywords" : [ "mindmap","思维导图", "谷粒的博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">谷粒的博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">历史文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhungio.me">谷粒的博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">历史文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Numerai量化101</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhungio.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2025-03-11 itemprop="datePublished">March 11, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhungio.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+
+                |
+                <a href="#gitalk-container" itemprop="discussionUrl">
+                    <span class="gitalk-comment-count" itemprop="commentCount"></span>
+                </a>
+                条评论
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#核心指标与回报计算">核心指标与回报计算</a></li>
+    <li><a href="#相关系数-corr">相关系数 (CORR)</a></li>
+    <li><a href="#模型贡献mmc">模型贡献（MMC）</a></li>
+    <li><a href="#指标汇总">指标汇总</a></li>
+    <li><a href="#其他重要指标">其他重要指标</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#数据集说明">数据集说明</a></li>
+    <li><a href="#实测说明">实测说明</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="一numerai-平台介绍">一、Numerai 平台介绍</h1>
+<p>Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：</p>
+<p>持仓规模为<strong>3.6亿美元</strong>（现金部分未披露）</p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/numerai/numerai.png" alt="持仓规模" class="lazyload"><figcaption class="image-caption">持仓规模</figcaption></figure></p>
+<p>基金持仓头寸数为<strong>389支</strong></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/numerai/heatmap.png" alt="持仓头寸" class="lazyload"><figcaption class="image-caption">持仓头寸</figcaption></figure></p>
+<p>为什么要关注它，是因为它的噱头集成实在是太多了：<strong>机器学习+加密货币+对冲基金</strong>。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市场走势，并提交自己的预测结果/模型。平台再根据参赛者的质押金额，对模型预测结果做集成，以此来指导投资。</p>
+<p>在该平台上，截至20250312：平台上的活跃参与者（有提交并且质押本金）用户有490位，模型数为3851个。质押55万枚NMR，约合440万美元。平均每位用户质押约9千美元，质押中位数为8百美元。<strong>年回报率约为46%</strong>。</p>
+<p>由于增加了质押和回报计算部分，相较于一般量化比赛会稍显复杂。本文将在评价指标和回报计算方面，做着重介绍。此外还将给出一个初步的执行流程，以及作者的实盘线上反馈。</p>
+<ul>
+<li>评价指标：如何评判和分配收益</li>
+<li>数据情况：数据分布&amp;数据生成机制</li>
+<li>模型构建：如何构建基本模型</li>
+<li>线上反馈：提交后的数据情况和可能的改进方向</li>
+</ul>
+<p>如果读者对于量化的基本知识还不甚了解，可参考作者的思维导图：<a href="https://kuhungio.me/2022/m2-quantitative-trading/">谷粒的博客 思维导图｜《量化交易》</a></p>
+<h1 id="二评估指标参考">二、评估指标参考</h1>
+<h2 id="核心指标与回报计算">核心指标与回报计算</h2>
+<p>一句话概括：既关注模型的预测效果，也关注模型的额外信息增益。预测效果：关注的是模型对于特定标的未来20天的预测相关性，使用相关系数计算。额外信息增益：关注单个模型对于最后的加权模型预测的贡献度，越独特越准确越好。</p>
+<p>另外，平台增加了本金的概念：你需要对自己的模型下注，下注的标的物便是NMR，平台发行的加密货币。</p>
+<p>最后的收益计算如下：<code>payout = stake * clip(payout_factor * (corr * 0.5 + mmc * 2), -0.05, 0.05)</code></p>
+<p>其中：payout指平台支付给你的回报，stake是下注的本金。clip的作用是限制最大最小范围到0.05上下。其中corr和mmc是需要重点关注的指标。平台希望提交的模型关注相关性，更关心模型的额外贡献情况。</p>
+<h2 id="相关系数-corr">相关系数 (CORR)</h2>
+<p>相关系数衡量预测值与实际目标值之间的相关性。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> stats
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">numerai_corr</span>(preds, target):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    计算转换后的预测值和目标值之间的皮尔逊相关系数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        preds: 预测值
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        target: 目标值
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        float: 相关系数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 对预测值进行排名和高斯化</span>
+</span></span><span style="display:flex;"><span>    ranked_preds <span style="color:#f92672">=</span> (preds<span style="color:#f92672">.</span>rank(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;average&#34;</span>)<span style="color:#f92672">.</span>values <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>) <span style="color:#f92672">/</span> preds<span style="color:#f92672">.</span>count()
+</span></span><span style="display:flex;"><span>    gauss_ranked_preds <span style="color:#f92672">=</span> stats<span style="color:#f92672">.</span>norm<span style="color:#f92672">.</span>ppf(ranked_preds)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 目标值中心化</span>
+</span></span><span style="display:flex;"><span>    centered_target <span style="color:#f92672">=</span> target <span style="color:#f92672">-</span> target<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 将预测值和目标值都提高到1.5次方，加强尾部</span>
+</span></span><span style="display:flex;"><span>    preds_p15 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sign(gauss_ranked_preds) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(gauss_ranked_preds) <span style="color:#f92672">**</span> <span style="color:#ae81ff">1.5</span>
+</span></span><span style="display:flex;"><span>    target_p15 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sign(centered_target) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>abs(centered_target) <span style="color:#f92672">**</span> <span style="color:#ae81ff">1.5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 计算相关系数</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>corrcoef(preds_p15, target_p15)[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>]
+</span></span></code></pre></div><p>相关系数是一个比较常见的评估指标。如果是个人量化或者公司量化，也会关心该指标。而MMC是一个不怎么常用的指标。</p>
+<h2 id="模型贡献mmc">模型贡献（MMC）</h2>
+<p>如果你的模型既预测相关度高，又和其他人的模型预测结果不同，那么你们MMC就高。但如果你的模型和别人的模型一样，那么MMC就会很低。</p>
+<p><strong>算法原理</strong>：</p>
+<ul>
+<li>先计算 <strong>Meta Model</strong>（一个汇总所有预测者的加权平均模型）。</li>
+<li>假设你的模型 <code>predictions</code> 与 <strong>Meta Model 非常相似</strong>，那么你的模型实际上 <strong>没有贡献新的信息</strong>，MMC 会很低。</li>
+<li>如果你的模型贡献了<strong>新的信息</strong>（即，预测与 Meta Model <strong>不同</strong>，但仍然与目标相关），<strong>MMC 会更高</strong>。</li>
+</ul>
+<p><strong>计算方式</strong>：</p>
+<ol>
+<li>
+<p><strong>中性化你的预测</strong>：去掉你预测与 Meta Model 的相似性（<strong>消除与 Meta Model 高度相关的部分</strong>，即正交化）。</p>
+</li>
+<li>
+<p>计算消除 Meta Model 成分后的预测与真实值的协方差</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">contribution</span>(
+</span></span><span style="display:flex;"><span>    predictions: pd<span style="color:#f92672">.</span>DataFrame,
+</span></span><span style="display:flex;"><span>    meta_model: pd<span style="color:#f92672">.</span>Series,
+</span></span><span style="display:flex;"><span>    live_targets: pd<span style="color:#f92672">.</span>Series,
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>Series:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Calculate the contributive correlation of the given predictions
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    wrt the given meta model.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Then calculate contributive correlation by:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    1. tie-kept ranking each prediction and the meta model
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    2. gaussianizing each prediction and the meta model
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    3. orthogonalizing each prediction wrt the meta model
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    4. multiplying the orthogonalized predictions and the targets
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Arguments:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        predictions: pd.DataFrame - the predictions to evaluate
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        meta_model: pd.Series - the meta model to evaluate against
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        live_targets: pd.Series - the live targets to evaluate against
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Returns:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pd.Series - the resulting contributive correlation
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                    scores for each column in predictions
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># filter and sort preds, mm, and targets wrt each other</span>
+</span></span><span style="display:flex;"><span>    meta_model, predictions <span style="color:#f92672">=</span> filter_sort_index(meta_model, predictions)
+</span></span><span style="display:flex;"><span>    live_targets, predictions <span style="color:#f92672">=</span> filter_sort_index(live_targets, predictions)
+</span></span><span style="display:flex;"><span>    live_targets, meta_model <span style="color:#f92672">=</span> filter_sort_index(live_targets, meta_model)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># rank and normalize meta model and predictions so mean=0 and std=1</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> gaussian(tie_kept_rank(predictions))<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>    m <span style="color:#f92672">=</span> gaussian(tie_kept_rank(meta_model<span style="color:#f92672">.</span>to_frame()))[meta_model<span style="color:#f92672">.</span>name]<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># orthogonalize predictions wrt meta model</span>
+</span></span><span style="display:flex;"><span>    neutral_preds <span style="color:#f92672">=</span> orthogonalize(p, m)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># center the target</span>
+</span></span><span style="display:flex;"><span>    live_targets <span style="color:#f92672">-=</span> live_targets<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># multiply target and neutralized predictions</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># this is equivalent to covariance b/c mean = 0</span>
+</span></span><span style="display:flex;"><span>    mmc <span style="color:#f92672">=</span> (live_targets <span style="color:#f92672">@</span> neutral_preds) <span style="color:#f92672">/</span> len(live_targets)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>Series(mmc, index<span style="color:#f92672">=</span>predictions<span style="color:#f92672">.</span>columns)
+</span></span></code></pre></div><h2 id="指标汇总">指标汇总</h2>
+<p>CORR和MMC是直接参与计算收益的指标，除了他俩平台还推荐关注FNC特征中性化指标。</p>
+<table>
+<thead>
+<tr>
+<th>指标类型</th>
+<th>重要性</th>
+<th>收益影响</th>
+<th>关注度</th>
+<th>优化建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correlation (CORR20v2)</td>
+<td>最基础指标</td>
+<td>直接影响基础收益</td>
+<td>高</td>
+<td>保持稳定性，避免过拟合</td>
+</tr>
+<tr>
+<td>Meta Model Contribution (MMC)</td>
+<td>最重要指标</td>
+<td>额外收益主要来源</td>
+<td>最高</td>
+<td>开发独特策略，避免与其他模型高度相关</td>
+</tr>
+<tr>
+<td>Feature Neutral Correlation (FNC)</td>
+<td>风控指标</td>
+<td>影响长期收益</td>
+<td>高</td>
+<td>降低特征依赖，提高模型鲁棒性</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>相关系数(CORR)：衡量预测准确性</p>
+</li>
+<li>
+<p>元模型贡献(MMC)：衡量模型独特性，与其他模型的差异性，对整体预测的贡献</p>
+</li>
+<li>
+<p>特征中性(FNC)：避免过度依赖单一特征，寻求Alpha收益而非Beta</p>
+</li>
+</ul>
+<h2 id="其他重要指标">其他重要指标</h2>
+<ul>
+<li>夏普比率 (sharpe)</li>
+<li>最大回撤 (max_drawdown)</li>
+</ul>
+<p>除了相关性，在实盘中我们还会关心夏普值和最大回撤。但该指标为后验指标，在该平台为参考指标。</p>
+<h1 id="三数据说明">三、数据说明</h1>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/numerai/data.png" alt="数据说明" class="lazyload"><figcaption class="image-caption">数据说明</figcaption></figure></p>
+<p>id其实就是对应的股票市场上的标的物；era代表时间单位，一个era表示一周，预测目标是4周后的市场表现。target是人为构造，有多种构造方式已实现。</p>
+<h2 id="数据集说明">数据集说明</h2>
+<p>数据集包含以下文件：</p>
+<ul>
+<li><code>train_int8.parquet</code>: 训练数据</li>
+<li><code>validation_int8.parquet</code>: 验证数据</li>
+<li><code>live_int8.parquet</code>: 实时预测数据</li>
+<li><code>meta_model.parquet</code>: 元模型数据</li>
+<li><code>features.json</code>: 特征说明</li>
+<li><code>_example_preds.{csv,parquet}</code>: 示例预测文件</li>
+</ul>
+<p>实际上他们的接口会有变动，命名大致如上。数据已经清洗干净。</p>
+<h2 id="实测说明">实测说明</h2>
+<p>预测目标可以进行融合，特征在训练集做了全局处理，构建交叉验证时需注意过拟合风险。</p>
+<p>验证集和训练集都是过去的数据，是官方人为切割的结果。这样做只是为了和官网上的评估参数一致。</p>
+<p>个人开发而言，将验证集和训练集合并，也是OK的。不过根据线上指标的反馈，合并后会负向影响MMC指标。</p>
+<h1 id="四开发建模">四、开发建模</h1>
+<p>根据官方的文档，建模其实代码很少，几行就可以跑起来，因为数据已经被清洗、归一化过了。</p>
+<p>详情可参考：<a href="https://colab.research.google.com/github/numerai/example-scripts/blob/master/hello_numerai.ipynb">hello_numerai.ipynb</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMRegressor.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lightgbm <span style="color:#66d9ef">as</span> lgb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://lightgbm.readthedocs.io/en/latest/Parameters-Tuning.html</span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> lgb<span style="color:#f92672">.</span>LGBMRegressor(
+</span></span><span style="display:flex;"><span>  n_estimators<span style="color:#f92672">=</span><span style="color:#ae81ff">2000</span>,
+</span></span><span style="display:flex;"><span>  learning_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>,
+</span></span><span style="display:flex;"><span>  max_depth<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>  num_leaves<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">5</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>  colsample_bytree<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This will take a few minutes 🍵</span>
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>fit(
+</span></span><span style="display:flex;"><span>  train[feature_set],
+</span></span><span style="display:flex;"><span>  train[<span style="color:#e6db74">&#34;target&#34;</span>]
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>核心部分相当直接，毕竟特征和label都已经帮你构造好了，不像公司业务需要自己组织生产。训练完成后，可以选择模型上传，在线上预测。也可以考虑数据拉取，然后上传结果。</p>
+<p>就参考脚本来说，官方给出的建议是增加n_estimators可提升模型效果，这也符合机器学习的直觉。不过这样做的潜在风险是MMC会降低，因为官方自己大概率用的这种方式。</p>
+<p>对于参赛者来说，<strong>在增大参数前，更多的数据探索和模型构造是更建议的做法。</strong></p>
+<h1 id="五总结">五、总结</h1>
+<p>该社区内的活跃度不算高，近期3个月少有用户发言。平台的拉新工作一般，NMR货币的获取对于大部份人来说并非易事，新手引导的NMR货币发放也存在bug难以到账。有用户认为NMR代币的方式，会带来价格波动上的风险。</p>
+<p>平台提供的数据是清洗匿名化的数据。希望通过众包的形式，借助不同的数据科学家，生成预测能力强、偏向Alpha的量化模型。对于个人来说，是一个不错的练手之地。不同于实际业务中的数据清洗占大头的情况，这里需要的是模型能力。除此之外，平台的模型思想还是值得学习的：特别是label融合和特征中性化的技巧。</p>
+<h1 id="参考资料">参考资料</h1>
+<ol>
+<li><a href="https://docs.numer.ai/numerai-tournament/scoring">指标说明文档</a></li>
+<li><a href="https://docs.numer.ai/numerai-tournament/submissions">官方提交说明</a></li>
+<li><a href="https://coinmarketcap.com/currencies/numeraire/">NMR 价格走势</a></li>
+<li><a href="https://fintel.io/zh-hant/i/numerai-gp-llc">Numerai GP 投资组合持仓</a></li>
+<li>工具推荐:
+<ol>
+<li>集成工具: <a href="https://crowdcent.github.io/numerblox/">numerblox</a></li>
+<li>THOR工具: <a href="https://github.com/ThomasWong2022/thor-public">thor-public</a></li>
+</ol>
+</li>
+</ol>
+<p>评分指标总览</p>
+<table>
+<thead>
+<tr>
+<th>指标名称</th>
+<th>缩写</th>
+<th>计算周期</th>
+<th>说明</th>
+<th>计算方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correlation</td>
+<td>CORR20v2</td>
+<td>20D2L (+2天数据延迟)</td>
+<td>预测值与target_cyrus_20的相关系数</td>
+<td>numerai_corr</td>
+</tr>
+<tr>
+<td>Meta Model Contribution</td>
+<td>MMC</td>
+<td>20D2L (+2天数据延迟)</td>
+<td>预测值对SWMM和target_cyrus_20的贡献</td>
+<td>correlation_contribution</td>
+</tr>
+<tr>
+<td>Feature Neutral Correlation</td>
+<td>FNCV3</td>
+<td>20D2L (+2天数据延迟)</td>
+<td>特征中性化后的相关系数</td>
+<td>feature_neutral_corr</td>
+</tr>
+<tr>
+<td>Correlation Jerome</td>
+<td>CORJ60</td>
+<td>60D2L (+2天数据延迟)</td>
+<td>预测值与target_jerome_60的相关系数</td>
+<td>numerai_corr</td>
+</tr>
+<tr>
+<td>Benchmark Model Contribution</td>
+<td>BMC</td>
+<td>20D2L (+2天数据延迟)</td>
+<td>预测值对BMM的贡献</td>
+<td>correlation_contribution</td>
+</tr>
+<tr>
+<td>Correlation with Meta Model</td>
+<td>CWMM</td>
+<td>4天数据延迟</td>
+<td>与SWMM的相关系数</td>
+<td>pearson correlation</td>
+</tr>
+<tr>
+<td>Max Correlation with Numerai Models</td>
+<td>MCWNM</td>
+<td>4天数据延迟</td>
+<td>与其他提交模型的最大相关系数</td>
+<td>pearson correlation</td>
+</tr>
+<tr>
+<td>Average Pairwise Correlation with Numerai Models</td>
+<td>APCWNM</td>
+<td>4天数据延迟</td>
+<td>与其他提交模型的平均相关系数</td>
+<td>pearson correlation</td>
+</tr>
+</tbody>
+</table>
+<p>注：</p>
+<ul>
+<li>20D2L (20 Days 2 Lag): 20个交易日(4周)，2天延迟</li>
+<li>60D2L (60 Days 2 Lag): 60个交易日，2天延迟</li>
+<li>SWMM (Stake-Weighted Meta Model): 加权元模型</li>
+<li>BMM (Benchmark Meta Model): 基准元模型</li>
+</ul>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhungio.me/2025/numerai-guide/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/mindmap/">
+                    #mindmap</a></span>
+            
+            <span class="tag"><a href="https://kuhungio.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+                    #思维导图</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhungio.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhungio.me/2025/iot-home/" class="prev" rel="prev" title="自己动手将米家接入Homekit，构建低成本智能家居系统"><i class="iconfont icon-left"></i>&nbsp;自己动手将米家接入Homekit，构建低成本智能家居系统</a>
+        
+        
+        <a href="https://kuhungio.me/2025/amap-mcp/" class="next" rel="next" title="P人友好的高德（谷歌）地图 MCP">P人友好的高德（谷歌）地图 MCP&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="gitalk-container" class="gitalk-container"></div>
+    <link rel="stylesheet" href="/lib/gitalk/gitalk-1.2.2.min.css">
+    <script src="/lib/gitalk/gitalk-1.2.2.min.js"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '62bd9ea6e6946eab8e647eb7a3b9b6dd',
+        title: 'Numerai量化101',
+        clientID: '7e5b8bd7063e5315e349',
+        clientSecret: 'd6bd237e0a078b7e343775a47533d7b95d364899',
+        repo: 'kuhung.github.io',
+        owner: 'kuhung',
+        admin: ['kuhung'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the
+      <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a>
+    </noscript><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2025</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhungio.me">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
