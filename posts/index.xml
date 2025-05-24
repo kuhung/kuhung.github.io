@@ -6,17 +6,32 @@
     <description>Recent content in Posts on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Apr 2025 14:37:35 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 May 2025 12:15:10 +0800</lastBuildDate><atom:link href="https://kuhungio.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastVLM iPhone 安装与实机测评</title>
+      <link>https://kuhungio.me/2025/fastvlm-iphone-install/</link>
+      <pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate>
+      
+      <guid>https://kuhungio.me/2025/fastvlm-iphone-install/</guid>
+      <description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
+接下来说说实测最关心的性能表现和大小情况：
+作者的测试设备为：
+MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版本 下载大小 TTFT（MBP） 内存占用 FastVLM 0.5B (fp16) 1.15G 400ms 2G FastVLM 1.5B (int8) 1.91G 600ms 2.8G FastVLM 7B (int8) 3.85G 1800ms 5G 注意：以上大小均为适配转换后，适用于Apple Silicon的模型。原始模型大小会有出入，实际按指令下载的大小即为表格所述。
+作者测试下来，认为该技术是一个初步的技术原型。能够满足基本的视频理解，在终端跑起来仍然会有发热的问题。但瑕不掩瑜，未来在端侧，AI将会有更多的可能性。打包后，最小的安装包大小在2G左右。基本上每个模型都会把MBP的CPU温度干到85度以上，风扇直接到6000转以上。真没见过这么吵的MBP。iPhone16pro的情况也大差不多，能感受到明显的温度升高。不过手头没有测温装置，所以无法给到确切的数字。而在速度方面，基本如上图所示，能够在秒级别以内产出首个Token。iPhone再乘以2-3倍。当然，这个时间也取决于提示词、图片复杂度等其他因素。
+对于未来展望部分：调用逻辑和交互上，适当的优化能够降低发热，提升用户体验。无论如何，AI新技术都需要整合到需求中，才会有更大的价值。
+准备工作 系统要求 Mac电脑：macOS 15.2+ 并安装Xcode最新版本 iPhone设备：支持iOS 18.2+的设备（建议运行内存在3G以上，iPhone X 及以上） 开发者账号：普通Apple ID即可 项目特性 ✅ 支持iOS (18.2+) 和macOS (15.2+) ✅ 显示每次推理的首Token时间(TTFT) ✅ 完全离线运行，保护隐私安全 ✅ 灵活的提示系统，支持自定义prompt ✅ 三种不同规格的预训练模型 安装步骤 1. 下载源代码 git clone https://github.com/apple/ml-fastvlm.git cd ml-fastvlm 2.</description>
+    </item>
+    
     <item>
       <title>P人友好的高德（谷歌）地图 MCP</title>
       <link>https://kuhungio.me/2025/amap-mcp/</link>
       <pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate>
       
       <guid>https://kuhungio.me/2025/amap-mcp/</guid>
-      <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安心。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
+      <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
 生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
 MCP原理 简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。
-在这之前，程序之间主要通过API交互。而MCP的出现，大大降低了组装不同程序之间的难度，使得通过文本描述执行特定功能成为可能。
+以往程序之间主要通过API交互。而MCP的出现，大大降低了组装不同程序之间的难度，使得通过文本描述执行特定功能成为可能。
 以上内容对于非技术的朋友来说较为难理解，通俗来说就是：使用MCP可以方便的调用其他能力，类似于U盘：即插即用。目前，MCP在中文互联网的传播热度大过英文社群。已经有不少厂商开始适配MCP，以期增强自身在这波AI浪潮中的竞争力。其中的典型就是地图厂商。
 目前三大地图厂商，高德、百度和腾讯都已经适配，但大部分公开教程还是以高德地图为主。以下也以高德地图出发，看看地图MCP能带来什么新体验。
 高德MCP配置 本文的侧重点并非配置，所以会简单描述配置要点。着重强调配置后的体验和反馈，这部份内容在AI自媒体中较为少见。见多了太多“炸裂”、“全新体验”、“革命”，我们来点儿实际的。用起来到底怎么样，还有哪些不足，可以尝试从哪些方面改善。
