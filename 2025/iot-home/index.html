@@ -251,82 +251,82 @@ if (!doNotTrack) {
 <h2 id="配置过程">配置过程</h2>
 <h3 id="连接树莓派">连接树莓派</h3>
 <p>对于一个全新的树莓派，我们需要初始化它，以便进行后续操作。参考以下信息：</p>
-<pre tabindex="0"><code># &lt;https://ost.51cto.com/posts/4179&gt;
-
-## 创建账号，解决没有权限的问题
-&lt;https://www.cnblogs.com/melodicule/p/16212711.html&gt;
-
-## 连接ssh
-ssh pi@192.168.x.x
-password: xx
-
-## 配置
-sudo raspi-config #设置登录方式、屏幕
-
-## VNC 可视化界面
-&lt;https://www.jianshu.com/p/5e4d64c2ceaf&gt;
-
-## 查看温度
-vcgencmd measure_temp
-
-## 引脚信息
-&lt;http://www.raspigeek.com/index.php?c=read&amp;id=126&amp;page=1&gt;
-</code></pre><h3 id="安装docker">安装docker</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># &lt;https://ost.51cto.com/posts/4179&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 创建账号，解决没有权限的问题</span>
+</span></span><span style="display:flex;"><span>&lt;https://www.cnblogs.com/melodicule/p/16212711.html&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 连接ssh</span>
+</span></span><span style="display:flex;"><span>ssh pi@192.168.x.x
+</span></span><span style="display:flex;"><span>password: xx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 配置</span>
+</span></span><span style="display:flex;"><span>sudo raspi-config <span style="color:#75715e">#设置登录方式、屏幕</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## VNC 可视化界面</span>
+</span></span><span style="display:flex;"><span>&lt;https://www.jianshu.com/p/5e4d64c2ceaf&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 查看温度</span>
+</span></span><span style="display:flex;"><span>vcgencmd measure_temp
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 引脚信息</span>
+</span></span><span style="display:flex;"><span>&lt;http://www.raspigeek.com/index.php?c<span style="color:#f92672">=</span>read&amp;id<span style="color:#f92672">=</span>126&amp;page<span style="color:#f92672">=</span>1&gt;
+</span></span></code></pre></div><h3 id="安装docker">安装docker</h3>
 <p>docker安装，需要留意源信息的变更。</p>
-<pre tabindex="0"><code>curl -fsSL &lt;https://get.docker.com&gt; -o get-docker.sh
-sudo sh get-docker.sh  --mirror Aliyun
-sudo docker version
-
-# 修改docker源与dns解析，留意是否失效ustc的源已失效
-sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39;
-{
-  &#34;registry-mirrors&#34;:[&#34;&lt;https://docker.mirrors.ustc.edu.cn&gt;&#34;],
-  &#34;dns&#34;:[&#34;114.114.114.114&#34;,&#34;8.8.8.8&#34;]
-}
-EOF
-
-sudo systemctl daemon-reload
-sudo service docker restart
-# 给pi用户权限
-sudo usermod -aG docker pi
-sudo reboot
-docker run hello-world
-</code></pre><h3 id="hacs-安装">HACS 安装</h3>
-<pre tabindex="0"><code>docker pull homeassistant/home-assistant:stable
-# 注意源的选取不同于官方文档
-docker run -d \\
-  --name homeassistant \\
-  --privileged \\
-  --restart=unless-stopped \\
-  -e TZ=Asia/Shanghai \\
-  -v /home/pi/has/config \\
-  --network=host \\
-  homeassistant/home-assistant:stable
-
-docker container ls
-</code></pre><h3 id="插件安装">插件安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -fsSL &lt;https://get.docker.com&gt; -o get-docker.sh
+</span></span><span style="display:flex;"><span>sudo sh get-docker.sh  --mirror Aliyun
+</span></span><span style="display:flex;"><span>sudo docker version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改docker源与dns解析，留意是否失效ustc的源已失效</span>
+</span></span><span style="display:flex;"><span>sudo tee /etc/docker/daemon.json <span style="color:#e6db74">&lt;&lt;-&#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;registry-mirrors&#34;:[&#34;&lt;https://docker.mirrors.ustc.edu.cn&gt;&#34;],
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;dns&#34;:[&#34;114.114.114.114&#34;,&#34;8.8.8.8&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo service docker restart
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 给pi用户权限</span>
+</span></span><span style="display:flex;"><span>sudo usermod -aG docker pi
+</span></span><span style="display:flex;"><span>sudo reboot
+</span></span><span style="display:flex;"><span>docker run hello-world
+</span></span></code></pre></div><h3 id="hacs-安装">HACS 安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker pull homeassistant/home-assistant:stable
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注意源的选取不同于官方文档</span>
+</span></span><span style="display:flex;"><span>docker run -d <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  --name homeassistant <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  --privileged <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  --restart<span style="color:#f92672">=</span>unless-stopped <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  -e TZ<span style="color:#f92672">=</span>Asia/Shanghai <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  -v /home/pi/has/config <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  --network<span style="color:#f92672">=</span>host <span style="color:#ae81ff">\\</span>
+</span></span><span style="display:flex;"><span>  homeassistant/home-assistant:stable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker container ls
+</span></span></code></pre></div><h3 id="插件安装">插件安装</h3>
 <p>在网络情况佳的情况下，可直接在网页端配置。核心要点是GitHub上所托管的资源能否顺利获得。</p>
-<pre tabindex="0"><code>vi /etc/hosts
-151.101.64.133    raw.githubusercontent.com
-52.74.223.119    github.com
-# 方式一
-docker exec -it homeassistant bash
-wget -O - &lt;https://get.hacs.xyz&gt; | bash -
-
-# 方式二：先去上面的网址把压缩包下下来，按照网址里的步骤手动来
-docker cp hacs.zip homeassistant:/config/custom_components/
-docker exec -it homeassistant bash
-
-# 方式三：
-wget -O - &lt;https://ghproxy.com/raw.githubusercontent.com/hasscc/get/main/get&gt; | HUB_DOMAIN=ghproxy.com/github.com DOMAIN=hacs REPO_PATH=hacs-china/integration ARCHIVE_TAG=china bash -
-
-# 安装/下载小米插件
-wget &lt;https://github.com/ha0y/xiaomi_miot_raw/archive/refs/heads/master.zip&gt;
-cd **
-docker cp xiaomi_miot_raw/ homeassistant:/config/custom_components/
-</code></pre><h3 id="网页配置">网页配置</h3>
-<pre tabindex="0"><code># 打开vscode，连接登陆树莓派 转发终端 8123以实现能够在本地访问
-</code></pre><p>直接通过HACS侧边栏进入并搜索xiaomi，即可获得相关插件。之后再在设置-&gt;集成中，配置小米账号，选定传感器。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vi /etc/hosts
+</span></span><span style="display:flex;"><span>151.101.64.133    raw.githubusercontent.com
+</span></span><span style="display:flex;"><span>52.74.223.119    github.com
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方式一</span>
+</span></span><span style="display:flex;"><span>docker exec -it homeassistant bash
+</span></span><span style="display:flex;"><span>wget -O - &lt;https://get.hacs.xyz&gt; | bash -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方式二：先去上面的网址把压缩包下下来，按照网址里的步骤手动来</span>
+</span></span><span style="display:flex;"><span>docker cp hacs.zip homeassistant:/config/custom_components/
+</span></span><span style="display:flex;"><span>docker exec -it homeassistant bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方式三：</span>
+</span></span><span style="display:flex;"><span>wget -O - &lt;https://ghproxy.com/raw.githubusercontent.com/hasscc/get/main/get&gt; | HUB_DOMAIN<span style="color:#f92672">=</span>ghproxy.com/github.com DOMAIN<span style="color:#f92672">=</span>hacs REPO_PATH<span style="color:#f92672">=</span>hacs-china/integration ARCHIVE_TAG<span style="color:#f92672">=</span>china bash -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装/下载小米插件</span>
+</span></span><span style="display:flex;"><span>wget &lt;https://github.com/ha0y/xiaomi_miot_raw/archive/refs/heads/master.zip&gt;
+</span></span><span style="display:flex;"><span>cd **
+</span></span><span style="display:flex;"><span>docker cp xiaomi_miot_raw/ homeassistant:/config/custom_components/
+</span></span></code></pre></div><h3 id="网页配置">网页配置</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 打开vscode，连接登陆树莓派 转发终端 8123以实现能够在本地访问</span>
+</span></span></code></pre></div><p>直接通过HACS侧边栏进入并搜索xiaomi，即可获得相关插件。之后再在设置-&gt;集成中，配置小米账号，选定传感器。</p>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/iot-home/iot-2.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>这些操作完成后，我们可以在Home Assistant控制小米硬件。</p>
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/iot-home/iot-3.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
@@ -481,6 +481,7 @@ docker cp xiaomi_miot_raw/ homeassistant:/config/custom_components/
       }
     </script>
 </footer>
+
 
 
 
