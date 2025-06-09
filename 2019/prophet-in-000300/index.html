@@ -234,7 +234,7 @@ if (!doNotTrack) {
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;../data/000300.csv&#39;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;GB2312&#39;</span>) 
 </span></span><span style="display:flex;"><span>data<span style="color:#f92672">.</span>head()
-</span></span></code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_1.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+</span></span></code></pre></div><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/prophet/300_1.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>数据清洗</p>
 <ul>
 <li>选取需要的数据，并对数据做 log / box-cox 变换，使数据更符合线性、正态分布，减少方差差异。经济系统和生态系统类似，都存在指数级增长现象，也存在饱和现象。我们这里采用 log 变换。</li>
@@ -254,15 +254,15 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
 </span></span><span style="display:flex;"><span>future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_lower&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
 </span></span><span style="display:flex;"><span>future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>] <span style="color:#f92672">=</span> future_predict[<span style="color:#e6db74">&#39;yhat_upper&#39;</span>]<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:np<span style="color:#f92672">.</span>exp(x))
-</span></span></code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+</span></span></code></pre></div><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/prophet/300_2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>yhat 预测比较保守，20200307 相较于目前20190308 的大盘涨了100个点。预期最大收益：(6536-3658)/3658≈ 78%，预期最大亏损：(2158-3658)/3658≈-41%</p>
 <h3 id="模型看到了什么">模型看到了什么</h3>
 <p>Prophet 有个功能是成分拆分，咱们来看看国内股市的趋势以及季节性因素是什么。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig1 <span style="color:#f92672">=</span> m<span style="color:#f92672">.</span>plot(forecast)
 </span></span></code></pre></div><p>模型拟合情况</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_3.png" alt="模型拟合情况" class="lazyload"><figcaption class="image-caption">模型拟合情况</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/prophet/300_3.png" alt="模型拟合情况" class="lazyload"><figcaption class="image-caption">模型拟合情况</figcaption></figure></p>
 <p>趋势项</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/prophet/300_4.png" alt="整体趋势、周趋势和年趋势" class="lazyload"><figcaption class="image-caption">整体趋势、周趋势和年趋势</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/prophet/300_4.png" alt="整体趋势、周趋势和年趋势" class="lazyload"><figcaption class="image-caption">整体趋势、周趋势和年趋势</figcaption></figure></p>
 <h2 id="总结">总结</h2>
 <p>模型数据表明，沪深股市短期看可能有波动，长期看上扬可能性更大。短期对于我们这种投资方式的参考意义不大，长期来看，稳中向好，我也将持续沪深300。当然，话说回来，投资有风险，决策需谨慎。不要只看狼吃肉，不见狼挨打。去年最差的时候，本人累计亏损15%&hellip;</p>
 <p>另外再强调一下，模型并非万能。这里使用的信息单一，但真实世界，可是有多种信息共同作用于市场。模型也还未经过充分调参，没有划分数据做验证，实际使用价值有限。</p>

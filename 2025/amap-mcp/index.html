@@ -206,11 +206,11 @@ if (!doNotTrack) {
 
           <p>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。</p>
 <p>生成的结果信息很丰富，信息的组织和呈现好了很多。如下：</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/amap-mcp/trip.png" alt="借助谷歌地图MCP生成的北九州攻略" class="lazyload"><figcaption class="image-caption">借助谷歌地图MCP生成的北九州攻略</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/amap-mcp/trip.png" alt="借助谷歌地图MCP生成的北九州攻略" class="lazyload"><figcaption class="image-caption">借助谷歌地图MCP生成的北九州攻略</figcaption></figure></p>
 <h2 id="mcp原理">MCP原理</h2>
 <p>简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。</p>
 <p>以往程序之间主要通过API交互。而MCP的出现，大大降低了组装不同程序之间的难度，使得通过文本描述执行特定功能成为可能。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/amap-mcp/mcp.png" alt="来源：_avichawla@X" class="lazyload"><figcaption class="image-caption">来源：_avichawla@X</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/amap-mcp/mcp.png" alt="来源：_avichawla@X" class="lazyload"><figcaption class="image-caption">来源：_avichawla@X</figcaption></figure></p>
 <p>以上内容对于非技术的朋友来说较为难理解，通俗来说就是：使用MCP可以方便的调用其他能力，类似于U盘：即插即用。目前，MCP在中文互联网的传播热度大过英文社群。已经有不少厂商开始适配MCP，以期增强自身在这波AI浪潮中的竞争力。其中的典型就是地图厂商。</p>
 <p>目前三大地图厂商，高德、百度和腾讯都已经适配，但大部分公开教程还是以高德地图为主。以下也以高德地图出发，看看地图MCP能带来什么新体验。</p>
 <h2 id="高德mcp配置">高德MCP配置</h2>
@@ -221,7 +221,7 @@ if (!doNotTrack) {
 <li>申请获得高德地图或其他地图的开发者权限，获得密钥。</li>
 </ol>
 <p>配置成功后，即可在cursor设置处见到我们的MCP sercers详情。接下来只需要通过聊天，即可调用地图MCP进行相关的信息获取。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/amap-mcp/cursor.jpeg" alt="配置结果" class="lazyload"><figcaption class="image-caption">配置结果</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/amap-mcp/cursor.jpeg" alt="配置结果" class="lazyload"><figcaption class="image-caption">配置结果</figcaption></figure></p>
 <h2 id="使用反馈说明">使用反馈说明</h2>
 <p>在反复尝试过多次后，作者生产出了开头的旅行PDF。在这个过程中，也暴露出很多问题。</p>
 <ol>

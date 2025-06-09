@@ -224,7 +224,7 @@ if (!doNotTrack) {
           
 
           <p>大概在三年前，作者通过树莓派+小米智能家居+苹果设备，实现了通过iPhone控制家庭智能设备的功能。通过苹果生态，即可实现若干智能化：根据所在位置，开关电器；通过Siri控制灯光亮度和开关等功能。外出时，再也不用担心家里哪个电器没关；回家前，还能提前打开空调；睡觉前也不用起来给每个房间单独按开关，直接Siri指令。这大大方便了用户。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/iot-home/iot-1.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/iot-home/iot-1.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>因为使用的是小米的智能家居，相较于单纯的苹果生态，降低了智能家居的接入成本。以插座为例，HomeKit生态相关的产品需要几百元，而米家相关的产品仅需要数十元，即可实现类似效果。</p>
 <p>当然，米家相关的配置并不是没有缺点。因为引入了更多的中转设施，其出故障的可能性会比单纯的HomeKit接入会更高。这不，近期HomeKit突然完全失联（后来确认是修改路由配置导致的连锁反应），于是借机重新走了一遍流程。刚好小米在一个月前，也发布了官方的插件，以支持跨平台的控制接入。我们来看看米家官方的插件到底如何。</p>
 <p>以下，从树莓派开始讲起，着手构建通过家庭App即能控制的低成本智能家居系统。</p>
@@ -321,11 +321,11 @@ if (!doNotTrack) {
 </span></span></code></pre></div><h3 id="网页配置">网页配置</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 打开vscode，连接登陆树莓派 转发终端 8123以实现能够在本地访问</span>
 </span></span></code></pre></div><p>直接通过HACS侧边栏进入并搜索xiaomi，即可获得相关插件。之后再在设置-&gt;集成中，配置小米账号，选定传感器。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/iot-home/iot-2.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/iot-home/iot-2.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>这些操作完成后，我们可以在Home Assistant控制小米硬件。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/iot-home/iot-3.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/iot-home/iot-3.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>仅还不够，我们还需要在设置→集成→右下角添加集成，搜索并下载HomeKit bridge插件，以实现桥接功能。在该插件的配置中，选定我们希望出现在家庭中的实体。这里需要注意，一个设备对应多个实体。以接触传感器为例，包含电池电量、光照度、接触状态三个实体。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/iot-home/iot-4.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/iot-home/iot-4.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>该插件下载安装后，会出现Homekit配置所需的二维码。打开iPhone的家庭app，右上角扫描二维码后，即可绑定前面所选的实体。</p>
 <h2 id="总结">总结</h2>
 <p>单就米家来说，硬件的接入相较于3年前已经进步很多。有米家的路由器的情况下，目前可以实现硬件的快速接入。但是米家硬件的使用，需要打开相关app或者使用小爱同学。对于小米生态用户来说，体验应该不错。但是iPhone用户来说，肯定是不够优雅的。这也是切换到homekit的动机之一。</p>

@@ -336,7 +336,7 @@ if (!doNotTrack) {
 <p>BG/NBD 是一个经典模型改进型，详细的数学论证参见：<a href="http://brucehardie.com/notes/009/pareto_nbd_derivations_2005-11-05.pdf">A Note on Deriving the Pareto/NBD Model
 and Related Expressions</a></p>
 <p>该模型有如下假设：</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/lifetimes/assumptions.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/lifetimes/assumptions.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>通过模型拟合，得到4个参数。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> lifetimes <span style="color:#f92672">import</span> BetaGeoFitter
 </span></span><span style="display:flex;"><span>
@@ -348,12 +348,12 @@ and Related Expressions</a></p>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;lifetimes.BetaGeoFitter: fitted with 2357 subjects, a: 0.79, alpha: 4.41, b: 2.43, r: 0.24&gt;
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>bgf<span style="color:#f92672">.</span>summary
-</span></span></code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/lifetimes/bgm.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+</span></span></code></pre></div><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/lifetimes/bgm.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <h4 id="效果可视化">效果可视化</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> lifetimes.plotting <span style="color:#f92672">import</span> plot_probability_alive_matrix
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>plot_probability_alive_matrix(bgf)
-</span></span></code></pre></div><p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/lifetimes/frequency_recency.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+</span></span></code></pre></div><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/lifetimes/frequency_recency.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>右下角为最佳客户，交易频率高。交易跨度大；右上的客户短时多次交易，极可能已流失。</p>
 <h3 id="预测单个用户的购买行为">预测单个用户的购买行为</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>t <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#75715e">#predict purchases in 10 periods</span>

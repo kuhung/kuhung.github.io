@@ -235,24 +235,24 @@ if (!doNotTrack) {
 <h2 id="拒绝回答与可解释性哲学层面">拒绝回答与可解释性（哲学层面）</h2>
 <h3 id="1-anomaly-detection-机器能不能知道我不知道">1. Anomaly Detection 机器能不能知道“我不知道”</h3>
 <p>机器能不能知道自己的识别范围，还是说生硬地给出模型内的东西，或者说抛出无法识别。在猫狗分类里，现有的模型已经到达很高的精度，甚至能给出猫狗的品种。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/Cat.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/Cat.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>但是正式上线后，用户真的会乖乖给到猫狗的图片吗？如果用户丢一张妹子图，机器能够知道自己不知道吗？目前这个领域的研究叫做 Anomaly Detection。知道自己不知道，对于一些异常的情况，十分重要。</p>
 <h3 id="2-explainable-ai-说出为什么我知道">2. Explainable AI 说出为什么“我知道”</h3>
 <p>神马汉斯的故事：</p>
 <p>18世纪德国，一匹名叫汉斯的马成为当地网红。他能够计算简单的算术题，并用蹄子敲出正确回答。这在当时一度引起轰动。后来，有人做了个实验，把汉斯和周围的人完全隔绝，这匹马就完全蒙圈了。时事证明，这匹马的神奇能力不在于他的算数能力，而在于他的观察能力。当给到正确答案时，周围的人会有不一样的反应，汉斯也就随即停止敲马蹄。</p>
 <p>机器学习的成果，是否同汉斯一样，通过一些意想不到的渠道，获得的答案。在 <a href="http://www.heatmapping.org/slides/2017_GCPR.pdf">GCPR 2017 Tutorial</a> 的研究中，研究者通过注意力机制，研究机器判断的依据。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/GCPR2017.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/GCPR2017.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>实验者测试了两个模型，两个模型均为马匹识别。DNN 模型的焦点集中在马匹身上，是一个正常的模型。但 FV 的交点却集中在图片左下角。原来，图片的左下角有图片的出处，所有的包含马匹的图都有这个标记。所以，FV 模型学到的重点在于这些标记。同样的表现，却是不一样的判断依据。显然，FV 模型的判断依据是滑稽和不可靠的。</p>
 <p>我们需要一些技术，让 AI 不仅给出结果，同时要给出判断的依据。即：模型的可解释性。</p>
 <h2 id="抵御恶意攻击">抵御恶意攻击</h2>
 <h3 id="3-防止-adversarial-attack">3. 防止 Adversarial Attack</h3>
 <p>人有错觉，机器是否也会有错觉。我们来做一个认知实验。以下两个圈圈，哪个的颜色更深？好，记住你的答案。结果将在稍后揭晓。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/mistake.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/mistake.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>对于机器，有研究表明，通过改变图像中的个别像素，可以起到迷惑机器的作用。改变一个像素，就可以让模型的判断结果从熊猫到长臂猿。该技术名叫 Adversarial Attack。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/m_mistake.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/m_mistake.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>这样的技术相当危险。举个例子，当自动驾驶的车辆行驶在路上时，可能路边的人挥舞下旗子，机器的判断就会被干扰，做出不当的举动。</p>
 <p>回到开头的例子，正确答案是左边。这其实是一个计中计。你以为这是视觉认知实验，其实这也是某种形式的“心理攻击”。
-<figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/mistake_2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/mistake_2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <h2 id="学习模式">学习模式</h2>
 <h3 id="4-life-long-learning-终身学习">4. Life-long learning 终身学习</h3>
 <p>终身学习是一个人类行为的概念。活到老学到老，大家都知道只有不断更新自己的知识，才能跟上社会发展的步伐。同时呢，先前学到的东西，对后面的学习仍有帮助。举个例子：学完线性代数之后，对学习和理解机器学习就大有帮助。</p>
@@ -265,19 +265,19 @@ if (!doNotTrack) {
 <h3 id="6-reinforcement-learning-增强学习为什么这么慢">6. Reinforcement learning 增强学习为什么这么慢</h3>
 <p>现在撸模型，没用上增强学习，都不好意思说出来。在像星际争霸这样的游戏中，增强学习确实有用。但是，它真的有那么强吗？</p>
 <p>在星际争霸中，机器花了900小时，才到达4000分左右。而人类的能力在哪儿呢？人类只需要2小时，就能到达。像前面提到的Alphastar，它虽然在星际争霸上能够痛扁人类，但它可是花了200年的时间在玩这个游戏。模型世界就像是修仙小说里的精神世界。若是把一个人丢在里面，只能玩星际争霸，他其实也可以达到机器的水平，更可能比机器做得更好。增强学习为什么这么慢，能不能再快些？</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/Alphastar.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/Alphastar.png" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <h3 id="7-network-compression-神经网络压缩">7. Network Compression 神经网络压缩</h3>
 <p>机器学习目前多运行在大型服务器上，配备极强的 GPU、相当大的内存和数目众多的 CPU。但若想要把机器学习广泛应用于生活中，IoT 物联网这类设备的计算和存储都是十分有限的。我们能不能把模型缩小，同时保留其能力呢。我们能不能把大型神经网络进行剪枝，或者是参数二元化，以此来减轻内存和计算压力呢。我们现在有 tensorflow lite，有 coreML，但这些还不够。</p>
 <h2 id="训练数据">训练数据</h2>
 <h3 id="8-few-shot--zero-shot-learning-一定需要很多训练数据吗">8. Few-shot / Zero-shot learning 一定需要很多训练数据吗</h3>
 <p>做比赛、写论文的都知道，要想效果好，数据少不了。数据质量很大程度决定了结果的表现。但是在实际生产环境中，带标注的优质数据是极其稀少的。这个时候，老板想让你做一个异常游戏玩家的识别，数据样本又很少，你该怎么办？除去自己手工标注、请人标注、做数据扩增外，我们还有很没有别的办法。难道要跟老板摊牌，说做不了这一个任务吗？</p>
 <p>现实场景的样本之少，一直有在困惑我们一线的员工。现在我们就希望，模型能够通过少量的样本，扩展到大量的未标记数据。这样的研究有，我们称之为 Few-shot learning。更有甚至，模型能不能通过我对川菜的描述：麻辣、重油、就识别出桌上的饭菜是四川菜呢？这样的模型被称之为 Zero-shot learing，不需要样本进行学习。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/caption.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/caption.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <h3 id="9-机器学习的谎言-训练数据和测试数据很不一样">9. 机器学习的谎言 训练数据和测试数据很不一样</h3>
 <p>当我们在学习机器学习各类算法时，教科书都会有这样一个假设：训练数据和测试数据拥有相同的分布。但在真实世界中，这就是个谎言。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/train-test.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/train-test.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>以手写数字识别为例，当训练集和测试集同分布时，你可以轻松达到99%的正确率。但在真实生活中，你的老板可能会给你右边的任务。训练数据是黑白的，实际场景中背景却是彩色的。这里你有两个选择：一是把《机器学习》这本数仍到老板面前，告诉他书上写的要求同分布，你这个任务做不了。但是一想到你家里的老婆孩子，你可能还是会含泪接下这个任务。仔细想想，若是模型真的识别到数字的形状，背景色应该没有关系吧。但是当你真正来做这件事时，你会发现，同样的模型，正确率下降到了57.5%。</p>
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/images/the-next-step-fro-ML/train-test-2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/the-next-step-fro-ML/train-test-2.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
 <p>诸如此类的问题，在真实场景中很常见。实际工作中，我们也有采取一些措施，尽量避免分布不同步的情况发生。</p>
 <h2 id="总结">总结</h2>
 <p>李宏毅老师以上的总结，在生产环境确实存在。这也是我把它梳理一遍的动机，希望所有从业者在工作中能够注意到它们，在这些问题上有所突破。看完本文的读者，别忘了点赞、评论、喜欢+关注哦。你的鼓励，是我下一步的动力。</p>
