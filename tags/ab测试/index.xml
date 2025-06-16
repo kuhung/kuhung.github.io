@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AB测试 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/</link>
+    <link>https://kuhung.me/tags/ab%E6%B5%8B%E8%AF%95/</link>
     <description>Recent content in AB测试 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Jun 2019 15:28:01 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/ab%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jun 2019 15:28:01 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ab%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A/B test 评价指标的选择</title>
-      <link>https://kuhungio.me/2019/abtest-2/</link>
+      <link>https://kuhung.me/2019/abtest-2/</link>
       <pubDate>Sat, 22 Jun 2019 15:28:01 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/abtest-2/</guid>
+      <guid>https://kuhung.me/2019/abtest-2/</guid>
       <description>如何定义一个评价指标 这是上一篇文章什么是 A/B test的续集，上一篇主要讲述 A/B 测试的历史，这里接着讲如何选择指标。
 从本人的经验来看，一个指标怎么选择确实重要，但更重要的是需要自上而下理解且落实科学实验。而不是拍脑袋想指标，中途随意更换指标，汇报时仅罗列有利的指标。
 如果要用一句话解释，如何定义一个评价指标，那一定是“以始为终”。在定义一个指标的时候，要想一想为什么要定义这个指标，这个指标的定义是为了说明什么情况，如果这个指标发生变化，将需要怎么去解释它。
@@ -41,10 +41,10 @@
     
     <item>
       <title>A/B test 揭秘之什么是 A/B test</title>
-      <link>https://kuhungio.me/2019/abtest/</link>
+      <link>https://kuhung.me/2019/abtest/</link>
       <pubDate>Fri, 24 May 2019 09:02:00 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/abtest/</guid>
+      <guid>https://kuhung.me/2019/abtest/</guid>
       <description>此文总结自 Udacity 的课程：A/B test，详细而系统地讲述了 Google，Amazon 以及 Netflix 等公司是如何在商业问题中设计 A/B test 并评估效果的，对于国内的业务也有很强的参考意义。这里是总结的的一部分：什么是 A/B test，讲述 A/B Test 的定义、适用范围以及和传统方法的异同。指标选择、实验设计与评估将在后面陆续放出。
 A/B 概览 Q：什么是 A/B test？ A：A/B test 是一种用来测试新产品或新功能的在线测试常规方法。一般分为两组用户，一组对照组，一组实验组。对照组采用已有的产品或功能，实验组采用新功能。要做的是找到他们的不同反应，并以此确定哪个版本更好。
 Q：A/B test 是否有适用范围，还是说所有情况都适用？ A：A/B test 能帮助你爬上前面的山峰，但如果想弄清楚是爬这座还是另一座，A/B test 可能不太有效。A/B test 能对很大范围的事情进行测试。

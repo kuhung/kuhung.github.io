@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>行业观察 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
+    <link>https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
     <description>Recent content in 行业观察 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 17 Sep 2020 21:51:46 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Sep 2020 21:51:46 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数据开发在2020年应当是什么样子的</title>
-      <link>https://kuhungio.me/2020/data-engineering-in-2020/</link>
+      <link>https://kuhung.me/2020/data-engineering-in-2020/</link>
       <pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/data-engineering-in-2020/</guid>
+      <guid>https://kuhung.me/2020/data-engineering-in-2020/</guid>
       <description>我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样搞，浪费时间、浪费算力。 目前这家，则大不相同。技术债不多，数据治理做得还不错。没有大谈特谈数据中台，数据开发的每一行代码，都是为下游，而不是晋升服务。数据挖掘也很少碰原始 log，这节约了大量时间，让下游有更多时间集中在业务上。
 同样是数据开发，却产生不一样的结果。这让我对该工作的定位，产生了兴趣。也这篇文章的由来。
 言归正传。本文翻译自：https://towardsdatascience.com/data-engineering-in-2020-e46910786eda 结合实际工作，有较大幅度删改。
@@ -35,10 +35,10 @@
     
     <item>
       <title>更高效的远程工作之道--REMOTE 手册精要</title>
-      <link>https://kuhungio.me/2020/remote/</link>
+      <link>https://kuhung.me/2020/remote/</link>
       <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/remote/</guid>
+      <guid>https://kuhung.me/2020/remote/</guid>
       <description>大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
 虽然朋友圈已经有人发帖，渴望在办公室中办公，但是，也不能因此，就放弃思考远程工作的这么个事物。一成不变往往很简单，但变化之中，才有契机。
 远程工作契机 什么阻挡了远程工作的推行，我们无从说起。但何不把这次当作一种契机，去学习其中的脉络。
@@ -56,10 +56,10 @@
     
     <item>
       <title>为啥说数据这行不容易 Why is Data Hard </title>
-      <link>https://kuhungio.me/2018/why-is-data-hard/</link>
+      <link>https://kuhung.me/2018/why-is-data-hard/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhungio.me/2018/why-is-data-hard/</guid>
+      <guid>https://kuhung.me/2018/why-is-data-hard/</guid>
       <description>原文链接 Slack 工程师 : why-is-data-hard?
 做数据挖掘时，常常需要考虑很多方面。其中一个方面，常常会涉及到跨功能，复杂且琐碎的一些事项。数据准备以及评价指标的制定，就是这些事项之一。
 等等，似乎干数据这一行，并不容易？

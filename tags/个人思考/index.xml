@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>个人思考 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83/</link>
+    <link>https://kuhung.me/tags/%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83/</link>
     <description>Recent content in 个人思考 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 15 May 2022 11:03:26 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 11:03:26 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>抵抗理性人思维与数据诱惑</title>
-      <link>https://kuhungio.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</link>
+      <link>https://kuhung.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</link>
       <pubDate>Sun, 15 May 2022 11:03:26 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</guid>
+      <guid>https://kuhung.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</guid>
       <description>（这是一篇原定于去年这个时候发出的文章，但由于种种原因，中途搁置。近日上海发生的种种，又不禁让我想起这篇文章的意义。数据到底意味着什么？这是本期，我们思考的议题。尤其是靠数据吃饭的数据分析与数据挖掘人士，在运用数据的同时，更应该知晓其短板和问题。人，因为理性而伟大，因为知晓其局限性而成熟。）
 背景故事 最近一位朋友遇到一件事情：他们公司是做外贸的，每天和很多客户打交道。只要和人打交道，就不可避免会有冲突。他们有个系统，来记录客户的投诉。问题就在客户投诉量这里。原因是公司老板觉得，每天一百的投诉量太多，需要产品弄清楚什么情况。产品想了一个立竿见影的方法，修改判断标准：如果客户的投诉内容少于7个字，则视为无效投诉。因为字这么少，并没有实际有效的信息。
 这个方法，惊为天人，马上投诉量指标就下来了，老板也不再过问。问题解决了吗？看起来解决了，又看起来没有。

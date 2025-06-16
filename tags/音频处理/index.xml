@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>音频处理 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/</link>
+    <link>https://kuhung.me/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/</link>
     <description>Recent content in 音频处理 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Jan 2020 23:52:45 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
-      <link>https://kuhungio.me/2020/audio_progress/</link>
+      <link>https://kuhung.me/2020/audio_progress/</link>
       <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/audio_progress/</guid>
+      <guid>https://kuhung.me/2020/audio_progress/</guid>
       <description>背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
 问题界定 这里将问题进行界定，进行子任务拆分：
 将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DIY on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/diy/</link>
+    <link>https://kuhung.me/tags/diy/</link>
     <description>Recent content in DIY on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 06 Feb 2025 13:06:59 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/diy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Feb 2025 13:06:59 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/diy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自己动手将米家接入Homekit，构建低成本智能家居系统</title>
-      <link>https://kuhungio.me/2025/iot-home/</link>
+      <link>https://kuhung.me/2025/iot-home/</link>
       <pubDate>Thu, 06 Feb 2025 13:06:59 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/iot-home/</guid>
+      <guid>https://kuhung.me/2025/iot-home/</guid>
       <description>大概在三年前，作者通过树莓派+小米智能家居+苹果设备，实现了通过iPhone控制家庭智能设备的功能。通过苹果生态，即可实现若干智能化：根据所在位置，开关电器；通过Siri控制灯光亮度和开关等功能。外出时，再也不用担心家里哪个电器没关；回家前，还能提前打开空调；睡觉前也不用起来给每个房间单独按开关，直接Siri指令。这大大方便了用户。
 因为使用的是小米的智能家居，相较于单纯的苹果生态，降低了智能家居的接入成本。以插座为例，HomeKit生态相关的产品需要几百元，而米家相关的产品仅需要数十元，即可实现类似效果。
 当然，米家相关的配置并不是没有缺点。因为引入了更多的中转设施，其出故障的可能性会比单纯的HomeKit接入会更高。这不，近期HomeKit突然完全失联（后来确认是修改路由配置导致的连锁反应），于是借机重新走了一遍流程。刚好小米在一个月前，也发布了官方的插件，以支持跨平台的控制接入。我们来看看米家官方的插件到底如何。

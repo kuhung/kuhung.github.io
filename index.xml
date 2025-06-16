@@ -1,28 +1,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>谷粒的博客 on 谷粒的博客</title>
-    <link>https://kuhungio.me/</link>
+    <link>https://kuhung.me/</link>
     <description>Recent content in 谷粒的博客 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 12 Jun 2025 11:43:34 +0800</lastBuildDate>
-    <atom:link href="https://kuhungio.me/" rel="self" type="application/rss+xml" />
+    <atom:link href="https://kuhung.me/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Posts</title>
-      <link>https://kuhungio.me/posts/</link>
+      <link>https://kuhung.me/posts/</link>
       <pubDate>Thu, 12 Jun 2025 11:43:34 +0800</pubDate>
       
-      <guid>https://kuhungio.me/posts/</guid>
+      <guid>https://kuhung.me/posts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>关于我</title>
-      <link>https://kuhungio.me/about/</link>
+      <link>https://kuhung.me/about/</link>
       <pubDate>Sat, 17 Apr 2021 00:14:04 +0800</pubDate>
       
-      <guid>https://kuhungio.me/about/</guid>
+      <guid>https://kuhung.me/about/</guid>
       <description>&lt;h1 id=&#34;关于我&#34;&gt;关于我&lt;/h1&gt;
 &lt;h2 id=&#34;个人简介&#34;&gt;个人简介&lt;/h2&gt;
 &lt;ul&gt;
@@ -195,7 +195,7 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;微信公众号、头条、知乎。
-&lt;img src=&#34;https://kuhungio.me/images/post/social.jpg&#34; alt=&#34;social&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://kuhung.me/images/post/social.jpg&#34; alt=&#34;social&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上述后台的留言都会及时回复&lt;/li&gt;
 &lt;/ul&gt;

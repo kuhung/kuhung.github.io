@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据分析 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
+    <link>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
     <description>Recent content in 数据分析 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 25 Jul 2020 20:43:52 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jul 2020 20:43:52 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2020高考志愿填报中的数据误导与价值机会</title>
-      <link>https://kuhungio.me/2020/statistics-tell-lies/</link>
+      <link>https://kuhung.me/2020/statistics-tell-lies/</link>
       <pubDate>Sat, 25 Jul 2020 20:43:52 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/statistics-tell-lies/</guid>
+      <guid>https://kuhung.me/2020/statistics-tell-lies/</guid>
       <description>高考发榜，已经有几日。这篇文章姗姗来迟。还是希望，给各位考生朋友，补充有价值的信息。2020，迟到的高考，落下帷幕。紧接着，就是志愿填报环节。
 想起自己当年，突然要选择自己的专业，那是慌得不行。草草的根据自己分数，划了几条线，填了武大、华科、同济、天大。然后又在最后一刻，决定学门手艺。将华科调到了最前面，并且选择了目前的专业，一个名字听起来很酷的专业。于是，就这样来到了华科机械大类下的测控专业。
 但是，在度过四年时光后，却没有选择机械，而是选择了互联网。一方面，是原专业的就业环境，与志愿填报时的预期不符；相信每一位机械同学，都是想着做酷炫的机器人、或者是参与“大国重器”的建设中来；但实际上，即使是华科，机械全国前三，可选择的余地也不多。另一方面，是薪资成长性，传统机械，十年磨一剑，适合耐得住寂寞，有家底的同学。而就在刚刚，在专业大群里，惊闻自己这个专业，今年不再招生。
@@ -41,10 +41,10 @@
     
     <item>
       <title>凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </title>
-      <link>https://kuhungio.me/2019/competing-on-analytics/</link>
+      <link>https://kuhung.me/2019/competing-on-analytics/</link>
       <pubDate>Tue, 12 Mar 2019 10:48:59 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/competing-on-analytics/</guid>
+      <guid>https://kuhung.me/2019/competing-on-analytics/</guid>
       <description>数据科学家这个职位，随着12年的哈佛商业评论的一篇文章，成为了21世纪“最性感的职业”。这年头，越来越多的年轻人开始往这个方向奔，市场几近饱和。但是，很少有听见企业家说：“是的，我们很需要数据工程师，因为以下原因&amp;hellip;“对于看此文的老板们，你们是否不止一次听到媒体鼓吹大数据、鼓吹机器学习、鼓吹人工智能，却很少有听到说这些东西，对于企业来说，实实在在带来了什么。如果你的答案是“Yes”，那么这篇文章将解答你的疑惑。
 本文论点主要取自 Thomas H. Davenport 文章 《Competing on Analytics》，试图从企业管理的角度，阐述为什么我们需要数据科学家（或者说广义的数据相关人员）；他们能给企业带来哪些切实的好处；以及作为企业家，我们该如何转型，如何拥有更强的竞争力。
 同质化的市场危机 在当下，想依靠某个新奇的点子或者是产品服务，已经不大可能再和其他竞争者区分开来。作为一个人类组织，底子里仍保留有人类的天性。人类天生就爱模仿，从一出生模仿吃东西，到后面通过模仿习得语言，再到后面的学习。人类的本质可能就是个复读机。模仿可以说保证了我们人类种族的存在与延续。对于企业来说，也大抵相同。

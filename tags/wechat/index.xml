@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wechat on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/wechat/</link>
+    <link>https://kuhung.me/tags/wechat/</link>
     <description>Recent content in Wechat on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Jan 2019 15:52:08 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Jan 2019 15:52:08 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>12306Bypass Server 抢票神器&#43;微信提醒</title>
-      <link>https://kuhungio.me/2019/12306bypass-server/</link>
+      <link>https://kuhung.me/2019/12306bypass-server/</link>
       <pubDate>Sat, 26 Jan 2019 15:52:08 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/12306bypass-server/</guid>
+      <guid>https://kuhung.me/2019/12306bypass-server/</guid>
       <description>前言 春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。
 网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。
 以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。

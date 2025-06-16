@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>开源框架 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/</link>
+    <link>https://kuhung.me/tags/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/</link>
     <description>Recent content in 开源框架 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 08 Mar 2019 22:48:45 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Mar 2019 22:48:45 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>用先知模型预测股市 Prophet in 000300 </title>
-      <link>https://kuhungio.me/2019/prophet-in-000300/</link>
+      <link>https://kuhung.me/2019/prophet-in-000300/</link>
       <pubDate>Fri, 08 Mar 2019 22:48:45 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/prophet-in-000300/</guid>
+      <guid>https://kuhung.me/2019/prophet-in-000300/</guid>
       <description>跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。
 时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。
 为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。

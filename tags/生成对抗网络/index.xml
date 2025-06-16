@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>生成对抗网络 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/</link>
+    <link>https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/</link>
     <description>Recent content in 生成对抗网络 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 21 Nov 2017 09:02:35 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Nov 2017 09:02:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>yysGAN 生成对抗网络，在游戏角色生成中的尝试</title>
-      <link>https://kuhungio.me/2017/yysgan/</link>
+      <link>https://kuhung.me/2017/yysgan/</link>
       <pubDate>Tue, 21 Nov 2017 09:02:35 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2017/yysgan/</guid>
+      <guid>https://kuhung.me/2017/yysgan/</guid>
       <description>使用GAN生成新的游戏角色 摘要 Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。 依赖 （pip install） cv2 tensorflow( &amp;gt;=1.0) scipy numpy 使用方法 cd yysGAN python yysGAN.py 5000次迭代训练结果 了解更多GAN的知识 Generative Adversarial Networks.ipynb
 参考资料 Siraj Raval moxiegushi/pokeGAN 项目地址 https://github.com/kuhung/yysGAN
 定制你的GAN图片生成器 # 拆包即用，修改input下文件，改为对应的jpg素材即可。 </description>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>项目备忘 on 谷粒的博客</title>
-    <link>https://kuhungio.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/</link>
+    <link>https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/</link>
     <description>Recent content in 项目备忘 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Apr 2025 14:37:35 +0800</lastBuildDate><atom:link href="https://kuhungio.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Apr 2025 14:37:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>P人友好的高德（谷歌）地图 MCP</title>
-      <link>https://kuhungio.me/2025/amap-mcp/</link>
+      <link>https://kuhung.me/2025/amap-mcp/</link>
       <pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/amap-mcp/</guid>
+      <guid>https://kuhung.me/2025/amap-mcp/</guid>
       <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
 生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
 MCP原理 简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。
@@ -33,10 +33,10 @@ MCP原理 简单来说，MCP是function call的统一定义。他不是什么新
     
     <item>
       <title>自己动手将米家接入Homekit，构建低成本智能家居系统</title>
-      <link>https://kuhungio.me/2025/iot-home/</link>
+      <link>https://kuhung.me/2025/iot-home/</link>
       <pubDate>Thu, 06 Feb 2025 13:06:59 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/iot-home/</guid>
+      <guid>https://kuhung.me/2025/iot-home/</guid>
       <description>大概在三年前，作者通过树莓派+小米智能家居+苹果设备，实现了通过iPhone控制家庭智能设备的功能。通过苹果生态，即可实现若干智能化：根据所在位置，开关电器；通过Siri控制灯光亮度和开关等功能。外出时，再也不用担心家里哪个电器没关；回家前，还能提前打开空调；睡觉前也不用起来给每个房间单独按开关，直接Siri指令。这大大方便了用户。
 因为使用的是小米的智能家居，相较于单纯的苹果生态，降低了智能家居的接入成本。以插座为例，HomeKit生态相关的产品需要几百元，而米家相关的产品仅需要数十元，即可实现类似效果。
 当然，米家相关的配置并不是没有缺点。因为引入了更多的中转设施，其出故障的可能性会比单纯的HomeKit接入会更高。这不，近期HomeKit突然完全失联（后来确认是修改路由配置导致的连锁反应），于是借机重新走了一遍流程。刚好小米在一个月前，也发布了官方的插件，以支持跨平台的控制接入。我们来看看米家官方的插件到底如何。
@@ -48,10 +48,10 @@ curl -fsSL &amp;lt;https://get.docker.com&amp;gt; -o get-docker.sh sudo sh get-d
     
     <item>
       <title>产品实践之应用沉淀</title>
-      <link>https://kuhungio.me/1970/web_deploy/</link>
+      <link>https://kuhung.me/1970/web_deploy/</link>
       <pubDate>Thu, 01 Jan 1970 23:44:32 +0800</pubDate>
       
-      <guid>https://kuhungio.me/1970/web_deploy/</guid>
+      <guid>https://kuhung.me/1970/web_deploy/</guid>
       <description> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署&amp;ndash;以垃圾消息识别为例 kuhung/flask_vue_MLsingle-page-apps-with-vue-js-and-flask-deployment 机器学习系统设计测试题 高级软件工程师需要掌握系统设计，高级机器学习从业者同样如此 机器学习系统设计原则 10个机器学习系统设计案例chiphuyen/machine-learning-systems-design </description>
     </item>
     

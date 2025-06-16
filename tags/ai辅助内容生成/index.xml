@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI辅助内容生成 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/ai%E8%BE%85%E5%8A%A9%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90/</link>
+    <link>https://kuhung.me/tags/ai%E8%BE%85%E5%8A%A9%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90/</link>
     <description>Recent content in AI辅助内容生成 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Jun 2025 19:15:55 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/ai%E8%BE%85%E5%8A%A9%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jun 2025 19:15:55 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E8%BE%85%E5%8A%A9%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</title>
-      <link>https://kuhungio.me/2025/content-sop/</link>
+      <link>https://kuhung.me/2025/content-sop/</link>
       <pubDate>Thu, 05 Jun 2025 19:15:55 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/content-sop/</guid>
+      <guid>https://kuhung.me/2025/content-sop/</guid>
       <description>有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。
 当下的很多AI产品思路都是如此，但做得好的不多。谷歌出品的NotebookLM是产品中的代表。最近新火起来的AI自媒体主播也是如此。通过信息过滤压缩，再配以“有趣”的对谈或是快节奏的音乐和视频剪辑，就实现了一次对用户大脑的安抚。
 作者在整个五月，利用NotebookLM以及相关工具，创作出了23段播客节目，并为这个系列节目命名为“硅基奇谈”。这些节目发布到小宇宙、抖音、B站、视频号、油管等平台，为作者带来了近百粉丝。本期内容，作者就跟大家分享：这些内容是如何生产出来的，将会为我们带来什么样的机遇，以及如何避免常见错误。

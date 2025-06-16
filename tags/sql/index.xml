@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SQL on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/sql/</link>
+    <link>https://kuhung.me/tags/sql/</link>
     <description>Recent content in SQL on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jun 2019 00:17:05 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/sql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HIVE 技巧积累之合并重叠日期</title>
-      <link>https://kuhungio.me/2019/merge_overlapping_date/</link>
+      <link>https://kuhung.me/2019/merge_overlapping_date/</link>
       <pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/merge_overlapping_date/</guid>
+      <guid>https://kuhung.me/2019/merge_overlapping_date/</guid>
       <description>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
 这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。
 在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。

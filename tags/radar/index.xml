@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>radar on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/radar/</link>
+    <link>https://kuhung.me/tags/radar/</link>
     <description>Recent content in radar on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 01 Jan 2024 13:13:53 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/radar/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jan 2024 13:13:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/radar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2023年度总结</title>
-      <link>https://kuhungio.me/2024/radar-in-2024/</link>
+      <link>https://kuhung.me/2024/radar-in-2024/</link>
       <pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2024/radar-in-2024/</guid>
+      <guid>https://kuhung.me/2024/radar-in-2024/</guid>
       <description>灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
 一、技术 采纳 机器学习开发流程
 构建并维护⼀套稳定、可复⽤的流程，⽤于快速构建机器学习模型。现在市⾯上也有很多稳定的服务，但是⼤多专攻某些特定⽅向。⽐如wandb实验记录或者dvc数据版本控制之类。就个人⽽⾔，更多是整合不同⼯具，形成⾃⼰的建模⻛格。

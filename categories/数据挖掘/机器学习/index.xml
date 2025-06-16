@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据挖掘/机器学习 on 谷粒的博客</title>
-    <link>https://kuhungio.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
     <description>Recent content in 数据挖掘/机器学习 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language><atom:link href="https://kuhungio.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language><atom:link href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Numerai量化101</title>
-      <link>https://kuhungio.me/2025/numerai-guide/</link>
+      <link>https://kuhung.me/2025/numerai-guide/</link>
       <pubDate>Tue, 11 Mar 2025 15:38:38 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/numerai-guide/</guid>
+      <guid>https://kuhung.me/2025/numerai-guide/</guid>
       <description>一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：
 持仓规模为3.6亿美元（现金部分未披露）
 基金持仓头寸数为389支
@@ -29,10 +29,10 @@ import numpy as np from scipy import stats def numerai_corr(preds, target): &amp
     
     <item>
       <title>Xgboost 三种特征重要性计算方法对比与扩展</title>
-      <link>https://kuhungio.me/2021/three-feature-importances-in-xgb/</link>
+      <link>https://kuhung.me/2021/three-feature-importances-in-xgb/</link>
       <pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/three-feature-importances-in-xgb/</guid>
+      <guid>https://kuhung.me/2021/three-feature-importances-in-xgb/</guid>
       <description>简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
 这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
 另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。
@@ -51,10 +51,10 @@ gain model.feature_importances_ 这是我们调用特征重要性数值时，用
     
     <item>
       <title>算法模型的可解释性</title>
-      <link>https://kuhungio.me/2021/interpretable-machine-learning/</link>
+      <link>https://kuhung.me/2021/interpretable-machine-learning/</link>
       <pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/interpretable-machine-learning/</guid>
+      <guid>https://kuhung.me/2021/interpretable-machine-learning/</guid>
       <description>背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
 QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
 某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
@@ -103,10 +103,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>云游戏，会是反作弊的银弹吗？</title>
-      <link>https://kuhungio.me/2020/game_anti-cheat/</link>
+      <link>https://kuhung.me/2020/game_anti-cheat/</link>
       <pubDate>Thu, 18 Jun 2020 23:18:26 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/game_anti-cheat/</guid>
+      <guid>https://kuhung.me/2020/game_anti-cheat/</guid>
       <description>游戏反作弊，一直是各大游戏厂商头疼的问题。究其根本，游戏，本身是一种软件产品。交付到用户侧时，你永远无法穷举，玩家会怎么使用它。只要有利可图，就会有人去钻空子。
 为了反作弊，各大厂商，也是用尽各种手段。除了内部的反作弊团队，还有法务团队的律师函警告，甚至直接招安外挂开发者。说到底，游戏反作弊，有没有一个终极方案呢？
 数据挖掘，说是近5年的火热技术，没得跑的，甚至连电视剧里，都开始出现这个职业的主配角。
@@ -151,10 +151,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>如何计算用户生命周期价值（CLV）</title>
-      <link>https://kuhungio.me/2019/lifetimes/</link>
+      <link>https://kuhung.me/2019/lifetimes/</link>
       <pubDate>Wed, 25 Dec 2019 23:28:09 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/lifetimes/</guid>
+      <guid>https://kuhung.me/2019/lifetimes/</guid>
       <description>在用户关系管理中，常会遇到些直击灵魂的问题：
 这批用户到底价值几何？
 为什么要用这种措施去干预用户，而不是另一种方式。
@@ -184,10 +184,10 @@ frequency 用户登录的频率，这里为周期内的天数 recency 用户的�
     
     <item>
       <title>深度强化学习技巧 hacks for training deep RL</title>
-      <link>https://kuhungio.me/2019/training_rl_systems_hacks/</link>
+      <link>https://kuhung.me/2019/training_rl_systems_hacks/</link>
       <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/training_rl_systems_hacks/</guid>
+      <guid>https://kuhung.me/2019/training_rl_systems_hacks/</guid>
       <description>深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧 简化问题，使用低维变量。 使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。 当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。 构造一个 demo 来测试你的算法 比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。 这样能够轻易地发现那里出了问题。 注意：不要在这样的小问题上过分的尝试。 在熟悉的场景中测试 随着时间的推移，你将能预估训练所需的时间。 明白你的奖赏是如何变化的。 能够设定一个基线，以便让你知道相对过去改进了多少。 作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。 快速上手新任务的技巧 简化问题 从简单的开始，直到回到问题。 途径1： 简化特征空间 举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。 一旦起步，逐步还原问题直到解决问题。 途径2：简化奖赏函数 简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。 比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。 将一个问题转化为强化学习的技巧 可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。
 第一步：将这个问题使用随机策略可视化出来。 看看那些部分吸引了你。
 如果这个随机策略在某些情况下做了正确的事，那么很大概率，强化学习也可以做到。
@@ -196,10 +196,10 @@ frequency 用户登录的频率，这里为周期内的天数 recency 用户的�
     
     <item>
       <title>机器学习建模与部署--以垃圾消息识别为例</title>
-      <link>https://kuhungio.me/2019/flask_vue_ml/</link>
+      <link>https://kuhung.me/2019/flask_vue_ml/</link>
       <pubDate>Sat, 20 Apr 2019 14:31:26 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/flask_vue_ml/</guid>
+      <guid>https://kuhung.me/2019/flask_vue_ml/</guid>
       <description>前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。
 如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个本科就业的人，如果没有较为丰富的实战经验；有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。
 模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。
@@ -210,10 +210,10 @@ frequency 用户登录的频率，这里为周期内的天数 recency 用户的�
     
     <item>
       <title>机器学习项目的完整生命周期 Hands On Machine Learning in Industry </title>
-      <link>https://kuhungio.me/2019/hands-on_machine_learning_in_industry/</link>
+      <link>https://kuhung.me/2019/hands-on_machine_learning_in_industry/</link>
       <pubDate>Mon, 01 Apr 2019 19:28:32 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/hands-on_machine_learning_in_industry/</guid>
+      <guid>https://kuhung.me/2019/hands-on_machine_learning_in_industry/</guid>
       <description>机器学习这东西，在学术界产出颇多，但在工业界，却很少落地。究其原因，是理念落地不够彻底，很多从业者和相关上下游不理解所致。这次就这这个机会，梳理下一个机器学习，从立项到落地再到结束，他的完整生命周期该是什么样子的。这里参考了《Hands-On Machine Learning with Scikit-Learn and Tensorflow》，值得一提的是这本书写的很不错，和《集体智慧编程》有一拼，建议阅读英文原著或东南大学出的影印版。
 机器学习项目的生命周期 问题定义 定义问题，并关注大局 数据处理
 获取数据 探索性的数据分析 清洗数据，为接下来的模型做准备 模型方案
@@ -226,10 +226,10 @@ frequency 用户登录的频率，这里为周期内的天数 recency 用户的�
     
     <item>
       <title>用先知模型预测股市 Prophet in 000300 </title>
-      <link>https://kuhungio.me/2019/prophet-in-000300/</link>
+      <link>https://kuhung.me/2019/prophet-in-000300/</link>
       <pubDate>Fri, 08 Mar 2019 22:48:45 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/prophet-in-000300/</guid>
+      <guid>https://kuhung.me/2019/prophet-in-000300/</guid>
       <description>跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。
 时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精确预测，为资源的调配起到了重大的参考作用。从个体角度来说，得到的服务和体验也大大提升。
 为此，Facebook 开源了一套工具 Prophet，专门用于时间学列预测。在这里，我们将用它，来一探股市究竟。
@@ -245,19 +245,19 @@ future = m.</description>
     
     <item>
       <title>What is Data Mining 什么是数据挖掘</title>
-      <link>https://kuhungio.me/2019/what-is-data-mining/</link>
+      <link>https://kuhung.me/2019/what-is-data-mining/</link>
       <pubDate>Sun, 17 Feb 2019 00:40:20 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/what-is-data-mining/</guid>
+      <guid>https://kuhung.me/2019/what-is-data-mining/</guid>
       <description> 一、数据挖掘的定义 什么是数据挖掘？ 数据挖掘是一个用数据发现问题、解决问题的学科。 通常通过对数据的探索、处理、分析或建模实现。 数据挖掘学习路线 大学里并没有数据挖掘这么一个专业，现有的数据挖掘工程师大都来自工科或统计学等专业。 目前的数据挖掘工程师大都来自不同背景，计算机科学、数学甚至是机械工程。要想成功胜任，其诀窍是热情、好奇心，不断学习新的工具的能力，以及对数据清洗和分析的耐心。 给新人的建议 最重要的三个品质：好奇心、是非观以及批判性思考。这三个品质，放在其他领域同样适用。 专业领域的三种能力：编程能力、统计基础、商业思维。编程和统计在大学较为容易学到，商业思维需要多实践总结。 二、数据挖掘在做什么 数据挖掘工程师的一天 检查日常报表数据是否异常，寻求数据波动的合理解释。 针对新业务，设计指标，搭建数据模型。 搭建商品推荐系统、价格预测系统、文本分类系统或是聊天机器人。 数据挖掘的算法 使用复杂的机器学习算法并不能保证效果。一般来讲，最好的解决办法，通常很简单。 生产环境使用简单的算法，并不意味着要放弃前沿算法。每一套新的方法，其目的都在解决前面的薄弱之处。 数据挖掘与服务器 本地 PC 由于硬件与系统限制，工程师常在服务器进行大规模数据的运算、脚本部署与接口部署。 三、商业中的数据挖掘 作为公司，该如何开展数据挖掘 评估可能的收益与需要的投入 开始收集数据 招募数据挖掘团队 招聘数据挖掘团队 好奇心应该是数据挖掘从业者的最重要品质。 招聘时，应确保候选人对工作内容感兴趣。 候选人应具备一定的成果意识。商业更重成果，而不是过程。 数据挖掘应用 广告位点击预估 信用卡风控评估 用户流失干预 四、数据挖掘工具 数据挖掘工具与大数据 掌握以下工具：Python、Linux、Pandas 及 Jupyter、关系型和非关系型数据库。 大数据通常指传统数据系统无法处理的数据。体量和增速都相当大。处理工具以 Hadoop 为代表。 五、数据挖掘进阶 神经网络和深度学习 神经网络出现已数十年，但由于条件限制，这一方向搁置了数十年。目前随着新的优化方法的出现和算力的提升，这一方向的工业化逐渐成为可能。 如何更上一层楼 掌握基本的编程知识，更多地去理解背后的原理。 流程化意识，及时复盘总结，规范流程（复用）。 成果导向，将知识转化为行动和成果，给他人带来价值，服务更多人。 </description>
     </item>
     
     <item>
       <title>一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </title>
-      <link>https://kuhungio.me/2018/time-series-problem-summary/</link>
+      <link>https://kuhung.me/2018/time-series-problem-summary/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhungio.me/2018/time-series-problem-summary/</guid>
+      <guid>https://kuhung.me/2018/time-series-problem-summary/</guid>
       <description>Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
 总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。 tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。

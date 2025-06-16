@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>技术研究 on 谷粒的博客</title>
-    <link>https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
+    <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
     <description>Recent content in 技术研究 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 May 2025 12:15:10 +0800</lastBuildDate><atom:link href="https://kuhungio.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 May 2025 12:15:10 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FastVLM iPhone 安装与实机测评</title>
-      <link>https://kuhungio.me/2025/fastvlm-iphone-install/</link>
+      <link>https://kuhung.me/2025/fastvlm-iphone-install/</link>
       <pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/fastvlm-iphone-install/</guid>
+      <guid>https://kuhung.me/2025/fastvlm-iphone-install/</guid>
       <description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
 接下来说说实测最关心的性能表现和大小情况：
 作者的测试设备为：

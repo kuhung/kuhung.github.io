@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>计算机视觉 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</link>
+    <link>https://kuhung.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</link>
     <description>Recent content in 计算机视觉 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 13 Apr 2020 21:17:08 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Apr 2020 21:17:08 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自制以图搜图引擎，居家学习必备</title>
-      <link>https://kuhungio.me/2020/simple-image-search/</link>
+      <link>https://kuhung.me/2020/simple-image-search/</link>
       <pubDate>Mon, 13 Apr 2020 21:17:08 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/simple-image-search/</guid>
+      <guid>https://kuhung.me/2020/simple-image-search/</guid>
       <description>最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
 各位绅士可别想歪，我说的是动漫。
 这个问题本质是一个相似度的检索问题。

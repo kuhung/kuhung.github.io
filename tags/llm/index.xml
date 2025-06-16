@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LLM on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/llm/</link>
+    <link>https://kuhung.me/tags/llm/</link>
     <description>Recent content in LLM on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Apr 2025 14:37:35 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Apr 2025 14:37:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>P人友好的高德（谷歌）地图 MCP</title>
-      <link>https://kuhungio.me/2025/amap-mcp/</link>
+      <link>https://kuhung.me/2025/amap-mcp/</link>
       <pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/amap-mcp/</guid>
+      <guid>https://kuhung.me/2025/amap-mcp/</guid>
       <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
 生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
 MCP原理 简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。

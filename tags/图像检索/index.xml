@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>图像检索 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2/</link>
+    <link>https://kuhung.me/tags/%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2/</link>
     <description>Recent content in 图像检索 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何设计一套类似视觉中国“鹰眼”的技术</title>
-      <link>https://kuhungio.me/2019/vgc-it/</link>
+      <link>https://kuhung.me/2019/vgc-it/</link>
       <pubDate>Sun, 14 Apr 2019 11:51:09 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/vgc-it/</guid>
+      <guid>https://kuhung.me/2019/vgc-it/</guid>
       <description>这两天除了马总的 996， 互联网上最火的莫属被黑洞绊倒的视觉中国了。视觉中国因黑洞图的版权争端，被卷入更大的争端。一时间舆论哗然，其股票连续跌停。他是如何一步步壮大，又是为何跌倒的呢？往前看几年，起底其历史：公开资料显示，“视觉中国凭借其‘鹰眼技术’，有力的打击了“盗版”并成功形成了自己的商业模式。”
 2016年初公司开发图像追踪系统，通过人工智能、图像比对、爬虫技术，能够追踪公司拥有代理权的图片在网络上的使用情况，一方面大幅降低版权保护的成本，更为有价值的是，公司因此大大降低了客户获取成本以及通过大数据获取客户的内容需求数据。
 ![](/images/vgc/vgc 不敢配图.jpg)

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>行业趋势 on 谷粒的博客</title>
-    <link>https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</link>
+    <link>https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</link>
     <description>Recent content in 行业趋势 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Jun 2025 19:15:55 +0800</lastBuildDate><atom:link href="https://kuhungio.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jun 2025 19:15:55 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</title>
-      <link>https://kuhungio.me/2025/content-sop/</link>
+      <link>https://kuhung.me/2025/content-sop/</link>
       <pubDate>Thu, 05 Jun 2025 19:15:55 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2025/content-sop/</guid>
+      <guid>https://kuhung.me/2025/content-sop/</guid>
       <description>有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。
 当下的很多AI产品思路都是如此，但做得好的不多。谷歌出品的NotebookLM是产品中的代表。最近新火起来的AI自媒体主播也是如此。通过信息过滤压缩，再配以“有趣”的对谈或是快节奏的音乐和视频剪辑，就实现了一次对用户大脑的安抚。
 作者在整个五月，利用NotebookLM以及相关工具，创作出了23段播客节目，并为这个系列节目命名为“硅基奇谈”。这些节目发布到小宇宙、抖音、B站、视频号、油管等平台，为作者带来了近百粉丝。本期内容，作者就跟大家分享：这些内容是如何生产出来的，将会为我们带来什么样的机遇，以及如何避免常见错误。
@@ -39,10 +39,10 @@ markitdown document.pdf &amp;gt; document.md 以上均为命令行脚本，实�
     
     <item>
       <title>2023年度总结</title>
-      <link>https://kuhungio.me/2024/radar-in-2024/</link>
+      <link>https://kuhung.me/2024/radar-in-2024/</link>
       <pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2024/radar-in-2024/</guid>
+      <guid>https://kuhung.me/2024/radar-in-2024/</guid>
       <description>灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
 一、技术 采纳 机器学习开发流程
 构建并维护⼀套稳定、可复⽤的流程，⽤于快速构建机器学习模型。现在市⾯上也有很多稳定的服务，但是⼤多专攻某些特定⽅向。⽐如wandb实验记录或者dvc数据版本控制之类。就个人⽽⾔，更多是整合不同⼯具，形成⾃⼰的建模⻛格。
@@ -92,10 +92,10 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
     
     <item>
       <title>2023年的职业发展，还要爬梯子吗</title>
-      <link>https://kuhungio.me/2023/career/</link>
+      <link>https://kuhung.me/2023/career/</link>
       <pubDate>Sun, 06 Aug 2023 14:05:27 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2023/career/</guid>
+      <guid>https://kuhung.me/2023/career/</guid>
       <description>在2023年的年中档口，阿里计划将其P职级进行拆分，分为更细的类似华为的序列。据晚点LatePost等媒体报道，此举是在拉开级别差，在“战功”不那么多的情况下，让更多员工感受到爬梯子带来的激励。
 爬梯子这个事情，在很多“成熟”公司，都会存在。这也是他们所宣称的“完善体系”中的一环——晋升体系。这一体系，带给人们最多的就是P7、P8的神话。在红利还未耗尽的18年，P7=100w，P8=200w。3年P6、5年P7这一说法在当时的背景下广泛传播。你到了这个阶段，没啥意外的话，就该是这个水平。现如今，这个说法不复存在。一是这种机遇没了，股票下挫总包锐减；二是称呼给你变了。
 为什么要改，以及有哪些可选项，不是本文讨论的关键。这些信息作者没有、也无法像关注科技公司的记者那样跑在最前面（报道出了偏差，可是要负责任的）。
@@ -145,10 +145,10 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
     
     <item>
       <title>全面了解 PrivateGPT：中文技巧和功能实测</title>
-      <link>https://kuhungio.me/2023/privategpt/</link>
+      <link>https://kuhung.me/2023/privategpt/</link>
       <pubDate>Wed, 17 May 2023 21:38:16 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2023/privategpt/</guid>
+      <guid>https://kuhung.me/2023/privategpt/</guid>
       <description>近日，GitHub上开源了privateGPT，声称能够断网的情况下，借助GPT和文档进行交互。这一场景对于大语言模型来说，意义重大。因为很多公司或者个人的资料，无论是出于数据安全还是隐私的考量，是不方便联网的。为此，我也进行了些许体验，跑完了整个流程，希望给读者朋友一些有用信息。
 原作仓库地址：https://github.com/imartinez/privateGPT
 先说结论：可用，但还有进步空间。特别是对于简单询问语句，该模型不像ChatGPT回答有来有回，而是提供若干可能性进行回答。而数据预处理环节的容错性、embedding向量的生成方法以及大语言模型的基底模型，每一个环节的质量都会影响最终的使用体验。可期待的是，每一个环节都有可能逐步改善，并最终带来质的飞跃。
@@ -165,10 +165,10 @@ python ingest.py 如果502失败，可以尝试shell中直接调起python，输�
     
     <item>
       <title>ChatGPT 现状回顾与机会分析</title>
-      <link>https://kuhungio.me/2023/chatgpt/</link>
+      <link>https://kuhung.me/2023/chatgpt/</link>
       <pubDate>Tue, 14 Mar 2023 00:41:03 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2023/chatgpt/</guid>
+      <guid>https://kuhung.me/2023/chatgpt/</guid>
       <description>前言 最近中文互联网上最火热的莫过于ChatGPT。人们都在谈论这个东西是多么“划时代”的产物。过去对AI不成气候的论调也看不见了，主流媒体似乎都在说：牛。不少大厂说自己也要“下海”参与布局与竞争，即使他们才不久刚ALL in 元宇宙。AIGC似乎是PGC、UGC的下一个大蛋糕。
 该技术在22年11月底就推出了，但并未在当时引起太多关注（当然也和大家都急着囤药有关）。去年十二月份左右，即有技术论坛谈论到此事。不过大家讨论的并非它有多牛，而是关注的它带来了多少“垃圾内容”。新的“内容农场”的论调随处可见：假话空话以及语义不明的文本内容占据高的SEO，污染各种可见的搜索结果。Stack Overflow发表声明称：将会拒绝这类生成的答案在论坛中出现。随后，更多论坛也发表了类似的声明。
 谁可想，三个月不到，该产品便火爆中文互联网出圈。
@@ -192,10 +192,10 @@ GPT 全称 Generative Pre-Training，生成式预训练模型。生成式通过�
     
     <item>
       <title>抵抗理性人思维与数据诱惑</title>
-      <link>https://kuhungio.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</link>
+      <link>https://kuhung.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</link>
       <pubDate>Sun, 15 May 2022 11:03:26 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</guid>
+      <guid>https://kuhung.me/2022/how-over-targeting-ruined-our-lives-step-by-step/</guid>
       <description>（这是一篇原定于去年这个时候发出的文章，但由于种种原因，中途搁置。近日上海发生的种种，又不禁让我想起这篇文章的意义。数据到底意味着什么？这是本期，我们思考的议题。尤其是靠数据吃饭的数据分析与数据挖掘人士，在运用数据的同时，更应该知晓其短板和问题。人，因为理性而伟大，因为知晓其局限性而成熟。）
 背景故事 最近一位朋友遇到一件事情：他们公司是做外贸的，每天和很多客户打交道。只要和人打交道，就不可避免会有冲突。他们有个系统，来记录客户的投诉。问题就在客户投诉量这里。原因是公司老板觉得，每天一百的投诉量太多，需要产品弄清楚什么情况。产品想了一个立竿见影的方法，修改判断标准：如果客户的投诉内容少于7个字，则视为无效投诉。因为字这么少，并没有实际有效的信息。
 这个方法，惊为天人，马上投诉量指标就下来了，老板也不再过问。问题解决了吗？看起来解决了，又看起来没有。
@@ -228,10 +228,10 @@ GPT 全称 Generative Pre-Training，生成式预训练模型。生成式通过�
     
     <item>
       <title>增长黑客概要</title>
-      <link>https://kuhungio.me/2021/growth-hacking-01/</link>
+      <link>https://kuhung.me/2021/growth-hacking-01/</link>
       <pubDate>Sun, 10 Oct 2021 23:11:13 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/growth-hacking-01/</guid>
+      <guid>https://kuhung.me/2021/growth-hacking-01/</guid>
       <description>诸多科技公司都热衷的增长黑客是什么 增长，自古以来是一个永恒的话题。宇宙在膨胀、国家经济在增长、数不胜数的公司也在这片土地上扩张。可以说，没有一个带自主意识的东西，是不在扩张边界的。即使是在零和博弈中，一方的衰减也伴随着另一方的增长。
 增长黑客这个词，也是最近网络上的一个热词。同人工智能、数据算法一样，很多新兴高科技公司，都想通过这种模式，实现快速的跨越式的增长。实际情况到底是怎么样的，如何做好增长，今天我们就来缕一缕思路。
 由于我本身工作就和数据相关，且和数据中的用户相关，因此会添加更多数据、算法的模型角度观点。从一个数据挖掘工程师的角度，来看待增长这么回事。
@@ -253,10 +253,10 @@ GPT 全称 Generative Pre-Training，生成式预训练模型。生成式通过�
     
     <item>
       <title>奈飞工作法</title>
-      <link>https://kuhungio.me/2021/netflix-culture-01/</link>
+      <link>https://kuhung.me/2021/netflix-culture-01/</link>
       <pubDate>Mon, 12 Jul 2021 23:12:34 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/netflix-culture-01/</guid>
+      <guid>https://kuhung.me/2021/netflix-culture-01/</guid>
       <description>红线可有可无文化 之前互联网有个段子，叫做：低P（职级）碰红线，低P没了；高P碰红线，红线没了。大致描述某电商公司的月饼事件、高P替考事件以及总裁出轨事件。这种说法，虽然是大众编的段子，但也折射出该公司的真实文化与标榜文化的背离。
 在这类公司里，价值观成了上级约束下级、驱使下级讨好自己，以及内部斗争的工具。
 组织管理大师沙因曾经提出一种观念，用文化管理组织。而今我们也发现，不同的公司文化，开始有了不一样的经营现状。我们就以8年前就公开组织管理秘籍，且在这些年仍继续成长的奈飞作为剖析对象，看看这样的企业文化，有何不同。
@@ -281,10 +281,10 @@ GPT 全称 Generative Pre-Training，生成式预训练模型。生成式通过�
     
     <item>
       <title>扁平化团队背后的危机</title>
-      <link>https://kuhungio.me/2021/the-tyranny-of-structurelessness/</link>
+      <link>https://kuhung.me/2021/the-tyranny-of-structurelessness/</link>
       <pubDate>Fri, 09 Jul 2021 09:07:13 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/the-tyranny-of-structurelessness/</guid>
+      <guid>https://kuhung.me/2021/the-tyranny-of-structurelessness/</guid>
       <description>越来越多的扁平化 越来越多的公司开始宣称他们是扁平化团队。扁平化就是字面意思：整个组织的架构很宽，而纵深很窄。基层员工到组织领袖，可能只有3层。扁平化的概念，是相对于层级分明的大型组织而言的，同时它也是较小组织吸引人才的一个关键。背后隐藏着基本假设：富有创意和才华的年轻人，很难忍受传统大型架构组织的官僚。组织需要更扁的层级，以加快信息的流通和促进决策的有效性。
 扁平化背后的独裁 现实生活中，管理的扁平化大多出现在小公司，当公司逐渐成长后，扁平化也将暴露一些问题。在这篇文章中，我们将其称为扁平化背后的独裁。本篇的思想框架主要来源于文章《The Tyranny of Structurelessness》。该文章阐述了上世纪70年代，伴随着女性权力运动，无架构组织中出现的一些问题。我们今天将其带入公司管理视角，逐条分析扁平化背后的问题，以探寻可能的解决方案，以及尝试着去思考：作为扁平化团队的一员，如何规避其负面效果，最大化扁平组织架构的作用。
 无架构组织的出现 在当时，无架构、扁平化起源于女性对男性主导的社会权力结构的反抗。传统的组织中，多级架构存在于组织内。而当时的运动想摆脱这一点，于是提出了无架构（后文又叫做扁平化）的主张。当然扁平化不是完全无架构，但可以将无架构看成扁平化的特例，即只有1-2层组织。在这样的组织架构中，人们通过非正式会议达成共识。
@@ -312,10 +312,10 @@ GPT 全称 Generative Pre-Training，生成式预训练模型。生成式通过�
     
     <item>
       <title>算法模型的可解释性</title>
-      <link>https://kuhungio.me/2021/interpretable-machine-learning/</link>
+      <link>https://kuhung.me/2021/interpretable-machine-learning/</link>
       <pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/interpretable-machine-learning/</guid>
+      <guid>https://kuhung.me/2021/interpretable-machine-learning/</guid>
       <description>背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
 QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
 某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
@@ -364,10 +364,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>不可不知的项目推进与团队建设之道</title>
-      <link>https://kuhungio.me/2020/pmp/</link>
+      <link>https://kuhung.me/2020/pmp/</link>
       <pubDate>Mon, 26 Oct 2020 23:21:09 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/pmp/</guid>
+      <guid>https://kuhung.me/2020/pmp/</guid>
       <description>项目管理好坏，决定了项目的成败。无论做什么工作，项目地企划、执行、效果评估、复盘，总是必不可少的。
 我们可能遇到过如下场景：
 业务方提出需求，扑哧扑哧做个几周后，却发现并不是他们想要的。这样的后果就是： 项目结果被搁置
@@ -415,10 +415,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>数据开发在2020年应当是什么样子的</title>
-      <link>https://kuhungio.me/2020/data-engineering-in-2020/</link>
+      <link>https://kuhung.me/2020/data-engineering-in-2020/</link>
       <pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/data-engineering-in-2020/</guid>
+      <guid>https://kuhung.me/2020/data-engineering-in-2020/</guid>
       <description>我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样搞，浪费时间、浪费算力。 目前这家，则大不相同。技术债不多，数据治理做得还不错。没有大谈特谈数据中台，数据开发的每一行代码，都是为下游，而不是晋升服务。数据挖掘也很少碰原始 log，这节约了大量时间，让下游有更多时间集中在业务上。
 同样是数据开发，却产生不一样的结果。这让我对该工作的定位，产生了兴趣。也这篇文章的由来。
 言归正传。本文翻译自：https://towardsdatascience.com/data-engineering-in-2020-e46910786eda 结合实际工作，有较大幅度删改。
@@ -441,10 +441,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>云游戏，会是反作弊的银弹吗？</title>
-      <link>https://kuhungio.me/2020/game_anti-cheat/</link>
+      <link>https://kuhung.me/2020/game_anti-cheat/</link>
       <pubDate>Thu, 18 Jun 2020 23:18:26 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/game_anti-cheat/</guid>
+      <guid>https://kuhung.me/2020/game_anti-cheat/</guid>
       <description>游戏反作弊，一直是各大游戏厂商头疼的问题。究其根本，游戏，本身是一种软件产品。交付到用户侧时，你永远无法穷举，玩家会怎么使用它。只要有利可图，就会有人去钻空子。
 为了反作弊，各大厂商，也是用尽各种手段。除了内部的反作弊团队，还有法务团队的律师函警告，甚至直接招安外挂开发者。说到底，游戏反作弊，有没有一个终极方案呢？
 数据挖掘，说是近5年的火热技术，没得跑的，甚至连电视剧里，都开始出现这个职业的主配角。
@@ -489,10 +489,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>我为何离开网易游戏</title>
-      <link>https://kuhungio.me/2020/why-i-left-netease-games/</link>
+      <link>https://kuhung.me/2020/why-i-left-netease-games/</link>
       <pubDate>Wed, 13 May 2020 00:41:54 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/why-i-left-netease-games/</guid>
+      <guid>https://kuhung.me/2020/why-i-left-netease-games/</guid>
       <description>前言 网易游戏是我毕业后的第一家公司，说没有感情，那是不可能的。当然，这感情主要针对那里的同事和朋友。
 网易又叫猪场，猪场曾一度有最好吃的免费食堂，一度给名校毕业生开最高的工资。
 在数年前，大话西游2帮助公司起死回生。
@@ -555,10 +555,10 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
     <item>
       <title>浅谈互联网风控--从策略到技术</title>
-      <link>https://kuhungio.me/2020/risk_management/</link>
+      <link>https://kuhung.me/2020/risk_management/</link>
       <pubDate>Sun, 22 Mar 2020 14:34:33 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/risk_management/</guid>
+      <guid>https://kuhung.me/2020/risk_management/</guid>
       <description>风控，全称风险控制，英文名 risk management。风控的研究起于二战结束后，主要集中在个人或企业的商业保险领域，用于减少突发事物带来的损失。金融行业的核心，乃是风险控制。
 但今天，我们这里不谈金融的风控。金融风控已经演化了多年，众多顶尖学者已对其进行了研究，各种模型层出不穷，自有人去分析。我们这里说一说，互联网的风控。
 风控的核心 如果你在网上检索，一定会发现很多人，谈到风控，必加智能，似乎不智能就不风控了一般。有人说，风控的核心是智能；也有人说，风控的核心是数据。这些老生常谈，将数据智能看成了银弹，看成了哆啦A梦的百宝袋，能解决一切问题，但其实这种说法忽略了现实。
@@ -590,10 +590,10 @@ Risk Management: History, Definition, and Critique &amp;ndash; Georges Dionne
     
     <item>
       <title>更高效的远程工作之道--REMOTE 手册精要</title>
-      <link>https://kuhungio.me/2020/remote/</link>
+      <link>https://kuhung.me/2020/remote/</link>
       <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/remote/</guid>
+      <guid>https://kuhung.me/2020/remote/</guid>
       <description>大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
 虽然朋友圈已经有人发帖，渴望在办公室中办公，但是，也不能因此，就放弃思考远程工作的这么个事物。一成不变往往很简单，但变化之中，才有契机。
 远程工作契机 什么阻挡了远程工作的推行，我们无从说起。但何不把这次当作一种契机，去学习其中的脉络。
@@ -611,10 +611,10 @@ Risk Management: History, Definition, and Critique &amp;ndash; Georges Dionne
     
     <item>
       <title>Dataops 数据化运维实践</title>
-      <link>https://kuhungio.me/2019/dataops/</link>
+      <link>https://kuhung.me/2019/dataops/</link>
       <pubDate>Sat, 19 Oct 2019 11:33:09 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/dataops/</guid>
+      <guid>https://kuhung.me/2019/dataops/</guid>
       <description>翻译自：《What is DataOps? Everything You Need to Know》 From Oracle Data Science Blog
 图片自：《DataOps is Not Just DevOps for Data》By DataKitchen in Medium
 DataOps, 看到它的第一眼，大多数人会觉得陌生。但是提到另一个词——DevOps，做开发的同学可能会有些熟悉。DataOps 的理念与 DevOps 类似：将开发或者说是数据，与运维、测试相结合，自动化业务的交付以及架构的变更，使得构建、测试和发布能够更加快捷、频繁且可靠。
@@ -630,10 +630,10 @@ DataOps 这一概念从何而来？ DataOps 起源于 DevOps 这一概念。据�
     
     <item>
       <title>机器学习实践--测试驱动开发</title>
-      <link>https://kuhungio.me/2019/tdd_drive_ml/</link>
+      <link>https://kuhung.me/2019/tdd_drive_ml/</link>
       <pubDate>Sun, 25 Aug 2019 00:22:07 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/tdd_drive_ml/</guid>
+      <guid>https://kuhung.me/2019/tdd_drive_ml/</guid>
       <description>机器学习现状与问题 2012年，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。
 这一效应，一直持续到今年：在2019这一年，高考志愿填报金融遇冷，计算机一跃成为抢手专业，在各大工科院校中，有取代传统电气、机械之势；各学院的研究生院，纷纷开始往人工智能、深度学习上贴近。
 这从一个侧面，反应了民众对于计算机、人工智能、机器学习的就业预期。但是，随着原来越多的从业者涌入，项目落地越来越多，机器学习这一领域的问题也开始暴露，亟需解决。
@@ -652,10 +652,10 @@ SRP 单一职责原则：一片代码只做一件事，及一块代码只实现�
     
     <item>
       <title>凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </title>
-      <link>https://kuhungio.me/2019/competing-on-analytics/</link>
+      <link>https://kuhung.me/2019/competing-on-analytics/</link>
       <pubDate>Tue, 12 Mar 2019 10:48:59 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/competing-on-analytics/</guid>
+      <guid>https://kuhung.me/2019/competing-on-analytics/</guid>
       <description>数据科学家这个职位，随着12年的哈佛商业评论的一篇文章，成为了21世纪“最性感的职业”。这年头，越来越多的年轻人开始往这个方向奔，市场几近饱和。但是，很少有听见企业家说：“是的，我们很需要数据工程师，因为以下原因&amp;hellip;“对于看此文的老板们，你们是否不止一次听到媒体鼓吹大数据、鼓吹机器学习、鼓吹人工智能，却很少有听到说这些东西，对于企业来说，实实在在带来了什么。如果你的答案是“Yes”，那么这篇文章将解答你的疑惑。
 本文论点主要取自 Thomas H. Davenport 文章 《Competing on Analytics》，试图从企业管理的角度，阐述为什么我们需要数据科学家（或者说广义的数据相关人员）；他们能给企业带来哪些切实的好处；以及作为企业家，我们该如何转型，如何拥有更强的竞争力。
 同质化的市场危机 在当下，想依靠某个新奇的点子或者是产品服务，已经不大可能再和其他竞争者区分开来。作为一个人类组织，底子里仍保留有人类的天性。人类天生就爱模仿，从一出生模仿吃东西，到后面通过模仿习得语言，再到后面的学习。人类的本质可能就是个复读机。模仿可以说保证了我们人类种族的存在与延续。对于企业来说，也大抵相同。
@@ -689,10 +689,10 @@ SRP 单一职责原则：一片代码只做一件事，及一块代码只实现�
     
     <item>
       <title>机器学习落地需攻破的9个难题 The Next Step for Machine Learning</title>
-      <link>https://kuhungio.me/2019/the-next-step-for-machine-learning/</link>
+      <link>https://kuhung.me/2019/the-next-step-for-machine-learning/</link>
       <pubDate>Sun, 24 Feb 2019 23:31:58 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/the-next-step-for-machine-learning/</guid>
+      <guid>https://kuhung.me/2019/the-next-step-for-machine-learning/</guid>
       <description>机器学习在前两年的时间里，一下子就爆火了起来。很多公司也跟着这个趋势，招募了很多算法工程师、数据挖掘工程师。但是，在实践中，企业发现要落地，实际上还有很多问题需解决。以至于在大部分项目，还是规则主导。算法工程师的日常，也不过是清洗数据，调整规则。所以，机器学习技术，在真实的应用中到底缺少些什么呢？
 在国立台湾大学《机器学习》2019春季班，李宏毅老师给出了他的观察。以下的内容，结合李老师的最新讲义、加上我本身工作的理解，给大家梳理机器学习落地急需解决的9个难题。
 拒绝回答与可解释性（哲学层面） 1. Anomaly Detection 机器能不能知道“我不知道” 机器能不能知道自己的识别范围，还是说生硬地给出模型内的东西，或者说抛出无法识别。在猫狗分类里，现有的模型已经到达很高的精度，甚至能给出猫狗的品种。
@@ -714,10 +714,10 @@ SRP 单一职责原则：一片代码只做一件事，及一块代码只实现�
     
     <item>
       <title>为啥说数据这行不容易 Why is Data Hard </title>
-      <link>https://kuhungio.me/2018/why-is-data-hard/</link>
+      <link>https://kuhung.me/2018/why-is-data-hard/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhungio.me/2018/why-is-data-hard/</guid>
+      <guid>https://kuhung.me/2018/why-is-data-hard/</guid>
       <description>原文链接 Slack 工程师 : why-is-data-hard?
 做数据挖掘时，常常需要考虑很多方面。其中一个方面，常常会涉及到跨功能，复杂且琐碎的一些事项。数据准备以及评价指标的制定，就是这些事项之一。
 等等，似乎干数据这一行，并不容易？

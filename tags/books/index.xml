@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Books on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/books/</link>
+    <link>https://kuhung.me/tags/books/</link>
     <description>Recent content in Books on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 07 May 2019 23:34:54 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/books/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 May 2019 23:34:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/books/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>数据从业者必读的7本书 Booklist for DE</title>
-      <link>https://kuhungio.me/2019/book-list-for-ds/</link>
+      <link>https://kuhung.me/2019/book-list-for-ds/</link>
       <pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/book-list-for-ds/</guid>
+      <guid>https://kuhung.me/2019/book-list-for-ds/</guid>
       <description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
 有关注某校友的公众号，他是做爬虫和可视乎的。某天在推荐 Python 学习资料。封面看着挺美，点开一看，书单质量实属一般。倒像是接的推广，很多估计他自己都没有看过，不太负责任。于是乎，便萌生了出一期书单的想法。而定位，便是数据科学家、数据挖掘工程师、算法工程师的书单。
 首先声明，这份书单不是单纯的技术向书籍，不会有什么西瓜书或是算法导论之类的。他们也是好书，但不会出现在这里。因为在工作中大家就会发现，技术只是工具，好的工匠 != 熟练使用工具的熟练工。看见大局，同时有跨学科的思维，能够从事物的本质去出发，理解和思考它，也很重要。

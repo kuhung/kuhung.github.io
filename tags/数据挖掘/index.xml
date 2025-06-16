@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据挖掘 on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/</link>
+    <link>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/</link>
     <description>Recent content in 数据挖掘 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 08 Mar 2021 21:09:31 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Mar 2021 21:09:31 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Xgboost 三种特征重要性计算方法对比与扩展</title>
-      <link>https://kuhungio.me/2021/three-feature-importances-in-xgb/</link>
+      <link>https://kuhung.me/2021/three-feature-importances-in-xgb/</link>
       <pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2021/three-feature-importances-in-xgb/</guid>
+      <guid>https://kuhung.me/2021/three-feature-importances-in-xgb/</guid>
       <description>简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
 这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
 另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。
@@ -31,10 +31,10 @@ gain model.feature_importances_ 这是我们调用特征重要性数值时，用
     
     <item>
       <title>我为何离开网易游戏</title>
-      <link>https://kuhungio.me/2020/why-i-left-netease-games/</link>
+      <link>https://kuhung.me/2020/why-i-left-netease-games/</link>
       <pubDate>Wed, 13 May 2020 00:41:54 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2020/why-i-left-netease-games/</guid>
+      <guid>https://kuhung.me/2020/why-i-left-netease-games/</guid>
       <description>前言 网易游戏是我毕业后的第一家公司，说没有感情，那是不可能的。当然，这感情主要针对那里的同事和朋友。
 网易又叫猪场，猪场曾一度有最好吃的免费食堂，一度给名校毕业生开最高的工资。
 在数年前，大话西游2帮助公司起死回生。
@@ -97,10 +97,10 @@ gain model.feature_importances_ 这是我们调用特征重要性数值时，用
     
     <item>
       <title>数据从业者必读的7本书 Booklist for DE</title>
-      <link>https://kuhungio.me/2019/book-list-for-ds/</link>
+      <link>https://kuhung.me/2019/book-list-for-ds/</link>
       <pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/book-list-for-ds/</guid>
+      <guid>https://kuhung.me/2019/book-list-for-ds/</guid>
       <description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
 有关注某校友的公众号，他是做爬虫和可视乎的。某天在推荐 Python 学习资料。封面看着挺美，点开一看，书单质量实属一般。倒像是接的推广，很多估计他自己都没有看过，不太负责任。于是乎，便萌生了出一期书单的想法。而定位，便是数据科学家、数据挖掘工程师、算法工程师的书单。
 首先声明，这份书单不是单纯的技术向书籍，不会有什么西瓜书或是算法导论之类的。他们也是好书，但不会出现在这里。因为在工作中大家就会发现，技术只是工具，好的工匠 != 熟练使用工具的熟练工。看见大局，同时有跨学科的思维，能够从事物的本质去出发，理解和思考它，也很重要。
@@ -132,10 +132,10 @@ top 2 《咨询的奥秘》</description>
     
     <item>
       <title>机器学习落地需攻破的9个难题 The Next Step for Machine Learning</title>
-      <link>https://kuhungio.me/2019/the-next-step-for-machine-learning/</link>
+      <link>https://kuhung.me/2019/the-next-step-for-machine-learning/</link>
       <pubDate>Sun, 24 Feb 2019 23:31:58 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/the-next-step-for-machine-learning/</guid>
+      <guid>https://kuhung.me/2019/the-next-step-for-machine-learning/</guid>
       <description>机器学习在前两年的时间里，一下子就爆火了起来。很多公司也跟着这个趋势，招募了很多算法工程师、数据挖掘工程师。但是，在实践中，企业发现要落地，实际上还有很多问题需解决。以至于在大部分项目，还是规则主导。算法工程师的日常，也不过是清洗数据，调整规则。所以，机器学习技术，在真实的应用中到底缺少些什么呢？
 在国立台湾大学《机器学习》2019春季班，李宏毅老师给出了他的观察。以下的内容，结合李老师的最新讲义、加上我本身工作的理解，给大家梳理机器学习落地急需解决的9个难题。
 拒绝回答与可解释性（哲学层面） 1. Anomaly Detection 机器能不能知道“我不知道” 机器能不能知道自己的识别范围，还是说生硬地给出模型内的东西，或者说抛出无法识别。在猫狗分类里，现有的模型已经到达很高的精度，甚至能给出猫狗的品种。
@@ -157,19 +157,19 @@ top 2 《咨询的奥秘》</description>
     
     <item>
       <title>What is Data Mining 什么是数据挖掘</title>
-      <link>https://kuhungio.me/2019/what-is-data-mining/</link>
+      <link>https://kuhung.me/2019/what-is-data-mining/</link>
       <pubDate>Sun, 17 Feb 2019 00:40:20 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/what-is-data-mining/</guid>
+      <guid>https://kuhung.me/2019/what-is-data-mining/</guid>
       <description> 一、数据挖掘的定义 什么是数据挖掘？ 数据挖掘是一个用数据发现问题、解决问题的学科。 通常通过对数据的探索、处理、分析或建模实现。 数据挖掘学习路线 大学里并没有数据挖掘这么一个专业，现有的数据挖掘工程师大都来自工科或统计学等专业。 目前的数据挖掘工程师大都来自不同背景，计算机科学、数学甚至是机械工程。要想成功胜任，其诀窍是热情、好奇心，不断学习新的工具的能力，以及对数据清洗和分析的耐心。 给新人的建议 最重要的三个品质：好奇心、是非观以及批判性思考。这三个品质，放在其他领域同样适用。 专业领域的三种能力：编程能力、统计基础、商业思维。编程和统计在大学较为容易学到，商业思维需要多实践总结。 二、数据挖掘在做什么 数据挖掘工程师的一天 检查日常报表数据是否异常，寻求数据波动的合理解释。 针对新业务，设计指标，搭建数据模型。 搭建商品推荐系统、价格预测系统、文本分类系统或是聊天机器人。 数据挖掘的算法 使用复杂的机器学习算法并不能保证效果。一般来讲，最好的解决办法，通常很简单。 生产环境使用简单的算法，并不意味着要放弃前沿算法。每一套新的方法，其目的都在解决前面的薄弱之处。 数据挖掘与服务器 本地 PC 由于硬件与系统限制，工程师常在服务器进行大规模数据的运算、脚本部署与接口部署。 三、商业中的数据挖掘 作为公司，该如何开展数据挖掘 评估可能的收益与需要的投入 开始收集数据 招募数据挖掘团队 招聘数据挖掘团队 好奇心应该是数据挖掘从业者的最重要品质。 招聘时，应确保候选人对工作内容感兴趣。 候选人应具备一定的成果意识。商业更重成果，而不是过程。 数据挖掘应用 广告位点击预估 信用卡风控评估 用户流失干预 四、数据挖掘工具 数据挖掘工具与大数据 掌握以下工具：Python、Linux、Pandas 及 Jupyter、关系型和非关系型数据库。 大数据通常指传统数据系统无法处理的数据。体量和增速都相当大。处理工具以 Hadoop 为代表。 五、数据挖掘进阶 神经网络和深度学习 神经网络出现已数十年，但由于条件限制，这一方向搁置了数十年。目前随着新的优化方法的出现和算力的提升，这一方向的工业化逐渐成为可能。 如何更上一层楼 掌握基本的编程知识，更多地去理解背后的原理。 流程化意识，及时复盘总结，规范流程（复用）。 成果导向，将知识转化为行动和成果，给他人带来价值，服务更多人。 </description>
     </item>
     
     <item>
       <title>为啥说数据这行不容易 Why is Data Hard </title>
-      <link>https://kuhungio.me/2018/why-is-data-hard/</link>
+      <link>https://kuhung.me/2018/why-is-data-hard/</link>
       <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhungio.me/2018/why-is-data-hard/</guid>
+      <guid>https://kuhung.me/2018/why-is-data-hard/</guid>
       <description>原文链接 Slack 工程师 : why-is-data-hard?
 做数据挖掘时，常常需要考虑很多方面。其中一个方面，常常会涉及到跨功能，复杂且琐碎的一些事项。数据准备以及评价指标的制定，就是这些事项之一。
 等等，似乎干数据这一行，并不容易？

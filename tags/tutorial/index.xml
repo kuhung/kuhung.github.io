@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tutorial on 谷粒的博客</title>
-    <link>https://kuhungio.me/tags/tutorial/</link>
+    <link>https://kuhung.me/tags/tutorial/</link>
     <description>Recent content in tutorial on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 17 Feb 2019 11:30:26 +0800</lastBuildDate><atom:link href="https://kuhungio.me/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Feb 2019 11:30:26 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>中文语料的 Bert 微调 Bert Chinese Finetune </title>
-      <link>https://kuhungio.me/2019/bert-chinese-finetune/</link>
+      <link>https://kuhung.me/2019/bert-chinese-finetune/</link>
       <pubDate>Sun, 17 Feb 2019 11:30:26 +0800</pubDate>
       
-      <guid>https://kuhungio.me/2019/bert-chinese-finetune/</guid>
+      <guid>https://kuhung.me/2019/bert-chinese-finetune/</guid>
       <description>Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。
 Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 Bert as service 代码的开源，使用 Bert 分类或阅读理解的副产物&amp;ndash;词空间，成为一个更具实用价值的方向。
 因而，此文档着重以一个例子，梳理 finetune 垂直语料，获得微调后的模型 这一过程。Bert 原理或 Bert as service 还请移步官方文档。
