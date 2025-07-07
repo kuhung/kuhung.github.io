@@ -13,7 +13,7 @@
       <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
       
       <guid>https://kuhung.me/2019/machine_learning_system_design/</guid>
-      <description>导读 Web app：https://kuhungio.me/machine-learning-systems-design/
+      <description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
 机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
 国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程师、机器学习工程师、深度学习工程师都指的这个。
 这一岗位同开发岗位，SDE 一样，也需要足够的系统设计经验。

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>系统设计 on 谷粒的博客</title>
+    <link>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
+    <description>Recent content in 系统设计 on 谷粒的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 07 Jul 2025 11:52:01 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>所谓上下文工程，实质为Agent系统设计</title>
+      <link>https://kuhung.me/2025/context-engineering/</link>
+      <pubDate>Mon, 07 Jul 2025 11:52:01 +0800</pubDate>
+      
+      <guid>https://kuhung.me/2025/context-engineering/</guid>
+      <description>原文作者 DAIR.AI Academy 中文翻译 gemini &amp;amp; kuhung 备注评论 kuhung 什么是上下文工程？ 几年前，许多人，甚至是顶尖的AI研究人员，都声称提示工程（prompt engineering）将不复存在。（注：当时的语境是说：当大模型足够强，人类就不需要写那些提示词。）
+显然，他们错了。事实上，提示工程现在比以往任何时候都更加重要。它的重要性如此之高，以至于现在被重新命名为上下文工程 (context engineering)。
+是的，又是一个花哨的术语（注：不就是从单点的提示词描述，扩大范围到上下游的整个流程嘛）。被用来描述调整指令和相关上下文这一重要过程，以便让大语言模型（LLM）有效执行其任务。
+关于上下文工程已经有很多文章（Ankur Goyal、Walden Yan、Tobi Lutke 和 Andrej Karpathy），但我想写下对这个主题的看法，并向读者展示一个在开发 ai agent workflow 时将上下文工程付诸实践的步骤指南。
+我不太确定是谁创造了&amp;quot;上下文工程&amp;quot;这个词，但我们将基于 Dex Horthy 的这张图来展开，它简要地解释了上下文工程是什么。（注：当然是热衷写 guide 的推特流量弄潮儿）
+我喜欢&amp;quot;上下文工程&amp;quot;这个术语（注：那为啥不叫 ai agent system design），因为它感觉更广泛（注：因为它流量更好），能更好地解释提示工程中包含的大部分工作以及其他相关任务。
+许多人认为提示词工程不算工程，是因为很多人将其与&amp;quot;和chatgpt对话时的简短任务描述&amp;quot;相混淆。在该过程中，你只是在向系统提问。而在提示工程中，你必须更仔细地考虑提示的上下文和结构。也许它一开始就应该被称为上下文工程。（注：嗯，之前的故事讲不下去了，大家都知道是啥，我得重新定义一个方便我卖课）
+上下文工程是下一个阶段，你需要构建完整的上下文，这在许多情况下需要的不仅仅是越简单的提示，而是更严谨的方法来获取、增强和优化系统的知识。
+从开发人员的角度来看，上下文工程涉及一个迭代的过程，通过优化你提供给大语言模型的指令和上下文，从而达到预期的结果（注：意思就是，想获得好的效果的一切方式，都可以统称为上下文工程）。这包括采用正式的流程（例如，评估流水线）来衡量你的策略是否有效。
+鉴于AI领域的快速发展，我建议对上下文工程下一个更广泛的定义：设计和优化指令及相关上下文，以便大语言模型和高级AI模型有效执行其任务的过程。 这不仅包括基于文本的大语言模型，还包括为日益普及的多模态模型优化上下文。这可以涵盖所有的提示工程工作以及相关流程，例如：
+设计和管理提示链（如果适用） 调整指令/系统提示 管理提示的动态元素（例如，用户输入、日期/时间等） 搜索和准备相关知识（即 RAG） 查询增强 工具定义和指令（在 agent 系统中） 准备和优化少样本示范（few-shot demonstrations） 结构化输入和输出（例如，分隔符、JSON 模式） 短期记忆（即管理状态/历史上下文）和长期记忆（例如，从向量存储中检索相关知识） 以及许多其他用于优化大语言模型系统提示以实现所需任务的技巧。 （注：中间部分其实就是提示词工程需要考虑的事情，前后实际上是系统设计需要考虑的事情）
+换句话说，你在上下文工程中在做的就是：优化你在大语言模型上下文窗口中提供的信息。其意味着过滤掉嘈杂的信息（注：这里又没有分类器，实质上是通过规则限定信息的分布），这本身就是一门科学（注：实际上是个体力活，科学显得更牛逼。潜台词就是科学的才是更好的）。因为它需要系统地衡量大语言模型的性能（注：嗯，衡量=科学）。
+每个人都在写关于上下文工程的文章，但在这里，我们将通过一个具体的例子，带你了解在构建AI agent 时上下文工程是什么样的。
+上下文工程实践 来看一个我最近为个人使用而构建的 multi-agent deep research 应用。</description>
+    </item>
+    
+  </channel>
+</rss>
