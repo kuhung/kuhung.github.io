@@ -5,13 +5,13 @@
     <description>Recent content in 谷粒的博客 on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Jul 2025 10:20:04 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 21 Jul 2025 21:48:52 +0800</lastBuildDate>
     <atom:link href="https://kuhung.me/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Posts</title>
       <link>https://kuhung.me/posts/</link>
-      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
+      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/</guid>
       <description></description>
@@ -110,45 +110,46 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;202309&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Nishika&lt;!-- raw HTML omitted --&gt;金融時系列予測&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Nishika&lt;br/&gt;金融時系列予測&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;金融関連企業様のデータを用いて、数百の匿名特徴量を用い、金融に関する或るターゲット値を予測することをテーマとします&lt;/td&gt;
 &lt;td style=&#34;text-align:right&#34;&gt;3/836&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;201808&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;第七届全国媒体技术处理大会&lt;!-- raw HTML omitted --&gt;文本溯源技术测评&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;第七届全国媒体技术处理大会&lt;br&gt;文本溯源技术测评&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;NLP 问题，判断文本是否改编自其它文本，用于学术查重&lt;/td&gt;
 &lt;td style=&#34;text-align:right&#34;&gt;5/95&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;201706&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Kaggle&lt;!-- raw HTML omitted --&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Kaggle&lt;br&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;图像识别，宫颈癌的早期诊断与分型，公益医疗&lt;/td&gt;
 &lt;td style=&#34;text-align:right&#34;&gt;top10%&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;201702&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;DataCastle&lt;!-- raw HTML omitted --&gt;精准资助预测赛&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DataCastle&lt;br&gt;精准资助预测赛&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;用户分群，识别高校内真正需要资助的人群&lt;/td&gt;
 &lt;td style=&#34;text-align:right&#34;&gt;7/124&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;201612&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;2016 BYTE CUP&lt;!-- raw HTML omitted --&gt;国际机器学习竞赛&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2016 BYTE CUP&lt;br&gt;国际机器学习竞赛&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;推荐系统，推荐头条问答上的问题给合适专家，加快 PGC 产出&lt;/td&gt;
 &lt;td style=&#34;text-align:right&#34;&gt;8/1029&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;201610&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;第五届全国社会媒体处理大会&lt;!-- raw HTML omitted --&gt;用户画像技术测评&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;第五届全国社会媒体处理大会&lt;br&gt;用户画像技术测评&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;用户画像，通过文本等特征，挖掘微博用户性别、居住地和年龄段属性&lt;/td&gt;
 &lt;td style=&#34;text-align:right&#34;&gt;5/373&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;span-idgithubgithub-关注span&#34;&gt;&lt;!-- raw HTML omitted --&gt;Github 关注&lt;!-- raw HTML omitted --&gt;&lt;/h2&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;span-idgithubgithub-关注span&#34;&gt;&lt;span id=&#34;github&#34;&gt;Github 关注&lt;/span&gt;&lt;/h2&gt;
+&lt;!--
+[![GitHub followers](https://img.shields.io/github/followers/kuhung.svg?&amp;label=Follow&amp;maxAge=2592000)](https://github.com/kuhung)
+--&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

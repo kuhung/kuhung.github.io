@@ -6,13 +6,49 @@
     <description>Recent content in Tags on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Jul 2025 10:20:04 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Jul 2025 21:48:52 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://kuhung.me/tags/ai/</link>
-      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
+      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LangChain</title>
+      <link>https://kuhung.me/tags/langchain/</link>
+      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/langchain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LangGraph</title>
+      <link>https://kuhung.me/tags/langgraph/</link>
+      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/langgraph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LangSmith</title>
+      <link>https://kuhung.me/tags/langsmith/</link>
+      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/langsmith/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>案例研究</title>
+      <link>https://kuhung.me/tags/%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/</link>
+      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/</guid>
       <description></description>
     </item>
     
