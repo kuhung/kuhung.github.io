@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Photography on 谷粒的博客</title>
+    <link>https://kuhung.me/tags/photography/</link>
+    <description>Recent content in Photography on 谷粒的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 23 Nov 2025 11:11:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>将富士LUTs应用到iPhone前需要弄清楚的6个问题</title>
+      <link>https://kuhung.me/2025/luts-for-iphone/</link>
+      <pubDate>Sun, 23 Nov 2025 11:11:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/2025/luts-for-iphone/</guid>
+      <description>最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。
+笔者通过编程方式，结合实际数据和图表，力图深入浅出解释LUT、Log模式以及为什么需要进行色彩空间转换。
+1. 什么是 LUT (Look-Up Table) LUT 本质上是一个映射表，就如其英文全称所言。对于 3D LUT，它是一个 RGB 立方体。输入一个 RGB 值 (R, G, B)，查找表，输出一个新的 RGB 值。
+LUT 的核心映射逻辑 输入 RGB: 假设视频里有一个像素，颜色是 R=0.5, G=0.5, B=0.5 (中性灰)。 查找 (Look Up): LUT 文件是一个三维数组 (例如 33x33x33)。 我们把 0.0~1.0 的范围划分成 33 个格子。 0.5 刚好对应第 17 个格子索引 (因为 16/32 = 0.5)。 定位: 找到坐标为 (17, 17, 17) 的那个小格子。 读取: 读取这个格子预先存储的 RGB 值。比如，胶片模拟可能会把这个灰变成略带冷调的 (0.48, 0.49, 0.52)。 插值 (Interpolation): 如果输入是 0.</description>
+    </item>
+    
+  </channel>
+</rss>

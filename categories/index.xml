@@ -6,7 +6,16 @@
     <description>Recent content in Categories on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Nov 2025 11:39:46 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Nov 2025 11:11:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>技术研究</title>
+      <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
+      <pubDate>Sun, 23 Nov 2025 11:11:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>构建备忘录</title>
       <link>https://kuhung.me/categories/%E6%9E%84%E5%BB%BA%E5%A4%87%E5%BF%98%E5%BD%95/</link>
@@ -121,15 +130,6 @@
       <pubDate>Thu, 05 Jun 2025 19:15:55 +0800</pubDate>
       
       <guid>https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>技术研究</title>
-      <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
-      <pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate>
-      
-      <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</guid>
       <description></description>
     </item>
     
