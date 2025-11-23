@@ -33,10 +33,10 @@ if (!doNotTrack) {
   <title>
        
        
-           将富士LUTs应用到iPhone前需要弄清楚的6个问题 | 谷粒的博客
+           富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题 | 谷粒的博客
        
   </title>
-  <meta name="title" content="将富士LUTs应用到iPhone前需要弄清楚的6个问题 | 谷粒的博客">
+  <meta name="title" content="富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题 | 谷粒的博客">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -55,8 +55,8 @@ if (!doNotTrack) {
          "@id": "https:\/\/kuhung.me"
     },
     "articleSection" : "posts",
-    "name" : "将富士LUTs应用到iPhone前需要弄清楚的6个问题",
-    "headline" : "将富士LUTs应用到iPhone前需要弄清楚的6个问题",
+    "name" : "富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题",
+    "headline" : "富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题",
     "description" : "最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。\n笔者通过编程方式，结合实际数据和图表，力图深入浅出解释LUT、Log模式以及为什么需要进行色彩空间转换。\n1. 什么是 LUT (Look-Up Table) LUT 本质上是一个映射表，就如其英文全称所言。对于 3D LUT，它是一个 RGB 立方体。输入一个 RGB 值 (R, G, B)，查找表，输出一个新的 RGB 值。\nLUT 的核心映射逻辑 输入 RGB: 假设视频里有一个像素，颜色是 R=0.5, G=0.5, B=0.5 (中性灰)。 查找 (Look Up): LUT 文件是一个三维数组 (例如 33x33x33)。 我们把 0.0~1.0 的范围划分成 33 个格子。 0.5 刚好对应第 17 个格子索引 (因为 16\/32 = 0.5)。 定位: 找到坐标为 (17, 17, 17) 的那个小格子。 读取: 读取这个格子预先存储的 RGB 值。比如，胶片模拟可能会把这个灰变成略带冷调的 (0.48, 0.49, 0.52)。 插值 (Interpolation): 如果输入是 0.",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
@@ -123,7 +123,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">将富士LUTs应用到iPhone前需要弄清楚的6个问题</h1>
+        <h1 class="post-title" itemprop="name headline">富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -276,7 +276,7 @@ if (!doNotTrack) {
 <p>在适当配置后，iPhone 拍摄的是 <strong>Apple Log</strong>。而富士的 LUT 期望输入是 <strong>F-Log</strong> 或 <strong>F-Log2</strong>。</p>
 <p>如果直接把富士 LUT 套在 Apple Log 素材上，由于 Gamma 曲线不匹配，会导致画面反差错误（通常是高光过曝或暗部死黑），色彩也会发生偏移。</p>
 <p>由于富士给出的更全面的LUTs是在F-Log2基础上配置的，所以下图仅对比 Apple Log 与 F-Log2。实际上 Apple Log 与 F-Log 差别较小。</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/luts-for-iphone/apple-log.png" alt="apple-log" class="lazyload"><figcaption class="image-caption">apple-log</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/luts-for-iphone/apple-log.png" alt="Apple Log vs F-Log2" class="lazyload"><figcaption class="image-caption">Apple Log vs F-Log2</figcaption></figure></p>
 <h3 id="转换逻辑">转换逻辑</h3>
 <p>为了正确使用 LUT，我们需要如下步骤：</p>
 <ol>
@@ -300,11 +300,11 @@ if (!doNotTrack) {
 <li><strong>Classic Neg. (Superia)</strong>: 也是大家常说的<strong>胶片</strong>。高对比，独特的色彩偏移（红色偏橘，绿色偏青）。适合日常随拍。</li>
 </ol>
 <p>下图显示，几个典型胶片对于标准色彩的偏移情况</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/luts-for-iphone/color.png" alt="color" class="lazyload"><figcaption class="image-caption">color</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/luts-for-iphone/color.png" alt="效果对比" class="lazyload"><figcaption class="image-caption">效果对比</figcaption></figure></p>
 <h2 id="6-我该如何应用lut">6. 我该如何应用LUT</h2>
 <p>目前，根据苹果官网介绍：要拍摄 Log 格式视频，需要使用运行 iOS 15.1 或更高版本的 13 Pro 及以后的机型，并在相机设置中将 ProRes 编码设置为 Log。为了更好体验，建议使用 iPhone15 Pro 及以上 Pro 机型。</p>
 <p>另外，目前苹果本身的相机不支持导入LUT，建议下载免费软件 BlackmagicCam，进行导入。需要注意的是，录制时色彩空间应当设置为 Apple Log。</p>
-<p>想要获取CC滤镜进行体验，访问下载 <a href="https://fuji-lut.kuhung.me/">https://fuji-lut.kuhung.me/</a> 。限时免费，随时开拍。</p>
+<p>想要获取已转换的CC滤镜进行体验，访问下载 <a href="https://fuji-lut.kuhung.me/">https://fuji-lut.kuhung.me/</a> 。限时免费，下载开拍。</p>
 <hr>
 <p><a href="/about/">关于作者</a></p>
 
