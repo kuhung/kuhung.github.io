@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/2025/luts-for-iphone/" />
+  
+  <link rel="canonical" href="https://kuhung.me/2025/ai-trend-in-my-eyes/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           AI产品构建全景图：六阶段及其方法选型 | 谷粒的博客
+       
+  </title>
+  <meta name="title" content="AI产品构建全景图：六阶段及其方法选型 | 谷粒的博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me"
+    },
+    "articleSection" : "posts",
+    "name" : "AI产品构建全景图：六阶段及其方法选型",
+    "headline" : "AI产品构建全景图：六阶段及其方法选型",
+    "description" : "在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。\n虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。\n本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。\n注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。\n由于篇幅限制，深度受限。欢迎关注并留言感兴趣的部分，笔者接下来将长期更新。\n阶段一：设计规划 这一步，讲的是如何将我们的需求，传递给 AI 的可执行规范。核心是要确认我们的交互规范，再让 AI 执行。当然，如果你脑子里没有这部分的清晰想法，让 AI 先给一版，再进行微调也是可以的。这也是建立品味的过程。\n工具选型 工具上，目前可试验的有 v0、Figma Make、Miro AI 等。它们在产品设计的初期，提供头脑风暴、UI、UX 上的便利。\n不过随着基础模型能力的提升，笔者认为更应该关注审美、以及知道当前风格是属于什么类别，建立脑海里的分类器概念，便于有效传递给大模型。\n工具 定位 适用场景 v0 AI 驱动的 UI 原型设计 从文本\/视觉输入快速生成 UI Figma Make AI 辅助设计工具 产品经理直接生成交互原型 AI Design Reviewer Figma 设计审计插件 UX\/UI 批评、可访问性检测 除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 Prompt-ready 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。\n规范驱动开发 在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。\nAGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。\n注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2025",
+    "datePublished": "2025-11-26 11:46:12 \u002b0800 CST",
+    "dateModified" : "2025-11-26 11:46:12 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/2025\/ai-trend-in-my-eyes\/",
+    "wordCount" : "666",
+    "keywords" : [ "AI","技术雷达","智能体","MCP","LLM", "谷粒的博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me">谷粒的博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">历史文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me">谷粒的博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">历史文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">AI产品构建全景图：六阶段及其方法选型</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2025-11-26 itemprop="datePublished">November 26, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/"> 技术专栏 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#阶段一设计规划">阶段一：设计规划</a>
+      <ul>
+        <li><a href="#工具选型">工具选型</a></li>
+        <li><a href="#规范驱动开发">规范驱动开发</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#阶段二数据工程">阶段二：数据工程</a>
+      <ul>
+        <li><a href="#核心理念data-centric-ai">核心理念：Data-Centric AI</a></li>
+        <li><a href="#文档解析docling">文档解析：Docling</a></li>
+        <li><a href="#数据质量cleanlab">数据质量：Cleanlab</a></li>
+        <li><a href="#数据合规presidio">数据合规：Presidio</a></li>
+      </ul>
+    </li>
+    <li><a href="#阶段三模型选择">阶段三：模型选择</a>
+      <ul>
+        <li><a href="#小语言模型">小语言模型</a></li>
+        <li><a href="#模型量化autoround">模型量化：AutoRound</a></li>
+        <li><a href="#高质量微调">高质量微调</a></li>
+        <li><a href="#结构化输出outlines-vs-instructor">结构化输出：Outlines vs Instructor</a></li>
+      </ul>
+    </li>
+    <li><a href="#阶段四智能体编排">阶段四：智能体编排</a>
+      <ul>
+        <li><a href="#编排框架选型">编排框架选型</a></li>
+        <li><a href="#上下文工程">上下文工程</a></li>
+        <li><a href="#工具生态">工具生态</a></li>
+        <li><a href="#记忆管理">记忆管理</a></li>
+        <li><a href="#交互组件">交互组件</a></li>
+        <li><a href="#注意事项-1">注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#阶段五部署与维护">阶段五：部署与维护</a>
+      <ul>
+        <li><a href="#推理引擎">推理引擎</a></li>
+        <li><a href="#可观测性">可观测性</a></li>
+        <li><a href="#成本与扩缩容">成本与扩缩容</a></li>
+      </ul>
+    </li>
+    <li><a href="#阶段六工具与理念">阶段六：工具与理念</a>
+      <ul>
+        <li><a href="#开发实践">开发实践</a></li>
+        <li><a href="#安全评估">安全评估</a></li>
+        <li><a href="#效果评估">效果评估</a></li>
+        <li><a href="#注意事项-2">注意事项</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结你并不需要一个检查清单">总结：你并不需要一个检查清单</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。</p>
+<p>虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/ai-trend/hype_cycle.png" alt="hype_cycle" class="lazyload"><figcaption class="image-caption">hype_cycle</figcaption></figure></p>
+<p>本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。</p>
+<blockquote>
+<p>注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。</p>
+</blockquote>
+<p>由于篇幅限制，深度受限。欢迎关注并留言感兴趣的部分，笔者接下来将长期更新。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/ai-trend/ai_product_stages.png" alt="ai_product_stages" class="lazyload"><figcaption class="image-caption">ai_product_stages</figcaption></figure></p>
+<hr>
+<h2 id="阶段一设计规划">阶段一：设计规划</h2>
+<p>这一步，讲的是如何将我们的需求，传递给 AI 的可执行规范。核心是要确认我们的交互规范，再让 AI 执行。当然，如果你脑子里没有这部分的清晰想法，让 AI 先给一版，再进行微调也是可以的。这也是建立品味的过程。</p>
+<h3 id="工具选型">工具选型</h3>
+<p>工具上，目前可试验的有 <strong>v0</strong>、<strong>Figma Make</strong>、<strong>Miro AI</strong> 等。它们在产品设计的初期，提供头脑风暴、UI、UX 上的便利。</p>
+<p>不过随着基础模型能力的提升，笔者认为更应该关注审美、以及知道当前风格是属于什么类别，建立脑海里的分类器概念，便于有效传递给大模型。</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>定位</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>v0</strong></td>
+<td>AI 驱动的 UI 原型设计</td>
+<td>从文本/视觉输入快速生成 UI</td>
+</tr>
+<tr>
+<td><strong>Figma Make</strong></td>
+<td>AI 辅助设计工具</td>
+<td>产品经理直接生成交互原型</td>
+</tr>
+<tr>
+<td><strong>AI Design Reviewer</strong></td>
+<td>Figma 设计审计插件</td>
+<td>UX/UI 批评、可访问性检测</td>
+</tr>
+</tbody>
+</table>
+<p>除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 <strong>Prompt-ready</strong> 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。</p>
+<h3 id="规范驱动开发">规范驱动开发</h3>
+<p>在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。</p>
+<p><strong>AGENTS.md</strong> 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。</p>
+<h3 id="注意事项">注意事项</h3>
+<p>整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</p>
+<hr>
+<h2 id="阶段二数据工程">阶段二：数据工程</h2>
+<p>数据是目前创业者们能做到极致的事情。在算力、算法和数据这个循环中，算力和算法，并非小团队能够玩转。数据决定了模型的上限。这点，与笔者的算法从业经验结论一致：大部分场景并不需要高深模型，简单模型+高质量数据，即可实现预期效果。</p>
+<h3 id="核心理念data-centric-ai">核心理念：Data-Centric AI</h3>
+<p>在该阶段，数据的处理和检验十分重要。在传统数据团队中，会有大量的 DQC 进行数据质量检测。这是保证服务可用的一项基本原则。而在 AI 产品方面，我们的数据更多是非结构化的、多源头，需要更多的处理精力投入。</p>
+<p>当建立起这种数据为中心的意识后，数据飞轮才有意义。</p>
+<h3 id="文档解析docling">文档解析：Docling</h3>
+<p><strong>Docling</strong> 是解析 PDF、PPT 的一项有效工具。它的核心逻辑是，基于视觉理解进行版面布局分析，而不仅仅是提取文本流。目前该项目在 GitHub 上拥有 4w+ stars。</p>
+<p><strong>实现原理：</strong></p>
+<ol>
+<li><strong>布局分析模型</strong>：使用 IBM 开发的 DocLayNet 模型（基于 RT-DETR 架构）识别页面元素（标题、段落、表格、图片等 11 种类型）</li>
+<li><strong>表格识别</strong>：使用 TableFormer 模型将表格区域转换为结构化 HTML</li>
+<li><strong>阅读顺序推断</strong>：通过空间关系和语义分析推断正确的阅读顺序</li>
+<li><strong>结构化输出</strong>：输出统一的 DoclingDocument 格式，可导出为 Markdown、JSON 等</li>
+</ol>
+<h4 id="对比-mineru">对比 MinerU</h4>
+<p><strong>MinerU</strong> 是上海人工智能实验室 OpenDataLab 开发的开源文档提取工具（PDF-Extract-Kit），专注于科技文献解析。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Docling</th>
+<th>MinerU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开发方</td>
+<td>IBM Research</td>
+<td>上海 AI 实验室 OpenDataLab</td>
+</tr>
+<tr>
+<td>核心优势</td>
+<td>企业文档、多格式支持（PDF/DOCX/PPTX/HTML）</td>
+<td>科技论文、公式识别强</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>快，CPU 友好</td>
+<td>需 GPU 加速，精度更高</td>
+</tr>
+<tr>
+<td>表格识别</td>
+<td>TableFormer，嵌套表格处理好</td>
+<td>StructEqTable，复杂表格好</td>
+</tr>
+<tr>
+<td>公式识别</td>
+<td>基础支持</td>
+<td>UniMERNet，LaTeX 输出优秀</td>
+</tr>
+<tr>
+<td>集成性</td>
+<td>LangChain/LlamaIndex 深度集成</td>
+<td>Dify 平台集成、RAGFlow</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>商业文档、合同、报告</td>
+<td>学术论文、技术文档</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据质量cleanlab">数据质量：Cleanlab</h3>
+<p><strong>Cleanlab</strong> 是另一个工具，用于数据集质量的自动识别。目前该项目在 GitHub 上拥有 1w+ stars。该工具的核心原理依赖置信学习。</p>
+<p><strong>置信学习（Confident Learning）原理：</strong></p>
+<p>置信学习的核心思想是利用模型的预测概率分布来估计标签噪音。具体步骤：</p>
+<ol>
+<li><strong>交叉验证获取 Out-of-sample 概率</strong>：对每个样本获取模型的预测概率</li>
+<li><strong>估计联合分布 Q(ŷ, y)</strong>：估计&quot;预测标签&quot;与&quot;真实标签&quot;的联合概率矩阵</li>
+<li><strong>识别标签错误</strong>：当某个样本的给定标签概率显著低于模型预测的其他类别时，标记为潜在错误</li>
+</ol>
+<p><strong>数学表达：</strong></p>
+<pre tabindex="0"><code>P(label error) ∝ 1 - P(given_label | x)
+</code></pre><p>当样本 x 被标记为类别 y，但模型给出的 P(y|x) 很低时，该样本很可能是标签错误。这种方法适合初步筛选，在类别边界清晰的场景下效果更好。说白了就是模型拟合后，难以分类的样本。实际业务中，对这部分数据的额外处理，能很好提升模型性能。因为真实场景下，真正干净的数据几乎没有。</p>
+<blockquote>
+<p><strong>理论背景</strong>：Confident Learning 由 MIT 的 Curtis Northcutt 于 2019 年提出，核心思想是通过估计&quot;噪声标签&quot;与&quot;真实标签&quot;之间的联合分布来识别标签错误。这不同于<strong>模糊学习（Fuzzy Learning）</strong>——后者处理的是标签本身具有模糊性的场景（如情感分析的边界样本），而 Confident Learning 处理的是标签标注错误的场景。</p>
+</blockquote>
+<h3 id="数据合规presidio">数据合规：Presidio</h3>
+<p>数据合规也是构建过程中需要考虑的一件事，合规从一开始就考虑，比上线后面临合规再来更改，要方便得多。但这里要留意，不宜过度思考，让合规成为发布的拦路虎，应想办法让其成为竞争优势。</p>
+<p><strong>Presidio</strong> 是微软开源的 PII（个人隐私信息）检测和匿名化工具，支持 50+ 种实体类型的识别。</p>
+<p><strong>实现原理：</strong></p>
+<ol>
+<li><strong>识别器（Recognizers）</strong>：采用多层识别策略
+<ul>
+<li><strong>规则层</strong>：正则表达式匹配（身份证、手机号、邮箱等）</li>
+<li><strong>校验层</strong>：Luhn 算法校验信用卡号、身份证校验位等</li>
+<li><strong>NLP 层</strong>：基于 spaCy/Transformers 的命名实体识别（人名、地址等）</li>
+</ul>
+</li>
+<li><strong>匿名化器（Anonymizers）</strong>：支持多种脱敏策略
+<ul>
+<li><code>replace</code>：替换为占位符</li>
+<li><code>redact</code>：直接删除</li>
+<li><code>mask</code>：部分遮蔽（如手机号 138****1234）</li>
+<li><code>hash</code>：单向哈希</li>
+<li><code>encrypt</code>：可逆加密（需密钥）</li>
+</ul>
+</li>
+<li><strong>可扩展性</strong>：可自定义识别器来检测特定领域的敏感信息（如内部工号格式）</li>
+</ol>
+<p>至于更多数据仓库方面，例如 ClickHouse、Apache Paimon，则是当体量到达一定程度后的选择。这里不做过多展开。而向量数据库，本期虽未提及但也十分重要，建议关注 MTEB 榜单。</p>
+<hr>
+<h2 id="阶段三模型选择">阶段三：模型选择</h2>
+<p>选择合适的模型，并结合周遭工具进行应用开发。这一阶段的核心是 <strong>&ldquo;Right Size for the Job&rdquo;</strong>。一开始用最好模型做测试，试探边界总是没错。后续考虑则更多是效果、性能和价格的取舍。</p>
+<h3 id="小语言模型">小语言模型</h3>
+<p><strong>小语言模型（SLMs）</strong> 在特定垂直任务上性价比更高，且支持端侧运行。代表性模型包括 Phi-3、Gemma、SmolLM2、DeepSeek 开源系列等。它们的典型应用场景包括：端侧推理（Edge AI）、高频低延迟的重复性任务、路由分流与问题降级、以及投机采样中的 Draft Model。</p>
+<blockquote>
+<p><strong>什么是投机采样？</strong> 这是一种 LLM 推理加速技术。核心思想是用一个小而快的 Draft Model 快速&quot;猜测&quot;生成多个候选 Token，然后由大模型 Target Model 并行验证这些候选。由于大模型并行验证的成本远低于逐个生成，整体推理速度可提升 2-3 倍。</p>
+</blockquote>
+<h3 id="模型量化autoround">模型量化：AutoRound</h3>
+<p><strong>AutoRound</strong> 是 Intel 推出的后训练量化（PTQ）算法，可将模型压缩到 4-bit 甚至 2-bit，几乎不损失精度。其原理是基于 Sign Gradient Descent（符号梯度下降）优化权重的舍入方式，通过少量校准数据找到最优的量化参数。</p>
+<h3 id="高质量微调">高质量微调</h3>
+<p>&ldquo;Textbooks Are All You Need&rdquo;（微软 Phi 系列论文）提出了一个重要理念：用高质量合成数据训练/微调小模型，可以达到惊人的效果。高质量数据的特征包括：结构化（清晰的逻辑链条，如教科书式的推理步骤）、多样性（覆盖多种场景和问题类型）、准确性（无错误、无噪音）、以及教学性（包含解释和推理过程，而非只有答案）。</p>
+<h3 id="结构化输出outlines-vs-instructor">结构化输出：Outlines vs Instructor</h3>
+<p>LLM 本质是概率模型，输出具有不确定性，难以直接对接下游确定性系统。结构化输出是解决这一问题的关键。实现路径从简单到复杂包括：Prompt Engineering（通过 Few-shot 示例要求 JSON）、Constrained Decoding（根据 Schema 屏蔽不合法 Token）、Native Structured Output（模型原生支持 JSON Schema，如 OpenAI 的 <code>response_format</code>）、以及 Model Fine-tuning（Function Calling 微调）。</p>
+<p><strong>Outlines</strong> 是约束解码的代表工具，在每一步 Token 生成时，根据当前状态和 Schema 规则，将不合法的 Token 概率设为 0，从而 100% 保证输出符合 Schema。它适用于本地部署的 HuggingFace 模型。</p>
+<p><strong>Instructor</strong> 则走了另一条路——将 Pydantic 模型与 LLM API 调用无缝结合，通过 Function Calling 或 JSON Mode 请求结构化输出，配合 Pydantic 数据校验，当输出不符合 Schema 时自动重试并将错误信息反馈给模型。它适用于 OpenAI、Anthropic 等 API 模型，灵活性更高，但依赖重试机制而非 100% 保证。</p>
+<p>简单来说：本地模型用 Outlines（保证度高），API 模型用 Instructor（灵活性强）。</p>
+<hr>
+<h2 id="阶段四智能体编排">阶段四：智能体编排</h2>
+<p>智能体编排是将模型能力转化为可控业务流程的关键环节。这一阶段的核心挑战在于：如何让 AI 在复杂任务中保持状态、管理上下文、并与外部工具可靠交互。</p>
+<h3 id="编排框架选型">编排框架选型</h3>
+<p><strong>LangGraph</strong> 已成为构建有状态多智能体应用的事实标准。它基于图论将 Agent 流程建模为状态在节点之间的流转，关键特性是<strong>支持循环</strong>——这对 Agent 的&quot;思考-行动-观察&quot;迭代至关重要，也是区别于传统 DAG 的核心优势。</p>
+<p>在框架选型上，不同场景有不同的最优解：<strong>LangGraph</strong> 适合复杂业务流程和多步骤 Agent；<strong>Pydantic AI</strong> 由 Pydantic 团队开发，主打类型安全和 Python 原生体验，集成 OpenTelemetry 实现可观测，适合生产环境；<strong>CrewAI</strong> 专注多智能体协调与任务分配；<strong>Agno</strong> 以微秒级启动和低内存消耗见长，适合高并发场景；<strong>SmolAgents</strong> 是 HuggingFace 出品的轻量方案，CodeAgent 模式适合代码生成任务；<strong>Browser Use</strong> 则基于 Playwright 和 VLM，将网页 DOM 或截图喂给视觉模型来决定点击位置，适合 Web 自动化和 RPA 场景。</p>
+<h3 id="上下文工程">上下文工程</h3>
+<p>上下文工程是 Prompt Engineering 的进阶版。它包含三个核心要素：<strong>上下文设置</strong>（最小化系统提示词、规范化少样本示例）、<strong>上下文管理</strong>（摘要压缩、结构化笔记、子代理分散压力）、以及<strong>动态检索</strong>（JIT 即时检索，按需加载外部数据）。</p>
+<p>针对 <strong>&ldquo;Lost in the Middle&rdquo;</strong> 问题（模型对长文本中间部分注意力不足），常见策略包括：将关键信息放在开头或结尾、使用 JSON 等结构化格式标记重要内容、分段独立推理后汇总。</p>
+<p>在技术实现层面，<strong>KV Cache Management</strong> 是优化长上下文推理效率的关键——Transformer 的自注意力机制需要计算每个 Token 与之前所有 Token 的关系，KV Cache 缓存已计算的 Key-Value 对以避免重复计算。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/ai-trend/kv_cache.png" alt="kv_cache" class="lazyload"><figcaption class="image-caption">kv_cache</figcaption></figure></p>
+<p>RAG 优化方面，<strong>JIT Retrieval</strong>（即时检索）的理念是只在需要时加载数据，而非一开始就塞满上下文窗口，这能显著提升效率和相关性。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/ai-trend/jit_rag.png" alt="jit_rag" class="lazyload"><figcaption class="image-caption">jit_rag</figcaption></figure></p>
+<h3 id="工具生态">工具生态</h3>
+<p><strong>MCP（Model Context Protocol）</strong> 试图统一 LLM 与外部数据/工具的连接标准，已经算是业内共识。
+<strong>Context7</strong> 作为 MCP 服务器提供最新框架文档，解决 LLM 训练数据截止日期导致的 API 幻觉问题；
+<strong>FastMCP</strong> 通过 Python 装饰器简化 MCP 服务器实现，降低自定义服务的门槛。</p>
+<p><strong>LiteLLM</strong> 解决的是另一个痛点：将 Azure、Bedrock、Anthropic、Ollama 等各种 LLM API 统一转换成 OpenAI 格式。它的价值在于解耦应用层与模型层、统一错误处理、内置成本追踪、以及支持多模型负载均衡和故障转移。</p>
+<p><strong>n8n</strong> 属于低代码阵营，适合快速构建 AI 智能体工作流原型，以及自动化日常工作流。</p>
+<h3 id="记忆管理">记忆管理</h3>
+<p>智能体的记忆管理是长期对话的关键。<strong>Mem0</strong> 提供了短期回忆与智能长期记忆相结合的解决方案，核心能力包括：从对话中自动提取值得记住的信息、检测并智能合并重复或冲突的记忆、分层存储（会话内短期 + 跨会话长期）、以及多用户隔离。</p>
+<p>与之对比，<strong>LangMem</strong> 更侧重于 LangChain/LangGraph 生态的原生集成，主要依赖 LangGraph 状态管理，自动提取需要自定义逻辑。选择哪个取决于你的技术栈——通用场景选 Mem0，深度使用 LangChain 生态则选 LangMem。</p>
+<h3 id="交互组件">交互组件</h3>
+<p><strong>assistant-ui</strong> 是 AI 对话界面的 React 组件库，支持消息流式处理和状态管理，适合快速构建 AI 对话产品的前端。以下是笔者整理的其他组件。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/ai-trend/Snipaste_2025-07-27_10-28-48.png" alt="Snipaste_2025-07-27_10-28-48" class="lazyload"><figcaption class="image-caption">Snipaste_2025-07-27_10-28-48</figcaption></figure></p>
+<h3 id="注意事项-1">注意事项</h3>
+<p><strong>认为 API 转换为 MCP 就完事大吉</strong>是常见陷阱。直接暴露内部 API 会导致 token 爆炸和上下文污染。</p>
+<p>此外还有安全风险。当智能体同时具备三项能力时，就构成了**&ldquo;致命三威胁&rdquo;**：访问私有数据（如数据库、内部文档）、接触不可信内容（如用户输入、外部网页）、能够进行外部通信（如发送邮件、调用 API）。这种组合为提示词注入攻击创造了完美条件。</p>
+<p>建议使用 <strong>Toxic Flow Analysis（有害流程分析）</strong> 检查智能体系统的数据流向，识别潜在的不安全路径。</p>
+<hr>
+<h2 id="阶段五部署与维护">阶段五：部署与维护</h2>
+<p>从原型到生产，推理性能和运维能力是决定产品体验的关键。这一阶段的核心在于：如何在有限的算力资源下，提供稳定、高效、可观测的服务。</p>
+<h3 id="推理引擎">推理引擎</h3>
+<p><strong>vLLM</strong> 是目前开源推理引擎的事实标准，其核心创新 <strong>PagedAttention</strong> 受操作系统虚拟内存启发，非连续地分配显存给 KV Cache。传统方式需要预分配连续显存，导致碎片和浪费；PagedAttention 将 KV Cache 分成固定大小的 Block 按需分配，显著减少显存碎片，支持更大的 Batch Size，从而提升整体吞吐量。</p>
+<p><strong>LMCache</strong> 解决的是另一个痛点：多轮对话或长文档 RAG 场景中，每次请求都要重新计算 Prefix 的 KV Cache。它的思路是将计算好的 KV Cache 存到磁盘或共享内存，下次请求直接加载，从而减少首字延迟（TTFT）。这种 Context Caching 机制已成为 Anthropic、DeepSeek 等 API 厂商的标配功能，LMCache 是开源侧的实现。</p>
+<h3 id="可观测性">可观测性</h3>
+<p>传统的 APM 监控（CPU/Memory）对 LLM 应用远远不够，需要关注更多维度：Token 消耗、每步延迟、Prompt/Response 内容、以及检索相关性。</p>
+<p>工具选型上，<strong>DataDog LLM Observability</strong> 提供 LLM 端到端追踪，覆盖 Token、延迟、Prompt 内容等维度；<strong>LangSmith</strong> 是 LangChain 生态的可观测方案，支持 Chain/Agent 调试回放；<strong>NVIDIA DCGM Exporter</strong> 则专注 GPU 集群监控，追踪利用率、温度和 ECC 错误——在大模型训练中，Straggler（掉队节点）会拖慢整个集群，细粒度 GPU 监控至关重要。</p>
+<h3 id="成本与扩缩容">成本与扩缩容</h3>
+<p>成本控制方面，可通过 <strong>LiteLLM</strong> 配合自定义仪表盘追踪 Token 消耗；模型版本管理可借助 <strong>MLflow</strong> 实现 A/B 测试和灰度发布；扩缩容则基于请求量配置 K8s HPA 和自定义指标。</p>
+<p>GPU 资源调度是特殊挑战。大模型训练/推理是通信密集型的，需要将频繁 All-Reduce 的任务调度到同一物理机或同一 Switch 下。<strong>Kueue</strong> 提供队列和配额管理，配合<strong>拓扑感知调度</strong>（考虑 NVLink、Switch 层级等物理拓扑），可显著提升集群效率。</p>
+<hr>
+<h2 id="阶段六工具与理念">阶段六：工具与理念</h2>
+<p>最后这个阶段，聚焦于贯穿全流程的开发实践、安全机制和评估体系。这些内容与前面各阶段有所交叉，但作为独立主题值得强调。</p>
+<h3 id="开发实践">开发实践</h3>
+<p><strong>使用 LLM 理解遗留代码库</strong>能显著加速对大型项目的理解，这是 AI 编码工具最成熟的场景之一；</p>
+<p><strong>TCR 工作流</strong>（Test &amp;&amp; Commit || Revert）是一种测试驱动的编程实践，强化 YAGNI（You Ain&rsquo;t Gonna Need It）、KISS（Keep It Simple, Stupid） 等原则；</p>
+<p><strong>团队共享 AI 指令</strong>则超越个人提示词，将验证过的高质量指令沉淀为团队资产。</p>
+<h3 id="安全评估">安全评估</h3>
+<p>安全工具方面，<strong>Presidio</strong>（前面已介绍）专注 PII 检测和匿名化；<strong>SAIF</strong> 是 Google 开发的 AI 安全风险管理框架，主要应对数据投毒、提示注入、模型窃取和对抗样本等威胁；<strong>MCP-Scan</strong> 专门扫描 MCP 服务器的安全风险，检测提示词注入和工具投毒；<strong>NeMo Guardrails</strong> 使用 Colang（一种对话流程定义语言）创建安全护栏，支持话题边界控制、输出格式约束、事实性检查和敏感词过滤。</p>
+<h3 id="效果评估">效果评估</h3>
+<p><strong>DeepEval</strong> 是 LLM 性能评估的主流框架，核心指标包括：Faithfulness（忠实度，检测幻觉）、Answer Relevancy（答案相关性）、Context Precision/Recall（检索质量）、以及 Bias &amp; Toxicity（偏见和有害内容）。<strong>Inspect AI</strong> 是英国 AI 安全研究所开源的标准化评估框架，侧重安全评估。</p>
+<p><strong>LLM as Judge</strong>（用强模型评估输出）是一种可扩展的自动化评估方案，但需警惕几个陷阱：<strong>位置偏差</strong>（模型倾向于给特定位置的答案打高分）、<strong>冗长偏差</strong>（倾向于更长的答案）、<strong>自我偏好</strong>（倾向于给同家族模型的输出打高分）。建议使用多评估器交叉验证，或专门的评估模型（如 Prometheus）。</p>
+<h3 id="注意事项-2">注意事项</h3>
+<p><strong>自满于 AI 生成的代码</strong>——研究表明代码质量可能随时间下降，Code Review 和测试不能省；</p>
+<p><strong>容量驱动开发</strong>导致的跨产品上下文切换成本累积，最终可能引发&quot;拥塞崩溃&quot;；</p>
+<p><strong>Text to SQL</strong> 直接让 LLM 生成并执行 SQL 风险极大，幻觉和数据泄露都是真实威胁，建议中间加一层语义层或人工审核。</p>
+<hr>
+<h2 id="总结你并不需要一个检查清单">总结：你并不需要一个检查清单</h2>
+<p>在开始构建下一个 AI 功能时，我们也许不必要按照每一项都执行。但是，有相对清晰的认识，也是建立品味的过程。只有当见的够多、见过的最佳实践够多，才有可能设计出符合预期、甚至是超出用户预期的产品。</p>
+<p>这是全景图的意义，也是这篇文章的意义所在。</p>
+<hr>
+<p><em>整理自 ThoughtWorks 技术雷达 Vol.33 (2025.11) | 作者：<a href="/about/">kuhung</a> | <a href="mailto:hi@kuhung.me">hi@kuhung.me</a></em></p>
+<p><em>Gemini 3 Pro &amp; Claude Opus 4.5 亦有参与贡献</em></p>
+<hr>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/2025/ai-trend-in-my-eyes/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E9%9B%B7%E8%BE%BE/">
+                    #技术雷达</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E4%BD%93/">
+                    #智能体</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mcp/">
+                    #MCP</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/llm/">
+                    #LLM</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/2025/luts-for-iphone/" class="prev" rel="prev" title="富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题"><i class="iconfont icon-left"></i>&nbsp;富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2025</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

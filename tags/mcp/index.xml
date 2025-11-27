@@ -6,7 +6,27 @@
     <description>Recent content in MCP on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 23 Apr 2025 14:37:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Nov 2025 11:46:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI产品构建全景图：六阶段及其方法选型</title>
+      <link>https://kuhung.me/2025/ai-trend-in-my-eyes/</link>
+      <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/2025/ai-trend-in-my-eyes/</guid>
+      <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
+虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
+本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
+注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。
+由于篇幅限制，深度受限。欢迎关注并留言感兴趣的部分，笔者接下来将长期更新。
+阶段一：设计规划 这一步，讲的是如何将我们的需求，传递给 AI 的可执行规范。核心是要确认我们的交互规范，再让 AI 执行。当然，如果你脑子里没有这部分的清晰想法，让 AI 先给一版，再进行微调也是可以的。这也是建立品味的过程。
+工具选型 工具上，目前可试验的有 v0、Figma Make、Miro AI 等。它们在产品设计的初期，提供头脑风暴、UI、UX 上的便利。
+不过随着基础模型能力的提升，笔者认为更应该关注审美、以及知道当前风格是属于什么类别，建立脑海里的分类器概念，便于有效传递给大模型。
+工具 定位 适用场景 v0 AI 驱动的 UI 原型设计 从文本/视觉输入快速生成 UI Figma Make AI 辅助设计工具 产品经理直接生成交互原型 AI Design Reviewer Figma 设计审计插件 UX/UI 批评、可访问性检测 除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 Prompt-ready 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。
+规范驱动开发 在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。
+AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。
+注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description>
+    </item>
+    
     <item>
       <title>P人友好的高德（谷歌）地图 MCP</title>
       <link>https://kuhung.me/2025/amap-mcp/</link>
