@@ -209,23 +209,23 @@ if (!doNotTrack) {
 
           <p>Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。</p>
 <p>你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末的Github链接，动手实操。</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204205727412.png" alt="image-20251204205727412" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/image-20251204205727412.png" alt="image-20251204205727412" style="zoom:50%;" />
 <p>接下来，我们按照数据定义、数据获取、数据加工、数据应用四层思路，一起来看看链上数据。</p>
 <h2 id="链上数据">链上数据</h2>
 <p>说到链上数据，这里有两个概念需要澄清。首先，交易所的k线、各个矿池的价格数据，不算严格意义上的链上数据，但他也是链交易的一环，所以下文也会提及。接着便是真正的区块链上存储的数据，它是严格意义上的链上数据。</p>
 <p>下图是使用 CoinGecko API 获取近90天比特币价格数据的例子：</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/output.png" alt="output" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/output.png" alt="output" style="zoom:50%;" />
 <p>而在区块链上，数据会分为三类。他们分别是<strong>交易数据</strong>，包含收发地址、转账金额、余额信息；<strong>区块数据</strong>，包含时间戳、矿工费、矿工奖励等；<strong>智能合约代码</strong>，区块上的编码业务逻辑。我们主要关注交易数据。</p>
 <p>当然，围绕区块链，类似证券交易，还会有各类研究报告、以及社媒数据。这两个，不在今天的讨论范畴。</p>
 <h2 id="数据获取">数据获取</h2>
 <p>就目前来说，单一链的数据量已经膨胀的非常大了，特别是主流的比特币、以太坊等。你可以下载整个区块链到本地，但这并非最佳选择。两年前，受序数（ordinals）活动影响，完整的未修剪的比特币区块已经有600G大小。</p>
 <p>不过也别担心，我们有公链浏览器这么个东西。通过它，可以查询链上的交易、地址和合约情况。在文末的链接中，有一个使用 Etherscan 查询以太坊创始人 Vitalik 地址的例子。可以看到如下返回：</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184414657.png" alt="image-20251204184414657" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/image-20251204184414657.png" alt="image-20251204184414657" style="zoom:50%;" />
 <p>另外，即使是原始的数据，也并不能直接用来分析。需要加工和存储。有平台对数据进行了加工处理，导入到了关系型数据库中。其中的典型代表就有 Dune Analytics 这类。我们可以直接在平台使用SQL进行查询，随后可以通过API获取相应数据。</p>
 <p>下图是通过Dune查询并返回以太坊每日交易数的一个例子</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184454486.png" alt="image-20251204184454486" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/image-20251204184454486.png" alt="image-20251204184454486" style="zoom:50%;" />
 <p>此外，在区块之外，还在存在尚未被矿工验证的代替确认交易合集。对其的分析，能够有效评估区块链网络的实际使用和健康状态，也能通过其推断市场预期、优化交易费用。此外，还能发现热门的新Token。下图是使用 GeckoTerminal 获取以太坊热门DEX交易池的例子。</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184435144.png" alt="image-20251204184435144" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/image-20251204184435144.png" alt="image-20251204184435144" style="zoom:50%;" />
 <h2 id="数据加工">数据加工</h2>
 <p>这里的数据加工，也分为两个层面。因为前面有提到，有些工具会预先处理数据，形成数据库。但实际上，你也一定会好奇，他们处理了哪些数据。数据加工，这里分为数据清洗和数据再加工两个层面。</p>
 <p>在数据清洗层面，原始区块字段，包含很多对于下游分析无用的信息，特别是非交易活动。比如交易所新造币转移给矿工、或者一些排除找零（change outputs）以及一些排除重复的程序化行为。这些行为，一般在我们使用加工后的数据时，无需考虑。</p>
@@ -237,13 +237,13 @@ if (!doNotTrack) {
 <p>◦ <strong>CDD (Coin Days Destroyed)：</strong> 币天销毁，衡量长期持有的币被移动（卖出）的程度，用于判断长期持有者的动向。</p>
 <p>◦ <strong>SOPR (Spent Output Profit Ratio)：</strong> 卖出产出利润率，衡量市场参与者在卖出时是盈利还是亏损。</p>
 <p>下图是一个比特币价格移动平均线与MVRV比率的数据图：</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/MVRV.png" alt="MVRV" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/MVRV.png" alt="MVRV" style="zoom:50%;" />
 <p>日常的跟踪跟随，见的比较多的便是聪明钱跟踪和巨鲸钱包的监控。下图是已知的部分巨鲸列表：</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184529779.png" alt="image-20251204184529779" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/image-20251204184529779.png" alt="image-20251204184529779" style="zoom:50%;" />
 <p>◦ <strong>Smart Money 追踪：</strong> 追踪 Nansen 标记的“聪明钱”地址的持仓动向，这些地址的行为映射着信息差，比如内幕交易。</p>
 <p>◦ <strong>巨鲸监控：</strong> 监控大型持有者（巨鲸）的钱包，因为他们的交易对价格波动有更大的影响。特别是沉睡钱包的激活，往往意味着趋势下行。</p>
 <p>下图是ETH创始人的钱包地址最新变动，在11月26日，转移出1006枚ETH。</p>
-<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184546977.png" alt="image-20251204184546977" style="zoom:50%;" />
+<img src="/images/onchain-data-mining/image-20251204184546977.png" alt="image-20251204184546977" style="zoom:50%;" />
 <p>而对于机构反洗钱来说，链上分析也十分重要。通过特定模式识别，挖掘异常交易行为。这里一般是图算法工程师重点关注的内容。而链上的行为简化有两种</p>
 <ol>
 <li><strong>空投糖果行为</strong>（通常表现为在短时间内向大量用户发送近似金额的交易，动机可能是营销或“粉尘”注入追踪地址）</li>
