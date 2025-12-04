@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/2025/meritocracy-in-mind/" />
+  
+  <link rel="canonical" href="https://kuhung.me/2025/data-mining-onchain/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           链上数据挖掘导读（onchain data mining 101） | 谷粒的博客
+       
+  </title>
+  <meta name="title" content="链上数据挖掘导读（onchain data mining 101） | 谷粒的博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me"
+    },
+    "articleSection" : "posts",
+    "name" : "链上数据挖掘导读（onchain data mining 101）",
+    "headline" : "链上数据挖掘导读（onchain data mining 101）",
+    "description" : "Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。\n你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末的Github链接，动手实操。\n接下来，我们按照数据定义、数据获取、数据加工、数据应用四层思路，一起来看看链上数据。\n链上数据 说到链上数据，这里有两个概念需要澄清。首先，交易所的k线、各个矿池的价格数据，不算严格意义上的链上数据，但他也是链交易的一环，所以下文也会提及。接着便是真正的区块链上存储的数据，它是严格意义上的链上数据。\n下图是使用 CoinGecko API 获取近90天比特币价格数据的例子：\n而在区块链上，数据会分为三类。他们分别是交易数据，包含收发地址、转账金额、余额信息；区块数据，包含时间戳、矿工费、矿工奖励等；智能合约代码，区块上的编码业务逻辑。我们主要关注交易数据。\n当然，围绕区块链，类似证券交易，还会有各类研究报告、以及社媒数据。这两个，不在今天的讨论范畴。\n数据获取 就目前来说，单一链的数据量已经膨胀的非常大了，特别是主流的比特币、以太坊等。你可以下载整个区块链到本地，但这并非最佳选择。两年前，受序数（ordinals）活动影响，完整的未修剪的比特币区块已经有600G大小。\n不过也别担心，我们有公链浏览器这么个东西。通过它，可以查询链上的交易、地址和合约情况。在文末的链接中，有一个使用 Etherscan 查询以太坊创始人 Vitalik 地址的例子。可以看到如下返回：\n另外，即使是原始的数据，也并不能直接用来分析。需要加工和存储。有平台对数据进行了加工处理，导入到了关系型数据库中。其中的典型代表就有 Dune Analytics 这类。我们可以直接在平台使用SQL进行查询，随后可以通过API获取相应数据。\n下图是通过Dune查询并返回以太坊每日交易数的一个例子\n此外，在区块之外，还在存在尚未被矿工验证的代替确认交易合集。对其的分析，能够有效评估区块链网络的实际使用和健康状态，也能通过其推断市场预期、优化交易费用。此外，还能发现热门的新Token。下图是使用 GeckoTerminal 获取以太坊热门DEX交易池的例子。\n数据加工 这里的数据加工，也分为两个层面。因为前面有提到，有些工具会预先处理数据，形成数据库。但实际上，你也一定会好奇，他们处理了哪些数据。数据加工，这里分为数据清洗和数据再加工两个层面。\n在数据清洗层面，原始区块字段，包含很多对于下游分析无用的信息，特别是非交易活动。比如交易所新造币转移给矿工、或者一些排除找零（change outputs）以及一些排除重复的程序化行为。这些行为，一般在我们使用加工后的数据时，无需考虑。\n而真正对我们重要的是，数据再加工。一般这个活动，去取决于我们的分析目标。比如我们想要构建交易图，那么就需要把上一步数据中涉及的节点和边提取出来，构建有向图。比如我们想要构建巨鲸监控，则我们需要按交易地址进行处理归类，汇总同一地址或同一实体的交易。\n数据应用 就一般用户来说，数据应用无非是能不能帮他挣到钱。这里可以分为前期的价值评估和日常跟踪跟随。价值评估会有几个常用指标：\n◦ MVRV 比率 (Market Value to Realized Value)： 市值与已实现价值的比率，用于判断资产价格是被高估还是低估。\n◦ NVT 比率 (Network Value to Transactions)： 将网络价值（市值）与交易量进行比较，类似传统金融的市盈率 (P\/E)。\n◦ CDD (Coin Days Destroyed)： 币天销毁，衡量长期持有的币被移动（卖出）的程度，用于判断长期持有者的动向。\n◦ SOPR (Spent Output Profit Ratio)： 卖出产出利润率，衡量市场参与者在卖出时是盈利还是亏损。\n下图是一个比特币价格移动平均线与MVRV比率的数据图：\n日常的跟踪跟随，见的比较多的便是聪明钱跟踪和巨鲸钱包的监控。下图是已知的部分巨鲸列表：\n◦ Smart Money 追踪： 追踪 Nansen 标记的“聪明钱”地址的持仓动向，这些地址的行为映射着信息差，比如内幕交易。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2025",
+    "datePublished": "2025-12-03 15:21:47 \u002b0800 CST",
+    "dateModified" : "2025-12-03 15:21:47 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/2025\/data-mining-onchain\/",
+    "wordCount" : "151",
+    "keywords" : [ "onchain","data mining","数据分析","加密货币","链上数据分析", "谷粒的博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me">谷粒的博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me">谷粒的博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">链上数据挖掘导读（onchain data mining 101）</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2025-12-03 itemprop="datePublished">December 3, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#链上数据">链上数据</a></li>
+    <li><a href="#数据获取">数据获取</a></li>
+    <li><a href="#数据加工">数据加工</a></li>
+    <li><a href="#数据应用">数据应用</a></li>
+    <li><a href="#链上数据挖掘总结">链上数据挖掘总结</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+    <li><a href="#名词解释表">名词解释表</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。</p>
+<p>你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末的Github链接，动手实操。</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204205727412.png" alt="image-20251204205727412" style="zoom:50%;" />
+<p>接下来，我们按照数据定义、数据获取、数据加工、数据应用四层思路，一起来看看链上数据。</p>
+<h2 id="链上数据">链上数据</h2>
+<p>说到链上数据，这里有两个概念需要澄清。首先，交易所的k线、各个矿池的价格数据，不算严格意义上的链上数据，但他也是链交易的一环，所以下文也会提及。接着便是真正的区块链上存储的数据，它是严格意义上的链上数据。</p>
+<p>下图是使用 CoinGecko API 获取近90天比特币价格数据的例子：</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/output.png" alt="output" style="zoom:50%;" />
+<p>而在区块链上，数据会分为三类。他们分别是<strong>交易数据</strong>，包含收发地址、转账金额、余额信息；<strong>区块数据</strong>，包含时间戳、矿工费、矿工奖励等；<strong>智能合约代码</strong>，区块上的编码业务逻辑。我们主要关注交易数据。</p>
+<p>当然，围绕区块链，类似证券交易，还会有各类研究报告、以及社媒数据。这两个，不在今天的讨论范畴。</p>
+<h2 id="数据获取">数据获取</h2>
+<p>就目前来说，单一链的数据量已经膨胀的非常大了，特别是主流的比特币、以太坊等。你可以下载整个区块链到本地，但这并非最佳选择。两年前，受序数（ordinals）活动影响，完整的未修剪的比特币区块已经有600G大小。</p>
+<p>不过也别担心，我们有公链浏览器这么个东西。通过它，可以查询链上的交易、地址和合约情况。在文末的链接中，有一个使用 Etherscan 查询以太坊创始人 Vitalik 地址的例子。可以看到如下返回：</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184414657.png" alt="image-20251204184414657" style="zoom:50%;" />
+<p>另外，即使是原始的数据，也并不能直接用来分析。需要加工和存储。有平台对数据进行了加工处理，导入到了关系型数据库中。其中的典型代表就有 Dune Analytics 这类。我们可以直接在平台使用SQL进行查询，随后可以通过API获取相应数据。</p>
+<p>下图是通过Dune查询并返回以太坊每日交易数的一个例子</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184454486.png" alt="image-20251204184454486" style="zoom:50%;" />
+<p>此外，在区块之外，还在存在尚未被矿工验证的代替确认交易合集。对其的分析，能够有效评估区块链网络的实际使用和健康状态，也能通过其推断市场预期、优化交易费用。此外，还能发现热门的新Token。下图是使用 GeckoTerminal 获取以太坊热门DEX交易池的例子。</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184435144.png" alt="image-20251204184435144" style="zoom:50%;" />
+<h2 id="数据加工">数据加工</h2>
+<p>这里的数据加工，也分为两个层面。因为前面有提到，有些工具会预先处理数据，形成数据库。但实际上，你也一定会好奇，他们处理了哪些数据。数据加工，这里分为数据清洗和数据再加工两个层面。</p>
+<p>在数据清洗层面，原始区块字段，包含很多对于下游分析无用的信息，特别是非交易活动。比如交易所新造币转移给矿工、或者一些排除找零（change outputs）以及一些排除重复的程序化行为。这些行为，一般在我们使用加工后的数据时，无需考虑。</p>
+<p>而真正对我们重要的是，数据再加工。一般这个活动，去取决于我们的分析目标。比如我们想要构建交易图，那么就需要把上一步数据中涉及的节点和边提取出来，构建有向图。比如我们想要构建巨鲸监控，则我们需要按交易地址进行处理归类，汇总同一地址或同一实体的交易。</p>
+<h2 id="数据应用">数据应用</h2>
+<p>就一般用户来说，数据应用无非是能不能帮他挣到钱。这里可以分为前期的价值评估和日常跟踪跟随。价值评估会有几个常用指标：</p>
+<p>◦ <strong>MVRV 比率 (Market Value to Realized Value)：</strong> 市值与已实现价值的比率，用于判断资产价格是被高估还是低估。</p>
+<p>◦ <strong>NVT 比率 (Network Value to Transactions)：</strong> 将网络价值（市值）与交易量进行比较，类似传统金融的市盈率 (P/E)。</p>
+<p>◦ <strong>CDD (Coin Days Destroyed)：</strong> 币天销毁，衡量长期持有的币被移动（卖出）的程度，用于判断长期持有者的动向。</p>
+<p>◦ <strong>SOPR (Spent Output Profit Ratio)：</strong> 卖出产出利润率，衡量市场参与者在卖出时是盈利还是亏损。</p>
+<p>下图是一个比特币价格移动平均线与MVRV比率的数据图：</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/MVRV.png" alt="MVRV" style="zoom:50%;" />
+<p>日常的跟踪跟随，见的比较多的便是聪明钱跟踪和巨鲸钱包的监控。下图是已知的部分巨鲸列表：</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184529779.png" alt="image-20251204184529779" style="zoom:50%;" />
+<p>◦ <strong>Smart Money 追踪：</strong> 追踪 Nansen 标记的“聪明钱”地址的持仓动向，这些地址的行为映射着信息差，比如内幕交易。</p>
+<p>◦ <strong>巨鲸监控：</strong> 监控大型持有者（巨鲸）的钱包，因为他们的交易对价格波动有更大的影响。特别是沉睡钱包的激活，往往意味着趋势下行。</p>
+<p>下图是ETH创始人的钱包地址最新变动，在11月26日，转移出1006枚ETH。</p>
+<img src="/Users/kuhung/Library/CloudStorage/Dropbox/hugo/Sites/kuhung/static/images/onchain-data-mining/image-20251204184546977.png" alt="image-20251204184546977" style="zoom:50%;" />
+<p>而对于机构反洗钱来说，链上分析也十分重要。通过特定模式识别，挖掘异常交易行为。这里一般是图算法工程师重点关注的内容。而链上的行为简化有两种</p>
+<ol>
+<li><strong>空投糖果行为</strong>（通常表现为在短时间内向大量用户发送近似金额的交易，动机可能是营销或“粉尘”注入追踪地址）</li>
+<li><strong>贪婪注资行为</strong>（通常表现为在短时间内收到大量高于历史平均金额的交易，动机可能是勒索或骗局非法集资）</li>
+</ol>
+<p>实际上的图结构会更复杂，会有更多反风控对抗模式呈现其中。</p>
+<p>此外，还会有一些Defi和NFT分析方面的工作，就不在此展开了。</p>
+<h2 id="链上数据挖掘总结">链上数据挖掘总结</h2>
+<p>链上的数据形式，其实还是比较简单的。数据挖掘的核心，从来都不是数据，而是业务价值。但是也不妨碍我们通过上述流程，学习掌握基本的数据获取和建模技巧。目前，区块链上的交易价格，越发和现实世界的经济走势同步。若是进行投机活动，则还需要了解更多的宏观经济行为，比如日元这类流动性杠杆工具对其的影响。</p>
+<p>链上数据挖掘101源代码：https://github.com/kuhung/onchain-data-mining</p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>An On-Chain Analysis-Based Approach to Predict Ethereum Prices</li>
+<li>GLXY On-Chain Fundamentals Whitepaper</li>
+<li>ONCHAIN ANALYTICS A New Methodology for Cryptocurrency Analysis</li>
+<li>Mastering Onchain Analytics</li>
+</ol>
+<p>谷歌 notebooklm 亦对此文有贡献。</p>
+<h2 id="名词解释表">名词解释表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名词</th>
+<th style="text-align:left">全称</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Web3</strong></td>
+<td style="text-align:left">Web 3.0</td>
+<td style="text-align:left">下一代互联网，强调去中心化、区块链技术和用户主权。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>链上数据</strong></td>
+<td style="text-align:left">On-chain Data</td>
+<td style="text-align:left">存储在区块链网络中的所有交易和交互记录，具有公开、透明、不可篡改的特性。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>区块</strong></td>
+<td style="text-align:left">Block</td>
+<td style="text-align:left">区块链中的基本存储单位，包含了一定时间内的交易记录和其他元数据。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>智能合约</strong></td>
+<td style="text-align:left">Smart Contract</td>
+<td style="text-align:left">部署在区块链上的程序代码，在满足特定条件时自动执行。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>DEX</strong></td>
+<td style="text-align:left">Decentralized Exchange</td>
+<td style="text-align:left">去中心化交易所，允许用户直接通过智能合约进行代币兑换，无需中介机构。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>巨鲸</strong></td>
+<td style="text-align:left">Whale</td>
+<td style="text-align:left">持有大量加密资产的个人或实体，其交易行为可能对市场价格产生显著影响。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>聪明钱</strong></td>
+<td style="text-align:left">Smart Money</td>
+<td style="text-align:left">指在这个市场中表现出高收益、信息灵敏的专业投资者或机构的资金。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>DeFi</strong></td>
+<td style="text-align:left">Decentralized Finance</td>
+<td style="text-align:left">去中心化金融，利用区块链技术构建的开放式金融系统。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>NFT</strong></td>
+<td style="text-align:left">Non-Fungible Token</td>
+<td style="text-align:left">非同质化代币，用于表示数字资产（如艺术品、收藏品）的唯一所有权。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/2025/data-mining-onchain/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/onchain/">
+                    #onchain</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/data-mining/">
+                    #data mining</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                    #数据分析</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">
+                    #加密货币</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                    #链上数据分析</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/2025/meritocracy-in-mind/" class="prev" rel="prev" title="你以为的优绩主义"><i class="iconfont icon-left"></i>&nbsp;你以为的优绩主义</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2025</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
