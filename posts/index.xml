@@ -6,43 +6,7 @@
     <description>Recent content in Posts on 谷粒的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Jan 2026 00:22:28 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>技术领导｜08 the big leagues 管理组织</title>
-      <link>https://kuhung.me/2026/the-big-leagues/</link>
-      <pubDate>Fri, 30 Jan 2026 00:22:28 +0800</pubDate>
-      
-      <guid>https://kuhung.me/2026/the-big-leagues/</guid>
-      <description>本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
-下文是第八章，管理组织的思维导图，与诸位读者共勉。
-🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜07 managing managers 管理管理者</title>
-      <link>https://kuhung.me/2026/managing-managers/</link>
-      <pubDate>Fri, 30 Jan 2026 00:22:05 +0800</pubDate>
-      
-      <guid>https://kuhung.me/2026/managing-managers/</guid>
-      <description>本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
-下文是第七章，管理管理者的思维导图，与诸位读者共勉。
-🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜06 managing multiple teams 管理多个团队</title>
-      <link>https://kuhung.me/2026/managing-multiple-teams/</link>
-      <pubDate>Fri, 30 Jan 2026 00:20:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/2026/managing-multiple-teams/</guid>
-      <description>本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
-下文是第六章，管理多个团队的思维导图，与诸位读者共勉。
-🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译
-关于作者</description>
-    </item>
-    
+    <lastBuildDate>Wed, 03 Dec 2025 15:21:47 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>链上数据挖掘导读（onchain data mining 101）</title>
       <link>https://kuhung.me/2025/data-mining-onchain/</link>
@@ -751,6 +715,42 @@ import numpy as np from scipy import stats def numerai_corr(preds, target): &amp
 涉及资源 硬件 树莓派4B（服务器，包含SD卡） 米家智能家居（各类实际硬件，包含多模网关） Apple homepod mini / Apple TV / iPad（Apple控制中枢） 软件 Raspbian 系统 Docker HACS（docker版本） xiaomi插件 配置过程 连接树莓派 对于一个全新的树莓派，我们需要初始化它，以便进行后续操作。参考以下信息：
 # &amp;lt;https://ost.51cto.com/posts/4179&amp;gt; ## 创建账号，解决没有权限的问题 &amp;lt;https://www.cnblogs.com/melodicule/p/16212711.html&amp;gt; ## 连接ssh ssh pi@192.168.x.x password: xx ## 配置 sudo raspi-config #设置登录方式、屏幕 ## VNC 可视化界面 &amp;lt;https://www.jianshu.com/p/5e4d64c2ceaf&amp;gt; ## 查看温度 vcgencmd measure_temp ## 引脚信息 &amp;lt;http://www.raspigeek.com/index.php?c=read&amp;amp;id=126&amp;amp;page=1&amp;gt; 安装docker docker安装，需要留意源信息的变更。
 curl -fsSL &amp;lt;https://get.docker.com&amp;gt; -o get-docker.sh sudo sh get-docker.sh --mirror Aliyun sudo docker version # 修改docker源与dns解析，留意是否失效ustc的源已失效 sudo tee /etc/docker/daemon.</description>
+    </item>
+    
+    <item>
+      <title>技术领导｜08 the big leagues 管理组织</title>
+      <link>https://kuhung.me/2025/the-big-leagues/</link>
+      <pubDate>Thu, 30 Jan 2025 00:22:28 +0800</pubDate>
+      
+      <guid>https://kuhung.me/2025/the-big-leagues/</guid>
+      <description>本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第八章，管理组织的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>技术领导｜07 managing managers 管理管理者</title>
+      <link>https://kuhung.me/2025/managing-managers/</link>
+      <pubDate>Thu, 30 Jan 2025 00:22:05 +0800</pubDate>
+      
+      <guid>https://kuhung.me/2025/managing-managers/</guid>
+      <description>本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第七章，管理管理者的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>技术领导｜06 managing multiple teams 管理多个团队</title>
+      <link>https://kuhung.me/2025/managing-multiple-teams/</link>
+      <pubDate>Thu, 30 Jan 2025 00:20:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/2025/managing-multiple-teams/</guid>
+      <description>本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第六章，管理多个团队的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译
+关于作者</description>
     </item>
     
     <item>
