@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta name="generator" content="Hugo 0.101.0" />
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  
+  
+  <link rel="canonical" href="https://kuhung.me/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  
+  
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https:\/\/kuhung.me\/",
+    "name": "Kuhung | 谷粒",
+    "author": {
+        "@type": "Person",
+        "name": "谷粒"
+    },
+    "description": "数据挖掘\/机器学习工程师",
+}
+</script>
+ 
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+  	
+  	<style>
+    .intro-fullscreen {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        box-sizing: border-box;
+        padding-top: 15vh;
+    }
+    .intro-fullscreen .scroll-down {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-10px); }
+        60% { transform: translateX(-50%) translateY(-5px); }
+    }
+    .post-content .post-summary {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<div class="post-warp">
+	<div class="intro intro-fullscreen">
+    
+    
+    
+    <div class="avatar">
+        <a href="/posts/"><img src="/images/me/avatar.svg"></a>
+    </div>
+    
+    
+    <h2 class="description">
+        <span class="typed-text"></span>
+    </h2>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subtitles = ["可测量的一面不是世界，它只是世界可以测量的一面。","行则将至，功不唐捐。 ",];
+            let currentIndex = 0;
+            const typedTextSpan = document.querySelector(".typed-text");
+            
+            function updateSubtitle() {
+                typedTextSpan.classList.add('fade');
+                
+                setTimeout(function() {
+                    const text = subtitles[currentIndex];
+                    typedTextSpan.textContent = text;
+                    currentIndex = (currentIndex + 1) % subtitles.length;
+                    
+                    setTimeout(function() {
+                        typedTextSpan.classList.remove('fade');
+                    }, 50);
+                }, 500);
+            }
+            
+            updateSubtitle();
+            setInterval(updateSubtitle, 4000);
+        });
+    </script>
+    
+    <div class="social-links">
+        
+<a href="https://github.com/kuhung" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/kuhungio" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a> 
+
+
+<a href="mailto:hi@kuhung.me" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+    </div>
+    <div class="scroll-down">
+        <a href="#posts-list"><i class="iconfont icon-down"></i></a>
+    </div>
+</div>
+
+<div id="posts-list" class="posts-container">
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/mentoring-vol-2/">技术领导｜02 Mentoring 如何指导新人</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">🌟 合集地址：《The Manager&rsquo;s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
+经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
+所以不出意外的，我感到灰心丧气。而在灰心之余，最好的办法就是去 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-05-23" itemprop="datePublished">May 23, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/side-project/"> Side Project </a>
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%BF%BB%E8%AF%91%E4%BD%9C%E5%93%81/">
+               	 #翻译作品</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%AE%A1%E7%90%86/">
+               	 #管理</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/the-managers-path/">
+               	 #The Manager&#39;s Path</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/mentoring-vol-1/">技术领导｜02 Mentoring 如何指导实习生</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">🌟 合集地址：《The Manager&rsquo;s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
+导师制度的价值 导师制度 导师通常被分配给团队中的初级成员，例如应届生或实习生。许多组织，在新员工的入职过程中也使用导师。
+导师是谁 有时，导师是团队中的另一位初级同学。可能他自己也只参加工作一两年，可以轻易地与新人建立联系。
+导师有时是高级工程师。除了可以帮助新 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-04-23" itemprop="datePublished">April 23, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/side-project/"> Side Project </a>
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%BF%BB%E8%AF%91%E4%BD%9C%E5%93%81/">
+               	 #翻译作品</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%AE%A1%E7%90%86/">
+               	 #管理</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/the-managers-path/">
+               	 #The Manager&#39;s Path</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/about/">关于我</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">关于我 (About Me) 创业路上，关注算法&amp;数据应用。
+曾担任算法负责人，在全球化用户画像、游戏反作弊、海内外用户增长方向拥有多年经验。
+社交媒体：「谷粒粒」 全网搜索，关注上述账号，便捷了解产品最新动向。
+个人标签 (Personal Tags) 笔名：谷粒（kuhung） 毕业院校：华中科技大学 MBTI：ENFJ-A 使命、愿景与价值观 (Mission, Vision …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-04-17" itemprop="datePublished">April 17, 2021</time>
+                </span>
+                in
+                
+        </div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/performance-coaching/">思维导图｜《高绩效教练》</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">核心观点：
+让教练对象产生如下感觉
+自主 胜任 联结 教练需要做到
+察觉 提问 倾听 关于作者</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-03-16" itemprop="datePublished">March 16, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/mindmap/">
+               	 #mindmap</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+               	 #思维导图</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/three-feature-importances-in-xgb/">Xgboost 三种特征重要性计算方法对比与扩展</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
+这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
+另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-03-08" itemprop="datePublished">March 8, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+               	 #数据挖掘</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%80%BB%E7%BB%93/">
+               	 #总结</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B/">
+               	 #特征工程</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/what-i-learned-from-little-game-xiao/">从一款小游戏收获的三点思考</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
+这一过程，收到了很多反馈。
+同时，也有如下三点思考：
+善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
+前景提要 品牌与商业化观察 很久以前，小力就有一个想法：将自己的技术能力变现，至少是能变成流量。
+在这个过程中，交付客户喜欢的东西，形成自己的名片📇。
+这样做的目的：一方面是督促自己不断学习；另一 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-02-13" itemprop="datePublished">February 13, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        <a href="https://kuhung.me/categories/side-project/"> side project </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/app/">
+               	 #app</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%80%BB%E7%BB%93/">
+               	 #总结</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/interpretable-machine-learning/">算法模型的可解释性</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
+QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
+某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
+数据越多越好 作为调参从业人员，从算法和模型角度来说，数据确实是越多越好。
+数据越多，模型能捕获到的有用特征则更多。从特征状态空间，映射到实际标签的 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2021-01-22" itemprop="datePublished">January 22, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%80%BB%E7%BB%93/">
+               	 #总结</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/ten-financial-moments-in-five-years-1/">五年十个财务瞬间｜01 2020年财务总结</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
+为什么会有这篇文章 写这篇文章，是为了审视自己的财务情况，梳理财务观和财务现状，给自己一个交代。
+财富，不仅决定了一个人的生活水平，也是其未来的支撑。财富自由不是绝对概念——需要达 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2020-12-31" itemprop="datePublished">December 31, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E8%B4%A2%E5%8A%A1/">
+               	 #财务</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%80%BB%E7%BB%93/">
+               	 #总结</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/management-101-vol-2/">技术领导｜01 技术管理入门 （下）</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">🌟 合集地址：《The Manager&rsquo;s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
+下半部分，我们集中注意力在自身，即：如何被管理，做一个称职的下属（打工人）。
+被管理者视角 弄清楚如何被管理，也是管理者需掌握的东西。这和向上管理不太一样，虽然它们有相关性。
+它的核心在于三点：
+在工作中，发展主人翁意识
+培养对所做工作内 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2020-12-30" itemprop="datePublished">December 30, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/side-project/"> Side Project </a>
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%BF%BB%E8%AF%91%E4%BD%9C%E5%93%81/">
+               	 #翻译作品</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%AE%A1%E7%90%86/">
+               	 #管理</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/the-managers-path/">
+               	 #The Manager&#39;s Path</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/game-design-summary/">游戏机制设计，以剧本杀为例剖析可玩性的来源</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">标题 创建时间 发布时间 最后一次修改 备注 游戏机制设计 2020.11.11 2020.12.24 2020.12.24 拖更文🐶 写作背景 一款游戏，挨骂最多的是谁 一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；
+但我们将各个部分拆开，一定会发现，单一的”美好“的元素，并不足以撑起整体的评价。
+最后游戏的评价，一定是多方面，1+1&gt;2 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2020-12-24" itemprop="datePublished">December 24, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+               	 #游戏设计</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+
+	
+
+<ul class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/">1</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/6/">6</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/7/">7</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/page/8/">8</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/9/">9</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/10/">10</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/13/">13</a></li>
+        </span>
+    
+    
+    
+    
+</ul>
+
+</div>
+
+  
+
+          
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="/js/vendor_main.min.js" async=""></script>
+
+
+
+     </div>
+  </body>
+</html>

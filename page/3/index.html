@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+	<meta name="generator" content="Hugo 0.101.0" />
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  
+  
+  <link rel="canonical" href="https://kuhung.me/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  
+  
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https:\/\/kuhung.me\/",
+    "name": "Kuhung | 谷粒",
+    "author": {
+        "@type": "Person",
+        "name": "谷粒"
+    },
+    "description": "数据挖掘\/机器学习工程师",
+}
+</script>
+ 
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+  	
+  	<style>
+    .intro-fullscreen {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        box-sizing: border-box;
+        padding-top: 15vh;
+    }
+    .intro-fullscreen .scroll-down {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-10px); }
+        60% { transform: translateX(-50%) translateY(-5px); }
+    }
+    .post-content .post-summary {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<div class="post-warp">
+	<div class="intro intro-fullscreen">
+    
+    
+    
+    <div class="avatar">
+        <a href="/posts/"><img src="/images/me/avatar.svg"></a>
+    </div>
+    
+    
+    <h2 class="description">
+        <span class="typed-text"></span>
+    </h2>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subtitles = ["可测量的一面不是世界，它只是世界可以测量的一面。","行则将至，功不唐捐。 ",];
+            let currentIndex = 0;
+            const typedTextSpan = document.querySelector(".typed-text");
+            
+            function updateSubtitle() {
+                typedTextSpan.classList.add('fade');
+                
+                setTimeout(function() {
+                    const text = subtitles[currentIndex];
+                    typedTextSpan.textContent = text;
+                    currentIndex = (currentIndex + 1) % subtitles.length;
+                    
+                    setTimeout(function() {
+                        typedTextSpan.classList.remove('fade');
+                    }, 50);
+                }, 500);
+            }
+            
+            updateSubtitle();
+            setInterval(updateSubtitle, 4000);
+        });
+    </script>
+    
+    <div class="social-links">
+        
+<a href="https://github.com/kuhung" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/kuhungio" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
+ 
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a> 
+
+
+<a href="mailto:hi@kuhung.me" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+    </div>
+    <div class="scroll-down">
+        <a href="#posts-list"><i class="iconfont icon-down"></i></a>
+    </div>
+</div>
+
+<div id="posts-list" class="posts-container">
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/bootstrapping-culture/">技术领导｜09 Bootstrapping Culture 塑造团队文化</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary"> 翻译这篇文章时，我正在M家工作，感受到了独树一帜的企业文化。在这里，W公司经历的一些稀奇古怪的事没有了，而自身的动力和绩效也达到了一个新的高度。
+可以说，正是M家的企业文化，引导和决定了我选择这里。同时，也是在相互选择的过程中，让我有了比W更高的生产力和更清晰的远景。
+但同时，随着人数的扩充，也观察到了不同文化的碰撞和侵蚀。一些原以为对的事，开始有了不同立场。一些在W看到的过往，也在部分项目和部 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-07-30" itemprop="datePublished">July 30, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/mindmap/">
+               	 #mindmap</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/the-managers-path/">
+               	 #the-managers-path</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/agent-case-studies/">41个 LangChain / LangGraph / LangSmith 案例研究</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">关于作者</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-07-21" itemprop="datePublished">July 21, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/ai/"> AI </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/langchain/">
+               	 #LangChain</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/langgraph/">
+               	 #LangGraph</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/langsmith/">
+               	 #LangSmith</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6/">
+               	 #案例研究</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/ai/">
+               	 #AI</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/prompt-guide/">三大LLM厂商的提示词行动指南</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-07-20" itemprop="datePublished">July 20, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/">
+               	 #提示词工程</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/llm/">
+               	 #LLM</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/ai/">
+               	 #AI</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+               	 #大模型</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/context-engineering/">所谓上下文工程，实质为Agent系统设计</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">原文作者 DAIR.AI Academy 中文翻译 gemini &amp; kuhung 备注评论 kuhung 什么是上下文工程？ 几年前，许多人，甚至是顶尖的AI研究人员，都声称提示工程（prompt engineering）将不复存在。（注：当时的语境是说：当大模型足够强，人类就不需要写那些提示词。）
+显然，他们错了。事实上，提示工程现在比以往任何时候都更加重要。它的重要性如此之高，以至于 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-07-07" itemprop="datePublished">July 7, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"> 系统设计 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E7%A8%8B/">
+               	 #AI工程</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/">
+               	 #上下文工程</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/agent%E7%B3%BB%E7%BB%9F/">
+               	 #Agent系统</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/llm%E4%BC%98%E5%8C%96/">
+               	 #LLM优化</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/jlpt-push/">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">7月的JLPT考试临近，语法复习得怎么样了，还真难说。hero3046看了几遍，金龟子哥哥看了多少，心理还是没底呀。与其沉迷于碎片化信息，不如让碎片化知识打断自己。
+本期差生文具多｜工具篇系列，博主手搓一份 JLPT 推送项目，用碎片化（知识）挑战碎片化（信息）。
+特点：随机抓取一条JLPT考试语法点，推送到手机端。帮助用户利用碎片化时间学习和复习 JLPT 语法。
+项目仓 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-06-12" itemprop="datePublished">June 12, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/push/">
+               	 #push</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/jlpt/">
+               	 #jlpt</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/content-sop/">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。
+当下的很多AI产品思路都是如此，但做得好的不多。谷歌出品的NotebookLM是产品中的代表。最近新火起来的AI自媒体主播也是如此。通过信息过滤压缩，再配以“有 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-06-05" itemprop="datePublished">June 5, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/ai%E8%BE%85%E5%8A%A9%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90/">
+               	 #AI辅助内容生成</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B/">
+               	 #业务流程</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/fastvlm-iphone-install/">FastVLM iPhone 安装与实机测评</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
+接下来说说实测最关心的性能表现和大小情况：
+作者的测试设备为：
+MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-05-24" itemprop="datePublished">May 24, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+               	 #机器学习</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/amap-mcp/">P人友好的高德（谷歌）地图 MCP</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
+生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
+MCP原理 简单来说，MCP …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-04-23" itemprop="datePublished">April 23, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/"> 项目备忘 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/mcp/">
+               	 #MCP</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/llm/">
+               	 #LLM</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E5%87%BA%E8%A1%8C%E5%B7%A5%E5%85%B7/">
+               	 #出行工具</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/numerai-guide/">Numerai量化101</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：
+持仓规模为3.6亿美元（现金部分未披露）
+基金持仓头寸数为389支
+为什么要关注它，是因为它的噱头集成实在是太多了：机器学习+加密货币+对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-03-11" itemprop="datePublished">March 11, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96/">
+               	 #量化</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E5%85%A5%E9%97%A8/">
+               	 #入门</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/iot-home/">自己动手将米家接入Homekit，构建低成本智能家居系统</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">大概在三年前，作者通过树莓派+小米智能家居+苹果设备，实现了通过iPhone控制家庭智能设备的功能。通过苹果生态，即可实现若干智能化：根据所在位置，开关电器；通过Siri控制灯光亮度和开关等功能。外出时，再也不用担心家里哪个电器没关；回家前，还能提前打开空调；睡觉前也不用起来给每个房间单独按开关，直接Siri指令。这大大方便了用户。
+因为使用的是小米的智能家居，相较于单纯的苹果生态，降低了智能家居 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2025-02-06" itemprop="datePublished">February 6, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/"> 项目备忘 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/iot/">
+               	 #iot</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/diy/">
+               	 #DIY</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+
+	
+
+<ul class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/">1</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/2/">2</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/page/3/">3</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/4/">4</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/5/">5</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/13/">13</a></li>
+        </span>
+    
+    
+    
+    
+</ul>
+
+</div>
+
+  
+
+          
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="/js/vendor_main.min.js" async=""></script>
+
+
+
+     </div>
+  </body>
+</html>

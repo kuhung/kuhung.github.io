@@ -115,9 +115,6 @@ if (!doNotTrack) {
       		
   	
   	<style>
-    html {
-        scroll-behavior: smooth;
-    }
     .intro-fullscreen {
         min-height: 100vh;
         display: flex;
@@ -130,46 +127,19 @@ if (!doNotTrack) {
     }
     .intro-fullscreen .scroll-down {
         position: absolute;
-        bottom: 15rem;
+        bottom: 2rem;
         left: 50%;
         transform: translateX(-50%);
         animation: bounce 2s infinite;
-        cursor: pointer;
-    }
-    .scroll-down a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: #666;
-        transition: color 0.3s ease;
-    }
-    .scroll-down a:hover {
-        color: #333;
-    }
-    .scroll-down .scroll-text {
-        font-size: 12px;
-        letter-spacing: 2px;
-        margin-bottom: 8px;
-        opacity: 0.7;
-    }
-    .scroll-down .scroll-arrow {
-        width: 24px;
-        height: 24px;
-        border-left: 2px solid currentColor;
-        border-bottom: 2px solid currentColor;
-        transform: rotate(-45deg);
-        opacity: 0.8;
     }
     @keyframes bounce {
         0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-        40% { transform: translateX(-50%) translateY(10px); }
-        60% { transform: translateX(-50%) translateY(5px); }
+        40% { transform: translateX(-50%) translateY(-10px); }
+        60% { transform: translateX(-50%) translateY(-5px); }
     }
     .post-content .post-summary {
         display: -webkit-box;
         -webkit-line-clamp: 3;
-        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -190,7 +160,7 @@ if (!doNotTrack) {
     </h2>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const subtitles = JSON.parse(`"[\"可测量的一面不是世界，它只是世界可以测量的一面。\",\"行则将至，功不唐捐。 \"]"`);
+            const subtitles = ["可测量的一面不是世界，它只是世界可以测量的一面。","行则将至，功不唐捐。 ",];
             let currentIndex = 0;
             const typedTextSpan = document.querySelector(".typed-text");
             
@@ -234,10 +204,7 @@ if (!doNotTrack) {
 
     </div>
     <div class="scroll-down">
-        <a href="#posts-list">
-            <span class="scroll-text">SCROLL</span>
-            <span class="scroll-arrow"></span>
-        </a>
+        <a href="#posts-list"><i class="iconfont icon-down"></i></a>
     </div>
 </div>
 
@@ -246,35 +213,29 @@ if (!doNotTrack) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/talks-with-an-ex-vc/">AI出海创业观察｜一位前VC（风险投资人）的务实主义</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/algebra-calculus/">速查表 | Linear Algebra and Calculus 线代与微积分</a></h1>
 			</header>
 			<div class="post-content">
 				
-				<div class="post-summary">前段时间某社群，有老板私我说想约个coffee chat。这位创始人之前是VC（风险投资人），现在做AI+2B的出海业务。他的合伙人在南非有家财税公司，算是自带种子客户。
-我们约在咖啡馆见面，聊了一个多小时。这次对话对我颇有启发，分享给读者朋友。
-业务逻辑 他们的做法很直接：直接去客户公司蹲点。看人家怎么工作的，哪些流程重复，哪些环节费人力。然后用AI改造这些流程，帮客户省成本。
-&ldquo;别 …</div>
+				<div class="post-summary"></div>
 			</div>
 			<div class="post-footer">
 				<div class="post-meta">
                 <span class="post-time">
-                <time datetime="2026-02-03" itemprop="datePublished">February 3, 2026</time>
+                <time datetime="2018-10-18" itemprop="datePublished">October 18, 2018</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/"> 思考 </a>
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
                         
                 </span>
         </div>
 				
 				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">
-               	 #行业观察</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E8%AE%BF%E8%B0%88/">
-               	 #访谈</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E5%AD%A6/">
+               	 #数学</a></span>
         		
 				</div>
 				
@@ -284,36 +245,29 @@ if (!doNotTrack) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/talks-with-an-ai-pm/">AI社交产品观察｜200题与一杯咖啡的背后</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/probabilities-statistics/">速查表 | Probabilities Statistics 数理统计</a></h1>
 			</header>
 			<div class="post-content">
 				
-				<div class="post-summary">某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。
-该产品的想法很纯粹：AI分身帮你社交破冰。你先和对方的AI聊，觉得合适再联系真人。团队说，&ldquo;AI帮社交破冰是真的&rdquo;。
-就在昨天，产品宣布即将关服。类似的草稿有几份，思来想去，优先发布这篇文章。
-产品逻辑 产品叫&quot;分身&quot;，其运作方式如下：
-首先回答 …</div>
+				<div class="post-summary"></div>
 			</div>
 			<div class="post-footer">
 				<div class="post-meta">
                 <span class="post-time">
-                <time datetime="2026-02-02" itemprop="datePublished">February 2, 2026</time>
+                <time datetime="2018-10-18" itemprop="datePublished">October 18, 2018</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/"> 思考 </a>
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
                         
                 </span>
         </div>
 				
 				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">
-               	 #行业观察</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E8%AE%BF%E8%B0%88/">
-               	 #访谈</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E5%AD%A6/">
+               	 #数学</a></span>
         		
 				</div>
 				
@@ -323,42 +277,71 @@ if (!doNotTrack) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/data-mining-onchain/">链上数据挖掘导读（onchain data mining 101）</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/why-is-data-hard/">为啥说数据这行不容易 Why is Data Hard </a></h1>
 			</header>
 			<div class="post-content">
 				
-				<div class="post-summary">Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。
-你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末 …</div>
+				<div class="post-summary">原文链接 Slack 工程师 : why-is-data-hard?
+做数据挖掘时，常常需要考虑很多方面。其中一个方面，常常会涉及到跨功能，复杂且琐碎的一些事项。数据准备以及评价指标的制定，就是这些事项之一。
+等等，似乎干数据这一行，并不容易？
+当大多数的组织谈到数据时，他们想的其实是指标——能反应近期业务、或是能够提供数据驱动的决策、抑或是能够监测企业经营状况的指标。
+按上面的说法，我们应该能够 …</div>
 			</div>
 			<div class="post-footer">
 				<div class="post-meta">
                 <span class="post-time">
-                <time datetime="2025-12-03" itemprop="datePublished">December 3, 2025</time>
+                <time datetime="2018-03-30" itemprop="datePublished">March 30, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">
+               	 #行业观察</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+               	 #数据挖掘</a></span>
+        		
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/time-series-problem-summary/">一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
+总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
+方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &ldquo;golden week&rdquo; 与 &ldquo;new …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2018-02-08" itemprop="datePublished">February 8, 2018</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
                         <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"> 数据挖掘/机器学习 </a>
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
                         
                 </span>
         </div>
 				
 				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/onchain/">
-               	 #onchain</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/data-mining/">
-               	 #data mining</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-               	 #数据分析</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">
-               	 #加密货币</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-               	 #链上数据分析</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%97%B6%E5%BA%8F%E9%97%AE%E9%A2%98/">
+               	 #时序问题</a></span>
         		
 				</div>
 				
@@ -368,30 +351,33 @@ if (!doNotTrack) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/meritocracy-in-mind/">你以为的优绩主义</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/ssd/">Single Shot MultiBox Detector Keras version</a></h1>
 			</header>
 			<div class="post-content">
 				
-				<div class="post-summary">你以为的优绩主义 优绩主义声称：这个社会奖赏那些绩效优秀的人。绩效更优的人，值得更多的奖励、更多的资源。你只要努力达到规则、指标要求的一切，你就配得到更多。这套逻辑，撑起了现代大厦的方方面面，从教育升学、到企业管理，甚至两性关系。
-实际上的优绩主义 你并不知道什么是优绩主义。小时候的你，只知道做好了：前面有奖赏。你被许诺一个光鲜靓丽、有空调的办公室生活，而反面则是重复父辈“面朝黄土背朝天”的循环。 …</div>
+				<div class="post-summary">SSD目标检测Keras版 SSD是一种Object Detection方法。本文是基于论文SSD: Single Shot MultiBox Detector，实现的keras版本。
+该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。 SSD将输 …</div>
 			</div>
 			<div class="post-footer">
 				<div class="post-meta">
                 <span class="post-time">
-                <time datetime="2025-11-27" itemprop="datePublished">November 27, 2025</time>
+                <time datetime="2017-12-08" itemprop="datePublished">December 8, 2017</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/"> 你以为 </a>
+                        <a href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"> 计算机视觉 </a>
                         
                 </span>
         </div>
 				
 				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">
-               	 #胡言乱语</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">
+               	 #目标检测</a></span>
+        		
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/">
+               	 #机器学习入门</a></span>
         		
 				</div>
 				
@@ -401,44 +387,32 @@ if (!doNotTrack) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/ai-trend-in-my-eyes/">AI构建全景图：六阶段及其方案选型</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/yysgan/">yysGAN 生成对抗网络，在游戏角色生成中的尝试</a></h1>
 			</header>
 			<div class="post-content">
 				
-				<div class="post-summary">在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
-虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
-本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
-注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提 …</div>
+				<div class="post-summary">使用GAN生成新的游戏角色 摘要 Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。 依赖 （pip install） cv2 tensorflow( &gt;=1.0) scipy numpy 使用方法 cd yysGAN python yysGAN.py 5000次迭代训练结果 了解更多GAN …</div>
 			</div>
 			<div class="post-footer">
 				<div class="post-meta">
                 <span class="post-time">
-                <time datetime="2025-11-26" itemprop="datePublished">November 26, 2025</time>
+                <time datetime="2017-11-21" itemprop="datePublished">November 21, 2017</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/"> 技术专栏 </a>
+                        <a href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"> 计算机视觉 </a>
                         
                 </span>
         </div>
 				
 				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/ai/">
-               	 #AI</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/demo/">
+               	 #demo</a></span>
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E9%9B%B7%E8%BE%BE/">
-               	 #技术雷达</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E4%BD%93/">
-               	 #智能体</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/mcp/">
-               	 #MCP</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/llm/">
-               	 #LLM</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E7%BD%91%E7%BB%9C/">
+               	 #生成对抗网络</a></span>
         		
 				</div>
 				
@@ -448,43 +422,66 @@ if (!doNotTrack) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/luts-for-iphone/">富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/">Cats VS. Dogs 图像分类之猫狗大战</a></h1>
 			</header>
 			<div class="post-content">
 				
-				<div class="post-summary">最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。
-笔者通过编程方式，结合实际数据和图表，力图深入浅出解释LUT、Log模式以及为什么需要进行色彩空间转换。
-1. …</div>
+				<div class="post-summary">我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）
+个人介绍 华中科技大学机械学院的大二（准大三）学生，接触数据挖掘快有一年了。早期在学生团队做过一些D3数据可视化方面的工作，今年上半年开始数据挖掘实践。想把这个爱好发展成事业。做过阿里的天池竞赛，也有在kaggle混迹。算个数据新 …</div>
 			</div>
 			<div class="post-footer">
 				<div class="post-meta">
                 <span class="post-time">
-                <time datetime="2025-11-23" itemprop="datePublished">November 23, 2025</time>
+                <time datetime="2016-07-06" itemprop="datePublished">July 6, 2016</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        <a href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"> 计算机视觉 </a>
                         
                 </span>
         </div>
 				
 				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/lut/">
-               	 #LUT</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">
+               	 #图像分类</a></span>
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/iphone/">
-               	 #iPhone</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/">
+               	 #机器学习入门</a></span>
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/fujifilm/">
-               	 #Fujifilm</a></span>
+				</div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/">高效能人士的7个习惯</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">第一部分：认识自我 一切探索的尽头，就是重回起点。——艾略特
+以原则为中心的思维 公平的原则 诚实与善良 以原则为中心，以品德为基础 由内而外强调，先追求个人的成功，才能有人际关系的成就;先信守对自己的承诺，才能信守对他人的承诺。 七个习惯&ndash;大纲 习惯一：积极主动（BE PROACTIVE) 习惯二：以终为始(BEGIN WITH THE END IN MIND) 习惯三：要事第 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2016-04-10" itemprop="datePublished">April 10, 2016</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+        </div>
+				
+				<div class="post-tags">
         		
-        			<span class="tag"><a href="https://kuhung.me/tags/color-science/">
-               	 #Color Science</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/photography/">
-               	 #Photography</a></span>
+        			<span class="tag"><a href="https://kuhung.me/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+               	 #读书笔记</a></span>
         		
 				</div>
 				
@@ -492,11 +489,158 @@ if (!doNotTrack) {
 		</article>
 	
 
-	<div class="read-more-container" style="text-align: center; margin: 3rem 0;">
-		<a href="/posts/" class="read-more-link" style="display: inline-block; padding: 12px 32px; border: 1px solid #333; color: #333; text-decoration: none; font-size: 14px; letter-spacing: 2px; transition: all 0.3s ease;">
-			阅读更多
-		</a>
-	</div>
+	
+
+<ul class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/">1</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/11/">11</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/page/12/">12</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/page/13/">13</a></li>
+        </span>
+    
+    
+    
+    
+</ul>
+
 </div>
 
   
