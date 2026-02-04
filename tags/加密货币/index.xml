@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>加密货币 on 谷粒的博客</title>
+    <title>加密货币 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/</link>
-    <description>Recent content in 加密货币 on 谷粒的博客</description>
+    <description>Recent content in 加密货币 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 03 Dec 2025 15:21:47 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>链上数据挖掘导读（onchain data mining 101）</title>
-      <link>https://kuhung.me/2025/data-mining-onchain/</link>
+      <link>https://kuhung.me/posts/data-mining-onchain/</link>
       <pubDate>Wed, 03 Dec 2025 15:21:47 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/data-mining-onchain/</guid>
+      <guid>https://kuhung.me/posts/data-mining-onchain/</guid>
       <description>Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。
 你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末的Github链接，动手实操。
 接下来，我们按照数据定义、数据获取、数据加工、数据应用四层思路，一起来看看链上数据。

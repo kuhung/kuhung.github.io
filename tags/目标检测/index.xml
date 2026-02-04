@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>目标检测 on 谷粒的博客</title>
+    <title>目标检测 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/</link>
-    <description>Recent content in 目标检测 on 谷粒的博客</description>
+    <description>Recent content in 目标检测 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 08 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Single Shot MultiBox Detector Keras version</title>
-      <link>https://kuhung.me/2017/ssd/</link>
+      <link>https://kuhung.me/posts/ssd/</link>
       <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhung.me/2017/ssd/</guid>
+      <guid>https://kuhung.me/posts/ssd/</guid>
       <description>SSD目标检测Keras版 SSD是一种Object Detection方法。本文是基于论文SSD: Single Shot MultiBox Detector，实现的keras版本。
 该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。 SSD将输出一系列离散化（discretization）的bounding boxes，这些bounding boxes是在不同层次（layers）上的feature maps上生成的，并且有着不同的aspect ratio。
 模型效果 模型对载具的检测 模型对动物的检测 模型的视频检测 如何使用 项目地址kuhung/SSD_keras

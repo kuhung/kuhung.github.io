@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>机器学习 on 谷粒的博客</title>
+    <title>机器学习 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
-    <description>Recent content in 机器学习 on 谷粒的博客</description>
+    <description>Recent content in 机器学习 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 24 May 2025 12:15:10 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FastVLM iPhone 安装与实机测评</title>
-      <link>https://kuhung.me/2025/fastvlm-iphone-install/</link>
+      <link>https://kuhung.me/posts/fastvlm-iphone-install/</link>
       <pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/fastvlm-iphone-install/</guid>
+      <guid>https://kuhung.me/posts/fastvlm-iphone-install/</guid>
       <description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
 接下来说说实测最关心的性能表现和大小情况：
 作者的测试设备为：
@@ -24,10 +24,10 @@ MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版本 下载�
     
     <item>
       <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
-      <link>https://kuhung.me/2020/audio_progress/</link>
+      <link>https://kuhung.me/posts/audio_progress/</link>
       <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/audio_progress/</guid>
+      <guid>https://kuhung.me/posts/audio_progress/</guid>
       <description>背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
 问题界定 这里将问题进行界定，进行子任务拆分：
 将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
@@ -42,10 +42,10 @@ from pydub import AudioSegment from pydub.utils import db_to_float # Let&amp;#39
     
     <item>
       <title>机器学习系统设计 Machine learning system design</title>
-      <link>https://kuhung.me/2019/machine_learning_system_design/</link>
+      <link>https://kuhung.me/posts/machine_learning_system_design/</link>
       <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/machine_learning_system_design/</guid>
+      <guid>https://kuhung.me/posts/machine_learning_system_design/</guid>
       <description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
 机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
 国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程师、机器学习工程师、深度学习工程师都指的这个。
@@ -78,10 +78,10 @@ Machine learning methods change every year, solving problems stays the same.
     
     <item>
       <title>机器学习实践--测试驱动开发</title>
-      <link>https://kuhung.me/2019/tdd_drive_ml/</link>
+      <link>https://kuhung.me/posts/tdd_drive_ml/</link>
       <pubDate>Sun, 25 Aug 2019 00:22:07 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/tdd_drive_ml/</guid>
+      <guid>https://kuhung.me/posts/tdd_drive_ml/</guid>
       <description>机器学习现状与问题 2012年，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。
 这一效应，一直持续到今年：在2019这一年，高考志愿填报金融遇冷，计算机一跃成为抢手专业，在各大工科院校中，有取代传统电气、机械之势；各学院的研究生院，纷纷开始往人工智能、深度学习上贴近。
 这从一个侧面，反应了民众对于计算机、人工智能、机器学习的就业预期。但是，随着原来越多的从业者涌入，项目落地越来越多，机器学习这一领域的问题也开始暴露，亟需解决。
@@ -100,10 +100,10 @@ SRP 单一职责原则：一片代码只做一件事，及一块代码只实现�
     
     <item>
       <title>数据从业者必读的7本书 Booklist for DE</title>
-      <link>https://kuhung.me/2019/book-list-for-ds/</link>
+      <link>https://kuhung.me/posts/book-list-for-ds/</link>
       <pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/book-list-for-ds/</guid>
+      <guid>https://kuhung.me/posts/book-list-for-ds/</guid>
       <description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
 有关注某校友的公众号，他是做爬虫和可视乎的。某天在推荐 Python 学习资料。封面看着挺美，点开一看，书单质量实属一般。倒像是接的推广，很多估计他自己都没有看过，不太负责任。于是乎，便萌生了出一期书单的想法。而定位，便是数据科学家、数据挖掘工程师、算法工程师的书单。
 首先声明，这份书单不是单纯的技术向书籍，不会有什么西瓜书或是算法导论之类的。他们也是好书，但不会出现在这里。因为在工作中大家就会发现，技术只是工具，好的工匠 != 熟练使用工具的熟练工。看见大局，同时有跨学科的思维，能够从事物的本质去出发，理解和思考它，也很重要。

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>智能体 on 谷粒的博客</title>
+    <title>智能体 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E4%BD%93/</link>
-    <description>Recent content in 智能体 on 谷粒的博客</description>
+    <description>Recent content in 智能体 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 26 Nov 2025 11:46:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI构建全景图：六阶段及其方案选型</title>
-      <link>https://kuhung.me/2025/ai-trend-in-my-eyes/</link>
+      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
       <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/ai-trend-in-my-eyes/</guid>
+      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
       <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。

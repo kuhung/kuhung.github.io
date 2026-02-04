@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>上下文工程 on 谷粒的博客</title>
+    <title>上下文工程 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/</link>
-    <description>Recent content in 上下文工程 on 谷粒的博客</description>
+    <description>Recent content in 上下文工程 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 07 Jul 2025 11:52:01 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>所谓上下文工程，实质为Agent系统设计</title>
-      <link>https://kuhung.me/2025/context-engineering/</link>
+      <link>https://kuhung.me/posts/context-engineering/</link>
       <pubDate>Mon, 07 Jul 2025 11:52:01 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/context-engineering/</guid>
+      <guid>https://kuhung.me/posts/context-engineering/</guid>
       <description>原文作者 DAIR.AI Academy 中文翻译 gemini &amp;amp; kuhung 备注评论 kuhung 什么是上下文工程？ 几年前，许多人，甚至是顶尖的AI研究人员，都声称提示工程（prompt engineering）将不复存在。（注：当时的语境是说：当大模型足够强，人类就不需要写那些提示词。）
 显然，他们错了。事实上，提示工程现在比以往任何时候都更加重要。它的重要性如此之高，以至于现在被重新命名为上下文工程 (context engineering)。
 是的，又是一个花哨的术语（注：不就是从单点的提示词描述，扩大范围到上下游的整个流程嘛）。被用来描述调整指令和相关上下文这一重要过程，以便让大语言模型（LLM）有效执行其任务。

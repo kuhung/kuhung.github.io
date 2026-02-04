@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>时序问题 on 谷粒的博客</title>
+    <title>时序问题 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E6%97%B6%E5%BA%8F%E9%97%AE%E9%A2%98/</link>
-    <description>Recent content in 时序问题 on 谷粒的博客</description>
+    <description>Recent content in 时序问题 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 08 Feb 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%97%B6%E5%BA%8F%E9%97%AE%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </title>
-      <link>https://kuhung.me/2018/time-series-problem-summary/</link>
+      <link>https://kuhung.me/posts/time-series-problem-summary/</link>
       <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhung.me/2018/time-series-problem-summary/</guid>
+      <guid>https://kuhung.me/posts/time-series-problem-summary/</guid>
       <description>Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
 总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。 tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。

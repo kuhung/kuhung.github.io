@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>游戏设计 on 谷粒的博客</title>
+    <title>游戏设计 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/</link>
-    <description>Recent content in 游戏设计 on 谷粒的博客</description>
+    <description>Recent content in 游戏设计 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 24 Dec 2020 09:33:23 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>游戏机制设计，以剧本杀为例剖析可玩性的来源</title>
-      <link>https://kuhung.me/2020/game-design-summary/</link>
+      <link>https://kuhung.me/posts/game-design-summary/</link>
       <pubDate>Thu, 24 Dec 2020 09:33:23 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/game-design-summary/</guid>
+      <guid>https://kuhung.me/posts/game-design-summary/</guid>
       <description>标题 创建时间 发布时间 最后一次修改 备注 游戏机制设计 2020.11.11 2020.12.24 2020.12.24 拖更文🐶 写作背景 一款游戏，挨骂最多的是谁 一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；
 但我们将各个部分拆开，一定会发现，单一的”美好“的元素，并不足以撑起整体的评价。
 最后游戏的评价，一定是多方面，1+1&amp;gt;2的结果。
@@ -60,10 +60,10 @@
     
     <item>
       <title>为度过原神长草期，我写了个原神放置类单机小游戏</title>
-      <link>https://kuhung.me/2020/yuanshen-idle-feedback/</link>
+      <link>https://kuhung.me/posts/yuanshen-idle-feedback/</link>
       <pubDate>Mon, 16 Nov 2020 00:37:39 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/yuanshen-idle-feedback/</guid>
+      <guid>https://kuhung.me/posts/yuanshen-idle-feedback/</guid>
       <description>游戏地址：https://kuhung.me/yuanshen-idle/
 很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。
 游戏模板来源于 Couy69 的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。

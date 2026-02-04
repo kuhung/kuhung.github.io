@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/data-mining-onchain/" />
+  <link rel="next" href="https://kuhung.me/posts/talks-with-an-ex-vc/" />
+  <link rel="canonical" href="https://kuhung.me/posts/talks-with-an-ai-pm/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           AI社交产品观察｜200题与一杯咖啡的背后 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="AI社交产品观察｜200题与一杯咖啡的背后 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "AI社交产品观察｜200题与一杯咖啡的背后",
+    "headline" : "AI社交产品观察｜200题与一杯咖啡的背后",
+    "description" : "某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。\n该产品的想法很纯粹：AI分身帮你社交破冰。你先和对方的AI聊，觉得合适再联系真人。团队说，\u0026ldquo;AI帮社交破冰是真的\u0026rdquo;。\n就在昨天，产品宣布即将关服。类似的草稿有几份，思来想去，优先发布这篇文章。\n产品逻辑 产品叫\u0026quot;分身\u0026quot;，其运作方式如下：\n首先回答约200道题，涵盖MBTI、大五人格等心理学模型。系统根据答案生成你的AI分身。这个分身不是简单的聊天机器人，而是要尽可能\u0026quot;像你本人\u0026quot;。之后，你可以先和别人的AI分身聊天，觉得合适了再联系真人。\n这样既降低了社交风险，也节省了试探的时间成本。\n团队的想法是：AI足够像真人，才有价值。这是和其他AI社交产品的核心差异。这个追求也带来问题：高保真度意味着高门槛，用户体验有明显的摩擦。而且，一个像我的Agent，就真的是我吗？\n用户是为“像”付费，还是因为能满足社交的诸多目的：自我展示、认同构建、线下链接而付费呢？\n地推现场 团队地推获客，相当务实。咖啡馆、大学校园附近，产品经理亲自上阵，主动和路人攀谈。激励方式是请喝咖啡或帮忙拍照。用户完成注册和问卷后，会被邀请进微信群，方便后续沟通反馈。\n当天我们去了五角场的复旦大学附近。在校生对新技术接受度高，愿意尝试。但问题是，大部分人是\u0026quot;玩一玩，尝试一下\u0026quot;的心态，付费意愿不强。\n用户体验的反馈很两极：\n门槛高。\u0026ldquo;题太多了\u0026quot;是最常见的反馈。200多道题，不是每个人都愿意花这个时间。很多人答到一半就放弃了。\n准确性高。完成问卷的用户普遍认可分身的\u0026quot;真人感\u0026rdquo;。互联网金融从业的用户说，\u0026ldquo;题多了才能准\u0026rdquo;，他们理解这个逻辑，也愿意投入时间。\n这就带来一个问题：产品要求用户巨大的前期投入，但核心价值要等到很晚才能体验到。如何弥合这个鸿沟，是产品短期最大的挑战。\n三类用户 团队在地推中接触三类用户。\n社交障碍人群。比如宅男、二次元用户。他们\u0026quot;渴望被爱\u0026quot;，但\u0026quot;不敢主动去结交\u0026quot;。理论上，代理社交正好解决他们的痛点。但访谈中提到一个问题：部分深度二次元用户更喜欢\u0026quot;纸片人老婆\u0026quot;，对导向真实社交的产品兴趣有限。\n大学生群体。获客成本低，愿意尝试新东西。但付费转化率低，更多是当成有趣的体验，而不是刚需工具。\n职场打工人。这类用户对产品底层逻辑理解更深，认同\u0026quot;投入时间换取精准结果\u0026quot;。他们是潜在的核心付费用户，但获取成本高。\n早期探索阶段，用户定位广泛且有交叉很正常。\n最难的是付费 访谈中，我试图解变现方式。\n大量早期用户能感知到产品的趣味性，但没有强烈的付费意愿。他们把产品当成新奇的AI应用体验，而不是解决实际问题的工具。\n团队内部曾将\u0026quot;提升社交效率\u0026quot;作为核心卖点。但问题在于，双边市场的用户规模还没建立起来。平台用户基数不足，匹配不到心仪对象，\u0026ldquo;效率\u0026quot;根本无从谈起。这只是一个未经验证的假设。\n团队对此有自己的认知：\u0026ldquo;先价值再想费点\u0026rdquo;。产品必须先让用户深刻感知到不可替代的价值，之后才能谈商业化。在用户真正通过产品解决社交难题之前，收费都可能太早。\n访谈中还有一个有意思的现象：女性用户可能对详细的性格分析报告有更高的付费意愿，而男性用户觉得\u0026quot;200多题\u0026quot;\u0026ldquo;有点不值\u0026rdquo;。\n找到并清晰传递核心价值，是产品实现商业化前必须跨越的鸿沟。\n和抖音AI的对比 沟通中，也聊到了抖音的AI聊天功能。\n用户的评价是，抖音的AI分身\u0026quot;太假了\u0026rdquo;，更像模式化的聊天机器人，无法真正模拟博主本人的特质。这也是\u0026quot;分身\u0026quot;的机会点。他们在\u0026quot;更像本人\u0026quot;这个维度上的投入，是和大厂泛娱乐化AI应用的核心差异。\n但访谈也触及了一个深刻的问题：\u0026ldquo;过于真实\u0026quot;可能带来数据隐私和授权分级的挑战。比如为CEO或名人创建分身时，如何确保AI只公开其主人愿意公开的信息？这是个巨大的技术和伦理挑战。\n这或许是抖音等大厂\u0026quot;没有incentive去做更像\u0026quot;的原因。\n其他可能性 除了社交场景，访谈中还讨论了几个有潜力的应用方向：\nAI面试官。将技术应用于模拟面试场景，为求职者提供高度拟真、可反复练习的面试环境。\n名人知识付费。为CEO、投资人或知识博主创建AI分身，作为他们对外输出知识和粉丝互动的代理。这不仅能突破名人本人的时间限制，还可能实现一种全新的\u0026quot;二次知识付费\u0026quot;模式。\n前者其实已经在广泛铺开落地；后者目前也在发展之中，甚至我自己本身，都有这个长期诉求。\n你在江浙沪，也在做类似方向的探索，欢迎约我来聊。\n声明：以上内容由片段录音与回忆串联，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。\n关注我，带你看更多类似访谈。\n关于作者",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-02-02 23:24:45 \u002b0800 CST",
+    "dateModified" : "2026-02-02 23:24:45 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/talks-with-an-ai-pm\/",
+    "wordCount" : "43",
+    "keywords" : [ "行业观察","访谈", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">AI社交产品观察｜200题与一杯咖啡的背后</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-02-02 itemprop="datePublished">February 2, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/"> 思考 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#产品逻辑">产品逻辑</a></li>
+    <li><a href="#地推现场">地推现场</a></li>
+    <li><a href="#三类用户">三类用户</a></li>
+    <li><a href="#最难的是付费">最难的是付费</a></li>
+    <li><a href="#和抖音ai的对比">和抖音AI的对比</a></li>
+    <li><a href="#其他可能性">其他可能性</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。</p>
+<p>该产品的想法很纯粹：AI分身帮你社交破冰。你先和对方的AI聊，觉得合适再联系真人。团队说，<strong>&ldquo;AI帮社交破冰是真的&rdquo;</strong>。</p>
+<p>就在昨天，产品宣布即将关服。类似的草稿有几份，思来想去，优先发布这篇文章。</p>
+<h2 id="产品逻辑">产品逻辑</h2>
+<p>产品叫&quot;分身&quot;，其运作方式如下：</p>
+<p>首先回答约200道题，涵盖MBTI、大五人格等心理学模型。系统根据答案生成你的AI分身。这个分身不是简单的聊天机器人，而是要尽可能&quot;像你本人&quot;。之后，你可以先和别人的AI分身聊天，觉得合适了再联系真人。</p>
+<p>这样既降低了社交风险，也节省了试探的时间成本。</p>
+<p>团队的想法是：AI足够像真人，才有价值。这是和其他AI社交产品的核心差异。这个追求也带来问题：高保真度意味着高门槛，用户体验有明显的摩擦。而且，一个像我的Agent，就真的是我吗？</p>
+<p>用户是为“像”付费，还是因为能满足社交的诸多目的：自我展示、认同构建、线下链接而付费呢？</p>
+<h2 id="地推现场">地推现场</h2>
+<p>团队地推获客，相当务实。咖啡馆、大学校园附近，产品经理亲自上阵，主动和路人攀谈。激励方式是请喝咖啡或帮忙拍照。用户完成注册和问卷后，会被邀请进微信群，方便后续沟通反馈。</p>
+<p>当天我们去了五角场的复旦大学附近。在校生对新技术接受度高，愿意尝试。但问题是，大部分人是&quot;玩一玩，尝试一下&quot;的心态，付费意愿不强。</p>
+<p>用户体验的反馈很两极：</p>
+<p><strong>门槛高</strong>。&ldquo;题太多了&quot;是最常见的反馈。200多道题，不是每个人都愿意花这个时间。很多人答到一半就放弃了。</p>
+<p><strong>准确性高</strong>。完成问卷的用户普遍认可分身的&quot;真人感&rdquo;。互联网金融从业的用户说，&ldquo;题多了才能准&rdquo;，他们理解这个逻辑，也愿意投入时间。</p>
+<p>这就带来一个问题：产品要求用户巨大的前期投入，但核心价值要等到很晚才能体验到。如何弥合这个鸿沟，是产品短期最大的挑战。</p>
+<h2 id="三类用户">三类用户</h2>
+<p>团队在地推中接触三类用户。</p>
+<p><strong>社交障碍人群</strong>。比如宅男、二次元用户。他们&quot;渴望被爱&quot;，但&quot;不敢主动去结交&quot;。理论上，代理社交正好解决他们的痛点。但访谈中提到一个问题：部分深度二次元用户更喜欢&quot;纸片人老婆&quot;，对导向真实社交的产品兴趣有限。</p>
+<p><strong>大学生群体</strong>。获客成本低，愿意尝试新东西。但付费转化率低，更多是当成有趣的体验，而不是刚需工具。</p>
+<p><strong>职场打工人</strong>。这类用户对产品底层逻辑理解更深，认同&quot;投入时间换取精准结果&quot;。他们是潜在的核心付费用户，但获取成本高。</p>
+<p>早期探索阶段，用户定位广泛且有交叉很正常。</p>
+<h2 id="最难的是付费">最难的是付费</h2>
+<p>访谈中，我试图解变现方式。</p>
+<p>大量早期用户能感知到产品的趣味性，但没有强烈的付费意愿。他们把产品当成新奇的AI应用体验，而不是解决实际问题的工具。</p>
+<p>团队内部曾将&quot;提升社交效率&quot;作为核心卖点。但问题在于，双边市场的用户规模还没建立起来。平台用户基数不足，匹配不到心仪对象，&ldquo;效率&quot;根本无从谈起。这只是一个未经验证的假设。</p>
+<p>团队对此有自己的认知：<strong>&ldquo;先价值再想费点&rdquo;</strong>。产品必须先让用户深刻感知到不可替代的价值，之后才能谈商业化。在用户真正通过产品解决社交难题之前，收费都可能太早。</p>
+<p>访谈中还有一个有意思的现象：女性用户可能对详细的性格分析报告有更高的付费意愿，而男性用户觉得&quot;200多题&quot;&ldquo;有点不值&rdquo;。</p>
+<p>找到并清晰传递核心价值，是产品实现商业化前必须跨越的鸿沟。</p>
+<h2 id="和抖音ai的对比">和抖音AI的对比</h2>
+<p>沟通中，也聊到了抖音的AI聊天功能。</p>
+<p>用户的评价是，抖音的AI分身&quot;太假了&rdquo;，更像模式化的聊天机器人，无法真正模拟博主本人的特质。这也是&quot;分身&quot;的机会点。他们在&quot;更像本人&quot;这个维度上的投入，是和大厂泛娱乐化AI应用的核心差异。</p>
+<p>但访谈也触及了一个深刻的问题：&ldquo;过于真实&quot;可能带来数据隐私和授权分级的挑战。比如为CEO或名人创建分身时，如何确保AI只公开其主人愿意公开的信息？这是个巨大的技术和伦理挑战。</p>
+<p>这或许是抖音等大厂&quot;没有incentive去做更像&quot;的原因。</p>
+<h2 id="其他可能性">其他可能性</h2>
+<p>除了社交场景，访谈中还讨论了几个有潜力的应用方向：</p>
+<p><strong>AI面试官</strong>。将技术应用于模拟面试场景，为求职者提供高度拟真、可反复练习的面试环境。</p>
+<p><strong>名人知识付费</strong>。为CEO、投资人或知识博主创建AI分身，作为他们对外输出知识和粉丝互动的代理。这不仅能突破名人本人的时间限制，还可能实现一种全新的&quot;二次知识付费&quot;模式。</p>
+<p>前者其实已经在广泛铺开落地；后者目前也在发展之中，甚至我自己本身，都有这个长期诉求。</p>
+<hr>
+<p>你在江浙沪，也在做类似方向的探索，欢迎约我来聊。</p>
+<p>声明：以上内容由片段录音与回忆串联，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。</p>
+<p>关注我，带你看更多类似访谈。</p>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/talks-with-an-ai-pm/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/">
+                    #行业观察</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%AE%BF%E8%B0%88/">
+                    #访谈</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/data-mining-onchain/" class="prev" rel="prev" title="链上数据挖掘导读（onchain data mining 101）"><i class="iconfont icon-left"></i>&nbsp;链上数据挖掘导读（onchain data mining 101）</a>
+        
+        
+        <a href="https://kuhung.me/posts/talks-with-an-ex-vc/" class="next" rel="next" title="AI出海创业观察｜一位前VC（风险投资人）的务实主义">AI出海创业观察｜一位前VC（风险投资人）的务实主义&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

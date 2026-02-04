@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>读书笔记 on 谷粒的博客</title>
+    <title>读书笔记 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in 读书笔记 on 谷粒的博客</description>
+    <description>Recent content in 读书笔记 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 10 Oct 2021 23:11:13 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>增长黑客概要</title>
-      <link>https://kuhung.me/2021/growth-hacking-01/</link>
+      <link>https://kuhung.me/posts/growth-hacking-01/</link>
       <pubDate>Sun, 10 Oct 2021 23:11:13 +0800</pubDate>
       
-      <guid>https://kuhung.me/2021/growth-hacking-01/</guid>
+      <guid>https://kuhung.me/posts/growth-hacking-01/</guid>
       <description>诸多科技公司都热衷的增长黑客是什么 增长，自古以来是一个永恒的话题。宇宙在膨胀、国家经济在增长、数不胜数的公司也在这片土地上扩张。可以说，没有一个带自主意识的东西，是不在扩张边界的。即使是在零和博弈中，一方的衰减也伴随着另一方的增长。
 增长黑客这个词，也是最近网络上的一个热词。同人工智能、数据算法一样，很多新兴高科技公司，都想通过这种模式，实现快速的跨越式的增长。实际情况到底是怎么样的，如何做好增长，今天我们就来缕一缕思路。
 由于我本身工作就和数据相关，且和数据中的用户相关，因此会添加更多数据、算法的模型角度观点。从一个数据挖掘工程师的角度，来看待增长这么回事。
@@ -34,10 +34,10 @@
     
     <item>
       <title>日常冲突的解决之道</title>
-      <link>https://kuhung.me/2021/confrontation-01/</link>
+      <link>https://kuhung.me/posts/confrontation-01/</link>
       <pubDate>Mon, 13 Sep 2021 09:03:51 +0800</pubDate>
       
-      <guid>https://kuhung.me/2021/confrontation-01/</guid>
+      <guid>https://kuhung.me/posts/confrontation-01/</guid>
       <description>冲突管理三步骤 “不在沉默中爆发，就在沉默中灭亡。”这句话原本是周树人用来描绘旧中国反动派统治下的场景，但今天的很多场景也很适用。在人类社会中，由于各种理念的差异、资源的不均，冲突从来没有停止过。面对冲突，我们最常见的要么是沉默、要么就是爆发。
 改善冲突管理技巧，对于我们的生活将大有裨益。首先，冲突很多时候是因为他人不符合自己的预期，提高冲突处理技巧能鼓舞他人对事情负责。其次，有效的冲突处理，能够给他人带来信任感，让他人更加信任你。最后，在职业生涯中，管理得当的冲突，能够给组织结构带来可预见性。
 今天，我们就冲突这个话题，展开讲讲如何处理它。分为冲突之前、冲突进行中以及冲突的后管理。以下的思路框架来源于《关键冲突》，看完全文且感兴趣的同学，可以去阅读原著。
@@ -55,10 +55,10 @@
     
     <item>
       <title>更高效的远程工作之道--REMOTE 手册精要</title>
-      <link>https://kuhung.me/2020/remote/</link>
+      <link>https://kuhung.me/posts/remote/</link>
       <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/remote/</guid>
+      <guid>https://kuhung.me/posts/remote/</guid>
       <description>大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
 虽然朋友圈已经有人发帖，渴望在办公室中办公，但是，也不能因此，就放弃思考远程工作的这么个事物。一成不变往往很简单，但变化之中，才有契机。
 远程工作契机 什么阻挡了远程工作的推行，我们无从说起。但何不把这次当作一种契机，去学习其中的脉络。
@@ -76,10 +76,10 @@
     
     <item>
       <title>高效能人士的7个习惯</title>
-      <link>https://kuhung.me/2016/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</link>
+      <link>https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</link>
       <pubDate>Sun, 10 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://kuhung.me/2016/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</guid>
+      <guid>https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</guid>
       <description>第一部分：认识自我 一切探索的尽头，就是重回起点。——艾略特
 以原则为中心的思维 公平的原则 诚实与善良 以原则为中心，以品德为基础 由内而外强调，先追求个人的成功，才能有人际关系的成就;先信守对自己的承诺，才能信守对他人的承诺。 七个习惯&amp;ndash;大纲 习惯一：积极主动（BE PROACTIVE) 习惯二：以终为始(BEGIN WITH THE END IN MIND) 习惯三：要事第一(PUT FIRST THINGS FIRST) 习惯四：双赢思维(THINK WIN) 习惯五：知彼解己(SEEK FIRST TOUNDERSTAND,THEN TOBE UNDERSTOOD) 习惯六：统合综效(SYNERGIZE) 习惯七：不断更新(SHARPEN THE SAW) 第二部分：个人的成功：从依赖到独立 习惯一：积极主动 三种决定论 基因决定论 心理决定论 环境决定论 人类的四种天赋 选择的自由(freedom to choose) 想象力(imagination) 良知(conscience) 独立意志(independent conscience) 积极主动是人类的天性
 积极主动与积极思考不同。积极主动不仅承认现实，也肯定人有权选择对现实环境做出积极回应。

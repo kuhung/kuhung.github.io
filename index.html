@@ -34,10 +34,10 @@ if (!doNotTrack) {
   <title>
        
        
-           谷粒的博客
+           Kuhung | 谷粒
        
   </title>
-  <meta name="title" content="谷粒的博客">
+  <meta name="title" content="Kuhung | 谷粒">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -45,8 +45,8 @@ if (!doNotTrack) {
 
 
   
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="谷粒的博客">
-  <link rel="feed" href="/index.xml" type="application/rss+xml" title="谷粒的博客">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
 
@@ -55,7 +55,7 @@ if (!doNotTrack) {
     "@context": "http://schema.org",
     "@type": "WebSite",
     "url": "https:\/\/kuhung.me\/",
-    "name": "谷粒的博客",
+    "name": "Kuhung | 谷粒",
     "author": {
         "@type": "Person",
         "name": "谷粒"
@@ -75,7 +75,7 @@ if (!doNotTrack) {
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me">谷粒的博客</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -92,7 +92,7 @@ if (!doNotTrack) {
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me">谷粒的博客</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -113,10 +113,8 @@ if (!doNotTrack) {
     	 <main class="main">
           <div class="container">
       		
-  	
-  	
-<div class="post-warp">
-	<div class="intro">
+  
+  	<div class="intro">
     
     
     
@@ -126,67 +124,106 @@ if (!doNotTrack) {
     
     
     <h2 class="description">
-       [可测量的一面不是世界，它只是世界可以测量的一面。 行则将至，功不唐捐。 ]
+        <span class="typed-text"></span>
     </h2>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const subtitles = ["可测量的一面不是世界，它只是世界可以测量的一面。","行则将至，功不唐捐。 ",];
+            let currentIndex = 0;
+            const typedTextSpan = document.querySelector(".typed-text");
+            
+            function updateSubtitle() {
+                typedTextSpan.classList.add('fade');
+                
+                setTimeout(() => {
+                    const text = subtitles[currentIndex];
+                    typedTextSpan.textContent = text;
+                    currentIndex = (currentIndex + 1) % subtitles.length;
+                    
+                    
+                    setTimeout(() => {
+                        typedTextSpan.classList.remove('fade');
+                    }, 50);
+                }, 500);
+            }
+            
+            
+            updateSubtitle();
+            
+            
+            setInterval(updateSubtitle, 4000);
+        });
+    </script>
     
+    <div class="social-links">
+      
+<a href="https://github.com/kuhung" target="_blank" rel="me noopener"><i class="iconfont icon-github"></i></a>
+
+
+
+<a href="https://twitter.com/kuhungio" target="_blank" rel="me noopener"><i class="iconfont icon-twitter"></i></a>
+
  
+
+<a href="javascript:void(0);" rel="me noopener" onclick="document.getElementById('lightbox').style.display='inline';"><i class="iconfont icon-wechat"></i></a> 
+
+
+<a href="mailto:hi@kuhung.me" rel="me noopener"><i class="iconfont icon-mail01"></i></a>
+
+
+
+
+
+    </div>
 </div>
-	
-		<article class="post" itemscope itemscope="" itemtype="http://schema.org/Article">
 
-			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/">Posts</a></h1>
-			</header>
-			<div class="post-content">
-				 
-				   
-       			 
 
-       			
-			</div>
-			<div class="post-footer">
-				<div class="post-meta">
-                <span class="post-time">
-                <time datetime=2026-02-02 itemprop="datePublished">February 2, 2026</time>
-                </span>
-                in
-                
-        </div>
-				
-			</div>
-		</article>
-	
-		<article class="post" itemscope itemscope="" itemtype="http://schema.org/Article">
+ 
 
-			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/about/">关于我</a></h1>
-			</header>
-			<div class="post-content">
-				 
-				   
-       			 
 
-       			关于我 (About Me) 创业路上，关注算法&amp;数据应用。
-曾担任算法负责人，在全球化用户画像、游戏反作弊、海内外用户增长方向拥有多年经验。
-社交媒体：「谷粒粒」 全网搜索，关注上述账号，便捷了解产品最新动向。
-个人标签 (Personal Tags) 笔名：谷粒（kuhung） 毕业院校：华中科技大学 MBTI：ENFJ-A 使命、愿景与价值观 (Mission, Vision &amp; Values) 使命：在纷繁的数据中找到清晰的答案，为客户打造可持续的向上引擎。 愿景：成为客户最值得信赖的智慧大脑。 价值观：心怀好奇，独立思考，积极乐观；做正确的事，而非正确地做事。 工作信条 (Guiding Principles) 信条 阐述 客户出发 产品最大的价值，始于对客户最棘手问题的深刻理解。提问倾听，直到本质。 交付可见价值 创造能被客户感知和衡量的价值。用结果说话，为变化负责。 先完成，再完美 快速行动和迭代。先让事情发生，然后在用户的反馈中持续打磨。 精益高效 拒绝无效的并行。集中精力，把关键任务做到极致，减少过程浪费。 个人历史 (Personal History) 工作经历 (Work Experience) 2025.02～至今 技术创业 2020.05~2025.02 米哈游 算法 2018.07~2020.05 网易游戏 数据挖掘 2017.11~2018.05 RussellCloud 建模实习生 2017.07~2017.09 微众银行 数据科学实习生 2017.03~2017.06 武汉安天 数据挖掘实习生 开源项目 (Open Source Projects) 项目 简介 Stars RAG-in-LangGraph 基于LangGraph的RAG项目，旨在降低RAG的上手成本 audiovisualizer 高性能3D音频可视化器，支持文件/麦克风输入 alpha-mining 量化策略研究与可视化项目 yuanshen-idle 原神放置挂机小游戏，真实掉率，不肝不氪 The-Managers-Path-CN 技术领导者之路中文翻译 DateCastle 图像识别与推荐系统两类 bert_finetune 中文语料 Bert finetune yysGAN GAN 使用生成对抗网络生成新的图片 ML-systems-design 机器学习系统设计 flask_vue_ML 前后端+算法模型的结合 SSD_keras 简明 SSD 目标检测模型 keras version 竞赛成果 (Competition Achievements) 时间 项目 简介 名次 202309 Nishika 金融時系列予測 金融関連企業様のデータを用いて、数百の匿名特徴量を用い、金融に関する或るターゲット値を予測することをテーマとします（使用一家金融相关公司的数据，利用数百个匿名特征来预测某个金融目标值） 3/836 201808 第七届全国媒体技术处理大会 文本溯源技术测评 NLP 问题，判断文本是否改编自其它文本，用于学术查重 5/95 201706 Kaggle Intel&amp;MobileODTCervicalCancerScreening 图像识别，宫颈癌的早期诊断与分型，公益医疗 top10% 201702 DataCastle 精准资助预测赛 用户分群，识别高校内真正需要资助的人群 7/124 201612 2016 BYTE CUP 国际机器学习竞赛 推荐系统，推荐头条问答上的问题给合适专家，加快 PGC 产出 8/1029 201610 第五届全国社会媒体处理大会 用户画像技术测评 用户画像，通过文本等特征，挖掘微博用户性别、居住地和年龄段属性 5/373 文章导读 (Content Guide) 自2016年起持续输出，累计发布 100+ 篇原创内容。按主题分类如下：
-			</div>
-			<div class="post-footer">
-				<div class="post-meta">
-                <span class="post-time">
-                <time datetime=2021-04-17 itemprop="datePublished">April 17, 2021</time>
-                </span>
-                in
-                
-        </div>
-				
-			</div>
-		</article>
-	
+<style type="text/css">
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+}
 
-	
+.center {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -110px;
+}
 
+.center img {
+    width: 220px;
+}
+
+.center i {
+    color: #fff;
+    font-size: 1.5em;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+}
+</style>
+
+
+<div id="lightbox" style="display: none" class="lightbox" onclick="document.getElementById('lightbox').style.display='none';">
+    <div class="center">
+        <i class="iconfont icon-close"></i>
+        <img src="/images/post/wechat.JPG">
+    </div>
 </div>
+
+
 
   
 
@@ -204,7 +241,7 @@ if (!doNotTrack) {
     	 <i class="iconfont icon-love"></i>
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me">谷粒</a> | </span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
          
 
          

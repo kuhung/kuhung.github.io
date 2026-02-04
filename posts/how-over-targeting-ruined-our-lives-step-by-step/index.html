@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/your-brain-at-work/" />
+  <link rel="next" href="https://kuhung.me/posts/team-geek/" />
+  <link rel="canonical" href="https://kuhung.me/posts/how-over-targeting-ruined-our-lives-step-by-step/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           抵抗理性人思维与数据诱惑 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="抵抗理性人思维与数据诱惑 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "抵抗理性人思维与数据诱惑",
+    "headline" : "抵抗理性人思维与数据诱惑",
+    "description" : "（这是一篇原定于去年这个时候发出的文章，但由于种种原因，中途搁置。近日上海发生的种种，又不禁让我想起这篇文章的意义。数据到底意味着什么？这是本期，我们思考的议题。尤其是靠数据吃饭的数据分析与数据挖掘人士，在运用数据的同时，更应该知晓其短板和问题。人，因为理性而伟大，因为知晓其局限性而成熟。）\n背景故事 最近一位朋友遇到一件事情：他们公司是做外贸的，每天和很多客户打交道。只要和人打交道，就不可避免会有冲突。他们有个系统，来记录客户的投诉。问题就在客户投诉量这里。原因是公司老板觉得，每天一百的投诉量太多，需要产品弄清楚什么情况。产品想了一个立竿见影的方法，修改判断标准：如果客户的投诉内容少于7个字，则视为无效投诉。因为字这么少，并没有实际有效的信息。\n这个方法，惊为天人，马上投诉量指标就下来了，老板也不再过问。问题解决了吗？看起来解决了，又看起来没有。\n我的朋友是一位思想坚定的青年，有他自己的原则。他认为这种做法无异于掩耳盗铃，即使这个事情每天都发生在我们周边。为什么这样说，首先第一点，老板想知道原因，改善问题。但是下级却曲解了其本意，认为数据是让老板感觉不爽的点，并奉为行事圭臬。第二点，通过粉饰数据的方式去达到表面的目的，放弃了深入理解这个问题的可能。\n朋友认为需要该事发起一项专项分析。可是很不妙的是，项目的决策者并不关心客诉，他希望他开发的功能赶紧上线。另外一个产品还说，这就是工作。Yep，有时候你不得不陪某些人演戏，但当整个组织都在演戏时，没人关心客户，没人关心长远利益。这个组织虽然短期还能运转，但我们都知道最后的结局。\n这些人呢？也许会失业，也许因为其“卓越”的方法论，被请到下一家企业，作为职业经理人，继续布道。\n这样的事情每天都发生在我们周围。\n数据的不可抗拒之魅力 指标，是现代管理学的一次伟大胜利。著名管理学家彼得·德鲁克（也是提出彼得原理的那位）曾经说过：无法测量，则无法改进。这句话掀起了管理的革命，一定程度上帮助近现代企业走向目前的辉煌。目前在管理体系中，活动大多围绕指标（metric）展开。\n作为数据从业人员，我们也会遇到很多数据指标，DAU、转化率、营收。在建模时，同样也需要指标去衡量模型的客观效果。数据简直太好用了，不愧是21世纪最性感的科学。当别人不同意你的看法时，拿出数据；当组织考核你绩效时，拿出数据；当前路不明需要探索时，拿出数据。数据是石，敲击星星之火。数据是火，点燃熄灭的灯；数据是灯，照亮夜行的路；数据是路，引你走到光明。\n这些点点滴滴，一步一步也在筑起企业的数据能力，帮助企业在决策中走向理性和胜利。\n但是，越来越多的证据表明，过度指标化，正在侵蚀我们的生活。\n数据的日常快照 生活上，我们总是在追逐各种数据。早上什么时候起来，今天学了多少东西。体重保持在优雅的范围没，工资能买零点几平上海老公房了。甚至于，我们会拿智能设备去监控自己的各项指标，以期望达到某种自我的调和认可。\n以我写文章为例。早期的目标是一周一篇，发现实际操作起来，还是有难度的。主要的难点在于，怎么保证稳定输出。想得很好，但实际却也陷入指标的陷阱。我开始焦虑，文章会不会受到欢迎。如果我不写、不发布，那就永远不会面临指标的考核。这也是我目前正在经历的。这样的例子在工作、学习、人际交往以及理财等领域屡见不鲜。\n职场上，这类事情就更多了。成也指标，却也败于指标。上面一开始的例子，绝对不止发生在朋友的公司，成千上万的企业内部正在发生类似的事情。今天你这个部门多少人加班了，明天这个季度你所在的项目数据如何，后天再来一个数据复盘。数据正渗透我们的职场生活。\n某位老板希望产品的DAU能到百万，于是该产品团队撤掉了支持集团其它业务的工具，将其并入某app，达到了百万DAU。但是，公司得到了什么？公司得到了数字，但是却失去了用户体验。从一个旁观者来看，对集团最有利的不是牺牲用户体验堆DAU，而是发挥员工的主观能动性，去开发一款真正吸引用户的产品。\n至于社会上，这类事情则表现得更隐蔽。如果一个地区强调破案率，则基层民警则一定会先去做简单的案子。如果破案率要求到百分百，则冤假错案也就出现了。同样的，医院如果注重康复率，那些疑难杂症，自然而然优先级就降低了，这并不是我们想看到的，但却每天都在发生着。\n更甚至，编造假数据欺骗外界。亩产万斤放卫星的事情，至今还没被教科书擦掉。\n魅惑的原理与后果 为什么我们会痴迷于此，这恐怕得和最近两百年的科学文化胜利脱不开关系。近现代文明得以有飞速的发展，离不开“理性”两个字。理性是现代化启蒙的源头，理性、科学、实证替换感性、玄学、传言，将诸多现代发明带到我们身边，提高了我们的劳动生产效率，也带来了物质的空前富足。我们有什么理由拒绝理性呢？\n在另一个方面，从社会规训角度，大家会潜意识地认为：只要有公开透明的数字，那么我们就可以监督组织或个人实现其目的。无论这个组织是我们持有股票的上市企业，还是一般科研机构。这个人是标准化考试下的未成年人，还是绩效考核下的打工人。\n指标文化甚至到了一种安慰剂的程度：即使没做出什么事情来，只要在不断收集数字，呈现数字，那么至少还会有些心理上的慰藉。这大概就是无效加班，没有功劳也有苦劳的内在自洽逻辑。\n不过问题也显而易见：你测量什么，你才能优化什么，但你也只能得到什么。但越来越多的事实表明，指标之中存在陷阱。迷恋指标，只是带来粉饰、欺骗甚至是生命的代价。\n首先是信息的扭曲，每个人对于指标的理解都不一样。计件工作是吧，那我先做容易做的。程序员的代码不好评估，那就去评估代码量、去评估工作时长。同样的数据，用春秋笔法，听起来也就没那么糟糕了不是。\n同时存在的也有指标的操纵。粉饰业绩，让数据在不同的口径下进行对比。降低标准，以期让产品达标（对的，某奶制品企业）。或者报喜不报忧，喜欢听好话是吧，给个够，负面消息藏着掖着让后来的人吃个够。作弊造假自然也就见怪不怪了。\n如何摆脱理性人 回到开头的案例，我们试着以朋友的思维来解决问题：首先，不必对指标过份解读。也许老板是随口一提，表达他的困惑。作为负责人，有理由去澄清和引导老板。迫于老板的“淫威”而改变口径降低标准，是放弃了自己作为主体人的权利，沦为工具理性的客体。接着，才是把注意力集中在核心的问题上，去解决问题。\n但是有时候，我们不得不设立指标去追踪、记录和改善某件事。《指标陷阱》中提出了以下九点建议，我们得以按清单一一检查：\n测量对象的类型：是人还是物，人的介入越多，测量的扭曲可能性越大 测量对象的意义：虽然有些东西很容易测量，但却离意义甚远 测量对象的数量：不是越多越好，测得越多成本越高 一定要标准化测量吗？有没有其他能表现效果的方式 测量结果的用户：是拿去直接做绩效奖金依据，还是作为宏观资源分布调控用 获取指标的成本：除开事实成本，也考虑机会成本 提出测量人的目的：有时候我们是执行某个人的测量，请弄清楚其目的 测量方法由谁来定：最好是被测量者本身，因为只有认同，才更能发挥作用 明白局限：再好的测量系统都会受制于目标转移 如果检查完上述的9条，还是很有把握应用指标，那么就请行动吧。毕竟指标化，有如此多的好处。当然，选择不继续指标化也是很正常的，并不代表个人、组织的失败。有的时候，基于生活经验的决策，带来的好运气也许更长久。\n请时时刻刻记住其局限性，无论你是否是专业数据人员，明白局限，是智慧的开端。\n参考资料 刘擎西方现代思想讲义 我们的未来 : 数字社会乌托邦 算法的力量 : 人类如何共同生存？ 指标陷阱 : 过度量化如何威胁当今的商业、社会和生活 ",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2022",
+    "datePublished": "2022-05-15 11:03:26 \u002b0800 CST",
+    "dateModified" : "2022-05-15 11:03:26 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/how-over-targeting-ruined-our-lives-step-by-step\/",
+    "wordCount" : "52",
+    "keywords" : [ "个人思考","业内观察", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">抵抗理性人思维与数据诱惑</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2022-05-15 itemprop="datePublished">May 15, 2022</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景故事">背景故事</a></li>
+    <li><a href="#数据的不可抗拒之魅力">数据的不可抗拒之魅力</a></li>
+    <li><a href="#数据的日常快照">数据的日常快照</a></li>
+    <li><a href="#魅惑的原理与后果">魅惑的原理与后果</a></li>
+    <li><a href="#如何摆脱理性人">如何摆脱理性人</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>（这是一篇原定于去年这个时候发出的文章，但由于种种原因，中途搁置。近日上海发生的种种，又不禁让我想起这篇文章的意义。数据到底意味着什么？这是本期，我们思考的议题。尤其是靠数据吃饭的数据分析与数据挖掘人士，在运用数据的同时，更应该知晓其短板和问题。人，因为理性而伟大，因为知晓其局限性而成熟。）</p>
+<h2 id="背景故事">背景故事</h2>
+<p>最近一位朋友遇到一件事情：他们公司是做外贸的，每天和很多客户打交道。只要和人打交道，就不可避免会有冲突。他们有个系统，来记录客户的投诉。问题就在客户投诉量这里。原因是公司老板觉得，每天一百的投诉量太多，需要产品弄清楚什么情况。产品想了一个立竿见影的方法，修改判断标准：如果客户的投诉内容少于7个字，则视为无效投诉。因为字这么少，并没有实际有效的信息。</p>
+<p>这个方法，惊为天人，马上投诉量指标就下来了，老板也不再过问。问题解决了吗？看起来解决了，又看起来没有。</p>
+<p>我的朋友是一位思想坚定的青年，有他自己的原则。他认为这种做法无异于掩耳盗铃，即使这个事情每天都发生在我们周边。为什么这样说，首先第一点，老板想知道原因，改善问题。但是下级却曲解了其本意，认为数据是让老板感觉不爽的点，并奉为行事圭臬。第二点，通过粉饰数据的方式去达到表面的目的，放弃了深入理解这个问题的可能。</p>
+<p>朋友认为需要该事发起一项专项分析。可是很不妙的是，项目的决策者并不关心客诉，他希望他开发的功能赶紧上线。另外一个产品还说，这就是工作。Yep，有时候你不得不陪某些人演戏，但当整个组织都在演戏时，没人关心客户，没人关心长远利益。这个组织虽然短期还能运转，但我们都知道最后的结局。</p>
+<p>这些人呢？也许会失业，也许因为其“卓越”的方法论，被请到下一家企业，作为职业经理人，继续布道。</p>
+<p>这样的事情每天都发生在我们周围。</p>
+<h2 id="数据的不可抗拒之魅力">数据的不可抗拒之魅力</h2>
+<p>指标，是现代管理学的一次伟大胜利。著名管理学家彼得·德鲁克（也是提出彼得原理的那位）曾经说过：无法测量，则无法改进。这句话掀起了管理的革命，一定程度上帮助近现代企业走向目前的辉煌。目前在管理体系中，活动大多围绕指标（metric）展开。</p>
+<p>作为数据从业人员，我们也会遇到很多数据指标，DAU、转化率、营收。在建模时，同样也需要指标去衡量模型的客观效果。数据简直太好用了，不愧是21世纪最性感的科学。当别人不同意你的看法时，拿出数据；当组织考核你绩效时，拿出数据；当前路不明需要探索时，拿出数据。数据是石，敲击星星之火。数据是火，点燃熄灭的灯；数据是灯，照亮夜行的路；数据是路，引你走到光明。</p>
+<p>这些点点滴滴，一步一步也在筑起企业的数据能力，帮助企业在决策中走向理性和胜利。</p>
+<p>但是，越来越多的证据表明，过度指标化，正在侵蚀我们的生活。</p>
+<h2 id="数据的日常快照">数据的日常快照</h2>
+<p>生活上，我们总是在追逐各种数据。早上什么时候起来，今天学了多少东西。体重保持在优雅的范围没，工资能买零点几平上海老公房了。甚至于，我们会拿智能设备去监控自己的各项指标，以期望达到某种自我的调和认可。</p>
+<p>以我写文章为例。早期的目标是一周一篇，发现实际操作起来，还是有难度的。主要的难点在于，怎么保证稳定输出。想得很好，但实际却也陷入指标的陷阱。我开始焦虑，文章会不会受到欢迎。如果我不写、不发布，那就永远不会面临指标的考核。这也是我目前正在经历的。这样的例子在工作、学习、人际交往以及理财等领域屡见不鲜。</p>
+<p>职场上，这类事情就更多了。成也指标，却也败于指标。上面一开始的例子，绝对不止发生在朋友的公司，成千上万的企业内部正在发生类似的事情。今天你这个部门多少人加班了，明天这个季度你所在的项目数据如何，后天再来一个数据复盘。数据正渗透我们的职场生活。</p>
+<p>某位老板希望产品的DAU能到百万，于是该产品团队撤掉了支持集团其它业务的工具，将其并入某app，达到了百万DAU。但是，公司得到了什么？公司得到了数字，但是却失去了用户体验。从一个旁观者来看，对集团最有利的不是牺牲用户体验堆DAU，而是发挥员工的主观能动性，去开发一款真正吸引用户的产品。</p>
+<p>至于社会上，这类事情则表现得更隐蔽。如果一个地区强调破案率，则基层民警则一定会先去做简单的案子。如果破案率要求到百分百，则冤假错案也就出现了。同样的，医院如果注重康复率，那些疑难杂症，自然而然优先级就降低了，这并不是我们想看到的，但却每天都在发生着。</p>
+<p>更甚至，编造假数据欺骗外界。亩产万斤放卫星的事情，至今还没被教科书擦掉。</p>
+<h2 id="魅惑的原理与后果">魅惑的原理与后果</h2>
+<p>为什么我们会痴迷于此，这恐怕得和最近两百年的科学文化胜利脱不开关系。近现代文明得以有飞速的发展，离不开“理性”两个字。理性是现代化启蒙的源头，理性、科学、实证替换感性、玄学、传言，将诸多现代发明带到我们身边，提高了我们的劳动生产效率，也带来了物质的空前富足。我们有什么理由拒绝理性呢？</p>
+<p>在另一个方面，从社会规训角度，大家会潜意识地认为：只要有公开透明的数字，那么我们就可以监督组织或个人实现其目的。无论这个组织是我们持有股票的上市企业，还是一般科研机构。这个人是标准化考试下的未成年人，还是绩效考核下的打工人。</p>
+<p>指标文化甚至到了一种安慰剂的程度：即使没做出什么事情来，只要在不断收集数字，呈现数字，那么至少还会有些心理上的慰藉。这大概就是无效加班，没有功劳也有苦劳的内在自洽逻辑。</p>
+<p>不过问题也显而易见：你测量什么，你才能优化什么，但你也只能得到什么。但越来越多的事实表明，指标之中存在陷阱。迷恋指标，只是带来粉饰、欺骗甚至是生命的代价。</p>
+<p>首先是信息的扭曲，每个人对于指标的理解都不一样。计件工作是吧，那我先做容易做的。程序员的代码不好评估，那就去评估代码量、去评估工作时长。同样的数据，用春秋笔法，听起来也就没那么糟糕了不是。</p>
+<p>同时存在的也有指标的操纵。粉饰业绩，让数据在不同的口径下进行对比。降低标准，以期让产品达标（对的，某奶制品企业）。或者报喜不报忧，喜欢听好话是吧，给个够，负面消息藏着掖着让后来的人吃个够。作弊造假自然也就见怪不怪了。</p>
+<h2 id="如何摆脱理性人">如何摆脱理性人</h2>
+<p>回到开头的案例，我们试着以朋友的思维来解决问题：首先，不必对指标过份解读。也许老板是随口一提，表达他的困惑。作为负责人，有理由去澄清和引导老板。迫于老板的“淫威”而改变口径降低标准，是放弃了自己作为主体人的权利，沦为工具理性的客体。接着，才是把注意力集中在核心的问题上，去解决问题。</p>
+<p>但是有时候，我们不得不设立指标去追踪、记录和改善某件事。《指标陷阱》中提出了以下九点建议，我们得以按清单一一检查：</p>
+<ol>
+<li>测量对象的类型：是人还是物，人的介入越多，测量的扭曲可能性越大</li>
+<li>测量对象的意义：虽然有些东西很容易测量，但却离意义甚远</li>
+<li>测量对象的数量：不是越多越好，测得越多成本越高</li>
+<li>一定要标准化测量吗？有没有其他能表现效果的方式</li>
+<li>测量结果的用户：是拿去直接做绩效奖金依据，还是作为宏观资源分布调控用</li>
+<li>获取指标的成本：除开事实成本，也考虑机会成本</li>
+<li>提出测量人的目的：有时候我们是执行某个人的测量，请弄清楚其目的</li>
+<li>测量方法由谁来定：最好是被测量者本身，因为只有认同，才更能发挥作用</li>
+<li>明白局限：再好的测量系统都会受制于目标转移</li>
+</ol>
+<p>如果检查完上述的9条，还是很有把握应用指标，那么就请行动吧。毕竟指标化，有如此多的好处。当然，选择不继续指标化也是很正常的，并不代表个人、组织的失败。有的时候，基于生活经验的决策，带来的好运气也许更长久。</p>
+<p>请时时刻刻记住其局限性，无论你是否是专业数据人员，明白局限，是智慧的开端。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://book.douban.com/subject/35313227/">刘擎西方现代思想讲义</a></li>
+<li><a href="https://book.douban.com/subject/35668939/">我们的未来 : 数字社会乌托邦</a></li>
+<li><a href="https://book.douban.com/subject/35668949/">算法的力量 : 人类如何共同生存？</a></li>
+<li><a href="https://book.douban.com/subject/35115655/">指标陷阱 : 过度量化如何威胁当今的商业、社会和生活</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/how-over-targeting-ruined-our-lives-step-by-step/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%B8%AA%E4%BA%BA%E6%80%9D%E8%80%83/">
+                    #个人思考</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%B8%9A%E5%86%85%E8%A7%82%E5%AF%9F/">
+                    #业内观察</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/your-brain-at-work/" class="prev" rel="prev" title="思维导图｜《Your Brain at Work》"><i class="iconfont icon-left"></i>&nbsp;思维导图｜《Your Brain at Work》</a>
+        
+        
+        <a href="https://kuhung.me/posts/team-geek/" class="next" rel="next" title="思维导图｜《极客与团队》">思维导图｜《极客与团队》&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

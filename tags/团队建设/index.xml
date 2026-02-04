@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>团队建设 on 谷粒的博客</title>
+    <title>团队建设 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E5%9B%A2%E9%98%9F%E5%BB%BA%E8%AE%BE/</link>
-    <description>Recent content in 团队建设 on 谷粒的博客</description>
+    <description>Recent content in 团队建设 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 09 Jul 2021 09:07:13 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%9B%A2%E9%98%9F%E5%BB%BA%E8%AE%BE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>扁平化团队背后的危机</title>
-      <link>https://kuhung.me/2021/the-tyranny-of-structurelessness/</link>
+      <link>https://kuhung.me/posts/the-tyranny-of-structurelessness/</link>
       <pubDate>Fri, 09 Jul 2021 09:07:13 +0800</pubDate>
       
-      <guid>https://kuhung.me/2021/the-tyranny-of-structurelessness/</guid>
+      <guid>https://kuhung.me/posts/the-tyranny-of-structurelessness/</guid>
       <description>越来越多的扁平化 越来越多的公司开始宣称他们是扁平化团队。扁平化就是字面意思：整个组织的架构很宽，而纵深很窄。基层员工到组织领袖，可能只有3层。扁平化的概念，是相对于层级分明的大型组织而言的，同时它也是较小组织吸引人才的一个关键。背后隐藏着基本假设：富有创意和才华的年轻人，很难忍受传统大型架构组织的官僚。组织需要更扁的层级，以加快信息的流通和促进决策的有效性。
 扁平化背后的独裁 现实生活中，管理的扁平化大多出现在小公司，当公司逐渐成长后，扁平化也将暴露一些问题。在这篇文章中，我们将其称为扁平化背后的独裁。本篇的思想框架主要来源于文章《The Tyranny of Structurelessness》。该文章阐述了上世纪70年代，伴随着女性权力运动，无架构组织中出现的一些问题。我们今天将其带入公司管理视角，逐条分析扁平化背后的问题，以探寻可能的解决方案，以及尝试着去思考：作为扁平化团队的一员，如何规避其负面效果，最大化扁平组织架构的作用。
 无架构组织的出现 在当时，无架构、扁平化起源于女性对男性主导的社会权力结构的反抗。传统的组织中，多级架构存在于组织内。而当时的运动想摆脱这一点，于是提出了无架构（后文又叫做扁平化）的主张。当然扁平化不是完全无架构，但可以将无架构看成扁平化的特例，即只有1-2层组织。在这样的组织架构中，人们通过非正式会议达成共识。
@@ -40,10 +40,10 @@
     
     <item>
       <title>不可不知的项目推进与团队建设之道</title>
-      <link>https://kuhung.me/2020/pmp/</link>
+      <link>https://kuhung.me/posts/pmp/</link>
       <pubDate>Mon, 26 Oct 2020 23:21:09 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/pmp/</guid>
+      <guid>https://kuhung.me/posts/pmp/</guid>
       <description>项目管理好坏，决定了项目的成败。无论做什么工作，项目地企划、执行、效果评估、复盘，总是必不可少的。
 我们可能遇到过如下场景：
 业务方提出需求，扑哧扑哧做个几周后，却发现并不是他们想要的。这样的后果就是： 项目结果被搁置

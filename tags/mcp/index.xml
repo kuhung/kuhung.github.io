@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MCP on 谷粒的博客</title>
+    <title>MCP on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/mcp/</link>
-    <description>Recent content in MCP on 谷粒的博客</description>
+    <description>Recent content in MCP on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 26 Nov 2025 11:46:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI构建全景图：六阶段及其方案选型</title>
-      <link>https://kuhung.me/2025/ai-trend-in-my-eyes/</link>
+      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
       <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/ai-trend-in-my-eyes/</guid>
+      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
       <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
@@ -29,10 +29,10 @@ AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准�
     
     <item>
       <title>P人友好的高德（谷歌）地图 MCP</title>
-      <link>https://kuhung.me/2025/amap-mcp/</link>
+      <link>https://kuhung.me/posts/amap-mcp/</link>
       <pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/amap-mcp/</guid>
+      <guid>https://kuhung.me/posts/amap-mcp/</guid>
       <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
 生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
 MCP原理 简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。

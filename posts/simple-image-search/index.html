@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/computational-advertising/" />
+  <link rel="next" href="https://kuhung.me/posts/mindmap_2020/" />
+  <link rel="canonical" href="https://kuhung.me/posts/simple-image-search/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           自制以图搜图引擎，居家学习必备 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="自制以图搜图引擎，居家学习必备 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "自制以图搜图引擎，居家学习必备",
+    "headline" : "自制以图搜图引擎，居家学习必备",
+    "description" : "最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。\n各位绅士可别想歪，我说的是动漫。\n这个问题本质是一个相似度的检索问题。\n说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。\n但是当你满怀期待上传一张图时，你会发现，他返回的结果要么是同风格作品，要么是图片的描述。摔，我不是让你做抽象阅读理解哇。\n这样的现象，实际是个性化需求与规模化需求的矛盾。对于公司，能规模化的，成本越低；定制带来存储成本，远高于能带来的回报。\n这样的问题难不倒我们广大的人民群众，如果没有现成的，那我们就造一个。\n以图搜图，可以理解为图像的检索，图像和其它信息一样，是可以被索引，被检索的。\n于是乎，可以将整个工程抽象为3个部分。\n图像预处理 图像特征表征 图像检索 图像预处理，一般是尺寸、色调的调整、以及去除明显的噪声。\n索引建立有很多种方法，其核心是构造图像的特征表征。\n这里先用简单的，构建一个 MVP（最小可行性产品），就采用谷歌的 MobileNet 啦。\n该模型尺寸仅数十M，放在服务器或是部署到手机移动端，完全绰绰有余。（实不相瞒，其实一开始上的VGG16，但是模型太大了，服务器放不下。）\n最后，图像检索，当一张新图来到时，对其进行特征提取，然后去索引库中查询，返回特征表征最近的 TopN，一个简单的以图搜图就完成了。\n迫不及待想尝试了，但是发现一个大问题，咱们的索引图从哪儿来？总不能凭空捏造噻。\n嗯，这也不是什么大问题，之前浏览某P开头，哦不对是G开头的学习网站，发现了知乎问题的爬虫。\n这可是个好东西，恰好知乎时间线上，总有一个问题干扰学习——#什么样的腿才叫好看的腿#\n就拿这个问题为例，将图片在离线创建索引，随后通过服务端部署。（服务端部署也可以讲一集，但不在这里，别挡住我看腿。）\n当当当，随着周末两天的操作，舍弃了俺在的 pubg mobile 战友，谷粒粒的第一个搜图app上线咯。喜大普奔。\n让我们赶紧试试，\n嗯，还不错\n再来一张，\n原图秒匹配好吗，还给配上了类似风格的照片。\n到这里，咱们的以图搜图小应用，就算开发上线完毕啦。\n学习效率上升N个档次有没有⬆\n链接地址：以图搜图之#什么样的腿才叫好看的腿# http:\/\/img-search.kuhung.cn\/\n相关文章：\n谷粒：机器学习模型部署\u0026ndash;打通前后端任督二脉\n谷粒：机器学习落地需攻破的9个难题\n声明：该应用仅供学习，禁止用于其它用途。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-04-13 21:17:08 \u002b0800 CST",
+    "dateModified" : "2020-04-13 21:17:08 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/simple-image-search\/",
+    "wordCount" : "41",
+    "keywords" : [ "app","计算机视觉","CV", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">自制以图搜图引擎，居家学习必备</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-04-13 itemprop="datePublished">April 13, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/side-project/"> Side Project </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/dog.jpg" alt="狗头" class="lazyload"><figcaption class="image-caption">狗头</figcaption></figure></p>
+<p>各位绅士可别想歪，我说的是动漫。</p>
+<p>这个问题本质是一个相似度的检索问题。</p>
+<p>说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/google-img-search.jpg" alt="谷歌搜图" class="lazyload"><figcaption class="image-caption">谷歌搜图</figcaption></figure></p>
+<p>但是当你满怀期待上传一张图时，你会发现，他返回的结果要么是同风格作品，要么是图片的描述。摔，我不是让你做抽象阅读理解哇。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/google-img-search-result.jpg" alt="谷歌搜图效果" class="lazyload"><figcaption class="image-caption">谷歌搜图效果</figcaption></figure></p>
+<p>这样的现象，实际是个性化需求与规模化需求的矛盾。对于公司，能规模化的，成本越低；定制带来存储成本，远高于能带来的回报。</p>
+<p>这样的问题难不倒我们广大的人民群众，如果没有现成的，那我们就造一个。</p>
+<hr>
+<p>以图搜图，可以理解为图像的检索，图像和其它信息一样，是可以被索引，被检索的。</p>
+<p>于是乎，可以将整个工程抽象为3个部分。</p>
+<ul>
+<li>图像预处理</li>
+<li>图像特征表征</li>
+<li>图像检索</li>
+</ul>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/pipeline.jpg" alt="图像检索" class="lazyload"><figcaption class="image-caption">图像检索</figcaption></figure></p>
+<p>图像预处理，一般是尺寸、色调的调整、以及去除明显的噪声。</p>
+<p>索引建立有很多种方法，其核心是构造图像的特征表征。</p>
+<p>这里先用简单的，构建一个 MVP（最小可行性产品），就采用谷歌的 MobileNet 啦。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/mobileNet2.png" alt="mobileNet2" class="lazyload"><figcaption class="image-caption">mobileNet2</figcaption></figure></p>
+<p>该模型尺寸仅数十M，放在服务器或是部署到手机移动端，完全绰绰有余。（实不相瞒，其实一开始上的VGG16，但是模型太大了，服务器放不下。）</p>
+<p>最后，图像检索，当一张新图来到时，对其进行特征提取，然后去索引库中查询，返回特征表征最近的 TopN，一个简单的以图搜图就完成了。</p>
+<hr>
+<p>迫不及待想尝试了，但是发现一个大问题，咱们的索引图从哪儿来？总不能凭空捏造噻。</p>
+<p>嗯，这也不是什么大问题，之前浏览某P开头，哦不对是G开头的学习网站，发现了知乎问题的爬虫。</p>
+<p>这可是个好东西，恰好知乎时间线上，总有一个问题干扰学习——#什么样的腿才叫好看的腿#</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/img-set.jpg" alt="img-set" class="lazyload"><figcaption class="image-caption">img-set</figcaption></figure></p>
+<p>就拿这个问题为例，将图片在离线创建索引，随后通过服务端部署。（服务端部署也可以讲一集，但不在这里，别挡住我看腿。）</p>
+<p>当当当，随着周末两天的操作，舍弃了俺在的 pubg mobile 战友，谷粒粒的第一个搜图app上线咯。喜大普奔。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/niubi.jpg" alt="叉腰" class="lazyload"><figcaption class="image-caption">叉腰</figcaption></figure></p>
+<p>让我们赶紧试试，</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/img-search-1.jpg" alt="效果一" class="lazyload"><figcaption class="image-caption">效果一</figcaption></figure></p>
+<p>嗯，还不错</p>
+<p>再来一张，</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/img-search-2.jpg" alt="效果二" class="lazyload"><figcaption class="image-caption">效果二</figcaption></figure></p>
+<p>原图秒匹配好吗，还给配上了类似风格的照片。</p>
+<p>到这里，咱们的以图搜图小应用，就算开发上线完毕啦。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/img-search/img-search-3.jpg" alt="效果三" class="lazyload"><figcaption class="image-caption">效果三</figcaption></figure></p>
+<p>学习效率上升N个档次有没有⬆</p>
+<p><strong>链接地址：以图搜图之#什么样的腿才叫好看的腿#</strong> <strong><a href="http://img-search.kuhung.cn/">http://img-search.kuhung.cn/</a></strong></p>
+<p>相关文章：</p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAwODQ4MDAzMw==&amp;mid=2651274954&amp;idx=1&amp;sn=96c1aa81c59ccbb1b3af86256506b029&amp;chksm=809daa84b7ea23925bc04cd1921f45e89db12335284df8c936c4896b82f908d214c3a172f527&amp;scene=21#wechat_redirect">谷粒：机器学习模型部署&ndash;打通前后端任督二脉</a></p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MzAwODQ4MDAzMw==&amp;mid=2651274907&amp;idx=1&amp;sn=45af5f11f9ceb2fa4d31a0752348a735&amp;chksm=809daad5b7ea23c3bfc377d4429d74e9f5adde79cfecf31c9b3ee218ce3902c270078d1fd74b&amp;scene=21#wechat_redirect">谷粒：机器学习落地需攻破的9个难题</a></p>
+<p>声明：该应用仅供学习，禁止用于其它用途。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/simple-image-search/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/app/">
+                    #app</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">
+                    #计算机视觉</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/cv/">
+                    #CV</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/computational-advertising/" class="prev" rel="prev" title="思维导图｜《计算广告》"><i class="iconfont icon-left"></i>&nbsp;思维导图｜《计算广告》</a>
+        
+        
+        <a href="https://kuhung.me/posts/mindmap_2020/" class="next" rel="next" title="思维导图｜15份结构化知识整理">思维导图｜15份结构化知识整理&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

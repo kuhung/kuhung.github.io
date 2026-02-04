@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>生命周期 on 谷粒的博客</title>
+    <title>生命周期 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
-    <description>Recent content in 生命周期 on 谷粒的博客</description>
+    <description>Recent content in 生命周期 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 25 Dec 2019 23:28:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何计算用户生命周期价值（CLV）</title>
-      <link>https://kuhung.me/2019/lifetimes/</link>
+      <link>https://kuhung.me/posts/lifetimes/</link>
       <pubDate>Wed, 25 Dec 2019 23:28:09 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/lifetimes/</guid>
+      <guid>https://kuhung.me/posts/lifetimes/</guid>
       <description>在用户关系管理中，常会遇到些直击灵魂的问题：
 这批用户到底价值几何？
 为什么要用这种措施去干预用户，而不是另一种方式。

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>iPhone on 谷粒的博客</title>
+    <title>iPhone on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/iphone/</link>
-    <description>Recent content in iPhone on 谷粒的博客</description>
+    <description>Recent content in iPhone on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 23 Nov 2025 11:11:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/iphone/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</title>
-      <link>https://kuhung.me/2025/luts-for-iphone/</link>
+      <link>https://kuhung.me/posts/luts-for-iphone/</link>
       <pubDate>Sun, 23 Nov 2025 11:11:54 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/luts-for-iphone/</guid>
+      <guid>https://kuhung.me/posts/luts-for-iphone/</guid>
       <description>最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。
 笔者通过编程方式，结合实际数据和图表，力图深入浅出解释LUT、Log模式以及为什么需要进行色彩空间转换。
 1. 什么是 LUT (Look-Up Table) LUT 本质上是一个映射表，就如其英文全称所言。对于 3D LUT，它是一个 RGB 立方体。输入一个 RGB 值 (R, G, B)，查找表，输出一个新的 RGB 值。

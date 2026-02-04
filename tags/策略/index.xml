@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>策略 on 谷粒的博客</title>
+    <title>策略 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E7%AD%96%E7%95%A5/</link>
-    <description>Recent content in 策略 on 谷粒的博客</description>
+    <description>Recent content in 策略 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 18 Jun 2020 23:18:26 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%AD%96%E7%95%A5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>云游戏，会是反作弊的银弹吗？</title>
-      <link>https://kuhung.me/2020/game_anti-cheat/</link>
+      <link>https://kuhung.me/posts/game_anti-cheat/</link>
       <pubDate>Thu, 18 Jun 2020 23:18:26 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/game_anti-cheat/</guid>
+      <guid>https://kuhung.me/posts/game_anti-cheat/</guid>
       <description>游戏反作弊，一直是各大游戏厂商头疼的问题。究其根本，游戏，本身是一种软件产品。交付到用户侧时，你永远无法穷举，玩家会怎么使用它。只要有利可图，就会有人去钻空子。
 为了反作弊，各大厂商，也是用尽各种手段。除了内部的反作弊团队，还有法务团队的律师函警告，甚至直接招安外挂开发者。说到底，游戏反作弊，有没有一个终极方案呢？
 数据挖掘，说是近5年的火热技术，没得跑的，甚至连电视剧里，都开始出现这个职业的主配角。
@@ -57,10 +57,10 @@
     
     <item>
       <title>浅谈互联网风控--从策略到技术</title>
-      <link>https://kuhung.me/2020/risk_management/</link>
+      <link>https://kuhung.me/posts/risk_management/</link>
       <pubDate>Sun, 22 Mar 2020 14:34:33 +0800</pubDate>
       
-      <guid>https://kuhung.me/2020/risk_management/</guid>
+      <guid>https://kuhung.me/posts/risk_management/</guid>
       <description>风控，全称风险控制，英文名 risk management。风控的研究起于二战结束后，主要集中在个人或企业的商业保险领域，用于减少突发事物带来的损失。金融行业的核心，乃是风险控制。
 但今天，我们这里不谈金融的风控。金融风控已经演化了多年，众多顶尖学者已对其进行了研究，各种模型层出不穷，自有人去分析。我们这里说一说，互联网的风控。
 风控的核心 如果你在网上检索，一定会发现很多人，谈到风控，必加智能，似乎不智能就不风控了一般。有人说，风控的核心是智能；也有人说，风控的核心是数据。这些老生常谈，将数据智能看成了银弹，看成了哆啦A梦的百宝袋，能解决一切问题，但其实这种说法忽略了现实。

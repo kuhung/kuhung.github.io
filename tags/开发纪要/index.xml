@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>开发纪要 on 谷粒的博客</title>
+    <title>开发纪要 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E5%BC%80%E5%8F%91%E7%BA%AA%E8%A6%81/</link>
-    <description>Recent content in 开发纪要 on 谷粒的博客</description>
+    <description>Recent content in 开发纪要 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 07 Oct 2025 21:12:32 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%BC%80%E5%8F%91%E7%BA%AA%E8%A6%81/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI相亲小镇开发纪要（三）</title>
-      <link>https://kuhung.me/2025/love-in-ai-town-3/</link>
+      <link>https://kuhung.me/posts/love-in-ai-town-3/</link>
       <pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/love-in-ai-town-3/</guid>
+      <guid>https://kuhung.me/posts/love-in-ai-town-3/</guid>
       <description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
 接着，内测群也发起了测试。累计招募了3位真人朋友。从测试的结果来看，也是合乎预期。最直接的证明就是，这三位即使身份背景不同，都对UP主的Agent表达出兴趣。这和他们选择参加游戏的现实结果一致。
 不过，更多的用户停在了门外。根据用户访谈，有朋友认为该项目的定位和商业BP不够清晰。所以，第三次迭代纪要，主体便是回应这个问题。
@@ -38,10 +38,10 @@ A：目前从身边感受来说，普遍存在需求。这部分数据后续陆�
     
     <item>
       <title>AI相亲小镇开发纪要（二）</title>
-      <link>https://kuhung.me/2025/love-in-ai-town-2/</link>
+      <link>https://kuhung.me/posts/love-in-ai-town-2/</link>
       <pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/love-in-ai-town-2/</guid>
+      <guid>https://kuhung.me/posts/love-in-ai-town-2/</guid>
       <description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
 工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。
 AI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。
@@ -67,10 +67,10 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
     
     <item>
       <title>AI相亲小镇开发纪要（一）</title>
-      <link>https://kuhung.me/2025/love-in-ai-town-1/</link>
+      <link>https://kuhung.me/posts/love-in-ai-town-1/</link>
       <pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/love-in-ai-town-1/</guid>
+      <guid>https://kuhung.me/posts/love-in-ai-town-1/</guid>
       <description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
 优质的用户是平台资产，当他们匹配成功时，意味着平台的资产流失。
 除开目的的背离，还有客服感。不少网友反馈，在社交软件上聊天像是客服，对不同的人要重复相同的话术，聊着聊着对方还会断线。这种感受在消磨人的耐心，消磨对美好爱情的憧憬。

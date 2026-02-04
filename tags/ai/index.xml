@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AI on 谷粒的博客</title>
+    <title>AI on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/ai/</link>
-    <description>Recent content in AI on 谷粒的博客</description>
+    <description>Recent content in AI on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 26 Nov 2025 11:46:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI构建全景图：六阶段及其方案选型</title>
-      <link>https://kuhung.me/2025/ai-trend-in-my-eyes/</link>
+      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
       <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/ai-trend-in-my-eyes/</guid>
+      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
       <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
@@ -29,10 +29,10 @@ AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准�
     
     <item>
       <title>AI相亲小镇开发纪要（三）</title>
-      <link>https://kuhung.me/2025/love-in-ai-town-3/</link>
+      <link>https://kuhung.me/posts/love-in-ai-town-3/</link>
       <pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/love-in-ai-town-3/</guid>
+      <guid>https://kuhung.me/posts/love-in-ai-town-3/</guid>
       <description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
 接着，内测群也发起了测试。累计招募了3位真人朋友。从测试的结果来看，也是合乎预期。最直接的证明就是，这三位即使身份背景不同，都对UP主的Agent表达出兴趣。这和他们选择参加游戏的现实结果一致。
 不过，更多的用户停在了门外。根据用户访谈，有朋友认为该项目的定位和商业BP不够清晰。所以，第三次迭代纪要，主体便是回应这个问题。
@@ -58,10 +58,10 @@ A：目前从身边感受来说，普遍存在需求。这部分数据后续陆�
     
     <item>
       <title>AI相亲小镇开发纪要（二）</title>
-      <link>https://kuhung.me/2025/love-in-ai-town-2/</link>
+      <link>https://kuhung.me/posts/love-in-ai-town-2/</link>
       <pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/love-in-ai-town-2/</guid>
+      <guid>https://kuhung.me/posts/love-in-ai-town-2/</guid>
       <description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
 工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。
 AI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。
@@ -87,10 +87,10 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
     
     <item>
       <title>AI相亲小镇开发纪要（一）</title>
-      <link>https://kuhung.me/2025/love-in-ai-town-1/</link>
+      <link>https://kuhung.me/posts/love-in-ai-town-1/</link>
       <pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/love-in-ai-town-1/</guid>
+      <guid>https://kuhung.me/posts/love-in-ai-town-1/</guid>
       <description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
 优质的用户是平台资产，当他们匹配成功时，意味着平台的资产流失。
 除开目的的背离，还有客服感。不少网友反馈，在社交软件上聊天像是客服，对不同的人要重复相同的话术，聊着聊着对方还会断线。这种感受在消磨人的耐心，消磨对美好爱情的憧憬。
@@ -116,10 +116,10 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
     
     <item>
       <title>从2015到2025：技术创业的变与不变</title>
-      <link>https://kuhung.me/2025/build-in-2015/</link>
+      <link>https://kuhung.me/posts/build-in-2015/</link>
       <pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/build-in-2015/</guid>
+      <guid>https://kuhung.me/posts/build-in-2015/</guid>
       <description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖析2012至2015年大众创业浪潮中技术人的心路与实践。十年光阴流转，那些昔日的观点与抉择，如今已成为检验其真实价值的试金石。因为，评判一个人，不仅要听其言，更要观其行。
 那些要完蛋的公司 在《技术人创业攻略》中，不乏有创业者对当时的大公司（如微软、Adobe）提出尖锐批判，预言其将因臃肿而走向衰落，小公司则将迎来颠覆性时刻。然而，时至今日，我们回望十年，这些“即将完蛋”的巨头不仅未曾陨落，反而凭借其庞大的规模优势，更上层楼。
@@ -148,19 +148,19 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
     
     <item>
       <title>41个 LangChain / LangGraph / LangSmith 案例研究</title>
-      <link>https://kuhung.me/2025/agent-case-studies/</link>
+      <link>https://kuhung.me/posts/agent-case-studies/</link>
       <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/agent-case-studies/</guid>
+      <guid>https://kuhung.me/posts/agent-case-studies/</guid>
       <description>关于作者</description>
     </item>
     
     <item>
       <title>三大LLM厂商的提示词行动指南</title>
-      <link>https://kuhung.me/2025/prompt-guide/</link>
+      <link>https://kuhung.me/posts/prompt-guide/</link>
       <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/prompt-guide/</guid>
+      <guid>https://kuhung.me/posts/prompt-guide/</guid>
       <description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
 提示词技巧与人类沟通的共通性 产品设计本身也是人类社会规则设计的一个抽象。从宏观来说，提示词技巧和人类社会的一些常见共识重合度很高。例如：清晰阐明你的诉求、明确角色职责、分阶段分解任务、重复诉求以防止遗忘、约定清晰的输出结构、提供样例进行模仿、引导输出内容、要有事实数据支撑、设计指标反复迭代。这些技巧，在与人沟通、协作、领导、教练的时候，是非常重要的。靠意识同步的三体人，其 AI 的形态必与我们的不同。只要人类社会还是当前的结构形态，当下这些工作就还有意义。
 提示词的分类 提示词，我们从配置方来说，分为三类。分别是系统提示词，由 LLM 提供商预设在模型 API 接口下，定义模型的行为准则。例如：反黄暴之类的。这一般是第一条注入的提示词。角色提示词，这个提示词是开放给用户配置的，比如配置为“你是一个大模型专家”。最后就是常见的用户交互提示词，用户输入的内容也算提示词。在此基础上，又根据用户和场景，派生出例如：指令提示词，指定输出xx字这种；上下文提示词，交代上下文说过啥；样本提示词，按照给的样式来；CoT 提示词，好好想想，逐步思考，等若干提示词种类。

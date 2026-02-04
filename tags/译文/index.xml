@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>译文 on 谷粒的博客</title>
+    <title>译文 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E8%AF%91%E6%96%87/</link>
-    <description>Recent content in 译文 on 谷粒的博客</description>
+    <description>Recent content in 译文 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 19 Oct 2019 11:33:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dataops 数据化运维实践</title>
-      <link>https://kuhung.me/2019/dataops/</link>
+      <link>https://kuhung.me/posts/dataops/</link>
       <pubDate>Sat, 19 Oct 2019 11:33:09 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/dataops/</guid>
+      <guid>https://kuhung.me/posts/dataops/</guid>
       <description>翻译自：《What is DataOps? Everything You Need to Know》 From Oracle Data Science Blog
 图片自：《DataOps is Not Just DevOps for Data》By DataKitchen in Medium
 DataOps, 看到它的第一眼，大多数人会觉得陌生。但是提到另一个词——DevOps，做开发的同学可能会有些熟悉。DataOps 的理念与 DevOps 类似：将开发或者说是数据，与运维、测试相结合，自动化业务的交付以及架构的变更，使得构建、测试和发布能够更加快捷、频繁且可靠。

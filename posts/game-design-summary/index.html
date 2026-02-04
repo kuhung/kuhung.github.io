@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/management-101-vol-1/" />
+  <link rel="next" href="https://kuhung.me/posts/management-101-vol-2/" />
+  <link rel="canonical" href="https://kuhung.me/posts/game-design-summary/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           游戏机制设计，以剧本杀为例剖析可玩性的来源 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="游戏机制设计，以剧本杀为例剖析可玩性的来源 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "游戏机制设计，以剧本杀为例剖析可玩性的来源",
+    "headline" : "游戏机制设计，以剧本杀为例剖析可玩性的来源",
+    "description" : "标题 创建时间 发布时间 最后一次修改 备注 游戏机制设计 2020.11.11 2020.12.24 2020.12.24 拖更文🐶 写作背景 一款游戏，挨骂最多的是谁 一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；\n但我们将各个部分拆开，一定会发现，单一的”美好“的元素，并不足以撑起整体的评价。\n最后游戏的评价，一定是多方面，1\u002b1\u0026gt;2的结果。\n美术很重要，它带来了独特的美的享受；\n程序很重要，它保证了基本功能和丰富玩法的实现。\n这样算来，策划确实不算啥，动动嘴皮子就行。\n事实并非如此。\n抛开营销、渠道不谈，其实，恰恰是策划所构造的游戏机制，将好玩的游戏带到我们身边。\n想一想，你是否有接触过音乐一般、美术一般，但极度耐玩的游戏？\n。。。\n。。。\n。。。\n不用绞尽脑汁想，象棋、跳棋、五子棋都是经典的耐玩游戏，打弹珠、扇卡片仍在代代相传。\n为什么他们耐玩，究其原因，还是因为游戏机制设计，带来了丰富的可玩性。\n这是一篇给策划的洗地文？ 本文不是谈论单独某款游戏的策划，而是探究他们做的事情之一——游戏机制设计，是如何带来游戏可玩性的。\n以下内容，参照《游戏机制——高级游戏设计技术》、《通关 游戏设计之道》、《我在美国学游戏设计》等资料。\n以剧本杀《情辞白帝》《青楼》等作为迁移剖析的对象。分析游戏机制在其中扮演的角色，以及如何进一步改进剧本杀游戏体验。\n所以，该骂策划继续骂。但不妨碍我们思考，游戏机制如何影响我们的生活。以及在每一次版本发布后，试着理解，内容调整的动机。\n游戏是什么 在开始之前，我们先定义游戏的概念。什么是游戏？游戏是在规则的约束下，参与模拟的冲突，产生可量化结果的系统。\n游戏不可预测 游戏的最大特点，是不可预测性。这里的不可预测，不等于100%随机。\n好游戏的不可预测性，是少量的随机\u002b简单的规则\u002b充分的互动的结果。\n为了强化不可预测性，常常会让玩家在游戏中做出选择。\n这个选择，可能是操作上的、也可能是策略上的。\n试着思考以下游戏，你做出过的选择：\n《超级马里奥》、《俄罗斯方块》、《贪吃蛇》，《王者荣耀》、《PUBGM》。\n在剧本杀中，同样充满了不可预测性。每个玩家手中的剧本，都是局部的，需要策略伪装，以达成最后的任务。\n机制的存在，影响了游戏运作。其作为核心，是游戏可玩性的来源。\n什么是机制 机制是穿插在游戏内，最有影响力的东西。\n例如，马里奥的跳跃。通过简单的跳跃，玩家可以实现攻击、闪躲、跨越障碍等几乎所有事情。\n虽然玩家也可以左右移动，但左右移动，服务于跳跃。所以，跳跃是超级马里奥的核心机制。\n五类机制 机制，一般可分为5个大类，分别是：\n物理机制 内部经济 战术动机 社交互动 渐进 其中，前四者又可以概括为突现。\n物理机制\n物理机制，典型如愤怒的小鸟：小鸟发射、碰撞、滚落，遵循了真实世界的物理规则。\n内部经济\n内部经济，则包括元素的收集、消费以及交易。常见的资源有：金钱、能源或是武器弹药。\n同时，不同于现实世界，抽象的资源也是内部经济的一部分。\n抽象资源如：声望、健康、好感度和技能点等。\n战术动机\n战术动机，其典型代表则是象棋。战术的核心是资源的分配，例如象棋棋子的位置。\n社交互动\n社交互动，就是字面上的意思。国内的腾讯，把这部分发挥到了极致。\n国外的 coin master，也背靠 Facebook 等社交公司，长期挤占付费榜前十。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-12-24 09:33:23 \u002b0800 CST",
+    "dateModified" : "2020-12-24 09:33:23 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/game-design-summary\/",
+    "wordCount" : "188",
+    "keywords" : [ "游戏设计", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">游戏机制设计，以剧本杀为例剖析可玩性的来源</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-12-24 itemprop="datePublished">December 24, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"> 个人进步 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#写作背景">写作背景</a>
+      <ul>
+        <li><a href="#一款游戏挨骂最多的是谁">一款游戏，挨骂最多的是谁</a></li>
+        <li><a href="#这是一篇给策划的洗地文">这是一篇给策划的洗地文？</a></li>
+      </ul>
+    </li>
+    <li><a href="#游戏是什么">游戏是什么</a>
+      <ul>
+        <li><a href="#游戏不可预测">游戏不可预测</a></li>
+      </ul>
+    </li>
+    <li><a href="#什么是机制">什么是机制</a>
+      <ul>
+        <li><a href="#五类机制">五类机制</a></li>
+        <li><a href="#机制的其他划分">机制的其他划分</a></li>
+      </ul>
+    </li>
+    <li><a href="#不可预测性的设计">不可预测性的设计</a>
+      <ul>
+        <li><a href="#突现的局限与渐进的融合">突现的局限与渐进的融合</a></li>
+        <li><a href="#复杂理论与生活中的突现">复杂理论与生活中的突现</a></li>
+        <li><a href="#利用经济系统设计突现">利用经济系统设计突现</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a>
+      <ul>
+        <li><a href="#剧本杀校验">剧本杀校验</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <table>
+<thead>
+<tr>
+<th style="text-align:left">标题</th>
+<th style="text-align:left">创建时间</th>
+<th style="text-align:left">发布时间</th>
+<th style="text-align:left">最后一次修改</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">游戏机制设计</td>
+<td style="text-align:left">2020.11.11</td>
+<td style="text-align:left">2020.12.24</td>
+<td style="text-align:left">2020.12.24</td>
+<td style="text-align:left">拖更文🐶</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="写作背景">写作背景</h2>
+<h3 id="一款游戏挨骂最多的是谁">一款游戏，挨骂最多的是谁</h3>
+<p>一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；</p>
+<p>但我们将各个部分拆开，一定会发现，单一的”美好“的元素，并不足以撑起整体的评价。</p>
+<p>最后游戏的评价，一定是多方面，1+1&gt;2的结果。</p>
+<p>美术很重要，它带来了独特的美的享受；</p>
+<p>程序很重要，它保证了基本功能和丰富玩法的实现。</p>
+<p>这样算来，策划确实不算啥，动动嘴皮子就行。</p>
+<p>事实并非如此。</p>
+<p>抛开营销、渠道不谈，其实，恰恰是策划所构造的游戏机制，将好玩的游戏带到我们身边。</p>
+<p>想一想，你是否有接触过音乐一般、美术一般，但极度耐玩的游戏？</p>
+<p>。。。</p>
+<p>。。。</p>
+<p>。。。</p>
+<p>不用绞尽脑汁想，象棋、跳棋、五子棋都是经典的耐玩游戏，打弹珠、扇卡片仍在代代相传。</p>
+<p>为什么他们耐玩，究其原因，还是因为游戏机制设计，带来了丰富的可玩性。</p>
+<h3 id="这是一篇给策划的洗地文">这是一篇给策划的洗地文？</h3>
+<p>本文不是谈论单独某款游戏的策划，而是探究他们做的事情之一——游戏机制设计，是如何带来游戏可玩性的。</p>
+<p>以下内容，参照《游戏机制——高级游戏设计技术》、《通关 游戏设计之道》、《我在美国学游戏设计》等资料。</p>
+<p>以剧本杀《情辞白帝》《青楼》等作为迁移剖析的对象。分析游戏机制在其中扮演的角色，以及如何进一步改进剧本杀游戏体验。</p>
+<p>所以，该骂策划继续骂。但不妨碍我们思考，游戏机制如何影响我们的生活。以及在每一次版本发布后，试着理解，内容调整的动机。</p>
+<hr>
+<h2 id="游戏是什么">游戏是什么</h2>
+<p>在开始之前，我们先定义游戏的概念。什么是游戏？<strong>游戏是在规则的约束下，参与模拟的冲突，产生可量化结果的系统</strong>。</p>
+<h3 id="游戏不可预测">游戏不可预测</h3>
+<p>游戏的最大特点，是不可预测性。这里的不可预测，不等于100%随机。</p>
+<p>好游戏的不可预测性，是<strong>少量的随机+简单的规则+充分的互动</strong>的结果。</p>
+<p>为了强化不可预测性，常常会让玩家在游戏中做出选择。</p>
+<p>这个选择，可能是操作上的、也可能是策略上的。</p>
+<p>试着思考以下游戏，你做出过的选择：</p>
+<p>《超级马里奥》、《俄罗斯方块》、《贪吃蛇》，《王者荣耀》、《PUBGM》。</p>
+<p>在剧本杀中，同样充满了不可预测性。每个玩家手中的剧本，都是局部的，需要策略伪装，以达成最后的任务。</p>
+<p>机制的存在，影响了游戏运作。其作为核心，是游戏可玩性的来源。</p>
+<h2 id="什么是机制">什么是机制</h2>
+<p>机制是穿插在游戏内，最有影响力的东西。</p>
+<p>例如，马里奥的跳跃。通过简单的跳跃，玩家可以实现攻击、闪躲、跨越障碍等几乎所有事情。</p>
+<p>虽然玩家也可以左右移动，但左右移动，服务于跳跃。所以，跳跃是超级马里奥的核心机制。</p>
+<h3 id="五类机制">五类机制</h3>
+<p>机制，一般可分为5个大类，分别是：</p>
+<ul>
+<li>物理机制</li>
+<li>内部经济</li>
+<li>战术动机</li>
+<li>社交互动</li>
+<li>渐进</li>
+</ul>
+<p>其中，前四者又可以概括为<strong>突现</strong>。</p>
+<p><strong>物理机制</strong></p>
+<p>物理机制，典型如愤怒的小鸟：小鸟发射、碰撞、滚落，遵循了真实世界的物理规则。</p>
+<p><strong>内部经济</strong></p>
+<p>内部经济，则包括元素的收集、消费以及交易。常见的资源有：金钱、能源或是武器弹药。</p>
+<p>同时，不同于现实世界，抽象的资源也是内部经济的一部分。</p>
+<p>抽象资源如：声望、健康、好感度和技能点等。</p>
+<p><strong>战术动机</strong></p>
+<p>战术动机，其典型代表则是象棋。战术的核心是资源的分配，例如象棋棋子的位置。</p>
+<p><strong>社交互动</strong></p>
+<p>社交互动，就是字面上的意思。国内的腾讯，把这部分发挥到了极致。</p>
+<p>国外的 coin master，也背靠 Facebook 等社交公司，长期挤占付费榜前十。</p>
+<p>任天堂的动物森林，其社交联机，也是一大特色。</p>
+<p><strong>渐进机制</strong></p>
+<p>渐进机制，完全可以算是另一类。</p>
+<p>渐进常常被用来设计关卡。其在游戏内的表现为：操纵杆或机关等进行解谜。</p>
+<p>一般该机制用来控制玩家的进度。</p>
+<h4 id="剧本杀中的机制应用">剧本杀中的机制应用</h4>
+<p>如果我们把剧本杀带入到游戏机制中，会发现好的剧本杀，也都有这些机制的身影。</p>
+<p>物理机制，虽然剧本没有可操作界面，但有实打实的原型。角色需要沟通交流，近似于现实世界的模拟。</p>
+<p>内部经济，这个比较明显，血量、元宝都是经济系统的一部分，还有拍卖等活动，促进了经济系统的流转。</p>
+<p>战术动机，剧本杀中需要合理的分配资源，结合卡牌类游戏，需要在适当的时候，进行资源的再分配。</p>
+<p>社交互动，可以算是剧本杀的核心玩法。赋予每个玩家角色后，需要玩家之间进行合纵连横。</p>
+<p>最后渐进机制，通过剧本的页数，控制所有玩家的进度，给玩家提供一个合理的流程体验。</p>
+<h3 id="机制的其他划分">机制的其他划分</h3>
+<p>除了五类划分，也可划分为离散和连续两类。</p>
+<p>这里的离散机制和连续机制，类似于数学中的离散函数和连续函数。</p>
+<p>离散，诸如经济或者道具，有其基本单元，无法再进行细分。</p>
+<p>物理机制则是连续的。</p>
+<h2 id="不可预测性的设计">不可预测性的设计</h2>
+<p>玩游戏时，我们的肾上腺素，一次又一次地被调动。</p>
+<p>无论是 MOBA 类游戏冲突的爆发，还是解密类游戏敌人突然的出现，亦或是消消乐刷新的奇怪形状。</p>
+<p>这些事件，如同盒中的巧克力，不知道下一块是什么，也调动了我们人类的情绪系统。</p>
+<p>好奇、期待、失落、惊喜，这些情绪在不可预测面前，被随意拿捏组合。</p>
+<p>不可预测，在游戏设计中，是极其重要的一环。</p>
+<p>上帝不会掷骰子。不可预测，靠的也不是掷骰子。<strong>纯骰子的做法，只会让玩家带着失望的消极情绪离开游戏</strong>。</p>
+<p>因为他发现：自己既无法主宰现实的命运，也无法主宰游戏内的”命运“。</p>
+<p>所以，适当的随机+充分的突现，才是更好的方法。</p>
+<h3 id="突现的局限与渐进的融合">突现的局限与渐进的融合</h3>
+<p>单纯的突现，也并非万能。突现机制，意味着无法有效约束玩家，难以控制玩家进度。</p>
+<p>因而实际操作时，常是突现与渐进的结合：渐进，用来控制玩家的进度。突现，用来提供更高的可玩性。</p>
+<h4 id="渐进机制的优缺点">渐进机制的优缺点</h4>
+<p>渐进的典型代表，是游戏关卡。</p>
+<p>需要强调一点的是，游戏渐进，指的是玩法，而不是游戏内的离散数值。</p>
+<p>升级是渐进过程，但不能说有升级的游戏，就是渐进类游戏。</p>
+<p>不同于等级的渐渐+1，渐进类游戏，是更高层面的抽象。</p>
+<p>渐进游戏是指：<strong>预设了挑战、每个挑战只有一个解法，挑战的次序是固定的，需要依次进行</strong>。</p>
+<p>其优点，能够控制玩家的进度。玩家行为在预设范围内，能够创造良好体验。</p>
+<p>其缺点：如果设计不当，造成前后依赖，会导致游戏的容错率降低，玩家挫败感增强。</p>
+<p>在剧本杀中，通过剧情的走向，控制玩家进度。在到达一定程度后，所有玩家的剧情被控制停下。</p>
+<h4 id="突现机制的优缺点">突现机制的优缺点</h4>
+<p>与渐进相反的，是突现类游戏。</p>
+<p>突现是指：<strong>用较少的规则，创造更多的可能性</strong>。</p>
+<p>该系统的典型特征，是整体的行为特征，无法通过局部推导。</p>
+<p>其优点，可玩性提高。其缺点，难以控制。</p>
+<p>一般而言，会利用<strong>反馈</strong>，来创造突现现象。</p>
+<p>在剧本杀中，有两种突现形式。一是通过加入突发事件，让局部的信息逆转；</p>
+<p>二是通过搜证环节，利用社交心理战，产生更多的概率空间。</p>
+<h3 id="复杂理论与生活中的突现">复杂理论与生活中的突现</h3>
+<p>突现在生活中有很多例子。其典型代表，是复杂系统。</p>
+<p>事实上，复杂系统，是一种处于混沌和统一之间的系统。</p>
+<p>在混沌与秩序之间，存在两类系统：周期系统、复杂系统。</p>
+<p>一年四季是周期系统；人类文明，是复杂系统。</p>
+<p><strong>非线性、涌现、自发秩序、适应、和反馈循环</strong>，是复杂系统的基本特性。</p>
+<p>复杂系统按照突现的程度，可以将其分为四类。</p>
+<ul>
+<li>
+<p>微小突现，如机器设备</p>
+</li>
+<li>
+<p>弱突现，如鸟类集群飞行</p>
+</li>
+<li>
+<p>多重突现，如股市，多重反馈并存</p>
+</li>
+<li>
+<p>最后是强突现，生命和文化的突现</p>
+</li>
+</ul>
+<h4 id="突现的结构特征">突现的结构特征</h4>
+<p>为了实现突现，需要三个结构特征：</p>
+<ol>
+<li>简单元构成，规则局部</li>
+<li>信息能远程传递</li>
+<li>系统复杂度与单位活跃度成正相关</li>
+</ol>
+<p>需要强调的是，突现不等同于随机，单一的随机会让人沮丧。</p>
+<p>突现也不等同于规则，并非规则越多，突现越多。</p>
+<p>在剧本杀中，可以通过引入掷骰子来增加变数；但更常见的，是通过竞拍，产生各异的资源分配方式。、</p>
+<p>在设计剧本杀时，应当尽量避免过多的规则。</p>
+<p>规则过多，一方面会影响玩家的理解；另一方面，限制了突现的发生，降低可玩性。</p>
+<h3 id="利用经济系统设计突现">利用经济系统设计突现</h3>
+<p>突现包含了4类机制，但其中，经济机制是最容易做出突现的。</p>
+<p>经济系统包含了获取、消耗、转化和交易等过程。</p>
+<p>同时作为物理机制的补充，能很好的和数值玩法融合在一起，创造出各种可能。</p>
+<h4 id="经济系统定义">经济系统定义</h4>
+<p>经济系统是使资源得以生产、流通和消费的系统；其中，资源的数据可量化。</p>
+<p>游戏中的经济系统，是现实经济系统的超集。因为除了现实有的，游戏内的经济还包括生命、经验和技能等。</p>
+<p>内部经济，其构成要素包括资源和实体。</p>
+<p>资源又分为有形和无形的。</p>
+<p>有形资源包括战斗资源，如小兵等。无形的资源大多是抽象的，如声望和心情等。</p>
+<p>背包、战斗单位则是实体，用来承载资源。</p>
+<p>剧本杀中的经济系统，一般由角色的血量、武力值和财富承载。</p>
+<p>同时，以交易、赠与等方式，让经济在系统中消费流转。</p>
+<h4 id="如何设计经济突现">如何设计经济突现</h4>
+<p>在设计原型时，需要特别留意，经济系统的走势。在设计经济结构时，通过<strong>引入正负反馈实现突现</strong>。</p>
+<p>正反馈，会引起竞争的加剧，用来防止游戏陷入胶着。设计不当时，容易造成逻辑上的死锁。</p>
+<p>例如，在SLG游戏中，没有足够的土地，无法快速造兵；没有足够的兵力，又无法占据更多的土地。</p>
+<p>另一方面，负反馈，则会引发均衡。</p>
+<p>例如在对抗类游戏中，个子越大，移动速度越慢。</p>
+<p>在竞速类游戏中，跑前面的车，更容易受到攻击，又名：“皮筋约束”。</p>
+<h4 id="经济系统与物理机制互动">经济系统与物理机制互动</h4>
+<p>内部经济系统，一般被用来补足物理机制。典型的是增益道具，这在 RPG 游戏中最为常见。</p>
+<p>另一方面，通过数值上的设计，创造更大的概率空间，丰富游戏的可玩性。</p>
+<p>在设计经济系统时，需要注意三点：</p>
+<ol>
+<li>防止统治性策略的扩散</li>
+<li>保证足够多的概率空间</li>
+<li>提供多种通关手法</li>
+</ol>
+<p>统治性策略，简单来说，就是一个策略通吃。</p>
+<p>当一个玩家发现更高效的方式时，这个方式会在玩家中扩散，并形成统治。</p>
+<p>这对于游戏可玩性，将是极大的负面作用。没有了其他解法，玩家的乐趣将很快消失殆尽。</p>
+<p>为此，在设计时，就应该提供多样的通关手法。同时，在数值上给予更多概率空间。</p>
+<h2 id="总结">总结</h2>
+<p>游戏是一门艺术，但也并非无章法可循。好的游戏机制，一定是经过原型反复模拟、调整的结果。</p>
+<p>以下三点，可帮助读者快速掌握本文地核心内容，掌握游戏机制设计的奥秘：</p>
+<ul>
+<li><strong>逐步揭露系统，不把所有东西同时提供给玩家</strong></li>
+<li><strong>留意超经济结构，适当抑制统治性策略</strong></li>
+<li><strong>采用突现，产生更多的概率空间</strong></li>
+</ul>
+<h3 id="剧本杀校验">剧本杀校验</h3>
+<p>最后，将剧本杀游戏带入校验。</p>
+<p>剧本杀的系统，是随着剧本的推动，逐步揭露。每个玩家掌握的信息，都是局部的。</p>
+<p>通过玩家间的互动，强结盟很难形成，统治性策略无法有效蔓延。</p>
+<p>使用随机事件，多结局叙事，提供更多的概率空间。</p>
+<p>剧本杀的核心，在于社交互动机制。角色间的信任与猜忌，结盟与反水，提供了丰富的可玩性。</p>
+<p>但除此之外，还有一些建议：</p>
+<ul>
+<li>
+<p>规则和剧情不宜过度复杂。这在加大玩家理解负担的同时，还会降低玩家体验。</p>
+</li>
+<li>
+<p>适当地在负反馈下手。对于暴露的玩家，设计反转机制，防止失利的螺旋。</p>
+</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/game-design-summary/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">
+                    #游戏设计</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/management-101-vol-1/" class="prev" rel="prev" title="技术领导｜01 技术管理入门 （上）"><i class="iconfont icon-left"></i>&nbsp;技术领导｜01 技术管理入门 （上）</a>
+        
+        
+        <a href="https://kuhung.me/posts/management-101-vol-2/" class="next" rel="next" title="技术领导｜01 技术管理入门 （下）">技术领导｜01 技术管理入门 （下）&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

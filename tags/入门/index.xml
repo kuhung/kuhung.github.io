@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>入门 on 谷粒的博客</title>
+    <title>入门 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E5%85%A5%E9%97%A8/</link>
-    <description>Recent content in 入门 on 谷粒的博客</description>
+    <description>Recent content in 入门 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 11 Mar 2025 15:38:38 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Numerai量化101</title>
-      <link>https://kuhung.me/2025/numerai-guide/</link>
+      <link>https://kuhung.me/posts/numerai-guide/</link>
       <pubDate>Tue, 11 Mar 2025 15:38:38 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/numerai-guide/</guid>
+      <guid>https://kuhung.me/posts/numerai-guide/</guid>
       <description>一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：
 持仓规模为3.6亿美元（现金部分未披露）
 基金持仓头寸数为389支

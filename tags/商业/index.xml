@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>商业 on 谷粒的博客</title>
+    <title>商业 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E5%95%86%E4%B8%9A/</link>
-    <description>Recent content in 商业 on 谷粒的博客</description>
+    <description>Recent content in 商业 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 12 Mar 2019 10:48:59 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%95%86%E4%B8%9A/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </title>
-      <link>https://kuhung.me/2019/competing-on-analytics/</link>
+      <link>https://kuhung.me/posts/competing-on-analytics/</link>
       <pubDate>Tue, 12 Mar 2019 10:48:59 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/competing-on-analytics/</guid>
+      <guid>https://kuhung.me/posts/competing-on-analytics/</guid>
       <description>数据科学家这个职位，随着12年的哈佛商业评论的一篇文章，成为了21世纪“最性感的职业”。这年头，越来越多的年轻人开始往这个方向奔，市场几近饱和。但是，很少有听见企业家说：“是的，我们很需要数据工程师，因为以下原因&amp;hellip;“对于看此文的老板们，你们是否不止一次听到媒体鼓吹大数据、鼓吹机器学习、鼓吹人工智能，却很少有听到说这些东西，对于企业来说，实实在在带来了什么。如果你的答案是“Yes”，那么这篇文章将解答你的疑惑。
 本文论点主要取自 Thomas H. Davenport 文章 《Competing on Analytics》，试图从企业管理的角度，阐述为什么我们需要数据科学家（或者说广义的数据相关人员）；他们能给企业带来哪些切实的好处；以及作为企业家，我们该如何转型，如何拥有更强的竞争力。
 同质化的市场危机 在当下，想依靠某个新奇的点子或者是产品服务，已经不大可能再和其他竞争者区分开来。作为一个人类组织，底子里仍保留有人类的天性。人类天生就爱模仿，从一出生模仿吃东西，到后面通过模仿习得语言，再到后面的学习。人类的本质可能就是个复读机。模仿可以说保证了我们人类种族的存在与延续。对于企业来说，也大抵相同。

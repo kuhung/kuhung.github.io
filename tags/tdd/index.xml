@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TDD on 谷粒的博客</title>
+    <title>TDD on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/tdd/</link>
-    <description>Recent content in TDD on 谷粒的博客</description>
+    <description>Recent content in TDD on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 25 Aug 2019 00:22:07 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机器学习实践--测试驱动开发</title>
-      <link>https://kuhung.me/2019/tdd_drive_ml/</link>
+      <link>https://kuhung.me/posts/tdd_drive_ml/</link>
       <pubDate>Sun, 25 Aug 2019 00:22:07 +0800</pubDate>
       
-      <guid>https://kuhung.me/2019/tdd_drive_ml/</guid>
+      <guid>https://kuhung.me/posts/tdd_drive_ml/</guid>
       <description>机器学习现状与问题 2012年，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。
 这一效应，一直持续到今年：在2019这一年，高考志愿填报金融遇冷，计算机一跃成为抢手专业，在各大工科院校中，有取代传统电气、机械之势；各学院的研究生院，纷纷开始往人工智能、深度学习上贴近。
 这从一个侧面，反应了民众对于计算机、人工智能、机器学习的就业预期。但是，随着原来越多的从业者涌入，项目落地越来越多，机器学习这一领域的问题也开始暴露，亟需解决。

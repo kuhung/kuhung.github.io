@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/fastvlm-iphone-install/" />
+  <link rel="next" href="https://kuhung.me/posts/jlpt-push/" />
+  <link rel="canonical" href="https://kuhung.me/posts/content-sop/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           “硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js",
+    "headline" : "“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js",
+    "description" : "有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。\n当下的很多AI产品思路都是如此，但做得好的不多。谷歌出品的NotebookLM是产品中的代表。最近新火起来的AI自媒体主播也是如此。通过信息过滤压缩，再配以“有趣”的对谈或是快节奏的音乐和视频剪辑，就实现了一次对用户大脑的安抚。\n作者在整个五月，利用NotebookLM以及相关工具，创作出了23段播客节目，并为这个系列节目命名为“硅基奇谈”。这些节目发布到小宇宙、抖音、B站、视频号、油管等平台，为作者带来了近百粉丝。本期内容，作者就跟大家分享：这些内容是如何生产出来的，将会为我们带来什么样的机遇，以及如何避免常见错误。\nNotebookLM 介绍 NotebookLM并不是一个新产品，它最早推出在2023年。不过最近的几次迭代，让它有了很多可玩性。最最重要的，是增加了中文语音。在早期，主要还是英文对谈。这个产品可以将用户上传的pdf文件、各种资料、链接，生成摘要汇总。再通过思维导图、播客等形式，实现内容的二级汇总输出。\n目前该产品的体验独一档，虽然有非常多的同类追赶者，但谷歌Gemini的模型加持下，外加播客本身的提示词做的很好，出来的播客内容很自然。感兴趣的朋友，可以直接来我的播客链接体验看看：https:\/\/namecard.xiaoyuzhoufm.com\/xd4lk 。 没有小宇宙的朋友，也可以在常用音乐软件上搜索：硅基奇谈。\n当然，它也有自身的缺点。第一个大缺点就是对CN地区不开放。第二个缺点是播客的中文读音，部分读音有问题，估计是训练语料的问题。第二个问题，可以静待PlayDiffusion这类修音技术的完善，实现DIY 修音。\n第三个大问题，就是它只做到了音频这一步，并未涉及到视频这一更大的消费市场。不过也能想到，播客在欧美的普及程度远高于国内，先拿下这个市场。视频的生成，无论是技术还是资源消耗，目前都存在瓶颈。就这点上，作者做了个曲线救国方法：通过音频的可视化，生成视频“代餐”。这样就多了N个视频平台传播机会。\n资料前期准备 整个流程中，资料的准备是重中之重。在初期，作者选择用自己熟悉的内容。选取了在更早时期，阅读积攒下的关于技术职场的内容、以及在4月所做的AI陪伴硬件访谈，作为素材。\n整体来说，资料的多样化越高越好、越贴近生活越好。反之的代表则是一些PR稿件，看起来说了很多东西，实际上过完AI，信息锐减。即使现在有了大模型的协助，在茫茫资料中找到真正信息密度高的内容，也并非一件容易事。\n更多情况下，是信息爆炸。每天的信息流中，每个小窗口都是一个可能的信息资料。这里作者采用的方法是分层、保护当前的工作流。很多东西都想做，不代表每件事都值得做。有趣但是时间资源不足的内容，将会把它放在下一期的内容池中。以此来保护工作流，减少半成品，提高交付效率。\n资料准备就讲究一个从自身出发：自身要感兴趣，受众才会也感兴趣。如果自身都没兴致，那么批量生产出来的，只会是垃圾内容。除开这点，做好内容的短中期储备也很关键，能够保证内容持续生产。将浮夸、无实物表演的内容去掉，并放置在内容池中，既能保证素材不断，又能保证当下工作流不被打断。\n资料的处理 一般而言，PDF的资料相对友好，可以直接上传平台。但是部分场合下，也会遇到其他格式的内容。比如音频、或者Epub格式的电子资料。音频可以直接上传让谷歌解析，也可以采用本地whisper。实践表明，本地的whisper效果会更胜一筹。当然，两者目前都无法做到区分说话人。（whisper可以，但需要额外的一些处理）。\nwhisper-ctranslate2 voice.mp3 --model medium --language zh 至于Epub，作者采用的如下工具：\npandoc mybook.epub -o mybook.pdf --pdf-engine=xelatex -V CJKmainfont=\u0026#34;PingFang SC\u0026#34; 补充个题外话，如果是PDF需要转成文字，强烈推荐markItdown。非常方便就能将一份PDF转换成可编辑的markdown，而后者是大模型较为通用的输入输出格式。\nmarkitdown document.pdf \u0026gt; document.md 以上均为命令行脚本，实测好用。\n音频生成 在使用播客生成功能的时候，也有技巧可循。NotebookLM很多时候生成的内容比较生硬直白，尽管谷歌已经有过优化，但是钩子的设计力度还是偏低。为此，作者也测试了几组。形成了下面的提示词：\n整体设计目标：要让用户有获得感，包括但不限于生产力提升、掌握最新内容、快速上手、想要动手尝试等，面向的受众是偏向技术的人群，但是又要保证能够在普罗大众中获得传播。 开篇要有自我介绍，外加引子，激发听众兴趣。 开篇要有：欢迎来到谷粒粒的节目《硅基奇谈》！在这里，我们以对谈的形式，探索和解读世界。 接着要有一个对话大纲，简单扼要说明有哪几个部分。 结束需要钩子，促成受众行动。 结束要有：感谢和我们一起讨论上述话题，也请留下你的观点。如果内容有帮助，欢迎点赞收藏。更多精彩内容，还请关注我们的账号。下期我们接着聊。 内容中，不要提及“你”、“报告”等词。让整个对话，更像是一个专家对话，而不是照本宣科。其他的敏感内容或者类似PR的内容，也应该模糊处理。 内容中，应该关注更多的技术细节和关键词，忽略掉那些出于公关目的、浮夸的、不切实际的外行人幻想的内容。整体要求务实，必要时提出批判性问题，而不是全盘接受资料中的内容。 完成以上设计后，将内容中的最精彩内容，放在最开头重复一遍，用于吸引用户在信息流中停留，导入我们的内容。要求尽可能简短，能够吊起受众的兴趣。 这样的好处是第一能够在开篇生成钩子，吸引用户的注意力，正如我在文章开头做的一样。其次是在前半部分形成重复，用户会对这个品牌形成印象。最后是总结提问。当然，其中也有一些关于结构化思考和安全隐私的约束。\n通过上述方法的调教处理，音频基本上可以拿来直接使用，用作播客的音源。\n播客工作流 在发布播客的过程中，好的播客内容一般都会附带时点，也就几份几秒讲了什么内容。这部份内容非常适合whisper工具叠加大模型来做。whisper能够生成音频的带时间戳内容，时间戳内容再丢给大模型，基本上就OK了。\n当然，因为下一步有视频字幕呈现给用户，所以前面加了一个字幕修正的任务，确保ASR模型出来的字是基本正确的。\n利用下面的提示词减少幻听、空耳和前后不一致：\n这是一份whisper语音转文字的内容，因为是ASR模型转的，所以存在一些问题。请帮助修正的同时，不改变原来的意思，使其能够作为字幕，让观众看到的和听到的一致。 * \u0026#34;请检查是否有明显的错别字，有标点则用空格替换。” * \u0026#34;检查字幕内容是否通顺，是否存在逻辑不连贯或难以理解的句子。\u0026#34; * \u0026#34;注意检查字幕中提到的专有名词、人名、地名、品牌名、技术术语是否准确无误且统一。\u0026#34; * \u0026#34;请留意是否有听起来像A但实际应该是B的词语’。\u0026#34; 做出上述修改 然后是播客的时点",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2025",
+    "datePublished": "2025-06-05 19:15:55 \u002b0800 CST",
+    "dateModified" : "2025-06-05 19:15:55 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/content-sop\/",
+    "wordCount" : "103",
+    "keywords" : [ "AI辅助内容生成","业务流程", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2025-06-05 itemprop="datePublished">June 5, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#notebooklm-介绍">NotebookLM 介绍</a></li>
+    <li><a href="#资料前期准备">资料前期准备</a></li>
+    <li><a href="#资料的处理">资料的处理</a></li>
+    <li><a href="#音频生成">音频生成</a></li>
+    <li><a href="#播客工作流">播客工作流</a></li>
+    <li><a href="#视频工作流">视频工作流</a></li>
+    <li><a href="#总结与展望">总结与展望</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。</p>
+<p>当下的很多AI产品思路都是如此，但做得好的不多。谷歌出品的NotebookLM是产品中的代表。最近新火起来的AI自媒体主播也是如此。通过信息过滤压缩，再配以“有趣”的对谈或是快节奏的音乐和视频剪辑，就实现了一次对用户大脑的安抚。</p>
+<p>作者在整个五月，利用NotebookLM以及相关工具，创作出了23段播客节目，并为这个系列节目命名为“硅基奇谈”。这些节目发布到小宇宙、抖音、B站、视频号、油管等平台，为作者带来了近百粉丝。本期内容，作者就跟大家分享：这些内容是如何生产出来的，将会为我们带来什么样的机遇，以及如何避免常见错误。</p>
+<h2 id="notebooklm-介绍">NotebookLM 介绍</h2>
+<p>NotebookLM并不是一个新产品，它最早推出在2023年。不过最近的几次迭代，让它有了很多可玩性。最最重要的，是增加了中文语音。在早期，主要还是英文对谈。这个产品可以将用户上传的pdf文件、各种资料、链接，生成摘要汇总。再通过思维导图、播客等形式，实现内容的二级汇总输出。</p>
+<p>目前该产品的体验独一档，虽然有非常多的同类追赶者，但谷歌Gemini的模型加持下，外加播客本身的提示词做的很好，出来的播客内容很自然。感兴趣的朋友，可以直接来我的播客链接体验看看：https://namecard.xiaoyuzhoufm.com/xd4lk 。 没有小宇宙的朋友，也可以在常用音乐软件上搜索：硅基奇谈。</p>
+<p>当然，它也有自身的缺点。第一个大缺点就是对CN地区不开放。第二个缺点是播客的中文读音，部分读音有问题，估计是训练语料的问题。第二个问题，可以静待PlayDiffusion这类修音技术的完善，实现DIY 修音。</p>
+<p>第三个大问题，就是它只做到了音频这一步，并未涉及到视频这一更大的消费市场。不过也能想到，播客在欧美的普及程度远高于国内，先拿下这个市场。视频的生成，无论是技术还是资源消耗，目前都存在瓶颈。就这点上，作者做了个曲线救国方法：通过音频的可视化，生成视频“代餐”。这样就多了N个视频平台传播机会。</p>
+<h2 id="资料前期准备">资料前期准备</h2>
+<p>整个流程中，资料的准备是重中之重。在初期，作者选择用自己熟悉的内容。选取了在更早时期，阅读积攒下的关于技术职场的内容、以及在4月所做的AI陪伴硬件访谈，作为素材。</p>
+<p>整体来说，资料的多样化越高越好、越贴近生活越好。反之的代表则是一些PR稿件，看起来说了很多东西，实际上过完AI，信息锐减。即使现在有了大模型的协助，在茫茫资料中找到真正信息密度高的内容，也并非一件容易事。</p>
+<p>更多情况下，是信息爆炸。每天的信息流中，每个小窗口都是一个可能的信息资料。这里作者采用的方法是分层、保护当前的工作流。很多东西都想做，不代表每件事都值得做。有趣但是时间资源不足的内容，将会把它放在下一期的内容池中。以此来保护工作流，减少半成品，提高交付效率。</p>
+<p>资料准备就讲究一个从自身出发：自身要感兴趣，受众才会也感兴趣。如果自身都没兴致，那么批量生产出来的，只会是垃圾内容。除开这点，做好内容的短中期储备也很关键，能够保证内容持续生产。将浮夸、无实物表演的内容去掉，并放置在内容池中，既能保证素材不断，又能保证当下工作流不被打断。</p>
+<h2 id="资料的处理">资料的处理</h2>
+<p>一般而言，PDF的资料相对友好，可以直接上传平台。但是部分场合下，也会遇到其他格式的内容。比如音频、或者Epub格式的电子资料。音频可以直接上传让谷歌解析，也可以采用本地whisper。实践表明，本地的whisper效果会更胜一筹。当然，两者目前都无法做到区分说话人。（whisper可以，但需要额外的一些处理）。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>whisper-ctranslate2 voice.mp3 --model medium --language zh
+</span></span></code></pre></div><p>至于Epub，作者采用的如下工具：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pandoc mybook.epub -o mybook.pdf --pdf-engine<span style="color:#f92672">=</span>xelatex -V CJKmainfont<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;PingFang SC&#34;</span>
+</span></span></code></pre></div><p>补充个题外话，如果是PDF需要转成文字，强烈推荐markItdown。非常方便就能将一份PDF转换成可编辑的markdown，而后者是大模型较为通用的输入输出格式。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>markitdown document.pdf &gt; document.md
+</span></span></code></pre></div><p>以上均为命令行脚本，实测好用。</p>
+<h2 id="音频生成">音频生成</h2>
+<p>在使用播客生成功能的时候，也有技巧可循。NotebookLM很多时候生成的内容比较生硬直白，尽管谷歌已经有过优化，但是钩子的设计力度还是偏低。为此，作者也测试了几组。形成了下面的提示词：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>整体设计目标：要让用户有获得感，包括但不限于生产力提升、掌握最新内容、快速上手、想要动手尝试等，面向的受众是偏向技术的人群，但是又要保证能够在普罗大众中获得传播。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>开篇要有自我介绍，外加引子，激发听众兴趣。
+</span></span><span style="display:flex;"><span>开篇要有：欢迎来到谷粒粒的节目《硅基奇谈》！在这里，我们以对谈的形式，探索和解读世界。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>接着要有一个对话大纲，简单扼要说明有哪几个部分。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>结束需要钩子，促成受众行动。
+</span></span><span style="display:flex;"><span>结束要有：感谢和我们一起讨论上述话题，也请留下你的观点。如果内容有帮助，欢迎点赞收藏。更多精彩内容，还请关注我们的账号。下期我们接着聊。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>内容中，不要提及“你”、“报告”等词。让整个对话，更像是一个专家对话，而不是照本宣科。其他的敏感内容或者类似PR的内容，也应该模糊处理。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>内容中，应该关注更多的技术细节和关键词，忽略掉那些出于公关目的、浮夸的、不切实际的外行人幻想的内容。整体要求务实，必要时提出批判性问题，而不是全盘接受资料中的内容。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>完成以上设计后，将内容中的最精彩内容，放在最开头重复一遍，用于吸引用户在信息流中停留，导入我们的内容。要求尽可能简短，能够吊起受众的兴趣。
+</span></span></code></pre></div><p>这样的好处是第一能够在开篇生成钩子，吸引用户的注意力，正如我在文章开头做的一样。其次是在前半部分形成重复，用户会对这个品牌形成印象。最后是总结提问。当然，其中也有一些关于结构化思考和安全隐私的约束。</p>
+<p>通过上述方法的调教处理，音频基本上可以拿来直接使用，用作播客的音源。</p>
+<h2 id="播客工作流">播客工作流</h2>
+<p>在发布播客的过程中，好的播客内容一般都会附带时点，也就几份几秒讲了什么内容。这部份内容非常适合whisper工具叠加大模型来做。whisper能够生成音频的带时间戳内容，时间戳内容再丢给大模型，基本上就OK了。</p>
+<p>当然，因为下一步有视频字幕呈现给用户，所以前面加了一个字幕修正的任务，确保ASR模型出来的字是基本正确的。</p>
+<p>利用下面的提示词减少幻听、空耳和前后不一致：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>这是一份whisper语音转文字的内容，因为是ASR模型转的，所以存在一些问题。请帮助修正的同时，不改变原来的意思，使其能够作为字幕，让观众看到的和听到的一致。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> &#34;请检查是否有明显的错别字，有标点则用空格替换。”
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> &#34;检查字幕内容是否通顺，是否存在逻辑不连贯或难以理解的句子。&#34;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> &#34;注意检查字幕中提到的专有名词、人名、地名、品牌名、技术术语是否准确无误且统一。&#34;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">*</span> &#34;请留意是否有听起来像A但实际应该是B的词语’。&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>做出上述修改
+</span></span></code></pre></div><p>然后是播客的时点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>概括总结这份报告的时点，用于播客
+</span></span><span style="display:flex;"><span>00:00 - 00:37 xxx 这个格式
+</span></span><span style="display:flex;"><span>简洁一些
+</span></span></code></pre></div><p>最后，标题生成部分</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>根据上述内容，结合可能的用户痛点，生成标题。要求：要让用户有获得感，包括但不限于生产力提升、快速掌握最新内容、想要动手尝试等。常见标题： 对比vs、Top【N】、最佳【数字】等。控制在30字以内。
+</span></span></code></pre></div><p>别看标题生成部分的提示词很短，但它能带来实际上的流量提升。一方面是引导模型关注用户的心理诉求，另一方面是加入了常见的爆款标题引导。最后，受限于部分平台的标题字数要求，进行了长度控制。</p>
+<p>播客语音文本总结这块儿，算是一个比较好的AI落地场景，ASR+LLM是能真提高生产效率。</p>
+<h2 id="视频工作流">视频工作流</h2>
+<p>对于播客来说，基本到这里就算完工了。但由于播客在国内的受众相对较小，视频平台又是一个大的流量分发机器，所以视频化也是重要一环。</p>
+<p>视频化，初期的想法是通过脚本，去构建图片库。但实践下来发现，计算效率十分低下。作者选择的内容，不像影视解说天然自带视频，也不像搞笑类或者财经类，能够放表情包、放材料中的图片。好在音频本身就有携带信息，那就是音频本身的频谱特性。</p>
+<p>通过上传音频并将之可视化，便是其中的典型思路。这里作者借鉴了开源项目，一个使用three.js开发的音频可视化工具。原始的版本仅能够根据声音，做出响应的反应。无法支持字幕，形状也怪怪的。作者拉取进行了二次开发。增加了一个喇叭粒子特效，能够更加形象地可视化音频。二是增加字幕上传功能，使得用户能够直接实时同步字幕。地址：https://av.kuhung.me/</p>
+<p>上传音频和解析出来的字幕后，即可在网站上获得语音的可视化效果。这个时候结合录屏工具screenity，即可获得屏幕上的图像和音频，实现最终的视觉化。</p>
+<p>工作到这里并没有结束。还有相当大的一段时间，作者是在和各种比例的封面图生成斗智斗勇。对于高频次的内容输出和文字内容为主的内容来说，剪映的工具并不友好。最后，作者通过前端技术，部署一个自定义的界面。通过这种方式，提高了封面图的制作效率，能够一次性生成3种比例的封面图。封面自定义：https://cover-editor.vercel.app/</p>
+<p>其他的斗智斗勇，也包括因为生成的视频高达1G，抖音网页版因此而崩溃。在我节目信息复制输入到一半的时候，得抢着时间提交。也包括视频号，上传的3:4不用，非要二次剪裁作者的封面（摔）。总之就是，各个平台有各个平台的小毛病。综合下来，B站和油管，算是相对用户友好的上传平台。</p>
+<h2 id="总结与展望">总结与展望</h2>
+<p>整个流程，我们涉及到选题、资料整理、影视片处理、后期传播优化等多个环节。再这么跑了20来次后，作者额外获得粉丝近百。差点儿成为百大UP主，现在算是半个白搭UP主。</p>
+<p>我将其中的原因归结为以下几点：</p>
+<ol>
+<li>垂直度不够，用户无法弄清楚你想做什么、平台推荐模型也无法搞清楚该推给什么人。没有稳定的内容生成预期，就很难产生受众的粘性，自然无法带来关注、扩圈的正向循环。</li>
+<li>没有联结感，躲在AI背后的人，受众自动会带入到其他AI工具里。无论你生成的是文字内容、音频内容，还是视频内容，没有和观众形成互动的内容，都非常具备可替代性。</li>
+<li>最后也包含：视觉效果不佳、有趣程度不够等原因。即使你讲了些很宽泛的内容，动辄近10分钟的内容，也很难激起受众的FOMO心理，心理安抚更是聊胜于无。</li>
+</ol>
+<p>本流程是一个由新技术催生的尝试，也是众多AI落地应用案例中能够相对较快落地的一种。在技术的加持下，作者跨过了网络障碍、优化了不少提示词，形成了相对跑顺的流程。在1-2h的时间里，即可生成一期视频。</p>
+<p>但从流量角度，算不上一次成功的尝试。受众并不喜欢。没有人喜欢AI味道的素食快餐，尤其是你这个速食快餐，即不好吃也不能填满肚子。这点，应当是未来AI应用，无论是工具提供方，还是工具使用方，都应该慎重考虑的内容。</p>
+<p>在数据的基础上，作者也有在看同行的一些作品。发现AI炸裂体反而更能吸引受众。真应了那句话：做的内容太专业，反而更吸引同行。在AI内容方面，整合自身在算法方面的优势积累，适当下放内容深度，也许能复刻财经类博主的路子。不过，得和王自如下场竞争了。</p>
+<p>垂直度方面，作者目前在做另一个尝试：仓满量化，一个关于财经方面的信号。这次吸取了前面的教训，新建账号并且只做量化、交易相关的内容。当然，也利用了前面的经验，采用公式化的方式，一天能够生成5条以上的内容。采用Manim，兼顾了视觉传达效果和专业度。目前一周下来，小红书上就收获500+的粉丝。</p>
+<p>未来更进一步，还需要补充更多的真人感、更多和用户的联结。去真切解决用户的需求，辅以更丰富的视觉呈现，更专业的知识解读。AI是提效工具，而不是目的。</p>
+<p>最后，用户需要的是高质量的内容，不是简单的AI重复。需要真人感。即使是AI的内容，也需要和你这个人本体产生关联。</p>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/content-sop/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E8%BE%85%E5%8A%A9%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90/">
+                    #AI辅助内容生成</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B/">
+                    #业务流程</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/fastvlm-iphone-install/" class="prev" rel="prev" title="FastVLM iPhone 安装与实机测评"><i class="iconfont icon-left"></i>&nbsp;FastVLM iPhone 安装与实机测评</a>
+        
+        
+        <a href="https://kuhung.me/posts/jlpt-push/" class="next" rel="next" title="差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

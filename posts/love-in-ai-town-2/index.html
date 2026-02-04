@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/love-in-ai-town-1/" />
+  <link rel="next" href="https://kuhung.me/posts/guess-you-like/" />
+  <link rel="canonical" href="https://kuhung.me/posts/love-in-ai-town-2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           AI相亲小镇开发纪要（二） | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="AI相亲小镇开发纪要（二） | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "AI相亲小镇开发纪要（二）",
+    "headline" : "AI相亲小镇开发纪要（二）",
+    "description" : "进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。\n工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。\nAI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。\n首先要做的是保证启动，实现原代码的功能。过程略微枯燥，总之就是发现问题，理解问题，寻找解决方案，尝试解决方案，最后修复。\n在本次的案例里，复现最大的问题是后端部署方式，需要调整为本地部署。这些内容可以在up的视频中看到，不在此赘述。\n本地化 跑通之后，接着要做的是本地化，以符合需求。我将其分为两部分。第一步是泛功能的本地化，另一方面是针对本项目的本地化。\n泛功能方面，包括语言本地化、交互的调整。中文本地化，包含提示词和初始化角色。删除一些没必要的提示词，屏蔽掉移动端逻辑。\n之前的代码，侧重demo宣传，有较多品牌logo植入。另外核心可视区域较小。up放大了主体窗口，缩小并调整了交互组建的位置，删除无关的品牌宣传logo。\n这些在编程辅助工具帮助下，一个工作日就能完成。\n项目的本地化，关注的是项目目标。首先我们的撮合服务，不能偏离现有用户习惯太多。也要有其他产品、服务具备的标签服务。这些标签，成为系统筛选的依据。\n其次，以LLM为核心的交互，需要做对应调整。好在这个项目原始代码逻辑也不复杂，调整对应的提示词，强调匹配的目标，并且需要利用前面的标签，即可初步达到目的。\n再者，我们借鉴游戏设计，引入经济系统。在这里是好感系统。Agent需要通过自己的努力，提升意向对象的好感度。Agent之间的对话，会影响好感度。这样就将经济目标，与核心功能绑定。\n在我们没做改动之前，这个项目内的各个Agent目标是分散的。调整后，Agent的行为逻辑，更符合国内文化。初步注入的8个Agent，在各自交友目标的驱动下，和剩下的7位反复交谈，最后反应在好感度上。\n作为系统的管理员，只需要录入客户的Agent信息，收集最后的好感度，即可筛选出匹配的对象。整个过程可视。\n其他展望 调整之后，仍有很多待优化的项目。比如提示词、循环系统、外部资源消耗监控。商业行为，需要控制完美主义倾向。完成比完美重要，先交付再优化。\n提示词方面，原项目差不多构建于2年前。那时基座模型的性能还差点儿意思，提示词方面也没有系统的方法论。现在提示词经过不少讨论迭代，已经形成一些写法套路。\n整个项目在Agent 设计中，ReAct（推理与行动）使用得很粗糙。仅针对对话结果进行了打分分析，并不涉及下一步行动策略的调整。在现实中，这恰恰是人类最常用的。\n项目依赖本地的大模型，但并未对token的消耗进行统计、未对服务的负载情况进行监控。若服务不可用或性能下降，实际会影响对话部分的质量。\n目前，项目的演示视频已发布到多个平台，获得的曝光仍较为局限。获客是最大的挑战、缺少话题性，难以获得垂直流量。\n看到这里的朋友，动动手指，填写一分钟问卷，圆你的交友梦。限时免费匹配，定期直播结果。https:\/\/wj.qq.com\/s2\/24050706\/c5d5\/\n关于作者",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2025",
+    "datePublished": "2025-09-27 15:55:13 \u002b0800 CST",
+    "dateModified" : "2025-09-27 15:55:13 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/love-in-ai-town-2\/",
+    "wordCount" : "26",
+    "keywords" : [ "AI","agent","开发纪要", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">AI相亲小镇开发纪要（二）</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2025-09-27 itemprop="datePublished">September 27, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/ai/"> AI </a>
+                        <a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A/"> 创业 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="进入开发">进入开发</h1>
+<p>书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。</p>
+<p>工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。</p>
+<p>AI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。</p>
+<p>首先要做的是保证启动，实现原代码的功能。过程略微枯燥，总之就是发现问题，理解问题，寻找解决方案，尝试解决方案，最后修复。</p>
+<p>在本次的案例里，复现最大的问题是后端部署方式，需要调整为本地部署。这些内容可以在up的视频中看到，不在此赘述。</p>
+<h1 id="本地化">本地化</h1>
+<p>跑通之后，接着要做的是本地化，以符合需求。我将其分为两部分。第一步是泛功能的本地化，另一方面是针对本项目的本地化。</p>
+<p>泛功能方面，包括语言本地化、交互的调整。中文本地化，包含提示词和初始化角色。删除一些没必要的提示词，屏蔽掉移动端逻辑。</p>
+<p>之前的代码，侧重demo宣传，有较多品牌logo植入。另外核心可视区域较小。up放大了主体窗口，缩小并调整了交互组建的位置，删除无关的品牌宣传logo。</p>
+<p>这些在编程辅助工具帮助下，一个工作日就能完成。</p>
+<p>项目的本地化，关注的是项目目标。首先我们的撮合服务，不能偏离现有用户习惯太多。也要有其他产品、服务具备的标签服务。这些标签，成为系统筛选的依据。</p>
+<p>其次，以LLM为核心的交互，需要做对应调整。好在这个项目原始代码逻辑也不复杂，调整对应的提示词，强调匹配的目标，并且需要利用前面的标签，即可初步达到目的。</p>
+<p>再者，我们借鉴游戏设计，引入经济系统。在这里是好感系统。Agent需要通过自己的努力，提升意向对象的好感度。Agent之间的对话，会影响好感度。这样就将经济目标，与核心功能绑定。</p>
+<p>在我们没做改动之前，这个项目内的各个Agent目标是分散的。调整后，Agent的行为逻辑，更符合国内文化。初步注入的8个Agent，在各自交友目标的驱动下，和剩下的7位反复交谈，最后反应在好感度上。</p>
+<p>作为系统的管理员，只需要录入客户的Agent信息，收集最后的好感度，即可筛选出匹配的对象。整个过程可视。</p>
+<h1 id="其他展望">其他展望</h1>
+<p>调整之后，仍有很多待优化的项目。比如提示词、循环系统、外部资源消耗监控。商业行为，需要控制完美主义倾向。完成比完美重要，先交付再优化。</p>
+<p>提示词方面，原项目差不多构建于2年前。那时基座模型的性能还差点儿意思，提示词方面也没有系统的方法论。现在提示词经过不少讨论迭代，已经形成一些写法套路。</p>
+<p>整个项目在Agent 设计中，ReAct（推理与行动）使用得很粗糙。仅针对对话结果进行了打分分析，并不涉及下一步行动策略的调整。在现实中，这恰恰是人类最常用的。</p>
+<p>项目依赖本地的大模型，但并未对token的消耗进行统计、未对服务的负载情况进行监控。若服务不可用或性能下降，实际会影响对话部分的质量。</p>
+<p>目前，项目的演示视频已发布到多个平台，获得的曝光仍较为局限。获客是最大的挑战、缺少话题性，难以获得垂直流量。</p>
+<p>看到这里的朋友，动动手指，填写一分钟问卷，圆你的交友梦。限时免费匹配，定期直播结果。https://wj.qq.com/s2/24050706/c5d5/</p>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/love-in-ai-town-2/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/agent/">
+                    #agent</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%BC%80%E5%8F%91%E7%BA%AA%E8%A6%81/">
+                    #开发纪要</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/love-in-ai-town-1/" class="prev" rel="prev" title="AI相亲小镇开发纪要（一）"><i class="iconfont icon-left"></i>&nbsp;AI相亲小镇开发纪要（一）</a>
+        
+        
+        <a href="https://kuhung.me/posts/guess-you-like/" class="next" rel="next" title="亲爱的，我变成了“猜你喜欢”">亲爱的，我变成了“猜你喜欢”&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

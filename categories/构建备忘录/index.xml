@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>构建备忘录 on 谷粒的博客</title>
+    <title>构建备忘录 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/categories/%E6%9E%84%E5%BB%BA%E5%A4%87%E5%BF%98%E5%BD%95/</link>
-    <description>Recent content in 构建备忘录 on 谷粒的博客</description>
+    <description>Recent content in 构建备忘录 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 18 Nov 2025 11:39:46 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%9E%84%E5%BB%BA%E5%A4%87%E5%BF%98%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>精益创造（lean build）</title>
-      <link>https://kuhung.me/2025/lean-productive/</link>
+      <link>https://kuhung.me/posts/lean-productive/</link>
       <pubDate>Tue, 18 Nov 2025 11:39:46 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/lean-productive/</guid>
+      <guid>https://kuhung.me/posts/lean-productive/</guid>
       <description>控制半成品 精益，是一个制造业概念。对工科背景的朋友，特别是工业工程领域，应该不陌生。它最先出现在日本，伴随着日本上世纪的经济腾飞，在多个领域特别是汽车制造业击败美国，这一理念也大热。
 历史只会重复，这一现象在如今的互联网公司也在上演。随着规模扩大，分工变细，并行量越来越多。实质上是逆精益。增加的工序、额外的跨部门沟通成本，带来大量内耗和浪费。
 当然，今天的讨论主题，并非大公司，只是从这一概念出发，引申到个人、在构建产品中应该运用的原则。

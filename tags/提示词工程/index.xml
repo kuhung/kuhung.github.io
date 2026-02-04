@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>提示词工程 on 谷粒的博客</title>
+    <title>提示词工程 on Kuhung | 谷粒</title>
     <link>https://kuhung.me/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/</link>
-    <description>Recent content in 提示词工程 on 谷粒的博客</description>
+    <description>Recent content in 提示词工程 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 20 Jul 2025 10:20:04 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>三大LLM厂商的提示词行动指南</title>
-      <link>https://kuhung.me/2025/prompt-guide/</link>
+      <link>https://kuhung.me/posts/prompt-guide/</link>
       <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
       
-      <guid>https://kuhung.me/2025/prompt-guide/</guid>
+      <guid>https://kuhung.me/posts/prompt-guide/</guid>
       <description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
 提示词技巧与人类沟通的共通性 产品设计本身也是人类社会规则设计的一个抽象。从宏观来说，提示词技巧和人类社会的一些常见共识重合度很高。例如：清晰阐明你的诉求、明确角色职责、分阶段分解任务、重复诉求以防止遗忘、约定清晰的输出结构、提供样例进行模仿、引导输出内容、要有事实数据支撑、设计指标反复迭代。这些技巧，在与人沟通、协作、领导、教练的时候，是非常重要的。靠意识同步的三体人，其 AI 的形态必与我们的不同。只要人类社会还是当前的结构形态，当下这些工作就还有意义。
 提示词的分类 提示词，我们从配置方来说，分为三类。分别是系统提示词，由 LLM 提供商预设在模型 API 接口下，定义模型的行为准则。例如：反黄暴之类的。这一般是第一条注入的提示词。角色提示词，这个提示词是开放给用户配置的，比如配置为“你是一个大模型专家”。最后就是常见的用户交互提示词，用户输入的内容也算提示词。在此基础上，又根据用户和场景，派生出例如：指令提示词，指定输出xx字这种；上下文提示词，交代上下文说过啥；样本提示词，按照给的样式来；CoT 提示词，好好想想，逐步思考，等若干提示词种类。

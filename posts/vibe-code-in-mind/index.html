@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/grow-up-in-mind/" />
+  <link rel="next" href="https://kuhung.me/posts/love-in-mind/" />
+  <link rel="canonical" href="https://kuhung.me/posts/vibe-code-in-mind/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+            你以为的vibe coding | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content=" 你以为的vibe coding | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : " 你以为的vibe coding",
+    "headline" : " 你以为的vibe coding",
+    "description" : "你以为的 vibe coding 你有一个点子，告诉对话框，它就框框完工。你要做的就是转发、倒流，接着收获大量用户。毕竟各大媒体、KOL都这么说。写代码不再是需要严谨的知识，系统架构、算法原理、业务知识都不存在了。你和顶级应用的差距，只是没买他们的应用和课程。买了之后，直接开除公司的程序员，让产品写代码。一人公司搞起来。\n实际上的 vibe coding 写代码五分钟、debug 两小时。\n写小玩具没关系，写大项目老大难。\n代码写完了，需求却是伪需求。\n很多 vibe coding 样例，是在设定demo范围内呈现。超出它能力范围的，就爱莫能助。\nVibe coding这个说法最早出现在推特。都说互联网盛产黑话，这事海内外一个样。Vibe coding 实质上是LLM coding，或者也可以叫 AI coding。Vibe 这个说法，试图将严肃的编码活动，营造成轻松、随心所动的工作。\n你有写代码的基础，写过一些小应用。虽然没有见过特大应用，但是写系统内的问题不大。在cursor、Claude code没流行起来，你在vscode里面写你的python小代码，毕竟机器学习都用这个。\n辅助编码工具兴起，你通过插件管理各种工具。你安装了一些开源的辅助编程工具，通过自部署方式，实现补全功能。chatgpt也能用，但是需要转发，外加隐私顾虑。你尝试了下这个本地模型，能帮你起个def函数定义的头。\n公司让你们内测了copilot，确实能省下补全的时间，通过聊天也能写出一些小应用。文档详尽的框架基础上，出活很快，你还能就着前端样式反复调个几回。\n程序员的工作，80%在阅读代码，20%才是编写代码。就算法来说，还有很多时间在现有框架下调参数、改阈值、写报告。并没有想象中那样，充分解放生产力。你觉得更解放生产力的，是减少无谓的会议，以及无休止的统计汇报。\n这个时候的模型性能，还差点儿意思。上下文窗口有限，也没有外挂工具。好在大模型的摩尔定律还未失效，没多久性能就上来了。\n各大厂商观察力LLM的落地，发现Coding落地成功，也纷纷开发对应的编码应用。Claud code、Gemini cli 就是这个逻辑的产物。当然，他们对模型也进行了垂直微调，使其编码能力进一步增强。\n除此之外，应用提供方和整个社区，也在不断完善vibe coding的工程方法。对任务进行分解、更好的上下文窗口、更多的MCP外部调用接口。你会看见越来越多的讲座和活动，也有越来越多的人讲如何vibe coding。生态逐渐完善。\n你逐渐掌握了以下原则：\nvibe 不是平空变戏法，a few shot 给出例子告诉模型你想要的效果 一次会话只做一件事，多任务只会导致模型混乱 设定你的编码风格习惯、要求，在全局约束所有编码行为 在单个项目，设定你的编码目标，项目风格 使用更多的外挂工具mcp，比如context7 效果不好就回退，不在模糊基础上构建下一步 必要情况下，使用更强性能的模型 当然，传统软件开发的习惯也很总要。用好git做版本控制、完成比完美重要、控制重构欲望、合理注释代码。\n掌握这些原则，虽然离完美效果仍有距离。但你不再在代码里转圈，能够写出一些可用的项目了。\n你用vibe coding 写应用，但需求描述比正经PR弱。描述不清即是需求不清，你也深知这个道理。但是代码已经写出来了，试试看呢。项目介于能用与不能用之间。越来越多的半成品堆积在你的git仓库。\n各路自媒体也开始炒这个东西。授课开始流行。因为这个vibe这个概念，前期已经“骗”了不少人入局。实践起来却有不少问题。这里面先“骗”进来，再让用户受挫、再顺势提出解决方案，多熟悉的销售模式。\n你用得比较顺手的，其实是让cursor的免费模型，帮你检查文稿的错别字、想一个惊世骇俗的标题。但你也发现，做不起来不是因为标题，在于内容的真实程度、干货程度。标题只是起个前期导流作用，而读者对于AI生成的标题也渐渐麻木。\n你可以借它写一个复杂应用。这里的问题是，你描述不清想要什么、你不知道好应用长什么样子。\n但其实呢，也不必纠结完美。所有成功的构建都来自不断的需求澄清、来自于迭代演进。\n最重要的是，行比想重要。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2025",
+    "datePublished": "2025-09-12 20:50:35 \u002b0800 CST",
+    "dateModified" : "2025-09-12 20:50:35 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/vibe-code-in-mind\/",
+    "wordCount" : "58",
+    "keywords" : [ "胡言乱语", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">全部文章</a>
+                
+                <a class="menu-item" href="/tags/mindmap/" title="">思维导图</a>
+                
+                <a class="menu-item" href="/about/" title="关于我">关于我</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline"> 你以为的vibe coding</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2025-09-12 itemprop="datePublished">September 12, 2025</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/"> 你以为 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="你以为的-vibe-coding">你以为的 vibe coding</h1>
+<p>你有一个点子，告诉对话框，它就框框完工。你要做的就是转发、倒流，接着收获大量用户。毕竟各大媒体、KOL都这么说。写代码不再是需要严谨的知识，系统架构、算法原理、业务知识都不存在了。你和顶级应用的差距，只是没买他们的应用和课程。买了之后，直接开除公司的程序员，让产品写代码。一人公司搞起来。</p>
+<h1 id="实际上的-vibe-coding">实际上的 vibe coding</h1>
+<ul>
+<li>
+<p>写代码五分钟、debug 两小时。</p>
+</li>
+<li>
+<p>写小玩具没关系，写大项目老大难。</p>
+</li>
+<li>
+<p>代码写完了，需求却是伪需求。</p>
+</li>
+</ul>
+<p>很多 vibe coding 样例，是在设定demo范围内呈现。超出它能力范围的，就爱莫能助。</p>
+<p>Vibe coding这个说法最早出现在推特。都说互联网盛产黑话，这事海内外一个样。Vibe coding 实质上是LLM coding，或者也可以叫 AI coding。Vibe 这个说法，试图将严肃的编码活动，营造成轻松、随心所动的工作。</p>
+<p>你有写代码的基础，写过一些小应用。虽然没有见过特大应用，但是写系统内的问题不大。在cursor、Claude code没流行起来，你在vscode里面写你的python小代码，毕竟机器学习都用这个。</p>
+<p>辅助编码工具兴起，你通过插件管理各种工具。你安装了一些开源的辅助编程工具，通过自部署方式，实现补全功能。chatgpt也能用，但是需要转发，外加隐私顾虑。你尝试了下这个本地模型，能帮你起个def函数定义的头。</p>
+<p>公司让你们内测了copilot，确实能省下补全的时间，通过聊天也能写出一些小应用。文档详尽的框架基础上，出活很快，你还能就着前端样式反复调个几回。</p>
+<p>程序员的工作，80%在阅读代码，20%才是编写代码。就算法来说，还有很多时间在现有框架下调参数、改阈值、写报告。并没有想象中那样，充分解放生产力。你觉得更解放生产力的，是减少无谓的会议，以及无休止的统计汇报。</p>
+<p>这个时候的模型性能，还差点儿意思。上下文窗口有限，也没有外挂工具。好在大模型的摩尔定律还未失效，没多久性能就上来了。</p>
+<p>各大厂商观察力LLM的落地，发现Coding落地成功，也纷纷开发对应的编码应用。Claud code、Gemini cli 就是这个逻辑的产物。当然，他们对模型也进行了垂直微调，使其编码能力进一步增强。</p>
+<p>除此之外，应用提供方和整个社区，也在不断完善vibe coding的工程方法。对任务进行分解、更好的上下文窗口、更多的MCP外部调用接口。你会看见越来越多的讲座和活动，也有越来越多的人讲如何vibe coding。生态逐渐完善。</p>
+<p>你逐渐掌握了以下原则：</p>
+<ul>
+<li>vibe 不是平空变戏法，a few shot 给出例子告诉模型你想要的效果</li>
+<li>一次会话只做一件事，多任务只会导致模型混乱</li>
+<li>设定你的编码风格习惯、要求，在全局约束所有编码行为</li>
+<li>在单个项目，设定你的编码目标，项目风格</li>
+<li>使用更多的外挂工具mcp，比如context7</li>
+<li>效果不好就回退，不在模糊基础上构建下一步</li>
+<li>必要情况下，使用更强性能的模型</li>
+</ul>
+<p>当然，传统软件开发的习惯也很总要。用好git做版本控制、完成比完美重要、控制重构欲望、合理注释代码。</p>
+<p>掌握这些原则，虽然离完美效果仍有距离。但你不再在代码里转圈，能够写出一些可用的项目了。</p>
+<p>你用vibe coding 写应用，但需求描述比正经PR弱。描述不清即是需求不清，你也深知这个道理。但是代码已经写出来了，试试看呢。项目介于能用与不能用之间。越来越多的半成品堆积在你的git仓库。</p>
+<p>各路自媒体也开始炒这个东西。授课开始流行。因为这个vibe这个概念，前期已经“骗”了不少人入局。实践起来却有不少问题。这里面先“骗”进来，再让用户受挫、再顺势提出解决方案，多熟悉的销售模式。</p>
+<p>你用得比较顺手的，其实是让cursor的免费模型，帮你检查文稿的错别字、想一个惊世骇俗的标题。但你也发现，做不起来不是因为标题，在于内容的真实程度、干货程度。标题只是起个前期导流作用，而读者对于AI生成的标题也渐渐麻木。</p>
+<p>你可以借它写一个复杂应用。这里的问题是，你描述不清想要什么、你不知道好应用长什么样子。</p>
+<p>但其实呢，也不必纠结完美。所有成功的构建都来自不断的需求澄清、来自于迭代演进。</p>
+<p>最重要的是，行比想重要。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/vibe-code-in-mind/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/">
+                    #胡言乱语</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/grow-up-in-mind/" class="prev" rel="prev" title="你以为的成年"><i class="iconfont icon-left"></i>&nbsp;你以为的成年</a>
+        
+        
+        <a href="https://kuhung.me/posts/love-in-mind/" class="next" rel="next" title="你以为的爱情">你以为的爱情&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
