@@ -30,7 +30,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -74,7 +74,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -129,7 +129,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -260,7 +260,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -287,7 +287,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -338,7 +338,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
@@ -381,7 +381,7 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;文章&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;推荐理由&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
