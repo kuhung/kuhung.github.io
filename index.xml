@@ -18,184 +18,12 @@
     </item>
     
     <item>
-      <title>关于我</title>
-      <link>https://kuhung.me/about/</link>
-      <pubDate>Sat, 17 Apr 2021 00:14:04 +0800</pubDate>
+      <title>文章精选</title>
+      <link>https://kuhung.me/guide/</link>
+      <pubDate>Sat, 17 Jan 2026 00:14:04 +0800</pubDate>
       
-      <guid>https://kuhung.me/about/</guid>
-      <description>&lt;h1 id=&#34;关于我-about-me&#34;&gt;关于我 (About Me)&lt;/h1&gt;
-&lt;p&gt;创业路上，关注算法&amp;amp;数据应用。&lt;/p&gt;
-&lt;p&gt;曾担任算法负责人，在全球化用户画像、游戏反作弊、海内外用户增长方向拥有多年经验。&lt;/p&gt;
-&lt;p&gt;社交媒体：「谷粒粒」 全网搜索，关注上述账号，便捷了解产品最新动向。&lt;/p&gt;
-&lt;h2 id=&#34;个人标签-personal-tags&#34;&gt;个人标签 (Personal Tags)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;笔名：谷粒（kuhung）&lt;/li&gt;
-&lt;li&gt;毕业院校：华中科技大学&lt;/li&gt;
-&lt;li&gt;MBTI：ENFJ-A&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;使命愿景与价值观-mission-vision--values&#34;&gt;使命、愿景与价值观 (Mission, Vision &amp;amp; Values)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;使命：在纷繁的数据中找到清晰的答案，为客户打造可持续的向上引擎。&lt;/li&gt;
-&lt;li&gt;愿景：成为客户最值得信赖的智慧大脑。&lt;/li&gt;
-&lt;li&gt;价值观：心怀好奇，独立思考，积极乐观；做正确的事，而非正确地做事。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;工作信条-guiding-principles&#34;&gt;工作信条 (Guiding Principles)&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;信条&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;阐述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;客户出发&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;产品最大的价值，始于对客户最棘手问题的深刻理解。提问倾听，直到本质。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;交付可见价值&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;创造能被客户感知和衡量的价值。用结果说话，为变化负责。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;先完成，再完美&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;快速行动和迭代。先让事情发生，然后在用户的反馈中持续打磨。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;精益高效&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;拒绝无效的并行。集中精力，把关键任务做到极致，减少过程浪费。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;个人历史-personal-history&#34;&gt;&lt;strong&gt;个人历史&lt;/strong&gt; (Personal History)&lt;/h1&gt;
-&lt;h2 id=&#34;工作经历-work-experience&#34;&gt;&lt;strong&gt;工作经历&lt;/strong&gt; (Work Experience)&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;2025.02～至今 技术创业&lt;/li&gt;
-&lt;li&gt;2020.05~2025.02 米哈游 算法&lt;/li&gt;
-&lt;li&gt;2018.07~2020.05 网易游戏 数据挖掘&lt;/li&gt;
-&lt;li&gt;2017.11~2018.05 RussellCloud 建模实习生&lt;/li&gt;
-&lt;li&gt;2017.07~2017.09 微众银行 数据科学实习生&lt;/li&gt;
-&lt;li&gt;2017.03~2017.06 武汉安天 数据挖掘实习生&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;开源项目-open-source-projects&#34;&gt;开源项目 (Open Source Projects)&lt;/h2&gt;
-&lt;!--
-[![GitHub followers](https://img.shields.io/github/followers/kuhung.svg?&amp;label=Follow&amp;maxAge=2592000)](https://github.com/kuhung)
---&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;项目&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;Stars&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;RAG-in-LangGraph&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;基于LangGraph的RAG项目，旨在降低RAG的上手成本&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/RAG-in-LangGraph&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/RAG-in-LangGraph&#34; alt=&#34;2&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;audiovisualizer&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;高性能3D音频可视化器，支持文件/麦克风输入&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/audiovisualizer&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/audiovisualizer&#34; alt=&#34;16&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;alpha-mining&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;量化策略研究与可视化项目&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/alpha-mining&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/alpha-mining&#34; alt=&#34;24&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;yuanshen-idle&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;原神放置挂机小游戏，真实掉率，不肝不氪&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/yuanshen-idle&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/yuanshen-idle&#34; alt=&#34;30&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;The-Managers-Path-CN&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;技术领导者之路中文翻译&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/The-Managers-Path-CN&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/The-Managers-Path-CN&#34; alt=&#34;52&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;DateCastle&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;图像识别与推荐系统两类&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/DateCastle&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/DateCastle&#34; alt=&#34;76&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;bert_finetune&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;中文语料 Bert finetune&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/bert_finetune&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/bert_finetune&#34; alt=&#34;82&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;yysGAN&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;GAN 使用生成对抗网络生成新的图片&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/yysGAN&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/yysGAN&#34; alt=&#34;82&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;ML-systems-design&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;机器学习系统设计&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/machine-learning-systems-design&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/machine-learning-systems-design&#34; alt=&#34;104&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;flask_vue_ML&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;前后端+算法模型的结合&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/flask_vue_ML&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/flask_vue_ML&#34; alt=&#34;111&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;SSD_keras&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;简明 SSD 目标检测模型 keras version&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/SSD_keras&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/SSD_keras&#34; alt=&#34;163&#34;&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;竞赛成果-competition-achievements&#34;&gt;竞赛成果 (Competition Achievements)&lt;/h2&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;时间&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;项目&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
-&lt;th style=&#34;text-align:right&#34;&gt;名次&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;202309&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Nishika &lt;br&gt;金融時系列予測&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;金融関連企業様のデータを用いて、数百の匿名特徴量を用い、金融に関する或るターゲット値を予測することをテーマとします（使用一家金融相关公司的数据，利用数百个匿名特征来预测某个金融目标值）&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;3/836&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;201808&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;第七届全国媒体技术处理大会 &lt;br&gt;文本溯源技术测评&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;NLP 问题，判断文本是否改编自其它文本，用于学术查重&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;5/95&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;201706&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Kaggle &lt;br&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;图像识别，宫颈癌的早期诊断与分型，公益医疗&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;top10%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;201702&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;DataCastle &lt;br&gt;精准资助预测赛&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;用户分群，识别高校内真正需要资助的人群&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;7/124&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;201612&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;2016 BYTE CUP &lt;br&gt;国际机器学习竞赛&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;推荐系统，推荐头条问答上的问题给合适专家，加快 PGC 产出&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;8/1029&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;201610&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;第五届全国社会媒体处理大会 &lt;br&gt;用户画像技术测评&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;用户画像，通过文本等特征，挖掘微博用户性别、居住地和年龄段属性&lt;/td&gt;
-&lt;td style=&#34;text-align:right&#34;&gt;5/373&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;文章导读-content-guide&#34;&gt;&lt;strong&gt;文章导读&lt;/strong&gt; (Content Guide)&lt;/h1&gt;
+      <guid>https://kuhung.me/guide/</guid>
+      <description>&lt;h1 id=&#34;文章导读-content-guide&#34;&gt;&lt;strong&gt;文章导读&lt;/strong&gt; (Content Guide)&lt;/h1&gt;
 &lt;p&gt;自2016年起持续输出，累计发布 &lt;strong&gt;100+&lt;/strong&gt; 篇原创内容。按主题分类如下：&lt;/p&gt;
 &lt;h2 id=&#34;大模型系列&#34;&gt;大模型系列&lt;/h2&gt;
 &lt;table&gt;
@@ -523,7 +351,7 @@
 &lt;td style=&#34;text-align:left&#34;&gt;端侧AI部署&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;https://kuhung.me/2025/content-sop/&#34;&gt;&amp;ldquo;硅基奇谈&amp;quot;播客、视频生成工作流&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;a href=&#34;https://kuhung.me/2025/content-sop/&#34;&gt;&amp;quot;硅基奇谈&amp;quot;播客、视频生成工作流&lt;/a&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;内容创作工作流&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -585,9 +413,199 @@
 &lt;hr&gt;
 &lt;p&gt;📖 &lt;strong&gt;全部文章&lt;/strong&gt;：&lt;a href=&#34;https://kuhung.me/posts/&#34;&gt;https://kuhung.me/posts/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;🗺️ &lt;strong&gt;思维导图合集&lt;/strong&gt;：&lt;a href=&#34;https://kuhung.me/tags/mindmap/&#34;&gt;https://kuhung.me/tags/mindmap/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>关于我</title>
+      <link>https://kuhung.me/about/</link>
+      <pubDate>Sat, 17 Apr 2021 00:14:04 +0800</pubDate>
+      
+      <guid>https://kuhung.me/about/</guid>
+      <description>&lt;h1 id=&#34;关于我-about-me&#34;&gt;关于我 (About Me)&lt;/h1&gt;
+&lt;p&gt;创业路上，关注算法&amp;amp;数据应用。&lt;/p&gt;
+&lt;p&gt;曾担任算法负责人，在全球化用户画像、游戏反作弊、海内外用户增长方向拥有多年经验。&lt;/p&gt;
+&lt;p&gt;社交媒体：「谷粒粒」 全网搜索，关注上述账号，便捷了解产品最新动向。&lt;/p&gt;
+&lt;h2 id=&#34;个人标签-personal-tags&#34;&gt;个人标签 (Personal Tags)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;笔名：谷粒（kuhung）&lt;/li&gt;
+&lt;li&gt;毕业院校：华中科技大学&lt;/li&gt;
+&lt;li&gt;MBTI：ENFJ-A&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;使命愿景与价值观-mission-vision--values&#34;&gt;使命、愿景与价值观 (Mission, Vision &amp;amp; Values)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;使命：在纷繁的数据中找到清晰的答案，为客户打造可持续的向上引擎。&lt;/li&gt;
+&lt;li&gt;愿景：成为客户最值得信赖的智慧大脑。&lt;/li&gt;
+&lt;li&gt;价值观：心怀好奇，独立思考，积极乐观；做正确的事，而非正确地做事。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;工作信条-guiding-principles&#34;&gt;工作信条 (Guiding Principles)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;信条&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;阐述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;客户出发&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;产品最大的价值，始于对客户最棘手问题的深刻理解。提问倾听，直到本质。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;交付可见价值&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;创造能被客户感知和衡量的价值。用结果说话，为变化负责。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;先完成，再完美&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;快速行动和迭代。先让事情发生，然后在用户的反馈中持续打磨。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;精益高效&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;拒绝无效的并行。集中精力，把关键任务做到极致，减少过程浪费。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;个人历史-personal-history&#34;&gt;&lt;strong&gt;个人历史&lt;/strong&gt; (Personal History)&lt;/h1&gt;
+&lt;h2 id=&#34;工作经历-work-experience&#34;&gt;&lt;strong&gt;工作经历&lt;/strong&gt; (Work Experience)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2025.02～至今 技术创业&lt;/li&gt;
+&lt;li&gt;2020.05~2025.02 米哈游 算法&lt;/li&gt;
+&lt;li&gt;2018.07~2020.05 网易游戏 数据挖掘&lt;/li&gt;
+&lt;li&gt;2017.11~2018.05 RussellCloud 建模实习生&lt;/li&gt;
+&lt;li&gt;2017.07~2017.09 微众银行 数据科学实习生&lt;/li&gt;
+&lt;li&gt;2017.03~2017.06 武汉安天 数据挖掘实习生&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;开源项目-open-source-projects&#34;&gt;开源项目 (Open Source Projects)&lt;/h2&gt;
+&lt;!--
+[![GitHub followers](https://img.shields.io/github/followers/kuhung.svg?&amp;label=Follow&amp;maxAge=2592000)](https://github.com/kuhung)
+--&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;项目&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;Stars&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;RAG-in-LangGraph&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;基于LangGraph的RAG项目，旨在降低RAG的上手成本&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/RAG-in-LangGraph&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/RAG-in-LangGraph&#34; alt=&#34;2&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;audiovisualizer&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;高性能3D音频可视化器，支持文件/麦克风输入&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/audiovisualizer&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/audiovisualizer&#34; alt=&#34;16&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;alpha-mining&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;量化策略研究与可视化项目&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/alpha-mining&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/alpha-mining&#34; alt=&#34;24&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;yuanshen-idle&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;原神放置挂机小游戏，真实掉率，不肝不氪&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/yuanshen-idle&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/yuanshen-idle&#34; alt=&#34;30&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;The-Managers-Path-CN&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;技术领导者之路中文翻译&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/The-Managers-Path-CN&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/The-Managers-Path-CN&#34; alt=&#34;52&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DateCastle&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;图像识别与推荐系统两类&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/DateCastle&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/DateCastle&#34; alt=&#34;76&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;bert_finetune&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;中文语料 Bert finetune&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/bert_finetune&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/bert_finetune&#34; alt=&#34;82&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;yysGAN&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;GAN 使用生成对抗网络生成新的图片&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/yysGAN&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/yysGAN&#34; alt=&#34;82&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;ML-systems-design&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;机器学习系统设计&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/machine-learning-systems-design&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/machine-learning-systems-design&#34; alt=&#34;104&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;flask_vue_ML&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;前后端+算法模型的结合&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/flask_vue_ML&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/flask_vue_ML&#34; alt=&#34;111&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;SSD_keras&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;简明 SSD 目标检测模型 keras version&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;&lt;a href=&#34;https://github.com/kuhung/SSD_keras&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/stars/kuhung/SSD_keras&#34; alt=&#34;163&#34;&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;竞赛成果-competition-achievements&#34;&gt;竞赛成果 (Competition Achievements)&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;时间&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;项目&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;简介&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;名次&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;202309&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Nishika &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;金融時系列予測&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;金融関連企業様のデータを用いて、数百の匿名特徴量を用い、金融に関する或るターゲット値を予測することをテーマとします（使用一家金融相关公司的数据，利用数百个匿名特征来预测某个金融目标值）&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;3/836&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201808&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;第七届全国媒体技术处理大会 &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;文本溯源技术测评&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;NLP 问题，判断文本是否改编自其它文本，用于学术查重&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5/95&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201706&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Kaggle &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;Intel&amp;amp;MobileODTCervicalCancerScreening&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;图像识别，宫颈癌的早期诊断与分型，公益医疗&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;top10%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201702&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DataCastle &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;精准资助预测赛&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用户分群，识别高校内真正需要资助的人群&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;7/124&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201612&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2016 BYTE CUP &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;国际机器学习竞赛&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;推荐系统，推荐头条问答上的问题给合适专家，加快 PGC 产出&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;8/1029&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;201610&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;第五届全国社会媒体处理大会 &lt;code&gt;&amp;lt;br&amp;gt;&lt;/code&gt;用户画像技术测评&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;用户画像，通过文本等特征，挖掘微博用户性别、居住地和年龄段属性&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;5/373&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h1 id=&#34;直接联系-direct-contact&#34;&gt;&lt;strong&gt;直接联系&lt;/strong&gt; (Direct Contact)&lt;/h1&gt;
 &lt;p&gt;欢迎找工作的小伙伴、寻求合伙人的创业者以及投资人通过邮箱联系：📮 hi#kuhung.me (@替换#)&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>归档</title>
+      <link>https://kuhung.me/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhung.me/archives/</guid>
+      <description></description>
     </item>
     
   </channel>
