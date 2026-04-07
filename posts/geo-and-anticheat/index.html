@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
   <link rel="prev" href="https://kuhung.me/posts/talks-with-vc/" />
-  
+  <link rel="next" href="https://kuhung.me/posts/vibe-coding-long-term-operation/" />
   <link rel="canonical" href="https://kuhung.me/posts/geo-and-anticheat/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,10 +33,10 @@ if (!doNotTrack) {
   <title>
        
        
-           GEO与反作弊 | Kuhung | 谷粒
+           GEO的过去、未来与反作弊算法 | Kuhung | 谷粒
        
   </title>
-  <meta name="title" content="GEO与反作弊 | Kuhung | 谷粒">
+  <meta name="title" content="GEO的过去、未来与反作弊算法 | Kuhung | 谷粒">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -55,8 +55,8 @@ if (!doNotTrack) {
          "@id": "https:\/\/kuhung.me\/"
     },
     "articleSection" : "posts",
-    "name" : "GEO与反作弊",
-    "headline" : "GEO与反作弊",
+    "name" : "GEO的过去、未来与反作弊算法",
+    "headline" : "GEO的过去、未来与反作弊算法",
     "description" : "回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。\n关注一位博主，曾短暂投入过GEO方面的创业，到年初放弃。而我当时也让Gemini的DeepResearch做了一次调研。从目前我的状态来看，大家就知道并未深度投入。\n为什么不深入？我当时有三个判断。\n第一，GEO 本质上还是 SEO。国内搞这套，说到底还是内容农场的路子。门槛低，没护城河。 第二，小规模跑通容易，但想做成大生意，得铺大量销售去对接老板。这不符合我“轻步快跑”的现状。 第三，算不清账。业内叫零点击。你很难证明大模型里的某句推荐，到底带来了多少实在的收入。没法算账，客户就没法持续掏钱。\n但 3.15 曝光后的现象，让我觉得之前的判断有点保守了。\n当下 在人人玩虾🦐的时代，FOMO（害怕错过）的情绪充斥社会。各个公司也在鼓励AI整合到现有工作中，“蒸馏”员工的业务知识到skills里面，然后削减人头。有没有提效不知道，但是这场运动，愈演愈烈。\n3.15 曝光之后，圈里反倒多了一批来询单的老板。都不想错过风口，想抢先占位。不管是自己做正向营销，还是给对手下黑手，老板们都愿意从营销预算里挤点钱出来，砸在 GEO 上。\n节目中也有说，一年出200单。当然，商务促单说的数据，不一定对；但也从侧面说明，有需求，而且这个需求是低垂的果实。不需要你懂太多大模型的知识和原理，只需要接住老板们的情绪，并通过批量发布内容给到情绪按摩即可。\n话虽如此，原理还是要懂一点。由于涉及平台生态，这就不得不提 GEO 的前身——SEO，以及它背后多年的对抗和演进。\n原理 GEO和SEO类似，这也是为什么很多SEO公司会跨过来做GEO。其核心，还是在互联网上留下内容。至于怎么留、留哪些，我们不妨参考SEO的逻辑。\n举个例子，当我想做测评网站，我们需要关注哪些内容？\n首先第一个，关键词。很多网站会批量堆砌关键词，以期望在用户搜索的时候，命中。典型的做法，是像旅游网站，结合5w1h，进行关键词组合。例如：“春季上海周边1小时家庭出行，用可达出行一眼便知”。通过词语组合的方式，提高曝光。这招曾经被不同旅游网站用过。（当然，可达出行是我的产品。）\n第二个是内外链结构。这也是谷歌搜索的成名算法：Pagerank的原理。Pagerank大致可以类比为：这个人行不行，看的是周围人对他的评价。这也是为什么会有很多网站，在底部穿插友链。其实也和linkedin到处找人评价一个原理。\n此外，还有很多其他细节。比如域名权威性、网站加载速度、网站存在时长、网站结构是否清晰可读、网站死链数等。最最关键的，根据用户搜索意图动态调整内容。还会有人专门去抓长尾词，来获得一席之地。\nSEO 与内容农场 规则一旦明确，就有人琢磨怎么蒙蔽规则。这便催生了臭名昭著的内容农场。\n早年做网站挂广告还很赚钱的时候，有人发现捷径：拿其他语言的内容机器翻译成中文，直接往网站里塞。这就是为什么你搜技术问题时，总能碰上一堆狗屁不通的机翻文章。这种玩法跟营销号废话文学如出一辙：“解决这个问题的办法，就是找到解决问题的办法。”用海量低质信息换取高权重。\n内容农场还会建一批空壳网站互相引流。更有甚者，用黑产手段黑进高权重的老域名，暗中植入自己的链接。\n反作弊思路 搜索的核心是帮到用户。最直接的判断标准是：如果用户点进你的网页，一秒钟就退出来点了下一个，说明你的内容是垃圾。搜索引擎据此降低排名。现在的推荐算法也是这个逻辑，小流量池里没反馈，就切断流量。\n但如果黑产批量注册域名，打一枪换一个地方呢？事后惩罚就失效了。这里就要引入风控思维。\n风控分事前、事中、事后。刚才说的是事后反馈。事前，谷歌搞了一套 EEAT 评价体系（经验、专业、权威、信任度），靠这几个维度提前给网页打分。事中则侧重应急，发现问题怎么最快切断下线。\n反作弊的本质不是追求绝对干净，而是无限拉高作弊者的成本，让他们付出收获不对等。\nGEO 怎么做 回到 GEO。大模型现在抓取内容，用的还是老一套反作弊逻辑。但它也有其特色：偏好结构清晰的文本，层次分明，要点前置。这恰恰也是大模型生成内容擅长的。\n虽然现在RAG在部分场景已经不那么SOTA（优雅），但其思路还在。模型是分块读取内容的，所以把内容拆成独立的小块，前后关联别太强，这种更容易被总结。大模型也偏爱 PGC（专家生产内容）的格式。看上去权威。比如“XX 深度测评”“XX Top榜单”“A 产品 vs B 产品”。把这些内容发在社交媒体或新闻公关平台上，用平台的权重给内容背书。\n所以 GEO 的实操没什么高深技术。无非是写内容、调内容、发内容，跟大模型的反作弊规则做持续测试。\nGEO 的未来 搞清楚了怎么做，最后面临的是怎么交差。\n和 SEO 相比，GEO 最大的硬伤是数据归因断层。过去你能清楚看到用户搜了什么词、在页面停留了多久。但在 GEO 里，这些全成了黑盒。\n但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
@@ -123,7 +123,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">GEO与反作弊</h1>
+        <h1 class="post-title" itemprop="name headline">GEO的过去、未来与反作弊算法</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -302,6 +302,8 @@ if (!doNotTrack) {
         
         <a href="https://kuhung.me/posts/talks-with-vc/" class="prev" rel="prev" title="独立创业观察｜和一位 AI 投资人聊了聊"><i class="iconfont icon-left"></i>&nbsp;独立创业观察｜和一位 AI 投资人聊了聊</a>
         
+        
+        <a href="https://kuhung.me/posts/vibe-coding-long-term-operation/" class="next" rel="next" title="Vibe Coding 长线运营思路">Vibe Coding 长线运营思路&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
