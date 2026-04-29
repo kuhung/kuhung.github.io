@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/vibe-coding-long-term-operation/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           AI时代，OPC（一人公司）的自动化与半自动化 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="AI时代，OPC（一人公司）的自动化与半自动化 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "AI时代，OPC（一人公司）的自动化与半自动化",
+    "headline" : "AI时代，OPC（一人公司）的自动化与半自动化",
+    "description" : "如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练\u002b扬长避短。\n成事，不仅需要财力、物力，更需要心力。为了控制心力消耗，除了常见的SMART法则拆解目标、番茄工作法保持专注外，笔者总结了一份指南：AI时代，OPC（一人公司）的自动化与半自动化。\n通过下述方法，让笔者把精力放在高价值活动上。\n自动化 这里的自动化，指的是自动实现某个效果，替代繁杂的人力。这个自动化本身，也是更大系统中的一部分。这里把它拆出来，是因为这些自动化环节，关乎效果和体验。\n构建自动化。笔者通过GitHub和Vercel，实现自动化构建与发布。构建自动化这个事，在敏捷开发中多有提及。目前，几乎所有大厂的产品发布，都已经实现自动化。构建、打包，这个过去很耗时间的事，现在也越来越短。只有当你能够快速构建，你才能够快速迭代。无论是增加新特性，还是修复旧 Bug，构建自动化，都是提效工具。\n笔者的这部分自动化，逻辑上是通过GitHub提交代码，触发Vercel的工作流，实现测试、预发和生产部署。也可以利用 GitHub Actions 的功能，做日常的调度任务，例如：数据拉取、模型计算。GitHub的Action每月提供2000min的运行时长。除开Vercel，也可以选择Cloudflare进行任务的部署，技术栈和原理类似。\n指标自动化。通过 Google Analytics（GA）和 Bark，每日同步数据情况。指标，是每个项目都需要关注的内容。现代企业管理和生产，没有指标就没法优化。一般而言，产品应当关注活跃和时长指标。客户满意度无法精准测量的情况下，活跃和时长是一个基础性指标：数据量够大、又和产品的核心体验强相关。\n这里的自动化，也利用了上文提到的 GitHub Actions 定时任务。通过例行任务，拉取GA的数据，再通过Bark这款手机应用，推送到手机上。这里不用Bark用邮箱也是可行的。主要目的就是每天同步线上数据情况，方便第一时间发现问题\/增长点。\n交付自动化，通过Stripe直接发货。这部分内容，是笔者过去小半年跑通的一个示范。先说说我们想要的效果：用户付款或者订阅，我们的软件或者文档自动开放给用户下载使用，而不是后台手工发货。很多朋友在提供服务时，往往找不到好的收款方式。也有朋友在留言，好奇是如何实现的。\n当然我不建议一开始，0基础搭建这套流程，因为你的需求可能是伪需求。笔者首先在小红书和B站开店，卖出了上百份，才开始做这部分改造。目前，笔者的应用，用户可以直接实现购买、下单和资产获取，而不用笔者手工干预。这省下大量发货时间，用户的即时满足感也得到增强。\n半自动化 半自动化一般借助中间工具实现，用于信息收集和内容产出工作。这部分很多时候，是为了满足信息收集和内容产出的癖好，不一定能带来真实的生产力提升。包含如下内容：\nGitHub 上的 Star 同步到 Notion。笔者有大量的代码任务和感兴趣的仓库，通过 GitHub 点赞实现，但是这部分代码，有些并未转化为实际的下一步行动。究其原因，还是GitHub的点赞太方便，回顾稍微有些麻烦。笔者参考开源项目，进行了自己的改造，实现GitHub的关注自动同步到Notion，通过Notion看板，来进行任务的管理。\nNotebookLM Podcast自动化，用于消化信息并产出新的信息。同样类似的，笔者也有大量的新闻资讯需要消化，进行思考并做出输出。这里笔者借助NotebookLM进行内容处理，并加工评论以防止自己成为信息转发机。在去年的基础上，迭代更新了内容资讯的生产方式，产出播客内容。\nGemini 深度研究，用来做特定研究命题的深入研究。目前谷歌整合进入Chrome侧边栏，问问Gemini。当然这个功能有时候不好使，完全看梯子的状态。为此笔者开发了平替产品，Chrome插件PageGrok。能够在任意地区，自定义模型，实现页面的解读任务。目前应用商店搜索PageGrok即可免费使用。\nCursor 写代码。有人说为啥不用 Claude Code（CC），笔者有两方面原因：一个是现在笔者是20刀500次请求的模式，算是究极性价比了；二是CC的登录验证太麻烦了，其他地方又没有稳定的高质量CC模型提供。这部分不放在完全自动化里面，是因为笔者还是不太习惯完全让AI自动运行。\nAI就如同指导新同事一般，你知道它有这个能力，但是若不施加约束、进行阶段监控，只会带来返工擦屁股。直到它完全契合你的工作方式，这个时候才是放权的好时机。不过可惜，AI没法根据本地内容进行迭代。而且目前，Tier 1的模型，总是会出现过度设计和代码膨胀。放弃审查就是放弃自己。\nRemotion 制作视频。通过 Remotion Skill，能够制作视频。质量在及格线附近，但聊胜于无。也算是半个自动化过程。\nSEO优化。通过三方网站来实现，做到基准线水平，排除掉大的漏洞。SEO 本质上就是产出清晰、可读结构化的高质量内容。这点和内容创作无异，和编码也无异。\n使用PageSpeed Insights进行网页加载优化。利用好公开的诊断工具，也不用啥都AI。\n手工活 这部分，是笔者发现目前仍然难以自动化的环节。或者说，不需要自动化。\n财务总结。笔者每月进行一次。盘点开支和收入情况，划分不同资产类型，进行横向比对和下月资金分配。\n新知学习，需要实践，不能交给AI来做，不然学到知识的就只是AI而不是个体。\n写文章，AI虽好，但是会剥夺人味，只有真情实感写出来的东西，才值得读者花时间。这部分写的过程，不可被AI替代。当然资料收集和论证环节，可以借助AI。最后发布前的语法、错别字和常识校验，笔者还是在用AI进行辅助。\n项目管理。每天做了什么、下周和下个月计划做什么；之前一周和几个月，分别做了什么，有什么阶段性成果；哪部分和预期的效果不一致，需要做哪些调整，这些目前来看，是手工完成。但是目前也在做自动化改造。\n因为笔者目前的项目进度，几乎都是由Notion进行管理，而Notion又是很方便同步到GitHub（利用前文逻辑），所以基本上可以通过GitHub 的Action，定时每周和每月起一个任务，来总结甘特图中的项目进展。\n平台发文，纯手工但是不得不做。用自动化发文容易被封。\n说到底，手工活的核心是判断力和切身感。什么该自动化、什么该亲手做，这个判断本身没法外包给AI。\n总结 不要一上来就想着自动化。先做内容，而不是做工具。重复的工作要自动化，重要的指标要自动化，比如交付数量、线上数据，值得每天盯着。但判断力、审美、对受众的理解，这些没法自动化。\n之前我总喜欢读书，总觉得办法在书里，先看看别人怎么做的。这个思路是对的，很多问题和解决方案，早在别人那里有过。现在，书也要看，人也要谈，更多的是从实践和面对面输出中，获取连结感和下一步行动力。\n虽然现在AI自动研究的话题很火，但我认为它更像是一个范围命题。这场AI show，什么时候落幕不知道，但需要更多的关于边界的自我认知。追逐热点，奉为圭臬的人往往更FOMO，更容易被营销带偏。偶尔跟不上热点，并非坏事。AI这个行当，曾经的热点，过几个月，就不再是了。\n最好的方式，就是控制流入，高价值利用自己的核心工作时间。笔者这套体系一直在迭代，随着工具和需求变化，持续调整。\n保持敏锐，但拒绝焦虑。持续输出。\n关于作者",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-04-29 11:49:00 \u002b0800 CST",
+    "dateModified" : "2026-04-29 11:49:00 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/automation-and-human-in-the-loop-in-the-age-of-ai\/",
+    "wordCount" : "66",
+    "keywords" : [ "一人公司","自动化","独立开发", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">AI时代，OPC（一人公司）的自动化与半自动化</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-04-29 itemprop="datePublished">April 29, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。</p>
+<p>成事，不仅需要财力、物力，更需要心力。为了控制心力消耗，除了常见的SMART法则拆解目标、番茄工作法保持专注外，笔者总结了一份指南：AI时代，OPC（一人公司）的自动化与半自动化。</p>
+<p>通过下述方法，让笔者把精力放在高价值活动上。</p>
+<h1 id="自动化">自动化</h1>
+<p>这里的自动化，指的是自动实现某个效果，替代繁杂的人力。这个自动化本身，也是更大系统中的一部分。这里把它拆出来，是因为这些自动化环节，关乎效果和体验。</p>
+<p>构建自动化。笔者通过GitHub和Vercel，实现自动化构建与发布。构建自动化这个事，在敏捷开发中多有提及。目前，几乎所有大厂的产品发布，都已经实现自动化。构建、打包，这个过去很耗时间的事，现在也越来越短。只有当你能够快速构建，你才能够快速迭代。无论是增加新特性，还是修复旧 Bug，构建自动化，都是提效工具。</p>
+<p>笔者的这部分自动化，逻辑上是通过GitHub提交代码，触发Vercel的工作流，实现测试、预发和生产部署。也可以利用 GitHub Actions 的功能，做日常的调度任务，例如：数据拉取、模型计算。GitHub的Action每月提供2000min的运行时长。除开Vercel，也可以选择Cloudflare进行任务的部署，技术栈和原理类似。</p>
+<p>指标自动化。通过 Google Analytics（GA）和 Bark，每日同步数据情况。指标，是每个项目都需要关注的内容。现代企业管理和生产，没有指标就没法优化。一般而言，产品应当关注活跃和时长指标。客户满意度无法精准测量的情况下，活跃和时长是一个基础性指标：数据量够大、又和产品的核心体验强相关。</p>
+<p>这里的自动化，也利用了上文提到的 GitHub Actions 定时任务。通过例行任务，拉取GA的数据，再通过Bark这款手机应用，推送到手机上。这里不用Bark用邮箱也是可行的。主要目的就是每天同步线上数据情况，方便第一时间发现问题/增长点。</p>
+<p>交付自动化，通过Stripe直接发货。这部分内容，是笔者过去小半年跑通的一个示范。先说说我们想要的效果：用户付款或者订阅，我们的软件或者文档自动开放给用户下载使用，而不是后台手工发货。很多朋友在提供服务时，往往找不到好的收款方式。也有朋友在留言，好奇是如何实现的。</p>
+<p>当然我不建议一开始，0基础搭建这套流程，因为你的需求可能是伪需求。笔者首先在小红书和B站开店，卖出了上百份，才开始做这部分改造。目前，笔者的应用，用户可以直接实现购买、下单和资产获取，而不用笔者手工干预。这省下大量发货时间，用户的即时满足感也得到增强。</p>
+<h1 id="半自动化">半自动化</h1>
+<p>半自动化一般借助中间工具实现，用于信息收集和内容产出工作。这部分很多时候，是为了满足信息收集和内容产出的癖好，不一定能带来真实的生产力提升。包含如下内容：</p>
+<p>GitHub 上的 Star 同步到 Notion。笔者有大量的代码任务和感兴趣的仓库，通过 GitHub 点赞实现，但是这部分代码，有些并未转化为实际的下一步行动。究其原因，还是GitHub的点赞太方便，回顾稍微有些麻烦。笔者参考开源项目，进行了自己的改造，实现GitHub的关注自动同步到Notion，通过Notion看板，来进行任务的管理。</p>
+<p>NotebookLM Podcast自动化，用于消化信息并产出新的信息。同样类似的，笔者也有大量的新闻资讯需要消化，进行思考并做出输出。这里笔者借助NotebookLM进行内容处理，并加工评论以防止自己成为信息转发机。在去年的基础上，迭代更新了内容资讯的生产方式，产出播客内容。</p>
+<p>Gemini 深度研究，用来做特定研究命题的深入研究。目前谷歌整合进入Chrome侧边栏，问问Gemini。当然这个功能有时候不好使，完全看梯子的状态。为此笔者开发了平替产品，Chrome插件PageGrok。能够在任意地区，自定义模型，实现页面的解读任务。目前应用商店搜索PageGrok即可免费使用。</p>
+<p>Cursor 写代码。有人说为啥不用 Claude Code（CC），笔者有两方面原因：一个是现在笔者是20刀500次请求的模式，算是究极性价比了；二是CC的登录验证太麻烦了，其他地方又没有稳定的高质量CC模型提供。这部分不放在完全自动化里面，是因为笔者还是不太习惯完全让AI自动运行。</p>
+<p>AI就如同指导新同事一般，你知道它有这个能力，但是若不施加约束、进行阶段监控，只会带来返工擦屁股。直到它完全契合你的工作方式，这个时候才是放权的好时机。不过可惜，AI没法根据本地内容进行迭代。而且目前，Tier 1的模型，总是会出现过度设计和代码膨胀。放弃审查就是放弃自己。</p>
+<p>Remotion 制作视频。通过 Remotion Skill，能够制作视频。质量在及格线附近，但聊胜于无。也算是半个自动化过程。</p>
+<p>SEO优化。通过三方网站来实现，做到基准线水平，排除掉大的漏洞。SEO 本质上就是产出清晰、可读结构化的高质量内容。这点和内容创作无异，和编码也无异。</p>
+<p>使用PageSpeed Insights进行网页加载优化。利用好公开的诊断工具，也不用啥都AI。</p>
+<h1 id="手工活">手工活</h1>
+<p>这部分，是笔者发现目前仍然难以自动化的环节。或者说，不需要自动化。</p>
+<p>财务总结。笔者每月进行一次。盘点开支和收入情况，划分不同资产类型，进行横向比对和下月资金分配。</p>
+<p>新知学习，需要实践，不能交给AI来做，不然学到知识的就只是AI而不是个体。</p>
+<p>写文章，AI虽好，但是会剥夺人味，只有真情实感写出来的东西，才值得读者花时间。这部分写的过程，不可被AI替代。当然资料收集和论证环节，可以借助AI。最后发布前的语法、错别字和常识校验，笔者还是在用AI进行辅助。</p>
+<p>项目管理。每天做了什么、下周和下个月计划做什么；之前一周和几个月，分别做了什么，有什么阶段性成果；哪部分和预期的效果不一致，需要做哪些调整，这些目前来看，是手工完成。但是目前也在做自动化改造。</p>
+<p>因为笔者目前的项目进度，几乎都是由Notion进行管理，而Notion又是很方便同步到GitHub（利用前文逻辑），所以基本上可以通过GitHub 的Action，定时每周和每月起一个任务，来总结甘特图中的项目进展。</p>
+<p>平台发文，纯手工但是不得不做。用自动化发文容易被封。</p>
+<p>说到底，手工活的核心是判断力和切身感。什么该自动化、什么该亲手做，这个判断本身没法外包给AI。</p>
+<h1 id="总结">总结</h1>
+<p>不要一上来就想着自动化。先做内容，而不是做工具。重复的工作要自动化，重要的指标要自动化，比如交付数量、线上数据，值得每天盯着。但判断力、审美、对受众的理解，这些没法自动化。</p>
+<p>之前我总喜欢读书，总觉得办法在书里，先看看别人怎么做的。这个思路是对的，很多问题和解决方案，早在别人那里有过。现在，书也要看，人也要谈，更多的是从实践和面对面输出中，获取连结感和下一步行动力。</p>
+<p>虽然现在AI自动研究的话题很火，但我认为它更像是一个范围命题。这场AI show，什么时候落幕不知道，但需要更多的关于边界的自我认知。追逐热点，奉为圭臬的人往往更FOMO，更容易被营销带偏。偶尔跟不上热点，并非坏事。AI这个行当，曾经的热点，过几个月，就不再是了。</p>
+<p>最好的方式，就是控制流入，高价值利用自己的核心工作时间。笔者这套体系一直在迭代，随着工具和需求变化，持续调整。</p>
+<p>保持敏锐，但拒绝焦虑。持续输出。</p>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/">
+                    #一人公司</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                    #自动化</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/">
+                    #独立开发</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/vibe-coding-long-term-operation/" class="prev" rel="prev" title="Vibe Coding 长线运营思路"><i class="iconfont icon-left"></i>&nbsp;Vibe Coding 长线运营思路</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
