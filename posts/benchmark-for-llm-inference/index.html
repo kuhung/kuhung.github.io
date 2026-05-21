@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/benchmark-for-llm-inference/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架",
+    "headline" : "拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架",
+    "description" : "经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。\n作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程中，会遇到两个问题：一个是本地显\/内存有限的前提下，最有性价比或者说最有智力的模型是谁？第二个问题是，我该用什么框架来部署服务。\n在不知道咋选的时候，我选择用最新的开源模型。但是不少模型其实是有显存要求的。最新是好，但不一定能部署到本机。后来，我通过拉取最新的模型数据，构造并发布了一个网页应用 Traktoken，这下可以直观了解模型能力与所需显存间的关系。\n模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 PageGrok（一款浏览器插件 AI 产品）时，到达巅峰。\n为什么要做这个评测？ 首先是实际的业务痛点。PageGrok 是一款浏览器插件，用来在不跳转、不用外部 API（省事省钱）的情况下，解读当前页面的内容。其不用外部 API，靠的就是用户自己部署的本地模型。本意是减少用户动作，但真上线后发现：用户选中内容并发送给本地模型处理时，响应延迟非常大。\n虽然本地不花 API 费用，但是时间也是钱啊（摔）。动辄数十秒的冷启动时间，让用户一度以为插件失灵。显然，瓶颈不在插件和通信，是本地服务的问题。框架性能表现成为必须关注的核心。到底咋回事，为啥 Chatbot 感觉不明显的模型加载和提示词填充，在这个场景下延迟明显？\n其次是新老框架的交替和抉择。我从去年就开始在生产活动中使用本地模型（例如在“相亲小镇”项目中），一直使用 Ollama 框架，部署 Gemma 3 模型作为底座模型。早期在 MacBook 上风扇转得飞快，但迁移到 Linux 服务器后，GPU 你转就转吧。\n早在 23 年，苹果就推出了专为 Apple Silicon 优化的 MLX 框架。但直到 26 年上半年，在其基础上开发的 oMLX 才受到大范围关注，社媒上看到其声称更好适配苹果设备。没过多久，Ollama 也在新版本声称支持了 MLX 框架。这种感觉就像是：“你别迁移，我能行”。\n真的行吗？我一开始下载的是 LM Studio，它出现的时间比 Ollama 更早。Ollama 后来居上，凭借其 YC 投资背景和简洁的设计，很快占据了不少市场。面对不同的框架，我的核心疑问随之而来：最适合 Mac 电脑部署的本地框架到底是什么？ 拒绝感觉良好，得有套系统的测评手段。\n评测指标体系设计 在开始自己重复造轮子前，我也系统看了现有的解决方案。大家主要关注三个方面的指标，分别是用户体验指标（如：TTFT 首字延迟时间）、成本指标（如：TPS token 吞吐量）、资源消耗（如：GPU 占用情况）。\n这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-05-17 12:49:56 \u002b0800 CST",
+    "dateModified" : "2026-05-17 12:49:56 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/benchmark-for-llm-inference\/",
+    "wordCount" : "270",
+    "keywords" : [ "LLM","推理框架","性能测评","Mac","本地部署", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-05-17 itemprop="datePublished">May 17, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么要做这个评测">为什么要做这个评测？</a></li>
+    <li><a href="#评测指标体系设计">评测指标体系设计</a>
+      <ul>
+        <li><a href="#核心指标">核心指标</a></li>
+      </ul>
+    </li>
+    <li><a href="#各框架与模型表现对比">各框架与模型表现对比</a></li>
+    <li><a href="#结论与使用者建议">结论与使用者建议</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。</p>
+<p>作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程中，会遇到两个问题：一个是本地显/内存有限的前提下，最有性价比或者说最有智力的模型是谁？第二个问题是，我该用什么框架来部署服务。</p>
+<p>在不知道咋选的时候，我选择用最新的开源模型。但是不少模型其实是有显存要求的。最新是好，但不一定能部署到本机。后来，我通过拉取最新的模型数据，构造并发布了一个网页应用 Traktoken，这下可以直观了解模型能力与所需显存间的关系。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/9eefa5708fff7ae3.webp" alt="Traktoken 智能指数 vs VRAM 需求散点图，气泡大小表示参数量，右下角为高智能低显存的部署性价比区" class="lazyload"><figcaption class="image-caption">Traktoken 智能指数 vs VRAM 需求散点图，气泡大小表示参数量，右下角为高智能低显存的部署性价比区</figcaption></figure></p>
+<p>模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 <code>PageGrok</code>（一款浏览器插件 AI 产品）时，到达巅峰。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/a18b737c8322061d.webp" alt="PageGrok 官网首页，主打本地 AI 驱动的浏览器侧边栏，100% 私密免费" class="lazyload"><figcaption class="image-caption">PageGrok 官网首页，主打本地 AI 驱动的浏览器侧边栏，100% 私密免费</figcaption></figure></p>
+<h2 id="为什么要做这个评测">为什么要做这个评测？</h2>
+<p>首先是实际的业务痛点。PageGrok 是一款浏览器插件，用来在不跳转、不用外部 API（省事省钱）的情况下，解读当前页面的内容。其不用外部 API，靠的就是用户自己部署的本地模型。本意是减少用户动作，但真上线后发现：用户选中内容并发送给本地模型处理时，响应延迟非常大。</p>
+<p>虽然本地不花 API 费用，但是时间也是钱啊（摔）。动辄数十秒的冷启动时间，让用户一度以为插件失灵。显然，瓶颈不在插件和通信，是本地服务的问题。框架性能表现成为必须关注的核心。到底咋回事，为啥 Chatbot 感觉不明显的模型加载和提示词填充，在这个场景下延迟明显？</p>
+<p>其次是新老框架的交替和抉择。我从去年就开始在生产活动中使用本地模型（例如在“相亲小镇”项目中），一直使用 <code>Ollama</code> 框架，部署 Gemma 3 模型作为底座模型。早期在 MacBook 上风扇转得飞快，但迁移到 Linux 服务器后，GPU 你转就转吧。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/58820f6fd599da2e.webp" alt="AI Match Town（相亲小镇）项目截图，基于本地大模型驱动的虚拟小镇 AI 角色社交" class="lazyload"><figcaption class="image-caption">AI Match Town（相亲小镇）项目截图，基于本地大模型驱动的虚拟小镇 AI 角色社交</figcaption></figure></p>
+<p>早在 23 年，苹果就推出了专为 Apple Silicon 优化的 <code>MLX</code> 框架。但直到 26 年上半年，在其基础上开发的 oMLX 才受到大范围关注，社媒上看到其声称更好适配苹果设备。没过多久，Ollama 也在新版本声称支持了 MLX 框架。这种感觉就像是：“你别迁移，我能行”。</p>
+<p>真的行吗？我一开始下载的是 LM Studio，它出现的时间比 Ollama 更早。Ollama 后来居上，凭借其 YC 投资背景和简洁的设计，很快占据了不少市场。面对不同的框架，我的核心疑问随之而来：<strong>最适合 Mac 电脑部署的本地框架到底是什么？</strong> 拒绝感觉良好，得有套系统的测评手段。</p>
+<h2 id="评测指标体系设计">评测指标体系设计</h2>
+<p>在开始自己重复造轮子前，我也系统看了现有的解决方案。大家主要关注三个方面的指标，分别是用户体验指标（如：TTFT 首字延迟时间）、成本指标（如：TPS token 吞吐量）、资源消耗（如：GPU 占用情况）。</p>
+<p>这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。</p>
+<p>关于这部分的讨论，其实早在 23、24 年就有了。不少模型平台提供方也提供了它们自己的脚手架工具，例如 <a href="https://github.com/huggingface/inference-benchmarker">huggingface/inference-benchmarker</a>。模型部署框架方也做了不少工作，例如 oMLX 就自带测评工具。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/e8eee21859386454.webp" alt="oMLX 自带的性能基准测试界面，支持单请求和连续批处理测试配置" class="lazyload"><figcaption class="image-caption">oMLX 自带的性能基准测试界面，支持单请求和连续批处理测试配置</figcaption></figure></p>
+<p>不过，总的看来，这些测评工具都多少有些耦合和过度设计。比如 oMLX 这套只能说明它自己的模型效果，无法横向测评其他框架结果。Hugging Face 这套则是和它自身的生态绑定，学习曲线比较陡峭。</p>
+<p>网上也有不少开源项目，目前看来都缺少维护，简单 vibe 发布后，后续就没有迭代了。基于上述情况，我决定自己根据这些测评角度，开发一套简单易用、跨多个框架的测评工具。</p>
+<p>在上述背景下，<a href="https://benchmark-for-llm.kuhung.me/">LLM Bench</a> 应运而生。这是一个网页应用，用户可以直接连接本地大模型，简单点击即可进行测评。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/2252f7ed008ac1c4.gif" alt="LLM Bench 操作演示，展示节点配置（支持 Ollama / LM Studio / oMLX）、测试参数设置与一键启动流程" class="lazyload"><figcaption class="image-caption">LLM Bench 操作演示，展示节点配置（支持 Ollama / LM Studio / oMLX）、测试参数设置与一键启动流程</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/830b36b29f770716.webp" alt="LLM Bench 快速上手指南：配置端点、运行测试、对比分析三步流程" class="lazyload"><figcaption class="image-caption">LLM Bench 快速上手指南：配置端点、运行测试、对比分析三步流程</figcaption></figure></p>
+<h3 id="核心指标">核心指标</h3>
+<ul>
+<li>
+<p><strong>首字延迟（TTFT）</strong>：直接决定用户等待焦虑度，是本地体验的关键。一般来说，线上服务的等待时间控制在 2-3s 内会比较好。TTFT 实际上是排队等待 + 提示词预填充时间（Prefill Time）+ 网络波动的总和。从用户角度来说，就是我发消息过去，直到屏幕上开始出现字的等待时间。</p>
+</li>
+<li>
+<p><strong>输出速度（Tokens Per Second）</strong>：首个 token 到最后一个 token 之间的 decode 速率。分母不包含 TTFT，确保 prefill 和 decode 正交衡量。人类的阅读速度一般是每秒 4 个字符，感觉流畅要大于 30 个 token/s。相同硬件条件下，TPS 越高，反映出资源利用率越高，成本控制越好。</p>
+</li>
+</ul>
+<p>除开上述两个指标外，本地模型还有个指标非常重要，是<strong>冷启动时的 TTFT</strong>。这反映模型加载到框架到出现字符的时间，这也是前文我们体感觉得慢的地方。这个指标，在其他测评框架中基本整合进 TTFT，但我觉得很有必要单独拎出来。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/25b6f2e2e0c918b9.webp" alt="首字延迟 TTFT 柱状图，展示 P50、P95 与冷启动最大值，冷启动延迟高达 36 秒" class="lazyload"><figcaption class="image-caption">首字延迟 TTFT 柱状图，展示 P50、P95 与冷启动最大值，冷启动延迟高达 36 秒</figcaption></figure></p>
+<p>另外，还会有**字间延迟分布（Inter-Token Latency）**这个指标，用来衡量两个 token 之间的时间间隔，越高表示卡顿越明显，用户感知为“一卡一卡的”。内存管理或者是显存带宽出现问题，都会导致这个指标升高。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/e28fb28a06151545.webp" alt="字间延迟分布 ITL 柱状图，展示 oMLX 在 P50 / P95 / P99 分位的 token 间隔时间" class="lazyload"><figcaption class="image-caption">字间延迟分布 ITL 柱状图，展示 oMLX 在 P50 / P95 / P99 分位的 token 间隔时间</figcaption></figure></p>
+<p>**并发扩展性（Scalability）**则是指当并发请求出现时，模型的表现情况。计算方式为 <code>TPS@concurrency=8 / TPS@concurrency=1</code>。比值 1.0 表示完美扩展（并发不影响单请求速度），0.15 以下表示严重退化。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/TODO-concurrency-scaling.webp" alt="并发扩展性图表，左侧为 TPS 随并发数增加的变化趋势，右侧为 TTFT 随并发数增加的变化趋势" class="lazyload"><figcaption class="image-caption">并发扩展性图表，左侧为 TPS 随并发数增加的变化趋势，右侧为 TTFT 随并发数增加的变化趋势</figcaption></figure></p>
+<h2 id="各框架与模型表现对比">各框架与模型表现对比</h2>
+<p>说完测评指标，我们来看不同框架下，相同模型的表现情况。本次测试了三个框架，分别是 Ollama、LM Studio 以及 oMLX。我的 MBP 是 16G 内存，根据 Traktoken 的开源模型智能指数与 VRAM 需求图，本次参加对比的模型是 Gemma 4 E2B。其中需要注意的是，Ollama 是默认 GGUF 格式，LM Studio 和 oMLX 选择的是 MLX 格式的模型权重。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/2023e6252d3ea082.webp" alt="Traktoken 中 Gemma 4 E2B 模型详情：Google 出品，智能指数 15.2，VRAM 仅需 3GB+，5.1B 参数 MOE 架构" class="lazyload"><figcaption class="image-caption">Traktoken 中 Gemma 4 E2B 模型详情：Google 出品，智能指数 15.2，VRAM 仅需 3GB+，5.1B 参数 MOE 架构</figcaption></figure></p>
+<p>框架表现结论：<strong>整体来说，LM Studio 的总和评分最高；oMLX 受制于并发能力，得分垫底。但若不考虑并发，单点情况下 oMLX 的冷启动和首字加载优于 LM Studio，吞吐量优于 Ollama。</strong></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/c337460c5d07e1d4.webp" alt="雷达评分对比图，LM Studio 74 分、Ollama 69 分、oMLX 62 分，覆盖输出速度、首字响应、输出平滑、并发能力、响应稳定五个维度" class="lazyload"><figcaption class="image-caption">雷达评分对比图，LM Studio 74 分、Ollama 69 分、oMLX 62 分，覆盖输出速度、首字响应、输出平滑、并发能力、响应稳定五个维度</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/19afd05839ce975d.webp" alt="冷启动延迟对比，LM Studio 约 14 秒、Ollama 约 6 秒、oMLX 约 7 秒" class="lazyload"><figcaption class="image-caption">冷启动延迟对比，LM Studio 约 14 秒、Ollama 约 6 秒、oMLX 约 7 秒</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/03ea7e00b554fce8.webp" alt="并发扩展能力 TTFT 与 TPS 详细对比柱状图" class="lazyload"><figcaption class="image-caption">并发扩展能力 TTFT 与 TPS 详细对比柱状图</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/07105290a0cd327f.webp" alt="三框架字间延迟与并发扩展性对比柱状图" class="lazyload"><figcaption class="image-caption">三框架字间延迟与并发扩展性对比柱状图</figcaption></figure></p>
+<h2 id="结论与使用者建议">结论与使用者建议</h2>
+<p>从上面的图表，我们可以轻易对比得出理想的框架。就我来说，目前可选项是 oMLX，如果有高并发需求且不看重冷启动延迟，那么 LM Studio 是相对较好的选择。而 Ollama，虽然它声称新版本已经支持了 MLX 格式的权重文件，但下载的时候提供的仍然是 llama.cpp 支持的 GGUF，需要额外的转换。</p>
+<p>当然，我们的测试也不是没有局限。我们并没有做额外的操作，来检查并控制它们的系统配置参数一致，仅使用框架默认的参数。所以，就单个框架本身，肯定是有优化空间的。这点，读者朋友们可以自己试试。</p>
+<p>目前，我们的测评工具开源在 <a href="https://github.com/kuhung/benchmark-for-LLM/">GitHub - benchmark-for-LLM</a>，欢迎关注 star 和一起改进。对于无法跨域暴露给外网地址的，还提供了自部署和 Python 包两种选择。Python 包地址：<a href="https://pypi.org/project/llm-benchmark-runner/">llm-benchmark-runner</a>。</p>
+<p>如果你对我的浏览器本地 AI 插件感兴趣，Chrome 商店搜索 PageGrok 即可获得，或者直接访问 <a href="https://www.pagegrok.org/">PageGrok 官网</a> 下载安装插件。目前我日常深度使用中，未来还会有更多的体验优化，欢迎关注。</p>
+<p>如果你对 Traktoken 感兴趣，可访问 <a href="https://token.kuhung.me/">Traktoken</a>，了解我每日追踪的 500 多个大模型关于能力、定价的数据信息，以及关于本地部署大模型参数量的估算数据。</p>
+<p>最后，拒绝感觉有效，让实验数据说话。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/LocalLLaMA/">A collection of benchmarks for LLM inference engines: SGLang vs vLLM</a> - Reddit r/LocalLLaMA 社区讨论帖</li>
+<li><a href="https://ai-api-perf.com/">AI API 性能测试器</a> - 在线工具网页</li>
+<li><a href="https://github.com/JohnMing143/llm-api-speedtester">JohnMing143/llm-api-speedtester</a> - 开源测速工具代码库</li>
+<li><a href="https://github.com/coder543/llm-speed-benchmark">coder543/llm-speed-benchmark</a> - 开源测速工具代码库</li>
+<li><a href="https://github.com/hyscale-lab/LLM-Benchmarking">hyscale-lab/LLM-Benchmarking</a> - 全景基准测试框架代码库</li>
+<li><a href="https://github.com/luminal-ai/simple_benchmarking">luminal-ai/simple_benchmarking</a> - 简易推理服务测试脚本库</li>
+<li><a href="https://github.com/huggingface/inference-benchmarker">huggingface/inference-benchmarker</a> - Hugging Face 官方推理基准测试工具</li>
+<li><a href="https://www.digitalocean.com/blog/llm-inference-benchmarking">LLM Inference Benchmarking - Measure What Matters</a> - DigitalOcean 技术博客</li>
+<li><a href="https://developer.nvidia.com/blog/llm-inference-benchmarking-fundamental-concepts/">LLM Inference Benchmarking: Fundamental Concepts</a> - NVIDIA 技术博客</li>
+<li><a href="https://arxiv.org/abs/2505.13868">BENCH360 - Benchmarking Local LLM Inference from 360°</a> - 学术研究论文</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/benchmark-for-llm-inference/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/llm/">
+                    #LLM</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/">
+                    #推理框架</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%84/">
+                    #性能测评</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mac/">
+                    #Mac</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">
+                    #本地部署</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/" class="prev" rel="prev" title="成本三分钱，整合Notion、GitHub的AI周报工作流"><i class="iconfont icon-left"></i>&nbsp;成本三分钱，整合Notion、GitHub的AI周报工作流</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

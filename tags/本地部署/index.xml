@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>本地部署 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</link>
+    <description>Recent content in 本地部署 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 17 May 2026 12:49:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</title>
+      <link>https://kuhung.me/posts/benchmark-for-llm-inference/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/benchmark-for-llm-inference/</guid>
+      <description>经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
+作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程中，会遇到两个问题：一个是本地显/内存有限的前提下，最有性价比或者说最有智力的模型是谁？第二个问题是，我该用什么框架来部署服务。
+在不知道咋选的时候，我选择用最新的开源模型。但是不少模型其实是有显存要求的。最新是好，但不一定能部署到本机。后来，我通过拉取最新的模型数据，构造并发布了一个网页应用 Traktoken，这下可以直观了解模型能力与所需显存间的关系。
+模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 PageGrok（一款浏览器插件 AI 产品）时，到达巅峰。
+为什么要做这个评测？ 首先是实际的业务痛点。PageGrok 是一款浏览器插件，用来在不跳转、不用外部 API（省事省钱）的情况下，解读当前页面的内容。其不用外部 API，靠的就是用户自己部署的本地模型。本意是减少用户动作，但真上线后发现：用户选中内容并发送给本地模型处理时，响应延迟非常大。
+虽然本地不花 API 费用，但是时间也是钱啊（摔）。动辄数十秒的冷启动时间，让用户一度以为插件失灵。显然，瓶颈不在插件和通信，是本地服务的问题。框架性能表现成为必须关注的核心。到底咋回事，为啥 Chatbot 感觉不明显的模型加载和提示词填充，在这个场景下延迟明显？
+其次是新老框架的交替和抉择。我从去年就开始在生产活动中使用本地模型（例如在“相亲小镇”项目中），一直使用 Ollama 框架，部署 Gemma 3 模型作为底座模型。早期在 MacBook 上风扇转得飞快，但迁移到 Linux 服务器后，GPU 你转就转吧。
+早在 23 年，苹果就推出了专为 Apple Silicon 优化的 MLX 框架。但直到 26 年上半年，在其基础上开发的 oMLX 才受到大范围关注，社媒上看到其声称更好适配苹果设备。没过多久，Ollama 也在新版本声称支持了 MLX 框架。这种感觉就像是：“你别迁移，我能行”。
+真的行吗？我一开始下载的是 LM Studio，它出现的时间比 Ollama 更早。Ollama 后来居上，凭借其 YC 投资背景和简洁的设计，很快占据了不少市场。面对不同的框架，我的核心疑问随之而来：最适合 Mac 电脑部署的本地框架到底是什么？ 拒绝感觉良好，得有套系统的测评手段。
+评测指标体系设计 在开始自己重复造轮子前，我也系统看了现有的解决方案。大家主要关注三个方面的指标，分别是用户体验指标（如：TTFT 首字延迟时间）、成本指标（如：TPS token 吞吐量）、资源消耗（如：GPU 占用情况）。
+这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>商业化 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%8C%96/</link>
+    <description>Recent content in 商业化 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 06 May 2026 00:51:42 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NoAINoG 月刊 | 整个4月，我们在聊什么？</title>
+      <link>https://kuhung.me/posts/noainog-202604/</link>
+      <pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/noainog-202604/</guid>
+      <description>过去一个月，NoAINoG 保持工作日日更节奏，从 EP01 到 EP18，累计输出了近 300 分钟的深度内容。在 AI 这个方向，追热点、拆技术、探讨人文与商业化，试图搞清楚：没有 AI 是会完蛋，还是啥事没有（NoAI NoG）。
+如果你还没听过，这篇文章帮你 4 分钟看完全貌。
+一、商业认知：利润才是唯一的护城河 EP01 从《Rework》出发，直指&amp;quot;融资上瘾&amp;quot;的病根——利润才是验证一个生意是否成立的唯一标准，不是 DAU，不是估值。
+EP04 接着拆&amp;quot;超级个体&amp;quot;的陷阱：薄利多销是大公司的游戏，个体创业者应该走高客单价路线，先卖再做，用&amp;quot;反向 MVP&amp;quot;验证需求。
+EP11 把视角拉到中日独立开发者现场：当代码的边际成本趋近于零，真正的壁垒已经转移到分发能力、审美品味和 IP 积累上。
+EP13 引用 Steve Blank 的最新观点，宣告 MVP 时代正在终结——AI 让软件变成了&amp;quot;结果型员工&amp;quot;，按工位收费的 SaaS 逻辑正在崩塌。
+EP17 则戳破了&amp;quot;被动收入&amp;quot;的迷梦：Dropshipping、AI 博客农场、SEO 评测站，本质上都是&amp;quot;教人赚钱&amp;quot;的二级市场，真正的护城河在物理世界的脏活累活里。
+二、技术：看懂底层，才能不被忽悠 EP05 用 TurboQuant 拆解说明：显存焦虑的本质是 KV Cache 问题，暴力堆卡不如算法巧劲。
+EP06 从 Claude Code 泄露源码切入，揭示 AI Memory 不是什么魔法 RAG，而是一棵 git-tree 式的持久化结构，理解这个才能真正用好 AI 编程工具。
+EP09 深度解读 Google Gemma 4 的 PLE 架构：26B MoE 如何在边缘设备上跑出大模型质感，以及 Thinking Mode 的连锁幻觉陷阱。</description>
+    </item>
+    
+  </channel>
+</rss>

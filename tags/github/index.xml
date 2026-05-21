@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GitHub on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/github/</link>
+    <description>Recent content in GitHub on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 12 May 2026 14:44:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>成本三分钱，整合Notion、GitHub的AI周报工作流</title>
+      <link>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</link>
+      <pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</guid>
+      <description>熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
+手写不行，但如果是AI写的呢？这里，要给大家介绍我目前的自动化周报工作流：Notion记录跟踪项目甘特图、GitHub汇总issue、交付和热点关注，整合二者的信息，每周调用大模型自动总结上周工作。
+原理介绍 flowchart LR subgraph Input[输入数据源] N1[Notion 工单 DB] N2[Notion GitHub DB] G1[GitHub Commits] end subgraph Sync[同步与采集] S1[notion_sync.py] S2[github_collector.py] end subgraph Process[处理流程] A1[analyzer.py] L1[llm_summarizer.py] end subgraph Result[结果输出] R1[report/*.md] N3[notifier.py] B1[Bark] E1[Email] end N1 -- API --&amp;gt; S1 N2 -- API --&amp;gt; S1 G1 -- API --&amp;gt; S2 S1 --&amp;gt; A1 S2 --&amp;gt; A1 A1 --&amp;gt; L1 L1 --&amp;gt; R1 L1 --&amp;gt; N3 N3 --&amp;gt; B1 N3 --&amp;gt; E1 整体技术原理不难，核心是数据打通。通过Notion的甘特图做项目管理；GitHub作为版本控制和交付工具。Notion和GitHub的数据打通，GitHub的数据能够同步到Notion，包括项目仓库情况和star情况；Notion项目能够同步到GitHub Actions，用来做调用大模型的素材输入。</description>
+    </item>
+    
+  </channel>
+</rss>

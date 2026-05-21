@@ -6,13 +6,112 @@
     <description>Recent content in Tags on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 02 May 2026 10:40:50 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 May 2026 12:49:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM</title>
+      <link>https://kuhung.me/tags/llm/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/llm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>https://kuhung.me/tags/mac/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>性能测评</title>
+      <link>https://kuhung.me/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%84/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%84/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>推理框架</title>
+      <link>https://kuhung.me/tags/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>本地部署</title>
+      <link>https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub</title>
+      <link>https://kuhung.me/tags/github/</link>
+      <pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notion</title>
+      <link>https://kuhung.me/tags/notion/</link>
+      <pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/notion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自动化</title>
+      <link>https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+      <pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>AI</title>
       <link>https://kuhung.me/tags/ai/</link>
-      <pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate>
+      <pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NoAINoG</title>
+      <link>https://kuhung.me/tags/noainog/</link>
+      <pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/noainog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>商业化</title>
+      <link>https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%8C%96/</link>
+      <pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>播客</title>
+      <link>https://kuhung.me/tags/%E6%92%AD%E5%AE%A2/</link>
+      <pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%92%AD%E5%AE%A2/</guid>
       <description></description>
     </item>
     
@@ -49,15 +148,6 @@
       <pubDate>Wed, 29 Apr 2026 11:49:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>自动化</title>
-      <link>https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
-      <pubDate>Wed, 29 Apr 2026 11:49:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</guid>
       <description></description>
     </item>
     
@@ -184,15 +274,6 @@
       <pubDate>Thu, 27 Nov 2025 08:45:42 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/%E8%83%A1%E8%A8%80%E4%B9%B1%E8%AF%AD/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>LLM</title>
-      <link>https://kuhung.me/tags/llm/</link>
-      <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/llm/</guid>
       <description></description>
     </item>
     
