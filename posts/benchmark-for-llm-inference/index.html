@@ -213,7 +213,7 @@ if (!doNotTrack) {
 <p>作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程中，会遇到两个问题：一个是本地显/内存有限的前提下，最有性价比或者说最有智力的模型是谁？第二个问题是，我该用什么框架来部署服务。</p>
 <p>在不知道咋选的时候，我选择用最新的开源模型。但是不少模型其实是有显存要求的。最新是好，但不一定能部署到本机。后来，我通过拉取最新的模型数据，构造并发布了一个网页应用 Traktoken，这下可以直观了解模型能力与所需显存间的关系。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/9eefa5708fff7ae3.webp" alt="Traktoken 智能指数 vs VRAM 需求散点图，气泡大小表示参数量，右下角为高智能低显存的部署性价比区" class="lazyload"><figcaption class="image-caption">Traktoken 智能指数 vs VRAM 需求散点图，气泡大小表示参数量，右下角为高智能低显存的部署性价比区</figcaption></figure></p>
-<p>模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 <code>PageGrok</code>（一款浏览器插件 AI 产品）时，到达巅峰。</p>
+<p>模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 <a href="https://www.pagegrok.org/">PageGrok</a>（一款浏览器插件 AI 产品）时，到达巅峰。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/a18b737c8322061d.webp" alt="PageGrok 官网首页，主打本地 AI 驱动的浏览器侧边栏，100% 私密免费" class="lazyload"><figcaption class="image-caption">PageGrok 官网首页，主打本地 AI 驱动的浏览器侧边栏，100% 私密免费</figcaption></figure></p>
 <h2 id="为什么要做这个评测">为什么要做这个评测？</h2>
 <p>首先是实际的业务痛点。PageGrok 是一款浏览器插件，用来在不跳转、不用外部 API（省事省钱）的情况下，解读当前页面的内容。其不用外部 API，靠的就是用户自己部署的本地模型。本意是减少用户动作，但真上线后发现：用户选中内容并发送给本地模型处理时，响应延迟非常大。</p>
@@ -242,26 +242,28 @@ if (!doNotTrack) {
 </li>
 </ul>
 <p>除开上述两个指标外，本地模型还有个指标非常重要，是<strong>冷启动时的 TTFT</strong>。这反映模型加载到框架到出现字符的时间，这也是前文我们体感觉得慢的地方。这个指标，在其他测评框架中基本整合进 TTFT，但我觉得很有必要单独拎出来。</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/25b6f2e2e0c918b9.webp" alt="首字延迟 TTFT 柱状图，展示 P50、P95 与冷启动最大值，冷启动延迟高达 36 秒" class="lazyload"><figcaption class="image-caption">首字延迟 TTFT 柱状图，展示 P50、P95 与冷启动最大值，冷启动延迟高达 36 秒</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/25b6f2e2e0c918b9.webp" alt="首字延迟 TTFT 柱状图，展示 P50、P95 与冷启动最大值" class="lazyload"><figcaption class="image-caption">首字延迟 TTFT 柱状图，展示 P50、P95 与冷启动最大值</figcaption></figure></p>
 <p>另外，还会有**字间延迟分布（Inter-Token Latency）**这个指标，用来衡量两个 token 之间的时间间隔，越高表示卡顿越明显，用户感知为“一卡一卡的”。内存管理或者是显存带宽出现问题，都会导致这个指标升高。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/e28fb28a06151545.webp" alt="字间延迟分布 ITL 柱状图，展示 oMLX 在 P50 / P95 / P99 分位的 token 间隔时间" class="lazyload"><figcaption class="image-caption">字间延迟分布 ITL 柱状图，展示 oMLX 在 P50 / P95 / P99 分位的 token 间隔时间</figcaption></figure></p>
 <p>**并发扩展性（Scalability）**则是指当并发请求出现时，模型的表现情况。计算方式为 <code>TPS@concurrency=8 / TPS@concurrency=1</code>。比值 1.0 表示完美扩展（并发不影响单请求速度），0.15 以下表示严重退化。</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/TODO-concurrency-scaling.webp" alt="并发扩展性图表，左侧为 TPS 随并发数增加的变化趋势，右侧为 TTFT 随并发数增加的变化趋势" class="lazyload"><figcaption class="image-caption">并发扩展性图表，左侧为 TPS 随并发数增加的变化趋势，右侧为 TTFT 随并发数增加的变化趋势</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/64fa46b61d09bc4d.webp" alt="并发扩展性图表，左侧为 TPS 随并发数增加的变化趋势，右侧为 TTFT 随并发数增加的变化趋势" class="lazyload"><figcaption class="image-caption">并发扩展性图表，左侧为 TPS 随并发数增加的变化趋势，右侧为 TTFT 随并发数增加的变化趋势</figcaption></figure></p>
 <h2 id="各框架与模型表现对比">各框架与模型表现对比</h2>
 <p>说完测评指标，我们来看不同框架下，相同模型的表现情况。本次测试了三个框架，分别是 Ollama、LM Studio 以及 oMLX。我的 MBP 是 16G 内存，根据 Traktoken 的开源模型智能指数与 VRAM 需求图，本次参加对比的模型是 Gemma 4 E2B。其中需要注意的是，Ollama 是默认 GGUF 格式，LM Studio 和 oMLX 选择的是 MLX 格式的模型权重。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/2023e6252d3ea082.webp" alt="Traktoken 中 Gemma 4 E2B 模型详情：Google 出品，智能指数 15.2，VRAM 仅需 3GB+，5.1B 参数 MOE 架构" class="lazyload"><figcaption class="image-caption">Traktoken 中 Gemma 4 E2B 模型详情：Google 出品，智能指数 15.2，VRAM 仅需 3GB+，5.1B 参数 MOE 架构</figcaption></figure></p>
 <p>框架表现结论：<strong>整体来说，LM Studio 的总和评分最高；oMLX 受制于并发能力，得分垫底。但若不考虑并发，单点情况下 oMLX 的冷启动和首字加载优于 LM Studio，吞吐量优于 Ollama。</strong></p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/c337460c5d07e1d4.webp" alt="雷达评分对比图，LM Studio 74 分、Ollama 69 分、oMLX 62 分，覆盖输出速度、首字响应、输出平滑、并发能力、响应稳定五个维度" class="lazyload"><figcaption class="image-caption">雷达评分对比图，LM Studio 74 分、Ollama 69 分、oMLX 62 分，覆盖输出速度、首字响应、输出平滑、并发能力、响应稳定五个维度</figcaption></figure></p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/19afd05839ce975d.webp" alt="冷启动延迟对比，LM Studio 约 14 秒、Ollama 约 6 秒、oMLX 约 7 秒" class="lazyload"><figcaption class="image-caption">冷启动延迟对比，LM Studio 约 14 秒、Ollama 约 6 秒、oMLX 约 7 秒</figcaption></figure></p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/03ea7e00b554fce8.webp" alt="并发扩展能力 TTFT 与 TPS 详细对比柱状图" class="lazyload"><figcaption class="image-caption">并发扩展能力 TTFT 与 TPS 详细对比柱状图</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/03ea7e00b554fce8.webp" alt="并发扩展能力 TTFT 与 TPS 详细对比图" class="lazyload"><figcaption class="image-caption">并发扩展能力 TTFT 与 TPS 详细对比图</figcaption></figure></p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/07105290a0cd327f.webp" alt="三框架字间延迟与并发扩展性对比柱状图" class="lazyload"><figcaption class="image-caption">三框架字间延迟与并发扩展性对比柱状图</figcaption></figure></p>
 <h2 id="结论与使用者建议">结论与使用者建议</h2>
 <p>从上面的图表，我们可以轻易对比得出理想的框架。就我来说，目前可选项是 oMLX，如果有高并发需求且不看重冷启动延迟，那么 LM Studio 是相对较好的选择。而 Ollama，虽然它声称新版本已经支持了 MLX 格式的权重文件，但下载的时候提供的仍然是 llama.cpp 支持的 GGUF，需要额外的转换。</p>
 <p>当然，我们的测试也不是没有局限。我们并没有做额外的操作，来检查并控制它们的系统配置参数一致，仅使用框架默认的参数。所以，就单个框架本身，肯定是有优化空间的。这点，读者朋友们可以自己试试。</p>
 <p>目前，我们的测评工具开源在 <a href="https://github.com/kuhung/benchmark-for-LLM/">GitHub - benchmark-for-LLM</a>，欢迎关注 star 和一起改进。对于无法跨域暴露给外网地址的，还提供了自部署和 Python 包两种选择。Python 包地址：<a href="https://pypi.org/project/llm-benchmark-runner/">llm-benchmark-runner</a>。</p>
 <p>如果你对我的浏览器本地 AI 插件感兴趣，Chrome 商店搜索 PageGrok 即可获得，或者直接访问 <a href="https://www.pagegrok.org/">PageGrok 官网</a> 下载安装插件。目前我日常深度使用中，未来还会有更多的体验优化，欢迎关注。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/aaa8b709114124e5.webp" alt="PageGrok 使用本地Gemma4E4B模型对全文的总结" class="lazyload"><figcaption class="image-caption">PageGrok 使用本地Gemma4E4B模型对全文的总结</figcaption></figure></p>
 <p>如果你对 Traktoken 感兴趣，可访问 <a href="https://token.kuhung.me/">Traktoken</a>，了解我每日追踪的 500 多个大模型关于能力、定价的数据信息，以及关于本地部署大模型参数量的估算数据。</p>
-<p>最后，拒绝感觉有效，让实验数据说话。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/394cd0b56311fa32.webp" alt="Traktoken 对于头部模型智力水平与定价的每日追踪" class="lazyload"><figcaption class="image-caption">Traktoken 对于头部模型智力水平与定价的每日追踪</figcaption></figure></p>
+<p>最后，<strong>拒绝感觉有效，让实验数据说话</strong>。</p>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://www.reddit.com/r/LocalLLaMA/">A collection of benchmarks for LLM inference engines: SGLang vs vLLM</a> - Reddit r/LocalLLaMA 社区讨论帖</li>
