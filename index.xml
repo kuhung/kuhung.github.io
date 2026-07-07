@@ -5,8 +5,17 @@
     <description>Recent content in Kuhung | 谷粒 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 17 May 2026 12:49:56 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 17:12:54 +0800</lastBuildDate>
     <atom:link href="https://kuhung.me/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://kuhung.me/posts/</link>
+      <pubDate>Mon, 06 Jul 2026 17:12:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>关于我</title>
@@ -310,15 +319,6 @@ JLPT 日语语法自动推送工具，每天定时推送语法知识点到 iOS /
 &lt;h1 id=&#34;直接联系-direct-contact&#34;&gt;&lt;strong&gt;直接联系&lt;/strong&gt; (Direct Contact)&lt;/h1&gt;
 &lt;p&gt;欢迎找工作的小伙伴、寻求合伙人的创业者以及投资人通过邮箱联系：📮 hi#kuhung.me (@替换#)&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Posts</title>
-      <link>https://kuhung.me/posts/</link>
-      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/</guid>
-      <description></description>
     </item>
     
     <item>

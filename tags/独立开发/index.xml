@@ -6,7 +6,30 @@
     <description>Recent content in 独立开发 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 29 Apr 2026 11:49:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 May 2026 10:46:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不要再 Vibe 创业了，干点儿实事吧阿谷</title>
+      <link>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</link>
+      <pubDate>Sun, 31 May 2026 10:46:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</guid>
+      <description>大家好，我是谷粒粒，OPC（One Person Company）练习生一年有余。vibe coding 这个话题，随着过去半年基础模型能力的提升和 agent harness 架构的成熟，越来越火。
+不少公司在内部扩大 AI 辅助编程的范围，试图提升编码和想法验证的速度，同时进行 Token 消耗量的考核。也有人像笔者一样，经历过公司的一些事，想借助编码工具的生产力提升，构造更多属于自己的产品。
+AI 提升生产力不假，但也许我们陷入了无意视盲陷阱。
+心理学上有个概念叫无意视盲（Inattentional Blindness，又称非注意盲视）：注意力高度集中在某个目标或任务上时，视野里其他明显、意外出现的刺激，你完全察觉不到。
+最有名的实验是「隐形大猩猩」。研究者让被试看一段视频，数穿白色和黑色衣服的球员之间传了多少次球。视频中途，一个穿大猩猩服装的人走到场地中央，捶胸顿足，然后走开。大约一半的被试根本没看见大猩猩——他们忙着数球。
+Vibe coding 时代，我们盯着的「球」是 Token 消耗、代码生成、产品 demo，是最新的模型能力。大猩猩可能是市场、用户、真实反馈。就在视野中央，但我们数球数疯了，根本看不见。
+AI 生产力，对也不对 Token 消耗量，并非好的度量指标。公司考核 Token 使用量，下面就会有一万种方法让这个指标起飞。OPC 每天都想着构建新产品，沉浸在老虎机摇杆似的 vibe coding 快感中，结果大概率自嗨。
+我们从结果出发：如果 AI 提升效率显著，大公司应该交付更惊艳的产品；OPC 或者小团队，也应该跑出一些成果来。从当前节点看，两个都不成立。（借助 AI 搞 AI washing 裁员的大公司，以及借助 AI 搞流量生意的自媒体不在此讨论范围内）
+笔者之前待过大厂，见过所谓&amp;quot;降本增效&amp;quot;怎么回事。整个系统被按下暂停键，各级leader的精力花在工时统计上。每个人头精确到小数点后一位，分摊到对应业务线，中台和业务方反复确认人力支出。
+业务方控预算，中台就裁人。人才不断流失，留下来的人也等着大礼包。少数人用 AI 故事满足老板的汇报需求，没人真正关心业务、关心用户。
+而 vibe coding 写代码，当有人质疑生产力的时候，常会出现下列说辞：你 AI 不够牛逼，你的使用方式不对，现在不行不代表未来不行（典型诉诸可能）。
+从笔者近一年高强度使用体验来说，AI 提升生产力不假，但也只是其中一个环节。在多人协作场合，写报告、写代码这些环节并非瓶颈。从系统论角度，任何对于非瓶颈的优化，都带不来整体上效率的提升。
+重视市场 市场这个事情，被讨论了很多次。大家都知道正面竞争不过大厂，觉得某个地方有 niche 需求，只要找到 niche 需求，就能小范围成功。
+现实是，不少人的需求来自自身。有了想法就打开 Cursor 开始编码，一顿指令后获得一个看起来不错的作品。但发出去没人关心。因为这事，就像勇哥说餐饮的中药奶茶一样，是自己臆想的结果。
+笔者接触过不少 AI 方向的创业者，大致分三类：一类纯为融资而融资，靠消耗投资人的钱维持生活品质；一类缺乏实际经验，想法脱离技术现实，逻辑闭环走不通；还有一类兜售&amp;quot;AI 基础设施&amp;quot;之类的宏大叙事，变现模式和客户基础极度虚弱。（笔者是花自己的存款，闭环了但没用、不信宏大叙事的综合体）</description>
+    </item>
+    
     <item>
       <title>AI时代，OPC（一人公司）的自动化与半自动化</title>
       <link>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</link>

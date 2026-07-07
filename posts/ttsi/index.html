@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/ttsi/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           LLM Token Expenditure Index 是怎么算出来的？我复现了一个还给出了异动归因 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="LLM Token Expenditure Index 是怎么算出来的？我复现了一个还给出了异动归因 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "LLM Token Expenditure Index 是怎么算出来的？我复现了一个还给出了异动归因",
+    "headline" : "LLM Token Expenditure Index 是怎么算出来的？我复现了一个还给出了异动归因",
+    "description" : "起因 财联社报道，6月Token支出指数下降了。以此来说明终端买家愿意承担的成本在降低，进一步暗示可能影响上游的各个环节。实话说，这个结论大致符合直觉：无论科技大厂还是个人，近期都不再无脑敞开用最先进模型，转而注意模型的能力边界，搭配着用提升性价比。\n但是你说，该“指数是外界目前所能获取的最清晰、最直接的市场风向标”，总感觉话说得太满了。作为一个算法出身，长期和数据打交道的人，自然也想知道是如何计算出来的。懂的都懂，数据里可操纵的东西太多了。另外，当然也想知道直觉之外，理性分析下的异动归因。到底是哪部分促成了指数变动，什么因素、各自贡献了多少。另外就是，能不能掌握这波趋势有所动作。\n先动起来找出处。原始报告比较好找，关键词《The AI Trade Is Losing One of Its Key Signals》。彭博社的要1.99刀，但没关系，雅虎财经上的免费。\n太长不看，用我自己开发的 PageGrok 一键解读：\n简单来说，就是认为这个指数可能反映模型厂商正在失去定价权。可能的原因有三个：1. 模型厂商在降价；2. 用户在转向便宜好用的模型，比如来自中国的模型；3. 买家的真实支付意愿在下降，比如大型科技公司不再无限制token消耗。\n另一方面，我也找到了一份有援引数据的报告，来自Citadel证券的《Tokenomics》。从图表中可以看出有两个上行高峰：分别是25年底和26年3月。经常在AI圈被“轰炸”和“瘫坐在地”的朋友应该能很敏锐察觉发生了什么：25年底是Claude 4.5发布的时间，Claude Code 好用到出圈。其实那个时候，养小龙虾也已经在欧美圈子传播开。26年3月，当然就是全球养虾盛潮，懂的和不懂的都在凑热闹搞消耗。一段时间后就又趋于平缓，到四月底各大科技公司开始搞token消耗排名，鼓励员工敞开用前沿模型。说到这里，想起字节炒股哥，抓住这波直接起飞。多亏了这两波曲线，他的存储标才能实现起飞接力。\n数据复现 说回正题：想知道一个指标靠不靠谱，最直接的就是找到数据源和加工方法。我替大家去看了，Silicon Data 就放了短期几天他们计算出来的结果。多的没有，要付费，499美刀。想来也合理，他们这种做财经数据的，就靠这些个数据赚钱。\n另一方面，他们也大致在主页讲了是怎么计算出来的。首先第一个，这个指标看名字的意思是：用户愿意为1M的token，所支付的实际费用。和单独的价格相比，就是多了个消耗权重。举个例子，比如Claude 1M收费10刀，卖出10；GLM 1M收费1刀，卖出100。你要衡量市场，那当然得乘以他们的消耗，就得到市场愿意为1M支付的价格 = (10x10\u002b1x100)\/110 = 1.818。1.8就是市场愿意为1M所掏的真金白银。\n所以，需要的东西也很直白：各个模型的单价\u002b不同模型的消耗。它自己说用到了400多个模型，20多个头部模型，20多个价格和消耗数据。模型方面算小样，我开发的 traktoken.com 目前都追踪了500多个模型了。头部模型其实也就那么些，只有领先的值得消耗。强者拿下大部分市场，甚至拿下自己过去的旗舰模型的市场（个人认为Opus 4.6是个例外）。\n此外，原数据还做了一些额外的数据处理，例如归一化下述指标。\n输入\/输出 Token 比例（Input\/output token mix） 上下文窗口（Context window） 批处理行为（Batching behavior） 可靠性（Reliability） 输入输出比例我可以理解，就是限定好它们之间的比。一般而言，早期的文本生成任务输入和输出比是3:7；而近期以coding agent为代表的任务，输入和输出比则是8:2甚至9:1。由于token本身是非标准品，上下文和批处理这两项的归一化不太明白，可靠性的处理也不太理解……如果有明白的读者朋友欢迎交流。\n简单来说，它这里算的就是实际消耗的加权平均价格。仅此而已。\n价格方面，笔者早先做的 LLM token 比价网站 traktoken.com，对于价格的支持已经很好了，能够做到每日追踪最新价格，而且都能通过git历史记录追溯。额外所需的就是用量。用量的话，我推测它用的是OpenRouter的，因为只有它够大且公开用量。至于比如像Claude这种的官方用量，非内部基本拿不到，且多是按套餐供应而不是token单价。\n说干就干。这里有些参数不同，例如输入和输出的token价格比，由于近期coding agent的兴起，大部分token消耗实际上是输入占比约8:2或更高（在个人的Claude消耗统计里也可以看出来），而早期的文字生成，则是大约3:7。我们项目定为8:2。剩下的工作，就是相对枯燥的数据接入、清洗工作。利用好Fable 5，也能很快生成一份。我们直接看结论：不能说大差不差，基本上是一毛一样。\n我们的数据同样在1月有小高峰、在5月有近半年的高峰，且近期走弱。不过存疑的是，其所谓的基本翻倍是如何实现的。通过对追踪的数据来看，目前TTSI指数看起来价格差异不大。这里有个隐含假设不同：traktoken是今年3月上线，历史的模型价格无法追溯。存在幸存者偏差，价格高好用的留了下来。通过另一个网站的token价格走势，也能看出来3月价格比去年底高不少。问题不大，数据积累起来之后，就会越来越准。另外就是，原报道的结论，其实聚焦于5月的高点回落20%这个事情上，从图表上看结论类似。7月份的走势也一致，有向上趋势。\n进一步结论 现在，我们有了进一步的数据图表和原始数据，是时候检验和回答我们开头的问题了。关于5月以来的价格回落，我们假设了三个方面的原因：厂商降价、用户转向便宜模型、支付意愿下降（股市危）。\n结论：下降属实，但是“单价”下降而非“花钱变少”。6 月均价 $2.11\/M tokens，较 5 月的 $2.",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-07-06 17:12:54 \u002b0800 CST",
+    "dateModified" : "2026-07-06 17:12:54 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/ttsi\/",
+    "wordCount" : "243",
+    "keywords" : [ "LLM","Token","TTSI","数据分析", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">LLM Token Expenditure Index 是怎么算出来的？我复现了一个还给出了异动归因</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-07-06 itemprop="datePublished">July 6, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#起因">起因</a></li>
+    <li><a href="#数据复现">数据复现</a></li>
+    <li><a href="#进一步结论">进一步结论</a></li>
+    <li><a href="#彩蛋计算">彩蛋计算</a></li>
+    <li><a href="#参考来源">参考来源</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="起因">起因</h2>
+<p>财联社报道，6月Token支出指数下降了。以此来说明终端买家愿意承担的成本在降低，进一步暗示可能影响上游的各个环节。实话说，这个结论大致符合直觉：无论科技大厂还是个人，近期都不再无脑敞开用最先进模型，转而注意模型的能力边界，搭配着用提升性价比。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/c18aacb1a07fc6ad.webp" alt="财联社电报截图：Token支出指数较5月份高点大幅下跌近20%，配有 Silicon Data LLM Token 支出指数走势图" class="lazyload"><figcaption class="image-caption">财联社电报截图：Token支出指数较5月份高点大幅下跌近20%，配有 Silicon Data LLM Token 支出指数走势图</figcaption></figure></p>
+<p>但是你说，该“指数是外界目前所能获取的最清晰、最直接的市场风向标”，总感觉话说得太满了。作为一个算法出身，长期和数据打交道的人，自然也想知道是如何计算出来的。懂的都懂，数据里可操纵的东西太多了。另外，当然也想知道直觉之外，理性分析下的异动归因。到底是哪部分促成了指数变动，什么因素、各自贡献了多少。另外就是，能不能掌握这波趋势有所动作。</p>
+<p>先动起来找出处。原始报告比较好找，关键词《The AI Trade Is Losing One of Its Key Signals》。彭博社的要1.99刀，但没关系，<a href="https://finance.yahoo.com/technology/ai/articles/ai-trade-losing-one-key-061343277.html">雅虎财经上的免费</a>。</p>
+<p>太长不看，用我自己开发的 PageGrok 一键解读：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/e30eb9cef348b453.webp" alt="PageGrok 解读截图：核心论述为 AI 交易正面临关键信号失效，Token 价格及支出指数下降，暗示 AI 公司可能正在失去定价权" class="lazyload"><figcaption class="image-caption">PageGrok 解读截图：核心论述为 AI 交易正面临关键信号失效，Token 价格及支出指数下降，暗示 AI 公司可能正在失去定价权</figcaption></figure></p>
+<p>简单来说，就是认为这个指数可能反映模型厂商正在失去定价权。可能的原因有三个：1. 模型厂商在降价；2. 用户在转向便宜好用的模型，比如来自中国的模型；3. 买家的真实支付意愿在下降，比如大型科技公司不再无限制token消耗。</p>
+<p>另一方面，我也找到了一份有援引数据的报告，来自Citadel证券的《Tokenomics》。从图表中可以看出有两个上行高峰：分别是25年底和26年3月。经常在AI圈被“轰炸”和“瘫坐在地”的朋友应该能很敏锐察觉发生了什么：25年底是Claude 4.5发布的时间，Claude Code 好用到出圈。其实那个时候，养小龙虾也已经在欧美圈子传播开。26年3月，当然就是全球养虾盛潮，懂的和不懂的都在凑热闹搞消耗。一段时间后就又趋于平缓，到四月底各大科技公司开始搞token消耗排名，鼓励员工敞开用前沿模型。说到这里，想起字节炒股哥，抓住这波直接起飞。多亏了这两波曲线，他的存储标才能实现起飞接力。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/feb17a126f586b74.webp" alt="Silicon Data LLM 支出指数水平与 21 日对数增长率（年化）走势图：指数从 25 年 12 月的 1.0 附近升至 26 年 6 月的 2.1 左右，近期高位回落区域用红框标出" class="lazyload"><figcaption class="image-caption">Silicon Data LLM 支出指数水平与 21 日对数增长率（年化）走势图：指数从 25 年 12 月的 1.0 附近升至 26 年 6 月的 2.1 左右，近期高位回落区域用红框标出</figcaption></figure></p>
+<h2 id="数据复现">数据复现</h2>
+<p>说回正题：想知道一个指标靠不靠谱，最直接的就是找到数据源和加工方法。我替大家去看了，Silicon Data 就放了短期几天他们计算出来的结果。多的没有，要付费，499美刀。想来也合理，他们这种做财经数据的，就靠这些个数据赚钱。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/fbb2e01a9229bbc2.webp" alt="Silicon Data 官网截图：LLM Token Expenditure Index（Bloomberg Ticker: SDLLMTK），截至 2026 年 7 月 4 日为 1.63 美元/百万 token，仅展示 6 月底以来一周的走势" class="lazyload"><figcaption class="image-caption">Silicon Data 官网截图：LLM Token Expenditure Index（Bloomberg Ticker: SDLLMTK），截至 2026 年 7 月 4 日为 1.63 美元/百万 token，仅展示 6 月底以来一周的走势</figcaption></figure></p>
+<p>另一方面，他们也大致在主页讲了是怎么计算出来的。首先第一个，这个指标看名字的意思是：用户愿意为1M的token，所支付的实际费用。和单独的价格相比，就是多了个消耗权重。举个例子，比如Claude 1M收费10刀，卖出10；GLM 1M收费1刀，卖出100。你要衡量市场，那当然得乘以他们的消耗，就得到市场愿意为1M支付的价格 = (10x10+1x100)/110 = 1.818。1.8就是市场愿意为1M所掏的真金白银。</p>
+<p>所以，需要的东西也很直白：各个模型的单价+不同模型的消耗。它自己说用到了400多个模型，20多个头部模型，20多个价格和消耗数据。模型方面算小样，我开发的 <a href="https://traktoken.com">traktoken.com</a> 目前都追踪了500多个模型了。头部模型其实也就那么些，只有领先的值得消耗。强者拿下大部分市场，甚至拿下自己过去的旗舰模型的市场（个人认为Opus 4.6是个例外）。</p>
+<p>此外，原数据还做了一些额外的数据处理，例如归一化下述指标。</p>
+<ul>
+<li>输入/输出 Token 比例（Input/output token mix）</li>
+<li>上下文窗口（Context window）</li>
+<li>批处理行为（Batching behavior）</li>
+<li>可靠性（Reliability）</li>
+</ul>
+<p>输入输出比例我可以理解，就是限定好它们之间的比。一般而言，早期的文本生成任务输入和输出比是3:7；而近期以coding agent为代表的任务，输入和输出比则是8:2甚至9:1。由于token本身是非标准品，上下文和批处理这两项的归一化不太明白，可靠性的处理也不太理解……如果有明白的读者朋友欢迎交流。</p>
+<p>简单来说，它这里算的就是实际消耗的加权平均价格。仅此而已。</p>
+<p>价格方面，笔者早先做的 LLM token 比价网站 <a href="https://traktoken.com">traktoken.com</a>，对于价格的支持已经很好了，能够做到每日追踪最新价格，而且都能通过git历史记录追溯。额外所需的就是用量。用量的话，我推测它用的是OpenRouter的，因为只有它够大且公开用量。至于比如像Claude这种的官方用量，非内部基本拿不到，且多是按套餐供应而不是token单价。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/ae88d23f9f82cb88.webp" alt="MacroMicro 全球 OpenRouter Token 使用量堆叠图：按 Google、Anthropic、OpenAI、DeepSeek 等厂商拆分，日用量从 25 年 12 月的不足 1K Billions 增长到 26 年 7 月的 4K 以上" class="lazyload"><figcaption class="image-caption">MacroMicro 全球 OpenRouter Token 使用量堆叠图：按 Google、Anthropic、OpenAI、DeepSeek 等厂商拆分，日用量从 25 年 12 月的不足 1K Billions 增长到 26 年 7 月的 4K 以上</figcaption></figure></p>
+<p>说干就干。这里有些参数不同，例如输入和输出的token价格比，由于近期coding agent的兴起，大部分token消耗实际上是输入占比约8:2或更高（在个人的Claude消耗统计里也可以看出来），而早期的文字生成，则是大约3:7。我们项目定为8:2。剩下的工作，就是相对枯燥的数据接入、清洗工作。利用好Fable 5，也能很快生成一份。我们直接看结论：不能说大差不差，基本上是一毛一样。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/e1e063e128abf4ff.webp" alt="TrakToken 复现的 LLM 支出指数走势图" class="lazyload"><figcaption class="image-caption">TrakToken 复现的 LLM 支出指数走势图</figcaption></figure></p>
+<p>我们的数据同样在1月有小高峰、在5月有近半年的高峰，且近期走弱。不过存疑的是，其所谓的基本翻倍是如何实现的。通过对追踪的数据来看，目前TTSI指数看起来价格差异不大。这里有个隐含假设不同：traktoken是今年3月上线，历史的模型价格无法追溯。存在幸存者偏差，价格高好用的留了下来。通过另一个网站的token价格走势，也能看出来3月价格比去年底高不少。问题不大，数据积累起来之后，就会越来越准。另外就是，原报道的结论，其实聚焦于5月的高点回落20%这个事情上，从图表上看结论类似。7月份的走势也一致，有向上趋势。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/4c8a57e338f4c278.webp" alt="Token Price Index 网站的平均混合成本走势图：价格从 24 年 11 月的 1.2 美元/M tokens 阶梯式上涨至 26 年 6 月的 2.1 美元以上，红色箭头标注了 25 年 11 月和 26 年 3 月两次跳涨" class="lazyload"><figcaption class="image-caption">Token Price Index 网站的平均混合成本走势图：价格从 24 年 11 月的 1.2 美元/M tokens 阶梯式上涨至 26 年 6 月的 2.1 美元以上，红色箭头标注了 25 年 11 月和 26 年 3 月两次跳涨</figcaption></figure></p>
+<h2 id="进一步结论">进一步结论</h2>
+<p>现在，我们有了进一步的数据图表和原始数据，是时候检验和回答我们开头的问题了。关于5月以来的价格回落，我们假设了三个方面的原因：厂商降价、用户转向便宜模型、支付意愿下降（股市危）。</p>
+<p>结论：下降属实，但是“单价”下降而非“花钱变少”。6 月均价 $2.11/M tokens，较 5 月的 $2.51 回落 15.6%。归因分解显示结构迁移（转向便宜模型）贡献约 54%，厂商降价贡献约 46%；而市场总支出不降反升（日均估算支出 +47%），“支付意愿下降”在本数据内不成立。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/bb06f87a54eb1648.webp" alt="TTSI 核心数据看板：5 月均价 $2.51/M tokens，6 月均价 $2.11，月均支出价格环比 -15.6%，5/26 单日峰值 $3.22" class="lazyload"><figcaption class="image-caption">TTSI 核心数据看板：5 月均价 $2.51/M tokens，6 月均价 $2.11，月均支出价格环比 -15.6%，5/26 单日峰值 $3.22</figcaption></figure></p>
+<p>可以看到的是，前沿闭源模型的价格是在走高的，有分化的是开源模型价格直接往下走了。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/0b6940f1dca12e24.webp" alt="TrakToken 支出指数走势图：TTSI-F 闭源前沿（红线）持续走高至 5 美元附近，TTSI 全市场（蓝线）在 2 至 3 美元间波动，TTSI-O 开源权重（绿线）从近 1 美元回落至 0.5 美元以下" class="lazyload"><figcaption class="image-caption">TrakToken 支出指数走势图：TTSI-F 闭源前沿（红线）持续走高至 5 美元附近，TTSI 全市场（蓝线）在 2 至 3 美元间波动，TTSI-O 开源权重（绿线）从近 1 美元回落至 0.5 美元以下</figcaption></figure></p>
+<p>接着做归因分解，从归因结果来看，降价和结构迁移各占一半。将 5 月至 6 月的月均支出价格变化（$2.51 → $2.11，-$0.40）做对称分解：价格效应 = 同一模型价格变化 × 平均权重；结构效应 = 模型间权重迁移 × 平均价格。其中，价格效应占 -$0.184；结构效应占 -$0.22。</p>
+<p>价格里面，一半是中国厂商真实降低价格；另一半是Anthropic在6月有过一次价格调整风波。DeepSeek V4 Pro 于 5/24 砍价 75%，小米 MiMo 系列于 5/29 砍价 55~67%。至于Anthropic：AA 价格快照显示 Anthropic 全线模型的输入价在 5/3 统一上调 25%（$5 → $6.25、$3 → $3.75，输出价不变），并于 6/12 整体回调至 4 月原价。6 月的 Claude 价格只是回到了 4 月水平。它这一调价，也贡献了一半的价格效应。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/b6f3fdb9c7355f7b.webp" alt="主要降价模型明细表：DeepSeek V4 Pro 于 05-24 从 $2.088 调至 $0.522，小米 MiMo-V2.5 与 MiMo-V2.5-Pro 于 05-29 分别降至 $0.168 和 $0.522，阿里 Qwen3 235B A22B 渐变降至 $0.720" class="lazyload"><figcaption class="image-caption">主要降价模型明细表：DeepSeek V4 Pro 于 05-24 从 $2.088 调至 $0.522，小米 MiMo-V2.5 与 MiMo-V2.5-Pro 于 05-29 分别降至 $0.168 和 $0.522，阿里 Qwen3 235B A22B 渐变降至 $0.720</figcaption></figure></p>
+<p>结构里面，Anthropic自己的新模型Opus 4.8（+$0.39）抢占旧模型份额（-$0.54），一进一出贡献-$0.15。另一方面，中国厂商（DeepSeek、小米、腾讯、智谱、MiniMax、阶跃等）token 份额从 5 月的 49.9% 升至 6 月的 64.0%，6 月下旬多日突破 68%。这是结构效应的核心来源。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/125044433f4a444c.webp" alt="指数篮子内中国厂商模型的 token 用量占比日度走势：从 4 月初的 40% 左右升至 6 月下旬的 68% 以上，5 月中旬起稳定站上 50% 分界线" class="lazyload"><figcaption class="image-caption">指数篮子内中国厂商模型的 token 用量占比日度走势：从 4 月初的 40% 左右升至 6 月下旬的 68% 以上，5 月中旬起稳定站上 50% 分界线</figcaption></figure></p>
+<p>但是需要中国厂商注意的是：按 token 算中国模型占 64%，按美元算仅从 14.3% 升到 14.9%。便宜模型拿走了用量，没有吃走预算。Anthropic 的美元支出份额两个月都稳定在 65% 以上。“迁移”发生在增量任务上，高价值任务仍留在前沿模型。</p>
+<p>第三个假设是支付意愿在下降，不成立。如果支付意愿在收缩，总消耗和总支出应该下降。实际相反：6 月日均 token 消耗 5.88 万亿（5 月 3.58 万亿，+64%），日均估算支出 $10.8M（5 月 $7.3M，+47%）。免费层份额还从 14.9% 降到 6.8%，付费用量占比在提高。单价跌、总账单涨，算是典型的“量补价”扩张。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/0abb0e890a50f298.webp" alt="总量与总支出对比图：左图为 Top50 模型日 token 总量（万亿），从 4 月的约 3 万亿升至 7 月的近 6 万亿；右图为估算日支出（百万美元），从约 $5M 升至 $10M 以上" class="lazyload"><figcaption class="image-caption">总量与总支出对比图：左图为 Top50 模型日 token 总量（万亿），从 4 月的约 3 万亿升至 7 月的近 6 万亿；右图为估算日支出（百万美元），从约 $5M 升至 $10M 以上</figcaption></figure></p>
+<p>最后的结论，这波走势完全就是中国厂商以价格换量换来的。用户转向了便宜的中国模型，整体的支付意愿并未下降。Jevons 悖论再次被验证：单价跌 12~15%，总支出反而涨 47%。</p>
+<p>现在，traktoken 价格指数也将成为全球AI关键指标。更关键的是，它开源（计算方式开源也叫开源）且可追溯。</p>
+<h2 id="彩蛋计算">彩蛋计算</h2>
+<ul>
+<li>小米 MiMo-V2.5（5/29 砍价 67%）：日用量从 415 亿 token 涨到 6 月底的 6228 亿，翻了 15 倍；日收入从 $1.9 万涨到 $10.5 万，翻了 5.6 倍。需求弹性远大于 1。</li>
+<li>DeepSeek V4 Pro（5/24 砍价 75%）：日用量涨了 1.3 倍，但日收入从 $28.5 万掉到 $16.2 万。这单笔是亏的，换到了份额，没换回收入。</li>
+<li>中国厂商合计：日均估算收入 4 月 $0.80M → 5 月 $1.05M → 6 月 $1.61M，两个月接近翻倍。个别模型亏，总盘子是赚的。</li>
+<li>但是要注意的是，设备折旧和这种情况是否能长期持续，值得纳入考虑。另外这里的数据不包含模型厂商提供的toB服务数据，结论有偏，请谨慎采纳。</li>
+</ul>
+<h2 id="参考来源">参考来源</h2>
+<ul>
+<li><a href="https://www.traktoken.com/spend-index">TrakToken 支出指数</a> - 本次构建的token价格指数</li>
+<li><a href="https://www.citadelsecurities.com/news-and-insights/global-macro-strategy/tokenomics/">Tokenomics</a> - Citadel证券的援引数据报告</li>
+<li><a href="https://sc.macromicro.me/charts/148532/world-openrouter-token-usage">全球 OpenRouter Token 使用量</a> - MacroMicro 用量图表</li>
+<li><a href="https://tokenpriceindex.com/">Token Price Index</a> - token价格走势（非加权）</li>
+<li><a href="https://www.silicondata.com/products/silicon-index/llm-token-expenditure-index">Silicon Data LLM Token Expenditure Index</a> - 原始的数据来源</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/ttsi/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/llm/">
+                    #LLM</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/token/">
+                    #Token</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ttsi/">
+                    #TTSI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                    #数据分析</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/" class="prev" rel="prev" title="写在离职一年半"><i class="iconfont icon-left"></i>&nbsp;写在离职一年半</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
