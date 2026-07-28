@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/weread-skills-in-practice/" />
+  <link rel="next" href="https://kuhung.me/posts/ai-native-in-mind/" />
+  <link rel="canonical" href="https://kuhung.me/posts/cang-in-house/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理） | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理） | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）",
+    "headline" : "接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）",
+    "description" : "毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。\n但是后来，随着投资标的的分散，每次在券商上算账都要耗费不少的心力。需要计算杠杆、货币转换。这让我逐渐厌倦。想知道\u0026quot;投资账户一共有多少资金\u0026quot;，需要打开富途和雪盈两个 App 分别计算再合并。随着最近大模型的进一步发展，是时候用 Claude 写个 in-house 的仓位管理工具了。不少人 vibe coding 的第一步，都是搞些什么记账、todo 和番茄闹钟，这回也落回这三大件上了。\n做 in-house 的仓位管理，目的是让 AI 能直接碰到持仓数据，进行交互分析和建议。包含四个方面的功能：分析持仓、计算收益、策略回测，以及最终的自动下单。手动记账时代，数据在 Notion 表格里，大模型要获取需要转个弯。现在，券商数据直接接入之后，它才有可能真正帮你干活。\n本次文章，就给大家介绍下我用 Codex \u002b Claude 接入富途 API 和雪盈 API 的过程和最终效果。当然，如果你是长桥、老虎或者别的什么，也是类似的道理，只要券商开放了 API，都可以做到。\n设计目标 动手之前先明确目标和约束，我的目标有四个，逐层递进，分别是获取持仓、收益计算、策略回测以及下单信号。\n自动获取持仓。 两个券商的持仓、资金、成交记录，每天自动同步到一个本地账本里，统一折算成人民币。不用再打开两个 App 分头算，一条命令就能回答\u0026quot;我一共有多少钱、钱都在哪些标的上、目前的杠杆情况如何\u0026quot;。\n绩效回顾与归因。 能汇总看近 1 个月、半年、一年的区间收益。赚了多少、亏了多少、钱分布在哪些市场和币种里、不同资产的总体占比情况是多少。这个事之前手动基本无法做到，只能分平台看出赚了还是亏了。要对照沪深三百、纳斯达克这类计算超额收益，还需要手动转换，非常麻烦。\n策略构建与回测。 有了历史 K 线数据之后，就可以让 AI 帮忙回测：\u0026ldquo;如果过去一年按某个策略操作，结果会怎样？\u0026ldquo;这是手动记账完全做不到的事，也是我做这个系统最想达到的目标。因为我在仓满量化那边有很多的点子，需要真实线上数据回测来说明情况。\n下单信号。 有了上述的策略，进一步的就是生成交易信号。当然自动下单两个平台也是支持的，但是由于我的持仓不多、交易频次不高，所以暂不考虑自动化交易。能有信号也不错了。\n券商特点 两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。\n富途是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。\n雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-07-26 12:44:44 \u002b0800 CST",
+    "dateModified" : "2026-07-26 12:44:44 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/cang-in-house\/",
+    "wordCount" : "171",
+    "keywords" : [ "AI","投资","仓位管理","富途","雪盈", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-07-26 itemprop="datePublished">July 26, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#设计目标">设计目标</a></li>
+    <li><a href="#券商特点">券商特点</a></li>
+    <li><a href="#设计分层">设计分层</a></li>
+    <li><a href="#效果回顾">效果回顾</a>
+      <ul>
+        <li><a href="#仓位">仓位</a></li>
+        <li><a href="#绩效">绩效</a></li>
+        <li><a href="#回测">回测</a></li>
+        <li><a href="#实盘">实盘</a></li>
+      </ul>
+    </li>
+    <li><a href="#踩坑与耗时">踩坑与耗时</a>
+      <ul>
+        <li><a href="#耗时">耗时</a></li>
+        <li><a href="#踩坑">踩坑</a></li>
+      </ul>
+    </li>
+    <li><a href="#展望">展望</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。</p>
+<p>但是后来，随着投资标的的分散，每次在券商上算账都要耗费不少的心力。需要计算杠杆、货币转换。这让我逐渐厌倦。想知道&quot;投资账户一共有多少资金&quot;，需要打开富途和雪盈两个 App 分别计算再合并。随着最近大模型的进一步发展，是时候用 Claude 写个 in-house 的仓位管理工具了。不少人 vibe coding 的第一步，都是搞些什么记账、todo 和番茄闹钟，这回也落回这三大件上了。</p>
+<p>做 in-house 的仓位管理，目的是让 AI 能直接碰到持仓数据，进行交互分析和建议。包含四个方面的功能：分析持仓、计算收益、策略回测，以及最终的自动下单。手动记账时代，数据在 Notion 表格里，大模型要获取需要转个弯。现在，券商数据直接接入之后，它才有可能真正帮你干活。</p>
+<p>本次文章，就给大家介绍下我用 Codex + Claude 接入富途 API 和雪盈 API 的过程和最终效果。当然，如果你是长桥、老虎或者别的什么，也是类似的道理，只要券商开放了 API，都可以做到。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/1bbd60128451d5be.webp" alt="系统概览：让 AI 帮你把散在各家券商的钱管起来，2 个账户合成一张总表，4 种货币自动折算" class="lazyload"><figcaption class="image-caption">系统概览：让 AI 帮你把散在各家券商的钱管起来，2 个账户合成一张总表，4 种货币自动折算</figcaption></figure></p>
+<h2 id="设计目标">设计目标</h2>
+<p>动手之前先明确目标和约束，我的目标有四个，逐层递进，分别是获取持仓、收益计算、策略回测以及下单信号。</p>
+<p><strong>自动获取持仓。</strong> 两个券商的持仓、资金、成交记录，每天自动同步到一个本地账本里，统一折算成人民币。不用再打开两个 App 分头算，一条命令就能回答&quot;我一共有多少钱、钱都在哪些标的上、目前的杠杆情况如何&quot;。</p>
+<p><strong>绩效回顾与归因。</strong> 能汇总看近 1 个月、半年、一年的区间收益。赚了多少、亏了多少、钱分布在哪些市场和币种里、不同资产的总体占比情况是多少。这个事之前手动基本无法做到，只能分平台看出赚了还是亏了。要对照沪深三百、纳斯达克这类计算超额收益，还需要手动转换，非常麻烦。</p>
+<p><strong>策略构建与回测。</strong> 有了历史 K 线数据之后，就可以让 AI 帮忙回测：&ldquo;如果过去一年按某个策略操作，结果会怎样？&ldquo;这是手动记账完全做不到的事，也是我做这个系统最想达到的目标。因为我在仓满量化那边有很多的点子，需要真实线上数据回测来说明情况。</p>
+<p><strong>下单信号。</strong> 有了上述的策略，进一步的就是生成交易信号。当然自动下单两个平台也是支持的，但是由于我的持仓不多、交易频次不高，所以暂不考虑自动化交易。能有信号也不错了。</p>
+<h2 id="券商特点">券商特点</h2>
+<p>两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。</p>
+<p><strong>富途</strong>是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。</p>
+<p><strong>雪盈</strong>是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</p>
+<p><strong>设计上的结论很直接：行情走富途，雪盈只负责它自己账户的持仓和交易数据。</strong> 雪盈账户里那些标的的市值和现价用富途的行情接口补上。两家的标的代码归一化成统一格式，数据就能对得上。</p>
+<h2 id="设计分层">设计分层</h2>
+<p>券商能给什么搞清楚了，系统就按四部分来设计。先能看，再能算，最后才能动。先确认数据是对的，再让它算收益；行情数据有了，就能接入回测。能回测诊断，就能让资产从数学上期望最大。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/e49777080ad6f8b8.webp" alt="系统三层架构：底层数据基建、中层数据处理与分析、上层资产诊断与配置" class="lazyload"><figcaption class="image-caption">系统三层架构：底层数据基建、中层数据处理与分析、上层资产诊断与配置</figcaption></figure></p>
+<p><strong>仓位统计。</strong> 把两家券商的持仓、资金、成交记录同步到本地数据库，统一折算成人民币。每天自动跑一次，重复跑也不会重复记账。这个部分，涉及币种转换、杠杆计算，繁琐且细致，大模型很擅长。最后只需要对一对手工扒下来的数据，就知道有没有问题。</p>
+<p><strong>绩效回顾与归因。</strong> 在第一层的基础上，按日留存持仓和资金快照，攒出历史净值曲线。然后做区间收益计算、市场分布、币种分布。虽然我们从截面能知道目前账户的盈亏情况，但我更希望知道合并账户的走势情况，以此来做调仓的判断依据。</p>
+<p><strong>策略构建与回测。</strong> 把持仓标的的历史日 K 线数据批量入库，有了价格数据就可以跑回测。这一层解决的问题是&quot;该怎么做&rdquo;。当然，对于一些特定标的的回测需求，还可以现用现拉，这就比较省事了。</p>
+<p><strong>交易信号与实盘。</strong> 程序化下单，带安全护栏。目前只完成了设计和 dry-run 模拟，真实下单还没上。这其实是雪盈的局限，它只要有密钥，就可以发送订单，对于线上来说，我认为风险过高。而富途还需要手动在网关程序上打开才可以进行交易。</p>
+<h2 id="效果回顾">效果回顾</h2>
+<h3 id="仓位">仓位</h3>
+<p>同步完成后，每天都能看到两家券商聚合后的持仓总览，市场分布（港股占多少、美股占多少）和币种分布（港币、美元、日元各占几成）。底部汇总净资产折算人民币。不用再两个 App 来回切了。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/5f188601c23dd463.webp" alt="持仓日报：聚合富途和雪盈的净资产，按券商和币种分列现金与净资产" class="lazyload"><figcaption class="image-caption">持仓日报：聚合富途和雪盈的净资产，按券商和币种分列现金与净资产</figcaption></figure></p>
+<h3 id="绩效">绩效</h3>
+<p>绩效报告能看到每只标的不同时间区间的收益，还有每只标的的数量、成本、现价、盈亏。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/e10f87249e10bb97.webp" alt="区间绩效报告：各标的权重、累计盈亏与 1 月至 1 年的多区间收益对比" class="lazyload"><figcaption class="image-caption">区间绩效报告：各标的权重、累计盈亏与 1 月至 1 年的多区间收益对比</figcaption></figure></p>
+<p>在 Claude 里面，还可以交互获取当前的市场基准参考情况。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/b74d6cd55d52d266.webp" alt="在 Claude 中交互获取市场基准行情：恒生指数、恒生科技、上证指数的实时涨跌数据" class="lazyload"><figcaption class="image-caption">在 Claude 中交互获取市场基准行情：恒生指数、恒生科技、上证指数的实时涨跌数据</figcaption></figure></p>
+<h3 id="回测">回测</h3>
+<p>历史 K 线入库之后，可以对持仓标的做策略回测。目前主要用来验证一些简单的想法——&ldquo;如果某些标的在过去一年按某个规则操作，结果会怎样&rdquo;，帮助建立对策略的直觉。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/2449b23b2cbab586.webp" alt="策略回测曲线：对比静态持仓与相对动量策略（N=20 和 N=60）的累计对数收益" class="lazyload"><figcaption class="image-caption">策略回测曲线：对比静态持仓与相对动量策略（N=20 和 N=60）的累计对数收益</figcaption></figure></p>
+<h3 id="实盘">实盘</h3>
+<p>下单模块完成了设计和 dry-run 模拟。</p>
+<h2 id="踩坑与耗时">踩坑与耗时</h2>
+<h3 id="耗时">耗时</h3>
+<p>从项目初始化到绩效报告完成，集中在一天内完成，13 个 commit。Codex 和 Claude 配合编码，我负责设计和验收，AI 出代码。没有 AI 辅助的话，同样的事情估计至少一到两周，而且不会有当前的精细度。</p>
+<p>给想自己做的人一个参考：前置条件是你得有券商的 API 权限（富途需要开通 OpenD，雪盈需要申请 OpenAPI），以及对 Python 有基本的使用能力。如果你只接一家券商，特别是富途，那基本丢给大模型来做就行，接入这部分没啥额外工作量。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/2e691cc27731d77a.webp" alt="数据同步流程图：富途和雪盈账户数据每天自动汇入本地数据库，经换算计算后生成总表和日报" class="lazyload"><figcaption class="image-caption">数据同步流程图：富途和雪盈账户数据每天自动汇入本地数据库，经换算计算后生成总表和日报</figcaption></figure></p>
+<h3 id="踩坑">踩坑</h3>
+<p><strong>数据不总是干净的。</strong> 有一只日股标的，雪盈的接口返回时把它标成了美股。不做交叉验证的话，这个错误会一路带进净值计算里。我加了一个&quot;原始返回存档&rdquo;——券商返回的原始 JSON 全部原样存一份。涉及外部数据源，存原始应答是必要的，数字对不上的时候能离线取证。发现这个错误，是因为直接看数据就没对上。</p>
+<p><strong>多币种折算的汇率时点问题。</strong> 用的是免费汇率源，一天更新一次。和券商 App 对比，总会有零点几个百分点的误差（目前 0.17%），汇率取值时点不同导致的。在我们的低频场景，是完全可以接受的。</p>
+<p><strong>富途网关的连接问题。</strong> 富途的 SDK 在网关没启动时会无限重试，脚本直接挂死，没有任何报错。不知道这个行为的话，调试时会很懵。调用前先做一次连接检测，连不上就快速退出。</p>
+<h2 id="展望">展望</h2>
+<p>API Key 已经迁入系统钥匙串，磁盘上不留明文。还是前面那个问题，雪盈的安全管控较弱，本地需要严控自己的密钥披露情况。接入国内的券商，是我接下来想做的事情。</p>
+<p>一天 13 个 commit 搞定前三层，剩下的时间花在想清楚设计上。更多的精力，就请花在策略评估和验证上吧。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://openapi.futunn.com/futu-api-doc/">Futu API 文档</a> - 富途 OpenAPI 官方文档，涵盖行情、交易、OpenD 网关等全部接口说明</li>
+<li><a href="https://github.com/snowballsecurities/snbpy">snowballsecurities/snbpy</a> - 雪盈证券 OpenAPI Python SDK，含接入说明与接口列表</li>
+<li><a href="https://snbpy-doc.readthedocs.io/zh-cn/latest/">Snbpy 使用文档</a> - 雪盈 OpenAPI 的开户、入金、API 权限申请与调用指南</li>
+<li><a href="https://www.quantfull.com/products/quant-bundle">仓满量化策略文档</a> - 仓满量化整理的151交易策略全集</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/cang-in-house/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84/">
+                    #投资</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/">
+                    #仓位管理</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%AF%8C%E9%80%94/">
+                    #富途</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%9B%AA%E7%9B%88/">
+                    #雪盈</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/weread-skills-in-practice/" class="prev" rel="prev" title="利用微信读书skill，将读过的知识整合进AI实践"><i class="iconfont icon-left"></i>&nbsp;利用微信读书skill，将读过的知识整合进AI实践</a>
+        
+        
+        <a href="https://kuhung.me/posts/ai-native-in-mind/" class="next" rel="next" title="你以为的 AI Native">你以为的 AI Native&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

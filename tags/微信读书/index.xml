@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微信读书 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6/</link>
+    <description>Recent content in 微信读书 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 24 Jul 2026 18:29:48 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用微信读书skill，将读过的知识整合进AI实践</title>
+      <link>https://kuhung.me/posts/weread-skills-in-practice/</link>
+      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weread-skills-in-practice/</guid>
+      <description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
+是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：&amp;ldquo;SLMs是什么&amp;quot;&amp;ldquo;端侧模型有哪些技术要点&amp;quot;这类。它还有个很强的特性，迎合说话人。这点即使通过提示词纠正，也难以跳出提问人的思维边界。碰到框架性的问题，它给不出系统的、有真人感的建议。
+从底层原理来说，大模型给出的是概率性文字，它也没法给切身经验和系统方法。这就像公司新人，能力不差，但缺少开展工作的上下文。高质量书籍填补的就是这块空白。
+以前看书，做做笔记、画个思维导图，遇到有意思的会写份读书笔记。今天讲的是更进一步的做法：把书里的方法，编译成 AI Agent 可以直接调用的技能。
+Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷。有些好用，有些徒有其名。一个 Markdown 文件配个抓眼球的标题，就能在 GitHub 上混到成千上万颗星标，星标快失去意义了。还有些 skills 在逻辑里面埋毒，引导脚本执行木马程序。
+试过不少 skills 之后，我发现还是得有一套自己的方法。比如有人推荐 superpowers，我用下来慢得要死，还生成一堆无关文件。别人的 skill 可以参考，快速了解知识的时候先拿来用，再在自己的基础上调整。核心方法得从自己的知识体系里长出来。
+在 skills 没出来之前，这个场景可能的解决方案是外挂 RAG。即通过对文稿的预先处理，试图用大模型来召回对应的知识结构。这种方法的好处是省事，直接丢文档切分即可。坏处是吃大模型的上下文，召回质量需要大量工程逻辑兜底。另外，这种方法最大的问题，个人认为是缺少“人在循环”这么个东西。
+微信读书笔记，恰好就是“人在循环”的一个具体表现。一千个人有一千个哈姆雷特，一千个读者也有一千种理解。这种带有个人理解的内容，才是 skills 真正值得沉淀的部分。
+读万卷书，不如蒸馏成术；蒸馏成术，不如实践成路。
+数据源：从 cookies 到官方 Skills API 在早先几年，我通过 cookies 截取的方式，借助 GitHub Actions 把微信读书笔记自动同步到 Notion。能归集阅读内容，但最近一年失效了，微信读书团队更新了鉴权方式。
+今年早些时候，顺着 skills 这波风，微信读书团队开放了官方 Skills 接口。走完固定流程，就能在 Agent 里通过对话拿到你的数据：书架、阅读进度、划线信息，全部可以外挂给大模型。
+网上对这个接口的二次加工，多集中在聊天、可视化、书籍推荐的程度。我想做的事更进一步：数据源有了，直接加工成可调用的 skills。把微信读书里的划线与想法，编译成 SKILL.md 技能指令，挂载到 Agent 上，在对话匹配到触发条件时自动加载。
+五步流水线：划线变技能 整个流程分五步，从原始划线到全局可用：
+步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description>
+    </item>
+    
+  </channel>
+</rss>

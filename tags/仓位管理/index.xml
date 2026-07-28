@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>仓位管理 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 仓位管理 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Jul 2026 12:44:44 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%BB%93%E4%BD%8D%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title>
+      <link>https://kuhung.me/posts/cang-in-house/</link>
+      <pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/cang-in-house/</guid>
+      <description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
+但是后来，随着投资标的的分散，每次在券商上算账都要耗费不少的心力。需要计算杠杆、货币转换。这让我逐渐厌倦。想知道&amp;quot;投资账户一共有多少资金&amp;quot;，需要打开富途和雪盈两个 App 分别计算再合并。随着最近大模型的进一步发展，是时候用 Claude 写个 in-house 的仓位管理工具了。不少人 vibe coding 的第一步，都是搞些什么记账、todo 和番茄闹钟，这回也落回这三大件上了。
+做 in-house 的仓位管理，目的是让 AI 能直接碰到持仓数据，进行交互分析和建议。包含四个方面的功能：分析持仓、计算收益、策略回测，以及最终的自动下单。手动记账时代，数据在 Notion 表格里，大模型要获取需要转个弯。现在，券商数据直接接入之后，它才有可能真正帮你干活。
+本次文章，就给大家介绍下我用 Codex + Claude 接入富途 API 和雪盈 API 的过程和最终效果。当然，如果你是长桥、老虎或者别的什么，也是类似的道理，只要券商开放了 API，都可以做到。
+设计目标 动手之前先明确目标和约束，我的目标有四个，逐层递进，分别是获取持仓、收益计算、策略回测以及下单信号。
+自动获取持仓。 两个券商的持仓、资金、成交记录，每天自动同步到一个本地账本里，统一折算成人民币。不用再打开两个 App 分头算，一条命令就能回答&amp;quot;我一共有多少钱、钱都在哪些标的上、目前的杠杆情况如何&amp;quot;。
+绩效回顾与归因。 能汇总看近 1 个月、半年、一年的区间收益。赚了多少、亏了多少、钱分布在哪些市场和币种里、不同资产的总体占比情况是多少。这个事之前手动基本无法做到，只能分平台看出赚了还是亏了。要对照沪深三百、纳斯达克这类计算超额收益，还需要手动转换，非常麻烦。
+策略构建与回测。 有了历史 K 线数据之后，就可以让 AI 帮忙回测：&amp;ldquo;如果过去一年按某个策略操作，结果会怎样？&amp;ldquo;这是手动记账完全做不到的事，也是我做这个系统最想达到的目标。因为我在仓满量化那边有很多的点子，需要真实线上数据回测来说明情况。
+下单信号。 有了上述的策略，进一步的就是生成交易信号。当然自动下单两个平台也是支持的，但是由于我的持仓不多、交易频次不高，所以暂不考虑自动化交易。能有信号也不错了。
+券商特点 两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。
+富途是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。
+雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,28 @@
     <description>Recent content in 你以为 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 27 Nov 2025 08:45:42 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jul 2026 17:46:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你以为的 AI Native</title>
+      <link>https://kuhung.me/posts/ai-native-in-mind/</link>
+      <pubDate>Mon, 27 Jul 2026 17:46:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ai-native-in-mind/</guid>
+      <description>你以为的 AI Native 年轻人，在 AI 的环境下成长。他们接触到的世界，天生就有 AI。理所应当，他们是 AI 的一代，是人类未来的希望。
+他们不需要学，因为他们就是 native。就像母语者不需要背单词一样。他们天然知道怎么用这些工具，天然知道怎么和模型协作。
+营销号说，再不上车就晚了。VC 说，AI-native 才是未来。你要么变得 AI native，要么被淘汰。
+不过很遗憾，你不是年轻人，自动出局。
+实际上的 AI Native 历史只会重复。这个故事二十年前讲过一遍。那个词叫&amp;quot;数字原住民&amp;quot;。
+2001 年，一个叫 Marc Prensky 的教育学者造了&amp;quot;Digital Native&amp;quot;这个词。意思是，在数字环境中长大的年轻人，是&amp;quot;技术的母语者&amp;quot;。这个概念火了将近十年，各种教育改革都在引用它。
+接着学术界开始打脸。2008 年有论文说，这场辩论本质上是学术版的&amp;quot;道德恐慌&amp;quot;。2017 年有研究指出：不存在&amp;quot;未经历过非数字世界就天生信息娴熟&amp;quot;的数字原住民。Prensky 自己 2009 年也承认这个框架&amp;quot;正变得越来越不相关&amp;quot;。
+暴露不等于习得。你在有互联网的环境中长大，不代表你会高效检索信息。你在有 AI 的环境中长大，不代表你会高效使用模型。这点，想必诸位中登都有体会。
+但&amp;quot;XX-Native&amp;quot;是个好用的构词模板。Digital Native、Cloud Native、Data Native（Data Driven）、AI Native。每当一种新技术进入主流视野，就有人把&amp;quot;native&amp;quot;贴上去。贴了这个后缀，就自带先进光环。
+你刷到 a16z 的报告，说 AI-native 公司正在涌现。你看到各种课程打着&amp;quot;培养 AI Native 能力&amp;quot;的旗号。你开始焦虑，觉得自己不够 native。
+a16z人家需要投资造势，吸引下一轮；各类课程人家是准备先你一步“AI变现”。IBM 自己 2026 年都说了，Native 这个词&amp;quot;常常作为营销话术出现在并不适用的语境里&amp;quot;。
+用在产品上，native 有个可操作的判断方法：把 AI 拿掉，产品还能不能用？Perplexity 去掉 AI 就不存在了，它是 AI native。一个用 AI 做朗读的浏览器，去掉 AI 照样跑，那它只是套了个壳。
+但对人呢？把 AI 从这个人身上拿掉他就干不了活，这样的人敢用吗？</description>
+    </item>
+    
     <item>
       <title>你以为的优绩主义</title>
       <link>https://kuhung.me/posts/meritocracy-in-mind/</link>
