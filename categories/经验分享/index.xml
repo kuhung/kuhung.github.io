@@ -6,7 +6,24 @@
     <description>Recent content in 经验分享 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 26 Jul 2026 12:44:44 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Jul 2026 15:43:32 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不想为总结一个网页花20美元，我给Chrome做了个平替插件</title>
+      <link>https://kuhung.me/posts/pagegrok-in-practice/</link>
+      <pubDate>Wed, 29 Jul 2026 15:43:32 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/pagegrok-in-practice/</guid>
+      <description>需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&amp;quot;丢&amp;quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
+我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越好。
+市面上不是没有类似的东西，Chrome 插件 Page-Assist 算比较早的一个，但功能铺得太满，配置项一大堆，用不上的东西成了负担。这活儿逻辑不复杂，手搓也不难，正好还能把本地跑的模型用起来。
+于是就有了 PageGrok 这款浏览器插件。
+大厂做了，还做不做 开发到一半，Google 把 Gemini 塞进了 Chrome 侧边栏。选中页面问模型，跟我做的事一模一样。这种时刻经典复刻了：你琢磨的东西，大厂顺手就做了，怎么办？
+想了想，还是继续做。理由也不复杂。Gemini in Chrome 的完整功能绑在 Google AI Pro 上，一个月 19.99 美元，我只是想总结个页面，用不上生图、云存储。这笔账不划算，何况有些地区还用不了。还有隐私：Chrome 侧边栏默认拿当前标签页内容去生成回答，数据是走 Google 服务器的，公司内部文档、没公开的研究资料，这可使不得。
+它能干什么 所以 PageGrok 做的还是一个很朴素的东西：侧边栏常驻，一边看内容一边问；自定义接入本地模型或者 API；借鉴了印象笔记的截屏取景框逻辑，能自定义截取一块区域。这个在小红书、推特这种浮窗式应用上意外地好用；回答可以直接复制走，还能带上来源，方便回头翻。产品形态确实初级，商业化也有限，但我自己天天用，够用。
+4个月8个小版本 三月底上线 1.0.1，只支持 Ollama，弹窗交互。五月中到 1.0.4，加了 oMLX 和 LM Studio，顺手把弹窗换成了侧边栏。这一步其实是深度体验后的有依据调整。七月稳定发布 1.0.7 和 1.0.8。四个月，八个版本。五月十一号在 V2EX 发了个帖子，到现在 1100 多次浏览，被几个 AI 工具站收录转载过。周活跃用户在数十位，横跨亚欧美三大洲。这些够我确认一件事：这个需求不是我一人独有。
+踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</description>
+    </item>
+    
     <item>
       <title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title>
       <link>https://kuhung.me/posts/cang-in-house/</link>

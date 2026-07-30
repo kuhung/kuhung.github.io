@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/ai-native-in-mind/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/pagegrok-in-practice/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           不想为总结一个网页花20美元，我给Chrome做了个平替插件 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="不想为总结一个网页花20美元，我给Chrome做了个平替插件 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "不想为总结一个网页花20美元，我给Chrome做了个平替插件",
+    "headline" : "不想为总结一个网页花20美元，我给Chrome做了个平替插件",
+    "description" : "需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个\u0026quot;丢\u0026quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。\n我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越好。\n市面上不是没有类似的东西，Chrome 插件 Page-Assist 算比较早的一个，但功能铺得太满，配置项一大堆，用不上的东西成了负担。这活儿逻辑不复杂，手搓也不难，正好还能把本地跑的模型用起来。\n于是就有了 PageGrok 这款浏览器插件。\n大厂做了，还做不做 开发到一半，Google 把 Gemini 塞进了 Chrome 侧边栏。选中页面问模型，跟我做的事一模一样。这种时刻经典复刻了：你琢磨的东西，大厂顺手就做了，怎么办？\n想了想，还是继续做。理由也不复杂。Gemini in Chrome 的完整功能绑在 Google AI Pro 上，一个月 19.99 美元，我只是想总结个页面，用不上生图、云存储。这笔账不划算，何况有些地区还用不了。还有隐私：Chrome 侧边栏默认拿当前标签页内容去生成回答，数据是走 Google 服务器的，公司内部文档、没公开的研究资料，这可使不得。\n它能干什么 所以 PageGrok 做的还是一个很朴素的东西：侧边栏常驻，一边看内容一边问；自定义接入本地模型或者 API；借鉴了印象笔记的截屏取景框逻辑，能自定义截取一块区域。这个在小红书、推特这种浮窗式应用上意外地好用；回答可以直接复制走，还能带上来源，方便回头翻。产品形态确实初级，商业化也有限，但我自己天天用，够用。\n4个月8个小版本 三月底上线 1.0.1，只支持 Ollama，弹窗交互。五月中到 1.0.4，加了 oMLX 和 LM Studio，顺手把弹窗换成了侧边栏。这一步其实是深度体验后的有依据调整。七月稳定发布 1.0.7 和 1.0.8。四个月，八个版本。五月十一号在 V2EX 发了个帖子，到现在 1100 多次浏览，被几个 AI 工具站收录转载过。周活跃用户在数十位，横跨亚欧美三大洲。这些够我确认一件事：这个需求不是我一人独有。\n踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-07-29 15:43:32 \u002b0800 CST",
+    "dateModified" : "2026-07-29 15:43:32 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/pagegrok-in-practice\/",
+    "wordCount" : "105",
+    "keywords" : [ "Chrome插件","PageGrok","AI工具","本地模型", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">不想为总结一个网页花20美元，我给Chrome做了个平替插件</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-07-29 itemprop="datePublished">July 29, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#需求痛点">需求痛点</a></li>
+    <li><a href="#大厂做了还做不做">大厂做了，还做不做</a></li>
+    <li><a href="#它能干什么">它能干什么</a></li>
+    <li><a href="#4个月8个小版本">4个月8个小版本</a></li>
+    <li><a href="#踩过的坑">踩过的坑</a></li>
+    <li><a href="#谁适合用">谁适合用</a></li>
+    <li><a href="#我自己怎么用">我自己怎么用</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="需求痛点">需求痛点</h2>
+<p>刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&quot;丢&quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。</p>
+<p>我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越好。</p>
+<p>市面上不是没有类似的东西，Chrome 插件 Page-Assist 算比较早的一个，但功能铺得太满，配置项一大堆，用不上的东西成了负担。这活儿逻辑不复杂，手搓也不难，正好还能把本地跑的模型用起来。</p>
+<p>于是就有了 PageGrok 这款浏览器插件。</p>
+<h2 id="大厂做了还做不做">大厂做了，还做不做</h2>
+<p>开发到一半，Google 把 Gemini 塞进了 Chrome 侧边栏。选中页面问模型，跟我做的事一模一样。这种时刻经典复刻了：你琢磨的东西，大厂顺手就做了，怎么办？</p>
+<p>想了想，还是继续做。理由也不复杂。Gemini in Chrome 的完整功能绑在 Google AI Pro 上，一个月 19.99 美元，我只是想总结个页面，用不上生图、云存储。这笔账不划算，何况有些地区还用不了。还有隐私：Chrome 侧边栏默认拿当前标签页内容去生成回答，数据是走 Google 服务器的，公司内部文档、没公开的研究资料，这可使不得。</p>
+<h2 id="它能干什么">它能干什么</h2>
+<p>所以 PageGrok 做的还是一个很朴素的东西：侧边栏常驻，一边看内容一边问；自定义接入本地模型或者 API；借鉴了印象笔记的截屏取景框逻辑，能自定义截取一块区域。这个在小红书、推特这种浮窗式应用上意外地好用；回答可以直接复制走，还能带上来源，方便回头翻。产品形态确实初级，商业化也有限，但我自己天天用，够用。</p>
+<h2 id="4个月8个小版本">4个月8个小版本</h2>
+<p>三月底上线 1.0.1，只支持 Ollama，弹窗交互。五月中到 1.0.4，加了 oMLX 和 LM Studio，顺手把弹窗换成了侧边栏。这一步其实是深度体验后的有依据调整。七月稳定发布 1.0.7 和 1.0.8。四个月，八个版本。五月十一号在 V2EX 发了个帖子，到现在 1100 多次浏览，被几个 AI 工具站收录转载过。周活跃用户在数十位，横跨亚欧美三大洲。这些够我确认一件事：这个需求不是我一人独有。</p>
+<h2 id="踩过的坑">踩过的坑</h2>
+<p>踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</p>
+<h2 id="谁适合用">谁适合用</h2>
+<p>它并非要跟豆包，以及一些其他国内外 AI agent 抢地盘。多轮复杂对话、文件上传分析、联网搜索这些，PageGrok 现在都做不到，也没打算做。它的范围就是&quot;选中—提问—拿结果&quot;这一条最短路径，适合日常阅读量大，又不想为一个总结功能单开一个 AI 对话窗口的人；适合对隐私有顾虑、不想把公司文档丢给云端模型的人；适合本地已经跑着 Ollama 或 LM Studio、缺的只是一个顺手交互前端的人。</p>
+<h2 id="我自己怎么用">我自己怎么用</h2>
+<p>以我自己为例，一般是下面这么用的。刷 V2EX、小红书、知乎、推特这类信息流杂的地方，评论区经常比正文更有料，可评论多到看不过来，我会整段选中让模型帮我理出几种不同立场。碰到三五千字的长文，先选全文要一个结构化摘要，摘要里哪个点勾住我了，再细致追问。这个两步走的节奏比通读快得多，尤其碰上那种本身就是 AI 写的文章，硬啃脑壳疼。英文技术文档、日文新闻，选中让模型用中文讲讲，模型会自己补上下文、拆解术语。甚至还可以帮你总结疑难词和语法点。遇到值得反复看的内容，总结完把 Markdown 复制到 Gist 或者自己的笔记系统里，每周复盘的时候翻这些摘要，就再也不会出现：&ldquo;好像哪里看到，但是记不清是哪里&quot;的问题了。</p>
+<p>如果要我来推销这个东西，那我会说：数据自己管，链路少折腾。本地跑 Ollama 就一点都不出机器，公司有自部署的模型服务，填个地址就能用。</p>
+<p>现在可以在 Chrome 应用商店搜 PageGrok 装上，或者访问<a href="https://www.pagegrok.org/">官网 pagegrok.org</a> 了解更多细节。不知道咋的，Chrome 后台显示有 5000+ 的用户。形态不复杂，但它让我的知识管理更顺畅，对我来说，这就够了。</p>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/pagegrok-in-practice/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/chrome%E6%8F%92%E4%BB%B6/">
+                    #Chrome插件</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/pagegrok/">
+                    #PageGrok</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
+                    #AI工具</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B/">
+                    #本地模型</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/ai-native-in-mind/" class="prev" rel="prev" title="你以为的 AI Native"><i class="iconfont icon-left"></i>&nbsp;你以为的 AI Native</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
