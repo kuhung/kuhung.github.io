@@ -6,7 +6,29 @@
     <description>Recent content in 独立开发 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 31 May 2026 10:46:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Aug 2026 11:49:39 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>普通人要 Codex 有什么用？</title>
+      <link>https://kuhung.me/posts/how-i-use-codex/</link>
+      <pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-i-use-codex/</guid>
+      <description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
+我的背景是算法，在很多人看来，程序员都是一个类型。但实际上这个岗位的细分非常多，我擅长将业务问题转化为建模问题，能够构建稳定可靠的数据pipeline和模型pipeline，但并不包括写出好看的前端和稳健的后端。后半部分工作，是 Codex 帮我加速达成的。
+此外，对于像产品、市场和运营这类工作，虽然日常协作有所耳濡目染，但绝对并非我的优势。我也借助 Codex，来帮我整理用户需求、做市场调研、分析数据并制定对应的运营活动策略。
+所以，你说，Codex 对于普通人有什么用？那我想是解放了生产力，能够有机会做更多之前能想到，但是没资源去验证的事情。这些事情包括开发、文案类工作，也包括数据调研、资料整合类工作。
+具体展开来说。
+Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐渐琢磨出来的事情。在更早期我习惯让LLM先写一版原型看看，后来发现得市场先行。可以有想法，但是千万别急着开发构建应用，不然会陷入无尽的调试细节。
+做 TrakToken 之前，我想知道市面上有哪些 LLM 定价追踪工具、它们的数据源是什么。这些调研工作，交给 Codex 去做整理，我来判断和取舍。最后结合我个人的偏好，上线了 TrakToken 这个 Token 追踪应用。用户反馈也不错，每天能稳定有500左右的访问量。
+第二件：SEO。 SEO这事，其实我从大学开始就知道。图书馆的SEO相关书籍，我也看过不少。上半年的灰产GEO，我还写过一篇文章来介绍原理和我的看法。SEO这事，没啥诀窍，按照搜索引擎大厂的要求来，一点一滴优化就行。这任务特别细致，现在交给 Codex，哐哐出活。
+此外，还可以让 Codex 分析竞品的 meta tags、关键词布局、页面结构，拉出具体的优化建议。转化漏斗的埋点代码、Google Analytics 的事件追踪配置，这些重复性的工程工作也一并交给它。我要做的是提需求，验收并给出我对数据的解读反馈。
+第三件：开发管理与加速。 PageGrok 从 1.0.1 到 1.0.8，八个版本，四个月，大量 feature 和 bug 修复，都是靠&amp;quot;GitHub issue 记录需求、Codex 生成代码、review 后合并&amp;quot;这套流程跑出来的。虽然大家都想许愿式编程，但编程的艺术在于舍而不是在来坨大的。
+通过产品路线图、版本控制、issue跟踪的方式，让我的开发管理井井有条。慢即是快。issue 会写清楚当前行为、期望行为、验收标准，剩下的让 Codex 的 agent 干就完事。当然，这些 issue 也是 Codex 在我的指挥下生成的。
+第四件：运营维护。项目上线后，日志采集脚本、安全配置检查清单、定时任务的 cron 表达式、数据更新的定期抓取。这些琐碎但必要的运维工作，我现在都习惯丢给 Codex。
+另外，我还有一套基于 Notion + GitHub 的周报自动化流程，底层的数据采集和同步模块是大模型搭的。现在每周的工作，不再需要手动记录，流转在 Notion 甘特图和GitHub提交记录的信息，通过数据管线汇总给大模型，每周只需要花2块钱，就能让顶级模型帮你总结项目进展、风险和下周优先级。
+第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description>
+    </item>
+    
     <item>
       <title>不要再 Vibe 创业了，干点儿实事吧阿谷</title>
       <link>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</link>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>港股 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/</link>
+    <description>Recent content in 港股 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 30 Jul 2026 18:14:26 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>智谱 x MiniMax：配对交易的验证与心得</title>
+      <link>https://kuhung.me/posts/pair-zhipu-minimax/</link>
+      <pubDate>Thu, 30 Jul 2026 18:14:26 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/pair-zhipu-minimax/</guid>
+      <description>先说结论 多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。
+协整检验不通过，经典配对交易的前提不成立；顺分化做多空回测夏普 3.52，但样本外验证表明合理预期在 0.5~1；波动率降仓把最大回撤从 -27.9% 压到 -9.2%，比单日止损更有效。
+注意：本文仅分享个人思路和回测过程，不代表投资建议。投资有风险，需充分衡量个人风险承受能力，在持牌顾问指导下进行。
+为什么盯上这两家 智谱（HK.02513）和 MiniMax（HK.00100）是 2026 年 1 月先后在港股上市的两家大模型企业。
+我参与了打新，不过没中。即使中了，按照之前的习惯也会在暗盘给卖了。回头看很可惜：智谱从发行价到 6/22 最高收盘 2410，涨幅 +1974%（总价约 20.7 倍），到 2026-07-30 收盘 862.0 仍有 +642%。MiniMax 在 3/18 最高收盘 1238（较发行价 +650%），但到 2026-07-30 收盘 203.8，较发行价仅 +23.5%，较首日收盘已跌 40.9%。
+作为港股大模型双雄，很容易让人联想到配对交易：两只同板块高相关的票，价差拉开了押注回归。比如可口可乐和百事长期走势高度相关，价差偏离后做反向交易。我们在之前的文章有介绍过接入持仓数据到 AI，要验证想法很简单，让 AI 拉取数据并进行回测验证。
+智谱 HK.02513 MiniMax HK.00100 发行价 116.2 165.0 上市日 2026-01-08 2026-01-09 公开发售认购 1159 倍 1837 倍，一手中签率 2.81% 首日开盘 120.0（+3.27%） 235.4（+42.67%） 首日收盘 131.5（+13.17%） 345.0（+109.09%） 最高收盘 2410（6/22） 1238（3/18） 盘中最高 2980（6/22） 1330（3/18） 7/30 收盘 862.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/pagegrok-in-practice/" />
+  <link rel="next" href="https://kuhung.me/posts/meet-with-hardware-ai/" />
+  <link rel="canonical" href="https://kuhung.me/posts/pair-zhipu-minimax/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           智谱 x MiniMax：配对交易的验证与心得 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="智谱 x MiniMax：配对交易的验证与心得 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "智谱 x MiniMax：配对交易的验证与心得",
+    "headline" : "智谱 x MiniMax：配对交易的验证与心得",
+    "description" : "先说结论 多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。\n协整检验不通过，经典配对交易的前提不成立；顺分化做多空回测夏普 3.52，但样本外验证表明合理预期在 0.5~1；波动率降仓把最大回撤从 -27.9% 压到 -9.2%，比单日止损更有效。\n注意：本文仅分享个人思路和回测过程，不代表投资建议。投资有风险，需充分衡量个人风险承受能力，在持牌顾问指导下进行。\n为什么盯上这两家 智谱（HK.02513）和 MiniMax（HK.00100）是 2026 年 1 月先后在港股上市的两家大模型企业。\n我参与了打新，不过没中。即使中了，按照之前的习惯也会在暗盘给卖了。回头看很可惜：智谱从发行价到 6\/22 最高收盘 2410，涨幅 \u002b1974%（总价约 20.7 倍），到 2026-07-30 收盘 862.0 仍有 \u002b642%。MiniMax 在 3\/18 最高收盘 1238（较发行价 \u002b650%），但到 2026-07-30 收盘 203.8，较发行价仅 \u002b23.5%，较首日收盘已跌 40.9%。\n作为港股大模型双雄，很容易让人联想到配对交易：两只同板块高相关的票，价差拉开了押注回归。比如可口可乐和百事长期走势高度相关，价差偏离后做反向交易。我们在之前的文章有介绍过接入持仓数据到 AI，要验证想法很简单，让 AI 拉取数据并进行回测验证。\n智谱 HK.02513 MiniMax HK.00100 发行价 116.2 165.0 上市日 2026-01-08 2026-01-09 公开发售认购 1159 倍 1837 倍，一手中签率 2.81% 首日开盘 120.0（\u002b3.27%） 235.4（\u002b42.67%） 首日收盘 131.5（\u002b13.17%） 345.0（\u002b109.09%） 最高收盘 2410（6\/22） 1238（3\/18） 盘中最高 2980（6\/22） 1330（3\/18） 7\/30 收盘 862.",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-07-30 18:14:26 \u002b0800 CST",
+    "dateModified" : "2026-07-30 18:14:26 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/pair-zhipu-minimax\/",
+    "wordCount" : "427",
+    "keywords" : [ "投资","配对交易","港股","AI","策略回测", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">智谱 x MiniMax：配对交易的验证与心得</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-07-30 itemprop="datePublished">July 30, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#先说结论">先说结论</a></li>
+    <li><a href="#为什么盯上这两家">为什么盯上这两家</a></li>
+    <li><a href="#三个发现">三个发现</a></li>
+    <li><a href="#验证过程">验证过程</a>
+      <ul>
+        <li><a href="#走势">走势</a></li>
+        <li><a href="#协整检验">协整检验</a></li>
+        <li><a href="#均值回归回测">均值回归回测</a></li>
+        <li><a href="#顺分化做相对动量">顺分化做：相对动量</a></li>
+      </ul>
+    </li>
+    <li><a href="#风控策略对比">风控策略对比</a></li>
+    <li><a href="#样本外验证">样本外验证</a></li>
+    <li><a href="#实操可行性">实操可行性</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="先说结论">先说结论</h2>
+<p>多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。</p>
+<p>协整检验不通过，经典配对交易的前提不成立；顺分化做多空回测夏普 3.52，但样本外验证表明合理预期在 0.5~1；波动率降仓把最大回撤从 -27.9% 压到 -9.2%，比单日止损更有效。</p>
+<blockquote>
+<p>注意：本文仅分享个人思路和回测过程，不代表投资建议。投资有风险，需充分衡量个人风险承受能力，在持牌顾问指导下进行。</p>
+</blockquote>
+<h2 id="为什么盯上这两家">为什么盯上这两家</h2>
+<p>智谱（HK.02513）和 MiniMax（HK.00100）是 2026 年 1 月先后在港股上市的两家大模型企业。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/ae9e9db8fde50ca7.webp" alt="智谱与 MiniMax 上市以来股价走势对比" class="lazyload"><figcaption class="image-caption">智谱与 MiniMax 上市以来股价走势对比</figcaption></figure></p>
+<p>我参与了打新，不过没中。即使中了，按照之前的习惯也会在暗盘给卖了。回头看很可惜：智谱从发行价到 6/22 最高收盘 2410，涨幅 +1974%（总价约 20.7 倍），到 2026-07-30 收盘 862.0 仍有 +642%。MiniMax 在 3/18 最高收盘 1238（较发行价 +650%），但到 2026-07-30 收盘 203.8，较发行价仅 +23.5%，较首日收盘已跌 40.9%。</p>
+<p>作为港股大模型双雄，很容易让人联想到配对交易：两只同板块高相关的票，价差拉开了押注回归。比如可口可乐和百事长期走势高度相关，价差偏离后做反向交易。我们在<a href="/posts/cang-in-house/">之前的文章</a>有介绍过接入持仓数据到 AI，要验证想法很简单，让 AI 拉取数据并进行回测验证。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>智谱 HK.02513</th>
+<th>MiniMax HK.00100</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>发行价</td>
+<td>116.2</td>
+<td>165.0</td>
+</tr>
+<tr>
+<td>上市日</td>
+<td>2026-01-08</td>
+<td>2026-01-09</td>
+</tr>
+<tr>
+<td>公开发售认购</td>
+<td>1159 倍</td>
+<td>1837 倍，一手中签率 2.81%</td>
+</tr>
+<tr>
+<td>首日开盘</td>
+<td>120.0（+3.27%）</td>
+<td>235.4（+42.67%）</td>
+</tr>
+<tr>
+<td>首日收盘</td>
+<td>131.5（+13.17%）</td>
+<td>345.0（+109.09%）</td>
+</tr>
+<tr>
+<td>最高收盘</td>
+<td>2410（6/22）</td>
+<td>1238（3/18）</td>
+</tr>
+<tr>
+<td>盘中最高</td>
+<td>2980（6/22）</td>
+<td>1330（3/18）</td>
+</tr>
+<tr>
+<td>7/30 收盘</td>
+<td>862.0</td>
+<td>203.8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="三个发现">三个发现</h2>
+<p>在展开验证过程之前，先把三个最值得记住的发现放在前面。</p>
+<p><strong>每天同涨同跌，不代表能做配对。</strong> 智谱和 MiniMax 的日收益相关性 0.70，每天看盘确实在一起动。但对数价格相关性只有 -0.064。说明两者只是共享板块情绪，长期走势脱钩。配对交易押的是&quot;价差拉开了会收回来&quot;，前提是两者价格存在长期稳定关系。</p>
+<p><strong>看到高夏普，应该审慎。</strong> 顺着分化做多空，回测夏普 3.52。夏普比率是收益除以波动的比值，衡量每承担一单位风险赚了多少，越高通常越好。但样本越短、行情越单一，这个数字越容易偏高。同一套规则跑 7 组港股同板块的类似配对（涉及 10 只票，实际独立的验证大约相当于 4 次），平均夏普只有 0.47，最好的一组 1.51（阿里/京东），2 组为负。对这类策略的合理预期大概是夏普 0.5~1。</p>
+<p><strong>波动率降仓比止损管用。</strong> 在年化波动 150% 以上的标的上，波动率降仓把最大回撤从 -27.9% 压到了 -9.2%，夏普反升。传统的&quot;策略当日亏超 5% 次日清仓&quot;全样本算总账是负贡献，但在急跌周（如 7/27）有保护作用。整体来看，事前控仓比事后止损更稳健。</p>
+<h2 id="验证过程">验证过程</h2>
+<p>回测区间为两者上市以来的日 K（2026-01-08 至 2026-07-30），重叠 135 个交易日。智谱有 136 根日K（多 01-08 一天，不在分析样本里）。以下表格中的收益数字均为对数收益（表头标 log），和日常说的百分比有几个点的差距，比如 log +72.1% 约等于普通收益 +105.6%。文中单独提到时会注明。</p>
+<h3 id="走势">走势</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>智谱</th>
+<th>MiniMax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共同交易日以来涨幅（01-09 收盘起）</td>
+<td>+444%</td>
+<td>-40.9%</td>
+</tr>
+<tr>
+<td>距最高收盘</td>
+<td>-64.2%（2410，6/22）</td>
+<td>-83.5%（1238，3/18）</td>
+</tr>
+<tr>
+<td>距盘中最高</td>
+<td>-71.1%（2980，6/22）</td>
+<td>-84.7%（1330，3/18）</td>
+</tr>
+<tr>
+<td>年化波动率</td>
+<td>191%</td>
+<td>154%</td>
+</tr>
+</tbody>
+</table>
+<p>以发行价为基准，智谱 +642%、MiniMax +23.5%；以共同起点 01-09 收盘为基准则是 +444% / -40.9%。口径不同数字差异大，但策略结论不受影响（相关性、协整、回测都由日收益驱动）。基本面定价逻辑是独立的：市场在给智谱持续加价，给 MiniMax 持续杀估值。</p>
+<h3 id="协整检验">协整检验</h3>
+<p><strong>结论：不通过。两只票之间没有长期稳定的价格关系，经典配对交易的前提不成立。</strong></p>
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>ADF p 值</th>
+<th>判定（p &lt; 0.05 为通过）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智谱 ~ MiniMax</td>
+<td>0.140</td>
+<td>不通过</td>
+</tr>
+<tr>
+<td>MiniMax ~ 智谱</td>
+<td>0.882</td>
+<td>不通过</td>
+</tr>
+</tbody>
+</table>
+<p>半衰期 18.5 天。三次不同截止日（07-20／07-23／07-30）重跑，p 值始终在 0.14~0.20，从没接近 0.05。135 个交易日的样本叠加新股解禁、指数纳入等一次性因素，噪音本身也大，检验不通过是&quot;没有证据支持&quot;。</p>
+<h3 id="均值回归回测">均值回归回测</h3>
+<p><strong>结论：亏钱，和协整不通过一致。</strong> 费后累计 -11.3%（log，普通收益 -10.7%），夏普 -1.20，最大回撤 -20.0%。</p>
+<p>参数：滚动 30 日 z-score，|z|&gt;2 开仓，|z|&lt;0.5 平仓，|z|&gt;3.5 止损，单边每腿成本 0.15%。全程只换向 3 次、持仓 22 天／76 个有效交易日，样本量本身说明不了什么。回测结果对截止日极敏感：07-20 是 -6.9%，07-23 是 +5%，07-30 是 -11.3%。否决均值回归的核心依据是协整检验始终不通过，回测亏损只是旁证。</p>
+<h3 id="顺分化做相对动量">顺分化做：相对动量</h3>
+<p><strong>结论：回测夏普 3.52，收益可观，但统计上和&quot;随机&quot;没法区分，不能当正常预期。</strong></p>
+<p>均值回归不成立，反过来顺着分化做：过去 N 日谁相对强就做多谁、做空另一只，两腿各半仓（市值中性），信号当日收盘成交。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/07/a076a292a2f4ef9d.webp" alt="相对动量策略回测净值曲线" class="lazyload"><figcaption class="image-caption">相对动量策略回测净值曲线</figcaption></figure></p>
+<table>
+<thead>
+<tr>
+<th>口径</th>
+<th>累计（log，费后）</th>
+<th>夏普</th>
+<th>最大回撤</th>
+<th>翻向次数</th>
+<th>有效天数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静态多智谱/空 MiniMax（事后参照）</td>
+<td>+111%</td>
+<td>3.01</td>
+<td>-28%</td>
+<td>&ndash;</td>
+<td>134</td>
+</tr>
+<tr>
+<td>相对动量 N=60</td>
+<td>+72.1%</td>
+<td>3.52</td>
+<td>-27.9%</td>
+<td>1</td>
+<td>74</td>
+</tr>
+<tr>
+<td>相对动量 N=20</td>
+<td>+68.6%</td>
+<td>2.18</td>
+<td>-37.9%</td>
+<td>7</td>
+<td>114</td>
+</tr>
+</tbody>
+</table>
+<p>静态夏普 3.01 低于 N=60 的 3.52，只有累计收益算上限参照。N=60 全程只翻向 1 次，有效交易日 74 天，夏普标准误约 1.9，95% 置信区间跨过 0。135 天里基本只有一轮&quot;智谱强、MiniMax 弱&quot;的大分化，这个夏普数字大概率是行情给的。</p>
+<p>截至 2026-07-30，N=60 信号仍是&quot;多智谱/空 MiniMax&quot;，N=20 已翻向为多 MiniMax/空智谱。7/23 到 7/30：智谱 -26.4%、MiniMax +2.3%，N=60 方向一周亏 16.4%，最大回撤 -27.9% 出现在数据最后一天，截稿时未修复。</p>
+<p>回测含佣金、印花税、滑点（单边每腿 0.15%），未含融券利息与保证金占用。N=60 对成交时点和滑点假设均不敏感（滑点从 0.15% 放大到 3%，夏普仅从 3.52 降至 3.36），N=20 对成交假设更敏感，实际执行偏乐观。</p>
+<h2 id="风控策略对比">风控策略对比</h2>
+<p><strong>结论：波动率降仓优于单日止损。</strong> 回撤从 -27.9% 压到 -9.2%，夏普反升；止损全样本算总账是负贡献，但急跌周有保护作用。</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>累计(log)</th>
+<th>夏普</th>
+<th>最大回撤</th>
+<th>近 5 日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基准（无风控）</td>
+<td>+72.1%</td>
+<td>3.52</td>
+<td>-27.9%</td>
+<td>-16.4%</td>
+</tr>
+<tr>
+<td>+ 单日止损</td>
+<td>+50.7%</td>
+<td>3.14</td>
+<td>-31.4%</td>
+<td>-6.5%</td>
+</tr>
+<tr>
+<td>+ 波动率降仓</td>
+<td>+48.3%</td>
+<td>4.65</td>
+<td>-9.2%</td>
+<td>-5.1%</td>
+</tr>
+<tr>
+<td>+ 两者都加</td>
+<td>+48.3%</td>
+<td>4.65</td>
+<td>-9.2%</td>
+<td>-5.1%</td>
+</tr>
+</tbody>
+</table>
+<p>波动率降仓的逻辑是波动越大仓位越小。赚得少了（log +48.3% vs +72.1%），但最大回撤从 -27.9% 压到 -9.2%。7/24-7/30 这一周是参数定好之后才发生的真实样本外行情：满仓基准一周亏 16.4%，降仓版只亏 5.1%。</p>
+<p>单日止损（策略当日亏超 5% 次日清仓）触发 3 次（07-06、07-17、07-27）。全样本算总账是负贡献，主要拖累来自 7/17：清仓后智谱 7/21 反弹 +36.9%，空仓错过。但 7/27 那次让止损版在最后一周只亏 6.5%（基准亏 16.4%），急跌周确实有用。叠加波动率降仓后仓位变小，止损阈值不再触发。</p>
+<p>最大回撤 -27.9% 出现在 2026-07-30（截稿时未修复），7 月中旬有一轮 -23.6% 后修复，但月底再度走扩。</p>
+<h2 id="样本外验证">样本外验证</h2>
+<p><strong>同一套规则在其他配对上平均夏普只有 0.47，智谱/MiniMax 的 3.52 不能当正常预期。</strong></p>
+<p>同一套相对动量规则（N=60），在 7 组港股同板块配对上回测（2024-07-22 至 2026-07-30，497 根日K）：</p>
+<table>
+<thead>
+<tr>
+<th>配对</th>
+<th>收益相关</th>
+<th>N=60 夏普</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>理想/蔚来</td>
+<td>0.51</td>
+<td>0.58</td>
+</tr>
+<tr>
+<td>理想/小鹏</td>
+<td>0.58</td>
+<td>0.31</td>
+</tr>
+<tr>
+<td>小鹏/蔚来</td>
+<td>0.60</td>
+<td>1.10</td>
+</tr>
+<tr>
+<td>中芯/华虹</td>
+<td>0.81</td>
+<td>1.02</td>
+</tr>
+<tr>
+<td>快手/B站</td>
+<td>0.69</td>
+<td>-0.28</td>
+</tr>
+<tr>
+<td>阿里/京东</td>
+<td>0.70</td>
+<td>1.51</td>
+</tr>
+<tr>
+<td>美团/京东</td>
+<td>0.70</td>
+<td>-0.93</td>
+</tr>
+<tr>
+<td><strong>均值</strong></td>
+<td></td>
+<td><strong>0.47</strong></td>
+</tr>
+<tr>
+<td>（对照）智谱/MiniMax</td>
+<td>0.70</td>
+<td>3.52</td>
+</tr>
+</tbody>
+</table>
+<p>最好的一组 1.51（阿里/京东），2 组为负（快手/B站、美团/京东）。短窗口（N=10、N=20）均值为负，两个月左右的窗口是横截面上均值最高的选择。</p>
+<p>7 组配对涉及 10 只票，实际独立验证约 4 次。横截面对比说明：<strong>夏普 3 以上超出这套策略的正常水平，合理预期在 0.5~1。</strong></p>
+<h2 id="实操可行性">实操可行性</h2>
+<p>理论上策略可执行，但瓶颈在统计前提和风险承受上。协整不通过意味着经典配对交易的前提缺失；顺分化做的高夏普大概率是样本运气；年化波动 150%+ 的标的，单日跳动幅度远超一般承受范围。</p>
+<p>什么情况下值得重新评估：</p>
+<ul>
+<li><strong>样本积累。</strong> 两者各自定价稳定、有 250+ 个交易日后重跑协整检验，看经典配对交易的前提是否成立。</li>
+<li><strong>信号翻向。</strong> N=60 截至 2026-07-30 只翻过 1 次，翻向后的表现完全没有验证过。</li>
+<li><strong>换配对。</strong> 在 AI 板块内部找业务更同质的组合，智谱和 MiniMax 虽然都做大模型，但市场给的估值逻辑完全不同。</li>
+</ul>
+<p><strong>口径说明：</strong> 夏普计算使用无风险利率 0。波动率降仓目标 30% 未做 20/30/40% 敏感性测试。融券利息与保证金占用未计入成本。所有统计和策略结论对基准选择不敏感（相关性、协整、回测都由日收益驱动），只有涨跌幅叙事受影响。</p>
+<blockquote>
+<p>注意：仅分享个人思路，不代表投资建议。投资有风险，需充分衡量个人风险承受能力，在持牌顾问指导下进行。</p>
+</blockquote>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/pair-zhipu-minimax/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84/">
+                    #投资</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%85%8D%E5%AF%B9%E4%BA%A4%E6%98%93/">
+                    #配对交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/">
+                    #港股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%AD%96%E7%95%A5%E5%9B%9E%E6%B5%8B/">
+                    #策略回测</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/pagegrok-in-practice/" class="prev" rel="prev" title="不想为总结一个网页花20美元，我给Chrome做了个平替插件"><i class="iconfont icon-left"></i>&nbsp;不想为总结一个网页花20美元，我给Chrome做了个平替插件</a>
+        
+        
+        <a href="https://kuhung.me/posts/meet-with-hardware-ai/" class="next" rel="next" title="创业独立观察｜和几位 AI 硬件从业者聊了聊">创业独立观察｜和几位 AI 硬件从业者聊了聊&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
