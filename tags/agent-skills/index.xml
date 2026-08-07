@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agent Skills on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/agent-skills/</link>
+    <description>Recent content in Agent Skills on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 05 Aug 2026 11:41:14 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/agent-skills/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从单 Agent 到跨 Agent 的 Skills 管理</title>
+      <link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link>
+      <pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid>
+      <description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
+以我自己为例：同时用 Claude Code、Codex 和 Cursor 三个 agent（之前还有 Gemini CLI），并在它们各自的 skill 目录里积累了几十个 skill 之后，发生了什么以及我的应对之策。
+为什么突然要管理 skill 不少其他作者说要管理 skill，是为了防治上下文腐败。他们安装了太多的 skill，以致于在决定召回用哪个 skill 时，出现打架冲突、召回准确率下降，以及影响正文内容表现的事。
+我这边装的不多，没遇到过 skill 失灵的情况。更多遇到的是如标题所言的，在多个工作工具来回切换时，skill 咋整的问题。
+典型情况就是 skill 没有全局安装，换了一个 agent 就看不到，要重装一遍。比如我在 Claude Code 里装了一个 grill-me skill（动手前让 AI 先把方案问透的技巧），用着顺手，切到 Codex 想用的时候发现它没挂在 Codex，需要重装。
+这种情形本质上其实是：Claude Code、Codex、Cursor 现在都支持 skill，但各家&amp;quot;支持&amp;quot;不等于&amp;quot;保持同步&amp;quot;。每个 agent 有自己的 skill 目录、自己的 discovery 规则。你在一个地方改了 skill，默认不会同步到其他 agent 下面。
+Skill 从&amp;quot;效率工具&amp;quot;变成了&amp;quot;需要跨工具治理的资产&amp;quot;，是这篇文章要讨论的。
+快速回顾：Skill vs Prompt vs MCP 首先我们快速回顾下什么是 skill，以及之前的相似概念：Prompt、MCP。
+Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description>
+    </item>
+    
+  </channel>
+</rss>

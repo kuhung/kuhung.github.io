@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据运营 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5/</link>
+    <description>Recent content in 数据运营 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 06 Aug 2026 18:39:39 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe Coding 产品的数据驱动怎么做</title>
+      <link>https://kuhung.me/posts/how-to-build-a-data-driven-product/</link>
+      <pubDate>Thu, 06 Aug 2026 18:39:39 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-to-build-a-data-driven-product/</guid>
+      <description>Vibe coding 很热，写出来的东西越来越像样。但好像很少有人聊 vibe coding 产品的数据怎么做。没有数据，写写自用玩具可以，但想进一步规模化和商业化，这个问题始终绕不过去。
+英文圈有一些讨论。Value Add VC 和 JustNeeda 分别写过一篇，其核心结论一致：定义北极星指标、只埋 5-10 个核心事件、每周花半小时看数据。这类文章面向的是有一定规模的 SaaS 创业者，和 vibe coding 出来的最小产品之间有些距离。
+中文圈相对更少，搜出来的基本是大厂视角的&amp;quot;埋点入门&amp;quot;或&amp;quot;用户行为追踪从入门到实践&amp;quot;，和独立产品不太搭噶。你真去看了，就会陷入很多细节。属高射炮打蚊子。
+笔者之前做算法，合作最紧密的业务方正好是产品数据运营和增长团队。回顾这些角色在干什么，对现在自己做的事情很有帮助。但很多人对数据的印象停留在活跃、营收这些大厂概念，更落地的问题反而没人讲：看什么数据、埋点怎么写、数据质量怎么保证。今天借机梳理下，从一个最小产品开始，数据该怎么做。
+总的来说，初创产品的数据建设要做的是一件事：从用户行为到迭代决策之间，建一条可获取、可解释、可验证的数据流。整个流程，可以拆为 5 步。
+一、先定义好坏，其后才是埋点 很多人一上来就问&amp;quot;接什么埋点 SDK &amp;ldquo;&amp;ldquo;GA4 够不够用&amp;rdquo;。工具当然重要，但数据工作的起点不是数据，是业务思维。大伙儿知道要接入数据，但不清楚为什么接、接入后干什么。闷头干，不是好事。
+首先，我们需要定义什么是好、什么是坏，要看的北极星指标是什么。整个项目，有且应该仅有一个核心指标。
+定义北极星指标（North Star Metric, NSM）大致两步：
+定义核心价值：在写追踪代码之前，先确定一个能最精准捕捉产品&amp;quot;价值&amp;quot;的单一指标。 确定具体动作：用户做完哪个动作，我们就认为他获得了价值。这个动作，就是北极星指标。 北极星指标举例：社交软件，每天发送的消息数。旅行 OTA 软件，预订的房晚数。音乐软件，听歌时长。
+数据要能证伪、要敢于直面现实。坏就是坏，不必麻醉自己。提前想清楚什么情况下需要调整、什么情况可以继续。标准不一定准，但一定要有。这个标准，应该能够指导决策和行动，如果不能，就不要追踪。
+拿笔者自己的项目来说。QuantFull 产品改版前，先定义五段漏斗和四周基线，改版后逐段对比，才能说清楚&amp;quot;到底改好了没有&amp;rdquo;。另一个项目则是把&amp;quot;支付成功&amp;quot;收紧为&amp;quot;完整内容呈现给用户&amp;quot;，因为只有用户真的看到了结果，才算完成了价值交付。之前有用户支付成功但是交付失败，这个影响就很大了。
+顺带提两个常见误区：第一个，过度关注虚荣指标。注册数、下载量、粉丝数这类只增不减的绝对数，好看但不能指导决策。真正有用的指标应该是可比较的比率，比如留存率、转化率、日活占比。第二个，忽视跷跷板效应。我们有一万种方法让点击率上升，但是这可能是强制弹窗、强制跳转，以牺牲用户体验和留存为代价。
+二、埋点规范与兜底 定义好了北极星指标之后，下一步就是把它拆解成具体的事件。埋点的核心原则就一条：为决策而埋点，不为数据而埋点。基本上就是上文的延伸，业务逻辑出发，能指导决策的事件才关注；宁可少而精，不要乱铺开。
+事件分四类 事件大致分四类：Pageview（自动采集，不用手动埋）、User Actions（按钮点击、表单提交等用户主动操作）、System Events（注册完成、购买、订阅变更等系统状态变化）、Custom Conversions（你自己业务定义的&amp;quot;成功&amp;quot;，比如漏斗终点）。
+具体场景上，营销站和产品内侧重不同。营销站关注 cta_clicked、form_submitted、signup_completed 这类转化事件；产品内关注 onboarding_step_completed、feature_used、purchase_completed、subscription_cancelled 这类行为事件。每个事件带上必要的属性（比如 button_text、location、feature_name、reason）。
+套到笔者自己的产品上，大概是这样。TrakToken 更偏&amp;quot;工具站&amp;quot;逻辑，核心事件是 model_compared（比了哪几个模型）、pricing_table_filtered（用了哪个筛选条件）、outbound_click（点去哪个模型官网/API 文档）。PageGrok 是个浏览器插件，更偏&amp;quot;产品内&amp;quot;逻辑，核心事件是 extension_installed、feature_used（feature_name 具体到摘要/翻译/哪个功能）、extension_uninstalled（带 reason，如果能采集到的话）。
+属性怎么挂 属性大致分四类：Page 类（page_title、page_location）、User 类（user_id、plan_type）、Campaign 类（就是 UTM 那五个）、Product 类（product_id、price 等）。建议统一词表，别每个事件各发明一套字段名。</description>
+    </item>
+    
+  </channel>
+</rss>

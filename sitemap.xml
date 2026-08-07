@@ -2,29 +2,9 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/</loc>
-      
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
       <loc>https://kuhung.me/categories/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://kuhung.me/tags/codex/</loc>
-      
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -34,7 +14,7 @@
     <url>
       <loc>https://kuhung.me/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -44,7 +24,7 @@
     <url>
       <loc>https://kuhung.me/posts/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -54,7 +34,7 @@
     <url>
       <loc>https://kuhung.me/tags/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -64,7 +44,7 @@
     <url>
       <loc>https://kuhung.me/tags/vibe-coding/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -72,9 +52,29 @@
     </url>
   
     <url>
-      <loc>https://kuhung.me/posts/how-i-use-codex/</loc>
+      <loc>https://kuhung.me/posts/how-to-build-a-data-driven-product/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
+      
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E8%BF%90%E8%90%A5/</loc>
+      
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -84,7 +84,7 @@
     <url>
       <loc>https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/</loc>
       
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
       
       
       
@@ -93,6 +93,66 @@
   
     <url>
       <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
+      
+      <lastmod>2026-08-06T18:39:39+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/tags/agent-skills/</loc>
+      
+      <lastmod>2026-08-05T11:41:14+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/</loc>
+      
+      <lastmod>2026-08-05T11:41:14+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/posts/how-to-manage-skills-for-agent/</loc>
+      
+      <lastmod>2026-08-05T11:41:14+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/tags/codex/</loc>
+      
+      <lastmod>2026-08-04T17:58:11+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/posts/use-codex-goal-build-products/</loc>
+      
+      <lastmod>2026-08-04T17:58:11+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://kuhung.me/posts/how-i-use-codex/</loc>
       
       <lastmod>2026-08-03T11:49:39+08:00</lastmod>
       
@@ -383,16 +443,6 @@
   
     <url>
       <loc>https://kuhung.me/tags/ttsi/</loc>
-      
-      <lastmod>2026-07-06T17:12:54+08:00</lastmod>
-      
-      
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</loc>
       
       <lastmod>2026-07-06T17:12:54+08:00</lastmod>
       

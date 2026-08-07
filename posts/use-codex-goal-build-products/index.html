@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/how-i-use-codex/" />
+  <link rel="next" href="https://kuhung.me/posts/how-to-manage-skills-for-agent/" />
+  <link rel="canonical" href="https://kuhung.me/posts/use-codex-goal-build-products/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           用 Codex /goal 指令从 0 到 1 验证并构建产品 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="用 Codex /goal 指令从 0 到 1 验证并构建产品 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "用 Codex \/goal 指令从 0 到 1 验证并构建产品",
+    "headline" : "用 Codex \/goal 指令从 0 到 1 验证并构建产品",
+    "description" : "随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。\n这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。\n但如果不想 Agent 反复追问呢？Codex 的\/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）\n前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。\n一个社交媒体帖子引发的产品想法 刷帖子有一个金融律所的人说，他的实习生过的日子比他好多了。新人不再像他们之前，古法审合同、一个个抠字眼、识别风险，直接丢给中外大模型即可。评论区反复在问，安全合规怎么搞、本地脱敏如何做。这点其实有不少解决方案，但是面向中小型组织和个人的似乎少见。我认为这是一个商机。\n这是一个真切存在的需求点吗，能够做到 PMF 验证吗？用户的抱怨集中在哪里？同行竞品是如何切入的，他们的定价、销量、投融资情况如何？恰好我的 Codex 额度要用不完了，这个需求我们丢给 goal 指令，实测其效果。\n六轮引导：从想法到产品 goal虽然能减少干预，但大概率交付的不是想要的。原因同开头讲的，双方都未获得关于产品的全部信息。”我“的观点和态度，会随着”我“掌握的信息变化。Agent 也会根据我的反馈信息，逐渐调整它的切入点和交付物。最终下来，我在整个过程中做了六次关键引导。\n第一轮：从一个功能设想，转成市场问题。 原始观察和想法丢给 Codex 后，它直接开始假设需求成立。我的反馈是：不假设需求成立，先验证场景、替代品与付费可能。Codex 随即完成了中国与海外调研、竞品、定价、市场规模的整理。结论是风险场景真实，但个人脱敏工具并非空白市场，存在多个现有产品。\n第二轮：从法律行业，扩到真实工作流。 市场切入范围调整。我反馈不要限制在法律行业，公司机密也不能直接喂给模型，试图让 Agent 思路放宽。Codex 重新扫描了个人插件、浏览器 DLP、企业治理与 Agent 安全的竞品地图。发现企业会为治理、审计和部署付费，个人通用插件的安装甚少。\n第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心\u0026quot;还原\u0026quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。\n第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制\/粘贴切入。暂不做文件工作区、PDF\/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。\n第五轮：从\u0026quot;造功能\u0026quot;，转向\u0026quot;嵌入已有抱怨\u0026quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。\n第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-08-04 17:58:11 \u002b0800 CST",
+    "dateModified" : "2026-08-04 17:58:11 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/use-codex-goal-build-products\/",
+    "wordCount" : "125",
+    "keywords" : [ "Codex","AI工具","独立开发","vibe coding", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">用 Codex /goal 指令从 0 到 1 验证并构建产品</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-08-04 itemprop="datePublished">August 4, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一个社交媒体帖子引发的产品想法">一个社交媒体帖子引发的产品想法</a></li>
+    <li><a href="#六轮引导从想法到产品">六轮引导：从想法到产品</a></li>
+    <li><a href="#交付了什么">交付了什么</a></li>
+    <li><a href="#确保理解到位再动手">确保理解到位再动手</a></li>
+    <li><a href="#堵不如疏">堵不如疏</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。</p>
+<p>这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。</p>
+<p>但如果不想 Agent 反复追问呢？Codex 的/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）</p>
+<p>前文讲过<a href="/posts/how-i-use-codex/">我用 Codex 来做什么</a>，这次拿一个完整案例展开。</p>
+<h2 id="一个社交媒体帖子引发的产品想法">一个社交媒体帖子引发的产品想法</h2>
+<p>刷帖子有一个金融律所的人说，他的实习生过的日子比他好多了。新人不再像他们之前，古法审合同、一个个抠字眼、识别风险，直接丢给中外大模型即可。评论区反复在问，安全合规怎么搞、本地脱敏如何做。这点其实有不少解决方案，但是面向中小型组织和个人的似乎少见。我认为这是一个商机。</p>
+<p>这是一个真切存在的需求点吗，能够做到 PMF 验证吗？用户的抱怨集中在哪里？同行竞品是如何切入的，他们的定价、销量、投融资情况如何？恰好我的 Codex 额度要用不完了，这个需求我们丢给 goal 指令，实测其效果。</p>
+<h2 id="六轮引导从想法到产品">六轮引导：从想法到产品</h2>
+<p>goal虽然能减少干预，但大概率交付的不是想要的。原因同开头讲的，双方都未获得关于产品的全部信息。”我“的观点和态度，会随着”我“掌握的信息变化。Agent 也会根据我的反馈信息，逐渐调整它的切入点和交付物。最终下来，我在整个过程中做了六次关键引导。</p>
+<p><strong>第一轮：从一个功能设想，转成市场问题。</strong> 原始观察和想法丢给 Codex 后，它直接开始假设需求成立。我的反馈是：不假设需求成立，先验证场景、替代品与付费可能。Codex 随即完成了中国与海外调研、竞品、定价、市场规模的整理。结论是风险场景真实，但个人脱敏工具并非空白市场，存在多个现有产品。</p>
+<p><strong>第二轮：从法律行业，扩到真实工作流。</strong> 市场切入范围调整。我反馈不要限制在法律行业，公司机密也不能直接喂给模型，试图让 Agent 思路放宽。Codex 重新扫描了个人插件、浏览器 DLP、企业治理与 Agent 安全的竞品地图。发现企业会为治理、审计和部署付费，个人通用插件的安装甚少。</p>
+<p><strong>第三轮：从功能堆叠，收敛到核心承诺。</strong> 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心&quot;还原&quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。</p>
+<p><strong>第四轮：从重工作区，收敛到轻量 MVP。</strong> Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制/粘贴切入。暂不做文件工作区、PDF/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。</p>
+<p><strong>第五轮：从&quot;造功能&quot;，转向&quot;嵌入已有抱怨&quot;。</strong> 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。</p>
+<p><strong>第六轮：从 Skill 拦截，转成诊断获客。</strong> 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</p>
+<p>Agent 给我下了一个目标：找到一个明确人群、一个真实场景，证明其会重复使用。</p>
+<h2 id="交付了什么">交付了什么</h2>
+<p>前前后后，Agent 自己统计的时间面板显示，花了7h6m25s，消耗了一半的周额度。从结果上看，竞品调研比我想的写得细致，调用数据分析写的 BP 数据也蛮不错，比自己写省力。甚至还帮我将诊断 Skill 发到 Skill 聚合平台，已经开始有人安装。</p>
+<p>具体来说，是这么些东西：</p>
+<ul>
+<li>可运行原型：浏览器本地检测器 + Agent Skill（v0.3.0）</li>
+<li>市场研究：24 条投诉语料 + 13 款竞品分析 + 竞争格局报告</li>
+<li>验证实验设计：三场景观察任务 + 扩展脚本</li>
+<li>决策档案：186 条对话的完整记录</li>
+</ul>
+<p>在需求验证的同时，帮我把落地页、获客原型demo给写了。</p>
+<h2 id="确保理解到位再动手">确保理解到位再动手</h2>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/08/66ddb3fd6e1f07e6.webp" alt="六轮引导过程：从功能设想到市场验证，作者与 Codex 逐步收敛产品方向" class="lazyload"><figcaption class="image-caption">六轮引导过程：从功能设想到市场验证，作者与 Codex 逐步收敛产品方向</figcaption></figure></p>
+<p>交涉这么多，我越发觉得自己像一个坏领导：“还是第一版好”、“你再补充些资料，我们看看怎么调整”。但需求澄清就是这样的，你不可能对一个未知之物有全貌的了解。</p>
+<p>不过也不是没有缓解之道，之前用 <strong>grill-me</strong> 效果不错，这是一个动手前先尽可能想清楚的 Skill。它会对你的方案反复追问，直到决策树收敛。想清楚、问清楚再开动，这点和对新人的要求基本一样。所以你看，职场的经验同样能平移到 Agent 协作上。大道理是相通的。</p>
+<h2 id="堵不如疏">堵不如疏</h2>
+<p>不少管理者和公司，会认为存在数据泄漏风险，所以不能用外部 AI。但我更倾向堵不如疏。用我们的工具，帮你的产品、工作流更加放心使用 AI，充分发挥先进生产力工具的作用，是使命之所在。</p>
+<p>产品最终命名为 <strong>ContextArmor</strong>，定位是 AI 使用场景下的隐私防护。这个产品名，还花了不少时间。因为原来的名字 safecontext 被别人占了。花了几轮对话来敲定命名，不重叠的同时还要体现产品特色。</p>
+<p>有意向的读者朋友，欢迎私聊我进行产品测试。想看goal详细报告的，也可以后台私我。</p>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/use-codex-goal-build-products/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/codex/">
+                    #Codex</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
+                    #AI工具</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/">
+                    #独立开发</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/vibe-coding/">
+                    #vibe coding</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/how-i-use-codex/" class="prev" rel="prev" title="普通人要 Codex 有什么用？"><i class="iconfont icon-left"></i>&nbsp;普通人要 Codex 有什么用？</a>
+        
+        
+        <a href="https://kuhung.me/posts/how-to-manage-skills-for-agent/" class="next" rel="next" title="从单 Agent 到跨 Agent 的 Skills 管理">从单 Agent 到跨 Agent 的 Skills 管理&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

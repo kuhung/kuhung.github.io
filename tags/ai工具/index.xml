@@ -6,7 +6,45 @@
     <description>Recent content in AI工具 on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 03 Aug 2026 11:49:39 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Aug 2026 11:41:14 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从单 Agent 到跨 Agent 的 Skills 管理</title>
+      <link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link>
+      <pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid>
+      <description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
+以我自己为例：同时用 Claude Code、Codex 和 Cursor 三个 agent（之前还有 Gemini CLI），并在它们各自的 skill 目录里积累了几十个 skill 之后，发生了什么以及我的应对之策。
+为什么突然要管理 skill 不少其他作者说要管理 skill，是为了防治上下文腐败。他们安装了太多的 skill，以致于在决定召回用哪个 skill 时，出现打架冲突、召回准确率下降，以及影响正文内容表现的事。
+我这边装的不多，没遇到过 skill 失灵的情况。更多遇到的是如标题所言的，在多个工作工具来回切换时，skill 咋整的问题。
+典型情况就是 skill 没有全局安装，换了一个 agent 就看不到，要重装一遍。比如我在 Claude Code 里装了一个 grill-me skill（动手前让 AI 先把方案问透的技巧），用着顺手，切到 Codex 想用的时候发现它没挂在 Codex，需要重装。
+这种情形本质上其实是：Claude Code、Codex、Cursor 现在都支持 skill，但各家&amp;quot;支持&amp;quot;不等于&amp;quot;保持同步&amp;quot;。每个 agent 有自己的 skill 目录、自己的 discovery 规则。你在一个地方改了 skill，默认不会同步到其他 agent 下面。
+Skill 从&amp;quot;效率工具&amp;quot;变成了&amp;quot;需要跨工具治理的资产&amp;quot;，是这篇文章要讨论的。
+快速回顾：Skill vs Prompt vs MCP 首先我们快速回顾下什么是 skill，以及之前的相似概念：Prompt、MCP。
+Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description>
+    </item>
+    
+    <item>
+      <title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title>
+      <link>https://kuhung.me/posts/use-codex-goal-build-products/</link>
+      <pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid>
+      <description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
+这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。
+但如果不想 Agent 反复追问呢？Codex 的/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）
+前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。
+一个社交媒体帖子引发的产品想法 刷帖子有一个金融律所的人说，他的实习生过的日子比他好多了。新人不再像他们之前，古法审合同、一个个抠字眼、识别风险，直接丢给中外大模型即可。评论区反复在问，安全合规怎么搞、本地脱敏如何做。这点其实有不少解决方案，但是面向中小型组织和个人的似乎少见。我认为这是一个商机。
+这是一个真切存在的需求点吗，能够做到 PMF 验证吗？用户的抱怨集中在哪里？同行竞品是如何切入的，他们的定价、销量、投融资情况如何？恰好我的 Codex 额度要用不完了，这个需求我们丢给 goal 指令，实测其效果。
+六轮引导：从想法到产品 goal虽然能减少干预，但大概率交付的不是想要的。原因同开头讲的，双方都未获得关于产品的全部信息。”我“的观点和态度，会随着”我“掌握的信息变化。Agent 也会根据我的反馈信息，逐渐调整它的切入点和交付物。最终下来，我在整个过程中做了六次关键引导。
+第一轮：从一个功能设想，转成市场问题。 原始观察和想法丢给 Codex 后，它直接开始假设需求成立。我的反馈是：不假设需求成立，先验证场景、替代品与付费可能。Codex 随即完成了中国与海外调研、竞品、定价、市场规模的整理。结论是风险场景真实，但个人脱敏工具并非空白市场，存在多个现有产品。
+第二轮：从法律行业，扩到真实工作流。 市场切入范围调整。我反馈不要限制在法律行业，公司机密也不能直接喂给模型，试图让 Agent 思路放宽。Codex 重新扫描了个人插件、浏览器 DLP、企业治理与 Agent 安全的竞品地图。发现企业会为治理、审计和部署付费，个人通用插件的安装甚少。
+第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心&amp;quot;还原&amp;quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。
+第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制/粘贴切入。暂不做文件工作区、PDF/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。
+第五轮：从&amp;quot;造功能&amp;quot;，转向&amp;quot;嵌入已有抱怨&amp;quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。
+第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description>
+    </item>
+    
     <item>
       <title>普通人要 Codex 有什么用？</title>
       <link>https://kuhung.me/posts/how-i-use-codex/</link>
