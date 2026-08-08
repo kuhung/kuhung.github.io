@@ -6,7 +6,23 @@
     <description>Recent content in LLM on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 06 Jul 2026 17:12:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Aug 2026 22:53:52 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM Token 支出指数能预测 AI 行情吗？</title>
+      <link>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</link>
+      <pubDate>Fri, 07 Aug 2026 22:53:52 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</guid>
+      <description>拆解模型定价、用量迁移与美股 AI 软硬件走势的先行关系
+背景介绍 上个月写了一篇关于 TTSI 的复现与归因分析，结论是 5-6 月的指数回落主要由中国厂商降价和用量迁移驱动，整体支付意愿并未下降。文章发出之后，收到了不少反馈。公众号读者的反应还不错，&amp;ldquo;非常不错的分析&amp;quot;&amp;ldquo;点赞&amp;quot;这类留言不少。TrakToken 网站的数据也迎来快速增长，很快用户数便破万。8 月 6 日，日活用户数创下新高，突破 800。
+另有一位做私募的朋友反馈他接收到的信息和看法：Anthropic 和 OpenAI 的前沿模型，在 OpenRouter 上的收入和份额趋势到底怎么样？中国模型的冲击，是打了定价权、还是抢了份额、还是两个都有？Token 降价这么猛，量增长没问题，但价格降得太狠的话，市场规模可能没有大家想的那么大，最后资本开支就会出问题。
+他的原话是&amp;quot;资本开支其实现在完全依赖债务融资，所以还是要边走边看&amp;rdquo;。这引出一个问题：TTSI 和美股 AI 行情之间，到底有没有可量化的关系？如果指数能够&amp;quot;预测&amp;quot;行情走势，哪怕是部分的、有条件的，对于关注 AI 赛道的投资者来说都有价值。
+如果前沿模型的定价权在流失，是不是意味着硬件端的资本开支（capex）逻辑正在松动？这是一个值得认真做的分析。
+先看一眼近期的 AI 行情 分析之前，先回顾下标的本身的走势。这里选了三个 ETF 做参照：
+SMH（VanEck 半导体 ETF）：代表 AI 硬件端，重仓英伟达、台积电、博通 IGV（iShares 软件 ETF）：代表 AI 软件端，覆盖 Salesforce、Adobe、ServiceNow 等 QQQ（纳斯达克 100 ETF）：大盘基准 从 4 月 1 日到 8 月初，SMH 走得最强，IGV 相对温和，QQQ 居中。TTSI 的波动幅度远大于三个 ETF，这点从标准化走势图上很明显。特别是 5 月底到 7 月，TTSI 经历了大幅波动（和上篇文章分析的中国厂商降价、用量迁移的时间窗口重合），而同期 SMH 持续走高。
+直觉上，&amp;ldquo;AI token 越来越贵 → 算力需求大 → 利好硬件&amp;quot;这条逻辑链看起来说得通。但直觉需要验证。</description>
+    </item>
+    
     <item>
       <title>LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</title>
       <link>https://kuhung.me/posts/ttsi/</link>

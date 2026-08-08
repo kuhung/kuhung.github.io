@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
   <link rel="prev" href="https://kuhung.me/posts/how-to-manage-skills-for-agent/" />
-  
+  <link rel="next" href="https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/" />
   <link rel="canonical" href="https://kuhung.me/posts/how-to-build-a-data-driven-product/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,10 +33,10 @@ if (!doNotTrack) {
   <title>
        
        
-           Vibe Coding 产品的数据驱动怎么做 | Kuhung | 谷粒
+           Vibe Coding 产品的数据怎么做 | Kuhung | 谷粒
        
   </title>
-  <meta name="title" content="Vibe Coding 产品的数据驱动怎么做 | Kuhung | 谷粒">
+  <meta name="title" content="Vibe Coding 产品的数据怎么做 | Kuhung | 谷粒">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -55,8 +55,8 @@ if (!doNotTrack) {
          "@id": "https:\/\/kuhung.me\/"
     },
     "articleSection" : "posts",
-    "name" : "Vibe Coding 产品的数据驱动怎么做",
-    "headline" : "Vibe Coding 产品的数据驱动怎么做",
+    "name" : "Vibe Coding 产品的数据怎么做",
+    "headline" : "Vibe Coding 产品的数据怎么做",
     "description" : "Vibe coding 很热，写出来的东西越来越像样。但好像很少有人聊 vibe coding 产品的数据怎么做。没有数据，写写自用玩具可以，但想进一步规模化和商业化，这个问题始终绕不过去。\n英文圈有一些讨论。Value Add VC 和 JustNeeda 分别写过一篇，其核心结论一致：定义北极星指标、只埋 5-10 个核心事件、每周花半小时看数据。这类文章面向的是有一定规模的 SaaS 创业者，和 vibe coding 出来的最小产品之间有些距离。\n中文圈相对更少，搜出来的基本是大厂视角的\u0026quot;埋点入门\u0026quot;或\u0026quot;用户行为追踪从入门到实践\u0026quot;，和独立产品不太搭噶。你真去看了，就会陷入很多细节。属高射炮打蚊子。\n笔者之前做算法，合作最紧密的业务方正好是产品数据运营和增长团队。回顾这些角色在干什么，对现在自己做的事情很有帮助。但很多人对数据的印象停留在活跃、营收这些大厂概念，更落地的问题反而没人讲：看什么数据、埋点怎么写、数据质量怎么保证。今天借机梳理下，从一个最小产品开始，数据该怎么做。\n总的来说，初创产品的数据建设要做的是一件事：从用户行为到迭代决策之间，建一条可获取、可解释、可验证的数据流。整个流程，可以拆为 5 步。\n一、先定义好坏，其后才是埋点 很多人一上来就问\u0026quot;接什么埋点 SDK \u0026ldquo;\u0026ldquo;GA4 够不够用\u0026rdquo;。工具当然重要，但数据工作的起点不是数据，是业务思维。大伙儿知道要接入数据，但不清楚为什么接、接入后干什么。闷头干，不是好事。\n首先，我们需要定义什么是好、什么是坏，要看的北极星指标是什么。整个项目，有且应该仅有一个核心指标。\n定义北极星指标（North Star Metric, NSM）大致两步：\n定义核心价值：在写追踪代码之前，先确定一个能最精准捕捉产品\u0026quot;价值\u0026quot;的单一指标。 确定具体动作：用户做完哪个动作，我们就认为他获得了价值。这个动作，就是北极星指标。 北极星指标举例：社交软件，每天发送的消息数。旅行 OTA 软件，预订的房晚数。音乐软件，听歌时长。\n数据要能证伪、要敢于直面现实。坏就是坏，不必麻醉自己。提前想清楚什么情况下需要调整、什么情况可以继续。标准不一定准，但一定要有。这个标准，应该能够指导决策和行动，如果不能，就不要追踪。\n拿笔者自己的项目来说。QuantFull 产品改版前，先定义五段漏斗和四周基线，改版后逐段对比，才能说清楚\u0026quot;到底改好了没有\u0026rdquo;。另一个项目则是把\u0026quot;支付成功\u0026quot;收紧为\u0026quot;完整内容呈现给用户\u0026quot;，因为只有用户真的看到了结果，才算完成了价值交付。之前有用户支付成功但是交付失败，这个影响就很大了。\n顺带提两个常见误区：第一个，过度关注虚荣指标。注册数、下载量、粉丝数这类只增不减的绝对数，好看但不能指导决策。真正有用的指标应该是可比较的比率，比如留存率、转化率、日活占比。第二个，忽视跷跷板效应。我们有一万种方法让点击率上升，但是这可能是强制弹窗、强制跳转，以牺牲用户体验和留存为代价。\n二、埋点规范与兜底 定义好了北极星指标之后，下一步就是把它拆解成具体的事件。埋点的核心原则就一条：为决策而埋点，不为数据而埋点。基本上就是上文的延伸，业务逻辑出发，能指导决策的事件才关注；宁可少而精，不要乱铺开。\n事件分四类 事件大致分四类：Pageview（自动采集，不用手动埋）、User Actions（按钮点击、表单提交等用户主动操作）、System Events（注册完成、购买、订阅变更等系统状态变化）、Custom Conversions（你自己业务定义的\u0026quot;成功\u0026quot;，比如漏斗终点）。\n具体场景上，营销站和产品内侧重不同。营销站关注 cta_clicked、form_submitted、signup_completed 这类转化事件；产品内关注 onboarding_step_completed、feature_used、purchase_completed、subscription_cancelled 这类行为事件。每个事件带上必要的属性（比如 button_text、location、feature_name、reason）。\n套到笔者自己的产品上，大概是这样。TrakToken 更偏\u0026quot;工具站\u0026quot;逻辑，核心事件是 model_compared（比了哪几个模型）、pricing_table_filtered（用了哪个筛选条件）、outbound_click（点去哪个模型官网\/API 文档）。PageGrok 是个浏览器插件，更偏\u0026quot;产品内\u0026quot;逻辑，核心事件是 extension_installed、feature_used（feature_name 具体到摘要\/翻译\/哪个功能）、extension_uninstalled（带 reason，如果能采集到的话）。\n属性怎么挂 属性大致分四类：Page 类（page_title、page_location）、User 类（user_id、plan_type）、Campaign 类（就是 UTM 那五个）、Product 类（product_id、price 等）。建议统一词表，别每个事件各发明一套字段名。",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
@@ -123,7 +123,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">Vibe Coding 产品的数据驱动怎么做</h1>
+        <h1 class="post-title" itemprop="name headline">Vibe Coding 产品的数据怎么做</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -386,6 +386,8 @@ if (!doNotTrack) {
         
         <a href="https://kuhung.me/posts/how-to-manage-skills-for-agent/" class="prev" rel="prev" title="从单 Agent 到跨 Agent 的 Skills 管理"><i class="iconfont icon-left"></i>&nbsp;从单 Agent 到跨 Agent 的 Skills 管理</a>
         
+        
+        <a href="https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/" class="next" rel="next" title="LLM Token 支出指数能预测 AI 行情吗？">LLM Token 支出指数能预测 AI 行情吗？&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
