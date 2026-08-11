@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GA4 on Kuhung | 谷粒</title>
+    <link>https://kuhung.me/tags/ga4/</link>
+    <description>Recent content in GA4 on Kuhung | 谷粒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 11 Aug 2026 14:38:58 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ga4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GA4 实践指南：从配置到 AI 工作流</title>
+      <link>https://kuhung.me/posts/ga4-in-practice/</link>
+      <pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ga4-in-practice/</guid>
+      <description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
+为什么单独写一篇？GA4 是 MVP 产品最容易&amp;quot;接了但没用好&amp;quot;的工具。接入只要一行代码，但要真正用出价值，自定义维度注册、埋点约定落文档、多工具口径对齐，这些坑 AI Agent 大概率不知道。
+一、GA4 是什么 GA4 是 Google 提供的免费网站和应用分析工具，2023 年全面替代 Universal Analytics。核心变化从&amp;quot;页面浏览 + 会话&amp;quot;模型转向事件驱动模型：所有用户交互都是事件，页面浏览也不例外。不清楚也没关系，就当成页面计数器好了。
+对小规模开发来说，GA4 的价值在于三点：免费、功能全（漏斗、留存、探索报表都有）、BigQuery 免费导出。代价也很明确：配置门槛高，学习曲线陡，生态相对封闭。但是你如果做出海、做谷歌生态，就没办法绕过它。
+二、功能关注点 GA4 后台功能繁多，MVP 产品不需要全用。以下是按实用程度排的几个核心功能。
+值得花时间的 探索报表：GA4 里最有价值的功能。自由形式的分析画布，可做漏斗、路径分析、同期群留存。标准报表是预设好的仪表盘，探索报表才是你真正需要的分析工具。它的学习曲线陡，第一次搭漏斗报表可能摸不着头脑。跟某些公司里的自定义报表没法比。
+自定义维度与指标：最容易踩坑、代价最大的功能。GA4 的规则是：事件参数如果没有在后台注册为自定义维度或指标，数据进了系统也不进报表，Data API 查不到，且历史数据无法补回。后面 PageGrok 的案例会详细说这个坑。
+增强衡量：滚动、外链点击、站内搜索、视频播放、文件下载，这些事件开箱即用，不需要额外埋点。
+DebugView：实时查看单个设备发送的事件和参数。新埋点上线后，先在 DebugView 里确认事件到达、参数值正确，再去看报表。不验证就直接看报表，数据不对还不知道问题出在哪。
+可以晚点再碰的 标准报表：预设的仪表盘，看个大盘趋势可以，做深度分析不够用。日常扫一眼流量来源和实时用户数就行。
+受众群体：需要一定流量基础才有意义。日活不到 500 的时候，细分受众样本太小，分析不出什么。
+Google Ads 集成：没投广告的话完全不用管。
+三、关键配置项 基础接入不赘述，建属性、建数据流、拿到衡量 ID（G-XXXXXXX），加到网站里。下面是几个容易被忽略、但直接影响数据质量的配置。
+数据保留期限 默认 2 个月，建议改为最长的 14 个月。这个设置只影响探索报表（标准报表不受限），而你真正需要的深度分析全在探索报表里。两个月后数据就查不到了，回头想做同期对比发现数据没了，就晚了。
+路径：GA4 → 管理 → 数据设置 → 数据保留。
+内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description>
+    </item>
+    
+  </channel>
+</rss>
