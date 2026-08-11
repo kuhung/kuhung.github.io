@@ -6,9 +6,24 @@
     <description>Recent content in vibe coding on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 06 Aug 2026 18:39:39 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Aug 2026 23:16:24 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Vibe Coding 产品的数据怎么做</title>
+      <title>驾驭你的 Agent Skills 和系统指令</title>
+      <link>https://kuhung.me/posts/harness-your-skills/</link>
+      <pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/harness-your-skills/</guid>
+      <description>打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
+先装一堆别人的 Skill，却没搞清楚系统有什么、自己需要什么。顺序应该反过来：先摸清 Cursor、Codex、Claude Code 各自预置了什么，再判断自己缺什么，薄弱点拿别人的 Skill 临时补上，同时把自己的专长编成 Skill 输出。
+补丁性质的skills迟早会被模型原生能力吞并，个人性质的skills才是长期资产。
+系统有什么 用 Agent 写代码，背后不止一个聊天窗口。从下到上大致是五层：基座模型决定推理上限；Tool 是模型能调用的外部能力（浏览器、终端、MCP）；Skill 是操作手册（一份 SKILL.md，教 Agent 按什么步骤用什么工具完成任务）；Rules 是项目级背景约束（Cursor 的 .cursor/rules/、Codex 的 AGENTS.md、Claude Code 的 CLAUDE.md）；Hooks 是守门员（脚本层执行，模型绕不过去，也不花推理 token）。还有一层 Subagent，主 Agent 派生子代理并行工作。
+搞清楚哪层做什么，才不会装一个 Skill 去做本该是 Hook 的事。
+原生指令 三个平台的原生指令覆盖面比大多数人以为的要广：
+任务 原生怎么做 代码审查 Claude Code /code-review --comment 直接发 PR 行内评论；Codex /review；Cursor 内置 review-bugbot、review-security 长任务管理 Codex /goal（edit/pause/resume）；Claude Code /goal 释放上下文 Codex /compact；Claude Code /compact [instructions] 并行工作 Claude Code /subtask、/fork、/batch；Codex /agent、/subagents；Cursor Subagent（Task 工具） 规划模式 Codex /plan；Claude Code /plan；Cursor Shift+Tab 初始化仓库说明 Codex /init 生成 AGENTS.</description>
+    </item>
+    
+    <item>
+      <title>Vibe Coding 产品数据建设：5步框架与数据清单</title>
       <link>https://kuhung.me/posts/how-to-build-a-data-driven-product/</link>
       <pubDate>Thu, 06 Aug 2026 18:39:39 +0800</pubDate>
       
