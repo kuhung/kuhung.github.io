@@ -68,7 +68,7 @@ if (!doNotTrack) {
     "datePublished": "2026-08-05 11:41:14 \u002b0800 CST",
     "dateModified" : "2026-08-05 11:41:14 \u002b0800 CST",
     "url" : "https:\/\/kuhung.me\/posts\/how-to-manage-skills-for-agent\/",
-    "wordCount" : "627",
+    "wordCount" : "650",
     "keywords" : [ "AI工具","vibe coding","Agent Skills","独立开发", "Kuhung | 谷粒"]
 }
 </script>
@@ -281,7 +281,10 @@ if (!doNotTrack) {
 <p>路线 C 认为不同 agent 的 discovery 规则本来就不一样，试图完全自动同步反而危险。但对于个人用户来说，我认为路线 A 的投入产出比最高。</p>
 <h3 id="我自己的方案">我自己的方案</h3>
 <p>我目前用的是路线 A 为主，路线 C 的理念做补充。</p>
-<p><strong>路线 A 体现在共享层。</strong> 我有两个 skill 源仓库（git 管理），一个是读书/管理类（27 个 skill），另一个是量化/金融类（5 个 skill）。这 32 个 skill 通过 <code>ln -s</code> 软链到 <code>~/.agents/skills/</code>。这个目录是跨 agent 的共享约定，Claude Code、Codex、Cursor 三家都会读取，改一次源文件全 agent 生效。各家 agent 默认安装 skill 时走的是自己的路径（<code>~/.claude/</code>、<code>~/.codex/</code>、<code>~/.cursor/</code>），但只要你手动放到 <code>~/.agents/</code>，就不需要再给每家单独挂一份。</p>
+<p><strong>路线 A 体现在共享层。</strong> 我有两个 skill 源仓库（git 管理），一个是读书/管理类（27 个 skill），另一个是量化/金融类（5 个 skill）。这 32 个 skill 通过 <code>ln -s</code> 软链到 <code>~/.agents/skills/</code>。这个目录是跨 agent 的共享约定，~~Claude Code、~~Codex、Cursor <del>三</del>两家都会读取，改一次源文件全 agent 生效。各家 agent 默认安装 skill 时走的是自己的路径（<code>~/.claude/</code>、<code>~/.codex/</code>、<code>~/.cursor/</code>），但只要你手动放到 <code>~/.agents/</code>，就不需要再给每家单独挂一份。</p>
+<blockquote>
+<p><strong>勘误（2026-08-16）：</strong> 经实际验证，Claude Code <strong>不会</strong>读取 <code>~/.agents/skills/</code> 目录，它只认 <code>~/.claude/skills/</code> 和项目级 <code>.claude/skills/</code>（<a href="https://code.claude.com/docs/en/skills">官方文档</a>）。GitHub 上有两个 open issue 在要求支持该路径（<a href="https://github.com/anthropics/claude-code/issues/53950">#53950</a>、<a href="https://github.com/anthropics/claude-code/issues/66352">#66352</a>）。变通方案是将 <code>~/.agents/skills/</code> 下的 skill 软链到 <code>~/.claude/skills/</code>。Codex 和 Cursor 读取 <code>~/.agents/skills/</code> 的结论不变。</p>
+</blockquote>
 <p><strong>路线 C 体现在专属层。</strong> 不是所有 skill 都应该同步。Cursor 专攻写作场景（content-matrix、review-zh-blog 等），Codex 专攻量化回测（quant-trading 等），Claude Code 相对全能。这些 skill 只在对应 agent 下才有意义，硬同步到其他 agent 反而增加 discovery 时的噪音。这就是路线 C 说的&quot;承认差异，不强求统一&rdquo;。此外，Cursor 的 Figma、Notion、Stripe 插件自带 skill，由插件系统自动管理，不额外手动介入。</p>
 <p>总量：共享 32 个 + 各 agent 专属约 20 个 + 插件自带若干，整体 60+。</p>
 <p><strong>一个容易混淆的点：共享目录不等于版本管理。</strong> <code>~/.agents/skills/</code> 解决的是分发，让所有 agent 发现同一批 skill。但分发和版本管理是两码事。我的 book-skills 仓库是 git 管理的，有提交历史，可以做分支。skill 源仓库管&quot;有没有版本记录&rdquo;，<code>~/.agents/</code> 管&quot;谁能看到&rdquo;，两者解决的不是同一层问题。</p>

@@ -6,7 +6,37 @@
     <description>Recent content in SEO on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 17 Mar 2026 10:37:36 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/seo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Aug 2026 11:25:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/seo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搜索与 AI 可见性：让需要你产品的人找到你</title>
+      <link>https://kuhung.me/posts/seo-enhance/</link>
+      <pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/seo-enhance/</guid>
+      <description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
+笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
+做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。
+用这个比方串一下全文逻辑：
+搜索需求决定这家店应该卖什么，不是先铺货再猜 技术配置保证路通、门能开，搜索引擎可以发现你的店 页面内容让招牌和货架真正回答顾客的问题 结构化数据给搜索系统一张规范的&amp;quot;商品卡&amp;quot;，帮它理解你卖的是什么 页面之间的链接像店内导视，把顾客带到相关区域 AI 可见性观察 AI 助手在推荐店铺时有没有提到你 应用商店是另一座商场，有自己的招牌规则和排名逻辑 在上述的内容之外，还有很多东西需要考虑。包括但不限于：进店后怎么让人掏钱（转化优化），怎么让内容高效自传播（那是外链和营销的事）。这篇只介绍&amp;quot;让人找到你的店&amp;quot;。
+下面按&amp;quot;基础、进阶、验证&amp;quot;三步展开。
+一、基础：搞清楚问题在哪 1.1 人们在找什么 这是所有后续工作的起点。很多人反其道而行之：&amp;ldquo;产品搞好了，咋没流量，听说要搞 SEO，让我来看看 SEO 咋优化&amp;rdquo;，连用户在搜什么都没搞清楚。
+核心问题：你的目标用户遇到问题时，会在搜索框或“豆包”聊天里打什么字？
+不要从关键词工具开始猜。按下面几步收集和验证证据。
+第一步：写清楚你卖给谁
+先用一句话描述：
+当____人遇到____场景时，他想完成____，但被____卡住。 比如：
+当小型 AI 产品团队准备选择模型 API 时， 他想估算不同模型完成同一任务的真实成本， 但被不同计费单位、上下文价格和供应商页面卡住。 这只是待验证的假设，不要把它当成需求存在的证据。
+第二步：收集用户的原话
+找离购买或使用最近的材料：客服记录、用户反馈、站内搜索、取消原因、竞品评价里的抱怨。记录完整句子和场景。比如：&amp;ldquo;Claude 和 GPT 做长文本摘要哪个 API 更便宜&amp;rdquo;。
+完全没有用户的话，可以先收集 10-20 条公开原话（社区、论坛、评价）作为假设池，但最好标记为推测。
+第三步：看已经发生的搜索
+如果网站已有曝光，Search Console 的 Queries 和 Pages 最直接：哪些查询曾展示你、哪些有曝光但没人点、一个查询落在了哪些页面上。
+还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。
+第四步：实际搜一搜，判断用户想要什么
+拿候选查询去搜，看第一页主要是什么类型的结果：
+教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description>
+    </item>
+    
     <item>
       <title>GEO的过去、未来与反作弊算法</title>
       <link>https://kuhung.me/posts/geo-and-anticheat/</link>

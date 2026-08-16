@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <link rel="prev" href="https://kuhung.me/posts/seo-enhance/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/maximization-your-claude-code-sessions/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           如何最大化 Claude Code Session 的价值 | Kuhung | 谷粒
+       
+  </title>
+  <meta name="title" content="如何最大化 Claude Code Session 的价值 | Kuhung | 谷粒">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/kuhung.me\/"
+    },
+    "articleSection" : "posts",
+    "name" : "如何最大化 Claude Code Session 的价值",
+    "headline" : "如何最大化 Claude Code Session 的价值",
+    "description" : "这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。\n我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。\n本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。\n一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。\n我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token。\n二、token 价格的决定方式 原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。\n模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。\n输入和输出的区别 原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）\n输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。",
+    "inLanguage" : "zh-CN",
+    "author" : "谷粒",
+    "creator" : "谷粒",
+    "publisher": "谷粒",
+    "accountablePerson" : "谷粒",
+    "copyrightHolder" : "谷粒",
+    "copyrightYear" : "2026",
+    "datePublished": "2026-08-15 21:17:08 \u002b0800 CST",
+    "dateModified" : "2026-08-15 21:17:08 \u002b0800 CST",
+    "url" : "https:\/\/kuhung.me\/posts\/maximization-your-claude-code-sessions\/",
+    "wordCount" : "825",
+    "keywords" : [ "Claude Code","AI编程","token优化", "Kuhung | 谷粒"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/about/" title="">关于我</a>
+                
+                <a class="menu-item" href="/archives/" title="">归档</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">如何最大化 Claude Code Session 的价值</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-08-15 itemprop="datePublished">August 15, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一成本模型变化">一、成本模型变化</a></li>
+    <li><a href="#二token-价格的决定方式">二、token 价格的决定方式</a>
+      <ul>
+        <li><a href="#输入和输出的区别">输入和输出的区别</a></li>
+        <li><a href="#提示缓存prompt-cache">提示缓存（Prompt Cache）</a></li>
+      </ul>
+    </li>
+    <li><a href="#三单次-session-的-token-组成">三、单次 session 的 token 组成</a>
+      <ul>
+        <li><a href="#上下文里装了什么">上下文里装了什么</a></li>
+        <li><a href="#上下文停留多少轮">上下文停留多少轮</a></li>
+        <li><a href="#subagent">Subagent</a></li>
+      </ul>
+    </li>
+    <li><a href="#四速查行动清单">四、速查行动清单</a></li>
+    <li><a href="#五我的-context-审计">五、我的 context 审计</a>
+      <ul>
+        <li><a href="#数据分布">数据分布</a></li>
+        <li><a href="#作用机制">作用机制</a></li>
+        <li><a href="#改进实践预估">改进实践预估</a></li>
+        <li><a href="#一些其他数据发现">一些其他数据发现</a></li>
+      </ul>
+    </li>
+    <li><a href="#六社区讨论反馈">六、社区讨论反馈</a></li>
+    <li><a href="#写在最后">写在最后</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：<a href="https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions">《Maximizing the value of your Claude Code sessions》</a>。</p>
+<p>我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。</p>
+<p>本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。</p>
+<h2 id="一成本模型变化">一、成本模型变化</h2>
+<p>编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。</p>
+<p>我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token。</p>
+<h2 id="二token-价格的决定方式">二、token 价格的决定方式</h2>
+<p>原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。</p>
+<p>模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。</p>
+<h3 id="输入和输出的区别">输入和输出的区别</h3>
+<p>原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）</p>
+<p>输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</p>
+<p>思考 token 是输出的大头。你看到的文本可能只有几行，但模型的内部推理可能消耗了几千 token。/effort 控制的就是这个量。原文还提到一个环境变量：<code>MAX_THINKING_TOKENS=0</code>，在启动时加上这个变量可以为整个 session 关闭思考（Fable 5 除外），等于比 /effort low 更激进一档。</p>
+<p>如果你关注 token 的占比细节，可以看我开发的 <a href="https://traktoken.com">TrakToken</a>，查看不同任务的输入输出占比。</p>
+<h3 id="提示缓存prompt-cache">提示缓存（Prompt Cache）</h3>
+<p>这块是全文的实操重点。大家其实都知道&quot;有缓存&quot;这件事，但容易忽视的是缓存失效的触发条件。</p>
+<p>每次请求发到服务端时，服务端会检查请求开头的 token 序列是不是跟上一次完全一样。如果一样，就直接加载之前算好的 KV Cache，不用重新计算。读缓存只花 0.1 倍输入价。</p>
+<p>需要注意的是<strong>首次写入缓存的成本最高可达 2 倍输入价</strong>。服务端不光要做正常的 Prefill 计算，还要把结果持久化到缓存存储里。这个 2 倍只发生一次，之后每轮都是 0.1 倍的读取。缓存写入是&quot;贵一次，省后面所有轮&quot;的逻辑。什么时候会触发写入？每次缓存不命中的时候，也就是新 session 的第一轮、切模型之后、缓存过期之后，都会重新写一次。</p>
+<p><strong>一个典型的 5 轮交互</strong></p>
+<p>原文用了&quot;fix the failing test in utils.test.ts&quot;做例子。核心模式是：每一轮请求都带着完整对话历史，但前面已发过的内容走缓存（0.1 倍价），只有本轮新增的内容按全价 Prefill。</p>
+<p>具体流程：发指令（首次全价 + 写入缓存）-&gt; Read 测试文件 -&gt; Read 被测文件 -&gt; Edit 修改 -&gt; 跑测试 -&gt; 返回总结。一共 5 次请求，从第 2 轮开始，前序内容全部走缓存。真正按全价计费的只有每轮新增的部分。</p>
+<p><strong>什么操作会让缓存失效？</strong></p>
+<p>缓存必须从请求的第一个 token 开始精确匹配。任何打断前缀的操作都会导致整段对话重新 Prefill：</p>
+<ul>
+<li>切模型（/model）：每个模型有独立缓存。进出 plan mode 也算切模型，因为 plan mode 使用的模型配置不同，即使你没有手动选择另一个模型，每次切换都会触发缓存重建。</li>
+<li>切 effort（/effort）：effort level 是缓存 key 的一部分。</li>
+<li>开 Fast mode：同上。要用就 session 开头就开，中途开等于给整段对话交一次全价。</li>
+<li>/compact：对话被替换成摘要，前缀全部对不上了。</li>
+<li>时间过期：订阅用户 1 小时，API key 用户 5 分钟。超时后下一轮就是全量 Prefill。</li>
+</ul>
+<p>所以原文的建议是：切模型、切 effort 这些操作，选在 session 刚开始或者刚 /clear 之后做（此时上下文为空，重建成本接近零）。长对话中途做性价比极低。</p>
+<p><strong>关于 /rewind</strong></p>
+<p>原文提到&quot;想丢掉最近几轮，用 /rewind 而不是 /compact&quot;。/rewind 是 Claude Code 的会话级撤销。每次你发送一个 prompt，Claude Code 都会自动保存一个 checkpoint。/rewind（或者按两次 Esc）打开菜单，你可以选择回退到任意一个历史节点。</p>
+<p>它有三个选项：回退代码和对话、只回退对话（保留当前代码）、只回退代码（保留对话）。</p>
+<p>关键在于，/rewind 只是把对话末尾砍掉。前面的内容没动，缓存还在。而 /compact 是把整段对话重写成摘要，前缀全部失效。所以如果你只是想丢掉最近走偏的几轮，/rewind 是零成本的选择。</p>
+<h2 id="三单次-session-的-token-组成">三、单次 session 的 token 组成</h2>
+<p>原文的表述是&quot;没有任何东西只发一次&quot;。进入对话的文件和命令输出，之后每一轮都会重发。有缓存所以便宜，但便宜不等于免费，它们一直占着上下文窗口的空间，模型每一轮都得绕着这些东西思考。</p>
+<h3 id="上下文里装了什么">上下文里装了什么</h3>
+<p>打字之前就已经存在的部分：工具定义、系统提示词、CLAUDE.md、MCP server 的定义。原文建议用 /context 看一下这部分有多大，把 CLAUDE.md 里工作流性质的内容挪进 Skills（按需加载），用不到的 MCP server 用 /mcp 关掉。</p>
+<p>我看了下自己的，这部分在 1M 上下文的模型里占比很小。Cursor 用户还能直接在界面里看到 context 使用情况。我的建议是，除非你已经观察到明确的性能问题或者 context 频繁爆满，不用刻意去砍这些。倒是值得排查一下有没有装了但已经过时、长期不用的 MCP 和 skills，用 /doctor 指令检查。</p>
+<p><strong>文件读取，精确指令总是更好</strong></p>
+<p>这是原文给的一个很有意思的对比：</p>
+<ul>
+<li>你说&quot;测试挂了&quot;，Claude 先 grep、再翻几个文件，结果全部留在上下文里</li>
+<li>你说&quot;修复 utils.test.ts 里失败的测试&quot;，省掉搜索，只花一次 Read</li>
+<li>你说&quot;修复 @utils.test.ts&quot;，连 Read 都省了，文件随首个请求一起发出</li>
+</ul>
+<p>你可能会想：我又不知道具体是哪个文件挂了，怎么给精确指令？这确实是鸡和蛋的问题。如果你已经从终端输出或者 CI 里看到了失败的文件名，直接 @ 过去最高效。如果你真的不知道，让 Claude 去搜是合理的，这时候的 token 花费是&quot;有价值的探索&quot;。</p>
+<p>还有一个细节：同一个文件在一次会话里只 @ 一次。重复 @ 会再塞一份副本进上下文。后面 HN 的讨论里有人争论 @ 是不是反模式，结论是小文件用 @，大文件让 Claude 自己按需读片段更划算。</p>
+<p><strong>命令输出的陷阱</strong></p>
+<p>超大输出反而安全，超过 30000 字符 Claude Code 会写入文件，只留预览和路径在对话里。真正的坑是刚好没超限的。比如测试跑完打印 400 行 pass 信息，一行行全在上下文里赖到 session 结束。</p>
+<p>对策是加静默参数。原文建议在 CLAUDE.md 里写上你每天常用的命令和对应的安静参数（比如 <code>npx vitest run &lt;file&gt; --reporter=dot</code>）。也可以把这些写进 Skills 而不是 CLAUDE.md，效果一样，区别在于 Skills 按需加载不会默认占上下文。Claude Code 还有 hook 机制，可以在命令执行前自动重写这些命令。</p>
+<h3 id="上下文停留多少轮">上下文停留多少轮</h3>
+<p>一个长 session 比拆成几个短 session 贵得多。第 40 轮还在重读前 39 轮的内容。换任务该新开就新开。</p>
+<p>关于 /clear 和 /compact 的选择：原文建议换任务用 /clear，同一任务做完前半段用 /compact。我更倾向于直接新开 session，因为有时候需要回头检索之前的对话内容。我自己操作下来，/clear 的对话消失了就真的消失了。虽然文档说可以通过 resume 指令恢复。</p>
+<p>HN 上有人推荐了 /handoff 来替代 /compact。/handoff 是一个社区 Skill，它把当前 session 的关键决策、失败路径和待办事项导出成一个结构化的 HANDOFF.md 文件。你开新 session 的时候把这个文件喂进去，新 session 就能继续之前的工作。相比 /compact 的好处是：你能看到、编辑导出的内容，而且新 session 的上下文是干净的。</p>
+<p><strong>关于 /loop</strong></p>
+<p>原文提了一句&quot;留意 /loop 会带着整段对话反复发&quot;。/loop 是 Claude Code 的会话内轮询指令。用法是 <code>/loop 5m check the deploy</code>，每 5 分钟自动执行一次你给的 prompt。</p>
+<p>典型场景是部署监控、CI 状态轮询这类&quot;隔几分钟看一眼&quot;的活儿。问题在于，/loop 的每一次触发都是一个完整的 turn，带着你当前 session 的全部上下文一起发。如果距离上次交互超过 1 小时，缓存已经过期，那每次 loop 都是一次全量 Prefill。</p>
+<p>所以原文说&quot;放到另一个终端的新 session 里跑&quot;。新 session 上下文为空，loop 每轮带的负担轻得多。</p>
+<h3 id="subagent">Subagent</h3>
+<p>Subagent 拥有独立上下文窗口，但拿不到你的对话。跑完把结论带回主 session，其他全部丢弃。</p>
+<p>什么时候用性价比高？典型场景是任务会产生大量输出但你只需要一个结论。比如翻日志找报错、跑一遍 lint 看问题汇总、在大仓库里做全局搜索。这些活儿的中间过程全是噪音，在主 session 里做会赖在上下文里影响后续每一轮。丢给 subagent 就是&quot;做完告诉我结果就行&quot;。</p>
+<p>不划算的场景是小任务。subagent 有启动成本（重新读 CLAUDE.md、加载工具定义），任务本身只需要一两轮就能解决的话，这个开销反而更大。</p>
+<p>在 prompt 里直接说&quot;在 subagent 里翻这份日志&quot;就能触发。如果有反复出现的噪音活儿，可以给它定义一个专用 subagent 并指定小模型（model: haiku 或 sonnet）。</p>
+<p>需要注意的是，新版本的 Claude Code subagent 并不像 Cursor 默认触发，需要用户明确声明。</p>
+<h2 id="四速查行动清单">四、速查行动清单</h2>
+<p>原文给了六条，按我的实际体验做了重新排序（实际效果见第五节）。</p>
+<p><strong>给高频命令加静默参数，或丢进 subagent。</strong> 命令输出会和文件一样，待在会话里直到结束。在 CLAUDE.md 或 Skills 里写上常用命令的安静参数（比如 <code>npx vitest run --reporter=dot</code>），纯探索类的大范围搜索交给 subagent，做完只把结论带回来。</p>
+<p><strong>离开键盘前先 /compact。</strong> 缓存 1 小时过期，趁热总结便宜。API key 用户窗口只有 5 分钟，<code>ENABLE_PROMPT_CACHING_1H=1</code> 可以延长到 1 小时（两倍价格）。</p>
+<p><strong>换任务就 /clear。</strong> 避免无关旧上下文被反复回传。直接新开 session 也行，好处是还能回头看历史。</p>
+<p><strong>新 session 跑一次 /context。</strong> 看清 CLAUDE.md、MCP 工具定义占了多少，砍掉不必要的。用不到的 MCP 用 /mcp 关掉，工作流内容挪进 Skills 按需加载。</p>
+<p><strong>开始前定好 model 和 effort。</strong> 中途改会打爆缓存，给整段对话交一次全价 Prefill。</p>
+<p><strong>用 @ 提及文件，而不是打文件名。</strong> 省掉一次 Read 调用，甚至省掉一次搜索。大文件不建议 @，整个塞进上下文太贵。同一个文件在一次会话里只 @ 一次，重复 @ 会再塞一份副本。</p>
+<h2 id="五我的-context-审计">五、我的 context 审计</h2>
+<p>上面说的都是原理。我拿 <a href="https://github.com/kuhung/cc-context-audit">cc-context-audit</a> 跑了一遍自己最近两个月的 Claude Code 日志。161 个 session，36 个项目，934 条指令，11,048 轮，1.51B token，$1,638。 每条指令中位 $1.35、P90 $4.28，平均跑 11.8 轮。</p>
+<p>若按最佳实践，<strong>除上下文质量提高外，理论上最高可省20%的消耗</strong>；若采用更性价比的模型进行任务分流，这个数据还可以更高。</p>
+<h3 id="数据分布">数据分布</h3>
+<p>先看 token 类型：</p>
+<table>
+<thead>
+<tr>
+<th>token 类型</th>
+<th style="text-align:right">token</th>
+<th style="text-align:right">占 token</th>
+<th style="text-align:right">实测单价</th>
+<th style="text-align:right">占成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>缓存读取</td>
+<td style="text-align:right">1.45B</td>
+<td style="text-align:right">96.4%</td>
+<td style="text-align:right">$0.57/M</td>
+<td style="text-align:right">50.5%</td>
+</tr>
+<tr>
+<td>缓存写入</td>
+<td style="text-align:right">43.9M</td>
+<td style="text-align:right">2.9%</td>
+<td style="text-align:right">$11.84/M</td>
+<td style="text-align:right">31.5%</td>
+</tr>
+<tr>
+<td>输出</td>
+<td style="text-align:right">9.9M</td>
+<td style="text-align:right">0.7%</td>
+<td style="text-align:right">$29.31/M</td>
+<td style="text-align:right">17.7%</td>
+</tr>
+<tr>
+<td>未缓存输入</td>
+<td style="text-align:right">734k</td>
+<td style="text-align:right">0.05%</td>
+<td style="text-align:right">$6.81/M</td>
+<td style="text-align:right">0.3%</td>
+</tr>
+</tbody>
+</table>
+<p>实测单价是按 requestId 去重后、跨模型加权的均值。</p>
+<p>再看内容来源：</p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th style="text-align:right">金额</th>
+<th style="text-align:right">占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>缓存写入</td>
+<td style="text-align:right">$519</td>
+<td style="text-align:right">31.5%</td>
+</tr>
+<tr>
+<td>工具返回（后续重读）</td>
+<td style="text-align:right">$322</td>
+<td style="text-align:right">19.7%</td>
+</tr>
+<tr>
+<td>模型输出（生产）</td>
+<td style="text-align:right">$289</td>
+<td style="text-align:right">17.7%</td>
+</tr>
+<tr>
+<td>模型输出（后续重读）</td>
+<td style="text-align:right">$248</td>
+<td style="text-align:right">15.1%</td>
+</tr>
+<tr>
+<td>固定段（每轮重发）</td>
+<td style="text-align:right">$232</td>
+<td style="text-align:right">14.2%</td>
+</tr>
+<tr>
+<td>你的输入（后续重读）</td>
+<td style="text-align:right">$28</td>
+<td style="text-align:right">1.7%</td>
+</tr>
+</tbody>
+</table>
+<p>撑大上下文的主力是工具往回吐的东西。假设工具返回减半（比如全面加静默参数 + subagent），对应的重读成本从 $322 降到 $161 左右，接近总成本的 10%。</p>
+<h3 id="作用机制">作用机制</h3>
+<p>整个会话周期里真正新产生的内容只有 23.9M token，最后进出模型的是 1.51B，放大 63 倍。</p>
+<p><strong>写入这道</strong>：每份内容至少写进缓存一次，干净会话的中位数是 1.20 次。理想情况下写入缓存应该就一次。超出 1.0 的部分来自三个原因：缓存过期、中途切模型/effort，以及缓存断点的步长。碎片化交互的单位写入成本天然更高。</p>
+<p>缓存的价值没有疑问。把所有 token 按不缓存重算一遍是 $8,698，开缓存 $1,638，省了 5.4 倍。1 小时缓存的回本点是第 3 次请求。所以默认开启没毛病。</p>
+<h3 id="改进实践预估">改进实践预估</h3>
+<p>七条措施，按估算量级排序：</p>
+<table>
+<thead>
+<tr>
+<th>措施</th>
+<th style="text-align:right">省</th>
+<th style="text-align:right">占总成本</th>
+<th>拆解</th>
+<th>上下文质量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>给高频命令加静默参数</td>
+<td style="text-align:right">$92</td>
+<td style="text-align:right">5.6%</td>
+<td>写入 $27 + 重读 $64</td>
+<td>变好</td>
+</tr>
+<tr>
+<td>离开前先 compact 或 clear</td>
+<td style="text-align:right">$85</td>
+<td style="text-align:right">5.2%</td>
+<td>写入 $85</td>
+<td>变好</td>
+</tr>
+<tr>
+<td>探索类工作交给 subagent</td>
+<td style="text-align:right">$68</td>
+<td style="text-align:right">4.2%</td>
+<td>写入 $10 + 重读 $58</td>
+<td>变好</td>
+</tr>
+<tr>
+<td>换任务就 clear</td>
+<td style="text-align:right">$33</td>
+<td style="text-align:right">2.0%</td>
+<td>写入 $22 + 重读 $11</td>
+<td>变好</td>
+</tr>
+<tr>
+<td>砍掉每轮重发的固定段</td>
+<td style="text-align:right">$21</td>
+<td style="text-align:right">1.3%</td>
+<td>写入 $5 + 重读 $16</td>
+<td>变好</td>
+</tr>
+<tr>
+<td>切换动作放在会话边界</td>
+<td style="text-align:right">$15</td>
+<td style="text-align:right">0.9%</td>
+<td>写入 $15</td>
+<td>无影响</td>
+</tr>
+<tr>
+<td>用 @ 提及代替重复读取</td>
+<td style="text-align:right">$10</td>
+<td style="text-align:right">0.6%</td>
+<td>写入 $2 + 重读 $8</td>
+<td>变好</td>
+</tr>
+</tbody>
+</table>
+<p>七条加起来约 $324，占总成本 20%。省消耗的同时效果也变好，上下文变短，模型分给每个 token 的注意力也更多。</p>
+<p>只减少缓存失效的三条措施（compact、切换放边界、换任务 clear）有数学天花板：$199，总成本的 12.2%。按理论下限 1.0 算是 14.9%。</p>
+<h3 id="一些其他数据发现">一些其他数据发现</h3>
+<p>我的项目对于工具输出基本没做控制，导致大量中间信息被缓存和大量读取。这里要点名Claude Code 自身的浏览器插件，大量中间日志由它产生。Subagent用的次数也不多。缓存过期发生了20来次，最大一次间隔7天激活了之前的一个session。这种需要避免，当时做完要留档，后面新开更好。</p>
+<blockquote>
+<p>以上数据来自本机 161 份 session 日志（按 requestId 去重后），按各模型公开 API 牌价折算。订阅制用户不按此计费，金额用于比较结构。</p>
+</blockquote>
+<h2 id="六社区讨论反馈">六、社区讨论反馈</h2>
+<p><strong>实用技巧</strong></p>
+<ul>
+<li><strong>自定义 statusline</strong>：Claude Code 支持在终端底部显示 token 用量、缓存命中率、quota 进度条等信息。社区做了 <a href="https://github.com/bfabio/ccstatusline">bfabio/ccstatusline</a> 和 <a href="https://github.com/ndave92/claude-code-status-line">ndave92/claude-code-status-line</a> 两个开箱即用的工具，在 <code>~/.claude/settings.json</code> 的 <code>statusLine</code> 字段里配置即可。</li>
+<li><strong>缓存过期提醒</strong>：用 hook 记录每次交互时间戳，statusline 脚本根据时间差推算缓存剩余时效。不是精确值，但作为本地计时器够用。</li>
+<li><strong>压低单轮思考成本</strong>：追问模型解释时直接说&quot;快速回答，不要深度思考&quot;，手动把单次 turn 的思考量压到最低，且不触发缓存重建。比切 effort 更灵活。</li>
+</ul>
+<p><strong>争议话题</strong></p>
+<ul>
+<li><strong>effort 为什么绑定缓存？</strong> 猜测是 effort 参数写在系统提示词前缀里，改了前缀就不匹配。痛点在于高 effort 出了结果之后追问解释，低 effort 就够了，但切了要交一次全价。变通办法是在 prompt 里写&quot;快速回答&quot;来代替切 effort。</li>
+<li><strong>&ldquo;这是产品设计问题&rdquo;</strong>：HN 上最激烈的争论。批评方认为手动管理上下文和缓存是产品缺陷。反驳方拿调 Postgres 索引和优化 AWS 账单做类比，说复杂系统都有调优这一层。不过这个类比本身就有火药味：不少人觉得优化 AWS 账单同样是糟糕的用户体验。</li>
+<li><strong>缓存过期窗口太短</strong>：布置任务后去忙别的，20 分钟后回来缓存已失效。延伸想一下：国内厂商计算是瓶颈但存储相对宽松，有动力给更长的缓存时效；Anthropic 的 Pro 订阅是固定月费按用量限额，没有强动力给更多缓存宽限。</li>
+</ul>
+<h2 id="写在最后">写在最后</h2>
+<p>我将原文整理成了一份<a href="https://github.com/kuhung/mindmap/raw/master/pdf/%E6%9C%80%E5%A4%A7%E5%8C%96%20Claude%20Code%20Session%20%E7%9A%84%E4%BB%B7%E5%80%BC.pdf">思维导图版本（PDF）</a>，方便快速浏览全貌。这篇文章里的很多操作（比如&quot;发指令前先想清楚精确度&quot;）其实和技术无关，是工作习惯。token 成本意识也一样。你不需要精确到每一轮花了多少，但&quot;这个 session 已经很长了，该重开了&quot;这种直觉值得培养。</p>
+<p>上面第五节的数据来自我写的诊断 Skill：<a href="https://github.com/kuhung/cc-context-audit">kuhung/cc-context-audit</a>，可以分析你自己的 Claude Code session 数据，跑一遍就能看到你的 token 和成本分布，并给出调整建议。</p>
+<p>另外两个相关的工具：</p>
+<ul>
+<li><a href="https://pagegrok.org/">PageGrok</a>：我用 Claude Code 构建的浏览器插件总结工具，现已免费发布</li>
+<li><a href="https://www.traktoken.com/">TrakToken</a>：支持 token 比价、支出指数追踪和价格变动提醒</li>
+</ul>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions">Maximizing the value of your Claude Code sessions</a> - Anthropic 官方博客原文</li>
+<li><a href="https://news.ycombinator.com/item?id=49300800">Hacker News 讨论帖</a> - 157 条评论，含大量实操反馈</li>
+<li><a href="https://code.claude.com/docs/en/checkpointing">Claude Code 官方文档：Checkpointing</a> - /rewind 和 checkpoint 机制</li>
+<li><a href="https://code.claude.com/docs/en/sessions">Claude Code 官方文档：Sessions</a> - session 管理、/clear、/resume</li>
+<li><a href="https://code.claude.com/docs/en/scheduled-tasks">Claude Code 官方文档：Scheduled Tasks</a> - /loop 和定时任务</li>
+<li><a href="https://code.claude.com/docs/en/statusline">Claude Code 官方文档：Statusline</a> - 自定义状态栏</li>
+<li><a href="https://github.com/bfabio/ccstatusline">bfabio/ccstatusline</a> - 社区 statusline 工具，支持 token 用量和缓存命中率显示</li>
+<li><a href="https://github.com/status203/handoff-skill">status203/handoff-skill</a> - /handoff session 交接 Skill</li>
+<li><a href="https://github.com/anthropics/claude-code/issues/39658">Issue #39658: /clear 导致 session 不可见</a> - 已确认 Bug</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/maximization-your-claude-code-sessions/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/claude-code/">
+                    #Claude Code</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E7%BC%96%E7%A8%8B/">
+                    #AI编程</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/token%E4%BC%98%E5%8C%96/">
+                    #token优化</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/seo-enhance/" class="prev" rel="prev" title="搜索与 AI 可见性：让需要你产品的人找到你"><i class="iconfont icon-left"></i>&nbsp;搜索与 AI 可见性：让需要你产品的人找到你</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2016 - 2026</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i>
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
+         
+
+         
+        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
+        
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
