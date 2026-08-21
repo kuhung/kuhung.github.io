@@ -22,7 +22,7 @@ if (!doNotTrack) {
 </script>
 
   <link rel="prev" href="https://kuhung.me/posts/seo-enhance/" />
-  
+  <link rel="next" href="https://kuhung.me/posts/cang-in-house-review/" />
   <link rel="canonical" href="https://kuhung.me/posts/maximization-your-claude-code-sessions/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,10 +33,10 @@ if (!doNotTrack) {
   <title>
        
        
-           如何最大化 Claude Code Session 的价值 | Kuhung | 谷粒
+           提效 20% 的 Claude Code Session 优化方法 | Kuhung | 谷粒
        
   </title>
-  <meta name="title" content="如何最大化 Claude Code Session 的价值 | Kuhung | 谷粒">
+  <meta name="title" content="提效 20% 的 Claude Code Session 优化方法 | Kuhung | 谷粒">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -55,8 +55,8 @@ if (!doNotTrack) {
          "@id": "https:\/\/kuhung.me\/"
     },
     "articleSection" : "posts",
-    "name" : "如何最大化 Claude Code Session 的价值",
-    "headline" : "如何最大化 Claude Code Session 的价值",
+    "name" : "提效 20% 的 Claude Code Session 优化方法",
+    "headline" : "提效 20% 的 Claude Code Session 优化方法",
     "description" : "这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。\n我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。\n本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。\n一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。\n我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token。\n二、token 价格的决定方式 原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。\n模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。\n输入和输出的区别 原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）\n输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。",
     "inLanguage" : "zh-CN",
     "author" : "谷粒",
@@ -123,7 +123,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">如何最大化 Claude Code Session 的价值</h1>
+        <h1 class="post-title" itemprop="name headline">提效 20% 的 Claude Code Session 优化方法</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -553,6 +553,8 @@ if (!doNotTrack) {
         
         <a href="https://kuhung.me/posts/seo-enhance/" class="prev" rel="prev" title="搜索与 AI 可见性：让需要你产品的人找到你"><i class="iconfont icon-left"></i>&nbsp;搜索与 AI 可见性：让需要你产品的人找到你</a>
         
+        
+        <a href="https://kuhung.me/posts/cang-in-house-review/" class="next" rel="next" title="五年十个财务瞬间 04｜结合AI进行仓位回顾与分析">五年十个财务瞬间 04｜结合AI进行仓位回顾与分析&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
