@@ -6,7 +6,27 @@
     <description>Recent content in Posts on Kuhung | 谷粒</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 23 Aug 2026 12:24:30 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Aug 2026 18:07:06 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agent Skills 出来的第10个月，再聊评估这件事</title>
+      <link>https://kuhung.me/posts/skill-eval-review/</link>
+      <pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/skill-eval-review/</guid>
+      <description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
+笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。
+Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。
+Skills 为什么被造出来 回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。
+Skills 最早是一个系统级提示词。问题在于，系统提示词覆盖面太广，不是所有场景都适合反复注入。自然想到做分级和索引。这就是 skills 结构体的由来：title 和 description 做索引，描述它要做什么；下面是详细约束和要调用的工具。
+它填补的是通用模型在垂直领域的缺失。除知识缺失外，还有风格缺失。模型知道怎么写代码，但不知道团队的编码、发布风格。
+Cursor 做这件事最早。从单文件 .cursorrules 到多文件 .cursor/rules，再到现在的 Agent Skills 目录。长期规范和项目事实留在 Agent.md，条件性的工作流程放 skills。
+系统提示词是公司文化，每时每刻都要参照的行为守则；skills 是处理特定工作时翻找的 wiki 目录。
+组织 vs 个体对于 Skills 的需求 对于大公司 大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。
+对于个体 个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。
+从组织到个体 大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。
+对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description>
+    </item>
+    
     <item>
       <title>从 SEO 角度做增长，以产品 TrakToken 为例</title>
       <link>https://kuhung.me/posts/seo-in-practice-sop/</link>
