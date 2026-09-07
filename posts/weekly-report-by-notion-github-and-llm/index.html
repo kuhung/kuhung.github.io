@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "成本三分钱，整合Notion、GitHub的AI周报工作流",
-    "headline" : "成本三分钱，整合Notion、GitHub的AI周报工作流",
-    "description" : "熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。\n手写不行，但如果是AI写的呢？这里，要给大家介绍我目前的自动化周报工作流：Notion记录跟踪项目甘特图、GitHub汇总issue、交付和热点关注，整合二者的信息，每周调用大模型自动总结上周工作。\n原理介绍 flowchart LR subgraph Input[输入数据源] N1[Notion 工单 DB] N2[Notion GitHub DB] G1[GitHub Commits] end subgraph Sync[同步与采集] S1[notion_sync.py] S2[github_collector.py] end subgraph Process[处理流程] A1[analyzer.py] L1[llm_summarizer.py] end subgraph Result[结果输出] R1[report\/*.md] N3[notifier.py] B1[Bark] E1[Email] end N1 -- API --\u0026gt; S1 N2 -- API --\u0026gt; S1 G1 -- API --\u0026gt; S2 S1 --\u0026gt; A1 S2 --\u0026gt; A1 A1 --\u0026gt; L1 L1 --\u0026gt; R1 L1 --\u0026gt; N3 N3 --\u0026gt; B1 N3 --\u0026gt; E1 整体技术原理不难，核心是数据打通。通过Notion的甘特图做项目管理；GitHub作为版本控制和交付工具。Notion和GitHub的数据打通，GitHub的数据能够同步到Notion，包括项目仓库情况和star情况；Notion项目能够同步到GitHub Actions，用来做调用大模型的素材输入。",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2026",
-    "datePublished": "2026-05-12 14:44:53 \u002b0800 CST",
-    "dateModified" : "2026-05-12 14:44:53 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/weekly-report-by-notion-github-and-llm\/",
-    "wordCount" : "130",
-    "keywords" : [ "Notion","GitHub","LLM","自动化", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2026-05-12T14:44:53+08:00","datePublished":"2026-05-12T14:44:53+08:00","description":"熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。 手写不行，但如果是AI写的呢？这里，要给大家介绍我目前的自动化周报工作流：Notion记录跟踪项目甘特图、GitHub汇总issue、交付和热点关注，整合二者的信息，每周调用大模型自动总结上周工作。 原理介绍 flowchart LR …","headline":"成本三分钱，整合Notion、GitHub的AI周报工作流","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"Notion, GitHub, LLM, 自动化","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/","@type":"WebPage"},"name":"成本三分钱，整合Notion、GitHub的AI周报工作流","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/","wordCount":130}</script>
 </head>
 
   

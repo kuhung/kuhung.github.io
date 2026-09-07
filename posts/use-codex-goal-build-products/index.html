@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "用 Codex \/goal 指令从 0 到 1 验证并构建产品",
-    "headline" : "用 Codex \/goal 指令从 0 到 1 验证并构建产品",
-    "description" : "随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。\n这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。\n但如果不想 Agent 反复追问呢？Codex 的\/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）\n前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。\n一个社交媒体帖子引发的产品想法 刷帖子有一个金融律所的人说，他的实习生过的日子比他好多了。新人不再像他们之前，古法审合同、一个个抠字眼、识别风险，直接丢给中外大模型即可。评论区反复在问，安全合规怎么搞、本地脱敏如何做。这点其实有不少解决方案，但是面向中小型组织和个人的似乎少见。我认为这是一个商机。\n这是一个真切存在的需求点吗，能够做到 PMF 验证吗？用户的抱怨集中在哪里？同行竞品是如何切入的，他们的定价、销量、投融资情况如何？恰好我的 Codex 额度要用不完了，这个需求我们丢给 goal 指令，实测其效果。\n六轮引导：从想法到产品 goal虽然能减少干预，但大概率交付的不是想要的。原因同开头讲的，双方都未获得关于产品的全部信息。”我“的观点和态度，会随着”我“掌握的信息变化。Agent 也会根据我的反馈信息，逐渐调整它的切入点和交付物。最终下来，我在整个过程中做了六次关键引导。\n第一轮：从一个功能设想，转成市场问题。 原始观察和想法丢给 Codex 后，它直接开始假设需求成立。我的反馈是：不假设需求成立，先验证场景、替代品与付费可能。Codex 随即完成了中国与海外调研、竞品、定价、市场规模的整理。结论是风险场景真实，但个人脱敏工具并非空白市场，存在多个现有产品。\n第二轮：从法律行业，扩到真实工作流。 市场切入范围调整。我反馈不要限制在法律行业，公司机密也不能直接喂给模型，试图让 Agent 思路放宽。Codex 重新扫描了个人插件、浏览器 DLP、企业治理与 Agent 安全的竞品地图。发现企业会为治理、审计和部署付费，个人通用插件的安装甚少。\n第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心\u0026quot;还原\u0026quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。\n第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制\/粘贴切入。暂不做文件工作区、PDF\/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。\n第五轮：从\u0026quot;造功能\u0026quot;，转向\u0026quot;嵌入已有抱怨\u0026quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。\n第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2026",
-    "datePublished": "2026-08-04 17:58:11 \u002b0800 CST",
-    "dateModified" : "2026-08-04 17:58:11 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/use-codex-goal-build-products\/",
-    "wordCount" : "125",
-    "keywords" : [ "Codex","AI工具","独立开发","vibe coding", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/use-codex-goal-build-products/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2026-08-04T17:58:11+08:00","datePublished":"2026-08-04T17:58:11+08:00","description":"随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。 这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非 …","headline":"用 Codex /goal 指令从 0 到 1 验证并构建产品","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"Codex, AI工具, 独立开发, vibe coding","mainEntityOfPage":{"@id":"https://kuhung.me/posts/use-codex-goal-build-products/","@type":"WebPage"},"name":"用 Codex /goal 指令从 0 到 1 验证并构建产品","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/use-codex-goal-build-products/","wordCount":125}</script>
 </head>
 
   

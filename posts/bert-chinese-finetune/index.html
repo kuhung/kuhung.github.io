@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "中文语料的 Bert 微调 Bert Chinese Finetune ",
-    "headline" : "中文语料的 Bert 微调 Bert Chinese Finetune ",
-    "description" : "Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。\nBert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准数据集的工程师来说，有一定的上手难度。随着 Bert as service 代码的开源，使用 Bert 分类或阅读理解的副产物\u0026ndash;词空间，成为一个更具实用价值的方向。\n因而，此文档着重以一个例子，梳理 finetune 垂直语料，获得微调后的模型 这一过程。Bert 原理或 Bert as service 还请移步官方文档。\n依赖 python==3.6 tensorflow\u0026gt;=1.11.0 预训练模型 下载 BERT-Base, Chinese: Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M parameters 数据准备 train.tsv 训练集 dev.tsv 验证集 数据格式 第一列为 label，第二列为具体内容，tab 分隔。因模型本身在字符级别做处理，因而无需分词。\nfashion\t衬衫和它一起穿,让你减龄十岁!越活越年轻!太美了!... houseliving\t95㎡简约美式小三居,过精美别致、悠然自得的小日子! 屋主的客... game\t赛季末用他们两天上一段，7.20最强LOL上分英雄推荐！ 各位小伙... 样例数据位置：data\n数据格式取决于业务场景，后面也可根据格式调整代码里的数据导入方式。\n操作 git clone https:\/\/github.",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2019",
-    "datePublished": "2019-02-17 11:30:26 \u002b0800 CST",
-    "dateModified" : "2019-02-17 11:30:26 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/bert-chinese-finetune\/",
-    "wordCount" : "260",
-    "keywords" : [ "NLP","tutorial", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/bert-chinese-finetune/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2019-02-17T11:30:26+08:00","datePublished":"2019-02-17T11:30:26+08:00","description":"Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。 Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准 …","headline":"中文语料的 Bert 微调 Bert Chinese Finetune ","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"NLP, tutorial","mainEntityOfPage":{"@id":"https://kuhung.me/posts/bert-chinese-finetune/","@type":"WebPage"},"name":"中文语料的 Bert 微调 Bert Chinese Finetune ","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/bert-chinese-finetune/","wordCount":260}</script>
 </head>
 
   

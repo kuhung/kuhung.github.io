@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "从 SEO 角度做增长，以产品 TrakToken 为例",
-    "headline" : "从 SEO 角度做增长，以产品 TrakToken 为例",
-    "description" : "在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。\n从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。\n本文试图介绍，从 SEO 相关角度，如何正确指导我们后续的产品迭代，如何持续构建数据驱动的产品迭代模式。并结合实际线上产品数据，给到说明。\nTrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600\u002b 模型的定价数据，每日自动同步，提供价格对比、成本计算器、支出指数等功能。\n一、数据能力 搜索可见性的数据分层 先看定义：搜索可见性实际上是一条管线。每一层回答不同的问题，对应不同的数据源。\n层级 回答什么 数据源 需求\/查询 用户搜了什么、展示了几次、点没点 GSC、Bing Webmaster 到站与归因 从哪来、落在哪个页面、渠道质量如何 GA4 行为解释 到站后做了什么、卡在哪、为什么走 产品分析平台 业务结果 是否完成决策、是否出站到厂商 同一平台的事件漏斗 这条管线的价值在于，将不同阶段的数据，拆成对应的数据指标和事件层级，高效定位问题，也方便作出取舍、屏蔽不必要细节。\n工具选型的实际取舍 GA4 负责渠道归因。免费、接入门槛低、渠道自动分组。缺点是不收自定义产品事件，没法在 GA4 里看到\u0026quot;用户点了计算器然后出站到厂商\u0026quot;这个漏斗。\nVercel Analytics 负责页面和事件。零配置、自定义事件方便。问题是它和 GA4 的用户身份打不通。Vercel 里看到 509 个 calculator_result_viewed 事件访客，但没法知道这 509 人里有多少是从搜索来的。\nPostHog 笔者还在尝试中。不过有些问题：一是服务器在海外，国内采集有延迟和丢失；二是功能和 GA4 \u002b Vercel 高度重叠，基础分析和事件采集两边都能做；三是实际只覆盖了 8.25 天，数据量不够支撑任何结论。还有就是他们家的UI太反人性了，我曾经以为GA4的交互很垃圾，但没想到他们家更是。\n不过 PostHog 代表的需求是真实的。需要一个单一平台串起落地页、行为动作以及站外动作的工具。\nBing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2026",
-    "datePublished": "2026-08-23 12:24:30 \u002b0800 CST",
-    "dateModified" : "2026-08-23 12:24:30 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/seo-in-practice-sop\/",
-    "wordCount" : "595",
-    "keywords" : [ "SEO","搜索可见性","数据分析","产品验证","TrakToken", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/seo-in-practice-sop/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2026-08-23T12:24:30+08:00","datePublished":"2026-08-23T12:24:30+08:00","description":"在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。 从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。 本文试图介绍，从 SEO 相关角度，如何 …","headline":"从 SEO 角度做增长，以产品 TrakToken 为例","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"SEO, 搜索可见性, 数据分析, 产品验证, TrakToken","mainEntityOfPage":{"@id":"https://kuhung.me/posts/seo-in-practice-sop/","@type":"WebPage"},"name":"从 SEO 角度做增长，以产品 TrakToken 为例","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/seo-in-practice-sop/","wordCount":595}</script>
 </head>
 
   

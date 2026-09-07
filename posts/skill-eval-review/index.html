@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "Agent Skills 出来的第10个月，再聊评估几件事",
-    "headline" : "Agent Skills 出来的第10个月，再聊评估几件事",
-    "description" : "Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。\n笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。\nAgent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。\nSkills 为什么被造出来 回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。\nSkills 最早是一个系统级提示词。问题在于，系统提示词覆盖面太广，不是所有场景都适合反复注入。自然想到做分级和索引。这就是 skills 结构体的由来：title 和 description 做索引，描述它要做什么；下面是详细约束和要调用的工具。\n它填补的是通用模型在垂直领域的缺失。除知识缺失外，还有风格缺失。模型知道怎么写代码，但不知道团队的编码、发布风格。\nCursor 做这件事最早。从单文件 .cursorrules 到多文件 .cursor\/rules，再到现在的 Agent Skills 目录。长期规范和项目事实留在 Agent.md，条件性的工作流程放 skills。\n系统提示词是公司文化，每时每刻都要参照的行为守则；skills 是处理特定工作时翻找的 wiki 目录。\n组织 vs 个体对于 Skills 的需求 对于大公司 大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。\n对于个体 个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。\n从组织到个体 大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。\n对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2026",
-    "datePublished": "2026-08-26 18:07:06 \u002b0800 CST",
-    "dateModified" : "2026-08-26 18:07:06 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/skill-eval-review\/",
-    "wordCount" : "467",
-    "keywords" : [ "AI工具","Agent Skills","评估","SOP", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/skill-eval-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2026-08-26T18:07:06+08:00","datePublished":"2026-08-26T18:07:06+08:00","description":"Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的 …","headline":"Agent Skills 出来的第10个月，再聊评估几件事","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"AI工具, Agent Skills, 评估, SOP","mainEntityOfPage":{"@id":"https://kuhung.me/posts/skill-eval-review/","@type":"WebPage"},"name":"Agent Skills 出来的第10个月，再聊评估几件事","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/skill-eval-review/","wordCount":467}</script>
 </head>
 
   

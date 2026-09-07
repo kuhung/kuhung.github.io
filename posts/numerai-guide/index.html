@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "Numerai量化101",
-    "headline" : "Numerai量化101",
-    "description" : "一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：\n持仓规模为3.6亿美元（现金部分未披露）\n基金持仓头寸数为389支\n为什么要关注它，是因为它的噱头集成实在是太多了：机器学习\u002b加密货币\u002b对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市场走势，并提交自己的预测结果\/模型。平台再根据参赛者的质押金额，对模型预测结果做集成，以此来指导投资。\n在该平台上，截至20250312：平台上的活跃参与者（有提交并且质押本金）用户有490位，模型数为3851个。质押55万枚NMR，约合440万美元。平均每位用户质押约9千美元，质押中位数为8百美元。年回报率约为46%。\n由于增加了质押和回报计算部分，相较于一般量化比赛会稍显复杂。本文将在评价指标和回报计算方面，做着重介绍。此外还将给出一个初步的执行流程，以及作者的实盘线上反馈。\n评价指标：如何评判和分配收益 数据情况：数据分布\u0026amp;数据生成机制 模型构建：如何构建基本模型 线上反馈：提交后的数据情况和可能的改进方向 如果读者对于量化的基本知识还不甚了解，可参考作者的思维导图：谷粒的博客 思维导图｜《量化交易》\n二、评估指标参考 核心指标与回报计算 一句话概括：既关注模型的预测效果，也关注模型的额外信息增益。预测效果：关注的是模型对于特定标的未来20天的预测相关性，使用相关系数计算。额外信息增益：关注单个模型对于最后的加权模型预测的贡献度，越独特越准确越好。\n另外，平台增加了本金的概念：你需要对自己的模型下注，下注的标的物便是NMR，平台发行的加密货币。\n最后的收益计算如下：payout = stake * clip(payout_factor * (corr * 0.5 \u002b mmc * 2), -0.05, 0.05)\n其中：payout指平台支付给你的回报，stake是下注的本金。clip的作用是限制最大最小范围到0.05上下。其中corr和mmc是需要重点关注的指标。平台希望提交的模型关注相关性，更关心模型的额外贡献情况。\n相关系数 (CORR) 相关系数衡量预测值与实际目标值之间的相关性。\nimport numpy as np from scipy import stats def numerai_corr(preds, target): \u0026#34;\u0026#34;\u0026#34; 计算转换后的预测值和目标值之间的皮尔逊相关系数 Args: preds: 预测值 target: 目标值 Returns: float: 相关系数 \u0026#34;\u0026#34;\u0026#34; # 对预测值进行排名和高斯化 ranked_preds = (preds.rank(method=\u0026#34;average\u0026#34;).values - 0.5) \/ preds.count() gauss_ranked_preds = stats.",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2025",
-    "datePublished": "2025-03-11 15:38:38 \u002b0800 CST",
-    "dateModified" : "2025-03-11 15:38:38 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/numerai-guide\/",
-    "wordCount" : "530",
-    "keywords" : [ "量化","入门", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/numerai-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2025-03-11T15:38:38+08:00","datePublished":"2025-03-11T15:38:38+08:00","description":"一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231： 持仓规模为3.6亿美元（现金部分未披露） 基金持仓头寸数为389支 为什么要关注它，是因为它的噱头集成实在是太多了：机器学习+加密货币+对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市 …","headline":"Numerai量化101","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"量化, 入门","mainEntityOfPage":{"@id":"https://kuhung.me/posts/numerai-guide/","@type":"WebPage"},"name":"Numerai量化101","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/numerai-guide/","wordCount":530}</script>
 </head>
 
   
@@ -231,7 +204,7 @@ if (!doNotTrack) {
 <li>模型构建：如何构建基本模型</li>
 <li>线上反馈：提交后的数据情况和可能的改进方向</li>
 </ul>
-<p>如果读者对于量化的基本知识还不甚了解，可参考作者的思维导图：<a href="https://kuhung.me/2022/m2-quantitative-trading/">谷粒的博客 思维导图｜《量化交易》</a></p>
+<p>如果读者对于量化的基本知识还不甚了解，可参考作者的思维导图：<a href="https://kuhung.me/posts/m2-quantitative-trading/">谷粒的博客 思维导图｜《量化交易》</a></p>
 <h1 id="二评估指标参考">二、评估指标参考</h1>
 <h2 id="核心指标与回报计算">核心指标与回报计算</h2>
 <p>一句话概括：既关注模型的预测效果，也关注模型的额外信息增益。预测效果：关注的是模型对于特定标的未来20天的预测相关性，使用相关系数计算。额外信息增益：关注单个模型对于最后的加权模型预测的贡献度，越独特越准确越好。</p>

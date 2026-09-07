@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary ",
-    "headline" : "一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary ",
-    "description" : "Source https:\/\/www.kaggle.com\/c\/recruit-restaurant-visitor-forecasting\/discussion\n总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。\n方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 \u0026ldquo;golden week\u0026rdquo; 与 \u0026ldquo;new year\u0026rdquo; 类比，选取 \u0026ldquo;new year\u0026rdquo; 段作为验证集。 tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。\n总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 \u0026ldquo;golden week\u0026rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。\n方式一:：等同法 The rules:\nTreat holiday as Saturday\nIf the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2018",
-    "datePublished": "2018-02-08 00:00:00 \u002b0000 UTC",
-    "dateModified" : "2018-02-08 00:00:00 \u002b0000 UTC",
-    "url" : "https:\/\/kuhung.me\/posts\/time-series-problem-summary\/",
-    "wordCount" : "237",
-    "keywords" : [ "时序问题", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/time-series-problem-summary/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2018-02-08T00:00:00Z","datePublished":"2018-02-08T00:00:00Z","description":"Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion 总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 “golden week” 与 “new year” 类比，选取 “new …","headline":"一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary ","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"时序问题","mainEntityOfPage":{"@id":"https://kuhung.me/posts/time-series-problem-summary/","@type":"WebPage"},"name":"一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary ","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/time-series-problem-summary/","wordCount":237}</script>
 </head>
 
   

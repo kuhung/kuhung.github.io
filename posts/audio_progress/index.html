@@ -47,34 +47,7 @@ if (!doNotTrack) {
 
   
   
- 
-
-<script type="application/ld+json">
- "@context" : "http://schema.org",
-    "@type" : "BlogPosting",
-    "mainEntityOfPage": {
-         "@type": "WebPage",
-         "@id": "https:\/\/kuhung.me\/"
-    },
-    "articleSection" : "posts",
-    "name" : "人声提取两大步骤：分离音频背景声\u002b过滤空白",
-    "headline" : "人声提取两大步骤：分离音频背景声\u002b过滤空白",
-    "description" : "背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。\n问题界定 这里将问题进行界定，进行子任务拆分：\n将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。\n在使用本领域“高深”的技术前，一定要思考，切莫手上有锤子，就看啥都像钉子。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。\n背景声音的剥离，最简单的其实是音轨分离。其前提是两种声音存为了不同的音轨，在一些场景很合适。比如电话录音。\n背景声分离 但是若只有一个音轨呢？别担心，机器学习来帮助你。spleeter 基于 tensorflow，训练了一套音乐检索系统，能够有效的分离人声和背景音乐声。\n该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下\n# Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load(\u0026#39;\/path\/to\/audio\/file\u0026#39;, sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform) 空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。\n这里参考 stackoverflow 的代码\nfrom pydub import AudioSegment from pydub.utils import db_to_float # Let\u0026#39;s load up the audio we need... podcast = AudioSegment.",
-    "inLanguage" : "zh-CN",
-    "author" : "谷粒",
-    "creator" : "谷粒",
-    "publisher": "谷粒",
-    "accountablePerson" : "谷粒",
-    "copyrightHolder" : "谷粒",
-    "copyrightYear" : "2020",
-    "datePublished": "2020-01-12 23:52:45 \u002b0800 CST",
-    "dateModified" : "2020-01-12 23:52:45 \u002b0800 CST",
-    "url" : "https:\/\/kuhung.me\/posts\/audio_progress\/",
-    "wordCount" : "173",
-    "keywords" : [ "机器学习","音频处理","Python","Code", "Kuhung | 谷粒"]
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/audio_progress/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2020-01-12T23:52:45+08:00","datePublished":"2020-01-12T23:52:45+08:00","description":"背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。 问题界定 这里将问题进行界定，进行子任务拆分： 将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据 …","headline":"人声提取两大步骤：分离音频背景声+过滤空白","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"机器学习, 音频处理, Python, Code","mainEntityOfPage":{"@id":"https://kuhung.me/posts/audio_progress/","@type":"WebPage"},"name":"人声提取两大步骤：分离音频背景声+过滤空白","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/audio_progress/","wordCount":173}</script>
 </head>
 
   
