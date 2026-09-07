@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="谷粒">
+  
+  
   <meta name="description" content="数据挖掘/机器学习工程师">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
@@ -82,6 +84,8 @@ if (!doNotTrack) {
                 
                 <a class="menu-item" href="/guide/" title="">内容精选</a>
                 
+                <a class="menu-item" href="/projects/" title="">项目</a>
+                
                 <a class="menu-item" href="/about/" title="">关于我</a>
                 
                 <a class="menu-item" href="/archives/" title="">归档</a>
@@ -102,6 +106,8 @@ if (!doNotTrack) {
                 
                 
                 <a class="menu-item" href="/guide/" title="">内容精选</a>
+                
+                <a class="menu-item" href="/projects/" title="">项目</a>
                 
                 <a class="menu-item" href="/about/" title="">关于我</a>
                 
@@ -165,6 +171,45 @@ if (!doNotTrack) {
         0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
         40% { transform: translateX(-50%) translateY(10px); }
         60% { transform: translateX(-50%) translateY(5px); }
+    }
+    .projects-highlight {
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        padding: 0 1rem;
+    }
+    .projects-highlight h2 {
+        font-size: 20px;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+    }
+    .projects-highlight .section-note {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 1.5rem;
+    }
+    .projects-highlight ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .projects-highlight li {
+        padding: 0.7rem 0;
+        border-bottom: 1px solid #eee;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    .projects-highlight li a {
+        font-weight: 600;
+    }
+    .projects-highlight li span {
+        color: #666;
+        display: block;
+        font-size: 13px;
+        margin-top: 0.2rem;
+    }
+    .projects-highlight .more {
+        margin-top: 1.5rem;
+        font-size: 14px;
     }
     .post-content .post-summary {
         display: -webkit-box;
@@ -371,11 +416,51 @@ document.addEventListener('click', function(e) {
 
 
     <div class="scroll-down">
-        <a href="#posts-list">
+        <a href="#projects">
             <span class="scroll-text">SCROLL</span>
             <span class="scroll-arrow"></span>
         </a>
     </div>
+</div>
+
+<div id="projects" class="projects-highlight">
+    <h2>精选产品</h2>
+    <p class="section-note">打开就能用，不用注册也不用安装。完整清单见<a href="/projects/">项目</a>。</p>
+    <ul>
+        <li>
+            <a href="https://benchmark-for-llm.kuhung.me">LLM Benchmark：大模型推理性能测速</a>
+            <span>对比不同模型服务的首字延迟、生成速度和并发表现，支持 Ollama、vLLM、llama.cpp、LM Studio、MLX。</span>
+        </li>
+        <li>
+            <a href="https://token.kuhung.me">TrakToken：LLM API 价格与成本计算</a>
+            <span>比较各家模型定价，算清楚你的用量下云端 API 和本地部署哪个更省钱。</span>
+        </li>
+        <li>
+            <a href="https://sheng.kuhung.me/">Phonology AI：语音科学工具集</a>
+            <span>TTS 排行榜、浏览器端声纹比对，外加语音 AI 的原理和术语解释。</span>
+        </li>
+        <li>
+            <a href="https://vibe-coding-101.kuhung.me">Vibe Coding 101：零基础用 AI 把产品做到上线</a>
+            <span>写给没有开发背景的人，从定需求到上线收费分五个阶段，每步都有具体做法。</span>
+        </li>
+        <li>
+            <a href="https://v.quantfull.com">Alpha101 因子三维可视化</a>
+            <span>把 101 个量化因子之间的关系做成可以转动缩放的三维图。</span>
+        </li>
+        <li>
+            <a href="https://fanren.kuhung.me/">凡人修仙传人物关系图谱</a>
+            <span>把小说里的人物、门派、地点和事件整理成可交互的关系网。</span>
+        </li>
+        <li>
+            <a href="https://keda.kuhung.me/">出行可达地图：一小时逃离计划</a>
+            <span>输入一个地点，看 15 分钟到 3 小时车程能到哪些地方。</span>
+        </li>
+        <li>
+            <a href="https://sri.kuhung.me/">性压抑指数测试 SRI</a>
+            <span>性压抑程度的自测量表，给出分数和解读。</span>
+        </li>
+    </ul>
+    <p class="more"><a href="/projects/">查看全部 27 个项目 &rarr;</a></p>
 </div>
 
 <div id="posts-list" class="posts-container">
@@ -383,7 +468,30 @@ document.addEventListener('click', function(e) {
 		<article class="post" itemscope itemtype="http://schema.org/Article">
 
 			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/skill-eval-review/">Agent Skills 出来的第10个月，再聊评估这件事</a></h1>
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/projects/">项目</a></h1>
+			</header>
+			<div class="post-content">
+				
+				<div class="post-summary">项目 (Projects) 这里是我做过的产品和工具的完整清单，都能直接打开使用，不用注册也不用装什么东西。大部分是先自己有需求，做出来自己用，觉得别人也用得上就挂到网上。
+想看背后的思路和踩过的坑，去 文章；想了解我本人，去 关于我。
+量化与金融 仓满量化：量化交易学习资料 《101 个量化因子解读》和《151 个交易策略》的展示与购买页面。适合想入门因子研究但不知道从哪本书开始的人。 …</div>
+			</div>
+			<div class="post-footer">
+				<div class="post-meta">
+                <span class="post-time">
+                <time datetime="2026-09-07" itemprop="datePublished">September 7, 2026</time>
+                </span>
+                in
+                
+        </div>
+				
+			</div>
+		</article>
+	
+		<article class="post" itemscope itemtype="http://schema.org/Article">
+
+			<header class="post-header">
+				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/skill-eval-review/">Agent Skills 出来的第10个月，再聊评估几件事</a></h1>
 			</header>
 			<div class="post-content">
 				
@@ -588,48 +696,6 @@ document.addEventListener('click', function(e) {
         		
         			<span class="tag"><a href="https://kuhung.me/tags/aso/">
                	 #ASO</a></span>
-        		
-				</div>
-				
-			</div>
-		</article>
-	
-		<article class="post" itemscope itemtype="http://schema.org/Article">
-
-			<header class="post-header">
-				<h1 class="post-title" itemprop="name headline"><a href="https://kuhung.me/posts/ga4-in-practice/">GA4 实践指南：从配置到 AI 工作流</a></h1>
-			</header>
-			<div class="post-content">
-				
-				<div class="post-summary">笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
-为什么单独写一篇？GA4 是 MVP 产品最容易&quot;接了但没用好&quot;的工具。接入只要一行代码，但要真正用出价值，自定义维度注册、埋点约定落文档、多工具口径对齐，这些坑 AI Agent 大概率不知 …</div>
-			</div>
-			<div class="post-footer">
-				<div class="post-meta">
-                <span class="post-time">
-                <time datetime="2026-08-11" itemprop="datePublished">August 11, 2026</time>
-                </span>
-                in
-                <i class="iconfont icon-folder"></i>
-                <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
-                        
-                </span>
-        </div>
-				
-				<div class="post-tags">
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/ga4/">
-               	 #GA4</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-               	 #数据分析</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
-               	 #AI工具</a></span>
-        		
-        			<span class="tag"><a href="https://kuhung.me/tags/%E4%BA%A7%E5%93%81%E9%AA%8C%E8%AF%81/">
-               	 #产品验证</a></span>
         		
 				</div>
 				
