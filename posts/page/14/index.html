@@ -46,10 +46,12 @@ if (!doNotTrack) {
 
 
   
+  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
+
 
 </head>
 
@@ -66,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -89,96 +89,210 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
 </nav>
     	 <main class="main">
           <div class="container">
-      		
-<div class="post-warp archive">
-    
-    <h3>2019</h3>
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px;
+        color: #4a4b50;
+        line-height: 1.9;
+        margin-top: 12px;
+        max-width: 660px;
+    }
+    .posts-views {
+        display: flex;
+        gap: 26px;
+        margin-top: 26px;
+        border-bottom: 1px solid #eee;
+    }
+    .posts-views a {
+        font-size: 15px;
+        font-weight: 400;
+        color: #87878d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active {
+        font-weight: 700;
+        color: #161209;
+        border-bottom-color: #2d96bd;
+    }
+    .posts-list { margin-top: 26px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px;
+        color: #87878d;
+        line-height: 1.8;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-views { gap: 18px; }
+    }
+</style>
+<div class="post-warp posts-index">
+    <h1 class="posts-heading">文章</h1>
+    <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
     
-    <article class="archive-item">
-        <a href="/posts/dataops/" class="archive-item-link">Dataops 数据化运维实践</a>
-        <span class="archive-item-date">
-            October 19, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the_way_to_learn/" class="archive-item-link">思维导图｜《学习之道》</a>
-        <span class="archive-item-date">
-            October 16, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/tdd_drive_ml/" class="archive-item-link">机器学习实践--测试驱动开发</a>
-        <span class="archive-item-date">
-            August 25, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/tdd_with_ml/" class="archive-item-link">思维导图｜测试驱动的机器学习</a>
-        <span class="archive-item-date">
-            August 22, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/pyramid/" class="archive-item-link">思维导图｜《金字塔原理》</a>
-        <span class="archive-item-date">
-            August 15, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/scrum/" class="archive-item-link">思维导图｜《敏捷革命》</a>
-        <span class="archive-item-date">
-            August 10, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/manadement/" class="archive-item-link">系统思考与卓有成效的管理者</a>
-        <span class="archive-item-date">
-            July 17, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/abtest-2/" class="archive-item-link">A/B test 评价指标的选择</a>
-        <span class="archive-item-date">
-            June 22, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/merge_overlapping_date/" class="archive-item-link">HIVE 技巧积累之合并重叠日期</a>
-        <span class="archive-item-date">
-            June 9, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/abtest/" class="archive-item-link">A/B test 揭秘之什么是 A/B test</a>
-        <span class="archive-item-date">
-            May 24, 2019
-        </span>
-    </article>
-     
-    
+    <div class="posts-views">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </div>
+
+    <div class="posts-list">
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/dataops/">Dataops 数据化运维实践</a></h2>
+            <p class="posts-list-summary">翻译自：《What is DataOps? Everything You Need to Know》 From Oracle Data Science Blog
+图片自：《DataOps is Not Just DevOps for Data》By DataKitchen in Medium
+DataOps, 看到它的第一眼，大多数人会觉得陌生。但是提到另一个词——DevOps，做开发的同学可能会 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-10-19">October 19, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the_way_to_learn/">思维导图｜《学习之道》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-10-16">October 16, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/tdd_drive_ml/">机器学习实践--测试驱动开发</a></h2>
+            <p class="posts-list-summary">机器学习现状与问题 2012年，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。
+这一效应，一直持续到今年：在2019这一年，高考志愿填报金融遇冷，计算机一跃成为抢手专业，在各大工科院校中，有取代传统电气、机械之势；各学院的研究生院，纷纷开始往人工智能、深度学习上贴近。
+这从一个侧 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-08-25">August 25, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/tdd_with_ml/">思维导图｜测试驱动的机器学习</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-08-22">August 22, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/pyramid/">思维导图｜《金字塔原理》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-08-15">August 15, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/scrum/">思维导图｜《敏捷革命》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-08-10">August 10, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/manadement/">系统思考与卓有成效的管理者</a></h2>
+            <p class="posts-list-summary">在老一辈的眼中，学而优则仕。学习好了就去当官从政，去服务别人。而在父母这一辈人的眼中，不论你干啥，当“老实人”被人管是不行的，他们的观点有一定的时代背景，但仍然在潜移默化影响着每个人。
+而对于初入职场的新人来说，虽然暂时当不上管理者，但被管理时却也会思考：“如果是自己，将会怎样去做管理？” 对于这一批新的90后甚至00后来说，管理并不再是一场服从性测试，权威性的组织管理方法或不再有效。
+什么是这些 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-07-17">July 17, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/abtest-2/">A/B test 评价指标的选择</a></h2>
+            <p class="posts-list-summary">如何定义一个评价指标 这是上一篇文章什么是 A/B test的续集，上一篇主要讲述 A/B 测试的历史，这里接着讲如何选择指标。
+从本人的经验来看，一个指标怎么选择确实重要，但更重要的是需要自上而下理解且落实科学实验。而不是拍脑袋想指标，中途随意更换指标，汇报时仅罗列有利的指标。
+如果要用一句话解释，如何定义一个评价指标，那一定是“以始为终”。在定义一个指标的时候，要想一想为什么要定义这个指标，这 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-06-22">June 22, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/merge_overlapping_date/">HIVE 技巧积累之合并重叠日期</a></h2>
+            <p class="posts-list-summary">目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
+这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-06-09">June 9, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/abtest/">A/B test 揭秘之什么是 A/B test</a></h2>
+            <p class="posts-list-summary">此文总结自 Udacity 的课程：A/B test，详细而系统地讲述了 Google，Amazon 以及 Netflix 等公司是如何在商业问题中设计 A/B test 并评估效果的，对于国内的业务也有很强的参考意义。这里是总结的的一部分：什么是 A/B test，讲述 A/B Test 的定义、适用范围以及和传统方法的异同。指标选择、实验设计与评估将在后面陆续放出。
+A/B 概览 Q： …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-05-24">May 24, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
+                
+            </div>
+        </article>
+        
+    </div>
+
+    <div class="posts-foot">
+        
 
 <ul class="pagination">
     
@@ -367,28 +481,81 @@ if (!doNotTrack) {
     
 </ul>
 
+        <span class="posts-total">共 160 篇</span>
+    </div>
 </div>
 
           
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -412,6 +579,7 @@ if (!doNotTrack) {
 
     
     <script src="/js/vendor_main.min.js" async=""></script>
+
 
 
 

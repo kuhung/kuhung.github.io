@@ -46,10 +46,12 @@ if (!doNotTrack) {
 
 
   
+  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
+
 
 </head>
 
@@ -66,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -89,99 +89,226 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
 </nav>
     	 <main class="main">
           <div class="container">
-      		
-<div class="post-warp archive">
-    
-    <h3>2021</h3>
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px;
+        color: #4a4b50;
+        line-height: 1.9;
+        margin-top: 12px;
+        max-width: 660px;
+    }
+    .posts-views {
+        display: flex;
+        gap: 26px;
+        margin-top: 26px;
+        border-bottom: 1px solid #eee;
+    }
+    .posts-views a {
+        font-size: 15px;
+        font-weight: 400;
+        color: #87878d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active {
+        font-weight: 700;
+        color: #161209;
+        border-bottom-color: #2d96bd;
+    }
+    .posts-list { margin-top: 26px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px;
+        color: #87878d;
+        line-height: 1.8;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-views { gap: 18px; }
+    }
+</style>
+<div class="post-warp posts-index">
+    <h1 class="posts-heading">文章</h1>
+    <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
     
-    <article class="archive-item">
-        <a href="/posts/atomic-habits/" class="archive-item-link">思维导图｜《掌控习惯》</a>
-        <span class="archive-item-date">
-            July 5, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/mentoring-vol-3/" class="archive-item-link">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a>
-        <span class="archive-item-date">
-            June 23, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/selling-the-wheel/" class="archive-item-link">工程师如何卖轮子</a>
-        <span class="archive-item-date">
-            May 25, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/mentoring-vol-2/" class="archive-item-link">技术领导｜02 Mentoring 如何指导新人</a>
-        <span class="archive-item-date">
-            May 23, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/mentoring-vol-1/" class="archive-item-link">技术领导｜02 Mentoring 如何指导实习生</a>
-        <span class="archive-item-date">
-            April 23, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/performance-coaching/" class="archive-item-link">思维导图｜《高绩效教练》</a>
-        <span class="archive-item-date">
-            March 16, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/three-feature-importances-in-xgb/" class="archive-item-link">Xgboost 三种特征重要性计算方法对比与扩展</a>
-        <span class="archive-item-date">
-            March 8, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/what-i-learned-from-little-game-xiao/" class="archive-item-link">从一款小游戏收获的三点思考</a>
-        <span class="archive-item-date">
-            February 13, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/interpretable-machine-learning/" class="archive-item-link">算法模型的可解释性</a>
-        <span class="archive-item-date">
-            January 22, 2021
-        </span>
-    </article>
-     
-    <h3>2020</h3>
+    <div class="posts-views">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </div>
 
-    
-    <article class="archive-item">
-        <a href="/posts/ten-financial-moments-in-five-years-1/" class="archive-item-link">五年十个财务瞬间｜01 2020年财务总结</a>
-        <span class="archive-item-date">
-            December 31, 2020
-        </span>
-    </article>
-     
-    
+    <div class="posts-list">
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/atomic-habits/">思维导图｜《掌控习惯》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-07-05">July 5, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/mentoring-vol-3/">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a></h2>
+            <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
+话虽如此，在职业生涯的某个时刻，我们大多数人都会从事某种程度的技术指导、职业指导或两者混合。
+我们中的许多人也将获得指导。那么，如何使这种类型的指导富有成效？
+互利的技术指导 当高级工程师指导团队中的初级工程师时，他们一起解决问题，这往往能提高后者 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-06-23">June 23, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/selling-the-wheel/">工程师如何卖轮子</a></h2>
+            <p class="posts-list-summary">在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
+上面是普通人的技术产品主张。作为程序员自己，是不是就没有这样的困扰了呢？我们可以做前端、可以做web端、可以开发自己的小程序，是不是就可以吸引无数忠实用户、卖个好价钱、躺平后半生了呢？如果真是这样子，那大 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-05-25">May 25, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/mentoring-vol-2/">技术领导｜02 Mentoring 如何指导新人</a></h2>
+            <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
+经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
+所以不出意外的，我感到灰心丧气。而在灰心之余，最好的办法就是去读研究生。所 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-05-23">May 23, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/mentoring-vol-1/">技术领导｜02 Mentoring 如何指导实习生</a></h2>
+            <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
+导师制度的价值 导师制度 导师通常被分配给团队中的初级成员，例如应届生或实习生。许多组织，在新员工的入职过程中也使用导师。
+导师是谁 有时，导师是团队中的另一位初级同学。可能他自己也只参加工作一两年，可以轻易地与新人建立联系。
+导师有时是高级工程师。除了可以帮助新员工加快熟悉 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-04-23">April 23, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/performance-coaching/">思维导图｜《高绩效教练》</a></h2>
+            <p class="posts-list-summary">核心观点：
+让教练对象产生如下感觉
+自主 胜任 联结 教练需要做到
+察觉 提问 倾听 关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-03-16">March 16, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/three-feature-importances-in-xgb/">Xgboost 三种特征重要性计算方法对比与扩展</a></h2>
+            <p class="posts-list-summary">简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
+这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
+另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-03-08">March 8, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/what-i-learned-from-little-game-xiao/">从一款小游戏收获的三点思考</a></h2>
+            <p class="posts-list-summary">2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
+这一过程，收到了很多反馈。
+同时，也有如下三点思考：
+善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
+前景提要 品牌与商业化观察 很久以前，小力就有一个想法：将自己的技术能力变现，至少是能变成流量。
+在这个过程中，交付客户喜欢的东西，形成自己的名片📇。
+这样做的目的：一方面是督促自己不断学习；另一 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-02-13">February 13, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">side project</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/interpretable-machine-learning/">算法模型的可解释性</a></h2>
+            <p class="posts-list-summary">背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
+QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
+某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
+数据越多越好 作为调参从业人员，从算法和模型角度来说，数据确实是越多越好。
+数据越多，模型能捕获到的有用特征则更多。从特征状态空间，映射到实际标签的 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-01-22">January 22, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/ten-financial-moments-in-five-years-1/">五年十个财务瞬间｜01 2020年财务总结</a></h2>
+            <p class="posts-list-summary">描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
+为什么会有这篇文章 写这篇文章，是为了审视自己的财务情况，梳理财务观和财务现状，给自己一个交代。
+财富，不仅决定了一个人的生活水平，也是其未来的支撑。财富自由不是绝对概念——需要达 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2020-12-31">December 31, 2020</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+    </div>
+
+    <div class="posts-foot">
+        
 
 <ul class="pagination">
     
@@ -377,28 +504,81 @@ if (!doNotTrack) {
     
 </ul>
 
+        <span class="posts-total">共 160 篇</span>
+    </div>
 </div>
 
           
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -422,6 +602,7 @@ if (!doNotTrack) {
 
     
     <script src="/js/vendor_main.min.js" async=""></script>
+
 
 
 

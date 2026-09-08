@@ -46,10 +46,12 @@ if (!doNotTrack) {
 
 
   
+  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
+
 
 </head>
 
@@ -66,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -89,99 +89,214 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
 </nav>
     	 <main class="main">
           <div class="container">
-      		
-<div class="post-warp archive">
-    
-    <h3>2023</h3>
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px;
+        color: #4a4b50;
+        line-height: 1.9;
+        margin-top: 12px;
+        max-width: 660px;
+    }
+    .posts-views {
+        display: flex;
+        gap: 26px;
+        margin-top: 26px;
+        border-bottom: 1px solid #eee;
+    }
+    .posts-views a {
+        font-size: 15px;
+        font-weight: 400;
+        color: #87878d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active {
+        font-weight: 700;
+        color: #161209;
+        border-bottom-color: #2d96bd;
+    }
+    .posts-list { margin-top: 26px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px;
+        color: #87878d;
+        line-height: 1.8;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-views { gap: 18px; }
+    }
+</style>
+<div class="post-warp posts-index">
+    <h1 class="posts-heading">文章</h1>
+    <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
     
-    <article class="archive-item">
-        <a href="/posts/listening-well/" class="archive-item-link">思维导图｜《同理倾听》</a>
-        <span class="archive-item-date">
-            November 21, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-mom-test/" class="archive-item-link">思维导图｜《The Mom Test》点子验证的最佳方式</a>
-        <span class="archive-item-date">
-            August 24, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/career/" class="archive-item-link">2023年的职业发展，还要爬梯子吗</a>
-        <span class="archive-item-date">
-            August 6, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/privategpt/" class="archive-item-link">全面了解 PrivateGPT：中文技巧和功能实测</a>
-        <span class="archive-item-date">
-            May 17, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/chatgpt/" class="archive-item-link">ChatGPT 现状回顾与机会分析</a>
-        <span class="archive-item-date">
-            March 14, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/behavioural-based-interview/" class="archive-item-link">思维导图｜《过去预测未来》胜任力模型</a>
-        <span class="archive-item-date">
-            February 20, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-phoenix-project/" class="archive-item-link">思维导图｜《凤凰项目》</a>
-        <span class="archive-item-date">
-            February 8, 2023
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/modern-western-thought/" class="archive-item-link">思维导图｜《刘擎西方现代思想讲义》</a>
-        <span class="archive-item-date">
-            January 28, 2023
-        </span>
-    </article>
-     
-    <h3>2022</h3>
+    <div class="posts-views">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </div>
 
-    
-    <article class="archive-item">
-        <a href="/posts/crucial-confrontations/" class="archive-item-link">思维导图｜《关键冲突》</a>
-        <span class="archive-item-date">
-            August 7, 2022
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/team-geek/" class="archive-item-link">思维导图｜《极客与团队》</a>
-        <span class="archive-item-date">
-            June 7, 2022
-        </span>
-    </article>
-     
-    
+    <div class="posts-list">
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/listening-well/">思维导图｜《同理倾听》</a></h2>
+            <p class="posts-list-summary">评判一件事总是比倾听并理解一件事容易。同理倾听，是我在近几年的协作互动中，最大的收获之一。
+同理倾听，帮助加深与周围人的联系，帮助促成改变。
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-11-21">November 21, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-mom-test/">思维导图｜《The Mom Test》点子验证的最佳方式</a></h2>
+            <p class="posts-list-summary">作为工程师，良好的沟通技巧对成功至关重要。《The Mom Test》提供了关键技能和原则，帮助我们提出深刻的问题、避免误导性数据，推动承诺和进展。
+🔍 点击获得文本大纲 关键技能 提出良好的问题（第1章和第3章）：学会在对话中提出有深度和相关性的问题。 避免错误的数据（第2章）：了解如何辨别和避免不可靠或带有偏见的信息。 保持轻松自如（第4章）：在讨论中保持放松和非正式的口气，鼓励开放的沟通。  …</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-08-24">August 24, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/career/">2023年的职业发展，还要爬梯子吗</a></h2>
+            <p class="posts-list-summary">在2023年的年中档口，阿里计划将其P职级进行拆分，分为更细的类似华为的序列。据晚点LatePost等媒体报道，此举是在拉开级别差，在“战功”不那么多的情况下，让更多员工感受到爬梯子带来的激励。
+爬梯子这个事情，在很多“成熟”公司，都会存在。这也是他们所宣称的“完善体系”中的一环——晋升体系。这一体系，带给人们最多的就是P7、P8的神话。在红利还未耗尽的18年，P7=100w，P8=200w。3 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-08-06">August 6, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/privategpt/">全面了解 PrivateGPT：中文技巧和功能实测</a></h2>
+            <p class="posts-list-summary">近日，GitHub上开源了privateGPT，声称能够断网的情况下，借助GPT和文档进行交互。这一场景对于大语言模型来说，意义重大。因为很多公司或者个人的资料，无论是出于数据安全还是隐私的考量，是不方便联网的。为此，我也进行了些许体验，跑完了整个流程，希望给读者朋友一些有用信息。
+原作仓库地址：https://github.com/imartinez/privateGPT
+先说结论：可用，但还有 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-05-17">May 17, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/chatgpt/">ChatGPT 现状回顾与机会分析</a></h2>
+            <p class="posts-list-summary">前言 最近中文互联网上最火热的莫过于ChatGPT。人们都在谈论这个东西是多么“划时代”的产物。过去对AI不成气候的论调也看不见了，主流媒体似乎都在说：牛。不少大厂说自己也要“下海”参与布局与竞争，即使他们才不久刚ALL in 元宇宙。AIGC似乎是PGC、UGC的下一个大蛋糕。
+该技术在22年11月底就推出了，但并未在当时引起太多关注（当然也和大家都急着囤药有关）。去年十二月份左右，即有技术论坛 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-03-14">March 14, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/behavioural-based-interview/">思维导图｜《过去预测未来》胜任力模型</a></h2>
+            <p class="posts-list-summary">我读这本书的动机是想了解如何选择优秀的团队伙伴，以及一般公司招聘体系的运作方式。
+这本书的核心内容是关于STAR法则的，即挖掘候选人过去的经历，来发现他们的未来潜力。
+值得注意的是：人常常带有偏见。为了识别不同能力特长的人，必须摒弃或减少主观偏好。至于如何更好地进行面试，这本书没有提供完美的解决方案。唯一的方法就是不断练习并增强自我觉察能力。
+此外，书中还详细介绍了如何进行调研，以获得适用于公司和 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-02-20">February 20, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-phoenix-project/">思维导图｜《凤凰项目》</a></h2>
+            <p class="posts-list-summary">这本书的妙处在于，你能在它身上看到工作的影子。虽然说有爽文的嫌疑，devops也不是银弹，但其中提到的约束理论、控制半成品的要求，还是很有启发意义的。跳开具体的管理理论，本书传达的向成熟行业学习的思路，也值得借鉴学习。
+对于一位工程师，或者说工程师团队负责人来说，你所做的该是与公司目标息息相关的事。构建一个合适的工作流，保护你的时间、保护你的工程师，确保达到目标。与反馈源保持密切接触，缩短反馈时 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-02-08">February 8, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/modern-western-thought/">思维导图｜《刘擎西方现代思想讲义》</a></h2>
+            <p class="posts-list-summary">工具理性正在日益渗透进入我们的生活，而价值理性正由于去“魅”失去标杆，现代人不可避免地工具化，只为在激烈的竞争中成为合格的、优质的零件。
+交往理性带着它美好的期待，却很难成为共识。我们都知道要好好说话，但日益禁锢的流程或结构下，少有人真情吐露。
+现代，我们身处其中。无论是工作还是家庭，都被其包裹。当然，随之而来的也有工具理性。好在我们有各种闪烁的思想，让我们能够与之对话，明晰自身。
+关于导图作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-01-28">January 28, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/crucial-confrontations/">思维导图｜《关键冲突》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2022-08-07">August 7, 2022</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/team-geek/">思维导图｜《极客与团队》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2022-06-07">June 7, 2022</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+    </div>
+
+    <div class="posts-foot">
+        
 
 <ul class="pagination">
     
@@ -377,28 +492,81 @@ if (!doNotTrack) {
     
 </ul>
 
+        <span class="posts-total">共 160 篇</span>
+    </div>
 </div>
 
           
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -422,6 +590,7 @@ if (!doNotTrack) {
 
     
     <script src="/js/vendor_main.min.js" async=""></script>
+
 
 
 

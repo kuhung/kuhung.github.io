@@ -46,10 +46,12 @@ if (!doNotTrack) {
 
 
   
+  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
+
 
 </head>
 
@@ -66,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -89,96 +89,207 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
 </nav>
     	 <main class="main">
           <div class="container">
-      		
-<div class="post-warp archive">
-    
-    <h3>2019</h3>
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px;
+        color: #4a4b50;
+        line-height: 1.9;
+        margin-top: 12px;
+        max-width: 660px;
+    }
+    .posts-views {
+        display: flex;
+        gap: 26px;
+        margin-top: 26px;
+        border-bottom: 1px solid #eee;
+    }
+    .posts-views a {
+        font-size: 15px;
+        font-weight: 400;
+        color: #87878d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active {
+        font-weight: 700;
+        color: #161209;
+        border-bottom-color: #2d96bd;
+    }
+    .posts-list { margin-top: 26px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px;
+        color: #87878d;
+        line-height: 1.8;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-views { gap: 18px; }
+    }
+</style>
+<div class="post-warp posts-index">
+    <h1 class="posts-heading">文章</h1>
+    <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
     
-    <article class="archive-item">
-        <a href="/posts/book-list-for-ds/" class="archive-item-link">数据从业者必读的7本书 Booklist for DE</a>
-        <span class="archive-item-date">
-            May 7, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/training_rl_systems_hacks/" class="archive-item-link">深度强化学习技巧 hacks for training deep RL</a>
-        <span class="archive-item-date">
-            May 2, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/flask_vue_ml/" class="archive-item-link">机器学习建模与部署--以垃圾消息识别为例</a>
-        <span class="archive-item-date">
-            April 20, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/vgc-it/" class="archive-item-link">如何设计一套类似视觉中国“鹰眼”的技术</a>
-        <span class="archive-item-date">
-            April 14, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/hands-on_machine_learning_in_industry/" class="archive-item-link">机器学习项目的完整生命周期 Hands On Machine Learning in Industry </a>
-        <span class="archive-item-date">
-            April 1, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/slack-gpt2-bot/" class="archive-item-link">GPT2 模型生成假正经文稿 Slack gpt2 Bot </a>
-        <span class="archive-item-date">
-            March 25, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/competing-on-analytics/" class="archive-item-link">凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </a>
-        <span class="archive-item-date">
-            March 12, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/prophet-in-000300/" class="archive-item-link">用先知模型预测股市 Prophet in 000300 </a>
-        <span class="archive-item-date">
-            March 8, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-next-step-for-machine-learning/" class="archive-item-link">机器学习落地需攻破的9个难题 The Next Step for Machine Learning</a>
-        <span class="archive-item-date">
-            February 24, 2019
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/bert-chinese-finetune/" class="archive-item-link">中文语料的 Bert 微调 Bert Chinese Finetune </a>
-        <span class="archive-item-date">
-            February 17, 2019
-        </span>
-    </article>
-     
-    
+    <div class="posts-views">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </div>
+
+    <div class="posts-list">
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/book-list-for-ds/">数据从业者必读的7本书 Booklist for DE</a></h2>
+            <p class="posts-list-summary">之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
+有关注某校友的公众号，他是做爬虫和可视乎的。某天在推荐 Python 学习资料。封面看着挺美，点开 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-05-07">May 7, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/training_rl_systems_hacks/">深度强化学习技巧 hacks for training deep RL</a></h2>
+            <p class="posts-list-summary">深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧 简化问题，使用低维变量。 使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-05-02">May 2, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/flask_vue_ml/">机器学习建模与部署--以垃圾消息识别为例</a></h2>
+            <p class="posts-list-summary">前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。
+如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-04-20">April 20, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/vgc-it/">如何设计一套类似视觉中国“鹰眼”的技术</a></h2>
+            <p class="posts-list-summary">这两天除了马总的 996， 互联网上最火的莫属被黑洞绊倒的视觉中国了。视觉中国因黑洞图的版权争端，被卷入更大的争端。一时间舆论哗然，其股票连续跌停。他是如何一步步壮大，又是为何跌倒的呢？往前看几年，起底其历史：公开资料显示，“视觉中国凭借其‘鹰眼技术’，有力的打击了“盗版”并成功形成了自己的商业模式。”
+2016年初公司开发图像追踪系统，通过人工智能、图像比对、爬虫技术，能够追踪公司拥有代理权的图 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-04-14">April 14, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/hands-on_machine_learning_in_industry/">机器学习项目的完整生命周期 Hands On Machine Learning in Industry </a></h2>
+            <p class="posts-list-summary">机器学习这东西，在学术界产出颇多，但在工业界，却很少落地。究其原因，是理念落地不够彻底，很多从业者和相关上下游不理解所致。这次就这这个机会，梳理下一个机器学习，从立项到落地再到结束，他的完整生命周期该是什么样子的。这里参考了《Hands-On Machine Learning with Scikit-Learn and Tensorflow》，值得一提的是这本书写的很不错，和《集体智慧编程》有一 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-04-01">April 1, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/slack-gpt2-bot/">GPT2 模型生成假正经文稿 Slack gpt2 Bot </a></h2>
+            <p class="posts-list-summary">slack app：slack workspace
+记得在校的时候，冰岩作坊做过一个app，讲接龙故事的。类似于我写一段，另一个人写接下来的一段，最后凑成一个完整的故事。当时，可产生了不少有意思的段子。最近，GPT2 模型的发布，让人不禁想到，有没有可能让机器来完成这个任务呢？机器写十四行诗、机器写莎士比亚风格的文章，机器写对联，这些都已经成为了现实。人工智能虽然没有带来突飞猛进的质变，但着实催生 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-03-25">March 25, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/competing-on-analytics/">凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </a></h2>
+            <p class="posts-list-summary">数据科学家这个职位，随着12年的哈佛商业评论的一篇文章，成为了21世纪“最性感的职业”。这年头，越来越多的年轻人开始往这个方向奔，市场几近饱和。但是，很少有听见企业家说：“是的，我们很需要数据工程师，因为以下原因…“对于看此文的老板们，你们是否不止一次听到媒体鼓吹大数据、鼓吹机器学习、鼓吹人工智能，却很少有听到说这些东西，对于企业来说，实实在在带来了什么。如果你的答案是“Yes”，那么这篇文章将解 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-03-12">March 12, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/prophet-in-000300/">用先知模型预测股市 Prophet in 000300 </a></h2>
+            <p class="posts-list-summary">跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。
+时序预测的价值 时序问题的预测在生活中很常见。例如：游戏在线人数预测、消费情况预测、 O2O 的到店人数预测、交通流量预测，这些场景的精 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-03-08">March 8, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-next-step-for-machine-learning/">机器学习落地需攻破的9个难题 The Next Step for Machine Learning</a></h2>
+            <p class="posts-list-summary">机器学习在前两年的时间里，一下子就爆火了起来。很多公司也跟着这个趋势，招募了很多算法工程师、数据挖掘工程师。但是，在实践中，企业发现要落地，实际上还有很多问题需解决。以至于在大部分项目，还是规则主导。算法工程师的日常，也不过是清洗数据，调整规则。所以，机器学习技术，在真实的应用中到底缺少些什么呢？
+在国立台湾大学《机器学习》2019春季班，李宏毅老师给出了他的观察。以下的内容，结合李老师的最新讲 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-02-24">February 24, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/bert-chinese-finetune/">中文语料的 Bert 微调 Bert Chinese Finetune </a></h2>
+            <p class="posts-list-summary">Finetune Bert for Chinese NLP 问题被证明同图像一样，可以通过 finetune 在垂直领域取得效果的提升。Bert 模型本身极其依赖计算资源，从 0 训练对大多数开发者都是难以想象的事。在节省资源避免重头开始训练的同时，为更好的拟合垂直领域的语料，我们有了 finetune 的动机。
+Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不熟悉官方标准 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2019-02-17">February 17, 2019</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
+                
+            </div>
+        </article>
+        
+    </div>
+
+    <div class="posts-foot">
+        
 
 <ul class="pagination">
     
@@ -362,28 +473,81 @@ if (!doNotTrack) {
     
 </ul>
 
+        <span class="posts-total">共 160 篇</span>
+    </div>
 </div>
 
           
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -407,6 +571,7 @@ if (!doNotTrack) {
 
     
     <script src="/js/vendor_main.min.js" async=""></script>
+
 
 
 

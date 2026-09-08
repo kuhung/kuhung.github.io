@@ -46,10 +46,12 @@ if (!doNotTrack) {
 
 
   
+  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
+
 
 </head>
 
@@ -66,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -89,96 +89,206 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
 </nav>
     	 <main class="main">
           <div class="container">
-      		
-<div class="post-warp archive">
-    
-    <h3>2021</h3>
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px;
+        color: #4a4b50;
+        line-height: 1.9;
+        margin-top: 12px;
+        max-width: 660px;
+    }
+    .posts-views {
+        display: flex;
+        gap: 26px;
+        margin-top: 26px;
+        border-bottom: 1px solid #eee;
+    }
+    .posts-views a {
+        font-size: 15px;
+        font-weight: 400;
+        color: #87878d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active {
+        font-weight: 700;
+        color: #161209;
+        border-bottom-color: #2d96bd;
+    }
+    .posts-list { margin-top: 26px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px;
+        color: #87878d;
+        line-height: 1.8;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-views { gap: 18px; }
+    }
+</style>
+<div class="post-warp posts-index">
+    <h1 class="posts-heading">文章</h1>
+    <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
     
-    <article class="archive-item">
-        <a href="/posts/confrontation-01/" class="archive-item-link">日常冲突的解决之道</a>
-        <span class="archive-item-date">
-            September 13, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/strategy-safari/" class="archive-item-link">思维导图｜《战略历程》</a>
-        <span class="archive-item-date">
-            September 7, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/storytelling-with-data/" class="archive-item-link">思维导图｜《用数据讲故事》</a>
-        <span class="archive-item-date">
-            September 5, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/competing-truth/" class="archive-item-link">思维导图｜竞争性真相</a>
-        <span class="archive-item-date">
-            August 15, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-effective-engineer-01/" class="archive-item-link">软件开发的高杠杆活动</a>
-        <span class="archive-item-date">
-            August 9, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-effective-engineer/" class="archive-item-link">思维导图｜《The Effective Enginner》</a>
-        <span class="archive-item-date">
-            August 8, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/strategy-01/" class="archive-item-link">如何理解战略</a>
-        <span class="archive-item-date">
-            August 1, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/netflix-culture-01/" class="archive-item-link">奈飞工作法</a>
-        <span class="archive-item-date">
-            July 12, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-tyranny-of-structurelessness/" class="archive-item-link">扁平化团队背后的危机</a>
-        <span class="archive-item-date">
-            July 9, 2021
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/ten-financial-moments-in-five-years-2/" class="archive-item-link">五年十个财务瞬间｜02 如何在2021年最短时间亏钱</a>
-        <span class="archive-item-date">
-            July 7, 2021
-        </span>
-    </article>
-     
-    
+    <div class="posts-views">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </div>
+
+    <div class="posts-list">
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/confrontation-01/">日常冲突的解决之道</a></h2>
+            <p class="posts-list-summary">冲突管理三步骤 “不在沉默中爆发，就在沉默中灭亡。”这句话原本是周树人用来描绘旧中国反动派统治下的场景，但今天的很多场景也很适用。在人类社会中，由于各种理念的差异、资源的不均，冲突从来没有停止过。面对冲突，我们最常见的要么是沉默、要么就是爆发。
+改善冲突管理技巧，对于我们的生活将大有裨益。首先，冲突很多时候是因为他人不符合自己的预期，提高冲突处理技巧能鼓舞他人对事情负责。其次，有效的冲突处理，能够 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-09-13">September 13, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/strategy-safari/">思维导图｜《战略历程》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-09-07">September 7, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/storytelling-with-data/">思维导图｜《用数据讲故事》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-09-05">September 5, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/competing-truth/">思维导图｜竞争性真相</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-08-15">August 15, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-effective-engineer-01/">软件开发的高杠杆活动</a></h2>
+            <p class="posts-list-summary">软件开发的正确思维，聚焦高杠杆活动 作为技术序列的工程师，我时常在想，什么样的角色将会是我五年、十年后所扮演的。目前来说，工作三年有余，在某些公司内，已经可以算是高级甚至是资深工程师。不过，对于我来说，赋予title起的作用，并没有做成一件事兴奋。我时常在好奇，别的工程师的工作方法和我一样吗？我目前的工作方法是最优的了吗？
+带着这样的疑问，也关注了硅谷大厂程序员的一些博客，同时也阅读了一些软件开发 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-08-09">August 9, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-effective-engineer/">思维导图｜《The Effective Enginner》</a></h2>
+            <p class="posts-list-summary">关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-08-08">August 8, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/strategy-01/">如何理解战略</a></h2>
+            <p class="posts-list-summary">“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
+可是，战略的本质又是什么 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-08-01">August 1, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/netflix-culture-01/">奈飞工作法</a></h2>
+            <p class="posts-list-summary">红线可有可无文化 之前互联网有个段子，叫做：低P（职级）碰红线，低P没了；高P碰红线，红线没了。大致描述某电商公司的月饼事件、高P替考事件以及总裁出轨事件。这种说法，虽然是大众编的段子，但也折射出该公司的真实文化与标榜文化的背离。
+在这类公司里，价值观成了上级约束下级、驱使下级讨好自己，以及内部斗争的工具。
+组织管理大师沙因曾经提出一种观念，用文化管理组织。而今我们也发现，不同的公司文化，开始有了 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-07-12">July 12, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-tyranny-of-structurelessness/">扁平化团队背后的危机</a></h2>
+            <p class="posts-list-summary">越来越多的扁平化 越来越多的公司开始宣称他们是扁平化团队。扁平化就是字面意思：整个组织的架构很宽，而纵深很窄。基层员工到组织领袖，可能只有3层。扁平化的概念，是相对于层级分明的大型组织而言的，同时它也是较小组织吸引人才的一个关键。背后隐藏着基本假设：富有创意和才华的年轻人，很难忍受传统大型架构组织的官僚。组织需要更扁的层级，以加快信息的流通和促进决策的有效性。
+扁平化背后的独裁 现实生活中，管理的 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-07-09">July 9, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/ten-financial-moments-in-five-years-2/">五年十个财务瞬间｜02 如何在2021年最短时间亏钱</a></h2>
+            <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 财务总结第二篇 我这半年是怎么亏钱的 宏观与微观情况 距离上篇财务总结，已经过去了整整半年。这半年，可以说是在亏钱中度过的。股市春节后给了一个意外的套路，机构抱团结束，纷纷争相离场，带来股市、基金的大幅下挫。与此同时，房地产却不再横盘，上海的二手交易价格创出新高；重庆的土拍价格也新高。在临近写这篇文章的6-7月，多重利空加在中概股上，国内的A股，之 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2021-07-07">July 7, 2021</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+    </div>
+
+    <div class="posts-foot">
+        
 
 <ul class="pagination">
     
@@ -374,28 +484,81 @@ if (!doNotTrack) {
     
 </ul>
 
+        <span class="posts-total">共 160 篇</span>
+    </div>
 </div>
 
           
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -419,6 +582,7 @@ if (!doNotTrack) {
 
     
     <script src="/js/vendor_main.min.js" async=""></script>
+
 
 
 

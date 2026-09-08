@@ -46,10 +46,12 @@ if (!doNotTrack) {
 
 
   
+  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
   
   
+
 
 </head>
 
@@ -66,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -89,102 +89,224 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
 </nav>
     	 <main class="main">
           <div class="container">
-      		
-<div class="post-warp archive">
-    
-    <h3>2025</h3>
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px;
+        color: #4a4b50;
+        line-height: 1.9;
+        margin-top: 12px;
+        max-width: 660px;
+    }
+    .posts-views {
+        display: flex;
+        gap: 26px;
+        margin-top: 26px;
+        border-bottom: 1px solid #eee;
+    }
+    .posts-views a {
+        font-size: 15px;
+        font-weight: 400;
+        color: #87878d;
+        padding-bottom: 10px;
+        border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active {
+        font-weight: 700;
+        color: #161209;
+        border-bottom-color: #2d96bd;
+    }
+    .posts-list { margin-top: 26px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px;
+        color: #87878d;
+        line-height: 1.8;
+        margin-top: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-views { gap: 18px; }
+    }
+</style>
+<div class="post-warp posts-index">
+    <h1 class="posts-heading">文章</h1>
+    <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
     
-    <article class="archive-item">
-        <a href="/posts/amap-mcp/" class="archive-item-link">P人友好的高德（谷歌）地图 MCP</a>
-        <span class="archive-item-date">
-            April 23, 2025
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/numerai-guide/" class="archive-item-link">Numerai量化101</a>
-        <span class="archive-item-date">
-            March 11, 2025
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/iot-home/" class="archive-item-link">自己动手将米家接入Homekit，构建低成本智能家居系统</a>
-        <span class="archive-item-date">
-            February 6, 2025
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/the-big-leagues/" class="archive-item-link">技术领导｜08 the big leagues 管理组织</a>
-        <span class="archive-item-date">
-            January 30, 2025
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/managing-managers/" class="archive-item-link">技术领导｜07 managing managers 管理管理者</a>
-        <span class="archive-item-date">
-            January 30, 2025
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/managing-multiple-teams/" class="archive-item-link">技术领导｜06 managing multiple teams 管理多个团队</a>
-        <span class="archive-item-date">
-            January 30, 2025
-        </span>
-    </article>
-     
-    <h3>2024</h3>
+    <div class="posts-views">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </div>
 
-    
-    <article class="archive-item">
-        <a href="/posts/build/" class="archive-item-link">思维导图｜《创造：用非传统方式做有价值的事》</a>
-        <span class="archive-item-date">
-            July 21, 2024
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/managing-a-team/" class="archive-item-link">技术领导｜05 managing a team 管理一个团队</a>
-        <span class="archive-item-date">
-            April 10, 2024
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="/posts/radar-in-2024/" class="archive-item-link">2023年度总结</a>
-        <span class="archive-item-date">
-            January 1, 2024
-        </span>
-    </article>
-     
-    <h3>2023</h3>
+    <div class="posts-list">
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/amap-mcp/">P人友好的高德（谷歌）地图 MCP</a></h2>
+            <p class="posts-list-summary">作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
+生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
+MCP原理 简单来说，MCP …</p>
+            <div class="posts-list-meta">
+                <time datetime="2025-04-23">April 23, 2025</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/">项目备忘</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/numerai-guide/">Numerai量化101</a></h2>
+            <p class="posts-list-summary">一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231：
+持仓规模为3.6亿美元（现金部分未披露）
+基金持仓头寸数为389支
+为什么要关注它，是因为它的噱头集成实在是太多了：机器学习+加密货币+对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2025-03-11">March 11, 2025</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/iot-home/">自己动手将米家接入Homekit，构建低成本智能家居系统</a></h2>
+            <p class="posts-list-summary">大概在三年前，作者通过树莓派+小米智能家居+苹果设备，实现了通过iPhone控制家庭智能设备的功能。通过苹果生态，即可实现若干智能化：根据所在位置，开关电器；通过Siri控制灯光亮度和开关等功能。外出时，再也不用担心家里哪个电器没关；回家前，还能提前打开空调；睡觉前也不用起来给每个房间单独按开关，直接Siri指令。这大大方便了用户。
+因为使用的是小米的智能家居，相较于单纯的苹果生态，降低了智能家居 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2025-02-06">February 6, 2025</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/">项目备忘</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/the-big-leagues/">技术领导｜08 the big leagues 管理组织</a></h2>
+            <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第八章，管理组织的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager’s Path》中文翻译
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2025-01-30">January 30, 2025</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/managing-managers/">技术领导｜07 managing managers 管理管理者</a></h2>
+            <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第七章，管理管理者的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager’s Path》中文翻译
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2025-01-30">January 30, 2025</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/managing-multiple-teams/">技术领导｜06 managing multiple teams 管理多个团队</a></h2>
+            <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第六章，管理多个团队的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager’s Path》中文翻译
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2025-01-30">January 30, 2025</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/build/">思维导图｜《创造：用非传统方式做有价值的事》</a></h2>
+            <p class="posts-list-summary">形成共识还是蛮好的，就是很多人不知道、不理解或者按自己的方式来搞，那才是组织的灾难。这本书老哥还是多了份alpha男的味道，不过总体还是有帮助。让我知道其实哪儿都会有斗争，都会有高光和滑铁卢。
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2024-07-21">July 21, 2024</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/managing-a-team/">技术领导｜05 managing a team 管理一个团队</a></h2>
+            <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第五章，管理一个团队的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager’s Path》中文翻译
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2024-04-10">April 10, 2024</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/radar-in-2024/">2023年度总结</a></h2>
+            <p class="posts-list-summary">灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
+一、技术 采纳 机器学习开发流程
+构建并维护⼀套稳定、可复⽤的流程，⽤于快速构建机器学习模型。现在市⾯上也有 …</p>
+            <div class="posts-list-meta">
+                <time datetime="2024-01-01">January 1, 2024</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+                
+            </div>
+        </article>
+        
+        <article class="posts-list-item">
+            <h2 class="posts-list-title"><a href="/posts/managing-people/">技术领导｜04 managing people 成员管理</a></h2>
+            <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
+下文是第四章，成员管理的思维导图，与诸位读者共勉。
+🌟 合集地址：《The Manager’s Path》中文翻译
+关于作者</p>
+            <div class="posts-list-meta">
+                <time datetime="2023-12-17">December 17, 2023</time>
+                
+                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+                
+            </div>
+        </article>
+        
+    </div>
 
-    
-    <article class="archive-item">
-        <a href="/posts/managing-people/" class="archive-item-link">技术领导｜04 managing people 成员管理</a>
-        <span class="archive-item-date">
-            December 17, 2023
-        </span>
-    </article>
-     
-    
+    <div class="posts-foot">
+        
 
 <ul class="pagination">
     
@@ -380,28 +502,81 @@ if (!doNotTrack) {
     
 </ul>
 
+        <span class="posts-total">共 160 篇</span>
+    </div>
 </div>
 
           
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -425,6 +600,7 @@ if (!doNotTrack) {
 
     
     <script src="/js/vendor_main.min.js" async=""></script>
+
 
 
 

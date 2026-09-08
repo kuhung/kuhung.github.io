@@ -47,7 +47,12 @@ if (!doNotTrack) {
 
   
   
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/benchmark-for-llm-inference/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"dateModified":"2026-05-17T12:49:56+08:00","datePublished":"2026-05-17T12:49:56+08:00","description":"经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。 作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程 …","headline":"拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"LLM, 推理框架, 性能测评, Mac, 本地部署","mainEntityOfPage":{"@id":"https://kuhung.me/posts/benchmark-for-llm-inference/","@type":"WebPage"},"name":"拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架","publisher":{"@type":"Person","name":"谷粒","url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/benchmark-for-llm-inference/","wordCount":270}</script>
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/benchmark-for-llm-inference/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-05-17T12:49:56+08:00","datePublished":"2026-05-17T12:49:56+08:00","description":"经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。 作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程 …","headline":"拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"LLM, 推理框架, 性能测评, Mac, 本地部署","mainEntityOfPage":{"@id":"https://kuhung.me/posts/benchmark-for-llm-inference/","@type":"WebPage"},"name":"拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/benchmark-for-llm-inference/","wordCount":270}</script>
 </head>
 
   
@@ -63,13 +68,11 @@ if (!doNotTrack) {
         <div class="menu navbar-right">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -86,13 +89,11 @@ if (!doNotTrack) {
           <div class="menu" id="mobile-menu">
                 
                 
-                <a class="menu-item" href="/guide/" title="">内容精选</a>
+                <a class="menu-item" href="/projects/" title="">产品</a>
                 
-                <a class="menu-item" href="/projects/" title="">项目</a>
+                <a class="menu-item" href="/posts/" title="">文章</a>
                 
-                <a class="menu-item" href="/about/" title="">关于我</a>
-                
-                <a class="menu-item" href="/archives/" title="">归档</a>
+                <a class="menu-item" href="/about/" title="">关于</a>
                 
         </div>
     </div>
@@ -240,7 +241,7 @@ if (!doNotTrack) {
 <p>目前，我们的测评工具开源在 <a href="https://github.com/kuhung/benchmark-for-LLM/">GitHub - benchmark-for-LLM</a>，欢迎关注 star 和一起改进。对于无法跨域暴露给外网地址的，还提供了自部署和 Python 包两种选择。Python 包地址：<a href="https://pypi.org/project/llm-benchmark-runner/">llm-benchmark-runner</a>。</p>
 <p>如果你对我的浏览器本地 AI 插件感兴趣，Chrome 商店搜索 PageGrok 即可获得，或者直接访问 <a href="https://www.pagegrok.org/">PageGrok 官网</a> 下载安装插件。目前我日常深度使用中，未来还会有更多的体验优化，欢迎关注。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/aaa8b709114124e5.webp" alt="PageGrok 使用本地Gemma4E4B模型对全文的总结" class="lazyload"><figcaption class="image-caption">PageGrok 使用本地Gemma4E4B模型对全文的总结</figcaption></figure></p>
-<p>如果你对 Traktoken 感兴趣，可访问 <a href="https://token.kuhung.me/">Traktoken</a>，了解我每日追踪的 500 多个大模型关于能力、定价的数据信息，以及关于本地部署大模型参数量的估算数据。</p>
+<p>如果你对 Traktoken 感兴趣，可访问 <a href="https://www.traktoken.com/">Traktoken</a>，了解我每日追踪的 500 多个大模型关于能力、定价的数据信息，以及关于本地部署大模型参数量的估算数据。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/05/394cd0b56311fa32.webp" alt="Traktoken 对于头部模型智力水平与定价的每日追踪" class="lazyload"><figcaption class="image-caption">Traktoken 对于头部模型智力水平与定价的每日追踪</figcaption></figure></p>
 <p>最后，<strong>拒绝感觉有效，让实验数据说话</strong>。</p>
 <h2 id="参考资料">参考资料</h2>
@@ -347,22 +348,73 @@ if (!doNotTrack) {
 
           </div>
 		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2016 - 2026</span>
-        
-        <span class="with-love">
-    	 <i class="iconfont icon-love"></i>
-         </span>
-         
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a> | </span>
-         
-
-         
-        <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span>
-        
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
     </div>
     <script>
       const currentTheme = window.localStorage && window.localStorage.getItem('theme')
@@ -391,6 +443,7 @@ if (!doNotTrack) {
      <script src="/js/vendor_gallery.min.js" async="" ></script>
     
   
+
 
 
 
