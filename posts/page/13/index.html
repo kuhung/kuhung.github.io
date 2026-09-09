@@ -113,11 +113,23 @@ if (!doNotTrack) {
     .posts-index .posts-lead {
         font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
     }
-    .posts-timeline { margin-top: 18px; border-top: 1px solid #eee; }
+    .posts-history { margin-top: 18px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+    .posts-history summary {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        padding: 11px 0; color: #4a4b50; font-size: 13px; line-height: 1.8; cursor: pointer;
+        list-style: none;
+    }
+    .posts-history summary::-webkit-details-marker { display: none; }
+    .posts-history summary::after { content: "展开"; flex: none; color: #2d96bd; }
+    .posts-history[open] summary::after { content: "收起"; }
+    .posts-history summary:hover { color: #161209; }
+    .posts-history summary:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-timeline { border-top: 1px solid #eee; }
     .posts-phase {
         display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 18px;
         padding: 11px 0; border-bottom: 1px solid #eee;
     }
+    .posts-phase:last-child { border-bottom: 0; }
     .posts-phase strong { font-size: 13px; line-height: 1.8; font-weight: 600; color: #161209; }
     .posts-phase p { margin: 0; font-size: 13px; line-height: 1.8; color: #4a4b50; }
     .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
@@ -166,16 +178,19 @@ if (!doNotTrack) {
     .client-page-button:disabled { cursor: default; opacity: .4; }
     .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
     .dark-theme .posts-index .posts-heading,
+    .dark-theme .posts-history summary:hover,
     .dark-theme .posts-phase strong,
     .dark-theme .posts-views a.active,
     .dark-theme .topic-filter:hover,
     .dark-theme .topic-filter[aria-pressed="true"],
     .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
     .dark-theme .posts-index .posts-lead,
+    .dark-theme .posts-history summary,
     .dark-theme .posts-phase p,
     .dark-theme .topic-filter,
     .dark-theme .client-page-button { color: #a9a9b3; }
     .dark-theme .posts-views,
+    .dark-theme .posts-history,
     .dark-theme .posts-timeline,
     .dark-theme .posts-phase,
     .dark-theme .topic-filter,
@@ -199,7 +214,9 @@ if (!doNotTrack) {
     <p class="posts-lead">从 2016 年写到现在，已经 160 篇。写的东西跟着我当时在做的事一路变化。</p>
     
     
-    <div class="posts-timeline" aria-label="文章主题变化">
+    <details class="posts-history">
+        <summary>2016 至今的写作主题变化</summary>
+        <div class="posts-timeline" aria-label="文章主题变化">
         
         <div class="posts-phase">
             <strong>2016 至 2018</strong>
@@ -221,7 +238,8 @@ if (!doNotTrack) {
             <p>把重心放到 AI 编程、Agent 与 Skills、内容增长和产品实践，记录真正用过之后的判断、方法和结果。</p>
         </div>
         
-    </div>
+        </div>
+    </details>
     
 
     <nav class="posts-views" aria-label="文章视图">
