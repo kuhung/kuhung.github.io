@@ -6,7 +6,31 @@
     <description>Recent content in vibe coding on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 08 Aug 2026 23:16:24 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人主页 SEO 优化与结构改版实践</title>
+      <link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link>
+      <pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid>
+      <description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
+改版动机 最直接的起因来自 Google Search Console（GSC）的数据排查。我翻看后台流量来源时发现，主站沉淀的大量文章曝光寥寥，反倒是几个挂在子域名上的独立应用带来了不少流量。
+这与预期有明显出入。之前主站更换过域名，按历史访问数据来看，最早的核心读者大多是机器学习领域的同行；后来随着我写技术管理与职业思考，又吸引了一批大厂中从执行转向管理的朋友。最近一年，我的精力主要投入在 AI 落地与 MVP 产品实践上，但这部分新内容在搜索引擎中几乎没有拿到自然流量。主站不仅没能承担起新内容的承载与分发任务，现有的技术流量也被分散了。
+架构老化 收录受阻的原因很直观。
+一方面，之前的域名从 kuhungio.me 更换到 kuhung.me，不可避免地影响了抓取权重。另一方面，网站结构彻底落后了。旧站用的是 2016 年开源的博客模板，那是前 AI 时代的产物。在当下 SEO 竞争加剧、Vibe Coding 普及的背景下，老模板在现代语义标签、加载性能和结构化数据上对搜索引擎并不友好。
+更现实的问题是承载力不足。老模板原本只为纯文本文章设计，而我现在需要把做过的一系列 AI 产品、工具展示和实验项目聚合在一起。原有的单体文章站架构，已经容纳不下新的业务形态。
+动手前，我先梳理了手头的两张牌。一是 Vibe Coding 能力。经过一年多的实战，用 AI 快速重构前端和交付完整页面的流程已经跑顺，重构一套模板绰绰有余。二是过去沉淀的 SEO 方法论。前段时间我系统整理过搜索可见性的标准流程，在站点结构诊断和关键词分层上有一套现成的工具箱。
+三层诊断 改造的第一步是全面诊断。
+无论是依靠自己编写的 Skills，还是编辑器插件内置的 SEO 检查，都能排查出基础漏洞。我的习惯是分三层推进：
+第一层是模型原生审查。让 AI 基于底模知识库直接检视站点结构，找出常见的配置疏漏。
+第二层是专用 Skill 规则扫描。加载 SEO 和前端规范技能，按预设清单逐项比对元数据、链接与层级关系。
+第三层是实时对齐最佳实践。让 AI 检索当下的官方规范与主流技术文档，核对最新的搜索抓取规则。
+权重整合 排查下来，首要问题出在主站与子域名的权重割裂上。
+长期以来，子域名分散了主站的权重。合理的架构应当是主站作为信任背书和流量枢纽，向子域名分发流量；同时子域名也要将搜索权重回传给主域名。但在实际运营中，出现了两处断层：
+其一是 GA4 数据追踪脱节。早先为了图省事，只有主力项目配置了埋点，很多低流量子项目处于裸奔状态。这次统一将所有子域名纳入同一套数据资产管理，规范了全站的追踪代码。
+其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description>
+    </item>
+    
     <item>
       <title>驾驭你的 Agent Skills 和系统指令</title>
       <link>https://kuhung.me/posts/harness-your-skills/</link>

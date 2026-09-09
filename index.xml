@@ -5,8 +5,17 @@
     <description>Recent content in 谷粒 kuhung on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Aug 2026 18:07:06 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate>
     <atom:link href="https://kuhung.me/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Posts</title>
+      <link>https://kuhung.me/posts/</link>
+      <pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>项目</title>
@@ -164,15 +173,6 @@ iPhone 录音超过 300M 就传不进 NotebookLM，这个工具压完就能传�
     </item>
     
     <item>
-      <title>Posts</title>
-      <link>https://kuhung.me/posts/</link>
-      <pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>关于我</title>
       <link>https://kuhung.me/about/</link>
       <pubDate>Wed, 27 May 2026 00:14:04 +0800</pubDate>
@@ -183,7 +183,6 @@ iPhone 录音超过 300M 就传不进 NotebookLM，这个工具压完就能传�
 &lt;p&gt;曾担任算法负责人，在全球化用户画像、反作弊、海内外用户增长方向拥有7年经验。&lt;/p&gt;
 &lt;h2 id=&#34;产品与项目&#34;&gt;产品与项目&lt;/h2&gt;
 &lt;p&gt;喜欢把 AI、数据和自动化做成可以直接使用的小产品。近一年主要在做量化研究、链上数据、LLM 成本工具、知识图谱、音频与学习工具。&lt;/p&gt;
-&lt;p&gt;完整清单在 &lt;strong&gt;&lt;a href=&#34;https://kuhung.me/projects/&#34;&gt;项目&lt;/a&gt;&lt;/strong&gt;，按量化与金融、链上数据、AI 工具、知识图谱与可视化、媒体与创作、学习与趣味工具六类整理，每个都写了是干什么用的。&lt;/p&gt;
 &lt;p&gt;社交媒体全网搜「谷粒粒」，关注后可以及时看到产品动向。&lt;/p&gt;
 &lt;h2 id=&#34;个人标签-personal-tags&#34;&gt;个人标签 (Personal Tags)&lt;/h2&gt;
 &lt;ul&gt;
