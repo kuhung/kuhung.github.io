@@ -8,7 +8,7 @@
   <meta name="author" content="谷粒">
   
   
-  <meta name="description" content="数据挖掘/机器学习工程师">
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           Numerai量化101 | Kuhung | 谷粒
+           Numerai量化101 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="Numerai量化101 | Kuhung | 谷粒">
+  <meta name="title" content="Numerai量化101 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -54,12 +54,12 @@ if (!doNotTrack) {
 
   
   
-  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
-  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="Kuhung | 谷粒">
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/numerai-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2025-03-11T15:38:38+08:00","datePublished":"2025-03-11T15:38:38+08:00","description":"一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231： 持仓规模为3.6亿美元（现金部分未披露） 基金持仓头寸数为389支 为什么要关注它，是因为它的噱头集成实在是太多了：机器学习+加密货币+对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市 …","headline":"Numerai量化101","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"Kuhung | 谷粒"},"keywords":"量化, 入门","mainEntityOfPage":{"@id":"https://kuhung.me/posts/numerai-guide/","@type":"WebPage"},"name":"Numerai量化101","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/numerai-guide/","wordCount":530}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/numerai-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2025-03-11T15:38:38+08:00","datePublished":"2025-03-11T15:38:38+08:00","description":"一、Numerai 平台介绍 Numerai 是一家坐标美国的对冲基金。据团队2025年2月向美国证券交易委员会（SEC) 披露的信息显示：截至20241231： 持仓规模为3.6亿美元（现金部分未披露） 基金持仓头寸数为389支 为什么要关注它，是因为它的噱头集成实在是太多了：机器学习+加密货币+对冲基金。它有自己的量化比赛平台，并且有自己发币：NMR。在比赛平台上，参赛者需要构建模型预测金融市 …","headline":"Numerai量化101","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化, 入门","mainEntityOfPage":{"@id":"https://kuhung.me/posts/numerai-guide/","@type":"WebPage"},"name":"Numerai量化101","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/numerai-guide/","wordCount":530}</script>
 </head>
 
   
@@ -70,7 +70,7 @@ if (!doNotTrack) {
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -87,7 +87,7 @@ if (!doNotTrack) {
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">Kuhung | 谷粒</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
