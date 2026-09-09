@@ -117,7 +117,7 @@ if (!doNotTrack) {
      
     .intro-fullscreen {
         transform: none;
-        min-height: 382px;
+        min-height: 340px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -149,18 +149,6 @@ if (!doNotTrack) {
         font-size: 15px;
         line-height: 1.9;
     }
-    .site-quote {
-        margin: 6px auto 0;
-        font-size: 13px;
-        color: #87878d;
-        min-height: 1.9em;
-    }
-    .site-quote .typed-text {
-        display: inline-block;
-        opacity: 1;
-        transition: opacity 0.5s ease-in-out;
-    }
-    .site-quote .typed-text.fade { opacity: 0; }
     .hero-actions {
         display: flex;
         gap: 12px;
@@ -172,52 +160,13 @@ if (!doNotTrack) {
     .hero-actions .hero-cta-primary:hover { color: #fff; }
     .hero-actions .hero-cta-secondary { color: #161209; border: 1px solid #eee; }
     .intro-fullscreen .social-links { margin-top: 12px; }
-    .intro-fullscreen .scroll-down {
-        position: absolute;
-        bottom: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation: bounce 2s infinite;
-        cursor: pointer;
-    }
-    .scroll-down a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: #666;
-        transition: color 0.3s ease;
-    }
-    .scroll-down a:hover { color: #333; }
-    .scroll-down .scroll-text {
-        font-size: 12px;
-        letter-spacing: 2px;
-        margin-bottom: 6px;
-        opacity: 0.7;
-    }
-    .scroll-down .scroll-arrow {
-        width: 18px;
-        height: 18px;
-        border-left: 2px solid currentColor;
-        border-bottom: 2px solid currentColor;
-        transform: rotate(-45deg);
-        opacity: 0.8;
-    }
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-        40% { transform: translateX(-50%) translateY(10px); }
-        60% { transform: translateX(-50%) translateY(5px); }
-    }
     .hero-actions a:focus-visible,
-    .home-section a:focus-visible,
-    .scroll-down a:focus-visible {
+    .home-section a:focus-visible {
         outline: 2px solid #2d96bd;
         outline-offset: 3px;
     }
     @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
-        .intro-fullscreen .scroll-down { animation: none; }
-        .site-quote .typed-text { transition: none; }
     }
 
      
@@ -313,7 +262,6 @@ if (!doNotTrack) {
         .site-title { font-size: 23px; line-height: 1.6; letter-spacing: .3px; }
         .site-title .site-title-sub { font-size: 19px; }
         .site-lead { font-size: 14px; line-height: 1.85; margin-top: 12px; }
-        .site-quote { margin-top: 6px; font-size: 12px; }
         .intro-fullscreen .social-links { margin-top: 12px; }
         .hero-actions { flex-direction: column; gap: 10px; margin-top: 16px; }
         .hero-actions a {
@@ -324,7 +272,6 @@ if (!doNotTrack) {
             align-items: center;
             justify-content: center;
         }
-        .intro-fullscreen .scroll-down { display: none; }
         .home-section { padding: 0 20px; }
         .product-grid { grid-template-columns: 1fr; }
         .product-row { flex-direction: column; align-items: flex-start; gap: 2px; }
@@ -340,30 +287,6 @@ if (!doNotTrack) {
         
         <h1 class="site-title">谷粒 kuhung<span class="site-title-sub">｜分享实在的 AI 干货</span></h1>
         <p class="site-lead">写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。</p>
-        
-        
-        <p class="site-quote"><span class="typed-text">可测量的一面不是世界，它只是世界可以测量的一面。</span></p>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const subtitles = JSON.parse(`"[\"可测量的一面不是世界，它只是世界可以测量的一面。\",\"行则将至，功不唐捐。 \"]"`);
-                if (subtitles.length < 2) { return; }
-                let currentIndex = 1;
-                const typedTextSpan = document.querySelector(".typed-text");
-
-                function updateSubtitle() {
-                    typedTextSpan.classList.add('fade');
-                    setTimeout(function() {
-                        typedTextSpan.textContent = subtitles[currentIndex];
-                        currentIndex = (currentIndex + 1) % subtitles.length;
-                        setTimeout(function() {
-                            typedTextSpan.classList.remove('fade');
-                        }, 50);
-                    }, 500);
-                }
-                setInterval(updateSubtitle, 4000);
-            });
-        </script>
-        
         <div class="hero-actions">
             <a class="hero-cta-primary" href="/posts/">读最新文章 &rarr;</a>
             <a class="hero-cta-secondary" href="/projects/">看全部产品 &rarr;</a>
@@ -525,12 +448,6 @@ document.addEventListener('click', function(e) {
 </div>
 
 
-        <div class="scroll-down">
-            <a href="#posts-list" aria-label="跳到最新文章">
-                <span class="scroll-text">SCROLL</span>
-                <span class="scroll-arrow"></span>
-            </a>
-        </div>
     </div>
 
     <div id="posts-list" class="home-section">
