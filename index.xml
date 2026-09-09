@@ -15,8 +15,8 @@
       
       <guid>https://kuhung.me/projects/</guid>
       <description>&lt;h1 id=&#34;项目-projects&#34;&gt;项目 (Projects)&lt;/h1&gt;
-&lt;p&gt;这里是我做过的产品和工具的完整清单，都能直接打开使用，不用注册也不用装什么东西。大部分是先自己有需求，做出来自己用，觉得别人也用得上就挂到网上。&lt;/p&gt;
-&lt;p&gt;想看背后的思路和踩过的坑，去 &lt;a href=&#34;https://kuhung.me/posts/&#34;&gt;文章&lt;/a&gt;；想了解我本人，去 &lt;a href=&#34;https://kuhung.me/about/&#34;&gt;关于我&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;我喜欢把一个念头真的做出来。有的用来查模型价格、追链上资金，有的用来学日语、做播客。这里收着我这些年做过的产品和工具。&lt;/p&gt;
+&lt;p&gt;想看它们怎么做出来、哪里踩过坑，去看 &lt;a href=&#34;https://kuhung.me/posts/&#34;&gt;文章&lt;/a&gt;；想认识背后这个人，去 &lt;a href=&#34;https://kuhung.me/about/&#34;&gt;关于我&lt;/a&gt;。&lt;/p&gt;
 &lt;h2 id=&#34;量化与金融&#34;&gt;量化与金融&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -180,7 +180,8 @@ iPhone 录音超过 300M 就传不进 NotebookLM，这个工具压完就能传�
       
       <guid>https://kuhung.me/about/</guid>
       <description>&lt;h1 id=&#34;关于我-about-me&#34;&gt;关于我 (About Me)&lt;/h1&gt;
-&lt;p&gt;写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。&lt;/p&gt;
+&lt;p&gt;Nobody。关注算法&amp;amp;数据应用。&lt;/p&gt;
+&lt;p&gt;曾担任算法负责人，在全球化用户画像、反作弊、海内外用户增长方向拥有7年经验。&lt;/p&gt;
 &lt;h2 id=&#34;产品与项目&#34;&gt;产品与项目&lt;/h2&gt;
 &lt;p&gt;喜欢把 AI、数据和自动化做成可以直接使用的小产品。近一年主要在做量化研究、链上数据、LLM 成本工具、知识图谱、音频与学习工具，一共 31 个站点，都能打开就用。&lt;/p&gt;
 &lt;p&gt;完整清单在 &lt;strong&gt;&lt;a href=&#34;https://kuhung.me/projects/&#34;&gt;项目&lt;/a&gt;&lt;/strong&gt;，按量化与金融、链上数据、AI 工具、知识图谱与可视化、媒体与创作、学习与趣味工具六类整理，每个都写了是干什么用的。&lt;/p&gt;
