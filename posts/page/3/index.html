@@ -111,202 +111,284 @@ if (!doNotTrack) {
     .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
     .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
     .posts-index .posts-lead {
-        font-size: 15px;
-        color: #4a4b50;
-        line-height: 1.9;
-        margin-top: 12px;
-        max-width: 660px;
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
     }
-    .posts-views {
-        display: flex;
-        gap: 26px;
-        margin-top: 26px;
-        border-bottom: 1px solid #eee;
-    }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
     .posts-views a {
-        font-size: 15px;
-        font-weight: 400;
-        color: #87878d;
-        padding-bottom: 10px;
-        border-bottom: 2px solid transparent;
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
     }
-    .posts-views a.active {
-        font-weight: 700;
-        color: #161209;
-        border-bottom-color: #2d96bd;
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; border: 0;
     }
-    .posts-list { margin-top: 26px; }
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
     .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
     .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
     .posts-list-item .posts-list-summary {
-        font-size: 14px;
-        color: #87878d;
-        line-height: 1.8;
-        margin-top: 8px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
     .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
     .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
     .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
     .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
     .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    .dark-theme .posts-index .posts-heading,
+    .dark-theme .posts-views a.active,
+    .dark-theme .topic-filter:hover,
+    .dark-theme .topic-filter[aria-pressed="true"],
+    .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
+    .dark-theme .posts-index .posts-lead,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button { color: #a9a9b3; }
+    .dark-theme .posts-views,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button,
+    .dark-theme .posts-list-item,
+    .dark-theme .posts-foot,
+    .dark-theme .client-pagination { border-color: #4a4b50; }
+    .dark-theme .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .18); }
     @media (max-width: 767px) {
         .posts-index .posts-heading { font-size: 23px; }
         .posts-views { gap: 18px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
     }
 </style>
-<div class="post-warp posts-index">
+<div class="post-warp posts-index" data-posts-base="/posts/">
     <h1 class="posts-heading">文章</h1>
     <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
-    
-    <div class="posts-views">
+    <nav class="posts-views" aria-label="文章视图">
         
         <a class="" href="/guide/">精选</a>
         
-        <a class="active" href="/posts/">全部</a>
+        <a class="active" aria-current="page" href="/posts/">全部</a>
         
         <a class="" href="/archives/">按年</a>
         
-    </div>
+    </nav>
 
-    <div class="posts-list">
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/beyond-vibe-coding-the-new-founder-mindset/">不要再 Vibe 创业了，干点儿实事吧阿谷</a></h2>
-            <p class="posts-list-summary">大家好，我是谷粒粒，OPC（One Person Company）练习生一年有余。vibe coding 这个话题，随着过去半年基础模型能力的提升和 agent harness 架构的成熟，越来越火。
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
+        
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="vibe coding||创业||独立开发"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/beyond-vibe-coding-the-new-founder-mindset/">不要再 Vibe 创业了，干点儿实事吧阿谷</a></h2>
+    <p class="posts-list-summary">大家好，我是谷粒粒，OPC（One Person Company）练习生一年有余。vibe coding 这个话题，随着过去半年基础模型能力的提升和 agent harness 架构的成熟，越来越火。
 不少公司在内部扩大 AI 辅助编程的范围，试图提升编码和想法验证的速度，同时进行 Token 消耗量的考核。也有人像笔者一样，经历过公司的一些事，想借助编码工具的生产力提升，构造更多属于自己的产品。 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-05-31">May 31, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-05-31">May 31, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/benchmark-for-llm-inference/">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</a></h2>
-            <p class="posts-list-summary">经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="LLM||推理框架||性能测评||Mac||本地部署"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/benchmark-for-llm-inference/">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</a></h2>
+    <p class="posts-list-summary">经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
 作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-05-17">May 17, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-05-17">May 17, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/weekly-report-by-notion-github-and-llm/">成本三分钱，整合Notion、GitHub的AI周报工作流</a></h2>
-            <p class="posts-list-summary">熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="Notion||GitHub||LLM||自动化"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/weekly-report-by-notion-github-and-llm/">成本三分钱，整合Notion、GitHub的AI周报工作流</a></h2>
+    <p class="posts-list-summary">熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
 手写不行，但如果是AI写的呢？这里，要给大家介绍我目前的自动化周报工作流：Notion记录跟踪项目甘特图、GitHub汇总issue、交付和热点关注，整合二者的信息，每周调用大模型自动总结上周工作。
 原理介绍 flowchart LR …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-05-12">May 12, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-05-12">May 12, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/noainog-202604/">NoAINoG 月刊 | 整个4月，我们在聊什么？</a></h2>
-            <p class="posts-list-summary">过去一个月，NoAINoG 保持工作日日更节奏，从 EP01 到 EP18，累计输出了近 300 分钟的深度内容。在 AI 这个方向，追热点、拆技术、探讨人文与商业化，试图搞清楚：没有 AI 是会完蛋，还是啥事没有（NoAI NoG）。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="播客||AI||商业化||NoAINoG"
+         data-categories="行业趋势||思考">
+    <h2 class="posts-list-title"><a href="/posts/noainog-202604/">NoAINoG 月刊 | 整个4月，我们在聊什么？</a></h2>
+    <p class="posts-list-summary">过去一个月，NoAINoG 保持工作日日更节奏，从 EP01 到 EP18，累计输出了近 300 分钟的深度内容。在 AI 这个方向，追热点、拆技术、探讨人文与商业化，试图搞清楚：没有 AI 是会完蛋，还是啥事没有（NoAI NoG）。
 如果你还没听过，这篇文章帮你 4 分钟看完全貌。
 一、商业认知：利润才是唯一的护城河 EP01 从《Rework》出发，直指&#34;融资上瘾&#34;的病根——利润才是验证一个 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-05-06">May 6, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-05-06">May 6, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/image2-for-makeover/">一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</a></h2>
-            <p class="posts-list-summary">Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-05-02">May 2, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/ai/">AI</a>
-                
-            </div>
-        </article>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/automation-and-human-in-the-loop-in-the-age-of-ai/">AI时代，OPC（一人公司）的自动化与半自动化</a></h2>
-            <p class="posts-list-summary">如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="AI||ChatGPT||图像生成"
+         data-categories="AI">
+    <h2 class="posts-list-title"><a href="/posts/image2-for-makeover/">一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</a></h2>
+    <p class="posts-list-summary">Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-05-02">May 2, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/ai/">AI</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="一人公司||自动化||独立开发"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/automation-and-human-in-the-loop-in-the-age-of-ai/">AI时代，OPC（一人公司）的自动化与半自动化</a></h2>
+    <p class="posts-list-summary">如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。
 成事，不仅需要财力、物力，更需要心力。为了控制心力消耗，除了常见的SMART法则拆解目标、番茄工作法保持专注外，笔者总结了一份指南：AI时代，OPC（一人公司）的自动化与半自动化。
 通过下述方法，让笔者把精力放在高价值活动上。
 自动化 这里的自动化， …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-04-29">April 29, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-04-29">April 29, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/vibe-coding-long-term-operation/">Vibe Coding 长线运营思路</a></h2>
-            <p class="posts-list-summary">写过 Vibe Coding 的朋友都知道，写出来不难，难的是长线运营带来收入。就目前来说，高性能模型例如 Opus4.6 等已经能够很好完成项目。但写完项目，只是产品化的第一步。运营很重要，流量是关键。本期，笔者就来分享下自己的运营思路。部分思路参考了工作过的大厂的思维模式，仅做抛砖引玉之用。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="vibe coding||运营||独立开发"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/vibe-coding-long-term-operation/">Vibe Coding 长线运营思路</a></h2>
+    <p class="posts-list-summary">写过 Vibe Coding 的朋友都知道，写出来不难，难的是长线运营带来收入。就目前来说，高性能模型例如 Opus4.6 等已经能够很好完成项目。但写完项目，只是产品化的第一步。运营很重要，流量是关键。本期，笔者就来分享下自己的运营思路。部分思路参考了工作过的大厂的思维模式，仅做抛砖引玉之用。
 关注数据 核心指标数据 关注核心的下载、活跃数据，看看用户从哪里来的。 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-04-06">April 6, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-04-06">April 6, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/geo-and-anticheat/">GEO的过去、未来与反作弊算法</a></h2>
-            <p class="posts-list-summary">回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="SEO||GEO||大模型||反作弊"
+         data-categories="行业趋势">
+    <h2 class="posts-list-title"><a href="/posts/geo-and-anticheat/">GEO的过去、未来与反作弊算法</a></h2>
+    <p class="posts-list-summary">回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
 关注一位博主，曾短暂投入过GEO方面的创业，到年初放弃。而我当时也让Gemini …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-03-17">March 17, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-03-17">March 17, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/talks-with-vc/">独立创业观察｜和一位 AI 投资人聊了聊</a></h2>
-            <p class="posts-list-summary">前阵子约了一位做 AI 投资的朋友聊天。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-vc/">独立创业观察｜和一位 AI 投资人聊了聊</a></h2>
+    <p class="posts-list-summary">前阵子约了一位做 AI 投资的朋友聊天。
 我的现状 离职半年了，现在做两件事：写东西沉淀想法，写 AI Agent 项目。
 技术上说，做应用层开发门槛不高。难的是找到对的方向，还有搞定流量。
 半成品比较多，这是实话。所以我现在对组队这事很谨慎。在自己没有趟过一些浑水之前，把别人叫过来是不负责任的。而且一个人生活开销可以压缩，有了团队就得给人发工资，压力完全不一样。
 生产变便宜了，什么变贵了 投资人 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-02-20">February 20, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-20">February 20, 2026</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/talks-with-an-old-peer/">技术转型｜赴日、副业和内容变现的那些事</a></h2>
-            <p class="posts-list-summary">“我现在回想，我都不知道去年一年我下班就在干嘛。”
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-an-old-peer/">技术转型｜赴日、副业和内容变现的那些事</a></h2>
+    <p class="posts-list-summary">“我现在回想，我都不知道去年一年我下班就在干嘛。”
 去年底，约了位老同事出来吃饭。他清华本科毕业，之前在公司负责跟进某预研项目。因受不了形式主义，与我先后离职。我俩都很好奇彼此的状态，遂约出来聊了聊天。
 多出来的时间去哪了 以前加班到九点多，累得回家就躺平。前公司七点下班，时间多了两三个小时，按理说应该能做点什么。但没有明确目标，反而天天刷手机、看视频、焦虑、然后循环。
 他也说不清楚，这些多出来的 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2026-02-17">February 17, 2026</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-17">February 17, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
         
     </div>
 
-    <div class="posts-foot">
+    <div class="posts-foot server-posts-foot">
         
 
 <ul class="pagination">
@@ -498,7 +580,12 @@ if (!doNotTrack) {
 
         <span class="posts-total">共 160 篇</span>
     </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
 </div>
+<script defer src="/js/posts-filter.js"></script>
 
           
 

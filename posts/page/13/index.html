@@ -111,204 +111,286 @@ if (!doNotTrack) {
     .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
     .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
     .posts-index .posts-lead {
-        font-size: 15px;
-        color: #4a4b50;
-        line-height: 1.9;
-        margin-top: 12px;
-        max-width: 660px;
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
     }
-    .posts-views {
-        display: flex;
-        gap: 26px;
-        margin-top: 26px;
-        border-bottom: 1px solid #eee;
-    }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
     .posts-views a {
-        font-size: 15px;
-        font-weight: 400;
-        color: #87878d;
-        padding-bottom: 10px;
-        border-bottom: 2px solid transparent;
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
     }
-    .posts-views a.active {
-        font-weight: 700;
-        color: #161209;
-        border-bottom-color: #2d96bd;
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; border: 0;
     }
-    .posts-list { margin-top: 26px; }
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
     .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
     .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
     .posts-list-item .posts-list-summary {
-        font-size: 14px;
-        color: #87878d;
-        line-height: 1.8;
-        margin-top: 8px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
     .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
     .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
     .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
     .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
     .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    .dark-theme .posts-index .posts-heading,
+    .dark-theme .posts-views a.active,
+    .dark-theme .topic-filter:hover,
+    .dark-theme .topic-filter[aria-pressed="true"],
+    .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
+    .dark-theme .posts-index .posts-lead,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button { color: #a9a9b3; }
+    .dark-theme .posts-views,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button,
+    .dark-theme .posts-list-item,
+    .dark-theme .posts-foot,
+    .dark-theme .client-pagination { border-color: #4a4b50; }
+    .dark-theme .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .18); }
     @media (max-width: 767px) {
         .posts-index .posts-heading { font-size: 23px; }
         .posts-views { gap: 18px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
     }
 </style>
-<div class="post-warp posts-index">
+<div class="post-warp posts-index" data-posts-base="/posts/">
     <h1 class="posts-heading">文章</h1>
     <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
-    
-    <div class="posts-views">
+    <nav class="posts-views" aria-label="文章视图">
         
         <a class="" href="/guide/">精选</a>
         
-        <a class="active" href="/posts/">全部</a>
+        <a class="active" aria-current="page" href="/posts/">全部</a>
         
         <a class="" href="/archives/">按年</a>
         
-    </div>
+    </nav>
 
-    <div class="posts-list">
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/mindmap_2020/">思维导图｜15份结构化知识整理</a></h2>
-            <p class="posts-list-summary">思维导图，是结构化思维的具体表现形式。最鲜明的例子，就是当你和一个人聊天时，可以很明确的感觉到，拥有结构化思维的人，他的语言组织能力很强，且很有层次感。简单来说，就是和他沟通，简单高效、有收获，有层次感。
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
+        
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/mindmap_2020/">思维导图｜15份结构化知识整理</a></h2>
+    <p class="posts-list-summary">思维导图，是结构化思维的具体表现形式。最鲜明的例子，就是当你和一个人聊天时，可以很明确的感觉到，拥有结构化思维的人，他的语言组织能力很强，且很有层次感。简单来说，就是和他沟通，简单高效、有收获，有层次感。
 在过去几年里，也整理了一些场景的思维导图。大约是从15年，上大学的第二年，第一次接触到这个东西。不过略微遗憾的是，早期是一些手绘的内容，没能保存在身边。以下是电子化的内容，分享给到大家。
 这里， …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-04-25">April 25, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-04-25">April 25, 2020</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/simple-image-search/">自制以图搜图引擎，居家学习必备</a></h2>
-            <p class="posts-list-summary">最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="app||计算机视觉||CV"
+         data-categories="Side Project">
+    <h2 class="posts-list-title"><a href="/posts/simple-image-search/">自制以图搜图引擎，居家学习必备</a></h2>
+    <p class="posts-list-summary">最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
 各位绅士可别想歪，我说的是动漫。
 这个问题本质是一个相似度的检索问题。
 说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。
 但是当你满怀期待上传一张图时，你会发现，他返回的结果要么是同风格 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-04-13">April 13, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-04-13">April 13, 2020</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/computational-advertising/">思维导图｜《计算广告》</a></h2>
-            <p class="posts-list-summary">
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/computational-advertising/">思维导图｜《计算广告》</a></h2>
+    <p class="posts-list-summary">
 思维导图获取 .xmind .pdf .png 关于作者 </p>
-            <div class="posts-list-meta">
-                <time datetime="2020-04-05">April 5, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-04-05">April 5, 2020</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/risk_management_mind_map/">思维导图｜互联网风控</a></h2>
-            <p class="posts-list-summary">关于作者</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-03-25">March 25, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-                
-            </div>
-        </article>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/risk_management/">浅谈互联网风控--从策略到技术</a></h2>
-            <p class="posts-list-summary">风控，全称风险控制，英文名 risk management。风控的研究起于二战结束后，主要集中在个人或企业的商业保险领域，用于减少突发事物带来的损失。金融行业的核心，乃是风险控制。
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/risk_management_mind_map/">思维导图｜互联网风控</a></h2>
+    <p class="posts-list-summary">关于作者</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-03-25">March 25, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="技术||策略"
+         data-categories="行业趋势">
+    <h2 class="posts-list-title"><a href="/posts/risk_management/">浅谈互联网风控--从策略到技术</a></h2>
+    <p class="posts-list-summary">风控，全称风险控制，英文名 risk management。风控的研究起于二战结束后，主要集中在个人或企业的商业保险领域，用于减少突发事物带来的损失。金融行业的核心，乃是风险控制。
 但今天，我们这里不谈金融的风控。金融风控已经演化了多年，众多顶尖学者已对其进行了研究，各种模型层出不穷，自有人去分析。我们这里说一说，互联网的风控。
 风控的核心 如果你在网上检索，一定会发现很多人，谈到风控，必加智能， …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-03-22">March 22, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-03-22">March 22, 2020</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/remote/">更高效的远程工作之道--REMOTE 手册精要</a></h2>
-            <p class="posts-list-summary">大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="读书笔记||行业观察"
+         data-categories="行业趋势">
+    <h2 class="posts-list-title"><a href="/posts/remote/">更高效的远程工作之道--REMOTE 手册精要</a></h2>
+    <p class="posts-list-summary">大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
 虽然朋友圈已经有人发帖，渴望在办公室中办公，但是，也不能因此，就放弃思考远程工作的这么个事物。一成不变往往很简单，但变化之中，才有契机。
 远程工作契机 什么阻挡了远程工作的推行，我们无从说起。但何不把 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-03-07">March 7, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-03-07">March 7, 2020</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/audio_progress/">人声提取两大步骤：分离音频背景声&#43;过滤空白</a></h2>
-            <p class="posts-list-summary">背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="机器学习||音频处理||Python||Code"
+         data-categories="自然语言处理">
+    <h2 class="posts-list-title"><a href="/posts/audio_progress/">人声提取两大步骤：分离音频背景声&#43;过滤空白</a></h2>
+    <p class="posts-list-summary">背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
 问题界定 这里将问题进行界定，进行子任务拆分：
 将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-01-12">January 12, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-01-12">January 12, 2020</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/web_deploy/">产品实践之应用沉淀</a></h2>
-            <p class="posts-list-summary"> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis&lt;br&gt; Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署– …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-01-01">January 1, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/">项目备忘</a>
-                
-            </div>
-        </article>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/lifetimes/">如何计算用户生命周期价值（CLV）</a></h2>
-            <p class="posts-list-summary">在用户关系管理中，常会遇到些直击灵魂的问题：
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="备忘录||网站开发||app"
+         data-categories="项目备忘">
+    <h2 class="posts-list-title"><a href="/posts/web_deploy/">产品实践之应用沉淀</a></h2>
+    <p class="posts-list-summary"> 项目地址 简介 相关资料 参考 以图搜图 上传图片，检索图库内容，返回最相似图片 自制以图搜图引擎 matsui528/sis&lt;br&gt; Flask补充系列–将应用部署在Heroku上 spam 文本检测 输入英文文本，检测是否为垃圾营销内容 机器学习建模与部署– …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-01-01">January 1, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/">项目备忘</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="用户||生命周期||价值评估"
+         data-categories="数据挖掘/机器学习">
+    <h2 class="posts-list-title"><a href="/posts/lifetimes/">如何计算用户生命周期价值（CLV）</a></h2>
+    <p class="posts-list-summary">在用户关系管理中，常会遇到些直击灵魂的问题：
 这批用户到底价值几何？
 为什么要用这种措施去干预用户，而不是另一种方式。
 为什么干预这类用户，而不去干预另一类，他们的划分标准是什么。
 有这些问题，实质是因为对客户价值不够了解，缺乏行之有效的划分方式。
 用户精细化运营价值巨大 随着人口红利的消失，增长逐渐见顶，急需在现有用户池做学问。过去粗放式的买量策略已经不再生效，一是买量成本逐渐高企，二是买量带来 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2019-12-25">December 25, 2019</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2019-12-25">December 25, 2019</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/machine_learning_system_design/">机器学习系统设计 Machine learning system design</a></h2>
-            <p class="posts-list-summary">导读 Web app：https://kuhung.me/machine-learning-systems-design/
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="机器学习||系统设计||网站||问答||app"
+         data-categories="Side Project||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/machine_learning_system_design/">机器学习系统设计 Machine learning system design</a></h2>
+    <p class="posts-list-summary">导读 Web app：https://kuhung.me/machine-learning-systems-design/
 机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
 国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2019-12-01">December 1, 2019</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2019-12-01">December 1, 2019</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
         
     </div>
 
-    <div class="posts-foot">
+    <div class="posts-foot server-posts-foot">
         
 
 <ul class="pagination">
@@ -505,7 +587,12 @@ if (!doNotTrack) {
 
         <span class="posts-total">共 160 篇</span>
     </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
 </div>
+<script defer src="/js/posts-filter.js"></script>
 
           
 

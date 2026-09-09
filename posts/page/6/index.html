@@ -111,198 +111,280 @@ if (!doNotTrack) {
     .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
     .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
     .posts-index .posts-lead {
-        font-size: 15px;
-        color: #4a4b50;
-        line-height: 1.9;
-        margin-top: 12px;
-        max-width: 660px;
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
     }
-    .posts-views {
-        display: flex;
-        gap: 26px;
-        margin-top: 26px;
-        border-bottom: 1px solid #eee;
-    }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
     .posts-views a {
-        font-size: 15px;
-        font-weight: 400;
-        color: #87878d;
-        padding-bottom: 10px;
-        border-bottom: 2px solid transparent;
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
     }
-    .posts-views a.active {
-        font-weight: 700;
-        color: #161209;
-        border-bottom-color: #2d96bd;
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; border: 0;
     }
-    .posts-list { margin-top: 26px; }
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
     .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
     .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
     .posts-list-item .posts-list-summary {
-        font-size: 14px;
-        color: #87878d;
-        line-height: 1.8;
-        margin-top: 8px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
     .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
     .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
     .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
     .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
     .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    .dark-theme .posts-index .posts-heading,
+    .dark-theme .posts-views a.active,
+    .dark-theme .topic-filter:hover,
+    .dark-theme .topic-filter[aria-pressed="true"],
+    .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
+    .dark-theme .posts-index .posts-lead,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button { color: #a9a9b3; }
+    .dark-theme .posts-views,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button,
+    .dark-theme .posts-list-item,
+    .dark-theme .posts-foot,
+    .dark-theme .client-pagination { border-color: #4a4b50; }
+    .dark-theme .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .18); }
     @media (max-width: 767px) {
         .posts-index .posts-heading { font-size: 23px; }
         .posts-views { gap: 18px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
     }
 </style>
-<div class="post-warp posts-index">
+<div class="post-warp posts-index" data-posts-base="/posts/">
     <h1 class="posts-heading">文章</h1>
     <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
-    
-    <div class="posts-views">
+    <nav class="posts-views" aria-label="文章视图">
         
         <a class="" href="/guide/">精选</a>
         
-        <a class="active" href="/posts/">全部</a>
+        <a class="active" aria-current="page" href="/posts/">全部</a>
         
         <a class="" href="/archives/">按年</a>
         
-    </div>
+    </nav>
 
-    <div class="posts-list">
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/we-media-in-2025/">你以为的自媒体</a></h2>
-            <p class="posts-list-summary">你以为的自媒体 只要敢上镜，能够情绪表达，怎么也能吸引一批人。你和哪些百万UP主相比，只是没有脱下“孔乙己长衫”，腼腆、不好意思罢了。
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
+        
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="胡言乱语||感触涌上心头"
+         data-categories="你以为">
+    <h2 class="posts-list-title"><a href="/posts/we-media-in-2025/">你以为的自媒体</a></h2>
+    <p class="posts-list-summary">你以为的自媒体 只要敢上镜，能够情绪表达，怎么也能吸引一批人。你和哪些百万UP主相比，只是没有脱下“孔乙己长衫”，腼腆、不好意思罢了。
 你手上的素材一堆又一堆，竞品看了一集又一集的。网上的段子信手拈来，你的脑子清楚知道什么是自己喜欢的，什么是大众喜欢的。
 你通过构造美观的封面，设置悬念、留下钩子。发布之后，全是99+的小红点。你的点击率高高的，完播率杠杆的。很快就突破小流量池，推到了更大的流量池。 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-09-10">September 10, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/">你以为</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-09-10">September 10, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/create-in-2025/">你以为的创业</a></h2>
-            <p class="posts-list-summary">你以为的创业 你有个点子，不缺程序员，因为你自己就是程序员。你通过历史技术能力的积累，很快实现产品原型。产品原型在种子用户里的反馈很好，一些小问题也快速被修复。不少用户觉得你的创造改变了他们的生活，他们愿意为之付费，并且到处宣传。接着发布产品，获得了爆炸性的关注，产品大卖。人才涌向你，都以加入你的团队为自豪。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/">你以为</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="胡言乱语||感触涌上心头"
+         data-categories="你以为">
+    <h2 class="posts-list-title"><a href="/posts/create-in-2025/">你以为的创业</a></h2>
+    <p class="posts-list-summary">你以为的创业 你有个点子，不缺程序员，因为你自己就是程序员。你通过历史技术能力的积累，很快实现产品原型。产品原型在种子用户里的反馈很好，一些小问题也快速被修复。不少用户觉得你的创造改变了他们的生活，他们愿意为之付费，并且到处宣传。接着发布产品，获得了爆炸性的关注，产品大卖。人才涌向你，都以加入你的团队为自豪。
 实际的创业 A方向是你的点子，你通过vibe coding也实现了原型。前后用时快一个 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-09-09">September 9, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/">你以为</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-09-09">September 9, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/build-in-2015/">从2015到2025：技术创业的变与不变</a></h2>
-            <p class="posts-list-summary">在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/">你以为</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="创业||技术人||复盘||思考||大公司||硬件创业||AI||投资||职业发展"
+         data-categories="创业思考||职业成长||技术趋势">
+    <h2 class="posts-list-title"><a href="/posts/build-in-2015/">从2015到2025：技术创业的变与不变</a></h2>
+    <p class="posts-list-summary">在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-08-25">August 25, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/">创业思考</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF/">职业成长</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/">技术趋势</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-08-25">August 25, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/bootstrapping-culture/">技术领导｜09 Bootstrapping Culture 塑造团队文化</a></h2>
-            <p class="posts-list-summary"> 翻译这篇文章时，我正在M家工作，感受到了独树一帜的企业文化。在这里，W公司经历的一些稀奇古怪的事没有了，而自身的动力和绩效也达到了一个新的高度。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/">创业思考</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF/">职业成长</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/">技术趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||the-managers-path"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/bootstrapping-culture/">技术领导｜09 Bootstrapping Culture 塑造团队文化</a></h2>
+    <p class="posts-list-summary"> 翻译这篇文章时，我正在M家工作，感受到了独树一帜的企业文化。在这里，W公司经历的一些稀奇古怪的事没有了，而自身的动力和绩效也达到了一个新的高度。
 可以说，正是M家的企业文化，引导和决定了我选择这里。同时，也是在相互选择的过程中，让我有了比W更高的生产力和更清晰的远景。
 但同时，随着人数的扩充，也观察到了不同文化的碰撞和侵蚀。一些原以为对的事，开始有了不同立场。一些在W看到的过往，也在部分项目和部 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-07-30">July 30, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-07-30">July 30, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/agent-case-studies/">41个 LangChain / LangGraph / LangSmith 案例研究</a></h2>
-            <p class="posts-list-summary">关于作者</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-07-21">July 21, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/ai/">AI</a>
-                
-            </div>
-        </article>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/prompt-guide/">三大LLM厂商的提示词行动指南</a></h2>
-            <p class="posts-list-summary">提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-07-20">July 20, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-                
-            </div>
-        </article>
+    </div>
+</article>
+
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/context-engineering/">所谓上下文工程，实质为Agent系统设计</a></h2>
-            <p class="posts-list-summary">原文作者 DAIR.AI Academy 中文翻译 gemini &amp; kuhung 备注评论 kuhung 什么是上下文工程？ 几年前，许多人，甚至是顶尖的AI研究人员，都声称提示工程（prompt engineering）将不复存在。（注：当时的语境是说：当大模型足够强，人类就不需要写那些提示词。）
+        <article class="posts-list-item"
+         data-tags="LangChain||LangGraph||LangSmith||案例研究||AI"
+         data-categories="AI">
+    <h2 class="posts-list-title"><a href="/posts/agent-case-studies/">41个 LangChain / LangGraph / LangSmith 案例研究</a></h2>
+    <p class="posts-list-summary">关于作者</p>
+    <div class="posts-list-meta">
+        <time datetime="2025-07-21">July 21, 2025</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/ai/">AI</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="提示词工程||LLM||AI||大模型"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/prompt-guide/">三大LLM厂商的提示词行动指南</a></h2>
+    <p class="posts-list-summary">提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2025-07-20">July 20, 2025</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="AI工程||上下文工程||Agent系统||LLM优化"
+         data-categories="系统设计">
+    <h2 class="posts-list-title"><a href="/posts/context-engineering/">所谓上下文工程，实质为Agent系统设计</a></h2>
+    <p class="posts-list-summary">原文作者 DAIR.AI Academy 中文翻译 gemini &amp; kuhung 备注评论 kuhung 什么是上下文工程？ 几年前，许多人，甚至是顶尖的AI研究人员，都声称提示工程（prompt engineering）将不复存在。（注：当时的语境是说：当大模型足够强，人类就不需要写那些提示词。）
 显然，他们错了。事实上，提示工程现在比以往任何时候都更加重要。它的重要性如此之高，以至于现在被重 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-07-07">July 7, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-07-07">July 7, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/jlpt-push/">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a></h2>
-            <p class="posts-list-summary">7月的JLPT考试临近，语法复习得怎么样了，还真难说。hero3046看了几遍，金龟子哥哥看了多少，心理还是没底呀。与其沉迷于碎片化信息，不如让碎片化知识打断自己。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="push||jlpt"
+         data-categories="工具">
+    <h2 class="posts-list-title"><a href="/posts/jlpt-push/">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a></h2>
+    <p class="posts-list-summary">7月的JLPT考试临近，语法复习得怎么样了，还真难说。hero3046看了几遍，金龟子哥哥看了多少，心理还是没底呀。与其沉迷于碎片化信息，不如让碎片化知识打断自己。
 本期差生文具多｜工具篇系列，博主手搓一份 JLPT 推送项目，用碎片化（知识）挑战碎片化（信息）。
 特点：随机抓取一条JLPT考试语法点，推送到手机端。帮助用户利用碎片化时间学习和复习 JLPT 语法。
 项目仓 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-06-12">June 12, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/">工具</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-06-12">June 12, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/content-sop/">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a></h2>
-            <p class="posts-list-summary">有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="AI辅助内容生成||业务流程"
+         data-categories="行业趋势">
+    <h2 class="posts-list-title"><a href="/posts/content-sop/">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a></h2>
+    <p class="posts-list-summary">有没有想过，将偶然看到的一段材料、抑或是采集到的一段音频生成对谈形式的播客，通过对谈的形式，来了解这个话题要不要深入。这听起来就很兴奋不是。这个场景，刚好命中了现代人的FOMO（Fear of missing out）害怕错过的心理情绪。
 当下的很多AI产品思路都是如此，但做得好的不多。谷歌出品的NotebookLM是产品中的代表。最近新火起来的AI自媒体主播也是如此。通过信息过滤压缩，再配以“有 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-06-05">June 5, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-06-05">June 5, 2025</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/fastvlm-iphone-install/">FastVLM iPhone 安装与实机测评</a></h2>
-            <p class="posts-list-summary">项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="机器学习"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/fastvlm-iphone-install/">FastVLM iPhone 安装与实机测评</a></h2>
+    <p class="posts-list-summary">项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
 接下来说说实测最关心的性能表现和大小情况：
 作者的测试设备为：
 MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2025-05-24">May 24, 2025</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2025-05-24">May 24, 2025</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
         
     </div>
 
-    <div class="posts-foot">
+    <div class="posts-foot server-posts-foot">
         
 
 <ul class="pagination">
@@ -501,7 +583,12 @@ MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版 …</p>
 
         <span class="posts-total">共 160 篇</span>
     </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
 </div>
+<script defer src="/js/posts-filter.js"></script>
 
           
 

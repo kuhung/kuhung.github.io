@@ -111,210 +111,292 @@ if (!doNotTrack) {
     .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
     .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
     .posts-index .posts-lead {
-        font-size: 15px;
-        color: #4a4b50;
-        line-height: 1.9;
-        margin-top: 12px;
-        max-width: 660px;
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
     }
-    .posts-views {
-        display: flex;
-        gap: 26px;
-        margin-top: 26px;
-        border-bottom: 1px solid #eee;
-    }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
     .posts-views a {
-        font-size: 15px;
-        font-weight: 400;
-        color: #87878d;
-        padding-bottom: 10px;
-        border-bottom: 2px solid transparent;
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
     }
-    .posts-views a.active {
-        font-weight: 700;
-        color: #161209;
-        border-bottom-color: #2d96bd;
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; border: 0;
     }
-    .posts-list { margin-top: 26px; }
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
     .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
     .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
     .posts-list-item .posts-list-summary {
-        font-size: 14px;
-        color: #87878d;
-        line-height: 1.8;
-        margin-top: 8px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
     .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
     .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
     .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
     .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
     .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    .dark-theme .posts-index .posts-heading,
+    .dark-theme .posts-views a.active,
+    .dark-theme .topic-filter:hover,
+    .dark-theme .topic-filter[aria-pressed="true"],
+    .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
+    .dark-theme .posts-index .posts-lead,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button { color: #a9a9b3; }
+    .dark-theme .posts-views,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button,
+    .dark-theme .posts-list-item,
+    .dark-theme .posts-foot,
+    .dark-theme .client-pagination { border-color: #4a4b50; }
+    .dark-theme .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .18); }
     @media (max-width: 767px) {
         .posts-index .posts-heading { font-size: 23px; }
         .posts-views { gap: 18px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
     }
 </style>
-<div class="post-warp posts-index">
+<div class="post-warp posts-index" data-posts-base="/posts/">
     <h1 class="posts-heading">文章</h1>
     <p class="posts-lead">2016 年写到现在，160 篇。多数是做产品、做数据、做量化时踩过的坑和当时的思路。</p>
 
-    
-    <div class="posts-views">
+    <nav class="posts-views" aria-label="文章视图">
         
         <a class="" href="/guide/">精选</a>
         
-        <a class="active" href="/posts/">全部</a>
+        <a class="active" aria-current="page" href="/posts/">全部</a>
         
         <a class="" href="/archives/">按年</a>
         
-    </div>
+    </nav>
 
-    <div class="posts-list">
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/atomic-habits/">思维导图｜《掌控习惯》</a></h2>
-            <p class="posts-list-summary">关于作者</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-07-05">July 5, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-                
-            </div>
-        </article>
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/mentoring-vol-3/">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a></h2>
-            <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/atomic-habits/">思维导图｜《掌控习惯》</a></h2>
+    <p class="posts-list-summary">关于作者</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-07-05">July 5, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="翻译作品||管理||The Manager&#39;s Path"
+         data-categories="Side Project||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/mentoring-vol-3/">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a></h2>
+    <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
 话虽如此，在职业生涯的某个时刻，我们大多数人都会从事某种程度的技术指导、职业指导或两者混合。
 我们中的许多人也将获得指导。那么，如何使这种类型的指导富有成效？
 互利的技术指导 当高级工程师指导团队中的初级工程师时，他们一起解决问题，这往往能提高后者 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-06-23">June 23, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-06-23">June 23, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/selling-the-wheel/">工程师如何卖轮子</a></h2>
-            <p class="posts-list-summary">在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="程序员||营销"
+         data-categories="个人进步||商业分析||技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/selling-the-wheel/">工程师如何卖轮子</a></h2>
+    <p class="posts-list-summary">在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
 上面是普通人的技术产品主张。作为程序员自己，是不是就没有这样的困扰了呢？我们可以做前端、可以做web端、可以开发自己的小程序，是不是就可以吸引无数忠实用户、卖个好价钱、躺平后半生了呢？如果真是这样子，那大 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-05-25">May 25, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-05-25">May 25, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/mentoring-vol-2/">技术领导｜02 Mentoring 如何指导新人</a></h2>
-            <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="翻译作品||管理||The Manager&#39;s Path"
+         data-categories="Side Project||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/mentoring-vol-2/">技术领导｜02 Mentoring 如何指导新人</a></h2>
+    <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
 经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
 所以不出意外的，我感到灰心丧气。而在灰心之余，最好的办法就是去读研究生。所 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-05-23">May 23, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-05-23">May 23, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/mentoring-vol-1/">技术领导｜02 Mentoring 如何指导实习生</a></h2>
-            <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="翻译作品||管理||The Manager&#39;s Path"
+         data-categories="Side Project||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/mentoring-vol-1/">技术领导｜02 Mentoring 如何指导实习生</a></h2>
+    <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
 导师制度的价值 导师制度 导师通常被分配给团队中的初级成员，例如应届生或实习生。许多组织，在新员工的入职过程中也使用导师。
 导师是谁 有时，导师是团队中的另一位初级同学。可能他自己也只参加工作一两年，可以轻易地与新人建立联系。
 导师有时是高级工程师。除了可以帮助新员工加快熟悉 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-04-23">April 23, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-04-23">April 23, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/performance-coaching/">思维导图｜《高绩效教练》</a></h2>
-            <p class="posts-list-summary">核心观点：
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/performance-coaching/">思维导图｜《高绩效教练》</a></h2>
+    <p class="posts-list-summary">核心观点：
 让教练对象产生如下感觉
 自主 胜任 联结 教练需要做到
 察觉 提问 倾听 关于作者</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-03-16">March 16, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-03-16">March 16, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/three-feature-importances-in-xgb/">Xgboost 三种特征重要性计算方法对比与扩展</a></h2>
-            <p class="posts-list-summary">简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="数据挖掘||总结||特征工程"
+         data-categories="技术技巧||数据挖掘/机器学习">
+    <h2 class="posts-list-title"><a href="/posts/three-feature-importances-in-xgb/">Xgboost 三种特征重要性计算方法对比与扩展</a></h2>
+    <p class="posts-list-summary">简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
 这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
 另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-03-08">March 8, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-03-08">March 8, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/what-i-learned-from-little-game-xiao/">从一款小游戏收获的三点思考</a></h2>
-            <p class="posts-list-summary">2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="app||总结"
+         data-categories="个人进步||side project">
+    <h2 class="posts-list-title"><a href="/posts/what-i-learned-from-little-game-xiao/">从一款小游戏收获的三点思考</a></h2>
+    <p class="posts-list-summary">2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
 这一过程，收到了很多反馈。
 同时，也有如下三点思考：
 善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
 前景提要 品牌与商业化观察 很久以前，小力就有一个想法：将自己的技术能力变现，至少是能变成流量。
 在这个过程中，交付客户喜欢的东西，形成自己的名片📇。
 这样做的目的：一方面是督促自己不断学习；另一 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-02-13">February 13, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">side project</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-02-13">February 13, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/interpretable-machine-learning/">算法模型的可解释性</a></h2>
-            <p class="posts-list-summary">背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">side project</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="总结"
+         data-categories="行业趋势||数据挖掘/机器学习">
+    <h2 class="posts-list-title"><a href="/posts/interpretable-machine-learning/">算法模型的可解释性</a></h2>
+    <p class="posts-list-summary">背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
 QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
 某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
 数据越多越好 作为调参从业人员，从算法和模型角度来说，数据确实是越多越好。
 数据越多，模型能捕获到的有用特征则更多。从特征状态空间，映射到实际标签的 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2021-01-22">January 22, 2021</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2021-01-22">January 22, 2021</time>
         
-        <article class="posts-list-item">
-            <h2 class="posts-list-title"><a href="/posts/ten-financial-moments-in-five-years-1/">五年十个财务瞬间｜01 2020年财务总结</a></h2>
-            <p class="posts-list-summary">描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="财务||总结"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/ten-financial-moments-in-five-years-1/">五年十个财务瞬间｜01 2020年财务总结</a></h2>
+    <p class="posts-list-summary">描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
 为什么会有这篇文章 写这篇文章，是为了审视自己的财务情况，梳理财务观和财务现状，给自己一个交代。
 财富，不仅决定了一个人的生活水平，也是其未来的支撑。财富自由不是绝对概念——需要达 …</p>
-            <div class="posts-list-meta">
-                <time datetime="2020-12-31">December 31, 2020</time>
-                
-                <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-                
-            </div>
-        </article>
+    <div class="posts-list-meta">
+        <time datetime="2020-12-31">December 31, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
         
     </div>
 
-    <div class="posts-foot">
+    <div class="posts-foot server-posts-foot">
         
 
 <ul class="pagination">
@@ -513,7 +595,12 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
 
         <span class="posts-total">共 160 篇</span>
     </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
 </div>
+<script defer src="/js/posts-filter.js"></script>
 
           
 
