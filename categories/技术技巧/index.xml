@@ -1,35 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>技术技巧 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</link>
-    <description>Recent content in 技术技巧 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Jul 2025 10:20:04 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>三大LLM厂商的提示词行动指南</title>
-      <link>https://kuhung.me/posts/prompt-guide/</link>
-      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/prompt-guide/</guid>
-      <description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术技巧 on 谷粒 kuhung</title><link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</link><description>Recent content in 技术技巧 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 20 Jul 2025 10:20:04 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml"/><item><title>三大LLM厂商的提示词行动指南</title><link>https://kuhung.me/posts/prompt-guide/</link><pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate><guid>https://kuhung.me/posts/prompt-guide/</guid><description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
 提示词技巧与人类沟通的共通性 产品设计本身也是人类社会规则设计的一个抽象。从宏观来说，提示词技巧和人类社会的一些常见共识重合度很高。例如：清晰阐明你的诉求、明确角色职责、分阶段分解任务、重复诉求以防止遗忘、约定清晰的输出结构、提供样例进行模仿、引导输出内容、要有事实数据支撑、设计指标反复迭代。这些技巧，在与人沟通、协作、领导、教练的时候，是非常重要的。靠意识同步的三体人，其 AI 的形态必与我们的不同。只要人类社会还是当前的结构形态，当下这些工作就还有意义。
 提示词的分类 提示词，我们从配置方来说，分为三类。分别是系统提示词，由 LLM 提供商预设在模型 API 接口下，定义模型的行为准则。例如：反黄暴之类的。这一般是第一条注入的提示词。角色提示词，这个提示词是开放给用户配置的，比如配置为“你是一个大模型专家”。最后就是常见的用户交互提示词，用户输入的内容也算提示词。在此基础上，又根据用户和场景，派生出例如：指令提示词，指定输出xx字这种；上下文提示词，交代上下文说过啥；样本提示词，按照给的样式来；CoT 提示词，好好想想，逐步思考，等若干提示词种类。
 主流大模型提供商的提示词建议 话归正题，笔者参考了 Anthropic、Google 以及 OpenAI 的提示词构建文档，力求从第一手信息源出来，结合自身的使用经验，给到当下最好的解决方案。这其中也离不开各类 LLM 支持构建的 deep reasearch 工具，这个过程才会变得更丝滑、效率更高。但由于人脑的带宽毕竟有限，错误和纰漏在所难免，读者朋友如有发现，欢迎指出。
 Antropic 的提示词建议 以 Anthropic 为例，他们在训练过程中使用了大量的 XML 的结构化语料，因此类似的结构化提示词在他家的模型上会表现得很好。另外也强调清晰和直接的重要性。即清晰表达你的需求，可量化的提出你的诉求。而不是丢一个模棱两可的问题，然后反复沟通。但其实这部份也是需要的，这里更多是指大规模应用的时候，系统预设提示词，减少用户和下文的困惑度，这在软件系统中很重要。而且模型本身就是概率模型，它的结果是不确定的，那么反复沟通其实就有必要。
 因为 LLM 的本质是预测下一个 token 是啥，所以可以通过预设这个开头来保证它会做出预期内的事情。比如想要输出 JSON，那么就以{开头。这一技术也被用在 deepseek 的 think 推理里面，通过预先提示来让模型进行 reason 推理。另一方面，由于模型的被奖励尽可能多的输出下一个 token，所以当遇到负面提示时：比如不要干啥，模型可能会产生意料之外的变化。因此，Anthropic 家的文档建议出更多的正面提示词：应该做什么，而不是不应该做什么，借此来减少不可控性。
 Google 的提示词建议 而 Google 来说，对于他们的 Gemini 模型，则建议提供一个清晰可供参考的样本。这点在笔者做仓满量化相关的产出时，深有体会。只需要在开始和模型磨合，得到想要的代码模版或者是 doc 模版，后续只需要提供这个模版，即使是 Gemini-flash 模型，也能高效完成代码的编写工作。除此之外，谷歌文档中也给出了更高级的方式。例如 Step back 思考。先抽象，再解决问题。CoT 思维链也是一种方式，通过提示词注入“一步步思考”的方式，让模型的输出更具可解释性。
-当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description>
-    </item>
-    
-    <item>
-      <title>日常冲突的解决之道</title>
-      <link>https://kuhung.me/posts/confrontation-01/</link>
-      <pubDate>Mon, 13 Sep 2021 09:03:51 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/confrontation-01/</guid>
-      <description>冲突管理三步骤 “不在沉默中爆发，就在沉默中灭亡。”这句话原本是周树人用来描绘旧中国反动派统治下的场景，但今天的很多场景也很适用。在人类社会中，由于各种理念的差异、资源的不均，冲突从来没有停止过。面对冲突，我们最常见的要么是沉默、要么就是爆发。
+当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description></item><item><title>日常冲突的解决之道</title><link>https://kuhung.me/posts/confrontation-01/</link><pubDate>Mon, 13 Sep 2021 09:03:51 +0800</pubDate><guid>https://kuhung.me/posts/confrontation-01/</guid><description>冲突管理三步骤 “不在沉默中爆发，就在沉默中灭亡。”这句话原本是周树人用来描绘旧中国反动派统治下的场景，但今天的很多场景也很适用。在人类社会中，由于各种理念的差异、资源的不均，冲突从来没有停止过。面对冲突，我们最常见的要么是沉默、要么就是爆发。
 改善冲突管理技巧，对于我们的生活将大有裨益。首先，冲突很多时候是因为他人不符合自己的预期，提高冲突处理技巧能鼓舞他人对事情负责。其次，有效的冲突处理，能够给他人带来信任感，让他人更加信任你。最后，在职业生涯中，管理得当的冲突，能够给组织结构带来可预见性。
 今天，我们就冲突这个话题，展开讲讲如何处理它。分为冲突之前、冲突进行中以及冲突的后管理。以下的思路框架来源于《关键冲突》，看完全文且感兴趣的同学，可以去阅读原著。
 冲突之前 看到一个不合预期的情况，很多人的第一反应，大概就是直接冲上去了吧。这个反应很正常，但今天起，你应该稍微停下来，思考下：这真的是个问题吗？这个观念和《你的灯亮着吗》如出一辙。强调的是：不是所有问题都真的需要解决，也不是所有问题都需要你解决。
@@ -41,16 +17,7 @@ Google 的提示词建议 而 Google 来说，对于他们的 Gemini 模型，�
 简化问题 除了动机，能力也会影响一个人做某事的态度。你让我一个拧螺丝的去造火箭，那我即使想完成，也很难胜任不是。所以，在缺乏能力时，应尽量帮助对方简化问题。通过提问的方式，和对方一同探寻问题的根本原因。适当的，引导去关注潜在的影响因素。当能力得到匹配之后，再检查动机是否具备。
 随机应变 进展不可能一帆风顺，多少你会遇到意料之外的事情。当对方感觉不安全时，先跳出话题，营造一种安全的感觉。语焉不详时，抓住这个点澄清事实。当插入突发话题时，标记好之前的话题进度，稍后回到原议题。当对方情绪化时，引导对方关注事实的经过，减少情绪化对判断的影响。
 冲突之后 最后别忘了，冲突解决了不等于问题解决了。明确执行计划并跟踪进展，是善始善终的重要一环。明确何人、何时、何地做何事。明确每个人的责任和工作内容。和对方一同确定检查的时间节奏。
-总结 面对冲突，核心还是在于沟通。当然，沟通也是需要技巧。以一个平等、尊重的视角，梳理冲突的经过。对差异的来源进行诊断，从能力和动机两个维度，激励他人。最后，定期检查，时刻回顾。这就是冲突处理的核心技巧。</description>
-    </item>
-    
-    <item>
-      <title>软件开发的高杠杆活动</title>
-      <link>https://kuhung.me/posts/the-effective-engineer-01/</link>
-      <pubDate>Mon, 09 Aug 2021 09:12:06 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/the-effective-engineer-01/</guid>
-      <description>软件开发的正确思维，聚焦高杠杆活动 作为技术序列的工程师，我时常在想，什么样的角色将会是我五年、十年后所扮演的。目前来说，工作三年有余，在某些公司内，已经可以算是高级甚至是资深工程师。不过，对于我来说，赋予title起的作用，并没有做成一件事兴奋。我时常在好奇，别的工程师的工作方法和我一样吗？我目前的工作方法是最优的了吗？
+总结 面对冲突，核心还是在于沟通。当然，沟通也是需要技巧。以一个平等、尊重的视角，梳理冲突的经过。对差异的来源进行诊断，从能力和动机两个维度，激励他人。最后，定期检查，时刻回顾。这就是冲突处理的核心技巧。</description></item><item><title>软件开发的高杠杆活动</title><link>https://kuhung.me/posts/the-effective-engineer-01/</link><pubDate>Mon, 09 Aug 2021 09:12:06 +0800</pubDate><guid>https://kuhung.me/posts/the-effective-engineer-01/</guid><description>软件开发的正确思维，聚焦高杠杆活动 作为技术序列的工程师，我时常在想，什么样的角色将会是我五年、十年后所扮演的。目前来说，工作三年有余，在某些公司内，已经可以算是高级甚至是资深工程师。不过，对于我来说，赋予title起的作用，并没有做成一件事兴奋。我时常在好奇，别的工程师的工作方法和我一样吗？我目前的工作方法是最优的了吗？
 带着这样的疑问，也关注了硅谷大厂程序员的一些博客，同时也阅读了一些软件开发的经典之作，例如《人月神话》、《大教堂与旧集市》、《程序员修炼之道》等。这些内容都是很好的基础，为我软件开发的职业道路，树立了基本的职业价值观。不过今天，要推荐另外一本书《The Effective Engineer》。本书目前还没有中文版本，作者经历过硅谷的大小厂，Google、Quip、Quora等，从他的角度，总结了一些很有道理的内容。
 该书的核心，聚焦在一个杠杆二字。所有活动的目的，都是最大化杠杆的效果。这点和的之前讲的财富38条法则不谋而合。在上次的法则中，同样强调了杠杆的效用。而软件开发领域，本身就是一个高杠杆活动。你开发的软件，可以只供团队内数十人使用，也可以供数以亿计的用户使用。
 该系列整体分为三条，咱们逐一拆解。
@@ -67,16 +34,7 @@ Google 的提示词建议 而 Google 来说，对于他们的 Gemini 模型，�
 构建长期价值 实用与质量的平衡 多快好省赶紧上，这种思想也会出现在软件开发领域。这本身与快速迭代并不矛盾，但要注意平衡好开发周期与质量的矛盾。CodeReview、自动化测试，能够一定程度减少出错概率。项目发展过程中的技术债，要得到有效管理。不可一味堆叠需求而忽视技术基建。
 减少维护成本 在项目上线的维护过程中，也需要留意维护的成本。开发代码过程中，将错误有效暴露。同时进行链路上的故障演习，合理安排兜底策略，将有效减少维护成本。
 投资团队成长 从长远来看，每个人都不可能单兵作战取得巨大的成功，我们需要团队。投资团队成长方面，首先是帮助其他人成功。这可以通过分享自己的经验，写下高质量的文档实现。也可通过CodeReview实现。另一方面，招聘是团队内每个人的责任。招聘高质量的同事，在入职培训和指导方面下功夫，也将获得极大的回报。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>工程师如何卖轮子</title>
-      <link>https://kuhung.me/posts/selling-the-wheel/</link>
-      <pubDate>Tue, 25 May 2021 21:53:20 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/selling-the-wheel/</guid>
-      <description>在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
+关于作者</description></item><item><title>工程师如何卖轮子</title><link>https://kuhung.me/posts/selling-the-wheel/</link><pubDate>Tue, 25 May 2021 21:53:20 +0800</pubDate><guid>https://kuhung.me/posts/selling-the-wheel/</guid><description>在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
 上面是普通人的技术产品主张。作为程序员自己，是不是就没有这样的困扰了呢？我们可以做前端、可以做web端、可以开发自己的小程序，是不是就可以吸引无数忠实用户、卖个好价钱、躺平后半生了呢？如果真是这样子，那大概996和秃头就是假的、是拜登打的劳工牌了。
 除了技术力，市场的敏锐度以及营销能力，也是决定成败的关键。
 在日常工作中，不可避免的，程序开发也会有自己的观点主张：无论是技术方面的、还是日常决策方向的。也有人幻想着，有个赏识的伯乐，能发现自己点子的独特之处，然后悄悄”颠覆世界“。
@@ -126,16 +84,7 @@ Tips：
 客户为什么需要我们的产品？
 什么促使他们更愿意从我们这里购买？
 为什么他们愿意从竞争对手处购买？
-我们应提供哪些增值服务以达成交易？</description>
-    </item>
-    
-    <item>
-      <title>Xgboost 三种特征重要性计算方法对比与扩展</title>
-      <link>https://kuhung.me/posts/three-feature-importances-in-xgb/</link>
-      <pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/three-feature-importances-in-xgb/</guid>
-      <description>简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
+我们应提供哪些增值服务以达成交易？</description></item><item><title>Xgboost 三种特征重要性计算方法对比与扩展</title><link>https://kuhung.me/posts/three-feature-importances-in-xgb/</link><pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate><guid>https://kuhung.me/posts/three-feature-importances-in-xgb/</guid><description>简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
 这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
 另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。
 在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。
@@ -148,16 +97,7 @@ XGB 中常用的三种特征重要性计算方法，以及它的使用场景。�
 XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。
 ‘weight’ - the number of times a feature is used to split the data across all trees. 简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**frequency**2。
 gain model.feature_importances_ 这是我们调用特征重要性数值时，用到的默认函数方法。其背后用到的贡献度计算方法为gain。
-‘gain’ - the average gain across all splits the feature is used in.</description>
-    </item>
-    
-    <item>
-      <title>HIVE 技巧积累之合并重叠日期</title>
-      <link>https://kuhung.me/posts/merge_overlapping_date/</link>
-      <pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/merge_overlapping_date/</guid>
-      <description>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
+‘gain’ - the average gain across all splits the feature is used in.</description></item><item><title>HIVE 技巧积累之合并重叠日期</title><link>https://kuhung.me/posts/merge_overlapping_date/</link><pubDate>Sun, 09 Jun 2019 00:17:05 +0800</pubDate><guid>https://kuhung.me/posts/merge_overlapping_date/</guid><description>目前网上流传着一个段子，说算法工程师实际上就是 SQL boy，数据分析师是 PPT boy。艺术来源于现实，实际上的我们真的有很多时间在写 SQL 出数据，或者是针对 bad case 做数据的进一步分析。
 这不，近期这边接到的一个需求就是对玩家的某项行为进行统计。一般来讲，掌握基本 SQL 的技巧，这些需求的难度都不大。但是这个需求需要将玩家用户的多个重叠日期进行拉伸去重。这一下可难到大伙儿。在自个儿思考无果，团队讨论之后也没啥直接的办法。
 在网上搜索一番后，很多都不是很对应。不过好在几轮筛选，找到了一个类似的需求。原文链接在这里：🔗。为了方便后来的人，在这里做个分析记录，以及后面举一反三该怎么做。毕竟这些东西很少出现在教程和课本里，但是当业务方有这个需求的时候，常常又很紧急，容不得细思慢想。
 问题定义： 在解决一个问题之前，我们需要先明确定义问题。这里的问题是对多个重叠日期，用 SQL 将其进行去重，并在 HIVE 环境中使用。
@@ -165,28 +105,10 @@ gain model.feature_importances_ 这是我们调用特征重要性数值时，用
 问题简化 解决问题的核心是简化问题。这个问题看起来情况众多，实际上，对于我们的任务，只有两种情况：一个是两个日期有重叠；一个是两个日期没有重叠。
 对于不同的情况，要做不同的处理。重叠日期取最大最小日期即可，非重叠的分段取。剩下的即是通过工具去实现逻辑。
 数据准备 这里采用原作的方式定义数据，创建出上面的13中情况。实际上，如果你的格式和下面的类似，做出对应的调整即可。
-drop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values (&amp;#39;01:precedes&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;01:precedes&amp;#39;,to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;02:meets&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;02:meets&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;03:overlaps&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;03:overlaps&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;04:finished by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;04:finished by&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;05:contains&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;05:contains&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;06:starts&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;06:starts&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;07:equals&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;07:equals&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;08:started by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;08:started by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;09:during&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;09:during&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;10:finishes&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;10:finishes&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;11:overlapped by&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;11:overlapped by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;12:met by&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;12:met by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;13:preceded by&amp;#39;,to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;13:preceded by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); commit; 定义出来的数据如下</description>
-    </item>
-    
-    <item>
-      <title>深度强化学习技巧 hacks for training deep RL</title>
-      <link>https://kuhung.me/posts/training_rl_systems_hacks/</link>
-      <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/training_rl_systems_hacks/</guid>
-      <description>深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧 简化问题，使用低维变量。 使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。 当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。 构造一个 demo 来测试你的算法 比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。 这样能够轻易地发现那里出了问题。 注意：不要在这样的小问题上过分的尝试。 在熟悉的场景中测试 随着时间的推移，你将能预估训练所需的时间。 明白你的奖赏是如何变化的。 能够设定一个基线，以便让你知道相对过去改进了多少。 作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。 快速上手新任务的技巧 简化问题 从简单的开始，直到回到问题。 途径1： 简化特征空间 举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。 一旦起步，逐步还原问题直到解决问题。 途径2：简化奖赏函数 简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。 比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。 将一个问题转化为强化学习的技巧 可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。
+drop table t purge; create table t ( test_case varchar2(32) not null, start_date date not null, end_date date not null ); Insert into t values (&amp;#39;01:precedes&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;01:precedes&amp;#39;,to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;02:meets&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;02:meets&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;03:overlaps&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;03:overlaps&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;04:finished by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;04:finished by&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;05:contains&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;05:contains&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;06:starts&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;06:starts&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;07:equals&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;07:equals&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;08:started by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;08:started by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;09:during&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;09:during&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;10:finishes&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;10:finishes&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;11:overlapped by&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;11:overlapped by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;12:met by&amp;#39;,to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;12:met by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;13:preceded by&amp;#39;,to_date(&amp;#39;03&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;04&amp;#39;,&amp;#39;DD&amp;#39;)); Insert into t values (&amp;#39;13:preceded by&amp;#39;,to_date(&amp;#39;01&amp;#39;,&amp;#39;DD&amp;#39;),to_date(&amp;#39;02&amp;#39;,&amp;#39;DD&amp;#39;)); commit; 定义出来的数据如下</description></item><item><title>深度强化学习技巧 hacks for training deep RL</title><link>https://kuhung.me/posts/training_rl_systems_hacks/</link><pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate><guid>https://kuhung.me/posts/training_rl_systems_hacks/</guid><description>深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧 简化问题，使用低维变量。 使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。 当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。 构造一个 demo 来测试你的算法 比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。 这样能够轻易地发现那里出了问题。 注意：不要在这样的小问题上过分的尝试。 在熟悉的场景中测试 随着时间的推移，你将能预估训练所需的时间。 明白你的奖赏是如何变化的。 能够设定一个基线，以便让你知道相对过去改进了多少。 作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。 快速上手新任务的技巧 简化问题 从简单的开始，直到回到问题。 途径1： 简化特征空间 举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。 一旦起步，逐步还原问题直到解决问题。 途径2：简化奖赏函数 简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。 比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。 将一个问题转化为强化学习的技巧 可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。
 第一步：将这个问题使用随机策略可视化出来。 看看那些部分吸引了你。
 如果这个随机策略在某些情况下做了正确的事，那么很大概率，强化学习也可以做到。
-策略的更新将会发现这里面的行为，并促使稳定下来。 如果随机策略永远都做不到，那么强化学习也不可能。 确保可观测 确保你能够掌控系统，且给 agent 的也是同样的系统环境。 举个例子： 亲自查看处理过图片，以确保你没有移出掉关键信息或者是在某种程度上阻碍算法。 确保所有的事物都在合理的尺度 经验法则： 观测环境： 确保均值为0，方差为1。 奖赏： 如果你能控制它，就把他缩放到一个合理的维度。 在所有的数据上都做同样的处理。 检查所有的观测环境以及奖赏，以确保没有特别离奇的异常值。 建立一个好的基线 一开始并不清楚哪些算法会起作用，所以设定一系列的基线（从其他方法）。 交叉熵 策略更新 一些类型的 Q-learning 算法: OpenAI Baselines 或者 RLLab 复现论文 某些时候（经常的事），复现论文结果特别困难。有如下一些技巧：</description>
-    </item>
-    
-    <item>
-      <title>12306Bypass Server 抢票神器&#43;微信提醒</title>
-      <link>https://kuhung.me/posts/12306bypass-server/</link>
-      <pubDate>Sat, 26 Jan 2019 15:52:08 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/12306bypass-server/</guid>
-      <description>前言 春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。
+策略的更新将会发现这里面的行为，并促使稳定下来。 如果随机策略永远都做不到，那么强化学习也不可能。 确保可观测 确保你能够掌控系统，且给 agent 的也是同样的系统环境。 举个例子： 亲自查看处理过图片，以确保你没有移出掉关键信息或者是在某种程度上阻碍算法。 确保所有的事物都在合理的尺度 经验法则： 观测环境： 确保均值为0，方差为1。 奖赏： 如果你能控制它，就把他缩放到一个合理的维度。 在所有的数据上都做同样的处理。 检查所有的观测环境以及奖赏，以确保没有特别离奇的异常值。 建立一个好的基线 一开始并不清楚哪些算法会起作用，所以设定一系列的基线（从其他方法）。 交叉熵 策略更新 一些类型的 Q-learning 算法: OpenAI Baselines 或者 RLLab 复现论文 某些时候（经常的事），复现论文结果特别困难。有如下一些技巧：</description></item><item><title>12306Bypass Server 抢票神器+微信提醒</title><link>https://kuhung.me/posts/12306bypass-server/</link><pubDate>Sat, 26 Jan 2019 15:52:08 +0800</pubDate><guid>https://kuhung.me/posts/12306bypass-server/</guid><description>前言 春节假期临近，车票一度紧张。某行、某团开了加速包后，仍然无法第一时间刷到目的地的票。稍微有点儿技术底子的我们岂能坐以待毙，自然是要自己动手，丰衣足食。
 网上有各类开源的工具包，这里不做过多点评。之前在好友圈内传得比较靠谱的是 12306Bypass，又叫分流。分流是一个 Windows 应用，工作在 PC 端。其核心功能完全免费，更更重要的是，它的监控刷新在本地可以真实的感知。
 以前在学校还好，可以守在电脑面前。但工作后，由于各种原因，无法第一时间获取分流的抢票信息，因而白白错过好几次下单付钱的机会。于是我们就有了这样一个愿望，希望能将分流的信息第一时间转发。
 前几日逛某论坛，有人向分流开发者传达了增加 Server 酱的请求。开发者还是很给力，在最近的几次版本迭代中实现了该功能。简单的来说，Server 酱就是一个提醒服务。在这里，我们把它用在抢票软件中。当软件抢到票时，通过该服务，给到微信提醒。通知我们及时付款。
@@ -201,23 +123,10 @@ drop table t purge; create table t ( test_case varchar2(32) not null, start_date
 实际效果 就在配置完成不久后，分流帮我抢到了回家的车票。同时在微信端，Server 酱强制推送。
 总结 通过这样的一番配置，我们终于能够安稳的玩耍手机，而不用担心错过订单付款时间。事实上，分流本身的基础功能，也自带了一些提醒服务。但是他们大多较为繁琐。以 QQ 提醒为例，有被顶掉下线的风险。自带的微信提醒，模拟的微信桌面登陆，理论上需要2个微信号。按照上面的操作，我们只需要简单的配置，即可实现强制推送，错过的几率大大减小。
 这样的推送服务，其应用场景不局限于此。这也是我琢磨它的原因之一——应用场景广泛。只要需要推送的地方，都可以嵌入这样一套服务。例如网站新增评论、或是按秒计费的服务器上模型训练结束等等。
-Server 酱实现的功能有限，仅针对微信推送。但这也是它针对国内业务的一种优化。类似这样的推送服务很多，国外的 Slack 功能组件也很丰富。在一些涉及敏感信息的领域，构建一套自己的推送服务，也是不错的主意。</description>
-    </item>
-    
-    <item>
-      <title>一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </title>
-      <link>https://kuhung.me/posts/time-series-problem-summary/</link>
-      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhung.me/posts/time-series-problem-summary/</guid>
-      <description>Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
+Server 酱实现的功能有限，仅针对微信推送。但这也是它针对国内业务的一种优化。类似这样的推送服务很多，国外的 Slack 功能组件也很丰富。在一些涉及敏感信息的领域，构建一套自己的推送服务，也是不错的主意。</description></item><item><title>一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary</title><link>https://kuhung.me/posts/time-series-problem-summary/</link><pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate><guid>https://kuhung.me/posts/time-series-problem-summary/</guid><description>Source https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion
 总结一：保证数据同分布 验证集的选取，分布上应尽量靠近测试集。
 方式一:：对抗验证集的生成。 方式二： 就近选取相同天数。 方式三:：类比属性。如本赛题 &amp;ldquo;golden week&amp;rdquo; 与 &amp;ldquo;new year&amp;rdquo; 类比，选取 &amp;ldquo;new year&amp;rdquo; 段作为验证集。 tips: kfold 用在时间序列上不合适，会有数据泄露风险。正确的方法应是滑窗。
 总结二：异常值特殊处理 一些特殊的时间节点（或者说是异常值），应该予以特殊考虑。比如本次比赛中的 &amp;ldquo;golden week&amp;rdquo;.。需要对其进行变换，而不是直接依靠模型的预测结果。
 方式一:：等同法 The rules:
 Treat holiday as Saturday
-If the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.</description>
-    </item>
-    
-  </channel>
-</rss>
+If the day before holiday is weekday ,treat the day before holiday as Friday If the day after holiday is weekday ,treat the day after holiday as Monday it work not only golden week but also a lot other holidays.</description></item></channel></rss>

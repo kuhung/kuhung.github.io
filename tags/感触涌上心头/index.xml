@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>感触涌上心头 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%84%9F%E8%A7%A6%E6%B6%8C%E4%B8%8A%E5%BF%83%E5%A4%B4/</link>
-    <description>Recent content in 感触涌上心头 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 21 Jun 2026 06:51:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%84%9F%E8%A7%A6%E6%B6%8C%E4%B8%8A%E5%BF%83%E5%A4%B4/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>写在离职一年半</title>
-      <link>https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/</link>
-      <pubDate>Sun, 21 Jun 2026 06:51:09 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/</guid>
-      <description>现在是20260621的早上5点半，你失眠了。原因无非是焦虑引起的躯体化反应，包括湿疹、心率偏高。焦虑的原因，也很简单：近期做的SRI商业化，一周下来预估的MRR（月经常性收入）是1.4k，而改版带来的收入反而下降了。隐约觉得这仅有的现金流收入，似乎也难以抓住。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>感触涌上心头 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%84%9F%E8%A7%A6%E6%B6%8C%E4%B8%8A%E5%BF%83%E5%A4%B4/</link><description>Recent content in 感触涌上心头 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 21 Jun 2026 06:51:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%84%9F%E8%A7%A6%E6%B6%8C%E4%B8%8A%E5%BF%83%E5%A4%B4/index.xml" rel="self" type="application/rss+xml"/><item><title>写在离职一年半</title><link>https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/</link><pubDate>Sun, 21 Jun 2026 06:51:09 +0800</pubDate><guid>https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/</guid><description>现在是20260621的早上5点半，你失眠了。原因无非是焦虑引起的躯体化反应，包括湿疹、心率偏高。焦虑的原因，也很简单：近期做的SRI商业化，一周下来预估的MRR（月经常性收入）是1.4k，而改版带来的收入反而下降了。隐约觉得这仅有的现金流收入，似乎也难以抓住。
 此外，近期一直困扰你的是：在投资上似乎站错队了。这段时间的行情风向长期保持在AI的上游基础设施，甚至牵扯到了组装厂和原材料上。中间有两度，你观察到自己似乎错过了风口，但却一直未有动作，导致一再错过的心理加剧。
 另一方面，你的现金流储备已经耗尽，开始调用投资的钱用来周转。短时间内，难以见到明显起色。你在一个月前开始看的工作机会，也并未有进一步接触机会。你会觉得挫败。上述都可以归结为：现金流问题和自我实现问题。
 说到自我实现，你还记得为什么当时离职后并不想找下一份大厂工作吗？原因大概有这么几个点：
@@ -32,16 +17,7 @@
 你要做的是，先验证可以大范围跑通的收入模式。这个模式可以是抄别人的：比如卖课、比如接AI商稿。这两者都需要你不断写东西、写受众感兴趣的东西。
 在这两者的基础上去做。做差异化竞争，而不是随便一个前后端或者门外汉都能做的事情。算法方面的落地分享、管理经验以及行业趋势看法。当然可以穿插一些你的兴趣点：比如开发小工具诊断猫咪之类的。但是不可以本末倒置。
 增加曝光性、流量性的投入，减少无效的开发工作。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>你以为的成年</title>
-      <link>https://kuhung.me/posts/grow-up-in-mind/</link>
-      <pubDate>Thu, 11 Sep 2025 18:13:27 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/grow-up-in-mind/</guid>
-      <description>你以为的成年 18岁那年，你如愿成为大人。你下半年能考上个好大学，未来能够为国家效力，能够实现你的科学家梦想。
+关于作者</description></item><item><title>你以为的成年</title><link>https://kuhung.me/posts/grow-up-in-mind/</link><pubDate>Thu, 11 Sep 2025 18:13:27 +0800</pubDate><guid>https://kuhung.me/posts/grow-up-in-mind/</guid><description>你以为的成年 18岁那年，你如愿成为大人。你下半年能考上个好大学，未来能够为国家效力，能够实现你的科学家梦想。
 28岁那年，你是某个领域的大能。也许在读博士，也许已经有了自己的公司。如果是在公司里面的话，一定混得不错。
 你会和某个喜欢的对象结婚，有自己的家庭。能够承担家庭的责任。有没有孩子不知道，但应该挺快乐的。
 实际的成年 18岁那年，考场没有意外。你发挥水平正常，有遗憾但也不多。这题简单，那题不应该错。你计算着平行宇宙的分数，看着专业名字，填下了志愿。
@@ -66,16 +42,7 @@
 你看，你以为的成年，是挥斥方裘。但实际，几乎全围绕工作，围绕琐碎和不确定性。
 你以为成年，会是大人的样子，大人的风度。却仍受困系统，蝇营狗苟。
 十年前你在难受啥，你记不清楚，但你应该在难受点什么。
-十年后你在难受啥，你很清楚，但你应该很快忘记。</description>
-    </item>
-    
-    <item>
-      <title>你以为的自媒体</title>
-      <link>https://kuhung.me/posts/we-media-in-2025/</link>
-      <pubDate>Wed, 10 Sep 2025 16:38:58 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/we-media-in-2025/</guid>
-      <description>你以为的自媒体 只要敢上镜，能够情绪表达，怎么也能吸引一批人。你和哪些百万UP主相比，只是没有脱下“孔乙己长衫”，腼腆、不好意思罢了。
+十年后你在难受啥，你很清楚，但你应该很快忘记。</description></item><item><title>你以为的自媒体</title><link>https://kuhung.me/posts/we-media-in-2025/</link><pubDate>Wed, 10 Sep 2025 16:38:58 +0800</pubDate><guid>https://kuhung.me/posts/we-media-in-2025/</guid><description>你以为的自媒体 只要敢上镜，能够情绪表达，怎么也能吸引一批人。你和哪些百万UP主相比，只是没有脱下“孔乙己长衫”，腼腆、不好意思罢了。
 你手上的素材一堆又一堆，竞品看了一集又一集的。网上的段子信手拈来，你的脑子清楚知道什么是自己喜欢的，什么是大众喜欢的。
 你通过构造美观的封面，设置悬念、留下钩子。发布之后，全是99+的小红点。你的点击率高高的，完播率杠杆的。很快就突破小流量池，推到了更大的流量池。这个过程就像是小溪入河再入海，没有一丝阻碍。
 各大商单接踵而至，你开始苦恼起商业化和粉丝粘性的关系。你通过自媒体建立起了个人IP，能够养活自己，并考虑招人分担工作了。
@@ -95,16 +62,7 @@
 某些内容偶尔爆火。你想复现。是因为加了这个标签？还是因为选了这个做了封面，时长凑够10分钟？你试图重复，但是无法重复。这种随机性让人沮丧。
 你的粉丝数达标，可以看到流量主广告。几百块钱、几千块钱，但是没有一个合适的。你开通商店，想试着卖点儿东西。开店瞬间，卖掉一单。你开始幻想暴富。结果下一单一周后才来到，三个月收入不到1k。
 你很难受，写下一篇文字来讲自己的心路。结果却又爆了。你想明白了，你要做真实的自己。
-你要向上管理，混成观众老爷们的嫡系。</description>
-    </item>
-    
-    <item>
-      <title>你以为的创业</title>
-      <link>https://kuhung.me/posts/create-in-2025/</link>
-      <pubDate>Tue, 09 Sep 2025 14:05:19 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/create-in-2025/</guid>
-      <description>你以为的创业 你有个点子，不缺程序员，因为你自己就是程序员。你通过历史技术能力的积累，很快实现产品原型。产品原型在种子用户里的反馈很好，一些小问题也快速被修复。不少用户觉得你的创造改变了他们的生活，他们愿意为之付费，并且到处宣传。接着发布产品，获得了爆炸性的关注，产品大卖。人才涌向你，都以加入你的团队为自豪。
+你要向上管理，混成观众老爷们的嫡系。</description></item><item><title>你以为的创业</title><link>https://kuhung.me/posts/create-in-2025/</link><pubDate>Tue, 09 Sep 2025 14:05:19 +0800</pubDate><guid>https://kuhung.me/posts/create-in-2025/</guid><description>你以为的创业 你有个点子，不缺程序员，因为你自己就是程序员。你通过历史技术能力的积累，很快实现产品原型。产品原型在种子用户里的反馈很好，一些小问题也快速被修复。不少用户觉得你的创造改变了他们的生活，他们愿意为之付费，并且到处宣传。接着发布产品，获得了爆炸性的关注，产品大卖。人才涌向你，都以加入你的团队为自豪。
 实际的创业 A方向是你的点子，你通过vibe coding也实现了原型。前后用时快一个月，到头来发现这不就是浏览器自身的功能吗？除了证明你通过这个demo，掌握了一些vibe coding技巧，没有任何市场价值。
 很快你看到了一个视频，B方向的原型在短视频上火热。于是你买了个原型产品，却没有技术门槛。很快市面上出现众多的创业者。他们都手持咸鱼买的原型，寻求投资。投资人也不是傻子，听听便罢了。
 再经历上面的事情后，你偶然看到了一篇自媒体爆款。好家伙，照着说明手册的文案，居然能吸引数十万粉丝关注。在你看来，这其中没有任何技术门槛。于是你也想到从这个方向入手，先做内容。
@@ -122,8 +80,4 @@ Why is so hard？ 老老实实在企业内爬职业梯子不行吗，为何要�
 你想做自媒体，发现自己并不擅长捕捉用户的心理。短时间内无法构建有效的视频内容，没有流量主愿意付钱。你需要和万千相同的想法的人，一起竞争用户的注意力。即使小有粉丝，不过是从一个结构跳到另一个结构。平台掌握你所有的表达、所有的情绪，控制你所有的流量。
 你总是写很多计划，但是实际执行的少之又少。即使你知道侯世达定律，知道项目的实际花费时间会远大于预估。你有时候会想，也许下个月就好了。但时间在流逝。你很难受，没有地方去讲。家里面只敢跟他们说这个月又增加了多少粉丝、卖了几百块的资料。朋友认为你和他不再有共同话题，不想和你聊天。
 你什么也干不好，只能写写东西发发牢骚。
-关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+关于作者</description></item></channel></rss>

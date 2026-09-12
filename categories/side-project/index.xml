@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Side Project on 谷粒 kuhung</title>
-    <link>https://kuhung.me/categories/side-project/</link>
-    <description>Recent content in Side Project on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 23 Nov 2021 15:56:41 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/side-project/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>技术领导｜03 techlead 想象、现实与路线抉择</title>
-      <link>https://kuhung.me/posts/techlead-vol-3/</link>
-      <pubDate>Tue, 23 Nov 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/techlead-vol-3/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Side Project on 谷粒 kuhung</title><link>https://kuhung.me/categories/side-project/</link><description>Recent content in Side Project on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 23 Nov 2021 15:56:41 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/side-project/index.xml" rel="self" type="application/rss+xml"/><item><title>技术领导｜03 techlead 想象、现实与路线抉择</title><link>https://kuhung.me/posts/techlead-vol-3/</link><pubDate>Tue, 23 Nov 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/techlead-vol-3/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 抉择：留在技术路线还是成为经理（管理路线） 成为经理还是留在技术路线是一个艰难的决定。这完全取决于你所处的环境，我不可能告诉你该怎么做。然而，作为一个憧憬并经历过这两条路线的人，我可以透露下我所幻想的、以及真实所见的。需要注意的是，这些只是为了表述方便进行的脸谱化描述，现实不完全相同。
 高级技术路线的想象生活 你的每一天都在深度思考中度过，与其他高级开发人员一起，解决那些有趣、新颖的智力难题。这是软件开发，所以你知道会有一些繁琐的小事。你有很大的权力来选择你的工作，进而可以选择最有趣的部分。你喜欢编写代码、修复bug、让代码运行得更快、让计算机做新的事情，并且你可以把大部分时间花在这上面。
 由于你的资历，经理会在开发开始之前询问你关于开发的建议。你知道正在发生的一切，但又不需要处理人事问题。你被邀请参加正确的会议，在那里做出重要的决定，而且没有影响到你的正常工作。大部分初级开发人员会尊重你、并相信你的每一句话，接受你的反馈，且没有过多地占用你的思考时间。
@@ -56,16 +41,7 @@
 如果你诚实并明确表示失败和不完美是安全的，那通常就足以让你的流程崇拜者放松一点并容忍模棱两可。防止流程崇拜者花大量时间寻找完美的工具或流程，尤其重要的是要确保他们不会因为未能遵循流程而惩罚他们的团队。
 如何成为一名出色的技术主管 优秀的技术主管有许多特征，但下面这些是最重要的。
 了解架构 如果你担任技术主管，但觉得自己没有完全理解所支持的架构，请花点时间了解它、学习它。了解它如何影响它所支持的产品，这些产品的核心逻辑在哪里。当你不了解你正在改变的架构时，几乎不可能很好地领导项目。
-成为一名团队合作者 如果所有的有趣工作都是你在做，请停下来。看看那些棘手、无聊或烦人的领域，你是否可以解决这些问题。处理代码中繁杂的部分可以提供你很多关于流程哪里出错的信息。对于无聊或令人沮丧的项目，有经验的人花时间查看它们通常可以发现并修复一些明显的错误。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜03 techlead 与项目管理</title>
-      <link>https://kuhung.me/posts/techlead-vol-2/</link>
-      <pubDate>Sat, 13 Nov 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/techlead-vol-2/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
+成为一名团队合作者 如果所有的有趣工作都是你在做，请停下来。看看那些棘手、无聊或烦人的领域，你是否可以解决这些问题。处理代码中繁杂的部分可以提供你很多关于流程哪里出错的信息。对于无聊或令人沮丧的项目，有经验的人花时间查看它们通常可以发现并修复一些明显的错误。</description></item><item><title>技术领导｜03 techlead 与项目管理</title><link>https://kuhung.me/posts/techlead-vol-2/</link><pubDate>Sat, 13 Nov 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/techlead-vol-2/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 管理项目经历 回到我第一次担任技术负责人的时候，我的团队正在执行一项非常复杂的任务：分布式系统迁移。我们一个现成的系统在单机已经到达了它的理论极限。在倾尽所学优化它之后，我们决定是时候弄清楚如何在多台机器上运行它了。
 这还是分布式系统萌芽的初期，当时大多数软件开发人员对构建它们的最佳实践知之甚少。但我们有一支优秀的聪明的团队，我们有信心解决这个问题。
 我们确实搞定它了，虽然缓慢但毋庸置疑。我们花了很长时间思考、设计和拆分计算。当跨多台机器计算时，这个过程是非常重要的。然后有一天，我的老板迈克把我拉到他的办公室，告诉我：需要制定一个项目计划。
@@ -117,16 +93,7 @@
 在给定原始需求集的情况下，通过分解项目，你学到了很多东西。
 如果需求在中途发生变化，请知悉这些变更并将计划进行调整。
 如果变更给项目增加了重大风险，需要进行大量新的规划，或者只是需要额外的工作量，请清楚这些成本。
-如果截止日期严格，粗略地了解所需的工作将帮助你确定优先级、削减和简化工作，以在功能、质量和交付日期之间取得最佳折中。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜03 techlead 该知道的事情</title>
-      <link>https://kuhung.me/posts/techlead-vol-1/</link>
-      <pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/techlead-vol-1/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
+如果截止日期严格，粗略地了解所需的工作将帮助你确定优先级、削减和简化工作，以在功能、质量和交付日期之间取得最佳折中。</description></item><item><title>技术领导｜03 techlead 该知道的事情</title><link>https://kuhung.me/posts/techlead-vol-1/</link><pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/techlead-vol-1/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 背景介绍 多年前，我成为技术负责人。在这之前我已经晋升为高级工程师，和其他几位高级工程师在一个小团队中工作。我对被提升为技术负责人有点令人惊讶，因为无论是头衔还是年限，我都不是团队中最资深的人。
 回想起来，我有一些优势。首先，我不仅仅是一名优秀的工程师，还是一个很好的沟通者。我可以写出清晰的文档，我可以在思维不短路的情况下进行演示，我可以与不同团队、不同角色的人交谈并解释发生了什么。
 我也擅长优先级排序。我渴望推进工作并搞清楚下一步需要做什么。最后，我愿意收拾残局，做能做的事情来取得进展。我认为，这种务实的紧迫性（pragmatic urgency）是决定性因素。毕竟，技术负责人是一个领导职位，即使它不是管理职位。
@@ -153,16 +120,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 技术负责人的位置更像是技术型的项目经理，需要在更大范围内利用他们的专业知识，促使整个团队变得更好。他们可以做出独立的决策，并在团队与其他非技术团队的协调方面发挥重要作用。你会注意到这里没有特定的技术向工作。这是一个高级工程师职位，但将技术负责人等同于团队中最优秀或最有经验的工程师是错误的。
 没有其他人的参与，你就无法领导。人际交往能力是我们要求新的技术负责人需要强化的地方，甚至优先于技术专长。与此同时，技术负责人将致力于一项新技术技能学习：项目管理。分解项目的工作与设计系统的工作有很多相似之处，即使对于不想管理他人的工程师来说，学习这项技能也很有价值。
 如果你发现自己处于技术负责人的位置，那么恭喜你！有人认为你具备成为团队关键人物的条件。现在是学习一些新技能的时候了！
-成为技术负责人 **技术负责人是一种在未授权状态下，练习影响力的机会。**作为技术负责人，我正在领导一个团队，但我们都向同一个技术经理汇报。因此，我不仅要影响我的同事，还要影响我的经理，以确保我们优先聚焦正确的工作。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</title>
-      <link>https://kuhung.me/posts/mentoring-vol-3/</link>
-      <pubDate>Wed, 23 Jun 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mentoring-vol-3/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
+成为技术负责人 **技术负责人是一种在未授权状态下，练习影响力的机会。**作为技术负责人，我正在领导一个团队，但我们都向同一个技术经理汇报。因此，我不仅要影响我的同事，还要影响我的经理，以确保我们优先聚焦正确的工作。</description></item><item><title>技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</title><link>https://kuhung.me/posts/mentoring-vol-3/</link><pubDate>Wed, 23 Jun 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/mentoring-vol-3/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
 话虽如此，在职业生涯的某个时刻，我们大多数人都会从事某种程度的技术指导、职业指导或两者混合。
 我们中的许多人也将获得指导。那么，如何使这种类型的指导富有成效？
 互利的技术指导 当高级工程师指导团队中的初级工程师时，他们一起解决问题，这往往能提高后者的生产效率。
@@ -208,16 +166,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 具有较高技术经验的管理人员对于小型高级工程师团队是个不错的配置，但是技术达人通常最好不在管理序列，而应让他们更多地关注技术策略和系统设计。
 在倾向于技术的初创公司中，你往往会看到技术达人扮演CTO的角色，他们在以执行为重点的工程作业中，都将重点放在设计和开发上。
 如果你有晋升提拔的权力，请非常小心地为技术达人提供管理职位，如果这样做了，请密切关注他们对该职位的影响。 技术达人的负面文化可能对合作非常有害，并且会给处于弱势的团队其他人员长久的负面影响。
-认为自己的价值来自于比其他人了解更多信息的技术达人，可能会隐藏信息以保持优势（玩信息差），而这会使团队中的每个人都失去效率。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜02 Mentoring 如何指导新人</title>
-      <link>https://kuhung.me/posts/mentoring-vol-2/</link>
-      <pubDate>Sun, 23 May 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mentoring-vol-2/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
+认为自己的价值来自于比其他人了解更多信息的技术达人，可能会隐藏信息以保持优势（玩信息差），而这会使团队中的每个人都失去效率。</description></item><item><title>技术领导｜02 Mentoring 如何指导新人</title><link>https://kuhung.me/posts/mentoring-vol-2/</link><pubDate>Sun, 23 May 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/mentoring-vol-2/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
 经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
 所以不出意外的，我感到灰心丧气。而在灰心之余，最好的办法就是去读研究生。所以我做了。
 这次大不相同 研究生毕业后的第一份工作，和之前大不相同。我没有被带到办公桌旁呆着，而是给我安排了一位导师。
@@ -262,16 +211,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 精明，内向的开发人员可能永远都不想做管理，但是鼓励他们参与指导有助于他们建立更强的外部视野，更不用说这也在拓展他们的社交圈。
 对话 CTO Q：
 我所在的公司曾多次询问我们是否雇用实习生。我们过去没有，但现在想开始这样做以扩大我们的招聘人数。怎么看这个问题？
-A：</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜02 Mentoring 如何指导实习生</title>
-      <link>https://kuhung.me/posts/mentoring-vol-1/</link>
-      <pubDate>Fri, 23 Apr 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mentoring-vol-1/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
+A：</description></item><item><title>技术领导｜02 Mentoring 如何指导实习生</title><link>https://kuhung.me/posts/mentoring-vol-1/</link><pubDate>Fri, 23 Apr 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/mentoring-vol-1/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
 导师制度的价值 导师制度 导师通常被分配给团队中的初级成员，例如应届生或实习生。许多组织，在新员工的入职过程中也使用导师。
 导师是谁 有时，导师是团队中的另一位初级同学。可能他自己也只参加工作一两年，可以轻易地与新人建立联系。
 导师有时是高级工程师。除了可以帮助新员工加快熟悉工作流程外，还可以充当技术导师。
@@ -314,16 +254,7 @@ A：</description>
 与你的实习生一起进行详细的分析。这对他有意义吗？向他提问，并倾听他的问题并。
 请记住，你正在练习将来成为领导时需要的技能。
 这些技能包括：倾听，清晰传达期望以及根据回应调整。
-管理的基本技能 倾听 倾听是管理人的第一项，也是最基本的技能。</description>
-    </item>
-    
-    <item>
-      <title>从一款小游戏收获的三点思考</title>
-      <link>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</link>
-      <pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</guid>
-      <description>2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
+管理的基本技能 倾听 倾听是管理人的第一项，也是最基本的技能。</description></item><item><title>从一款小游戏收获的三点思考</title><link>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</link><pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate><guid>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</guid><description>2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
 这一过程，收到了很多反馈。
 同时，也有如下三点思考：
 善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
@@ -360,16 +291,7 @@ A：</description>
 随后，小利在外网 Reddit 社区，也发出了帖子，进行游戏曝光，同样收到正面反馈。
 两天后，小力计划采用视频曝光方式。计划延期未交付。
 再两天，小力观察到米游社有一个首页推荐贴，合成史莱姆。获得了合成魈的十倍曝光。观察下来有如下特点：
-标题符合社区文化，吸引人去点击 素材更改并不多，甚至有些粗糙，交互逻辑沿用的第一版 但是，它获得了更好的流量。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜01 技术管理入门 （下）</title>
-      <link>https://kuhung.me/posts/management-101-vol-2/</link>
-      <pubDate>Wed, 30 Dec 2020 00:04:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/management-101-vol-2/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
+标题符合社区文化，吸引人去点击 素材更改并不多，甚至有些粗糙，交互逻辑沿用的第一版 但是，它获得了更好的流量。</description></item><item><title>技术领导｜01 技术管理入门 （下）</title><link>https://kuhung.me/posts/management-101-vol-2/</link><pubDate>Wed, 30 Dec 2020 00:04:13 +0800</pubDate><guid>https://kuhung.me/posts/management-101-vol-2/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
 下半部分，我们集中注意力在自身，即：如何被管理，做一个称职的下属（打工人）。
 被管理者视角 弄清楚如何被管理，也是管理者需掌握的东西。这和向上管理不太一样，虽然它们有相关性。
 它的核心在于三点：
@@ -418,16 +340,7 @@ A：</description>
 不要让每场谈话都变成你需要什么，以及某些事是多么的糟糕。
 当你遇到困难，找你的上级解决掉它之前，试着寻求建议，学习他处理问题的思路和方法。
 寻求建议，永远是表达尊重和真诚的最好方式。
-选择你的理想上级 你的上级会对你的职业生涯产生巨大的影响。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜01 技术管理入门 （上）</title>
-      <link>https://kuhung.me/posts/management-101-vol-1/</link>
-      <pubDate>Sat, 19 Dec 2020 15:32:37 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/management-101-vol-1/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 管理的秘诀就在于：让那些讨厌你的人，远离那些还没有形成主见的人。 ——卡西·史丹格尔
+选择你的理想上级 你的上级会对你的职业生涯产生巨大的影响。</description></item><item><title>技术领导｜01 技术管理入门 （上）</title><link>https://kuhung.me/posts/management-101-vol-1/</link><pubDate>Sat, 19 Dec 2020 15:32:37 +0800</pubDate><guid>https://kuhung.me/posts/management-101-vol-1/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 管理的秘诀就在于：让那些讨厌你的人，远离那些还没有形成主见的人。 ——卡西·史丹格尔
 你阅读这篇文章，是因为你想成为一个好的管理者。但在这之前，你其实并不知道，一个好的管理者是什么样子。
 你之前有遇到过一位好的经理吗？如果一个人让你告诉他，你想从一位好经理身上获得什么，你能够回答这个问题吗？
 从管理者那里，期望获得什么 每个人在管理之路的第一站，总是在桌子的另一边，即：被管理者。这些被管理的经历，成了你构建自己管理哲学的基础。
@@ -477,16 +390,7 @@ A：</description>
 但是要记住，比接收反馈更糟糕的是：没有反馈；或者是到绩效评估时，才得到反馈。
 持续追踪、记录反馈 从领导那里获得早期的、持续的反馈，非常重要。
 发现越早，坏习惯就越容易修正。
-这对于表扬也是同样的道理。一个好的管理者，会注意到你日常生活的点点滴滴，并从中认识你。</description>
-    </item>
-    
-    <item>
-      <title>为度过原神长草期，我写了个原神放置类单机小游戏</title>
-      <link>https://kuhung.me/posts/yuanshen-idle-feedback/</link>
-      <pubDate>Mon, 16 Nov 2020 00:37:39 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/yuanshen-idle-feedback/</guid>
-      <description>游戏地址：https://kuhung.me/yuanshen-idle/
+这对于表扬也是同样的道理。一个好的管理者，会注意到你日常生活的点点滴滴，并从中认识你。</description></item><item><title>为度过原神长草期，我写了个原神放置类单机小游戏</title><link>https://kuhung.me/posts/yuanshen-idle-feedback/</link><pubDate>Mon, 16 Nov 2020 00:37:39 +0800</pubDate><guid>https://kuhung.me/posts/yuanshen-idle-feedback/</guid><description>游戏地址：https://kuhung.me/yuanshen-idle/
 很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。
 游戏模板来源于 Couy69 的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。
 对这款放置挂类游戏的任何建议，欢迎通过以下三种方式联系。
@@ -498,16 +402,7 @@ A：</description>
 另寻前端高手，优化移动端布局，以及迭代整体交互逻辑。
 目前的更新计划：
 项目 预计耗时 预期上线时间 实际上线时间 备注 最后一次修改时间 原神放置类小游戏 7x10h 已上线 2020.11 项目整体概况 2020.12.10 完成全部副本的文字描述替换 4h 2020.12.13 1116 完成蒙德区副本文字描述 2020.11.16 增加新手引导 1h 已上线 2020.11 增加文字描述引导 2020.11.19 调整增益道具UI 增加道具洗练，将摩拉进行消耗 调整暴击逻辑，增加随机性 游戏 Tip：
-点击保存，保存的游戏进度在本地，离开再回来，仍能继续。 ◀返回游戏</description>
-    </item>
-    
-    <item>
-      <title>自制以图搜图引擎，居家学习必备</title>
-      <link>https://kuhung.me/posts/simple-image-search/</link>
-      <pubDate>Mon, 13 Apr 2020 21:17:08 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/simple-image-search/</guid>
-      <description>最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
+点击保存，保存的游戏进度在本地，离开再回来，仍能继续。 ◀返回游戏</description></item><item><title>自制以图搜图引擎，居家学习必备</title><link>https://kuhung.me/posts/simple-image-search/</link><pubDate>Mon, 13 Apr 2020 21:17:08 +0800</pubDate><guid>https://kuhung.me/posts/simple-image-search/</guid><description>最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
 各位绅士可别想歪，我说的是动漫。
 这个问题本质是一个相似度的检索问题。
 说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。
@@ -536,16 +431,7 @@ A：</description>
 相关文章：
 谷粒：机器学习模型部署&amp;ndash;打通前后端任督二脉
 谷粒：机器学习落地需攻破的9个难题
-声明：该应用仅供学习，禁止用于其它用途。</description>
-    </item>
-    
-    <item>
-      <title>机器学习系统设计 Machine learning system design</title>
-      <link>https://kuhung.me/posts/machine_learning_system_design/</link>
-      <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/machine_learning_system_design/</guid>
-      <description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
+声明：该应用仅供学习，禁止用于其它用途。</description></item><item><title>机器学习系统设计 Machine learning system design</title><link>https://kuhung.me/posts/machine_learning_system_design/</link><pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate><guid>https://kuhung.me/posts/machine_learning_system_design/</guid><description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
 机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
 国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程师、机器学习工程师、深度学习工程师都指的这个。
 这一岗位同开发岗位，SDE 一样，也需要足够的系统设计经验。
@@ -572,30 +458,12 @@ Machine learning methods change every year, solving problems stays the same.
 项目的限制条件包括：项目周期多长，有多少算力，需要何种能力，有哪些可用资源。
 特殊例子即：是否需要结合用户做特殊化处理，例如千人千面。
 最后，如同老师设计考试一样，需要考虑如何评估你的系统性能。
-数据流 Machine learning is driven more by data than by algorithms</description>
-    </item>
-    
-    <item>
-      <title>机器学习建模与部署--以垃圾消息识别为例</title>
-      <link>https://kuhung.me/posts/flask_vue_ml/</link>
-      <pubDate>Sat, 20 Apr 2019 14:31:26 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/flask_vue_ml/</guid>
-      <description>前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。
+数据流 Machine learning is driven more by data than by algorithms</description></item><item><title>机器学习建模与部署--以垃圾消息识别为例</title><link>https://kuhung.me/posts/flask_vue_ml/</link><pubDate>Sat, 20 Apr 2019 14:31:26 +0800</pubDate><guid>https://kuhung.me/posts/flask_vue_ml/</guid><description>前言 学历与定位 近日在某论坛，有网友提问道：搞机器学习是不是要博士或是硕士学历，是不是要求很高，顶会论文？本科生或者更低学历的，是不是就没有机会了？从最近公司的招聘来看，算法工程师的 bar 确实有在提高。但在某些事业部，仍需要很大的人力来做落地场景。每个人都要找准自己的定位，公司也有它的部门定位。
 如果是发论文、要在学术界站稳脚跟，给投资人“我们很重视最新技术”的信心，那博士确实很重要。另一个角度，从实用角度来说，研究生和本科生可能性价比更高。当然，作为一个本科就业的人，如果没有较为丰富的实战经验；有机会的话，还是拿到硕士及更高学历比较好。这里的实战经验就比如：搭建一个完整的、涉及算法模型、后端及前端的系统。
 模型算法的实用主义 机器学习的实用主义，不是在论文多少，而是用正确的方法去解决正确的问题。而作为背后的工程师，除了调参、除了写 sql，做调包侠、做 sql boy、报表 boy 以外，在之前的文章也提到过，要学会做正确的展示，做全套的工程化实施。毕竟，等排期很难受；有些情况前后端资源不够，或者优先级很低，那就需要自己动手了。以下以上面的垃圾邮件分类为例子，说明该如何搭建一个前后端完整的机器学习系统。
 这里将本次的任务拆解，分为三个部分来讲。后端 flask、前端 Vue、ML 模型采用 flair，项目地址 kuhung/flask_vue_ML
 后端 flask 相关依赖的安装 pip install -r requirements.txt
-核心函数 导入函数包 from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence 准备工作 app = Flask(__name__) # 声明准备 app.secret_key = &amp;#34;super_secret_key&amp;#34; CORS(app) classifier = TextClassifier.</description>
-    </item>
-    
-    <item>
-      <title>GPT2 模型生成假正经文稿 Slack gpt2 Bot </title>
-      <link>https://kuhung.me/posts/slack-gpt2-bot/</link>
-      <pubDate>Mon, 25 Mar 2019 22:36:06 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/slack-gpt2-bot/</guid>
-      <description>slack app：slack workspace
+核心函数 导入函数包 from flask import Flask, jsonify, request from flask_cors import CORS # 做跨域的准备 from flask import session # 追踪客户端会话 from flair.models import TextClassifier # 模型导入，采用前不久开源的 flair 做文本分类 from flair.data import Sentence 准备工作 app = Flask(__name__) # 声明准备 app.secret_key = &amp;#34;super_secret_key&amp;#34; CORS(app) classifier = TextClassifier.</description></item><item><title>GPT2 模型生成假正经文稿 Slack gpt2 Bot</title><link>https://kuhung.me/posts/slack-gpt2-bot/</link><pubDate>Mon, 25 Mar 2019 22:36:06 +0800</pubDate><guid>https://kuhung.me/posts/slack-gpt2-bot/</guid><description>slack app：slack workspace
 记得在校的时候，冰岩作坊做过一个app，讲接龙故事的。类似于我写一段，另一个人写接下来的一段，最后凑成一个完整的故事。当时，可产生了不少有意思的段子。最近，GPT2 模型的发布，让人不禁想到，有没有可能让机器来完成这个任务呢？机器写十四行诗、机器写莎士比亚风格的文章，机器写对联，这些都已经成为了现实。人工智能虽然没有带来突飞猛进的质变，但着实催生了很多有意思的小玩意儿。对于GPT2，一个字概括来说就是：壕——数据量大，算力能够 cover 住。这套算法模型网罗了几乎现有的所有文本数据，成功“过拟合“地屠榜，刷新多个 NLP 任务榜单排行。作者为了预防滥用模型、同时让别的研究者能够有个初步地认识，开源了一个小一些地模型。该模型的能力之一，就是我们今天的主题：接着别人地话写故事。今天我们要通过算法来实现。
 虽然作者有在尽力简化复现难度，但对于很多不是这行的人，让他去敲命令行来走完整个流程，还是困难重重。能够将深奥的原理讲给普通人听，并且简单易懂，是一项科学传播的必备能力。做为技术向的工程师，在产品处于雏形阶段时，能够通过一个 MVP 最小价值产品，实现核心功能，也是一项大大的加分项。对于今天的任务，我们选取容易上手，接口丰富的 slack 作为我们的前端交互窗口。
 如何构建一个 MVP 产品；或者具体的来讲，在我们的这个任务中，如何将数据挖掘工程师的模型成果，转化为可落地、可感知的产品或服务呢。操起斧子直接开干，依葫芦画瓢撸个前后端出来吗？这，其实是很多技术人员的一个误区——认为什么都可以从技术层面解决，”少废话别bb，bb is cheap，show me the code“。但从一个商业产品或服务商的角度来看，客户与渠道是前台，我们的客户是谁、如何触达客户以及选用何种渠道维系客户，是一个一开始就要考虑的事情。
@@ -603,8 +471,4 @@ Machine learning methods change every year, solving problems stays the same.
 虽然这波 AI 热潮，让很多像我这样的非科班得以上车。但在实际生产环境中，我们还是暴露了诸多问题。其中之一，便是工程能力薄弱。会写 SQL 、会手推算法、会调包，但是就是不会写能跑的整个小系统。在业务变化快的公司中，这可能不是一个好事情。你的模型也许还在细调参数，但突然整个业务就没了。如果你能拿出一个能跑的马儿，兴许能影响这个业务。这就是前面提到的加分项。
 言归正传，我们回到在slack上面。我们的核心就以下代码：
 核心代码解读 导入一些基础配置
-import os import time import re from slackclient import SlackClient import sys from gpt2.src import generate_unconditional_samples # instantiate Slackk client slack_client = SlackClient(&amp;#39;&amp;#39;) # 认证口令 # starterbot&amp;#39;s user ID in Slack: value is ssigned after the bot starts up starterbot_id = None 延迟配置以及样例和匹配模式</description>
-    </item>
-    
-  </channel>
-</rss>
+import os import time import re from slackclient import SlackClient import sys from gpt2.src import generate_unconditional_samples # instantiate Slackk client slack_client = SlackClient(&amp;#39;&amp;#39;) # 认证口令 # starterbot&amp;#39;s user ID in Slack: value is ssigned after the bot starts up starterbot_id = None 延迟配置以及样例和匹配模式</description></item></channel></rss>

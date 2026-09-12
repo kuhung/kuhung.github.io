@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>创业 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E5%88%9B%E4%B8%9A/</link>
-    <description>Recent content in 创业 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 31 May 2026 10:46:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%88%9B%E4%B8%9A/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>不要再 Vibe 创业了，干点儿实事吧阿谷</title>
-      <link>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</link>
-      <pubDate>Sun, 31 May 2026 10:46:56 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</guid>
-      <description>大家好，我是谷粒粒，OPC（One Person Company）练习生一年有余。vibe coding 这个话题，随着过去半年基础模型能力的提升和 agent harness 架构的成熟，越来越火。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>创业 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%88%9B%E4%B8%9A/</link><description>Recent content in 创业 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 31 May 2026 10:46:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%88%9B%E4%B8%9A/index.xml" rel="self" type="application/rss+xml"/><item><title>不要再 Vibe 创业了，干点儿实事吧阿谷</title><link>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</link><pubDate>Sun, 31 May 2026 10:46:56 +0800</pubDate><guid>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</guid><description>大家好，我是谷粒粒，OPC（One Person Company）练习生一年有余。vibe coding 这个话题，随着过去半年基础模型能力的提升和 agent harness 架构的成熟，越来越火。
 不少公司在内部扩大 AI 辅助编程的范围，试图提升编码和想法验证的速度，同时进行 Token 消耗量的考核。也有人像笔者一样，经历过公司的一些事，想借助编码工具的生产力提升，构造更多属于自己的产品。
 AI 提升生产力不假，但也许我们陷入了无意视盲陷阱。
 心理学上有个概念叫无意视盲（Inattentional Blindness，又称非注意盲视）：注意力高度集中在某个目标或任务上时，视野里其他明显、意外出现的刺激，你完全察觉不到。
@@ -27,16 +12,7 @@ AI 生产力，对也不对 Token 消耗量，并非好的度量指标。公司�
 从笔者近一年高强度使用体验来说，AI 提升生产力不假，但也只是其中一个环节。在多人协作场合，写报告、写代码这些环节并非瓶颈。从系统论角度，任何对于非瓶颈的优化，都带不来整体上效率的提升。
 重视市场 市场这个事情，被讨论了很多次。大家都知道正面竞争不过大厂，觉得某个地方有 niche 需求，只要找到 niche 需求，就能小范围成功。
 现实是，不少人的需求来自自身。有了想法就打开 Cursor 开始编码，一顿指令后获得一个看起来不错的作品。但发出去没人关心。因为这事，就像勇哥说餐饮的中药奶茶一样，是自己臆想的结果。
-笔者接触过不少 AI 方向的创业者，大致分三类：一类纯为融资而融资，靠消耗投资人的钱维持生活品质；一类缺乏实际经验，想法脱离技术现实，逻辑闭环走不通；还有一类兜售&amp;quot;AI 基础设施&amp;quot;之类的宏大叙事，变现模式和客户基础极度虚弱。（笔者是花自己的存款，闭环了但没用、不信宏大叙事的综合体）</description>
-    </item>
-    
-    <item>
-      <title>从2015到2025：技术创业的变与不变</title>
-      <link>https://kuhung.me/posts/build-in-2015/</link>
-      <pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/build-in-2015/</guid>
-      <description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
+笔者接触过不少 AI 方向的创业者，大致分三类：一类纯为融资而融资，靠消耗投资人的钱维持生活品质；一类缺乏实际经验，想法脱离技术现实，逻辑闭环走不通；还有一类兜售&amp;quot;AI 基础设施&amp;quot;之类的宏大叙事，变现模式和客户基础极度虚弱。（笔者是花自己的存款，闭环了但没用、不信宏大叙事的综合体）</description></item><item><title>从2015到2025：技术创业的变与不变</title><link>https://kuhung.me/posts/build-in-2015/</link><pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate><guid>https://kuhung.me/posts/build-in-2015/</guid><description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖析2012至2015年大众创业浪潮中技术人的心路与实践。十年光阴流转，那些昔日的观点与抉择，如今已成为检验其真实价值的试金石。因为，评判一个人，不仅要听其言，更要观其行。
 那些要完蛋的公司 在《技术人创业攻略》中，不乏有创业者对当时的大公司（如微软、Adobe）提出尖锐批判，预言其将因臃肿而走向衰落，小公司则将迎来颠覆性时刻。然而，时至今日，我们回望十年，这些“即将完蛋”的巨头不仅未曾陨落，反而凭借其庞大的规模优势，更上层楼。
 这种创业公司打破大公司垄断，实现颠覆式创新的故事，总是很受欢迎。在故事里，大公司是邪恶的，忘记初心，垂垂朽木的。创业公司是锐意进取，机动灵活，能够快速吃下这个新的市场的，勇者斗恶龙。
@@ -59,8 +35,4 @@ AI 生产力，对也不对 Token 消耗量，并非好的度量指标。公司�
 正像认知的那样，创业乃九死一生。书中现在还存在的公司，十不足一。即使这般，现在还是有不少人入场。一些人是天生的冒险家，敏锐察觉每一个风口，并一头扎入其中；也有些人是从长远出发，与其排队晋升，不如在外闯荡验证实力；还有一些人，是带着预算和DDL，验证想法不留遗憾。
 回望过去，不是为了捕捉下一个风口，而是为了理解商业和人性的不变规律，从而更好地应对未来的不确定性。真正的创业者，是在理解周期与人性之后，依然选择脚踏实地、验证自我的人。
 敬每位脚踏实地的创业者，这一路并不容易。
-关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+关于作者</description></item></channel></rss>

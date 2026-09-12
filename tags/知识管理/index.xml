@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>知识管理 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/</link>
-    <description>Recent content in 知识管理 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 24 Jul 2026 18:29:48 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>利用微信读书skill，将读过的知识整合进AI实践</title>
-      <link>https://kuhung.me/posts/weread-skills-in-practice/</link>
-      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weread-skills-in-practice/</guid>
-      <description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>知识管理 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/</link><description>Recent content in 知识管理 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 24 Jul 2026 18:29:48 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml"/><item><title>利用微信读书skill，将读过的知识整合进AI实践</title><link>https://kuhung.me/posts/weread-skills-in-practice/</link><pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate><guid>https://kuhung.me/posts/weread-skills-in-practice/</guid><description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
 是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：&amp;ldquo;SLMs是什么&amp;quot;&amp;ldquo;端侧模型有哪些技术要点&amp;quot;这类。它还有个很强的特性，迎合说话人。这点即使通过提示词纠正，也难以跳出提问人的思维边界。碰到框架性的问题，它给不出系统的、有真人感的建议。
 从底层原理来说，大模型给出的是概率性文字，它也没法给切身经验和系统方法。这就像公司新人，能力不差，但缺少开展工作的上下文。高质量书籍填补的就是这块空白。
 以前看书，做做笔记、画个思维导图，遇到有意思的会写份读书笔记。今天讲的是更进一步的做法：把书里的方法，编译成 AI Agent 可以直接调用的技能。
@@ -26,8 +11,4 @@ Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷�
 今年早些时候，顺着 skills 这波风，微信读书团队开放了官方 Skills 接口。走完固定流程，就能在 Agent 里通过对话拿到你的数据：书架、阅读进度、划线信息，全部可以外挂给大模型。
 网上对这个接口的二次加工，多集中在聊天、可视化、书籍推荐的程度。我想做的事更进一步：数据源有了，直接加工成可调用的 skills。把微信读书里的划线与想法，编译成 SKILL.md 技能指令，挂载到 Agent 上，在对话匹配到触发条件时自动加载。
 五步流水线：划线变技能 整个流程分五步，从原始划线到全局可用：
-步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description>
-    </item>
-    
-  </channel>
-</rss>
+步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description></item></channel></rss>

@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>个人进步 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</link>
-    <description>Recent content in 个人进步 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Mon, 01 Jan 2024 13:13:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2023年度总结</title>
-      <link>https://kuhung.me/posts/radar-in-2024/</link>
-      <pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/radar-in-2024/</guid>
-      <description>灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>个人进步 on 谷粒 kuhung</title><link>https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</link><description>Recent content in 个人进步 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 01 Jan 2024 13:13:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>2023年度总结</title><link>https://kuhung.me/posts/radar-in-2024/</link><pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate><guid>https://kuhung.me/posts/radar-in-2024/</guid><description>灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
 一、技术 采纳 机器学习开发流程
 构建并维护⼀套稳定、可复⽤的流程，⽤于快速构建机器学习模型。现在市⾯上也有很多稳定的服务，但是⼤多专攻某些特定⽅向。⽐如wandb实验记录或者dvc数据版本控制之类。就个人⽽⾔，更多是整合不同⼯具，形成⾃⼰的建模⻛格。
 雷达技术
@@ -57,16 +42,7 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
 暂缓 无
 三、理财 采纳 意外之财的态度
 对于奖金或者是意外之财，不少人会倾向于一次性消费、或者是等比例放大消费。这是常见的xx阶级陷阱，在如今的消费主义社会，更加难以坚守。从某种角度讲，我更信奉储蓄，不放大现有的消费节奏。或者可以偶尔消费，更多是投入到那些生产力工具上（自我麻痹）。
-复利优先</description>
-    </item>
-    
-    <item>
-      <title>2023年的职业发展，还要爬梯子吗</title>
-      <link>https://kuhung.me/posts/career/</link>
-      <pubDate>Sun, 06 Aug 2023 14:05:27 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/career/</guid>
-      <description>在2023年的年中档口，阿里计划将其P职级进行拆分，分为更细的类似华为的序列。据晚点LatePost等媒体报道，此举是在拉开级别差，在“战功”不那么多的情况下，让更多员工感受到爬梯子带来的激励。
+复利优先</description></item><item><title>2023年的职业发展，还要爬梯子吗</title><link>https://kuhung.me/posts/career/</link><pubDate>Sun, 06 Aug 2023 14:05:27 +0800</pubDate><guid>https://kuhung.me/posts/career/</guid><description>在2023年的年中档口，阿里计划将其P职级进行拆分，分为更细的类似华为的序列。据晚点LatePost等媒体报道，此举是在拉开级别差，在“战功”不那么多的情况下，让更多员工感受到爬梯子带来的激励。
 爬梯子这个事情，在很多“成熟”公司，都会存在。这也是他们所宣称的“完善体系”中的一环——晋升体系。这一体系，带给人们最多的就是P7、P8的神话。在红利还未耗尽的18年，P7=100w，P8=200w。3年P6、5年P7这一说法在当时的背景下广泛传播。你到了这个阶段，没啥意外的话，就该是这个水平。现如今，这个说法不复存在。一是这种机遇没了，股票下挫总包锐减；二是称呼给你变了。
 为什么要改，以及有哪些可选项，不是本文讨论的关键。这些信息作者没有、也无法像关注科技公司的记者那样跑在最前面（报道出了偏差，可是要负责任的）。
 这篇文章主要是就梯子这个事情，延伸讨论两个点，一个是有梯子的话，该怎么爬。无论这个梯子是“成熟”大公司内部确定的职级，还是“扁平化”公司不愿意谈起，但实际上又有外部参考系的职级。另一点是想讨论，这个梯子一定要爬吗，一定是向上的吗？遇到向下的梯子该怎么稳住心态，没梯子可爬该咋搞。前者对于初入职场的新人较为适用，后者则适合长期食用。
@@ -110,16 +86,7 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
 三、职业中的其他可能 3.1 外部社群 前面讲了很多的职场的事，但实际上职场并非职业生涯的全部。就如同《把自己作为方法》中所言：整日手机上网冲浪，会忽视掉附近的存在、忽视掉其他可能性。过分关注职场，特别是自己无法左右的职场事情时，也会让人忽视掉自身能力的提升，以及可能的外部联结。
 就像《高绩效教练》中所言，高绩效的三要素在于：自主、胜任、联结。与他人的联结，将带来更多的可能性。这里的联结，可以是与新来的同组同事，也可以是有相似兴趣爱好的邻里。当然，如果谈工作的话，那就是有类似技能和职业规划的一群人。无论你是在技术论坛中作为一个新人，咨询新手问题；还是作为在部分领域中有一定经验的人，帮助他人。这类活动，都可以加强自身的意义感，同时也能带来新的机遇。
 举例来说，参加公开的学术会议，或者是在机器学习比赛中结交新朋友，是不错的方式。除此之外，贡献开源项目或者是博客/播客内容输出，也是一种顺应潮流的思路。加入你感兴趣的职业社群，能够在倦怠之时，敦促自己前进。
-3.2 其他要素 看到本文的读者，从业经验大多不会超过10年。年轻的我们总是容易被眼前的琐碎但具体的事项所牵引，忘记了我们的职业生涯至少会有30年。职业中的其他要素，说的便是以一个更大尺度看待自己的职业生涯。在职场的早期，像《远见》中所言，可迁移技能、有意义经验以及持久的关系，比其他东西更重要。这个阶段，这三个要素要大于职位、金钱等其他要素。类比投资，就是在年轻经得起折腾时，尽可能多折腾，去积累更多经验。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜03 techlead 想象、现实与路线抉择</title>
-      <link>https://kuhung.me/posts/techlead-vol-3/</link>
-      <pubDate>Tue, 23 Nov 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/techlead-vol-3/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
+3.2 其他要素 看到本文的读者，从业经验大多不会超过10年。年轻的我们总是容易被眼前的琐碎但具体的事项所牵引，忘记了我们的职业生涯至少会有30年。职业中的其他要素，说的便是以一个更大尺度看待自己的职业生涯。在职场的早期，像《远见》中所言，可迁移技能、有意义经验以及持久的关系，比其他东西更重要。这个阶段，这三个要素要大于职位、金钱等其他要素。类比投资，就是在年轻经得起折腾时，尽可能多折腾，去积累更多经验。</description></item><item><title>技术领导｜03 techlead 想象、现实与路线抉择</title><link>https://kuhung.me/posts/techlead-vol-3/</link><pubDate>Tue, 23 Nov 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/techlead-vol-3/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 抉择：留在技术路线还是成为经理（管理路线） 成为经理还是留在技术路线是一个艰难的决定。这完全取决于你所处的环境，我不可能告诉你该怎么做。然而，作为一个憧憬并经历过这两条路线的人，我可以透露下我所幻想的、以及真实所见的。需要注意的是，这些只是为了表述方便进行的脸谱化描述，现实不完全相同。
 高级技术路线的想象生活 你的每一天都在深度思考中度过，与其他高级开发人员一起，解决那些有趣、新颖的智力难题。这是软件开发，所以你知道会有一些繁琐的小事。你有很大的权力来选择你的工作，进而可以选择最有趣的部分。你喜欢编写代码、修复bug、让代码运行得更快、让计算机做新的事情，并且你可以把大部分时间花在这上面。
 由于你的资历，经理会在开发开始之前询问你关于开发的建议。你知道正在发生的一切，但又不需要处理人事问题。你被邀请参加正确的会议，在那里做出重要的决定，而且没有影响到你的正常工作。大部分初级开发人员会尊重你、并相信你的每一句话，接受你的反馈，且没有过多地占用你的思考时间。
@@ -162,16 +129,7 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
 如果你诚实并明确表示失败和不完美是安全的，那通常就足以让你的流程崇拜者放松一点并容忍模棱两可。防止流程崇拜者花大量时间寻找完美的工具或流程，尤其重要的是要确保他们不会因为未能遵循流程而惩罚他们的团队。
 如何成为一名出色的技术主管 优秀的技术主管有许多特征，但下面这些是最重要的。
 了解架构 如果你担任技术主管，但觉得自己没有完全理解所支持的架构，请花点时间了解它、学习它。了解它如何影响它所支持的产品，这些产品的核心逻辑在哪里。当你不了解你正在改变的架构时，几乎不可能很好地领导项目。
-成为一名团队合作者 如果所有的有趣工作都是你在做，请停下来。看看那些棘手、无聊或烦人的领域，你是否可以解决这些问题。处理代码中繁杂的部分可以提供你很多关于流程哪里出错的信息。对于无聊或令人沮丧的项目，有经验的人花时间查看它们通常可以发现并修复一些明显的错误。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜03 techlead 与项目管理</title>
-      <link>https://kuhung.me/posts/techlead-vol-2/</link>
-      <pubDate>Sat, 13 Nov 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/techlead-vol-2/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
+成为一名团队合作者 如果所有的有趣工作都是你在做，请停下来。看看那些棘手、无聊或烦人的领域，你是否可以解决这些问题。处理代码中繁杂的部分可以提供你很多关于流程哪里出错的信息。对于无聊或令人沮丧的项目，有经验的人花时间查看它们通常可以发现并修复一些明显的错误。</description></item><item><title>技术领导｜03 techlead 与项目管理</title><link>https://kuhung.me/posts/techlead-vol-2/</link><pubDate>Sat, 13 Nov 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/techlead-vol-2/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 管理项目经历 回到我第一次担任技术负责人的时候，我的团队正在执行一项非常复杂的任务：分布式系统迁移。我们一个现成的系统在单机已经到达了它的理论极限。在倾尽所学优化它之后，我们决定是时候弄清楚如何在多台机器上运行它了。
 这还是分布式系统萌芽的初期，当时大多数软件开发人员对构建它们的最佳实践知之甚少。但我们有一支优秀的聪明的团队，我们有信心解决这个问题。
 我们确实搞定它了，虽然缓慢但毋庸置疑。我们花了很长时间思考、设计和拆分计算。当跨多台机器计算时，这个过程是非常重要的。然后有一天，我的老板迈克把我拉到他的办公室，告诉我：需要制定一个项目计划。
@@ -223,16 +181,7 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
 在给定原始需求集的情况下，通过分解项目，你学到了很多东西。
 如果需求在中途发生变化，请知悉这些变更并将计划进行调整。
 如果变更给项目增加了重大风险，需要进行大量新的规划，或者只是需要额外的工作量，请清楚这些成本。
-如果截止日期严格，粗略地了解所需的工作将帮助你确定优先级、削减和简化工作，以在功能、质量和交付日期之间取得最佳折中。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜03 techlead 该知道的事情</title>
-      <link>https://kuhung.me/posts/techlead-vol-1/</link>
-      <pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/techlead-vol-1/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
+如果截止日期严格，粗略地了解所需的工作将帮助你确定优先级、削减和简化工作，以在功能、质量和交付日期之间取得最佳折中。</description></item><item><title>技术领导｜03 techlead 该知道的事情</title><link>https://kuhung.me/posts/techlead-vol-1/</link><pubDate>Sat, 23 Oct 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/techlead-vol-1/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 背景介绍 多年前，我成为技术负责人。在这之前我已经晋升为高级工程师，和其他几位高级工程师在一个小团队中工作。我对被提升为技术负责人有点令人惊讶，因为无论是头衔还是年限，我都不是团队中最资深的人。
 回想起来，我有一些优势。首先，我不仅仅是一名优秀的工程师，还是一个很好的沟通者。我可以写出清晰的文档，我可以在思维不短路的情况下进行演示，我可以与不同团队、不同角色的人交谈并解释发生了什么。
 我也擅长优先级排序。我渴望推进工作并搞清楚下一步需要做什么。最后，我愿意收拾残局，做能做的事情来取得进展。我认为，这种务实的紧迫性（pragmatic urgency）是决定性因素。毕竟，技术负责人是一个领导职位，即使它不是管理职位。
@@ -259,16 +208,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 技术负责人的位置更像是技术型的项目经理，需要在更大范围内利用他们的专业知识，促使整个团队变得更好。他们可以做出独立的决策，并在团队与其他非技术团队的协调方面发挥重要作用。你会注意到这里没有特定的技术向工作。这是一个高级工程师职位，但将技术负责人等同于团队中最优秀或最有经验的工程师是错误的。
 没有其他人的参与，你就无法领导。人际交往能力是我们要求新的技术负责人需要强化的地方，甚至优先于技术专长。与此同时，技术负责人将致力于一项新技术技能学习：项目管理。分解项目的工作与设计系统的工作有很多相似之处，即使对于不想管理他人的工程师来说，学习这项技能也很有价值。
 如果你发现自己处于技术负责人的位置，那么恭喜你！有人认为你具备成为团队关键人物的条件。现在是学习一些新技能的时候了！
-成为技术负责人 **技术负责人是一种在未授权状态下，练习影响力的机会。**作为技术负责人，我正在领导一个团队，但我们都向同一个技术经理汇报。因此，我不仅要影响我的同事，还要影响我的经理，以确保我们优先聚焦正确的工作。</description>
-    </item>
-    
-    <item>
-      <title>如何理解战略</title>
-      <link>https://kuhung.me/posts/strategy-01/</link>
-      <pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/strategy-01/</guid>
-      <description>“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
+成为技术负责人 **技术负责人是一种在未授权状态下，练习影响力的机会。**作为技术负责人，我正在领导一个团队，但我们都向同一个技术经理汇报。因此，我不仅要影响我的同事，还要影响我的经理，以确保我们优先聚焦正确的工作。</description></item><item><title>如何理解战略</title><link>https://kuhung.me/posts/strategy-01/</link><pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate><guid>https://kuhung.me/posts/strategy-01/</guid><description>“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
 可是，战略的本质又是什么呢？到底什么才是战略，什么是好的战略？大家都在说战略，战略就没有缺点了吗？
 今天我们就通过《战略历程》这本书，拆解战略的本质，通过这篇内容，帮助你理解战略。
 战略是大象 没有人能准确定义战略，因为战略的本身，就是一个抽象概念，是对生活的抽象总结。战略就像是盲人摸象中的大象，而我们则是那些盲人，通过不同的接触面，会得到不一样的战略描述。战略总结，是片面的。
@@ -284,16 +224,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 战略的利弊 凡事有利必有弊，战略也不例外。从四个角度，我们来看看战略的利弊。
 从设定方向角度，战略为组织设定了航线，大家能够齐心协力达到目标。但其缺点就是，会掩盖潜在的危险。从集合力量角度，战略让组织内的行动更协调。但过份一致的思维，很有可能会让组织丧失洞察。
 战略决定了组织风格，方便了人们理解并和其他组织区分。它的负面效果就是，过份清晰界定组织，组织的多样性将会丧失。从提供一致性角度来说，战略减少了组织的模糊和无序。其缺点则是，追求一致导致了狭隘，甚至扭曲了事实。
-小结 战略是一头大象，我们往往只能看到其局部。但只有当我们从整体来看时，才会发现整体大于部分之和。可能你的组织正表现出某一类战略，但了解更广的面貌，总是更有助于发挥战略的作用。也别忘了，凡事需要有个度，过份一致的战略，反而会带来多样性丧失、灵活性丧失的风险。为此，还是需要缓慢移动，小心评估。</description>
-    </item>
-    
-    <item>
-      <title>五年十个财务瞬间｜02 如何在2021年最短时间亏钱</title>
-      <link>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</link>
-      <pubDate>Wed, 07 Jul 2021 22:56:03 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</guid>
-      <description>概述 预计耗时 预计发布 实际发布 最后一次修改 财务总结第二篇 我这半年是怎么亏钱的 宏观与微观情况 距离上篇财务总结，已经过去了整整半年。这半年，可以说是在亏钱中度过的。股市春节后给了一个意外的套路，机构抱团结束，纷纷争相离场，带来股市、基金的大幅下挫。与此同时，房地产却不再横盘，上海的二手交易价格创出新高；重庆的土拍价格也新高。在临近写这篇文章的6-7月，多重利空加在中概股上，国内的A股，之前一直广受市场追捧的白马股，也一蹶不振。虽然前期持仓比例不高，但这半年也跌掉了过去好几年的收益；算上融资的成本或者是买房的机会成本，整体亏损20%。
+小结 战略是一头大象，我们往往只能看到其局部。但只有当我们从整体来看时，才会发现整体大于部分之和。可能你的组织正表现出某一类战略，但了解更广的面貌，总是更有助于发挥战略的作用。也别忘了，凡事需要有个度，过份一致的战略，反而会带来多样性丧失、灵活性丧失的风险。为此，还是需要缓慢移动，小心评估。</description></item><item><title>五年十个财务瞬间｜02 如何在2021年最短时间亏钱</title><link>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</link><pubDate>Wed, 07 Jul 2021 22:56:03 +0800</pubDate><guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</guid><description>概述 预计耗时 预计发布 实际发布 最后一次修改 财务总结第二篇 我这半年是怎么亏钱的 宏观与微观情况 距离上篇财务总结，已经过去了整整半年。这半年，可以说是在亏钱中度过的。股市春节后给了一个意外的套路，机构抱团结束，纷纷争相离场，带来股市、基金的大幅下挫。与此同时，房地产却不再横盘，上海的二手交易价格创出新高；重庆的土拍价格也新高。在临近写这篇文章的6-7月，多重利空加在中概股上，国内的A股，之前一直广受市场追捧的白马股，也一蹶不振。虽然前期持仓比例不高，但这半年也跌掉了过去好几年的收益；算上融资的成本或者是买房的机会成本，整体亏损20%。
 资金分配方面，主要还是分为三大类。一类储蓄、一类投资，最后一类杠杆。当下时间切片，储蓄比例约占13%，基金比例约为33%，A股和数字货币比例为16%，港美股比例约为59%。总体杠杆率约为20%，杠杆融资成本约为5%。
 半年策略回顾 接着回顾一下这半年的策略。在第一次回顾报告中，我们设定的比例为储蓄+黄金+数字货币的比例约为20%，本期来看基本达到这个水平；基金比例为25%，目前来看略微超过这个比例8%。其中的原因大致有两个：一是基金那边不完全是买入的基金，还有部分每月自动划拨的现金。第二个则是，股票类资产亏得比例比基金多，因此整体拉高了基金的权重。港美股的杠杆率未到预期的30%，不过也快接近了。之前是因为在上杠杆方面比较保守，但后来对比了商业房贷的5+点位，评估下觉得其实也还好。
 四类策略回顾 策略方面，主要分为4类。
@@ -312,16 +243,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 补充财务知识 接着是还得补充一些财务的知识。在港股熊证交易时，能明显感觉自己就是在瞎搞。金融储备还是有提升空间。你要问我这半年干啥去了，这半年一直在探寻企业组织文化与管理的事情，这就涉及到最后一个计划了。
 提升工作素养 别看我上面扯了这么多，让大伙感觉我像是个专职的投机者，其实不是的。主业还是集中在工作上，工作技能的提升、综合能力的提升，以及给公司带来真实价值后公司的回馈，还是很值得花主要精力在上面的。
 总结 所以如果有朋友看到这篇文章，千万要理性看待，不要全盘照抄。将注意力集中在主业上去。投资自己、投资公司内自己的团队，带来的连续性的收益也是大大滴。在这个的同时，花些时间去实践并精进自己的财务知识，提升财商，将其作为一种组合策略，共同提升生活的品质。这将是我期望的，这篇内容的最大作用。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</title>
-      <link>https://kuhung.me/posts/mentoring-vol-3/</link>
-      <pubDate>Wed, 23 Jun 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mentoring-vol-3/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
+关于作者</description></item><item><title>技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</title><link>https://kuhung.me/posts/mentoring-vol-3/</link><pubDate>Wed, 23 Jun 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/mentoring-vol-3/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
 话虽如此，在职业生涯的某个时刻，我们大多数人都会从事某种程度的技术指导、职业指导或两者混合。
 我们中的许多人也将获得指导。那么，如何使这种类型的指导富有成效？
 互利的技术指导 当高级工程师指导团队中的初级工程师时，他们一起解决问题，这往往能提高后者的生产效率。
@@ -367,16 +289,7 @@ Rent the Runway 关于技术负责人的描述 技术负责人不是职级上的
 具有较高技术经验的管理人员对于小型高级工程师团队是个不错的配置，但是技术达人通常最好不在管理序列，而应让他们更多地关注技术策略和系统设计。
 在倾向于技术的初创公司中，你往往会看到技术达人扮演CTO的角色，他们在以执行为重点的工程作业中，都将重点放在设计和开发上。
 如果你有晋升提拔的权力，请非常小心地为技术达人提供管理职位，如果这样做了，请密切关注他们对该职位的影响。 技术达人的负面文化可能对合作非常有害，并且会给处于弱势的团队其他人员长久的负面影响。
-认为自己的价值来自于比其他人了解更多信息的技术达人，可能会隐藏信息以保持优势（玩信息差），而这会使团队中的每个人都失去效率。</description>
-    </item>
-    
-    <item>
-      <title>工程师如何卖轮子</title>
-      <link>https://kuhung.me/posts/selling-the-wheel/</link>
-      <pubDate>Tue, 25 May 2021 21:53:20 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/selling-the-wheel/</guid>
-      <description>在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
+认为自己的价值来自于比其他人了解更多信息的技术达人，可能会隐藏信息以保持优势（玩信息差），而这会使团队中的每个人都失去效率。</description></item><item><title>工程师如何卖轮子</title><link>https://kuhung.me/posts/selling-the-wheel/</link><pubDate>Tue, 25 May 2021 21:53:20 +0800</pubDate><guid>https://kuhung.me/posts/selling-the-wheel/</guid><description>在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
 上面是普通人的技术产品主张。作为程序员自己，是不是就没有这样的困扰了呢？我们可以做前端、可以做web端、可以开发自己的小程序，是不是就可以吸引无数忠实用户、卖个好价钱、躺平后半生了呢？如果真是这样子，那大概996和秃头就是假的、是拜登打的劳工牌了。
 除了技术力，市场的敏锐度以及营销能力，也是决定成败的关键。
 在日常工作中，不可避免的，程序开发也会有自己的观点主张：无论是技术方面的、还是日常决策方向的。也有人幻想着，有个赏识的伯乐，能发现自己点子的独特之处，然后悄悄”颠覆世界“。
@@ -426,16 +339,7 @@ Tips：
 客户为什么需要我们的产品？
 什么促使他们更愿意从我们这里购买？
 为什么他们愿意从竞争对手处购买？
-我们应提供哪些增值服务以达成交易？</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜02 Mentoring 如何指导新人</title>
-      <link>https://kuhung.me/posts/mentoring-vol-2/</link>
-      <pubDate>Sun, 23 May 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mentoring-vol-2/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
+我们应提供哪些增值服务以达成交易？</description></item><item><title>技术领导｜02 Mentoring 如何指导新人</title><link>https://kuhung.me/posts/mentoring-vol-2/</link><pubDate>Sun, 23 May 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/mentoring-vol-2/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
 经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
 所以不出意外的，我感到灰心丧气。而在灰心之余，最好的办法就是去读研究生。所以我做了。
 这次大不相同 研究生毕业后的第一份工作，和之前大不相同。我没有被带到办公桌旁呆着，而是给我安排了一位导师。
@@ -480,16 +384,7 @@ Tips：
 精明，内向的开发人员可能永远都不想做管理，但是鼓励他们参与指导有助于他们建立更强的外部视野，更不用说这也在拓展他们的社交圈。
 对话 CTO Q：
 我所在的公司曾多次询问我们是否雇用实习生。我们过去没有，但现在想开始这样做以扩大我们的招聘人数。怎么看这个问题？
-A：</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜02 Mentoring 如何指导实习生</title>
-      <link>https://kuhung.me/posts/mentoring-vol-1/</link>
-      <pubDate>Fri, 23 Apr 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mentoring-vol-1/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
+A：</description></item><item><title>技术领导｜02 Mentoring 如何指导实习生</title><link>https://kuhung.me/posts/mentoring-vol-1/</link><pubDate>Fri, 23 Apr 2021 15:56:41 +0800</pubDate><guid>https://kuhung.me/posts/mentoring-vol-1/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
 导师制度的价值 导师制度 导师通常被分配给团队中的初级成员，例如应届生或实习生。许多组织，在新员工的入职过程中也使用导师。
 导师是谁 有时，导师是团队中的另一位初级同学。可能他自己也只参加工作一两年，可以轻易地与新人建立联系。
 导师有时是高级工程师。除了可以帮助新员工加快熟悉工作流程外，还可以充当技术导师。
@@ -532,16 +427,7 @@ A：</description>
 与你的实习生一起进行详细的分析。这对他有意义吗？向他提问，并倾听他的问题并。
 请记住，你正在练习将来成为领导时需要的技能。
 这些技能包括：倾听，清晰传达期望以及根据回应调整。
-管理的基本技能 倾听 倾听是管理人的第一项，也是最基本的技能。</description>
-    </item>
-    
-    <item>
-      <title>从一款小游戏收获的三点思考</title>
-      <link>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</link>
-      <pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</guid>
-      <description>2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
+管理的基本技能 倾听 倾听是管理人的第一项，也是最基本的技能。</description></item><item><title>从一款小游戏收获的三点思考</title><link>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</link><pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate><guid>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</guid><description>2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
 这一过程，收到了很多反馈。
 同时，也有如下三点思考：
 善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
@@ -578,16 +464,7 @@ A：</description>
 随后，小利在外网 Reddit 社区，也发出了帖子，进行游戏曝光，同样收到正面反馈。
 两天后，小力计划采用视频曝光方式。计划延期未交付。
 再两天，小力观察到米游社有一个首页推荐贴，合成史莱姆。获得了合成魈的十倍曝光。观察下来有如下特点：
-标题符合社区文化，吸引人去点击 素材更改并不多，甚至有些粗糙，交互逻辑沿用的第一版 但是，它获得了更好的流量。</description>
-    </item>
-    
-    <item>
-      <title>五年十个财务瞬间｜01 2020年财务总结</title>
-      <link>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</link>
-      <pubDate>Thu, 31 Dec 2020 09:39:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</guid>
-      <description>描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
+标题符合社区文化，吸引人去点击 素材更改并不多，甚至有些粗糙，交互逻辑沿用的第一版 但是，它获得了更好的流量。</description></item><item><title>五年十个财务瞬间｜01 2020年财务总结</title><link>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</link><pubDate>Thu, 31 Dec 2020 09:39:13 +0800</pubDate><guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</guid><description>描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
 为什么会有这篇文章 写这篇文章，是为了审视自己的财务情况，梳理财务观和财务现状，给自己一个交代。
 财富，不仅决定了一个人的生活水平，也是其未来的支撑。财富自由不是绝对概念——需要达到多少数额，而是相对的、比较性质的结果。
 如果不好好理财，放任钱从左边口袋进、右边口袋出，则永远不可能享受真正意义上的财富自由（包括富二代）。
@@ -630,16 +507,7 @@ A：</description>
 这可是如日中天的新能源汽车领域，虽然2019年底，还有到过2块钱的地步，但是6块钱，其实也不值得做空。
 做空的钱，不如拿去买基金定投。
 过早卖出 38卖出顺丰科技，今日92；
-29卖出中国人寿，今日40；</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜01 技术管理入门 （下）</title>
-      <link>https://kuhung.me/posts/management-101-vol-2/</link>
-      <pubDate>Wed, 30 Dec 2020 00:04:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/management-101-vol-2/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
+29卖出中国人寿，今日40；</description></item><item><title>技术领导｜01 技术管理入门 （下）</title><link>https://kuhung.me/posts/management-101-vol-2/</link><pubDate>Wed, 30 Dec 2020 00:04:13 +0800</pubDate><guid>https://kuhung.me/posts/management-101-vol-2/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
 下半部分，我们集中注意力在自身，即：如何被管理，做一个称职的下属（打工人）。
 被管理者视角 弄清楚如何被管理，也是管理者需掌握的东西。这和向上管理不太一样，虽然它们有相关性。
 它的核心在于三点：
@@ -688,16 +556,7 @@ A：</description>
 不要让每场谈话都变成你需要什么，以及某些事是多么的糟糕。
 当你遇到困难，找你的上级解决掉它之前，试着寻求建议，学习他处理问题的思路和方法。
 寻求建议，永远是表达尊重和真诚的最好方式。
-选择你的理想上级 你的上级会对你的职业生涯产生巨大的影响。</description>
-    </item>
-    
-    <item>
-      <title>游戏机制设计，以剧本杀为例剖析可玩性的来源</title>
-      <link>https://kuhung.me/posts/game-design-summary/</link>
-      <pubDate>Thu, 24 Dec 2020 09:33:23 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/game-design-summary/</guid>
-      <description>标题 创建时间 发布时间 最后一次修改 备注 游戏机制设计 2020.11.11 2020.12.24 2020.12.24 拖更文🐶 写作背景 一款游戏，挨骂最多的是谁 一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；
+选择你的理想上级 你的上级会对你的职业生涯产生巨大的影响。</description></item><item><title>游戏机制设计，以剧本杀为例剖析可玩性的来源</title><link>https://kuhung.me/posts/game-design-summary/</link><pubDate>Thu, 24 Dec 2020 09:33:23 +0800</pubDate><guid>https://kuhung.me/posts/game-design-summary/</guid><description>标题 创建时间 发布时间 最后一次修改 备注 游戏机制设计 2020.11.11 2020.12.24 2020.12.24 拖更文🐶 写作背景 一款游戏，挨骂最多的是谁 一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；
 但我们将各个部分拆开，一定会发现，单一的”美好“的元素，并不足以撑起整体的评价。
 最后游戏的评价，一定是多方面，1+1&amp;gt;2的结果。
 美术很重要，它带来了独特的美的享受；
@@ -739,16 +598,7 @@ A：</description>
 战术动机，其典型代表则是象棋。战术的核心是资源的分配，例如象棋棋子的位置。
 社交互动
 社交互动，就是字面上的意思。国内的腾讯，把这部分发挥到了极致。
-国外的 coin master，也背靠 Facebook 等社交公司，长期挤占付费榜前十。</description>
-    </item>
-    
-    <item>
-      <title>技术领导｜01 技术管理入门 （上）</title>
-      <link>https://kuhung.me/posts/management-101-vol-1/</link>
-      <pubDate>Sat, 19 Dec 2020 15:32:37 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/management-101-vol-1/</guid>
-      <description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 管理的秘诀就在于：让那些讨厌你的人，远离那些还没有形成主见的人。 ——卡西·史丹格尔
+国外的 coin master，也背靠 Facebook 等社交公司，长期挤占付费榜前十。</description></item><item><title>技术领导｜01 技术管理入门 （上）</title><link>https://kuhung.me/posts/management-101-vol-1/</link><pubDate>Sat, 19 Dec 2020 15:32:37 +0800</pubDate><guid>https://kuhung.me/posts/management-101-vol-1/</guid><description>🌟 合集地址：《The Manager&amp;rsquo;s Path》中文翻译 管理的秘诀就在于：让那些讨厌你的人，远离那些还没有形成主见的人。 ——卡西·史丹格尔
 你阅读这篇文章，是因为你想成为一个好的管理者。但在这之前，你其实并不知道，一个好的管理者是什么样子。
 你之前有遇到过一位好的经理吗？如果一个人让你告诉他，你想从一位好经理身上获得什么，你能够回答这个问题吗？
 从管理者那里，期望获得什么 每个人在管理之路的第一站，总是在桌子的另一边，即：被管理者。这些被管理的经历，成了你构建自己管理哲学的基础。
@@ -798,16 +648,7 @@ A：</description>
 但是要记住，比接收反馈更糟糕的是：没有反馈；或者是到绩效评估时，才得到反馈。
 持续追踪、记录反馈 从领导那里获得早期的、持续的反馈，非常重要。
 发现越早，坏习惯就越容易修正。
-这对于表扬也是同样的道理。一个好的管理者，会注意到你日常生活的点点滴滴，并从中认识你。</description>
-    </item>
-    
-    <item>
-      <title>不可不知的项目推进与团队建设之道</title>
-      <link>https://kuhung.me/posts/pmp/</link>
-      <pubDate>Mon, 26 Oct 2020 23:21:09 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/pmp/</guid>
-      <description>项目管理好坏，决定了项目的成败。无论做什么工作，项目地企划、执行、效果评估、复盘，总是必不可少的。
+这对于表扬也是同样的道理。一个好的管理者，会注意到你日常生活的点点滴滴，并从中认识你。</description></item><item><title>不可不知的项目推进与团队建设之道</title><link>https://kuhung.me/posts/pmp/</link><pubDate>Mon, 26 Oct 2020 23:21:09 +0800</pubDate><guid>https://kuhung.me/posts/pmp/</guid><description>项目管理好坏，决定了项目的成败。无论做什么工作，项目地企划、执行、效果评估、复盘，总是必不可少的。
 我们可能遇到过如下场景：
 业务方提出需求，扑哧扑哧做个几周后，却发现并不是他们想要的。这样的后果就是： 项目结果被搁置
 几周的开发时间浪费
@@ -849,16 +690,7 @@ A：</description>
 优秀团队的定义 首先看，优秀团队的画像。对内，成员及时沟通。DRY 不做重复的工作。对外交流，团队成员是个性独特、心情愉悦的。外界听到的声音，是一致的。这要求团队氛围活跃，同时也要求项目文档清晰、准确、一致。且在会晤前进行了充分的准备。
 曳光弹开发 项目采用曳光弹的开发模式。
 曳光弹，和敏捷的概念类似。在夜晚作战时，先打出一发曳光弹，照亮目标区域，以期后续能精准命中目标。曳光弹开发，要求：个体互动高于流程工具；软件支撑高于详细文档；客户合作高于合同谈判；响应变化高于遵循计划。
-建设务实的团队 另外，建设一个务实的团队，也十分重要。务实不务虚。Talk is cheap, show me your code.</description>
-    </item>
-    
-    <item>
-      <title>2020高考志愿填报中的数据误导与价值机会</title>
-      <link>https://kuhung.me/posts/statistics-tell-lies/</link>
-      <pubDate>Sat, 25 Jul 2020 20:43:52 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/statistics-tell-lies/</guid>
-      <description>高考发榜，已经有几日。这篇文章姗姗来迟。还是希望，给各位考生朋友，补充有价值的信息。2020，迟到的高考，落下帷幕。紧接着，就是志愿填报环节。
+建设务实的团队 另外，建设一个务实的团队，也十分重要。务实不务虚。Talk is cheap, show me your code.</description></item><item><title>2020高考志愿填报中的数据误导与价值机会</title><link>https://kuhung.me/posts/statistics-tell-lies/</link><pubDate>Sat, 25 Jul 2020 20:43:52 +0800</pubDate><guid>https://kuhung.me/posts/statistics-tell-lies/</guid><description>高考发榜，已经有几日。这篇文章姗姗来迟。还是希望，给各位考生朋友，补充有价值的信息。2020，迟到的高考，落下帷幕。紧接着，就是志愿填报环节。
 想起自己当年，突然要选择自己的专业，那是慌得不行。草草的根据自己分数，划了几条线，填了武大、华科、同济、天大。然后又在最后一刻，决定学门手艺。将华科调到了最前面，并且选择了目前的专业，一个名字听起来很酷的专业。于是，就这样来到了华科机械大类下的测控专业。
 但是，在度过四年时光后，却没有选择机械，而是选择了互联网。一方面，是原专业的就业环境，与志愿填报时的预期不符；相信每一位机械同学，都是想着做酷炫的机器人、或者是参与“大国重器”的建设中来；但实际上，即使是华科，机械全国前三，可选择的余地也不多。另一方面，是薪资成长性，传统机械，十年磨一剑，适合耐得住寂寞，有家底的同学。而就在刚刚，在专业大群里，惊闻自己这个专业，今年不再招生。
 以上，足以见得：志愿填报，和投胎一样，也是个技术活。个人努力，行业趋势，两者不可相悖。选择，某种程度上，比努力重要。有效决策，能放大努力的价值；浮于表面的选择，则会冲淡寒窗苦读的日夜。
@@ -881,16 +713,7 @@ A：</description>
 另一个方面，建议在自由度上多花功夫。这里的自由，并不是指自由逃课、管理松散。自由度，在机械机构中，往往指机构可能的运行的空间。在机械设计中，越多的自由度，代表能做越多的事情。在选择专业上，我的看法类似：应当保证充分的自由度。原因如下：
 学生对于专业的认知，多源于综合信息，本身的匹配程度不可知。 充分的专业自由，学习自由，有助于帮助学生认识自我。 自由度在专业上的体现，就在于：提供机会转专业、能够跨专业大类选择。可能有些高分考生不认同这点，认为：考这么高，还去选择通识大类，不是浪费机会吗？确实如此。但如果选的专业，不是理想的那样，再高的分数，也只是过去式。
 其实，自由度还在其他方面有体现。北上广的火热，究其原因，还是提供了视野的自由度。更前沿的市场环境、更多的就业机会。这些都是在提供自由度。与此同时，综合类院校、大力发展文科的理工科院校，也是在保证思想的自由度。巴菲特的得力投资伙伴，查理曾说过，跨学科的思维，帮助他赢得了投资的成功。
-最后，无论填报结果如何，这都不是一锤子的买卖。进入好的大学、好的专业，不代表后半生就安稳了。进入不理想的专业，也不代表，后半生就玩完。没有永远的避风港，坚持刻意练习，积累职场竞争力，才是最优方案。</description>
-    </item>
-    
-    <item>
-      <title>我为何离开网易游戏</title>
-      <link>https://kuhung.me/posts/why-i-left-netease-games/</link>
-      <pubDate>Wed, 13 May 2020 00:41:54 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/why-i-left-netease-games/</guid>
-      <description>前言 网易游戏是我毕业后的第一家公司，说没有感情，那是不可能的。当然，这感情主要针对那里的同事和朋友。
+最后，无论填报结果如何，这都不是一锤子的买卖。进入好的大学、好的专业，不代表后半生就安稳了。进入不理想的专业，也不代表，后半生就玩完。没有永远的避风港，坚持刻意练习，积累职场竞争力，才是最优方案。</description></item><item><title>我为何离开网易游戏</title><link>https://kuhung.me/posts/why-i-left-netease-games/</link><pubDate>Wed, 13 May 2020 00:41:54 +0800</pubDate><guid>https://kuhung.me/posts/why-i-left-netease-games/</guid><description>前言 网易游戏是我毕业后的第一家公司，说没有感情，那是不可能的。当然，这感情主要针对那里的同事和朋友。
 网易又叫猪场，猪场曾一度有最好吃的免费食堂，一度给名校毕业生开最高的工资。
 在数年前，大话西游2帮助公司起死回生。
 而后开发的梦幻西游，成了公司最强的现金流来源。
@@ -947,16 +770,7 @@ A：</description>
 其次，单一的收入来源伴随着风险。不管和领导关系多么密切，公司现金流多么充沛。小概率事件必然发生。
 破解这两个问题的方法在于：
 工资到了一定水平后，需要关注精神的满足。工作的成就感和社会贡献，就显得尤为重要。
-其次，发展多重收入。可以是被动收入，也可以是主动收入。</description>
-    </item>
-    
-    <item>
-      <title>思维导图｜15份结构化知识整理</title>
-      <link>https://kuhung.me/posts/mindmap_2020/</link>
-      <pubDate>Sat, 25 Apr 2020 17:22:57 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/mindmap_2020/</guid>
-      <description>思维导图，是结构化思维的具体表现形式。最鲜明的例子，就是当你和一个人聊天时，可以很明确的感觉到，拥有结构化思维的人，他的语言组织能力很强，且很有层次感。简单来说，就是和他沟通，简单高效、有收获，有层次感。
+其次，发展多重收入。可以是被动收入，也可以是主动收入。</description></item><item><title>思维导图｜15份结构化知识整理</title><link>https://kuhung.me/posts/mindmap_2020/</link><pubDate>Sat, 25 Apr 2020 17:22:57 +0800</pubDate><guid>https://kuhung.me/posts/mindmap_2020/</guid><description>思维导图，是结构化思维的具体表现形式。最鲜明的例子，就是当你和一个人聊天时，可以很明确的感觉到，拥有结构化思维的人，他的语言组织能力很强，且很有层次感。简单来说，就是和他沟通，简单高效、有收获，有层次感。
 在过去几年里，也整理了一些场景的思维导图。大约是从15年，上大学的第二年，第一次接触到这个东西。不过略微遗憾的是，早期是一些手绘的内容，没能保存在身边。以下是电子化的内容，分享给到大家。
 这里，不仅有思维导图 png 格式，同时也有其 xmind 源文件。授人以鱼不如授人以渔嘛，可以参照之前的文件进行修改（xmind 公司，看到后请给我打钱）。
 免费获取思维导图 沟通与整理 沟通的艺术 要说人类在哪一点优于其它物种，当属语言沟通。但沟通也不是与生俱来的本能，不然就不会有这么多的冲突了。沟通是一门艺术。
@@ -995,16 +809,7 @@ A：</description>
 互联网风控 人类从诞生之初，就一直面临着各式各样的风险。而上世纪80年代兴起的互联网，当下也面临各式各样的风险。
 羊毛党、黑产肆虐，一不小心可能老本都被薅没。同时在PUGC平台，用户上传的内容也有各种风险。
 但好在，其它领域的风控经验，对于互联网同样有借鉴意义。通过多种策略手段，能在一定程度上控制风险。
-其它 敏捷 敏捷（Scrum），简单的来说就是赶紧上，先跑通流程，再去迭代。</description>
-    </item>
-    
-    <item>
-      <title>机器学习系统设计 Machine learning system design</title>
-      <link>https://kuhung.me/posts/machine_learning_system_design/</link>
-      <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/machine_learning_system_design/</guid>
-      <description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
+其它 敏捷 敏捷（Scrum），简单的来说就是赶紧上，先跑通流程，再去迭代。</description></item><item><title>机器学习系统设计 Machine learning system design</title><link>https://kuhung.me/posts/machine_learning_system_design/</link><pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate><guid>https://kuhung.me/posts/machine_learning_system_design/</guid><description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
 机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
 国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程师、机器学习工程师、深度学习工程师都指的这个。
 这一岗位同开发岗位，SDE 一样，也需要足够的系统设计经验。
@@ -1031,25 +836,7 @@ Machine learning methods change every year, solving problems stays the same.
 项目的限制条件包括：项目周期多长，有多少算力，需要何种能力，有哪些可用资源。
 特殊例子即：是否需要结合用户做特殊化处理，例如千人千面。
 最后，如同老师设计考试一样，需要考虑如何评估你的系统性能。
-数据流 Machine learning is driven more by data than by algorithms</description>
-    </item>
-    
-    <item>
-      <title>思维导图｜《学习之道》</title>
-      <link>https://kuhung.me/posts/the_way_to_learn/</link>
-      <pubDate>Wed, 16 Oct 2019 07:56:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/the_way_to_learn/</guid>
-      <description>关于作者</description>
-    </item>
-    
-    <item>
-      <title>系统思考与卓有成效的管理者</title>
-      <link>https://kuhung.me/posts/manadement/</link>
-      <pubDate>Wed, 17 Jul 2019 17:02:56 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/manadement/</guid>
-      <description>在老一辈的眼中，学而优则仕。学习好了就去当官从政，去服务别人。而在父母这一辈人的眼中，不论你干啥，当“老实人”被人管是不行的，他们的观点有一定的时代背景，但仍然在潜移默化影响着每个人。
+数据流 Machine learning is driven more by data than by algorithms</description></item><item><title>思维导图｜《学习之道》</title><link>https://kuhung.me/posts/the_way_to_learn/</link><pubDate>Wed, 16 Oct 2019 07:56:13 +0800</pubDate><guid>https://kuhung.me/posts/the_way_to_learn/</guid><description>关于作者</description></item><item><title>系统思考与卓有成效的管理者</title><link>https://kuhung.me/posts/manadement/</link><pubDate>Wed, 17 Jul 2019 17:02:56 +0800</pubDate><guid>https://kuhung.me/posts/manadement/</guid><description>在老一辈的眼中，学而优则仕。学习好了就去当官从政，去服务别人。而在父母这一辈人的眼中，不论你干啥，当“老实人”被人管是不行的，他们的观点有一定的时代背景，但仍然在潜移默化影响着每个人。
 而对于初入职场的新人来说，虽然暂时当不上管理者，但被管理时却也会思考：“如果是自己，将会怎样去做管理？” 对于这一批新的90后甚至00后来说，管理并不再是一场服从性测试，权威性的组织管理方法或不再有效。
 什么是这些年轻人喜欢的管理风格呢？ 如果稍微读过一些管理学的书籍，就会发现，管理其实在近现代发生了较大的变化。厚黑学受人推崇，有它的一定意义，但是小年轻们对里面的技巧似乎并不买账。这点在酒桌或者聚餐时就可以看得出来。这批年轻人有自己的想法，有独立的意识，甚至有些“不懂”人情世故。
 回顾历史，近现代企业管理做得比较好的，要当属日本。日本凭借其精益管理思路，在汽车制造业一举占领美国市场，打得美国的传统汽车巨头没有还手之力。在大学里，作为机械大类的学生，一定多少接触过精益生产。
@@ -1067,16 +854,7 @@ IT 工程师眼中的现代管理究竟应该是什么样的呢？ 我们接着�
 系统思考 如果想在组织中构建学习型组织，成为一个卓有成效的管理者，那肯定不是忽视系统思考的力量。
 关注长期的行为和系统内部的结构，而不是表象和短期事件；世界非线性，不要用线性的思维思考；恰当的划分系统的边界；充分考虑多方的限制因素及相对强弱。
 通过实际行为来推断系统目标，而不能只看表面的言辞或其标榜的目标。时间延迟无所不在，当下的干预很可能一段时间后才会产生影响。没有人能做到充分理性，每个人的理性都是有限的。
-总结 在最近和实习生同事的合作过程中，深切的感受到信息差带来的权力膨胀感。实际上，管理也是一门实践课程。一开始可能会走偏，但只要有回顾、有反思，也终究会上正轨。系统思考、长远为重。不仅要问这些年轻人想要什么、也要问自己想要什么。</description>
-    </item>
-    
-    <item>
-      <title>数据从业者必读的7本书 Booklist for DE</title>
-      <link>https://kuhung.me/posts/book-list-for-ds/</link>
-      <pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/book-list-for-ds/</guid>
-      <description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
+总结 在最近和实习生同事的合作过程中，深切的感受到信息差带来的权力膨胀感。实际上，管理也是一门实践课程。一开始可能会走偏，但只要有回顾、有反思，也终究会上正轨。系统思考、长远为重。不仅要问这些年轻人想要什么、也要问自己想要什么。</description></item><item><title>数据从业者必读的7本书 Booklist for DE</title><link>https://kuhung.me/posts/book-list-for-ds/</link><pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate><guid>https://kuhung.me/posts/book-list-for-ds/</guid><description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
 有关注某校友的公众号，他是做爬虫和可视乎的。某天在推荐 Python 学习资料。封面看着挺美，点开一看，书单质量实属一般。倒像是接的推广，很多估计他自己都没有看过，不太负责任。于是乎，便萌生了出一期书单的想法。而定位，便是数据科学家、数据挖掘工程师、算法工程师的书单。
 首先声明，这份书单不是单纯的技术向书籍，不会有什么西瓜书或是算法导论之类的。他们也是好书，但不会出现在这里。因为在工作中大家就会发现，技术只是工具，好的工匠 != 熟练使用工具的熟练工。看见大局，同时有跨学科的思维，能够从事物的本质去出发，理解和思考它，也很重要。
 作为一个数据挖掘工程师，以下是推荐的核心7本书单。为什么是7本呢？因为人一下子能记住的东西是有限的，记不住就忍不住收藏。收藏了就几乎等于很少看了。收藏一时爽，一直收藏一直爽。所以，书单从原来的二十几本变为了现在的7本。
@@ -1102,24 +880,11 @@ top 4 《利用 python 进行数据分析》
 top 3 《金字塔原理》
 主要是逻辑性思维的呈现原则，以及最核心的一点站在对方的角度看问题。书中罗列了很多报告撰写、演讲呈现的方法技巧。比如自上而下思考，自下而上表达，横向概括、纵向分类，独立穷尽。这些机巧用在你的日常生活中的表达和演讲，将会大大加分。
 与之类似的书还有《演说之禅》，以及稍微和职业更靠近的《数据可视化之美》。
-top 2 《咨询的奥秘》</description>
-    </item>
-    
-    <item>
-      <title>高效能人士的7个习惯</title>
-      <link>https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</link>
-      <pubDate>Sun, 10 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</guid>
-      <description>第一部分：认识自我 一切探索的尽头，就是重回起点。——艾略特
+top 2 《咨询的奥秘》</description></item><item><title>高效能人士的7个习惯</title><link>https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</link><pubDate>Sun, 10 Apr 2016 00:00:00 +0000</pubDate><guid>https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/</guid><description>第一部分：认识自我 一切探索的尽头，就是重回起点。——艾略特
 以原则为中心的思维 公平的原则 诚实与善良 以原则为中心，以品德为基础 由内而外强调，先追求个人的成功，才能有人际关系的成就;先信守对自己的承诺，才能信守对他人的承诺。 七个习惯&amp;ndash;大纲 习惯一：积极主动（BE PROACTIVE) 习惯二：以终为始(BEGIN WITH THE END IN MIND) 习惯三：要事第一(PUT FIRST THINGS FIRST) 习惯四：双赢思维(THINK WIN) 习惯五：知彼解己(SEEK FIRST TOUNDERSTAND,THEN TOBE UNDERSTOOD) 习惯六：统合综效(SYNERGIZE) 习惯七：不断更新(SHARPEN THE SAW) 第二部分：个人的成功：从依赖到独立 习惯一：积极主动 三种决定论 基因决定论 心理决定论 环境决定论 人类的四种天赋 选择的自由(freedom to choose) 想象力(imagination) 良知(conscience) 独立意志(independent conscience) 积极主动是人类的天性
 积极主动与积极思考不同。积极主动不仅承认现实，也肯定人有权选择对现实环境做出积极回应。
 人生的三种价值 经验价值 创造价值 态度价值 言语态度对照表 消极被动 我已无能为力 我就是这样一个人 他是我怒不可遏 积极主动 试试看有没有其他可能性 我可以选择不同的作风 我可以控制自己的情绪 关注圈与影响圈 在关注圈中把个人可以控制的圈起来，形成&amp;quot;影响圈&amp;quot;。 习惯二：以终为始 | 自我领导的原则 在做任何事之前，都得认清方向。（该方向由个人最重要的期许或价值观来决定）
 自我领导
 管理是正确地做事，领导则是做正确的事。
 四个方向：安全感、人生方向、智慧、力量
-以原则为中心的特征： 这是主动而非被动的决定 这是经过通盘考虑所得的结论，不是一时冲动 习惯三：要事第一 | 自我管理的原则 四代时间管理理论的演进 重视那些重要但不紧急的事</description>
-    </item>
-    
-  </channel>
-</rss>
+以原则为中心的特征： 这是主动而非被动的决定 这是经过通盘考虑所得的结论，不是一时冲动 习惯三：要事第一 | 自我管理的原则 四代时间管理理论的演进 重视那些重要但不紧急的事</description></item></channel></rss>

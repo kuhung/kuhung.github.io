@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI可见性 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/ai%E5%8F%AF%E8%A7%81%E6%80%A7/</link>
-    <description>Recent content in AI可见性 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 12 Aug 2026 11:25:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E5%8F%AF%E8%A7%81%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>搜索与 AI 可见性：让需要你产品的人找到你</title>
-      <link>https://kuhung.me/posts/seo-enhance/</link>
-      <pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/seo-enhance/</guid>
-      <description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI可见性 on 谷粒 kuhung</title><link>https://kuhung.me/tags/ai%E5%8F%AF%E8%A7%81%E6%80%A7/</link><description>Recent content in AI可见性 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Aug 2026 11:25:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E5%8F%AF%E8%A7%81%E6%80%A7/index.xml" rel="self" type="application/rss+xml"/><item><title>搜索与 AI 可见性：让需要你产品的人找到你</title><link>https://kuhung.me/posts/seo-enhance/</link><pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate><guid>https://kuhung.me/posts/seo-enhance/</guid><description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
 笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
 做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。
 用这个比方串一下全文逻辑：
@@ -34,8 +19,4 @@
 还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。
 第四步：实际搜一搜，判断用户想要什么
 拿候选查询去搜，看第一页主要是什么类型的结果：
-教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description>
-    </item>
-    
-  </channel>
-</rss>
+教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description></item></channel></rss>

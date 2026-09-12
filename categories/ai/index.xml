@@ -1,33 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI on 谷粒 kuhung</title>
-    <link>https://kuhung.me/categories/ai/</link>
-    <description>Recent content in AI on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 02 May 2026 10:40:50 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</title>
-      <link>https://kuhung.me/posts/image2-for-makeover/</link>
-      <pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/image2-for-makeover/</guid>
-      <description>Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少朋友其实缺少审美锻炼，无法区分什么是好的。本着想试试新模型的威力，再加上不少网友也无法正常访问Image2，笔者便顺势构建了这样一个应用《海蓝颜究社》。希望让更多的朋友能够用上，提升自己的外在形象。 这类应用，是不少人面对AI创业命题的首选作品。我们这里主要介绍文生图上的经验教训，暂不包括网页应用。两者的时间开销约为1:1，感兴趣的朋友可以另外留言。产品地址beauty.kuhung.me或点击链接。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on 谷粒 kuhung</title><link>https://kuhung.me/categories/ai/</link><description>Recent content in AI on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 02 May 2026 10:40:50 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</title><link>https://kuhung.me/posts/image2-for-makeover/</link><pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate><guid>https://kuhung.me/posts/image2-for-makeover/</guid><description>Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少朋友其实缺少审美锻炼，无法区分什么是好的。本着想试试新模型的威力，再加上不少网友也无法正常访问Image2，笔者便顺势构建了这样一个应用《海蓝颜究社》。希望让更多的朋友能够用上，提升自己的外在形象。 这类应用，是不少人面对AI创业命题的首选作品。我们这里主要介绍文生图上的经验教训，暂不包括网页应用。两者的时间开销约为1:1，感兴趣的朋友可以另外留言。产品地址beauty.kuhung.me或点击链接。
 在开始之前，先说结论，再说遇到的坑。首先它的效果确实不错，人物一致性和文字已经非常好了，确实是第一梯队的文生图、图生图模型。给出建议也比较中肯。而这细活豆包、Gemini做不了，他们的一致性差、文本效果一般。 接下来我们进入正题，遇到了哪些问题，如何解决和最后效果展示。
 首先第一个：提示词不准。虽然网上有给出简洁版的提示词，并且告诉你他是这样生成的。但当你实际操作的时候，会发现稳定性非常差。具体表现在两个方面：第一个是做出的效果和他的图不一致，会简化很多。其次是，当你用相同的指令，反复提交时，生成的结果也会不一样。 这一度让人困惑。即使是ChatGPT自己有提示，用它的提示词也生成不了预期的效果。 原因我猜测如下，概率模型本质上就具有随机性。你想要更准确的效果控制，要么在图的基础上再修改；要么就是在提示词上做约束。最直接的方法，就是你把图片和当前版本提示词、以及预期效果丢给ChatGPT，让它补完提示词。
 这样试过又会发现：GPT画蛇添足、过度设计。它将原本40个词的提示词，扩充到了1500字。扩充的后果是效果像了，但是细节不一样了。 GPT扩写这提示词，像没经过内部矫正一样。即使把ChatGPT里面的风格，设置成控制输出，也难以形成优雅统一的提示词。在浏览网页的时候，发现官网有专门的提示词教程。它其中写得明白：从少到多；结构化表达；明确修改范围和不变范围。通过这种方式，除开我们要做的这类图像编辑和转换，还可以实现信息图、UI等功能。 人写肯定不现实，还是让文笔更好的Opus来。丢给它要的目标图的形式，再给出提示词和提示词之后的结果图，让它一步步靠近。最终，实现近似可控的图片编辑效果。 这里面，最难的其实是一致性和排版；最需要权衡的是信息密度和样式。目前从结果来说，当约束人物一致性不变时，已经不会存在人物差距过大的问题，基本能保持一致；而排版通过提示词约束，也能一定程度上保持。不过稍微麻烦的是，不同目标（例如发型与墨镜）出来的效果还是会略微不同。 另外一个情况是，当约束中文排版时，由于有约束简洁，导致最后的信息密度一般。当然，也许是看惯了常用语言，有语言羞耻症。
 最后，有条件的读者朋友可以试试原始提示词；不方便的读者朋友，笔者在早鸟5折的基础上，额外提供一张专属可叠加的8折折扣码「BEAUTY2026」，结算时输入或点击链接，免输入即刻体验。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（三）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-3/</link>
-      <pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-3/</guid>
-      <description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（三）</title><link>https://kuhung.me/posts/love-in-ai-town-3/</link><pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-3/</guid><description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
 接着，内测群也发起了测试。累计招募了3位真人朋友。从测试的结果来看，也是合乎预期。最直接的证明就是，这三位即使身份背景不同，都对UP主的Agent表达出兴趣。这和他们选择参加游戏的现实结果一致。
 不过，更多的用户停在了门外。根据用户访谈，有朋友认为该项目的定位和商业BP不够清晰。所以，第三次迭代纪要，主体便是回应这个问题。
 这个项目的发起动机，是UP主本身有交友的需求。但在测试过程中，发现很多社交应用，都缺乏促成成交的机制。就像网友所说，社交APP的核心指标在于消费。没错，是用户在平台上各类消费活动。包括但不限于：知道谁喜欢了我、让对方直接看到我等更多特权。
@@ -47,16 +23,7 @@ A：目前从身边感受来说，普遍存在需求。这部分数据后续陆�
 此外，我们再过一遍技术细节。本地迭代，实现两个核心功能。
 一个是将LLM模型从本地机器，迁移到UP主更适合做模型服务的Linux服务器。另一个是增加了摄像头，使得我们能够在屏幕上跟踪对应agent，能够掌握它的第一手行为动作。另外一些小的改进，是数据采集增加了问卷，不用通过对话收集信息了。
 最后，有这部分需求的小伙伴可以持续关注本项目，更大规模测试计划中。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（二）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-2/</link>
-      <pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-2/</guid>
-      <description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（二）</title><link>https://kuhung.me/posts/love-in-ai-town-2/</link><pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-2/</guid><description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
 工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。
 AI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。
 首先要做的是保证启动，实现原代码的功能。过程略微枯燥，总之就是发现问题，理解问题，寻找解决方案，尝试解决方案，最后修复。
@@ -76,16 +43,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 项目依赖本地的大模型，但并未对token的消耗进行统计、未对服务的负载情况进行监控。若服务不可用或性能下降，实际会影响对话部分的质量。
 目前，项目的演示视频已发布到多个平台，获得的曝光仍较为局限。获客是最大的挑战、缺少话题性，难以获得垂直流量。
 看到这里的朋友，动动手指，填写一分钟问卷，圆你的交友梦。限时免费匹配，定期直播结果。https://wj.qq.com/s2/24050706/c5d5/
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（一）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-1/</link>
-      <pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-1/</guid>
-      <description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（一）</title><link>https://kuhung.me/posts/love-in-ai-town-1/</link><pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-1/</guid><description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
 优质的用户是平台资产，当他们匹配成功时，意味着平台的资产流失。
 除开目的的背离，还有客服感。不少网友反馈，在社交软件上聊天像是客服，对不同的人要重复相同的话术，聊着聊着对方还会断线。这种感受在消磨人的耐心，消磨对美好爱情的憧憬。
 用户需要填写标签。例如学历、资产情况等。这些标签化的筛选方式，早已植入到了人的内心。品格无法量化，便先通过标签筛选。而一个人的偏好，基本是固定的。
@@ -105,17 +63,4 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 本产品的主要营收方式为数字化服务费，主要成本为算力和人力支出。
 本产品无法完全杜绝资料作假、美化，无法帮助提升外在美商，无法帮助用户实现特定功利想法。
 本产品的主要风险来自于市场宣发，双边市场缺乏足够多的参与者。无人感兴趣，冷启动失败。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>41个 LangChain / LangGraph / LangSmith 案例研究</title>
-      <link>https://kuhung.me/posts/agent-case-studies/</link>
-      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/agent-case-studies/</guid>
-      <description>关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+关于作者</description></item><item><title>41个 LangChain / LangGraph / LangSmith 案例研究</title><link>https://kuhung.me/posts/agent-case-studies/</link><pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate><guid>https://kuhung.me/posts/agent-case-studies/</guid><description>关于作者</description></item></channel></rss>

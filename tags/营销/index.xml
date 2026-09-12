@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>营销 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E8%90%A5%E9%94%80/</link>
-    <description>Recent content in 营销 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 25 May 2021 21:53:20 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%90%A5%E9%94%80/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>工程师如何卖轮子</title>
-      <link>https://kuhung.me/posts/selling-the-wheel/</link>
-      <pubDate>Tue, 25 May 2021 21:53:20 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/selling-the-wheel/</guid>
-      <description>在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>营销 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E8%90%A5%E9%94%80/</link><description>Recent content in 营销 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 25 May 2021 21:53:20 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%90%A5%E9%94%80/index.xml" rel="self" type="application/rss+xml"/><item><title>工程师如何卖轮子</title><link>https://kuhung.me/posts/selling-the-wheel/</link><pubDate>Tue, 25 May 2021 21:53:20 +0800</pubDate><guid>https://kuhung.me/posts/selling-the-wheel/</guid><description>在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
 上面是普通人的技术产品主张。作为程序员自己，是不是就没有这样的困扰了呢？我们可以做前端、可以做web端、可以开发自己的小程序，是不是就可以吸引无数忠实用户、卖个好价钱、躺平后半生了呢？如果真是这样子，那大概996和秃头就是假的、是拜登打的劳工牌了。
 除了技术力，市场的敏锐度以及营销能力，也是决定成败的关键。
 在日常工作中，不可避免的，程序开发也会有自己的观点主张：无论是技术方面的、还是日常决策方向的。也有人幻想着，有个赏识的伯乐，能发现自己点子的独特之处，然后悄悄”颠覆世界“。
@@ -63,8 +48,4 @@ Tips：
 客户为什么需要我们的产品？
 什么促使他们更愿意从我们这里购买？
 为什么他们愿意从竞争对手处购买？
-我们应提供哪些增值服务以达成交易？</description>
-    </item>
-    
-  </channel>
-</rss>
+我们应提供哪些增值服务以达成交易？</description></item></channel></rss>

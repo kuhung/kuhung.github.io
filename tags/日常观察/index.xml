@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>日常观察 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%97%A5%E5%B8%B8%E8%A7%82%E5%AF%9F/</link>
-    <description>Recent content in 日常观察 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Aug 2021 22:56:45 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%97%A5%E5%B8%B8%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>如何理解战略</title>
-      <link>https://kuhung.me/posts/strategy-01/</link>
-      <pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/strategy-01/</guid>
-      <description>“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>日常观察 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%97%A5%E5%B8%B8%E8%A7%82%E5%AF%9F/</link><description>Recent content in 日常观察 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Aug 2021 22:56:45 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%97%A5%E5%B8%B8%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>如何理解战略</title><link>https://kuhung.me/posts/strategy-01/</link><pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate><guid>https://kuhung.me/posts/strategy-01/</guid><description>“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
 可是，战略的本质又是什么呢？到底什么才是战略，什么是好的战略？大家都在说战略，战略就没有缺点了吗？
 今天我们就通过《战略历程》这本书，拆解战略的本质，通过这篇内容，帮助你理解战略。
 战略是大象 没有人能准确定义战略，因为战略的本身，就是一个抽象概念，是对生活的抽象总结。战略就像是盲人摸象中的大象，而我们则是那些盲人，通过不同的接触面，会得到不一样的战略描述。战略总结，是片面的。
@@ -29,8 +14,4 @@
 战略的利弊 凡事有利必有弊，战略也不例外。从四个角度，我们来看看战略的利弊。
 从设定方向角度，战略为组织设定了航线，大家能够齐心协力达到目标。但其缺点就是，会掩盖潜在的危险。从集合力量角度，战略让组织内的行动更协调。但过份一致的思维，很有可能会让组织丧失洞察。
 战略决定了组织风格，方便了人们理解并和其他组织区分。它的负面效果就是，过份清晰界定组织，组织的多样性将会丧失。从提供一致性角度来说，战略减少了组织的模糊和无序。其缺点则是，追求一致导致了狭隘，甚至扭曲了事实。
-小结 战略是一头大象，我们往往只能看到其局部。但只有当我们从整体来看时，才会发现整体大于部分之和。可能你的组织正表现出某一类战略，但了解更广的面貌，总是更有助于发挥战略的作用。也别忘了，凡事需要有个度，过份一致的战略，反而会带来多样性丧失、灵活性丧失的风险。为此，还是需要缓慢移动，小心评估。</description>
-    </item>
-    
-  </channel>
-</rss>
+小结 战略是一头大象，我们往往只能看到其局部。但只有当我们从整体来看时，才会发现整体大于部分之和。可能你的组织正表现出某一类战略，但了解更广的面貌，总是更有助于发挥战略的作用。也别忘了，凡事需要有个度，过份一致的战略，反而会带来多样性丧失、灵活性丧失的风险。为此，还是需要缓慢移动，小心评估。</description></item></channel></rss>

@@ -1,1407 +1,173 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
-  <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
-  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
-  
-  
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
-}
-</script>
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "yelaywwb9r");
-  </script>
-  
-  <link rel="next" href="https://kuhung.me/guide/" />
-  <link rel="canonical" href="https://kuhung.me/archives/" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           归档 | 谷粒 kuhung
-       
-  </title>
-  <meta name="title" content="归档 | 谷粒 kuhung">
-    
-  
-  <link rel="stylesheet" href="/font/iconfont.css">
-  <link rel="stylesheet" href="/css/main.min.css">
-
-
-  
-  
-  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
-  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
-  
-  
-
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/archives/","@type":"WebPage","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"headline":"归档","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"mainEntityOfPage":{"@id":"https://kuhung.me/archives/","@type":"WebPage"},"name":"归档","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/archives/"}</script>
-</head>
-
-  
-
-
-  <body class="">
-    <div class="wrapper">
-        <nav class="navbar">
-    <div class="container">
-        <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
-        </div>
-        <div class="menu navbar-right">
-                
-                
-                <a class="menu-item" href="/projects/" title="">产品</a>
-                
-                <a class="menu-item" href="/posts/" title="">文章</a>
-                
-                <a class="menu-item" href="/about/" title="">关于</a>
-                
-        </div>
-    </div>
-</nav>
-<nav class="navbar-mobile" id="nav-mobile" style="display: none">
-     <div class="container">
-        <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
-            <div class="menu-toggle">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-     
-          <div class="menu" id="mobile-menu">
-                
-                
-                <a class="menu-item" href="/projects/" title="">产品</a>
-                
-                <a class="menu-item" href="/posts/" title="">文章</a>
-                
-                <a class="menu-item" href="/about/" title="">关于</a>
-                
-        </div>
-    </div>
-</nav>
-    	 <main class="main">
-          <div class="container">
-      		
-<div class="post-warp archive">
-    <h2 class="post-title" style="text-align:right;padding-bottom:2em">-&nbsp;归档&nbsp;-</h2>
-    
-    
-    
-    
-    
-    <h3 class="archive-year">2026</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/personal-website-seo-and-redesign-practice/" class="archive-item-link hvr-underline-from-center">个人主页 SEO 优化与结构改版实践</a>
-        <span class="archive-item-date">
-            09-09
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/skill-eval-review/" class="archive-item-link hvr-underline-from-center">Agent Skills 出来的第10个月，再聊评估几件事</a>
-        <span class="archive-item-date">
-            08-26
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/seo-in-practice-sop/" class="archive-item-link hvr-underline-from-center">从 SEO 角度做增长，以产品 TrakToken 为例</a>
-        <span class="archive-item-date">
-            08-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/cang-in-house-review/" class="archive-item-link hvr-underline-from-center">五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</a>
-        <span class="archive-item-date">
-            08-21
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/maximization-your-claude-code-sessions/" class="archive-item-link hvr-underline-from-center">提效 20% 的 Claude Code Session 优化方法</a>
-        <span class="archive-item-date">
-            08-15
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/seo-enhance/" class="archive-item-link hvr-underline-from-center">搜索与 AI 可见性：让需要你产品的人找到你</a>
-        <span class="archive-item-date">
-            08-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ga4-in-practice/" class="archive-item-link hvr-underline-from-center">GA4 实践指南：从配置到 AI 工作流</a>
-        <span class="archive-item-date">
-            08-11
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/harness-your-skills/" class="archive-item-link hvr-underline-from-center">驾驭你的 Agent Skills 和系统指令</a>
-        <span class="archive-item-date">
-            08-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/" class="archive-item-link hvr-underline-from-center">LLM Token 支出指数能预测 AI 行情吗？</a>
-        <span class="archive-item-date">
-            08-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/how-to-build-a-data-driven-product/" class="archive-item-link hvr-underline-from-center">Vibe Coding 产品数据建设：5步框架与数据清单</a>
-        <span class="archive-item-date">
-            08-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/how-to-manage-skills-for-agent/" class="archive-item-link hvr-underline-from-center">从单 Agent 到跨 Agent 的 Skills 管理</a>
-        <span class="archive-item-date">
-            08-05
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/use-codex-goal-build-products/" class="archive-item-link hvr-underline-from-center">用 Codex /goal 指令从 0 到 1 验证并构建产品</a>
-        <span class="archive-item-date">
-            08-04
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/how-i-use-codex/" class="archive-item-link hvr-underline-from-center">普通人要 Codex 有什么用？</a>
-        <span class="archive-item-date">
-            08-03
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/meet-with-hardware-ai/" class="archive-item-link hvr-underline-from-center">创业独立观察｜和几位 AI 硬件从业者聊了聊</a>
-        <span class="archive-item-date">
-            08-01
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/pair-zhipu-minimax/" class="archive-item-link hvr-underline-from-center">智谱 x MiniMax：配对交易的验证与心得</a>
-        <span class="archive-item-date">
-            07-30
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/pagegrok-in-practice/" class="archive-item-link hvr-underline-from-center">不想为总结一个网页花20美元，我给Chrome做了个平替插件</a>
-        <span class="archive-item-date">
-            07-29
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ai-native-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的 AI Native</a>
-        <span class="archive-item-date">
-            07-27
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/cang-in-house/" class="archive-item-link hvr-underline-from-center">接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</a>
-        <span class="archive-item-date">
-            07-26
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/weread-skills-in-practice/" class="archive-item-link hvr-underline-from-center">利用微信读书skill，将读过的知识整合进AI实践</a>
-        <span class="archive-item-date">
-            07-24
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ttsi/" class="archive-item-link hvr-underline-from-center">LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</a>
-        <span class="archive-item-date">
-            07-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/" class="archive-item-link hvr-underline-from-center">写在离职一年半</a>
-        <span class="archive-item-date">
-            06-21
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/" class="archive-item-link hvr-underline-from-center">不要再 Vibe 创业了，干点儿实事吧阿谷</a>
-        <span class="archive-item-date">
-            05-31
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/benchmark-for-llm-inference/" class="archive-item-link hvr-underline-from-center">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</a>
-        <span class="archive-item-date">
-            05-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/" class="archive-item-link hvr-underline-from-center">成本三分钱，整合Notion、GitHub的AI周报工作流</a>
-        <span class="archive-item-date">
-            05-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/noainog-202604/" class="archive-item-link hvr-underline-from-center">NoAINoG 月刊 | 整个4月，我们在聊什么？</a>
-        <span class="archive-item-date">
-            05-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/image2-for-makeover/" class="archive-item-link hvr-underline-from-center">一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</a>
-        <span class="archive-item-date">
-            05-02
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/" class="archive-item-link hvr-underline-from-center">AI时代，OPC（一人公司）的自动化与半自动化</a>
-        <span class="archive-item-date">
-            04-29
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/vibe-coding-long-term-operation/" class="archive-item-link hvr-underline-from-center">Vibe Coding 长线运营思路</a>
-        <span class="archive-item-date">
-            04-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/geo-and-anticheat/" class="archive-item-link hvr-underline-from-center">GEO的过去、未来与反作弊算法</a>
-        <span class="archive-item-date">
-            03-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-vc/" class="archive-item-link hvr-underline-from-center">独立创业观察｜和一位 AI 投资人聊了聊</a>
-        <span class="archive-item-date">
-            02-20
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-an-old-peer/" class="archive-item-link hvr-underline-from-center">技术转型｜赴日、副业和内容变现的那些事</a>
-        <span class="archive-item-date">
-            02-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-an-art-cowoker/" class="archive-item-link hvr-underline-from-center">创业合伙人｜教育留学 Agent 的未果沟通</a>
-        <span class="archive-item-date">
-            02-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-ex-netease/" class="archive-item-link hvr-underline-from-center">游戏人创业｜一位前网易人的&#39;不打工&#39;实验</a>
-        <span class="archive-item-date">
-            02-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-an-ex-pm/" class="archive-item-link hvr-underline-from-center">独立创业观察｜一位前大厂产品的风险厌恶与思维迷局</a>
-        <span class="archive-item-date">
-            02-04
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-an-ex-vc/" class="archive-item-link hvr-underline-from-center">AI出海创业观察｜一位前VC（风险投资人）的务实主义</a>
-        <span class="archive-item-date">
-            02-03
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/talks-with-an-ai-pm/" class="archive-item-link hvr-underline-from-center">AI社交产品观察｜200题与一杯咖啡的背后</a>
-        <span class="archive-item-date">
-            02-02
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2025</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/data-mining-onchain/" class="archive-item-link hvr-underline-from-center">链上数据挖掘导读（onchain data mining 101）</a>
-        <span class="archive-item-date">
-            12-03
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/meritocracy-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的优绩主义</a>
-        <span class="archive-item-date">
-            11-27
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ai-trend-in-my-eyes/" class="archive-item-link hvr-underline-from-center">AI构建全景图：六阶段及其方案选型</a>
-        <span class="archive-item-date">
-            11-26
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/luts-for-iphone/" class="archive-item-link hvr-underline-from-center">富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a>
-        <span class="archive-item-date">
-            11-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/lean-productive/" class="archive-item-link hvr-underline-from-center">精益创造（lean build）</a>
-        <span class="archive-item-date">
-            11-18
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/love-in-ai-town-3/" class="archive-item-link hvr-underline-from-center">AI相亲小镇开发纪要（三）</a>
-        <span class="archive-item-date">
-            10-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/break-up-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的分手</a>
-        <span class="archive-item-date">
-            10-02
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/guess-you-like/" class="archive-item-link hvr-underline-from-center">亲爱的，我变成了“猜你喜欢”</a>
-        <span class="archive-item-date">
-            09-29
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/love-in-ai-town-2/" class="archive-item-link hvr-underline-from-center">AI相亲小镇开发纪要（二）</a>
-        <span class="archive-item-date">
-            09-27
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/love-in-ai-town-1/" class="archive-item-link hvr-underline-from-center">AI相亲小镇开发纪要（一）</a>
-        <span class="archive-item-date">
-            09-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/lacking-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的匮乏</a>
-        <span class="archive-item-date">
-            09-22
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/write-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的写作</a>
-        <span class="archive-item-date">
-            09-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/love-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的爱情</a>
-        <span class="archive-item-date">
-            09-15
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/vibe-code-in-mind/" class="archive-item-link hvr-underline-from-center"> 你以为的vibe coding</a>
-        <span class="archive-item-date">
-            09-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/grow-up-in-mind/" class="archive-item-link hvr-underline-from-center">你以为的成年</a>
-        <span class="archive-item-date">
-            09-11
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/we-media-in-2025/" class="archive-item-link hvr-underline-from-center">你以为的自媒体</a>
-        <span class="archive-item-date">
-            09-10
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/create-in-2025/" class="archive-item-link hvr-underline-from-center">你以为的创业</a>
-        <span class="archive-item-date">
-            09-09
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/build-in-2015/" class="archive-item-link hvr-underline-from-center">从2015到2025：技术创业的变与不变</a>
-        <span class="archive-item-date">
-            08-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/bootstrapping-culture/" class="archive-item-link hvr-underline-from-center">技术领导｜09 Bootstrapping Culture 塑造团队文化</a>
-        <span class="archive-item-date">
-            07-30
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/agent-case-studies/" class="archive-item-link hvr-underline-from-center">41个 LangChain / LangGraph / LangSmith 案例研究</a>
-        <span class="archive-item-date">
-            07-21
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/prompt-guide/" class="archive-item-link hvr-underline-from-center">三大LLM厂商的提示词行动指南</a>
-        <span class="archive-item-date">
-            07-20
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/context-engineering/" class="archive-item-link hvr-underline-from-center">所谓上下文工程，实质为Agent系统设计</a>
-        <span class="archive-item-date">
-            07-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/jlpt-push/" class="archive-item-link hvr-underline-from-center">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a>
-        <span class="archive-item-date">
-            06-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/content-sop/" class="archive-item-link hvr-underline-from-center">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a>
-        <span class="archive-item-date">
-            06-05
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/fastvlm-iphone-install/" class="archive-item-link hvr-underline-from-center">FastVLM iPhone 安装与实机测评</a>
-        <span class="archive-item-date">
-            05-24
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/amap-mcp/" class="archive-item-link hvr-underline-from-center">P人友好的高德（谷歌）地图 MCP</a>
-        <span class="archive-item-date">
-            04-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/numerai-guide/" class="archive-item-link hvr-underline-from-center">Numerai量化101</a>
-        <span class="archive-item-date">
-            03-11
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/iot-home/" class="archive-item-link hvr-underline-from-center">自己动手将米家接入Homekit，构建低成本智能家居系统</a>
-        <span class="archive-item-date">
-            02-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-big-leagues/" class="archive-item-link hvr-underline-from-center">技术领导｜08 the big leagues 管理组织</a>
-        <span class="archive-item-date">
-            01-30
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/managing-managers/" class="archive-item-link hvr-underline-from-center">技术领导｜07 managing managers 管理管理者</a>
-        <span class="archive-item-date">
-            01-30
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/managing-multiple-teams/" class="archive-item-link hvr-underline-from-center">技术领导｜06 managing multiple teams 管理多个团队</a>
-        <span class="archive-item-date">
-            01-30
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2024</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/build/" class="archive-item-link hvr-underline-from-center">思维导图｜《创造：用非传统方式做有价值的事》</a>
-        <span class="archive-item-date">
-            07-21
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/managing-a-team/" class="archive-item-link hvr-underline-from-center">技术领导｜05 managing a team 管理一个团队</a>
-        <span class="archive-item-date">
-            04-10
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/radar-in-2024/" class="archive-item-link hvr-underline-from-center">2023年度总结</a>
-        <span class="archive-item-date">
-            01-01
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2023</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/managing-people/" class="archive-item-link hvr-underline-from-center">技术领导｜04 managing people 成员管理</a>
-        <span class="archive-item-date">
-            12-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/listening-well/" class="archive-item-link hvr-underline-from-center">思维导图｜《同理倾听》</a>
-        <span class="archive-item-date">
-            11-21
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-mom-test/" class="archive-item-link hvr-underline-from-center">思维导图｜《The Mom Test》点子验证的最佳方式</a>
-        <span class="archive-item-date">
-            08-24
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/career/" class="archive-item-link hvr-underline-from-center">2023年的职业发展，还要爬梯子吗</a>
-        <span class="archive-item-date">
-            08-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/privategpt/" class="archive-item-link hvr-underline-from-center">全面了解 PrivateGPT：中文技巧和功能实测</a>
-        <span class="archive-item-date">
-            05-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/chatgpt/" class="archive-item-link hvr-underline-from-center">ChatGPT 现状回顾与机会分析</a>
-        <span class="archive-item-date">
-            03-14
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/behavioural-based-interview/" class="archive-item-link hvr-underline-from-center">思维导图｜《过去预测未来》胜任力模型</a>
-        <span class="archive-item-date">
-            02-20
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-phoenix-project/" class="archive-item-link hvr-underline-from-center">思维导图｜《凤凰项目》</a>
-        <span class="archive-item-date">
-            02-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/modern-western-thought/" class="archive-item-link hvr-underline-from-center">思维导图｜《刘擎西方现代思想讲义》</a>
-        <span class="archive-item-date">
-            01-28
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2022</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/crucial-confrontations/" class="archive-item-link hvr-underline-from-center">思维导图｜《关键冲突》</a>
-        <span class="archive-item-date">
-            08-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/team-geek/" class="archive-item-link hvr-underline-from-center">思维导图｜《极客与团队》</a>
-        <span class="archive-item-date">
-            06-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/how-over-targeting-ruined-our-lives-step-by-step/" class="archive-item-link hvr-underline-from-center">抵抗理性人思维与数据诱惑</a>
-        <span class="archive-item-date">
-            05-15
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/your-brain-at-work/" class="archive-item-link hvr-underline-from-center">思维导图｜《Your Brain at Work》</a>
-        <span class="archive-item-date">
-            05-04
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/m2-quantitative-trading/" class="archive-item-link hvr-underline-from-center">思维导图｜《量化交易》</a>
-        <span class="archive-item-date">
-            03-29
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-almanack-of-naval-ravikant/" class="archive-item-link hvr-underline-from-center">思维导图｜《纳瓦尔宝典》</a>
-        <span class="archive-item-date">
-            02-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-four-steps-to-the-epiphany/" class="archive-item-link hvr-underline-from-center">思维导图｜《四步创业法》</a>
-        <span class="archive-item-date">
-            01-07
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2021</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/techlead-vol-3/" class="archive-item-link hvr-underline-from-center">技术领导｜03 techlead 想象、现实与路线抉择</a>
-        <span class="archive-item-date">
-            11-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/techlead-vol-2/" class="archive-item-link hvr-underline-from-center">技术领导｜03 techlead 与项目管理</a>
-        <span class="archive-item-date">
-            11-13
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/techlead-vol-1/" class="archive-item-link hvr-underline-from-center">技术领导｜03 techlead 该知道的事情</a>
-        <span class="archive-item-date">
-            10-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/growth-hacking-01/" class="archive-item-link hvr-underline-from-center">增长黑客概要</a>
-        <span class="archive-item-date">
-            10-10
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/30186119/" class="archive-item-link hvr-underline-from-center">思维导图｜增长黑客</a>
-        <span class="archive-item-date">
-            10-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/confrontation-01/" class="archive-item-link hvr-underline-from-center">日常冲突的解决之道</a>
-        <span class="archive-item-date">
-            09-13
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/strategy-safari/" class="archive-item-link hvr-underline-from-center">思维导图｜《战略历程》</a>
-        <span class="archive-item-date">
-            09-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/storytelling-with-data/" class="archive-item-link hvr-underline-from-center">思维导图｜《用数据讲故事》</a>
-        <span class="archive-item-date">
-            09-05
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/competing-truth/" class="archive-item-link hvr-underline-from-center">思维导图｜竞争性真相</a>
-        <span class="archive-item-date">
-            08-15
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-effective-engineer-01/" class="archive-item-link hvr-underline-from-center">软件开发的高杠杆活动</a>
-        <span class="archive-item-date">
-            08-09
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-effective-engineer/" class="archive-item-link hvr-underline-from-center">思维导图｜《The Effective Enginner》</a>
-        <span class="archive-item-date">
-            08-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/strategy-01/" class="archive-item-link hvr-underline-from-center">如何理解战略</a>
-        <span class="archive-item-date">
-            08-01
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/netflix-culture-01/" class="archive-item-link hvr-underline-from-center">奈飞工作法</a>
-        <span class="archive-item-date">
-            07-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-tyranny-of-structurelessness/" class="archive-item-link hvr-underline-from-center">扁平化团队背后的危机</a>
-        <span class="archive-item-date">
-            07-09
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ten-financial-moments-in-five-years-2/" class="archive-item-link hvr-underline-from-center">五年十个财务瞬间｜02 如何在2021年最短时间亏钱</a>
-        <span class="archive-item-date">
-            07-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/atomic-habits/" class="archive-item-link hvr-underline-from-center">思维导图｜《掌控习惯》</a>
-        <span class="archive-item-date">
-            07-05
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/mentoring-vol-3/" class="archive-item-link hvr-underline-from-center">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a>
-        <span class="archive-item-date">
-            06-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/selling-the-wheel/" class="archive-item-link hvr-underline-from-center">工程师如何卖轮子</a>
-        <span class="archive-item-date">
-            05-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/mentoring-vol-2/" class="archive-item-link hvr-underline-from-center">技术领导｜02 Mentoring 如何指导新人</a>
-        <span class="archive-item-date">
-            05-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/mentoring-vol-1/" class="archive-item-link hvr-underline-from-center">技术领导｜02 Mentoring 如何指导实习生</a>
-        <span class="archive-item-date">
-            04-23
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/performance-coaching/" class="archive-item-link hvr-underline-from-center">思维导图｜《高绩效教练》</a>
-        <span class="archive-item-date">
-            03-16
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/three-feature-importances-in-xgb/" class="archive-item-link hvr-underline-from-center">Xgboost 三种特征重要性计算方法对比与扩展</a>
-        <span class="archive-item-date">
-            03-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/what-i-learned-from-little-game-xiao/" class="archive-item-link hvr-underline-from-center">从一款小游戏收获的三点思考</a>
-        <span class="archive-item-date">
-            02-13
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/interpretable-machine-learning/" class="archive-item-link hvr-underline-from-center">算法模型的可解释性</a>
-        <span class="archive-item-date">
-            01-22
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2020</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ten-financial-moments-in-five-years-1/" class="archive-item-link hvr-underline-from-center">五年十个财务瞬间｜01 2020年财务总结</a>
-        <span class="archive-item-date">
-            12-31
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/management-101-vol-2/" class="archive-item-link hvr-underline-from-center">技术领导｜01 技术管理入门 （下）</a>
-        <span class="archive-item-date">
-            12-30
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/game-design-summary/" class="archive-item-link hvr-underline-from-center">游戏机制设计，以剧本杀为例剖析可玩性的来源</a>
-        <span class="archive-item-date">
-            12-24
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/management-101-vol-1/" class="archive-item-link hvr-underline-from-center">技术领导｜01 技术管理入门 （上）</a>
-        <span class="archive-item-date">
-            12-19
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/yuanshen-idle-feedback/" class="archive-item-link hvr-underline-from-center">为度过原神长草期，我写了个原神放置类单机小游戏</a>
-        <span class="archive-item-date">
-            11-16
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/pmp/" class="archive-item-link hvr-underline-from-center">不可不知的项目推进与团队建设之道</a>
-        <span class="archive-item-date">
-            10-26
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/data-engineering-in-2020/" class="archive-item-link hvr-underline-from-center">数据开发在2020年应当是什么样子的</a>
-        <span class="archive-item-date">
-            09-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/statistics-tell-lies/" class="archive-item-link hvr-underline-from-center">2020高考志愿填报中的数据误导与价值机会</a>
-        <span class="archive-item-date">
-            07-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/game_anti-cheat/" class="archive-item-link hvr-underline-from-center">云游戏，会是反作弊的银弹吗？</a>
-        <span class="archive-item-date">
-            06-18
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/why-i-left-netease-games/" class="archive-item-link hvr-underline-from-center">我为何离开网易游戏</a>
-        <span class="archive-item-date">
-            05-13
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/data_analytics_mindmap/" class="archive-item-link hvr-underline-from-center">思维导图｜数据分析</a>
-        <span class="archive-item-date">
-            05-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/mindmap_2020/" class="archive-item-link hvr-underline-from-center">思维导图｜15份结构化知识整理</a>
-        <span class="archive-item-date">
-            04-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/simple-image-search/" class="archive-item-link hvr-underline-from-center">自制以图搜图引擎，居家学习必备</a>
-        <span class="archive-item-date">
-            04-13
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/computational-advertising/" class="archive-item-link hvr-underline-from-center">思维导图｜《计算广告》</a>
-        <span class="archive-item-date">
-            04-05
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/risk_management_mind_map/" class="archive-item-link hvr-underline-from-center">思维导图｜互联网风控</a>
-        <span class="archive-item-date">
-            03-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/risk_management/" class="archive-item-link hvr-underline-from-center">浅谈互联网风控--从策略到技术</a>
-        <span class="archive-item-date">
-            03-22
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/remote/" class="archive-item-link hvr-underline-from-center">更高效的远程工作之道--REMOTE 手册精要</a>
-        <span class="archive-item-date">
-            03-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/audio_progress/" class="archive-item-link hvr-underline-from-center">人声提取两大步骤：分离音频背景声&#43;过滤空白</a>
-        <span class="archive-item-date">
-            01-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/web_deploy/" class="archive-item-link hvr-underline-from-center">产品实践之应用沉淀</a>
-        <span class="archive-item-date">
-            01-01
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2019</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/lifetimes/" class="archive-item-link hvr-underline-from-center">如何计算用户生命周期价值（CLV）</a>
-        <span class="archive-item-date">
-            12-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/machine_learning_system_design/" class="archive-item-link hvr-underline-from-center">机器学习系统设计 Machine learning system design</a>
-        <span class="archive-item-date">
-            12-01
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/dataops/" class="archive-item-link hvr-underline-from-center">Dataops 数据化运维实践</a>
-        <span class="archive-item-date">
-            10-19
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the_way_to_learn/" class="archive-item-link hvr-underline-from-center">思维导图｜《学习之道》</a>
-        <span class="archive-item-date">
-            10-16
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/tdd_drive_ml/" class="archive-item-link hvr-underline-from-center">机器学习实践--测试驱动开发</a>
-        <span class="archive-item-date">
-            08-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/tdd_with_ml/" class="archive-item-link hvr-underline-from-center">思维导图｜测试驱动的机器学习</a>
-        <span class="archive-item-date">
-            08-22
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/pyramid/" class="archive-item-link hvr-underline-from-center">思维导图｜《金字塔原理》</a>
-        <span class="archive-item-date">
-            08-15
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/scrum/" class="archive-item-link hvr-underline-from-center">思维导图｜《敏捷革命》</a>
-        <span class="archive-item-date">
-            08-10
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/manadement/" class="archive-item-link hvr-underline-from-center">系统思考与卓有成效的管理者</a>
-        <span class="archive-item-date">
-            07-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/abtest-2/" class="archive-item-link hvr-underline-from-center">A/B test 评价指标的选择</a>
-        <span class="archive-item-date">
-            06-22
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/merge_overlapping_date/" class="archive-item-link hvr-underline-from-center">HIVE 技巧积累之合并重叠日期</a>
-        <span class="archive-item-date">
-            06-09
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/abtest/" class="archive-item-link hvr-underline-from-center">A/B test 揭秘之什么是 A/B test</a>
-        <span class="archive-item-date">
-            05-24
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/book-list-for-ds/" class="archive-item-link hvr-underline-from-center">数据从业者必读的7本书 Booklist for DE</a>
-        <span class="archive-item-date">
-            05-07
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/training_rl_systems_hacks/" class="archive-item-link hvr-underline-from-center">深度强化学习技巧 hacks for training deep RL</a>
-        <span class="archive-item-date">
-            05-02
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/flask_vue_ml/" class="archive-item-link hvr-underline-from-center">机器学习建模与部署--以垃圾消息识别为例</a>
-        <span class="archive-item-date">
-            04-20
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/vgc-it/" class="archive-item-link hvr-underline-from-center">如何设计一套类似视觉中国“鹰眼”的技术</a>
-        <span class="archive-item-date">
-            04-14
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/hands-on_machine_learning_in_industry/" class="archive-item-link hvr-underline-from-center">机器学习项目的完整生命周期 Hands On Machine Learning in Industry </a>
-        <span class="archive-item-date">
-            04-01
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/slack-gpt2-bot/" class="archive-item-link hvr-underline-from-center">GPT2 模型生成假正经文稿 Slack gpt2 Bot </a>
-        <span class="archive-item-date">
-            03-25
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/competing-on-analytics/" class="archive-item-link hvr-underline-from-center">凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </a>
-        <span class="archive-item-date">
-            03-12
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/prophet-in-000300/" class="archive-item-link hvr-underline-from-center">用先知模型预测股市 Prophet in 000300 </a>
-        <span class="archive-item-date">
-            03-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/the-next-step-for-machine-learning/" class="archive-item-link hvr-underline-from-center">机器学习落地需攻破的9个难题 The Next Step for Machine Learning</a>
-        <span class="archive-item-date">
-            02-24
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/bert-chinese-finetune/" class="archive-item-link hvr-underline-from-center">中文语料的 Bert 微调 Bert Chinese Finetune </a>
-        <span class="archive-item-date">
-            02-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/what-is-data-mining/" class="archive-item-link hvr-underline-from-center">What is Data Mining 什么是数据挖掘</a>
-        <span class="archive-item-date">
-            02-17
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/12306bypass-server/" class="archive-item-link hvr-underline-from-center">12306Bypass Server 抢票神器&#43;微信提醒</a>
-        <span class="archive-item-date">
-            01-26
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2018</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/probabilities-statistics/" class="archive-item-link hvr-underline-from-center">速查表 | Probabilities Statistics 数理统计</a>
-        <span class="archive-item-date">
-            10-18
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/algebra-calculus/" class="archive-item-link hvr-underline-from-center">速查表 | Linear Algebra and Calculus 线代与微积分</a>
-        <span class="archive-item-date">
-            10-18
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/why-is-data-hard/" class="archive-item-link hvr-underline-from-center">为啥说数据这行不容易 Why is Data Hard </a>
-        <span class="archive-item-date">
-            03-30
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/time-series-problem-summary/" class="archive-item-link hvr-underline-from-center">一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary </a>
-        <span class="archive-item-date">
-            02-08
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2017</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/ssd/" class="archive-item-link hvr-underline-from-center">Single Shot MultiBox Detector Keras version</a>
-        <span class="archive-item-date">
-            12-08
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/yysgan/" class="archive-item-link hvr-underline-from-center">yysGAN 生成对抗网络，在游戏角色生成中的尝试</a>
-        <span class="archive-item-date">
-            11-21
-        </span>
-    </article>
-    
-    
-    <h3 class="archive-year">2016</h3>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/" class="archive-item-link hvr-underline-from-center">Cats VS. Dogs 图像分类之猫狗大战</a>
-        <span class="archive-item-date">
-            07-06
-        </span>
-    </article>
-    
-    <article class="archive-item">
-        <a href="https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/" class="archive-item-link hvr-underline-from-center">高效能人士的7个习惯</a>
-        <span class="archive-item-date">
-            04-10
-        </span>
-    </article>
-    
-    
-    
-    <p style="margin-top: 2em; color: #999; font-size: 0.9em;">
-        共 161 篇文章
-    </p>
-</div>
-
-          
-<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
-    <script type="text/javascript">
-    function showDisqus() {
-      
-
-      
-      
-      
-      
-
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
-      var disqus_shortname = 'kuhungio';
-      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-
-      window.location.hash = "#disqus_thread";
-    }
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
-
-          </div>
-		   </main>
-      <footer class="footer site-footer">
-    <style>
-        .site-footer {
-            height: auto;
-            text-align: left;
-            padding-top: 0;
-        }
-        .footer-inner {
-            border-top: 1px solid #eee;
-            margin: 40px auto 0;
-            padding: 32px 32px 28px;
-            max-width: 800px;
-            box-sizing: border-box;
-        }
-        .footer-cols {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 24px;
-        }
-        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
-        .footer-col .footer-col-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: #161209;
-            margin-bottom: 6px;
-        }
-        .footer-col a,
-        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
-        .footer-col .footer-plain { color: #87878d; }
-        .site-footer .copyright {
-            font-size: 12px;
-            color: #a9a9b3;
-            margin-top: 28px;
-            text-align: left;
-        }
-        @media (max-width: 767px) {
-            .footer-inner { padding: 28px 20px 24px; }
-            .footer-cols { flex-direction: column; gap: 20px; }
-        }
-    </style>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <div class="footer-col-title">产品</div>
-                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
-            </div>
-            <div class="footer-col">
-                <div class="footer-col-title">文章</div>
-                
-                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
-            </div>
-            <div class="footer-col">
-                <div class="footer-col-title">联系</div>
-                <span class="footer-plain">hi#kuhung.me</span>
-                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
-                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
-                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy;
-            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
-            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
-            
-            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
-        </div>
-    </div>
-    <script>
-      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
-      const isDark = currentTheme === 'dark'
-      if (isDark) {
-        document.body.classList.add('dark-theme')
-      }
-    </script>
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    <script src="/js/vendor_no_gallery.min.js" async=""></script>
-    
-  
-
-
-
-
-     </div>
-  </body>
-</html>
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=next href=https://kuhung.me/guide/><link rel=canonical href=https://kuhung.me/archives/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>归档 | 谷粒 kuhung</title><meta name=title content="归档 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/archives/","@type":"WebPage","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"headline":"归档","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"mainEntityOfPage":{"@id":"https://kuhung.me/archives/","@type":"WebPage"},"name":"归档","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/archives/"}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
+<a class=menu-item href=/posts/ title>文章</a>
+<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
+<a class=menu-item href=/posts/ title>文章</a>
+<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><div class="post-warp archive"><h2 class=post-title style=text-align:right;padding-bottom:2em>-&nbsp;归档&nbsp;-</h2><h3 class=archive-year>2026</h3><article class=archive-item><a href=https://kuhung.me/posts/personal-website-seo-and-redesign-practice/ class="archive-item-link hvr-underline-from-center">个人主页 SEO 优化与结构改版实践</a>
+<span class=archive-item-date>09-09</span></article><article class=archive-item><a href=https://kuhung.me/posts/skill-eval-review/ class="archive-item-link hvr-underline-from-center">Agent Skills 出来的第10个月，再聊评估几件事</a>
+<span class=archive-item-date>08-26</span></article><article class=archive-item><a href=https://kuhung.me/posts/seo-in-practice-sop/ class="archive-item-link hvr-underline-from-center">从 SEO 角度做增长，以产品 TrakToken 为例</a>
+<span class=archive-item-date>08-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/cang-in-house-review/ class="archive-item-link hvr-underline-from-center">五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</a>
+<span class=archive-item-date>08-21</span></article><article class=archive-item><a href=https://kuhung.me/posts/maximization-your-claude-code-sessions/ class="archive-item-link hvr-underline-from-center">提效 20% 的 Claude Code Session 优化方法</a>
+<span class=archive-item-date>08-15</span></article><article class=archive-item><a href=https://kuhung.me/posts/seo-enhance/ class="archive-item-link hvr-underline-from-center">搜索与 AI 可见性：让需要你产品的人找到你</a>
+<span class=archive-item-date>08-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/ga4-in-practice/ class="archive-item-link hvr-underline-from-center">GA4 实践指南：从配置到 AI 工作流</a>
+<span class=archive-item-date>08-11</span></article><article class=archive-item><a href=https://kuhung.me/posts/harness-your-skills/ class="archive-item-link hvr-underline-from-center">驾驭你的 Agent Skills 和系统指令</a>
+<span class=archive-item-date>08-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/ class="archive-item-link hvr-underline-from-center">LLM Token 支出指数能预测 AI 行情吗？</a>
+<span class=archive-item-date>08-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/how-to-build-a-data-driven-product/ class="archive-item-link hvr-underline-from-center">Vibe Coding 产品数据建设：5步框架与数据清单</a>
+<span class=archive-item-date>08-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/how-to-manage-skills-for-agent/ class="archive-item-link hvr-underline-from-center">从单 Agent 到跨 Agent 的 Skills 管理</a>
+<span class=archive-item-date>08-05</span></article><article class=archive-item><a href=https://kuhung.me/posts/use-codex-goal-build-products/ class="archive-item-link hvr-underline-from-center">用 Codex /goal 指令从 0 到 1 验证并构建产品</a>
+<span class=archive-item-date>08-04</span></article><article class=archive-item><a href=https://kuhung.me/posts/how-i-use-codex/ class="archive-item-link hvr-underline-from-center">普通人要 Codex 有什么用？</a>
+<span class=archive-item-date>08-03</span></article><article class=archive-item><a href=https://kuhung.me/posts/meet-with-hardware-ai/ class="archive-item-link hvr-underline-from-center">创业独立观察｜和几位 AI 硬件从业者聊了聊</a>
+<span class=archive-item-date>08-01</span></article><article class=archive-item><a href=https://kuhung.me/posts/pair-zhipu-minimax/ class="archive-item-link hvr-underline-from-center">智谱 x MiniMax：配对交易的验证与心得</a>
+<span class=archive-item-date>07-30</span></article><article class=archive-item><a href=https://kuhung.me/posts/pagegrok-in-practice/ class="archive-item-link hvr-underline-from-center">不想为总结一个网页花20美元，我给Chrome做了个平替插件</a>
+<span class=archive-item-date>07-29</span></article><article class=archive-item><a href=https://kuhung.me/posts/ai-native-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的 AI Native</a>
+<span class=archive-item-date>07-27</span></article><article class=archive-item><a href=https://kuhung.me/posts/cang-in-house/ class="archive-item-link hvr-underline-from-center">接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</a>
+<span class=archive-item-date>07-26</span></article><article class=archive-item><a href=https://kuhung.me/posts/weread-skills-in-practice/ class="archive-item-link hvr-underline-from-center">利用微信读书skill，将读过的知识整合进AI实践</a>
+<span class=archive-item-date>07-24</span></article><article class=archive-item><a href=https://kuhung.me/posts/ttsi/ class="archive-item-link hvr-underline-from-center">LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</a>
+<span class=archive-item-date>07-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/ class="archive-item-link hvr-underline-from-center">写在离职一年半</a>
+<span class=archive-item-date>06-21</span></article><article class=archive-item><a href=https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/ class="archive-item-link hvr-underline-from-center">不要再 Vibe 创业了，干点儿实事吧阿谷</a>
+<span class=archive-item-date>05-31</span></article><article class=archive-item><a href=https://kuhung.me/posts/benchmark-for-llm-inference/ class="archive-item-link hvr-underline-from-center">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</a>
+<span class=archive-item-date>05-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/ class="archive-item-link hvr-underline-from-center">成本三分钱，整合Notion、GitHub的AI周报工作流</a>
+<span class=archive-item-date>05-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/noainog-202604/ class="archive-item-link hvr-underline-from-center">NoAINoG 月刊 | 整个4月，我们在聊什么？</a>
+<span class=archive-item-date>05-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/image2-for-makeover/ class="archive-item-link hvr-underline-from-center">一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</a>
+<span class=archive-item-date>05-02</span></article><article class=archive-item><a href=https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/ class="archive-item-link hvr-underline-from-center">AI时代，OPC（一人公司）的自动化与半自动化</a>
+<span class=archive-item-date>04-29</span></article><article class=archive-item><a href=https://kuhung.me/posts/vibe-coding-long-term-operation/ class="archive-item-link hvr-underline-from-center">Vibe Coding 长线运营思路</a>
+<span class=archive-item-date>04-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/geo-and-anticheat/ class="archive-item-link hvr-underline-from-center">GEO的过去、未来与反作弊算法</a>
+<span class=archive-item-date>03-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-vc/ class="archive-item-link hvr-underline-from-center">独立创业观察｜和一位 AI 投资人聊了聊</a>
+<span class=archive-item-date>02-20</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-an-old-peer/ class="archive-item-link hvr-underline-from-center">技术转型｜赴日、副业和内容变现的那些事</a>
+<span class=archive-item-date>02-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-an-art-cowoker/ class="archive-item-link hvr-underline-from-center">创业合伙人｜教育留学 Agent 的未果沟通</a>
+<span class=archive-item-date>02-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-ex-netease/ class="archive-item-link hvr-underline-from-center">游戏人创业｜一位前网易人的'不打工'实验</a>
+<span class=archive-item-date>02-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-an-ex-pm/ class="archive-item-link hvr-underline-from-center">独立创业观察｜一位前大厂产品的风险厌恶与思维迷局</a>
+<span class=archive-item-date>02-04</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-an-ex-vc/ class="archive-item-link hvr-underline-from-center">AI出海创业观察｜一位前VC（风险投资人）的务实主义</a>
+<span class=archive-item-date>02-03</span></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-an-ai-pm/ class="archive-item-link hvr-underline-from-center">AI社交产品观察｜200题与一杯咖啡的背后</a>
+<span class=archive-item-date>02-02</span></article><h3 class=archive-year>2025</h3><article class=archive-item><a href=https://kuhung.me/posts/data-mining-onchain/ class="archive-item-link hvr-underline-from-center">链上数据挖掘导读（onchain data mining 101）</a>
+<span class=archive-item-date>12-03</span></article><article class=archive-item><a href=https://kuhung.me/posts/meritocracy-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的优绩主义</a>
+<span class=archive-item-date>11-27</span></article><article class=archive-item><a href=https://kuhung.me/posts/ai-trend-in-my-eyes/ class="archive-item-link hvr-underline-from-center">AI构建全景图：六阶段及其方案选型</a>
+<span class=archive-item-date>11-26</span></article><article class=archive-item><a href=https://kuhung.me/posts/luts-for-iphone/ class="archive-item-link hvr-underline-from-center">富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a>
+<span class=archive-item-date>11-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/lean-productive/ class="archive-item-link hvr-underline-from-center">精益创造（lean build）</a>
+<span class=archive-item-date>11-18</span></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-3/ class="archive-item-link hvr-underline-from-center">AI相亲小镇开发纪要（三）</a>
+<span class=archive-item-date>10-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/break-up-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的分手</a>
+<span class=archive-item-date>10-02</span></article><article class=archive-item><a href=https://kuhung.me/posts/guess-you-like/ class="archive-item-link hvr-underline-from-center">亲爱的，我变成了“猜你喜欢”</a>
+<span class=archive-item-date>09-29</span></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-2/ class="archive-item-link hvr-underline-from-center">AI相亲小镇开发纪要（二）</a>
+<span class=archive-item-date>09-27</span></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-1/ class="archive-item-link hvr-underline-from-center">AI相亲小镇开发纪要（一）</a>
+<span class=archive-item-date>09-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/lacking-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的匮乏</a>
+<span class=archive-item-date>09-22</span></article><article class=archive-item><a href=https://kuhung.me/posts/write-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的写作</a>
+<span class=archive-item-date>09-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的爱情</a>
+<span class=archive-item-date>09-15</span></article><article class=archive-item><a href=https://kuhung.me/posts/vibe-code-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的vibe coding</a>
+<span class=archive-item-date>09-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/grow-up-in-mind/ class="archive-item-link hvr-underline-from-center">你以为的成年</a>
+<span class=archive-item-date>09-11</span></article><article class=archive-item><a href=https://kuhung.me/posts/we-media-in-2025/ class="archive-item-link hvr-underline-from-center">你以为的自媒体</a>
+<span class=archive-item-date>09-10</span></article><article class=archive-item><a href=https://kuhung.me/posts/create-in-2025/ class="archive-item-link hvr-underline-from-center">你以为的创业</a>
+<span class=archive-item-date>09-09</span></article><article class=archive-item><a href=https://kuhung.me/posts/build-in-2015/ class="archive-item-link hvr-underline-from-center">从2015到2025：技术创业的变与不变</a>
+<span class=archive-item-date>08-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/bootstrapping-culture/ class="archive-item-link hvr-underline-from-center">技术领导｜09 Bootstrapping Culture 塑造团队文化</a>
+<span class=archive-item-date>07-30</span></article><article class=archive-item><a href=https://kuhung.me/posts/agent-case-studies/ class="archive-item-link hvr-underline-from-center">41个 LangChain / LangGraph / LangSmith 案例研究</a>
+<span class=archive-item-date>07-21</span></article><article class=archive-item><a href=https://kuhung.me/posts/prompt-guide/ class="archive-item-link hvr-underline-from-center">三大LLM厂商的提示词行动指南</a>
+<span class=archive-item-date>07-20</span></article><article class=archive-item><a href=https://kuhung.me/posts/context-engineering/ class="archive-item-link hvr-underline-from-center">所谓上下文工程，实质为Agent系统设计</a>
+<span class=archive-item-date>07-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/jlpt-push/ class="archive-item-link hvr-underline-from-center">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a>
+<span class=archive-item-date>06-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/content-sop/ class="archive-item-link hvr-underline-from-center">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a>
+<span class=archive-item-date>06-05</span></article><article class=archive-item><a href=https://kuhung.me/posts/fastvlm-iphone-install/ class="archive-item-link hvr-underline-from-center">FastVLM iPhone 安装与实机测评</a>
+<span class=archive-item-date>05-24</span></article><article class=archive-item><a href=https://kuhung.me/posts/amap-mcp/ class="archive-item-link hvr-underline-from-center">P人友好的高德（谷歌）地图 MCP</a>
+<span class=archive-item-date>04-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/numerai-guide/ class="archive-item-link hvr-underline-from-center">Numerai量化101</a>
+<span class=archive-item-date>03-11</span></article><article class=archive-item><a href=https://kuhung.me/posts/iot-home/ class="archive-item-link hvr-underline-from-center">自己动手将米家接入Homekit，构建低成本智能家居系统</a>
+<span class=archive-item-date>02-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-big-leagues/ class="archive-item-link hvr-underline-from-center">技术领导｜08 the big leagues 管理组织</a>
+<span class=archive-item-date>01-30</span></article><article class=archive-item><a href=https://kuhung.me/posts/managing-managers/ class="archive-item-link hvr-underline-from-center">技术领导｜07 managing managers 管理管理者</a>
+<span class=archive-item-date>01-30</span></article><article class=archive-item><a href=https://kuhung.me/posts/managing-multiple-teams/ class="archive-item-link hvr-underline-from-center">技术领导｜06 managing multiple teams 管理多个团队</a>
+<span class=archive-item-date>01-30</span></article><h3 class=archive-year>2024</h3><article class=archive-item><a href=https://kuhung.me/posts/build/ class="archive-item-link hvr-underline-from-center">思维导图｜《创造：用非传统方式做有价值的事》</a>
+<span class=archive-item-date>07-21</span></article><article class=archive-item><a href=https://kuhung.me/posts/managing-a-team/ class="archive-item-link hvr-underline-from-center">技术领导｜05 managing a team 管理一个团队</a>
+<span class=archive-item-date>04-10</span></article><article class=archive-item><a href=https://kuhung.me/posts/radar-in-2024/ class="archive-item-link hvr-underline-from-center">2023年度总结</a>
+<span class=archive-item-date>01-01</span></article><h3 class=archive-year>2023</h3><article class=archive-item><a href=https://kuhung.me/posts/managing-people/ class="archive-item-link hvr-underline-from-center">技术领导｜04 managing people 成员管理</a>
+<span class=archive-item-date>12-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/listening-well/ class="archive-item-link hvr-underline-from-center">思维导图｜《同理倾听》</a>
+<span class=archive-item-date>11-21</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-mom-test/ class="archive-item-link hvr-underline-from-center">思维导图｜《The Mom Test》点子验证的最佳方式</a>
+<span class=archive-item-date>08-24</span></article><article class=archive-item><a href=https://kuhung.me/posts/career/ class="archive-item-link hvr-underline-from-center">2023年的职业发展，还要爬梯子吗</a>
+<span class=archive-item-date>08-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/privategpt/ class="archive-item-link hvr-underline-from-center">全面了解 PrivateGPT：中文技巧和功能实测</a>
+<span class=archive-item-date>05-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/chatgpt/ class="archive-item-link hvr-underline-from-center">ChatGPT 现状回顾与机会分析</a>
+<span class=archive-item-date>03-14</span></article><article class=archive-item><a href=https://kuhung.me/posts/behavioural-based-interview/ class="archive-item-link hvr-underline-from-center">思维导图｜《过去预测未来》胜任力模型</a>
+<span class=archive-item-date>02-20</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-phoenix-project/ class="archive-item-link hvr-underline-from-center">思维导图｜《凤凰项目》</a>
+<span class=archive-item-date>02-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/modern-western-thought/ class="archive-item-link hvr-underline-from-center">思维导图｜《刘擎西方现代思想讲义》</a>
+<span class=archive-item-date>01-28</span></article><h3 class=archive-year>2022</h3><article class=archive-item><a href=https://kuhung.me/posts/crucial-confrontations/ class="archive-item-link hvr-underline-from-center">思维导图｜《关键冲突》</a>
+<span class=archive-item-date>08-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/team-geek/ class="archive-item-link hvr-underline-from-center">思维导图｜《极客与团队》</a>
+<span class=archive-item-date>06-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/how-over-targeting-ruined-our-lives-step-by-step/ class="archive-item-link hvr-underline-from-center">抵抗理性人思维与数据诱惑</a>
+<span class=archive-item-date>05-15</span></article><article class=archive-item><a href=https://kuhung.me/posts/your-brain-at-work/ class="archive-item-link hvr-underline-from-center">思维导图｜《Your Brain at Work》</a>
+<span class=archive-item-date>05-04</span></article><article class=archive-item><a href=https://kuhung.me/posts/m2-quantitative-trading/ class="archive-item-link hvr-underline-from-center">思维导图｜《量化交易》</a>
+<span class=archive-item-date>03-29</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-almanack-of-naval-ravikant/ class="archive-item-link hvr-underline-from-center">思维导图｜《纳瓦尔宝典》</a>
+<span class=archive-item-date>02-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-four-steps-to-the-epiphany/ class="archive-item-link hvr-underline-from-center">思维导图｜《四步创业法》</a>
+<span class=archive-item-date>01-07</span></article><h3 class=archive-year>2021</h3><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-3/ class="archive-item-link hvr-underline-from-center">技术领导｜03 techlead 想象、现实与路线抉择</a>
+<span class=archive-item-date>11-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-2/ class="archive-item-link hvr-underline-from-center">技术领导｜03 techlead 与项目管理</a>
+<span class=archive-item-date>11-13</span></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-1/ class="archive-item-link hvr-underline-from-center">技术领导｜03 techlead 该知道的事情</a>
+<span class=archive-item-date>10-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/growth-hacking-01/ class="archive-item-link hvr-underline-from-center">增长黑客概要</a>
+<span class=archive-item-date>10-10</span></article><article class=archive-item><a href=https://kuhung.me/posts/30186119/ class="archive-item-link hvr-underline-from-center">思维导图｜增长黑客</a>
+<span class=archive-item-date>10-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/confrontation-01/ class="archive-item-link hvr-underline-from-center">日常冲突的解决之道</a>
+<span class=archive-item-date>09-13</span></article><article class=archive-item><a href=https://kuhung.me/posts/strategy-safari/ class="archive-item-link hvr-underline-from-center">思维导图｜《战略历程》</a>
+<span class=archive-item-date>09-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/storytelling-with-data/ class="archive-item-link hvr-underline-from-center">思维导图｜《用数据讲故事》</a>
+<span class=archive-item-date>09-05</span></article><article class=archive-item><a href=https://kuhung.me/posts/competing-truth/ class="archive-item-link hvr-underline-from-center">思维导图｜竞争性真相</a>
+<span class=archive-item-date>08-15</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-effective-engineer-01/ class="archive-item-link hvr-underline-from-center">软件开发的高杠杆活动</a>
+<span class=archive-item-date>08-09</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-effective-engineer/ class="archive-item-link hvr-underline-from-center">思维导图｜《The Effective Enginner》</a>
+<span class=archive-item-date>08-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/strategy-01/ class="archive-item-link hvr-underline-from-center">如何理解战略</a>
+<span class=archive-item-date>08-01</span></article><article class=archive-item><a href=https://kuhung.me/posts/netflix-culture-01/ class="archive-item-link hvr-underline-from-center">奈飞工作法</a>
+<span class=archive-item-date>07-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-tyranny-of-structurelessness/ class="archive-item-link hvr-underline-from-center">扁平化团队背后的危机</a>
+<span class=archive-item-date>07-09</span></article><article class=archive-item><a href=https://kuhung.me/posts/ten-financial-moments-in-five-years-2/ class="archive-item-link hvr-underline-from-center">五年十个财务瞬间｜02 如何在2021年最短时间亏钱</a>
+<span class=archive-item-date>07-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/atomic-habits/ class="archive-item-link hvr-underline-from-center">思维导图｜《掌控习惯》</a>
+<span class=archive-item-date>07-05</span></article><article class=archive-item><a href=https://kuhung.me/posts/mentoring-vol-3/ class="archive-item-link hvr-underline-from-center">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a>
+<span class=archive-item-date>06-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/selling-the-wheel/ class="archive-item-link hvr-underline-from-center">工程师如何卖轮子</a>
+<span class=archive-item-date>05-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/mentoring-vol-2/ class="archive-item-link hvr-underline-from-center">技术领导｜02 Mentoring 如何指导新人</a>
+<span class=archive-item-date>05-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/mentoring-vol-1/ class="archive-item-link hvr-underline-from-center">技术领导｜02 Mentoring 如何指导实习生</a>
+<span class=archive-item-date>04-23</span></article><article class=archive-item><a href=https://kuhung.me/posts/performance-coaching/ class="archive-item-link hvr-underline-from-center">思维导图｜《高绩效教练》</a>
+<span class=archive-item-date>03-16</span></article><article class=archive-item><a href=https://kuhung.me/posts/three-feature-importances-in-xgb/ class="archive-item-link hvr-underline-from-center">Xgboost 三种特征重要性计算方法对比与扩展</a>
+<span class=archive-item-date>03-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/what-i-learned-from-little-game-xiao/ class="archive-item-link hvr-underline-from-center">从一款小游戏收获的三点思考</a>
+<span class=archive-item-date>02-13</span></article><article class=archive-item><a href=https://kuhung.me/posts/interpretable-machine-learning/ class="archive-item-link hvr-underline-from-center">算法模型的可解释性</a>
+<span class=archive-item-date>01-22</span></article><h3 class=archive-year>2020</h3><article class=archive-item><a href=https://kuhung.me/posts/ten-financial-moments-in-five-years-1/ class="archive-item-link hvr-underline-from-center">五年十个财务瞬间｜01 2020年财务总结</a>
+<span class=archive-item-date>12-31</span></article><article class=archive-item><a href=https://kuhung.me/posts/management-101-vol-2/ class="archive-item-link hvr-underline-from-center">技术领导｜01 技术管理入门 （下）</a>
+<span class=archive-item-date>12-30</span></article><article class=archive-item><a href=https://kuhung.me/posts/game-design-summary/ class="archive-item-link hvr-underline-from-center">游戏机制设计，以剧本杀为例剖析可玩性的来源</a>
+<span class=archive-item-date>12-24</span></article><article class=archive-item><a href=https://kuhung.me/posts/management-101-vol-1/ class="archive-item-link hvr-underline-from-center">技术领导｜01 技术管理入门 （上）</a>
+<span class=archive-item-date>12-19</span></article><article class=archive-item><a href=https://kuhung.me/posts/yuanshen-idle-feedback/ class="archive-item-link hvr-underline-from-center">为度过原神长草期，我写了个原神放置类单机小游戏</a>
+<span class=archive-item-date>11-16</span></article><article class=archive-item><a href=https://kuhung.me/posts/pmp/ class="archive-item-link hvr-underline-from-center">不可不知的项目推进与团队建设之道</a>
+<span class=archive-item-date>10-26</span></article><article class=archive-item><a href=https://kuhung.me/posts/data-engineering-in-2020/ class="archive-item-link hvr-underline-from-center">数据开发在2020年应当是什么样子的</a>
+<span class=archive-item-date>09-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/statistics-tell-lies/ class="archive-item-link hvr-underline-from-center">2020高考志愿填报中的数据误导与价值机会</a>
+<span class=archive-item-date>07-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/game_anti-cheat/ class="archive-item-link hvr-underline-from-center">云游戏，会是反作弊的银弹吗？</a>
+<span class=archive-item-date>06-18</span></article><article class=archive-item><a href=https://kuhung.me/posts/why-i-left-netease-games/ class="archive-item-link hvr-underline-from-center">我为何离开网易游戏</a>
+<span class=archive-item-date>05-13</span></article><article class=archive-item><a href=https://kuhung.me/posts/data_analytics_mindmap/ class="archive-item-link hvr-underline-from-center">思维导图｜数据分析</a>
+<span class=archive-item-date>05-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/mindmap_2020/ class="archive-item-link hvr-underline-from-center">思维导图｜15份结构化知识整理</a>
+<span class=archive-item-date>04-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/simple-image-search/ class="archive-item-link hvr-underline-from-center">自制以图搜图引擎，居家学习必备</a>
+<span class=archive-item-date>04-13</span></article><article class=archive-item><a href=https://kuhung.me/posts/computational-advertising/ class="archive-item-link hvr-underline-from-center">思维导图｜《计算广告》</a>
+<span class=archive-item-date>04-05</span></article><article class=archive-item><a href=https://kuhung.me/posts/risk_management_mind_map/ class="archive-item-link hvr-underline-from-center">思维导图｜互联网风控</a>
+<span class=archive-item-date>03-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/risk_management/ class="archive-item-link hvr-underline-from-center">浅谈互联网风控--从策略到技术</a>
+<span class=archive-item-date>03-22</span></article><article class=archive-item><a href=https://kuhung.me/posts/remote/ class="archive-item-link hvr-underline-from-center">更高效的远程工作之道--REMOTE 手册精要</a>
+<span class=archive-item-date>03-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/audio_progress/ class="archive-item-link hvr-underline-from-center">人声提取两大步骤：分离音频背景声+过滤空白</a>
+<span class=archive-item-date>01-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/web_deploy/ class="archive-item-link hvr-underline-from-center">产品实践之应用沉淀</a>
+<span class=archive-item-date>01-01</span></article><h3 class=archive-year>2019</h3><article class=archive-item><a href=https://kuhung.me/posts/lifetimes/ class="archive-item-link hvr-underline-from-center">如何计算用户生命周期价值（CLV）</a>
+<span class=archive-item-date>12-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/machine_learning_system_design/ class="archive-item-link hvr-underline-from-center">机器学习系统设计 Machine learning system design</a>
+<span class=archive-item-date>12-01</span></article><article class=archive-item><a href=https://kuhung.me/posts/dataops/ class="archive-item-link hvr-underline-from-center">Dataops 数据化运维实践</a>
+<span class=archive-item-date>10-19</span></article><article class=archive-item><a href=https://kuhung.me/posts/the_way_to_learn/ class="archive-item-link hvr-underline-from-center">思维导图｜《学习之道》</a>
+<span class=archive-item-date>10-16</span></article><article class=archive-item><a href=https://kuhung.me/posts/tdd_drive_ml/ class="archive-item-link hvr-underline-from-center">机器学习实践--测试驱动开发</a>
+<span class=archive-item-date>08-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/tdd_with_ml/ class="archive-item-link hvr-underline-from-center">思维导图｜测试驱动的机器学习</a>
+<span class=archive-item-date>08-22</span></article><article class=archive-item><a href=https://kuhung.me/posts/pyramid/ class="archive-item-link hvr-underline-from-center">思维导图｜《金字塔原理》</a>
+<span class=archive-item-date>08-15</span></article><article class=archive-item><a href=https://kuhung.me/posts/scrum/ class="archive-item-link hvr-underline-from-center">思维导图｜《敏捷革命》</a>
+<span class=archive-item-date>08-10</span></article><article class=archive-item><a href=https://kuhung.me/posts/manadement/ class="archive-item-link hvr-underline-from-center">系统思考与卓有成效的管理者</a>
+<span class=archive-item-date>07-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/abtest-2/ class="archive-item-link hvr-underline-from-center">A/B test 评价指标的选择</a>
+<span class=archive-item-date>06-22</span></article><article class=archive-item><a href=https://kuhung.me/posts/merge_overlapping_date/ class="archive-item-link hvr-underline-from-center">HIVE 技巧积累之合并重叠日期</a>
+<span class=archive-item-date>06-09</span></article><article class=archive-item><a href=https://kuhung.me/posts/abtest/ class="archive-item-link hvr-underline-from-center">A/B test 揭秘之什么是 A/B test</a>
+<span class=archive-item-date>05-24</span></article><article class=archive-item><a href=https://kuhung.me/posts/book-list-for-ds/ class="archive-item-link hvr-underline-from-center">数据从业者必读的7本书 Booklist for DE</a>
+<span class=archive-item-date>05-07</span></article><article class=archive-item><a href=https://kuhung.me/posts/training_rl_systems_hacks/ class="archive-item-link hvr-underline-from-center">深度强化学习技巧 hacks for training deep RL</a>
+<span class=archive-item-date>05-02</span></article><article class=archive-item><a href=https://kuhung.me/posts/flask_vue_ml/ class="archive-item-link hvr-underline-from-center">机器学习建模与部署--以垃圾消息识别为例</a>
+<span class=archive-item-date>04-20</span></article><article class=archive-item><a href=https://kuhung.me/posts/vgc-it/ class="archive-item-link hvr-underline-from-center">如何设计一套类似视觉中国“鹰眼”的技术</a>
+<span class=archive-item-date>04-14</span></article><article class=archive-item><a href=https://kuhung.me/posts/hands-on_machine_learning_in_industry/ class="archive-item-link hvr-underline-from-center">机器学习项目的完整生命周期 Hands On Machine Learning in Industry</a>
+<span class=archive-item-date>04-01</span></article><article class=archive-item><a href=https://kuhung.me/posts/slack-gpt2-bot/ class="archive-item-link hvr-underline-from-center">GPT2 模型生成假正经文稿 Slack gpt2 Bot</a>
+<span class=archive-item-date>03-25</span></article><article class=archive-item><a href=https://kuhung.me/posts/competing-on-analytics/ class="archive-item-link hvr-underline-from-center">凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics</a>
+<span class=archive-item-date>03-12</span></article><article class=archive-item><a href=https://kuhung.me/posts/prophet-in-000300/ class="archive-item-link hvr-underline-from-center">用先知模型预测股市 Prophet in 000300</a>
+<span class=archive-item-date>03-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/the-next-step-for-machine-learning/ class="archive-item-link hvr-underline-from-center">机器学习落地需攻破的9个难题 The Next Step for Machine Learning</a>
+<span class=archive-item-date>02-24</span></article><article class=archive-item><a href=https://kuhung.me/posts/bert-chinese-finetune/ class="archive-item-link hvr-underline-from-center">中文语料的 Bert 微调 Bert Chinese Finetune</a>
+<span class=archive-item-date>02-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/what-is-data-mining/ class="archive-item-link hvr-underline-from-center">What is Data Mining 什么是数据挖掘</a>
+<span class=archive-item-date>02-17</span></article><article class=archive-item><a href=https://kuhung.me/posts/12306bypass-server/ class="archive-item-link hvr-underline-from-center">12306Bypass Server 抢票神器+微信提醒</a>
+<span class=archive-item-date>01-26</span></article><h3 class=archive-year>2018</h3><article class=archive-item><a href=https://kuhung.me/posts/probabilities-statistics/ class="archive-item-link hvr-underline-from-center">速查表 | Probabilities Statistics 数理统计</a>
+<span class=archive-item-date>10-18</span></article><article class=archive-item><a href=https://kuhung.me/posts/algebra-calculus/ class="archive-item-link hvr-underline-from-center">速查表 | Linear Algebra and Calculus 线代与微积分</a>
+<span class=archive-item-date>10-18</span></article><article class=archive-item><a href=https://kuhung.me/posts/why-is-data-hard/ class="archive-item-link hvr-underline-from-center">为啥说数据这行不容易 Why is Data Hard</a>
+<span class=archive-item-date>03-30</span></article><article class=archive-item><a href=https://kuhung.me/posts/time-series-problem-summary/ class="archive-item-link hvr-underline-from-center">一场 kaggle 比赛总结出的时间序列处理技巧 time series problem summary</a>
+<span class=archive-item-date>02-08</span></article><h3 class=archive-year>2017</h3><article class=archive-item><a href=https://kuhung.me/posts/ssd/ class="archive-item-link hvr-underline-from-center">Single Shot MultiBox Detector Keras version</a>
+<span class=archive-item-date>12-08</span></article><article class=archive-item><a href=https://kuhung.me/posts/yysgan/ class="archive-item-link hvr-underline-from-center">yysGAN 生成对抗网络，在游戏角色生成中的尝试</a>
+<span class=archive-item-date>11-21</span></article><h3 class=archive-year>2016</h3><article class=archive-item><a href=https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/ class="archive-item-link hvr-underline-from-center">Cats VS. Dogs 图像分类之猫狗大战</a>
+<span class=archive-item-date>07-06</span></article><article class=archive-item><a href=https://kuhung.me/posts/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/ class="archive-item-link hvr-underline-from-center">高效能人士的7个习惯</a>
+<span class=archive-item-date>04-10</span></article><p style=margin-top:2em;color:#999;font-size:.9em>共 161 篇文章</p></div><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
+<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
+<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
+<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2016 &ndash; 2026</span>
+<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
+&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>const currentTheme=window.localStorage&&window.localStorage.getItem("theme"),isDark=currentTheme==="dark";isDark&&document.body.classList.add("dark-theme")</script></footer><script src=/js/vendor_no_gallery.min.js async></script></div></body></html>

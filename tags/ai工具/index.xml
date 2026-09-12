@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI工具 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/</link>
-    <description>Recent content in AI工具 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Aug 2026 18:07:06 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Agent Skills 出来的第10个月，再聊评估几件事</title>
-      <link>https://kuhung.me/posts/skill-eval-review/</link>
-      <pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/skill-eval-review/</guid>
-      <description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI工具 on 谷粒 kuhung</title><link>https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/</link><description>Recent content in AI工具 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 26 Aug 2026 18:07:06 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>Agent Skills 出来的第10个月，再聊评估几件事</title><link>https://kuhung.me/posts/skill-eval-review/</link><pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate><guid>https://kuhung.me/posts/skill-eval-review/</guid><description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。
 Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。
 Skills 为什么被造出来 回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。
@@ -24,16 +9,7 @@ Cursor 做这件事最早。从单文件 .cursorrules 到多文件 .cursor/rules
 组织 vs 个体对于 Skills 的需求 对于大公司 大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。
 对于个体 个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。
 从组织到个体 大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。
-对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description>
-    </item>
-    
-    <item>
-      <title>GA4 实践指南：从配置到 AI 工作流</title>
-      <link>https://kuhung.me/posts/ga4-in-practice/</link>
-      <pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ga4-in-practice/</guid>
-      <description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
+对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description></item><item><title>GA4 实践指南：从配置到 AI 工作流</title><link>https://kuhung.me/posts/ga4-in-practice/</link><pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate><guid>https://kuhung.me/posts/ga4-in-practice/</guid><description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
 为什么单独写一篇？GA4 是 MVP 产品最容易&amp;quot;接了但没用好&amp;quot;的工具。接入只要一行代码，但要真正用出价值，自定义维度注册、埋点约定落文档、多工具口径对齐，这些坑 AI Agent 大概率不知道。
 一、GA4 是什么 GA4 是 Google 提供的免费网站和应用分析工具，2023 年全面替代 Universal Analytics。核心变化从&amp;quot;页面浏览 + 会话&amp;quot;模型转向事件驱动模型：所有用户交互都是事件，页面浏览也不例外。不清楚也没关系，就当成页面计数器好了。
 对小规模开发来说，GA4 的价值在于三点：免费、功能全（漏斗、留存、探索报表都有）、BigQuery 免费导出。代价也很明确：配置门槛高，学习曲线陡，生态相对封闭。但是你如果做出海、做谷歌生态，就没办法绕过它。
@@ -48,31 +24,13 @@ Google Ads 集成：没投广告的话完全不用管。
 三、关键配置项 基础接入不赘述，建属性、建数据流、拿到衡量 ID（G-XXXXXXX），加到网站里。下面是几个容易被忽略、但直接影响数据质量的配置。
 数据保留期限 默认 2 个月，建议改为最长的 14 个月。这个设置只影响探索报表（标准报表不受限），而你真正需要的深度分析全在探索报表里。两个月后数据就查不到了，回头想做同期对比发现数据没了，就晚了。
 路径：GA4 → 管理 → 数据设置 → 数据保留。
-内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description>
-    </item>
-    
-    <item>
-      <title>驾驭你的 Agent Skills 和系统指令</title>
-      <link>https://kuhung.me/posts/harness-your-skills/</link>
-      <pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/harness-your-skills/</guid>
-      <description>打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
+内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description></item><item><title>驾驭你的 Agent Skills 和系统指令</title><link>https://kuhung.me/posts/harness-your-skills/</link><pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate><guid>https://kuhung.me/posts/harness-your-skills/</guid><description>打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
 先装一堆别人的 Skill，却没搞清楚系统有什么、自己需要什么。顺序应该反过来：先摸清 Cursor、Codex、Claude Code 各自预置了什么，再判断自己缺什么，薄弱点拿别人的 Skill 临时补上，同时把自己的专长编成 Skill 输出。
 补丁性质的skills迟早会被模型原生能力吞并，个人性质的skills才是长期资产。
 系统有什么 用 Agent 写代码，背后不止一个聊天窗口。从下到上大致是五层：基座模型决定推理上限；Tool 是模型能调用的外部能力（浏览器、终端、MCP）；Skill 是操作手册（一份 SKILL.md，教 Agent 按什么步骤用什么工具完成任务）；Rules 是项目级背景约束（Cursor 的 .cursor/rules/、Codex 的 AGENTS.md、Claude Code 的 CLAUDE.md）；Hooks 是守门员（脚本层执行，模型绕不过去，也不花推理 token）。还有一层 Subagent，主 Agent 派生子代理并行工作。
 搞清楚哪层做什么，才不会装一个 Skill 去做本该是 Hook 的事。
 原生指令 三个平台的原生指令覆盖面比大多数人以为的要广：
-任务 原生怎么做 代码审查 Claude Code /code-review --comment 直接发 PR 行内评论；Codex /review；Cursor 内置 review-bugbot、review-security 长任务管理 Codex /goal（edit/pause/resume）；Claude Code /goal 释放上下文 Codex /compact；Claude Code /compact [instructions] 并行工作 Claude Code /subtask、/fork、/batch；Codex /agent、/subagents；Cursor Subagent（Task 工具） 规划模式 Codex /plan；Claude Code /plan；Cursor Shift+Tab 初始化仓库说明 Codex /init 生成 AGENTS.</description>
-    </item>
-    
-    <item>
-      <title>从单 Agent 到跨 Agent 的 Skills 管理</title>
-      <link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link>
-      <pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid>
-      <description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
+任务 原生怎么做 代码审查 Claude Code /code-review --comment 直接发 PR 行内评论；Codex /review；Cursor 内置 review-bugbot、review-security 长任务管理 Codex /goal（edit/pause/resume）；Claude Code /goal 释放上下文 Codex /compact；Claude Code /compact [instructions] 并行工作 Claude Code /subtask、/fork、/batch；Codex /agent、/subagents；Cursor Subagent（Task 工具） 规划模式 Codex /plan；Claude Code /plan；Cursor Shift+Tab 初始化仓库说明 Codex /init 生成 AGENTS.</description></item><item><title>从单 Agent 到跨 Agent 的 Skills 管理</title><link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link><pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate><guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid><description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
 以我自己为例：同时用 Claude Code、Codex 和 Cursor 三个 agent（之前还有 Gemini CLI），并在它们各自的 skill 目录里积累了几十个 skill 之后，发生了什么以及我的应对之策。
 为什么突然要管理 skill 不少其他作者说要管理 skill，是为了防治上下文腐败。他们安装了太多的 skill，以致于在决定召回用哪个 skill 时，出现打架冲突、召回准确率下降，以及影响正文内容表现的事。
 我这边装的不多，没遇到过 skill 失灵的情况。更多遇到的是如标题所言的，在多个工作工具来回切换时，skill 咋整的问题。
@@ -80,16 +38,7 @@ Google Ads 集成：没投广告的话完全不用管。
 这种情形本质上其实是：Claude Code、Codex、Cursor 现在都支持 skill，但各家&amp;quot;支持&amp;quot;不等于&amp;quot;保持同步&amp;quot;。每个 agent 有自己的 skill 目录、自己的 discovery 规则。你在一个地方改了 skill，默认不会同步到其他 agent 下面。
 Skill 从&amp;quot;效率工具&amp;quot;变成了&amp;quot;需要跨工具治理的资产&amp;quot;，是这篇文章要讨论的。
 快速回顾：Skill vs Prompt vs MCP 首先我们快速回顾下什么是 skill，以及之前的相似概念：Prompt、MCP。
-Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description>
-    </item>
-    
-    <item>
-      <title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title>
-      <link>https://kuhung.me/posts/use-codex-goal-build-products/</link>
-      <pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid>
-      <description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
+Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description></item><item><title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title><link>https://kuhung.me/posts/use-codex-goal-build-products/</link><pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate><guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid><description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
 这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。
 但如果不想 Agent 反复追问呢？Codex 的/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）
 前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。
@@ -101,16 +50,7 @@ Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式�
 第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心&amp;quot;还原&amp;quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。
 第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制/粘贴切入。暂不做文件工作区、PDF/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。
 第五轮：从&amp;quot;造功能&amp;quot;，转向&amp;quot;嵌入已有抱怨&amp;quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。
-第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description>
-    </item>
-    
-    <item>
-      <title>普通人要 Codex 有什么用？</title>
-      <link>https://kuhung.me/posts/how-i-use-codex/</link>
-      <pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-i-use-codex/</guid>
-      <description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
+第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description></item><item><title>普通人要 Codex 有什么用？</title><link>https://kuhung.me/posts/how-i-use-codex/</link><pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate><guid>https://kuhung.me/posts/how-i-use-codex/</guid><description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
 我的背景是算法，在很多人看来，程序员都是一个类型。但实际上这个岗位的细分非常多，我擅长将业务问题转化为建模问题，能够构建稳定可靠的数据pipeline和模型pipeline，但并不包括写出好看的前端和稳健的后端。后半部分工作，是 Codex 帮我加速达成的。
 此外，对于像产品、市场和运营这类工作，虽然日常协作有所耳濡目染，但绝对并非我的优势。我也借助 Codex，来帮我整理用户需求、做市场调研、分析数据并制定对应的运营活动策略。
 所以，你说，Codex 对于普通人有什么用？那我想是解放了生产力，能够有机会做更多之前能想到，但是没资源去验证的事情。这些事情包括开发、文案类工作，也包括数据调研、资料整合类工作。
@@ -123,16 +63,7 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 通过产品路线图、版本控制、issue跟踪的方式，让我的开发管理井井有条。慢即是快。issue 会写清楚当前行为、期望行为、验收标准，剩下的让 Codex 的 agent 干就完事。当然，这些 issue 也是 Codex 在我的指挥下生成的。
 第四件：运营维护。项目上线后，日志采集脚本、安全配置检查清单、定时任务的 cron 表达式、数据更新的定期抓取。这些琐碎但必要的运维工作，我现在都习惯丢给 Codex。
 另外，我还有一套基于 Notion + GitHub 的周报自动化流程，底层的数据采集和同步模块是大模型搭的。现在每周的工作，不再需要手动记录，流转在 Notion 甘特图和GitHub提交记录的信息，通过数据管线汇总给大模型，每周只需要花2块钱，就能让顶级模型帮你总结项目进展、风险和下周优先级。
-第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description>
-    </item>
-    
-    <item>
-      <title>不想为总结一个网页花20美元，我给Chrome做了个平替插件</title>
-      <link>https://kuhung.me/posts/pagegrok-in-practice/</link>
-      <pubDate>Wed, 29 Jul 2026 15:43:32 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/pagegrok-in-practice/</guid>
-      <description>需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&amp;quot;丢&amp;quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
+第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description></item><item><title>不想为总结一个网页花20美元，我给Chrome做了个平替插件</title><link>https://kuhung.me/posts/pagegrok-in-practice/</link><pubDate>Wed, 29 Jul 2026 15:43:32 +0800</pubDate><guid>https://kuhung.me/posts/pagegrok-in-practice/</guid><description>需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&amp;quot;丢&amp;quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
 我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越好。
 市面上不是没有类似的东西，Chrome 插件 Page-Assist 算比较早的一个，但功能铺得太满，配置项一大堆，用不上的东西成了负担。这活儿逻辑不复杂，手搓也不难，正好还能把本地跑的模型用起来。
 于是就有了 PageGrok 这款浏览器插件。
@@ -140,8 +71,4 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 想了想，还是继续做。理由也不复杂。Gemini in Chrome 的完整功能绑在 Google AI Pro 上，一个月 19.99 美元，我只是想总结个页面，用不上生图、云存储。这笔账不划算，何况有些地区还用不了。还有隐私：Chrome 侧边栏默认拿当前标签页内容去生成回答，数据是走 Google 服务器的，公司内部文档、没公开的研究资料，这可使不得。
 它能干什么 所以 PageGrok 做的还是一个很朴素的东西：侧边栏常驻，一边看内容一边问；自定义接入本地模型或者 API；借鉴了印象笔记的截屏取景框逻辑，能自定义截取一块区域。这个在小红书、推特这种浮窗式应用上意外地好用；回答可以直接复制走，还能带上来源，方便回头翻。产品形态确实初级，商业化也有限，但我自己天天用，够用。
 4个月8个小版本 三月底上线 1.0.1，只支持 Ollama，弹窗交互。五月中到 1.0.4，加了 oMLX 和 LM Studio，顺手把弹窗换成了侧边栏。这一步其实是深度体验后的有依据调整。七月稳定发布 1.0.7 和 1.0.8。四个月，八个版本。五月十一号在 V2EX 发了个帖子，到现在 1100 多次浏览，被几个 AI 工具站收录转载过。周活跃用户在数十位，横跨亚欧美三大洲。这些够我确认一件事：这个需求不是我一人独有。
-踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</description>
-    </item>
-    
-  </channel>
-</rss>
+踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</description></item></channel></rss>

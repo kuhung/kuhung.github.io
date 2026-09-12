@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>复盘 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E5%A4%8D%E7%9B%98/</link>
-    <description>Recent content in 复盘 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 21 Aug 2026 10:30:14 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%A4%8D%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title>
-      <link>https://kuhung.me/posts/cang-in-house-review/</link>
-      <pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/cang-in-house-review/</guid>
-      <description>一、来龙去脉 这是&amp;quot;五年十个财务瞬间&amp;quot;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看还蛮有意思的，所以有了今天的文章。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>复盘 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%A4%8D%E7%9B%98/</link><description>Recent content in 复盘 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 21 Aug 2026 10:30:14 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%A4%8D%E7%9B%98/index.xml" rel="self" type="application/rss+xml"/><item><title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title><link>https://kuhung.me/posts/cang-in-house-review/</link><pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate><guid>https://kuhung.me/posts/cang-in-house-review/</guid><description>一、来龙去脉 这是&amp;quot;五年十个财务瞬间&amp;quot;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看还蛮有意思的，所以有了今天的文章。
 这一次不一样的地方在于，我们有了程序化的仓位管理工具。上个月写了接入富途券商 API，用 AI 接管投资仓位，把富途和雪盈两家券商的数据接入了本地系统。数据能被大模型读到之后，AI 就有机会做真正意义上的全面审视。不再是打开数个 App 来回切着算，也不再是 Notion 表格里改数字然后肉眼看趋势。
 这篇文章的定位是：有了工具之后的第一次全面数据审视。回答几个问题：现在持有什么、这一年多的钱从哪里赚/亏、按收益风险比衡量做得怎么样、哪些做得不错、哪些需要调整。
 二、为什么要做这件事 在投资这件事上，我的风格是做组合管理，不是 ALL IN 一个标的。这样的好处是风险分散，坏处是计算收益复杂。数个券商、数个银行账户、四种货币、几十只标的，每次想知道&amp;quot;到底哪部分赚了、哪部分需要优化&amp;quot;，都要花不少时间。
@@ -24,16 +9,7 @@
 最后，给出下一步该做什么、不该做什么的判断依据。尽量形成数据驱动决策，而不是凭感觉行事。
 三、数据现状 数据窗口是 2025 年 4 月 7 日到 2026 年 8 月 17 日，共 16.3 个月。这个起点对应进入提取期之后的全程。分析用到的底表是 Notion 财务盘点的 14 期明细数据，加上券商实盘持仓。
 3.1 宏观环境 先看这 16 个月里市场发生了什么（2025-04-07 到 2026-08-17）。
-指数 区间涨跌 沪深300 +32.</description>
-    </item>
-    
-    <item>
-      <title>从2015到2025：技术创业的变与不变</title>
-      <link>https://kuhung.me/posts/build-in-2015/</link>
-      <pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/build-in-2015/</guid>
-      <description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
+指数 区间涨跌 沪深300 +32.</description></item><item><title>从2015到2025：技术创业的变与不变</title><link>https://kuhung.me/posts/build-in-2015/</link><pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate><guid>https://kuhung.me/posts/build-in-2015/</guid><description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖析2012至2015年大众创业浪潮中技术人的心路与实践。十年光阴流转，那些昔日的观点与抉择，如今已成为检验其真实价值的试金石。因为，评判一个人，不仅要听其言，更要观其行。
 那些要完蛋的公司 在《技术人创业攻略》中，不乏有创业者对当时的大公司（如微软、Adobe）提出尖锐批判，预言其将因臃肿而走向衰落，小公司则将迎来颠覆性时刻。然而，时至今日，我们回望十年，这些“即将完蛋”的巨头不仅未曾陨落，反而凭借其庞大的规模优势，更上层楼。
 这种创业公司打破大公司垄断，实现颠覆式创新的故事，总是很受欢迎。在故事里，大公司是邪恶的，忘记初心，垂垂朽木的。创业公司是锐意进取，机动灵活，能够快速吃下这个新的市场的，勇者斗恶龙。
@@ -56,8 +32,4 @@
 正像认知的那样，创业乃九死一生。书中现在还存在的公司，十不足一。即使这般，现在还是有不少人入场。一些人是天生的冒险家，敏锐察觉每一个风口，并一头扎入其中；也有些人是从长远出发，与其排队晋升，不如在外闯荡验证实力；还有一些人，是带着预算和DDL，验证想法不留遗憾。
 回望过去，不是为了捕捉下一个风口，而是为了理解商业和人性的不变规律，从而更好地应对未来的不确定性。真正的创业者，是在理解周期与人性之后，依然选择脚踏实地、验证自我的人。
 敬每位脚踏实地的创业者，这一路并不容易。
-关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+关于作者</description></item></channel></rss>

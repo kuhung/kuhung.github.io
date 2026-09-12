@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>运营 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E8%BF%90%E8%90%A5/</link>
-    <description>Recent content in 运营 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Mon, 06 Apr 2026 21:40:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%BF%90%E8%90%A5/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vibe Coding 长线运营思路</title>
-      <link>https://kuhung.me/posts/vibe-coding-long-term-operation/</link>
-      <pubDate>Mon, 06 Apr 2026 21:40:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/vibe-coding-long-term-operation/</guid>
-      <description>写过 Vibe Coding 的朋友都知道，写出来不难，难的是长线运营带来收入。就目前来说，高性能模型例如 Opus4.6 等已经能够很好完成项目。但写完项目，只是产品化的第一步。运营很重要，流量是关键。本期，笔者就来分享下自己的运营思路。部分思路参考了工作过的大厂的思维模式，仅做抛砖引玉之用。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>运营 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E8%BF%90%E8%90%A5/</link><description>Recent content in 运营 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 06 Apr 2026 21:40:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%BF%90%E8%90%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>Vibe Coding 长线运营思路</title><link>https://kuhung.me/posts/vibe-coding-long-term-operation/</link><pubDate>Mon, 06 Apr 2026 21:40:12 +0800</pubDate><guid>https://kuhung.me/posts/vibe-coding-long-term-operation/</guid><description>写过 Vibe Coding 的朋友都知道，写出来不难，难的是长线运营带来收入。就目前来说，高性能模型例如 Opus4.6 等已经能够很好完成项目。但写完项目，只是产品化的第一步。运营很重要，流量是关键。本期，笔者就来分享下自己的运营思路。部分思路参考了工作过的大厂的思维模式，仅做抛砖引玉之用。
 关注数据 核心指标数据 关注核心的下载、活跃数据，看看用户从哪里来的。笔者目前发布的大部分应用为 Web 应用，且是通过 Vercel 发布，所以就直接上了 Vercel 的 Pro 计划，利用 Vercel 自带的数据功能，来做数据采集和统计。当然，同期对于一些质量较好的项目，也会直接植入 Google Analytics (GA) 进行数据统计。
 用户数据少的时候，优先关注宣发情况：你弄了几篇内容介绍了这个产品，发布到了哪些地方。平台给你的流量情况怎么样，读者和观众们在讨论什么。当用户数据比较多的时候，则开始关注下面的数据。
 用户数据 有数据埋点后，就可以清晰看到：用户是从什么渠道来的？为什么这个渠道效果还不错，是发对了推广还是自然流量。以笔者的某个项目为例，仅仅通过简单的 B 站推广，就获得了相当多的初始用户。而 B 站的推广，也不过是照着别人录了一个产品视频。该项目成功的原因，我归结为热点追踪。
@@ -31,8 +16,4 @@
 而至于那些跑起来的项目，则应该进一步关注SEO方面的改进、以及用户进来在干什么，落地页是符合预期的吗。适当的时候，可以选择买量测试。这可以节省不少时间。对于 Vibe Coding 开发者来说，时间看起来很充裕，但却是十分稀缺的东西。不要为了控制开销而空转自己的时间。
 轻重缓急 把握那些重中之重的事情，加速需要等待的事情、让那些小的细节随他去。啥是重要的事情：你的选题是重要的事情，因为涉及后续投入。你的切身感是重要的事情，因为这是你的品牌IP来源。这两个，我不推荐大家用所谓的AI流自动化。做出来的东西，只会是随机分布，缺乏个人特色。
 比如追热点：龙虾出来你就讲龙虾、CC源码泄漏你就讲源码，这些东西看起来会有一时的热度，但是如果你没有真的好奇心、没有加工、没有思考，只是通过所谓的AI工作流交付的内容，就像是互联网这个大染缸里，丢下一坨无足轻重的大便。
-另一方面，一些流程项的事情，适合的是经过多次迭代后，用大模型辅助生产。比如用Remotion skills制作宣传视频，笔者最近的5个项目宣传视频，都是AI辅助生产的。更早一些，笔者的量化视频，全是用 manim 生成的视频。</description>
-    </item>
-    
-  </channel>
-</rss>
+另一方面，一些流程项的事情，适合的是经过多次迭代后，用大模型辅助生产。比如用Remotion skills制作宣传视频，笔者最近的5个项目宣传视频，都是AI辅助生产的。更早一些，笔者的量化视频，全是用 manim 生成的视频。</description></item></channel></rss>

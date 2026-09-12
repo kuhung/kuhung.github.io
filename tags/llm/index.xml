@@ -1,35 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>LLM on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/llm/</link>
-    <description>Recent content in LLM on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Fri, 07 Aug 2026 22:53:52 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>LLM Token 支出指数能预测 AI 行情吗？</title>
-      <link>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</link>
-      <pubDate>Fri, 07 Aug 2026 22:53:52 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</guid>
-      <description>拆解模型定价、用量迁移与美股 AI 软硬件走势的先行关系
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on 谷粒 kuhung</title><link>https://kuhung.me/tags/llm/</link><description>Recent content in LLM on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 07 Aug 2026 22:53:52 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>LLM Token 支出指数能预测 AI 行情吗？</title><link>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</link><pubDate>Fri, 07 Aug 2026 22:53:52 +0800</pubDate><guid>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</guid><description>拆解模型定价、用量迁移与美股 AI 软硬件走势的先行关系
 背景介绍 上个月写了一篇关于 TTSI 的复现与归因分析，结论是 5-6 月的指数回落主要由中国厂商降价和用量迁移驱动，整体支付意愿并未下降。文章发出之后，收到了不少反馈。公众号读者的反应还不错，&amp;ldquo;非常不错的分析&amp;quot;&amp;ldquo;点赞&amp;quot;这类留言不少。TrakToken 网站的数据也迎来快速增长，很快用户数便破万。8 月 6 日，日活用户数创下新高，突破 800。
 另有一位做私募的朋友反馈他接收到的信息和看法：Anthropic 和 OpenAI 的前沿模型，在 OpenRouter 上的收入和份额趋势到底怎么样？中国模型的冲击，是打了定价权、还是抢了份额、还是两个都有？Token 降价这么猛，量增长没问题，但价格降得太狠的话，市场规模可能没有大家想的那么大，最后资本开支就会出问题。
 他的原话是&amp;quot;资本开支其实现在完全依赖债务融资，所以还是要边走边看&amp;rdquo;。这引出一个问题：TTSI 和美股 AI 行情之间，到底有没有可量化的关系？如果指数能够&amp;quot;预测&amp;quot;行情走势，哪怕是部分的、有条件的，对于关注 AI 赛道的投资者来说都有价值。
 如果前沿模型的定价权在流失，是不是意味着硬件端的资本开支（capex）逻辑正在松动？这是一个值得认真做的分析。
 先看一眼近期的 AI 行情 分析之前，先回顾下标的本身的走势。这里选了三个 ETF 做参照：
 SMH（VanEck 半导体 ETF）：代表 AI 硬件端，重仓英伟达、台积电、博通 IGV（iShares 软件 ETF）：代表 AI 软件端，覆盖 Salesforce、Adobe、ServiceNow 等 QQQ（纳斯达克 100 ETF）：大盘基准 从 4 月 1 日到 8 月初，SMH 走得最强，IGV 相对温和，QQQ 居中。TTSI 的波动幅度远大于三个 ETF，这点从标准化走势图上很明显。特别是 5 月底到 7 月，TTSI 经历了大幅波动（和上篇文章分析的中国厂商降价、用量迁移的时间窗口重合），而同期 SMH 持续走高。
-直觉上，&amp;ldquo;AI token 越来越贵 → 算力需求大 → 利好硬件&amp;quot;这条逻辑链看起来说得通。但直觉需要验证。</description>
-    </item>
-    
-    <item>
-      <title>LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</title>
-      <link>https://kuhung.me/posts/ttsi/</link>
-      <pubDate>Mon, 06 Jul 2026 17:12:54 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ttsi/</guid>
-      <description>起因 财联社报道，6月Token支出指数下降了。以此来说明终端买家愿意承担的成本在降低，进一步暗示可能影响上游的各个环节。实话说，这个结论大致符合直觉：无论科技大厂还是个人，近期都不再无脑敞开用最先进模型，转而注意模型的能力边界，搭配着用提升性价比。
+直觉上，&amp;ldquo;AI token 越来越贵 → 算力需求大 → 利好硬件&amp;quot;这条逻辑链看起来说得通。但直觉需要验证。</description></item><item><title>LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</title><link>https://kuhung.me/posts/ttsi/</link><pubDate>Mon, 06 Jul 2026 17:12:54 +0800</pubDate><guid>https://kuhung.me/posts/ttsi/</guid><description>起因 财联社报道，6月Token支出指数下降了。以此来说明终端买家愿意承担的成本在降低，进一步暗示可能影响上游的各个环节。实话说，这个结论大致符合直觉：无论科技大厂还是个人，近期都不再无脑敞开用最先进模型，转而注意模型的能力边界，搭配着用提升性价比。
 但是你说，该“指数是外界目前所能获取的最清晰、最直接的市场风向标”，总感觉话说得太满了。作为一个算法出身，长期和数据打交道的人，自然也想知道是如何计算出来的。懂的都懂，数据里可操纵的东西太多了。另外，当然也想知道直觉之外，理性分析下的异动归因。到底是哪部分促成了指数变动，什么因素、各自贡献了多少。另外就是，能不能掌握这波趋势有所动作。
 先动起来找出处。原始报告比较好找，关键词《The AI Trade Is Losing One of Its Key Signals》。彭博社的要1.99刀，但没关系，雅虎财经上的免费。
 太长不看，用我自己开发的 PageGrok 一键解读：
@@ -45,16 +21,7 @@ SMH（VanEck 半导体 ETF）：代表 AI 硬件端，重仓英伟达、台积�
 说干就干。这里有些参数不同，例如输入和输出的token价格比，由于近期coding agent的兴起，大部分token消耗实际上是输入占比约8:2或更高（在个人的Claude消耗统计里也可以看出来），而早期的文字生成，则是大约3:7。我们项目定为8:2。剩下的工作，就是相对枯燥的数据接入、清洗工作。利用好Fable 5，也能很快生成一份。我们直接看结论：不能说大差不差，基本上是一毛一样。
 我们的数据同样在1月有小高峰、在5月有近半年的高峰，且近期走弱。不过存疑的是，其所谓的基本翻倍是如何实现的。通过对追踪的数据来看，目前TTSI指数看起来价格差异不大。这里有个隐含假设不同：traktoken是今年3月上线，历史的模型价格无法追溯。存在幸存者偏差，价格高好用的留了下来。通过另一个网站的token价格走势，也能看出来3月价格比去年底高不少。问题不大，数据积累起来之后，就会越来越准。另外就是，原报道的结论，其实聚焦于5月的高点回落20%这个事情上，从图表上看结论类似。7月份的走势也一致，有向上趋势。
 进一步结论 现在，我们有了进一步的数据图表和原始数据，是时候检验和回答我们开头的问题了。关于5月以来的价格回落，我们假设了三个方面的原因：厂商降价、用户转向便宜模型、支付意愿下降（股市危）。
-结论：下降属实，但是“单价”下降而非“花钱变少”。6 月均价 $2.11/M tokens，较 5 月的 $2.</description>
-    </item>
-    
-    <item>
-      <title>拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</title>
-      <link>https://kuhung.me/posts/benchmark-for-llm-inference/</link>
-      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/benchmark-for-llm-inference/</guid>
-      <description>经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
+结论：下降属实，但是“单价”下降而非“花钱变少”。6 月均价 $2.11/M tokens，较 5 月的 $2.</description></item><item><title>拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</title><link>https://kuhung.me/posts/benchmark-for-llm-inference/</link><pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate><guid>https://kuhung.me/posts/benchmark-for-llm-inference/</guid><description>经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
 作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程中，会遇到两个问题：一个是本地显/内存有限的前提下，最有性价比或者说最有智力的模型是谁？第二个问题是，我该用什么框架来部署服务。
 在不知道咋选的时候，我选择用最新的开源模型。但是不少模型其实是有显存要求的。最新是好，但不一定能部署到本机。后来，我通过拉取最新的模型数据，构造并发布了一个网页应用 Traktoken，这下可以直观了解模型能力与所需显存间的关系。
 模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 PageGrok（一款浏览器插件 AI 产品）时，到达巅峰。
@@ -64,27 +31,9 @@ SMH（VanEck 半导体 ETF）：代表 AI 硬件端，重仓英伟达、台积�
 早在 23 年，苹果就推出了专为 Apple Silicon 优化的 MLX 框架。但直到 26 年上半年，在其基础上开发的 oMLX 才受到大范围关注，社媒上看到其声称更好适配苹果设备。没过多久，Ollama 也在新版本声称支持了 MLX 框架。这种感觉就像是：“你别迁移，我能行”。
 真的行吗？我一开始下载的是 LM Studio，它出现的时间比 Ollama 更早。Ollama 后来居上，凭借其 YC 投资背景和简洁的设计，很快占据了不少市场。面对不同的框架，我的核心疑问随之而来：最适合 Mac 电脑部署的本地框架到底是什么？ 拒绝感觉良好，得有套系统的测评手段。
 评测指标体系设计 在开始自己重复造轮子前，我也系统看了现有的解决方案。大家主要关注三个方面的指标，分别是用户体验指标（如：TTFT 首字延迟时间）、成本指标（如：TPS token 吞吐量）、资源消耗（如：GPU 占用情况）。
-这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。</description>
-    </item>
-    
-    <item>
-      <title>成本三分钱，整合Notion、GitHub的AI周报工作流</title>
-      <link>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</link>
-      <pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</guid>
-      <description>熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
+这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。</description></item><item><title>成本三分钱，整合Notion、GitHub的AI周报工作流</title><link>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</link><pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate><guid>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</guid><description>熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
 手写不行，但如果是AI写的呢？这里，要给大家介绍我目前的自动化周报工作流：Notion记录跟踪项目甘特图、GitHub汇总issue、交付和热点关注，整合二者的信息，每周调用大模型自动总结上周工作。
-原理介绍 flowchart LR subgraph Input[输入数据源] N1[Notion 工单 DB] N2[Notion GitHub DB] G1[GitHub Commits] end subgraph Sync[同步与采集] S1[notion_sync.py] S2[github_collector.py] end subgraph Process[处理流程] A1[analyzer.py] L1[llm_summarizer.py] end subgraph Result[结果输出] R1[report/*.md] N3[notifier.py] B1[Bark] E1[Email] end N1 -- API --&amp;gt; S1 N2 -- API --&amp;gt; S1 G1 -- API --&amp;gt; S2 S1 --&amp;gt; A1 S2 --&amp;gt; A1 A1 --&amp;gt; L1 L1 --&amp;gt; R1 L1 --&amp;gt; N3 N3 --&amp;gt; B1 N3 --&amp;gt; E1 整体技术原理不难，核心是数据打通。通过Notion的甘特图做项目管理；GitHub作为版本控制和交付工具。Notion和GitHub的数据打通，GitHub的数据能够同步到Notion，包括项目仓库情况和star情况；Notion项目能够同步到GitHub Actions，用来做调用大模型的素材输入。</description>
-    </item>
-    
-    <item>
-      <title>AI构建全景图：六阶段及其方案选型</title>
-      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
-      <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
-      <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
+原理介绍 flowchart LR subgraph Input[输入数据源] N1[Notion 工单 DB] N2[Notion GitHub DB] G1[GitHub Commits] end subgraph Sync[同步与采集] S1[notion_sync.py] S2[github_collector.py] end subgraph Process[处理流程] A1[analyzer.py] L1[llm_summarizer.py] end subgraph Result[结果输出] R1[report/*.md] N3[notifier.py] B1[Bark] E1[Email] end N1 -- API --&amp;gt; S1 N2 -- API --&amp;gt; S1 G1 -- API --&amp;gt; S2 S1 --&amp;gt; A1 S2 --&amp;gt; A1 A1 --&amp;gt; L1 L1 --&amp;gt; R1 L1 --&amp;gt; N3 N3 --&amp;gt; B1 N3 --&amp;gt; E1 整体技术原理不难，核心是数据打通。通过Notion的甘特图做项目管理；GitHub作为版本控制和交付工具。Notion和GitHub的数据打通，GitHub的数据能够同步到Notion，包括项目仓库情况和star情况；Notion项目能够同步到GitHub Actions，用来做调用大模型的素材输入。</description></item><item><title>AI构建全景图：六阶段及其方案选型</title><link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link><pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate><guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid><description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
 注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。
@@ -95,32 +44,14 @@ SMH（VanEck 半导体 ETF）：代表 AI 硬件端，重仓英伟达、台积�
 工具 定位 适用场景 v0 AI 驱动的 UI 原型设计 从文本/视觉输入快速生成 UI Figma Make AI 辅助设计工具 产品经理直接生成交互原型 AI Design Reviewer Figma 设计审计插件 UX/UI 批评、可访问性检测 除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 Prompt-ready 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。
 规范驱动开发 在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。
 AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。
-注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description>
-    </item>
-    
-    <item>
-      <title>三大LLM厂商的提示词行动指南</title>
-      <link>https://kuhung.me/posts/prompt-guide/</link>
-      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/prompt-guide/</guid>
-      <description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
+注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description></item><item><title>三大LLM厂商的提示词行动指南</title><link>https://kuhung.me/posts/prompt-guide/</link><pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate><guid>https://kuhung.me/posts/prompt-guide/</guid><description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
 提示词技巧与人类沟通的共通性 产品设计本身也是人类社会规则设计的一个抽象。从宏观来说，提示词技巧和人类社会的一些常见共识重合度很高。例如：清晰阐明你的诉求、明确角色职责、分阶段分解任务、重复诉求以防止遗忘、约定清晰的输出结构、提供样例进行模仿、引导输出内容、要有事实数据支撑、设计指标反复迭代。这些技巧，在与人沟通、协作、领导、教练的时候，是非常重要的。靠意识同步的三体人，其 AI 的形态必与我们的不同。只要人类社会还是当前的结构形态，当下这些工作就还有意义。
 提示词的分类 提示词，我们从配置方来说，分为三类。分别是系统提示词，由 LLM 提供商预设在模型 API 接口下，定义模型的行为准则。例如：反黄暴之类的。这一般是第一条注入的提示词。角色提示词，这个提示词是开放给用户配置的，比如配置为“你是一个大模型专家”。最后就是常见的用户交互提示词，用户输入的内容也算提示词。在此基础上，又根据用户和场景，派生出例如：指令提示词，指定输出xx字这种；上下文提示词，交代上下文说过啥；样本提示词，按照给的样式来；CoT 提示词，好好想想，逐步思考，等若干提示词种类。
 主流大模型提供商的提示词建议 话归正题，笔者参考了 Anthropic、Google 以及 OpenAI 的提示词构建文档，力求从第一手信息源出来，结合自身的使用经验，给到当下最好的解决方案。这其中也离不开各类 LLM 支持构建的 deep reasearch 工具，这个过程才会变得更丝滑、效率更高。但由于人脑的带宽毕竟有限，错误和纰漏在所难免，读者朋友如有发现，欢迎指出。
 Antropic 的提示词建议 以 Anthropic 为例，他们在训练过程中使用了大量的 XML 的结构化语料，因此类似的结构化提示词在他家的模型上会表现得很好。另外也强调清晰和直接的重要性。即清晰表达你的需求，可量化的提出你的诉求。而不是丢一个模棱两可的问题，然后反复沟通。但其实这部份也是需要的，这里更多是指大规模应用的时候，系统预设提示词，减少用户和下文的困惑度，这在软件系统中很重要。而且模型本身就是概率模型，它的结果是不确定的，那么反复沟通其实就有必要。
 因为 LLM 的本质是预测下一个 token 是啥，所以可以通过预设这个开头来保证它会做出预期内的事情。比如想要输出 JSON，那么就以{开头。这一技术也被用在 deepseek 的 think 推理里面，通过预先提示来让模型进行 reason 推理。另一方面，由于模型的被奖励尽可能多的输出下一个 token，所以当遇到负面提示时：比如不要干啥，模型可能会产生意料之外的变化。因此，Anthropic 家的文档建议出更多的正面提示词：应该做什么，而不是不应该做什么，借此来减少不可控性。
 Google 的提示词建议 而 Google 来说，对于他们的 Gemini 模型，则建议提供一个清晰可供参考的样本。这点在笔者做仓满量化相关的产出时，深有体会。只需要在开始和模型磨合，得到想要的代码模版或者是 doc 模版，后续只需要提供这个模版，即使是 Gemini-flash 模型，也能高效完成代码的编写工作。除此之外，谷歌文档中也给出了更高级的方式。例如 Step back 思考。先抽象，再解决问题。CoT 思维链也是一种方式，通过提示词注入“一步步思考”的方式，让模型的输出更具可解释性。
-当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description>
-    </item>
-    
-    <item>
-      <title>P人友好的高德（谷歌）地图 MCP</title>
-      <link>https://kuhung.me/posts/amap-mcp/</link>
-      <pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/amap-mcp/</guid>
-      <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
+当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description></item><item><title>P人友好的高德（谷歌）地图 MCP</title><link>https://kuhung.me/posts/amap-mcp/</link><pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate><guid>https://kuhung.me/posts/amap-mcp/</guid><description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
 生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
 MCP原理 简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。
 以往程序之间主要通过API交互。而MCP的出现，大大降低了组装不同程序之间的难度，使得通过文本描述执行特定功能成为可能。
@@ -135,8 +66,4 @@ MCP原理 简单来说，MCP是function call的统一定义。他不是什么新
 在不使用模版时，不同时候生成的文档差异性较大。使用模版后，关键信息例如：交通基本都会被捕捉并描述。
 如果是作者来做这个产品，一般到生成Markdown文件基本都结束了。但是这对于团队出游来说，分享属性稍弱。在社交媒体上的传播属性也偏弱。地图MCP能被作者看到并有深入了解的想法，离不开更进一步的可视化和便携化。在生成一般意义的文档之后，再通过提示词模版转换成html，更进一步pdf，甚至更进一步的可交互应用。从场景出发，方便终端用户，并能从视觉上影响用户，是该产品能够破圈的一个关键。
 作者带着这份攻略，真真切切去走了一番。得出的结论是：如果你是一个计划控，大语言模型加持的MCP可能不适合你。因为它给到的信息要么较模糊，要么受限于训练语料已经过时。但旅行中的意外，也是旅行的意义。综上：是一个P人友好的工具。
-参考资料 五一出行神器来了！高德mcp server查天气+路线一步到位！ AI + 高德MCP旅行规划神器：10分钟搞定完美行程！ mcp-google-map google-maps 关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+参考资料 五一出行神器来了！高德mcp server查天气+路线一步到位！ AI + 高德MCP旅行规划神器：10分钟搞定完美行程！ mcp-google-map google-maps 关于作者</description></item></channel></rss>
