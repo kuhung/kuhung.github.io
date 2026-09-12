@@ -1,29 +1,736 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=prev href=https://kuhung.me/posts/ga4-in-practice/><link rel=next href=https://kuhung.me/posts/maximization-your-claude-code-sessions/><link rel=canonical href=https://kuhung.me/posts/seo-enhance/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>搜索与 AI 可见性：让需要你产品的人找到你 | 谷粒 kuhung</title><meta name=title content="搜索与 AI 可见性：让需要你产品的人找到你 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/posts/seo-enhance/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-12T11:25:12+08:00","datePublished":"2026-08-12T11:25:12+08:00","description":"最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。 笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。 做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门 …","headline":"搜索与 AI 可见性：让需要你产品的人找到你","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"SEO, AI可见性, 搜索优化, ASO","mainEntityOfPage":{"@id":"https://kuhung.me/posts/seo-enhance/","@type":"WebPage"},"name":"搜索与 AI 可见性：让需要你产品的人找到你","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/seo-enhance/","wordCount":597}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><article class=post-warp itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline">搜索与 AI 可见性：让需要你产品的人找到你</h1><div class=post-meta>Written by <a itemprop=name href=https://kuhung.me/ rel=author>谷粒</a> with ♥
-<span class=post-time>on <time datetime=2026-08-12 itemprop=datePublished>August 12, 2026</time></span>
-in
-<i class="iconfont icon-folder"></i>
-<span class=post-category><a href=https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/>经验分享</a></span>
-|</div></header><div class=post-toc id=post-toc><h2 class=post-toc-title></h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#做产品和开小店的共性>做产品和开小店的共性</a></li><li><a href=#一基础搞清楚问题在哪>一、基础：搞清楚问题在哪</a><ul><li><a href=#11-人们在找什么>1.1 人们在找什么</a></li><li><a href=#12-搜索系统能找到你吗>1.2 搜索系统能找到你吗</a></li><li><a href=#13-页面在回答问题吗>1.3 页面在回答问题吗</a></li></ul></li><li><a href=#二进阶系统化可复制>二、进阶：系统化可复制</a><ul><li><a href=#21-搜索引擎的要求>2.1 搜索引擎的要求</a></li><li><a href=#22-页面之间的连接>2.2 页面之间的连接</a></li><li><a href=#23-发布排期>2.3 发布排期</a></li><li><a href=#24-竞品对比>2.4 竞品对比</a></li><li><a href=#25-是否批量建页>2.5 是否批量建页</a></li><li><a href=#26-ai-可见性>2.6 AI 可见性</a></li><li><a href=#27-app-商店>2.7 App 商店</a></li></ul></li><li><a href=#三验证做了有没有效>三、验证：做了有没有效</a><ul><li><a href=#31-搜索引擎验证>3.1 搜索引擎验证</a></li><li><a href=#32-ai-可见性验证>3.2 AI 可见性验证</a></li><li><a href=#33-线上数据验证>3.3 线上数据验证</a></li><li><a href=#34-冷启动期别慌>3.4 冷启动期别慌</a></li></ul></li><li><a href=#看完这篇你应该能判断>看完这篇，你应该能判断</a></li><li><a href=#参考资料>参考资料</a></li></ul></nav></div></div><script type=text/javascript>window.onload=function(){var n,o,e=$(".post-toc"),t=$(".post-comment"),i=e.offset().top,s=e.height(),a=e[0].offsetTop;$(window).scroll(function(){var r=Math.max(document.body.scrollTop,document.documentElement.scrollTop);t.length>0&&(n=t.offset().top,o=n-r-s),i<r?(e.css({position:"fixed"}),t.length>0&&n<r+s?e.css({top:o}):e.css({top:0})):(e.css({position:"absolute"}),e.css({top:a}))})}</script><div class=post-content><p>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。</p><p>笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。</p><h2 id=做产品和开小店的共性>做产品和开小店的共性</h2><p>把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。</p><p>用这个比方串一下全文逻辑：</p><ul><li><strong>搜索需求</strong>决定这家店应该卖什么，不是先铺货再猜</li><li><strong>技术配置</strong>保证路通、门能开，搜索引擎可以发现你的店</li><li><strong>页面内容</strong>让招牌和货架真正回答顾客的问题</li><li><strong>结构化数据</strong>给搜索系统一张规范的"商品卡"，帮它理解你卖的是什么</li><li><strong>页面之间的链接</strong>像店内导视，把顾客带到相关区域</li><li><strong>AI 可见性</strong>观察 AI 助手在推荐店铺时有没有提到你</li><li><strong>应用商店</strong>是另一座商场，有自己的招牌规则和排名逻辑</li></ul><p>在上述的内容之外，还有很多东西需要考虑。包括但不限于：进店后怎么让人掏钱（转化优化），怎么让内容高效自传播（那是外链和营销的事）。这篇只介绍"让人找到你的店"。</p><p>下面按"基础、进阶、验证"三步展开。</p><hr><h2 id=一基础搞清楚问题在哪>一、基础：搞清楚问题在哪</h2><h3 id=11-人们在找什么>1.1 人们在找什么</h3><p>这是所有后续工作的起点。很多人反其道而行之：&ldquo;产品搞好了，咋没流量，听说要搞 SEO，让我来看看 SEO 咋优化&rdquo;，连用户在搜什么都没搞清楚。</p><p>核心问题：你的目标用户遇到问题时，会在搜索框或“豆包”聊天里打什么字？</p><p>不要从关键词工具开始猜。按下面几步收集和验证证据。</p><p><strong>第一步：写清楚你卖给谁</strong></p><p>先用一句话描述：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>当____人遇到____场景时，他想完成____，但被____卡住。
-</span></span></code></pre></div><p>比如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>当小型 AI 产品团队准备选择模型 API 时，
-</span></span><span style=display:flex><span>他想估算不同模型完成同一任务的真实成本，
-</span></span><span style=display:flex><span>但被不同计费单位、上下文价格和供应商页面卡住。
-</span></span></code></pre></div><p>这只是待验证的假设，不要把它当成需求存在的证据。</p><p><strong>第二步：收集用户的原话</strong></p><p>找离购买或使用最近的材料：客服记录、用户反馈、站内搜索、取消原因、竞品评价里的抱怨。记录完整句子和场景。比如：&ldquo;Claude 和 GPT 做长文本摘要哪个 API 更便宜&rdquo;。</p><p>完全没有用户的话，可以先收集 10-20 条公开原话（社区、论坛、评价）作为假设池，但最好标记为推测。</p><p><strong>第三步：看已经发生的搜索</strong></p><p>如果网站已有曝光，Search Console 的 Queries 和 Pages 最直接：哪些查询曾展示你、哪些有曝光但没人点、一个查询落在了哪些页面上。</p><p>还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。</p><p><strong>第四步：实际搜一搜，判断用户想要什么</strong></p><p>拿候选查询去搜，看第一页主要是什么类型的结果：</p><ul><li>教程、指南：用户在学习</li><li>对比、替代品、榜单：用户在比较</li><li>产品页、价格页：用户接近行动</li><li>工具、计算器、模板：用户想立刻完成任务</li><li>混合结果：意图不稳定，可能需要继续拆</li></ul><p>不要只看关键词字面。搜"模型价格"的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</p><p><strong>第五步：决定做什么，不是把所有词都写成文章</strong></p><p>把候选需求放进一张表，每条标注动作：新建页面、更新旧页面、合并重复页面、作为子问题处理，或者干脆不做。</p><p>搜索量不是最终优先级。一个搜索量小、但直接发生在购买决策前的问题，可能比一个量很大的科普词更有价值。</p><blockquote><p>怎么算"搞清楚了"？至少满足四条：有真实原话或明确标记的假设；知道目标地区和人群；看过真实搜索结果，能说清意图；能把每个需求映射到一个明确动作。缺哪条就标记为"还不确定"，不假装已经知道了。</p></blockquote><h3 id=12-搜索系统能找到你吗>1.2 搜索系统能找到你吗</h3><p>搞清楚用户在找什么之后，下一步是确认搜索引擎能不能找到你的页面。按三层往下检查。</p><p><strong>能不能被发现？</strong></p><p>你得先告诉搜索引擎"这些页面存在"。三个东西要确认：</p><ul><li><strong>robots.txt</strong>：放在网站根目录的文件，告诉搜索引擎哪些页面允许抓取、哪些不要碰</li><li><strong>XML sitemap</strong>：主动提交给搜索引擎的页面清单，相当于"这是我店里所有值得看的货架"</li><li><strong>canonical 标签</strong>：告诉搜索引擎"同一个内容有多个网址时，这个 URL 才是正本"。这个标签有三种等效的声明方式，大部分教程只讲 HTML 里加 <code>&lt;link></code> 标签这一种，另外两种（HTTP 响应头、sitemap 里的 <code>&lt;loc></code>）知道就好</li></ul><p><strong>能不能被收录？</strong></p><p>被发现不等于被收录。搜索引擎发现页面后，还会判断值不值得放进索引库。这一步容易被忽略，很多人以为提交了 sitemap 就万事大吉。</p><p><strong>收录了，展示对不对？</strong></p><p>页面加载速度、交互响应、布局稳定性，搜索引擎会拿具体数字打分。Google 的那套指标叫 Core Web Vitals：</p><table><thead><tr><th>指标</th><th>衡量什么</th><th>合格门槛</th></tr></thead><tbody><tr><td>LCP</td><td>主要内容多久加载完</td><td>≤ 2.5 秒</td></tr><tr><td>INP</td><td>点击后多久有响应</td><td>≤ 200 毫秒</td></tr><tr><td>CLS</td><td>布局有没有意外跳动</td><td>≤ 0.1</td></tr></tbody></table><p>不用背缩写，谷歌有专门的免费工具 <a href=https://pagespeed.web.dev/>PageSpeed Insights</a>。</p><p><strong>一个容易踩的坑</strong></p><p>很多网站的结构化数据是 JavaScript 动态注入的，命令行只能看到原始 HTML，看不到 JS 执行后才出现的内容。要准确检查，得用浏览器开发者工具或 <a href=https://search.google.com/test/rich-results>Rich Results Test</a>。</p><blockquote><p>搜索引擎不会自动把所有页面都抓完吗？</p><p>不会。搜索引擎分配给每个站点的抓取资源有限。如果网站有大量筛选器组合自动生成的页面（颜色 x 尺码 x 价格区间，几个筛选器一组合就成千上万个 URL），真正重要的页面可能没被抓到。产品早期页面少的时候察觉不到这个问题，但站点有自动生成页面功能的话，最好早做打算。</p></blockquote><h3 id=13-页面在回答问题吗>1.3 页面在回答问题吗</h3><p>搜索引擎能找到你只是第一步。用户点进来后，页面得真正回答他们搜索时想问的问题。</p><p>听起来像常识，但实际中经常出问题。最典型的：用户搜"XX 工具怎么用"，点进来看到的是一篇 AI 软文。搜索引擎统计到用户点进来又立刻退出去，会认为该页面跟搜索意图不匹配，排名就往下掉。</p><p>检查几个点：</p><ul><li>标题是不是在回答用户搜索的那个问题？</li><li>首屏（不滚动就能看到的区域）有没有直接切入正题？</li><li>正文内容跟标题承诺的一致吗？</li></ul><p><strong>给搜索系统一张"商品卡"</strong></p><p>除了人能看懂的内容，还可以用一种标准格式（JSON-LD）告诉搜索引擎"这个页面讲的是一个产品/一篇文章/一个常见问题"。就当成给页面贴了一张机器能读懂的标签。</p><p>但这里有四个状态不是一回事：格式写对了、内容也准确、有资格展示特殊样式（比如搜索结果里带星级评分、FAQ 折叠）、真的展示了。即使前三步都做到了，搜索引擎也不保证第四步一定发生。加了没看到效果不代表做错了。</p><blockquote><p>不加这个"商品卡"会怎样？不加也能被收录和排名，但搜索引擎对页面内容的理解可能不够准确，也少了展示特殊样式的机会。产品页面、文章页面和 FAQ 页面加上通常值得，工作量也不大。</p></blockquote><hr><h2 id=二进阶系统化可复制>二、进阶：系统化可复制</h2><p>基础工作做完，搜索引擎已经能找到你了。接下来是怎么持续做、有章法地做，不是想写什么，也不是这个月写了下个月就停了。</p><h3 id=21-搜索引擎的要求>2.1 搜索引擎的要求</h3><p>网上关于"SEO 官方建议"的文章太多了，读起来难免犯晕。这里讲几个有明确文档立场的要求：</p><ul><li><strong>移动端优先</strong>：搜索引擎主要用手机版页面决定收录和排名。网站在手机上显示不全、加载很慢，影响整站排名</li><li><strong>HTTPS</strong>：加密连接是排名信号之一。绝大多数网站已经上了，还没有的话优先做</li><li><strong>JavaScript 渲染</strong>：页面内容靠 JS 生成的（React、Vue 做的单页应用），要确认搜索引擎能正确执行你的 JS 并看到完整内容</li><li><strong>AI 爬虫访问权限</strong>：2026 年新增的一项</li></ul><blockquote><p>&ldquo;AI 爬虫"是什么？</p><p>普通搜索爬虫抓取页面是为了放进搜索索引，AI 爬虫抓取页面是为了给 AI 模型提供回答问题的素材。它们可能来自同一家公司（比如 Bing 的爬虫现在身兼两职），但目的不同。你可以通过 robots.txt 选择允许或限制。</p></blockquote><h3 id=22-页面之间的连接>2.2 页面之间的连接</h3><p>搜索引擎用链接发现新页面、理解页面之间的关系。如果一个页面从站内没有任何链接指向它，搜索引擎很难发现它，用户也很难走到那里。这种没人链接到的页面叫"孤立页面&rdquo;，在产品站里较为常见。</p><p>检查几件事：</p><ul><li>重要页面有没有从站内其他页面链接过去？</li><li>链接的文字（锚文本）有没有说清楚目标页面讲的是什么？&ldquo;点击这里"这种锚文本对搜索引擎没什么信息量</li><li>有没有孤立页面？比如某个功能介绍页只能从导航栏的下拉菜单最深处找到</li></ul><p>不需要把这件事做得很复杂。对于页面不多的产品站，在写每篇新内容时想一下"这篇文章跟站内哪些已有页面相关，可以互相链接"就够了。</p><h3 id=23-发布排期>2.3 发布排期</h3><p>很多人对"发布排期"的理解是"建议每周发几篇文章&rdquo;，这种建议没有依据。更有用的思路分两层看。</p><p><strong>先搞清楚该写什么</strong></p><p>不是想到一个标题就开始写。顺序应该是：先看用户在搜什么、竞品在写什么、哪些话题还没人写好，围绕几个核心主题展开一组相关文章，按优先级排序，最后才排进日历。</p><p>很多人是先想到标题再想选题，顺序反了。</p><blockquote><p>什么叫"围绕核心主题展开一组相关文章"？</p><p>举个例子。做了一个记账工具，一个核心主题可能是"个人记账方法"。围绕它可以写一组文章：&ldquo;月光族怎么开始记账"&ldquo;记账 App 对比"&ldquo;记账坚持不下来怎么办"&ldquo;每月记账模板分享&rdquo;。这些文章互相链接，搜索引擎会认为你在这个话题上有深度覆盖，整组文章的排名都受益。行业里管这个叫 topic cluster（话题簇）。</p></blockquote><p><strong>排期不是排完就完事</strong></p><p>发布排期不是一次性的静态日历，至少要持续做两件事：</p><ul><li>定期补充新选题。市场在变、用户需求在变，隔一段时间就要回头看有没有新的选题机会</li><li>监控老文章有没有"衰退&rdquo;。发布几个月后排名开始下降的文章，可能需要更新内容，不是放着不管</li></ul><h3 id=24-竞品对比>2.4 竞品对比</h3><p>竞品对比拆开看是三步，不单纯是"写一篇对比文章&rdquo;。</p><p><strong>第一步：做研究</strong></p><p>收集竞品的产品功能、定价、用户评价、内容策略。关键不是收集多少，而是一个纪律：每条结论都要能追溯到信息来源，并且标注收集日期。</p><p>比如写"XX 产品基础版 $9/月&rdquo;，注明什么时候在哪个页面看到的。竞品随时在调价格、改功能，过时的信息不标记，后面会误导自己。</p><p><strong>第二步：持续关注</strong></p><p>竞品对比不是做一次就够了。对手在迭代，你也在迭代。隔一段时间就要回来更新。</p><p><strong>第三步：转化成内容</strong></p><p>把研究变成面向用户的对比页面。常见四种格式：</p><ul><li>&ldquo;XX 的替代品&rdquo;，面向在用竞品但想换的人</li><li>&ldquo;最好的 XX 替代方案&rdquo;，面向还在选型的人</li><li>&ldquo;你的产品 vs 某竞品&rdquo;，直接对比</li><li>&ldquo;竞品 A vs 竞品 B&rdquo;，你作为第三方给对比，顺带介绍自己</li></ul><blockquote><p>产品还在早期验证阶段就需要做竞品页吗？取决于有没有人在搜"XX 替代品"或"XX vs YY"。Search Console 或关键词工具能看到。有人搜就值得做，没人搜先把精力花在基础工作上。</p></blockquote><h3 id=25-是否批量建页>2.5 是否批量建页</h3><p>有些场景下，需求是批量存在的。比如一个模型价格对比工具，每个模型都需要一个独立页面。这时候会想到批量生成。</p><p>但批量建页是把双刃剑。搜索引擎把"为了操纵排名而大量生成低价值页面"定义为滥用行为，不管内容是人写的还是 AI 生成的。</p><p>所以在批量建之前，至少确认三件事：</p><ul><li>搜索模式成立吗？真的有人在搜这些页面对应的查询？</li><li>数据来源可靠吗？每个页面有没有独特的、不是随便拼凑的内容？</li><li>有没有质量底线？页面数量上去之后，怎么保证质量不塌？什么时候该停？</li></ul><p>决定批量建页之前先问自己：如果搜索引擎明天就来看这批页面，每一页拿出来看都能回答一个真实的用户问题吗？答案不确定的话，宁可先做几页验证，不急着全铺开。</p><h3 id=26-ai-可见性>2.6 AI 可见性</h3><p>最近两年 AI 搜索越来越火，出现了很多新概念。AEO、GEO，听起来好像是一套全新的方法论，实际没那么玄乎。</p><p>现实是：AI 搜索功能（比如 AI Overviews）依赖的是核心搜索的索引、排名和质量系统。页面连搜索引擎都没收录，AI 回答更不会引用你。所以 AI 可见性不是 SEO 的替代品，是 SEO 基础之上的延伸。</p><p>几个常见误解：</p><ul><li>&ldquo;那些 AEO/GEO 技巧是新时代的 SEO&rdquo;。很多流行的 AEO/GEO &ldquo;技巧"并没有得到搜索引擎官方支持</li><li>&ldquo;加一个 llms.txt 文件就能被所有 AI 推荐&rdquo;。不现实。llms.txt 只是告诉 AI 爬虫"这些内容可以用来回答问题&rdquo;，AI 会不会采用取决于很多因素</li><li>&ldquo;AI 可见性可以一次性搞定&rdquo;。不同 AI 平台的回答在持续变化，今天引用你不代表下周还会</li></ul><p>AI 可见性真正该做的事是持续观察：针对明确的平台、明确的问题、明确的时间，去看 AI 有没有提到你、怎么提到你、引用了哪些页面。需要定期重复，不是"优化完就不用管"的一次性任务。</p><blockquote><p>那 llms.txt 到底要不要加？可以加，成本很低，但不要期望过高。先确保内容有独特价值、技术层面能被正常抓取和收录，这些基本功做好了，AI 引用你的概率自然会高。llms.txt 最多是锦上添花。</p></blockquote><h3 id=27-app-商店>2.7 App 商店</h3><p>如果产品是 App，除了网页搜索还有另一座商场。Apple App Store 和 Google Play 有各自的排名逻辑，跟网页 SEO 不是一套规则，两个平台之间也不能照搬。</p><p><strong>排名看什么</strong></p><p>Apple 把文字相关性、产品页素材和用户行为都纳入搜索发现的考量。拆开看涉及这些要素：</p><ul><li>应用名称和副标题（Apple）或短描述（Google Play）</li><li>关键词字段（Apple 独有，100 个字符，不要浪费在品牌名或已出现在标题里的词上）</li><li>完整描述（Google Play 会用来做关键词匹配，Apple 目前不用）</li><li>分类选择、图标、截图和预览视频</li><li>评分、评价数量、下载量和留存</li></ul><p><strong>两个平台差异比想象中大</strong></p><ul><li>Apple 有独立的关键词字段，Google Play 没有，靠标题和描述做匹配</li><li>Apple 的描述目前不影响搜索排名，Google Play 的描述直接参与排名</li><li>截图尺寸、数量要求、审核政策都不同</li><li>Apple 有自定义产品页和 A/B 测试功能，Google Play Console 有商店详情实验</li></ul><p>建议分平台维护，不要写一份素材两边用。</p><blockquote><p>App 上线初期先优化什么？名称和副标题影响最大，先把这两个想清楚。截图是用户决定要不要下载的关键因素，值得花时间。评分低于 4.0 的话优先解决用户反馈的核心问题，评分对排名和转化的影响很直接。</p></blockquote><hr><h2 id=三验证做了有没有效>三、验证：做了有没有效</h2><p>做了优化，得能验证效果。不然在凭感觉做事。</p><h3 id=31-搜索引擎验证>3.1 搜索引擎验证</h3><p><strong>看收录数</strong></p><p>用 <a href=https://search.google.com/search-console>Search Console</a> 和 <a href=https://www.bing.com/webmasters>Bing Webmaster Tools</a> 对比"实际收录了多少页面"和"你认为应该被收录的页面数"。差距很大的话，回去检查第一部分提到的技术问题。</p><p><strong>IndexNow 提交后验证</strong></p><p>IndexNow 是一种主动通知搜索引擎"我这个页面更新了"的协议，可以加快收录速度。提交完不是就不管了，要回到 Bing Webmaster Tools 看抓取记录有没有变化，确认搜索引擎真的来重新抓取了。</p><p><strong>结构化数据的检测陷阱</strong></p><p>前面说过，用命令行检测结构化数据会漏掉 JS 动态注入的内容。验证阶段最容易犯这个错，你以为结构化数据没生效，其实只是检测方式不对。用浏览器工具或 <a href=https://search.google.com/test/rich-results>Rich Results Test</a> 确认。</p><h3 id=32-ai-可见性验证>3.2 AI 可见性验证</h3><p>目前没有"提交一下就知道结果"的验证方式。靠谱的做法是手动建一个基线，定期对比：</p><ol><li>列出 10-20 个目标用户可能问 AI 的问题</li><li>分别去 ChatGPT、Perplexity、豆包等平台问一遍</li><li>记录：品牌有没有被提到？引用了哪些页面？AI 怎么描述你的产品？还提到了哪些竞品？</li><li>隔一段时间再问同样的问题，对比变化</li></ol><p><strong>需要警惕一个陷阱</strong>。有些工具打着"AI 可见性检测"的旗号，实际上不是真的去问 ChatGPT、Perplexity 这些平台，而是把问题转发给自己的后端模型做判断，这不是真实的 AI 引用情况。</p><blockquote><p>每次问 ChatGPT 同一个问题答案都不一样，基线怎么建？正常的。多问几次、记录多次结果，关注趋势而不是单次答案。&ldquo;过去一个月问了 10 次，6 次提到了我的产品"vs"这个月 10 次只有 2 次&rdquo;，趋势比单次结果有意义。</p></blockquote><h3 id=33-线上数据验证>3.3 线上数据验证</h3><p>如果网站装了分析工具（GA4 或别的），还需要确认数据本身是准确的。不准确的数据比没有数据更糟糕。</p><p><strong>埋点检查：</strong></p><ul><li>事件有没有在正确的时候触发？&ldquo;点击注册按钮"这个事件，是不是真的只在点注册按钮时触发？</li><li>有没有重复计数？常见原因：装了不止一个统计容器，或者同一个触发条件绑了两次</li><li>跨浏览器和手机端要分别测</li></ul><p><strong>调试工具：</strong></p><ul><li>GA4 DebugView，实时看事件有没有正确发出</li><li>GTM Preview Mode，检查触发条件对不对</li></ul><p>笔者在 <a href=/posts/GA4-in-practice/>GA4 实践指南：从配置到 AI 工作流</a> 里详细写过埋点验证的坑，这里不重复了，提两个容易忽略的陷阱。</p><p><strong>两个容易忽略的陷阱：</strong></p><ul><li>自引荐问题。自己的域名被记成了"引荐来源&rdquo;，本来应该归功于搜索或广告的流量，被错误地算到了"从自己网站来"这个渠道里</li><li>AI 爬虫混入流量数据。前面提到有些爬虫现在身兼搜索抓取和 AI 答案检索两个角色。数据后台看到"曝光数涨了"，涨的可能是 AI 爬虫的访问次数，不一定代表真人访客涨了</li></ul><h3 id=34-冷启动期别慌>3.4 冷启动期别慌</h3><p>做完上面的工作，十天半个月过去了，数据还是零。先别急着推翻重来。</p><p>Google 说明，新站或新接入 Search Console 的站点可能需要约一周才开始生成数据，Performance 报告通常还有 2-3 天延迟。抓取本身可能需要几天到几周，而且请求抓取不保证一定被收录。</p><p>&ldquo;没结果"不是一种状态，拆开看至少有五种：</p><table><thead><tr><th>状态</th><th>要看什么</th><th>下一步</th></tr></thead><tbody><tr><td>还不可测</td><td>Search Console 属性、统计代码、目标 URL 和观察日期是否正确</td><td>先修测量，不讨论成效</td></tr><tr><td>没被发现</td><td>sitemap、robots、HTTP 状态、内部链接、URL Inspection</td><td>修发现与抓取阻塞</td></tr><tr><td>已抓取但未索引</td><td>Google 选择的 canonical、索引资格、是否被判为重复或低价值</td><td>找具体排除原因，不反复提交</td></tr><tr><td>已索引但没曝光</td><td>页面是否真的匹配目标意图、需求是否有证据、竞争结果是什么</td><td>重查需求和页面匹配</td></tr><tr><td>有曝光但没点击</td><td>查询、页面、CTR、落地后的下一步</td><td>分别交给页面优化或转化优化</td></tr></tbody></table><p>Search Console 的 impression 表示用户在搜索结果中看到了指向你站点的链接，它比点击和转化更早出现，适合作为冷启动的外部反馈信号。</p><p><strong>冷启动前两周的建议做法：</strong></p><ul><li>冻结一小批优先需求和对应页面，不要边做边换页面</li><li>检查测量、sitemap、内部链接、robots、canonical 和 URL Inspection</li><li>以完整天数据按周观察，不因单日为零就改方向</li><li>只在对应门槛失败时行动：没抓取修技术，已索引无曝光重查需求，有曝光无点击改页面表达</li><li>第一轮没有历史基线，只建立基线</li></ul><p>十天半个月没有点击或转化并不稀奇。需要警惕的是：这段时间过后，你仍说不清页面处在哪个状态，也没有固定的需求集合、可复现的数据和明确的下一步。</p><h2 id=看完这篇你应该能判断>看完这篇，你应该能判断</h2><ol><li>问题出在哪一层。是技术配置？内容？还是根本没人在搜这个？</li><li>下一步需要什么证据，不是凭感觉给自己开药方</li><li>&ldquo;能访问"&ldquo;被收录"&ldquo;有资格展示"&ldquo;实际获得曝光"是四件不同的事</li><li>拿到一份先结论、后证据、再行动的计划，不是一堆零散的待办清单</li></ol><h2 id=参考资料>参考资料</h2><ul><li><a href=https://developers.google.com/search/docs/fundamentals/ai-optimization-guide>Google Search: 生成式 AI 搜索优化指南</a> - AI 搜索优化的官方立场</li><li><a href=https://developers.google.com/search/docs/crawling-indexing>Google Search: 抓取与索引文档</a> - 抓取、收录和展示的基础说明</li><li><a href=https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl>Google Search: 请求重新抓取</a> - 请求抓取不保证收录</li><li><a href=https://developers.google.com/search/docs/appearance/structured-data/sd-policies>Google Search: 结构化数据通用指南</a> - 结构化数据的政策和资格要求</li><li><a href=https://developers.google.com/search/docs/crawling-indexing/links-crawlable>Google Search: 链接最佳实践</a> - 内链和可抓取链接的建议</li><li><a href=https://developers.google.com/search/docs/essentials/spam-policies>Google Search: spam policies</a> - 规模化低价值内容的定义</li><li><a href=https://support.google.com/webmasters/answer/17011259>Google Search Console: 查询与数据分组</a> - Search Console 数据的含义和局限</li><li><a href=https://support.google.com/webmasters/answer/96568>Google Search Console: 数据说明</a> - 新站数据延迟和 Performance 报告时效</li><li><a href=https://support.google.com/webmasters/answer/7042828>Google Search Console: impression、position 与 click</a> - 冷启动期最早出现的外部信号</li><li><a href=https://support.google.com/trends/answer/4365533>Google Trends 数据说明</a> - Trends 展示的是相对兴趣，不是绝对搜索量</li><li><a href=https://developer.apple.com/app-store/search/>Apple Developer: App Store search</a> - App Store 搜索发现的说明</li><li><a href=https://support.google.com/googleplay/android-developer/answer/13393723>Google Play: 商店详情最佳实践</a> - Google Play 的商店文案和素材政策</li><li><a href=https://search.google.com/test/rich-results>Rich Results Test</a> - 在线测试结构化数据</li><li><a href=https://search.google.com/search-console>Search Console</a> - 查看网站在搜索中的表现</li><li><a href=https://www.bing.com/webmasters>Bing Webmaster Tools</a> - 查看 Bing 搜索表现和 IndexNow 状态</li></ul><hr><p><a href=/about/>关于作者</a></p></div><div class=post-copyright><p class=copyright-item><span>Author:</span>
-<span>谷粒</span></p><p class=copyright-item><span>Link:</span>
-<a href=https://kuhung.me/posts/seo-enhance/><script>document.write(decodeURI(location.origin+location.pathname))</script></a></p><p class="copyright-item lincese">本文采用<a rel=license href=http://creativecommons.org/licenses/by-nc/4.0/ target=_blank>知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class=post-tags><section><i class="iconfont icon-tag"></i>Tag(s):
-<span class=tag><a href=https://kuhung.me/tags/seo/>#SEO</a></span>
-<span class=tag><a href=https://kuhung.me/tags/ai%E5%8F%AF%E8%A7%81%E6%80%A7/>#AI可见性</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96/>#搜索优化</a></span>
-<span class=tag><a href=https://kuhung.me/tags/aso/>#ASO</a></span></section><section><a href=javascript:window.history.back();>back</a></span> ·
-<span><a href=https://kuhung.me/>home</a></span></section></div><div class=post-nav><a href=https://kuhung.me/posts/ga4-in-practice/ class=prev rel=prev title="GA4 实践指南：从配置到 AI 工作流"><i class="iconfont icon-left"></i>&nbsp;GA4 实践指南：从配置到 AI 工作流</a>
-<a href=https://kuhung.me/posts/maximization-your-claude-code-sessions/ class=next rel=next title="提效 20% 的 Claude Code Session 优化方法">提效 20% 的 Claude Code Session 优化方法&nbsp;<i class="iconfont icon-right"></i></a></div></article><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>const currentTheme=window.localStorage&&window.localStorage.getItem("theme"),isDark=currentTheme==="dark";isDark&&document.body.classList.add("dark-theme")</script></footer><script src=/js/vendor_no_gallery.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/ga4-in-practice/" />
+  <link rel="next" href="https://kuhung.me/posts/maximization-your-claude-code-sessions/" />
+  <link rel="canonical" href="https://kuhung.me/posts/seo-enhance/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           搜索与 AI 可见性：让需要你产品的人找到你 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="搜索与 AI 可见性：让需要你产品的人找到你 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/seo-enhance/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-12T11:25:12+08:00","datePublished":"2026-08-12T11:25:12+08:00","description":"最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。 笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。 做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门 …","headline":"搜索与 AI 可见性：让需要你产品的人找到你","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"SEO, AI可见性, 搜索优化, ASO","mainEntityOfPage":{"@id":"https://kuhung.me/posts/seo-enhance/","@type":"WebPage"},"name":"搜索与 AI 可见性：让需要你产品的人找到你","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/seo-enhance/","wordCount":597}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">搜索与 AI 可见性：让需要你产品的人找到你</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-08-12 itemprop="datePublished">August 12, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#做产品和开小店的共性">做产品和开小店的共性</a></li>
+    <li><a href="#一基础搞清楚问题在哪">一、基础：搞清楚问题在哪</a>
+      <ul>
+        <li><a href="#11-人们在找什么">1.1 人们在找什么</a></li>
+        <li><a href="#12-搜索系统能找到你吗">1.2 搜索系统能找到你吗</a></li>
+        <li><a href="#13-页面在回答问题吗">1.3 页面在回答问题吗</a></li>
+      </ul>
+    </li>
+    <li><a href="#二进阶系统化可复制">二、进阶：系统化可复制</a>
+      <ul>
+        <li><a href="#21-搜索引擎的要求">2.1 搜索引擎的要求</a></li>
+        <li><a href="#22-页面之间的连接">2.2 页面之间的连接</a></li>
+        <li><a href="#23-发布排期">2.3 发布排期</a></li>
+        <li><a href="#24-竞品对比">2.4 竞品对比</a></li>
+        <li><a href="#25-是否批量建页">2.5 是否批量建页</a></li>
+        <li><a href="#26-ai-可见性">2.6 AI 可见性</a></li>
+        <li><a href="#27-app-商店">2.7 App 商店</a></li>
+      </ul>
+    </li>
+    <li><a href="#三验证做了有没有效">三、验证：做了有没有效</a>
+      <ul>
+        <li><a href="#31-搜索引擎验证">3.1 搜索引擎验证</a></li>
+        <li><a href="#32-ai-可见性验证">3.2 AI 可见性验证</a></li>
+        <li><a href="#33-线上数据验证">3.3 线上数据验证</a></li>
+        <li><a href="#34-冷启动期别慌">3.4 冷启动期别慌</a></li>
+      </ul>
+    </li>
+    <li><a href="#看完这篇你应该能判断">看完这篇，你应该能判断</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。</p>
+<p>笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。</p>
+<h2 id="做产品和开小店的共性">做产品和开小店的共性</h2>
+<p>把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。</p>
+<p>用这个比方串一下全文逻辑：</p>
+<ul>
+<li><strong>搜索需求</strong>决定这家店应该卖什么，不是先铺货再猜</li>
+<li><strong>技术配置</strong>保证路通、门能开，搜索引擎可以发现你的店</li>
+<li><strong>页面内容</strong>让招牌和货架真正回答顾客的问题</li>
+<li><strong>结构化数据</strong>给搜索系统一张规范的&quot;商品卡&quot;，帮它理解你卖的是什么</li>
+<li><strong>页面之间的链接</strong>像店内导视，把顾客带到相关区域</li>
+<li><strong>AI 可见性</strong>观察 AI 助手在推荐店铺时有没有提到你</li>
+<li><strong>应用商店</strong>是另一座商场，有自己的招牌规则和排名逻辑</li>
+</ul>
+<p>在上述的内容之外，还有很多东西需要考虑。包括但不限于：进店后怎么让人掏钱（转化优化），怎么让内容高效自传播（那是外链和营销的事）。这篇只介绍&quot;让人找到你的店&quot;。</p>
+<p>下面按&quot;基础、进阶、验证&quot;三步展开。</p>
+<hr>
+<h2 id="一基础搞清楚问题在哪">一、基础：搞清楚问题在哪</h2>
+<h3 id="11-人们在找什么">1.1 人们在找什么</h3>
+<p>这是所有后续工作的起点。很多人反其道而行之：&ldquo;产品搞好了，咋没流量，听说要搞 SEO，让我来看看 SEO 咋优化&rdquo;，连用户在搜什么都没搞清楚。</p>
+<p>核心问题：你的目标用户遇到问题时，会在搜索框或“豆包”聊天里打什么字？</p>
+<p>不要从关键词工具开始猜。按下面几步收集和验证证据。</p>
+<p><strong>第一步：写清楚你卖给谁</strong></p>
+<p>先用一句话描述：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>当____人遇到____场景时，他想完成____，但被____卡住。
+</span></span></code></pre></div><p>比如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>当小型 AI 产品团队准备选择模型 API 时，
+</span></span><span style="display:flex;"><span>他想估算不同模型完成同一任务的真实成本，
+</span></span><span style="display:flex;"><span>但被不同计费单位、上下文价格和供应商页面卡住。
+</span></span></code></pre></div><p>这只是待验证的假设，不要把它当成需求存在的证据。</p>
+<p><strong>第二步：收集用户的原话</strong></p>
+<p>找离购买或使用最近的材料：客服记录、用户反馈、站内搜索、取消原因、竞品评价里的抱怨。记录完整句子和场景。比如：&ldquo;Claude 和 GPT 做长文本摘要哪个 API 更便宜&rdquo;。</p>
+<p>完全没有用户的话，可以先收集 10-20 条公开原话（社区、论坛、评价）作为假设池，但最好标记为推测。</p>
+<p><strong>第三步：看已经发生的搜索</strong></p>
+<p>如果网站已有曝光，Search Console 的 Queries 和 Pages 最直接：哪些查询曾展示你、哪些有曝光但没人点、一个查询落在了哪些页面上。</p>
+<p>还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。</p>
+<p><strong>第四步：实际搜一搜，判断用户想要什么</strong></p>
+<p>拿候选查询去搜，看第一页主要是什么类型的结果：</p>
+<ul>
+<li>教程、指南：用户在学习</li>
+<li>对比、替代品、榜单：用户在比较</li>
+<li>产品页、价格页：用户接近行动</li>
+<li>工具、计算器、模板：用户想立刻完成任务</li>
+<li>混合结果：意图不稳定，可能需要继续拆</li>
+</ul>
+<p>不要只看关键词字面。搜&quot;模型价格&quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</p>
+<p><strong>第五步：决定做什么，不是把所有词都写成文章</strong></p>
+<p>把候选需求放进一张表，每条标注动作：新建页面、更新旧页面、合并重复页面、作为子问题处理，或者干脆不做。</p>
+<p>搜索量不是最终优先级。一个搜索量小、但直接发生在购买决策前的问题，可能比一个量很大的科普词更有价值。</p>
+<blockquote>
+<p>怎么算&quot;搞清楚了&quot;？至少满足四条：有真实原话或明确标记的假设；知道目标地区和人群；看过真实搜索结果，能说清意图；能把每个需求映射到一个明确动作。缺哪条就标记为&quot;还不确定&quot;，不假装已经知道了。</p>
+</blockquote>
+<h3 id="12-搜索系统能找到你吗">1.2 搜索系统能找到你吗</h3>
+<p>搞清楚用户在找什么之后，下一步是确认搜索引擎能不能找到你的页面。按三层往下检查。</p>
+<p><strong>能不能被发现？</strong></p>
+<p>你得先告诉搜索引擎&quot;这些页面存在&quot;。三个东西要确认：</p>
+<ul>
+<li><strong>robots.txt</strong>：放在网站根目录的文件，告诉搜索引擎哪些页面允许抓取、哪些不要碰</li>
+<li><strong>XML sitemap</strong>：主动提交给搜索引擎的页面清单，相当于&quot;这是我店里所有值得看的货架&quot;</li>
+<li><strong>canonical 标签</strong>：告诉搜索引擎&quot;同一个内容有多个网址时，这个 URL 才是正本&quot;。这个标签有三种等效的声明方式，大部分教程只讲 HTML 里加 <code>&lt;link&gt;</code> 标签这一种，另外两种（HTTP 响应头、sitemap 里的 <code>&lt;loc&gt;</code>）知道就好</li>
+</ul>
+<p><strong>能不能被收录？</strong></p>
+<p>被发现不等于被收录。搜索引擎发现页面后，还会判断值不值得放进索引库。这一步容易被忽略，很多人以为提交了 sitemap 就万事大吉。</p>
+<p><strong>收录了，展示对不对？</strong></p>
+<p>页面加载速度、交互响应、布局稳定性，搜索引擎会拿具体数字打分。Google 的那套指标叫 Core Web Vitals：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>衡量什么</th>
+<th>合格门槛</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LCP</td>
+<td>主要内容多久加载完</td>
+<td>≤ 2.5 秒</td>
+</tr>
+<tr>
+<td>INP</td>
+<td>点击后多久有响应</td>
+<td>≤ 200 毫秒</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>布局有没有意外跳动</td>
+<td>≤ 0.1</td>
+</tr>
+</tbody>
+</table>
+<p>不用背缩写，谷歌有专门的免费工具 <a href="https://pagespeed.web.dev/">PageSpeed Insights</a>。</p>
+<p><strong>一个容易踩的坑</strong></p>
+<p>很多网站的结构化数据是 JavaScript 动态注入的，命令行只能看到原始 HTML，看不到 JS 执行后才出现的内容。要准确检查，得用浏览器开发者工具或 <a href="https://search.google.com/test/rich-results">Rich Results Test</a>。</p>
+<blockquote>
+<p>搜索引擎不会自动把所有页面都抓完吗？</p>
+<p>不会。搜索引擎分配给每个站点的抓取资源有限。如果网站有大量筛选器组合自动生成的页面（颜色 x 尺码 x 价格区间，几个筛选器一组合就成千上万个 URL），真正重要的页面可能没被抓到。产品早期页面少的时候察觉不到这个问题，但站点有自动生成页面功能的话，最好早做打算。</p>
+</blockquote>
+<h3 id="13-页面在回答问题吗">1.3 页面在回答问题吗</h3>
+<p>搜索引擎能找到你只是第一步。用户点进来后，页面得真正回答他们搜索时想问的问题。</p>
+<p>听起来像常识，但实际中经常出问题。最典型的：用户搜&quot;XX 工具怎么用&quot;，点进来看到的是一篇 AI 软文。搜索引擎统计到用户点进来又立刻退出去，会认为该页面跟搜索意图不匹配，排名就往下掉。</p>
+<p>检查几个点：</p>
+<ul>
+<li>标题是不是在回答用户搜索的那个问题？</li>
+<li>首屏（不滚动就能看到的区域）有没有直接切入正题？</li>
+<li>正文内容跟标题承诺的一致吗？</li>
+</ul>
+<p><strong>给搜索系统一张&quot;商品卡&quot;</strong></p>
+<p>除了人能看懂的内容，还可以用一种标准格式（JSON-LD）告诉搜索引擎&quot;这个页面讲的是一个产品/一篇文章/一个常见问题&quot;。就当成给页面贴了一张机器能读懂的标签。</p>
+<p>但这里有四个状态不是一回事：格式写对了、内容也准确、有资格展示特殊样式（比如搜索结果里带星级评分、FAQ 折叠）、真的展示了。即使前三步都做到了，搜索引擎也不保证第四步一定发生。加了没看到效果不代表做错了。</p>
+<blockquote>
+<p>不加这个&quot;商品卡&quot;会怎样？不加也能被收录和排名，但搜索引擎对页面内容的理解可能不够准确，也少了展示特殊样式的机会。产品页面、文章页面和 FAQ 页面加上通常值得，工作量也不大。</p>
+</blockquote>
+<hr>
+<h2 id="二进阶系统化可复制">二、进阶：系统化可复制</h2>
+<p>基础工作做完，搜索引擎已经能找到你了。接下来是怎么持续做、有章法地做，不是想写什么，也不是这个月写了下个月就停了。</p>
+<h3 id="21-搜索引擎的要求">2.1 搜索引擎的要求</h3>
+<p>网上关于&quot;SEO 官方建议&quot;的文章太多了，读起来难免犯晕。这里讲几个有明确文档立场的要求：</p>
+<ul>
+<li><strong>移动端优先</strong>：搜索引擎主要用手机版页面决定收录和排名。网站在手机上显示不全、加载很慢，影响整站排名</li>
+<li><strong>HTTPS</strong>：加密连接是排名信号之一。绝大多数网站已经上了，还没有的话优先做</li>
+<li><strong>JavaScript 渲染</strong>：页面内容靠 JS 生成的（React、Vue 做的单页应用），要确认搜索引擎能正确执行你的 JS 并看到完整内容</li>
+<li><strong>AI 爬虫访问权限</strong>：2026 年新增的一项</li>
+</ul>
+<blockquote>
+<p>&ldquo;AI 爬虫&quot;是什么？</p>
+<p>普通搜索爬虫抓取页面是为了放进搜索索引，AI 爬虫抓取页面是为了给 AI 模型提供回答问题的素材。它们可能来自同一家公司（比如 Bing 的爬虫现在身兼两职），但目的不同。你可以通过 robots.txt 选择允许或限制。</p>
+</blockquote>
+<h3 id="22-页面之间的连接">2.2 页面之间的连接</h3>
+<p>搜索引擎用链接发现新页面、理解页面之间的关系。如果一个页面从站内没有任何链接指向它，搜索引擎很难发现它，用户也很难走到那里。这种没人链接到的页面叫&quot;孤立页面&rdquo;，在产品站里较为常见。</p>
+<p>检查几件事：</p>
+<ul>
+<li>重要页面有没有从站内其他页面链接过去？</li>
+<li>链接的文字（锚文本）有没有说清楚目标页面讲的是什么？&ldquo;点击这里&quot;这种锚文本对搜索引擎没什么信息量</li>
+<li>有没有孤立页面？比如某个功能介绍页只能从导航栏的下拉菜单最深处找到</li>
+</ul>
+<p>不需要把这件事做得很复杂。对于页面不多的产品站，在写每篇新内容时想一下&quot;这篇文章跟站内哪些已有页面相关，可以互相链接&quot;就够了。</p>
+<h3 id="23-发布排期">2.3 发布排期</h3>
+<p>很多人对&quot;发布排期&quot;的理解是&quot;建议每周发几篇文章&rdquo;，这种建议没有依据。更有用的思路分两层看。</p>
+<p><strong>先搞清楚该写什么</strong></p>
+<p>不是想到一个标题就开始写。顺序应该是：先看用户在搜什么、竞品在写什么、哪些话题还没人写好，围绕几个核心主题展开一组相关文章，按优先级排序，最后才排进日历。</p>
+<p>很多人是先想到标题再想选题，顺序反了。</p>
+<blockquote>
+<p>什么叫&quot;围绕核心主题展开一组相关文章&quot;？</p>
+<p>举个例子。做了一个记账工具，一个核心主题可能是&quot;个人记账方法&quot;。围绕它可以写一组文章：&ldquo;月光族怎么开始记账&quot;&ldquo;记账 App 对比&quot;&ldquo;记账坚持不下来怎么办&quot;&ldquo;每月记账模板分享&rdquo;。这些文章互相链接，搜索引擎会认为你在这个话题上有深度覆盖，整组文章的排名都受益。行业里管这个叫 topic cluster（话题簇）。</p>
+</blockquote>
+<p><strong>排期不是排完就完事</strong></p>
+<p>发布排期不是一次性的静态日历，至少要持续做两件事：</p>
+<ul>
+<li>定期补充新选题。市场在变、用户需求在变，隔一段时间就要回头看有没有新的选题机会</li>
+<li>监控老文章有没有&quot;衰退&rdquo;。发布几个月后排名开始下降的文章，可能需要更新内容，不是放着不管</li>
+</ul>
+<h3 id="24-竞品对比">2.4 竞品对比</h3>
+<p>竞品对比拆开看是三步，不单纯是&quot;写一篇对比文章&rdquo;。</p>
+<p><strong>第一步：做研究</strong></p>
+<p>收集竞品的产品功能、定价、用户评价、内容策略。关键不是收集多少，而是一个纪律：每条结论都要能追溯到信息来源，并且标注收集日期。</p>
+<p>比如写&quot;XX 产品基础版 $9/月&rdquo;，注明什么时候在哪个页面看到的。竞品随时在调价格、改功能，过时的信息不标记，后面会误导自己。</p>
+<p><strong>第二步：持续关注</strong></p>
+<p>竞品对比不是做一次就够了。对手在迭代，你也在迭代。隔一段时间就要回来更新。</p>
+<p><strong>第三步：转化成内容</strong></p>
+<p>把研究变成面向用户的对比页面。常见四种格式：</p>
+<ul>
+<li>&ldquo;XX 的替代品&rdquo;，面向在用竞品但想换的人</li>
+<li>&ldquo;最好的 XX 替代方案&rdquo;，面向还在选型的人</li>
+<li>&ldquo;你的产品 vs 某竞品&rdquo;，直接对比</li>
+<li>&ldquo;竞品 A vs 竞品 B&rdquo;，你作为第三方给对比，顺带介绍自己</li>
+</ul>
+<blockquote>
+<p>产品还在早期验证阶段就需要做竞品页吗？取决于有没有人在搜&quot;XX 替代品&quot;或&quot;XX vs YY&quot;。Search Console 或关键词工具能看到。有人搜就值得做，没人搜先把精力花在基础工作上。</p>
+</blockquote>
+<h3 id="25-是否批量建页">2.5 是否批量建页</h3>
+<p>有些场景下，需求是批量存在的。比如一个模型价格对比工具，每个模型都需要一个独立页面。这时候会想到批量生成。</p>
+<p>但批量建页是把双刃剑。搜索引擎把&quot;为了操纵排名而大量生成低价值页面&quot;定义为滥用行为，不管内容是人写的还是 AI 生成的。</p>
+<p>所以在批量建之前，至少确认三件事：</p>
+<ul>
+<li>搜索模式成立吗？真的有人在搜这些页面对应的查询？</li>
+<li>数据来源可靠吗？每个页面有没有独特的、不是随便拼凑的内容？</li>
+<li>有没有质量底线？页面数量上去之后，怎么保证质量不塌？什么时候该停？</li>
+</ul>
+<p>决定批量建页之前先问自己：如果搜索引擎明天就来看这批页面，每一页拿出来看都能回答一个真实的用户问题吗？答案不确定的话，宁可先做几页验证，不急着全铺开。</p>
+<h3 id="26-ai-可见性">2.6 AI 可见性</h3>
+<p>最近两年 AI 搜索越来越火，出现了很多新概念。AEO、GEO，听起来好像是一套全新的方法论，实际没那么玄乎。</p>
+<p>现实是：AI 搜索功能（比如 AI Overviews）依赖的是核心搜索的索引、排名和质量系统。页面连搜索引擎都没收录，AI 回答更不会引用你。所以 AI 可见性不是 SEO 的替代品，是 SEO 基础之上的延伸。</p>
+<p>几个常见误解：</p>
+<ul>
+<li>&ldquo;那些 AEO/GEO 技巧是新时代的 SEO&rdquo;。很多流行的 AEO/GEO &ldquo;技巧&quot;并没有得到搜索引擎官方支持</li>
+<li>&ldquo;加一个 llms.txt 文件就能被所有 AI 推荐&rdquo;。不现实。llms.txt 只是告诉 AI 爬虫&quot;这些内容可以用来回答问题&rdquo;，AI 会不会采用取决于很多因素</li>
+<li>&ldquo;AI 可见性可以一次性搞定&rdquo;。不同 AI 平台的回答在持续变化，今天引用你不代表下周还会</li>
+</ul>
+<p>AI 可见性真正该做的事是持续观察：针对明确的平台、明确的问题、明确的时间，去看 AI 有没有提到你、怎么提到你、引用了哪些页面。需要定期重复，不是&quot;优化完就不用管&quot;的一次性任务。</p>
+<blockquote>
+<p>那 llms.txt 到底要不要加？可以加，成本很低，但不要期望过高。先确保内容有独特价值、技术层面能被正常抓取和收录，这些基本功做好了，AI 引用你的概率自然会高。llms.txt 最多是锦上添花。</p>
+</blockquote>
+<h3 id="27-app-商店">2.7 App 商店</h3>
+<p>如果产品是 App，除了网页搜索还有另一座商场。Apple App Store 和 Google Play 有各自的排名逻辑，跟网页 SEO 不是一套规则，两个平台之间也不能照搬。</p>
+<p><strong>排名看什么</strong></p>
+<p>Apple 把文字相关性、产品页素材和用户行为都纳入搜索发现的考量。拆开看涉及这些要素：</p>
+<ul>
+<li>应用名称和副标题（Apple）或短描述（Google Play）</li>
+<li>关键词字段（Apple 独有，100 个字符，不要浪费在品牌名或已出现在标题里的词上）</li>
+<li>完整描述（Google Play 会用来做关键词匹配，Apple 目前不用）</li>
+<li>分类选择、图标、截图和预览视频</li>
+<li>评分、评价数量、下载量和留存</li>
+</ul>
+<p><strong>两个平台差异比想象中大</strong></p>
+<ul>
+<li>Apple 有独立的关键词字段，Google Play 没有，靠标题和描述做匹配</li>
+<li>Apple 的描述目前不影响搜索排名，Google Play 的描述直接参与排名</li>
+<li>截图尺寸、数量要求、审核政策都不同</li>
+<li>Apple 有自定义产品页和 A/B 测试功能，Google Play Console 有商店详情实验</li>
+</ul>
+<p>建议分平台维护，不要写一份素材两边用。</p>
+<blockquote>
+<p>App 上线初期先优化什么？名称和副标题影响最大，先把这两个想清楚。截图是用户决定要不要下载的关键因素，值得花时间。评分低于 4.0 的话优先解决用户反馈的核心问题，评分对排名和转化的影响很直接。</p>
+</blockquote>
+<hr>
+<h2 id="三验证做了有没有效">三、验证：做了有没有效</h2>
+<p>做了优化，得能验证效果。不然在凭感觉做事。</p>
+<h3 id="31-搜索引擎验证">3.1 搜索引擎验证</h3>
+<p><strong>看收录数</strong></p>
+<p>用 <a href="https://search.google.com/search-console">Search Console</a> 和 <a href="https://www.bing.com/webmasters">Bing Webmaster Tools</a> 对比&quot;实际收录了多少页面&quot;和&quot;你认为应该被收录的页面数&quot;。差距很大的话，回去检查第一部分提到的技术问题。</p>
+<p><strong>IndexNow 提交后验证</strong></p>
+<p>IndexNow 是一种主动通知搜索引擎&quot;我这个页面更新了&quot;的协议，可以加快收录速度。提交完不是就不管了，要回到 Bing Webmaster Tools 看抓取记录有没有变化，确认搜索引擎真的来重新抓取了。</p>
+<p><strong>结构化数据的检测陷阱</strong></p>
+<p>前面说过，用命令行检测结构化数据会漏掉 JS 动态注入的内容。验证阶段最容易犯这个错，你以为结构化数据没生效，其实只是检测方式不对。用浏览器工具或 <a href="https://search.google.com/test/rich-results">Rich Results Test</a> 确认。</p>
+<h3 id="32-ai-可见性验证">3.2 AI 可见性验证</h3>
+<p>目前没有&quot;提交一下就知道结果&quot;的验证方式。靠谱的做法是手动建一个基线，定期对比：</p>
+<ol>
+<li>列出 10-20 个目标用户可能问 AI 的问题</li>
+<li>分别去 ChatGPT、Perplexity、豆包等平台问一遍</li>
+<li>记录：品牌有没有被提到？引用了哪些页面？AI 怎么描述你的产品？还提到了哪些竞品？</li>
+<li>隔一段时间再问同样的问题，对比变化</li>
+</ol>
+<p><strong>需要警惕一个陷阱</strong>。有些工具打着&quot;AI 可见性检测&quot;的旗号，实际上不是真的去问 ChatGPT、Perplexity 这些平台，而是把问题转发给自己的后端模型做判断，这不是真实的 AI 引用情况。</p>
+<blockquote>
+<p>每次问 ChatGPT 同一个问题答案都不一样，基线怎么建？正常的。多问几次、记录多次结果，关注趋势而不是单次答案。&ldquo;过去一个月问了 10 次，6 次提到了我的产品&quot;vs&quot;这个月 10 次只有 2 次&rdquo;，趋势比单次结果有意义。</p>
+</blockquote>
+<h3 id="33-线上数据验证">3.3 线上数据验证</h3>
+<p>如果网站装了分析工具（GA4 或别的），还需要确认数据本身是准确的。不准确的数据比没有数据更糟糕。</p>
+<p><strong>埋点检查：</strong></p>
+<ul>
+<li>事件有没有在正确的时候触发？&ldquo;点击注册按钮&quot;这个事件，是不是真的只在点注册按钮时触发？</li>
+<li>有没有重复计数？常见原因：装了不止一个统计容器，或者同一个触发条件绑了两次</li>
+<li>跨浏览器和手机端要分别测</li>
+</ul>
+<p><strong>调试工具：</strong></p>
+<ul>
+<li>GA4 DebugView，实时看事件有没有正确发出</li>
+<li>GTM Preview Mode，检查触发条件对不对</li>
+</ul>
+<p>笔者在 <a href="/posts/GA4-in-practice/">GA4 实践指南：从配置到 AI 工作流</a> 里详细写过埋点验证的坑，这里不重复了，提两个容易忽略的陷阱。</p>
+<p><strong>两个容易忽略的陷阱：</strong></p>
+<ul>
+<li>自引荐问题。自己的域名被记成了&quot;引荐来源&rdquo;，本来应该归功于搜索或广告的流量，被错误地算到了&quot;从自己网站来&quot;这个渠道里</li>
+<li>AI 爬虫混入流量数据。前面提到有些爬虫现在身兼搜索抓取和 AI 答案检索两个角色。数据后台看到&quot;曝光数涨了&quot;，涨的可能是 AI 爬虫的访问次数，不一定代表真人访客涨了</li>
+</ul>
+<h3 id="34-冷启动期别慌">3.4 冷启动期别慌</h3>
+<p>做完上面的工作，十天半个月过去了，数据还是零。先别急着推翻重来。</p>
+<p>Google 说明，新站或新接入 Search Console 的站点可能需要约一周才开始生成数据，Performance 报告通常还有 2-3 天延迟。抓取本身可能需要几天到几周，而且请求抓取不保证一定被收录。</p>
+<p>&ldquo;没结果&quot;不是一种状态，拆开看至少有五种：</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>要看什么</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>还不可测</td>
+<td>Search Console 属性、统计代码、目标 URL 和观察日期是否正确</td>
+<td>先修测量，不讨论成效</td>
+</tr>
+<tr>
+<td>没被发现</td>
+<td>sitemap、robots、HTTP 状态、内部链接、URL Inspection</td>
+<td>修发现与抓取阻塞</td>
+</tr>
+<tr>
+<td>已抓取但未索引</td>
+<td>Google 选择的 canonical、索引资格、是否被判为重复或低价值</td>
+<td>找具体排除原因，不反复提交</td>
+</tr>
+<tr>
+<td>已索引但没曝光</td>
+<td>页面是否真的匹配目标意图、需求是否有证据、竞争结果是什么</td>
+<td>重查需求和页面匹配</td>
+</tr>
+<tr>
+<td>有曝光但没点击</td>
+<td>查询、页面、CTR、落地后的下一步</td>
+<td>分别交给页面优化或转化优化</td>
+</tr>
+</tbody>
+</table>
+<p>Search Console 的 impression 表示用户在搜索结果中看到了指向你站点的链接，它比点击和转化更早出现，适合作为冷启动的外部反馈信号。</p>
+<p><strong>冷启动前两周的建议做法：</strong></p>
+<ul>
+<li>冻结一小批优先需求和对应页面，不要边做边换页面</li>
+<li>检查测量、sitemap、内部链接、robots、canonical 和 URL Inspection</li>
+<li>以完整天数据按周观察，不因单日为零就改方向</li>
+<li>只在对应门槛失败时行动：没抓取修技术，已索引无曝光重查需求，有曝光无点击改页面表达</li>
+<li>第一轮没有历史基线，只建立基线</li>
+</ul>
+<p>十天半个月没有点击或转化并不稀奇。需要警惕的是：这段时间过后，你仍说不清页面处在哪个状态，也没有固定的需求集合、可复现的数据和明确的下一步。</p>
+<h2 id="看完这篇你应该能判断">看完这篇，你应该能判断</h2>
+<ol>
+<li>问题出在哪一层。是技术配置？内容？还是根本没人在搜这个？</li>
+<li>下一步需要什么证据，不是凭感觉给自己开药方</li>
+<li>&ldquo;能访问&quot;&ldquo;被收录&quot;&ldquo;有资格展示&quot;&ldquo;实际获得曝光&quot;是四件不同的事</li>
+<li>拿到一份先结论、后证据、再行动的计划，不是一堆零散的待办清单</li>
+</ol>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide">Google Search: 生成式 AI 搜索优化指南</a> - AI 搜索优化的官方立场</li>
+<li><a href="https://developers.google.com/search/docs/crawling-indexing">Google Search: 抓取与索引文档</a> - 抓取、收录和展示的基础说明</li>
+<li><a href="https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl">Google Search: 请求重新抓取</a> - 请求抓取不保证收录</li>
+<li><a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies">Google Search: 结构化数据通用指南</a> - 结构化数据的政策和资格要求</li>
+<li><a href="https://developers.google.com/search/docs/crawling-indexing/links-crawlable">Google Search: 链接最佳实践</a> - 内链和可抓取链接的建议</li>
+<li><a href="https://developers.google.com/search/docs/essentials/spam-policies">Google Search: spam policies</a> - 规模化低价值内容的定义</li>
+<li><a href="https://support.google.com/webmasters/answer/17011259">Google Search Console: 查询与数据分组</a> - Search Console 数据的含义和局限</li>
+<li><a href="https://support.google.com/webmasters/answer/96568">Google Search Console: 数据说明</a> - 新站数据延迟和 Performance 报告时效</li>
+<li><a href="https://support.google.com/webmasters/answer/7042828">Google Search Console: impression、position 与 click</a> - 冷启动期最早出现的外部信号</li>
+<li><a href="https://support.google.com/trends/answer/4365533">Google Trends 数据说明</a> - Trends 展示的是相对兴趣，不是绝对搜索量</li>
+<li><a href="https://developer.apple.com/app-store/search/">Apple Developer: App Store search</a> - App Store 搜索发现的说明</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/13393723">Google Play: 商店详情最佳实践</a> - Google Play 的商店文案和素材政策</li>
+<li><a href="https://search.google.com/test/rich-results">Rich Results Test</a> - 在线测试结构化数据</li>
+<li><a href="https://search.google.com/search-console">Search Console</a> - 查看网站在搜索中的表现</li>
+<li><a href="https://www.bing.com/webmasters">Bing Webmaster Tools</a> - 查看 Bing 搜索表现和 IndexNow 状态</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/seo-enhance/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/seo/">
+                    #SEO</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%8F%AF%E8%A7%81%E6%80%A7/">
+                    #AI可见性</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96/">
+                    #搜索优化</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/aso/">
+                    #ASO</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/ga4-in-practice/" class="prev" rel="prev" title="GA4 实践指南：从配置到 AI 工作流"><i class="iconfont icon-left"></i>&nbsp;GA4 实践指南：从配置到 AI 工作流</a>
+        
+        
+        <a href="https://kuhung.me/posts/maximization-your-claude-code-sessions/" class="next" rel="next" title="提效 20% 的 Claude Code Session 优化方法">提效 20% 的 Claude Code Session 优化方法&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

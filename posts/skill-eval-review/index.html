@@ -1,25 +1,579 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=prev href=https://kuhung.me/posts/seo-in-practice-sop/><link rel=next href=https://kuhung.me/posts/personal-website-seo-and-redesign-practice/><link rel=canonical href=https://kuhung.me/posts/skill-eval-review/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>Agent Skills 出来的第10个月，再聊评估几件事 | 谷粒 kuhung</title><meta name=title content="Agent Skills 出来的第10个月，再聊评估几件事 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/posts/skill-eval-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-26T18:07:06+08:00","datePublished":"2026-08-26T18:07:06+08:00","description":"Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的 …","headline":"Agent Skills 出来的第10个月，再聊评估几件事","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI工具, Agent Skills, 评估, SOP","mainEntityOfPage":{"@id":"https://kuhung.me/posts/skill-eval-review/","@type":"WebPage"},"name":"Agent Skills 出来的第10个月，再聊评估几件事","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/skill-eval-review/","wordCount":467}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><article class=post-warp itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline">Agent Skills 出来的第10个月，再聊评估几件事</h1><div class=post-meta>Written by <a itemprop=name href=https://kuhung.me/ rel=author>谷粒</a> with ♥
-<span class=post-time>on <time datetime=2026-08-26 itemprop=datePublished>August 26, 2026</time></span>
-in
-<i class="iconfont icon-folder"></i>
-<span class=post-category><a href=https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/>经验分享</a></span>
-|</div></header><div class=post-toc id=post-toc><h2 class=post-toc-title></h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#skills-为什么被造出来>Skills 为什么被造出来</a></li><li><a href=#组织-vs-个体对于-skills-的需求>组织 vs 个体对于 Skills 的需求</a><ul><li><a href=#对于大公司>对于大公司</a></li><li><a href=#对于个体>对于个体</a></li><li><a href=#从组织到个体>从组织到个体</a></li></ul></li><li><a href=#评估的实用主义>评估的实用主义</a></li><li><a href=#更进一步的评估>更进一步的评估</a></li><li><a href=#什么时候做系统评估>什么时候做系统评估</a></li><li><a href=#系统评估怎么做>系统评估怎么做</a><ul><li><a href=#设置对照>设置对照</a></li><li><a href=#判定方法>判定方法</a></li><li><a href=#成本和时间>成本和时间</a></li><li><a href=#轨迹分析>轨迹分析</a></li><li><a href=#边际贡献>边际贡献</a></li><li><a href=#评估频率>评估频率</a></li><li><a href=#核心评估以外的问题>核心评估以外的问题</a></li></ul></li><li><a href=#后续方向>后续方向</a></li><li><a href=#参考资料>参考资料</a></li></ul></nav></div></div><script type=text/javascript>window.onload=function(){var n,o,e=$(".post-toc"),t=$(".post-comment"),i=e.offset().top,s=e.height(),a=e[0].offsetTop;$(window).scroll(function(){var r=Math.max(document.body.scrollTop,document.documentElement.scrollTop);t.length>0&&(n=t.offset().top,o=n-r-s),i<r?(e.css({position:"fixed"}),t.length>0&&n<r+s?e.css({top:o}):e.css({top:0})):(e.css({position:"absolute"}),e.css({top:a}))})}</script><div class=post-content><p>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。</p><p>笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。</p><p>Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。</p><h2 id=skills-为什么被造出来>Skills 为什么被造出来</h2><p>回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。</p><p>Skills 最早是一个系统级提示词。问题在于，系统提示词覆盖面太广，不是所有场景都适合反复注入。自然想到做分级和索引。这就是 skills 结构体的由来：title 和 description 做索引，描述它要做什么；下面是详细约束和要调用的工具。</p><p>它填补的是通用模型在垂直领域的缺失。除知识缺失外，还有风格缺失。模型知道怎么写代码，但不知道团队的编码、发布风格。</p><p>Cursor 做这件事最早。从单文件 <code>.cursorrules</code> 到多文件 <code>.cursor/rules</code>，再到现在的 Agent Skills 目录。长期规范和项目事实留在 Agent.md，条件性的工作流程放 skills。</p><p>系统提示词是公司文化，每时每刻都要参照的行为守则；skills 是处理特定工作时翻找的 wiki 目录。</p><h2 id=组织-vs-个体对于-skills-的需求>组织 vs 个体对于 Skills 的需求</h2><h3 id=对于大公司>对于大公司</h3><p>大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。</p><h3 id=对于个体>对于个体</h3><p>个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。</p><h3 id=从组织到个体>从组织到个体</h3><p>大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。</p><p>对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</p><p>文档的阅读对象也从 Junior 变成了 Agent，Junior 的职业发展更难，少有公司还愿意培养初级员工。</p><h2 id=评估的实用主义>评估的实用主义</h2><p>Skills 是给 Agent 读的 SOP。既然是 SOP，预期就是：重复相同步骤，达到一样的结果。换人或换 Agent，效果不变。</p><p>那怎么验证这一点？一搜 skills eval，出来的全是数据驱动、AB 测试、增益模型。没错，但太专业了。非工程背景的人做不到，对单个小 skill 做了也未必有意义。这些方法都在回答同一个问题：<strong>加上 skills，达到预期目的了吗？</strong></p><p>大厂里做严密分析不奇怪。过去做产品也是这个思路：要评判效果，就做消融实验，分流开 AB。但 skills 和产品策略不太一样。产品策略的验证需要大量数据，得出来的仍然只是置信数据，不代表 A 一定优于 B（置信不代表对）。</p><p>工程角度可以讲很多，但普通人关心的就是效果。甚至不在乎能否稳定达到效果，体感上有效就行。学术界倒是做了系统对比，简单来说就是专有领域如医疗提升巨大、软件领域加 skill 基本无提升。</p><p>感觉有效，大概率就有效。有时候感觉比数据实验管用。不要高射炮打蚊子。对大部分人来说，用了某个 skills，目标达成了，工作量降低了，成本没有明显增加，它就合格了。</p><h2 id=更进一步的评估>更进一步的评估</h2><p>一次有效是体感，反复有效才算数。</p><p>笔者的标准是三条：可复现、不添乱、好维护。这也是给 Cursor 定的早期工程约束。</p><p>可复现，意思是同一个任务跑几遍，结果稳定。不是第一遍写出完整代码，第二遍给你半成品。如果结果忽好忽坏，大概率是 description 写得不够精确，模型在不同上下文里理解不一致，无法准确触发。</p><p>不添乱，意思是 skill 不引入额外问题。常见的添乱：token 消耗突然翻倍，说明指令太模糊，模型在反复试探；和其他 skill 或 rules 冲突，执行路径被带跑偏；skill 里调用的工具或脚本在特定环境下报错。</p><p>好维护，意思是换个项目或换个模型，skill 还能正常工作，好扩展。如果一个 skill 只在特定模型版本上有效，换了版本就废了，维护成本太高。</p><p>大部分人到这一步就够了。只有当 skill 反复不达预期，或者你想把它分发给团队或外部时，才需要往下走。</p><h2 id=什么时候做系统评估>什么时候做系统评估</h2><p>什么时候从「体感判断」切换到「认真排查」？几个典型的触发点。</p><p>效果不如意，这个最直接。用了 skill 反而更差，或者时好时坏，就该停下来看了。不同上下文下表现不一致。同一个 skill 在不同项目里效果差很远，说明触发条件或适用范围写得不够精确。</p><p>Skills 数量增多到触发率下降、错误触发。实操经验：同一类主题，3 到 5 个精简 skill 效果最佳，数量超了模型收益骤降。</p><p>切换模型。基础模型能力一升级，原来需要 skill 辅助的任务模型自己就能做了。这时候应该果断删掉过时的 skill，重新跑一遍对比。模型升级对于软件编程方面，影响更大。内部流程向的影响较小。</p><p>要分发给团队。自己用着好的 skill 迁移给别人，效果往往不如预期。别人的项目结构不同、模型配置不同、配合的 rules 不同，原来跑得好的 skill 可能不工作。分发前要评估依赖关系、明确预期交付物。</p><p>安全也是这个阶段需要认真对待的。skills 和 npm 包一样，来源不可控就有被注入恶意逻辑的风险。今年已经发生了不少来自 skill 注入的恶性事件。</p><p>触发了评估之后，排查思路也是顺着 skill 自身的结构走：触发条件对不对，执行路径有没有跑偏，终止条件是否合理，调用的资源和工具有没有冲突。拆成这几块，逐个排查。</p><h2 id=系统评估怎么做>系统评估怎么做</h2><p>到这一步，说明你已经不满足于「感觉」了。系统评估要回答：这个 skill 到底改变了什么，改变了多少，值不值得它带来的成本。</p><h3 id=设置对照>设置对照</h3><p>最基础的是有无对比。同一个任务，开着 skill 跑一遍，关掉跑一遍，对比结果和过程。不只看最终产出，还要看中间步骤：工具调用对不对、推理路径有没有偏、有没有多余的重试。如果关掉 skill 模型也能完成，这个 skill 的边际价值就存疑。</p><p>更细致的做法是把「效果」和「触发」分成两次实验。三个条件：不加 skill、强制加载 skill（明确告诉 Agent 这个 skill 可用）、自然触发（不提示，看 Agent 自己会不会激活）。第二和第三之间的差就是触发率。触发率低说明 description 没写好，或者 Agent 根本认不出来该用它。</p><p>Anthropic 自己也承认模型有欠触发倾向，建议 description 写得强势一点。测试需要测试集。8 到 12 个精确 case 起步，绑定真正重要的决策和失败模式。</p><h3 id=判定方法>判定方法</h3><p>能用代码、正则的不用模型打分。模型有先天性的同类偏好，且成本不低。通过规则检查硬性条件：文件是否存在、JSON 是否合法、工具调用参数是否正确、某个不该发生的状态变更有没有发生。</p><p>难解的语义问题才交给模型打分，给评分标准、参考答案和弃权选项。</p><p>用模型互评时需注意：随机化呈现顺序；多次投票取多数；设最小差值阈值，排除噪声导致的伪排序。用 A 模型评 B 模型的输出，以避免同类偏好。</p><h3 id=成本和时间>成本和时间</h3><p>skill 是纯 context 开销。加了 skill 之后 token 消耗突然翻倍，往往说明指令写得太模糊，模型在反复试探和补全。时长也是：如果一个 skill 让任务慢了三倍，效果提升那点可能不值得。</p><h3 id=轨迹分析>轨迹分析</h3><p>记录 Agent 的推理过程、工具调用、状态变更，定位失败发生在哪一步。有 skill 和没 skill 的轨迹放一起比，能看清 skill 具体改变了哪些行为。不过轨迹评判目前主要靠模型打分，主观性是绕不开的。</p><h3 id=边际贡献>边际贡献</h3><p>有无 skill 的差值接近零，说明模型本来就具备该行为，这个 skill 可以删掉；增量大的地方标记出 skill 里真正起作用的部分。增量接近零就删，这是评测最直接的产出。</p><h3 id=评估频率>评估频率</h3><p>一般而言，评估是伴随着改动发生的。可以是 skill 本体变更、也可以是更换任务、更换模型。生产中出现的反面案例，很适合放到 case 库里作为边界进行判定。</p><p>整理一下方法和适用场景：</p><table><thead><tr><th>方法</th><th>看什么</th><th>适合什么阶段</th></tr></thead><tbody><tr><td>有无对比（配对对照）</td><td>加 skill 前后的结果和过程差异</td><td>所有阶段的基础方法</td></tr><tr><td>三条件实验（无/强制/自然）</td><td>触发率，description 是否有效</td><td>skill 写好后的首次验证</td></tr><tr><td>代码判定</td><td>文件存在、参数正确、状态变更</td><td>有明确预期产出的任务</td></tr><tr><td>轨迹分析</td><td>推理路径、工具调用、失败步骤</td><td>排查失败原因</td></tr><tr><td>Token 和时长监控</td><td>成本波动、运行时长变化</td><td>日常监控，发现质量劣化</td></tr><tr><td>跨模型验证</td><td>skill 的通用性、模型特性干扰</td><td>换模型、分发给团队前</td></tr><tr><td>delta 审计</td><td>边际贡献是否存在</td><td>定期清理 skill 库</td></tr></tbody></table><h3 id=核心评估以外的问题>核心评估以外的问题</h3><p>以上是针对单个 skill 的方法。跳出来看，skills 生命周期里，从开始写到一起用，还有几个结构性问题。</p><p>AI 自生成的 skills 可能不可靠。基准测试里模型自己写的 skill 平均效果为负。原因还是模型不能准确把握自身权重外的知识。核心 SOP 最好人来控制内容（或提供清晰方向参考）。措辞要明确，写清楚什么时候该触发、什么时候不该触发。当然还有前文提到的，触发指令写得激进一些这类。</p><p>Skill 之间会冲突。多个 skill 同时加载，指令互相矛盾，模型不知道听谁的。这是上下文腐败问题，skills 越多越明显。这部分内容，也可以算上面评估的一部分。将已有skills看作系统整体，剩下思路类似。</p><p>可观测性已经开始被量化。不少框架试图把「会不会被触发」正式变成了可测量的指标，也开始追踪 skill 调用率。但对个人来说，目前还没有好用的工具让你看清自己几十个 skill 里哪些在高频工作、哪些从没被触发过。Claude 目前据我所知，/doctor 指令可以实现部分目标。</p><p>版本管理的问题在缓解。今年 8 月多厂商联合发布 Agent Plugins 1.0，把 skills 和 MCP 打包成可分发的标准目录。过去跨 agent 维护多份副本的问题，会得到进一步改善。</p><p>最后，skills 解决不了编码风格、整体架构的问题。笔者刚开始觉得 Cursor 比 Codex 好用，是因为 rules 层面积累了半年多的约束。这些约束迁移到 Codex 后，编码体感舒服很多。</p><h2 id=后续方向>后续方向</h2><p>Skill 后面会怎么变？这可能是专门做 skill 研究的人才需要考虑的事。不过从研究进展来看，这个方向正在快速成形：</p><table><thead><tr><th>时间</th><th>事件</th><th>评估关注点</th></tr></thead><tbody><tr><td>2025-01</td><td>Cursor 推出多文件 .cursor/rules</td><td>规则描述、智能附加</td></tr><tr><td>2025-10</td><td>Anthropic 发布 Agent Skills</td><td>触发、意外轨迹、脚本安全</td></tr><tr><td>2025-12</td><td>Agent Skills 开放标准；OpenAI Codex 采纳</td><td>跨平台兼容、渐进加载</td></tr><tr><td>2026-02</td><td>SkillsBench v1.0；skills.sh 自动审计上线</td><td>有无 Skill A/B；平台侧安全基础设施</td></tr><tr><td>2026-03</td><td>SkillRouter（阿里）；三大市场累计约 49 万 skill</td><td>description 路由在大池子下失效</td></tr><tr><td>2026-04</td><td>Tessl 评测框架；SkillsMP 单平台超百万 skill</td><td>三条件配对评测；规模问题</td></tr><tr><td>2026-06</td><td>SkillsBench 1.1</td><td>任务集扩容、追踪 skill 调用率</td></tr><tr><td>2026-08</td><td>Agent Plugins 1.0（五家联合）；NVIDIA SkillEvaluator</td><td>跨端打包同步；厂商持续评测</td></tr></tbody></table><p>回头看这十个月：</p><p>研究主线变了。从「skill 能不能提高任务成功率」，转向「什么 skill 在什么模型、任务、环境下，产生了多少可归因且值得成本的增益」。</p><p>篇幅和受众限制，这篇文章点到为止。笔者整理了一份更完整的技术评估路径文档，包括具体的评估方法、实验设计和用于评估 skills 的 skills。想了解实操细节的朋友，可以关注或联系笔者获取。</p><h2 id=参考资料>参考资料</h2><ul><li><a href=https://arxiv.org/abs/2602.12670>SkillsBench v1.0</a> - 首个系统评估 Agent Skills 有效性的基准框架，覆盖 11 领域 86 项任务</li><li><a href=https://www.skillsbench.ai/blogs/skillsbench-1-1>SkillsBench 1.1 榜单</a> - 扩容至 18 个模型配置，新增 skill 调用率指标</li><li><a href=https://arxiv.org/abs/2603.22455>SkillRouter</a> - 阿里团队，在 8 万 skill 池子上证明 metadata 路由的局限</li><li><a href=https://tessl.io/blog/a-proposed-framework-for-evaluating-skills-research-eng-blog/>Tessl 评测框架</a> - 三条件配对评测方法论，含解答质量、成本、时长三指标</li><li><a href=https://arxiv.org/abs/2606.11435>Agent Skill Evaluation and Evolution: Frameworks and Benchmarks</a> - 综述，串起 SkillsBench 之后的衍生工作</li><li><a href=https://developer.nvidia.com/blog/evaluating-ai-agent-skill-performance-with-nvidia-skillevaluator/>NVIDIA SkillEvaluator</a> - 厂商侧持续评测实践，含 Discoverability 维度</li><li><a href=https://zhuanlan.zhihu.com/p/2019076351424995869>Vibe Coding 时代的核心 SOP</a> - Skills 评估的参考方法论</li><li><a href=/posts/how-to-manage-skills-for-agent/>从单 Agent 到跨 Agent 的 Skills 管理</a> - 笔者关于 skills 迁移问题的讨论</li><li><a href=/posts/Harness-your-skills/>驾驭你的 Agent Skills 和系统指令</a> - 笔者关于 skills 体系与系统指令的梳理</li></ul><hr><p><a href=/about/>关于作者</a></p></div><div class=post-copyright><p class=copyright-item><span>Author:</span>
-<span>谷粒</span></p><p class=copyright-item><span>Link:</span>
-<a href=https://kuhung.me/posts/skill-eval-review/><script>document.write(decodeURI(location.origin+location.pathname))</script></a></p><p class="copyright-item lincese">本文采用<a rel=license href=http://creativecommons.org/licenses/by-nc/4.0/ target=_blank>知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class=post-tags><section><i class="iconfont icon-tag"></i>Tag(s):
-<span class=tag><a href=https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/>#AI工具</a></span>
-<span class=tag><a href=https://kuhung.me/tags/agent-skills/>#Agent Skills</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E8%AF%84%E4%BC%B0/>#评估</a></span>
-<span class=tag><a href=https://kuhung.me/tags/sop/>#SOP</a></span></section><section><a href=javascript:window.history.back();>back</a></span> ·
-<span><a href=https://kuhung.me/>home</a></span></section></div><div class=post-nav><a href=https://kuhung.me/posts/seo-in-practice-sop/ class=prev rel=prev title="从 SEO 角度做增长，以产品 TrakToken 为例"><i class="iconfont icon-left"></i>&nbsp;从 SEO 角度做增长，以产品 TrakToken 为例</a>
-<a href=https://kuhung.me/posts/personal-website-seo-and-redesign-practice/ class=next rel=next title="个人主页 SEO 优化与结构改版实践">个人主页 SEO 优化与结构改版实践&nbsp;<i class="iconfont icon-right"></i></a></div></article><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>const currentTheme=window.localStorage&&window.localStorage.getItem("theme"),isDark=currentTheme==="dark";isDark&&document.body.classList.add("dark-theme")</script></footer><script src=/js/vendor_no_gallery.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/seo-in-practice-sop/" />
+  <link rel="next" href="https://kuhung.me/posts/personal-website-seo-and-redesign-practice/" />
+  <link rel="canonical" href="https://kuhung.me/posts/skill-eval-review/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Agent Skills 出来的第10个月，再聊评估几件事 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Agent Skills 出来的第10个月，再聊评估几件事 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/skill-eval-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-26T18:07:06+08:00","datePublished":"2026-08-26T18:07:06+08:00","description":"Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的 …","headline":"Agent Skills 出来的第10个月，再聊评估几件事","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI工具, Agent Skills, 评估, SOP","mainEntityOfPage":{"@id":"https://kuhung.me/posts/skill-eval-review/","@type":"WebPage"},"name":"Agent Skills 出来的第10个月，再聊评估几件事","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/skill-eval-review/","wordCount":467}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Agent Skills 出来的第10个月，再聊评估几件事</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-08-26 itemprop="datePublished">August 26, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#skills-为什么被造出来">Skills 为什么被造出来</a></li>
+    <li><a href="#组织-vs-个体对于-skills-的需求">组织 vs 个体对于 Skills 的需求</a>
+      <ul>
+        <li><a href="#对于大公司">对于大公司</a></li>
+        <li><a href="#对于个体">对于个体</a></li>
+        <li><a href="#从组织到个体">从组织到个体</a></li>
+      </ul>
+    </li>
+    <li><a href="#评估的实用主义">评估的实用主义</a></li>
+    <li><a href="#更进一步的评估">更进一步的评估</a></li>
+    <li><a href="#什么时候做系统评估">什么时候做系统评估</a></li>
+    <li><a href="#系统评估怎么做">系统评估怎么做</a>
+      <ul>
+        <li><a href="#设置对照">设置对照</a></li>
+        <li><a href="#判定方法">判定方法</a></li>
+        <li><a href="#成本和时间">成本和时间</a></li>
+        <li><a href="#轨迹分析">轨迹分析</a></li>
+        <li><a href="#边际贡献">边际贡献</a></li>
+        <li><a href="#评估频率">评估频率</a></li>
+        <li><a href="#核心评估以外的问题">核心评估以外的问题</a></li>
+      </ul>
+    </li>
+    <li><a href="#后续方向">后续方向</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。</p>
+<p>笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。</p>
+<p>Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。</p>
+<h2 id="skills-为什么被造出来">Skills 为什么被造出来</h2>
+<p>回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。</p>
+<p>Skills 最早是一个系统级提示词。问题在于，系统提示词覆盖面太广，不是所有场景都适合反复注入。自然想到做分级和索引。这就是 skills 结构体的由来：title 和 description 做索引，描述它要做什么；下面是详细约束和要调用的工具。</p>
+<p>它填补的是通用模型在垂直领域的缺失。除知识缺失外，还有风格缺失。模型知道怎么写代码，但不知道团队的编码、发布风格。</p>
+<p>Cursor 做这件事最早。从单文件 <code>.cursorrules</code> 到多文件 <code>.cursor/rules</code>，再到现在的 Agent Skills 目录。长期规范和项目事实留在 Agent.md，条件性的工作流程放 skills。</p>
+<p>系统提示词是公司文化，每时每刻都要参照的行为守则；skills 是处理特定工作时翻找的 wiki 目录。</p>
+<h2 id="组织-vs-个体对于-skills-的需求">组织 vs 个体对于 Skills 的需求</h2>
+<h3 id="对于大公司">对于大公司</h3>
+<p>大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。</p>
+<h3 id="对于个体">对于个体</h3>
+<p>个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。</p>
+<h3 id="从组织到个体">从组织到个体</h3>
+<p>大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。</p>
+<p>对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</p>
+<p>文档的阅读对象也从 Junior 变成了 Agent，Junior 的职业发展更难，少有公司还愿意培养初级员工。</p>
+<h2 id="评估的实用主义">评估的实用主义</h2>
+<p>Skills 是给 Agent 读的 SOP。既然是 SOP，预期就是：重复相同步骤，达到一样的结果。换人或换 Agent，效果不变。</p>
+<p>那怎么验证这一点？一搜 skills eval，出来的全是数据驱动、AB 测试、增益模型。没错，但太专业了。非工程背景的人做不到，对单个小 skill 做了也未必有意义。这些方法都在回答同一个问题：<strong>加上 skills，达到预期目的了吗？</strong></p>
+<p>大厂里做严密分析不奇怪。过去做产品也是这个思路：要评判效果，就做消融实验，分流开 AB。但 skills 和产品策略不太一样。产品策略的验证需要大量数据，得出来的仍然只是置信数据，不代表 A 一定优于 B（置信不代表对）。</p>
+<p>工程角度可以讲很多，但普通人关心的就是效果。甚至不在乎能否稳定达到效果，体感上有效就行。学术界倒是做了系统对比，简单来说就是专有领域如医疗提升巨大、软件领域加 skill 基本无提升。</p>
+<p>感觉有效，大概率就有效。有时候感觉比数据实验管用。不要高射炮打蚊子。对大部分人来说，用了某个 skills，目标达成了，工作量降低了，成本没有明显增加，它就合格了。</p>
+<h2 id="更进一步的评估">更进一步的评估</h2>
+<p>一次有效是体感，反复有效才算数。</p>
+<p>笔者的标准是三条：可复现、不添乱、好维护。这也是给 Cursor 定的早期工程约束。</p>
+<p>可复现，意思是同一个任务跑几遍，结果稳定。不是第一遍写出完整代码，第二遍给你半成品。如果结果忽好忽坏，大概率是 description 写得不够精确，模型在不同上下文里理解不一致，无法准确触发。</p>
+<p>不添乱，意思是 skill 不引入额外问题。常见的添乱：token 消耗突然翻倍，说明指令太模糊，模型在反复试探；和其他 skill 或 rules 冲突，执行路径被带跑偏；skill 里调用的工具或脚本在特定环境下报错。</p>
+<p>好维护，意思是换个项目或换个模型，skill 还能正常工作，好扩展。如果一个 skill 只在特定模型版本上有效，换了版本就废了，维护成本太高。</p>
+<p>大部分人到这一步就够了。只有当 skill 反复不达预期，或者你想把它分发给团队或外部时，才需要往下走。</p>
+<h2 id="什么时候做系统评估">什么时候做系统评估</h2>
+<p>什么时候从「体感判断」切换到「认真排查」？几个典型的触发点。</p>
+<p>效果不如意，这个最直接。用了 skill 反而更差，或者时好时坏，就该停下来看了。不同上下文下表现不一致。同一个 skill 在不同项目里效果差很远，说明触发条件或适用范围写得不够精确。</p>
+<p>Skills 数量增多到触发率下降、错误触发。实操经验：同一类主题，3 到 5 个精简 skill 效果最佳，数量超了模型收益骤降。</p>
+<p>切换模型。基础模型能力一升级，原来需要 skill 辅助的任务模型自己就能做了。这时候应该果断删掉过时的 skill，重新跑一遍对比。模型升级对于软件编程方面，影响更大。内部流程向的影响较小。</p>
+<p>要分发给团队。自己用着好的 skill 迁移给别人，效果往往不如预期。别人的项目结构不同、模型配置不同、配合的 rules 不同，原来跑得好的 skill 可能不工作。分发前要评估依赖关系、明确预期交付物。</p>
+<p>安全也是这个阶段需要认真对待的。skills 和 npm 包一样，来源不可控就有被注入恶意逻辑的风险。今年已经发生了不少来自 skill 注入的恶性事件。</p>
+<p>触发了评估之后，排查思路也是顺着 skill 自身的结构走：触发条件对不对，执行路径有没有跑偏，终止条件是否合理，调用的资源和工具有没有冲突。拆成这几块，逐个排查。</p>
+<h2 id="系统评估怎么做">系统评估怎么做</h2>
+<p>到这一步，说明你已经不满足于「感觉」了。系统评估要回答：这个 skill 到底改变了什么，改变了多少，值不值得它带来的成本。</p>
+<h3 id="设置对照">设置对照</h3>
+<p>最基础的是有无对比。同一个任务，开着 skill 跑一遍，关掉跑一遍，对比结果和过程。不只看最终产出，还要看中间步骤：工具调用对不对、推理路径有没有偏、有没有多余的重试。如果关掉 skill 模型也能完成，这个 skill 的边际价值就存疑。</p>
+<p>更细致的做法是把「效果」和「触发」分成两次实验。三个条件：不加 skill、强制加载 skill（明确告诉 Agent 这个 skill 可用）、自然触发（不提示，看 Agent 自己会不会激活）。第二和第三之间的差就是触发率。触发率低说明 description 没写好，或者 Agent 根本认不出来该用它。</p>
+<p>Anthropic 自己也承认模型有欠触发倾向，建议 description 写得强势一点。测试需要测试集。8 到 12 个精确 case 起步，绑定真正重要的决策和失败模式。</p>
+<h3 id="判定方法">判定方法</h3>
+<p>能用代码、正则的不用模型打分。模型有先天性的同类偏好，且成本不低。通过规则检查硬性条件：文件是否存在、JSON 是否合法、工具调用参数是否正确、某个不该发生的状态变更有没有发生。</p>
+<p>难解的语义问题才交给模型打分，给评分标准、参考答案和弃权选项。</p>
+<p>用模型互评时需注意：随机化呈现顺序；多次投票取多数；设最小差值阈值，排除噪声导致的伪排序。用 A 模型评 B 模型的输出，以避免同类偏好。</p>
+<h3 id="成本和时间">成本和时间</h3>
+<p>skill 是纯 context 开销。加了 skill 之后 token 消耗突然翻倍，往往说明指令写得太模糊，模型在反复试探和补全。时长也是：如果一个 skill 让任务慢了三倍，效果提升那点可能不值得。</p>
+<h3 id="轨迹分析">轨迹分析</h3>
+<p>记录 Agent 的推理过程、工具调用、状态变更，定位失败发生在哪一步。有 skill 和没 skill 的轨迹放一起比，能看清 skill 具体改变了哪些行为。不过轨迹评判目前主要靠模型打分，主观性是绕不开的。</p>
+<h3 id="边际贡献">边际贡献</h3>
+<p>有无 skill 的差值接近零，说明模型本来就具备该行为，这个 skill 可以删掉；增量大的地方标记出 skill 里真正起作用的部分。增量接近零就删，这是评测最直接的产出。</p>
+<h3 id="评估频率">评估频率</h3>
+<p>一般而言，评估是伴随着改动发生的。可以是 skill 本体变更、也可以是更换任务、更换模型。生产中出现的反面案例，很适合放到 case 库里作为边界进行判定。</p>
+<p>整理一下方法和适用场景：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>看什么</th>
+<th>适合什么阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>有无对比（配对对照）</td>
+<td>加 skill 前后的结果和过程差异</td>
+<td>所有阶段的基础方法</td>
+</tr>
+<tr>
+<td>三条件实验（无/强制/自然）</td>
+<td>触发率，description 是否有效</td>
+<td>skill 写好后的首次验证</td>
+</tr>
+<tr>
+<td>代码判定</td>
+<td>文件存在、参数正确、状态变更</td>
+<td>有明确预期产出的任务</td>
+</tr>
+<tr>
+<td>轨迹分析</td>
+<td>推理路径、工具调用、失败步骤</td>
+<td>排查失败原因</td>
+</tr>
+<tr>
+<td>Token 和时长监控</td>
+<td>成本波动、运行时长变化</td>
+<td>日常监控，发现质量劣化</td>
+</tr>
+<tr>
+<td>跨模型验证</td>
+<td>skill 的通用性、模型特性干扰</td>
+<td>换模型、分发给团队前</td>
+</tr>
+<tr>
+<td>delta 审计</td>
+<td>边际贡献是否存在</td>
+<td>定期清理 skill 库</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心评估以外的问题">核心评估以外的问题</h3>
+<p>以上是针对单个 skill 的方法。跳出来看，skills 生命周期里，从开始写到一起用，还有几个结构性问题。</p>
+<p>AI 自生成的 skills 可能不可靠。基准测试里模型自己写的 skill 平均效果为负。原因还是模型不能准确把握自身权重外的知识。核心 SOP 最好人来控制内容（或提供清晰方向参考）。措辞要明确，写清楚什么时候该触发、什么时候不该触发。当然还有前文提到的，触发指令写得激进一些这类。</p>
+<p>Skill 之间会冲突。多个 skill 同时加载，指令互相矛盾，模型不知道听谁的。这是上下文腐败问题，skills 越多越明显。这部分内容，也可以算上面评估的一部分。将已有skills看作系统整体，剩下思路类似。</p>
+<p>可观测性已经开始被量化。不少框架试图把「会不会被触发」正式变成了可测量的指标，也开始追踪 skill 调用率。但对个人来说，目前还没有好用的工具让你看清自己几十个 skill 里哪些在高频工作、哪些从没被触发过。Claude 目前据我所知，/doctor 指令可以实现部分目标。</p>
+<p>版本管理的问题在缓解。今年 8 月多厂商联合发布 Agent Plugins 1.0，把 skills 和 MCP 打包成可分发的标准目录。过去跨 agent 维护多份副本的问题，会得到进一步改善。</p>
+<p>最后，skills 解决不了编码风格、整体架构的问题。笔者刚开始觉得 Cursor 比 Codex 好用，是因为 rules 层面积累了半年多的约束。这些约束迁移到 Codex 后，编码体感舒服很多。</p>
+<h2 id="后续方向">后续方向</h2>
+<p>Skill 后面会怎么变？这可能是专门做 skill 研究的人才需要考虑的事。不过从研究进展来看，这个方向正在快速成形：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>事件</th>
+<th>评估关注点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-01</td>
+<td>Cursor 推出多文件 .cursor/rules</td>
+<td>规则描述、智能附加</td>
+</tr>
+<tr>
+<td>2025-10</td>
+<td>Anthropic 发布 Agent Skills</td>
+<td>触发、意外轨迹、脚本安全</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>Agent Skills 开放标准；OpenAI Codex 采纳</td>
+<td>跨平台兼容、渐进加载</td>
+</tr>
+<tr>
+<td>2026-02</td>
+<td>SkillsBench v1.0；skills.sh 自动审计上线</td>
+<td>有无 Skill A/B；平台侧安全基础设施</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>SkillRouter（阿里）；三大市场累计约 49 万 skill</td>
+<td>description 路由在大池子下失效</td>
+</tr>
+<tr>
+<td>2026-04</td>
+<td>Tessl 评测框架；SkillsMP 单平台超百万 skill</td>
+<td>三条件配对评测；规模问题</td>
+</tr>
+<tr>
+<td>2026-06</td>
+<td>SkillsBench 1.1</td>
+<td>任务集扩容、追踪 skill 调用率</td>
+</tr>
+<tr>
+<td>2026-08</td>
+<td>Agent Plugins 1.0（五家联合）；NVIDIA SkillEvaluator</td>
+<td>跨端打包同步；厂商持续评测</td>
+</tr>
+</tbody>
+</table>
+<p>回头看这十个月：</p>
+<p>研究主线变了。从「skill 能不能提高任务成功率」，转向「什么 skill 在什么模型、任务、环境下，产生了多少可归因且值得成本的增益」。</p>
+<p>篇幅和受众限制，这篇文章点到为止。笔者整理了一份更完整的技术评估路径文档，包括具体的评估方法、实验设计和用于评估 skills 的 skills。想了解实操细节的朋友，可以关注或联系笔者获取。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2602.12670">SkillsBench v1.0</a> - 首个系统评估 Agent Skills 有效性的基准框架，覆盖 11 领域 86 项任务</li>
+<li><a href="https://www.skillsbench.ai/blogs/skillsbench-1-1">SkillsBench 1.1 榜单</a> - 扩容至 18 个模型配置，新增 skill 调用率指标</li>
+<li><a href="https://arxiv.org/abs/2603.22455">SkillRouter</a> - 阿里团队，在 8 万 skill 池子上证明 metadata 路由的局限</li>
+<li><a href="https://tessl.io/blog/a-proposed-framework-for-evaluating-skills-research-eng-blog/">Tessl 评测框架</a> - 三条件配对评测方法论，含解答质量、成本、时长三指标</li>
+<li><a href="https://arxiv.org/abs/2606.11435">Agent Skill Evaluation and Evolution: Frameworks and Benchmarks</a> - 综述，串起 SkillsBench 之后的衍生工作</li>
+<li><a href="https://developer.nvidia.com/blog/evaluating-ai-agent-skill-performance-with-nvidia-skillevaluator/">NVIDIA SkillEvaluator</a> - 厂商侧持续评测实践，含 Discoverability 维度</li>
+<li><a href="https://zhuanlan.zhihu.com/p/2019076351424995869">Vibe Coding 时代的核心 SOP</a> - Skills 评估的参考方法论</li>
+<li><a href="/posts/how-to-manage-skills-for-agent/">从单 Agent 到跨 Agent 的 Skills 管理</a> - 笔者关于 skills 迁移问题的讨论</li>
+<li><a href="/posts/Harness-your-skills/">驾驭你的 Agent Skills 和系统指令</a> - 笔者关于 skills 体系与系统指令的梳理</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/skill-eval-review/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
+                    #AI工具</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/agent-skills/">
+                    #Agent Skills</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%AF%84%E4%BC%B0/">
+                    #评估</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/sop/">
+                    #SOP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/seo-in-practice-sop/" class="prev" rel="prev" title="从 SEO 角度做增长，以产品 TrakToken 为例"><i class="iconfont icon-left"></i>&nbsp;从 SEO 角度做增长，以产品 TrakToken 为例</a>
+        
+        
+        <a href="https://kuhung.me/posts/personal-website-seo-and-redesign-practice/" class="next" rel="next" title="个人主页 SEO 优化与结构改版实践">个人主页 SEO 优化与结构改版实践&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

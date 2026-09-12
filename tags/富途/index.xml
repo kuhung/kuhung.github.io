@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>富途 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%AF%8C%E9%80%94/</link><description>Recent content in 富途 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 26 Jul 2026 12:44:44 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%AF%8C%E9%80%94/index.xml" rel="self" type="application/rss+xml"/><item><title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title><link>https://kuhung.me/posts/cang-in-house/</link><pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate><guid>https://kuhung.me/posts/cang-in-house/</guid><description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>富途 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%AF%8C%E9%80%94/</link>
+    <description>Recent content in 富途 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Jul 2026 12:44:44 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%AF%8C%E9%80%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title>
+      <link>https://kuhung.me/posts/cang-in-house/</link>
+      <pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/cang-in-house/</guid>
+      <description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
 但是后来，随着投资标的的分散，每次在券商上算账都要耗费不少的心力。需要计算杠杆、货币转换。这让我逐渐厌倦。想知道&amp;quot;投资账户一共有多少资金&amp;quot;，需要打开富途和雪盈两个 App 分别计算再合并。随着最近大模型的进一步发展，是时候用 Claude 写个 in-house 的仓位管理工具了。不少人 vibe coding 的第一步，都是搞些什么记账、todo 和番茄闹钟，这回也落回这三大件上了。
 做 in-house 的仓位管理，目的是让 AI 能直接碰到持仓数据，进行交互分析和建议。包含四个方面的功能：分析持仓、计算收益、策略回测，以及最终的自动下单。手动记账时代，数据在 Notion 表格里，大模型要获取需要转个弯。现在，券商数据直接接入之后，它才有可能真正帮你干活。
 本次文章，就给大家介绍下我用 Codex + Claude 接入富途 API 和雪盈 API 的过程和最终效果。当然，如果你是长桥、老虎或者别的什么，也是类似的道理，只要券商开放了 API，都可以做到。
@@ -9,4 +24,8 @@
 下单信号。 有了上述的策略，进一步的就是生成交易信号。当然自动下单两个平台也是支持的，但是由于我的持仓不多、交易频次不高，所以暂不考虑自动化交易。能有信号也不错了。
 券商特点 两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。
 富途是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。
-雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description></item></channel></rss>
+雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Codex on 谷粒 kuhung</title><link>https://kuhung.me/tags/codex/</link><description>Recent content in Codex on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 Aug 2026 17:58:11 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/codex/index.xml" rel="self" type="application/rss+xml"/><item><title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title><link>https://kuhung.me/posts/use-codex-goal-build-products/</link><pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate><guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid><description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Codex on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/codex/</link>
+    <description>Recent content in Codex on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 04 Aug 2026 17:58:11 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/codex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title>
+      <link>https://kuhung.me/posts/use-codex-goal-build-products/</link>
+      <pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid>
+      <description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
 这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。
 但如果不想 Agent 反复追问呢？Codex 的/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）
 前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。
@@ -10,7 +25,16 @@
 第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心&amp;quot;还原&amp;quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。
 第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制/粘贴切入。暂不做文件工作区、PDF/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。
 第五轮：从&amp;quot;造功能&amp;quot;，转向&amp;quot;嵌入已有抱怨&amp;quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。
-第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description></item><item><title>普通人要 Codex 有什么用？</title><link>https://kuhung.me/posts/how-i-use-codex/</link><pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate><guid>https://kuhung.me/posts/how-i-use-codex/</guid><description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
+第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description>
+    </item>
+    
+    <item>
+      <title>普通人要 Codex 有什么用？</title>
+      <link>https://kuhung.me/posts/how-i-use-codex/</link>
+      <pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-i-use-codex/</guid>
+      <description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
 我的背景是算法，在很多人看来，程序员都是一个类型。但实际上这个岗位的细分非常多，我擅长将业务问题转化为建模问题，能够构建稳定可靠的数据pipeline和模型pipeline，但并不包括写出好看的前端和稳健的后端。后半部分工作，是 Codex 帮我加速达成的。
 此外，对于像产品、市场和运营这类工作，虽然日常协作有所耳濡目染，但绝对并非我的优势。我也借助 Codex，来帮我整理用户需求、做市场调研、分析数据并制定对应的运营活动策略。
 所以，你说，Codex 对于普通人有什么用？那我想是解放了生产力，能够有机会做更多之前能想到，但是没资源去验证的事情。这些事情包括开发、文案类工作，也包括数据调研、资料整合类工作。
@@ -23,4 +47,8 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 通过产品路线图、版本控制、issue跟踪的方式，让我的开发管理井井有条。慢即是快。issue 会写清楚当前行为、期望行为、验收标准，剩下的让 Codex 的 agent 干就完事。当然，这些 issue 也是 Codex 在我的指挥下生成的。
 第四件：运营维护。项目上线后，日志采集脚本、安全配置检查清单、定时任务的 cron 表达式、数据更新的定期抓取。这些琐碎但必要的运维工作，我现在都习惯丢给 Codex。
 另外，我还有一套基于 Notion + GitHub 的周报自动化流程，底层的数据采集和同步模块是大模型搭的。现在每周的工作，不再需要手动记录，流转在 Notion 甘特图和GitHub提交记录的信息，通过数据管线汇总给大模型，每周只需要花2块钱，就能让顶级模型帮你总结项目进展、风险和下周优先级。
-第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description></item></channel></rss>
+第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description>
+    </item>
+    
+  </channel>
+</rss>

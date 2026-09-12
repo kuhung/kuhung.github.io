@@ -1,63 +1,772 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=canonical href=https://kuhung.me/posts/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>Posts | 谷粒 kuhung</title><meta name=title content="Posts | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><style>.posts-index{max-width:800px;margin:0 auto;box-sizing:border-box}.posts-index .posts-heading{font-size:30px;line-height:1.5;font-weight:600;margin:0}.posts-index .posts-lead{font-size:15px;color:#4a4b50;line-height:1.9;margin-top:12px;max-width:660px}.posts-history{margin-top:12px}.posts-history summary{display:flex;align-items:baseline;justify-content:space-between;gap:16px;color:#4a4b50;font-size:15px;line-height:1.9;cursor:pointer;list-style:none}.posts-history summary>span{max-width:660px}.posts-history summary::-webkit-details-marker{display:none}.posts-history summary::after{content:"展开";flex:none;color:#2d96bd}.posts-history[open] summary::after{content:"收起"}.posts-history summary:hover{color:#161209}.posts-history summary:focus-visible{outline:2px solid #2d96bd;outline-offset:3px}.posts-timeline{margin-top:18px;border-top:1px solid #eee}.posts-phase{display:grid;grid-template-columns:108px minmax(0,1fr);gap:18px;padding:11px 0;border-bottom:1px solid #eee}.posts-phase:last-child{border-bottom:0}.posts-phase strong{font-size:13px;line-height:1.8;font-weight:600;color:#161209}.posts-phase p{margin:0;font-size:13px;line-height:1.8;color:#4a4b50}.posts-views{display:flex;gap:26px;margin-top:26px;border-bottom:1px solid #eee}.posts-views a{font-size:15px;font-weight:400;color:#87878d;padding:0 2px 10px;border-bottom:2px solid transparent}.posts-views a.active{font-weight:700;color:#161209;border-bottom-color:#2d96bd}.topic-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;border:0}.topic-filters[hidden],.posts-filter-status[hidden],.server-posts-foot[hidden],.client-pagination[hidden]{display:none}.topic-filter,.client-page-button{appearance:none;border:1px solid #eee;border-radius:0;background:0 0;color:#4a4b50;font:inherit;cursor:pointer}.topic-filter{min-height:34px;padding:5px 11px;font-size:13px;line-height:1.6}.topic-filter:hover,.topic-filter[aria-pressed=true]{border-color:#2d96bd;color:#161209}.topic-filter[aria-pressed=true]{background:rgba(45,150,189,8%)}.topic-filter:focus-visible,.client-page-button:focus-visible,.posts-views a:focus-visible,.posts-list-item a:focus-visible{outline:2px solid #2d96bd;outline-offset:3px}.posts-filter-status{margin:14px 0 0;min-height:1.7em;color:#87878d;font-size:12px}.posts-list{margin-top:12px}.posts-list-item{border-top:1px solid #eee;padding:18px 0 20px}.posts-list-item[hidden]{display:none}.posts-list-item .posts-list-title{font-size:17px;font-weight:600;line-height:1.6;margin:0}.posts-list-item .posts-list-summary{font-size:14px;color:#87878d;line-height:1.8;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.posts-list-item .posts-list-meta{font-size:12px;color:#a9a9b3;margin-top:10px}.posts-list-item .posts-list-meta a{font-size:12px;color:#2d96bd}.posts-list-item .posts-list-meta a:hover{color:#ef3982}.posts-foot{border-top:1px solid #eee;padding-top:22px}.posts-foot .posts-total{font-size:12px;color:#a9a9b3}.client-pagination{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;border-top:1px solid #eee;padding-top:22px}.client-page-button{min-width:36px;min-height:36px;padding:5px 9px;font-size:13px}.client-page-button[aria-current=page]{border-color:#2d96bd;color:#161209;font-weight:700}.client-page-button:disabled{cursor:default;opacity:.4}.posts-empty{border-top:1px solid #eee;padding:28px 0;color:#87878d}.dark-theme .posts-index .posts-heading,.dark-theme .posts-history summary:hover,.dark-theme .posts-phase strong,.dark-theme .posts-views a.active,.dark-theme .topic-filter:hover,.dark-theme .topic-filter[aria-pressed=true],.dark-theme .client-page-button[aria-current=page]{color:#fff}.dark-theme .posts-index .posts-lead,.dark-theme .posts-history summary,.dark-theme .posts-phase p,.dark-theme .topic-filter,.dark-theme .client-page-button{color:#a9a9b3}.dark-theme .posts-views,.dark-theme .posts-timeline,.dark-theme .posts-phase,.dark-theme .topic-filter,.dark-theme .client-page-button,.dark-theme .posts-list-item,.dark-theme .posts-foot,.dark-theme .client-pagination{border-color:#4a4b50}.dark-theme .topic-filter[aria-pressed=true]{background:rgba(45,150,189,.18)}@media(max-width:767px){.posts-index .posts-heading{font-size:23px}.posts-history summary{align-items:flex-start}.posts-phase{grid-template-columns:1fr;gap:2px;padding:12px 0}.posts-views{gap:18px}.topic-filters{gap:7px}.topic-filter{min-height:44px;padding:8px 12px}.client-page-button{min-width:44px;min-height:44px}}</style><div class="post-warp posts-index" data-posts-base=/posts/><h1 class=posts-heading>文章</h1><details class=posts-history><summary><span>从 2016 年写到现在，已经 161 篇。写的东西跟着我当时在做的事一路变化。</span></summary><div class=posts-timeline aria-label=文章主题变化><div class=posts-phase><strong>2016 至 2018</strong><p>从计算机视觉、机器学习比赛和模型复现写起，边学边做。</p></div><div class=posts-phase><strong>2018 至 2020</strong><p>进入网易游戏后，内容转向数据挖掘、用户分析、A/B 测试和模型部署。</p></div><div class=posts-phase><strong>2020 至 2025</strong><p>在米哈游做算法，继续写反作弊和用户增长，也开始整理技术管理、量化研究和读书笔记。</p></div><div class=posts-phase><strong>2025 至今</strong><p>把重心放到 AI 编程、Agent 与 Skills、内容增长和产品实践，记录真正用过之后的判断、方法和结果。</p></div></div></details><nav class=posts-views aria-label=文章视图><a href=/guide/>精选</a>
-<a class=active aria-current=page href=/posts/>全部</a>
-<a href=/archives/>按年</a></nav><fieldset class=topic-filters aria-label=按主题筛选文章 hidden><button class=topic-filter type=button data-topic=all data-aliases aria-controls=posts-list aria-pressed=true>全部主题</button>
-<button class=topic-filter type=button data-topic=ai-tools data-aliases=AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成 aria-controls=posts-list aria-pressed=false>AI 工具</button>
-<button class=topic-filter type=button data-topic=agents-skills data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls=posts-list aria-pressed=false>Agent 与 Skills</button>
-<button class=topic-filter type=button data-topic=claude-code data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls=posts-list aria-pressed=false>Claude Code</button>
-<button class=topic-filter type=button data-topic=seo-growth data-aliases=SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户 aria-controls=posts-list aria-pressed=false>SEO 与增长</button>
-<button class=topic-filter type=button data-topic=data-analysis data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls=posts-list aria-pressed=false>数据分析</button>
-<button class=topic-filter type=button data-topic=quant-investing data-aliases=量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI aria-controls=posts-list aria-pressed=false>量化投资</button>
-<button class=topic-filter type=button data-topic=onchain data-aliases=onchain||链上数据分析||加密货币 aria-controls=posts-list aria-pressed=false>链上数据</button>
-<button class=topic-filter type=button data-topic=product-startup data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls=posts-list aria-pressed=false>产品与创业</button>
-<button class=topic-filter type=button data-topic=productivity data-aliases=效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益 aria-controls=posts-list aria-pressed=false>效率方法</button>
-<button class=topic-filter type=button data-topic=reading data-aliases=mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文 aria-controls=posts-list aria-pressed=false>读书笔记</button>
-<button class=topic-filter type=button data-topic=voice-audio data-aliases=语音||音频||音频处理||播客||TTS||NoAINoG aria-controls=posts-list aria-pressed=false>语音与音频</button>
-<button class=topic-filter type=button data-topic=life-review data-aliases=总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察 aria-controls=posts-list aria-pressed=false>生活复盘</button></fieldset><p class=posts-filter-status role=status aria-live=polite hidden></p><div class=posts-list id=posts-list><article class=posts-list-item data-tags=行业观察||访谈 data-categories=思考><h2 class=posts-list-title><a href=/posts/talks-with-an-old-peer/>技术转型｜赴日、副业和内容变现的那些事</a></h2><p class=posts-list-summary>“我现在回想，我都不知道去年一年我下班就在干嘛。”
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  
+  
+  <link rel="canonical" href="https://kuhung.me/posts/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Posts | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Posts | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
+    }
+    .posts-history { margin-top: 12px; }
+    .posts-history summary {
+        display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+        color: #4a4b50; font-size: 15px; line-height: 1.9; cursor: pointer;
+        list-style: none;
+    }
+    .posts-history summary > span { max-width: 660px; }
+    .posts-history summary::-webkit-details-marker { display: none; }
+    .posts-history summary::after { content: "展开"; flex: none; color: #2d96bd; }
+    .posts-history[open] summary::after { content: "收起"; }
+    .posts-history summary:hover { color: #161209; }
+    .posts-history summary:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-timeline { margin-top: 18px; border-top: 1px solid #eee; }
+    .posts-phase {
+        display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 18px;
+        padding: 11px 0; border-bottom: 1px solid #eee;
+    }
+    .posts-phase:last-child { border-bottom: 0; }
+    .posts-phase strong { font-size: 13px; line-height: 1.8; font-weight: 600; color: #161209; }
+    .posts-phase p { margin: 0; font-size: 13px; line-height: 1.8; color: #4a4b50; }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
+    .posts-views a {
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; border: 0;
+    }
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    .dark-theme .posts-index .posts-heading,
+    .dark-theme .posts-history summary:hover,
+    .dark-theme .posts-phase strong,
+    .dark-theme .posts-views a.active,
+    .dark-theme .topic-filter:hover,
+    .dark-theme .topic-filter[aria-pressed="true"],
+    .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
+    .dark-theme .posts-index .posts-lead,
+    .dark-theme .posts-history summary,
+    .dark-theme .posts-phase p,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button { color: #a9a9b3; }
+    .dark-theme .posts-views,
+    .dark-theme .posts-timeline,
+    .dark-theme .posts-phase,
+    .dark-theme .topic-filter,
+    .dark-theme .client-page-button,
+    .dark-theme .posts-list-item,
+    .dark-theme .posts-foot,
+    .dark-theme .client-pagination { border-color: #4a4b50; }
+    .dark-theme .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .18); }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-history summary { align-items: flex-start; }
+        .posts-phase { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+        .posts-views { gap: 18px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
+    }
+</style>
+<div class="post-warp posts-index" data-posts-base="/posts/">
+    <h1 class="posts-heading">文章</h1>
+    
+    <details class="posts-history">
+        <summary>
+            <span>从 2016 年写到现在，已经 162 篇。写的东西跟着我当时在做的事一路变化。</span>
+        </summary>
+        <div class="posts-timeline" aria-label="文章主题变化">
+            
+            <div class="posts-phase">
+                <strong>2016 至 2018</strong>
+                <p>从计算机视觉、机器学习比赛和模型复现写起，边学边做。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2018 至 2020</strong>
+                <p>进入网易游戏后，内容转向数据挖掘、用户分析、A/B 测试和模型部署。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2020 至 2025</strong>
+                <p>在米哈游做算法，继续写反作弊和用户增长，也开始整理技术管理、量化研究和读书笔记。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2025 至今</strong>
+                <p>把重心放到 AI 编程、Agent 与 Skills、内容增长和产品实践，记录真正用过之后的判断、方法和结果。</p>
+            </div>
+            
+        </div>
+    </details>
+    
+
+    <nav class="posts-views" aria-label="文章视图">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" aria-current="page" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </nav>
+
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
+        
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
+        
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-vc/">独立创业观察｜和一位 AI 投资人聊了聊</a></h2>
+    <p class="posts-list-summary">前阵子约了一位做 AI 投资的朋友聊天。
+我的现状 离职半年了，现在做两件事：写东西沉淀想法，写 AI Agent 项目。
+技术上说，做应用层开发门槛不高。难的是找到对的方向，还有搞定流量。
+半成品比较多，这是实话。所以我现在对组队这事很谨慎。在自己没有趟过一些浑水之前，把别人叫过来是不负责任的。而且一个人生活开销可以压缩，有了团队就得给人发工资，压力完全不一样。
+生产变便宜了，什么变贵了 投资人 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-20">February 20, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-an-old-peer/">技术转型｜赴日、副业和内容变现的那些事</a></h2>
+    <p class="posts-list-summary">“我现在回想，我都不知道去年一年我下班就在干嘛。”
 去年底，约了位老同事出来吃饭。他清华本科毕业，之前在公司负责跟进某预研项目。因受不了形式主义，与我先后离职。我俩都很好奇彼此的状态，遂约出来聊了聊天。
 多出来的时间去哪了 以前加班到九点多，累得回家就躺平。前公司七点下班，时间多了两三个小时，按理说应该能做点什么。但没有明确目标，反而天天刷手机、看视频、焦虑、然后循环。
-他也说不清楚，这些多出来的 …</p><div class=posts-list-meta><time datetime=2026-02-17>February 17, 2026</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/>思考</a></div></article><article class=posts-list-item data-tags=行业观察||访谈 data-categories=思考><h2 class=posts-list-title><a href=/posts/talks-with-an-art-cowoker/>创业合伙人｜教育留学 Agent 的未果沟通</a></h2><p class=posts-list-summary>朋友介绍，认识了一位艺术方向的创业者。英国皇家艺术学院毕业，归国后做艺术教育留学方向。目前想用AI做一个辅助创作的工具（订阅制），用于提升学员的作品质量，帮助用户的留学申请更有竞争力。
+他也说不清楚，这些多出来的 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-17">February 17, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-an-art-cowoker/">创业合伙人｜教育留学 Agent 的未果沟通</a></h2>
+    <p class="posts-list-summary">朋友介绍，认识了一位艺术方向的创业者。英国皇家艺术学院毕业，归国后做艺术教育留学方向。目前想用AI做一个辅助创作的工具（订阅制），用于提升学员的作品质量，帮助用户的留学申请更有竞争力。
 我们前后聊了两次，虽最后未达成合作意向，但整个沟通的过程，很有代表性。可以让大家了解想做agent创业的人，都在想什么，以及技术合伙人在想什么。
 市场需求 由于我本人并不具有领域知识，所以以下市场观察均来自对方。
-…</p><div class=posts-list-meta><time datetime=2026-02-08>February 8, 2026</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/>思考</a></div></article><article class=posts-list-item data-tags=行业观察||访谈 data-categories=思考><h2 class=posts-list-title><a href=/posts/talks-with-ex-netease/>游戏人创业｜一位前网易人的'不打工'实验</a></h2><p class=posts-list-summary>网上机缘，认识了同为游戏行业的朋友。网易、腾讯都待过，主要负责市场，特别是境外部分。后出来折腾创业。
+ …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-08">February 8, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-ex-netease/">游戏人创业｜一位前网易人的&#39;不打工&#39;实验</a></h2>
+    <p class="posts-list-summary">网上机缘，认识了同为游戏行业的朋友。网易、腾讯都待过，主要负责市场，特别是境外部分。后出来折腾创业。
 不同于网上的光鲜案例，他并非一帆风顺，而是经历试错、反思和迷茫。这可能是大部分人的常态。
 大厂待不下去了 他说离开大厂，不是因为钱或者岗位，是三件事把他磨得没脾气了。
-第一，太无聊。 职业发展到一定阶段，每天干的事可预见、可重复。你需要不断满足下一级别的要求，才能满足晋升的需要。但这些要求，离开公 …</p><div class=posts-list-meta><time datetime=2026-02-06>February 6, 2026</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/>思考</a></div></article><article class=posts-list-item data-tags=行业观察||访谈 data-categories=思考><h2 class=posts-list-title><a href=/posts/talks-with-an-ex-pm/>独立创业观察｜一位前大厂产品的风险厌恶与思维迷局</a></h2><p class=posts-list-summary>前几日中间人牵线，让我有机会与一位软件工程出身的离职产品进行对话。她之前在大厂做产品，技术背景出身，刚离职出来单干。
+第一，太无聊。 职业发展到一定阶段，每天干的事可预见、可重复。你需要不断满足下一级别的要求，才能满足晋升的需要。但这些要求，离开公 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-06">February 6, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-an-ex-pm/">独立创业观察｜一位前大厂产品的风险厌恶与思维迷局</a></h2>
+    <p class="posts-list-summary">前几日中间人牵线，让我有机会与一位软件工程出身的离职产品进行对话。她之前在大厂做产品，技术背景出身，刚离职出来单干。
 聊了两个多小时，很多东西对我有启发。
 她说这次离职是深思熟虑后的结果，所以心态还算笃定。聊下来，我发现大家面临的困境，可能都很相似。
-创业补课 她知道自己技术行，商业不行。于是报了创业课，还参加了"AI大航海"项目。
-创业课讲的东西很实操：一堂五步法、单面模型、股权分配、投资人沟 …</p><div class=posts-list-meta><time datetime=2026-02-04>February 4, 2026</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/>思考</a></div></article><article class=posts-list-item data-tags=行业观察||访谈 data-categories=思考><h2 class=posts-list-title><a href=/posts/talks-with-an-ex-vc/>AI出海创业观察｜一位前VC（风险投资人）的务实主义</a></h2><p class=posts-list-summary>前段时间某社群，有老板私我说想约个coffee chat。这位创始人之前是VC（风险投资人），现在做AI+2B的出海业务。他的合伙人在南非有家财税公司，算是自带种子客户。
+创业补课 她知道自己技术行，商业不行。于是报了创业课，还参加了&#34;AI大航海&#34;项目。
+创业课讲的东西很实操：一堂五步法、单面模型、股权分配、投资人沟 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-04">February 4, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-an-ex-vc/">AI出海创业观察｜一位前VC（风险投资人）的务实主义</a></h2>
+    <p class="posts-list-summary">前段时间某社群，有老板私我说想约个coffee chat。这位创始人之前是VC（风险投资人），现在做AI+2B的出海业务。他的合伙人在南非有家财税公司，算是自带种子客户。
 我们约在咖啡馆见面，聊了一个多小时。这次对话对我颇有启发，分享给读者朋友。
 业务逻辑 他们的做法很直接：直接去客户公司蹲点。看人家怎么工作的，哪些流程重复，哪些环节费人力。然后用AI改造这些流程，帮客户省成本。
-“别人要100个 …</p><div class=posts-list-meta><time datetime=2026-02-03>February 3, 2026</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/>思考</a></div></article><article class=posts-list-item data-tags=行业观察||访谈 data-categories=思考><h2 class=posts-list-title><a href=/posts/talks-with-an-ai-pm/>AI社交产品观察｜200题与一杯咖啡的背后</a></h2><p class=posts-list-summary>某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。
+“别人要100个 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-03">February 3, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="行业观察||访谈"
+         data-categories="思考">
+    <h2 class="posts-list-title"><a href="/posts/talks-with-an-ai-pm/">AI社交产品观察｜200题与一杯咖啡的背后</a></h2>
+    <p class="posts-list-summary">某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。
 该产品的想法很纯粹：AI分身帮你社交破冰。你先和对方的AI聊，觉得合适再联系真人。团队说，“AI帮社交破冰是真的”。
 就在昨天，产品宣布即将关服。类似的草稿有几份，思来想去，优先发布这篇文章。
-产品逻辑 产品叫"分身"，其运作方式如下：
-首先回答约200道题，涵盖MBTI、大五人格等心理学模型。 …</p><div class=posts-list-meta><time datetime=2026-02-02>February 2, 2026</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/>思考</a></div></article><article class=posts-list-item data-tags="onchain||data mining||数据分析||加密货币||链上数据分析" data-categories=数据挖掘/机器学习><h2 class=posts-list-title><a href=/posts/data-mining-onchain/>链上数据挖掘导读（onchain data mining 101）</a></h2><p class=posts-list-summary>Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。
-你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末 …</p><div class=posts-list-meta><time datetime=2025-12-03>December 3, 2025</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/>数据挖掘/机器学习</a></div></article><article class=posts-list-item data-tags=胡言乱语 data-categories=你以为><h2 class=posts-list-title><a href=/posts/meritocracy-in-mind/>你以为的优绩主义</a></h2><p class=posts-list-summary>你以为的优绩主义 优绩主义声称：这个社会奖赏那些绩效优秀的人。绩效更优的人，值得更多的奖励、更多的资源。你只要努力达到规则、指标要求的一切，你就配得到更多。这套逻辑，撑起了现代大厦的方方面面，从教育升学、到企业管理，甚至两性关系。
-实际上的优绩主义 你并不知道什么是优绩主义。小时候的你，只知道做好了：前面有奖赏。你被许诺一个光鲜靓丽、有空调的办公室生活，而反面则是重复父辈“面朝黄土背朝天”的循环。 …</p><div class=posts-list-meta><time datetime=2025-11-27>November 27, 2025</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/>你以为</a></div></article><article class=posts-list-item data-tags=AI||技术雷达||智能体||MCP||LLM data-categories=技术专栏><h2 class=posts-list-title><a href=/posts/ai-trend-in-my-eyes/>AI构建全景图：六阶段及其方案选型</a></h2><p class=posts-list-summary>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
+产品逻辑 产品叫&#34;分身&#34;，其运作方式如下：
+首先回答约200道题，涵盖MBTI、大五人格等心理学模型。 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-02-02">February 2, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/">思考</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="onchain||data mining||数据分析||加密货币||链上数据分析"
+         data-categories="数据挖掘/机器学习">
+    <h2 class="posts-list-title"><a href="/posts/data-mining-onchain/">链上数据挖掘导读（onchain data mining 101）</a></h2>
+    <p class="posts-list-summary">Web3目前已是一个既定的事实，融入到现有的金融体系之中。围绕Web3、特别是链上数据的服务，也越发成熟。一般意义上的数据挖掘、数据分析，也适用于链上。因为链上的数据是公开的，所以一般人也能获取。
+你是否也好奇，链上的巨鲸用户是如何被发现的、关于比特币的各类指数，是如何计算的。这篇文章，就用来回答链上数据挖掘的基本前置信息。看完本文，你将对链上数据挖掘，有一个基本的认知，并可以通过文末 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2025-12-03">December 3, 2025</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="胡言乱语"
+         data-categories="你以为">
+    <h2 class="posts-list-title"><a href="/posts/meritocracy-in-mind/">你以为的优绩主义</a></h2>
+    <p class="posts-list-summary">你以为的优绩主义 优绩主义声称：这个社会奖赏那些绩效优秀的人。绩效更优的人，值得更多的奖励、更多的资源。你只要努力达到规则、指标要求的一切，你就配得到更多。这套逻辑，撑起了现代大厦的方方面面，从教育升学、到企业管理，甚至两性关系。
+实际上的优绩主义 你并不知道什么是优绩主义。小时候的你，只知道做好了：前面有奖赏。你被许诺一个光鲜靓丽、有空调的办公室生活，而反面则是重复父辈“面朝黄土背朝天”的循环。 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2025-11-27">November 27, 2025</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/">你以为</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="AI||技术雷达||智能体||MCP||LLM"
+         data-categories="技术专栏">
+    <h2 class="posts-list-title"><a href="/posts/ai-trend-in-my-eyes/">AI构建全景图：六阶段及其方案选型</a></h2>
+    <p class="posts-list-summary">在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
-注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提 …</p><div class=posts-list-meta><time datetime=2025-11-26>November 26, 2025</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/>技术专栏</a></div></article><article class=posts-list-item data-tags="LUT||iPhone||Fujifilm||Color Science||Photography" data-categories=技术研究><h2 class=posts-list-title><a href=/posts/luts-for-iphone/>富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a></h2><p class=posts-list-summary>最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。
-笔者通过编程方式，结合实际数据和图表，力图深入浅出解释LUT、Log模式以及为什么需要进行色彩空间转换。
-1. …</p><div class=posts-list-meta><time datetime=2025-11-23>November 23, 2025</time>
-<span aria-hidden=true style="margin:0 6px">·</span><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/>技术研究</a></div></article></div><div class="posts-foot server-posts-foot"><ul class=pagination><li class=page-item><span class=page-link><a href=/posts/>1</a></li></span><li class=page-item><span class=page-link><a href=/posts/page/2/>2</a></li></span><li class=page-item><span class=page-link><a href=/posts/page/3/>3</a></li></span><li class="page-item active"><span class=page-link><a href=/posts/page/4/>4</a></li></span><li class=page-item><span class=page-link><a href=/posts/page/5/>5</a></li></span><li class=page-item><span class=page-link><a href=/posts/page/6/>6</a></li></span><li class=page-item><span class=page-link aria-hidden=true>&mldr;</span></li><li class=page-item><span class=page-link><a href=/posts/page/17/>17</a></li></span></ul><span class=posts-total>共 161 篇</span></div><nav class=client-pagination aria-label=筛选结果分页 hidden></nav><noscript><p class=posts-filter-status>主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript></div><script defer src=/js/posts-filter.js></script></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>const currentTheme=window.localStorage&&window.localStorage.getItem("theme"),isDark=currentTheme==="dark";isDark&&document.body.classList.add("dark-theme")</script></footer><script src=/js/vendor_main.min.js async></script></div></body></html>
+注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2025-11-26">November 26, 2025</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/">技术专栏</a>
+        
+    </div>
+</article>
+
+        
+    </div>
+
+    <div class="posts-foot server-posts-foot">
+        
+
+<ul class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/">1</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/2/">2</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/3/">3</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/posts/page/4/">4</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/5/">5</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/6/">6</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/17/">17</a></li>
+        </span>
+    
+    
+    
+    
+</ul>
+
+        <span class="posts-total">共 162 篇</span>
+    </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
+</div>
+<script defer src="/js/posts-filter.js"></script>
+
+          
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="/js/vendor_main.min.js" async=""></script>
+
+
+
+
+     </div>
+  </body>
+</html>

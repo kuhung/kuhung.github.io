@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCP on 谷粒 kuhung</title><link>https://kuhung.me/tags/mcp/</link><description>Recent content in MCP on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 26 Nov 2025 11:46:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mcp/index.xml" rel="self" type="application/rss+xml"/><item><title>AI构建全景图：六阶段及其方案选型</title><link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link><pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate><guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid><description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MCP on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/mcp/</link>
+    <description>Recent content in MCP on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 26 Nov 2025 11:46:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI构建全景图：六阶段及其方案选型</title>
+      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
+      <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
+      <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
 注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。
@@ -9,7 +24,16 @@
 工具 定位 适用场景 v0 AI 驱动的 UI 原型设计 从文本/视觉输入快速生成 UI Figma Make AI 辅助设计工具 产品经理直接生成交互原型 AI Design Reviewer Figma 设计审计插件 UX/UI 批评、可访问性检测 除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 Prompt-ready 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。
 规范驱动开发 在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。
 AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。
-注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description></item><item><title>P人友好的高德（谷歌）地图 MCP</title><link>https://kuhung.me/posts/amap-mcp/</link><pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate><guid>https://kuhung.me/posts/amap-mcp/</guid><description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
+注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description>
+    </item>
+    
+    <item>
+      <title>P人友好的高德（谷歌）地图 MCP</title>
+      <link>https://kuhung.me/posts/amap-mcp/</link>
+      <pubDate>Wed, 23 Apr 2025 14:37:35 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/amap-mcp/</guid>
+      <description>作为一个51%的J人，出门之前攻略是要做的，但是往往又是DDL驱动模式：不到最后不会做。在大语言模型的帮助下，攻略的生成比以往简单了很多。但是无法联网、充满幻觉的内容，又让人感到不安。不过最近一项工具的出现，使得攻略的心理成本下降非常多。本期主要介绍的是：接入地图信息的攻略生成工具：高德（谷歌）地图MCP。
 生成的结果信息很丰富，信息的组织和呈现好了很多。如下：
 MCP原理 简单来说，MCP是function call的统一定义。他不是什么新技术，而是对现有技术的统一规范。在此之前，我们要实现对LLM大语言模型的调用，主要靠通过直接传入API说明来实现。但这种方式最大的问题就是各家不统一，输出受制于编写人的提示词功底。过于碎片化和重复。
 以往程序之间主要通过API交互。而MCP的出现，大大降低了组装不同程序之间的难度，使得通过文本描述执行特定功能成为可能。
@@ -24,4 +48,8 @@ MCP原理 简单来说，MCP是function call的统一定义。他不是什么新
 在不使用模版时，不同时候生成的文档差异性较大。使用模版后，关键信息例如：交通基本都会被捕捉并描述。
 如果是作者来做这个产品，一般到生成Markdown文件基本都结束了。但是这对于团队出游来说，分享属性稍弱。在社交媒体上的传播属性也偏弱。地图MCP能被作者看到并有深入了解的想法，离不开更进一步的可视化和便携化。在生成一般意义的文档之后，再通过提示词模版转换成html，更进一步pdf，甚至更进一步的可交互应用。从场景出发，方便终端用户，并能从视觉上影响用户，是该产品能够破圈的一个关键。
 作者带着这份攻略，真真切切去走了一番。得出的结论是：如果你是一个计划控，大语言模型加持的MCP可能不适合你。因为它给到的信息要么较模糊，要么受限于训练语料已经过时。但旅行中的意外，也是旅行的意义。综上：是一个P人友好的工具。
-参考资料 五一出行神器来了！高德mcp server查天气+路线一步到位！ AI + 高德MCP旅行规划神器：10分钟搞定完美行程！ mcp-google-map google-maps 关于作者</description></item></channel></rss>
+参考资料 五一出行神器来了！高德mcp server查天气+路线一步到位！ AI + 高德MCP旅行规划神器：10分钟搞定完美行程！ mcp-google-map google-maps 关于作者</description>
+    </item>
+    
+  </channel>
+</rss>

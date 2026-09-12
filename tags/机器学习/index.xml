@@ -1,10 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>机器学习 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link><description>Recent content in 机器学习 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 24 May 2025 12:15:10 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>FastVLM iPhone 安装与实机测评</title><link>https://kuhung.me/posts/fastvlm-iphone-install/</link><pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate><guid>https://kuhung.me/posts/fastvlm-iphone-install/</guid><description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机器学习 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 机器学习 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 24 May 2025 12:15:10 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastVLM iPhone 安装与实机测评</title>
+      <link>https://kuhung.me/posts/fastvlm-iphone-install/</link>
+      <pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/fastvlm-iphone-install/</guid>
+      <description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
 接下来说说实测最关心的性能表现和大小情况：
 作者的测试设备为：
 MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版本 下载大小 TTFT（MBP） 内存占用 FastVLM 0.5B (fp16) 1.15G 400ms 2G FastVLM 1.5B (int8) 1.91G 600ms 2.8G FastVLM 7B (int4) 3.85G 1800ms 5G 注意：以上大小均为适配转换后，适用于Apple Silicon的模型。原始模型大小会有出入，实际按指令下载的大小即为表格所述。
 作者测试下来，认为该技术是一个初步的技术原型。能够满足基本的视频理解，在终端跑起来仍然会有发热的问题。但瑕不掩瑜，未来在端侧，AI将会有更多的可能性。打包后，最小的安装包大小在2G左右。基本上每个模型都会把MBP的CPU温度干到85度以上，风扇直接到6000转以上。真没见过这么吵的MBP。iPhone16pro的情况也大差不多，能感受到明显的温度升高。不过手头没有测温装置，所以无法给到确切的数字。而在速度方面，基本如上图所示，能够在秒级别以内产出首个Token。iPhone再乘以2-3倍。当然，这个时间也取决于提示词、图片复杂度等其他因素。
 对于未来展望部分：调用逻辑和交互上，适当的优化能够降低发热，提升用户体验。无论如何，AI新技术都需要整合到需求中，才会有更大的价值。
-准备工作 系统要求 Mac电脑：macOS 15.2+ 并安装Xcode最新版本 iPhone设备：支持iOS 18.2+的设备（建议运行内存在3G以上，iPhone X 及以上） 开发者账号：普通Apple ID即可 项目特性 ✅ 支持iOS (18.2+) 和macOS (15.2+) ✅ 显示每次推理的首Token时间(TTFT) ✅ 完全离线运行，保护隐私安全 ✅ 灵活的提示系统，支持自定义prompt ✅ 三种不同规格的预训练模型 安装步骤 1. 下载源代码 git clone https://github.com/apple/ml-fastvlm.git cd ml-fastvlm 2.</description></item><item><title>人声提取两大步骤：分离音频背景声+过滤空白</title><link>https://kuhung.me/posts/audio_progress/</link><pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate><guid>https://kuhung.me/posts/audio_progress/</guid><description>背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
+准备工作 系统要求 Mac电脑：macOS 15.2+ 并安装Xcode最新版本 iPhone设备：支持iOS 18.2+的设备（建议运行内存在3G以上，iPhone X 及以上） 开发者账号：普通Apple ID即可 项目特性 ✅ 支持iOS (18.2+) 和macOS (15.2+) ✅ 显示每次推理的首Token时间(TTFT) ✅ 完全离线运行，保护隐私安全 ✅ 灵活的提示系统，支持自定义prompt ✅ 三种不同规格的预训练模型 安装步骤 1. 下载源代码 git clone https://github.com/apple/ml-fastvlm.git cd ml-fastvlm 2.</description>
+    </item>
+    
+    <item>
+      <title>人声提取两大步骤：分离音频背景声&#43;过滤空白</title>
+      <link>https://kuhung.me/posts/audio_progress/</link>
+      <pubDate>Sun, 12 Jan 2020 23:52:45 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/audio_progress/</guid>
+      <description>背景需求 在处理音频中，我们可能会有这样的场景：随着语音设备的能力越来越强，音频数据越来越大。但实际上，音频中的有效部分却很少，抑或是音频的背景声过大，非目标声音。在这样的场景下，我们希望得到人声，去掉噪声，提高信噪比。
 问题界定 这里将问题进行界定，进行子任务拆分：
 将音频的背景声音去除， 去除“无声”阶段。 解决方案 要提高信噪比，这需求在很多场景中有见：比如课堂录音的提取，或者是录音笔的数据存储。
 在使用本领域“高深”的技术前，一定要思考，切莫手上有锤子，就看啥都像钉子。想想该领域的专家会怎么做，如何从专业角度看待该问题；其次想想普通人会怎么做，防止落入经验主义陷阱。
@@ -13,7 +37,16 @@ MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版本 下载�
 该工具已经进行封装，对于简单的人声分离，采用直接调取的方式即可。代码如下
 # Use audio loader explicitly for loading audio waveform : from spleeter.audio.adapter import get_default_audio_adapter audio_loader = get_default_audio_adapter() sample_rate = 44100 waveform, _ = audio_loader.load(&amp;#39;/path/to/audio/file&amp;#39;, sample_rate=sample_rate) # Perform the separation : prediction = separator.separate(waveform) 空白切割 在分离之后，得到人声和背景声。人声分离后，仔细听，就会发现里面有很多空白。对于空白部分，进行切割分离。
 这里参考 stackoverflow 的代码
-from pydub import AudioSegment from pydub.utils import db_to_float # Let&amp;#39;s load up the audio we need... podcast = AudioSegment.</description></item><item><title>机器学习系统设计 Machine learning system design</title><link>https://kuhung.me/posts/machine_learning_system_design/</link><pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate><guid>https://kuhung.me/posts/machine_learning_system_design/</guid><description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
+from pydub import AudioSegment from pydub.utils import db_to_float # Let&amp;#39;s load up the audio we need... podcast = AudioSegment.</description>
+    </item>
+    
+    <item>
+      <title>机器学习系统设计 Machine learning system design</title>
+      <link>https://kuhung.me/posts/machine_learning_system_design/</link>
+      <pubDate>Sun, 01 Dec 2019 18:26:43 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/machine_learning_system_design/</guid>
+      <description>导读 Web app：https://kuhung.me/machine-learning-systems-design/
 机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
 国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程师、机器学习工程师、深度学习工程师都指的这个。
 这一岗位同开发岗位，SDE 一样，也需要足够的系统设计经验。
@@ -40,7 +73,16 @@ Machine learning methods change every year, solving problems stays the same.
 项目的限制条件包括：项目周期多长，有多少算力，需要何种能力，有哪些可用资源。
 特殊例子即：是否需要结合用户做特殊化处理，例如千人千面。
 最后，如同老师设计考试一样，需要考虑如何评估你的系统性能。
-数据流 Machine learning is driven more by data than by algorithms</description></item><item><title>机器学习实践--测试驱动开发</title><link>https://kuhung.me/posts/tdd_drive_ml/</link><pubDate>Sun, 25 Aug 2019 00:22:07 +0800</pubDate><guid>https://kuhung.me/posts/tdd_drive_ml/</guid><description>机器学习现状与问题 2012年，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。
+数据流 Machine learning is driven more by data than by algorithms</description>
+    </item>
+    
+    <item>
+      <title>机器学习实践--测试驱动开发</title>
+      <link>https://kuhung.me/posts/tdd_drive_ml/</link>
+      <pubDate>Sun, 25 Aug 2019 00:22:07 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/tdd_drive_ml/</guid>
+      <description>机器学习现状与问题 2012年，数据科学击败生命科学，成为”21世界最性感的职业“。2016年，AlphaGo 战胜人类顶尖围棋手，深度学习、人工智能一度占领新闻头版头条，并引起一股机器学习新热潮。
 这一效应，一直持续到今年：在2019这一年，高考志愿填报金融遇冷，计算机一跃成为抢手专业，在各大工科院校中，有取代传统电气、机械之势；各学院的研究生院，纷纷开始往人工智能、深度学习上贴近。
 这从一个侧面，反应了民众对于计算机、人工智能、机器学习的就业预期。但是，随着原来越多的从业者涌入，项目落地越来越多，机器学习这一领域的问题也开始暴露，亟需解决。
 机器学习中的常见问题 机器学习的问题，由其特性所致。众所周知，机器学习的发展，离不开大数据技术。海量数据的收集、存储，让算法有了更强大的生命力。通过对大量数据的挖掘、学习，机器学习能够猜你所想，提升购物网站的转化率；能够识别障碍，让自动驾驶成为可能；能够识别风险，扩大业务同时减轻坏账。
@@ -53,7 +95,16 @@ Machine learning methods change every year, solving problems stays the same.
 偿还债务 代码重构，就犹如对你的资产进行一次清点盘算：清除不良资产、偿还债务、进行资产上的重新配置。重构能够有效减缓技术债务带来的负面影响。
 面向对象的 SOLID 原则 SOLID 原则由罗伯特·C·马丁提出，是五项原则&amp;ndash;单一职责、开闭原则、替换原则、接口隔离、依赖倒置的缩写，是面向对象设计与开发的五个基本原则。通过这五项原则，写出来的程序可读性、可扩展性都大大提高，软件维护和系统扩展变得更加容易。
 SRP 单一职责原则：一片代码只做一件事，及一块代码只实现某一特定功能，尽量减少逻辑的交叉堆叠。 OCP 开闭原则：对象对于扩展开放，对于修改关闭。即保持最小单元，写完后不去修改它，而是通过扩展或者配置的方式补充功能。 LSP 替换原则：任何的子类应该轻松由同一对象树的其它对象替代。 ISP 接口隔离原则：不同的接口做不同的事，软件开发没有银弹，接口也是。解耦能解决掉开发过程中“牵一发而动全身”的情况。 DIP 依赖倒置原则：抽象来自于细节、来自于底层，开发依赖抽象。 机器学习与 SOLID 原则 将 SOLID 原则应用于机器学习，会发现：机器学习与 SOLID 原则相互交织。诸如机器学习中的降维，是在减少耦合；胶水代码、数据依赖又与 SOLID 原则相抵触。
-单一职责 机器学习中的数据相互依赖，更有利用 GBDT 生成特征，这一情况与单一职责冲突。所幸可通过降维、正则化的手段减轻影响。 数据获取、数据处理、特征工程、模型训练、模型预测、数据监控，各模块无系统级代码分离，胶水代码处理一切。开发时应小心谨慎。 开闭原则 代码上可以做到开闭，但机器学习会作用于真实世界，引起的反馈将传导至模型内部。如模型预测出一批”潜在犯罪“，于是加大警力盯住这些人，最后发现他们的犯罪率果然高于常人。但他们就真的比别人更”坏“吗？这里有一个”预测、实施、证实“的偏差存在，算法无形中放大了偏见。 替换原则 机器学习的模型效果常由强特征决定，且特征众多。应用尽可能少的特征和数据，取得稳定结果。 接口隔离 模型的数据上游，可能会多个部门共用，数据源的人为变化，可能会导致模型的突然失效。因而需要对数据输入进行监控。 依赖倒置 测试代码、中间数据大量堆积，各个部分相互依赖。应定时对遗留代码和中间数据进行清理。 总结 机器学习、人工智能在经历这几年的爆发之后，出现了很多病症。测试驱动开发、SOLID 原则重构能够有效的缓解病症，还系统健康。如果你的项目已经落地，用 SOLID原则进行一次检查；如果项目还未实施，不妨尝试下测试驱动开发。系统更好的可读性、可维护性，不仅是程序员的责任，更是评判机器学习从业者的一把尺子。</description></item><item><title>数据从业者必读的7本书 Booklist for DE</title><link>https://kuhung.me/posts/book-list-for-ds/</link><pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate><guid>https://kuhung.me/posts/book-list-for-ds/</guid><description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
+单一职责 机器学习中的数据相互依赖，更有利用 GBDT 生成特征，这一情况与单一职责冲突。所幸可通过降维、正则化的手段减轻影响。 数据获取、数据处理、特征工程、模型训练、模型预测、数据监控，各模块无系统级代码分离，胶水代码处理一切。开发时应小心谨慎。 开闭原则 代码上可以做到开闭，但机器学习会作用于真实世界，引起的反馈将传导至模型内部。如模型预测出一批”潜在犯罪“，于是加大警力盯住这些人，最后发现他们的犯罪率果然高于常人。但他们就真的比别人更”坏“吗？这里有一个”预测、实施、证实“的偏差存在，算法无形中放大了偏见。 替换原则 机器学习的模型效果常由强特征决定，且特征众多。应用尽可能少的特征和数据，取得稳定结果。 接口隔离 模型的数据上游，可能会多个部门共用，数据源的人为变化，可能会导致模型的突然失效。因而需要对数据输入进行监控。 依赖倒置 测试代码、中间数据大量堆积，各个部分相互依赖。应定时对遗留代码和中间数据进行清理。 总结 机器学习、人工智能在经历这几年的爆发之后，出现了很多病症。测试驱动开发、SOLID 原则重构能够有效的缓解病症，还系统健康。如果你的项目已经落地，用 SOLID原则进行一次检查；如果项目还未实施，不妨尝试下测试驱动开发。系统更好的可读性、可维护性，不仅是程序员的责任，更是评判机器学习从业者的一把尺子。</description>
+    </item>
+    
+    <item>
+      <title>数据从业者必读的7本书 Booklist for DE</title>
+      <link>https://kuhung.me/posts/book-list-for-ds/</link>
+      <pubDate>Tue, 07 May 2019 23:34:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/book-list-for-ds/</guid>
+      <description>之前逛论坛，或者学习网站，看到很多人喜欢推荐书。自己早些时候也是这样，但是只 mark，却很少去看。如今作为一名社会人，虽说工作之余时间少了很多，但业余仍在坚持阅读。其中，支撑学习动力的一本书便是：《穷查理宝典》。书中查理·芒格提到的多学科思维，以及复利思维，一直在影响我的交友、做事和看问题的方式。
 有关注某校友的公众号，他是做爬虫和可视乎的。某天在推荐 Python 学习资料。封面看着挺美，点开一看，书单质量实属一般。倒像是接的推广，很多估计他自己都没有看过，不太负责任。于是乎，便萌生了出一期书单的想法。而定位，便是数据科学家、数据挖掘工程师、算法工程师的书单。
 首先声明，这份书单不是单纯的技术向书籍，不会有什么西瓜书或是算法导论之类的。他们也是好书，但不会出现在这里。因为在工作中大家就会发现，技术只是工具，好的工匠 != 熟练使用工具的熟练工。看见大局，同时有跨学科的思维，能够从事物的本质去出发，理解和思考它，也很重要。
 作为一个数据挖掘工程师，以下是推荐的核心7本书单。为什么是7本呢？因为人一下子能记住的东西是有限的，记不住就忍不住收藏。收藏了就几乎等于很少看了。收藏一时爽，一直收藏一直爽。所以，书单从原来的二十几本变为了现在的7本。
@@ -79,4 +130,8 @@ top 4 《利用 python 进行数据分析》
 top 3 《金字塔原理》
 主要是逻辑性思维的呈现原则，以及最核心的一点站在对方的角度看问题。书中罗列了很多报告撰写、演讲呈现的方法技巧。比如自上而下思考，自下而上表达，横向概括、纵向分类，独立穷尽。这些机巧用在你的日常生活中的表达和演讲，将会大大加分。
 与之类似的书还有《演说之禅》，以及稍微和职业更靠近的《数据可视化之美》。
-top 2 《咨询的奥秘》</description></item></channel></rss>
+top 2 《咨询的奥秘》</description>
+    </item>
+    
+  </channel>
+</rss>

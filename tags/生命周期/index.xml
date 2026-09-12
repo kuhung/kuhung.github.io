@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生命周期 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link><description>Recent content in 生命周期 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 25 Dec 2019 23:28:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>如何计算用户生命周期价值（CLV）</title><link>https://kuhung.me/posts/lifetimes/</link><pubDate>Wed, 25 Dec 2019 23:28:09 +0800</pubDate><guid>https://kuhung.me/posts/lifetimes/</guid><description>在用户关系管理中，常会遇到些直击灵魂的问题：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生命周期 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+    <description>Recent content in 生命周期 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 25 Dec 2019 23:28:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何计算用户生命周期价值（CLV）</title>
+      <link>https://kuhung.me/posts/lifetimes/</link>
+      <pubDate>Wed, 25 Dec 2019 23:28:09 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/lifetimes/</guid>
+      <description>在用户关系管理中，常会遇到些直击灵魂的问题：
 这批用户到底价值几何？
 为什么要用这种措施去干预用户，而不是另一种方式。
 为什么干预这类用户，而不去干预另一类，他们的划分标准是什么。
@@ -22,4 +37,8 @@ CLV 回答哪些问题 用户活跃还是流失，用户还有多少付费潜力
 lifetims 工具包引入 安装 python 的工具包：
 pip install lifetimes CLV 数据挖掘 用户生命周期判定，需要三个指标
 frequency 用户登录的频率，这里为周期内的天数 recency 用户的最大周期，即第一次活跃到最后一次活跃 T 用户所处阶段，第一次活跃到观察周期结束 对于付费预测，还需要用户的平均付费金额。
-数据获取 从数据库获取 SELECT customer_id, COUNT(distinct date(transaction_at)) - 1 as frequency, datediff(&amp;#39;day&amp;#39;, MIN(transaction_at), MAX(transaction_at)) as recency, AVG(total_price) as monetary_value, datediff(&amp;#39;day&amp;#39;, CURRENT_DATE, MIN(transaction_at)) as T FROM orders GROUP BY customer_id python 处理 from lifetimes.</description></item></channel></rss>
+数据获取 从数据库获取 SELECT customer_id, COUNT(distinct date(transaction_at)) - 1 as frequency, datediff(&amp;#39;day&amp;#39;, MIN(transaction_at), MAX(transaction_at)) as recency, AVG(total_price) as monetary_value, datediff(&amp;#39;day&amp;#39;, CURRENT_DATE, MIN(transaction_at)) as T FROM orders GROUP BY customer_id python 处理 from lifetimes.</description>
+    </item>
+    
+  </channel>
+</rss>

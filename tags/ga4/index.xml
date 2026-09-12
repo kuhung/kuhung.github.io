@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GA4 on 谷粒 kuhung</title><link>https://kuhung.me/tags/ga4/</link><description>Recent content in GA4 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 11 Aug 2026 14:38:58 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ga4/index.xml" rel="self" type="application/rss+xml"/><item><title>GA4 实践指南：从配置到 AI 工作流</title><link>https://kuhung.me/posts/ga4-in-practice/</link><pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate><guid>https://kuhung.me/posts/ga4-in-practice/</guid><description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GA4 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/ga4/</link>
+    <description>Recent content in GA4 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 11 Aug 2026 14:38:58 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ga4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GA4 实践指南：从配置到 AI 工作流</title>
+      <link>https://kuhung.me/posts/ga4-in-practice/</link>
+      <pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ga4-in-practice/</guid>
+      <description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
 为什么单独写一篇？GA4 是 MVP 产品最容易&amp;quot;接了但没用好&amp;quot;的工具。接入只要一行代码，但要真正用出价值，自定义维度注册、埋点约定落文档、多工具口径对齐，这些坑 AI Agent 大概率不知道。
 一、GA4 是什么 GA4 是 Google 提供的免费网站和应用分析工具，2023 年全面替代 Universal Analytics。核心变化从&amp;quot;页面浏览 + 会话&amp;quot;模型转向事件驱动模型：所有用户交互都是事件，页面浏览也不例外。不清楚也没关系，就当成页面计数器好了。
 对小规模开发来说，GA4 的价值在于三点：免费、功能全（漏斗、留存、探索报表都有）、BigQuery 免费导出。代价也很明确：配置门槛高，学习曲线陡，生态相对封闭。但是你如果做出海、做谷歌生态，就没办法绕过它。
@@ -13,4 +28,8 @@ Google Ads 集成：没投广告的话完全不用管。
 三、关键配置项 基础接入不赘述，建属性、建数据流、拿到衡量 ID（G-XXXXXXX），加到网站里。下面是几个容易被忽略、但直接影响数据质量的配置。
 数据保留期限 默认 2 个月，建议改为最长的 14 个月。这个设置只影响探索报表（标准报表不受限），而你真正需要的深度分析全在探索报表里。两个月后数据就查不到了，回头想做同期对比发现数据没了，就晚了。
 路径：GA4 → 管理 → 数据设置 → 数据保留。
-内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description></item></channel></rss>
+内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description>
+    </item>
+    
+  </channel>
+</rss>

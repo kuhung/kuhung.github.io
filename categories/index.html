@@ -1,12 +1,864 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=canonical href=https://kuhung.me/categories/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>Categories | 谷粒 kuhung</title><meta name=title content="Categories | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=javascript:void(0); class=theme-switch><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><div class="post-warp categories"><h2 class=post-title style=text-align:right;padding-bottom:2em>-&nbsp;Categories&nbsp;-</h2><div class=categories-card><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 图表专栏</h3></a><article class=archive-item><a href=https://kuhung.me/posts/bootstrapping-culture/ class=archive-item-link>技术领导｜09 Bootstrapping Culture 塑造团队文化</a></article><article class=archive-item><a href=https://kuhung.me/posts/the-big-leagues/ class=archive-item-link>技术领导｜08 the big leagues 管理组织</a></article><article class=archive-item><a href=https://kuhung.me/posts/managing-managers/ class=archive-item-link>技术领导｜07 managing managers 管理管理者</a></article><article class=archive-item><a href=https://kuhung.me/posts/managing-multiple-teams/ class=archive-item-link>技术领导｜06 managing multiple teams 管理多个团队</a></article><article class=archive-item><a href=https://kuhung.me/posts/build/ class=archive-item-link>思维导图｜《创造：用非传统方式做有价值的事》</a></article><span class=more-post><a href=https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 个人进步</h3></a><article class=archive-item><a href=https://kuhung.me/posts/radar-in-2024/ class=archive-item-link>2023年度总结</a></article><article class=archive-item><a href=https://kuhung.me/posts/career/ class=archive-item-link>2023年的职业发展，还要爬梯子吗</a></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-3/ class=archive-item-link>技术领导｜03 techlead 想象、现实与路线抉择</a></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-2/ class=archive-item-link>技术领导｜03 techlead 与项目管理</a></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-1/ class=archive-item-link>技术领导｜03 techlead 该知道的事情</a></article><span class=more-post><a href=https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 行业趋势</h3></a><article class=archive-item><a href=https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/ class=archive-item-link>LLM Token 支出指数能预测 AI 行情吗？</a></article><article class=archive-item><a href=https://kuhung.me/posts/ttsi/ class=archive-item-link>LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</a></article><article class=archive-item><a href=https://kuhung.me/posts/noainog-202604/ class=archive-item-link>NoAINoG 月刊 | 整个4月，我们在聊什么？</a></article><article class=archive-item><a href=https://kuhung.me/posts/geo-and-anticheat/ class=archive-item-link>GEO的过去、未来与反作弊算法</a></article><article class=archive-item><a href=https://kuhung.me/posts/content-sop/ class=archive-item-link>“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a></article><span class=more-post><a href=https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 经验分享</h3></a><article class=archive-item><a href=https://kuhung.me/posts/personal-website-seo-and-redesign-practice/ class=archive-item-link>个人主页 SEO 优化与结构改版实践</a></article><article class=archive-item><a href=https://kuhung.me/posts/skill-eval-review/ class=archive-item-link>Agent Skills 出来的第10个月，再聊评估几件事</a></article><article class=archive-item><a href=https://kuhung.me/posts/seo-in-practice-sop/ class=archive-item-link>从 SEO 角度做增长，以产品 TrakToken 为例</a></article><article class=archive-item><a href=https://kuhung.me/posts/cang-in-house-review/ class=archive-item-link>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</a></article><article class=archive-item><a href=https://kuhung.me/posts/maximization-your-claude-code-sessions/ class=archive-item-link>提效 20% 的 Claude Code Session 优化方法</a></article><span class=more-post><a href=https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/side-project/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> Side project</h3></a><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-3/ class=archive-item-link>技术领导｜03 techlead 想象、现实与路线抉择</a></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-2/ class=archive-item-link>技术领导｜03 techlead 与项目管理</a></article><article class=archive-item><a href=https://kuhung.me/posts/techlead-vol-1/ class=archive-item-link>技术领导｜03 techlead 该知道的事情</a></article><article class=archive-item><a href=https://kuhung.me/posts/mentoring-vol-3/ class=archive-item-link>技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a></article><article class=archive-item><a href=https://kuhung.me/posts/mentoring-vol-2/ class=archive-item-link>技术领导｜02 Mentoring 如何指导新人</a></article><span class=more-post><a href=https://kuhung.me/categories/side-project/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 数据挖掘 机器学习</h3></a><article class=archive-item><a href=https://kuhung.me/posts/data-mining-onchain/ class=archive-item-link>链上数据挖掘导读（onchain data mining 101）</a></article><article class=archive-item><a href=https://kuhung.me/posts/numerai-guide/ class=archive-item-link>Numerai量化101</a></article><article class=archive-item><a href=https://kuhung.me/posts/three-feature-importances-in-xgb/ class=archive-item-link>Xgboost 三种特征重要性计算方法对比与扩展</a></article><article class=archive-item><a href=https://kuhung.me/posts/interpretable-machine-learning/ class=archive-item-link>算法模型的可解释性</a></article><article class=archive-item><a href=https://kuhung.me/posts/game_anti-cheat/ class=archive-item-link>云游戏，会是反作弊的银弹吗？</a></article><span class=more-post><a href=https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 思考</h3></a><article class=archive-item><a href=https://kuhung.me/posts/meet-with-hardware-ai/ class=archive-item-link>创业独立观察｜和几位 AI 硬件从业者聊了聊</a></article><article class=archive-item><a href=https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/ class=archive-item-link>写在离职一年半</a></article><article class=archive-item><a href=https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/ class=archive-item-link>不要再 Vibe 创业了，干点儿实事吧阿谷</a></article><article class=archive-item><a href=https://kuhung.me/posts/noainog-202604/ class=archive-item-link>NoAINoG 月刊 | 整个4月，我们在聊什么？</a></article><article class=archive-item><a href=https://kuhung.me/posts/talks-with-vc/ class=archive-item-link>独立创业观察｜和一位 AI 投资人聊了聊</a></article><span class=more-post><a href=https://kuhung.me/categories/%E6%80%9D%E8%80%83/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 你以为</h3></a><article class=archive-item><a href=https://kuhung.me/posts/ai-native-in-mind/ class=archive-item-link>你以为的 AI Native</a></article><article class=archive-item><a href=https://kuhung.me/posts/meritocracy-in-mind/ class=archive-item-link>你以为的优绩主义</a></article><article class=archive-item><a href=https://kuhung.me/posts/break-up-in-mind/ class=archive-item-link>你以为的分手</a></article><article class=archive-item><a href=https://kuhung.me/posts/lacking-in-mind/ class=archive-item-link>你以为的匮乏</a></article><article class=archive-item><a href=https://kuhung.me/posts/write-in-mind/ class=archive-item-link>你以为的写作</a></article><span class=more-post><a href=https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 技术技巧</h3></a><article class=archive-item><a href=https://kuhung.me/posts/prompt-guide/ class=archive-item-link>三大LLM厂商的提示词行动指南</a></article><article class=archive-item><a href=https://kuhung.me/posts/confrontation-01/ class=archive-item-link>日常冲突的解决之道</a></article><article class=archive-item><a href=https://kuhung.me/posts/the-effective-engineer-01/ class=archive-item-link>软件开发的高杠杆活动</a></article><article class=archive-item><a href=https://kuhung.me/posts/selling-the-wheel/ class=archive-item-link>工程师如何卖轮子</a></article><article class=archive-item><a href=https://kuhung.me/posts/three-feature-importances-in-xgb/ class=archive-item-link>Xgboost 三种特征重要性计算方法对比与扩展</a></article><span class=more-post><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/ class=more-post-link>More >></a></span></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/ai/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> Ai</h3></a><article class=archive-item><a href=https://kuhung.me/posts/image2-for-makeover/ class=archive-item-link>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</a></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-3/ class=archive-item-link>AI相亲小镇开发纪要（三）</a></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-2/ class=archive-item-link>AI相亲小镇开发纪要（二）</a></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-1/ class=archive-item-link>AI相亲小镇开发纪要（一）</a></article><article class=archive-item><a href=https://kuhung.me/posts/agent-case-studies/ class=archive-item-link>41个 LangChain / LangGraph / LangSmith 案例研究</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 商业分析</h3></a><article class=archive-item><a href=https://kuhung.me/posts/strategy-01/ class=archive-item-link>如何理解战略</a></article><article class=archive-item><a href=https://kuhung.me/posts/selling-the-wheel/ class=archive-item-link>工程师如何卖轮子</a></article><article class=archive-item><a href=https://kuhung.me/posts/abtest-2/ class=archive-item-link>A/B test 评价指标的选择</a></article><article class=archive-item><a href=https://kuhung.me/posts/abtest/ class=archive-item-link>A/B test 揭秘之什么是 A/B test</a></article><article class=archive-item><a href=https://kuhung.me/posts/competing-on-analytics/ class=archive-item-link>凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 计算机视觉</h3></a><article class=archive-item><a href=https://kuhung.me/posts/vgc-it/ class=archive-item-link>如何设计一套类似视觉中国“鹰眼”的技术</a></article><article class=archive-item><a href=https://kuhung.me/posts/ssd/ class=archive-item-link>Single Shot MultiBox Detector Keras version</a></article><article class=archive-item><a href=https://kuhung.me/posts/yysgan/ class=archive-item-link>yysGAN 生成对抗网络，在游戏角色生成中的尝试</a></article><article class=archive-item><a href=https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/ class=archive-item-link>Cats VS. Dogs 图像分类之猫狗大战</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E5%88%9B%E4%B8%9A/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 创业</h3></a><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-3/ class=archive-item-link>AI相亲小镇开发纪要（三）</a></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-2/ class=archive-item-link>AI相亲小镇开发纪要（二）</a></article><article class=archive-item><a href=https://kuhung.me/posts/love-in-ai-town-1/ class=archive-item-link>AI相亲小镇开发纪要（一）</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 自然语言处理</h3></a><article class=archive-item><a href=https://kuhung.me/posts/audio_progress/ class=archive-item-link>人声提取两大步骤：分离音频背景声+过滤空白</a></article><article class=archive-item><a href=https://kuhung.me/posts/slack-gpt2-bot/ class=archive-item-link>GPT2 模型生成假正经文稿 Slack gpt2 Bot</a></article><article class=archive-item><a href=https://kuhung.me/posts/bert-chinese-finetune/ class=archive-item-link>中文语料的 Bert 微调 Bert Chinese Finetune</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 项目备忘</h3></a><article class=archive-item><a href=https://kuhung.me/posts/amap-mcp/ class=archive-item-link>P人友好的高德（谷歌）地图 MCP</a></article><article class=archive-item><a href=https://kuhung.me/posts/iot-home/ class=archive-item-link>自己动手将米家接入Homekit，构建低成本智能家居系统</a></article><article class=archive-item><a href=https://kuhung.me/posts/web_deploy/ class=archive-item-link>产品实践之应用沉淀</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 技术研究</h3></a><article class=archive-item><a href=https://kuhung.me/posts/luts-for-iphone/ class=archive-item-link>富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a></article><article class=archive-item><a href=https://kuhung.me/posts/fastvlm-iphone-install/ class=archive-item-link>FastVLM iPhone 安装与实机测评</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 创业思考</h3></a><article class=archive-item><a href=https://kuhung.me/posts/build-in-2015/ class=archive-item-link>从2015到2025：技术创业的变与不变</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 工具</h3></a><article class=archive-item><a href=https://kuhung.me/posts/jlpt-push/ class=archive-item-link>差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%88%91%E5%8F%98%E6%88%90%E4%BA%86/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 我变成了</h3></a><article class=archive-item><a href=https://kuhung.me/posts/guess-you-like/ class=archive-item-link>亲爱的，我变成了“猜你喜欢”</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 技术专栏</h3></a><article class=archive-item><a href=https://kuhung.me/posts/ai-trend-in-my-eyes/ class=archive-item-link>AI构建全景图：六阶段及其方案选型</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 技术趋势</h3></a><article class=archive-item><a href=https://kuhung.me/posts/build-in-2015/ class=archive-item-link>从2015到2025：技术创业的变与不变</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E6%9E%84%E5%BB%BA%E5%A4%87%E5%BF%98%E5%BD%95/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 构建备忘录</h3></a><article class=archive-item><a href=https://kuhung.me/posts/lean-productive/ class=archive-item-link>精益创造（lean build）</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 系统设计</h3></a><article class=archive-item><a href=https://kuhung.me/posts/context-engineering/ class=archive-item-link>所谓上下文工程，实质为Agent系统设计</a></article></div></div><div class=card-item><div class=categories><a href=https://kuhung.me/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF/><h3><i class="iconfont icon-folder" style=padding-right:3px></i> 职业成长</h3></a><article class=archive-item><a href=https://kuhung.me/posts/build-in-2015/ class=archive-item-link>从2015到2025：技术创业的变与不变</a></article></div></div></div></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>const currentTheme=window.localStorage&&window.localStorage.getItem("theme"),isDark=currentTheme==="dark";isDark&&document.body.classList.add("dark-theme")</script></footer><script src=/js/vendor_main.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  
+  
+  <link rel="canonical" href="https://kuhung.me/categories/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Categories | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Categories | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+
+
+
+
+
+
+<div class="post-warp categories">
+    <h2 class="post-title" style="text-align:right;padding-bottom:2em">-&nbsp;Categories&nbsp;-</h2>
+
+
+<div class="categories-card">
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 图表专栏  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/bootstrapping-culture/" class="archive-item-link">技术领导｜09 Bootstrapping Culture 塑造团队文化</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/the-big-leagues/" class="archive-item-link">技术领导｜08 the big leagues 管理组织</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/managing-managers/" class="archive-item-link">技术领导｜07 managing managers 管理管理者</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/managing-multiple-teams/" class="archive-item-link">技术领导｜06 managing multiple teams 管理多个团队</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/build/" class="archive-item-link">思维导图｜《创造：用非传统方式做有价值的事》</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 个人进步  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/radar-in-2024/" class="archive-item-link">2023年度总结</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/career/" class="archive-item-link">2023年的职业发展，还要爬梯子吗</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/techlead-vol-3/" class="archive-item-link">技术领导｜03 techlead 想象、现实与路线抉择</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/techlead-vol-2/" class="archive-item-link">技术领导｜03 techlead 与项目管理</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/techlead-vol-1/" class="archive-item-link">技术领导｜03 techlead 该知道的事情</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 行业趋势  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/" class="archive-item-link">LLM Token 支出指数能预测 AI 行情吗？</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/ttsi/" class="archive-item-link">LLM Token Expenditure Index 是怎么算出来的？我复现并给出了异动归因</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/noainog-202604/" class="archive-item-link">NoAINoG 月刊 | 整个4月，我们在聊什么？</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/geo-and-anticheat/" class="archive-item-link">GEO的过去、未来与反作弊算法</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/content-sop/" class="archive-item-link">“硅基奇谈”播客、视频生成工作流，借助notebooklm、whisper与three.js</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 经验分享  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/" class="archive-item-link">用 AI 优化我的投资组合：从宏观配置到美股持仓复盘</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/personal-website-seo-and-redesign-practice/" class="archive-item-link">个人主页 SEO 优化与结构改版实践</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/skill-eval-review/" class="archive-item-link">Agent Skills 出来的第10个月，再聊评估几件事</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/seo-in-practice-sop/" class="archive-item-link">从 SEO 角度做增长，以产品 TrakToken 为例</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/cang-in-house-review/" class="archive-item-link">五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/side-project/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> Side project  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/techlead-vol-3/" class="archive-item-link">技术领导｜03 techlead 想象、现实与路线抉择</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/techlead-vol-2/" class="archive-item-link">技术领导｜03 techlead 与项目管理</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/techlead-vol-1/" class="archive-item-link">技术领导｜03 techlead 该知道的事情</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/mentoring-vol-3/" class="archive-item-link">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/mentoring-vol-2/" class="archive-item-link">技术领导｜02 Mentoring 如何指导新人</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/side-project/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 数据挖掘 机器学习  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/data-mining-onchain/" class="archive-item-link">链上数据挖掘导读（onchain data mining 101）</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/numerai-guide/" class="archive-item-link">Numerai量化101</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/three-feature-importances-in-xgb/" class="archive-item-link">Xgboost 三种特征重要性计算方法对比与扩展</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/interpretable-machine-learning/" class="archive-item-link">算法模型的可解释性</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/game_anti-cheat/" class="archive-item-link">云游戏，会是反作弊的银弹吗？</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 思考  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/meet-with-hardware-ai/" class="archive-item-link">创业独立观察｜和几位 AI 硬件从业者聊了聊</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/" class="archive-item-link">写在离职一年半</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/" class="archive-item-link">不要再 Vibe 创业了，干点儿实事吧阿谷</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/noainog-202604/" class="archive-item-link">NoAINoG 月刊 | 整个4月，我们在聊什么？</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/talks-with-vc/" class="archive-item-link">独立创业观察｜和一位 AI 投资人聊了聊</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E6%80%9D%E8%80%83/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 你以为  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/ai-native-in-mind/" class="archive-item-link">你以为的 AI Native</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/meritocracy-in-mind/" class="archive-item-link">你以为的优绩主义</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/break-up-in-mind/" class="archive-item-link">你以为的分手</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/lacking-in-mind/" class="archive-item-link">你以为的匮乏</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/write-in-mind/" class="archive-item-link">你以为的写作</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 技术技巧  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/prompt-guide/" class="archive-item-link">三大LLM厂商的提示词行动指南</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/confrontation-01/" class="archive-item-link">日常冲突的解决之道</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/the-effective-engineer-01/" class="archive-item-link">软件开发的高杠杆活动</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/selling-the-wheel/" class="archive-item-link">工程师如何卖轮子</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/three-feature-importances-in-xgb/" class="archive-item-link">Xgboost 三种特征重要性计算方法对比与扩展</a>
+                </article>
+              
+               
+                  <span class="more-post">
+                    <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/" class="more-post-link">More  >></a>
+               </span> 
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/ai/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> Ai  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/image2-for-makeover/" class="archive-item-link">一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/love-in-ai-town-3/" class="archive-item-link">AI相亲小镇开发纪要（三）</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/love-in-ai-town-2/" class="archive-item-link">AI相亲小镇开发纪要（二）</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/love-in-ai-town-1/" class="archive-item-link">AI相亲小镇开发纪要（一）</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/agent-case-studies/" class="archive-item-link">41个 LangChain / LangGraph / LangSmith 案例研究</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 商业分析  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/strategy-01/" class="archive-item-link">如何理解战略</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/selling-the-wheel/" class="archive-item-link">工程师如何卖轮子</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/abtest-2/" class="archive-item-link">A/B test 评价指标的选择</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/abtest/" class="archive-item-link">A/B test 揭秘之什么是 A/B test</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/competing-on-analytics/" class="archive-item-link">凭什么打败竞争对手？基于数据、基于分析的商业竞争 Competing on Analytics </a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 计算机视觉  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/vgc-it/" class="archive-item-link">如何设计一套类似视觉中国“鹰眼”的技术</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/ssd/" class="archive-item-link">Single Shot MultiBox Detector Keras version</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/yysgan/" class="archive-item-link">yysGAN 生成对抗网络，在游戏角色生成中的尝试</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/" class="archive-item-link">Cats VS. Dogs 图像分类之猫狗大战</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 创业  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/love-in-ai-town-3/" class="archive-item-link">AI相亲小镇开发纪要（三）</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/love-in-ai-town-2/" class="archive-item-link">AI相亲小镇开发纪要（二）</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/love-in-ai-town-1/" class="archive-item-link">AI相亲小镇开发纪要（一）</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 自然语言处理  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/audio_progress/" class="archive-item-link">人声提取两大步骤：分离音频背景声&#43;过滤空白</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/slack-gpt2-bot/" class="archive-item-link">GPT2 模型生成假正经文稿 Slack gpt2 Bot </a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/bert-chinese-finetune/" class="archive-item-link">中文语料的 Bert 微调 Bert Chinese Finetune </a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 项目备忘  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/amap-mcp/" class="archive-item-link">P人友好的高德（谷歌）地图 MCP</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/iot-home/" class="archive-item-link">自己动手将米家接入Homekit，构建低成本智能家居系统</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/web_deploy/" class="archive-item-link">产品实践之应用沉淀</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 技术研究  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/luts-for-iphone/" class="archive-item-link">富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</a>
+                </article>
+                 
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/fastvlm-iphone-install/" class="archive-item-link">FastVLM iPhone 安装与实机测评</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 创业思考  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/build-in-2015/" class="archive-item-link">从2015到2025：技术创业的变与不变</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 工具  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/jlpt-push/" class="archive-item-link">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%88%91%E5%8F%98%E6%88%90%E4%BA%86/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 我变成了  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/guess-you-like/" class="archive-item-link">亲爱的，我变成了“猜你喜欢”</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 技术专栏  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/ai-trend-in-my-eyes/" class="archive-item-link">AI构建全景图：六阶段及其方案选型</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 技术趋势  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/build-in-2015/" class="archive-item-link">从2015到2025：技术创业的变与不变</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E6%9E%84%E5%BB%BA%E5%A4%87%E5%BF%98%E5%BD%95/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 构建备忘录  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/lean-productive/" class="archive-item-link">精益创造（lean build）</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 系统设计  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/context-engineering/" class="archive-item-link">所谓上下文工程，实质为Agent系统设计</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+    
+    
+    
+         <div class="card-item">
+           <div class="categories" >
+             <a href="https://kuhung.me/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF/"><h3> <i class="iconfont icon-folder" style="padding-right: 3px"></i> 职业成长  </h3> </a>
+                  
+                <article class="archive-item">
+                <a href="https://kuhung.me/posts/build-in-2015/" class="archive-item-link">从2015到2025：技术创业的变与不变</a>
+                </article>
+              
+               
+           </div>
+        </div>
+    
+
+</div> 
+ 
+
+</div>
+
+          
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="/js/vendor_main.min.js" async=""></script>
+
+
+
+
+     </div>
+  </body>
+</html>

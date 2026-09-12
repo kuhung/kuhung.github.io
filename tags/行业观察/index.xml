@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>行业观察 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link><description>Recent content in 行业观察 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Aug 2026 22:32:01 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>创业独立观察｜和几位 AI 硬件从业者聊了聊</title><link>https://kuhung.me/posts/meet-with-hardware-ai/</link><pubDate>Sat, 01 Aug 2026 22:32:01 +0800</pubDate><guid>https://kuhung.me/posts/meet-with-hardware-ai/</guid><description>前阵子参加了一场 AI 硬件方向的闭门交流，在场的有做可穿戴设备的创始人、做机器人的、做宠物科技的，还有几个在做全球化的。聊了快三个小时，几条判断我印象很深，先放最前面：AI 硬件真正要补的短板不是&amp;quot;听得见看得清&amp;quot;，而是&amp;quot;记不记得住&amp;quot;；通用大模型讲故事好听，但真正需要的是&amp;quot;只做一件事&amp;quot;的小模型；情感陪伴这件事，AI 越完美越容易崩，反倒是有点&amp;quot;小脾气&amp;quot;、需要你投喂才跟你亲的设定更稳；出海反直觉建议，把一半预算投向拉美和非洲，而不是单单做高客单价的美国日本。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>行业观察 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/</link>
+    <description>Recent content in 行业观察 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 01 Aug 2026 22:32:01 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>创业独立观察｜和几位 AI 硬件从业者聊了聊</title>
+      <link>https://kuhung.me/posts/meet-with-hardware-ai/</link>
+      <pubDate>Sat, 01 Aug 2026 22:32:01 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/meet-with-hardware-ai/</guid>
+      <description>前阵子参加了一场 AI 硬件方向的闭门交流，在场的有做可穿戴设备的创始人、做机器人的、做宠物科技的，还有几个在做全球化的。聊了快三个小时，几条判断我印象很深，先放最前面：AI 硬件真正要补的短板不是&amp;quot;听得见看得清&amp;quot;，而是&amp;quot;记不记得住&amp;quot;；通用大模型讲故事好听，但真正需要的是&amp;quot;只做一件事&amp;quot;的小模型；情感陪伴这件事，AI 越完美越容易崩，反倒是有点&amp;quot;小脾气&amp;quot;、需要你投喂才跟你亲的设定更稳；出海反直觉建议，把一半预算投向拉美和非洲，而不是单单做高客单价的美国日本。
 往下是具体内容，按话题整理。
 为什么非得做硬件 现在大部分 AI 交互还是靠手机屏幕或者电脑。但有人提了一个很有意思的说法：&amp;ldquo;你的世界应该是你最大的 prompt。&amp;rdquo;
 什么意思呢？你每次跟 AI 聊天，都得重新交代一遍背景。AI 不知道你在哪，不知道你刚跟谁吃完饭，不知道你桌上放着什么。这中间有一条巨大的&amp;quot;情境鸿沟&amp;quot;。
@@ -16,7 +31,16 @@
 Garmin 的&amp;quot;面粉&amp;quot;模式 聊到生态，有人提了 Garmin 的做法。Garmin 手表通过传感器收集原始数据，相当于&amp;quot;收割小麦&amp;quot;，然后把数据通过开放 API 加工成&amp;quot;面粉&amp;quot;，提供给合作伙伴。合作伙伴是各个垂直领域的&amp;quot;手艺人&amp;quot;，用面粉做自己的特色产品，Garmin 自己不下场做面包。
 两个案例挺有意思：一个是连续血糖监测（CGM），把运动、睡眠、压力数据跟血糖数据整合分析，给运动员和糖尿病前期患者提供整合健康方案；另一个是人宠互动，用主人的心率变异性数据算出一个&amp;quot;吸猫力指数&amp;quot;，把交互从人机变成了人和宠物之间的真实互动。压力大的时候提醒你去撸猫，比推送一条&amp;quot;你该休息了&amp;quot;场景感强得多。
 出海三件事 对于想出海的中国产品，几个人总结了三点。
-第一，品牌真实性。 不是靠砸营销预算，是靠用户社群自然增长。Duolingo 在哪个国家核心体验都一样，Notion 靠社群口碑起来的，持续交付一个核心价值，别搞碎片化营销。</description></item><item><title>独立创业观察｜和一位 AI 投资人聊了聊</title><link>https://kuhung.me/posts/talks-with-vc/</link><pubDate>Fri, 20 Feb 2026 22:15:01 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-vc/</guid><description>前阵子约了一位做 AI 投资的朋友聊天。
+第一，品牌真实性。 不是靠砸营销预算，是靠用户社群自然增长。Duolingo 在哪个国家核心体验都一样，Notion 靠社群口碑起来的，持续交付一个核心价值，别搞碎片化营销。</description>
+    </item>
+    
+    <item>
+      <title>独立创业观察｜和一位 AI 投资人聊了聊</title>
+      <link>https://kuhung.me/posts/talks-with-vc/</link>
+      <pubDate>Fri, 20 Feb 2026 22:15:01 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-vc/</guid>
+      <description>前阵子约了一位做 AI 投资的朋友聊天。
 我的现状 离职半年了，现在做两件事：写东西沉淀想法，写 AI Agent 项目。
 技术上说，做应用层开发门槛不高。难的是找到对的方向，还有搞定流量。
 半成品比较多，这是实话。所以我现在对组队这事很谨慎。在自己没有趟过一些浑水之前，把别人叫过来是不负责任的。而且一个人生活开销可以压缩，有了团队就得给人发工资，压力完全不一样。
@@ -44,7 +68,16 @@ AI 在提供&amp;quot;深刻洞察&amp;quot;这件事上，还差得远。
 我作为独立开发者，在意的是内容、技术、方向选择。我对 AI 工具有清醒认识，强调个人消化和深度思考。我对组队很谨慎，因为我得负责。
 他作为投资人，在意的是趋势发现和组织能力。他提出创业工厂模式，通过批量化、低成本试错来对冲风险。他的投资逻辑倾向于有壁垒的硬件和直面人性的软件应用。他追求极致组织效率，用&amp;quot;AI 挖趋势 -&amp;gt; 精准找人&amp;quot;的模式，不搞那些低效的线下社交活动。
 最后我们聊了聊未来可能的合作方向：
-我可以作为有经验的 Leader 角色，参与到他们的创业工厂计划中，一起孵化项目。或者，我通过内容创作吸引开发者社群，他们提供验证后的项目和资源，形成&amp;quot;流量-项目-转化&amp;quot;的路径。还有一个可能是，在他们正在研发的&amp;quot;AI for VC&amp;quot; Agent 项目上，做一些技术层面的交流与合作。</description></item><item><title>技术转型｜赴日、副业和内容变现的那些事</title><link>https://kuhung.me/posts/talks-with-an-old-peer/</link><pubDate>Tue, 17 Feb 2026 22:42:30 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-an-old-peer/</guid><description>&amp;ldquo;我现在回想，我都不知道去年一年我下班就在干嘛。&amp;rdquo;
+我可以作为有经验的 Leader 角色，参与到他们的创业工厂计划中，一起孵化项目。或者，我通过内容创作吸引开发者社群，他们提供验证后的项目和资源，形成&amp;quot;流量-项目-转化&amp;quot;的路径。还有一个可能是，在他们正在研发的&amp;quot;AI for VC&amp;quot; Agent 项目上，做一些技术层面的交流与合作。</description>
+    </item>
+    
+    <item>
+      <title>技术转型｜赴日、副业和内容变现的那些事</title>
+      <link>https://kuhung.me/posts/talks-with-an-old-peer/</link>
+      <pubDate>Tue, 17 Feb 2026 22:42:30 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-an-old-peer/</guid>
+      <description>&amp;ldquo;我现在回想，我都不知道去年一年我下班就在干嘛。&amp;rdquo;
 去年底，约了位老同事出来吃饭。他清华本科毕业，之前在公司负责跟进某预研项目。因受不了形式主义，与我先后离职。我俩都很好奇彼此的状态，遂约出来聊了聊天。
 多出来的时间去哪了 以前加班到九点多，累得回家就躺平。前公司七点下班，时间多了两三个小时，按理说应该能做点什么。但没有明确目标，反而天天刷手机、看视频、焦虑、然后循环。
 他也说不清楚，这些多出来的时间到底怎么用的。
@@ -78,7 +111,16 @@ YouTube没流量 他还试过把内容翻译成日文，发到YouTube上。结�
 如果你也在折腾类似的事，欢迎找我聊聊。
 声明：以上内容由对话与回忆整理，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。
 关注我，带你看更多价值内容。
-关于作者</description></item><item><title>创业合伙人｜教育留学 Agent 的未果沟通</title><link>https://kuhung.me/posts/talks-with-an-art-cowoker/</link><pubDate>Sun, 08 Feb 2026 18:06:45 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-an-art-cowoker/</guid><description>朋友介绍，认识了一位艺术方向的创业者。英国皇家艺术学院毕业，归国后做艺术教育留学方向。目前想用AI做一个辅助创作的工具（订阅制），用于提升学员的作品质量，帮助用户的留学申请更有竞争力。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>创业合伙人｜教育留学 Agent 的未果沟通</title>
+      <link>https://kuhung.me/posts/talks-with-an-art-cowoker/</link>
+      <pubDate>Sun, 08 Feb 2026 18:06:45 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-an-art-cowoker/</guid>
+      <description>朋友介绍，认识了一位艺术方向的创业者。英国皇家艺术学院毕业，归国后做艺术教育留学方向。目前想用AI做一个辅助创作的工具（订阅制），用于提升学员的作品质量，帮助用户的留学申请更有竞争力。
 我们前后聊了两次，虽最后未达成合作意向，但整个沟通的过程，很有代表性。可以让大家了解想做agent创业的人，都在想什么，以及技术合伙人在想什么。
 市场需求 由于我本人并不具有领域知识，所以以下市场观察均来自对方。
 在他视角里，国内艺术教育有个结构性缺陷：基本功练得多，但创意思维和研究方法的训练几乎空白。学生画得不错，让他们写一个完整的创作逻辑去申请海外院校，就相对困难。而后者，往往是竞争优势所在。
@@ -110,7 +152,16 @@ To C 按月订阅，逻辑简单。但200块的订阅费，客户是否买单，
 需求没理清就开工，大概率会白忙。更何况，更深的利益分配问题还未涉及。
 声明：以上内容由对话与回忆整理，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。
 关注我，带你看更多价值内容。
-关于作者</description></item><item><title>游戏人创业｜一位前网易人的'不打工'实验</title><link>https://kuhung.me/posts/talks-with-ex-netease/</link><pubDate>Fri, 06 Feb 2026 22:14:29 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-ex-netease/</guid><description>网上机缘，认识了同为游戏行业的朋友。网易、腾讯都待过，主要负责市场，特别是境外部分。后出来折腾创业。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>游戏人创业｜一位前网易人的&#39;不打工&#39;实验</title>
+      <link>https://kuhung.me/posts/talks-with-ex-netease/</link>
+      <pubDate>Fri, 06 Feb 2026 22:14:29 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-ex-netease/</guid>
+      <description>网上机缘，认识了同为游戏行业的朋友。网易、腾讯都待过，主要负责市场，特别是境外部分。后出来折腾创业。
 不同于网上的光鲜案例，他并非一帆风顺，而是经历试错、反思和迷茫。这可能是大部分人的常态。
 大厂待不下去了 他说离开大厂，不是因为钱或者岗位，是三件事把他磨得没脾气了。
 第一，太无聊。 职业发展到一定阶段，每天干的事可预见、可重复。你需要不断满足下一级别的要求，才能满足晋升的需要。但这些要求，离开公司基本没用。爬梯子这件事本身，让人觉得没意思。
@@ -134,7 +185,16 @@ To C 按月订阅，逻辑简单。但200块的订阅费，客户是否买单，
 若你也在探索从大厂出来后的方向，欢迎找我来聊。
 声明：以上内容由录音片段与回忆整理，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。
 关注我，带你看更多价值访谈。
-关于作者</description></item><item><title>独立创业观察｜一位前大厂产品的风险厌恶与思维迷局</title><link>https://kuhung.me/posts/talks-with-an-ex-pm/</link><pubDate>Wed, 04 Feb 2026 23:17:15 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-an-ex-pm/</guid><description>前几日中间人牵线，让我有机会与一位软件工程出身的离职产品进行对话。她之前在大厂做产品，技术背景出身，刚离职出来单干。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>独立创业观察｜一位前大厂产品的风险厌恶与思维迷局</title>
+      <link>https://kuhung.me/posts/talks-with-an-ex-pm/</link>
+      <pubDate>Wed, 04 Feb 2026 23:17:15 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-an-ex-pm/</guid>
+      <description>前几日中间人牵线，让我有机会与一位软件工程出身的离职产品进行对话。她之前在大厂做产品，技术背景出身，刚离职出来单干。
 聊了两个多小时，很多东西对我有启发。
 她说这次离职是深思熟虑后的结果，所以心态还算笃定。聊下来，我发现大家面临的困境，可能都很相似。
 创业补课 她知道自己技术行，商业不行。于是报了创业课，还参加了&amp;quot;AI大航海&amp;quot;项目。
@@ -180,7 +240,16 @@ AI大航海是个三四个月的线上项目，每周要交作业，写AI教程�
 若你也在做独立创业的探索，欢迎找我来聊。
 声明：以上内容由录音与回忆串联，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。
 关注我，带你看更多类似访谈。
-关于作者</description></item><item><title>AI出海创业观察｜一位前VC（风险投资人）的务实主义</title><link>https://kuhung.me/posts/talks-with-an-ex-vc/</link><pubDate>Tue, 03 Feb 2026 23:17:15 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-an-ex-vc/</guid><description>前段时间某社群，有老板私我说想约个coffee chat。这位创始人之前是VC（风险投资人），现在做AI+2B的出海业务。他的合伙人在南非有家财税公司，算是自带种子客户。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>AI出海创业观察｜一位前VC（风险投资人）的务实主义</title>
+      <link>https://kuhung.me/posts/talks-with-an-ex-vc/</link>
+      <pubDate>Tue, 03 Feb 2026 23:17:15 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-an-ex-vc/</guid>
+      <description>前段时间某社群，有老板私我说想约个coffee chat。这位创始人之前是VC（风险投资人），现在做AI+2B的出海业务。他的合伙人在南非有家财税公司，算是自带种子客户。
 我们约在咖啡馆见面，聊了一个多小时。这次对话对我颇有启发，分享给读者朋友。
 业务逻辑 他们的做法很直接：直接去客户公司蹲点。看人家怎么工作的，哪些流程重复，哪些环节费人力。然后用AI改造这些流程，帮客户省成本。
 &amp;ldquo;别人要100个人做的项目，我们30个人就能搞定。&amp;rdquo; 他说他们已经把开发成本压到三分之一，未来可能是十分之一、二十分之一。
@@ -226,7 +295,16 @@ End
 你也在做AI相关的创业探索，欢迎找我来聊。
 声明：以上内容由录音与回忆串联，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。
 关注我，带你看更多类似访谈。
-关于作者</description></item><item><title>AI社交产品观察｜200题与一杯咖啡的背后</title><link>https://kuhung.me/posts/talks-with-an-ai-pm/</link><pubDate>Mon, 02 Feb 2026 23:24:45 +0800</pubDate><guid>https://kuhung.me/posts/talks-with-an-ai-pm/</guid><description>某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>AI社交产品观察｜200题与一杯咖啡的背后</title>
+      <link>https://kuhung.me/posts/talks-with-an-ai-pm/</link>
+      <pubDate>Mon, 02 Feb 2026 23:24:45 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/talks-with-an-ai-pm/</guid>
+      <description>某书刷到AI社交团队，地推请人喝咖啡，换取产品注册。那段时间，我正在琢磨AI相亲小镇，遂报名前往现场。
 该产品的想法很纯粹：AI分身帮你社交破冰。你先和对方的AI聊，觉得合适再联系真人。团队说，&amp;ldquo;AI帮社交破冰是真的&amp;rdquo;。
 就在昨天，产品宣布即将关服。类似的草稿有几份，思来想去，优先发布这篇文章。
 产品逻辑 产品叫&amp;quot;分身&amp;quot;，其运作方式如下：
@@ -262,7 +340,16 @@ AI面试官。将技术应用于模拟面试场景，为求职者提供高度拟
 你在江浙沪，也在做类似方向的探索，欢迎约我来聊。
 声明：以上内容由片段录音与回忆串联，可能存在偏颇错位，仅供参考，不代表当事人立场、不构成投资建议。
 关注我，带你看更多类似访谈。
-关于作者</description></item><item><title>数据开发在2020年应当是什么样子的</title><link>https://kuhung.me/posts/data-engineering-in-2020/</link><pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate><guid>https://kuhung.me/posts/data-engineering-in-2020/</guid><description>我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样搞，浪费时间、浪费算力。 目前这家，则大不相同。技术债不多，数据治理做得还不错。没有大谈特谈数据中台，数据开发的每一行代码，都是为下游，而不是晋升服务。数据挖掘也很少碰原始 log，这节约了大量时间，让下游有更多时间集中在业务上。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>数据开发在2020年应当是什么样子的</title>
+      <link>https://kuhung.me/posts/data-engineering-in-2020/</link>
+      <pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/data-engineering-in-2020/</guid>
+      <description>我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样搞，浪费时间、浪费算力。 目前这家，则大不相同。技术债不多，数据治理做得还不错。没有大谈特谈数据中台，数据开发的每一行代码，都是为下游，而不是晋升服务。数据挖掘也很少碰原始 log，这节约了大量时间，让下游有更多时间集中在业务上。
 同样是数据开发，却产生不一样的结果。这让我对该工作的定位，产生了兴趣。也这篇文章的由来。
 言归正传。本文翻译自：https://towardsdatascience.com/data-engineering-in-2020-e46910786eda 结合实际工作，有较大幅度删改。
 随着数据体量的进一步增大，数据处理工具和技术的发展也日新月异。数据开发的工作性质也发生了巨大变化。如今所使用的工具，同十年前已大不相同。
@@ -279,7 +366,16 @@ AI面试官。将技术应用于模拟面试场景，为求职者提供高度拟
 尽管如此，Snowflake 和 Google BigQuery 等云数据工具的使用率很高，因为他们简化了数据提取的过程。
 而Spark，则需要一定门槛的专业化的技能。
 目前来看，国内的类似产品 MaxCompute，市场接受度似乎还不高？snowflake 前两天上市了，投资人挺喜欢它的故事，巴菲特也跟投了。
-数据开发技能清单（补充） 除开基本的数据开发技能，如 Hadoop 那套生态外，还建议掌握如下技能：</description></item><item><title>更高效的远程工作之道--REMOTE 手册精要</title><link>https://kuhung.me/posts/remote/</link><pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate><guid>https://kuhung.me/posts/remote/</guid><description>大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
+数据开发技能清单（补充） 除开基本的数据开发技能，如 Hadoop 那套生态外，还建议掌握如下技能：</description>
+    </item>
+    
+    <item>
+      <title>更高效的远程工作之道--REMOTE 手册精要</title>
+      <link>https://kuhung.me/posts/remote/</link>
+      <pubDate>Sat, 07 Mar 2020 17:43:44 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/remote/</guid>
+      <description>大规模远程工作实践 远程工作，一个之前都没怎么考虑的事情，在2020年的春节过后，中国大陆进行了一次大规模实验。WFH（work from home），一个在外企很常见的操作，在国内却鲜有生存环境。
 虽然朋友圈已经有人发帖，渴望在办公室中办公，但是，也不能因此，就放弃思考远程工作的这么个事物。一成不变往往很简单，但变化之中，才有契机。
 远程工作契机 什么阻挡了远程工作的推行，我们无从说起。但何不把这次当作一种契机，去学习其中的脉络。
 关于远程工作，找到了一本小册子《Remote》，专门介绍远程工作的。作者也写过另一本书《Rework》，中文名重来 。写书虽说门槛不高，但是写出有说服力的书，具备条件的人往往很少。作者以其自己的公司 Basecamp 为例，说明了远程工作的优点，也向我们介绍了远程工作的注意事项。读懂它，你的远程工作事半功倍。
@@ -291,7 +387,16 @@ AI面试官。将技术应用于模拟面试场景，为求职者提供高度拟
 及时同步进度 重要资料公开，而不是让人到处询问，让被询问人工作量加倍。展现工作进度，以成果导向。及时向团队内部公开。承诺往往有更高的约束力，而且，同行肯定比非技术领导更懂所需的工作时长。于此同时，做防灾的准备，诸如数据备份等工作。如果工作需要同客户合作，还需注意，及时将进度同步给客户。
 打造良好团队氛围 对于团队内部，保持正向的氛围，阻止消极负面的情绪在团队内部蔓延。聪明且及完成任务，才是合适的好员工。用当地最好的薪水留住他们，而不是因地施策。关心员工的身心健康，担心过度劳累，而不是懒惰，因为可持续才能走更远。最后，保持一个强劲的动力，鼓励员工从事自己喜欢的事物。
 员工如何出众 而对于员工，如果你想在团队内出众，往往有两种方法。一个是在保持活跃，另一个就是高质量的交付任务。
-关于作者</description></item><item><title>为啥说数据这行不容易 Why is Data Hard</title><link>https://kuhung.me/posts/why-is-data-hard/</link><pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate><guid>https://kuhung.me/posts/why-is-data-hard/</guid><description>原文链接 Slack 工程师 : why-is-data-hard?
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>为啥说数据这行不容易 Why is Data Hard </title>
+      <link>https://kuhung.me/posts/why-is-data-hard/</link>
+      <pubDate>Fri, 30 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhung.me/posts/why-is-data-hard/</guid>
+      <description>原文链接 Slack 工程师 : why-is-data-hard?
 做数据挖掘时，常常需要考虑很多方面。其中一个方面，常常会涉及到跨功能，复杂且琐碎的一些事项。数据准备以及评价指标的制定，就是这些事项之一。
 等等，似乎干数据这一行，并不容易？
 当大多数的组织谈到数据时，他们想的其实是指标——能反应近期业务、或是能够提供数据驱动的决策、抑或是能够监测企业经营状况的指标。
@@ -311,4 +416,8 @@ AI面试官。将技术应用于模拟面试场景，为求职者提供高度拟
 指标和维度 在探索和工具层面，有很多数据驱动的决策。但我们在 Slack 发现，如果数据不容易理解、不清晰或是不可信，即使工具各种各样，也无法进行更广泛的数据挖掘。这是为什么，一致性、被充分理解的、明确定义的指标和维度是如此重要。
 由于各种原因，数据可能不可信；或是不可获得（没有权限）；也可能数据是错误的（数据丢失或是跟踪出了问题）；再或者是不清楚数据代表什么以及如何使用它。在这种情况下，数据本身的完整性就不那么重要了。更需要关心的是，数据使用者在能够进行挖掘之前，需要花多少时间来检查和测试他们的工作。
 **例子：**在 Slack 公司，我们有两种不同的地理定位方式。如果你想了解用户数据，了解我们的国际活动和产品发布是如何进行的，或者寻找更多的机会让我们的业绩更上一层楼，那么地理位置是很重要的。
-我们的地理定义有两种：一由团队和用户的IP地址（他们使用 Slack 的地址），二是由团队的账单地址（通常是公司总部）来定义的。</description></item></channel></rss>
+我们的地理定义有两种：一由团队和用户的IP地址（他们使用 Slack 的地址），二是由团队的账单地址（通常是公司总部）来定义的。</description>
+    </item>
+    
+  </channel>
+</rss>

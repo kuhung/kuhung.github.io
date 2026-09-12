@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>经验分享 on 谷粒 kuhung</title><link>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</link><description>Recent content in 经验分享 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml"/><item><title>个人主页 SEO 优化与结构改版实践</title><link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link><pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate><guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid><description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>经验分享 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</link>
+    <description>Recent content in 经验分享 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 11 Sep 2026 00:11:23 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 AI 优化我的投资组合：从宏观配置到美股持仓复盘</title>
+      <link>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</link>
+      <pubDate>Fri, 11 Sep 2026 00:11:23 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</guid>
+      <description>前几周我对名下的主要资产做了一次盘点，计算了各自的占比以及过去一年半的收益率。资产盘点清楚后，接下来自然是优化现有组合。这篇文章就和大家分享我利用 AI 优化投资组合的思路与具体过程。
+先说一下大体思路：组合优化。它既体现在宏观资产配比上，也体现在微观层面每只股票配多少。所以本文有两个层面的内容和大家分享。
+同样说明一下：投资有风险，本文仅为个人复盘记录，不构成任何投资建议。
+宏观配置：穿透与目标函数 宏观层面的资产配置，我最初参考了汇丰针对不同风险偏好投资者的资产配比模型。上一期盘点时的一个明确结论是：大类资产配置的逻辑本身没有问题，关键在于需要定期调仓与再平衡，比如每半年或一年执行一次。
+在用 AI 重新审视权重时，我梳理出三个层面的问题：
+第一个是资产穿透。如果不穿透到底层持仓，历史资产分类其实相当模糊。我的汇总表里基金与股票加起来看似占了 74.7%，但跑代码穿透后发现真实占比其实只有 56% 左右。原因是在基金和理财的分类里，混进了不少稳健理财、美元固收，以及一部分海外高收益债券基金。整个组合过去的真实风险收益特征，和预想的出入很大。
+第二个是汇率折算。过去一年多配置美元资产的投资者大多会有体会，美元表现相对较弱。我之前把一部分资金配了美元固收理财和境外货基，换算回人民币后反而亏了约 2%。
+第三个是目标函数的抉择：到底追求收益率最大化，还是夏普比率优先？
+如果追求收益率，组合就要以几何复利最大化为目标。看的是资产期初到期末的复合增长倍数，而不是单看各周期的算术加权收益率。如果追求夏普比率优先，核心则是控制单位风险下的超额收益，量化标的回撤幅度与预期回报之间的比例关系。
+AI 测算的结果是：如果要追求更高的夏普比率，每年大约需要牺牲 2.07 个百分点的年化收益率，换取最大回撤从 -28.2% 改善到 -22.9%，缩窄约 5.3%。
+两种目标函数对配置方向的影响也截然不同。几何复利优先下，模型建议把日本股票加到 14.5%，配 5% 的加密资产；夏普优先下，日本股票压到 5.5%，加密资产直接清零。
+顺带一提，汇丰模型曾建议配 11% 的&amp;quot;亚洲（除日本外）&amp;quot;。但我回测其代表 ETF（AAXJ），过去十几年年化只有 7.4%，夏普仅 0.29，成分股里约四分之一是中国资产。而我原有组合中中国权益已经占到 35%，再加只会重复暴露。
+结合我自身的投资风格（属于高风险承受能力的激进型），我更倾向于追求长期几何复利最大化，愿意承担阶段性回撤。宏观层面的优化结论：减少低收益债券的配置，提高美股的权重。操作层面其实很简单，无非是资金从 A 资产挪到 B 资产，以及挪动多少比例的问题。
+美股持仓复盘：押注 AI 应用的得失 微观持仓层面，我把重点放在了美股上。这里也是我培养主观选股和量化选股能力的地方。
+从数据来看，我的美股自选账户跑输了纳斯达克（QQQ）。根本原因在于我去年押注了较多的 AI 应用层标的。当时我的判断逻辑是，每次重大技术革命初期，市场往往会过度渲染其潜在威胁，而高估应用落地的速度。
+但从实际走势来看，短期内这个判断失败了。过去这一年多，更多的资金还是流向了看得见摸得着的 AI 硬件，也就是算力芯片。应用端标的表现分化且疲软。
+之前我在梳理 Alpha 151 策略时，核心概念之一是趋势跟踪。目前趋势很明显是硬件。在 AI 应用均值回归尚未显现的前提下，做减法是更理性的做法。
+持仓优化的四轮迭代 明确了方向后，我利用 AI 对美股持仓进行了四轮方案迭代：
+第一轮是碎股合并。持有美股可以通过卖出 Call 期权（Covered Call）赚取权利金，但前提是必须持有 100 股整股。我持仓里有不少十几股、几十股的零散碎股。我让模型基于日收益相关性做了聚类，初衷是把同涨同跌的碎片股合并到核心标的上，凑成整手以便卖 Call 赚现金流，也减少注意力成本。</description>
+    </item>
+    
+    <item>
+      <title>个人主页 SEO 优化与结构改版实践</title>
+      <link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link>
+      <pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid>
+      <description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
 改版动机 最直接的起因来自 Google Search Console（GSC）的数据排查。我翻看后台流量来源时发现，主站沉淀的大量文章曝光寥寥，反倒是几个挂在子域名上的独立应用带来了不少流量。
 这与预期有明显出入。之前主站更换过域名，按历史访问数据来看，最早的核心读者大多是机器学习领域的同行；后来随着我写技术管理与职业思考，又吸引了一批大厂中从执行转向管理的朋友。最近一年，我的精力主要投入在 AI 落地与 MVP 产品实践上，但这部分新内容在搜索引擎中几乎没有拿到自然流量。主站不仅没能承担起新内容的承载与分发任务，现有的技术流量也被分散了。
 架构老化 收录受阻的原因很直观。
@@ -13,7 +55,16 @@
 权重整合 排查下来，首要问题出在主站与子域名的权重割裂上。
 长期以来，子域名分散了主站的权重。合理的架构应当是主站作为信任背书和流量枢纽，向子域名分发流量；同时子域名也要将搜索权重回传给主域名。但在实际运营中，出现了两处断层：
 其一是 GA4 数据追踪脱节。早先为了图省事，只有主力项目配置了埋点，很多低流量子项目处于裸奔状态。这次统一将所有子域名纳入同一套数据资产管理，规范了全站的追踪代码。
-其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description></item><item><title>Agent Skills 出来的第10个月，再聊评估几件事</title><link>https://kuhung.me/posts/skill-eval-review/</link><pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate><guid>https://kuhung.me/posts/skill-eval-review/</guid><description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
+其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description>
+    </item>
+    
+    <item>
+      <title>Agent Skills 出来的第10个月，再聊评估几件事</title>
+      <link>https://kuhung.me/posts/skill-eval-review/</link>
+      <pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/skill-eval-review/</guid>
+      <description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。
 Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。
 Skills 为什么被造出来 回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。
@@ -24,7 +75,16 @@ Cursor 做这件事最早。从单文件 .cursorrules 到多文件 .cursor/rules
 组织 vs 个体对于 Skills 的需求 对于大公司 大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。
 对于个体 个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。
 从组织到个体 大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。
-对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description></item><item><title>从 SEO 角度做增长，以产品 TrakToken 为例</title><link>https://kuhung.me/posts/seo-in-practice-sop/</link><pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate><guid>https://kuhung.me/posts/seo-in-practice-sop/</guid><description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
+对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description>
+    </item>
+    
+    <item>
+      <title>从 SEO 角度做增长，以产品 TrakToken 为例</title>
+      <link>https://kuhung.me/posts/seo-in-practice-sop/</link>
+      <pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/seo-in-practice-sop/</guid>
+      <description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
 从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。
 本文试图介绍，从 SEO 相关角度，如何正确指导我们后续的产品迭代，如何持续构建数据驱动的产品迭代模式。并结合实际线上产品数据，给到说明。
 TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的定价数据，每日自动同步，提供价格对比、成本计算器、支出指数等功能。
@@ -34,7 +94,16 @@ TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的
 Vercel Analytics 负责页面和事件。零配置、自定义事件方便。问题是它和 GA4 的用户身份打不通。Vercel 里看到 509 个 calculator_result_viewed 事件访客，但没法知道这 509 人里有多少是从搜索来的。
 PostHog 笔者还在尝试中。不过有些问题：一是服务器在海外，国内采集有延迟和丢失；二是功能和 GA4 + Vercel 高度重叠，基础分析和事件采集两边都能做；三是实际只覆盖了 8.25 天，数据量不够支撑任何结论。还有就是他们家的UI太反人性了，我曾经以为GA4的交互很垃圾，但没想到他们家更是。
 不过 PostHog 代表的需求是真实的。需要一个单一平台串起落地页、行为动作以及站外动作的工具。
-Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description></item><item><title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title><link>https://kuhung.me/posts/cang-in-house-review/</link><pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate><guid>https://kuhung.me/posts/cang-in-house-review/</guid><description>一、来龙去脉 这是&amp;quot;五年十个财务瞬间&amp;quot;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看还蛮有意思的，所以有了今天的文章。
+Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description>
+    </item>
+    
+    <item>
+      <title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title>
+      <link>https://kuhung.me/posts/cang-in-house-review/</link>
+      <pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/cang-in-house-review/</guid>
+      <description>一、来龙去脉 这是&amp;quot;五年十个财务瞬间&amp;quot;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看还蛮有意思的，所以有了今天的文章。
 这一次不一样的地方在于，我们有了程序化的仓位管理工具。上个月写了接入富途券商 API，用 AI 接管投资仓位，把富途和雪盈两家券商的数据接入了本地系统。数据能被大模型读到之后，AI 就有机会做真正意义上的全面审视。不再是打开数个 App 来回切着算，也不再是 Notion 表格里改数字然后肉眼看趋势。
 这篇文章的定位是：有了工具之后的第一次全面数据审视。回答几个问题：现在持有什么、这一年多的钱从哪里赚/亏、按收益风险比衡量做得怎么样、哪些做得不错、哪些需要调整。
 二、为什么要做这件事 在投资这件事上，我的风格是做组合管理，不是 ALL IN 一个标的。这样的好处是风险分散，坏处是计算收益复杂。数个券商、数个银行账户、四种货币、几十只标的，每次想知道&amp;quot;到底哪部分赚了、哪部分需要优化&amp;quot;，都要花不少时间。
@@ -45,7 +114,16 @@ Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关
 最后，给出下一步该做什么、不该做什么的判断依据。尽量形成数据驱动决策，而不是凭感觉行事。
 三、数据现状 数据窗口是 2025 年 4 月 7 日到 2026 年 8 月 17 日，共 16.3 个月。这个起点对应进入提取期之后的全程。分析用到的底表是 Notion 财务盘点的 14 期明细数据，加上券商实盘持仓。
 3.1 宏观环境 先看这 16 个月里市场发生了什么（2025-04-07 到 2026-08-17）。
-指数 区间涨跌 沪深300 +32.</description></item><item><title>提效 20% 的 Claude Code Session 优化方法</title><link>https://kuhung.me/posts/maximization-your-claude-code-sessions/</link><pubDate>Sat, 15 Aug 2026 21:17:08 +0800</pubDate><guid>https://kuhung.me/posts/maximization-your-claude-code-sessions/</guid><description>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
+指数 区间涨跌 沪深300 +32.</description>
+    </item>
+    
+    <item>
+      <title>提效 20% 的 Claude Code Session 优化方法</title>
+      <link>https://kuhung.me/posts/maximization-your-claude-code-sessions/</link>
+      <pubDate>Sat, 15 Aug 2026 21:17:08 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/maximization-your-claude-code-sessions/</guid>
+      <description>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。
 本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。
 一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。
@@ -53,7 +131,16 @@ Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关
 二、token 价格的决定方式 原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。
 模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。
 输入和输出的区别 原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）
-输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</description></item><item><title>搜索与 AI 可见性：让需要你产品的人找到你</title><link>https://kuhung.me/posts/seo-enhance/</link><pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate><guid>https://kuhung.me/posts/seo-enhance/</guid><description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
+输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</description>
+    </item>
+    
+    <item>
+      <title>搜索与 AI 可见性：让需要你产品的人找到你</title>
+      <link>https://kuhung.me/posts/seo-enhance/</link>
+      <pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/seo-enhance/</guid>
+      <description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
 笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
 做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。
 用这个比方串一下全文逻辑：
@@ -74,7 +161,16 @@ Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关
 还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。
 第四步：实际搜一搜，判断用户想要什么
 拿候选查询去搜，看第一页主要是什么类型的结果：
-教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description></item><item><title>GA4 实践指南：从配置到 AI 工作流</title><link>https://kuhung.me/posts/ga4-in-practice/</link><pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate><guid>https://kuhung.me/posts/ga4-in-practice/</guid><description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
+教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description>
+    </item>
+    
+    <item>
+      <title>GA4 实践指南：从配置到 AI 工作流</title>
+      <link>https://kuhung.me/posts/ga4-in-practice/</link>
+      <pubDate>Tue, 11 Aug 2026 14:38:58 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ga4-in-practice/</guid>
+      <description>笔者在Vibe Coding 产品数据建设：5步框架与数据清单里，提到 GA4 作为工具选型的一环但没有展开。这篇补上 GA4 本身的实操细节，重点是半年实践中踩过的坑和演进出来的规范。
 为什么单独写一篇？GA4 是 MVP 产品最容易&amp;quot;接了但没用好&amp;quot;的工具。接入只要一行代码，但要真正用出价值，自定义维度注册、埋点约定落文档、多工具口径对齐，这些坑 AI Agent 大概率不知道。
 一、GA4 是什么 GA4 是 Google 提供的免费网站和应用分析工具，2023 年全面替代 Universal Analytics。核心变化从&amp;quot;页面浏览 + 会话&amp;quot;模型转向事件驱动模型：所有用户交互都是事件，页面浏览也不例外。不清楚也没关系，就当成页面计数器好了。
 对小规模开发来说，GA4 的价值在于三点：免费、功能全（漏斗、留存、探索报表都有）、BigQuery 免费导出。代价也很明确：配置门槛高，学习曲线陡，生态相对封闭。但是你如果做出海、做谷歌生态，就没办法绕过它。
@@ -89,13 +185,31 @@ Google Ads 集成：没投广告的话完全不用管。
 三、关键配置项 基础接入不赘述，建属性、建数据流、拿到衡量 ID（G-XXXXXXX），加到网站里。下面是几个容易被忽略、但直接影响数据质量的配置。
 数据保留期限 默认 2 个月，建议改为最长的 14 个月。这个设置只影响探索报表（标准报表不受限），而你真正需要的深度分析全在探索报表里。两个月后数据就查不到了，回头想做同期对比发现数据没了，就晚了。
 路径：GA4 → 管理 → 数据设置 → 数据保留。
-内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description></item><item><title>驾驭你的 Agent Skills 和系统指令</title><link>https://kuhung.me/posts/harness-your-skills/</link><pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate><guid>https://kuhung.me/posts/harness-your-skills/</guid><description>打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
+内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description>
+    </item>
+    
+    <item>
+      <title>驾驭你的 Agent Skills 和系统指令</title>
+      <link>https://kuhung.me/posts/harness-your-skills/</link>
+      <pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/harness-your-skills/</guid>
+      <description>打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
 先装一堆别人的 Skill，却没搞清楚系统有什么、自己需要什么。顺序应该反过来：先摸清 Cursor、Codex、Claude Code 各自预置了什么，再判断自己缺什么，薄弱点拿别人的 Skill 临时补上，同时把自己的专长编成 Skill 输出。
 补丁性质的skills迟早会被模型原生能力吞并，个人性质的skills才是长期资产。
 系统有什么 用 Agent 写代码，背后不止一个聊天窗口。从下到上大致是五层：基座模型决定推理上限；Tool 是模型能调用的外部能力（浏览器、终端、MCP）；Skill 是操作手册（一份 SKILL.md，教 Agent 按什么步骤用什么工具完成任务）；Rules 是项目级背景约束（Cursor 的 .cursor/rules/、Codex 的 AGENTS.md、Claude Code 的 CLAUDE.md）；Hooks 是守门员（脚本层执行，模型绕不过去，也不花推理 token）。还有一层 Subagent，主 Agent 派生子代理并行工作。
 搞清楚哪层做什么，才不会装一个 Skill 去做本该是 Hook 的事。
 原生指令 三个平台的原生指令覆盖面比大多数人以为的要广：
-任务 原生怎么做 代码审查 Claude Code /code-review --comment 直接发 PR 行内评论；Codex /review；Cursor 内置 review-bugbot、review-security 长任务管理 Codex /goal（edit/pause/resume）；Claude Code /goal 释放上下文 Codex /compact；Claude Code /compact [instructions] 并行工作 Claude Code /subtask、/fork、/batch；Codex /agent、/subagents；Cursor Subagent（Task 工具） 规划模式 Codex /plan；Claude Code /plan；Cursor Shift+Tab 初始化仓库说明 Codex /init 生成 AGENTS.</description></item><item><title>Vibe Coding 产品数据建设：5步框架与数据清单</title><link>https://kuhung.me/posts/how-to-build-a-data-driven-product/</link><pubDate>Thu, 06 Aug 2026 18:39:39 +0800</pubDate><guid>https://kuhung.me/posts/how-to-build-a-data-driven-product/</guid><description>Vibe coding 很热，写出来的东西越来越像样。但好像很少有人聊 vibe coding 产品的数据怎么做。没有数据，写写自用玩具可以，但想进一步规模化和商业化，这个问题始终绕不过去。
+任务 原生怎么做 代码审查 Claude Code /code-review --comment 直接发 PR 行内评论；Codex /review；Cursor 内置 review-bugbot、review-security 长任务管理 Codex /goal（edit/pause/resume）；Claude Code /goal 释放上下文 Codex /compact；Claude Code /compact [instructions] 并行工作 Claude Code /subtask、/fork、/batch；Codex /agent、/subagents；Cursor Subagent（Task 工具） 规划模式 Codex /plan；Claude Code /plan；Cursor Shift+Tab 初始化仓库说明 Codex /init 生成 AGENTS.</description>
+    </item>
+    
+    <item>
+      <title>Vibe Coding 产品数据建设：5步框架与数据清单</title>
+      <link>https://kuhung.me/posts/how-to-build-a-data-driven-product/</link>
+      <pubDate>Thu, 06 Aug 2026 18:39:39 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-to-build-a-data-driven-product/</guid>
+      <description>Vibe coding 很热，写出来的东西越来越像样。但好像很少有人聊 vibe coding 产品的数据怎么做。没有数据，写写自用玩具可以，但想进一步规模化和商业化，这个问题始终绕不过去。
 英文圈有一些讨论。Value Add VC 和 JustNeeda 分别写过一篇，其核心结论一致：定义北极星指标、只埋 5-10 个核心事件、每周花半小时看数据。这类文章面向的是有一定规模的 SaaS 创业者，和 vibe coding 出来的最小产品之间有些距离。
 中文圈相对更少，搜出来的基本是大厂视角的&amp;quot;埋点入门&amp;quot;或&amp;quot;用户行为追踪从入门到实践&amp;quot;，和独立产品不太搭噶。你真去看了，就会陷入很多细节。属高射炮打蚊子。
 笔者之前做算法，合作最紧密的业务方正好是产品数据运营和增长团队。回顾这些角色在干什么，对现在自己做的事情很有帮助。但很多人对数据的印象停留在活跃、营收这些大厂概念，更落地的问题反而没人讲：看什么数据、埋点怎么写、数据质量怎么保证。今天借机梳理下，从一个最小产品开始，数据该怎么做。
@@ -111,7 +225,16 @@ Google Ads 集成：没投广告的话完全不用管。
 事件分四类 事件大致分四类：Pageview（自动采集，不用手动埋）、User Actions（按钮点击、表单提交等用户主动操作）、System Events（注册完成、购买、订阅变更等系统状态变化）、Custom Conversions（你自己业务定义的&amp;quot;成功&amp;quot;，比如漏斗终点）。
 具体场景上，营销站和产品内侧重不同。营销站关注 cta_clicked、form_submitted、signup_completed 这类转化事件；产品内关注 onboarding_step_completed、feature_used、purchase_completed、subscription_cancelled 这类行为事件。每个事件带上必要的属性（比如 button_text、location、feature_name、reason）。
 套到笔者自己的产品上，大概是这样。TrakToken 更偏&amp;quot;工具站&amp;quot;逻辑，核心事件是 model_compared（比了哪几个模型）、pricing_table_filtered（用了哪个筛选条件）、outbound_click（点去哪个模型官网/API 文档）。PageGrok 是个浏览器插件，更偏&amp;quot;产品内&amp;quot;逻辑，核心事件是 extension_installed、feature_used（feature_name 具体到摘要/翻译/哪个功能）、extension_uninstalled（带 reason，如果能采集到的话）。
-属性怎么挂 属性大致分四类：Page 类（page_title、page_location）、User 类（user_id、plan_type）、Campaign 类（就是 UTM 那五个）、Product 类（product_id、price 等）。建议统一词表，别每个事件各发明一套字段名。</description></item><item><title>从单 Agent 到跨 Agent 的 Skills 管理</title><link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link><pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate><guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid><description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
+属性怎么挂 属性大致分四类：Page 类（page_title、page_location）、User 类（user_id、plan_type）、Campaign 类（就是 UTM 那五个）、Product 类（product_id、price 等）。建议统一词表，别每个事件各发明一套字段名。</description>
+    </item>
+    
+    <item>
+      <title>从单 Agent 到跨 Agent 的 Skills 管理</title>
+      <link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link>
+      <pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid>
+      <description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
 以我自己为例：同时用 Claude Code、Codex 和 Cursor 三个 agent（之前还有 Gemini CLI），并在它们各自的 skill 目录里积累了几十个 skill 之后，发生了什么以及我的应对之策。
 为什么突然要管理 skill 不少其他作者说要管理 skill，是为了防治上下文腐败。他们安装了太多的 skill，以致于在决定召回用哪个 skill 时，出现打架冲突、召回准确率下降，以及影响正文内容表现的事。
 我这边装的不多，没遇到过 skill 失灵的情况。更多遇到的是如标题所言的，在多个工作工具来回切换时，skill 咋整的问题。
@@ -119,7 +242,16 @@ Google Ads 集成：没投广告的话完全不用管。
 这种情形本质上其实是：Claude Code、Codex、Cursor 现在都支持 skill，但各家&amp;quot;支持&amp;quot;不等于&amp;quot;保持同步&amp;quot;。每个 agent 有自己的 skill 目录、自己的 discovery 规则。你在一个地方改了 skill，默认不会同步到其他 agent 下面。
 Skill 从&amp;quot;效率工具&amp;quot;变成了&amp;quot;需要跨工具治理的资产&amp;quot;，是这篇文章要讨论的。
 快速回顾：Skill vs Prompt vs MCP 首先我们快速回顾下什么是 skill，以及之前的相似概念：Prompt、MCP。
-Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description></item><item><title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title><link>https://kuhung.me/posts/use-codex-goal-build-products/</link><pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate><guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid><description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
+Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description>
+    </item>
+    
+    <item>
+      <title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title>
+      <link>https://kuhung.me/posts/use-codex-goal-build-products/</link>
+      <pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid>
+      <description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
 这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。
 但如果不想 Agent 反复追问呢？Codex 的/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）
 前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。
@@ -131,7 +263,16 @@ Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式�
 第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心&amp;quot;还原&amp;quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。
 第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制/粘贴切入。暂不做文件工作区、PDF/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。
 第五轮：从&amp;quot;造功能&amp;quot;，转向&amp;quot;嵌入已有抱怨&amp;quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。
-第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description></item><item><title>普通人要 Codex 有什么用？</title><link>https://kuhung.me/posts/how-i-use-codex/</link><pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate><guid>https://kuhung.me/posts/how-i-use-codex/</guid><description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
+第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description>
+    </item>
+    
+    <item>
+      <title>普通人要 Codex 有什么用？</title>
+      <link>https://kuhung.me/posts/how-i-use-codex/</link>
+      <pubDate>Mon, 03 Aug 2026 11:49:39 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-i-use-codex/</guid>
+      <description>Codex 对我最大的用处，并非简单写代码，而是让我以尽可能小的时间成本，干成、干快以前干不成或干得慢的事。
 我的背景是算法，在很多人看来，程序员都是一个类型。但实际上这个岗位的细分非常多，我擅长将业务问题转化为建模问题，能够构建稳定可靠的数据pipeline和模型pipeline，但并不包括写出好看的前端和稳健的后端。后半部分工作，是 Codex 帮我加速达成的。
 此外，对于像产品、市场和运营这类工作，虽然日常协作有所耳濡目染，但绝对并非我的优势。我也借助 Codex，来帮我整理用户需求、做市场调研、分析数据并制定对应的运营活动策略。
 所以，你说，Codex 对于普通人有什么用？那我想是解放了生产力，能够有机会做更多之前能想到，但是没资源去验证的事情。这些事情包括开发、文案类工作，也包括数据调研、资料整合类工作。
@@ -144,13 +285,31 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 通过产品路线图、版本控制、issue跟踪的方式，让我的开发管理井井有条。慢即是快。issue 会写清楚当前行为、期望行为、验收标准，剩下的让 Codex 的 agent 干就完事。当然，这些 issue 也是 Codex 在我的指挥下生成的。
 第四件：运营维护。项目上线后，日志采集脚本、安全配置检查清单、定时任务的 cron 表达式、数据更新的定期抓取。这些琐碎但必要的运维工作，我现在都习惯丢给 Codex。
 另外，我还有一套基于 Notion + GitHub 的周报自动化流程，底层的数据采集和同步模块是大模型搭的。现在每周的工作，不再需要手动记录，流转在 Notion 甘特图和GitHub提交记录的信息，通过数据管线汇总给大模型，每周只需要花2块钱，就能让顶级模型帮你总结项目进展、风险和下周优先级。
-第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description></item><item><title>智谱 x MiniMax：配对交易的验证与心得</title><link>https://kuhung.me/posts/pair-zhipu-minimax/</link><pubDate>Thu, 30 Jul 2026 18:14:26 +0800</pubDate><guid>https://kuhung.me/posts/pair-zhipu-minimax/</guid><description>先说结论 多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。
+第五件：知识整理和评测。 这个可能比较少人提到。我用 Codex 帮我做 AI 模型的质量评测：写评测脚本，跑 benchmark，整理结果对比。做 TTSI（LLM Token 支出指数）复现的时候，数据采集和加工脚本也是 Codex 写的。我负责确定分析逻辑和结论判断。</description>
+    </item>
+    
+    <item>
+      <title>智谱 x MiniMax：配对交易的验证与心得</title>
+      <link>https://kuhung.me/posts/pair-zhipu-minimax/</link>
+      <pubDate>Thu, 30 Jul 2026 18:14:26 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/pair-zhipu-minimax/</guid>
+      <description>先说结论 多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。
 协整检验不通过，经典配对交易的前提不成立；顺分化做多空回测夏普 3.52，但样本外验证表明合理预期在 0.5~1；波动率降仓把最大回撤从 -27.9% 压到 -9.2%，比单日止损更有效。
 注意：本文仅分享个人思路和回测过程，不代表投资建议。投资有风险，需充分衡量个人风险承受能力，在持牌顾问指导下进行。
 为什么盯上这两家 智谱（HK.02513）和 MiniMax（HK.00100）是 2026 年 1 月先后在港股上市的两家大模型企业。
 我参与了打新，不过没中。即使中了，按照之前的习惯也会在暗盘给卖了。回头看很可惜：智谱从发行价到 6/22 最高收盘 2410，涨幅 +1974%（总价约 20.7 倍），到 2026-07-30 收盘 862.0 仍有 +642%。MiniMax 在 3/18 最高收盘 1238（较发行价 +650%），但到 2026-07-30 收盘 203.8，较发行价仅 +23.5%，较首日收盘已跌 40.9%。
 作为港股大模型双雄，很容易让人联想到配对交易：两只同板块高相关的票，价差拉开了押注回归。比如可口可乐和百事长期走势高度相关，价差偏离后做反向交易。我们在之前的文章有介绍过接入持仓数据到 AI，要验证想法很简单，让 AI 拉取数据并进行回测验证。
-智谱 HK.02513 MiniMax HK.00100 发行价 116.2 165.0 上市日 2026-01-08 2026-01-09 公开发售认购 1159 倍 1837 倍，一手中签率 2.81% 首日开盘 120.0（+3.27%） 235.4（+42.67%） 首日收盘 131.5（+13.17%） 345.0（+109.09%） 最高收盘 2410（6/22） 1238（3/18） 盘中最高 2980（6/22） 1330（3/18） 7/30 收盘 862.</description></item><item><title>不想为总结一个网页花20美元，我给Chrome做了个平替插件</title><link>https://kuhung.me/posts/pagegrok-in-practice/</link><pubDate>Wed, 29 Jul 2026 15:43:32 +0800</pubDate><guid>https://kuhung.me/posts/pagegrok-in-practice/</guid><description>需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&amp;quot;丢&amp;quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
+智谱 HK.02513 MiniMax HK.00100 发行价 116.2 165.0 上市日 2026-01-08 2026-01-09 公开发售认购 1159 倍 1837 倍，一手中签率 2.81% 首日开盘 120.0（+3.27%） 235.4（+42.67%） 首日收盘 131.5（+13.17%） 345.0（+109.09%） 最高收盘 2410（6/22） 1238（3/18） 盘中最高 2980（6/22） 1330（3/18） 7/30 收盘 862.</description>
+    </item>
+    
+    <item>
+      <title>不想为总结一个网页花20美元，我给Chrome做了个平替插件</title>
+      <link>https://kuhung.me/posts/pagegrok-in-practice/</link>
+      <pubDate>Wed, 29 Jul 2026 15:43:32 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/pagegrok-in-practice/</guid>
+      <description>需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&amp;quot;丢&amp;quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
 我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越好。
 市面上不是没有类似的东西，Chrome 插件 Page-Assist 算比较早的一个，但功能铺得太满，配置项一大堆，用不上的东西成了负担。这活儿逻辑不复杂，手搓也不难，正好还能把本地跑的模型用起来。
 于是就有了 PageGrok 这款浏览器插件。
@@ -158,7 +317,16 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 想了想，还是继续做。理由也不复杂。Gemini in Chrome 的完整功能绑在 Google AI Pro 上，一个月 19.99 美元，我只是想总结个页面，用不上生图、云存储。这笔账不划算，何况有些地区还用不了。还有隐私：Chrome 侧边栏默认拿当前标签页内容去生成回答，数据是走 Google 服务器的，公司内部文档、没公开的研究资料，这可使不得。
 它能干什么 所以 PageGrok 做的还是一个很朴素的东西：侧边栏常驻，一边看内容一边问；自定义接入本地模型或者 API；借鉴了印象笔记的截屏取景框逻辑，能自定义截取一块区域。这个在小红书、推特这种浮窗式应用上意外地好用；回答可以直接复制走，还能带上来源，方便回头翻。产品形态确实初级，商业化也有限，但我自己天天用，够用。
 4个月8个小版本 三月底上线 1.0.1，只支持 Ollama，弹窗交互。五月中到 1.0.4，加了 oMLX 和 LM Studio，顺手把弹窗换成了侧边栏。这一步其实是深度体验后的有依据调整。七月稳定发布 1.0.7 和 1.0.8。四个月，八个版本。五月十一号在 V2EX 发了个帖子，到现在 1100 多次浏览，被几个 AI 工具站收录转载过。周活跃用户在数十位，横跨亚欧美三大洲。这些够我确认一件事：这个需求不是我一人独有。
-踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</description></item><item><title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title><link>https://kuhung.me/posts/cang-in-house/</link><pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate><guid>https://kuhung.me/posts/cang-in-house/</guid><description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
+踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</description>
+    </item>
+    
+    <item>
+      <title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title>
+      <link>https://kuhung.me/posts/cang-in-house/</link>
+      <pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/cang-in-house/</guid>
+      <description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
 但是后来，随着投资标的的分散，每次在券商上算账都要耗费不少的心力。需要计算杠杆、货币转换。这让我逐渐厌倦。想知道&amp;quot;投资账户一共有多少资金&amp;quot;，需要打开富途和雪盈两个 App 分别计算再合并。随着最近大模型的进一步发展，是时候用 Claude 写个 in-house 的仓位管理工具了。不少人 vibe coding 的第一步，都是搞些什么记账、todo 和番茄闹钟，这回也落回这三大件上了。
 做 in-house 的仓位管理，目的是让 AI 能直接碰到持仓数据，进行交互分析和建议。包含四个方面的功能：分析持仓、计算收益、策略回测，以及最终的自动下单。手动记账时代，数据在 Notion 表格里，大模型要获取需要转个弯。现在，券商数据直接接入之后，它才有可能真正帮你干活。
 本次文章，就给大家介绍下我用 Codex + Claude 接入富途 API 和雪盈 API 的过程和最终效果。当然，如果你是长桥、老虎或者别的什么，也是类似的道理，只要券商开放了 API，都可以做到。
@@ -169,7 +337,16 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 下单信号。 有了上述的策略，进一步的就是生成交易信号。当然自动下单两个平台也是支持的，但是由于我的持仓不多、交易频次不高，所以暂不考虑自动化交易。能有信号也不错了。
 券商特点 两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。
 富途是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。
-雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description></item><item><title>利用微信读书skill，将读过的知识整合进AI实践</title><link>https://kuhung.me/posts/weread-skills-in-practice/</link><pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate><guid>https://kuhung.me/posts/weread-skills-in-practice/</guid><description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
+雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description>
+    </item>
+    
+    <item>
+      <title>利用微信读书skill，将读过的知识整合进AI实践</title>
+      <link>https://kuhung.me/posts/weread-skills-in-practice/</link>
+      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weread-skills-in-practice/</guid>
+      <description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
 是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：&amp;ldquo;SLMs是什么&amp;quot;&amp;ldquo;端侧模型有哪些技术要点&amp;quot;这类。它还有个很强的特性，迎合说话人。这点即使通过提示词纠正，也难以跳出提问人的思维边界。碰到框架性的问题，它给不出系统的、有真人感的建议。
 从底层原理来说，大模型给出的是概率性文字，它也没法给切身经验和系统方法。这就像公司新人，能力不差，但缺少开展工作的上下文。高质量书籍填补的就是这块空白。
 以前看书，做做笔记、画个思维导图，遇到有意思的会写份读书笔记。今天讲的是更进一步的做法：把书里的方法，编译成 AI Agent 可以直接调用的技能。
@@ -182,7 +359,16 @@ Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷�
 今年早些时候，顺着 skills 这波风，微信读书团队开放了官方 Skills 接口。走完固定流程，就能在 Agent 里通过对话拿到你的数据：书架、阅读进度、划线信息，全部可以外挂给大模型。
 网上对这个接口的二次加工，多集中在聊天、可视化、书籍推荐的程度。我想做的事更进一步：数据源有了，直接加工成可调用的 skills。把微信读书里的划线与想法，编译成 SKILL.md 技能指令，挂载到 Agent 上，在对话匹配到触发条件时自动加载。
 五步流水线：划线变技能 整个流程分五步，从原始划线到全局可用：
-步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description></item><item><title>拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</title><link>https://kuhung.me/posts/benchmark-for-llm-inference/</link><pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate><guid>https://kuhung.me/posts/benchmark-for-llm-inference/</guid><description>经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
+步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description>
+    </item>
+    
+    <item>
+      <title>拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</title>
+      <link>https://kuhung.me/posts/benchmark-for-llm-inference/</link>
+      <pubDate>Sun, 17 May 2026 12:49:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/benchmark-for-llm-inference/</guid>
+      <description>经常捣鼓大模型的朋友都知道，各大厂商提供的模型是生产力工具。可以蹭，但也需要计算性价比。一些小的任务或是隐私任务，放在本地更合适。随着越来越多开源的 SLM（Small Language Model）智力水平的提升，部署到本地也是一个选择。
 作为一个玩过智能家居、玩过路由器、玩过 NAS 的人，本地模型当然也要拉下来玩玩。这不仅可以用来窥探模型本身的技术架构，还可以解决手边的小问题。但技术选型过程中，会遇到两个问题：一个是本地显/内存有限的前提下，最有性价比或者说最有智力的模型是谁？第二个问题是，我该用什么框架来部署服务。
 在不知道咋选的时候，我选择用最新的开源模型。但是不少模型其实是有显存要求的。最新是好，但不一定能部署到本机。后来，我通过拉取最新的模型数据，构造并发布了一个网页应用 Traktoken，这下可以直观了解模型能力与所需显存间的关系。
 模型框架方面，我选择用适合本机显存的最强开源模型结合早期占据市场心智的 Ollama。但这真的是最优解吗，我有时候也会问自己。这个疑惑，在我开发 PageGrok（一款浏览器插件 AI 产品）时，到达巅峰。
@@ -192,9 +378,27 @@ Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷�
 早在 23 年，苹果就推出了专为 Apple Silicon 优化的 MLX 框架。但直到 26 年上半年，在其基础上开发的 oMLX 才受到大范围关注，社媒上看到其声称更好适配苹果设备。没过多久，Ollama 也在新版本声称支持了 MLX 框架。这种感觉就像是：“你别迁移，我能行”。
 真的行吗？我一开始下载的是 LM Studio，它出现的时间比 Ollama 更早。Ollama 后来居上，凭借其 YC 投资背景和简洁的设计，很快占据了不少市场。面对不同的框架，我的核心疑问随之而来：最适合 Mac 电脑部署的本地框架到底是什么？ 拒绝感觉良好，得有套系统的测评手段。
 评测指标体系设计 在开始自己重复造轮子前，我也系统看了现有的解决方案。大家主要关注三个方面的指标，分别是用户体验指标（如：TTFT 首字延迟时间）、成本指标（如：TPS token 吞吐量）、资源消耗（如：GPU 占用情况）。
-这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。</description></item><item><title>成本三分钱，整合Notion、GitHub的AI周报工作流</title><link>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</link><pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate><guid>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</guid><description>熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
+这个方向的测评，我们不关注模型在测评集上的表现。即默认相同模型权重在 MMLU 这类测评的表现是一致的（实际上不一致，会因为数据处理方式的差异，有略微表现差异）。</description>
+    </item>
+    
+    <item>
+      <title>成本三分钱，整合Notion、GitHub的AI周报工作流</title>
+      <link>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</link>
+      <pubDate>Tue, 12 May 2026 14:44:53 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</guid>
+      <description>熟悉我的朋友都知道，我算是一个比较讨厌周报的人。在工作的时候，如果你告诉我某人写了一份三千字的周报，那我一定嗤之以鼻。心里想，这算啥写作比赛或是落伍的向上管理手段。
 手写不行，但如果是AI写的呢？这里，要给大家介绍我目前的自动化周报工作流：Notion记录跟踪项目甘特图、GitHub汇总issue、交付和热点关注，整合二者的信息，每周调用大模型自动总结上周工作。
-原理介绍 flowchart LR subgraph Input[输入数据源] N1[Notion 工单 DB] N2[Notion GitHub DB] G1[GitHub Commits] end subgraph Sync[同步与采集] S1[notion_sync.py] S2[github_collector.py] end subgraph Process[处理流程] A1[analyzer.py] L1[llm_summarizer.py] end subgraph Result[结果输出] R1[report/*.md] N3[notifier.py] B1[Bark] E1[Email] end N1 -- API --&amp;gt; S1 N2 -- API --&amp;gt; S1 G1 -- API --&amp;gt; S2 S1 --&amp;gt; A1 S2 --&amp;gt; A1 A1 --&amp;gt; L1 L1 --&amp;gt; R1 L1 --&amp;gt; N3 N3 --&amp;gt; B1 N3 --&amp;gt; E1 整体技术原理不难，核心是数据打通。通过Notion的甘特图做项目管理；GitHub作为版本控制和交付工具。Notion和GitHub的数据打通，GitHub的数据能够同步到Notion，包括项目仓库情况和star情况；Notion项目能够同步到GitHub Actions，用来做调用大模型的素材输入。</description></item><item><title>AI时代，OPC（一人公司）的自动化与半自动化</title><link>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</link><pubDate>Wed, 29 Apr 2026 11:49:00 +0800</pubDate><guid>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</guid><description>如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。
+原理介绍 flowchart LR subgraph Input[输入数据源] N1[Notion 工单 DB] N2[Notion GitHub DB] G1[GitHub Commits] end subgraph Sync[同步与采集] S1[notion_sync.py] S2[github_collector.py] end subgraph Process[处理流程] A1[analyzer.py] L1[llm_summarizer.py] end subgraph Result[结果输出] R1[report/*.md] N3[notifier.py] B1[Bark] E1[Email] end N1 -- API --&amp;gt; S1 N2 -- API --&amp;gt; S1 G1 -- API --&amp;gt; S2 S1 --&amp;gt; A1 S2 --&amp;gt; A1 A1 --&amp;gt; L1 L1 --&amp;gt; R1 L1 --&amp;gt; N3 N3 --&amp;gt; B1 N3 --&amp;gt; E1 整体技术原理不难，核心是数据打通。通过Notion的甘特图做项目管理；GitHub作为版本控制和交付工具。Notion和GitHub的数据打通，GitHub的数据能够同步到Notion，包括项目仓库情况和star情况；Notion项目能够同步到GitHub Actions，用来做调用大模型的素材输入。</description>
+    </item>
+    
+    <item>
+      <title>AI时代，OPC（一人公司）的自动化与半自动化</title>
+      <link>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</link>
+      <pubDate>Wed, 29 Apr 2026 11:49:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</guid>
+      <description>如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。
 成事，不仅需要财力、物力，更需要心力。为了控制心力消耗，除了常见的SMART法则拆解目标、番茄工作法保持专注外，笔者总结了一份指南：AI时代，OPC（一人公司）的自动化与半自动化。
 通过下述方法，让笔者把精力放在高价值活动上。
 自动化 这里的自动化，指的是自动实现某个效果，替代繁杂的人力。这个自动化本身，也是更大系统中的一部分。这里把它拆出来，是因为这些自动化环节，关乎效果和体验。
@@ -226,7 +430,16 @@ SEO优化。通过三方网站来实现，做到基准线水平，排除掉大�
 虽然现在AI自动研究的话题很火，但我认为它更像是一个范围命题。这场AI show，什么时候落幕不知道，但需要更多的关于边界的自我认知。追逐热点，奉为圭臬的人往往更FOMO，更容易被营销带偏。偶尔跟不上热点，并非坏事。AI这个行当，曾经的热点，过几个月，就不再是了。
 最好的方式，就是控制流入，高价值利用自己的核心工作时间。笔者这套体系一直在迭代，随着工具和需求变化，持续调整。
 保持敏锐，但拒绝焦虑。持续输出。
-关于作者</description></item><item><title>Vibe Coding 长线运营思路</title><link>https://kuhung.me/posts/vibe-coding-long-term-operation/</link><pubDate>Mon, 06 Apr 2026 21:40:12 +0800</pubDate><guid>https://kuhung.me/posts/vibe-coding-long-term-operation/</guid><description>写过 Vibe Coding 的朋友都知道，写出来不难，难的是长线运营带来收入。就目前来说，高性能模型例如 Opus4.6 等已经能够很好完成项目。但写完项目，只是产品化的第一步。运营很重要，流量是关键。本期，笔者就来分享下自己的运营思路。部分思路参考了工作过的大厂的思维模式，仅做抛砖引玉之用。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>Vibe Coding 长线运营思路</title>
+      <link>https://kuhung.me/posts/vibe-coding-long-term-operation/</link>
+      <pubDate>Mon, 06 Apr 2026 21:40:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/vibe-coding-long-term-operation/</guid>
+      <description>写过 Vibe Coding 的朋友都知道，写出来不难，难的是长线运营带来收入。就目前来说，高性能模型例如 Opus4.6 等已经能够很好完成项目。但写完项目，只是产品化的第一步。运营很重要，流量是关键。本期，笔者就来分享下自己的运营思路。部分思路参考了工作过的大厂的思维模式，仅做抛砖引玉之用。
 关注数据 核心指标数据 关注核心的下载、活跃数据，看看用户从哪里来的。笔者目前发布的大部分应用为 Web 应用，且是通过 Vercel 发布，所以就直接上了 Vercel 的 Pro 计划，利用 Vercel 自带的数据功能，来做数据采集和统计。当然，同期对于一些质量较好的项目，也会直接植入 Google Analytics (GA) 进行数据统计。
 用户数据少的时候，优先关注宣发情况：你弄了几篇内容介绍了这个产品，发布到了哪些地方。平台给你的流量情况怎么样，读者和观众们在讨论什么。当用户数据比较多的时候，则开始关注下面的数据。
 用户数据 有数据埋点后，就可以清晰看到：用户是从什么渠道来的？为什么这个渠道效果还不错，是发对了推广还是自然流量。以笔者的某个项目为例，仅仅通过简单的 B 站推广，就获得了相当多的初始用户。而 B 站的推广，也不过是照着别人录了一个产品视频。该项目成功的原因，我归结为热点追踪。
@@ -244,4 +457,8 @@ SEO优化。通过三方网站来实现，做到基准线水平，排除掉大�
 而至于那些跑起来的项目，则应该进一步关注SEO方面的改进、以及用户进来在干什么，落地页是符合预期的吗。适当的时候，可以选择买量测试。这可以节省不少时间。对于 Vibe Coding 开发者来说，时间看起来很充裕，但却是十分稀缺的东西。不要为了控制开销而空转自己的时间。
 轻重缓急 把握那些重中之重的事情，加速需要等待的事情、让那些小的细节随他去。啥是重要的事情：你的选题是重要的事情，因为涉及后续投入。你的切身感是重要的事情，因为这是你的品牌IP来源。这两个，我不推荐大家用所谓的AI流自动化。做出来的东西，只会是随机分布，缺乏个人特色。
 比如追热点：龙虾出来你就讲龙虾、CC源码泄漏你就讲源码，这些东西看起来会有一时的热度，但是如果你没有真的好奇心、没有加工、没有思考，只是通过所谓的AI工作流交付的内容，就像是互联网这个大染缸里，丢下一坨无足轻重的大便。
-另一方面，一些流程项的事情，适合的是经过多次迭代后，用大模型辅助生产。比如用Remotion skills制作宣传视频，笔者最近的5个项目宣传视频，都是AI辅助生产的。更早一些，笔者的量化视频，全是用 manim 生成的视频。</description></item></channel></rss>
+另一方面，一些流程项的事情，适合的是经过多次迭代后，用大模型辅助生产。比如用Remotion skills制作宣传视频，笔者最近的5个项目宣传视频，都是AI辅助生产的。更早一些，笔者的量化视频，全是用 manim 生成的视频。</description>
+    </item>
+    
+  </channel>
+</rss>

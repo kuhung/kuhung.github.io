@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SEO on 谷粒 kuhung</title><link>https://kuhung.me/tags/seo/</link><description>Recent content in SEO on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/seo/index.xml" rel="self" type="application/rss+xml"/><item><title>个人主页 SEO 优化与结构改版实践</title><link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link><pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate><guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid><description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SEO on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/seo/</link>
+    <description>Recent content in SEO on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/seo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人主页 SEO 优化与结构改版实践</title>
+      <link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link>
+      <pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid>
+      <description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
 改版动机 最直接的起因来自 Google Search Console（GSC）的数据排查。我翻看后台流量来源时发现，主站沉淀的大量文章曝光寥寥，反倒是几个挂在子域名上的独立应用带来了不少流量。
 这与预期有明显出入。之前主站更换过域名，按历史访问数据来看，最早的核心读者大多是机器学习领域的同行；后来随着我写技术管理与职业思考，又吸引了一批大厂中从执行转向管理的朋友。最近一年，我的精力主要投入在 AI 落地与 MVP 产品实践上，但这部分新内容在搜索引擎中几乎没有拿到自然流量。主站不仅没能承担起新内容的承载与分发任务，现有的技术流量也被分散了。
 架构老化 收录受阻的原因很直观。
@@ -13,7 +28,16 @@
 权重整合 排查下来，首要问题出在主站与子域名的权重割裂上。
 长期以来，子域名分散了主站的权重。合理的架构应当是主站作为信任背书和流量枢纽，向子域名分发流量；同时子域名也要将搜索权重回传给主域名。但在实际运营中，出现了两处断层：
 其一是 GA4 数据追踪脱节。早先为了图省事，只有主力项目配置了埋点，很多低流量子项目处于裸奔状态。这次统一将所有子域名纳入同一套数据资产管理，规范了全站的追踪代码。
-其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description></item><item><title>从 SEO 角度做增长，以产品 TrakToken 为例</title><link>https://kuhung.me/posts/seo-in-practice-sop/</link><pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate><guid>https://kuhung.me/posts/seo-in-practice-sop/</guid><description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
+其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description>
+    </item>
+    
+    <item>
+      <title>从 SEO 角度做增长，以产品 TrakToken 为例</title>
+      <link>https://kuhung.me/posts/seo-in-practice-sop/</link>
+      <pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/seo-in-practice-sop/</guid>
+      <description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
 从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。
 本文试图介绍，从 SEO 相关角度，如何正确指导我们后续的产品迭代，如何持续构建数据驱动的产品迭代模式。并结合实际线上产品数据，给到说明。
 TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的定价数据，每日自动同步，提供价格对比、成本计算器、支出指数等功能。
@@ -23,7 +47,16 @@ TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的
 Vercel Analytics 负责页面和事件。零配置、自定义事件方便。问题是它和 GA4 的用户身份打不通。Vercel 里看到 509 个 calculator_result_viewed 事件访客，但没法知道这 509 人里有多少是从搜索来的。
 PostHog 笔者还在尝试中。不过有些问题：一是服务器在海外，国内采集有延迟和丢失；二是功能和 GA4 + Vercel 高度重叠，基础分析和事件采集两边都能做；三是实际只覆盖了 8.25 天，数据量不够支撑任何结论。还有就是他们家的UI太反人性了，我曾经以为GA4的交互很垃圾，但没想到他们家更是。
 不过 PostHog 代表的需求是真实的。需要一个单一平台串起落地页、行为动作以及站外动作的工具。
-Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description></item><item><title>搜索与 AI 可见性：让需要你产品的人找到你</title><link>https://kuhung.me/posts/seo-enhance/</link><pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate><guid>https://kuhung.me/posts/seo-enhance/</guid><description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
+Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description>
+    </item>
+    
+    <item>
+      <title>搜索与 AI 可见性：让需要你产品的人找到你</title>
+      <link>https://kuhung.me/posts/seo-enhance/</link>
+      <pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/seo-enhance/</guid>
+      <description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
 笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
 做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。
 用这个比方串一下全文逻辑：
@@ -44,7 +77,16 @@ Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关
 还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。
 第四步：实际搜一搜，判断用户想要什么
 拿候选查询去搜，看第一页主要是什么类型的结果：
-教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description></item><item><title>GEO的过去、未来与反作弊算法</title><link>https://kuhung.me/posts/geo-and-anticheat/</link><pubDate>Tue, 17 Mar 2026 10:37:36 +0800</pubDate><guid>https://kuhung.me/posts/geo-and-anticheat/</guid><description>回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
+教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description>
+    </item>
+    
+    <item>
+      <title>GEO的过去、未来与反作弊算法</title>
+      <link>https://kuhung.me/posts/geo-and-anticheat/</link>
+      <pubDate>Tue, 17 Mar 2026 10:37:36 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/geo-and-anticheat/</guid>
+      <description>回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
 关注一位博主，曾短暂投入过GEO方面的创业，到年初放弃。而我当时也让Gemini的DeepResearch做了一次调研。从目前我的状态来看，大家就知道并未深度投入。
 为什么不深入？我当时有三个判断。
 第一，GEO 本质上还是 SEO。国内搞这套，说到底还是内容农场的路子。门槛低，没护城河。 第二，小规模跑通容易，但想做成大生意，得铺大量销售去对接老板。这不符合我“轻步快跑”的现状。 第三，算不清账。业内叫零点击。你很难证明大模型里的某句推荐，到底带来了多少实在的收入。没法算账，客户就没法持续掏钱。
@@ -70,4 +112,8 @@ GEO 怎么做 回到 GEO。大模型现在抓取内容，用的还是老一套�
 所以 GEO 的实操没什么高深技术。无非是写内容、调内容、发内容，跟大模型的反作弊规则做持续测试。
 GEO 的未来 搞清楚了怎么做，最后面临的是怎么交差。
 和 SEO 相比，GEO 最大的硬伤是数据归因断层。过去你能清楚看到用户搜了什么词、在页面停留了多久。但在 GEO 里，这些全成了黑盒。
-但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。</description></item></channel></rss>
+但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。</description>
+    </item>
+    
+  </channel>
+</rss>
