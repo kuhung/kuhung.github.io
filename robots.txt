@@ -1,63 +1,83 @@
+# kuhung.me
+# 搜索索引与 AI 引用放行。商业 SEO 刮取与已知恶意爬虫拦截。
+# robots.txt 只约束守规矩的爬虫，拦不住伪装 UA 的扫描流量。
+# AI 站点摘要：https://kuhung.me/llms.txt
+
+# 默认策略：可检索、可引用、可训练。
+# search = 搜索索引与摘要；ai-input = 实时检索/引用；ai-train = 模型训练。
 User-agent: *
+Content-Signal: search=yes, ai-input=yes
 Allow: /
 
-User-agent: MJ12bot
-Disallow: /
+# 搜索引擎。单独成组，避免以后改 * 时误伤索引。
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: Sogou
+User-agent: 360Spider
+User-agent: YisouSpider
+User-agent: Applebot
+User-agent: YandexBot
+User-agent: Slurp
+Allow: /
 
+# AI 检索、实时引用、训练。每家的 Search / User / 训练爬虫是独立 token，不能互相替代。
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Google-CloudVertexBot
+User-agent: Applebot-Extended
+User-agent: Bytespider
+User-agent: Kimi-SearchBot
+User-agent: Kimi-User
+User-agent: KimiBot
+User-agent: MoonshotBot
+User-agent: DeepSeekBot
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: FacebookBot
+User-agent: CCBot
+Allow: /
+
+# 商业 SEO / 外链数据库。个人站没有合作需求，减少无效抓取。
 User-agent: AhrefsBot
-Disallow: /
-
+User-agent: AhrefsSiteAudit
+User-agent: SemrushBot
+User-agent: MJ12bot
+User-agent: DotBot
 User-agent: BLEXBot
+User-agent: DataForSeoBot
+User-agent: serpstatbot
+User-agent: SeekportBot
 Disallow: /
 
-# Block SISTRIX
-User-agent: SISTRIX Crawler
-Disallow: /
+# SISTRIX
 User-agent: sistrix
-Disallow: /
 User-agent: 007ac9
 Disallow: /
-User-agent: 007ac9 Crawler
-Disallow: /
 
-# Block Uptime robot
-User-agent: UptimeRobot/2.0
-Disallow: /
-
-# Block Ezooms Robot
-User-agent: Ezooms Robot
-Disallow: /
-
-# Block Perl LWP
-User-agent: Perl LWP
-Disallow: /
-
-# Block netEstate NE Crawler (+http://www.website-datenbank.de/)
-User-agent: netEstate NE Crawler (+http://www.website-datenbank.de/)
-Disallow: /
-
-# Block WiseGuys Robot
-User-agent: WiseGuys Robot
-Disallow: /
-
-# Block Turnitin Robot
-User-agent: Turnitin Robot
-Disallow: /
-
-# Block Heritrix
-User-agent: Heritrix
-Disallow: /
-
-# Block pricepi
-User-agent: pimonster
-Disallow: /
-User-agent: Pimonster
-Disallow: /
-
-User-agent: SurdotlyBot
-Disallow: /
-
+# 已知高噪声刮取。PetalBot / AspiegelBot 抓取量通常很大。
+User-agent: PetalBot
+User-agent: AspiegelBot
 User-agent: ZoominfoBot
+User-agent: MegaIndex
+User-agent: BUbiNG
+User-agent: magpie-crawler
+User-agent: DomainCrawler
+User-agent: SurdotlyBot
+User-agent: Ezooms
+User-agent: netEstate
+User-agent: pimonster
+User-agent: Pimonster
+User-agent: HTTrack
 Disallow: /
 
 Sitemap: https://kuhung.me/sitemap.xml
