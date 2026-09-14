@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GitHub Actions on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/github-actions/</link>
+    <description>Recent content in GitHub Actions on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 14 Sep 2026 23:38:37 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/github-actions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</title>
+      <link>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</link>
+      <pubDate>Mon, 14 Sep 2026 23:38:37 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</guid>
+      <description>最近对个人调度任务做了一次较大调整：核心从依赖 GitHub Actions 内置 schedule 的被动排队，改成由外部定时任务主动触发 workflow。要解决的主要是调度延迟。我有一批天级任务需要相对准时，例如拉取前一日数据、汇总昨天的工作；但 GitHub Actions 的 cron 并不可控，经常晚数小时，极端时当天该跑的 run 都没出现。GitHub 文档也写了，高负载时内置 schedule 会拖队，整点尤其挤，严重一点排队里的 job 还可能被丢掉。这和在公司里做数据调度是同一类烦恼。
+好在目前没有严格意义上的任务依赖；真有前后关系时，会拆成串联节点。更多还是用错开执行时间这类小技巧顶一顶。
+外部主动触发 除了 workflow 里自带的 schedule，还可以用第三方 cron 从仓库外 dispatch，相对更可控。调研阶段我主要用 Google Antigravity 查资料；古法编程也行，直接在 Google 里搜，AI 概览往往也会点到 workflow_dispatch、repository dispatch 这类做法。大意就是：定时器不在 GitHub 队列里干等，而是由外部按点去触发。落地代码在 kuhung/action-cron-hub，个人用的小 hub，负责外部定时和集中补触，细节就不展开了。线上各 workflow 原先自带的 schedule 我也下掉了，定时只走外部这一路，免得 GitHub 内外各响一次、同一天跑两遍。
+用 Pi CLI 批量改配置 落地时我用 Pi 的 CLI 客户端来改仓库。授权充分后，它可以读项目下的文件。我把多个相关仓库收进一个大文件路径下，在根目录让它扫描各子目录里已有的 GitHub workflow 配置，批量改 trigger，省得一个个仓库翻 yaml。这种多任务批量改，和之前统一改 GA4 实践指南：从配置到 AI 工作流 里那套埋点一样，改一处公共抽象、下面一起生效。（再次心痛：上次用 Claude 改到一半，账号被封了。）
+整体改动不大，前后折腾大约两个半小时。收尾时在 Antigravity 里用 Gemini 3.</description>
+    </item>
+    
+  </channel>
+</rss>
