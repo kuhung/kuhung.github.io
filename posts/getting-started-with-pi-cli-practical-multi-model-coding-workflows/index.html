@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Pi 入门笔记：比 Codex 更自由，但也更折腾 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Pi 入门笔记：比 Codex 更自由，但也更折腾 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-15T16:54:54+08:00","datePublished":"2026-09-15T16:54:54+08:00","description":"前段时间 Claude 把我封禁了，没办法，不得不找别的路子。光凭 Codex 也满足不了每天的编码需求，需要一些不一样视角的模型来互补。Cursor 又由于莫名其妙的操作，把我这张号的 500 次变成了按消耗计费。Antigravity 之前没怎么用过，虽然把代理问题解决了，总感觉不太聪明。底子比 Codex 和 Claude 的客户端要慢好多个版本。 社交媒体上关于 Pi 的讨论非常多。大半年 …","headline":"Pi 入门笔记：比 Codex 更自由，但也更折腾","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Pi, AI工具, vibe coding, 多模型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/","@type":"WebPage"},"name":"Pi 入门笔记：比 Codex 更自由，但也更折腾","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/","wordCount":525}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Pi 入门笔记：比 Codex 更自由，但也更折腾</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-09-15 itemprop="datePublished">September 15, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#命令行">命令行</a></li>
+    <li><a href="#常用指令">常用指令</a></li>
+    <li><a href="#打断和回退">打断和回退</a></li>
+    <li><a href="#图片和文件">图片和文件</a></li>
+    <li><a href="#项目里的坑">项目里的坑</a></li>
+    <li><a href="#输入方式">输入方式</a></li>
+    <li><a href="#载入顺序">载入顺序</a></li>
+    <li><a href="#使用感受">使用感受</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>前段时间 Claude 把我封禁了，没办法，不得不找别的路子。光凭 Codex 也满足不了每天的编码需求，需要一些不一样视角的模型来互补。Cursor 又由于莫名其妙的操作，把我这张号的 500 次变成了按消耗计费。Antigravity 之前没怎么用过，虽然把代理问题解决了，总感觉不太聪明。底子比 Codex 和 Claude 的客户端要慢好多个版本。</p>
+<p>社交媒体上关于 Pi 的讨论非常多。大半年前就听说前司内部开发还会用 Pi。我就想自己来琢磨一下，从装上到能干活，先把卡住我的问题记下来。</p>
+<h2 id="命令行">命令行</h2>
+<p>Pi 是一个命令行工具，简单得不能再简单。装上之后，从 Codex、Claude 的 GUI 过来的人，第一个疑惑往往是：文件怎么看？我也搜过有没有第三方客户端，结论是不用。有人推荐 <a href="https://github.com/can1357/oh-my-pi">oh-my-pi</a>，我的想法是从零开始，做一个更高度自定义的，所以没用它。后面都从最基础的 Pi 开始。</p>
+<p>安装、卸载不做重复介绍，直接去 <a href="https://pi.dev/">pi.dev</a> 下载就行。装完第一件事是登录。一种是走第三方客户端，推个网页认证。我把 Codex、Antigravity 和 Cursor 三个都登上去了。后面两个没有默认预装插件，网上找其他人开发的就行。Cursor 要注意，要装非 backend 的那款，backend 那款鉴权方式不一样。</p>
+<p>另一种是直接用 API token，比如 OpenRouter。我想用的是套餐额度，所以第三方 provider 没关注。它原生支持 Llama，条件允许可以用本地部署。这些都不是重点。</p>
+<h2 id="常用指令">常用指令</h2>
+<p>斜杠指令看起来蛮多，好像有 80 多个，至少我这边是。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/09/dc130fc933cf43cd.webp" alt="Pi 斜杠指令列表，左下角显示 1/84，可见 settings、model、tree、thinking、scoped-models" class="lazyload"><figcaption class="image-caption">Pi 斜杠指令列表，左下角显示 1/84，可见 settings、model、tree、thinking、scoped-models</figcaption></figure></p>
+<p>日常反复用到的，大致就是下面这些。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/model        换模型          /thinking     调推理级别
+</span></span><span style="display:flex;"><span>/tree         从跑偏点分支    /compact      压缩长上下文
+</span></span><span style="display:flex;"><span>/resume       找旧会话        /name         给会话命名
+</span></span><span style="display:flex;"><span>/session      看状态/成本     /reload       重载配置
+</span></span><span style="display:flex;"><span>@file         附文件          !cmd / !!cmd  执行 shell
+</span></span><span style="display:flex;"><span>Enter         纠偏            Alt+Enter     排队后续任务
+</span></span><span style="display:flex;"><span>Esc           中止
+</span></span></code></pre></div><p>我自己最常动的是 <code>/model</code> 和 <code>/thinking</code>。登录之后模型会展开特别多，<code>/thinking</code> 默认偏中，我喜欢调到最大，不然这些 token 怎么消耗得完。<code>/compact</code> 在 Codex 和 Claude 里也有，长了就压缩一下。</p>
+<p>清单之外，Codex 里那些 MCP、plan，还有 <code>/goal</code> 那种一口气做完的功能，Pi 核心没有。我个人觉得比较有用的是 sub-agent 和 MCP。Codex 里很多第三方服务是直接用 MCP 接的，比如 Stripe 支付、Resend 邮箱。</p>
+<p>Pi 把这些都留给扩展。缺了可以按需补，同一类先装一个。</p>
+<table>
+<thead>
+<tr>
+<th>缺少的内建能力</th>
+<th>可选扩展</th>
+<th>使用边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCP</td>
+<td><code>pi-mcp-adapter</code></td>
+<td>把 MCP 工具接入 Pi；工具一多，优先 proxy/search，避免全部常驻上下文</td>
+</tr>
+<tr>
+<td>Subagents</td>
+<td><code>pi-subagents</code></td>
+<td>单个、并行和链式委派；子代理仍会单独吃上下文和额度</td>
+</tr>
+<tr>
+<td>Plan Mode</td>
+<td><code>pi-agent-modes</code></td>
+<td>提供 ask/plan/build/review/debug 等模式；藏掉 <code>edit/write</code> 不等于沙箱</td>
+</tr>
+<tr>
+<td>权限确认</td>
+<td><code>pi-permission-system</code></td>
+<td>allow/ask/deny 规则；这是决策层，不是 OS 沙箱</td>
+</tr>
+<tr>
+<td>OS 沙箱</td>
+<td><code>pi-sandbox</code></td>
+<td>macOS 用 <code>sandbox-exec</code>，Linux 常用 bubblewrap</td>
+</tr>
+<tr>
+<td>后台 Bash</td>
+<td><code>pi-background-bash</code></td>
+<td>长命令转后台；进程仍继承本机用户权限</td>
+</tr>
+</tbody>
+</table>
+<p>没必要一开始全下。第三方大多是社区写的，版本升级时有风险。网上都建议锁定版本，避免软件升级后自动更新、注入恶意代码。高频指令记住，缺的能力先放着，可以开第一轮对话了。</p>
+<h2 id="打断和回退">打断和回退</h2>
+<p>第一轮对话里，最先卡住我的是怎么停。Codex 可以直接往下打字，还有 <code>/btw</code> 这种不打断进程、问一句当前进展的指令。Claude 里也有类似的。Pi 目前不支持。我给 <code>/btw</code> 的评价是一般有用：Claude 里有时比较弱智，Codex 里问是不是和预期一致，或者问细节，能答，但没有那么聪明。</p>
+<p>真要停，按 Esc，这个和 Codex 一致。不一致的是按两次 Esc。Codex 会回到上次对话，Pi 从我的实践看没有这个反应，两次 Esc 默认打开 <code>/tree</code>。</p>
+<p><code>Esc</code>、Enter、<code>/tree</code>、Git 看起来都像“回去”，处理的状态并不相同。</p>
+<table>
+<thead>
+<tr>
+<th>现场</th>
+<th>先做什么</th>
+<th>它能恢复什么</th>
+<th>它不能恢复什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输出明显跑偏，或准备执行危险动作</td>
+<td>按一次 <code>Esc</code></td>
+<td>中止当前 run；把排队的 steering/follow-up 恢复到编辑器</td>
+<td>已经执行的 shell、已经写入或删除的文件</td>
+</tr>
+<tr>
+<td>只是想补一句约束</td>
+<td>工作中按 <code>Enter</code></td>
+<td>作为 steering，等当前工具调用结束后尽快交给模型</td>
+<td>不是硬中断，不能撤销正在执行的副作用</td>
+</tr>
+<tr>
+<td>想回到旧思路重新聊</td>
+<td><code>/tree</code></td>
+<td>对话树与后续模型上下文</td>
+<td>磁盘文件、Git index、未跟踪文件</td>
+</tr>
+<tr>
+<td>想撤回代理造成的文件修改</td>
+<td>先 <code>git status</code>、<code>git diff</code>，再定点 <code>git restore</code></td>
+<td>Git 已跟踪文件的工作区或暂存区</td>
+<td>默认不处理未跟踪文件，也不恢复对话</td>
+</tr>
+</tbody>
+</table>
+<p><code>/tree</code> 对用户并不友好，只回退对话，不回退变更。它没有把 Git 整合进去，也没有文件跟踪。官方的意思是文件交给 Git。但你如果让模型自己操作 Git，我的观察是，即使是聪明的 GPT-5.6 sol 也会陷入迷失。所以还是用第三方更友好一点，比如 <a href="https://github.com/arpagon/pi-rewind">pi-rewind</a>。</p>
+<p>对话能停、能补、能回退之后，下一个问题是怎么把图和文件喂进去。</p>
+<h2 id="图片和文件">图片和文件</h2>
+<p>做前端、看第三方截图的时候，模型得能看见图。我一开始没找到粘贴入口，走了个曲线：先传到图床，把链接丢给模型，让它自己解释。后来才知道，Mac 上是 Ctrl+V，不是习惯的 Command+V。</p>
+<p>社区也反馈，有时候模型并不会读这张图片。所以需要留档、后面还要对比的图，我还是上传。不需要留的，Ctrl+V 粘进终端就行。几种入口拿到的东西不一样。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>模型实际拿到什么</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl+V</code> / 拖入终端 / <code>@</code></td>
+<td>本地路径，代理还得 <code>read</code></td>
+<td>本机交互，偶尔发图</td>
+</tr>
+<tr>
+<td><code>pi @image.png</code></td>
+<td>真正的图片附件</td>
+<td>图片决定对错时</td>
+</tr>
+<tr>
+<td>图床 URL</td>
+<td>一段文本，模型可能去 curl，也可能不去</td>
+<td>跨机器，或图片本来就要公开</td>
+</tr>
+<tr>
+<td><code>scp</code> 到远端再 <code>read</code></td>
+<td>远端路径</td>
+<td>Pi 跑在远程主机上</td>
+</tr>
+</tbody>
+</table>
+<p>我这边用的模型基本上都有图片理解能力。没有视觉能力的，比如半年前的 DeepSeek，论坛用户会装 vision-bridge 一类插件。这取决于需求。第三方插件蛮丰富，遇到问题直接搜，基本能解决。经常贴图的话，还有 <code>pi-paster</code>，会把路径换成真正的图片附件。</p>
+<p>Pi 跑在远程主机上，读不到你 Mac 的剪贴板。这时把图传到远端再 <code>read</code>。少数情况不建议直接在服务器上改东西，安全第一。敏感截图、未发布设计和含 token 的报错页，也不适合为了喂给 agent 先公开上传。</p>
+<p>普通文件也类似，给的是路径。直接 <code>@</code> 对应文件就可以。终端里拖拽文件进来，在 Pi 里没有那么方便，把路径告诉模型也行。</p>
+<p>图和文件能塞了，真开始改项目，坑会换一批。</p>
+<h2 id="项目里的坑">项目里的坑</h2>
+<p>我实践下来，Gemini 3.8 Flash 可能对 Git 操作过度微调了，非常喜欢在 Git 树上做微操，反而影响大局。这个时候我会把之前在 Codex、Claude 和 Cursor 里存下来的 agent memory 让它读一遍，写到当前项目里，成为给它的指导意见。</p>
+<p>做到一半还发现，它没有把我在其他项目的 skill 导入进来。提醒它帮我软链接过来。注意是软链接。我们所有 skills 都从统一仓库向几处分发，方便管理，而不是每个工具各留一套。这块我在<a href="/posts/how-to-manage-skills-for-agent/">从单 Agent 到跨 Agent 的 Skills 管理</a>里写过。</p>
+<p>模型列表是另一个麻烦。尤其是 Cursor，细分类太多。可以用 <code>/scoped-models</code> 做人工筛选。筛的时候我比较清楚 Codex 现在最强的是谁，但不清楚 Grok 在当前的实际水平，种类又太多。本来想自己写个插件，后面发现有人写了，就是 <a href="https://github.com/ktappdev/pi-better-models">pi-better-models</a>，省了非常多时间。也可以看我做的 <a href="https://traktoken.com">TrakToken</a>，上面有不同模型能力的排名。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/09/e15ac6b2d6d8c909.webp" alt="pi-better-models 模型选择器，按 cursor 搜索后列出 Claude Fable 与 Opus 多个变体，带价格、速度和 Artificial Analysis 评分" class="lazyload"><figcaption class="image-caption">pi-better-models 模型选择器，按 cursor 搜索后列出 Claude Fable 与 Opus 多个变体，带价格、速度和 Artificial Analysis 评分</figcaption></figure></p>
+<p><code>/scoped-models</code> 管候选范围，<code>pi-better-models</code> 帮你看清模型，不会替你自动选。</p>
+<p>会话名称也不帮我压缩。我希望它能像 Codex、Claude 那样缩一下，回头才知道不同会话做了什么。这部分应该也会有插件。</p>
+<h2 id="输入方式">输入方式</h2>
+<p>对话过程中怎么给它输入，需要分清 steering 和 follow-up。</p>
+<p>Steering 是这次先做完，下一句再补约束，按 Enter。想让它把当前这件事情做完，先不往过程里塞新内容，按 Alt+Enter。做得快错了，用 Esc 终止。</p>
+<p>其余快捷键，我自己常用的是这些。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+L</td>
+<td>选模型</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>循环模型</td>
+</tr>
+<tr>
+<td>Shift+Tab</td>
+<td>循环 thinking</td>
+</tr>
+<tr>
+<td>Ctrl+O</td>
+<td>展开/收起工具输出</td>
+</tr>
+<tr>
+<td>Ctrl+T</td>
+<td>展开/收起 thinking</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td>复制最后消息</td>
+</tr>
+<tr>
+<td>Esc Esc</td>
+<td>默认打开 <code>/tree</code></td>
+</tr>
+<tr>
+<td>/hotkeys</td>
+<td>查看其余全部</td>
+</tr>
+</tbody>
+</table>
+<p>按键会了，Git 习惯和 skill 也写进项目了。这些文件进模型的顺序是固定的。</p>
+<h2 id="载入顺序">载入顺序</h2>
+<p>Pi 的 system 提示词，按下面这个顺序拼。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>默认或自定义 SYSTEM
+</span></span><span style="display:flex;"><span>→ APPEND_SYSTEM
+</span></span><span style="display:flex;"><span>→ AGENTS.md / CLAUDE.md 项目上下文
+</span></span><span style="display:flex;"><span>→ Skills 目录
+</span></span><span style="display:flex;"><span>→ 当前工作目录
+</span></span></code></pre></div><p>它们进 Pi 的位置不同，约束力度也不同。</p>
+<table>
+<thead>
+<tr>
+<th>机制</th>
+<th>作用</th>
+<th>是否常驻上下文</th>
+<th>适合放什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AGENTS.md</code> / <code>CLAUDE.md</code></td>
+<td>项目规则，按全局、父目录、cwd 叠加</td>
+<td>是</td>
+<td>项目特有约束、验证命令、Git 规则</td>
+</tr>
+<tr>
+<td><code>.pi/APPEND_SYSTEM.md</code></td>
+<td>在 system prompt 后追加</td>
+<td>是</td>
+<td>少量高优先、跨任务规则</td>
+</tr>
+<tr>
+<td><code>.pi/SYSTEM.md</code></td>
+<td>替换默认 system prompt</td>
+<td>是</td>
+<td>完全定制代理；只想加几条规则时别动它</td>
+</tr>
+<tr>
+<td>Prompt Template</td>
+<td><code>/名称</code> 展开成用户消息</td>
+<td>只在调用时进入</td>
+<td>重复提示</td>
+</tr>
+<tr>
+<td>Skill</td>
+<td>先暴露名称和描述，匹配后再读正文</td>
+<td>描述常驻，正文按需</td>
+<td>专门工作流</td>
+</tr>
+<tr>
+<td>Extension</td>
+<td>TypeScript：工具、命令、钩子、UI</td>
+<td>作为代码运行</td>
+<td>确定性门禁、审批、自动化</td>
+</tr>
+</tbody>
+</table>
+<p>规则能加载，成本也想看清。我在 Claude 里面会看不同占比的 token 数。Pi 里面应该也有这个插件，回头找找能不能装上去。</p>
+<h2 id="使用感受">使用感受</h2>
+<p>从装上到能改项目，Pi 刚开始并没有那么友好。反应速度可以，也能把不同模型的能力集合在一起，但肯定还是各家自己的客户端调教会更好。Pi 提供的是更高的可玩性。如果你不是在做 Agent 开发研究，这个可玩性不用过度纠结。手上有 Claude、Codex 和 Cursor，用它们把日常工作做好就行。Pi 更适合灵活度更高的活。或者这件事简单，手里还有多余的模型额度，不必上 Claude 那种通用模型，用第二梯队的模型试一试也行。</p>
+<p>我一开始就用它改 GitHub Actions 的统一调度，花了一两个小时，效果还算满意。用的是 Gemini 3.8 Flash。偶尔用 Claude 帮我诊断一下方案。</p>
+<p>网上大部分话集中在：先用起来，别急着装网友推荐。遇到问题，先定位清楚，再去找对应的参考。我会看 Codex、Claude 里类似功能是怎么做的，再搜有没有现成的第三方。确认好用、自己也需要，再加回来。</p>
+<p>同一会话里快速换模型确实爽。爽归爽，我们之前在<a href="/posts/maximization-your-claude-code-sessions/">提效 20% 的 Claude Code Session 优化方法</a>里讲过，换模型缓存会全部失效。目的和成本要自己权衡。可玩性不是这件事的根本。根本是提高生产力，把手上的资源有效利用起来。</p>
+<p>能力表里有沙箱，这块我研究不算多。Pi 默认没有权限弹窗，也没有 OS 隔离，继承的是当前用户的文件、网络和凭证。敏感操作不适合直接在裸机上做，未来可能会把沙箱装回来。</p>
+<p>Pi 更新迭代实在太快。从 2026 年 5 月迁到 <code>@earendil-works</code> 之后，到 v0.85.1 已经走了很多版。之前的教程可能就没那么有效。</p>
+<h2 id="参考资料">参考资料</h2>
+<p><strong>官方与文档</strong></p>
+<ul>
+<li><a href="https://pi.dev/">Pi Coding Agent</a> - 官网与安装入口</li>
+<li><a href="https://pi.dev/docs/latest/usage">Pi Usage</a> - 斜杠命令、<code>@</code> 文件与图片入口</li>
+<li><a href="https://pi.dev/docs/latest/sessions">Pi Sessions</a> - <code>/tree</code>、<code>/fork</code>、<code>/clone</code></li>
+<li><a href="https://pi.dev/docs/latest/keybindings">Pi Keybindings</a> - 90 个可绑定 action</li>
+<li><a href="https://github.com/earendil-works/pi">earendil-works/pi</a> - v0.85.1 源码与发版</li>
+</ul>
+<p><strong>文中提到的插件</strong></p>
+<ul>
+<li><a href="https://github.com/can1357/oh-my-pi">can1357/oh-my-pi</a> - 高度封装的 Pi fork，本文没有采用</li>
+<li><a href="https://github.com/arpagon/pi-rewind">arpagon/pi-rewind</a> - 回退对话的同时回退文件变更</li>
+<li><a href="https://github.com/ktappdev/pi-better-models">ktappdev/pi-better-models</a> - 按编码能力筛选模型</li>
+<li><a href="https://github.com/beowulf11/pi-paster">beowulf11/pi-paster</a> - 把粘贴的图片路径转成真正附件</li>
+<li><a href="https://pi.dev/packages/pi-mcp-adapter">pi-mcp-adapter</a> - MCP 接入</li>
+<li><a href="https://pi.dev/packages/pi-subagents">pi-subagents</a> - 子代理</li>
+<li><a href="https://pi.dev/packages/pi-agent-modes">pi-agent-modes</a> - ask、plan、build 等工作模式</li>
+<li><a href="https://pi.dev/packages/pi-permission-system">pi-permission-system</a> - 工具权限规则</li>
+<li><a href="https://pi.dev/packages/pi-sandbox">pi-sandbox</a> - OS 级隔离</li>
+<li><a href="https://pi.dev/packages/pi-background-bash">pi-background-bash</a> - 后台命令与完成通知</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/pi/">
+                    #Pi</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
+                    #AI工具</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/vibe-coding/">
+                    #vibe coding</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%A4%9A%E6%A8%A1%E5%9E%8B/">
+                    #多模型</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/" class="prev" rel="prev" title="Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践"><i class="iconfont icon-left"></i>&nbsp;Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -6,7 +6,23 @@
     <description>Recent content in vibe coding on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 14 Sep 2026 23:38:37 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Sep 2026 16:54:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pi 入门笔记：比 Codex 更自由，但也更折腾</title>
+      <link>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</link>
+      <pubDate>Tue, 15 Sep 2026 16:54:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</guid>
+      <description>前段时间 Claude 把我封禁了，没办法，不得不找别的路子。光凭 Codex 也满足不了每天的编码需求，需要一些不一样视角的模型来互补。Cursor 又由于莫名其妙的操作，把我这张号的 500 次变成了按消耗计费。Antigravity 之前没怎么用过，虽然把代理问题解决了，总感觉不太聪明。底子比 Codex 和 Claude 的客户端要慢好多个版本。
+社交媒体上关于 Pi 的讨论非常多。大半年前就听说前司内部开发还会用 Pi。我就想自己来琢磨一下，从装上到能干活，先把卡住我的问题记下来。
+命令行 Pi 是一个命令行工具，简单得不能再简单。装上之后，从 Codex、Claude 的 GUI 过来的人，第一个疑惑往往是：文件怎么看？我也搜过有没有第三方客户端，结论是不用。有人推荐 oh-my-pi，我的想法是从零开始，做一个更高度自定义的，所以没用它。后面都从最基础的 Pi 开始。
+安装、卸载不做重复介绍，直接去 pi.dev 下载就行。装完第一件事是登录。一种是走第三方客户端，推个网页认证。我把 Codex、Antigravity 和 Cursor 三个都登上去了。后面两个没有默认预装插件，网上找其他人开发的就行。Cursor 要注意，要装非 backend 的那款，backend 那款鉴权方式不一样。
+另一种是直接用 API token，比如 OpenRouter。我想用的是套餐额度，所以第三方 provider 没关注。它原生支持 Llama，条件允许可以用本地部署。这些都不是重点。
+常用指令 斜杠指令看起来蛮多，好像有 80 多个，至少我这边是。
+日常反复用到的，大致就是下面这些。
+/model 换模型 /thinking 调推理级别 /tree 从跑偏点分支 /compact 压缩长上下文 /resume 找旧会话 /name 给会话命名 /session 看状态/成本 /reload 重载配置 @file 附文件 !cmd / !</description>
+    </item>
+    
     <item>
       <title>Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</title>
       <link>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</link>
