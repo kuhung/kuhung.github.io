@@ -6,7 +6,29 @@
     <description>Recent content in Posts on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 15 Sep 2026 16:54:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Sep 2026 23:47:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</title>
+      <link>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</link>
+      <pubDate>Wed, 16 Sep 2026 23:47:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</guid>
+      <description>为什么做插件 PageGrok 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。
+最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长团队。需要一个产品跑通来验证想法，浏览器插件是个不错的选择：入口轻，开发周期短，用户触达直接。
+毕竟工作的大部分时间也是在网页里过的。每天都会打开网页处理事情，无论是外部资料还是内网知识库（KM）上的内容，在 AI slop 流行的同时，信息过载了。很自然就想到让 AI 来解读。别人用 AI 扩写，你再用 AI 总结，完成了一轮社会结构意义上的编码和解码。
+出发点就是：不想再跳转网页，就在旁边看。
+功能设计 项目 3 月份开始。那时刚好从 Cursor 往 Codex 和 Claude 过渡，让 Claude 帮我写了一版，很快就有了一个带着 AI 味儿的原型。
+调研过竞品 Page-Assist。它想做的是网页上的对话框，一个 chatbot。但 chatbot 是 23、24 年的形态了，而且复杂。切入点就是做简单一点。
+自己用的时候发现，GitHub、Twitter、小红书这类复杂站点，整页读进来不加限制，重点容易丢掉。左右侧边栏塞了不少无关内容。当时一个产品直觉：能不能借鉴印象笔记的框选功能，选中想要的区域再做解读。提示词也按这个方向写，完成得还不错。
+核心功能就几点。启动后，把当前网页内容读进来，跟它交互拿到想要的东西。觉得取的内容不准，也可以自己框选。
+跑了几个小版本后发现，有时候我自己也不知道想问什么。典型的冷启动问题：用户不知道该干什么时，得先告诉他可以干什么。借鉴了 Google「问问 Gemini」侧边栏的引导式提问，一启动给出三个推荐问题。再往后是更细节的事：这三个问题要不要让用户自定义，愿不愿意用自己的模型来读。
+技术选型 不跳转网页这个点，后来延伸出另一层：隐私。
+不少同类产品走的是第三方服务。无论是个人还是小型公司，都不希望资料跑到外面去。当时我在本地 Mac 和 Ubuntu 服务器上都部署了 Gemma 4，做一些小总结，效果还不错。为此还做过小模型本地推理的 benchmark，搭了 Traktoken 来看模型框架的首字响应、吞吐量、负载情况，测评过程写在 拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架。
+但用得久了碰到一个问题。Ubuntu 上的 Gemma 4 冷启动要十秒以上，体验很差。脑子转得很快，却要冷静几秒钟，接受不了。
+恰好这时接触到 Cerebras。和英伟达路线不同，他们做的就是一个「快」字。据说是在整块晶圆上做模型服务，首字延迟和吞吐量都很惊人，能在一秒内完成回答。当时试用了平台上的 Gemma 4，就是我想要的。后来本地服务就没怎么用了。我自己的隐私需求其实不算特别强，也没有特别敏感的企业向内容。
+推广与定价 一开始把内容发在了 V2EX。从后面做 SEO 的角度看，这个举动确实带来不少曝光。但当时定调强调本地隐私，后面想接自己提供的 API 服务时，AI 生成的内容摘要极度偏向隐私，导致受众十分窄。后来改过几次网站，想在 SEO 上把它掰回来。近期流量看，有一点效果，总比没有强。</description>
+    </item>
+    
     <item>
       <title>Pi 入门笔记：比 Codex 更自由，但也更折腾</title>
       <link>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</link>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-16T23:47:12+08:00","datePublished":"2026-09-16T23:47:12+08:00","description":"为什么做插件 PageGrok 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。 最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长团队。需要一个产品跑通来验证想 …","headline":"离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Chrome插件, PageGrok, AI工具, 本地模型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/","@type":"WebPage"},"name":"离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/","wordCount":120}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-09-16 itemprop="datePublished">September 16, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么做插件">为什么做插件</a></li>
+    <li><a href="#功能设计">功能设计</a></li>
+    <li><a href="#技术选型">技术选型</a></li>
+    <li><a href="#推广与定价">推广与定价</a></li>
+    <li><a href="#我的用法">我的用法</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="为什么做插件">为什么做插件</h2>
+<p><a href="https://www.pagegrok.org/">PageGrok</a> 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/09/9175a6bc96628297.webp" alt="PageGrok 官网首页，左侧文案「不离开当前网页，直接问懂它」，右侧为 CSS Grid 文档页加侧边栏解读示意" class="lazyload"><figcaption class="image-caption">PageGrok 官网首页，左侧文案「不离开当前网页，直接问懂它」，右侧为 CSS Grid 文档页加侧边栏解读示意</figcaption></figure></p>
+<p>最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长团队。需要一个产品跑通来验证想法，浏览器插件是个不错的选择：入口轻，开发周期短，用户触达直接。</p>
+<p>毕竟工作的大部分时间也是在网页里过的。每天都会打开网页处理事情，无论是外部资料还是内网知识库（KM）上的内容，在 AI slop 流行的同时，信息过载了。很自然就想到让 AI 来解读。别人用 AI 扩写，你再用 AI 总结，完成了一轮社会结构意义上的编码和解码。</p>
+<p>出发点就是：不想再跳转网页，就在旁边看。</p>
+<h2 id="功能设计">功能设计</h2>
+<p>项目 3 月份开始。那时刚好从 Cursor 往 Codex 和 Claude 过渡，让 Claude 帮我写了一版，很快就有了一个带着 AI 味儿的原型。</p>
+<p>调研过竞品 Page-Assist。它想做的是网页上的对话框，一个 chatbot。但 chatbot 是 23、24 年的形态了，而且复杂。切入点就是做简单一点。</p>
+<p>自己用的时候发现，GitHub、Twitter、小红书这类复杂站点，整页读进来不加限制，重点容易丢掉。左右侧边栏塞了不少无关内容。当时一个产品直觉：能不能借鉴印象笔记的框选功能，选中想要的区域再做解读。提示词也按这个方向写，完成得还不错。</p>
+<p>核心功能就几点。启动后，把当前网页内容读进来，跟它交互拿到想要的东西。觉得取的内容不准，也可以自己框选。</p>
+<p>跑了几个小版本后发现，有时候我自己也不知道想问什么。典型的冷启动问题：用户不知道该干什么时，得先告诉他可以干什么。借鉴了 Google「问问 Gemini」侧边栏的引导式提问，一启动给出三个推荐问题。再往后是更细节的事：这三个问题要不要让用户自定义，愿不愿意用自己的模型来读。</p>
+<h2 id="技术选型">技术选型</h2>
+<p>不跳转网页这个点，后来延伸出另一层：隐私。</p>
+<p>不少同类产品走的是第三方服务。无论是个人还是小型公司，都不希望资料跑到外面去。当时我在本地 Mac 和 Ubuntu 服务器上都部署了 Gemma 4，做一些小总结，效果还不错。为此还做过小模型本地推理的 benchmark，搭了 <a href="https://www.traktoken.com/">Traktoken</a> 来看模型框架的首字响应、吞吐量、负载情况，测评过程写在 <a href="/posts/benchmark-for-llm-inference/">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</a>。</p>
+<p>但用得久了碰到一个问题。Ubuntu 上的 Gemma 4 冷启动要十秒以上，体验很差。脑子转得很快，却要冷静几秒钟，接受不了。</p>
+<p>恰好这时接触到 Cerebras。和英伟达路线不同，他们做的就是一个「快」字。据说是在整块晶圆上做模型服务，首字延迟和吞吐量都很惊人，能在一秒内完成回答。当时试用了平台上的 Gemma 4，就是我想要的。后来本地服务就没怎么用了。我自己的隐私需求其实不算特别强，也没有特别敏感的企业向内容。</p>
+<h2 id="推广与定价">推广与定价</h2>
+<p>一开始把内容发在了 V2EX。从后面做 SEO 的角度看，这个举动确实带来不少曝光。但当时定调强调本地隐私，后面想接自己提供的 API 服务时，AI 生成的内容摘要极度偏向隐私，导致受众十分窄。后来改过几次网站，想在 SEO 上把它掰回来。近期流量看，有一点效果，总比没有强。</p>
+<p>免费提供插件，有人用，至少证明有需求。中间一度 Chrome 后台显示有 5000 用户。但那次很奇怪，是某个特定版本上的短时高峰。升级后这些设备并没有跟着升版本，推测可能是内部服务或黑灰产爬虫，后来当异常数据剔掉了。</p>
+<p>后来补了账号体系。定价参考 Cursor 旧套餐：5 美元 500 次/月。按最近的测试，次数可能偏多了，或者计费周期该拉长一点。月均消耗大概一两百次。高频用户的情况不清楚，但插件本身的使用频次就不会特别高。</p>
+<h2 id="我的用法">我的用法</h2>
+<p>现在的工作流是：解读完网页，把回复复制下来。复制做了两种：只复制回答，或复制整段对话。这是自己用深了之后总结出来的设计。我需要把原始链接、我的问题、它的回答一起带上。后面做选题或知识集成时，能知道当时问了什么、得到了什么，还能回看原文。复制之后可以存到苹果备忘录，我现在是用脚本直接传到 GitHub Gist。后面其他 AI 也能读到这些 case，再接到选题、产品导向和文档输出里。</p>
+<p>整体做下来，产品出发点、宣传、商业闭环，这条链路是走完了。但如果再做一次，可能会多想商业化，而不是只做自我实现。目前每周用户数为54，这些都是自然流量带来的，说明需求存在。如果你也要总结页面，又不想丢给豆包或其他 AI，或者转发链接碰到登录鉴权，可以试试打开侧边栏让 AI 解读当前网页。本地部署不了 AI 又想体验的话，欢迎把邮箱发给我/留言也行，免费赠送一个月会员。就当是读者福利了。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://www.pagegrok.org/">PageGrok</a> - 浏览器侧边栏 AI 解读插件</li>
+<li><a href="https://www.cerebras.ai/">Cerebras</a> - 晶圆级芯片推理平台</li>
+<li><a href="/posts/benchmark-for-llm-inference/">拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架</a> - 本地推理框架选型的详细测评</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/chrome%E6%8F%92%E4%BB%B6/">
+                    #Chrome插件</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/pagegrok/">
+                    #PageGrok</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
+                    #AI工具</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B/">
+                    #本地模型</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/" class="prev" rel="prev" title="Pi 入门笔记：比 Codex 更自由，但也更折腾"><i class="iconfont icon-left"></i>&nbsp;Pi 入门笔记：比 Codex 更自由，但也更折腾</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
