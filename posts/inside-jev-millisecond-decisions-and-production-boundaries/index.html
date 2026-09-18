@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           深入解读 Jev 模型：毫秒级判定原理与工程应用边界 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="深入解读 Jev 模型：毫秒级判定原理与工程应用边界 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-18T20:57:35+08:00","datePublished":"2026-09-18T20:57:35+08:00","description":"理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。 很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。 …","headline":"深入解读 Jev 模型：毫秒级判定原理与工程应用边界","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 架构设计, 性能优化, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","@type":"WebPage"},"name":"深入解读 Jev 模型：毫秒级判定原理与工程应用边界","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","wordCount":1088}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">深入解读 Jev 模型：毫秒级判定原理与工程应用边界</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-09-18 itemprop="datePublished">September 18, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#理解-jev">理解 Jev</a></li>
+    <li><a href="#jev-是什么">Jev 是什么</a></li>
+    <li><a href="#拆底层">拆底层</a></li>
+    <li><a href="#20行代码实测">20行代码实测</a></li>
+    <li><a href="#压测数据分析">压测数据分析</a></li>
+    <li><a href="#失败模式">失败模式</a>
+      <ul>
+        <li><a href="#缺少思维链">缺少思维链</a></li>
+        <li><a href="#选项顺序偏差">选项顺序偏差</a></li>
+        <li><a href="#无关项干扰">无关项干扰</a></li>
+        <li><a href="#未校准风险">未校准风险</a></li>
+        <li><a href="#无文本生成">无文本生成</a></li>
+        <li><a href="#单步局限">单步局限</a></li>
+      </ul>
+    </li>
+    <li><a href="#四种设计模式">四种设计模式</a>
+      <ul>
+        <li><a href="#推测性扇出">推测性扇出</a></li>
+        <li><a href="#置信度门控">置信度门控</a></li>
+        <li><a href="#复合评分">复合评分</a></li>
+        <li><a href="#分层分类">分层分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#生产架构">生产架构</a>
+      <ul>
+        <li><a href="#混合路由">混合路由</a></li>
+        <li><a href="#成本与延迟">成本与延迟</a></li>
+        <li><a href="#三种网关形态">三种网关形态</a></li>
+        <li><a href="#生产落地案例">生产落地案例</a></li>
+        <li><a href="#reflexgate-方案">ReflexGate 方案</a></li>
+        <li><a href="#影子流量校验">影子流量校验</a></li>
+      </ul>
+    </li>
+    <li><a href="#生态地图">生态地图</a></li>
+    <li><a href="#该不该用">该不该用</a>
+      <ul>
+        <li><a href="#选型四问">选型四问</a></li>
+        <li><a href="#三种范式权衡">三种范式权衡</a></li>
+        <li><a href="#适用与不适用">适用与不适用</a></li>
+        <li><a href="#两点工程建议">两点工程建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="理解-jev">理解 Jev</h2>
+<p>在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。</p>
+<p>很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。这就是我想聊聊 Jev 的原因。</p>
+<p>为什么这个模型最近能掀起波澜？通用大模型的方向在业界已经基本固定，新进的产品团队必须寻找差异化的切入点。Jev 号称闭门研发了两年，主打的就是极速响应。它去掉了自回归生成循环，输入按 Token 计费，输出 Token 则是零元。这很合理，它本质上是一个判别器模型，就像没有人会为随机森林的输出结果按 Token 买单一样。</p>
+<h2 id="jev-是什么">Jev 是什么</h2>
+<p>Jev 本质上是一个面向状态评估的统计分类器。大模型擅长生成，Jev 专注于判别。它把传统分类任务用大模型处理时既慢又贵的痛点，做到了低成本和高速度。</p>
+<p>产品发布初期，不少开发者以为是恶搞，因为创始人 Diogo Almeida 的名字和 Anthropic 首席执行官 Dario Amodei 读音相近。直到社区看到用 Jev 毫秒级操控经典游戏 DOOM 的录屏演示，技术圈才开始认真讨论它到底能用来做什么。</p>
+<p>它的名字取自经济学中的杰文斯悖论。当某种资源的利用效率大幅提升时，其总消耗量往往不会缩减，反而会成倍增长。一旦单次模型决策的成本下降上百倍，系统里原本写死 if-else 的地方，可能都会考虑接入模型来做动态判断。</p>
+<p>Jev 的核心定位是机器对机器的状态评估。它不回答用户提问，也不生成自然语言。它的职责是根据输入上下文，在几十毫秒内返回一个预定义的离散标签，将上游请求分流到下游分支。这类似于物流分拣中的分流模型。在早期的大模型工程落地中，用轻量小模型做路由分流本来就是常见做法。</p>
+<p>官方公布的运行指标中，输入端每百万 Token 计费 0.042 美元，输出免费，端到端请求延迟在 70 到 500 毫秒区间。不管是底座更小，还是单步前向推导，服务成本都被压得很低。</p>
+<p>官方在宣传时借用了认知科学的“双系统”概念：让昂贵的前沿大模型负责慢速的深度推演（System 2），让 Jev 充当快速廉价的反射弧（System 1）。在需要做前置过滤或路由分流时，用小判别模型就能搞定，不需要让生成模型全程陪跑。</p>
+<p>为了追求速度，Jev 舍弃了文本生成，只保留三种输出原语：</p>
+<ol>
+<li><code>choice</code>：在给定的枚举列表中完成多选一路由。</li>
+<li><code>score</code>：在有序离散区间内打分（如 0 到 10 的数值评分）。</li>
+<li><code>noul</code>：输出三值布尔概率（true、false、unknown）。</li>
+</ol>
+<p>它的输出附带了置信度概率。很多开发者吃过大模型生成 JSON 时幻觉的苦头，大模型即使输出错误结果，也常常给出虚高的概率。Jev 宣称对置信度进行了校准，下游系统可以依据置信度设置阈值，一旦置信度偏低就由硬规则或人工接管。关于这个置信度是如何校准的，后文会详细展开。</p>
+<p>在工程调用上，TypeSafe AI 接入了 Cloudflare Workers AI 与 Vercel AI Gateway。走 Vercel AI SDK 时，用 <code>experimental_evaluate</code> 声明判断问题即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">experimental_evaluate</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">evaluate</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;ai&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">evaluate</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">model</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;typesafe-ai/jev&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">state</span>: <span style="color:#66d9ef">contextText</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">questions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">action</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;choice&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">instructions</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;How should this request be handled?&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">criteria</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">allow</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Safe to proceed&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">block</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Should be blocked&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">escalate</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Needs human review&#39;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>没必要把 Jev 捧上神坛。从技术本质来说，它没有超越统计学的理论创新，能力边界也很窄：它无法完成长文本创作、代码编写、多轮对话记忆，更解不了长步骤数学推导。但它提醒我们，不是所有任务都必须调用高价的前沿模型，专长于速度的判别模型同样有其工程价值。</p>
+<h2 id="拆底层">拆底层</h2>
+<p>Jev 目前尚未完全开源，但结合官方技术报告与开源社区的逆向复现，它的实现路径已经相当明确。</p>
+<p>传统大模型处理分类或决策，必须启动自回归解码循环，逐个生成 Token。整个过程通常耗时 2 到 5 秒，下游还得小心处理 JSON 字符串是否闭合。Jev 的生成步数为零。输入提示词与候选动作后，底层网络只执行单次前向传播，输出在数学上只是一次矩阵乘法的副产物。</p>
+<p>开源社区在发布两小时内就跑通了两条复现路径，都不需要重写注意力机制，直接在开源小模型上就能运行。</p>
+<p>第一条路径是候选词 Logits 掩码投影。社区项目 <a href="https://huggingface.co/harshatheg/Qwen-2.5-1B-RLCD">harshatheg/Qwen-2.5-1B-RLCD</a> 验证了这种思路：模型在单次前向推导后，直接提取序列最后一个位置的 Logits，仅筛选出候选标签对应的 Token ID，做局部 Softmax 归一化计算置信度。这也是过往做约束输出和意图路由时常用的方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># harshatheg/Qwen-2.5-1B-RLCD logits projection</span>
+</span></span><span style="display:flex;"><span>logits <span style="color:#f92672">=</span> model(input_ids)<span style="color:#f92672">.</span>logits[:, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, :]
+</span></span><span style="display:flex;"><span>candidate_logits <span style="color:#f92672">=</span> logits[:, candidate_token_ids]
+</span></span><span style="display:flex;"><span>probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>softmax(candidate_logits, dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>第二条路径是基于 NLI（自然语言推理）的交叉编码器架构。项目 <a href="https://huggingface.co/AlexWortega/openjev">AlexWortega/openjev</a> 选用 Qwen 系列作为底座，把输入上下文作为前提（Premise），候选动作作为假设（Hypothesis）。分类头直接输出蕴含、中立与矛盾三分类得分，取蕴含概率做决策。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># AlexWortega/openjev cross-encoder scoring</span>
+</span></span><span style="display:flex;"><span>inputs <span style="color:#f92672">=</span> tokenizer(premise<span style="color:#f92672">=</span>state, hypothesis<span style="color:#f92672">=</span>action, return_tensors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pt&#34;</span>)
+</span></span><span style="display:flex;"><span>logits <span style="color:#f92672">=</span> cross_encoder(<span style="color:#f92672">**</span>inputs)<span style="color:#f92672">.</span>logits
+</span></span><span style="display:flex;"><span>entailment_score <span style="color:#f92672">=</span> logits[:, ENTAILMENT_IDX]
+</span></span></code></pre></div><p>如果单次前向每次只能评估一个选项，面对高并发多选项时依然不够快。Jev 依靠 Decoder-only 架构的 KV Cache 前缀缓存共享来化解瓶颈。面对长文本上下文，模型在 Prefill 阶段只计算一次并存入显存，后续几十个候选选项共享同一份前缀缓存指针，只并行计算各自少量 Token 的注意力。这使得评估几十个维度的总耗时几乎等同于单次评估。</p>
+<p>普通小模型为什么不能直接套用这套逻辑？熟悉机器学习的朋友清楚，Softmax 输出的分数只是指数归一化的相对值，不等于真实概率。未经专门校准的模型普遍存在严重的过度自信，即使预测完全错误，Softmax 也可能给出 0.99 的高分。工业级安全拦截系统不能直接依赖这种裸露数值。</p>
+<p>Jev 引入了面向校准决策的强化学习（RLCD）。该训练方式不再关注生成句子的语言文采，而是针对预期校准误差（ECE）进行优化。简单来说，就是通过样本校验与惩罚，确保模型输出 0.8 的置信度时，在统计上真实对应约 80% 的准确率。</p>
+<p>即便经过概率校准，也无法完全消除底层注意力的结构特性：</p>
+<p>第一是无关选项的干扰。Archer Hume 的实验显示，在既有的四个有效选项后追加一个无关的“天气”选项，原有最优选项的优势 log-odds 会明显下滑。这说明候选项之间依然存在注意力交互，模型内部本质上是在做列表排序，选项并不是互相独立的。</p>
+<p>第二是选项的物理顺序敏感性。由于自回归模型的单向注意力机制，排在后面的 Token 能看到前面的所有上下文。如果参考依据出现的位置发生变动，或者选项顺序调整，判断结果就会产生波动。只有把依据放在共享的 Prompt 上下文（State）中，注意力分配才会更加均衡。</p>
+<p>有人会问，这和 2018 年的 BERT 分类器有什么区别？区别在于底座的常识与上下文容量。BERT 的上下文窗口通常只有 512 Tokens，词表较小，无法理解长篇代码、系统日志与长篇业务文档。Jev 建立在经历海量预训练的现代因果 Transformer 底座上，具备现代语义理解能力，只是摘掉了自回归生成的环节。</p>
+<h2 id="20行代码实测">20行代码实测</h2>
+<p>脱去概念包装，零 Token 生成机制在本地用 20 行 Python 脚本就能跑通。</p>
+<p>我们加载参数量只有 5 亿的开源小模型 Qwen2.5-0.5B-Instruct，给它一段带有候选标签的客服分类 Prompt。运行时绕过自回归生成循环，仅执行一次前向推导，提取末位对应候选标签的输出并做归一化：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> transformers <span style="color:#f92672">import</span> AutoModelForCausalLM, AutoTokenizer
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Qwen/Qwen2.5-0.5B-Instruct&#34;</span>
+</span></span><span style="display:flex;"><span>tokenizer <span style="color:#f92672">=</span> AutoTokenizer<span style="color:#f92672">.</span>from_pretrained(model_id)
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> AutoModelForCausalLM<span style="color:#f92672">.</span>from_pretrained(model_id, torch_dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float16, device_map<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;auto&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;判断用户意图：&#39;我想退货&#39;。选项：[投诉, 咨询, 售后]&#34;</span>
+</span></span><span style="display:flex;"><span>candidate_words <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;投诉&#34;</span>, <span style="color:#e6db74">&#34;咨询&#34;</span>, <span style="color:#e6db74">&#34;售后&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 演示假定每个标签对应单个 Token</span>
+</span></span><span style="display:flex;"><span>candidate_ids <span style="color:#f92672">=</span> [tokenizer<span style="color:#f92672">.</span>encode(w, add_special_tokens<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> candidate_words]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>inputs <span style="color:#f92672">=</span> tokenizer(prompt, return_tensors<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pt&#34;</span>)<span style="color:#f92672">.</span>to(model<span style="color:#f92672">.</span>device)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    logits <span style="color:#f92672">=</span> model(inputs<span style="color:#f92672">.</span>input_ids)<span style="color:#f92672">.</span>logits[<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, candidate_ids]
+</span></span><span style="display:flex;"><span>    probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>softmax(logits, dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> word, prob <span style="color:#f92672">in</span> zip(candidate_words, probs):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>word<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>prob<span style="color:#f92672">.</span>item()<span style="color:#e6db74">:</span><span style="color:#e6db74">.4f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>如果让同一个 0.5B 模型按常规方式生成 JSON，需要自回归吐出数十个 Token，耗时通常在一两秒左右，且需要额外做 JSON 解析容错。直接提取末位 Logits 的耗时则可以压到 30 毫秒以内。</p>
+<p>在边缘计算场景中，通过 Cloudflare Workers 或 REST 接口调用 <code>typesafe/jev</code>，形态同样很精简：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">AI</span>.<span style="color:#a6e22e">run</span>(<span style="color:#e6db74">&#34;typesafe/jev&#34;</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">state</span>: <span style="color:#66d9ef">ticketContent</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">questions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">is_urgent</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;noul&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">instructions</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Does this ticket require urgent attention?&#34;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">department</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;choice&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">instructions</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Which team should handle this?&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">criteria</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">billing</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Payments and refunds&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">technical</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bugs and outages&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">sales</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Pricing and accounts&#34;</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">frustration</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;score&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">instructions</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;How frustrated is the customer?&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">criteria</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;Calm&#34;</span>, <span style="color:#e6db74">&#34;Frustrated&#34;</span>, <span style="color:#e6db74">&#34;Very angry&#34;</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>跑完本地脚本与云端调用，技术层面的差异便清晰显现出来。</p>
+<p>截取本地小模型的末位 Logits 虽然能拿到相对分数，但未校准的 Softmax 分数存在虚假自信问题。当模型遇到不确定的样本时，由于 Softmax 的指数放大效应，微小的 Logits 差距也会被拉大为 95% 以上的高置信度。</p>
+<p>商业服务的主要工作，正是通过 RLCD 训练或大规模样本校准，将置信度与真实准确率拉齐。如果只是为了追求运行速度，本地部署小模型截取 Logits 已经足够可用；但如果要依赖置信度数值去做自动化拦截与放行，就需要自己在领域数据集上做温度缩放（Temperature Scaling）或后验校准，避免盲目放行错误分类。</p>
+<h2 id="压测数据分析">压测数据分析</h2>
+<p>脱离真实环境的宣传指标往往不够客观。Archer Hume 针对 Jev 官方接口发起了上万次测试，记录了其在长文本与高并发场景下的实际表现。</p>
+<p>在长文本扩展测试中，测试脚本向同一个长文本上下文投喂单个问题，记录端到端耗时：</p>
+<table>
+<thead>
+<tr>
+<th>输入上下文（Tokens）</th>
+<th>中位数延迟（Median Latency）</th>
+<th>极速延迟（Fastest Latency）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>360</td>
+<td>57.5 ms</td>
+<td>44.0 ms</td>
+</tr>
+<tr>
+<td>9,796</td>
+<td>89.0 ms</td>
+<td>81.0 ms</td>
+</tr>
+<tr>
+<td>29,835</td>
+<td>218.0 ms</td>
+<td>211.0 ms</td>
+</tr>
+</tbody>
+</table>
+<p>当输入从 360 Tokens 增加到近 30,000 Tokens 时，中位数耗时从 57.5ms 增加到 218ms。文本量增长了约 80 倍，延迟仅增加约 160ms。这符合非自回归模型的特征：没有长文本逐字解码的累加耗时，主要耗时都在一次性的 Prefill 阶段。</p>
+<p>在高并发问答测试中，固定短文本上下文，将并发问题数量从 1 逐步拉升至 1,500 个：</p>
+<table>
+<thead>
+<tr>
+<th>并发问题数量（Questions）</th>
+<th>中位数延迟（Median Latency）</th>
+<th>表现特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 - 100</td>
+<td>70.0 - 100.0 ms</td>
+<td>耗时相对平稳</td>
+</tr>
+<tr>
+<td>500</td>
+<td>~240.0 ms</td>
+<td>延迟温和上升</td>
+</tr>
+<tr>
+<td>1,500</td>
+<td>610.0 ms</td>
+<td>出现排队与积压</td>
+</tr>
+</tbody>
+</table>
+<p>从 1 个问题增加到 100 个问题，延迟基本保持在 70ms 到 100ms 区间。当并发激增至 1,500 个时，耗时上升到 610ms。数据反映出底层复用了 KV Cache 共享前缀，不需要为公共上下文重复做计算。</p>
+<p>速度快并不代表判断质量完美。Richard Bäcker 在开源项目 <a href="https://github.com/rorshopping/jev-on-a-laptop">rorshopping/jev-on-a-laptop</a> 中，使用 Qwen2.5-7B 裸 Logits 与 TypeSafe 公布的工作流题目进行了对比：</p>
+<p>TypeSafe 评测里，Jev 与前沿模型共识的一致性是 86.6%。同一批题目上，本地 Qwen2.5-7B 只有 73.8%。实测也证实了未校准模型的盲目自信问题：当 Qwen 预测错误时，输出的 Softmax 置信度依然经常高于 0.90。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://github.com/rorshopping/jev-on-a-laptop</span>
+</span></span><span style="display:flex;"><span>probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>softmax(qwen_logits[:, target_token_ids], dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>pred_idx <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>argmax(probs, dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>confidence <span style="color:#f92672">=</span> probs<span style="color:#f92672">.</span>max(dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>values
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 预测错误时 confidence 仍常高于 0.90</span>
+</span></span></code></pre></div><p>关于输出 Token 的计费方式：Jev 官方接口沿用了行业通用的“输出 Token”计费口径。但从技术机制来看，底层只执行了单次前向计算，并不存在自回归逐字生成。最终返回的几个标签字节被折算成虚拟 Token，本质上是厂商为了迎合开发者熟悉的计费习惯，按次计算服务成本即可。</p>
+<h2 id="失败模式">失败模式</h2>
+<p>单步分类模型在特定场景下有清晰的局限性。</p>
+<h3 id="缺少思维链">缺少思维链</h3>
+<p>单步前向推导无法完成多层因果逻辑推理。在钓鱼邮件基准测试 <a href="https://github.com/anisselbd/jev-phishing-bench">anisselbd/jev-phishing-bench</a> 中，面对包含多层转折与伪造身份的诱骗邮件，支持思维链推理的 Claude Haiku 判定准确率明显优于 Jev。Jev 出现了较多的漏判。</p>
+<p>原因在于计算路径被压缩为一次矩阵乘法。大模型依赖自回归逐步推导来构建中间逻辑支撑，而单步打分必须一次性输出结论。一旦语义欺骗嵌套超过两层，单步模型往往力不从心。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 单步评估缺乏中间推理步骤，多步逻辑推导容易失准</span>
+</span></span><span style="display:flex;"><span>decision <span style="color:#f92672">=</span> jev<span style="color:#f92672">.</span>evaluate(email_body, primitive<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;noul&#34;</span>, <span style="color:#e6db74">&#34;question&#34;</span>: <span style="color:#e6db74">&#34;Is this phishing?&#34;</span>})
+</span></span></code></pre></div><h3 id="选项顺序偏差">选项顺序偏差</h3>
+<p>候选项的排列顺序会影响最终判定。Archer Hume 在提示词扰动测试中发现，当参考依据放在候选项之后时，正确率维持在较高水平；一旦将依据调整到开头或中间，正确率便会出现明显下滑。</p>
+<p>这是因为自回归模型的单向注意力机制决定了靠后的 Token 能完整聚合前序信息。如果线索出现在序列最前方，其注意力权重在长文本中容易被稀释。因此在设计 Prompt 时，依据不要塞进选项列表的开头或中间。能放进共享 State 最好；只能放进选项时，放在列表末尾。</p>
+<h3 id="无关项干扰">无关项干扰</h3>
+<p>在多选一测试中，向枚举列表中加入一个完全无关的选项（如“天气”），原有业务选项之间的相对对数几率比（log-odds）会出现下滑。</p>
+<p>这说明候选项之间并非完全独立打分。模型底层的全量注意力计算会让候选池内部产生竞争，无关选项同样会参与注意力权重分配。在对统计分布要求严苛的场景下，需要对候选集做严格清洗。</p>
+<h3 id="未校准风险">未校准风险</h3>
+<p>如果直接从自建开源小模型中提取未校准的裸 Logits 作为置信度，存在明显的安全隐患。本地 Qwen2.5-7B 裸读出的 Logits 与 TypeSafe 工作流参考答案的一致性仅约 73.8%。</p>
+<p>如果业务网关依据高置信度直接自动放行，只在低置信度时转人工复核，未校准模型的虚高置信度就会导致错误分类直接穿透网关，自动化防护机制形同虚设。</p>
+<h3 id="无文本生成">无文本生成</h3>
+<p>Jev 没有自回归解码通道，无法生成连贯的自然语言句子。它不能承担异常日志总结、代码编写或客服回复等生成任务。它的定位是流水线上的判别员。如果系统在拦截请求后需要向用户解释拦截原因，需要把上下文交给后续的生成模型。</p>
+<h3 id="单步局限">单步局限</h3>
+<p>这些局限的共同根源在于单步前向计算的固定容量。单个前向网络只能在固定深度的矩阵变换中处理特征。如果业务需要多步逻辑推导、长文本生成或严格的独立概率评估，单步模型无法替代自回归大模型。</p>
+<h2 id="四种设计模式">四种设计模式</h2>
+<p>在实际工程落地中，单步判别模型通常需要与规则引擎及大模型组合使用。以下是四种常见的落地模式。</p>
+<h3 id="推测性扇出">推测性扇出</h3>
+<p>面对数千字的用户工单或长文档，系统往往需要同时提取多个维度的标签。如果用传统大模型挨个提问，耗时与费用都会线性增加。</p>
+<p>推测性扇出模式利用了前缀缓存共享机制：长文本上下文在显存中只做一次 Prefill 计算，后续十几个离散问题并发挂载在同一份缓存上，各自执行轻量前向计算。多维度的提取耗时被压缩到接近单次评估水平。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// 共享前置长文本 KV Cache，一次网络往返并发求值多维标签
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">profile</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">jev</span>.<span style="color:#a6e22e">evaluateBatch</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">context</span>: <span style="color:#66d9ef">rawTicketContent</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">questions</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">is_urgent</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;noul&#34;</span>, <span style="color:#a6e22e">sentiment</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;score&#34;</span>, <span style="color:#a6e22e">dept</span><span style="color:#f92672">:</span> { <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;choice&#34;</span>, <span style="color:#a6e22e">options</span>: <span style="color:#66d9ef">DEPTS</span> } },
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>并发提问的子问题在语义上必须相对独立。如果问题 B 的判定依赖问题 A 的结果，就无法放入同一个批次内并行计算。</p>
+<h3 id="置信度门控">置信度门控</h3>
+<p>门控模式的做法是：让预测结果决定业务动作，让置信度决定自动化等级。</p>
+<p>置信度高于 0.90 的请求直接自动执行；置信度在 0.60 到 0.90 之间的请求暂缓执行，异步记录日志并触发抽检；低于 0.60 时判定为不确定区域，直接转交人工或更强模型处理。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// 动作由 answer 指引，执行权限由 confidence 分级裁决
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">confidence</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0.90</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">autoExecute</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">answer</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">confidence</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0.60</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">logAndAlertAsyncReview</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">answer</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> <span style="color:#a6e22e">circuitBreakToHuman</span>(<span style="color:#a6e22e">requestId</span>);
+</span></span></code></pre></div><p>高并发内容审核是典型场景。绝大多数确信合规或确信违规的内容可以瞬间处理，只有处于模糊地带的请求才进入人工复核池。前提是模型具备可靠的概率校准，阈值需要根据误杀与漏放的容忍度定期调整。</p>
+<h3 id="复合评分">复合评分</h3>
+<p>很多团队尝试让模型直接输出一个百分制的综合质量分，这种做法往往不稳定，细微的 Prompt 扰动就会导致综合分数剧烈漂移。</p>
+<p>复合评分的做法是让模型只对单一维度给出 0 到 10 的离散分，加权公式与安全硬规则全部交由后端确定性代码执行。调整业务策略时只需修改本地权重配置，不需要重新调整提示词。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 模型仅提供单项原子分，加权公式与安全硬规则由确定性代码执行</span>
+</span></span><span style="display:flex;"><span>scores <span style="color:#f92672">=</span> {k: jev<span style="color:#f92672">.</span>score(text, metric<span style="color:#f92672">=</span>k) <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;clarity&#34;</span>, <span style="color:#e6db74">&#34;depth&#34;</span>, <span style="color:#e6db74">&#34;factuality&#34;</span>]}
+</span></span><span style="display:flex;"><span>composite_score <span style="color:#f92672">=</span> sum(scores[k] <span style="color:#f92672">*</span> WEIGHTS[k] <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> WEIGHTS)
+</span></span><span style="display:flex;"><span>is_qualified <span style="color:#f92672">=</span> composite_score <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span> <span style="color:#f92672">and</span> scores[<span style="color:#e6db74">&#34;factuality&#34;</span>] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">6</span>
+</span></span></code></pre></div><h3 id="分层分类">分层分类</h3>
+<p>当分类标签数量达到数百甚至数千个时，一次性把全部选项塞进枚举列表会导致注意力稀释。</p>
+<p>分层分类参考了树状检索思路：先在顶层大类中选出 Top-K 分支，再沿着胜出的大类细化到二级子类，逐级剪枝收窄。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 顶层先粗筛出 Top-2 大类，随后沿活跃分支并发检索细分类</span>
+</span></span><span style="display:flex;"><span>top_roots <span style="color:#f92672">=</span> jev<span style="color:#f92672">.</span>top_k(product_text, candidates<span style="color:#f92672">=</span>ROOT_CATEGORIES, k<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>sub_candidates <span style="color:#f92672">=</span> [leaf <span style="color:#66d9ef">for</span> root <span style="color:#f92672">in</span> top_roots <span style="color:#66d9ef">for</span> leaf <span style="color:#f92672">in</span> TAXONOMY[root]]
+</span></span><span style="display:flex;"><span>final_leaf <span style="color:#f92672">=</span> jev<span style="color:#f92672">.</span>evaluate(product_text, candidates<span style="color:#f92672">=</span>sub_candidates)
+</span></span></code></pre></div><p>例如电商商品归类，先判定属于数码还是户外，再细化到具体类目。实现时建议每层保留二到三个候选分支，避免早期误剪枝导致后续全部走偏。</p>
+<h2 id="生产架构">生产架构</h2>
+<p>在生产架构中，将低时延的判别模型作为前置网关，可以拦截大量不必要的生成请求。</p>
+<h3 id="混合路由">混合路由</h3>
+<p>生产系统的请求在穿过 API 网关后，首先进入单步分类器。路由依据分类标签与置信度将流量分流：常规查询命中预计算或缓存，安全违规直接拦截，只有多步推理任务才唤醒后端的生成式大模型。</p>
+<h3 id="成本与延迟">成本与延迟</h3>
+<p>我们以日均 10 万次请求的在线服务为例做测算（假设输入均长 800 Token，输出均长 400 Token）：</p>
+<table>
+<thead>
+<tr>
+<th>架构方案</th>
+<th>日均 LLM 调用量</th>
+<th>日均推理费用 (USD)</th>
+<th>月度总支出 (USD)</th>
+<th>端到端 P50 延迟</th>
+<th>端到端 P99 延迟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全量 LLM 直连（Claude $3/$15 计价）</td>
+<td>100,000 次</td>
+<td>$840.00</td>
+<td>$25,200.00</td>
+<td>1,800 ms</td>
+<td>4,200 ms</td>
+</tr>
+<tr>
+<td>判别模型前置 + LLM 混合路由</td>
+<td>20,000 次</td>
+<td>$171.36</td>
+<td>$5,140.80</td>
+<td>70 ms</td>
+<td>2,100 ms</td>
+</tr>
+<tr>
+<td><strong>优化幅度</strong></td>
+<td><strong>-80.0%</strong></td>
+<td><strong>-79.6%</strong></td>
+<td><strong>-79.6%</strong></td>
+<td><strong>-96.1%</strong></td>
+<td><strong>-50.0%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>如果约 80% 的常规请求能在前置判别层直接分流或命中缓存，透传至大模型的调用量将大幅缩减，既降低了开销，也避免了用户经历无谓的等待。</p>
+<h3 id="三种网关形态">三种网关形态</h3>
+<ol>
+<li>拦截器形态：在流量入口对恶意输入进行毫秒级预筛，直接切断注入攻击。</li>
+<li>路由器形态：识别用户意图，将高难度任务导向重型推理集群，简单闲聊或固定问答分发给本地轻量模型。</li>
+<li>守卫形态：在 Agent 执行 Shell 命令或修改敏感配置前进行动态鉴权，对越权操作即刻阻断。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">verdict</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">jev</span>.<span style="color:#a6e22e">evaluate</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`Command: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">command</span><span style="color:#e6db74">}</span><span style="color:#e6db74">; WorkingDir: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">cwd</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">primitive</span><span style="color:#f92672">:</span> { <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;choice&#34;</span>, <span style="color:#a6e22e">options</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;allow&#34;</span>, <span style="color:#e6db74">&#34;block&#34;</span>, <span style="color:#e6db74">&#34;escalate&#34;</span>] }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">verdict</span>.<span style="color:#a6e22e">choice</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;allow&#34;</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">SecurityViolationError</span>(<span style="color:#a6e22e">verdict</span>);
+</span></span></code></pre></div><h3 id="生产落地案例">生产落地案例</h3>
+<p>社区中已有一些将该思路落地的开源项目：</p>
+<ul>
+<li><a href="https://github.com/DevMortimer/pi-warden">pi-warden</a>：拦截 Agent 运行时的文件覆写与终端命令，替代传统的关键词黑名单。</li>
+<li><a href="https://github.com/jomatsu/pi-jev-auto-mode">pi-jev-auto-mode</a>：用 Jev 语义审批 Pi 的 bash、write、edit 调用，无法判定时默认阻断。</li>
+<li><a href="https://github.com/gargpratyush/jev-router">jev-router</a> / <a href="https://github.com/0xNatoshi/jev-codex-router">jev-codex-router</a>：在入口处解析任务难度，把简单请求分给快模型。</li>
+</ul>
+<h3 id="reflexgate-方案">ReflexGate 方案</h3>
+<p>把网关决策沉淀为标准化中间件，通常称为 ReflexGate 方案。接入层挂载 1B 到 3B 参数量的本地轻量模型（如 Qwen2.5-1.5B），关闭自回归生成，只执行确定性的单步前向推理。单卡吞吐量大幅提高，网关可以在 10 到 30 毫秒内完成安全检查与意图打分。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    logits <span style="color:#f92672">=</span> model(inputs<span style="color:#f92672">.</span>input_ids)<span style="color:#f92672">.</span>logits[<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, candidate_token_ids]
+</span></span><span style="display:flex;"><span>    calibrated_probs <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>softmax(logits <span style="color:#f92672">/</span> temperature, dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><h3 id="影子流量校验">影子流量校验</h3>
+<p>分流模型上线前，建议采用影子流量进行验证。将生产流量旁路复制给新分类器，与现有主流程决策做对比。当统计差异在容限范围内且置信度表现稳定后，再切入主链路。</p>
+<h2 id="生态地图">生态地图</h2>
+<p>Jev 发布后，开源社区迅速展开了多维度的复现与改造。从几千万参数的轻量网络到数百亿参数的模型，均有团队进行单步决策适配。</p>
+<table>
+<thead>
+<tr>
+<th>仓库 / 项目</th>
+<th>底座与架构</th>
+<th>核心特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://huggingface.co/harshatheg/Qwen-2.5-1B-RLCD">harshatheg/Qwen-2.5-1B-RLCD</a></td>
+<td>Qwen2.5-1.5B</td>
+<td>并行约束解码（PCD），免重新训练，单步输出离散分布</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/AlexWortega/openjev">AlexWortega/openjev</a></td>
+<td>Qwen3.5-4B / 35B MoE</td>
+<td>基于 NLI 序列分类，提供 Qwen3.5-35B-A3B MoE 配套方案</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/heman10x/rlcd-modernbert-151m">heman10x/rlcd-modernbert-151m</a></td>
+<td>ModernBERT 151M</td>
+<td>支持 25 个候选槽位，延迟小于 35ms，适配边缘推理</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/Mapika/decider-2b">Mapika/decider-2b</a></td>
+<td>Qwen3.5-2B-Base</td>
+<td>基于数十万标注样本完成全参数微调</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TheoLeeCJ/openjev">TheoLeeCJ/openjev</a> (<a href="https://openjev.com">openjev.com</a>)</td>
+<td>MiniCPM5-2B-GGUF</td>
+<td>浏览器端纯本地 WebGPU 运行，无需后端服务</td>
+</tr>
+<tr>
+<td><a href="https://github.com/vinnylarouge/jevlike">vinnylarouge/jevlike</a></td>
+<td>微型字节编码器</td>
+<td>采用交叉注意力解耦选项间干扰</td>
+</tr>
+<tr>
+<td><a href="https://huggingface.co/DavidHatley/system-one-mini">DavidHatley/system-one-mini</a></td>
+<td>自研紧凑网络</td>
+<td>约 69M 参数量，验证低算力下的单步反射能力</td>
+</tr>
+</tbody>
+</table>
+<p>在具体应用场景上，社区主要集中在以下方向：</p>
+<ol>
+<li><strong>GUI 自动化</strong>：如 <a href="https://github.com/browser-use/jev-ultrafast">browser-use/jev-ultrafast</a> 与 <a href="https://github.com/droidrun/mobile-jev">droidrun/mobile-jev</a>，将屏幕状态判定与动作选择交给单步决策，仅在需要生成长文本时调用生成模型。</li>
+<li><strong>安全网关</strong>：如 <a href="https://github.com/DevMortimer/pi-warden">pi-warden</a>，在 Agent 调用命令前做权限判定。</li>
+<li><strong>语义路由</strong>：如 <a href="https://github.com/gargpratyush/jev-router">jev-router</a>，在入口甄别任务难度并做模型分流。</li>
+<li><strong>游戏微操</strong>：如 <a href="https://github.com/lukaske/jev-doom-agent">lukaske/jev-doom-agent</a>，利用毫秒级响应接管 DOOM 的实时走位。</li>
+</ol>
+<h2 id="该不该用">该不该用</h2>
+<p>在做架构设计时，首先要明确业务究竟需要的是快速的直觉判断，还是深度的因果推演。很多系统为了做一次枚举分类，让数百亿参数的模型去逐字生成，本质上是算力错配。</p>
+<h3 id="选型四问">选型四问</h3>
+<ol>
+<li><strong>请求是否高度可枚举？</strong> 如果绝大多数请求都在预设类别内，直接用单步判别模型更经济；如果是开放长尾输入，则需要大模型。</li>
+<li><strong>标签体系是否稳定？</strong> 频繁变更的分类标签需要动态传入候选集；长期稳定的标签更适合离线轻量化微调。</li>
+<li><strong>分类错误的容错成本多高？</strong> 如果容错率低（如涉及资金支付），建议配规则引擎兜底或人工复核。</li>
+<li><strong>是否有基准标注数据？</strong> 缺少基准数据时很难检验分类与校准效果，贸然自建模型容易过拟合。</li>
+</ol>
+<h3 id="三种范式权衡">三种范式权衡</h3>
+<table>
+<thead>
+<tr>
+<th>评估维度</th>
+<th>传统 BERT 分类器</th>
+<th>生成式大模型 (LLM)</th>
+<th>Jev / 单步判别模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>运行时灵活性</strong></td>
+<td>较低（标签固定，增删需重训）</td>
+<td>极高（提示词自由定义输出）</td>
+<td>较高（运行时动态传入候选选项）</td>
+</tr>
+<tr>
+<td><strong>通用常识储备</strong></td>
+<td>较弱（依赖垂直域监督信号）</td>
+<td>极丰富（海量通用常识）</td>
+<td>丰富（继承大模型预训练常识）</td>
+</tr>
+<tr>
+<td><strong>上下文长度</strong></td>
+<td>短（通常 512 Tokens）</td>
+<td>极长（可达数十万 Tokens）</td>
+<td>中长（依赖底座长文本缓存）</td>
+</tr>
+<tr>
+<td><strong>推理延迟</strong></td>
+<td>极快（通常小于 20ms）</td>
+<td>较慢（数百毫秒至数秒）</td>
+<td>快（20ms 至 200ms）</td>
+</tr>
+<tr>
+<td><strong>输出形式</strong></td>
+<td>固定分类概率分布</td>
+<td>生成文本（易产生格式波动）</td>
+<td>结构化离散概率直出</td>
+</tr>
+<tr>
+<td><strong>置信度质量</strong></td>
+<td>需额外标定</td>
+<td>原始 logits 虚高较普遍</td>
+<td>经校准训练后较为可信</td>
+</tr>
+<tr>
+<td><strong>深度推理能力</strong></td>
+<td>无</td>
+<td>极强（支持多步思维链）</td>
+<td>弱（仅限单步模式匹配）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="适用与不适用">适用与不适用</h3>
+<p>适合使用单步判别模型的场景：</p>
+<ul>
+<li>入口处的意图识别与路由分发</li>
+<li>高并发内容合规预筛</li>
+<li>敏感 API 与终端命令权限审查</li>
+<li>流程中固定的枚举状态流转</li>
+</ul>
+<p>不适合使用的场景：</p>
+<ul>
+<li>需要向用户直接输出自然语言解释</li>
+<li>依赖两步以上因果推理的任务</li>
+<li>涉及多层伪装的安全风控</li>
+<li>缺乏明确候选选项的开放式生成</li>
+</ul>
+<h3 id="两点工程建议">两点工程建议</h3>
+<p>第一，如果分类准确率要求极高且依赖多步推导，建议直接使用具备思维链的大模型。单步前向推导缺少中间思考过程，遇到多层转折容易失准。</p>
+<p>第二，冷启动阶段如果缺少标注数据，可以先用通用大模型的 Few-shot 提示词跑通业务流程，顺带沉淀真实访问日志。等数据积累到一定规模并完成标注后，再考虑用单步判别模型做替换或蒸馏。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">Introducing System One Models and Jev</a> - TypeSafe 官方发布说明，含定价、延迟与 RLCD</li>
+<li><a href="https://archerhume.com/posts/jevs-architecture-unmasked/">Jev’s Architecture Unmasked</a> - Archer Hume 对官方接口的延迟、选项顺序与无关项压测</li>
+<li><a href="https://github.com/rorshopping/jev-on-a-laptop">rorshopping/jev-on-a-laptop</a> - 裸 Qwen Logits 与 TypeSafe 工作流参考答案的一致性对比</li>
+<li><a href="https://github.com/anisselbd/jev-phishing-bench">anisselbd/jev-phishing-bench</a> - 钓鱼邮件单步判定与思维链对比</li>
+<li><a href="https://huggingface.co/harshatheg/Qwen-2.5-1B-RLCD">harshatheg/Qwen-2.5-1B-RLCD</a> - Logits 掩码与并行约束解码复现</li>
+<li><a href="https://huggingface.co/AlexWortega/openjev">AlexWortega/openjev</a> - 基于 Qwen3.5 的 NLI 交叉编码器实现</li>
+<li><a href="https://huggingface.co/spaces/multimodalart/jev-reproductions-tracker">multimodalart/jev-reproductions-tracker</a> - 社区复现追踪</li>
+<li><a href="https://github.com/AnotiaWang/awesome-jev">AnotiaWang/awesome-jev</a> - Jev 生态索引</li>
+<li><a href="https://github.com/browser-use/jev-ultrafast">browser-use/jev-ultrafast</a> - 浏览器自动化实验</li>
+<li><a href="https://github.com/droidrun/mobile-jev">droidrun/mobile-jev</a> - 移动端 Agent 实验</li>
+<li><a href="https://github.com/DevMortimer/pi-warden">DevMortimer/pi-warden</a> - Pi 命令守卫网关</li>
+<li><a href="https://github.com/jomatsu/pi-jev-auto-mode">jomatsu/pi-jev-auto-mode</a> - 用 Jev 语义审批 Pi 的 bash / write / edit</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/llm/">
+                    #LLM</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+                    #架构设计</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+                    #性能优化</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/">
+                    #模型选型</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/" class="prev" rel="prev" title="离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记"><i class="iconfont icon-left"></i>&nbsp;离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
+      const isDark = currentTheme === 'dark'
+      if (isDark) {
+        document.body.classList.add('dark-theme')
+      }
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

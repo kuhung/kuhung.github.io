@@ -6,29 +6,7 @@
     <description>Recent content in 经验分享 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Sep 2026 23:47:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</title>
-      <link>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</link>
-      <pubDate>Wed, 16 Sep 2026 23:47:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</guid>
-      <description>为什么做插件 PageGrok 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。
-最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长业务。需要一个产品跑通来验证想法，浏览器插件是个不错的选择：入口轻，开发周期短，用户触达直接。
-毕竟工作的大部分时间也是在网页里过的。每天都会打开网页处理事情，无论是外部资料还是内网知识库（KM）上的内容，在 AI slop 流行的同时，信息过载了。很自然就想到让 AI 来解读。别人用 AI 扩写，你再用 AI 总结，完成了一轮社会结构意义上的编码和解码。
-出发点就是：不想再跳转网页，就在旁边看。
-功能设计 项目 3 月份开始。那时刚好从 Cursor 往 Codex 和 Claude 过渡，让 Claude 帮我写了一版，很快就有了一个带着 AI 味儿的原型。
-调研过竞品 Page-Assist。它想做的是网页上的对话框，一个 chatbot。但 chatbot 是 23、24 年的形态了，而且复杂。切入点就是做简单一点。
-自己用的时候发现，GitHub、Twitter、小红书这类复杂站点，整页读进来不加限制，重点容易丢掉。左右侧边栏塞了不少无关内容。当时一个产品直觉：能不能借鉴印象笔记的框选功能，选中想要的区域再做解读。提示词也按这个方向写，完成得还不错。
-核心功能就几点。启动后，把当前网页内容读进来，跟它交互拿到想要的东西。觉得取的内容不准，也可以自己框选。
-跑了几个小版本后发现，有时候我自己也不知道想问什么。典型的冷启动问题：用户不知道该干什么时，得先告诉他可以干什么。借鉴了 Google「问问 Gemini」侧边栏的引导式提问，一启动给出三个推荐问题。再往后是更细节的事：这三个问题要不要让用户自定义，愿不愿意用自己的模型来读。
-技术选型 不跳转网页这个点，后来延伸出另一层：隐私。
-不少同类产品走的是第三方服务。无论是个人还是小型公司，都不希望资料跑到外面去。当时我在本地 Mac 和 Ubuntu 服务器上都部署了 Gemma 4，做一些小总结，效果还不错。为此还做过小模型本地推理的 benchmark，搭了 Traktoken 来看模型框架的首字响应、吞吐量、负载情况，测评过程写在 拒绝感觉有效，基于在线推理性能测评，选出最适合我 Mac 的 LLM 推理框架。
-但用得久了碰到一个问题。Ubuntu 上的 Gemma 4 冷启动要十秒以上，体验很差。脑子转得很快，却要冷静几秒钟，接受不了。
-恰好这时接触到 Cerebras。和英伟达路线不同，他们做的就是一个「快」字。据说是在整块晶圆上做模型服务，首字延迟和吞吐量都很惊人，能在一秒内完成回答。当时试用了平台上的 Gemma 4，就是我想要的。后来本地服务就没怎么用了。我自己的隐私需求其实不算特别强，也没有特别敏感的企业向内容。
-推广与定价 一开始把内容发在了 V2EX。从后面做 SEO 的角度看，这个举动确实带来不少曝光。但当时定调强调本地隐私，后面想接自己提供的 API 服务时，AI 生成的内容摘要极度偏向隐私，导致受众十分窄。后来改过几次网站，想在 SEO 上把它掰回来。近期流量看，有一点效果，总比没有强。</description>
-    </item>
-    
+    <lastBuildDate>Tue, 15 Sep 2026 16:54:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pi 入门笔记：比 Codex 更自由，但也更折腾</title>
       <link>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</link>
@@ -43,19 +21,6 @@
 常用指令 斜杠指令看起来蛮多，好像有 80 多个，至少我这边是。
 日常反复用到的，大致就是下面这些。
 /model 换模型 /thinking 调推理级别 /tree 从跑偏点分支 /compact 压缩长上下文 /resume 找旧会话 /name 给会话命名 /session 看状态/成本 /reload 重载配置 @file 附文件 !cmd / !</description>
-    </item>
-    
-    <item>
-      <title>Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</title>
-      <link>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</link>
-      <pubDate>Mon, 14 Sep 2026 23:38:37 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</guid>
-      <description>最近对个人调度任务做了一次较大调整：核心从依赖 GitHub Actions 内置 schedule 的被动排队，改成由外部定时任务主动触发 workflow。要解决的主要是调度延迟。我有一批天级任务需要相对准时，例如拉取前一日数据、汇总昨天的工作；但 GitHub Actions 的 cron 并不可控，经常晚数小时，极端时当天该跑的 run 都没出现。GitHub 文档也写了，高负载时内置 schedule 会拖队，整点尤其挤，严重一点排队里的 job 还可能被丢掉。这和在公司里做数据调度是同一类烦恼。
-好在目前没有严格意义上的任务依赖；真有前后关系时，会拆成串联节点。更多还是用错开执行时间这类小技巧顶一顶。
-外部主动触发 除了 workflow 里自带的 schedule，还可以用第三方 cron 从仓库外 dispatch，相对更可控。调研阶段我主要用 Google Antigravity 查资料；古法编程也行，直接在 Google 里搜，AI 概览往往也会点到 workflow_dispatch、repository dispatch 这类做法。大意就是：定时器不在 GitHub 队列里干等，而是由外部按点去触发。落地代码在 kuhung/action-cron-hub，个人用的小 hub，负责外部定时和集中补触，细节就不展开了。线上各 workflow 原先自带的 schedule 我也下掉了，定时只走外部这一路，免得 GitHub 内外各响一次、同一天跑两遍。
-用 Pi CLI 批量改配置 落地时我用 Pi 的 CLI 客户端来改仓库。授权充分后，它可以读项目下的文件。我把多个相关仓库收进一个大文件路径下，在根目录让它扫描各子目录里已有的 GitHub workflow 配置，批量改 trigger，省得一个个仓库翻 yaml。这种多任务批量改，和之前统一改 GA4 实践指南：从配置到 AI 工作流 里那套埋点一样，改一处公共抽象、下面一起生效。（再次心痛：上次用 Claude 改到一半，账号被封了。）
-整体改动不大，前后折腾大约两个半小时。收尾时在 Antigravity 里用 Gemini 3.</description>
     </item>
     
     <item>
@@ -110,45 +75,6 @@ AI 测算的结果是：如果要追求更高的夏普比率，每年大约需�
     </item>
     
     <item>
-      <title>Agent Skills 出来的第10个月，再聊评估几件事</title>
-      <link>https://kuhung.me/posts/skill-eval-review/</link>
-      <pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/skill-eval-review/</guid>
-      <description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
-笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。
-Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。
-Skills 为什么被造出来 回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。
-Skills 最早是一个系统级提示词。问题在于，系统提示词覆盖面太广，不是所有场景都适合反复注入。自然想到做分级和索引。这就是 skills 结构体的由来：title 和 description 做索引，描述它要做什么；下面是详细约束和要调用的工具。
-它填补的是通用模型在垂直领域的缺失。除知识缺失外，还有风格缺失。模型知道怎么写代码，但不知道团队的编码、发布风格。
-Cursor 做这件事最早。从单文件 .cursorrules 到多文件 .cursor/rules，再到现在的 Agent Skills 目录。长期规范和项目事实留在 Agent.md，条件性的工作流程放 skills。
-系统提示词是公司文化，每时每刻都要参照的行为守则；skills 是处理特定工作时翻找的 wiki 目录。
-组织 vs 个体对于 Skills 的需求 对于大公司 大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。
-对于个体 个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。
-从组织到个体 大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。
-对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description>
-    </item>
-    
-    <item>
-      <title>从 SEO 角度做增长，以产品 TrakToken 为例</title>
-      <link>https://kuhung.me/posts/seo-in-practice-sop/</link>
-      <pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/seo-in-practice-sop/</guid>
-      <description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
-从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。
-本文试图介绍，从 SEO 相关角度，如何正确指导我们后续的产品迭代，如何持续构建数据驱动的产品迭代模式。并结合实际线上产品数据，给到说明。
-TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的定价数据，每日自动同步，提供价格对比、成本计算器、支出指数等功能。
-一、数据能力 搜索可见性的数据分层 先看定义：搜索可见性实际上是一条管线。每一层回答不同的问题，对应不同的数据源。
-层级 回答什么 数据源 需求/查询 用户搜了什么、展示了几次、点没点 GSC、Bing Webmaster 到站与归因 从哪来、落在哪个页面、渠道质量如何 GA4 行为解释 到站后做了什么、卡在哪、为什么走 产品分析平台 业务结果 是否完成决策、是否出站到厂商 同一平台的事件漏斗 这条管线的价值在于，将不同阶段的数据，拆成对应的数据指标和事件层级，高效定位问题，也方便作出取舍、屏蔽不必要细节。
-工具选型的实际取舍 GA4 负责渠道归因。免费、接入门槛低、渠道自动分组。缺点是不收自定义产品事件，没法在 GA4 里看到&amp;quot;用户点了计算器然后出站到厂商&amp;quot;这个漏斗。
-Vercel Analytics 负责页面和事件。零配置、自定义事件方便。问题是它和 GA4 的用户身份打不通。Vercel 里看到 509 个 calculator_result_viewed 事件访客，但没法知道这 509 人里有多少是从搜索来的。
-PostHog 笔者还在尝试中。不过有些问题：一是服务器在海外，国内采集有延迟和丢失；二是功能和 GA4 + Vercel 高度重叠，基础分析和事件采集两边都能做；三是实际只覆盖了 8.25 天，数据量不够支撑任何结论。还有就是他们家的UI太反人性了，我曾经以为GA4的交互很垃圾，但没想到他们家更是。
-不过 PostHog 代表的需求是真实的。需要一个单一平台串起落地页、行为动作以及站外动作的工具。
-Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description>
-    </item>
-    
-    <item>
       <title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title>
       <link>https://kuhung.me/posts/cang-in-house-review/</link>
       <pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate>
@@ -166,53 +92,6 @@ Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关
 三、数据现状 数据窗口是 2025 年 4 月 7 日到 2026 年 8 月 17 日，共 16.3 个月。这个起点对应进入提取期之后的全程。分析用到的底表是 Notion 财务盘点的 14 期明细数据，加上券商实盘持仓。
 3.1 宏观环境 先看这 16 个月里市场发生了什么（2025-04-07 到 2026-08-17）。
 指数 区间涨跌 沪深300 +32.</description>
-    </item>
-    
-    <item>
-      <title>提效 20% 的 Claude Code Session 优化方法</title>
-      <link>https://kuhung.me/posts/maximization-your-claude-code-sessions/</link>
-      <pubDate>Sat, 15 Aug 2026 21:17:08 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/maximization-your-claude-code-sessions/</guid>
-      <description>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
-我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。
-本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。
-一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。
-我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token。
-二、token 价格的决定方式 原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。
-模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。
-输入和输出的区别 原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）
-输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</description>
-    </item>
-    
-    <item>
-      <title>搜索与 AI 可见性：让需要你产品的人找到你</title>
-      <link>https://kuhung.me/posts/seo-enhance/</link>
-      <pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/seo-enhance/</guid>
-      <description>最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
-笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
-做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门打不开，顾客走不进来的。搜索引擎和 AI 助手是帮顾客找路的系统，决定你的店会不会出现在顾客面前。
-用这个比方串一下全文逻辑：
-搜索需求决定这家店应该卖什么，不是先铺货再猜 技术配置保证路通、门能开，搜索引擎可以发现你的店 页面内容让招牌和货架真正回答顾客的问题 结构化数据给搜索系统一张规范的&amp;quot;商品卡&amp;quot;，帮它理解你卖的是什么 页面之间的链接像店内导视，把顾客带到相关区域 AI 可见性观察 AI 助手在推荐店铺时有没有提到你 应用商店是另一座商场，有自己的招牌规则和排名逻辑 在上述的内容之外，还有很多东西需要考虑。包括但不限于：进店后怎么让人掏钱（转化优化），怎么让内容高效自传播（那是外链和营销的事）。这篇只介绍&amp;quot;让人找到你的店&amp;quot;。
-下面按&amp;quot;基础、进阶、验证&amp;quot;三步展开。
-一、基础：搞清楚问题在哪 1.1 人们在找什么 这是所有后续工作的起点。很多人反其道而行之：&amp;ldquo;产品搞好了，咋没流量，听说要搞 SEO，让我来看看 SEO 咋优化&amp;rdquo;，连用户在搜什么都没搞清楚。
-核心问题：你的目标用户遇到问题时，会在搜索框或“豆包”聊天里打什么字？
-不要从关键词工具开始猜。按下面几步收集和验证证据。
-第一步：写清楚你卖给谁
-先用一句话描述：
-当____人遇到____场景时，他想完成____，但被____卡住。 比如：
-当小型 AI 产品团队准备选择模型 API 时， 他想估算不同模型完成同一任务的真实成本， 但被不同计费单位、上下文价格和供应商页面卡住。 这只是待验证的假设，不要把它当成需求存在的证据。
-第二步：收集用户的原话
-找离购买或使用最近的材料：客服记录、用户反馈、站内搜索、取消原因、竞品评价里的抱怨。记录完整句子和场景。比如：&amp;ldquo;Claude 和 GPT 做长文本摘要哪个 API 更便宜&amp;rdquo;。
-完全没有用户的话，可以先收集 10-20 条公开原话（社区、论坛、评价）作为假设池，但最好标记为推测。
-第三步：看已经发生的搜索
-如果网站已有曝光，Search Console 的 Queries 和 Pages 最直接：哪些查询曾展示你、哪些有曝光但没人点、一个查询落在了哪些页面上。
-还没有数据的话，Google Trends 可以看词语的相对趋势，搜索联想和相关问题可以发现用户的真实措辞。
-第四步：实际搜一搜，判断用户想要什么
-拿候选查询去搜，看第一页主要是什么类型的结果：
-教程、指南：用户在学习 对比、替代品、榜单：用户在比较 产品页、价格页：用户接近行动 工具、计算器、模板：用户想立刻完成任务 混合结果：意图不稳定，可能需要继续拆 不要只看关键词字面。搜&amp;quot;模型价格&amp;quot;的人可能想看价格表，也可能想做成本计算，最终意图用真实结果和用户原话一起判断。</description>
     </item>
     
     <item>
@@ -237,84 +116,6 @@ Google Ads 集成：没投广告的话完全不用管。
 数据保留期限 默认 2 个月，建议改为最长的 14 个月。这个设置只影响探索报表（标准报表不受限），而你真正需要的深度分析全在探索报表里。两个月后数据就查不到了，回头想做同期对比发现数据没了，就晚了。
 路径：GA4 → 管理 → 数据设置 → 数据保留。
 内部流量过滤 开发者自己频繁访问产品，不过滤的话数据会严重失真。操作分两步：</description>
-    </item>
-    
-    <item>
-      <title>驾驭你的 Agent Skills 和系统指令</title>
-      <link>https://kuhung.me/posts/harness-your-skills/</link>
-      <pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/harness-your-skills/</guid>
-      <description>打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
-先装一堆别人的 Skill，却没搞清楚系统有什么、自己需要什么。顺序应该反过来：先摸清 Cursor、Codex、Claude Code 各自预置了什么，再判断自己缺什么，薄弱点拿别人的 Skill 临时补上，同时把自己的专长编成 Skill 输出。
-补丁性质的skills迟早会被模型原生能力吞并，个人性质的skills才是长期资产。
-系统有什么 用 Agent 写代码，背后不止一个聊天窗口。从下到上大致是五层：基座模型决定推理上限；Tool 是模型能调用的外部能力（浏览器、终端、MCP）；Skill 是操作手册（一份 SKILL.md，教 Agent 按什么步骤用什么工具完成任务）；Rules 是项目级背景约束（Cursor 的 .cursor/rules/、Codex 的 AGENTS.md、Claude Code 的 CLAUDE.md）；Hooks 是守门员（脚本层执行，模型绕不过去，也不花推理 token）。还有一层 Subagent，主 Agent 派生子代理并行工作。
-搞清楚哪层做什么，才不会装一个 Skill 去做本该是 Hook 的事。
-原生指令 三个平台的原生指令覆盖面比大多数人以为的要广：
-任务 原生怎么做 代码审查 Claude Code /code-review --comment 直接发 PR 行内评论；Codex /review；Cursor 内置 review-bugbot、review-security 长任务管理 Codex /goal（edit/pause/resume）；Claude Code /goal 释放上下文 Codex /compact；Claude Code /compact [instructions] 并行工作 Claude Code /subtask、/fork、/batch；Codex /agent、/subagents；Cursor Subagent（Task 工具） 规划模式 Codex /plan；Claude Code /plan；Cursor Shift+Tab 初始化仓库说明 Codex /init 生成 AGENTS.</description>
-    </item>
-    
-    <item>
-      <title>Vibe Coding 产品数据建设：5步框架与数据清单</title>
-      <link>https://kuhung.me/posts/how-to-build-a-data-driven-product/</link>
-      <pubDate>Thu, 06 Aug 2026 18:39:39 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-build-a-data-driven-product/</guid>
-      <description>Vibe coding 很热，写出来的东西越来越像样。但好像很少有人聊 vibe coding 产品的数据怎么做。没有数据，写写自用玩具可以，但想进一步规模化和商业化，这个问题始终绕不过去。
-英文圈有一些讨论。Value Add VC 和 JustNeeda 分别写过一篇，其核心结论一致：定义北极星指标、只埋 5-10 个核心事件、每周花半小时看数据。这类文章面向的是有一定规模的 SaaS 创业者，和 vibe coding 出来的最小产品之间有些距离。
-中文圈相对更少，搜出来的基本是大厂视角的&amp;quot;埋点入门&amp;quot;或&amp;quot;用户行为追踪从入门到实践&amp;quot;，和独立产品不太搭噶。你真去看了，就会陷入很多细节。属高射炮打蚊子。
-笔者之前做算法，合作最紧密的业务方正好是产品数据运营和增长团队。回顾这些角色在干什么，对现在自己做的事情很有帮助。但很多人对数据的印象停留在活跃、营收这些大厂概念，更落地的问题反而没人讲：看什么数据、埋点怎么写、数据质量怎么保证。今天借机梳理下，从一个最小产品开始，数据该怎么做。
-总的来说，初创产品的数据建设要做的是一件事：从用户行为到迭代决策之间，建一条可获取、可解释、可验证的数据流。整个流程，可以拆为 5 步。
-一、先定义好坏，其后才是埋点 很多人一上来就问&amp;quot;接什么埋点 SDK &amp;ldquo;&amp;ldquo;GA4 够不够用&amp;rdquo;。工具当然重要，但数据工作的起点不是数据，是业务思维。大伙儿知道要接入数据，但不清楚为什么接、接入后干什么。闷头干，不是好事。
-首先，我们需要定义什么是好、什么是坏，要看的北极星指标是什么。整个项目，有且应该仅有一个核心指标。
-定义北极星指标（North Star Metric, NSM）大致两步：
-定义核心价值：在写追踪代码之前，先确定一个能最精准捕捉产品&amp;quot;价值&amp;quot;的单一指标。 确定具体动作：用户做完哪个动作，我们就认为他获得了价值。这个动作，就是北极星指标。 北极星指标举例：社交软件，每天发送的消息数。旅行 OTA 软件，预订的房晚数。音乐软件，听歌时长。
-数据要能证伪、要敢于直面现实。坏就是坏，不必麻醉自己。提前想清楚什么情况下需要调整、什么情况可以继续。标准不一定准，但一定要有。这个标准，应该能够指导决策和行动，如果不能，就不要追踪。
-拿笔者自己的项目来说。QuantFull 产品改版前，先定义五段漏斗和四周基线，改版后逐段对比，才能说清楚&amp;quot;到底改好了没有&amp;rdquo;。另一个项目则是把&amp;quot;支付成功&amp;quot;收紧为&amp;quot;完整内容呈现给用户&amp;quot;，因为只有用户真的看到了结果，才算完成了价值交付。之前有用户支付成功但是交付失败，这个影响就很大了。
-顺带提两个常见误区：第一个，过度关注虚荣指标。注册数、下载量、粉丝数这类只增不减的绝对数，好看但不能指导决策。真正有用的指标应该是可比较的比率，比如留存率、转化率、日活占比。第二个，忽视跷跷板效应。我们有一万种方法让点击率上升，但是这可能是强制弹窗、强制跳转，以牺牲用户体验和留存为代价。
-二、埋点规范与兜底 定义好了北极星指标之后，下一步就是把它拆解成具体的事件。埋点的核心原则就一条：为决策而埋点，不为数据而埋点。基本上就是上文的延伸，业务逻辑出发，能指导决策的事件才关注；宁可少而精，不要乱铺开。
-事件分四类 事件大致分四类：Pageview（自动采集，不用手动埋）、User Actions（按钮点击、表单提交等用户主动操作）、System Events（注册完成、购买、订阅变更等系统状态变化）、Custom Conversions（你自己业务定义的&amp;quot;成功&amp;quot;，比如漏斗终点）。
-具体场景上，营销站和产品内侧重不同。营销站关注 cta_clicked、form_submitted、signup_completed 这类转化事件；产品内关注 onboarding_step_completed、feature_used、purchase_completed、subscription_cancelled 这类行为事件。每个事件带上必要的属性（比如 button_text、location、feature_name、reason）。
-套到笔者自己的产品上，大概是这样。TrakToken 更偏&amp;quot;工具站&amp;quot;逻辑，核心事件是 model_compared（比了哪几个模型）、pricing_table_filtered（用了哪个筛选条件）、outbound_click（点去哪个模型官网/API 文档）。PageGrok 是个浏览器插件，更偏&amp;quot;产品内&amp;quot;逻辑，核心事件是 extension_installed、feature_used（feature_name 具体到摘要/翻译/哪个功能）、extension_uninstalled（带 reason，如果能采集到的话）。
-属性怎么挂 属性大致分四类：Page 类（page_title、page_location）、User 类（user_id、plan_type）、Campaign 类（就是 UTM 那五个）、Product 类（product_id、price 等）。建议统一词表，别每个事件各发明一套字段名。</description>
-    </item>
-    
-    <item>
-      <title>从单 Agent 到跨 Agent 的 Skills 管理</title>
-      <link>https://kuhung.me/posts/how-to-manage-skills-for-agent/</link>
-      <pubDate>Wed, 05 Aug 2026 11:41:14 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-manage-skills-for-agent/</guid>
-      <description>Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
-以我自己为例：同时用 Claude Code、Codex 和 Cursor 三个 agent（之前还有 Gemini CLI），并在它们各自的 skill 目录里积累了几十个 skill 之后，发生了什么以及我的应对之策。
-为什么突然要管理 skill 不少其他作者说要管理 skill，是为了防治上下文腐败。他们安装了太多的 skill，以致于在决定召回用哪个 skill 时，出现打架冲突、召回准确率下降，以及影响正文内容表现的事。
-我这边装的不多，没遇到过 skill 失灵的情况。更多遇到的是如标题所言的，在多个工作工具来回切换时，skill 咋整的问题。
-典型情况就是 skill 没有全局安装，换了一个 agent 就看不到，要重装一遍。比如我在 Claude Code 里装了一个 grill-me skill（动手前让 AI 先把方案问透的技巧），用着顺手，切到 Codex 想用的时候发现它没挂在 Codex，需要重装。
-这种情形本质上其实是：Claude Code、Codex、Cursor 现在都支持 skill，但各家&amp;quot;支持&amp;quot;不等于&amp;quot;保持同步&amp;quot;。每个 agent 有自己的 skill 目录、自己的 discovery 规则。你在一个地方改了 skill，默认不会同步到其他 agent 下面。
-Skill 从&amp;quot;效率工具&amp;quot;变成了&amp;quot;需要跨工具治理的资产&amp;quot;，是这篇文章要讨论的。
-快速回顾：Skill vs Prompt vs MCP 首先我们快速回顾下什么是 skill，以及之前的相似概念：Prompt、MCP。
-Skill 不是 prompt 模板的简单升级。核心区别在&amp;quot;渐进式披露&amp;quot;：skill 是按需加载的，agent 判断当前任务需要某个 skill 才会去读；而 system prompt 是开局就全塞进 context，不管用不用得上都占着窗口。当你有几十个 skill 的时候，这个差异决定了 context 会否被无关信息稀释。</description>
-    </item>
-    
-    <item>
-      <title>用 Codex /goal 指令从 0 到 1 验证并构建产品</title>
-      <link>https://kuhung.me/posts/use-codex-goal-build-products/</link>
-      <pubDate>Tue, 04 Aug 2026 17:58:11 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/use-codex-goal-build-products/</guid>
-      <description>随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
-这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非也。模型无法猜测你的心思，就如你无法猜透上级、客户的心思一样，需要反复追问确定清楚交付细节。
-但如果不想 Agent 反复追问呢？Codex 的/goal 指令，就是一个可以实现“按预期交付”的工具。goal 是用来做持续性迭代工作，你可以在睡觉前、或是额度快耗尽前起一个，让 Agent 持续不断进行多轮探索。几个月前，我在做 agentank 比赛的时候，就得知有人用它取得了 Top 的成绩。（虽然耗 token，但是结果上优于我的蒸馏学习）
-前文讲过我用 Codex 来做什么，这次拿一个完整案例展开。
-一个社交媒体帖子引发的产品想法 刷帖子有一个金融律所的人说，他的实习生过的日子比他好多了。新人不再像他们之前，古法审合同、一个个抠字眼、识别风险，直接丢给中外大模型即可。评论区反复在问，安全合规怎么搞、本地脱敏如何做。这点其实有不少解决方案，但是面向中小型组织和个人的似乎少见。我认为这是一个商机。
-这是一个真切存在的需求点吗，能够做到 PMF 验证吗？用户的抱怨集中在哪里？同行竞品是如何切入的，他们的定价、销量、投融资情况如何？恰好我的 Codex 额度要用不完了，这个需求我们丢给 goal 指令，实测其效果。
-六轮引导：从想法到产品 goal虽然能减少干预，但大概率交付的不是想要的。原因同开头讲的，双方都未获得关于产品的全部信息。”我“的观点和态度，会随着”我“掌握的信息变化。Agent 也会根据我的反馈信息，逐渐调整它的切入点和交付物。最终下来，我在整个过程中做了六次关键引导。
-第一轮：从一个功能设想，转成市场问题。 原始观察和想法丢给 Codex 后，它直接开始假设需求成立。我的反馈是：不假设需求成立，先验证场景、替代品与付费可能。Codex 随即完成了中国与海外调研、竞品、定价、市场规模的整理。结论是风险场景真实，但个人脱敏工具并非空白市场，存在多个现有产品。
-第二轮：从法律行业，扩到真实工作流。 市场切入范围调整。我反馈不要限制在法律行业，公司机密也不能直接喂给模型，试图让 Agent 思路放宽。Codex 重新扫描了个人插件、浏览器 DLP、企业治理与 Agent 安全的竞品地图。发现企业会为治理、审计和部署付费，个人通用插件的安装甚少。
-第三轮：从功能堆叠，收敛到核心承诺。 我一开始随口提了句能脱敏然后还原，Agent 将落地页写出来后，我随即发现落地页 AI 味太重，用户未必关心&amp;quot;还原&amp;quot;能力。我把主矛盾收敛为：内容发出前识别风险，不展示复杂能力。
-第四轮：从重工作区，收敛到轻量 MVP。 Agent 给出的调整方向是做离线安全工作区。但显然这个方案过于庞大。我反馈先从复制/粘贴切入。暂不做文件工作区、PDF/Office、系统级剪贴板劫持。这些都是为了控制交付复杂度。
-第五轮：从&amp;quot;造功能&amp;quot;，转向&amp;quot;嵌入已有抱怨&amp;quot;。 看来模型整不明白，算了不要这个功能，看看用户的反馈集中在哪里。我让 Codex 去研究用户在哪里抱怨，不要教育用户新流程。它拉回了 24 条公开抱怨语料，收敛到客户报告、工单、错误日志三个真实场景。
-第六轮：从 Skill 拦截，转成诊断获客。 如果切入工作流行不通，那试试写 Skill 搭便车。不过 Skill 被调用时内容已可能进模型，也就无法实现前置拦截。随即调整为免费隐私诊断工具，用来获客，付费产品才是本地脱敏。</description>
     </item>
     
     <item>
@@ -355,23 +156,6 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
     </item>
     
     <item>
-      <title>不想为总结一个网页花20美元，我给Chrome做了个平替插件</title>
-      <link>https://kuhung.me/posts/pagegrok-in-practice/</link>
-      <pubDate>Wed, 29 Jul 2026 15:43:32 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/pagegrok-in-practice/</guid>
-      <description>需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&amp;quot;丢&amp;quot;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
-我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越好。
-市面上不是没有类似的东西，Chrome 插件 Page-Assist 算比较早的一个，但功能铺得太满，配置项一大堆，用不上的东西成了负担。这活儿逻辑不复杂，手搓也不难，正好还能把本地跑的模型用起来。
-于是就有了 PageGrok 这款浏览器插件。
-大厂做了，还做不做 开发到一半，Google 把 Gemini 塞进了 Chrome 侧边栏。选中页面问模型，跟我做的事一模一样。这种时刻经典复刻了：你琢磨的东西，大厂顺手就做了，怎么办？
-想了想，还是继续做。理由也不复杂。Gemini in Chrome 的完整功能绑在 Google AI Pro 上，一个月 19.99 美元，我只是想总结个页面，用不上生图、云存储。这笔账不划算，何况有些地区还用不了。还有隐私：Chrome 侧边栏默认拿当前标签页内容去生成回答，数据是走 Google 服务器的，公司内部文档、没公开的研究资料，这可使不得。
-它能干什么 所以 PageGrok 做的还是一个很朴素的东西：侧边栏常驻，一边看内容一边问；自定义接入本地模型或者 API；借鉴了印象笔记的截屏取景框逻辑，能自定义截取一块区域。这个在小红书、推特这种浮窗式应用上意外地好用；回答可以直接复制走，还能带上来源，方便回头翻。产品形态确实初级，商业化也有限，但我自己天天用，够用。
-4个月8个小版本 三月底上线 1.0.1，只支持 Ollama，弹窗交互。五月中到 1.0.4，加了 oMLX 和 LM Studio，顺手把弹窗换成了侧边栏。这一步其实是深度体验后的有依据调整。七月稳定发布 1.0.7 和 1.0.8。四个月，八个版本。五月十一号在 V2EX 发了个帖子，到现在 1100 多次浏览，被几个 AI 工具站收录转载过。周活跃用户在数十位，横跨亚欧美三大洲。这些够我确认一件事：这个需求不是我一人独有。
-踩过的坑 踩过的坑也有。最早是 popup 弹窗，点图标弹出来，点别处就收起去。换成 Side Panel API 之后才顺了，不过这 API 本身还比较新，有些交互细节 Google 自己可能都还在摸索。然后是会话不保存，早期版本刷新页面或者关掉侧边栏，之前问的东西就没了，对那种需要反复追问、一层层往下挖的场景，体验糟糕。后来加了 Markdown 渲染和复制，能够衔接到下游的知识管理 pipeline 了。</description>
-    </item>
-    
-    <item>
       <title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title>
       <link>https://kuhung.me/posts/cang-in-house/</link>
       <pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate>
@@ -389,28 +173,6 @@ Codex，我用来干这些事 **第一件：看清楚市场。**这也是我逐�
 券商特点 两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。
 富途是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。
 雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description>
-    </item>
-    
-    <item>
-      <title>利用微信读书skill，将读过的知识整合进AI实践</title>
-      <link>https://kuhung.me/posts/weread-skills-in-practice/</link>
-      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weread-skills-in-practice/</guid>
-      <description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
-是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：&amp;ldquo;SLMs是什么&amp;quot;&amp;ldquo;端侧模型有哪些技术要点&amp;quot;这类。它还有个很强的特性，迎合说话人。这点即使通过提示词纠正，也难以跳出提问人的思维边界。碰到框架性的问题，它给不出系统的、有真人感的建议。
-从底层原理来说，大模型给出的是概率性文字，它也没法给切身经验和系统方法。这就像公司新人，能力不差，但缺少开展工作的上下文。高质量书籍填补的就是这块空白。
-以前看书，做做笔记、画个思维导图，遇到有意思的会写份读书笔记。今天讲的是更进一步的做法：把书里的方法，编译成 AI Agent 可以直接调用的技能。
-Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷。有些好用，有些徒有其名。一个 Markdown 文件配个抓眼球的标题，就能在 GitHub 上混到成千上万颗星标，星标快失去意义了。还有些 skills 在逻辑里面埋毒，引导脚本执行木马程序。
-试过不少 skills 之后，我发现还是得有一套自己的方法。比如有人推荐 superpowers，我用下来慢得要死，还生成一堆无关文件。别人的 skill 可以参考，快速了解知识的时候先拿来用，再在自己的基础上调整。核心方法得从自己的知识体系里长出来。
-在 skills 没出来之前，这个场景可能的解决方案是外挂 RAG。即通过对文稿的预先处理，试图用大模型来召回对应的知识结构。这种方法的好处是省事，直接丢文档切分即可。坏处是吃大模型的上下文，召回质量需要大量工程逻辑兜底。另外，这种方法最大的问题，个人认为是缺少“人在循环”这么个东西。
-微信读书笔记，恰好就是“人在循环”的一个具体表现。一千个人有一千个哈姆雷特，一千个读者也有一千种理解。这种带有个人理解的内容，才是 skills 真正值得沉淀的部分。
-读万卷书，不如蒸馏成术；蒸馏成术，不如实践成路。
-数据源：从 cookies 到官方 Skills API 在早先几年，我通过 cookies 截取的方式，借助 GitHub Actions 把微信读书笔记自动同步到 Notion。能归集阅读内容，但最近一年失效了，微信读书团队更新了鉴权方式。
-今年早些时候，顺着 skills 这波风，微信读书团队开放了官方 Skills 接口。走完固定流程，就能在 Agent 里通过对话拿到你的数据：书架、阅读进度、划线信息，全部可以外挂给大模型。
-网上对这个接口的二次加工，多集中在聊天、可视化、书籍推荐的程度。我想做的事更进一步：数据源有了，直接加工成可调用的 skills。把微信读书里的划线与想法，编译成 SKILL.md 技能指令，挂载到 Agent 上，在对话匹配到触发条件时自动加载。
-五步流水线：划线变技能 整个流程分五步，从原始划线到全局可用：
-步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description>
     </item>
     
     <item>

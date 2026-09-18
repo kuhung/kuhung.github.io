@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-      <loc>https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/</loc>
-      <lastmod>2026-09-16T23:47:12+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/categories/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/llm/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/</loc>
+      <lastmod>2026-09-18T20:57:35+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/</loc>
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/chrome%E6%8F%92%E4%BB%B6/</loc>
@@ -13,22 +40,13 @@
       <loc>https://kuhung.me/tags/pagegrok/</loc>
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/</loc>
-      <lastmod>2026-09-16T23:47:12+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/</loc>
+      <loc>https://kuhung.me/categories/side-project/</loc>
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B/</loc>
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</loc>
-      <lastmod>2026-09-16T23:47:12+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
-      <lastmod>2026-09-16T23:47:12+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/</loc>
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/pi/</loc>
@@ -43,6 +61,9 @@
       <loc>https://kuhung.me/tags/%E5%A4%9A%E6%A8%A1%E5%9E%8B/</loc>
       <lastmod>2026-09-15T16:54:54+08:00</lastmod>
     </url><url>
+      <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
+      <lastmod>2026-09-15T16:54:54+08:00</lastmod>
+    </url><url>
       <loc>https://kuhung.me/tags/github-actions/</loc>
       <lastmod>2026-09-14T23:38:37+08:00</lastmod>
     </url><url>
@@ -50,6 +71,9 @@
       <lastmod>2026-09-14T23:38:37+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</loc>
+      <lastmod>2026-09-14T23:38:37+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
       <lastmod>2026-09-14T23:38:37+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/ai/</loc>
@@ -106,6 +130,9 @@
       <loc>https://kuhung.me/posts/seo-in-practice-sop/</loc>
       <lastmod>2026-08-23T12:24:30+08:00</lastmod>
     </url><url>
+      <loc>https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</loc>
+      <lastmod>2026-08-23T12:24:30+08:00</lastmod>
+    </url><url>
       <loc>https://kuhung.me/posts/cang-in-house-review/</loc>
       <lastmod>2026-08-21T10:30:14+08:00</lastmod>
     </url><url>
@@ -133,6 +160,9 @@
       <loc>https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96/</loc>
       <lastmod>2026-08-12T11:25:12+08:00</lastmod>
     </url><url>
+      <loc>https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</loc>
+      <lastmod>2026-08-12T11:25:12+08:00</lastmod>
+    </url><url>
       <loc>https://kuhung.me/tags/ga4/</loc>
       <lastmod>2026-08-11T14:38:58+08:00</lastmod>
     </url><url>
@@ -142,13 +172,13 @@
       <loc>https://kuhung.me/tags/%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91/</loc>
       <lastmod>2026-08-08T23:16:24+08:00</lastmod>
     </url><url>
+      <loc>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</loc>
+      <lastmod>2026-08-08T23:16:24+08:00</lastmod>
+    </url><url>
       <loc>https://kuhung.me/posts/harness-your-skills/</loc>
       <lastmod>2026-08-08T23:16:24+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/ai%E8%A1%8C%E6%83%85/</loc>
-      <lastmod>2026-08-07T22:53:52+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/llm/</loc>
       <lastmod>2026-08-07T22:53:52+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</loc>
@@ -161,9 +191,6 @@
       <lastmod>2026-08-07T22:53:52+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E7%BE%8E%E8%82%A1/</loc>
-      <lastmod>2026-08-07T22:53:52+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</loc>
       <lastmod>2026-08-07T22:53:52+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/how-to-build-a-data-driven-product/</loc>
@@ -228,6 +255,9 @@
     </url><url>
       <loc>https://kuhung.me/tags/%E9%9B%AA%E7%9B%88/</loc>
       <lastmod>2026-07-26T12:44:44+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/ai/</loc>
+      <lastmod>2026-07-24T18:29:48+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/skills/</loc>
       <lastmod>2026-07-24T18:29:48+08:00</lastmod>
@@ -297,9 +327,6 @@
     </url><url>
       <loc>https://kuhung.me/tags/%E6%92%AD%E5%AE%A2/</loc>
       <lastmod>2026-05-06T00:51:42+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/ai/</loc>
-      <lastmod>2026-05-02T10:40:50+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/chatgpt/</loc>
       <lastmod>2026-05-02T10:40:50+08:00</lastmod>
@@ -404,9 +431,6 @@
       <lastmod>2025-11-23T11:11:54+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/luts-for-iphone/</loc>
-      <lastmod>2025-11-23T11:11:54+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</loc>
       <lastmod>2025-11-23T11:11:54+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E6%80%9D%E7%BB%B4/</loc>
@@ -532,9 +556,6 @@
       <loc>https://kuhung.me/posts/prompt-guide/</loc>
       <lastmod>2025-07-20T10:20:04+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
-      <lastmod>2025-07-20T10:20:04+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/</loc>
       <lastmod>2025-07-20T10:20:04+08:00</lastmod>
     </url><url>
@@ -551,9 +572,6 @@
       <lastmod>2025-07-07T11:52:01+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/context-engineering/</loc>
-      <lastmod>2025-07-07T11:52:01+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</loc>
       <lastmod>2025-07-07T11:52:01+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/guide/</loc>
@@ -703,9 +721,6 @@
       <loc>https://kuhung.me/posts/the-four-steps-to-the-epiphany/</loc>
       <lastmod>2022-01-07T21:41:40+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/categories/side-project/</loc>
-      <lastmod>2021-11-23T15:56:41+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/techlead-vol-3/</loc>
       <lastmod>2021-11-23T15:56:41+08:00</lastmod>
     </url><url>
@@ -753,9 +768,6 @@
     </url><url>
       <loc>https://kuhung.me/posts/the-effective-engineer/</loc>
       <lastmod>2021-08-08T00:22:36+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</loc>
-      <lastmod>2021-08-01T22:56:45+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/strategy-01/</loc>
       <lastmod>2021-08-01T22:56:45+08:00</lastmod>

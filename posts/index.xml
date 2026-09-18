@@ -6,7 +6,27 @@
     <description>Recent content in Posts on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Sep 2026 23:47:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Sep 2026 20:57:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入解读 Jev 模型：毫秒级判定原理与工程应用边界</title>
+      <link>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</link>
+      <pubDate>Fri, 18 Sep 2026 20:57:35 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</guid>
+      <description>理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
+很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。这就是我想聊聊 Jev 的原因。
+为什么这个模型最近能掀起波澜？通用大模型的方向在业界已经基本固定，新进的产品团队必须寻找差异化的切入点。Jev 号称闭门研发了两年，主打的就是极速响应。它去掉了自回归生成循环，输入按 Token 计费，输出 Token 则是零元。这很合理，它本质上是一个判别器模型，就像没有人会为随机森林的输出结果按 Token 买单一样。
+Jev 是什么 Jev 本质上是一个面向状态评估的统计分类器。大模型擅长生成，Jev 专注于判别。它把传统分类任务用大模型处理时既慢又贵的痛点，做到了低成本和高速度。
+产品发布初期，不少开发者以为是恶搞，因为创始人 Diogo Almeida 的名字和 Anthropic 首席执行官 Dario Amodei 读音相近。直到社区看到用 Jev 毫秒级操控经典游戏 DOOM 的录屏演示，技术圈才开始认真讨论它到底能用来做什么。
+它的名字取自经济学中的杰文斯悖论。当某种资源的利用效率大幅提升时，其总消耗量往往不会缩减，反而会成倍增长。一旦单次模型决策的成本下降上百倍，系统里原本写死 if-else 的地方，可能都会考虑接入模型来做动态判断。
+Jev 的核心定位是机器对机器的状态评估。它不回答用户提问，也不生成自然语言。它的职责是根据输入上下文，在几十毫秒内返回一个预定义的离散标签，将上游请求分流到下游分支。这类似于物流分拣中的分流模型。在早期的大模型工程落地中，用轻量小模型做路由分流本来就是常见做法。
+官方公布的运行指标中，输入端每百万 Token 计费 0.042 美元，输出免费，端到端请求延迟在 70 到 500 毫秒区间。不管是底座更小，还是单步前向推导，服务成本都被压得很低。
+官方在宣传时借用了认知科学的“双系统”概念：让昂贵的前沿大模型负责慢速的深度推演（System 2），让 Jev 充当快速廉价的反射弧（System 1）。在需要做前置过滤或路由分流时，用小判别模型就能搞定，不需要让生成模型全程陪跑。
+为了追求速度，Jev 舍弃了文本生成，只保留三种输出原语：
+choice：在给定的枚举列表中完成多选一路由。 score：在有序离散区间内打分（如 0 到 10 的数值评分）。 noul：输出三值布尔概率（true、false、unknown）。 它的输出附带了置信度概率。很多开发者吃过大模型生成 JSON 时幻觉的苦头，大模型即使输出错误结果，也常常给出虚高的概率。Jev 宣称对置信度进行了校准，下游系统可以依据置信度设置阈值，一旦置信度偏低就由硬规则或人工接管。关于这个置信度是如何校准的，后文会详细展开。
+在工程调用上，TypeSafe AI 接入了 Cloudflare Workers AI 与 Vercel AI Gateway。走 Vercel AI SDK 时，用 experimental_evaluate 声明判断问题即可：</description>
+    </item>
+    
     <item>
       <title>离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</title>
       <link>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</link>

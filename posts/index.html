@@ -214,7 +214,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 165 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 166 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -286,15 +286,30 @@ if (!doNotTrack) {
     <div class="posts-list" id="posts-list">
         
         <article class="posts-list-item"
+         data-tags="LLM||架构设计||性能优化||模型选型"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/inside-jev-millisecond-decisions-and-production-boundaries/">深入解读 Jev 模型：毫秒级判定原理与工程应用边界</a></h2>
+    <p class="posts-list-summary">理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
+很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-09-18">September 18, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
          data-tags="Chrome插件||PageGrok||AI工具||本地模型"
-         data-categories="经验分享">
+         data-categories="Side Project">
     <h2 class="posts-list-title"><a href="/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/">离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</a></h2>
     <p class="posts-list-summary">为什么做插件 PageGrok 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。
 最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长业务。需要一个产品跑通来验证想 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-09-16">September 16, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
         
     </div>
 </article>
@@ -317,13 +332,13 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="Vibe Coding||GitHub Actions||定时任务"
-         data-categories="经验分享">
+         data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/">Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</a></h2>
     <p class="posts-list-summary">最近对个人调度任务做了一次较大调整：核心从依赖 GitHub Actions 内置 schedule 的被动排队，改成由外部定时任务主动触发 workflow。要解决的主要是调度延迟。我有一批天级任务需要相对准时，例如拉取前一日数据、汇总昨天的工作；但 GitHub Actions 的 cron 并不可控，经常晚数小时，极端时当天该跑的 run 都没出现。GitHub 文档也写了， …</p>
     <div class="posts-list-meta">
         <time datetime="2026-09-14">September 14, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -364,14 +379,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="AI工具||Agent Skills||评估||SOP"
-         data-categories="经验分享">
+         data-categories="技术研究">
     <h2 class="posts-list-title"><a href="/posts/skill-eval-review/">Agent Skills 出来的第10个月，再聊评估几件事</a></h2>
     <p class="posts-list-summary">Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-26">August 26, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
         
     </div>
 </article>
@@ -379,7 +394,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="SEO||搜索可见性||数据分析||产品验证||TrakToken"
-         data-categories="经验分享">
+         data-categories="商业分析">
     <h2 class="posts-list-title"><a href="/posts/seo-in-practice-sop/">从 SEO 角度做增长，以产品 TrakToken 为例</a></h2>
     <p class="posts-list-summary">在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
 从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。
@@ -387,7 +402,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2026-08-23">August 23, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
         
     </div>
 </article>
@@ -409,30 +424,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="Claude Code||AI编程||token优化"
-         data-categories="经验分享">
+         data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/maximization-your-claude-code-sessions/">提效 20% 的 Claude Code Session 优化方法</a></h2>
     <p class="posts-list-summary">这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-15">August 15, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="SEO||AI可见性||搜索优化||ASO"
-         data-categories="经验分享">
-    <h2 class="posts-list-title"><a href="/posts/seo-enhance/">搜索与 AI 可见性：让需要你产品的人找到你</a></h2>
-    <p class="posts-list-summary">最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
-笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
-做产品和开小店的共性 把网站想象成一家店。货上了架，但路不通、门 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-08-12">August 12, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -629,7 +628,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 165 篇</span>
+        <span class="posts-total">共 166 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
@@ -637,15 +636,30 @@ if (!doNotTrack) {
     <template id="all-posts-template">
         
         <article class="posts-list-item"
+         data-tags="LLM||架构设计||性能优化||模型选型"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/inside-jev-millisecond-decisions-and-production-boundaries/">深入解读 Jev 模型：毫秒级判定原理与工程应用边界</a></h2>
+    <p class="posts-list-summary">理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
+很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-09-18">September 18, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
          data-tags="Chrome插件||PageGrok||AI工具||本地模型"
-         data-categories="经验分享">
+         data-categories="Side Project">
     <h2 class="posts-list-title"><a href="/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/">离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</a></h2>
     <p class="posts-list-summary">为什么做插件 PageGrok 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。
 最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长业务。需要一个产品跑通来验证想 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-09-16">September 16, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
         
     </div>
 </article>
@@ -668,13 +682,13 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="Vibe Coding||GitHub Actions||定时任务"
-         data-categories="经验分享">
+         data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/">Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</a></h2>
     <p class="posts-list-summary">最近对个人调度任务做了一次较大调整：核心从依赖 GitHub Actions 内置 schedule 的被动排队，改成由外部定时任务主动触发 workflow。要解决的主要是调度延迟。我有一批天级任务需要相对准时，例如拉取前一日数据、汇总昨天的工作；但 GitHub Actions 的 cron 并不可控，经常晚数小时，极端时当天该跑的 run 都没出现。GitHub 文档也写了， …</p>
     <div class="posts-list-meta">
         <time datetime="2026-09-14">September 14, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -715,14 +729,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="AI工具||Agent Skills||评估||SOP"
-         data-categories="经验分享">
+         data-categories="技术研究">
     <h2 class="posts-list-title"><a href="/posts/skill-eval-review/">Agent Skills 出来的第10个月，再聊评估几件事</a></h2>
     <p class="posts-list-summary">Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-26">August 26, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
         
     </div>
 </article>
@@ -730,7 +744,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="SEO||搜索可见性||数据分析||产品验证||TrakToken"
-         data-categories="经验分享">
+         data-categories="商业分析">
     <h2 class="posts-list-title"><a href="/posts/seo-in-practice-sop/">从 SEO 角度做增长，以产品 TrakToken 为例</a></h2>
     <p class="posts-list-summary">在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
 从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。
@@ -738,7 +752,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2026-08-23">August 23, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
         
     </div>
 </article>
@@ -760,14 +774,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="Claude Code||AI编程||token优化"
-         data-categories="经验分享">
+         data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/maximization-your-claude-code-sessions/">提效 20% 的 Claude Code Session 优化方法</a></h2>
     <p class="posts-list-summary">这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-15">August 15, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -775,7 +789,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="SEO||AI可见性||搜索优化||ASO"
-         data-categories="经验分享">
+         data-categories="行业趋势">
     <h2 class="posts-list-title"><a href="/posts/seo-enhance/">搜索与 AI 可见性：让需要你产品的人找到你</a></h2>
     <p class="posts-list-summary">最近半年，关于 SEO 和 GEO 的讨论很多。不少做产品开发的大佬，也都在强调流量的重要性。对于低市场预算和起步阶段的小团队来说，善用搜索引擎流量，提高 AI 的可见性，是极具性价比的一环。
 笔者的几个产品，不少流量就来自搜索引擎和“豆包”这类产品。这篇文章，试图以通俗的语言，穿插专业内容，来盘一盘这一路上会遇到的问题和解决思路。
@@ -783,7 +797,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2026-08-12">August 12, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
         
     </div>
 </article>
@@ -807,14 +821,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="AI工具||Agent Skills||vibe coding||独立开发"
-         data-categories="经验分享">
+         data-categories="系统设计">
     <h2 class="posts-list-title"><a href="/posts/harness-your-skills/">驾驭你的 Agent Skills 和系统指令</a></h2>
     <p class="posts-list-summary">打开 skills.sh 排行榜，前十名加起来几百万安装量。直觉告诉你：这么多人装了，应该有用吧。装了一圈之后发现，大部分时候它们在干预期以外的事情。
 先装一堆别人的 Skill，却没搞清楚系统有什么、自己需要什么。顺序应该反过来：先摸清 Cursor、Codex、Claude Code 各自预置了什么，再判断自己缺什么，薄弱点拿别人的 Skill 临时补上，同时把自己的专长编成 Skill 输 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-08">August 8, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>
         
     </div>
 </article>
@@ -837,14 +851,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="数据运营||独立开发||vibe coding||数据分析"
-         data-categories="经验分享">
+         data-categories="商业分析">
     <h2 class="posts-list-title"><a href="/posts/how-to-build-a-data-driven-product/">Vibe Coding 产品数据建设：5步框架与数据清单</a></h2>
     <p class="posts-list-summary">Vibe coding 很热，写出来的东西越来越像样。但好像很少有人聊 vibe coding 产品的数据怎么做。没有数据，写写自用玩具可以，但想进一步规模化和商业化，这个问题始终绕不过去。
 英文圈有一些讨论。Value Add VC 和 JustNeeda 分别写过一篇，其核心结论一致：定义北极星指标、只埋 5-10 个核心事件、每周花半小时看数据。这类文章面向的是有一定规模的 SaaS 创业 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-06">August 6, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
         
     </div>
 </article>
@@ -852,7 +866,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="AI工具||vibe coding||Agent Skills||独立开发"
-         data-categories="经验分享">
+         data-categories="系统设计">
     <h2 class="posts-list-title"><a href="/posts/how-to-manage-skills-for-agent/">从单 Agent 到跨 Agent 的 Skills 管理</a></h2>
     <p class="posts-list-summary">Skill 是什么、怎么写，这篇文章不准备展开介绍。这里聊的是另一件事：当跨 agent 工作越来越常见，工具转换间，沉淀的 skill 怎么办。
 以我自己为例：同时用 Claude Code、Codex 和 Cursor 三个 agent（之前还有 Gemini CLI），并在它们各自的 skill 目录里积累了几十个 skill 之后，发生了什么以及我的应对之策。
@@ -860,7 +874,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2026-08-05">August 5, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a>
         
     </div>
 </article>
@@ -868,14 +882,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="Codex||AI工具||独立开发||vibe coding"
-         data-categories="经验分享">
+         data-categories="Side Project">
     <h2 class="posts-list-title"><a href="/posts/use-codex-goal-build-products/">用 Codex /goal 指令从 0 到 1 验证并构建产品</a></h2>
     <p class="posts-list-summary">随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。
 这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-08-04">August 4, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
         
     </div>
 </article>
@@ -929,14 +943,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="Chrome插件||PageGrok||AI工具||本地模型"
-         data-categories="经验分享">
+         data-categories="Side Project">
     <h2 class="posts-list-title"><a href="/posts/pagegrok-in-practice/">不想为总结一个网页花20美元，我给Chrome做了个平替插件</a></h2>
     <p class="posts-list-summary">需求痛点 刷网页的时候，总会碰到这种时刻：看到一篇长文，或者一段讨论，想快速知晓大意或是多方观点。念头很简单，但满足它却挺麻烦。前大模型时代只能硬啃；后大模型时代，能把内容丢给豆包、丢给 DeepSeek，可这个&#34;丢&#34;字里全是摩擦：开一个新标签页，将链接丢给他们。碰上反爬或者排版诡异的页面，结果不可控还得回来复制粘贴。
 我真正想要的东西十分简单：看到感兴趣的内容，选中，问一句，拿到答案。中间越少越 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-07-29">July 29, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
         
     </div>
 </article>
@@ -976,14 +990,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="AI||skills||微信读书||知识管理"
-         data-categories="经验分享">
+         data-categories="AI">
     <h2 class="posts-list-title"><a href="/posts/weread-skills-in-practice/">利用微信读书skill，将读过的知识整合进AI实践</a></h2>
     <p class="posts-list-summary">遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
 是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：“SLMs是什么&#34;“端侧模型有哪些技术要 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-07-24">July 24, 2026</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/ai/">AI</a>
         
     </div>
 </article>

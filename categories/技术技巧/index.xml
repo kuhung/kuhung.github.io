@@ -6,7 +6,37 @@
     <description>Recent content in 技术技巧 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Jul 2025 10:20:04 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Sep 2026 23:38:37 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践</title>
+      <link>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</link>
+      <pubDate>Mon, 14 Sep 2026 23:38:37 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</guid>
+      <description>最近对个人调度任务做了一次较大调整：核心从依赖 GitHub Actions 内置 schedule 的被动排队，改成由外部定时任务主动触发 workflow。要解决的主要是调度延迟。我有一批天级任务需要相对准时，例如拉取前一日数据、汇总昨天的工作；但 GitHub Actions 的 cron 并不可控，经常晚数小时，极端时当天该跑的 run 都没出现。GitHub 文档也写了，高负载时内置 schedule 会拖队，整点尤其挤，严重一点排队里的 job 还可能被丢掉。这和在公司里做数据调度是同一类烦恼。
+好在目前没有严格意义上的任务依赖；真有前后关系时，会拆成串联节点。更多还是用错开执行时间这类小技巧顶一顶。
+外部主动触发 除了 workflow 里自带的 schedule，还可以用第三方 cron 从仓库外 dispatch，相对更可控。调研阶段我主要用 Google Antigravity 查资料；古法编程也行，直接在 Google 里搜，AI 概览往往也会点到 workflow_dispatch、repository dispatch 这类做法。大意就是：定时器不在 GitHub 队列里干等，而是由外部按点去触发。落地代码在 kuhung/action-cron-hub，个人用的小 hub，负责外部定时和集中补触，细节就不展开了。线上各 workflow 原先自带的 schedule 我也下掉了，定时只走外部这一路，免得 GitHub 内外各响一次、同一天跑两遍。
+用 Pi CLI 批量改配置 落地时我用 Pi 的 CLI 客户端来改仓库。授权充分后，它可以读项目下的文件。我把多个相关仓库收进一个大文件路径下，在根目录让它扫描各子目录里已有的 GitHub workflow 配置，批量改 trigger，省得一个个仓库翻 yaml。这种多任务批量改，和之前统一改 GA4 实践指南：从配置到 AI 工作流 里那套埋点一样，改一处公共抽象、下面一起生效。（再次心痛：上次用 Claude 改到一半，账号被封了。）
+整体改动不大，前后折腾大约两个半小时。收尾时在 Antigravity 里用 Gemini 3.</description>
+    </item>
+    
+    <item>
+      <title>提效 20% 的 Claude Code Session 优化方法</title>
+      <link>https://kuhung.me/posts/maximization-your-claude-code-sessions/</link>
+      <pubDate>Sat, 15 Aug 2026 21:17:08 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/maximization-your-claude-code-sessions/</guid>
+      <description>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
+我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。
+本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。
+一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。
+我自己的理解是，如果一条工作流已经被你验证过了（比如有现成的 SOP 或者 skills），那把它编码成固定流程或代码让 Agent 调用。被验证过的事情不需要反复探索，也能省下不少时间和 token。
+二、token 价格的决定方式 原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。
+模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。
+输入和输出的区别 原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）
+输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</description>
+    </item>
+    
     <item>
       <title>三大LLM厂商的提示词行动指南</title>
       <link>https://kuhung.me/posts/prompt-guide/</link>

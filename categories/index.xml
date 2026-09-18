@@ -6,22 +6,67 @@
     <description>Recent content in Categories on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 16 Sep 2026 23:47:12 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Sep 2026 20:57:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>技术研究</title>
+      <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
+      <pubDate>Fri, 18 Sep 2026 20:57:35 +0800</pubDate>
+      
+      <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Side Project</title>
+      <link>https://kuhung.me/categories/side-project/</link>
+      <pubDate>Wed, 16 Sep 2026 23:47:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/categories/side-project/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>经验分享</title>
       <link>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</link>
-      <pubDate>Wed, 16 Sep 2026 23:47:12 +0800</pubDate>
+      <pubDate>Tue, 15 Sep 2026 16:54:54 +0800</pubDate>
       
       <guid>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>技术技巧</title>
+      <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Mon, 14 Sep 2026 23:38:37 +0800</pubDate>
+      
+      <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>商业分析</title>
+      <link>https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</link>
+      <pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate>
+      
+      <guid>https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>行业趋势</title>
       <link>https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</link>
-      <pubDate>Fri, 07 Aug 2026 22:53:52 +0800</pubDate>
+      <pubDate>Wed, 12 Aug 2026 11:25:12 +0800</pubDate>
       
       <guid>https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>系统设计</title>
+      <link>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sat, 08 Aug 2026 23:16:24 +0800</pubDate>
+      
+      <guid>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid>
       <description></description>
     </item>
     
@@ -46,7 +91,7 @@
     <item>
       <title>AI</title>
       <link>https://kuhung.me/categories/ai/</link>
-      <pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate>
+      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
       
       <guid>https://kuhung.me/categories/ai/</guid>
       <description></description>
@@ -58,15 +103,6 @@
       <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
       
       <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>技术研究</title>
-      <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
-      <pubDate>Sun, 23 Nov 2025 11:11:54 +0800</pubDate>
-      
-      <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</guid>
       <description></description>
     </item>
     
@@ -134,24 +170,6 @@
     </item>
     
     <item>
-      <title>技术技巧</title>
-      <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</link>
-      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
-      
-      <guid>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>系统设计</title>
-      <link>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
-      <pubDate>Mon, 07 Jul 2025 11:52:01 +0800</pubDate>
-      
-      <guid>https://kuhung.me/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>工具</title>
       <link>https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/</link>
       <pubDate>Thu, 12 Jun 2025 11:43:34 +0800</pubDate>
@@ -175,24 +193,6 @@
       <pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate>
       
       <guid>https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Side Project</title>
-      <link>https://kuhung.me/categories/side-project/</link>
-      <pubDate>Tue, 23 Nov 2021 15:56:41 +0800</pubDate>
-      
-      <guid>https://kuhung.me/categories/side-project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>商业分析</title>
-      <link>https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</link>
-      <pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate>
-      
-      <guid>https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</guid>
       <description></description>
     </item>
     
