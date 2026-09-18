@@ -61,7 +61,7 @@ if (!doNotTrack) {
   
 
 <script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/","@type":"WebSite","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"description":"写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。","inLanguage":"zh-CN","name":"谷粒 kuhung","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"TrakToken","position":1,"url":"https://www.traktoken.com/"},{"@type":"ListItem","name":"LLM Benchmark","position":2,"url":"https://benchmark-for-llm.kuhung.me"},{"@type":"ListItem","name":"Phonology AI","position":3,"url":"https://sheng.kuhung.me/"},{"@type":"ListItem","name":"Vibe Coding 101","position":4,"url":"https://vibe-coding-101.kuhung.me"},{"@type":"ListItem","name":"Alpha101 因子三维可视化","position":5,"url":"https://v.quantfull.com"},{"@type":"ListItem","name":"凡人修仙传人物关系图谱","position":6,"url":"https://fanren.kuhung.me/"},{"@type":"ListItem","name":"出行可达地图","position":7,"url":"https://keda.kuhung.me/"},{"@type":"ListItem","name":"性压抑指数测试 SRI","position":8,"url":"https://sri.kuhung.me/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"谷粒 · 精选产品","numberOfItems":8,"url":"https://kuhung.me/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"Vibe Coding 101","position":1,"url":"https://vibe-coding-101.kuhung.me"},{"@type":"ListItem","name":"TrakToken","position":2,"url":"https://www.traktoken.com/"},{"@type":"ListItem","name":"QuantFull","position":3,"url":"https://www.quantfull.com"},{"@type":"ListItem","name":"LLM Benchmark","position":4,"url":"https://benchmark-for-llm.kuhung.me"},{"@type":"ListItem","name":"Phonology AI","position":5,"url":"https://sheng.kuhung.me/"},{"@type":"ListItem","name":"Alpha101 因子三维可视化","position":6,"url":"https://v.quantfull.com"},{"@type":"ListItem","name":"凡人修仙传人物关系图谱","position":7,"url":"https://fanren.kuhung.me/"},{"@type":"ListItem","name":"出行可达地图","position":8,"url":"https://keda.kuhung.me/"},{"@type":"ListItem","name":"性压抑指数测试 SRI","position":9,"url":"https://sri.kuhung.me/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"谷粒 · 精选产品","numberOfItems":9,"url":"https://kuhung.me/"}</script>
 </head>
 
   
@@ -155,7 +155,7 @@ if (!doNotTrack) {
         justify-content: center;
         margin-top: 14px;
     }
-    .hero-actions a { font-size: 14px; padding: 10px 22px; }
+    .hero-actions a { font-size: 14px; padding: 10px 22px; border-radius: 4px; }
     .hero-actions .hero-cta-primary { color: #fff; background: #2d96bd; }
     .hero-actions .hero-cta-primary:hover { color: #fff; }
     .hero-actions .hero-cta-secondary { color: #161209; border: 1px solid #eee; }
@@ -263,14 +263,25 @@ if (!doNotTrack) {
         .site-title .site-title-sub { font-size: 19px; }
         .site-lead { font-size: 14px; line-height: 1.85; margin-top: 12px; }
         .intro-fullscreen .social-links { margin-top: 12px; }
-        .hero-actions { flex-direction: column; gap: 10px; margin-top: 16px; }
+        .hero-actions {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-top: 16px;
+            width: 100%;
+            max-width: 320px;
+            justify-content: center;
+        }
         .hero-actions a {
-            font-size: 15px;
-            height: 46px;
-            padding: 0;
+            flex: 1;
+            font-size: 14px;
+            height: 42px;
+            padding: 0 12px;
+            box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
+            white-space: nowrap;
         }
         .home-section { padding: 0 20px; }
         .product-grid { grid-template-columns: 1fr; }
@@ -288,8 +299,8 @@ if (!doNotTrack) {
         <h1 class="site-title">谷粒 kuhung<span class="site-title-sub">｜分享实在的 AI 干货</span></h1>
         <p class="site-lead">写 AI 编程、Agent 与 Skills、内容与增长、数据与量化，记录用过之后的真实判断、方法和结果。2018 年进入算法领域，曾供职网易游戏和米哈游。涉及亿级规模的用户画像、反作弊和用户增长。从 2016 年开始写，至今 160 多篇。</p>
         <div class="hero-actions">
-            <a class="hero-cta-primary" href="/posts/">读最新文章 &rarr;</a>
-            <a class="hero-cta-secondary" href="/projects/">看全部产品 &rarr;</a>
+            <a class="hero-cta-primary" href="/projects/">看全部产品 &rarr;</a>
+            <a class="hero-cta-secondary" href="/posts/">读最新文章 &rarr;</a>
         </div>
         <div class="social-links">
             <style>
@@ -450,6 +461,78 @@ document.addEventListener('click', function(e) {
 
     </div>
 
+    <div id="projects" class="home-section">
+        <h2><span class="hash">#</span>精选产品</h2>
+        <p class="section-note">打开就能用，不用注册也不用安装。</p>
+        <div class="product-grid">
+            
+            <a class="product-card" href="https://vibe-coding-101.kuhung.me">
+                <div class="product-name">Vibe Coding 101</div>
+                <div class="product-tagline">零基础用 AI 把产品做到上线</div>
+                <div class="product-desc">写给没有开发背景的人。按定需求、做第一版、改功能排错、上线收费、运行反馈五个阶段组织。</div>
+                <div class="product-domain">vibe-coding-101.kuhung.me &nearr;</div>
+            </a>
+            
+            <a class="product-card" href="https://www.traktoken.com/">
+                <div class="product-name">TrakToken</div>
+                <div class="product-tagline">LLM API 价格与成本计算</div>
+                <div class="product-desc">算清楚你的用量下，云端 API 和本地部署哪个更省钱。</div>
+                <div class="product-domain">www.traktoken.com &nearr;</div>
+            </a>
+            
+            <a class="product-card" href="https://www.quantfull.com">
+                <div class="product-name">QuantFull</div>
+                <div class="product-tagline">量化交易与策略投研学习</div>
+                <div class="product-desc">《101 个量化因子解读》与《151 个交易策略》展示与购买，系统掌握因子研究与策略回测。</div>
+                <div class="product-domain">www.quantfull.com &nearr;</div>
+            </a>
+            
+        </div>
+        <div class="product-rows">
+            
+            <a class="product-row" href="https://benchmark-for-llm.kuhung.me">
+                <span class="product-name">LLM Benchmark</span>
+                <span class="product-tagline">大模型推理性能测速</span>
+                <span class="product-domain">benchmark-for-llm.kuhung.me</span>
+            </a>
+            
+            <a class="product-row" href="https://sheng.kuhung.me/">
+                <span class="product-name">Phonology AI</span>
+                <span class="product-tagline">语音科学工具集</span>
+                <span class="product-domain">sheng.kuhung.me</span>
+            </a>
+            
+            <a class="product-row" href="https://v.quantfull.com">
+                <span class="product-name">Alpha101 因子三维可视化</span>
+                <span class="product-tagline">把 101 个量化因子之间的关系做成可以转动缩放的三维图。</span>
+                <span class="product-domain">v.quantfull.com</span>
+            </a>
+            
+            <a class="product-row" href="https://fanren.kuhung.me/">
+                <span class="product-name">凡人修仙传人物关系图谱</span>
+                <span class="product-tagline">把小说里的人物、门派、地点和事件整理成可交互的关系网。</span>
+                <span class="product-domain">fanren.kuhung.me</span>
+            </a>
+            
+            <a class="product-row" href="https://keda.kuhung.me/">
+                <span class="product-name">出行可达地图</span>
+                <span class="product-tagline">一小时逃离计划</span>
+                <span class="product-domain">keda.kuhung.me</span>
+            </a>
+            
+            <a class="product-row" href="https://sri.kuhung.me/">
+                <span class="product-name">性压抑指数测试 SRI</span>
+                <span class="product-tagline">性压抑程度的自测量表，给出分数和解读。</span>
+                <span class="product-domain">sri.kuhung.me</span>
+            </a>
+            
+        </div>
+        <p class="section-more">
+            <a class="lk" href="/projects/">查看全部 31 个产品 &rarr;</a>
+            <span class="more-note">按量化、链上、AI 工具等六类整理</span>
+        </p>
+    </div>
+
     <div id="posts-list" class="home-section">
         <h2><span class="hash">#</span>最新文章</h2>
         <div class="home-posts">
@@ -458,7 +541,7 @@ document.addEventListener('click', function(e) {
             <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
                 <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/">离职后，我用 AI 做了个「不跳转网页」的产品：PageGrok 创始手记</a></h2>
                 <p class="post-summary">为什么做插件 PageGrok 是我离职以来，一个真正意义上的产品。去年折腾了不少时间做量化、做视频、写东西，东研究一个、西研究一个，做下来发现还是需要一个具体形态的产品来跑通整条链路。（之前多是 web 网页）。
-最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长团队。需要一个产品跑通来验证想 …</p>
+最大的启发来自同期离职的一位同事。她在中东，自己做了一个浏览器插件，反响还不错。我之前的经验集中在机器学习、算法、数据管线上，服务的无非是运营和用户增长业务。需要一个产品跑通来验证想 …</p>
                 <div class="home-post-meta">
                     <time datetime="2026-09-16" itemprop="datePublished">September 16, 2026</time>
                     
@@ -525,72 +608,6 @@ document.addEventListener('click', function(e) {
         </div>
         <p class="home-posts-more">
             <a class="lk" href="/posts/" style="font-size: 14px; color: #2d96bd;">查看全部 165 篇文章 &rarr;</a>
-        </p>
-    </div>
-
-    <div id="projects" class="home-section">
-        <h2><span class="hash">#</span>精选产品</h2>
-        <p class="section-note">打开就能用，不用注册也不用安装。</p>
-        <div class="product-grid">
-            
-            <a class="product-card" href="https://www.traktoken.com/">
-                <div class="product-name">TrakToken</div>
-                <div class="product-tagline">LLM API 价格与成本计算</div>
-                <div class="product-desc">算清楚你的用量下，云端 API 和本地部署哪个更省钱。</div>
-                <div class="product-domain">www.traktoken.com &nearr;</div>
-            </a>
-            
-            <a class="product-card" href="https://benchmark-for-llm.kuhung.me">
-                <div class="product-name">LLM Benchmark</div>
-                <div class="product-tagline">大模型推理性能测速</div>
-                <div class="product-desc">打开就能测：首字延迟、生成速度、并发表现，支持 Ollama、vLLM、llama.cpp。</div>
-                <div class="product-domain">benchmark-for-llm.kuhung.me &nearr;</div>
-            </a>
-            
-            <a class="product-card" href="https://sheng.kuhung.me/">
-                <div class="product-name">Phonology AI</div>
-                <div class="product-tagline">语音科学工具集</div>
-                <div class="product-desc">TTS 排行榜、浏览器端声纹比对，外加语音 AI 的原理解释。</div>
-                <div class="product-domain">sheng.kuhung.me &nearr;</div>
-            </a>
-            
-        </div>
-        <div class="product-rows">
-            
-            <a class="product-row" href="https://vibe-coding-101.kuhung.me">
-                <span class="product-name">Vibe Coding 101</span>
-                <span class="product-tagline">零基础用 AI 把产品做到上线</span>
-                <span class="product-domain">vibe-coding-101.kuhung.me</span>
-            </a>
-            
-            <a class="product-row" href="https://v.quantfull.com">
-                <span class="product-name">Alpha101 因子三维可视化</span>
-                <span class="product-tagline">把 101 个量化因子之间的关系做成可以转动缩放的三维图。</span>
-                <span class="product-domain">v.quantfull.com</span>
-            </a>
-            
-            <a class="product-row" href="https://fanren.kuhung.me/">
-                <span class="product-name">凡人修仙传人物关系图谱</span>
-                <span class="product-tagline">把小说里的人物、门派、地点和事件整理成可交互的关系网。</span>
-                <span class="product-domain">fanren.kuhung.me</span>
-            </a>
-            
-            <a class="product-row" href="https://keda.kuhung.me/">
-                <span class="product-name">出行可达地图</span>
-                <span class="product-tagline">一小时逃离计划</span>
-                <span class="product-domain">keda.kuhung.me</span>
-            </a>
-            
-            <a class="product-row" href="https://sri.kuhung.me/">
-                <span class="product-name">性压抑指数测试 SRI</span>
-                <span class="product-tagline">性压抑程度的自测量表，给出分数和解读。</span>
-                <span class="product-domain">sri.kuhung.me</span>
-            </a>
-            
-        </div>
-        <p class="section-more">
-            <a class="lk" href="/projects/">查看全部 31 个产品 &rarr;</a>
-            <span class="more-note">按量化、链上、AI 工具等六类整理</span>
         </p>
     </div>
 </div>
