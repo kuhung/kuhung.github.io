@@ -139,8 +139,18 @@ if (!doNotTrack) {
     }
     .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
     .topic-filters {
-        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 0; border: 0;
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding: 0; border: 0;
     }
+    .posts-search-box { margin-top: 22px; position: relative; }
+    .posts-search-input {
+        width: 100%; box-sizing: border-box; appearance: none;
+        border: 1px solid #eee; border-radius: 0; background: transparent;
+        color: #161209; font: inherit; font-size: 14px; line-height: 1.6;
+        padding: 8px 12px;
+    }
+    .posts-search-input::placeholder { color: #a9a9b3; }
+    .posts-search-input:focus-visible { outline: 2px solid #2d96bd; outline-offset: 1px; border-color: #2d96bd; }
+    .posts-search-box[hidden],
     .topic-filters[hidden],
     .posts-filter-status[hidden],
     .server-posts-foot[hidden],
@@ -184,15 +194,18 @@ if (!doNotTrack) {
     .dark-theme .posts-views a.active,
     .dark-theme .topic-filter:hover,
     .dark-theme .topic-filter[aria-pressed="true"],
+    .dark-theme .posts-search-input,
     .dark-theme .client-page-button[aria-current="page"] { color: #fff; }
     .dark-theme .posts-index .posts-lead,
     .dark-theme .posts-history summary,
     .dark-theme .posts-phase p,
     .dark-theme .topic-filter,
     .dark-theme .client-page-button { color: #a9a9b3; }
+    .dark-theme .posts-search-input::placeholder { color: #87878d; }
     .dark-theme .posts-views,
     .dark-theme .posts-timeline,
     .dark-theme .posts-phase,
+    .dark-theme .posts-search-input,
     .dark-theme .topic-filter,
     .dark-theme .client-page-button,
     .dark-theme .posts-list-item,
@@ -204,6 +217,7 @@ if (!doNotTrack) {
         .posts-history summary { align-items: flex-start; }
         .posts-phase { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
         .posts-views { gap: 18px; }
+        .posts-search-input { min-height: 42px; font-size: 16px; }
         .topic-filters { gap: 7px; }
         .topic-filter { min-height: 44px; padding: 8px 12px; }
         .client-page-button { min-width: 44px; min-height: 44px; }
@@ -252,11 +266,15 @@ if (!doNotTrack) {
         
     </nav>
 
+    <div class="posts-search-box" hidden>
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、标签或关键词..." aria-label="搜索文章">
+    </div>
+
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
         <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
         
-        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||NLP||机器学习||机器学习入门||机器学习进阶||目标检测||图像分类||生成对抗网络||图像检索||强化学习||深度学习||AI辅助内容生成||技术研究||技术专栏" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
         
         <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
         
@@ -264,21 +282,21 @@ if (!doNotTrack) {
         
         <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
         
-        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数学||时间序列||时序问题||数据开发||TDD" aria-controls="posts-list" aria-pressed="false">数据分析</button>
         
-        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI||时间序列||时序问题" aria-controls="posts-list" aria-pressed="false">量化投资</button>
         
         <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
         
-        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||side project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||行业观察||思考||备忘录||项目备忘||app||创业思考" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
         
-        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||工具||iot||DIY||Server||push||jlpt||LUT||iPhone||构建备忘录" aria-controls="posts-list" aria-pressed="false">效率方法</button>
         
-        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文||图表专栏" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
         
-        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
         
-        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化||团队建设||职业成长||我变成了" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
         
     </fieldset>
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
@@ -2069,14 +2087,14 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/techlead-vol-3/">技术领导｜03 techlead 想象、现实与路线抉择</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 抉择：留在技术路线还是成为经理（管理路线） 成为经理还是留在技术路线是一个艰难的决定。这完全取决于你所处的环境，我不可能告诉你该怎么做。然而，作为一个憧憬并经历过这两条路线的人，我可以透露下我所幻想的、以及真实所见的。需要注意的是，这些只是为了表述方便进行的脸 …</p>
     <div class="posts-list-meta">
         <time datetime="2021-11-23">November 23, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2084,7 +2102,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/techlead-vol-2/">技术领导｜03 techlead 与项目管理</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 管理项目经历 回到我第一次担任技术负责人的时候，我的团队正在执行一项非常复杂的任务：分布式系统迁移。我们一个现成的系统在单机已经到达了它的理论极限。在倾尽所学优化它之后，我们决定是时候弄清楚如何在多台机器上运行它了。
@@ -2092,7 +2110,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2021-11-13">November 13, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2100,7 +2118,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/techlead-vol-1/">技术领导｜03 techlead 该知道的事情</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 注：没有特别声明，文中的“我”都指原作者 Camille Fournier
 背景介绍 多年前，我成为技术负责人。在这之前我已经晋升为高级工程师，和其他几位高级工程师在一个小团队中工作。我对被提升为技术负责人有点令人惊讶，因为无论是头衔还是年限，我都不是团队中最资深的人。
@@ -2108,7 +2126,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2021-10-23">October 23, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2305,7 +2323,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/mentoring-vol-3/">技术领导｜02 Mentoring 如何成为一个受人欢迎的mentor</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 技术路线还是管理路线 本文只少量涉及这个话题，因为导师制的指导通常与管理没有直接关系。
 话虽如此，在职业生涯的某个时刻，我们大多数人都会从事某种程度的技术指导、职业指导或两者混合。
@@ -2314,7 +2332,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2021-06-23">June 23, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2337,7 +2355,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/mentoring-vol-2/">技术领导｜02 Mentoring 如何指导新人</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
 经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
@@ -2345,7 +2363,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2021-05-23">May 23, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2353,7 +2371,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/mentoring-vol-1/">技术领导｜02 Mentoring 如何指导实习生</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 许多人的第一次管理，往往不是正式委任的，而是指导性的工作。
 导师制度的价值 导师制度 导师通常被分配给团队中的初级成员，例如应届生或实习生。许多组织，在新员工的入职过程中也使用导师。
@@ -2362,7 +2380,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2021-04-23">April 23, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2403,7 +2421,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="app||总结"
-         data-categories="个人进步||side project">
+         data-categories="个人进步||Side Project">
     <h2 class="posts-list-title"><a href="/posts/what-i-learned-from-little-game-xiao/">从一款小游戏收获的三点思考</a></h2>
     <p class="posts-list-summary">2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
 这一过程，收到了很多反馈。
@@ -2415,7 +2433,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2021-02-13">February 13, 2021</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">side project</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
         
     </div>
 </article>
@@ -2457,7 +2475,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/management-101-vol-2/">技术领导｜01 技术管理入门 （下）</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
 下半部分，我们集中注意力在自身，即：如何被管理，做一个称职的下属（打工人）。
@@ -2469,7 +2487,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     <div class="posts-list-meta">
         <time datetime="2020-12-30">December 30, 2020</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2493,7 +2511,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
-         data-categories="Side Project||个人进步">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/management-101-vol-1/">技术领导｜01 技术管理入门 （上）</a></h2>
     <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 管理的秘诀就在于：让那些讨厌你的人，远离那些还没有形成主见的人。 ——卡西·史丹格尔
 你阅读这篇文章，是因为你想成为一个好的管理者。但在这之前，你其实并不知道，一个好的管理者是什么样子。
@@ -2502,7 +2520,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     <div class="posts-list-meta">
         <time datetime="2020-12-19">December 19, 2020</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>

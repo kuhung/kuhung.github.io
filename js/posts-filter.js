@@ -1,6 +1,8 @@
 (function () {
     const root = document.querySelector('.posts-index');
     const filters = root && root.querySelector('.topic-filters');
+    const searchBox = root && root.querySelector('.posts-search-box');
+    const searchInput = root && root.querySelector('#posts-search-input');
     const list = root && root.querySelector('#posts-list');
     const source = document.getElementById('all-posts-template');
     const status = root && root.querySelector('.posts-filter-status');
@@ -9,6 +11,7 @@
     if (!root || !filters || !list || !status || !serverFoot || !clientPager) return;
 
     if (!source) {
+        if (searchBox) searchBox.hidden = false;
         filters.hidden = false;
         filters.addEventListener('click', function (event) {
             const button = event.target.closest('[data-topic]');
@@ -20,7 +23,7 @@
     }
 
     const pageSize = 10;
-    const normalize = value => value.normalize('NFKC').trim().toLowerCase();
+    const normalize = value => (value || '').normalize('NFKC').trim().toLowerCase();
     const topics = Array.from(filters.querySelectorAll('[data-topic]')).map(button => ({
         button,
         slug: button.dataset.topic,
@@ -28,6 +31,7 @@
     }));
     list.replaceChildren(source.content.cloneNode(true));
     const articles = Array.from(list.querySelectorAll('.posts-list-item'));
+    if (searchBox) searchBox.hidden = false;
     filters.hidden = false;
     status.hidden = false;
     serverFoot.hidden = true;
@@ -35,27 +39,40 @@
 
     let activeTopic = 'all';
     let activePage = 1;
+    let searchQuery = '';
 
     function readLocation() {
         const params = new URLSearchParams(window.location.search);
         const requestedTopic = params.get('topic') || 'all';
         activeTopic = topics.some(topic => topic.slug === requestedTopic) ? requestedTopic : 'all';
         activePage = Math.max(1, Number.parseInt(params.get('page') || '1', 10) || 1);
+        const requestedQuery = params.get('q') || '';
+        searchQuery = normalize(requestedQuery);
+        if (searchInput && searchInput.value !== requestedQuery) {
+            searchInput.value = requestedQuery;
+        }
     }
 
     function writeLocation() {
         const params = new URLSearchParams();
         if (activeTopic !== 'all') params.set('topic', activeTopic);
+        if (searchQuery && searchInput) params.set('q', searchInput.value.trim());
         if (activePage > 1) params.set('page', String(activePage));
         const query = params.toString();
         window.history.pushState({}, '', root.dataset.postsBase + (query ? '?' + query : ''));
     }
 
-    function matches(article, topic) {
-        if (!topic || topic.slug === 'all') return true;
-        const terms = (article.dataset.tags + '||' + article.dataset.categories)
-            .split('||').filter(Boolean).map(normalize);
-        return topic.aliases.some(alias => terms.includes(alias));
+    function matches(article, topic, query) {
+        if (topic && topic.slug !== 'all') {
+            const terms = (article.dataset.tags + '||' + article.dataset.categories)
+                .split('||').filter(Boolean).map(normalize);
+            if (!topic.aliases.some(alias => terms.includes(alias))) return false;
+        }
+        if (query) {
+            const text = normalize(article.textContent + ' ' + (article.dataset.tags || '') + ' ' + (article.dataset.categories || ''));
+            if (!text.includes(query)) return false;
+        }
+        return true;
     }
 
     function pageButton(label, page, options) {
@@ -82,7 +99,7 @@
 
     function render(shouldScroll) {
         const topic = topics.find(item => item.slug === activeTopic) || topics[0];
-        const matching = articles.filter(article => matches(article, topic));
+        const matching = articles.filter(article => matches(article, topic, searchQuery));
         const pageCount = Math.max(1, Math.ceil(matching.length / pageSize));
         activePage = Math.min(activePage, pageCount);
         const start = (activePage - 1) * pageSize;
@@ -91,11 +108,17 @@
         matching.slice(start, end).forEach(article => { article.hidden = false; });
         topics.forEach(item => item.button.setAttribute('aria-pressed', String(item.slug === activeTopic)));
 
-        status.textContent = matching.length
-            ? topic.slug === 'all'
-                ? `显示 ${start + 1}–${end} / ${matching.length} 篇`
-                : `${topic.button.textContent}：显示 ${start + 1}–${end} / ${matching.length} 篇`
-            : `${topic.button.textContent}：暂无文章`;
+        if (searchQuery) {
+            status.textContent = matching.length
+                ? `搜索 "${searchInput.value.trim()}"：找到 ${matching.length} 篇（显示 ${start + 1}–${end} 篇）`
+                : `搜索 "${searchInput.value.trim()}"：未找到匹配文章`;
+        } else {
+            status.textContent = matching.length
+                ? topic.slug === 'all'
+                    ? `显示 ${start + 1}–${end} / ${matching.length} 篇`
+                    : `${topic.button.textContent}：显示 ${start + 1}–${end} / ${matching.length} 篇`
+                : `${topic.button.textContent}：暂无文章`;
+        }
 
         clientPager.replaceChildren();
         if (matching.length > pageSize) {
@@ -112,6 +135,15 @@
         clientPager.hidden = matching.length <= pageSize;
         list.classList.toggle('posts-empty', matching.length === 0);
         if (shouldScroll) status.scrollIntoView({ block: 'start' });
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            searchQuery = normalize(this.value);
+            activePage = 1;
+            writeLocation();
+            render(false);
+        });
     }
 
     filters.addEventListener('click', function (event) {
