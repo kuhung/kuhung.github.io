@@ -267,14 +267,14 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、标签或关键词..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
         <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
         
-        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||NLP||机器学习||机器学习入门||机器学习进阶||目标检测||图像分类||生成对抗网络||图像检索||强化学习||深度学习||AI辅助内容生成||技术研究||技术专栏" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||机器学习||机器学习进阶||强化学习||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
         
         <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
         
@@ -282,21 +282,21 @@ if (!doNotTrack) {
         
         <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
         
-        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数学||时间序列||时序问题||数据开发||TDD" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数据工程" aria-controls="posts-list" aria-pressed="false">数据分析</button>
         
-        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI||时间序列||时序问题" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
         
         <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
         
-        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||side project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||行业观察||思考||备忘录||项目备忘||app||创业思考" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||项目备忘" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
         
-        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||工具||iot||DIY||Server||push||jlpt||LUT||iPhone||构建备忘录" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||iot||Server||jlpt||LUT" aria-controls="posts-list" aria-pressed="false">效率方法</button>
         
-        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文||图表专栏" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
         
         <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
         
-        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化||团队建设||职业成长||我变成了" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
         
     </fieldset>
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
@@ -322,7 +322,7 @@ if (!doNotTrack) {
 
         
         <article class="posts-list-item"
-         data-tags="行业观察"
+         data-tags="行业观察||数据工程"
          data-categories="行业趋势">
     <h2 class="posts-list-title"><a href="/posts/data-engineering-in-2020/">数据开发在2020年应当是什么样子的</a></h2>
     <p class="posts-list-summary">我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样 …</p>

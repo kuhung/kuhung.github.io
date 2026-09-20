@@ -11,7 +11,6 @@
     if (!root || !filters || !list || !status || !serverFoot || !clientPager) return;
 
     if (!source) {
-        if (searchBox) searchBox.hidden = false;
         filters.hidden = false;
         filters.addEventListener('click', function (event) {
             const button = event.target.closest('[data-topic]');
@@ -53,13 +52,14 @@
         }
     }
 
-    function writeLocation() {
+    function writeLocation(replace) {
         const params = new URLSearchParams();
         if (activeTopic !== 'all') params.set('topic', activeTopic);
         if (searchQuery && searchInput) params.set('q', searchInput.value.trim());
         if (activePage > 1) params.set('page', String(activePage));
         const query = params.toString();
-        window.history.pushState({}, '', root.dataset.postsBase + (query ? '?' + query : ''));
+        const method = replace ? 'replaceState' : 'pushState';
+        window.history[method]({}, '', root.dataset.postsBase + (query ? '?' + query : ''));
     }
 
     function matches(article, topic, query) {
@@ -109,9 +109,10 @@
         topics.forEach(item => item.button.setAttribute('aria-pressed', String(item.slug === activeTopic)));
 
         if (searchQuery) {
+            const scope = topic.slug === 'all' ? '' : `${topic.button.textContent}内`;
             status.textContent = matching.length
-                ? `搜索 "${searchInput.value.trim()}"：找到 ${matching.length} 篇（显示 ${start + 1}–${end} 篇）`
-                : `搜索 "${searchInput.value.trim()}"：未找到匹配文章`;
+                ? `${scope}搜索 "${searchInput.value.trim()}"：找到 ${matching.length} 篇（显示 ${start + 1}–${end} 篇）`
+                : `${scope}搜索 "${searchInput.value.trim()}"：未找到匹配文章`;
         } else {
             status.textContent = matching.length
                 ? topic.slug === 'all'
@@ -141,7 +142,7 @@
         searchInput.addEventListener('input', function () {
             searchQuery = normalize(this.value);
             activePage = 1;
-            writeLocation();
+            writeLocation(true);
             render(false);
         });
     }

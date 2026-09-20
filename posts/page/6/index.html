@@ -267,14 +267,14 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、标签或关键词..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
         <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
         
-        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||NLP||机器学习||机器学习入门||机器学习进阶||目标检测||图像分类||生成对抗网络||图像检索||强化学习||深度学习||AI辅助内容生成||技术研究||技术专栏" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||机器学习||机器学习进阶||强化学习||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
         
         <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
         
@@ -282,21 +282,21 @@ if (!doNotTrack) {
         
         <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
         
-        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数学||时间序列||时序问题||数据开发||TDD" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数据工程" aria-controls="posts-list" aria-pressed="false">数据分析</button>
         
-        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI||时间序列||时序问题" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
         
         <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
         
-        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||side project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||行业观察||思考||备忘录||项目备忘||app||创业思考" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||项目备忘" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
         
-        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||工具||iot||DIY||Server||push||jlpt||LUT||iPhone||构建备忘录" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||iot||Server||jlpt||LUT" aria-controls="posts-list" aria-pressed="false">效率方法</button>
         
-        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文||图表专栏" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
         
         <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
         
-        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化||团队建设||职业成长||我变成了" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
         
     </fieldset>
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
@@ -436,14 +436,14 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="创业||技术人||复盘||思考||大公司||硬件创业||AI||投资||职业发展"
-         data-categories="创业思考||职业成长||技术趋势">
+         data-categories="创业||个人进步||行业趋势">
     <h2 class="posts-list-title"><a href="/posts/build-in-2015/">从2015到2025：技术创业的变与不变</a></h2>
     <p class="posts-list-summary">在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖 …</p>
     <div class="posts-list-meta">
         <time datetime="2025-08-25">August 25, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/">创业思考</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF/">职业成长</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/">技术趋势</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A/">创业</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
         
     </div>
 </article>
@@ -451,7 +451,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/bootstrapping-culture/">技术领导｜09 Bootstrapping Culture 塑造团队文化</a></h2>
     <p class="posts-list-summary"> 翻译这篇文章时，我正在M家工作，感受到了独树一帜的企业文化。在这里，W公司经历的一些稀奇古怪的事没有了，而自身的动力和绩效也达到了一个新的高度。
 可以说，正是M家的企业文化，引导和决定了我选择这里。同时，也是在相互选择的过程中，让我有了比W更高的生产力和更清晰的远景。
@@ -459,7 +459,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2025-07-30">July 30, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>

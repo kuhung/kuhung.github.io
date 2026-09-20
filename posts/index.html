@@ -267,14 +267,14 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、标签或关键词..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 166 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
         
         <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
         
-        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||NLP||机器学习||机器学习入门||机器学习进阶||目标检测||图像分类||生成对抗网络||图像检索||强化学习||深度学习||AI辅助内容生成||技术研究||技术专栏" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||机器学习||机器学习进阶||强化学习||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
         
         <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
         
@@ -282,21 +282,21 @@ if (!doNotTrack) {
         
         <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
         
-        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数学||时间序列||时序问题||数据开发||TDD" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数据工程" aria-controls="posts-list" aria-pressed="false">数据分析</button>
         
-        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI||时间序列||时序问题" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
         
         <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
         
-        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||side project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||行业观察||思考||备忘录||项目备忘||app||创业思考" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||项目备忘" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
         
-        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||工具||iot||DIY||Server||push||jlpt||LUT||iPhone||构建备忘录" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||iot||Server||jlpt||LUT" aria-controls="posts-list" aria-pressed="false">效率方法</button>
         
-        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文||图表专栏" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
         
         <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
         
-        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化||团队建设||职业成长||我变成了" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
         
     </fieldset>
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
@@ -1328,7 +1328,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="AI||技术雷达||智能体||MCP||LLM"
-         data-categories="技术专栏">
+         data-categories="AI">
     <h2 class="posts-list-title"><a href="/posts/ai-trend-in-my-eyes/">AI构建全景图：六阶段及其方案选型</a></h2>
     <p class="posts-list-summary">在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
@@ -1337,7 +1337,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2025-11-26">November 26, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E4%B8%93%E6%A0%8F/">技术专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/ai/">AI</a>
         
     </div>
 </article>
@@ -1361,7 +1361,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="精益||思维||方法总结||思考分享"
-         data-categories="构建备忘录">
+         data-categories="项目备忘">
     <h2 class="posts-list-title"><a href="/posts/lean-productive/">精益创造（lean build）</a></h2>
     <p class="posts-list-summary">控制半成品 精益，是一个制造业概念。对工科背景的朋友，特别是工业工程领域，应该不陌生。它最先出现在日本，伴随着日本上世纪的经济腾飞，在多个领域特别是汽车制造业击败美国，这一理念也大热。
 历史只会重复，这一现象在如今的互联网公司也在上演。随着规模扩大，分工变细，并行量越来越多。实质上是逆精益。增加的工序、额外的跨部门沟通成本，带来大量内耗和浪费。
@@ -1369,7 +1369,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2025-11-18">November 18, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%9E%84%E5%BB%BA%E5%A4%87%E5%BF%98%E5%BD%95/">构建备忘录</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E9%A1%B9%E7%9B%AE%E5%A4%87%E5%BF%98/">项目备忘</a>
         
     </div>
 </article>
@@ -1407,7 +1407,7 @@ if (!doNotTrack) {
         
         <article class="posts-list-item"
          data-tags="胡言乱语"
-         data-categories="我变成了">
+         data-categories="你以为">
     <h2 class="posts-list-title"><a href="/posts/guess-you-like/">亲爱的，我变成了“猜你喜欢”</a></h2>
     <p class="posts-list-summary">为什么别人可以 亲爱的，你总说，想找一个能懂你的人。能在你不开口，就知道内心想法的人。
 为此，有过几次争吵，之后便是沉默。你说，厌倦了这种生活。
@@ -1417,7 +1417,7 @@ if (!doNotTrack) {
     <div class="posts-list-meta">
         <time datetime="2025-09-29">September 29, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%88%91%E5%8F%98%E6%88%90%E4%BA%86/">我变成了</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%BD%A0%E4%BB%A5%E4%B8%BA/">你以为</a>
         
     </div>
 </article>
@@ -1573,14 +1573,14 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
         
         <article class="posts-list-item"
          data-tags="创业||技术人||复盘||思考||大公司||硬件创业||AI||投资||职业发展"
-         data-categories="创业思考||职业成长||技术趋势">
+         data-categories="创业||个人进步||行业趋势">
     <h2 class="posts-list-title"><a href="/posts/build-in-2015/">从2015到2025：技术创业的变与不变</a></h2>
     <p class="posts-list-summary">在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖 …</p>
     <div class="posts-list-meta">
         <time datetime="2025-08-25">August 25, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/">创业思考</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%81%8C%E4%B8%9A%E6%88%90%E9%95%BF/">职业成长</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/">技术趋势</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%88%9B%E4%B8%9A/">创业</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
         
     </div>
 </article>
@@ -1588,7 +1588,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/bootstrapping-culture/">技术领导｜09 Bootstrapping Culture 塑造团队文化</a></h2>
     <p class="posts-list-summary"> 翻译这篇文章时，我正在M家工作，感受到了独树一帜的企业文化。在这里，W公司经历的一些稀奇古怪的事没有了，而自身的动力和绩效也达到了一个新的高度。
 可以说，正是M家的企业文化，引导和决定了我选择这里。同时，也是在相互选择的过程中，让我有了比W更高的生产力和更清晰的远景。
@@ -1596,7 +1596,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
     <div class="posts-list-meta">
         <time datetime="2025-07-30">July 30, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -1647,7 +1647,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
         
         <article class="posts-list-item"
          data-tags="push||jlpt"
-         data-categories="工具">
+         data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/jlpt-push/">差生文具多｜工具篇：JLPT考前冲刺，日本语文法碎片化学习</a></h2>
     <p class="posts-list-summary">7月的JLPT考试临近，语法复习得怎么样了，还真难说。hero3046看了几遍，金龟子哥哥看了多少，心理还是没底呀。与其沉迷于碎片化信息，不如让碎片化知识打断自己。
 本期差生文具多｜工具篇系列，博主手搓一份 JLPT 推送项目，用碎片化（知识）挑战碎片化（信息）。
@@ -1656,7 +1656,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
     <div class="posts-list-meta">
         <time datetime="2025-06-12">June 12, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -1744,7 +1744,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/the-big-leagues/">技术领导｜08 the big leagues 管理组织</a></h2>
     <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
 下文是第八章，管理组织的思维导图，与诸位读者共勉。
@@ -1753,7 +1753,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2025-01-30">January 30, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -1761,7 +1761,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/managing-managers/">技术领导｜07 managing managers 管理管理者</a></h2>
     <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
 下文是第七章，管理管理者的思维导图，与诸位读者共勉。
@@ -1770,7 +1770,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2025-01-30">January 30, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -1778,7 +1778,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/managing-multiple-teams/">技术领导｜06 managing multiple teams 管理多个团队</a></h2>
     <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
 下文是第六章，管理多个团队的思维导图，与诸位读者共勉。
@@ -1787,7 +1787,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2025-01-30">January 30, 2025</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -1810,7 +1810,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/managing-a-team/">技术领导｜05 managing a team 管理一个团队</a></h2>
     <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
 下文是第五章，管理一个团队的思维导图，与诸位读者共勉。
@@ -1819,7 +1819,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2024-04-10">April 10, 2024</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -1843,7 +1843,7 @@ MCP原理 简单来说，MCP …</p>
         
         <article class="posts-list-item"
          data-tags="mindmap||the-managers-path"
-         data-categories="图表专栏">
+         data-categories="个人进步">
     <h2 class="posts-list-title"><a href="/posts/managing-people/">技术领导｜04 managing people 成员管理</a></h2>
     <p class="posts-list-summary">本书已经由孙宇聪老师翻译，电子工业出版社出版。感兴趣的朋友可以直接去阅读中文版《技术为径》。在此不再重复造轮子。
 下文是第四章，成员管理的思维导图，与诸位读者共勉。
@@ -1852,7 +1852,7 @@ MCP原理 简单来说，MCP …</p>
     <div class="posts-list-meta">
         <time datetime="2023-12-17">December 17, 2023</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
         
     </div>
 </article>
@@ -2562,7 +2562,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
 
         
         <article class="posts-list-item"
-         data-tags="行业观察"
+         data-tags="行业观察||数据工程"
          data-categories="行业趋势">
     <h2 class="posts-list-title"><a href="/posts/data-engineering-in-2020/">数据开发在2020年应当是什么样子的</a></h2>
     <p class="posts-list-summary">我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样 …</p>
@@ -3054,7 +3054,7 @@ A/B 概览 Q： …</p>
 
         
         <article class="posts-list-item"
-         data-tags="时间序列||开源框架"
+         data-tags="时间序列||开源框架||量化"
          data-categories="数据挖掘/机器学习">
     <h2 class="posts-list-title"><a href="/posts/prophet-in-000300/">用先知模型预测股市 Prophet in 000300 </a></h2>
     <p class="posts-list-summary">跑步进场 最近股市大涨，不少人忙着跑步进场。作为保守型“投资者”，主投指数基金：沪深300。在这波行情 中，短短2个月，也有13%的账面收益。虽然知道指数类适合长期持有，但也好奇，这个点是否是高位了。为了解决这个疑虑。我们今天用算法模型套一套，看能否发现些什么。
@@ -3130,13 +3130,13 @@ Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不�
         
         <article class="posts-list-item"
          data-tags="数学"
-         data-categories="图表专栏">
+         data-categories="数据挖掘/机器学习">
     <h2 class="posts-list-title"><a href="/posts/algebra-calculus/">速查表 | Linear Algebra and Calculus 线代与微积分</a></h2>
     <p class="posts-list-summary"></p>
     <div class="posts-list-meta">
         <time datetime="2018-10-18">October 18, 2018</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
         
     </div>
 </article>
@@ -3144,13 +3144,13 @@ Bert 的文档本身对 finetune 进行了较为详细的描述，但对于不�
         
         <article class="posts-list-item"
          data-tags="数学"
-         data-categories="图表专栏">
+         data-categories="数据挖掘/机器学习">
     <h2 class="posts-list-title"><a href="/posts/probabilities-statistics/">速查表 | Probabilities Statistics 数理统计</a></h2>
     <p class="posts-list-summary"></p>
     <div class="posts-list-meta">
         <time datetime="2018-10-18">October 18, 2018</time>
         
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
         
     </div>
 </article>
