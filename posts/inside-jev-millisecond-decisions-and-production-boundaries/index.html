@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           深入解读 Jev 模型：毫秒级判定原理与工程应用边界 | 谷粒 kuhung
+           深入解读 Jev 模型：是什么以及怎么用 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="深入解读 Jev 模型：毫秒级判定原理与工程应用边界 | 谷粒 kuhung">
+  <meta name="title" content="深入解读 Jev 模型：是什么以及怎么用 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -59,7 +59,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-18T20:57:35+08:00","datePublished":"2026-09-18T20:57:35+08:00","description":"理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。 很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。 …","headline":"深入解读 Jev 模型：毫秒级判定原理与工程应用边界","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 架构设计, 性能优化, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","@type":"WebPage"},"name":"深入解读 Jev 模型：毫秒级判定原理与工程应用边界","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","wordCount":1088}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-18T20:57:35+08:00","datePublished":"2026-09-18T20:57:35+08:00","description":"理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。 很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。 …","headline":"深入解读 Jev 模型：是什么以及怎么用","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 架构设计, 性能优化, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","@type":"WebPage"},"name":"深入解读 Jev 模型：是什么以及怎么用","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/","wordCount":1088}</script>
 </head>
 
   
@@ -110,7 +110,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">深入解读 Jev 模型：毫秒级判定原理与工程应用边界</h1>
+        <h1 class="post-title" itemprop="name headline">深入解读 Jev 模型：是什么以及怎么用</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
