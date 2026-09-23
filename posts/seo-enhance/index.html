@@ -46,6 +46,15 @@ if (!doNotTrack) {
        
   </title>
   <meta name="title" content="搜索与 AI 可见性：让需要你产品的人找到你 | 谷粒 kuhung">
+  <script>
+    (function() {
+      var storedTheme = window.localStorage && window.localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+      }
+    })();
+  </script>
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -673,6 +682,15 @@ if (!doNotTrack) {
             .footer-inner { padding: 28px 20px 24px; }
             .footer-cols { flex-direction: column; gap: 20px; }
         }
+         
+        .dark-theme .footer-inner { border-top-color: #4a4b50; }
+        .dark-theme .footer-col .footer-col-title { color: #fff; }
+        .dark-theme .footer-col a,
+        .dark-theme .footer-col .footer-plain { color: #a9a9b3; }
+        .dark-theme .footer-col a:hover { color: #fff; }
+        .dark-theme .site-footer .copyright { color: #87878d; }
+        .dark-theme .site-footer .copyright a { color: #a9a9b3; }
+        .dark-theme .site-footer .copyright a:hover { color: #fff; }
     </style>
     <div class="footer-inner">
         <div class="footer-cols">
@@ -702,11 +720,29 @@ if (!doNotTrack) {
         </div>
     </div>
     <script>
-      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
-      const isDark = currentTheme === 'dark'
-      if (isDark) {
-        document.body.classList.add('dark-theme')
-      }
+      (function() {
+        const storedTheme = window.localStorage && window.localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+        if (isDark) {
+          document.body.classList.add('dark-theme');
+        } else {
+          document.documentElement.classList.remove('dark-theme');
+        }
+
+        const themeSwitches = document.querySelectorAll('.theme-switch');
+        themeSwitches.forEach(function(el) {
+          el.addEventListener('click', function() {
+            setTimeout(function() {
+              if (document.body.classList.contains('dark-theme')) {
+                document.documentElement.classList.add('dark-theme');
+              } else {
+                document.documentElement.classList.remove('dark-theme');
+              }
+            }, 0);
+          });
+        });
+      })();
     </script>
 </footer>
 

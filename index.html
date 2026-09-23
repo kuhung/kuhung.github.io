@@ -47,6 +47,15 @@ if (!doNotTrack) {
        
   </title>
   <meta name="title" content="谷粒 kuhung｜分享实在的 AI 干货">
+  <script>
+    (function() {
+      var storedTheme = window.localStorage && window.localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark-theme');
+      }
+    })();
+  </script>
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -254,6 +263,40 @@ if (!doNotTrack) {
     .home-post-item .home-post-meta a { font-size: 12px; color: #2d96bd; }
     .home-post-item .home-post-meta a:hover { color: #ef3982; }
     .home-posts-more { border-top: 1px solid #eee; padding-top: 20px; }
+
+     
+    .dark-theme .site-title { color: #fff; }
+    .dark-theme .site-title .site-title-sub,
+    .dark-theme .site-lead,
+    .dark-theme .product-card .product-desc,
+    .dark-theme .product-row .product-tagline,
+    .dark-theme .home-post-item .post-summary { color: #a9a9b3; }
+    .dark-theme .home-section h2,
+    .dark-theme .product-card .product-name,
+    .dark-theme .product-row .product-name,
+    .dark-theme .home-post-item .home-post-title a { color: #fff; }
+    .dark-theme .home-post-item .home-post-title a:hover,
+    .dark-theme .product-row:hover .product-name { color: #2d96bd; }
+    .dark-theme .hero-actions .hero-cta-secondary {
+        color: #fff;
+        border-color: #4a4b50;
+        background: rgba(255, 255, 255, 0.04);
+    }
+    .dark-theme .hero-actions .hero-cta-secondary:hover {
+        color: #fff;
+        border-color: #2d96bd;
+        background: rgba(45, 150, 189, 0.12);
+    }
+    .dark-theme .product-card,
+    .dark-theme .product-row,
+    .dark-theme .home-post-item,
+    .dark-theme .home-posts-more { border-color: #4a4b50; }
+    .dark-theme .product-card:hover { border-color: #2d96bd; }
+    .dark-theme .social-more-panel {
+        background: #202124;
+        border: 1px solid #4a4b50;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
 
     @media (max-width: 767px) {
          
@@ -650,6 +693,15 @@ document.addEventListener('click', function(e) {
             .footer-inner { padding: 28px 20px 24px; }
             .footer-cols { flex-direction: column; gap: 20px; }
         }
+         
+        .dark-theme .footer-inner { border-top-color: #4a4b50; }
+        .dark-theme .footer-col .footer-col-title { color: #fff; }
+        .dark-theme .footer-col a,
+        .dark-theme .footer-col .footer-plain { color: #a9a9b3; }
+        .dark-theme .footer-col a:hover { color: #fff; }
+        .dark-theme .site-footer .copyright { color: #87878d; }
+        .dark-theme .site-footer .copyright a { color: #a9a9b3; }
+        .dark-theme .site-footer .copyright a:hover { color: #fff; }
     </style>
     <div class="footer-inner">
         <div class="footer-cols">
@@ -679,11 +731,29 @@ document.addEventListener('click', function(e) {
         </div>
     </div>
     <script>
-      const currentTheme = window.localStorage && window.localStorage.getItem('theme')
-      const isDark = currentTheme === 'dark'
-      if (isDark) {
-        document.body.classList.add('dark-theme')
-      }
+      (function() {
+        const storedTheme = window.localStorage && window.localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = storedTheme === 'dark' || (!storedTheme && prefersDark);
+        if (isDark) {
+          document.body.classList.add('dark-theme');
+        } else {
+          document.documentElement.classList.remove('dark-theme');
+        }
+
+        const themeSwitches = document.querySelectorAll('.theme-switch');
+        themeSwitches.forEach(function(el) {
+          el.addEventListener('click', function() {
+            setTimeout(function() {
+              if (document.body.classList.contains('dark-theme')) {
+                document.documentElement.classList.add('dark-theme');
+              } else {
+                document.documentElement.classList.remove('dark-theme');
+              }
+            }, 0);
+          });
+        });
+      })();
     </script>
 </footer>
 
