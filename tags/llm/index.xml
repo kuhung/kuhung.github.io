@@ -6,7 +6,19 @@
     <description>Recent content in LLM on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 18 Sep 2026 20:57:35 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Sep 2026 16:23:56 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</title>
+      <link>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</link>
+      <pubDate>Wed, 23 Sep 2026 16:23:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</guid>
+      <description>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。
+三款都降价了。Opus 5.5 是真的变强了，目前在第三方综合榜排第一。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代码略有进步，写报告这类活反而退步。
+下面依次看发布清单、能力和价格的变化、推特和社区上大家怎么用，最后是旧模型怎么换、国产同价位怎么比。
+发布清单 模型 定位 上一代价格 新价格 变化 Claude Opus 5.5 长任务、知识工作 $5 / $25（Opus 5） $4 / $20 降 20% GPT-6 Sol 复杂编码、Agent $4 / $20（GPT-5.6 Sol） $2 / $10 降 50% GPT-6 Luna 高频、低成本任务 $0.20 / $1.20（GPT-5.6 Luna） $0.10 / $0.50 输入降 50%，输出降 58% 价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</description>
+    </item>
+    
     <item>
       <title>深入解读 Jev 模型：是什么以及怎么用</title>
       <link>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</link>
