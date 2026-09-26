@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="做务实人，写实在 AI。曾为算法专家，今为内容新人。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-26T09:28:00+08:00","datePublished":"2026-09-26T09:28:00+08:00","description":"这周手上事情不少：链上数据、内容发布、持仓复盘，还有 Meta Muse 的初体验。按块记一下，分享我的 AI 用法。 链上数据 Dune 大善人发了测试额度，不用白不用，我就拿它拉了一轮链上数据。比起自己手写查询逻辑，交给 AI 写 SQL，效率高了好几倍。用下来也有问题：Codex 有点过度设计，Google Antigravity 又设计能力不足。Cursor 出的 Grok …","headline":"我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 复盘, 投资","mainEntityOfPage":{"@id":"https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/","@type":"WebPage"},"name":"我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/","wordCount":234}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-09-26 itemprop="datePublished">September 26, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#链上数据">链上数据</a></li>
+    <li><a href="#jev-与内容">Jev 与内容</a></li>
+    <li><a href="#博客发布">博客发布</a></li>
+    <li><a href="#渠道分发">渠道分发</a></li>
+    <li><a href="#链上分析">链上分析</a></li>
+    <li><a href="#订阅改版">订阅改版</a></li>
+    <li><a href="#持仓调仓">持仓调仓</a></li>
+    <li><a href="#muse-初看">Muse 初看</a></li>
+    <li><a href="#其他">其他</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>这周手上事情不少：链上数据、内容发布、持仓复盘，还有 Meta Muse 的初体验。按块记一下，分享我的 AI 用法。</p>
+<h2 id="链上数据">链上数据</h2>
+<p><a href="https://dune.com/">Dune</a> 大善人发了测试额度，不用白不用，我就拿它拉了一轮链上数据。比起自己手写查询逻辑，交给 AI 写 SQL，效率高了好几倍。用下来也有问题：Codex 有点过度设计，<a href="https://antigravity.google/">Google Antigravity</a> 又设计能力不足。Cursor 出的 Grok 4.6、4.7，黑话多得一批。</p>
+<p>现在的分工是这样：智力更高的 Codex 做需求拆解和任务划分，Antigravity 里的 Gemini 3.8 Flash 负责具体执行，最后在 Cursor 里做多模型交替 review，看交付有没有漏项。</p>
+<h2 id="jev-与内容">Jev 与内容</h2>
+<p>上周发了 <a href="/posts/inside-jev-millisecond-decisions-and-production-boundaries/">深入解读 Jev 模型：是什么以及怎么用</a>，全网差不多上万浏览，算是我大半年来数据最好的一篇。回头看，一是踩中了热点，二是做了一轮 SEO：去 Google Search Console 和 Bing 后台看哪些关键词匹配上了文章，再针对性优化。新产品、新概念出来，用户搜得最多的就是「是什么」和「怎么用」。这对后面选题有参考价值。</p>
+<p>做 Jev 演示时，我发现体感延迟和官方宣称的不一样。这个问题我在做 <a href="https://www.pagegrok.org/">PageGrok</a> 时也遇到过。真实延迟分三四段：用户到我们的服务器，服务器到模型 API 供应商，供应商再到模型服务，然后原路返回。模型自己的计算只占一小部分。服务器和供应商不在一个地方，甚至跨洲，延迟就平白多出一截。服务端反复做判断，也会拖慢。</p>
+<p>PageGrok 一开始挺快，后来加了账号验证和频率限制，服务器和数据库之间来回好几趟，延迟一度到十几秒。优化之后压到两秒以内，不算极限，但比之前好很多。我还想过用 Cerebras 替换推理后端，它响应确实快，但 TTFT 还是取决于整体架构。最后还是沿用原来的 OpenRouter。</p>
+<p>另一个演示是 AskJev，用 Jev 做「中午吃什么」这类人生选择题。Jev 本身是判别模型，有点像以前用大转盘决定午饭，我把它改成了聊天框。上线第一天两千多访问，今天看后台六千来次调用，花了不到一块钱人民币。确实省，但智力也确实一般，毕竟模型容量摆在那里。</p>
+<h2 id="博客发布">博客发布</h2>
+<p>个人博客这边，我让 Codex 重新整理了标签分类，并把发布流程改成了一条指令。老流程是：改 <code>draft: false</code>，终端跑一遍 Hugo，再开 VS Code 提交，最后同步到 Git。窗口来回切，阻塞很严重。</p>
+<p>现在用 <code>pubpost</code> 一键发布上线。同样的，<code>newpost</code> 后面接任意英文句子，就能生成对应的 markdown 路径。在这之前，我得自己保证文件名没空格、没特殊符号，非常烦人。格式类的重复劳动交给工具，流程不卡，心理负担也小，我认为这是 AI 很有意义的用法。</p>
+<h2 id="渠道分发">渠道分发</h2>
+<p>X 和 B 站的编辑器都不兼容 Markdown。知乎、公众号还有工具能转富文本，这两个只能另想办法。好在现在有 Skill，可以让大模型来干这种枯燥的排版活。来回几轮后，我给 X 和 B 站各准备了一个文章发布 Skill，比手工粘贴 Markdown 省事一大截。偷懒才是生产力。</p>
+<h2 id="链上分析">链上分析</h2>
+<p>链上分析这个方向，我大半年前就有想法。一是数据公开，所有链上数据对用户都是透明的；二是和我数据挖掘的老本行重合。当时卡在数据源上，AI 也还写不好 SQL。今年不一样了，各大平台接了 MCP，文档也齐，模型能直接读懂。</p>
+<p>真正落地时还是有几件事要注意。首先得有整体概念和时间积累，不然对 AI 写出来的 SQL 没把握。Text-to-SQL 的能力我倒不怀疑，自己 review 过几份，Codex 和 Antigravity 都不会犯时间选错这种低级错误。新问题是，以前写数会挨个核对数据源，AI 提效之后，人没这么多时间核对了。模型也会说自己验证过，但我的掌控感在消失。我的办法是强迫自己写对应的科普文，站在小白的视角想：现在的数据能不能回答这些问题，回答不了缺什么。</p>
+<p>还有版本蔓延问题。Codex 习惯先写个小脚本，这是好习惯，但它会在后续版本里反复提及前一版。我会直接让它删掉旧版本数据，统一口径。活本身不难：拉数据、看胜率、找巨鲸，再根据高胜率地址的交易窗口，判断跟单有没有利可图。从结论看，大部分是左侧交易，跟单的利润可能还不如早期就投入。</p>
+<p>另外，我有点受够了 Codex 在处理数据的时候反复提及 SHA256，这其实就是个版本管理问题，它却瞎几把搞。计划下周再弄一个 Claude 账号，方案设计这类工作交给 Claude。Codex 还是更适合执行，同时要控制它过度思考、过度防御的毛病。</p>
+<p>交付上还有不少细节：在 Telegram 做监控同步，补实体标签、钱包行为和交易质量。这里暴露出数据问题。取数逻辑我没有严格 review，因为我自己也不清楚这些表原来是干什么的、质量如何、有没有换过版本，基本是盲跑。下一步打算补一些数据开发的 Skill，数据开发讲究的就是血缘、质量、版本管理和资产管理。</p>
+<p>Dune 这边我也在推数据质量检查，让模型出血缘报告。但报告太多，根本审不过来，只能让另一个模型来审。宣传类的口径文稿我坚持自己审，一来加强对项目的掌控，二来顺手去掉 AI 味。</p>
+<h2 id="订阅改版">订阅改版</h2>
+<p><a href="https://traktoken.com/">TrakToken</a> 的文章用 <a href="https://resend.com/">Resend</a> 做了一次订阅改版。想验证一个产品有没有市场，可以直接放 waitlist 或邮箱订阅。一个人都不留，那基本就是伪需求。我这边的转化差不多是千分之二，需求不算强，但能沉淀一批核心用户。Resend 做客户维系，强烈推荐。</p>
+<h2 id="持仓调仓">持仓调仓</h2>
+<p>资产配置是我感兴趣、也在舒适区的事。做数据挖掘那几年，练出了一些数据敏感性。这块我主要用 Antigravity 里的 Gemini 3.8 Flash，我叫它哈吉米，做量化测算非常顺手。它够聪明，不像前几代傻乎乎的；够快，脚本写得不错，算得也快；说人话，对比之下 GPT 就是黑话大师，看得人浑身不适；还够简单，你说啥它就做啥，不像别的模型堆一堆防御性代码。报告写完，我再让 Codex 审一遍，基本没有大差错。</p>
+<p>具体做法是先从趋势动能看持仓，让模型出报告，告诉我哪些该继续持有、哪些该卖。模型一开始只看了最近一年，我让它拉长到五六年；之前只看收益率、看夏普，我让它加上卡玛比率和年线位置。为了控制风险，还做了行业去重，配比按波动率倒数分配。用 AI 做财经分析感兴趣的朋友，可以关注我的知识星球「我用 AI 来培养财商」。</p>
+<p>另外还让它画了甘特图和资金流转图，梳理最近两个月哪些资金该从哪个标的挪到哪个标的，主要看大方向，非常方便。</p>
+<p>在这个基础上，我让它扩到 A 股、H 股，扩大选股范围，再做回测，算预期年化收益和最大回撤。这里出了一个问题：模型用了后视镜数据，自己没发现。如果你没有这方面经验，大概率也发现不了，只会觉得回测数据非常好看。正确做法是滚动回测，模型只能用当时切片上的数据做判断。观察窗口也是一样，选什么窗口就看到什么结果，这里有幸存者偏差。</p>
+<p>我还让模型按 ETF 动量筛热门行业板块，再从板块里选个股，最后回到持仓配置。做完会发现，收益并不比参考标的（比如纳斯达克）高多少。但我们的目标其实是优化夏普，在风险较小的情况下能上杠杆。杠杆要花很多时间算：花在哪、付多少利息、合理区间是多少、能接受多大回撤。这部分是 AI 帮我最大的地方，以前自己一行行抠代码，或者网上抄代码、调包，非常费劲。但坑还是一样的，我的办法仍然是把它写成内容梳理一遍，就知道哪里有问题。这些内容会放到我的量化网站 <a href="https://www.quantfull.com/">QuantFull</a> 上。</p>
+<h2 id="muse-初看">Muse 初看</h2>
+<p>最后是 Meta 的 <a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">Muse</a>。粗略体验了一下，我认为想象力不算大，现在媒体吹得再热，看好的不看好的都有，还是三个月后见分晓。</p>
+<p>Muse 目前只在美国开放，我试了三种注册方式，最后成功了：</p>
+<ol>
+<li>Gemini Pro 的 Spark 模式，失败。</li>
+<li>让 Grokbot 自己操作虚拟机，IP 虽然在华盛顿，但进了等待队列。</li>
+<li>在 <a href="https://cloud.browser-use.com/browser">Browser Use Cloud</a> 注册账号，启动一台云浏览器，按正常流程走，成功拿下。</li>
+</ol>
+<p>第一次注册可以用我的邀请码 <code>YA9VVA</code>，能免费拿到额度奖励。</p>
+<h2 id="其他">其他</h2>
+<p>这几天刷推特，看到数字生命卡兹克说，他三年前发的微信文章，每篇阅读量也就几十几百，我突然就释然了。这个赛道容得下第二个、第三个卡兹克。他靠的是持续更新，前期接地气，后期工业化，这点值得做内容的人学习。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://dune.com/">Dune</a> - 链上数据查询平台</li>
+<li><a href="https://antigravity.google/">Google Antigravity</a> - Gemini 3.8 Flash 的主要使用环境</li>
+<li><a href="/posts/inside-jev-millisecond-decisions-and-production-boundaries/">深入解读 Jev 模型：是什么以及怎么用</a> - 上周的 Jev 解读文章</li>
+<li><a href="https://www.pagegrok.org/">PageGrok</a> - 浏览器侧边栏 AI 解读插件</li>
+<li><a href="https://resend.com/">Resend</a> - 邮件订阅与客户维系工具</li>
+<li><a href="https://www.quantfull.com/">QuantFull</a> - 量化策略内容站</li>
+<li><a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">Meta：Introducing Muse</a> - Muse 产品发布说明</li>
+<li><a href="https://cloud.browser-use.com/browser">Browser Use Cloud</a> - 注册 Muse 用的云浏览器</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%A4%8D%E7%9B%98/">
+                    #复盘</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84/">
+                    #投资</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/" class="prev" rel="prev" title="GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议"><i class="iconfont icon-left"></i>&nbsp;GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
