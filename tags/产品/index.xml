@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>产品 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E4%BA%A7%E5%93%81/</link>
+    <description>Recent content in 产品 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 01 Oct 2026 16:33:06 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%BA%A7%E5%93%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe Coding 一年半：我为什么做，怎么做</title>
+      <link>https://kuhung.me/posts/why-vibe-coding/</link>
+      <pubDate>Thu, 01 Oct 2026 16:33:06 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/why-vibe-coding/</guid>
+      <description>为什么要 Vibe Coding 大概一年半前我离职的时候，Vibe Coding 刚有苗头。那会儿做应用主要用 Cursor，公司内部用的还是微软 Copilot 那一套。到了 2025 年 3 到 5 月，Manus 爆火，Claude 这些模型的能力又上了一个台阶，身边不少写代码的朋友开始担心，自己的职业是不是走到头了。
+我当时的判断是，程序员很可能会变成第二个土木，到今天我还是这么看。我给朋友们的建议是多做产品，多接触真实的商业世界，把出卖时间换成出卖可以复制的产品。Vibe Coding 正好让这件事变得可行：一个人就能把一个软件从想法做到上线。
+可以复制的产品是一种杠杆 《纳瓦尔宝典》讲过三种杠杆：别人的劳动、资本，还有复制成本几乎为零的产品，也就是代码和媒体。前两种要别人点头才能用，代码和媒体不用，做一次，边际成本为0。
+只是做出来之后，马上会碰到分发的问题。当下最紧缺的是注意力：平台卖注意力，创作者生产内容，内容可以是视频、文章，也可以是软件。很多从大公司出来的人就卡在这一步，有想法，但不擅长让人看见。
+擅长分发的人，靠的多半也是一些固定的技巧，还没到吃天赋的地步。这跟在公司里吸引同事注意、争取上面的资源倾斜是一个道理，你得先搞出点动静。Vibe Coding 让一个人就能把软件做出来、发出去，本身就是搞出动静的好办法。怎么让更多人看到，是另一个话题，我们下期讲。
+为什么还要讲方法 今天「要不要 Vibe Coding」已经不用讨论了，大家都在用。但和大模型打交道久了就会发现，它智力很高，输出却不稳定，你没法指望它每次都按你的想法、按你团队的习惯交付。记忆、上下文、Skills 这些手段能让它更贴近你，可总还会有大大小小的毛病。
+有人说 AI 迭代这么快，等一等就好了。我的看法是，不能只等着对方升级。了解它的边界，设计一些办法去引导它，这些办法我叫它「工程」。就算以后被新工具替代，你也攒下了经验，更懂这套系统，遇到问题解决得更快。
+我草稿箱里有一篇 2025 年写的「用 Cursor 怎么做好 Vibe Coding」，现在回头看，里面很多观点仍然成立。工具换了好几轮，方法留了下来，这也是我想把这些做法写出来的原因。
+我是怎么做的 下面是过去一年多，特别是最近半年高强度用 AI 写代码之后，我自己的做法。我把读者当成刚入职的新人来讲。
+工具 国内国外都有各自的第一梯队、第二梯队产品，挑一个顺手的就行。
+我自己目前主力用 Claude Code，其次是 Codex；写长文时用 Google 的 Antigravity；需要打开编辑器逐行细改时用 Cursor。四个 20 美元的套餐，AI 编程每个月花 80 美元左右。比不上在公司里敞开了用，但套餐确实好用，性价比很高。备用的是 API，通过 OpenRouter 调 DeepSeek 等模型。
+国内的朋友，现在比较主流的做法是买国内模型厂商的编程套餐，一般叫 Coding Plan，智谱、Kimi、MiniMax、字节火山方舟、阿里云百炼、百度千帆都有。买了之后，可以在 Claude Code 这类工具里接 DeepSeek、GLM、Kimi、Qwen 这些模型。写代码我推荐 DeepSeek，Kimi 做出来的前端也挺好看。</description>
+    </item>
+    
+  </channel>
+</rss>
