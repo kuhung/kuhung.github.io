@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>产品观察 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/categories/%E4%BA%A7%E5%93%81%E8%A7%82%E5%AF%9F/</link>
+    <description>Recent content in 产品观察 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 03 Oct 2026 16:44:17 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E4%BA%A7%E5%93%81%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Muse 国外已经在热炒的 Personal Agent，国内能抄对作业吗？</title>
+      <link>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</link>
+      <pubDate>Sat, 03 Oct 2026 16:44:17 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</guid>
+      <description>现在 AI 圈大家的目光都在 Personal Agent 上，特别是随着 Meta 的 Muse 爆火出圈，假期不少国内团队在抓紧研发对应版本。我试用了一段时间 Muse。对比之前用过的 Grok，谈谈它的常见用法和主观感受。
+一开始我有点排斥 Muse。一方面觉得它和 Grok 是一类产品，另一方面是它的宣发太饱和，病毒营销很厉害。你能在各类介绍文章和视频下看到裂变邀请码。起初觉得烦，转过头来想，这确实是一种经典策略。能把这个飞轮玩起来的产品不多。
+他们控制了早期的发布范围，又提供了可绕过的方式。推特上刚好缺素材，博主们需要热点。搞定 Muse 的使用资格成了一种身份彰显和自我认同。在营销定位这一块，他们做得很准。
+注册方式网上有很多，主要靠北美节点。
+进入应用会有简短的引导。这一点比 Grok 好很多。Grok 进去后你完全不知道干嘛。虽说宣传是个人助理，问它能做啥，似乎什么也做不了。
+Muse 的核心依然是对话框。大家都逃不开 Chatbot 这种交互形式。官方宣传说能帮你订东西，听起来很鸡肋。但 Muse 打开后，你大概知道能跟它聊什么。这是体验做得好的地方。国产 Personal Agent 应该学习这点，别学 Grok。
+用了一两天发现，它的动态板块很有意思。手机端 For You 做成了信息流形式。更新频次低，不打扰人。我会在上面停留不少时间。这类似大家讨论过的 AI 每日早报。它直接把这功能做掉了，还能按偏好自定义。
+另一个板块是点子建议。它会学习聊天记录。主动告诉你基于之前的对话，它还能帮你做些什么。系统也会提供预设的效率功能清单。不知道该干嘛时，可以去看看。
+点子库里有健身、金融等多个板块。里面的案例跟推特上很火的例子很像。推测运营团队会去抓取高流量的用户反馈，提炼成标准化案例，用来丰富产品体验。传统的 Chatbot 没做这层。
+下一个板块是目标追踪。一开始我也觉得没用。后来发现，它把目标和每日定时任务结合在了一起。处理资讯获取这类事情时，它的表现形式不是生硬的定时任务，而是以目标的形式展现。
+最后是内容生成和设置板块。这里不用多说，一看就懂。总体而言，Muse 的使用体验比同类产品好很多。
+关于用量消耗。一开始觉得用得慢。跑起一两个定时任务或播客任务后，消耗飞快。短时间内还能维持平衡。
+使用场景方面，网上的例子多集中在省钱。这类内容很能吸流量，比如让 AI 推荐服务、谈判砍价。购物和旅行类也类似，帮忙监控价格或代下单。用这玩意儿赚钱的噱头总是最吸引人的。
+我一般用它处理繁琐重复的事项。这些事用写代码的工具来跑，感觉有点重，直接交给它刚好。
+缺点也很明显。地图类操作非常麻烦。它也不适配国内环境。我的工作涉及海外组件，用起来还算自然。但牵扯到国内 App，权限是死结。很多 App 根本不给 Agent 开放接口。
+我的主要用途还是工作、信息收集和数据处理。还是逃不过牛马的用途。这会涉及敏感信息获取。比如让它帮忙登录网站，需要谷歌账号密码。给了之后体验确实不错。
+关于作者</description>
+    </item>
+    
+  </channel>
+</rss>

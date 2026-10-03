@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="做务实人，写实在 AI。曾为算法专家，今为内容新人。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/why-vibe-coding/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Muse 国外已经在热炒的 Personal Agent，国内能抄对作业吗？ | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Muse 国外已经在热炒的 Personal Agent，国内能抄对作业吗？ | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-03T16:44:17+08:00","datePublished":"2026-10-03T16:44:17+08:00","description":"现在 AI 圈大家的目光都在 Personal Agent 上，特别是随着 Meta 的 Muse 爆火出圈，假期不少国内团队在抓紧研发对应版本。我试用了一段时间 Muse。对比之前用过的 Grok，谈谈它的常见用法和主观感受。 一开始我有点排斥 Muse。一方面觉得它和 Grok 是一类产品，另一方面是它的宣发太饱和，病毒营销很厉害。你能在各类介绍文章和视频下看到裂变邀请码。起初觉得烦，转过头来 …","headline":"Muse 国外已经在热炒的 Personal Agent，国内能抄对作业吗？","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Personal Agent, Muse, AI, 产品测评","mainEntityOfPage":{"@id":"https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/","@type":"WebPage"},"name":"Muse 国外已经在热炒的 Personal Agent，国内能抄对作业吗？","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/","wordCount":60}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Muse 国外已经在热炒的 Personal Agent，国内能抄对作业吗？</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-03 itemprop="datePublished">October 3, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E4%BA%A7%E5%93%81%E8%A7%82%E5%AF%9F/"> 产品观察 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>现在 AI 圈大家的目光都在 Personal Agent 上，特别是随着 Meta 的 Muse 爆火出圈，假期不少国内团队在抓紧研发对应版本。我试用了一段时间 Muse。对比之前用过的 Grok，谈谈它的常见用法和主观感受。</p>
+<p>一开始我有点排斥 Muse。一方面觉得它和 Grok 是一类产品，另一方面是它的宣发太饱和，病毒营销很厉害。你能在各类介绍文章和视频下看到裂变邀请码。起初觉得烦，转过头来想，这确实是一种经典策略。能把这个飞轮玩起来的产品不多。</p>
+<p>他们控制了早期的发布范围，又提供了可绕过的方式。推特上刚好缺素材，博主们需要热点。搞定 Muse 的使用资格成了一种身份彰显和自我认同。在营销定位这一块，他们做得很准。</p>
+<p>注册方式网上有很多，主要靠北美节点。</p>
+<p>进入应用会有简短的引导。这一点比 Grok 好很多。Grok 进去后你完全不知道干嘛。虽说宣传是个人助理，问它能做啥，似乎什么也做不了。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/79f4566e1aea2cb9.webp" alt="Muse 引导页，问 What should we dive into，下列股票研究、订餐、写脚本等六个入口" class="lazyload"><figcaption class="image-caption">Muse 引导页，问 What should we dive into，下列股票研究、订餐、写脚本等六个入口</figcaption></figure></p>
+<p>Muse 的核心依然是对话框。大家都逃不开 Chatbot 这种交互形式。官方宣传说能帮你订东西，听起来很鸡肋。但 Muse 打开后，你大概知道能跟它聊什么。这是体验做得好的地方。国产 Personal Agent 应该学习这点，别学 Grok。</p>
+<p>用了一两天发现，它的动态板块很有意思。手机端 For You 做成了信息流形式。更新频次低，不打扰人。我会在上面停留不少时间。这类似大家讨论过的 AI 每日早报。它直接把这功能做掉了，还能按偏好自定义。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/0416c060fa12e384.webp" alt="Muse 的 For You 信息流，含早报、AI 行业动态和 Vibe Coding 热点推送" class="lazyload"><figcaption class="image-caption">Muse 的 For You 信息流，含早报、AI 行业动态和 Vibe Coding 热点推送</figcaption></figure></p>
+<p>另一个板块是点子建议。它会学习聊天记录。主动告诉你基于之前的对话，它还能帮你做些什么。系统也会提供预设的效率功能清单。不知道该干嘛时，可以去看看。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/a70c1090640bc398.webp" alt="Muse 点子页，列出盯国庆租车价格、搭 Opus 5.5 视频流水线、审核 PageGrok 目录" class="lazyload"><figcaption class="image-caption">Muse 点子页，列出盯国庆租车价格、搭 Opus 5.5 视频流水线、审核 PageGrok 目录</figcaption></figure></p>
+<p>点子库里有健身、金融等多个板块。里面的案例跟推特上很火的例子很像。推测运营团队会去抓取高流量的用户反馈，提炼成标准化案例，用来丰富产品体验。传统的 Chatbot 没做这层。</p>
+<p>下一个板块是目标追踪。一开始我也觉得没用。后来发现，它把目标和每日定时任务结合在了一起。处理资讯获取这类事情时，它的表现形式不是生硬的定时任务，而是以目标的形式展现。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/bc07a28f021141b8.webp" alt="Muse 目标页，追踪里有 Vibe Coding 每日热点推送和每日 AI 行业动态播客" class="lazyload"><figcaption class="image-caption">Muse 目标页，追踪里有 Vibe Coding 每日热点推送和每日 AI 行业动态播客</figcaption></figure></p>
+<p>最后是内容生成和设置板块。这里不用多说，一看就懂。总体而言，Muse 的使用体验比同类产品好很多。</p>
+<p>关于用量消耗。一开始觉得用得慢。跑起一两个定时任务或播客任务后，消耗飞快。短时间内还能维持平衡。</p>
+<p>使用场景方面，网上的例子多集中在省钱。这类内容很能吸流量，比如让 AI 推荐服务、谈判砍价。购物和旅行类也类似，帮忙监控价格或代下单。用这玩意儿赚钱的噱头总是最吸引人的。</p>
+<p>我一般用它处理繁琐重复的事项。这些事用写代码的工具来跑，感觉有点重，直接交给它刚好。</p>
+<p>缺点也很明显。地图类操作非常麻烦。它也不适配国内环境。我的工作涉及海外组件，用起来还算自然。但牵扯到国内 App，权限是死结。很多 App 根本不给 Agent 开放接口。</p>
+<p>我的主要用途还是工作、信息收集和数据处理。还是逃不过牛马的用途。这会涉及敏感信息获取。比如让它帮忙登录网站，需要谷歌账号密码。给了之后体验确实不错。</p>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/personal-agent/">
+                    #Personal Agent</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/muse/">
+                    #Muse</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%BA%A7%E5%93%81%E6%B5%8B%E8%AF%84/">
+                    #产品测评</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/why-vibe-coding/" class="prev" rel="prev" title="Vibe Coding 一年半：我为什么做，以及怎么做"><i class="iconfont icon-left"></i>&nbsp;Vibe Coding 一年半：我为什么做，以及怎么做</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
