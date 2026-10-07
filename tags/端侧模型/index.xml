@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>端侧 SLM on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E7%AB%AF%E4%BE%A7-slm/</link>
-    <description>Recent content in 端侧 SLM on 谷粒 kuhung</description>
+    <title>端侧模型 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E7%AB%AF%E4%BE%A7%E6%A8%A1%E5%9E%8B/</link>
+    <description>Recent content in 端侧模型 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 07 Oct 2026 11:47:22 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%AB%AF%E4%BE%A7-slm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Oct 2026 11:47:22 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%AB%AF%E4%BE%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析</title>
       <link>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</link>

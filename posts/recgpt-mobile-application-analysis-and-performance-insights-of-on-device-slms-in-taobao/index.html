@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           RecGPT-Mobile：淘宝端侧 SLM 应用解析与效果洞察 | 谷粒 kuhung
+           手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="RecGPT-Mobile：淘宝端侧 SLM 应用解析与效果洞察 | 谷粒 kuhung">
+  <meta name="title" content="手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -59,7 +59,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-07T11:47:22+08:00","datePublished":"2026-10-07T11:47:22+08:00","description":"刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了1G的内存。从我去年一直关注小模型来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。 而评论区的部分网友不这么认为。他们认为比起效率，用户手机上的算力显然是大公司窥视的。我是觉得为了不同设备的算力榨取， …","headline":"RecGPT-Mobile：淘宝端侧 SLM 应用解析与效果洞察","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"mindmap, 思维导图, RecGPT, 端侧 SLM, 推荐系统","mainEntityOfPage":{"@id":"https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/","@type":"WebPage"},"name":"RecGPT-Mobile：淘宝端侧 SLM 应用解析与效果洞察","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/","wordCount":1100}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-07T11:47:22+08:00","datePublished":"2026-10-07T11:47:22+08:00","description":"刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了 1GB 内存。从我去年一直关注小模型以来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。 而评论区的部分网友不这么认为。他们认为比起效率，用户手机上的算力显然是大公司窥视的。我是觉得为了不同设备的算力 …","headline":"手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"RecGPT, 端侧 SLM, 推荐系统, 端侧模型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/","@type":"WebPage"},"name":"手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/","wordCount":1073}</script>
 </head>
 
   
@@ -111,7 +111,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">RecGPT-Mobile：淘宝端侧 SLM 应用解析与效果洞察</h1>
+        <h1 class="post-title" itemprop="name headline">手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -120,7 +120,7 @@ if (!doNotTrack) {
                 in
                 <i class="iconfont icon-folder"></i>
                 <span class="post-category">
-                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        <a href="https://kuhung.me/categories/ai/"> ai </a>
                         
                 </span>
 
@@ -134,48 +134,49 @@ if (!doNotTrack) {
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#recgpt-mobile-系列论文整理">RecGPT-Mobile 系列论文整理</a></li>
     <li><a href="#整理说明">整理说明</a></li>
-    <li><a href="#一论文基本信息">一、论文基本信息</a></li>
-    <li><a href="#二出发点为什么把-llm-搬到端侧">二、出发点：为什么把 LLM 搬到端侧</a></li>
-    <li><a href="#三技术方案">三、技术方案</a>
+    <li><a href="#论文基本信息">论文基本信息</a></li>
+    <li><a href="#为什么把-llm-搬到端侧">为什么把 LLM 搬到端侧</a></li>
+    <li><a href="#技术方案">技术方案</a>
       <ul>
-        <li><a href="#31-行为轨迹压缩300-个事件--25-个">3.1 行为轨迹压缩：~300 个事件 → ~25 个</a></li>
-        <li><a href="#32-动态触发意图漂移才推理">3.2 动态触发：意图漂移才推理</a></li>
-        <li><a href="#33-自适应思维链按需分配算力">3.3 自适应思维链：按需分配算力</a></li>
-        <li><a href="#34-训练范式领域预训练--sft--质量门控强化学习">3.4 训练范式：领域预训练 → SFT → 质量门控强化学习</a></li>
-        <li><a href="#35-端侧量化与压缩">3.5 端侧量化与压缩</a></li>
+        <li><a href="#行为轨迹压缩300-个事件--25-个">行为轨迹压缩：~300 个事件 → ~25 个</a></li>
+        <li><a href="#动态触发意图漂移才推理">动态触发：意图漂移才推理</a></li>
+        <li><a href="#自适应思维链按需分配算力">自适应思维链：按需分配算力</a></li>
+        <li><a href="#训练范式领域预训练--sft--质量门控强化学习">训练范式：领域预训练 → SFT → 质量门控强化学习</a></li>
+        <li><a href="#端侧量化与压缩">端侧量化与压缩</a></li>
       </ul>
     </li>
-    <li><a href="#四效果回收">四、效果回收</a>
+    <li><a href="#效果回收">效果回收</a>
       <ul>
-        <li><a href="#41-离线cot-信息价值消融v2-table-6">4.1 离线：CoT 信息价值消融（V2 Table 6）</a></li>
-        <li><a href="#42-离线rl-奖励机制-a1a6v2-table-910">4.2 离线：RL 奖励机制 A1–A6（V2 Table 9/10）</a></li>
-        <li><a href="#43-离线召回互补性v2-table-8">4.3 离线：召回互补性（V2 Table 8）</a></li>
-        <li><a href="#44-在线-ab四大场景sigir-短文-table-3">4.4 在线 A/B：四大场景（SIGIR 短文 Table 3）</a></li>
-        <li><a href="#45-端侧延迟实测v2-108">4.5 端侧延迟实测（V2 §10.8）</a></li>
+        <li><a href="#离线cot-信息价值消融v2-table-6">离线：CoT 信息价值消融（V2 Table 6）</a></li>
+        <li><a href="#离线rl-奖励机制-a1a6v2-table-910">离线：RL 奖励机制 A1–A6（V2 Table 9/10）</a></li>
+        <li><a href="#离线召回互补性v2-table-8">离线：召回互补性（V2 Table 8）</a></li>
+        <li><a href="#在线-ab四大场景sigir-短文-table-3">在线 A/B：四大场景（SIGIR 短文 Table 3）</a></li>
+        <li><a href="#端侧延迟实测v2-108">端侧延迟实测（V2 §10.8）</a></li>
       </ul>
     </li>
-    <li><a href="#五评估指标体系为什么设计这些指标">五、评估指标体系：为什么设计这些指标</a>
+    <li><a href="#评估指标体系">评估指标体系</a>
       <ul>
-        <li><a href="#51-行为压缩层">5.1 行为压缩层</a></li>
-        <li><a href="#52-query-质量层离线">5.2 Query 质量层（离线）</a></li>
-        <li><a href="#53-在线业务与性能层">5.3 在线业务与性能层</a></li>
-        <li><a href="#54-统计与接受协议v2-910">5.4 统计与接受协议（V2 §9.10）</a></li>
+        <li><a href="#行为压缩层">行为压缩层</a></li>
+        <li><a href="#query-质量层离线">Query 质量层（离线）</a></li>
+        <li><a href="#在线业务与性能层">在线业务与性能层</a></li>
+        <li><a href="#统计与接受协议v2-910">统计与接受协议（V2 §9.10）</a></li>
       </ul>
     </li>
-    <li><a href="#六深度追问-qa-精选">六、深度追问 Q&amp;A 精选</a>
+    <li><a href="#深度追问-qa">深度追问 Q&amp;A</a>
       <ul>
-        <li><a href="#61-输入与压缩">6.1 输入与压缩</a></li>
-        <li><a href="#62-触发与延迟">6.2 触发与延迟</a></li>
-        <li><a href="#63-召回排序与归因">6.3 召回、排序与归因</a></li>
-        <li><a href="#64-案例验孕棒--儿童床">6.4 案例：验孕棒 + 儿童床</a></li>
-        <li><a href="#65-训练与评估">6.5 训练与评估</a></li>
-        <li><a href="#66-产品与展望">6.6 产品与展望</a></li>
-        <li><a href="#67-trade-off-清单优化了什么牺牲了什么">6.7 Trade-off 清单：优化了什么，牺牲了什么</a></li>
+        <li><a href="#输入与压缩">输入与压缩</a></li>
+        <li><a href="#触发与延迟">触发与延迟</a></li>
+        <li><a href="#召回排序与归因">召回、排序与归因</a></li>
+        <li><a href="#案例验孕棒--儿童床">案例：验孕棒 + 儿童床</a></li>
+        <li><a href="#训练与评估">训练与评估</a></li>
+        <li><a href="#产品与展望">产品与展望</a></li>
+        <li><a href="#trade-off-清单优化了什么牺牲了什么">Trade-off 清单：优化了什么，牺牲了什么</a></li>
       </ul>
     </li>
-    <li><a href="#七未来展望">七、未来展望</a></li>
-    <li><a href="#八批判性思考摘要">八、批判性思考摘要</a></li>
+    <li><a href="#未来展望">未来展望</a></li>
+    <li><a href="#批判性思考">批判性思考</a></li>
     <li><a href="#附录原文链接">附录：原文链接</a></li>
   </ul>
 </nav>
@@ -229,24 +230,24 @@ if (!doNotTrack) {
           
           
 
-          <p>刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了1G的内存。从我去年一直关注小模型来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。</p>
+          <p>刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了 1GB 内存。从我去年一直关注小模型以来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。</p>
 <p>而评论区的部分网友不这么认为。他们认为比起效率，用户手机上的算力显然是大公司窥视的。我是觉得为了不同设备的算力榨取，做这件事不合理和不体面。我认为出发点更多是实验性质，探索端侧小模型能不能带来业务提升。</p>
-<p>有分歧咋办，去找原始资料呗。我顺着评论区，把 RecGPT-Mobile 和 V2 两篇论文翻完。发现其实有不少问题，不去做端侧部署是会不知道的。端侧的算力不是你想要，想要就能要。端侧部署先不说效果，工程方面就要做很多的阉割。至于效果，论文中给出的业务指标是相对提升，目前线上流量占比例仍然不高，可以推测还有较多tradeoff需要考虑。</p>
-<h1 id="recgpt-mobile-系列论文整理">RecGPT-Mobile 系列论文整理</h1>
+<p>有分歧咋办，去找原始资料呗。我顺着评论区，把 RecGPT-Mobile 和 V2 两篇论文翻完。发现其实有不少问题，不去做端侧部署是会不知道的。端侧的算力不是你想要，想要就能要。端侧部署先不说效果，工程方面就要做很多的阉割。至于效果，论文中给出的业务指标是相对提升，目前线上流量占比例仍然不高，可以推测还有较多 tradeoff 需要考虑。</p>
+<h2 id="recgpt-mobile-系列论文整理">RecGPT-Mobile 系列论文整理</h2>
 <h2 id="整理说明">整理说明</h2>
 <ul>
 <li>本文档完整保留了多轮探讨的全部论点与深度追问细节，按八大主题与精选 Q&amp;A 进行系统性结构化编排。</li>
 <li>本文档采用原始文件上传 Gemini notebook，互动得出见解的方式。可能存在幻觉、理解不一的脑补情况。</li>
 </ul>
 <hr>
-<h2 id="一论文基本信息">一、论文基本信息</h2>
+<h2 id="论文基本信息">论文基本信息</h2>
 <ul>
-<li><strong>《RecGPT-Mobile: On-Device Large Language Models for User Intent Understanding in Taobao Feed Recommendation》</strong> —— SIGIR &lsquo;26（第 49 届 ACM SIGIR，墨尔本），arXiv:2605.04726（2026-05-06）。淘天集团 12 人团队，Bin Zhang、Weipeng Huang 为共同一作。5 页短文，CC-BY 协议。</li>
-<li><strong>《RecGPT-Mobile-V2 Technical Report》</strong> —— arXiv:2608.24295（2026-08）。长篇技术报告，由同一团队撰写，补充机制层面的完整实验：行为压缩、推荐域初始化、CoT 信息价值、自适应推理控制、评测治理、质量–成本证据。</li>
+<li><strong>《RecGPT-Mobile: On-Device Large Language Models for User Intent Understanding in Taobao Feed Recommendation》</strong>：SIGIR &lsquo;26（第 49 届 ACM SIGIR，墨尔本），arXiv:2605.04726（2026-05-06）。淘天集团 12 人团队，Bin Zhang、Weipeng Huang 为共同一作。5 页短文，CC-BY 协议。</li>
+<li><strong>《RecGPT-Mobile-V2 Technical Report》</strong>：arXiv:2608.24295（2026-08）。长篇技术报告，由同一团队撰写，补充机制层面的完整实验：行为压缩、推荐域初始化、CoT 信息价值、自适应推理控制、评测治理、质量–成本证据。</li>
 <li><strong>两篇的关系：</strong> 短文是“做了什么+线上效果”的简单发表；V2 报告是“为什么这样设计+每个机制的效果证据”。</li>
 </ul>
 <hr>
-<h2 id="二出发点为什么把-llm-搬到端侧">二、出发点：为什么把 LLM 搬到端侧</h2>
+<h2 id="为什么把-llm-搬到端侧">为什么把 LLM 搬到端侧</h2>
 <p>核心任务：从用户近期的交互行为，预测“下一个搜索 query”，在用户意图快速演化的场景下尤为关键。团队抓住三个矛盾：</p>
 <ol>
 <li>
@@ -254,17 +255,17 @@ if (!doNotTrack) {
 <p>我的评论：但其实端侧推理的延迟也不低，后文有提到；而且云端是不是一定要用LLM，一定要全部用户都用LLM，显然这种推极端的估算方式是不成立的；端侧部署模型，对于用户设备的要求会变高，影响用户体验的部分，该如何估量呢？</p>
 </li>
 <li>
-<p><strong>隐式行为到显式意图的映射难题：</strong> 点击、加购、收藏、购买、售后探索都是隐式信号，不等于搜索词。尤其是复购、互补品购买、跨类目探索等售后场景，意图推导最为复杂——“买了手机，下一步想搜什么”没有标准答案。</p>
+<p><strong>隐式行为到显式意图的映射难题：</strong> 点击、加购、收藏、购买、售后探索都是隐式信号，不等于搜索词。尤其是复购、互补品购买、跨类目探索等售后场景，意图推导最为复杂。“买了手机，下一步想搜什么”没有标准答案。</p>
 </li>
 <li>
 <p><strong>端侧部署的机遇与资源限制：</strong> 把 LLM 作为意图 Agent 直接部署在手机端，能利用本地数据毫秒级捕获实时兴趣（且行为日志不出端）；但手机在内存、算力、功耗上受严苛限制，未经优化的重型模型根本跑不起来。</p>
+<p>我的评论：这部分我认为是值得细看的，那就是在工业部署，会遇到哪些问题，有哪些优化思路。</p>
 </li>
 </ol>
-<p>​	我的评论：这部分我认为是值得细看的，那就是在工业部署，会遇到哪些问题，有哪些优化思路。</p>
 <p>云端“算不起、等不及”，端侧“放不下、跑不动”。论文试图同时解决这两头。</p>
 <hr>
-<h2 id="三技术方案">三、技术方案</h2>
-<h3 id="31-行为轨迹压缩300-个事件--25-个">3.1 行为轨迹压缩：~300 个事件 → ~25 个</h3>
+<h2 id="技术方案">技术方案</h2>
+<h3 id="行为轨迹压缩300-个事件--25-个">行为轨迹压缩：~300 个事件 → ~25 个</h3>
 <p>V2 报告 Table 5 与 Figure 2 给出的实测压缩画像与架构流水线：</p>
 <table>
 <thead>
@@ -314,29 +315,29 @@ if (!doNotTrack) {
 </li>
 <li><strong>为什么必须压缩（不压缩会怎样）：</strong> Prompt 越长，LLM 在 Prefill（首 token）阶段计算量越大，KV Cache 内存随序列长度剧增。300 条原始行为（含大量滑动、曝光等噪声）会让手机端因内存溢出而崩溃，或推理耗时从百毫秒飙到数秒、十几秒，导致推荐流卡顿、手机严重发热。可以从中学到的是，为了提升端侧模型性能，减少对设备运行的影响，优化输入是有必要的。</li>
 </ul>
-<h3 id="32-动态触发意图漂移才推理">3.2 动态触发：意图漂移才推理</h3>
+<h3 id="动态触发意图漂移才推理">动态触发：意图漂移才推理</h3>
 <ul>
 <li><strong>意图漂移公式：</strong> 把滑动窗口内行为映射为离散语义标签，构造标签分布；意图漂移得分：
-$$\Delta_{\text{intent}} = \lambda_1 \cdot \Delta H + \lambda_2 \cdot (1 - \text{Jaccard}) + \lambda_3 \cdot \text{JS}$$
-其中 $\Delta H$ 为熵变（衡量意图聚焦还是发散），Jaccard 衡量语义重叠，JS 散度衡量分布漂移；超参数 $\lambda = (0.4, 0.3, 0.3)$，仅当 $\Delta_{\text{intent}} &gt; \tau$（$\tau=0.8$，启发式搜索确定）才触发 LLM 重新推理。</li>
+<code>Δ_intent = λ1 · ΔH + λ2 · (1 - Jaccard) + λ3 · JS</code><br>
+其中 ΔH 为熵变（衡量意图聚焦还是发散），Jaccard 衡量语义重叠，JS 散度衡量分布漂移；超参数 λ = (0.4, 0.3, 0.3)，仅当 Δ_intent &gt; τ（τ = 0.8，启发式搜索确定）才触发 LLM 重新推理。</li>
 <li><strong>要解决的问题：</strong> 用户在浏览同类商品（意图未变）时反复跑模型是纯浪费；只在意图真正漂移时才花算力。</li>
 <li><strong>线上实测性能：</strong>
-$$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \text{power consumption: } 40%$$
+<code>trigger rate: 21% | model qps: 3200 | power consumption: 40%</code><br>
 即在连续行为窗口中，仅约 21% 的事件触发了端侧 LLM 真实推理（79% 被成功拦截），使设备端功耗降为基准的 40%。注意其含义是“1/5 的推理被触发”，而不是“只有 1/5 用户被覆盖”。</li>
 </ul>
-<h3 id="33-自适应思维链按需分配算力">3.3 自适应思维链：按需分配算力</h3>
+<h3 id="自适应思维链按需分配算力">自适应思维链：按需分配算力</h3>
 <ul>
 <li>放弃“所有请求统一长 CoT”：推理过程分为“证据提取 → 意图形成 → Query 输出”；简单请求直接输出 Query（无/极短 CoT），只有高模糊度、复杂互补意图才分配更多 token。</li>
 <li><strong>核心哲学（V2 §10.9）：</strong> efficient reasoning 应该定义为 <strong>sufficiency（够用）</strong>，而不是 <strong>brevity（短）</strong>。</li>
 </ul>
-<h3 id="34-训练范式领域预训练--sft--质量门控强化学习">3.4 训练范式：领域预训练 → SFT → 质量门控强化学习</h3>
+<h3 id="训练范式领域预训练--sft--质量门控强化学习">训练范式：领域预训练 → SFT → 质量门控强化学习</h3>
 <ul>
 <li>
 <p><strong>领域持续预训练（CPT）：</strong></p>
 <ul>
-<li>采用 <strong>Qwen3.5-0.8B 混合架构</strong>（24 层，每组包含 3 层 Gated DeltaNet + 1 层 Gated Attention），词表保留完整的 $\mathbf{vocab = 248,320}$，上下文窗口 262,144。</li>
+<li>采用 <strong>Qwen3.5-0.8B 混合架构</strong>（24 层，每组包含 3 层 Gated DeltaNet + 1 层 Gated Attention），词表保留完整的 <strong>vocab = 248,320</strong>，上下文窗口 262,144。</li>
 <li>引入层次化 Semantic IDs（语义码 + 商品标题/类目/属性绑定），构建推荐原生基座。</li>
-<li>SFT loss 从 0.6448 降到 0.6066（相对 −5.9%）；held-out 机器评判总分保持在 Base+SFT 的 99.58%，最高质量 A 档占比从 39.22% 升至 39.70%——字面指标保留约 95–96%，换来任务对齐更容易。</li>
+<li>SFT loss 从 0.6448 降到 0.6066（相对 −5.9%）；held-out 机器评判总分保持在 Base+SFT 的 99.58%，最高质量 A 档占比从 39.22% 升至 39.70%。字面指标保留约 95–96%，换来任务对齐更容易。</li>
 </ul>
 </li>
 <li>
@@ -344,17 +345,17 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 </li>
 <li>
 <p><strong>质量门控强化学习（GRPO，A1–A6）：</strong> 引入冻结的 Qwen3-14B 结构化模型裁判（V2 Section 9.3），只在质量合格的候选上对推理长度施加惩罚，避免“为短而短”（详见 4.2）。</p>
-<p>我的评论：一开始我的疑惑是，为啥要用一个不太强的模型作为裁判模型，而且还是同家族的，不会强化同类偏好吗。原文给出的解答是，这个模型便宜好部署，加上线上量大，用这个省成本。为了防治裁判模型被绕过，他们也加了很多强制手段来约束结果判断。</p>
+<p>我的评论：一开始我的疑惑是，为啥要用一个不太强的模型作为裁判模型，而且还是同家族的，不会强化同类偏好吗。原文给出的解答是，这个模型便宜好部署，加上线上量大，用这个省成本。为了防范裁判模型被绕过，他们也加了很多强制手段来约束结果判断。</p>
 </li>
 </ul>
-<h3 id="35-端侧量化与压缩">3.5 端侧量化与压缩</h3>
+<h3 id="端侧量化与压缩">端侧量化与压缩</h3>
 <ul>
 <li><strong>SIGIR 短文：</strong> Qwen3-0.6B → LoRA 微调 → LoRA+量化（INT8，Dettmers et al. 2022 路线），部署采用 Qwen3-0.6B-Quant；离线评测显示量化版总分仅从 0.829 降到 0.794（Qwen3-4B 裁判），质量损失极小。</li>
 <li><strong>V2 演进：</strong> 混合精度量化（FP16/BF16 → INT8/INT4）的敏感度感知比特分配、结构化压缩、蒸馏、紧凑思考表示与端云分层路由。</li>
 </ul>
 <hr>
-<h2 id="四效果回收">四、效果回收</h2>
-<h3 id="41-离线cot-信息价值消融v2-table-6">4.1 离线：CoT 信息价值消融（V2 Table 6）</h3>
+<h2 id="效果回收">效果回收</h2>
+<h3 id="离线cot-信息价值消融v2-table-6">离线：CoT 信息价值消融（V2 Table 6）</h3>
 <p>三视角对齐比较（同一批样本、同一生成器、同一指标实现）：</p>
 <table>
 <thead>
@@ -384,10 +385,10 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 </table>
 <ul>
 <li><strong>结论：</strong> 证据提取贡献了几乎全部收益（ROUGE-L +0.0866），完整长推理没有额外好处，甚至微低于 Short CoT。</li>
-<li><strong>单阶段删除诊断：</strong> 删掉 evidence extraction，ROUGE-L 从 0.3077 跌到 0.2806，是各阶段中跌得最惨的；删候选枚举或关系叙述几乎无影响甚至微升——说明那是冗余的“套话”。</li>
+<li><strong>单阶段删除诊断：</strong> 删掉 evidence extraction，ROUGE-L 从 0.3077 跌到 0.2806，是各阶段中跌得最惨的；删候选枚举或关系叙述几乎无影响甚至微升，说明那是冗余的“套话”。</li>
 <li><strong>分层：</strong> 低推理需求输入上 Full CoT 仅 +0.0230，高需求输入 +0.0847；按类别：直接信号 +0.0232、购后关系 +0.0848、多意图消歧 +0.0867。</li>
 </ul>
-<h3 id="42-离线rl-奖励机制-a1a6v2-table-910">4.2 离线：RL 奖励机制 A1–A6（V2 Table 9/10）</h3>
+<h3 id="离线rl-奖励机制-a1a6v2-table-910">离线：RL 奖励机制 A1–A6（V2 Table 9/10）</h3>
 <p>同一 SFT actor 出发、同一训练 horizon 下的对照（质量/合格率/失败率为百分比）：</p>
 <table>
 <thead>
@@ -461,16 +462,16 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 </table>
 <ul>
 <li><strong>收益对比：</strong> A6 相对 A1 质量 +5.4 个百分点，CoT 中位数 −48 tokens（−77.4%）；相对 A0 质量 +13.1 个百分点，CoT 中位数从 52 降至 14 tokens（−73.1%）。</li>
-<li><strong>关键诊断 A2：</strong> 表达分 0.806（比 A1 的 0.764 还高），但语义接地 0.388、逻辑 0.398——学会了“说人话但无 grounding”的作弊路径。A6 三项为 0.915 / 0.930 / 0.918，加权 0.921。教训：不能只看流畅度，质量信号必须分解维度。</li>
-<li><strong>硬失败率（Hard Failure Rate）定义：</strong> 不是“推荐得不好看”，而是违反工程标准的确定性错误：一票否决项包括——输出为空或缺 <code>&lt;think&gt;</code>/<code>&lt;final&gt;</code> 标签致解析崩溃；<code>&lt;final&gt;</code> 里输出多个 query（协议只允许 1 个）；<code>&lt;final&gt;</code> 闭合后继续输出废话；超 token 上限被截断；臆造无行为支撑的关键实体（品牌/型号幻觉）。触发一次判 −1 分。</li>
+<li><strong>关键诊断 A2：</strong> 表达分 0.806（比 A1 的 0.764 还高），但语义接地 0.388、逻辑 0.398，学会了“说人话但无 grounding”的作弊路径。A6 三项为 0.915 / 0.930 / 0.918，加权 0.921。教训：不能只看流畅度，质量信号必须分解维度。</li>
+<li><strong>硬失败率（Hard Failure Rate）定义：</strong> 不是“推荐得不好看”，而是违反工程标准的确定性错误：一票否决项包括：输出为空或缺 <code>&lt;think&gt;</code>/<code>&lt;final&gt;</code> 标签致解析崩溃；<code>&lt;final&gt;</code> 里输出多个 query（协议只允许 1 个）；<code>&lt;final&gt;</code> 闭合后继续输出废话；超 token 上限被截断；臆造无行为支撑的关键实体（品牌/型号幻觉）。触发一次判 −1 分。</li>
 </ul>
-<h3 id="43-离线召回互补性v2-table-8">4.3 离线：召回互补性（V2 Table 8）</h3>
+<h3 id="离线召回互补性v2-table-8">离线：召回互补性（V2 Table 8）</h3>
 <ul>
-<li><strong>Jaccard 重叠度对比：</strong> Query 路径与传统召回路径的商品语义标签 Jaccard 为 0.512 / 0.628 / 0.543 / 0.588；而传统路径之间相互为 0.626 / 0.615 / 0.621 / 0.645。Query 通道低 0.06–0.12——触达了主流召回没覆盖的语义区域。</li>
+<li><strong>Jaccard 重叠度对比：</strong> Query 路径与传统召回路径的商品语义标签 Jaccard 为 0.512 / 0.628 / 0.543 / 0.588；而传统路径之间相互为 0.626 / 0.615 / 0.621 / 0.645。Query 通道低 0.06–0.12，触达了主流召回没覆盖的语义区域。</li>
 <li><strong>流量盘子（serving scope）：</strong> 服务端 Query 路径 recall 占比仅 0.20%，曝光 PV 占 1.10%，UV 覆盖 6.90%；端侧（Android+iOS）额外贡献 0.30% 曝光、1.90% UV。从 0.20% → 1.10% 说明下游精排并未过滤掉它，胜出率反而更高。</li>
 <li><strong>作者自注：</strong> Jaccard 低只代表“不一样”，不代表“更相关”；需配合 Recall@K、NDCG@K、用户反馈综合评估。</li>
 </ul>
-<h3 id="44-在线-ab四大场景sigir-短文-table-3">4.4 在线 A/B：四大场景（SIGIR 短文 Table 3）</h3>
+<h3 id="在线-ab四大场景sigir-短文-table-3">在线 A/B：四大场景（SIGIR 短文 Table 3）</h3>
 <p>手机淘宝 4 个场景、为期一个月、覆盖数千万真实用户（原文表述为 “achieves a definitely significant improvement”）：</p>
 <table>
 <thead>
@@ -515,35 +516,35 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 </tbody>
 </table>
 <ul>
-<li><strong>解读：</strong> 四个场景都是“动作刚完成”的页面（付完款、查物流、购物车、订单列表）——云端画像还没更新、但用户下一步意图（互补购买）最鲜活，端侧实时意图正好补这个缺口。</li>
-<li><strong>收益结构：</strong> PAY/GMV 提升（+2.7%/+2.5%）明显大于 CLICK（+1.8%）——带来的是真实的商业转化质量而非单纯的点击诱导。</li>
+<li><strong>解读：</strong> 四个场景都是“动作刚完成”的页面（付完款、查物流、购物车、订单列表）。云端画像还没更新，但用户下一步意图（互补购买）最鲜活，端侧实时意图正好补这个缺口。</li>
+<li><strong>收益结构：</strong> PAY/GMV 提升（+2.7%/+2.5%）明显大于 CLICK（+1.8%），带来的是真实的商业转化质量而非单纯的点击诱导。</li>
 <li><strong>归因机制：</strong> 实验组/对照组随机双盲分流；物料下发携带召回通道来源标识（如 <code>MatchType=query</code>），用户点击与下单埋点精确归因到该通道。</li>
 </ul>
-<h3 id="45-端侧延迟实测v2-108">4.5 端侧延迟实测（V2 §10.8）</h3>
+<h3 id="端侧延迟实测v2-108">端侧延迟实测（V2 §10.8）</h3>
 <ul>
 <li><strong>加速器路径实测：</strong> 平均 3.00s → 0.76s（3.95×）；P95 尾部延迟从 8.00s → 1.70s（4.71×）；P99 尾部延迟从 10.00s → 2.50s（4.00×）。</li>
 <li><strong>细分耗时：</strong> 纯 decode 任务 2.12×；TTFT 1.42×；TPOT 1.27×；桌面 CPU 路径 4.13s → 2.70s（1.53×）。</li>
 <li><strong>尾延迟收益更大：</strong> 砍掉超长无用生成大幅减少了设备调度方差。</li>
 <li><strong>对比基线：</strong> 未做自适应思维链压缩与量化剪枝的参考模型。</li>
-<li><strong>用户感知：</strong> 采用“异步后台推理 + 本地缓存”机制——0.76s 在浏览间隙的后台消解，下次刷新或进入新页面时直接读取本地缓存，不阻塞 UI 渲染。</li>
+<li><strong>用户感知：</strong> 采用“异步后台推理 + 本地缓存”机制：0.76s 在浏览间隙的后台消解，下次刷新或进入新页面时直接读取本地缓存，不阻塞 UI 渲染。</li>
 </ul>
 <hr>
-<h2 id="五评估指标体系为什么设计这些指标">五、评估指标体系：为什么设计这些指标</h2>
+<h2 id="评估指标体系">评估指标体系</h2>
 <p>论文设计了三层评估，每层考核不同板块，外加统计协议：</p>
-<h3 id="51-行为压缩层">5.1 行为压缩层</h3>
+<h3 id="行为压缩层">行为压缩层</h3>
 <ul>
 <li><strong>考核：</strong> 过滤与去重后的高意图信号保留率、事件与 Token 缩减量、证据分层截断是否严格保住了显式搜索词与高价值转化行为。</li>
 </ul>
-<h3 id="52-query-质量层离线">5.2 Query 质量层（离线）</h3>
+<h3 id="query-质量层离线">Query 质量层（离线）</h3>
 <ul>
-<li><strong>词法一致：</strong> Exact Match、BLEU、ROUGE-L、Jaccard——考核“长得像不像”。</li>
-<li><strong>语义一致：</strong> frozen 编码器/裁判认同义改写，并限分防止“万能通用词”刷分——考核“意思对不对”。</li>
-<li><strong>行为 grounding：</strong> 实体与属性抽取，严格验证关键内容有历史轨迹支撑——考核“有没有瞎编”。</li>
-<li><strong>结构化任务裁判：</strong> next-query 合理性、购后关系有效性、具体程度、自然度、输出边界合规——考核“像不像人话”。</li>
-<li><strong>防坍缩：</strong> 热门 query 浓度、query 去重率——考核“模型有没有退化成复读机”。</li>
-<li><strong>裁判审计：</strong> 人工 pairwise 一致率、误判率、对抗反例——考核“裁判模型本身靠不靠谱”。</li>
+<li><strong>词法一致：</strong> Exact Match、BLEU、ROUGE-L、Jaccard，考核“长得像不像”。</li>
+<li><strong>语义一致：</strong> frozen 编码器/裁判认同义改写，并限分防止“万能通用词”刷分，考核“意思对不对”。</li>
+<li><strong>行为 grounding：</strong> 实体与属性抽取，严格验证关键内容有历史轨迹支撑，考核“有没有瞎编”。</li>
+<li><strong>结构化任务裁判：</strong> next-query 合理性、购后关系有效性、具体程度、自然度、输出边界合规，考核“像不像人话”。</li>
+<li><strong>防坍缩：</strong> 热门 query 浓度、query 去重率，考核“模型有没有退化成复读机”。</li>
+<li><strong>裁判审计：</strong> 人工 pairwise 一致率、误判率、对抗反例，考核“裁判模型本身靠不靠谱”。</li>
 </ul>
-<h3 id="53-在线业务与性能层">5.3 在线业务与性能层</h3>
+<h3 id="在线业务与性能层">在线业务与性能层</h3>
 <ul>
 <li>
 <p><strong>业务指标：</strong> CLICK（点击率）、PAY（支付笔数）、GMV（成交金额）。</p>
@@ -553,14 +554,14 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 <p>我的评论：后者由于涉及商业机密，未在文章中披露。</p>
 </li>
 </ul>
-<h3 id="54-统计与接受协议v2-910">5.4 统计与接受协议（V2 §9.10）</h3>
+<h3 id="统计与接受协议v2-910">统计与接受协议（V2 §9.10）</h3>
 <ul>
 <li>同样本 pairwise 对比；基于用户聚类的重采样置信区间；关键难例切片预注册；人工复核聚焦“指标打架”的争议 Case。</li>
 <li><strong>接受标准：</strong> 保住质量护栏、不增加硬失败与无支撑实体、不坍缩到高频通用词、降低推理与设备成本、在难例分层上稳定。</li>
 </ul>
 <hr>
-<h2 id="六深度追问-qa-精选">六、深度追问 Q&amp;A 精选</h2>
-<h3 id="61-输入与压缩">6.1 输入与压缩</h3>
+<h2 id="深度追问-qa">深度追问 Q&amp;A</h2>
+<h3 id="输入与压缩">输入与压缩</h3>
 <p><strong>Q：25 个高意图行为具体是哪些？</strong><br>
 <strong>A：</strong> 并非固定的 25 种名词，而是按四层优先级配额保留的事件（出自 V2 Figure 2 架构图）：</p>
 <ul>
@@ -572,10 +573,10 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 <p><strong>Q：为什么一定要减轻端侧输入负担？不减轻会怎样？</strong><br>
 <strong>A：</strong> Prompt 越长，Prefill 阶段计算量越大，KV Cache 内存随序列长度剧增。300 条原始行为（含大量滑动、曝光等垃圾噪声）会让手机端因内存超限直接崩溃，或推理耗时飙到数秒甚至十几秒，导致推荐流卡顿、手机严重发热。这是端侧大模型从“实验室玩具”走向“工业落地”的第一道生命线。</p>
 <p><strong>Q：长短序列如何区分处理？Token 压缩到底压的是什么？</strong><br>
-<strong>A：</strong> 长序列（P99 高活用户近 3000 条行为）通过分级优先截断，仅保留 P0/P1 事件，将输入序列压缩至 <strong>200–400 tokens</strong>（出自 V2 Table 5）。而“CoT 中位数从 62 压到 14 tokens”压的是<strong>模型生成的思维链（<code>&lt;think&gt;</code> 区）长度</strong>，不是输入长度——未优化模型即使输入很短也会产生冗长的套话；优化后简单输入仅需极短 Token 即可输出 Query。</p>
-<h3 id="62-触发与延迟">6.2 触发与延迟</h3>
+<strong>A：</strong> 长序列（P99 高活用户近 3000 条行为）通过分级优先截断，仅保留 P0/P1 事件，将输入序列压缩至 <strong>200–400 tokens</strong>（出自 V2 Table 5）。而“CoT 中位数从 62 压到 14 tokens”压的是<strong>模型生成的思维链（<code>&lt;think&gt;</code> 区）长度</strong>，不是输入长度。未优化模型即使输入很短也会产生冗长的套话；优化后简单输入仅需极短 Token 即可输出 Query。</p>
+<h3 id="触发与延迟">触发与延迟</h3>
 <p><strong>Q：动态触发想解决什么问题？可以理解为“意图从 A 商品变到 B 商品、差异够大才更新”吗？</strong><br>
-<strong>A：</strong> 理解完全正确。行为平稳时反复跑模型是纯浪费；只有当意图漂移得分 $\Delta_{\text{intent}} &gt; \tau$ 时才触发。评价指标考核全量测试用户的整体业务指标——只有在漂移时及时跟进，才能带动全盘的转化效率。</p>
+<strong>A：</strong> 理解完全正确。行为平稳时反复跑模型是纯浪费；只有当意图漂移得分 Δ_intent &gt; τ 时才触发。评价指标考核全量测试用户的整体业务指标。只有在漂移时及时跟进，才能带动全盘的转化效率。</p>
 <p><strong>Q：0.76s 延迟 vs “毫秒级意图演化”，延迟不是相互抵消了吗？</strong><br>
 <strong>A：</strong> 关键在架构：不是同步阻塞，而是<strong>异步后台推理 + 本地高速缓存</strong>。行为在端侧毫秒级落库；漂移时后台 NPU/GPU 异步跑完 0.76s 并写入本地缓存；用户下次刷新或进页时 0 延迟读缓存拉取物料。云端方案反而要经过打点上报→流式日志处理（秒级到分钟级）→云端推理→网络下发，网络 RTT 极不可控。</p>
 <p><strong>Q：省成本的代价是手机发热，这不是 trade-off 吗？</strong><br>
@@ -586,20 +587,20 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 </ol>
 <p><strong>Q：尾延迟降低后具体数值是多少？对比基线是什么？</strong><br>
 <strong>A：</strong> 基线是未做自适应压缩与量化剪枝的参考模型：平均延迟 3.00s → 0.76s（3.95×），P95 尾延迟 8.00s → 1.70s（4.71×），P99 尾延迟 10.00s → 2.50s（4.00×）。</p>
-<h3 id="63-召回排序与归因">6.3 召回、排序与归因</h3>
+<h3 id="召回排序与归因">召回、排序与归因</h3>
 <p><strong>Q：小模型只管召回、最后展不展示看粗排精排，这个说法对吗？召回了但没展现，怎么归功？</strong><br>
 <strong>A：</strong> 说法完全正确。链路：端侧生成 query → 搜索引擎检索候选 → 与传统通道候选一起进粗排/精排打分 → 胜出才曝光。</p>
 <ul>
-<li><strong>数据支撑：</strong> Query 通道在上游召回池仅占 0.20%，但在最终曝光中占到了 1.10%（UV 覆盖 6.90%）——下游不仅没过滤掉它，其精排胜出率反而显著更高。</li>
+<li><strong>数据支撑：</strong> Query 通道在上游召回池仅占 0.20%，但在最终曝光中占到了 1.10%（UV 覆盖 6.90%）。下游不仅没过滤掉它，其精排胜出率反而显著更高。</li>
 <li><strong>归因机制：</strong> 随机双盲分流；下发物料带 <code>MatchType=query</code> 标识，点击与成交通过埋点日志精确归因。</li>
 </ul>
 <p><strong>Q：“覆盖传统召回无法触达的互补商品”是什么意思？这不是 corner case 吗？指标提升能推及全盘吗？</strong><br>
 <strong>A：</strong> 指跨类目售后互补需求（如“买手机 → 搜车载支架/快充”），这是电商每天数亿用户发生的高频场景，不是孤立 corner case。传统协同过滤困在“买手机继续推手机”的同质化里（通道间 Jaccard 高达 0.615–0.645），而 Query 通道将重叠度降至 0.512–0.588，成功突破茧房。</p>
 <p><strong>Q：传统算法加打散参数也能降重叠度，靶子是不是 strawman？</strong><br>
-<strong>A：</strong> 直击要害。传统方法强行加打散/MMR 惩罚，重叠度确实能降，但代价是相关性断崖式下跌（为了打散而推荐不相干的噪声）。RecGPT 是在<strong>保证高相关与精准意图的前提下</strong>，通过语义推理找到逻辑互补的新商品——“高相关下的语义多样性”，这是传统矩阵打散参数无法做到的。</p>
+<strong>A：</strong> 直击要害。传统方法强行加打散/MMR 惩罚，重叠度确实能降，但代价是相关性断崖式下跌（为了打散而推荐不相干的噪声）。RecGPT 是在<strong>保证高相关与精准意图的前提下</strong>，通过语义推理找到逻辑互补的新商品，实现“高相关下的语义多样性”，这是传统矩阵打散参数无法做到的。</p>
 <p><strong>Q：开放式 query 的“未知候选集”是什么意思？商品不都是已知的吗？</strong><br>
 <strong>A：</strong> “已知/未知”是相对推荐链路阶段而言的：传统精排只能对召回给定的固定候选池（如 1000 个商品 ID）打分，召回没放进来的商品再好也无缘展示；LLM 生成式召回不需要预设候选池，直接生成开放词去全库检索，把原本未进入粗排队列的越界商品招募进来。</p>
-<h3 id="64-案例验孕棒--儿童床">6.4 案例：验孕棒 + 儿童床</h3>
+<h3 id="案例验孕棒--儿童床">案例：验孕棒 + 儿童床</h3>
 <p><strong>Q：附录里的儿童床 case 到底讲了什么？时间线是怎样的？</strong><br>
 <strong>A：</strong> 真实脱敏用户轨迹（出自 V2 附录 Case）：</p>
 <ul>
@@ -614,7 +615,7 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 <li><strong>静态规则局限：</strong> 静态关联只能给出大盘先验（验孕棒 → 叶酸/孕妇装），无法动态将跨周期的三个异构维度合成为一个自然语言 Query。</li>
 </ol>
 <ul>
-<li><strong>数据证明：</strong> 传统协同过滤通道间 Jaccard 重叠度高达 0.615–0.645，而 Query 通道脱钩至 0.512–0.588——如果传统关联也能召回，重叠度绝不会发生如此显著的脱钩。</li>
+<li><strong>数据证明：</strong> 传统协同过滤通道间 Jaccard 重叠度高达 0.615–0.645，而 Query 通道脱钩至 0.512–0.588。如果传统关联也能召回，重叠度绝不会发生如此显著的脱钩。</li>
 </ul>
 <p><strong>Q：什么是关键行为证据？什么不是？</strong><br>
 <strong>A：</strong></p>
@@ -622,7 +623,7 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 <li><strong>是：</strong> 最近 24h 真实搜索词、购买、加购、收藏等反映明确强意图的高价值动作。</li>
 <li><strong>不是：</strong> 漫无目的的滑动曝光、UI 交互噪声、低优先级偶发浏览。</li>
 </ul>
-<h3 id="65-训练与评估">6.5 训练与评估</h3>
+<h3 id="训练与评估">训练与评估</h3>
 <p><strong>Q：RL 训练的评价指标是什么？想优化什么？</strong><br>
 <strong>A：</strong> 优化目标：在保证并提升 query 质量的前提下，最小化推理 token。评价体系包括：硬失败率（一票否决项）、接地指标（ROUGE-L/Jaccard/实体匹配）、7 维结构化 LLM 裁判、以及基于动态预算的单侧超额成本惩罚与乘法奖惩保护（A6）。</p>
 <p><strong>Q：量化后的评价指标是什么？对端侧设备有什么要求？</strong><br>
@@ -641,37 +642,37 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
 <li><strong>硬失败惩罚：</strong> 严惩“臆造无支撑实体”，倒逼模型采取保守策略（宁可退化为宽泛品类词也不瞎编型号）；</li>
 <li><strong>端云分层路由：</strong> 复杂度或置信度超限时，自动升级路由至云端大模型兜底。</li>
 </ol>
-<h3 id="66-产品与展望">6.6 产品与展望</h3>
+<h3 id="产品与展望">产品与展望</h3>
 <p><strong>Q：产品入口在哪里？UI 改了吗？</strong><br>
 <strong>A：</strong> 入口在四个页面的推荐 Feed 流卡片区（如购物车底部“猜你喜欢/猜你想搜”、物流详情页下方推荐位），渲染为带意图标签的商品卡片或搜索词条。底层直接对接手淘现有的商品检索与渲染模块，前端基础 UI 框架保持一致。</p>
 <p><strong>Q：展望是不是在“摘低垂果实”？为什么不用传统 ML？高频实时场景传统模型不能做吗？</strong><br>
-<strong>A：</strong> 传统模型（XGBoost/DIN）擅长对已知候选集打分排序，但无法从非结构化跨类目行为中直接“生成”开放式语义 query——这是生成范式与排序范式的本质差异。端侧利用用户手机算力（服务器算力成本为 0），带来了极高的商业 ROI。</p>
+<strong>A：</strong> 传统模型（XGBoost/DIN）擅长对已知候选集打分排序，但无法从非结构化跨类目行为中直接“生成”开放式语义 query。这是生成范式与排序范式的本质差异。端侧利用用户手机算力（服务器算力成本为 0），减少服务端LLM成本。</p>
 <p><strong>Q：连续隐空间思考有参考文献吗？是自创还是验证过的？</strong><br>
 <strong>A：</strong> 有，V2 §2.4 明确引用了 Coconut（Hao et al., 2024，将 hidden state 作为连续思考回灌）与 CODI（Shen et al., 2025b，将显式推理蒸馏进连续表示）。</p>
 <p><strong>Q：场景边界到底是什么？搜索建议不是它的场景吗？</strong><br>
 <strong>A：</strong> 已落地场景为手淘 Feed 的四个关键页面（支付成功页、物流详情页、购物车页、订单列表页）；搜索建议（Query Suggestion）和直播间是未来规划扩展的场景。</p>
 <p><strong>Q：隐私是卖点吗？</strong><br>
 <strong>A：</strong> 不是核心卖点。在商业落地上，GMV/CTR/成本才是决定性因素，隐私只是端侧附带的合规红利。真正驱动团队投入研发的是零网络延迟、实时感知、零云端成本，以及线上 +2.5% GMV 的真金白银。</p>
-<h3 id="67-trade-off-清单优化了什么牺牲了什么">6.7 Trade-off 清单：优化了什么，牺牲了什么</h3>
+<h3 id="trade-off-清单优化了什么牺牲了什么">Trade-off 清单：优化了什么，牺牲了什么</h3>
 <ol>
 <li><strong>CPT 的代价：</strong> 领域持续预训练使字面指标（Exact Match/ROUGE-L）比纯 Base+SFT 低约 4–5%（保留 95–96%），但换来了最高质量 A-tier 占比由 39.22% 升至 39.70% 以及更平滑的下游对齐。</li>
-<li><strong>A2 的教训：</strong> 无门控强行压长度，CoT 虽然归 0，但硬失败率从 3.6% 暴涨至 10.5%，预测质量跌破基线——证明了质量门控的不可替代性。</li>
+<li><strong>A2 的教训：</strong> 无门控强行压长度，CoT 虽然归 0，但硬失败率从 3.6% 暴涨至 10.5%，预测质量跌破基线，证明了质量门控的不可替代性。</li>
 <li><strong>触发率限制：</strong> 严苛阈值拦截了约 79% 的微小行为，以牺牲微观实时性为代价，换取了端侧功耗降为 40% 的工程可行性。</li>
 <li><strong>硬件代价：</strong> 尽管做了 INT4/INT8 量化，端侧运行依然需要占用设备峰值内存与移动端 GPU/NPU 算力，这是相对于纯云端方案在端侧零开销所付出的硬件代价。</li>
 </ol>
 <hr>
-<h2 id="七未来展望">七、未来展望</h2>
+<h2 id="未来展望">未来展望</h2>
 <ul>
 <li><strong>端云协同分层路由深化：</strong> 更精细的复杂意图识别；端侧小模型处理高频实时意图，极高模糊度/跨长周期多意图冲突的请求无缝路由至云端大模型。</li>
 <li><strong>连续隐空间思考（Continuous Latent Thinking）：</strong> 把显式文本 CoT 转为隐空间连续表示，减少 token 解码的延迟与电量消耗。</li>
 <li><strong>多模态与多场景扩展：</strong> 结合端侧图像、短视频互动等多模态实时信号；把端侧意图预测扩展到淘宝首页 Feed、搜索建议、直播等更多商业场景。</li>
 </ul>
 <hr>
-<h2 id="八批判性思考摘要">八、批判性思考摘要</h2>
+<h2 id="批判性思考">批判性思考</h2>
 <ul>
 <li><strong>隐私不是卖点，指标才是：</strong> 端侧的最大价值是实时性与零云端成本。</li>
-<li><strong>Strawman 质疑与回应：</strong> 传统打散参数也能降重叠度——但会以相关性为代价；RecGPT 的核心差异在于“高相关下的语义多样性”。</li>
-<li><strong>效率哲学：</strong> sufficiency（够用）而非 brevity（短）——A2 证明了为短而短会走作弊捷径，A6 证明了质量约束下的压缩才是正道。</li>
+<li><strong>Strawman 质疑与回应：</strong> 传统打散参数也能降重叠度，但会以相关性为代价；RecGPT 的核心差异在于“高相关下的语义多样性”。</li>
+<li><strong>效率哲学：</strong> sufficiency（够用）而非 brevity（短）。A2 证明了为短而短会走作弊捷径，A6 证明了质量约束下的压缩才是正道。</li>
 <li><strong>报告的自我认知：</strong> V2 明确讨论了离线评测的局限（多 valid 答案、历史标签带曝光偏差、弱质量信号可被利用），这也是坚持引入质量门控的原因。</li>
 </ul>
 <hr>
@@ -716,12 +717,6 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
             <section>
             <i class="iconfont icon-tag"></i>Tag(s):
             
-            <span class="tag"><a href="https://kuhung.me/tags/mindmap/">
-                    #mindmap</a></span>
-            
-            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
-                    #思维导图</a></span>
-            
             <span class="tag"><a href="https://kuhung.me/tags/recgpt/">
                     #RecGPT</a></span>
             
@@ -730,6 +725,9 @@ $$\text{trigger rate: } 21% \quad|\quad \text{model qps: } 3200 \quad|\quad \tex
             
             <span class="tag"><a href="https://kuhung.me/tags/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
                     #推荐系统</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%AB%AF%E4%BE%A7%E6%A8%A1%E5%9E%8B/">
+                    #端侧模型</a></span>
             
             </section>
         
