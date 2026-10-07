@@ -6,7 +6,23 @@
     <description>Recent content in 图表专栏 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 21 Jul 2024 21:55:54 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Oct 2026 11:47:22 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RecGPT-Mobile：淘宝端侧 SLM 应用解析与效果洞察</title>
+      <link>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</link>
+      <pubDate>Wed, 07 Oct 2026 11:47:22 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</guid>
+      <description>刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了1G的内存。从我去年一直关注小模型来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。
+而评论区的部分网友不这么认为。他们认为比起效率，用户手机上的算力显然是大公司窥视的。我是觉得为了不同设备的算力榨取，做这件事不合理和不体面。我认为出发点更多是实验性质，探索端侧小模型能不能带来业务提升。
+有分歧咋办，去找原始资料呗。我顺着评论区，把 RecGPT-Mobile 和 V2 两篇论文翻完。发现其实有不少问题，不去做端侧部署是会不知道的。端侧的算力不是你想要，想要就能要。端侧部署先不说效果，工程方面就要做很多的阉割。至于效果，论文中给出的业务指标是相对提升，目前线上流量占比例仍然不高，可以推测还有较多tradeoff需要考虑。
+RecGPT-Mobile 系列论文整理 整理说明 本文档完整保留了多轮探讨的全部论点与深度追问细节，按八大主题与精选 Q&amp;amp;A 进行系统性结构化编排。 本文档采用原始文件上传 Gemini notebook，互动得出见解的方式。可能存在幻觉、理解不一的脑补情况。 一、论文基本信息 《RecGPT-Mobile: On-Device Large Language Models for User Intent Understanding in Taobao Feed Recommendation》 —— SIGIR &amp;lsquo;26（第 49 届 ACM SIGIR，墨尔本），arXiv:2605.04726（2026-05-06）。淘天集团 12 人团队，Bin Zhang、Weipeng Huang 为共同一作。5 页短文，CC-BY 协议。 《RecGPT-Mobile-V2 Technical Report》 —— arXiv:2608.24295（2026-08）。长篇技术报告，由同一团队撰写，补充机制层面的完整实验：行为压缩、推荐域初始化、CoT 信息价值、自适应推理控制、评测治理、质量–成本证据。 两篇的关系： 短文是“做了什么+线上效果”的简单发表；V2 报告是“为什么这样设计+每个机制的效果证据”。 二、出发点：为什么把 LLM 搬到端侧 核心任务：从用户近期的交互行为，预测“下一个搜索 query”，在用户意图快速演化的场景下尤为关键。团队抓住三个矛盾：
+云端推荐的延迟与成本瓶颈： 传统集中式云端架构存在不可避免的端云通信延迟，难以实时感知移动端用户瞬间变化的兴趣；若在云端用 LLM 做实时推理，面对淘宝亿级用户，服务器 GPU 成本是天价。
+我的评论：但其实端侧推理的延迟也不低，后文有提到；而且云端是不是一定要用LLM，一定要全部用户都用LLM，显然这种推极端的估算方式是不成立的；端侧部署模型，对于用户设备的要求会变高，影响用户体验的部分，该如何估量呢？
+隐式行为到显式意图的映射难题： 点击、加购、收藏、购买、售后探索都是隐式信号，不等于搜索词。尤其是复购、互补品购买、跨类目探索等售后场景，意图推导最为复杂——“买了手机，下一步想搜什么”没有标准答案。
+端侧部署的机遇与资源限制： 把 LLM 作为意图 Agent 直接部署在手机端，能利用本地数据毫秒级捕获实时兴趣（且行为日志不出端）；但手机在内存、算力、功耗上受严苛限制，未经优化的重型模型根本跑不起来。</description>
+    </item>
+    
     <item>
       <title>思维导图｜《创造：用非传统方式做有价值的事》</title>
       <link>https://kuhung.me/posts/build/</link>
