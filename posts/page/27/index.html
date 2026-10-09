@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  
+  
+  <link rel="canonical" href="https://kuhung.me/posts/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Posts | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Posts | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
+    }
+    .posts-history { margin-top: 12px; }
+    .posts-history summary {
+        display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+        color: #4a4b50; font-size: 15px; line-height: 1.9; cursor: pointer;
+        list-style: none;
+    }
+    .posts-history summary > span { max-width: 660px; }
+    .posts-history summary::-webkit-details-marker { display: none; }
+    .posts-history summary::after { content: "展开"; flex: none; color: #2d96bd; }
+    .posts-history[open] summary::after { content: "收起"; }
+    .posts-history summary:hover { color: #161209; }
+    .posts-history summary:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-timeline { margin-top: 18px; border-top: 1px solid #eee; }
+    .posts-phase {
+        display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 18px;
+        padding: 11px 0; border-bottom: 1px solid #eee;
+    }
+    .posts-phase:last-child { border-bottom: 0; }
+    .posts-phase strong { font-size: 13px; line-height: 1.8; font-weight: 600; color: #161209; }
+    .posts-phase p { margin: 0; font-size: 13px; line-height: 1.8; color: #4a4b50; }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
+    .posts-views a {
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding: 0; border: 0;
+    }
+    .posts-search-box { margin-top: 22px; position: relative; }
+    .posts-search-input {
+        width: 100%; box-sizing: border-box; appearance: none;
+        border: 1px solid #eee; border-radius: 0; background: transparent;
+        color: #161209; font: inherit; font-size: 14px; line-height: 1.6;
+        padding: 8px 12px;
+    }
+    .posts-search-input::placeholder { color: #a9a9b3; }
+    .posts-search-input:focus-visible { outline: 2px solid #2d96bd; outline-offset: 1px; border-color: #2d96bd; }
+    .posts-search-box[hidden],
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-history summary { align-items: flex-start; }
+        .posts-phase { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+        .posts-views { gap: 18px; }
+        .posts-search-input { min-height: 42px; font-size: 16px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
+    }
+</style>
+<div class="post-warp posts-index" data-posts-base="/posts/">
+    <h1 class="posts-heading">文章</h1>
+    
+    <details class="posts-history">
+        <summary>
+            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+        </summary>
+        <div class="posts-timeline" aria-label="文章主题变化">
+            
+            <div class="posts-phase">
+                <strong>2016 至 2018</strong>
+                <p>从计算机视觉、机器学习比赛和模型复现写起，边学边做。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2018 至 2020</strong>
+                <p>进入网易游戏后，内容转向数据挖掘、用户分析、A/B 测试和模型部署。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2020 至 2025</strong>
+                <p>在米哈游做算法，继续写反作弊和用户增长，也开始整理技术管理、量化研究和读书笔记。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2025 至今</strong>
+                <p>把重心放到 AI 编程、Agent 与 Skills、内容增长和产品实践，记录真正用过之后的判断、方法和结果。</p>
+            </div>
+            
+        </div>
+    </details>
+    
+
+    <nav class="posts-views" aria-label="文章视图">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" aria-current="page" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </nav>
+
+    <div class="posts-search-box" hidden>
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+    </div>
+
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
+        
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
+        
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||机器学习||机器学习进阶||强化学习||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数据工程" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||项目备忘" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||iot||Server||jlpt||LUT" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="pandas||高频问题"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/pandas-tricks/">Pandas 常见问题速查</a></h2>
+    <p class="posts-list-summary">标题 创建时间 发布时间 最后一次修改 备注 Pandas 常见问题速查 2020.08.04 2020.12.21 2021.06.09 / 一个 dataframe 重复多次，复制内容 n 遍 n = 3 df_repeated = pd.concat([df1]*n, ignore_index=True) 日期分箱 date_bins = …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-08-04">August 4, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="数据分析||高考"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/statistics-tell-lies/">2020高考志愿填报中的数据误导与价值机会</a></h2>
+    <p class="posts-list-summary">高考发榜，已经有几日。这篇文章姗姗来迟。还是希望，给各位考生朋友，补充有价值的信息。2020，迟到的高考，落下帷幕。紧接着，就是志愿填报环节。
+想起自己当年，突然要选择自己的专业，那是慌得不行。草草的根据自己分数，划了几条线，填了武大、华科、同济、天大。然后又在最后一刻，决定学门手艺。将华科调到了最前面，并且选择了目前的专业，一个名字听起来很酷的专业。于是，就这样来到了华科机械大类下的测控专业。
+ …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-07-25">July 25, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="技术||策略"
+         data-categories="行业趋势||数据挖掘/机器学习">
+    <h2 class="posts-list-title"><a href="/posts/game_anti-cheat/">云游戏，会是反作弊的银弹吗？</a></h2>
+    <p class="posts-list-summary">游戏反作弊，一直是各大游戏厂商头疼的问题。究其根本，游戏，本身是一种软件产品。交付到用户侧时，你永远无法穷举，玩家会怎么使用它。只要有利可图，就会有人去钻空子。
+为了反作弊，各大厂商，也是用尽各种手段。除了内部的反作弊团队，还有法务团队的律师函警告，甚至直接招安外挂开发者。说到底，游戏反作弊，有没有一个终极方案呢？
+数据挖掘，说是近5年的火热技术，没得跑的，甚至连电视剧里，都开始出现这个职业的主配 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-06-18">June 18, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/recommend_system_compare/">Recommend_system_compare</a></h2>
+    <p class="posts-list-summary">为何b站大主播，培养起来后，就会被拉走？从推荐逻辑解析，对比YouTube，谈谈如何避免这种情况
+详情展开
+思维导图获取 .xmind .pdf .png 关于作者</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-06-17">June 17, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="数据挖掘||商业模式"
+         data-categories="个人进步||行业趋势">
+    <h2 class="posts-list-title"><a href="/posts/why-i-left-netease-games/">我为何离开网易游戏</a></h2>
+    <p class="posts-list-summary">前言 网易游戏是我毕业后的第一家公司，说没有感情，那是不可能的。当然，这感情主要针对那里的同事和朋友。
+网易又叫猪场，猪场曾一度有最好吃的免费食堂，一度给名校毕业生开最高的工资。
+在数年前，大话西游2帮助公司起死回生。
+而后开发的梦幻西游，成了公司最强的现金流来源。
+2016年阴阳师爆款，几乎成了全民游戏。
+2018年，加入网易游戏，带着自豪感。因为它说：用心做游戏。
+2020年，离开网易游戏，矛 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-05-13">May 13, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/data_analytics_mindmap/">思维导图｜数据分析</a></h2>
+    <p class="posts-list-summary">思维导图获取 .xmind .pdf .png 关于作者</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-05-06">May 6, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/data_analytics_from_0_to_1/">Data_analytics_from_0_to_1</a></h2>
+    <p class="posts-list-summary">常自嘲，我这个数据挖掘工程师，实际上就是一个写 SQL 的劳工。咱们又 TF bot，那我就是 sql boy。数据挖掘这个工作，在很多公司里都很微妙。模型也做、分析也做。当然，和其它岗位一样，做得最多、最要紧的其实是 PPT。抛开 PPT不说，对数据的敏感度，也是这个职业很重要的要求。
+刚开始接触数据分析的时候，常常感觉抠脑壳。究其原因，其实是不理解这套东西的运行逻辑。当你了解了之后，这简直就和 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-05-02">May 2, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/mindmap_2020/">思维导图｜15份结构化知识整理</a></h2>
+    <p class="posts-list-summary">思维导图，是结构化思维的具体表现形式。最鲜明的例子，就是当你和一个人聊天时，可以很明确的感觉到，拥有结构化思维的人，他的语言组织能力很强，且很有层次感。简单来说，就是和他沟通，简单高效、有收获，有层次感。
+在过去几年里，也整理了一些场景的思维导图。大约是从15年，上大学的第二年，第一次接触到这个东西。不过略微遗憾的是，早期是一些手绘的内容，没能保存在身边。以下是电子化的内容，分享给到大家。
+这里， …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-04-25">April 25, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="app||计算机视觉||CV"
+         data-categories="Side Project">
+    <h2 class="posts-list-title"><a href="/posts/simple-image-search/">自制以图搜图引擎，居家学习必备</a></h2>
+    <p class="posts-list-summary">最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
+各位绅士可别想歪，我说的是动漫。
+这个问题本质是一个相似度的检索问题。
+说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。
+但是当你满怀期待上传一张图时，你会发现，他返回的结果要么是同风格 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-04-13">April 13, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/computational-advertising/">思维导图｜《计算广告》</a></h2>
+    <p class="posts-list-summary">
+思维导图获取 .xmind .pdf .png 关于作者 </p>
+    <div class="posts-list-meta">
+        <time datetime="2020-04-05">April 5, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+    </div>
+
+    <div class="posts-foot server-posts-foot">
+        
+
+<ul class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/">1</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/25/">25</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/26/">26</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/posts/page/27/">27</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/28/">28</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/29/">29</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/32/">32</a></li>
+        </span>
+    
+    
+    
+    
+</ul>
+
+        <span class="posts-total">共 315 篇</span>
+    </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
+</div>
+<script defer src="/js/posts-filter.js"></script>
+
+          
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="/js/vendor_main.min.js" async=""></script>
+
+
+
+
+     </div>
+  </body>
+</html>

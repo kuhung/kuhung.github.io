@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/strategy-04/" />
+  <link rel="next" href="https://kuhung.me/posts/the-effective-engineer/" />
+  <link rel="canonical" href="https://kuhung.me/posts/strategy-05/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Strategy 05 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Strategy 05 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/strategy-05/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2021-08-04T23:14:15+08:00","datePublished":"2021-08-04T23:14:15+08:00","description":"概述 预计耗时 预计发布 实际发布 最后一次修改 自我实现的预言与试错学习 古希腊有个神话故事，说的是有个能工巧匠，雕刻了一尊美丽女神的石像。在他的强烈愿望下，石像变成了真人。这个故事，也被叫做自我实现的预言，意即：你期望什么，就会得到什么。如果你相信自己是一个有规律的创作者，那你就会想办法维持住这个形象，最后反应出来的结果也是有规律的创作。 今天我们就通过《战略历程》这本书，拆解战略的本质，通过 …","headline":"Strategy 05","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"mindmap, 思维导图","mainEntityOfPage":{"@id":"https://kuhung.me/posts/strategy-05/","@type":"WebPage"},"name":"Strategy 05","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/strategy-05/"}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Strategy 05</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2021-08-04 itemprop="datePublished">August 4, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#认知学派简单介绍">认知学派简单介绍</a></li>
+    <li><a href="#认知决策中的常见偏见">认知决策中的常见偏见</a></li>
+    <li><a href="#认知的两个过程">认知的两个过程</a>
+      <ul>
+        <li><a href="#信息处理过程">信息处理过程</a></li>
+        <li><a href="#构架过程">构架过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#评价认知学派">评价认知学派</a></li>
+    <li><a href="#学习学派">学习学派</a>
+      <ul>
+        <li><a href="#战略管理与责任">战略管理与责任</a></li>
+      </ul>
+    </li>
+    <li><a href="#学习模式的表现">学习模式的表现</a></li>
+    <li><a href="#构建学习型组织">构建学习型组织</a></li>
+    <li><a href="#评价学习学派">评价学习学派</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <table>
+<thead>
+<tr>
+<th>概述</th>
+<th>预计耗时</th>
+<th>预计发布</th>
+<th>实际发布</th>
+<th>最后一次修改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="自我实现的预言与试错学习">自我实现的预言与试错学习</h1>
+<p>古希腊有个神话故事，说的是有个能工巧匠，雕刻了一尊美丽女神的石像。在他的强烈愿望下，石像变成了真人。这个故事，也被叫做自我实现的预言，意即：你期望什么，就会得到什么。如果你相信自己是一个有规律的创作者，那你就会想办法维持住这个形象，最后反应出来的结果也是有规律的创作。</p>
+<p>今天我们就通过《战略历程》这本书，拆解战略的本质，通过这篇内容，帮助你理解战略。</p>
+<h2 id="认知学派简单介绍">认知学派简单介绍</h2>
+<p>在认知学派中，认知心理学是其学科基础。这一分支，受广大心理学爱好者拥护。他们试图从认知的角度，去解释战略、去设置战略。认知源于领导，环境压倒一切。</p>
+<p>本学派同认知模式类似，也分为两个分支。一个是实证主义，认为战略是通过观察环境得来的。另一个是主观意愿。认为认知创造力世界。</p>
+<h2 id="认知决策中的常见偏见">认知决策中的常见偏见</h2>
+<p>如果说到认知，那就不得不谈谈认知心理学中常见的偏见。理解这些偏见，将有助于做出正确的决策，减少战略设计错误的风险。</p>
+<p>如果我们有了一个观点，我们将倾向于寻找支撑证据，进而忽视掉那些反对意见。在这个过程中，我们可能做出虚假的关联，甚至是错误的归因。另一方面，受制于信息获取的有效性、及时性，以及锚定心理的影响，我们会对那些印象深刻的信息赋予较大权重，即时他们并没有什么用处。</p>
+<p>我们也常常低估了项目完成的时间，过于乐观。更甚至，在相同条件下，却做出不一样的决策，决策不一致性极强。最后，可能由于运气好，我们押对了一两次，但均值回归存在广泛存在，下次就可能无效了。</p>
+<h2 id="认知的两个过程">认知的两个过程</h2>
+<h3 id="信息处理过程">信息处理过程</h3>
+<p>如果说认知学派是在观察外部环境，那么认知这个信息处理过程，往往会将很多高级经理陷入其中。</p>
+<h4 id="信息处理的逆向决策技巧">信息处理的逆向决策技巧</h4>
+<p>认知过程中，核心的一点在于质疑，这里介绍逆向决策技巧，来使质疑有章法可循。首先是面对结果，这还不够好。以实验的心态对待结果，那么将会有更多的开放心态。对惊喜带个问号，挖掘其中的问题。日常的异议是有其合理性的，允许组织内出现不同声音。不同立场的人观点不同是合理的，因为每个人接收的信息不同。陌生人的观点也是合理的，当组织内每个人都习惯了某种范式，新人的加入将带来新观点。任何事物的因果都是双向的，命题和反命题也都是成立的，通过这种方法，锻炼批判思维的能力。</p>
+<h3 id="构架过程">构架过程</h3>
+<p>在另一侧，认知学派是一个构建过程。该过程常常会有群体思维。为了避免群体一致性导致的决策失误，可以常备不同的思维框架，来从不同视角看待问题。</p>
+<h2 id="评价认知学派">评价认知学派</h2>
+<p>认知学派的核心是正确的，战略的形成本身就是基本认知过程。相较于定位学派，认知学派的不确定性更强。与计划学派相比，认知学派又更具有个性化。</p>
+<hr>
+<h2 id="学习学派">学习学派</h2>
+<p>学习学派是另一种较为时髦的学派，目前也流行在各大互联网公司之中。学习学派强调试错，通过试验与失败，找到合适的战略风格。</p>
+<h3 id="战略管理与责任">战略管理与责任</h3>
+<p>战略管理不是管理变化，而是通过变化来管理，这也是学习学派所推崇的。好战略的责任是将规划与执行统一起来，让思想与行动同步。</p>
+<h2 id="学习模式的表现">学习模式的表现</h2>
+<p>在这一学派中，具有三个表现。第一个是断续渐进。很多时候，大家会小修小补，来让组织茁壮发展。第二个是逻辑渐进。重要战略、生死攸关的战略，不是一下子就出现的。而是小范围萌芽，更大范围实验，以及最后落地成为战略。最后一条，是理解战略是非线性的。战略的有效性不在于它的清晰严密，而在于它能捕捉到变化，且将相应资源调动在新出现的机遇上。</p>
+<h2 id="构建学习型组织">构建学习型组织</h2>
+<p>失败是学习之母。在学习型组织中，一定是少不了失败的。失败在任何组织内都不可避免，但学习型组织中，是通过失败来学习的。定期审视流程，不断优化流程也是学习型组织的特色。从一手资料学习。无论是到一线了解客户诉求，还是高层管理面对面沟通，学习型组织都需要获取一手的信息。保持信息的流动，对于学习型组织也很重要。其实，学习型组织本身和扁平化组织很像，两者只是从不同角度在描述组织而已。</p>
+<h2 id="评价学习学派">评价学习学派</h2>
+<p>正如越来越多组织开始扁平化，越来越多组织也开始学习学派。但其实学习学派也不是那么完美，首先战略的漂移，会影响组织战略的实施，因为整个组织都在不断学习，战略可能也会随之变化。接着是在试错时，一方面可能在错误道路上越走越远，另一方面是较为浪费时间。这个学派，需要能够识别机遇。</p>
+<h2 id="总结">总结</h2>
+<p>认知学派和学习学派，都向我们的日常生活靠近了一步。这些学派的观点技巧，不仅能用于组织战略设定，对于个人的提升也是同样的道理。关注并订阅这个系列，将有用的内容转发给朋友，喜欢的话点个赞，战略体系我们明天接着讲。</p>
+<hr>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/mindmap/scrum.jpg" alt="" class="lazyload"><figcaption class="image-caption"></figcaption></figure></p>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/strategy-05/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mindmap/">
+                    #mindmap</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+                    #思维导图</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/strategy-04/" class="prev" rel="prev" title="Strategy 04"><i class="iconfont icon-left"></i>&nbsp;Strategy 04</a>
+        
+        
+        <a href="https://kuhung.me/posts/the-effective-engineer/" class="next" rel="next" title="思维导图｜《The Effective Enginner》">思维导图｜《The Effective Enginner》&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/data-engineering-in-2020/" />
+  <link rel="next" href="https://kuhung.me/posts/what-is-seo/" />
+  <link rel="canonical" href="https://kuhung.me/posts/data-management-everyone-should-know/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Data Management Everyone Should Know | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Data Management Everyone Should Know | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/data-management-everyone-should-know/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2020-09-22T12:37:23+08:00","datePublished":"2020-09-22T12:37:23+08:00","description":"要成为真正的“ 全栈 ”数据科学家，或者被许多博主和雇主称为“ 独角兽 ”，您必须掌握数据科学过程的每个步骤-从存储数据到完成产品的整个过程（通常是预测模型）。但是，大多数数据科学培训都集中在机器/深度学习技术上。 数据管理知识通常被认为是事后的想法。数据科学专业的学生通常会使用笔记本电脑上存储的文本文件中经过处理和清理的数据来学习建模技能，而忽略了如何制作数据香肠。学生通常不会意识到在行业环境 …","headline":"Data Management Everyone Should Know","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"mindmap, 思维导图","mainEntityOfPage":{"@id":"https://kuhung.me/posts/data-management-everyone-should-know/","@type":"WebPage"},"name":"Data Management Everyone Should Know","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/data-management-everyone-should-know/","wordCount":103}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Data Management Everyone Should Know</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-09-22 itemprop="datePublished">September 22, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#非结构化数据和大数据工具的兴起">非结构化数据和大数据工具的兴起</a></li>
+    <li><a href="#案例研究为推荐的应用程序启动构建端到端数据科学基础架构">案例研究：为推荐的应用程序启动构建端到端数据科学基础架构</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>要成为真正的“ <a href="https://medium.com/applied-data-science/new-series-the-full-stack-data-scientist-15791cbef626">全栈</a> ”数据科学家，或者被许多博主和雇主称为“ <a href="https://towardsdatascience.com/whats-the-secret-sauce-to-transforming-into-a-unicorn-in-data-science-94082b01c39d">独角兽</a> ”，您必须掌握数据科学过程的每个步骤-从存储数据到完成产品的整个过程（通常是预测模型）。但是，大多数数据科学培训都集中在机器/深度学习技术上。</p>
+<p>数据管理知识通常被认为是事后的想法。数据科学专业的学生通常会使用笔记本电脑上存储的文本文件中经过处理和清理的数据来学习建模技能，而忽略了如何制作数据香肠。学生通常不会意识到在行业环境中，通常需要从各种来源获取原始数据以进行建模 <a href="https://www.datacamp.com/community/blog/full-stack-data-science-transcript">80％的工作</a>。而且，由于企业项目通常涉及其本地计算机无法处理的大量数据，因此整个建模过程通常在云中进行，大多数应用程序和数据库托管在其他地方的数据中心的服务器中。</p>
+<p>即使在学生找到了数据科学家的工作之后，数据管理通常也变成了由单独的数据工程团队负责的事情。结果，太多的数据科学家对数据存储和基础设施知之甚少，这常常损害了他们在工作中做出正确决定的能力。</p>
+<p>本文的目的是为2019年的数据科学家提供有关数据管理的知识的路线图-从数据库类型，在何处以及如何存储和处理数据，</p>
+<hr>
+<h2 id="非结构化数据和大数据工具的兴起">非结构化数据和大数据工具的兴起</h2>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/1*Fz7nDoYorQS9cRQaLP-SkA.jpeg?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>IBM 305 RAMAC（来源：<a href="https://commons.wikimedia.org/wiki/File:BRL61-IBM_305_RAMAC.jpeg">WikiCommons</a>）</p>
+<p>数据科学的<a href="https://www.forbes.com/sites/insights-intelai/2019/05/22/automated-inspiration/#5516de61c44f">故事</a>实际上<a href="https://www.forbes.com/sites/insights-intelai/2019/05/22/automated-inspiration/#5516de61c44f">就是数据存储</a>的<a href="https://www.forbes.com/sites/insights-intelai/2019/05/22/automated-inspiration/#5516de61c44f">故事</a>。在数字化时代之前，数据被存储在我们的头脑中，粘土板上或纸上，这使得汇总和分析数据非常耗时。1956年，IBM推出了第一台带有磁性硬盘驱动器的商用计算机<a href="https://gizmodo.com/ibm-305-ramac-the-grandaddy-of-modern-hard-drives-5494858">305 RAMAC</a>。整个设备需要30英尺x 50英尺的物理空间，重达一吨，每月租金3200美元，公司可以租用该设备来存储多达5 MB的数据。</p>
+<p>此后的60年中，<a href="https://www.computerworld.com/article/3182207/cw50-data-storage-goes-from-1m-to-2-cents-per-gigabyte.html">DRAM的每千兆字节价格</a>已从1965年的26.4亿美元下降到2017年的4.9美元。除了价格便宜之外，数据存储也变得越来越密集/越来越小。相比之下，305 RAMAC中的一个磁盘存储每平方英寸存储一百位<a href="https://www.wired.com/2012/03/seagate-trillion-bits/">在</a>当今的典型磁盘中，<a href="https://www.wired.com/2012/03/seagate-trillion-bits/">每平方英寸的数据量超过了万亿比特</a>。</p>
+<p>数据存储成本和大小显着降低的结合，使当今的大数据分析成为可能。以超低的存储成本，建立数据科学基础架构以从大量数据中收集和提取见解已成为企业的获利方法。随着大量<a href="https://internetofthingsagenda.techtarget.com/definition/IoT-device">IoT设备</a>不断生成和传输用户数据，企业正在收集与越来越多的活动有关的数据，从而创建了大量的高容量，高速度和高多样性的信息资产（或“ <a href="https://www.zdnet.com/article/volume-velocity-and-variety-understanding-the-three-vs-of-big-data/">大数据的三个Vs</a> ”）。其中大多数活动（例如电子邮件，视频，音频，聊天消息，社交媒体帖子）都会生成<a href="https://www.datamation.com/big-data/structured-vs-unstructured-data.html">非结构化数据</a>，如今已占到企业数据总量的近80％，并且在过去十年中其增长速度是结构化数据的两倍。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/1*JeIC6PreHjgh06w3WqkXMA.jpeg?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>2017年存储了125 EB的企业数据; 80％是非结构化数据。（来源：<a href="https://www.credit-suisse.com/eg/en/articles/asset-management/in-cloud-we-trust-uk-201905.tag*article-topic--asset-management---security.html">瑞士信贷</a>）</p>
+<p>大规模的数据增长极大地改变了数据的存储和分析方式，因为传统的工具和方法无法应对“大数据的三大挑战”。新技术的开发能够处理不断增长的数据量和各种数据，并且速度更快，成本更低。这些新工具还对数据科学家的工作方式产生深远影响-允许他们通过执行分析和构建以前无法实现的新应用程序，通过海量数据获利。以下是我们认为每位数据科学家都应了解的主要大数据管理创新。</p>
+<p><strong>关系数据库和NoSQL</strong></p>
+<p><a href="https://www.alooma.com/blog/types-of-modern-databases">关系数据库管理系统</a>（RDBMS）于1970年代出现，它使用结构化查询语言（SQL）语句查询和维护数据库，将数据存储为具有行和列的表。关系数据库基本上是表的集合，每个表都具有一个模式，该模式严格定义了它们存储的数据的属性和类型，以及标识特定列或行以方便访问的键。RDBMS格局曾经由<a href="https://db-engines.com/en/system/Oracle">Oracle</a>和<a href="https://db-engines.com/en/system/IBM+Db2">IBM</a>统治，但是如今许多开源选项（如<a href="https://db-engines.com/en/system/MySQL">MySQL</a>，<a href="https://db-engines.com/en/system/SQLite">SQLite</a>和<a href="https://db-engines.com/en/system/PostgreSQL">PostgreSQL）</a>同样受欢迎。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*BcJW0soJynaxRoK_?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>RDBMS按受欢迎程度排名（来源：<a href="https://db-engines.com/en/ranking/relational+dbms">DB-Engines</a>）</p>
+<p>关系数据库由于具有一些非常吸引人的特性而在商业世界中找到了家。在关系数据库中，<a href="https://towardsdatascience.com/choosing-the-right-database-c45cd3a28f77">数据完整性</a>绝对至关重要。RDBMS满足<a href="https://blog.yugabyte.com/a-primer-on-acid-transactions/">原子性，一致性，隔离性和耐久性（或兼容ACID）的要求</a>通过施加许多约束条件来确保存储的数据可靠和准确，使其成为跟踪和存储帐号，订单和付款等事物的理想选择。但是这些限制伴随着代价高昂的折衷。由于架构和类型的限制，RDBMS在存储非结构化或半结构化数据时非常糟糕。</p>
+<p>严格的架构还使RDBMS的设置，维护和增长变得更加昂贵。设置RDBMS要求用户事先具有特定的用例。对模式的任何更改通常都是困难且耗时的。此外，传统的RDBMS被设计为<a href="https://crate.io/a/rise-distributed-sql-database/">在单个计算机节点上运行</a>，这意味着在处理大量数据时，它们的速度大大降低。<a href="https://crate.io/a/rise-distributed-sql-database/">分片</a>为了在保持ACID合规性的同时进行水平扩展的RDBMS也极具挑战性。所有这些属性使传统的RDBMS不能很好地处理现代大数据。</p>
+<p>到2000年代中期，现有的RDBMS不能再处理一些非常成功的在线业务的变化需求和指数增长，结果开发了许多非关系（或NoSQL）数据库（这是有关Facebook如何处理<a href="https://blog.yugabyte.com/facebooks-user-db-is-it-sql-or-nosql/">的故事</a>数据量开始增长时受到MySQL的限制）。当时没有任何已知的解决方案，这些在线业务发明了新的方法和工具来处理他们收集的大量非结构化数据：Google创建了<a href="https://en.wikipedia.org/wiki/Google_File_System">GFS</a>，<a href="https://ai.google/research/pubs/pub62">MapReduce</a>和<a href="https://cloud.google.com/bigtable/docs/">BigTable</a>；亚马逊创建了<a href="https://cloudacademy.com/blog/amazon-dynamodb-ten-things/">DynamoDB</a> ; 雅虎创建了<a href="https://www.sas.com/nl_nl/insights/big-data/hadoop.html#hadoopworld">Hadoop</a> ; Facebook创建了<a href="https://www.facebook.com/notes/facebook-engineering/cassandra-a-structured-storage-system-on-a-p2p-network/24413138919/">Cassandra</a>和<a href="https://www.facebook.com/notes/facebook-engineering/hive-a-petabyte-scale-data-warehouse-using-hadoop/89508453919/">Hive</a>；领英创建<a href="https://engineering.linkedin.com/blog/2016/04/kafka-ecosystem-at-linkedin">卡夫卡</a>。这些业务中有些是开源的。一些发表的研究论文详细介绍了它们的设计，从而导致使用新技术的数据库激增，NoSQL数据库成为该行业的主要参与者。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*EeRO-8cl2oZkZ49J?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>自2000年代以来，数据库选项呈爆炸式增长。资料来源：<a href="https://www.researchgate.net/figure/Landscape-and-categorization-of-the-high-variety-of-existing-database-systems-18_fig2_303562879">Korflatis等。al（2016）</a></p>
+<p>与模式无关，可提供存储和处理大量<a href="https://www.datamation.com/big-data/structured-vs-unstructured-data.html">非结构化和半结构化数据</a>所需的灵活性。用户不需要知道在设置过程中将存储什么类型的数据，并且系统可以适应数据类型和模式的更改。设计用于在不同节点之间分布数据，NoSQL数据库通常具有更高的水平可扩展性和容错性。但是，这些性能优势也要付出代价-NoSQL数据库不符合ACID，并且不能保证数据的一致性。</p>
+<p>相反，它们提供了“ <a href="https://medium.baqend.com/nosql-databases-a-survey-and-decision-guidance-ea7823a822d">最终的一致性</a> ”：当旧数据被覆盖时，它们将暂时返回有些错误的结果。例如，<a href="https://arstechnica.com/information-technology/2016/03/to-sql-or-nosql-thats-the-database-question/">Google的搜索引擎索引</a>当人们同时搜索给定术语时，它不能覆盖其数据，因此当我们进行搜索时，它不会为我们提供最新的结果，但可以为我们提供最新的最佳答案。尽管此设置在绝对需要数据一致性（例如财务交易）的情况下不起作用；对于需要速度而不是精确度的任务来说，这是很好的选择。</p>
+<p>现在有几种不同的NoSQL类别，每种类别都有特定的用途。键值存储（例如<a href="https://db-engines.com/en/system/Redis">Redis</a>，<a href="https://db-engines.com/en/system/Amazon+DynamoDB">DynamoDB</a>和<a href="https://db-engines.com/en/system/Microsoft+Azure+Cosmos+DB">Cosmos DB</a>）仅存储键值对，并提供用于检索与已知键关联的值的基本功能。当速度很重要时，它们最适合使用简单的数据库架构。宽列存储（例如<a href="https://db-engines.com/en/system/Cassandra">Cassandra</a>，<a href="https://db-engines.com/en/system/ScyllaDB">Scylla</a>和<a href="https://db-engines.com/en/system/HBase">HBase</a>）将数据存储在列族或表中，并被构建为在大型分布式系统中管理PB级的数据。文档存储，例如<a href="https://db-engines.com/en/system/MongoDB">MongoDB</a>和<a href="https://db-engines.com/en/system/Couchbase">Couchbase</a>，以XML或JSON格式存储数据，文档名称为键，文档内容为值。这些文档可以包含许多不同的值类型，并且可以嵌套，使它们特别适合于管理分布式系统中的半结构化数据。诸如<a href="https://db-engines.com/en/system/Neo4j">Neo4J</a>和<a href="https://db-engines.com/en/system/Amazon+Neptune">Amazon Neptune之</a>类的图形数据库将数据表示为相关节点或对象的网络，以便于数据可视化和图形分析。<a href="https://towardsdatascience.com/graph-databases-whats-the-big-deal-ec310b1bc0ed">图形数据库</a>对于分析异构数据点之间的关系特别有用，例如在欺诈预防或Facebook的朋友图中。</p>
+<p>MongoDB是目前<a href="https://db-engines.com/en/ranking">最流行的NoSQL数据库</a>，并且为一些使用传统RDBMS方法努力处理非结构化数据的企业提供了可观的价值。这是<a href="https://arstechnica.com/information-technology/2016/03/to-sql-or-nosql-thats-the-database-question/">两个行业示例</a>：大都会人寿（MetLife）花了数<em>年时间</em>试图在可以处理其所有保险产品的RDBMS上建立集中式客户数据库之后，内部黑客马拉松的某人在数小时内就用MongoDB构建了一个数据库，并在90天内投入生产。市场研究公司YouGov每小时收集5吉比特数据，通过从RDBMS迁移到MongoDB，节省了以前使用的70％的存储容量。</p>
+<p><strong>数据仓库，数据湖和数据沼泽</strong></p>
+<p>随着数据源的不断增长，使用多个数据库执行数据分析变得效率低下且成本高昂。<a href="https://www.dataversity.net/brief-history-data-warehouse/">1980年代</a>出现了一种称为<a href="https://blogs.oracle.com/bigdata/data-lake-database-data-warehouse-difference">数据仓库的</a>解决方案，<a href="https://www.dataversity.net/brief-history-data-warehouse/">该</a>解决方案集中了企业所有数据库中的数据。数据仓库通过创建来自各种来源（内部和外部）的单个数据存储库，支持从操作系统到分析/决策系统的数据流。在大多数情况下，数据仓库是一个关系数据库，用于存储经过处理的数据，这些数据针对收集业务见解进行了优化。它收集来自交易系统和业务应用程序的具有预定结构和架构的数据，并且该数据通常用于运营报告和分析。</p>
+<p>但是，由于进入数据仓库的数据需要在存储之前进行处理-使用当今大量的非结构化数据，这可能会花费大量时间和资源。作为回应，企业在<a href="https://www.dataversity.net/brief-history-data-lakes/">2010年代</a>开始维护<a href="https://blogs.oracle.com/bigdata/data-lake-database-data-warehouse-difference">Data Lakes</a>。，可以以任意规模存储企业的所有结构化和非结构化数据。数据湖存储原始数据，无需先定义数据结构和架构即可进行设置。数据湖使用户无需将数据移至单独的分析系统即可运行分析，从而使企业能够从以前无法进行分析的新数据源中获取见解，例如，通过使用日志文件中的数据构建机器学习模型，点击流，社交媒体和物联网设备。通过使所有企业数据易于分析，数据科学家可以回答一组新的业务问题，或使用新数据解决旧问题。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*QC4YhkOjmsLrnt6f?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>数据仓库和数据湖比较（来源：<a href="https://aws.amazon.com/big-data/datalakes-and-analytics/what-is-a-data-lake/">AWS</a>）</p>
+<p>Data Lake体系结构的一个共同挑战是，如果没有适当的数据质量和治理框架，当数以千亿计的结构化和非结构化数据流入Data Lakes时，对它们的内容进行分类通常变得非常困难。由于存储的数据太乱而无法使用，因此数据湖可能会变成<a href="https://s3-ap-southeast-1.amazonaws.com/mktg-apac/Big+Data+Refresh+Q4+Campaign/ESG-White-Paper-AWS-Apr-2017+(FINAL).pdf">数据沼泽</a>。现在，许多组织都在呼吁采取更多的数据治理和元数据管理实践，以防止形成数据沼泽。</p>
+<p><strong>分布式和并行处理：Hadoop，Spark和MPP</strong></p>
+<p>在过去的几十年中，尽管存储和计算需求突飞猛进，但传统硬件的发展还不足以跟上步伐。企业数据不再完全适合标准存储，处理大多数大数据分析任务所需的计算能力可能需要数周，数月，或者根本不可能在标准计算机上完成。为了克服这一缺陷，许多新技术已经发展为包括多台计算机协同工作，将数据库分发到数千个商用服务器。当计算机网络连接在一起并共同完成同一任务时，计算机形成一个<a href="https://www.datacamp.com/community/blog/data-science-cloud">集群</a>。群集可以看作是一台计算机，但是可以通过使用商品硬件以更低的成本大大提高一台功能更强大的计算机的性能，可用性和可伸缩性。<a href="https://towardsdatascience.com/what-happened-to-hadoop-what-should-you-do-now-2876f68dbd1d">Apache Hadoop</a>是分布式数据基础架构的一个示例，该基础架构利用群集来存储和处理大量数据，并启用了Data Lake体系结构。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*Qll4HLSAjByLHgn3?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>数据库技术的发展（来源：<a href="https://practicalanalytics.co/2015/06/02/the-maturing-nosql-ecoystem-a-c-level-guide/">Business Analytic 3.0</a>）</p>
+<p>当您考虑Hadoop时，请考虑“分发”。Hadoop由<a href="https://hortonworks.com/apache/hadoop/#section_2">三个主要组件组成</a>：Hadoop分布式文件系统（HDFS），一种跨多个（分布式）物理硬盘驱动器存储和跟踪数据的方式；MapReduce，一个用于在分布式处理器上处理数据的框架；还有另一个资源协商器（YARN），它是一个群集管理框架，可以协调诸如分布式计算机之间的CPU使用率，内存和网络带宽分配之类的事情的分布。Hadoop的处理层是一项特别引人注目的创新：<a href="https://hci.stanford.edu/courses/cs448g/a2/files/map_reduce_tutorial.pdf">MapReduce</a>这是一种两步计算方法，用于以可靠，容错的方式处理在大型商用硬件集群中分布的大型（多TB或更大）的数据集。第一步是将数据分布在多台计算机（地图）上，每台计算机并行对其数据切片执行计算。下一步是以成对的方式合并这些结果（减少）。Google 于2004年在MapReduce上<a href="https://ai.google/research/pubs/pub62">发表了一篇论文</a>，<a href="https://ai.google/research/pubs/pub62">该论文</a><a href="https://www.wired.com/2011/10/how-yahoo-spawned-hadoop/">被Yahoo程序员采纳。</a>他于2006年在开放源代码Apache环境中实现了该功能，从而为每个企业提供了使用商品硬件存储前所未有的数据量的功能。即使该想法有许多开源实现，Google品牌名称MapReduce仍然存在，就像Jacuzzi或Kleenex。</p>
+<p>Hadoop专为迭代计算而构建，可在一次操作中从磁盘扫描大量数据，将处理分布在多个节点上，并将结果存储回磁盘上。在Hadoop和<a href="https://hbase.apache.org/">HBase中</a>，在传统数据仓库环境中运行需要4个小时才能运行<a href="https://hortonworks.com/apache/hadoop/#section_2">的索引数据的ZB的</a>查询可以在10到12秒内完成。Hadoop通常用于生成复杂的分析模型或大容量数据存储应用程序，例如追溯和预测分析。机器学习和模式匹配；客户细分和客户流失分析；和活动档案。</p>
+<p>但是MapReduce <a href="https://datawhatnow.com/batch-processing-mapreduce/">批量处理数据，</a>因此不适合处理实时数据。<a href="https://towardsdatascience.com/a-beginners-guide-to-apache-spark-ff301cb4cd92">Apache Spark</a>成立于2012年，以填补这一空白。Spark是一种并行数据处理工具，通过<a href="https://dzone.com/articles/apache-spark-introduction-and-its-comparison-to-ma">在内存中处理数据</a>来优化速度和效率。它以相同的MapReduce原理运行，但是通过完成内存中的大部分计算并且仅在内存已满或计算完成时才写入磁盘，才能运行得更快。这种内存中的计算使Spark可以“在内存中运行程序的速度比Hadoop MapReduce快100倍，在磁盘上快10倍”。但是，当数据集太大而导致<a href="https://towardsdatascience.com/a-beginners-guide-to-apache-spark-ff301cb4cd92">RAM不足时，就会成为问题</a>（通常为数百GB或更多），Hadoop MapReduce可能会胜过Spark。Spark还具有广泛的数据分析库集，涵盖了广泛的功能：用于SQL和结构化数据的<a href="https://spark.apache.org/sql/">Spark SQL；</a>用于SQL的<a href="https://spark.apache.org/sql/">Spark SQL；</a>用于SQL的<a href="https://spark.apache.org/sql/">Spark SQL</a>。<a href="https://spark.apache.org/mllib/">MLib</a>用于机器学习，<a href="https://spark.apache.org/streaming/">Spark Streaming</a>用于流处理，而<a href="https://spark.apache.org/graphx/">GraphX</a>用于图形分析。由于Spark的重点是计算，因此它没有自带的存储系统，而是在各种存储系统（例如<a href="https://aws.amazon.com/s3/">Amazon S3</a>，<a href="https://azure.microsoft.com/en-us/services/storage/">Azure存储</a>和<a href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html">Hadoop的HDFS）上运行</a>。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*MbOv4dHH2DLiEjGd?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>在MPP系统中，所有节点都是互连的，并且可以通过网络交换数据（来源：<a href="https://www.ibm.com/support/knowledgecenter/en/SSZJPZ_11.5.0/com.ibm.swg.im.iis.productization.iisinfsv.install.doc/topics/wsisinst_pln_engscalabilityparallel.html">IBM</a>）</p>
+<p>并非只有Hadoop和Spark可以利用群集来处理大量数据。分布式查询处理的另一种流行的计算方法称为<a href="https://www.zdnet.com/article/mapreduce-and-mpp-two-sides-of-the-big-data-coin/">大规模并行处理（MPP）</a>。与MapReduce相似，MPP在多个节点之间分布数据处理，并且节点并行处理数据以提高速度。但是与Hadoop不同，MPP用于RDBMS，并使用<a href="https://0x0fff.com/hadoop-vs-mpp/">“无共享”架构</a> -每个节点都使用多核处理器处理自己的数据片段，使其速度比传统RDBMS快许多倍。一些MPP数据库（例如<a href="https://pivotal.io/pivotal-greenplum">Pivotal Greenplum</a>）具有<a href="https://madlib.apache.org/">成熟的机器学习库</a>允许进行数据库内分析。但是，与传统的RDBMS一样，大多数MPP数据库不支持非结构化数据，甚至结构化数据也需要进行一些处理才能适合MPP基础结构；因此，要花费更多的时间和资源来建立MPP数据库的数据管道。由于MPP数据库符合ACID标准，并且提供的速度比传统RDBMS快得多，因此它们通常用于高端企业数据仓库解决方案中，例如<a href="https://db-engines.com/en/system/Amazon+Redshift%3BGreenplum%3BSnowflake">Amazon Redshift，Pivotal Greenplum和Snowflake</a>。作为一个行业例子，<a href="https://www.forbes.com/sites/tomgroenfeldt/2013/02/14/at-nyse-the-data-deluge-overwhelms-traditional-databases/#3d171aa05aab">纽约证券交易所</a>每天接收4到5 TB的数据，并进行复杂的分析，市场监视，容量计划和监视。该公司一直在使用无法处理工作负载的传统数据库，该数据库需要花费数小时才能加载并且查询速度较差。转移到MPP数据库后，其每日分析运行时间减少了八个小时。</p>
+<p><strong>云服务</strong></p>
+<p>彻底改变企业大数据分析能力的另一项创新是<a href="https://www.credit-suisse.com/eg/en/articles/asset-management/in-cloud-we-trust-uk-201905.tag*article-topic--asset-management---security.html">云服务的兴起</a>。在云服务可用之前的糟糕年代，企业不得不从软件和硬件供应商那里购买本地数据存储和分析解决方案，通常要支付前期永久软件许可费以及年度硬件维护和服务费。最重要的是用于构建和维护本地基础结构的电源，冷却，安全，灾难保护，IT人员等的成本。即使在技术上可以存储和处理大数据，大多数企业也发现，大规模进行这样做的成本过高。使用本地基础架构进行扩展还需要大量的设计和采购过程，这需要很长时间才能实施，并且需要大量的前期资金。结果，许多潜在有价值的数据收集和分析可能性被忽略了。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*T2yuJKY3GsI1DLux?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>“即服务”提供商：例如基础架构即服务（IaaS）和存储即服务（STaaS）（来源：<a href="https://imelgrat.me/cloud/cloud-services-models-help-business/">IMELGRAT.ME</a>）</p>
+<p>在2000年代末推出云服务后，本地模型开始迅速失去市场份额-在过去十年中，全球云服务市场每年以15％的速度增长。云服务平台提供<a href="https://imelgrat.me/cloud/cloud-services-models-help-business/">各种服务的</a>订阅（从虚拟计算到存储基础架构再到数据库），是按需付费的方式通过Internet交付，使客户可以快速访问灵活且低成本的存储和虚拟计算资源。云服务提供商负责所有其硬件和软件的购买与维护，并且通常拥有庞大的服务器网络和支持人员以提供可靠的服务。许多企业发现他们可以使用云服务显着降低成本并提高运营效率，并且能够利用现成的云资源及其内置的可扩展性更快地开发和生产其产品。通过消除建立本地基础架构的前期成本和时间承诺，云服务还降低了采用大数据工具的障碍，</p>
+<p>有几种云服务模型，最常见的是公共云。在<a href="https://azure.microsoft.com/en-us/overview/what-are-private-public-hybrid-clouds/?cdn=disable">公共云中</a>，所有硬件，软件和其他支持基础结构均由云服务提供商拥有和管理。客户与其他“云租户”共享云基础架构，并通过Web浏览器访问其服务。一个<a href="https://www.liquidweb.com/kb/difference-private-cloud-premise/">私有云</a>通常有特殊的安全需求，如政府机构和金融机构使用的机构。在私有云中，服务和基础架构仅专用于一个组织，并在私有网络上维护。私有云可以是本地的，也可以由其他地方的第三方服务提供商托管。<a href="https://www.sdxcentral.com/cloud/multi-cloud/definitions/what-is-multi-cloud/">混合云</a>将私有云与公共云结合起来，使组织可以利用两者的优势。在混合云中，数据和应用程序可以在私有云和公共云之间移动，以提供更大的灵活性：例如，公共云可以用于处理大容量，安全性较低的数据，私有云可以用于处理敏感的关键业务数据，例如财务报告。在<a href="https://www.sdxcentral.com/articles/news/pivotal-greenplum-adds-multicloud-support/2017/09/">多云模型</a>涉及多个云平台，每个平台提供了一个特定的应用服务。多云可以是公共云，私有云和混合云的组合，以实现组织的目标。组织通常会选择多云以适合其特定的业务，位置和时间需求，并避免供应商锁定。</p>
+<hr>
+<h2 id="案例研究为推荐的应用程序启动构建端到端数据科学基础架构">案例研究：为推荐的应用程序启动构建端到端数据科学基础架构</h2>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*pY8S1N-OJpvGWneX?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>适用于不同类型数据环境的机器学习包（来源：<a href="https://biz-excellence.com/2016/09/13/machine-learning-dt/">Kosyakov（2016）</a>）</p>
+<p>构建可行的数据科学产品所涉及的不仅仅包括使用scikit-learn构建机器学习模型，对其进行腌制并将其加载到服务器上。它需要了解企业生态系统的所有部分如何协同工作，从数据在何处/如何流入数据团队，处理/转换数据的环境，企业用于可视化/呈现数据的约定开始，以及以下方面的理解：模型输出将转换为某些其他企业应用程序的输入。主要目标涉及建立易于维护的流程；在哪里可以迭代模型并且性能可重现；其他利益相关者可以轻松理解和可视化模型的输出，以便他们可以做出更明智的业务决策。</p>
+<p>让我们用一个场景进行说明：假设您刚刚被聘为度假推荐应用程序启动的首席数据科学家，该应用程序预计将收集数百GB的结构化（客户资料，温度，价格和交易记录）和非结构化（客户每日的帖子/评论和图片文件）数据。您的预测模型将需要每周重新训练以提供新数据，并根据需要立即提出建议。由于您希望应用程序会大受欢迎，因此您的数据收集，存储和分析功能必须具有极高的可扩展性。您将如何设计数据科学流程并生产模型？完成工作需要哪些工具？由于这是一家初创企业，您是数据科学家的领导者（也许是唯一的），</p>
+<p>首先，您必须弄清楚如何建立数据管道，该管道将从数据源中获取原始数据，处理数据，并将处理后的数据馈送到数据库中。理想的数据管道具有低事件延迟（可以在数据收集后立即查询）；可扩展性（能够随着您的产品规模处理大量数据）；交互式查询（同时支持批处理查询和较小的交互式查询，这些查询使数据科学家可以浏览表和模式）；版本控制（在不中断管道且不会丢失数据的情况下更改管道的能力）；监视（当数据停止进入时，管道应生成警报）；和测试（无中断测试管道的能力）。也许最重要的是，它最好不要干扰日常业务运营-例如 如果您正在测试的新模型导致您的运营数据库陷入瘫痪，那么头将滚动。建立和维护数据管道通常是数据工程师的职责（有关更多详细信息，<a href="https://towardsdatascience.com/data-science-for-startups-data-pipelines-786f6746a59a">本文</a>对为初创公司构建数据管道有一个很好的概述），但是数据科学家至少应该熟悉该过程，其局限性以及访问处理后的数据进行分析所需的工具。</p>
+<p>接下来，您必须决定是要设置本地基础结构还是使用云服务。对于一家初创企业而言，首要任务是在不扩展运营资源的情况下扩展数据收集。如前所述，内部部署基础架构需要大量的前期和维护成本，因此云服务对于初创企业而言是更好的选择。云服务允许扩展以适应需求并需要最少的维护工作，因此您的一小团队人员可以专注于产品和分析，而不是基础架构管理。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://miro.medium.com/max/60/0*VsCnCDsZeLUwRCam?q=20" alt="图片发布" class="lazyload"><figcaption class="image-caption">图片发布</figcaption></figure></p>
+<p>提供基于Hadoop的解决方案的供应商示例（来源：<a href="https://commons.wikimedia.org/wiki/File:Top-Hadoop-Companies_Final.png">WikiCommons</a>）</p>
+<p>为了选择云服务提供商，您必须首先建立分析所需的数据，以及最适合这些数据类型的数据库和分析基础架构。由于分析管道中既有结构化数据又有非结构化数据，因此您可能要同时设置数据仓库和数据湖。数据科学家需要考虑的重要事情是存储层是否支持构建模型所需的大数据工具，以及数据库是否提供有效的数据库内分析。例如，某些ML库（例如Spark的MLlib）不能有效地与数据库一起用作数据的主要接口-必须先从数据库中卸载数据，然后才能对其进行操作，</p>
+<p>对于云中的数据科学，大多数云提供商都在努力开发其本机机器学习功能，以使数据科学家能够使用存储在其自己平台中的数据轻松构建和部署机器学习模型（亚马逊拥有<a href="https://towardsdatascience.com/chapter-1-intro-to-aws-sagemaker-a1ecf00ec761">SageMaker</a>，谷歌拥有<a href="https://cloud.google.com/bigquery-ml/docs/">BigQuery ML</a>，微软具有<a href="https://azure.microsoft.com/en-us/services/machine-learning-studio/">Azure机器学习</a>）。但是工具集仍在开发中，并且通常不完整：例如，<a href="https://cloud.google.com/bigquery-ml/docs/bigqueryml-intro">BigQuery ML</a>当前仅支持线性回归，二进制和多类逻辑回归，K-means聚类和TensorFlow模型导入。如果决定使用这些工具，则必须彻底测试它们的功能，以确保它们能够按照您的要求进行操作。</p>
+<p>选择云提供商时要考虑的另一项主要事情是锁定供应商。如果选择专有的云数据库解决方案，则您很可能将无法访问本地环境中的软件或数据，因此更换供应商将需要迁移到其他数据库可能会很昂贵。解决此问题的一种方法是选择支持<a href="https://opensourceforu.com/2019/04/an-overview-of-open-source-cloud-platforms-for-enterprises/">开源</a>技术的供应商（<a href="https://medium.com/netflix-techblog/why-we-use-and-contribute-to-open-source-software-1faa77c2e5c4">此处是Netflix解释了为什么他们使用开源软件的原因</a>）。使用开源技术的另一个优势是，它们倾向于吸引更大的用户群体，这意味着您可以更轻松地雇用具有经验和技能的人员在基础架构中工作。解决该问题的另一种方法是选择第三方供应商（例如<a href="https://pivotal.io/pivotal-greenplum">Pivotal Greenplum</a>和<a href="https://www.snowflake.com/">Snowflake</a>）提供了使用其他主要云提供商作为存储后端的云数据库解决方案，如果适合您的创业公司的需求，还可以将数据存储在多个云中。</p>
+<p>最后，由于您希望公司发展，因此必须采取稳健的云管理实践来保护您的云并防止<a href="https://www.credit-suisse.com/eg/en/articles/asset-management/in-cloud-we-trust-uk-201905.tag*article-topic--asset-management---security.html">数据丢失和泄漏</a>，例如管理数据访问以及保护接口和API。您还希望实施<a href="https://hortonworks.com/wp-content/uploads/2014/05/TeradataHortonworks_Datalake_White-Paper_20140410.pdf">数据治理最佳实践，</a>以保持数据质量并确保您的Data Lake不会变成数据沼泽。</p>
+<p>如您所见，在企业数据科学项目中，除了调整机器学习模型中的超参数之外，还有更多其他内容！我们希望这个高层次的概述使您兴奋地学习到更多有关数据管理的知识，也许还可以从中获得一些启发，从而给饮水机的数据工程师留下深刻的印象。</p>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/data-management-everyone-should-know/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mindmap/">
+                    #mindmap</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+                    #思维导图</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/data-engineering-in-2020/" class="prev" rel="prev" title="数据开发在2020年应当是什么样子的"><i class="iconfont icon-left"></i>&nbsp;数据开发在2020年应当是什么样子的</a>
+        
+        
+        <a href="https://kuhung.me/posts/what-is-seo/" class="next" rel="next" title="What Is Seo">What Is Seo&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

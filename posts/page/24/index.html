@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  
+  
+  <link rel="canonical" href="https://kuhung.me/posts/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Posts | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Posts | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		<style>
+    .posts-index { max-width: 800px; margin: 0 auto; box-sizing: border-box; }
+    .posts-index .posts-heading { font-size: 30px; line-height: 1.5; font-weight: 600; margin: 0; }
+    .posts-index .posts-lead {
+        font-size: 15px; color: #4a4b50; line-height: 1.9; margin-top: 12px; max-width: 660px;
+    }
+    .posts-history { margin-top: 12px; }
+    .posts-history summary {
+        display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+        color: #4a4b50; font-size: 15px; line-height: 1.9; cursor: pointer;
+        list-style: none;
+    }
+    .posts-history summary > span { max-width: 660px; }
+    .posts-history summary::-webkit-details-marker { display: none; }
+    .posts-history summary::after { content: "展开"; flex: none; color: #2d96bd; }
+    .posts-history[open] summary::after { content: "收起"; }
+    .posts-history summary:hover { color: #161209; }
+    .posts-history summary:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-timeline { margin-top: 18px; border-top: 1px solid #eee; }
+    .posts-phase {
+        display: grid; grid-template-columns: 108px minmax(0, 1fr); gap: 18px;
+        padding: 11px 0; border-bottom: 1px solid #eee;
+    }
+    .posts-phase:last-child { border-bottom: 0; }
+    .posts-phase strong { font-size: 13px; line-height: 1.8; font-weight: 600; color: #161209; }
+    .posts-phase p { margin: 0; font-size: 13px; line-height: 1.8; color: #4a4b50; }
+    .posts-views { display: flex; gap: 26px; margin-top: 26px; border-bottom: 1px solid #eee; }
+    .posts-views a {
+        font-size: 15px; font-weight: 400; color: #87878d; padding: 0 2px 10px; border-bottom: 2px solid transparent;
+    }
+    .posts-views a.active { font-weight: 700; color: #161209; border-bottom-color: #2d96bd; }
+    .topic-filters {
+        display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding: 0; border: 0;
+    }
+    .posts-search-box { margin-top: 22px; position: relative; }
+    .posts-search-input {
+        width: 100%; box-sizing: border-box; appearance: none;
+        border: 1px solid #eee; border-radius: 0; background: transparent;
+        color: #161209; font: inherit; font-size: 14px; line-height: 1.6;
+        padding: 8px 12px;
+    }
+    .posts-search-input::placeholder { color: #a9a9b3; }
+    .posts-search-input:focus-visible { outline: 2px solid #2d96bd; outline-offset: 1px; border-color: #2d96bd; }
+    .posts-search-box[hidden],
+    .topic-filters[hidden],
+    .posts-filter-status[hidden],
+    .server-posts-foot[hidden],
+    .client-pagination[hidden] { display: none; }
+    .topic-filter,
+    .client-page-button {
+        appearance: none; border: 1px solid #eee; border-radius: 0; background: transparent; color: #4a4b50; font: inherit; cursor: pointer;
+    }
+    .topic-filter { min-height: 34px; padding: 5px 11px; font-size: 13px; line-height: 1.6; }
+    .topic-filter:hover,
+    .topic-filter[aria-pressed="true"] { border-color: #2d96bd; color: #161209; }
+    .topic-filter[aria-pressed="true"] { background: rgba(45, 150, 189, .08); }
+    .topic-filter:focus-visible,
+    .client-page-button:focus-visible,
+    .posts-views a:focus-visible,
+    .posts-list-item a:focus-visible { outline: 2px solid #2d96bd; outline-offset: 3px; }
+    .posts-filter-status { margin: 14px 0 0; min-height: 1.7em; color: #87878d; font-size: 12px; }
+    .posts-list { margin-top: 12px; }
+    .posts-list-item { border-top: 1px solid #eee; padding: 18px 0 20px; }
+    .posts-list-item[hidden] { display: none; }
+    .posts-list-item .posts-list-title { font-size: 17px; font-weight: 600; line-height: 1.6; margin: 0; }
+    .posts-list-item .posts-list-summary {
+        font-size: 14px; color: #87878d; line-height: 1.8; margin-top: 8px; display: -webkit-box;
+        -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .posts-list-item .posts-list-meta { font-size: 12px; color: #a9a9b3; margin-top: 10px; }
+    .posts-list-item .posts-list-meta a { font-size: 12px; color: #2d96bd; }
+    .posts-list-item .posts-list-meta a:hover { color: #ef3982; }
+    .posts-foot { border-top: 1px solid #eee; padding-top: 22px; }
+    .posts-foot .posts-total { font-size: 12px; color: #a9a9b3; }
+    .client-pagination {
+        display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; border-top: 1px solid #eee; padding-top: 22px;
+    }
+    .client-page-button { min-width: 36px; min-height: 36px; padding: 5px 9px; font-size: 13px; }
+    .client-page-button[aria-current="page"] { border-color: #2d96bd; color: #161209; font-weight: 700; }
+    .client-page-button:disabled { cursor: default; opacity: .4; }
+    .posts-empty { border-top: 1px solid #eee; padding: 28px 0; color: #87878d; }
+    @media (max-width: 767px) {
+        .posts-index .posts-heading { font-size: 23px; }
+        .posts-history summary { align-items: flex-start; }
+        .posts-phase { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+        .posts-views { gap: 18px; }
+        .posts-search-input { min-height: 42px; font-size: 16px; }
+        .topic-filters { gap: 7px; }
+        .topic-filter { min-height: 44px; padding: 8px 12px; }
+        .client-page-button { min-width: 44px; min-height: 44px; }
+    }
+</style>
+<div class="post-warp posts-index" data-posts-base="/posts/">
+    <h1 class="posts-heading">文章</h1>
+    
+    <details class="posts-history">
+        <summary>
+            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+        </summary>
+        <div class="posts-timeline" aria-label="文章主题变化">
+            
+            <div class="posts-phase">
+                <strong>2016 至 2018</strong>
+                <p>从计算机视觉、机器学习比赛和模型复现写起，边学边做。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2018 至 2020</strong>
+                <p>进入网易游戏后，内容转向数据挖掘、用户分析、A/B 测试和模型部署。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2020 至 2025</strong>
+                <p>在米哈游做算法，继续写反作弊和用户增长，也开始整理技术管理、量化研究和读书笔记。</p>
+            </div>
+            
+            <div class="posts-phase">
+                <strong>2025 至今</strong>
+                <p>把重心放到 AI 编程、Agent 与 Skills、内容增长和产品实践，记录真正用过之后的判断、方法和结果。</p>
+            </div>
+            
+        </div>
+    </details>
+    
+
+    <nav class="posts-views" aria-label="文章视图">
+        
+        <a class="" href="/guide/">精选</a>
+        
+        <a class="active" aria-current="page" href="/posts/">全部</a>
+        
+        <a class="" href="/archives/">按年</a>
+        
+    </nav>
+
+    <div class="posts-search-box" hidden>
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+    </div>
+
+    <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
+        
+        <button class="topic-filter" type="button" data-topic="all" data-aliases="" aria-controls="posts-list" aria-pressed="true">全部主题</button>
+        
+        <button class="topic-filter" type="button" data-topic="ai-tools" data-aliases="AI||AI工具||ChatGPT||LLM||大模型||提示词工程||本地模型||本地部署||推理框架||性能测评||图像生成||计算机视觉||自然语言处理||机器学习||机器学习进阶||强化学习||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">AI 工具</button>
+        
+        <button class="topic-filter" type="button" data-topic="agents-skills" data-aliases="agent||Agent Skills||skills||智能体||MCP||LangChain||LangGraph||LangSmith||上下文工程" aria-controls="posts-list" aria-pressed="false">Agent 与 Skills</button>
+        
+        <button class="topic-filter" type="button" data-topic="claude-code" data-aliases="Claude Code||Codex||vibe coding||AI编程||全栈" aria-controls="posts-list" aria-pressed="false">Claude Code</button>
+        
+        <button class="topic-filter" type="button" data-topic="seo-growth" data-aliases="SEO||ASO||GEO||AI可见性||搜索可见性||搜索优化||增长||营销||广告||用户" aria-controls="posts-list" aria-pressed="false">SEO 与增长</button>
+        
+        <button class="topic-filter" type="button" data-topic="data-analysis" data-aliases="数据分析||数据科学||数据挖掘||data mining||GA4||SQL||AB测试||因果推断||causal inference||统计思维||数据运营||数据挖掘/机器学习||数据工程" aria-controls="posts-list" aria-pressed="false">数据分析</button>
+        
+        <button class="topic-filter" type="button" data-topic="quant-investing" data-aliases="量化||投资||策略||策略回测||配对交易||财务||美股||港股||加密货币||雪盈||富途||TTSI" aria-controls="posts-list" aria-pressed="false">量化投资</button>
+        
+        <button class="topic-filter" type="button" data-topic="onchain" data-aliases="onchain||链上数据分析||加密货币" aria-controls="posts-list" aria-pressed="false">链上数据</button>
+        
+        <button class="topic-filter" type="button" data-topic="product-startup" data-aliases="产品||产品验证||创业||独立开发||Side Project||商业||商业化||商业模式||交付||运营||一人公司||开发纪要||访谈||项目备忘" aria-controls="posts-list" aria-pressed="false">产品与创业</button>
+        
+        <button class="topic-filter" type="button" data-topic="productivity" data-aliases="效率||自动化||Notion||GitHub||知识管理||项目推进||计划||排期||技巧||方法总结||精益||iot||Server||jlpt||LUT" aria-controls="posts-list" aria-pressed="false">效率方法</button>
+        
+        <button class="topic-filter" type="button" data-topic="reading" data-aliases="mindmap||思维导图||读书笔记||阅读笔记||学习笔记||books||微信读书||翻译作品||译文" aria-controls="posts-list" aria-pressed="false">读书笔记</button>
+        
+        <button class="topic-filter" type="button" data-topic="voice-audio" data-aliases="语音||音频||音频处理||播客||TTS||NoAINoG||AI辅助内容生成" aria-controls="posts-list" aria-pressed="false">语音与音频</button>
+        
+        <button class="topic-filter" type="button" data-topic="life-review" data-aliases="总结||复盘||胡言乱语||感触涌上心头||日常思考||日常观察||个人思考||职业发展||择业思考||管理||个人进步||社会观察||企业文化" aria-controls="posts-list" aria-pressed="false">生活复盘</button>
+        
+    </fieldset>
+    <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
+
+    <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="财务||总结"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/ten-financial-moments-in-five-years-1/">五年十个财务瞬间｜01 2020年财务总结</a></h2>
+    <p class="posts-list-summary">描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
+为什么会有这篇文章 写这篇文章，是为了审视自己的财务情况，梳理财务观和财务现状，给自己一个交代。
+财富，不仅决定了一个人的生活水平，也是其未来的支撑。财富自由不是绝对概念——需要达 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-12-31">December 31, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="翻译作品||管理||The Manager&#39;s Path"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/management-101-vol-2/">技术领导｜01 技术管理入门 （下）</a></h2>
+    <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 在上半部分，我们描述了一个好的管理者画像。以及我们所期待的，从管理者身上获得的东西。
+下半部分，我们集中注意力在自身，即：如何被管理，做一个称职的下属（打工人）。
+被管理者视角 弄清楚如何被管理，也是管理者需掌握的东西。这和向上管理不太一样，虽然它们有相关性。
+它的核心在于三点：
+在工作中，发展主人翁意识
+培养对所做工作内容的权威感
+ …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-12-30">December 30, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="游戏设计"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/game-design-summary/">游戏机制设计，以剧本杀为例剖析可玩性的来源</a></h2>
+    <p class="posts-list-summary">标题 创建时间 发布时间 最后一次修改 备注 游戏机制设计 2020.11.11 2020.12.24 2020.12.24 拖更文🐶 写作背景 一款游戏，挨骂最多的是谁 一个游戏中，挨骂最多的，策划排第二，没人敢排第一。按理说，一个游戏的美术好、音乐好，确实值得夸赞；
+但我们将各个部分拆开，一定会发现，单一的”美好“的元素，并不足以撑起整体的评价。
+最后游戏的评价，一定是多方面，1+1&gt;2的结 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-12-24">December 24, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/game-project-ltv/">Game Project Ltv</a></h2>
+    <p class="posts-list-summary">简单描述 预计耗时 预计发布 实际发布 最后一次修改 玩家生命周期价值（LTV）三种测试方法
+数据分析与玩家生命周期
+请问手游LTV怎么计算呢？
+使用Bass扩散模型预测手游LTV（玩家生命周期价值）
+Unity：COVID-19对游戏行业的影响报告
+数据优化的游戏运营思考路径 · 3 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-12-23">December 23, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="翻译作品||管理||The Manager&#39;s Path"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/management-101-vol-1/">技术领导｜01 技术管理入门 （上）</a></h2>
+    <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 管理的秘诀就在于：让那些讨厌你的人，远离那些还没有形成主见的人。 ——卡西·史丹格尔
+你阅读这篇文章，是因为你想成为一个好的管理者。但在这之前，你其实并不知道，一个好的管理者是什么样子。
+你之前有遇到过一位好的经理吗？如果一个人让你告诉他，你想从一位好经理身上获得什么，你能够回答这个问题吗？
+从管理者那里，期望获得什么 每个人在管理之 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-12-19">December 19, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/investment_observe_20201122/">Investment_observe_20201122</a></h2>
+    <p class="posts-list-summary">详情展开
+思维导图获取 .xmind .pdf .png 关于作者
+模板：
+基本走向分析、宏观政策变动、未来趋势分析
+逸仙电商上市，首日上涨80%以上，达到市值800亿人民币。在其第三季度财报中显示，2020前三季度，营业额30亿，净利润-10亿。
+其本身，大着国货的名头，在做美妆类产品。其主要营收来自于平台，平台属性强。
+在随机受访中，反馈其部分产品具有口碑，但产品质量存在短板。复购和品牌忠诚度 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-11-22">November 22, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/investment_plan/">Investment_plan</a></h2>
+    <p class="posts-list-summary">投资计划表
+202011
+类别 占比 时间 理由 回顾 股票 外部 40-&gt;80国内 15 基金 25
+其他 10 流动现金 10 固定资产 - 合理的投资比例：风险接受度 20%本金损失</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-11-21">November 21, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/the-managers-path-introduction/">The Manager&#39;s Path Introduction</a></h2>
+    <p class="posts-list-summary">2011年，我加入了一家名为Rent the Runway的小型创业公司。从我在一家大公司从事大型分布式系统的工作，到 与小型工程团队合作，专注于交付出色的客户 经验。我之所以这样做，是因为我认为自己的业务很棒，所以我想要一个 领导的机会。我相信只要有一点运气和一些努力，我就能得到 我非常渴望获得的领导经验。 我不知道自己在干什么。我以 没有团队的经理，名副其实的工程总监等 实践中的技术领先者。就 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-11-16">November 16, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="反馈收集||游戏设计"
+         data-categories="Side Project">
+    <h2 class="posts-list-title"><a href="/posts/yuanshen-idle-feedback/">为度过原神长草期，我写了个原神放置类单机小游戏</a></h2>
+    <p class="posts-list-summary">游戏地址：https://kuhung.me/yuanshen-idle/
+很高兴能和大家分享这款小游戏。如果恰好你也喜欢原神这款游戏，想在长草期放松放松，那么这款放置类游戏一定不要错过。
+游戏模板来源于 Couy69 的 vue-idle-game，副本填充内容来自原神米游社等公开社区。所有内容均来自公开互联网，业余时间打造，非内鬼，不py。
+对这款放置挂类游戏的任何建议，欢迎通过以下三种方式联 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-11-16">November 16, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="项目推进||团队建设"
+         data-categories="行业趋势||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/pmp/">不可不知的项目推进与团队建设之道</a></h2>
+    <p class="posts-list-summary">项目管理好坏，决定了项目的成败。无论做什么工作，项目地企划、执行、效果评估、复盘，总是必不可少的。
+我们可能遇到过如下场景：
+业务方提出需求，扑哧扑哧做个几周后，却发现并不是他们想要的。这样的后果就是： 项目结果被搁置
+几周的开发时间浪费
+业务和开发其乐融融，第一版也顺利交付，而后由于老板或者更高一级负责人的要求，要做的功能点越来越多，以至于现有功能延误。 需求的企划，项目的推进、以及团队的建设， …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-10-26">October 26, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+    </div>
+
+    <div class="posts-foot server-posts-foot">
+        
+
+<ul class="pagination">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/">1</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/22/">22</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/23/">23</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/posts/page/24/">24</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/25/">25</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/26/">26</a></li>
+        </span>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item "><span class="page-link" aria-hidden="true">&hellip;</span></li>
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/32/">32</a></li>
+        </span>
+    
+    
+    
+    
+</ul>
+
+        <span class="posts-total">共 315 篇</span>
+    </div>
+    <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
+
+    
+    <noscript><p class="posts-filter-status">主题筛选需要 JavaScript；当前显示 Hugo 原生分页列表。</p></noscript>
+</div>
+<script defer src="/js/posts-filter.js"></script>
+
+          
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="/js/vendor_main.min.js" async=""></script>
+
+
+
+
+     </div>
+  </body>
+</html>

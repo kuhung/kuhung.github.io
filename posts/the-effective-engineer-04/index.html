@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/the-effective-engineer-03/" />
+  <link rel="next" href="https://kuhung.me/posts/true-01/" />
+  <link rel="canonical" href="https://kuhung.me/posts/the-effective-engineer-04/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           The Effective Engineer 04 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="The Effective Engineer 04 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/the-effective-engineer-04/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2021-08-14T10:36:39+08:00","datePublished":"2021-08-14T10:36:39+08:00","description":"概述 预计耗时 预计发布 实际发布 最后一次修改 如何构建长期价值，高效工程师需要理解的三个要点 在软件开发领域，常遇到一些取舍。trade off 是开发过程中不得不考量的事情。早上线，还是优化更好的功能。虽然我们在前面提到过，要加快迭代速度，但这并不等于要放弃软件的质量。 在第一篇文章里，我们总体陈述了高效工程师需要理解的三个要点。今天我们由长期价值出发，看看卓越工程师在日常是怎么做的。这里将 …","headline":"The Effective Engineer 04","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"mindmap, 思维导图","mainEntityOfPage":{"@id":"https://kuhung.me/posts/the-effective-engineer-04/","@type":"WebPage"},"name":"The Effective Engineer 04","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/the-effective-engineer-04/","wordCount":53}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">The Effective Engineer 04</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2021-08-14 itemprop="datePublished">August 14, 2021</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#平衡质量与实用">平衡质量与实用</a>
+      <ul>
+        <li><a href="#建立code-review-习惯">建立code review 习惯</a></li>
+        <li><a href="#抽象自动化测试与技术债">抽象、自动化测试与技术债</a></li>
+      </ul>
+    </li>
+    <li><a href="#降低日常维护成本">降低日常维护成本</a>
+      <ul>
+        <li><a href="#简化系统">简化系统</a></li>
+        <li><a href="#尽早失败显式失败">尽早失败、显式失败</a></li>
+        <li><a href="#故障演练">故障演练</a></li>
+      </ul>
+    </li>
+    <li><a href="#投资团队成长">投资团队成长</a>
+      <ul>
+        <li><a href="#将招聘视为高优先级">将招聘视为高优先级</a></li>
+        <li><a href="#在入职培训和指导上下功夫">在入职培训和指导上下功夫</a></li>
+        <li><a href="#共享代码与经验">共享代码与经验</a></li>
+        <li><a href="#卓越工程师文化">卓越工程师文化</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <table>
+<thead>
+<tr>
+<th>概述</th>
+<th>预计耗时</th>
+<th>预计发布</th>
+<th>实际发布</th>
+<th>最后一次修改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="如何构建长期价值高效工程师需要理解的三个要点">如何构建长期价值，高效工程师需要理解的三个要点</h1>
+<p>在软件开发领域，常遇到一些取舍。trade off 是开发过程中不得不考量的事情。早上线，还是优化更好的功能。虽然我们在前面提到过，要加快迭代速度，但这并不等于要放弃软件的质量。</p>
+<p>在第一篇文章里，我们总体陈述了高效工程师需要理解的三个要点。今天我们由长期价值出发，看看卓越工程师在日常是怎么做的。这里将包含三个要点，分别是：<strong>平衡质量与实用，降低日常维护成本以及在团队成长上做投资</strong>。</p>
+<h2 id="平衡质量与实用">平衡质量与实用</h2>
+<p>事实上，尽早上线与软件质量并不矛盾。我们有很多措施和手段来保证软件质量，最最糟糕的软件开发团队，才会以上线时间作为考量。一般而言，这种开发模式下的软件质量，会是非常糟糕且难以维护的。技术债务在短期不会爆发，但长期而言却成为项目的显著短板，进入恶性循环，甚至是会拖垮整个产品。</p>
+<h3 id="建立code-review-习惯">建立code review 习惯</h3>
+<p>code review 在很多公司的很多团队已经得到实现。不过在数据挖掘和算法领域，却很少看到有最佳实践出现。在很久以前，我也写过一篇测试驱动机器学习的文章，不过自己执行下来会发现，还是会有想简便省事的天性阻碍。不知道其他算法团队，是如何实践code review和自动化测试的，欢迎交流。</p>
+<p>建立code review 习惯有诸多好处。例如能够尽早地发现bug或者是不当的程序设计。同时，由于改的代码将会有人审核，也将会增加修改代码时人的责任心。这样下来，团队内每个成员都能够清楚，好的代码是什么样子的。在出现人员变动，人员休假的时候，也能够顺利补位，快速修补线上问题。</p>
+<p>code review的最大成本就是需要时间去进行，但长期来看团队的整体效率会更高。</p>
+<h3 id="抽象自动化测试与技术债">抽象、自动化测试与技术债</h3>
+<p>除了code review，在写代码过程中，设计适度的抽象也是很必要的。同时，自动化测试代码，也将加快交付的节奏。最后，留意软件开发过程中的技术债，留下适度的时间，让团队进行重构。</p>
+<h2 id="降低日常维护成本">降低日常维护成本</h2>
+<h3 id="简化系统">简化系统</h3>
+<p>软件开发本身，是一个熵增的过程，也就是说项目的复杂度会逐渐加大。不过这样也带来了风险。工程师需要更多的时间来理解不同系统的差异。单点的故障可能也有所增加。对于新人来说，学习的曲线会变得特别陡峭。所以，当系统的复杂度增加时，还是要周期性地回顾，并尝试着去简化系统。</p>
+<h3 id="尽早失败显式失败">尽早失败、显式失败</h3>
+<p>除开简化系统外，还应在软件开发设计系统过程中，尽早地抛出错误，抛出显式的错误。为什么这么讲，是因为我们的生活经历也告诉我们：发现当系统出问题时，掩盖问题或者是隐晦地抛出问题，只会让问题越来越严重。软件设计领域也是如此。当系统出问题时，就应该尽早地抛出错误，而且能够明显定位问题的方式越好。</p>
+<h3 id="故障演练">故障演练</h3>
+<p>在深度学习训练过程中，我们会通过 dropout 的方式，随机丢弃掉一定比例的神经元，以此来达到防止过拟合，加强系统鲁棒性的作用。这一思想，在奈飞的软件开发团队也有所应用。他们会在工作日，随机关停一些系统，来考验软件服务的鲁棒性。这种做法，与压测和灾难演习也有相似作用。</p>
+<p>当然，无论我们准备得多么充分，也会有出问题的可能。设计兜底策略，自动化决策过程，也是有必要纳入的。</p>
+<h2 id="投资团队成长">投资团队成长</h2>
+<p>一个人的极客，能做到事情有限；但一个卓越的极客团队，却能做出无限精彩的事情。投资团队的成长，也是构建长期价值中的有力一环。以下内容虽然像是写给团队leader的，但其实我们每个人在人生的不同阶段，都有可能在这个位置上。</p>
+<h3 id="将招聘视为高优先级">将招聘视为高优先级</h3>
+<p>在《奈飞文化手册》中有提过，奈飞自由与责任的文化能够得以发挥作用，很大程度是因为他们招聘到了最顶尖的人才。招聘，对于一个团队的成功至关重要。这里原作者也分享了一些招聘技巧。首先评估团队所需的能力图谱，按图索骥，寻找高匹配度的人才。设计不同层次的问题，通过快速问答考察知识广度。掌握面试节奏，设计有效的引导，防止过长时间的卡壳。周期性地回顾面试，周期性地和其他团队成员一起面试。</p>
+<h3 id="在入职培训和指导上下功夫">在入职培训和指导上下功夫</h3>
+<p>新人入职时，设计有效的入职指引，帮助他快速上手。传达团队的文化宗旨与核心价值，让新人理解什么将有助于成功。设计有效的互动环节，让新人能够融入已有的社交网络。</p>
+<h3 id="共享代码与经验">共享代码与经验</h3>
+<p>在具体业务层面，首先要尽量避免单点项目。如果可以，定期在团队内切换任务和责任事项。单点项目的问题，之前有说过。一个是人员变动风险，一个是最佳实践风险。前者无法保证其他人快速上手，后者无法保证目前的设计是相较最优的。</p>
+<p>经常去review他人的代码和设计。保持代码的可读性与高质量。当然这不是说你不信任他们，恰好相反，信任其实就来源于这类活动。对于重要的软件与架构的决策，设计一个分享会，让每个人都能理解背后的动机以及期望的目标。归档此类文档以便后来的人能够查阅。</p>
+<h3 id="卓越工程师文化">卓越工程师文化</h3>
+<p>团队文化这个词，在我阅读的多本软件开发的书中有提到。看得出来，这些卓越团队都有个共性，那就是很重视自身的文化氛围，会定期审视团队的氛围变化。当出现“害群之马”时，及时纠正偏差。那么怎么样的文化，对于工程师来说是卓越的呢？原文作者给出了以下描述。</p>
+<p>将需要手工触发的活持续自动化。优化迭代的速度。共享软件开发的经验教训。做好软件抽象。通过code review保持代码高质量。投资自动化测试。</p>
+<p>保持尊重（谦虚、尊重、信任）的工作氛围。给工程师团队预留20%的时间做探索性项目。培养学习和持续改进的文化。招聘最优秀的人。</p>
+<h2 id="总结">总结</h2>
+<p>在本系列，我们详细阐述了卓越工程师的若干品行。包括树立正确的思维，聚焦高杠杆、直接产生价值的地方。在执行过程中，进行指标衡量，早验证多迭代。构建长期的价值，不图一时之快，通过多项措施保证代码质量；投资团队成长，创造卓越的工程师团队文化。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/the-effective-engineer-04/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mindmap/">
+                    #mindmap</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+                    #思维导图</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/the-effective-engineer-03/" class="prev" rel="prev" title="The Effective Engineer 03"><i class="iconfont icon-left"></i>&nbsp;The Effective Engineer 03</a>
+        
+        
+        <a href="https://kuhung.me/posts/true-01/" class="next" rel="next" title="True 01">True 01&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

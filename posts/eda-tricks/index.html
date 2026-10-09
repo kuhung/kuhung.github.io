@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/outlier-detection/" />
+  <link rel="next" href="https://kuhung.me/posts/books-20200907/" />
+  <link rel="canonical" href="https://kuhung.me/posts/eda-tricks/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           EDA 常见问题速查 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="EDA 常见问题速查 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/eda-tricks/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2020-09-01T12:04:49+08:00","datePublished":"2020-09-01T12:04:49+08:00","description":"标题 创建时间 发布时间 最后一次修改 备注 EDA 常见问题速查 2020.09.01 2020.12.21 2021.03.30 / 工具包 ydata-profiling from ydata_profiling import ProfileReport profile = ProfileReport(reports, title=\u0026#34;Pandas Profiling Report\u0026#34;) 主要关 …","headline":"EDA 常见问题速查","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"eda, 高频问题","mainEntityOfPage":{"@id":"https://kuhung.me/posts/eda-tricks/","@type":"WebPage"},"name":"EDA 常见问题速查","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/eda-tricks/","wordCount":318}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">EDA 常见问题速查</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2020-09-01 itemprop="datePublished">September 1, 2020</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#工具包">工具包</a></li>
+        <li><a href="#参考网站">参考网站</a></li>
+        <li><a href="#可视化工具">可视化工具</a></li>
+        <li><a href="#数据分布探查">数据分布探查</a></li>
+        <li><a href="#三维坐标二维化">三维坐标二维化</a></li>
+        <li><a href="#韦恩图绘制">韦恩图绘制</a></li>
+        <li><a href="#seaborn-加-title">seaborn 加 title</a></li>
+        <li><a href="#seaboard-存-png">seaboard 存 png</a></li>
+        <li><a href="#绘制3d图">绘制3D图</a></li>
+        <li><a href="#层次聚类">层次聚类</a></li>
+        <li><a href="#chord-diagram">Chord diagram</a></li>
+        <li><a href="#matplot-mac中文字符处理">matplot mac中文字符处理</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <table>
+<thead>
+<tr>
+<th style="text-align:left">标题</th>
+<th style="text-align:left">创建时间</th>
+<th style="text-align:left">发布时间</th>
+<th style="text-align:left">最后一次修改</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">EDA 常见问题速查</td>
+<td style="text-align:left">2020.09.01</td>
+<td style="text-align:left">2020.12.21</td>
+<td style="text-align:left">2021.03.30</td>
+<td style="text-align:left">/</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="工具包">工具包</h3>
+<h4 id="ydata-profilinghttpsgithubcomydataai"><a href="https://github.com/ydataai/">ydata-profiling</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> ydata_profiling <span style="color:#f92672">import</span> ProfileReport
+</span></span><span style="display:flex;"><span>profile <span style="color:#f92672">=</span> ProfileReport(reports, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Pandas Profiling Report&#34;</span>)
+</span></span></code></pre></div><p>主要关注生成
+数据总览、数据质量：类型、缺失、存储等信息。
+变量分布，相关性等信息。
+样本示范。</p>
+<p>其他支持大数据集、敏感数据处理、数据集比较、自定义显示效果等。</p>
+<h4 id="dataprephttpsgithubcomsfu-dbdataprep"><a href="https://github.com/sfu-db/dataprep">dataprep</a></h4>
+<p>探查
+包括
+数据统计（总数、缺失数）
+数据洞察（具体列的缺失、倾斜、多样性、0值）</p>
+<p>样本交互
+样本相关性（Pearson、Spearman、KendallTau）
+缺失值可视化</p>
+<p>连接</p>
+<p>清洗</p>
+<h4 id="dtalehttpsgithubcomman-groupdtale"><a href="https://github.com/man-group/dtale">dtale</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> dtale
+</span></span><span style="display:flex;"><span>dtale<span style="color:#f92672">.</span>show(reports)
+</span></span></code></pre></div><p><a href="https://github.com/akanz1/klib">https://github.com/akanz1/klib</a></p>
+<h4 id="关注指标">关注指标</h4>
+<h3 id="参考网站">参考网站</h3>
+<ul>
+<li><a href="https://www.python-graph-gallery.com/">python-graph-gallery</a></li>
+<li><a href="http://tuzhidian.com/">图之典</a></li>
+<li><a href="https://antv-2018.alipay.com/zh-cn/vis/chart/index.html#_%E5%9B%BE%E8%A1%A8%E5%88%86%E7%B1%BB">AntV</a></li>
+<li><a href="https://www.visualcinnamon.com/portfolio/">visualcinnamon</a></li>
+</ul>
+<h3 id="可视化工具">可视化工具</h3>
+<ul>
+<li>
+<p><a href="https://seaborn.pydata.org/examples/index.html">seaborn</a></p>
+<ul>
+<li><a href="https://jasonxqh.github.io/2020/07/11/seaborn%E5%9F%BA%E7%A1%80/">seaborn基础</a></li>
+</ul>
+</li>
+<li>
+<p>bokeh</p>
+</li>
+<li>
+<p>chord</p>
+</li>
+<li>
+<p>pyplot</p>
+</li>
+<li>
+<p>plotly</p>
+</li>
+<li>
+<p>Datapane</p>
+</li>
+<li>
+<p><a href="https://altair-viz.github.io/">Altair</a></p>
+</li>
+<li>
+<p>降维</p>
+<ul>
+<li>t-SNE</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据分布探查">数据分布探查</h3>
+<h3 id="三维坐标二维化">三维坐标二维化</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Seaborn pair plot</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df_3d <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame()
+</span></span><span style="display:flex;"><span>df_3d[<span style="color:#e6db74">&#39;x&#39;</span>] <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>df_3d[<span style="color:#e6db74">&#39;y&#39;</span>] <span style="color:#f92672">=</span> y
+</span></span><span style="display:flex;"><span>df_3d[<span style="color:#e6db74">&#39;z&#39;</span>] <span style="color:#f92672">=</span> z
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>pairplot(df_3d)
+</span></span></code></pre></div><h3 id="韦恩图绘制">韦恩图绘制</h3>
+<ul>
+<li>
+<p>matplotlib-venn</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> matplotlib_venn <span style="color:#f92672">import</span> venn2
+</span></span><span style="display:flex;"><span>venn2([set([<span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#39;B&#39;</span>, <span style="color:#e6db74">&#39;C&#39;</span>, <span style="color:#e6db74">&#39;D&#39;</span>]), set([<span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;E&#39;</span>, <span style="color:#e6db74">&#39;F&#39;</span>])])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_venn</span>(col_1,col_2):
+</span></span><span style="display:flex;"><span>    set_1 <span style="color:#f92672">=</span> set(col_1)
+</span></span><span style="display:flex;"><span>    print(len(set_1))
+</span></span><span style="display:flex;"><span>    set_2 <span style="color:#f92672">=</span> set(col_2)
+</span></span><span style="display:flex;"><span>    print(len(set_2))
+</span></span><span style="display:flex;"><span>    venn2([set_1,set_2])
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="seaborn-加-title">seaborn 加 title</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># refer https://stackoverflow.com/questions/42406233/how-to-add-title-to-seaborn-boxplot</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> seaborn <span style="color:#66d9ef">as</span> sns
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tips <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;tips&#34;</span>)
+</span></span><span style="display:flex;"><span>sns<span style="color:#f92672">.</span>boxplot(x<span style="color:#f92672">=</span>tips[<span style="color:#e6db74">&#34;total_bill&#34;</span>])<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;LaLaLa&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><h3 id="seaboard-存-png">seaboard 存 png</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># refer https://stackoverflow.com/questions/32244753/how-to-save-a-seaborn-plot-into-a-file</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#39;iris&#39;</span>)
+</span></span><span style="display:flex;"><span>sns_plot <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>pairplot(df, hue<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;species&#39;</span>, height<span style="color:#f92672">=</span><span style="color:#ae81ff">2.5</span>)
+</span></span><span style="display:flex;"><span>sns_plot<span style="color:#f92672">.</span>figure<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;output.png&#34;</span>)
+</span></span></code></pre></div><h3 id="绘制3d图">绘制3D图</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 3D 二维化，热力图</span>
+</span></span></code></pre></div><h3 id="层次聚类">层次聚类</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># refer: https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance_multicollinear.html#handling-multicollinear-features</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 参数说：https://haojunsui.github.io/2016/07/16/scipy-hac/</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> spearmanr
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.cluster <span style="color:#f92672">import</span> hierarchy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig, (ax1, ax2) <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">8</span>))
+</span></span><span style="display:flex;"><span>corr <span style="color:#f92672">=</span> spearmanr(data[features])<span style="color:#f92672">.</span>correlation
+</span></span><span style="display:flex;"><span>corr_linkage <span style="color:#f92672">=</span> hierarchy<span style="color:#f92672">.</span>ward(corr)
+</span></span><span style="display:flex;"><span>dendro <span style="color:#f92672">=</span> hierarchy<span style="color:#f92672">.</span>dendrogram(
+</span></span><span style="display:flex;"><span>    corr_linkage, labels<span style="color:#f92672">=</span>features, ax<span style="color:#f92672">=</span>ax1, leaf_rotation<span style="color:#f92672">=</span><span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>dendro_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0</span>, len(dendro[<span style="color:#e6db74">&#39;ivl&#39;</span>]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>imshow(corr[dendro[<span style="color:#e6db74">&#39;leaves&#39;</span>], :][:, dendro[<span style="color:#e6db74">&#39;leaves&#39;</span>]])
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_xticks(dendro_idx)
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_yticks(dendro_idx)
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_xticklabels(dendro[<span style="color:#e6db74">&#39;ivl&#39;</span>], rotation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vertical&#39;</span>)
+</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_yticklabels(dendro[<span style="color:#e6db74">&#39;ivl&#39;</span>])
+</span></span><span style="display:flex;"><span>fig<span style="color:#f92672">.</span>tight_layout()
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># refer: https://seaborn.pydata.org/generated/seaborn.clustermap.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 大数据集下容易挂掉</span>
+</span></span><span style="display:flex;"><span>iris <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>load_dataset(<span style="color:#e6db74">&#34;iris&#34;</span>)
+</span></span><span style="display:flex;"><span>species <span style="color:#f92672">=</span> iris<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#34;species&#34;</span>)
+</span></span><span style="display:flex;"><span>g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>clustermap(iris)
+</span></span></code></pre></div><h3 id="chord-diagram">Chord diagram</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 方式一 bokeh</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># http://holoviews.org/gallery/demos/matplotlib/route_chord.html</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> holoviews <span style="color:#66d9ef">as</span> hv
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> holoviews <span style="color:#f92672">import</span> opts, dim
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bokeh.sampledata.airport_routes <span style="color:#f92672">import</span> routes, airports
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hv<span style="color:#f92672">.</span>extension(<span style="color:#e6db74">&#39;bokeh&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Count the routes between Airports</span>
+</span></span><span style="display:flex;"><span>route_counts <span style="color:#f92672">=</span> routes<span style="color:#f92672">.</span>groupby([<span style="color:#e6db74">&#39;SourceID&#39;</span>, <span style="color:#e6db74">&#39;DestinationID&#39;</span>])<span style="color:#f92672">.</span>Stops<span style="color:#f92672">.</span>count()<span style="color:#f92672">.</span>reset_index()
+</span></span><span style="display:flex;"><span>nodes <span style="color:#f92672">=</span> hv<span style="color:#f92672">.</span>Dataset(airports, <span style="color:#e6db74">&#39;AirportID&#39;</span>, <span style="color:#e6db74">&#39;City&#39;</span>)
+</span></span><span style="display:flex;"><span>chord <span style="color:#f92672">=</span> hv<span style="color:#f92672">.</span>Chord((route_counts, nodes), [<span style="color:#e6db74">&#39;SourceID&#39;</span>, <span style="color:#e6db74">&#39;DestinationID&#39;</span>], [<span style="color:#e6db74">&#39;Stops&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Select the 20 busiest airports</span>
+</span></span><span style="display:flex;"><span>busiest <span style="color:#f92672">=</span> list(routes<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;SourceID&#39;</span>)<span style="color:#f92672">.</span>count()<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;Stops&#39;</span>)<span style="color:#f92672">.</span>iloc[<span style="color:#f92672">-</span><span style="color:#ae81ff">20</span>:]<span style="color:#f92672">.</span>index<span style="color:#f92672">.</span>values)
+</span></span><span style="display:flex;"><span>busiest_airports <span style="color:#f92672">=</span> chord<span style="color:#f92672">.</span>select(AirportID<span style="color:#f92672">=</span>busiest, selection_mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;nodes&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>busiest_airports<span style="color:#f92672">.</span>opts(
+</span></span><span style="display:flex;"><span>    opts<span style="color:#f92672">.</span>Chord(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Category20&#39;</span>, edge_color<span style="color:#f92672">=</span>dim(<span style="color:#e6db74">&#39;SourceID&#39;</span>)<span style="color:#f92672">.</span>str(), 
+</span></span><span style="display:flex;"><span>               height<span style="color:#f92672">=</span><span style="color:#ae81ff">800</span>, labels<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;City&#39;</span>, node_color<span style="color:#f92672">=</span>dim(<span style="color:#e6db74">&#39;AirportID&#39;</span>)<span style="color:#f92672">.</span>str(), width<span style="color:#f92672">=</span><span style="color:#ae81ff">800</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 方式二 </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> chord <span style="color:#f92672">import</span> Chord
+</span></span><span style="display:flex;"><span>matrix <span style="color:#f92672">=</span> vis_df<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>tolist()
+</span></span><span style="display:flex;"><span>names <span style="color:#f92672">=</span> list(vis_df<span style="color:#f92672">.</span>index)
+</span></span><span style="display:flex;"><span>Chord(matrix, names)<span style="color:#f92672">.</span>to_html(<span style="color:#e6db74">&#34;chord-diagram-chord-library.html&#34;</span>)
+</span></span></code></pre></div><h3 id="matplot-mac中文字符处理">matplot mac中文字符处理</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># https://www.cnblogs.com/cymwill/p/10554916.html</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#39;font.sans-serif&#39;</span>] <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;Arial Unicode MS&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者下载字体</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://stackoverflow.com/questions/35668219/how-to-set-up-a-custom-font-with-custom-path-to-matplotlib-global-font</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">!</span> wget https:<span style="color:#f92672">//</span>raw<span style="color:#f92672">.</span>githubusercontent<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>StellarCN<span style="color:#f92672">/</span>scp_zh<span style="color:#f92672">/</span>master<span style="color:#f92672">/</span>fonts<span style="color:#f92672">/</span>SimHei<span style="color:#f92672">.</span>ttf
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/eda-tricks/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/eda/">
+                    #eda</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%AB%98%E9%A2%91%E9%97%AE%E9%A2%98/">
+                    #高频问题</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/outlier-detection/" class="prev" rel="prev" title="Outlier Detection"><i class="iconfont icon-left"></i>&nbsp;Outlier Detection</a>
+        
+        
+        <a href="https://kuhung.me/posts/books-20200907/" class="next" rel="next" title="Books 20200907">Books 20200907&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

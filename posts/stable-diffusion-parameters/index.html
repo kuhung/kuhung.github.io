@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/pmp-in-mle/" />
+  <link rel="next" href="https://kuhung.me/posts/ten-financial-moments-in-five-years-3/" />
+  <link rel="canonical" href="https://kuhung.me/posts/stable-diffusion-parameters/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Stable Diffusion 参数解析 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Stable Diffusion 参数解析 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stable-diffusion-parameters/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2023-04-14T22:20:11+08:00","datePublished":"2023-04-14T22:20:11+08:00","description":"部署与运行 https://hub.docker.com/r/siutin/stable-diffusion-webui-docker mkdir -p /MY-DATA-DIR \u0026amp;\u0026amp; cd /MY-DATA-DIR mkdir models outputs sudo chown 10000:$UID -R models outputs sudo chmod 775 -R models …","headline":"Stable Diffusion 参数解析","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"mindmap, 思维导图","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stable-diffusion-parameters/","@type":"WebPage"},"name":"Stable Diffusion 参数解析","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stable-diffusion-parameters/","wordCount":607}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Stable Diffusion 参数解析</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2023-04-14 itemprop="datePublished">April 14, 2023</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/"> 图表专栏 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#部署与运行">部署与运行</a></li>
+    <li><a href="#历史文章">历史文章</a></li>
+    <li><a href="#共性参数">共性参数</a>
+      <ul>
+        <li><a href="#基本概念">基本概念</a></li>
+        <li><a href="#提示词符号">提示词符号</a></li>
+        <li><a href="#lora">LoRA</a></li>
+        <li><a href="#图生图">图生图</a></li>
+      </ul>
+    </li>
+    <li><a href="#mac">Mac</a></li>
+    <li><a href="#模型选择">模型选择</a></li>
+    <li><a href="#模型训练">模型训练</a></li>
+    <li><a href="#diffusers">diffusers</a></li>
+    <li><a href="#其他信息">其他信息</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <h2 id="部署与运行">部署与运行</h2>
+<p><a href="https://hub.docker.com/r/siutin/stable-diffusion-webui-docker">https://hub.docker.com/r/siutin/stable-diffusion-webui-docker</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /MY-DATA-DIR <span style="color:#f92672">&amp;&amp;</span> cd /MY-DATA-DIR
+</span></span><span style="display:flex;"><span>mkdir models outputs
+</span></span><span style="display:flex;"><span>sudo chown 10000:$UID -R models outputs
+</span></span><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">775</span> -R models outputs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run -it --name sdw --gpus all -p 7860:7860 --network host <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/models:/app/stable-diffusion-webui/models <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/outputs:/app/stable-diffusion-webui/outputs <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --rm siutin/stable-diffusion-webui-docker:latest-cuda <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  bash webui.sh --share
+</span></span></code></pre></div><p><a href="https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup">https://github.com/AbdBarho/stable-diffusion-webui-docker/wiki/Setup</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker compose --profile download up --build
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># wait until its done, then:</span>
+</span></span><span style="display:flex;"><span>docker compose --profile <span style="color:#f92672">[</span>ui<span style="color:#f92672">]</span> up --build
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># where [ui] is one of: invoke | auto | auto-cpu | comfy | comfy-cpu</span>
+</span></span></code></pre></div><h2 id="历史文章">历史文章</h2>
+<p>stable diffusion 参数解析大全，一文掌握高质量生成。</p>
+<p>谈及AIGC，最近最火的工具莫过于stable diffusion和midjourney。相较于midjourney，stable diffusion因其更可本地部署，以及开源的特性，吸引了较大基数的用户。通过各类提示词以及参数，叠加上不通的模型，得到了不同风格的结果。不少人戏称其为抽卡，随机性意味十足。在正式开始前，不得不说：这类参数搜寻的工作，也正是stable diffusion火起来的原因之一。因为这类工作，没有明确的死板的过程，充满了随机性并附加了一定的可控性。嗯，没错，远古时打猎也是如此。</p>
+<p>对于一个数据挖掘工程师来说，也就是业内自嘲的调参工程师，不得不说这题我会。参数搜索与分享固然有用，但是仅仅调参+调包，是难以接受的。而近期流行的stable diffusion，又偏偏暴露了很多参数给用户。很多人凭借seed撞大运，抽到了想要的图片。</p>
+<p>本文着重介绍各种调参页面中的参数含义，以及可能的原理。以及我们的调整是如何影响模型的。并尝试给出一些参数建议，并阐明为何这个参数更合适，而不是别的参数。部分参数的理解需要一些基本的模型原理介绍。至于更多的模型原理，不在此展开介绍，已经有很多同类文章了。如有需要还请移步搜索 Stable Diffusion 原理。此外，本文不对安装和操作次序做详细介绍。</p>
+<p>有更多想法欢迎联系我。联系方式见aboutme。</p>
+<h2 id="共性参数">共性参数</h2>
+<h3 id="基本概念">基本概念</h3>
+<p>通过文本，向图片空间扩散，得到目标图。</p>
+<h4 id="提示词-prompt-and-negative-prompt">提示词 Prompt and Negative Prompt</h4>
+<p>顾名思义，你想要啥结果，就用英语描绘出来。不想出现的结果就在负面提示里面描述。</p>
+<p>负面词的作用原理，是过滤，还是啥？如何实现的呢？</p>
+<p>如果英语说不溜，可以考虑任何一个翻译软件/chatgpt进行中译英；或者用看图说话模型，生成参考图片的描述，再进行微调。</p>
+<p>近义词对于模型的影响有限，在文本映射中，相似文本具备相似的空间向量。但是也有一定的扰动作用。</p>
+<p>这里的图片采样是在干啥，什么是图片采样</p>
+<p><a href="https://stable-diffusion-art.com/samplers/">https://stable-diffusion-art.com/samplers/</a></p>
+<h4 id="采样步骤-sampling-steps">采样步骤 Sampling steps</h4>
+<p>某些软件里称之为推理步骤。</p>
+<p>图片的质量会随着这个数字的变大而变好，随后边际效益递减，参数增大时间变长，但改进有限，最后过度。</p>
+<p>对于DPM 采样器，20-25步可取得较好结果。</p>
+<h4 id="采样器-sampler">采样器 Sampler</h4>
+<p>待补充：各类采样器对比</p>
+<p>Different samplers can converge at different steps and may result different visual styles.</p>
+<p>Euler A is known to generate more &ldquo;dreamy&rdquo; images</p>
+<p>while DPM++ 2M Karras can generate high quality images in no more than 30 steps.</p>
+<h4 id="长宽">长宽</h4>
+<p>顾名思义，想要生成图片的长宽。大部分软件默认为512x512，是因为Stable Diffusion有在该尺寸上做过微调。</p>
+<p>为何能生成任意尺寸的图片？</p>
+<p><a href="https://stable-diffusion-art.com/how-stable-diffusion-work/">https://stable-diffusion-art.com/how-stable-diffusion-work/</a></p>
+<p>Hi, the image size is reflected in the size of the latent image tensor. Eg. the size of the latent image is 4x64x64 for a 512×512 image but is 4x96x64 for a 768×512 image. The noise predictor U-Net can consume latent states of different sizes, much like CNN for images.</p>
+<h4 id="cfg-scale--guidance-scale">CFG Scale / Guidance Scale</h4>
+<p>Indicates how much the image should resemble the prompt.</p>
+<p>Low values produce more varied results, while excessively high ones may result in image artifacts such as posterization.</p>
+<p>Values between 7 and 10 are usually good choices, but they affect differently to different models.</p>
+<p>Feel free to experiment!</p>
+<p>这段话是关于使用AI生成图像的时候，要如何设置生成结果的“相似度”参数。在这里，“相似度”是指生成的图像与给定的提示（prompt）之间的相似程度。</p>
+<p>具体来说，如果你将相似度参数设置为较低的值，生成结果会更加多样化，但可能会出现图像色彩的分层现象（posterization）等问题。https://svi.nl/PosterizationArtifacts</p>
+<p>相反，如果你将相似度参数设置为过高的值，生成结果可能会过于接近给定的提示，导致缺乏创造性。</p>
+<p>作者建议将相似度参数设置在7到10之间，这通常可以得到较好的生成结果，但不同的模型对相似度参数的影响可能会有所不同。因此，建议根据具体情况进行实验和调整。</p>
+<p>Text guidance</p>
+<p>How &ldquo;literally&rdquo; the text input should be treated. Higher would be more faithful to the text while lower would have more artistic liberty.</p>
+<p>这个参数描述了模型在处理文本输入时，对文本的“严格程度”的处理方式。设置较高的值将更忠实地呈现文本的含义，而设置较低的值将更具有艺术性的自由度。</p>
+<p>具体来说，如果将该参数设置为较高的值，模型将尽可能地遵循输入文本的字面含义，生成与文本输入直接相关的结果。相反，如果将该参数设置为较低的值，模型将有更大的自由度来解释和改变输入文本的含义，生成更具创造性和艺术性的结果。</p>
+<h3 id="提示词符号">提示词符号</h3>
+<p>提示词符号</p>
+<p><a href="https://stable-diffusion-art.com/prompt-guide/#Prompting_techniques">https://stable-diffusion-art.com/prompt-guide/#Prompting_techniques</a></p>
+<h4 id="heading"></h4>
+<h3 id="lora">LoRA</h3>
+<h3 id="图生图">图生图</h3>
+<h2 id="mac">Mac</h2>
+<p>Control</p>
+<p>Additive models can provide additional control to guide the image generation process. They often take inputs in the form of scribble, poses, depth map or edge map. These additive models are only compatible with their designated versions of Stable Diffusion. &ldquo;Weight&rdquo; determines how much influence the control has over the image generation process. &ldquo;No Prompt&rdquo; can generate image without prompt. &ldquo;Start&rdquo; and</p>
+<p>&ldquo;End&rdquo; determines during the denoising process, when the additional control kicks in.</p>
+<p>Strength</p>
+<p>When generating from an image, high value would give more artistic freedom from the original. 100% means no influence from the existing image (a.k.a. text to image).</p>
+<h2 id="模型选择">模型选择</h2>
+<p>Stable Diffusion 1.4</p>
+<p>This is the original Stable Diffusion model that changed the landscape of Al image generation. For more details, visit the model card or click on the title above.</p>
+<p>Stable Diffusion 1.5</p>
+<p>Same architecture as 1.4, but trained on additional images with a focus on aesthetics.</p>
+<p>Stable Diffusion 2</p>
+<p>Improved model, heavily retrained on millions of additional images. This version corresponds to the stable-diffusion-2-base version of the model (trained on 512 × 512 images).</p>
+<p>Stable Diffusion 2.1</p>
+<p>The last reference in the Stable Diffusion family. Works great with negative prompts.</p>
+<h2 id="模型训练">模型训练</h2>
+<p>LoRA (Low-order Rank Adaptation) is a technique to apply separately trained small additive models to Stable Diffusion base model. These are typically trained faster than full model fine-tuning.</p>
+<p>Clip skip</p>
+<p>&ldquo;CLIP Skip&rdquo; controls how many lavers from the last in the text encoder are skipped. Text encoder translates your text to vectors the computer understands. Skipping more layers in the text encoder will force computer to focus more on individual words than their combined meanings. This might be useful for models that fine-tuned on tag-like text inputs.</p>
+<h2 id="diffusers">diffusers</h2>
+<h2 id="其他信息">其他信息</h2>
+<p>Stable Diffusion 可以跑在python环境</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/613094868">Stable Diffusion Web UI 界面和主要参数介绍</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/611310582">AI绘画入门：扩散模型，Stable Diffusion，LoRA，ControlNet相关技术原理</a></li>
+<li><a href="https://github.com/CompVis/stable-diffusion">https://github.com/CompVis/stable-diffusion</a></li>
+<li><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features">https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Features</a></li>
+<li><a href="https://github.com/VinsonLaro/stable-diffusion-webui-chinese">https://github.com/VinsonLaro/stable-diffusion-webui-chinese</a></li>
+<li><a href="https://getimg.ai/guides/stable-diffusion-parameters">https://getimg.ai/guides/stable-diffusion-parameters</a></li>
+<li><a href="https://stable-diffusion-art.com/how-stable-diffusion-work/">https://stable-diffusion-art.com/how-stable-diffusion-work/</a></li>
+<li><a href="https://diffusion-news.org/stable-diffusion-settings-parameters">https://diffusion-news.org/stable-diffusion-settings-parameters</a></li>
+<li><a href="https://blog.openart.ai/2023/02/13/the-most-complete-guide-to-stable-diffusion-parameters/">https://blog.openart.ai/2023/02/13/the-most-complete-guide-to-stable-diffusion-parameters/</a></li>
+<li><a href="https://stable-diffusion-art.com/prompt-guide/#Prompting_techniques">https://stable-diffusion-art.com/prompt-guide/#Prompting_techniques</a></li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/stable-diffusion-parameters/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mindmap/">
+                    #mindmap</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/">
+                    #思维导图</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/pmp-in-mle/" class="prev" rel="prev" title="交付 数据挖掘"><i class="iconfont icon-left"></i>&nbsp;交付 数据挖掘</a>
+        
+        
+        <a href="https://kuhung.me/posts/ten-financial-moments-in-five-years-3/" class="next" rel="next" title="五年十个财务瞬间｜03 2023年财务变动">五年十个财务瞬间｜03 2023年财务变动&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
