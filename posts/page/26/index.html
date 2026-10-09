@@ -52,6 +52,40 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -205,7 +239,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -244,7 +278,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -279,6 +313,24 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/video-20200826/">Video 20200826</a></h2>
+    <p class="posts-list-summary">先就业，再择业。是当下对于毕业生的建议。
+但如果你工作过一段时间，有了自己的议价权后，也要考虑择业的问题。
+选对行业，跟对人，才是重中之重。
+沃伦巴菲特的好友，同为富豪的查理芒格这样建议年轻人：在择业时，
+别卖你都不相信的东西，即使里面有赌的成分 别为你都无法尊重的人工作。即使他腰缠万贯、位高权重。 别和你不喜欢的人共事。气场的不和，会导致很多问题。 最后，这三个条件，不是非得全部满足。不同阶段， …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-08-27">August 27, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="hive||高频问题"
@@ -425,20 +477,6 @@ shap …</p>
         <time datetime="2020-08-04">August 4, 2020</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="python||高频问题"
-         data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/python-tricks/">Python 常见问题速查</a></h2>
-    <p class="posts-list-summary">标题 创建时间 发布时间 最后一次修改 备注 Python 常见问题速查 2020.08.04 2020.12.21 2021.03.30 / 获取日期参数输入，或者默认日期 import sys import time if len(sys.argv)==2: today = sys.argv[1] else: today = time.strftime(&#34;%Y-%m-%d&#34;, …</p>
-    <div class="posts-list-meta">
-        <time datetime="2020-08-04">August 4, 2020</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -787,7 +825,7 @@ shap …</p>
     
 </ul>
 
-        <span class="posts-total">共 315 篇</span>
+        <span class="posts-total">共 316 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

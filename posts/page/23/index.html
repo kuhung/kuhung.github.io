@@ -52,6 +52,40 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -205,7 +239,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -244,7 +278,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -279,6 +313,21 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/serverless-machine-learning/">Serverless Machine Learning</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 https://github.com/search?o=desc&amp;p=2&amp;q=serverless+machine+learning&amp;s=updated&amp;type=Repositories
+https://github.com/ml-tooling/opyrator https://github.com/ahmedbesbes/cartoonify …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-04-26">April 26, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="翻译作品||管理||The Manager&#39;s Path"
@@ -433,21 +482,6 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
         <time datetime="2021-01-22">January 22, 2021</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/content-creation-in-2020/">Content Creation in 2020</a></h2>
-    <p class="posts-list-summary">简单描述 预计耗时 预计发布 实际发布 最后一次修改 如果说把内容生产，当成自己的资产（某种意义上说，确实如此）。虽然现在没有一栋房子让我收租，这样的资产，但可以可以拿内容生产作为对象，练习如何评估资产。
-另一方面，文章消费上，今年知乎的粉丝达到了6k，总计曝光xx，阅读xx。总体来说，并非篇篇爆款。有一个有趣的现象，就是观点输出的，远胜于知识结构输出。推荐机制下，读者更乐意看到干货，而不是文邹邹 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-01-11">January 11, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
         
     </div>
 </article>
@@ -796,7 +830,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
 </ul>
 
-        <span class="posts-total">共 315 篇</span>
+        <span class="posts-total">共 316 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

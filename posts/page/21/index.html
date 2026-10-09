@@ -52,6 +52,40 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -205,7 +239,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -244,7 +278,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -279,6 +313,21 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/wealth-01/">Wealth 01</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 财富是如何被创造的 大力出奇迹的金融杠杆 很多人提到杠杆，不太熟悉。但当说到借钱消费或投资，可能就好理解了。杠杆是金融系统的一个伟大发明，它加快了资金的流动。加快了资金富集的速度，当然也加快了破产速度。不过，杠杆在这里不再是狭义的金融杠杆，在越来越多的场景下，我们会用到杠杆。
+在上一篇内容，我分享了自己的财务近况。很多朋友会很好奇，我这些思想理论是 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-07-26">July 26, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="mindmap||思维导图"
@@ -408,21 +457,6 @@ if (!doNotTrack) {
 每个人都想养成好习惯，但并非每 …</p>
     <div class="posts-list-meta">
         <time datetime="2021-07-08">July 8, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/atomic-habits-03/">Atomic Habits 03</a></h2>
-    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 让习惯的信号显而易见 位置决定价值 家里有开店铺的朋友可能知道，店铺的选址对于店的客流量影响是有多大。你的店越靠近路边与核心商圈，就能有更高的人气，进而有更高的营业额。这也是为什么商圈位置很关键的原因。习惯也是如此，一个信号越明显，它就更可能形成习惯。
-每个人都想养成好习惯，但并非每个习惯都沉淀了下来。我们想得很好，但却做得很糟糕。可能，你只是缺少 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-07-07">July 7, 2021</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
         
@@ -773,7 +807,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 315 篇</span>
+        <span class="posts-total">共 316 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

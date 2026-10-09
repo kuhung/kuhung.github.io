@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>eda on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/eda/</link>
+    <description>Recent content in eda on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 01 Sep 2020 12:04:49 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/eda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EDA 常见问题速查</title>
+      <link>https://kuhung.me/posts/eda-tricks/</link>
+      <pubDate>Tue, 01 Sep 2020 12:04:49 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/eda-tricks/</guid>
+      <description>标题 创建时间 发布时间 最后一次修改 备注 EDA 常见问题速查 2020.09.01 2020.12.21 2021.03.30 / 工具包 ydata-profiling from ydata_profiling import ProfileReport profile = ProfileReport(reports, title=&amp;#34;Pandas Profiling Report&amp;#34;) 主要关注生成 数据总览、数据质量：类型、缺失、存储等信息。 变量分布，相关性等信息。 样本示范。
+其他支持大数据集、敏感数据处理、数据集比较、自定义显示效果等。
+dataprep 探查 包括 数据统计（总数、缺失数） 数据洞察（具体列的缺失、倾斜、多样性、0值）
+样本交互 样本相关性（Pearson、Spearman、KendallTau） 缺失值可视化
+连接
+清洗
+dtale import dtale dtale.show(reports) https://github.com/akanz1/klib
+关注指标 参考网站 python-graph-gallery 图之典 AntV visualcinnamon 可视化工具 seaborn
+seaborn基础 bokeh
+chord
+pyplot
+plotly
+Datapane
+Altair
+降维
+t-SNE 数据分布探查 三维坐标二维化 #Seaborn pair plot # source: https://stackoverflow.com/questions/52285104/3d-scatterplots-in-python-with-hue-colormap-and-legend import pandas as pd import seaborn as sns df_3d = pd.</description>
+    </item>
+    
+  </channel>
+</rss>

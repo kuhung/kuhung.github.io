@@ -52,6 +52,40 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -205,7 +239,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -244,7 +278,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -279,6 +313,21 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/true-04/">True 04</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 人类简史：人造的真相 在《人类简史》一书中，作者认为，我们所仰仗的团体，不过是社会想象的结果。社群、部落，存在于人们的脑海中，而非具体的形态。正因为如此，这种社会共同的想象体，也给人留下了操作空间。这些人为构建的东西，到底存在多少的操作空间？
+以下内容，主要核心观点来自于《后真相时代》。这个系列将针对它展开，详细讲讲不同的竞争性真相是什么样子的。我 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-08-19">August 19, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="mindmap||思维导图"
@@ -403,20 +452,6 @@ if (!doNotTrack) {
     <h2 class="posts-list-title"><a href="/posts/strategy-06/">Strategy 06</a></h2>
     <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 文化与政治在战略形成过程的作用 权力结构，一直存在于组织中。只要有人的地方，就有江湖，就有权力。在战略中，同样有这样一个学派，从权力角度出发，进行战略的设计。权力将组织根据职能或权力结构，划分为不同部门。而其镜像，则是文化学派，文化将不同的人结合起来，成为一个整体组织。这两者是我们今天要讨论的对象。
 今天我们就通过《战略历程》这本书，拆解战略的本 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-08-08">August 8, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/the-effective-engineer/">思维导图｜《The Effective Enginner》</a></h2>
-    <p class="posts-list-summary">关于作者</p>
     <div class="posts-list-meta">
         <time datetime="2021-08-08">August 8, 2021</time>
         
@@ -769,7 +804,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 315 篇</span>
+        <span class="posts-total">共 316 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

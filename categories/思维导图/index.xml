@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>思维导图 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/</link>
+    <description>Recent content in 思维导图 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 17 Oct 2019 07:57:14 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_analysis</title>
+      <link>https://kuhung.me/posts/data_analysis/</link>
+      <pubDate>Thu, 17 Oct 2019 07:57:14 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/data_analysis/</guid>
+      <description>关于作者</description>
+    </item>
+    
+    <item>
+      <title>How_to_write_resume</title>
+      <link>https://kuhung.me/posts/how_to_write_resume/</link>
+      <pubDate>Wed, 16 Oct 2019 07:56:28 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how_to_write_resume/</guid>
+      <description>关于作者</description>
+    </item>
+    
+  </channel>
+</rss>

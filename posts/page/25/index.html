@@ -52,6 +52,40 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -205,7 +239,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 315 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -244,7 +278,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 315 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -279,6 +313,24 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="项目推进||团队建设"
+         data-categories="行业趋势||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/pmp/">不可不知的项目推进与团队建设之道</a></h2>
+    <p class="posts-list-summary">项目管理好坏，决定了项目的成败。无论做什么工作，项目地企划、执行、效果评估、复盘，总是必不可少的。
+我们可能遇到过如下场景：
+业务方提出需求，扑哧扑哧做个几周后，却发现并不是他们想要的。这样的后果就是： 项目结果被搁置
+几周的开发时间浪费
+业务和开发其乐融融，第一版也顺利交付，而后由于老板或者更高一级负责人的要求，要做的功能点越来越多，以至于现有功能延误。 需求的企划，项目的推进、以及团队的建设， …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-10-26">October 26, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="mindmap||思维导图"
@@ -421,24 +473,6 @@ https://github.com/jaume-ferrarons/paratus/blob/master/tests/cat2vec_test.py
 异常检测，是业务场景中的常见需求。就如同其他自然发展的食物，离群点总会出现。无论是基因的突变、抑或是之前系统中蕴含的巨大分歧，这个世界上，异常才是常态，稳定反而是一种稀缺状态。
 尽管如此，我们在业务中，还是希望抓住确定性。这已深深印刻在人们的内心。每个人都追求稳定性，同时又追求冒险。在业务中，如何发现异常、如何保证系统稳定，是一个系统长期发展的根本基石。
 在异常检测中，一般又分为多种 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2020-08-27">August 27, 2020</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/video-20200826/">Video 20200826</a></h2>
-    <p class="posts-list-summary">先就业，再择业。是当下对于毕业生的建议。
-但如果你工作过一段时间，有了自己的议价权后，也要考虑择业的问题。
-选对行业，跟对人，才是重中之重。
-沃伦巴菲特的好友，同为富豪的查理芒格这样建议年轻人：在择业时，
-别卖你都不相信的东西，即使里面有赌的成分 别为你都无法尊重的人工作。即使他腰缠万贯、位高权重。 别和你不喜欢的人共事。气场的不和，会导致很多问题。 最后，这三个条件，不是非得全部满足。不同阶段， …</p>
     <div class="posts-list-meta">
         <time datetime="2020-08-27">August 27, 2020</time>
         
@@ -791,7 +825,7 @@ https://github.com/jaume-ferrarons/paratus/blob/master/tests/cat2vec_test.py
     
 </ul>
 
-        <span class="posts-total">共 315 篇</span>
+        <span class="posts-total">共 316 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
