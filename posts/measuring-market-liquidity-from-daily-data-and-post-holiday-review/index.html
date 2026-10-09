@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           1.68 万亿放量下跌：日度数据怎么测出市场真实流动性 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="1.68 万亿放量下跌：日度数据怎么测出市场真实流动性 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-09T08:50:00+08:00","datePublished":"2026-10-09T08:50:00+08:00","description":"2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。 盘中科技股一度领涨，但收盘上证指数跌 0.79%，创业板指跌 3.15%，恒生科技指数跌 2.89%。 收盘后的多数讨论把这天归结为「放量，流动性充裕」。但实盘交易的体感往往相反：买盘承接很薄，稍微有些规模的卖单打出去，价格就直接滑下一大截。 把成交额直接等同 …","headline":"1.68 万亿放量下跌：日度数据怎么测出市场真实流动性","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 流动性, A股, 港股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","@type":"WebPage"},"name":"1.68 万亿放量下跌：日度数据怎么测出市场真实流动性","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","wordCount":214}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-09 itemprop="datePublished">October 9, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#流动性的三维结构">流动性的三维结构</a></li>
+    <li><a href="#指标一amihud-非流动性比率算深度">指标一：Amihud 非流动性比率算深度</a>
+      <ul>
+        <li><a href="#算法与直觉">算法与直觉</a></li>
+        <li><a href="#实测过程与数值">实测过程与数值</a></li>
+      </ul>
+    </li>
+    <li><a href="#指标二corwin-schultz-高低价价差算摩擦">指标二：Corwin-Schultz 高低价价差算摩擦</a>
+      <ul>
+        <li><a href="#算法逻辑">算法逻辑</a></li>
+        <li><a href="#实测结果">实测结果</a></li>
+      </ul>
+    </li>
+    <li><a href="#为什么放量反而流动性收紧融资流动性传导">为什么放量反而流动性收紧：融资流动性传导</a></li>
+    <li><a href="#a-股实测中的三处盲区">A 股实测中的三处盲区</a></li>
+    <li><a href="#总结与实盘启示">总结与实盘启示</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。</p>
+<p>盘中科技股一度领涨，但收盘上证指数跌 0.79%，创业板指跌 3.15%，恒生科技指数跌 2.89%。</p>
+<p>收盘后的多数讨论把这天归结为「放量，流动性充裕」。但实盘交易的体感往往相反：买盘承接很薄，稍微有些规模的卖单打出去，价格就直接滑下一大截。</p>
+<p>把成交额直接等同于流动性，是日常复盘里最容易踩的坑。</p>
+<p>借着这次节后行情的复盘，把我最近在 QuantFull 上整理的日度流动性度量方法、计算过程和实际结果梳理一遍。</p>
+<h2 id="流动性的三维结构">流动性的三维结构</h2>
+<p>在微观结构里，流动性不是一个单一指标，而是三个互相独立的维度：</p>
+<p><strong>广度</strong>。市场上有多少交易主体、发生了多少成交额。常用代理指标是成交额和换手率。</p>
+<p><strong>深度</strong>。订单簿在不发生剧烈价格偏离的前提下，能吸收多大的订单规模。衡量的是价格冲击（price impact）。</p>
+<p><strong>紧度</strong>。完成一笔交易需要承担的摩擦成本，对应买卖有效价差（effective spread）。</p>
+<p>10 月 8 日的盘面是典型的「广度放大、深度塌陷」。成交额虽然升至 1.68 万亿，但单位抛压撬动的价格下跌幅度极大。市场有换手，没有深度。</p>
+<p>多数人手里只有日度 OHLCV，没有 Level-2 逐笔委托簿数据。但只用日度公开数据，同样能高精度逼近深度和价差。</p>
+<h2 id="指标一amihud-非流动性比率算深度">指标一：Amihud 非流动性比率算深度</h2>
+<p>度量市场深度最经典的低频工具是 Amihud（2002）提出的非流动性比率（ILLIQ）。</p>
+<h3 id="算法与直觉">算法与直觉</h3>
+<p>计算只需要日收益率绝对值与日成交额：</p>
+<p>$$
+\text{ILLIQ}<em>{i,t} = \frac{|r</em>{i,t}|}{\text{Volume}_{i,t}}
+$$</p>
+<p>分子是价格变动幅度，分母是用多少资金撬动了这个幅度。比值越大，意味着每单位成交金额对价格造成的冲击越大，市场深度越薄，流动性越差。</p>
+<p>学术界（Goyenko et al. 2009 与 Fong et al. 2017）在全球 43 国市场做过赛马检验：在所有低频度量中，日度 Amihud ILLIQ 对微观高频价格冲击（Kyle&rsquo;s $\lambda$）的刻画能力排名第一。不需要高频逐笔数据清洗，日度成交额与涨跌幅已经保留了绝大部分价格冲击信号。</p>
+<h3 id="实测过程与数值">实测过程与数值</h3>
+<p>拿 10 月 8 日对比节前 9 月 30 日：</p>
+<ul>
+<li><strong>9 月 30 日（节前基准）</strong>：两市成交 1.45 万亿元，上证窄幅震荡平收（$|r| \approx 0.10%$）。计算出的基准 $\text{ILLIQ}$ 约为 $0.069 \times 10^{-6}$。</li>
+<li><strong>10 月 8 日（节后首日上证）</strong>：两市成交 1.68 万亿元，上证收跌 0.79%。计算出的 $\text{ILLIQ}$ 跳升至 $0.469 \times 10^{-6}$，比节前放大了约 5.8 倍。</li>
+<li><strong>10 月 8 日（节后创业板）</strong>：全天成交约 3600 亿元，收益率跌 3.15%。$\text{ILLIQ}$ 达到 $8.75 \times 10^{-6}$，价格冲击是主板宽基的 18 倍。</li>
+</ul>
+<p>结论很直观：虽然成交额放大了 16%，但单位资金撬动的负向价格冲击放大了接近 6 倍。订单簿厚度被空头击穿，买盘承接极其脆弱。</p>
+<h2 id="指标二corwin-schultz-高低价价差算摩擦">指标二：Corwin-Schultz 高低价价差算摩擦</h2>
+<p>衡量买卖有效价差（紧度），通常依赖盘口挂单。Corwin &amp; Schultz（2012）提供了一种用日最高价与最低价反推有效价差的方法。</p>
+<h3 id="算法逻辑">算法逻辑</h3>
+<p>单日最高价绝大多数由买方发起交易推高，最低价绝大多数由卖方发起交易砸出。日内对数高低价比率 $[\ln(H/L)]^2$ 同时包含了标的的真实波动率和买卖价差。</p>
+<p>波动率随时间累加（两天的方差大致是单日的两倍），但买卖价差不随持有时间翻倍。利用单日高低价与跨两日高低价联立方程，即可剥离出隐含价差 $S$。</p>
+<h3 id="实测结果">实测结果</h3>
+<ul>
+<li>节前（9 月 30 日）：市场处于休假模式，上证日内振幅仅 0.72%，估计出的有效价差约为 12 到 15 bps。</li>
+<li>节后（10 月 8 日）：早盘科技拉升（13:58 通信一度涨 4.51%、电子涨 2.69%），午后断崖跳水，科技股全天振幅达 7% 到 10%。</li>
+<li>联立两日数据计算，全市场估计有效价差跃升至 38 到 55 bps，交易摩擦成本扩大了 2 到 3 倍。</li>
+</ul>
+<h2 id="为什么放量反而流动性收紧融资流动性传导">为什么放量反而流动性收紧：融资流动性传导</h2>
+<p>要理解放量深跌的微观机制，需要引入 Brunnermeier &amp; Pedersen（2009）的框架：区分市场流动性（资产变现难易）与融资流动性（交易者获得杠杆的能力）。</p>
+<p>做市主体提供二级市场承接能力，直接受制于其保证金约束。</p>
+<p>截至 9 月 30 日，全市场两融余额已降至 2.57 万亿元（融资余额 2.54 万亿元），有效跌破 2.6 万亿元关口，较 9 月中旬高点净流出数百亿。</p>
+<p>融资流动性在节前已经处于收紧通道。节后首日早盘，当部分资金获利了结时，二级市场缺乏足够的两融买盘提供双向缓冲，导致正常的获利了结迅速演变为价格下挫。</p>
+<p>与此形成对比的是港股通资金：恒指跌 1.43%，但南向资金逆势净买入 64.77 亿港元，占大市成交近 40%。内资在港股表现出明显的左侧配置属性，而不是追涨杀跌。</p>
+<h2 id="a-股实测中的三处盲区">A 股实测中的三处盲区</h2>
+<p>把上述指标套用到 A 股时，有三处制度特征容易导致失真：</p>
+<ol>
+<li><strong>涨跌停板截断</strong>：一字跌停或涨停时，换手率极低但涨跌幅被打满，Amihud 分母接近零会导致数值虚高。横截面统计必须剔除未开板标的。</li>
+<li><strong>恐慌日的波动率污染</strong>：大盘暴跌时，个股涨跌幅主要由系统性贝塔驱动，而非个股微观承接能力改变。做横截面时需剥离大盘残差。</li>
+<li><strong>T+1 机制对高低价的拉偏</strong>：当日买入无法卖出，多头无法在日内低点止损，造成日内振幅偏大，Corwin-Schultz 估算出的成本相对保守。</li>
+</ol>
+<h2 id="总结与实盘启示">总结与实盘启示</h2>
+<p>日常跟踪流动性时，形成三条习惯：</p>
+<ul>
+<li>不单看成交额的绝对值，成交额要配合换手率历史分位数一起看。</li>
+<li>用 Amihud ILLIQ 区分放量的性质。放量下跌伴随 ILLIQ 走高，代表价格冲击失控、承接枯竭。</li>
+<li>紧盯融资流动性指标。两融余额在 2.6 万亿下方尚未企稳前，做市深度依然脆弱，大资金调仓滑点会是常态交易日的数倍。</li>
+</ul>
+<p>更多详细的微观结构模型推导和 A 股实战案例，我也整理在 QuantFull 网站上：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull：流动性是怎么测出来的（长文解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull：策略容量与冲击成本估算</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">QuantFull：量化交易思维导图与资料合集</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/">
+                    #流动性</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/a%E8%82%A1/">
+                    #A股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/">
+                    #港股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84%E5%A4%8D%E7%9B%98/">
+                    #投资复盘</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/" class="prev" rel="prev" title="Claude Haiku 5.5: 性能、价格断崖与选型建议"><i class="iconfont icon-left"></i>&nbsp;Claude Haiku 5.5: 性能、价格断崖与选型建议</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

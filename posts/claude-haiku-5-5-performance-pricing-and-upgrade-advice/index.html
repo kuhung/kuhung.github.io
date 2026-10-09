@@ -31,7 +31,7 @@ if (!doNotTrack) {
     })(window, document, "clarity", "script", "yelaywwb9r");
   </script>
   <link rel="prev" href="https://kuhung.me/posts/hsbc-pulse-vs-red-credit-cards-comparison-and-application-guide/" />
-  
+  <link rel="next" href="https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/" />
   <link rel="canonical" href="https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -59,7 +59,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-08T22:00:00+08:00","datePublished":"2026-10-08T22:00:00+08:00","description":"北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族在 Opus 5.5 和 Sonnet 5.5 之后的收官模型。标价降到和 GPT-6 Luna 完全一致，上下文拉到 1M。大家关心的核心问题通常是两件事：它到底强在哪，手上的小模型要不要换。 笔者维护的浏览器插件 PageGrok， …","headline":"Claude Haiku 5.5: 性能、价格断崖与选型建议","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/","@type":"WebPage"},"name":"Claude Haiku 5.5: 性能、价格断崖与选型建议","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/","wordCount":541}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-08T22:00:00+08:00","datePublished":"2026-10-08T22:00:00+08:00","description":"北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族在 Opus 5.5 和 Sonnet 5.5 之后的收官模型。标价降到和 GPT-6 Luna 完全一致，上下文拉到 1M。大家关心的核心问题通常是两件事：它到底强在哪，手上的小模型要不要换。 笔者维护的浏览器插件 PageGrok， …","headline":"Claude Haiku 5.5: 性能、价格断崖与选型建议","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/","@type":"WebPage"},"name":"Claude Haiku 5.5: 性能、价格断崖与选型建议","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/","wordCount":529}</script>
 </head>
 
   
@@ -477,7 +477,6 @@ if (!doNotTrack) {
 <p>综合各项测试，选择路径相对明确：</p>
 <p>适合接入 Haiku 5.5 的场景：团队已经深耕 Claude 生态，需要更轻便的子 agent 来处理检索、路由、总结或日志清洗；单次提示词稳定在 100K 以内；或者需要高质量的浏览器与电脑操作。</p>
 <p>适合选择其他模型的场景：单次提示词经常超过 100K，建议选择没有 5 倍跳价的 Luna 或 DeepSeek；面向用户的实时聊天且对首字延迟敏感，建议选用 DeepSeek 或 Flash-Lite；涉及多步骤复杂编码，依然建议直接调用 Sonnet 5.5。</p>
-<p>接下来 PageGrok 准备抽取 30 条生产历史长文本与网页摘要日志，分别接入 Haiku 5.5 和 DeepSeek V4.1 Flash 跑盲测，对比响应速度、首字延迟和页面理解质量，以此敲定最终的切换配置。</p>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li>Anthropic 官方发布：https://www.anthropic.com/claude-haiku-5-5</li>
@@ -539,6 +538,8 @@ if (!doNotTrack) {
         
         <a href="https://kuhung.me/posts/hsbc-pulse-vs-red-credit-cards-comparison-and-application-guide/" class="prev" rel="prev" title="汇丰 Pulse 与 Red 信用卡对比，回赠差异、下卡门槛与内地卓越开卡梳理"><i class="iconfont icon-left"></i>&nbsp;汇丰 Pulse 与 Red 信用卡对比，回赠差异、下卡门槛与内地卓越开卡梳理</a>
         
+        
+        <a href="https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/" class="next" rel="next" title="1.68 万亿放量下跌：日度数据怎么测出市场真实流动性">1.68 万亿放量下跌：日度数据怎么测出市场真实流动性&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
