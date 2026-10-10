@@ -6,7 +6,21 @@
     <description>Recent content in agent on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 07 Oct 2025 21:12:32 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Oct 2026 16:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了</title>
+      <link>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</link>
+      <pubDate>Sat, 10 Oct 2026 16:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+如果只想记一句话，那就是：0.99 用 Codemode 把 MCP 接了回来，1.0 把这套东西定成稳定版，1.1 只是让日常用起来更顺手。
+Pi 的 changelog 很长，但真正改变这个工具性格的只有一件事，就是对 MCP 的态度。其余的更新要么是在为这件事铺路，要么是在给它擦屁股。社区这两周吵得热闹，吵的也不是功能多少，而是 Pi 还算不算那个极简的 Pi。
+上个月写 Pi 入门笔记 的时候，它还是一个连 Plan 模式都不给你的终端工具。短短三周，变化不小。
+先把时间线理清 日期 版本 一句话 09-29 0.99.0 真正的大版本：Codemode、内置 MCP、延迟加载、虚拟模型、分类器 10-01 1.0.0 定版加固：默认全屏、Codemode 提示成本再降约四成；同日发布实验包 Pi Durable 10-03 至 10-05 1.0.1 至 1.0.4 补丁周，唯一的破坏性变更是 1.0.3 里 Azure provider 改名 10-07 1.1.0 没有破坏性变更：状态上报、工具增减写法、Haiku 5.5、看图分类、llama.cpp 原生接入 有个细节容易被忽略：最激进的改动其实发生在 0.99，而不是 1.0。1.0 的意义更像是一份承诺，告诉大家这套接口以后不会乱动了，可以放心在上面写扩展。
+最大的变化：MCP 回来了，但换了个接法 当初为什么拒绝 Pi 过去一年多旗帜鲜明地不支持 MCP，官网上就这么写着。理由不是意识形态，而是一笔账：传统的 MCP 接法会把所有工具的 Schema 一次性塞进上下文。社区里被反复引用的例子是，接三个 MCP 服务器，光工具定义就吃掉约 143k 的上下文（总共 200k），活还没开始干，七成窗口已经没了。</description>
+    </item>
+    
     <item>
       <title>AI相亲小镇开发纪要（三）</title>
       <link>https://kuhung.me/posts/love-in-ai-town-3/</link>

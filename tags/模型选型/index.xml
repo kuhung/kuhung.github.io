@@ -8,14 +8,14 @@
     <language>zh-CN</language>
     <lastBuildDate>Thu, 08 Oct 2026 22:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Claude Haiku 5.5: 性能、价格断崖与选型建议</title>
+      <title>Claude Haiku 5.5，当前性价比首选？</title>
       <link>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</link>
       <pubDate>Thu, 08 Oct 2026 22:00:00 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</guid>
-      <description>北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族在 Opus 5.5 和 Sonnet 5.5 之后的收官模型。标价降到和 GPT-6 Luna 完全一致，上下文拉到 1M。大家关心的核心问题通常是两件事：它到底强在哪，手上的小模型要不要换。
-笔者维护的浏览器插件 PageGrok，其云端轻量模型之前走 OpenRouter 挂在 Gemini 2.5 Flash-Lite 上。OpenRouter 标注该模型在 2026 年 10 月 20 日退役，刚好需要在这两周内完成迁移选型。借着这次对 Haiku 5.5 的整理，把价格算式、性能实测和替换策略梳理清楚。
-下面逐项介绍。依次讨论规格、能力提升、计费断崖、延迟表现以及国产同价位模型的选择。
+      <description>北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族的最后一款模型。名义标价对齐 OpenAI GPT-6 Luna（输入 $0.10、输出 $0.50 每百万 token），上下文窗口扩展到 1M。大家关心的通常是两件事：到底强在哪，手头的小模型要不要换。
+笔者维护的浏览器插件 PageGrok，轻量模型此前走 OpenRouter 挂在 Gemini 2.5 Flash-Lite。该模型标注在 2026 年 10 月 20 日退役，刚好需要在这两周内完成迁移选型。
+Haiku 5.5 标价降了九成，但实际账单有三处门槛：长上下文单价翻 5 倍、思考档位拉长延迟、新分词器带来的 token 膨胀。这里把价格算式、性能实测和替换细节梳理清楚。
 发布清单 模型 上下文 输入 / 输出单价（≤100K） 相对上一代变化 Claude Haiku 5.5 1M $0.10 / $0.50 标价降 90%，支持 effort 档位 GPT-6 Luna 1.05M $0.10 / $0.50 输入降 50%，输出降 58% Gemini 3.5 Flash-Lite 1M $0.</description>
     </item>
     

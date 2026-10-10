@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-10T16:25:00+08:00","datePublished":"2026-10-10T16:25:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 如果只想记一句话，那就是：0.99 用 Codemode 把 MCP 接了回来，1.0 把这套东西定成稳定版，1.1 只是让日常用起来更顺手。 Pi 的 changelog 很长，但真正改变这个工具性格的只有一件事，就是对 MCP 的态度。其余的更新要么是在为这件事铺路，要么是在给它擦屁股。社区这两周吵得热闹，吵的也不是功能多少，而是 Pi 还算不 …","headline":"Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Pi, AI工具, vibe coding, Agent, MCP","mainEntityOfPage":{"@id":"https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/","@type":"WebPage"},"name":"Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/","wordCount":364}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-10 itemprop="datePublished">October 10, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#先把时间线理清">先把时间线理清</a></li>
+    <li><a href="#最大的变化mcp-回来了但换了个接法">最大的变化：MCP 回来了，但换了个接法</a>
+      <ul>
+        <li><a href="#当初为什么拒绝">当初为什么拒绝</a></li>
+        <li><a href="#现在怎么接">现在怎么接</a></li>
+        <li><a href="#为什么改口">为什么改口</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-还顺手做了什么">1.0 还顺手做了什么</a></li>
+    <li><a href="#pi-durable可能才是真正的赌注">Pi Durable：可能才是真正的赌注</a></li>
+    <li><a href="#11-很安静这是好事">1.1 很安静，这是好事</a></li>
+    <li><a href="#社区在吵什么">社区在吵什么</a>
+      <ul>
+        <li><a href="#极简还算不算极简">极简还算不算极简</a></li>
+        <li><a href="#不跟模型行为对着干">「不跟模型行为对着干」</a></li>
+        <li><a href="#没有权限系统">没有权限系统</a></li>
+        <li><a href="#一些小事但影响信任">一些小事，但影响信任</a></li>
+      </ul>
+    </li>
+    <li><a href="#该不该升级该不该入坑">该不该升级，该不该入坑</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
+</blockquote>
+<p>如果只想记一句话，那就是：<strong>0.99 用 Codemode 把 MCP 接了回来，1.0 把这套东西定成稳定版，1.1 只是让日常用起来更顺手。</strong></p>
+<p>Pi 的 changelog 很长，但真正改变这个工具性格的只有一件事，就是对 MCP 的态度。其余的更新要么是在为这件事铺路，要么是在给它擦屁股。社区这两周吵得热闹，吵的也不是功能多少，而是 Pi 还算不算那个极简的 Pi。</p>
+<p>上个月写 <a href="/posts/Getting-Started-with-Pi-CLI-Practical-Multi-Model-Coding-Workflows/">Pi 入门笔记</a> 的时候，它还是一个连 Plan 模式都不给你的终端工具。短短三周，变化不小。</p>
+<h2 id="先把时间线理清">先把时间线理清</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>版本</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09-29</td>
+<td>0.99.0</td>
+<td>真正的大版本：Codemode、内置 MCP、延迟加载、虚拟模型、分类器</td>
+</tr>
+<tr>
+<td>10-01</td>
+<td>1.0.0</td>
+<td>定版加固：默认全屏、Codemode 提示成本再降约四成；同日发布实验包 Pi Durable</td>
+</tr>
+<tr>
+<td>10-03 至 10-05</td>
+<td>1.0.1 至 1.0.4</td>
+<td>补丁周，唯一的破坏性变更是 1.0.3 里 Azure provider 改名</td>
+</tr>
+<tr>
+<td>10-07</td>
+<td>1.1.0</td>
+<td>没有破坏性变更：状态上报、工具增减写法、Haiku 5.5、看图分类、llama.cpp 原生接入</td>
+</tr>
+</tbody>
+</table>
+<p>有个细节容易被忽略：最激进的改动其实发生在 0.99，而不是 1.0。1.0 的意义更像是一份承诺，告诉大家这套接口以后不会乱动了，可以放心在上面写扩展。</p>
+<h2 id="最大的变化mcp-回来了但换了个接法">最大的变化：MCP 回来了，但换了个接法</h2>
+<h3 id="当初为什么拒绝">当初为什么拒绝</h3>
+<p>Pi 过去一年多旗帜鲜明地不支持 MCP，官网上就这么写着。理由不是意识形态，而是一笔账：传统的 MCP 接法会把所有工具的 Schema 一次性塞进上下文。社区里被反复引用的例子是，接三个 MCP 服务器，光工具定义就吃掉约 143k 的上下文（总共 200k），活还没开始干，七成窗口已经没了。</p>
+<p>对一个以「系统提示短、上下文干净」为卖点的工具来说，这确实不能接受。</p>
+<h3 id="现在怎么接">现在怎么接</h3>
+<p>0.99 的做法是不让模型直接看工具清单。模型拿到的是一个 QuickJS 沙箱，它在里面写一段 JavaScript，通过 <code>searchTools()</code> 按需找到要用的工具，在沙箱里调用、过滤、合并结果，最后只把脚本的输出交回上下文。中间那些又长又没用的原始返回值，模型根本看不到。</p>
+<p>这套机制就叫 Codemode。MCP 服务器配置好之后，默认就走这条路，工具不会直接出现在模型的工具声明里。如果你确实想让某个工具直接暴露，也可以把它切到 <code>direct</code> 模式，另外还有 <code>deferred</code> 和 <code>hidden</code> 两档。</p>
+<p>1.0 又把 Codemode 自身的提示开销从约 5,300 token 压到约 3,300 token，降了四成左右。</p>
+<p>说实话，这个思路不是 Pi 首创的。Cloudflare 去年就写过一篇 <a href="https://blog.cloudflare.com/code-mode/">Code Mode</a>，核心想法一模一样：与其让模型一个个调工具，不如让它写代码去调。Pi 的贡献在于把它做成了默认行为，并且放进了一个本来就以省上下文出名的工具里。</p>
+<h3 id="为什么改口">为什么改口</h3>
+<p>官方专门写了一篇 <a href="https://earendil.com/posts/you-said-no-mcp/">You Said No MCP!</a>，标题就是在自嘲。理由大致有三层：</p>
+<ul>
+<li>MCP 协议本身这一年变了不少，不再是当初那个样子。</li>
+<li>为了支持 Codemode 做的底层改动（延迟加载工具、对话中途改系统消息、接入分类器这类非对话模型），对 Pi 本身就有用，MCP 只是顺带吃到了好处。</li>
+<li>官方仍然承认 MCP 的可组合性很差，但觉得与其在外面骂，不如用 Codemode 把它变得可用。</li>
+</ul>
+<p>Armin Ronacher 在 Hacker News 上补了一个更现实的理由：前沿模型已经被训练成依赖这种写代码调工具的方式，比如 Codex 内部做并行工具调用时就靠类似机制。harness 如果不跟，就等于在跟模型的习惯作对。</p>
+<p>这句话后来成了整个讨论里最有争议的一段，后面再说。</p>
+<p>社区的主流解读倒是挺宽容：不是 Pi 投降了，而是它一直等到有一种不吃上下文的接法，才肯说 yes。HN 上的「You Said No MCP」帖拿到了 600 多分，很多评论都在说，公开改口本身就值得尊重。</p>
+<h2 id="10-还顺手做了什么">1.0 还顺手做了什么</h2>
+<p>除了 Codemode，1.0 的官方列表里还有几项，单拿出来不起眼，但都和上面那件事有关：</p>
+<ul>
+<li><strong>延迟加载工具</strong>：工具不再开机全量加载，用到才拉。这是 Codemode 能省上下文的前提。</li>
+<li><strong>对话中途的系统消息</strong>：会话进行到一半增减工具、改提示词时，模型能感知到变化，而不是假装什么都没发生。</li>
+<li><strong>Anthropic 模型的缓存预热</strong>：长会话里能少付一些重复的输入费用。</li>
+<li><strong>虚拟模型</strong>：扩展可以注册一个「模型」，背后其实是自己的逻辑，比如路由或者组合多个模型。</li>
+<li><strong>默认全屏和新主题</strong>：纯界面改动，但被骂得不少，后面会提到。</li>
+</ul>
+<p>另外 1.0 开始支持用 Earendil 自家的 Radius 网关登录。这里顺便澄清一个常见误会：Pi 本身是 MIT 开源，没有订阅费也没有席位费。Radius 是一个按 token 扣费的模型网关，和 OpenRouter 是一类东西，它的价目表不是 Pi 的月费。</p>
+<h2 id="pi-durable可能才是真正的赌注">Pi Durable：可能才是真正的赌注</h2>
+<p>和 1.0 同一天发布的还有一个实验包，叫 <a href="https://earendil.com/posts/pi-durable/">Pi Durable</a>。HN 上有人管它叫 sleeper release，意思是现在没人在意，以后可能最重要。</p>
+<p>它要解决的问题很具体：现在的 coding agent 基本都活在一个终端进程里，进程一挂，会话就没了。如果你想让 agent 跑几个小时甚至几天的后台任务，这就不够用了。</p>
+<p>Pi Durable 的做法是把会话状态持久化到 SQLite 或 JSONL 里，进程崩了能从检查点恢复；同时支持多会话并发和分叉。比较有意思的一点是，它要求工具声明「崩溃后能不能安全重跑」，这样恢复的时候 harness 知道哪些操作可以重放，哪些不能。</p>
+<p>官方说得很克制，明确表示它不会取代现在的终端客户端，更像是给想做后台自动化的人准备的底盘。整个包大约 1.5 万行代码（不含测试），还是实验状态，现在拿来跑生产任务为时过早。</p>
+<h2 id="11-很安静这是好事">1.1 很安静，这是好事</h2>
+<p>1.1 在社区里几乎没有形成独立话题。没有破坏性变更，没有新叙事，就是一批顺手的改进：</p>
+<ul>
+<li><strong>工具增减写法</strong>：<code>pi -t +codemode,-write</code> 这样用加减号增删工具，不用把整串工具名重新抄一遍。想临时开沙箱、或者拿掉写权限做只读审查，一行就够。</li>
+<li><strong>OSC 7501 状态上报</strong>：Pi 会把自己的状态（忙、等待输入、结束）上报给终端。多开几个会话并行跑的时候，标签页上一眼就能看出谁卡住了。</li>
+<li><strong>模型和分类器</strong>：新增 Haiku 5.5；<code>models.classify()</code> 能看图分类，批量筛截图之类的场景能用上；llama.cpp 作为决策模型原生接入，跑本地模型更方便。</li>
+<li>另外还有二十来项修复。</li>
+</ul>
+<p>大版本之后紧跟一个无聊的小版本，通常说明 1.0 的地基打得还算稳。对用户来说，结论很简单：直接 <code>pi update</code>，不用犹豫。</p>
+<h2 id="社区在吵什么">社区在吵什么</h2>
+<p>这部分比功能列表更值得看，因为它决定了一个人会不会真的换过来。</p>
+<h3 id="极简还算不算极简">极简还算不算极简</h3>
+<p>这是吵得最凶的一点。Pi 当初靠「什么都不做」赢得了一批死忠：没有子代理，没有 Plan 模式，没有权限弹窗，那份拒绝清单本身就是产品。现在一口气把 MCP、Codemode、工具搜索全塞进了核心，一部分老用户觉得味道变了。</p>
+<p>反应激烈到出现了 fork。GitHub 上的 <a href="https://github.com/subimpact/e">subimpact/e</a> 直接把 MCP、Codemode 和工具搜索从代码里删掉，README 里写得很直白：当年的拒绝清单就是卖点。</p>
+<p>支持现在路线的人则认为，极简指的是核心循环小、提示词干净，不是永远拒绝生态接口。而且 Codemode 恰恰是在守「上下文干净」这条线，只是守法换了。</p>
+<p>我倾向于后一种看法，但前一种担忧也不是没道理。2026 年 4 月 Earendil 收购了 Pi，原作者 Mario Zechner 加入公司。一个开源工具被公司接手之后开始加功能，大家天然会警惕：这次加了 MCP，下次会不会就是内置子代理、内置计划模式？「默认全屏」被骂，某种程度上也是这种情绪的投射，界面改动本身不大，但它释放的信号是：Pi 开始替你做决定了。</p>
+<h3 id="不跟模型行为对着干">「不跟模型行为对着干」</h3>
+<p>前面提到 Armin 的那句话。支持者觉得这很务实：模型就是被这么训练的，harness 顺着走效率最高。反对者觉得这等于放弃了 harness 该有的引导责任，模型厂商怎么训，工具就怎么跟，那 harness 还剩什么独立价值？</p>
+<p>这个问题没有标准答案，但它其实问到了所有 agent 工具的根上：当模型越来越强，外面这层壳到底该厚还是该薄。</p>
+<h3 id="没有权限系统">没有权限系统</h3>
+<p>Pi 默认用启动它的用户权限运行，读写文件、访问网络、碰凭证，都没有内置拦截。老用户会自己套容器或者装审批扩展，新手往往直接裸跑。这是 HN 上被点赞最多的批评之一。</p>
+<p>这里有个特别容易混淆的点：<strong>Codemode 的沙箱是为了省 token，不是安全边界。</strong> 它隔离的是上下文，不是你的文件系统。别因为看到「沙箱」两个字就以为安全了。</p>
+<h3 id="一些小事但影响信任">一些小事，但影响信任</h3>
+<ul>
+<li>有人指出自动更新和遥测的关闭方式不一致，觉得像暗模式。fork 项目 e 也把「默认不外发信息」当成卖点之一，说明确实有人在意。</li>
+<li>扩展质量参差不齐。Pi 的强项是可扩展，弱项也是可扩展：裸装几乎不干活，好不好用取决于你挑了哪些扩展。有人晒自己写的八九个扩展，也有人吐槽很多扩展像个人练手项目。</li>
+<li>名字和体积。Pi 跟树莓派、圆周率重名，每次都得解释；Node 生态的安装体积也被吐槽，有人说容器里拉下来五百兆左右。这类话题技术含量不高，但传播最广。</li>
+</ul>
+<h2 id="该不该升级该不该入坑">该不该升级，该不该入坑</h2>
+<p>已经在用 Pi 的，直接升到 1.1。如果你本来就不用 MCP，Codemode 不会主动打扰你；如果介意，用 <code>-t -codemode</code> 关掉就行，或者去用 e 这个 fork。</p>
+<p>还没用过 Pi 的，可以按这几个问题自己判断：</p>
+<ul>
+<li>你手里有一堆现成的 MCP 服务器，又嫌别的 agent 一接上就把上下文撑爆，那 1.x 的 Codemode 值得专门试一下。拿一个常用的 MCP 服务器接上去，对比一下上下文占用，几分钟就能看出差别。</li>
+<li>你想在终端里用本地模型或者多家模型搭一套自己能完全控制的环境，Pi 依然是最合适的选择之一，轻量的系统提示对小模型尤其友好。</li>
+<li>你希望开箱即用，不想挑扩展、不想配权限，那 Claude Code、OpenCode 或者 Cursor 会省心得多。Pi 1.x 变大了一点，但它仍然是一个给你原语、让你自己拼的工具。</li>
+</ul>
+<p>至于新手，不管选哪条路，先在容器里跑。</p>
+<p>回头看这次更新，最有意思的不是它多了什么功能，而是一个靠拒绝建立信任的工具，在改主意时给出了一份足够认真的解释。社区可以不同意，但至少吵得有理有据。这本身就说明 Pi 的用户群体在乎的东西，和大多数 AI 工具的用户不太一样。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://earendil.com/posts/pi-1-0/">Pi 1.0 官方发布</a></li>
+<li><a href="https://earendil.com/posts/you-said-no-mcp/">You Said No MCP!</a></li>
+<li><a href="https://earendil.com/posts/pi-durable/">Pi Durable</a></li>
+<li><a href="https://pi.dev/changelog">Pi changelog</a></li>
+<li><a href="https://pi.dev/docs/latest/codemode">Codemode 文档</a> 和 <a href="https://pi.dev/docs/latest/mcp">MCP 文档</a></li>
+<li>Hacker News 讨论：<a href="https://news.ycombinator.com/item?id=49926069">Pi 1.0</a>、<a href="https://news.ycombinator.com/item?id=49906637">You Said No MCP</a>、<a href="https://news.ycombinator.com/item?id=49925969">Pi Durable</a></li>
+<li><a href="https://github.com/subimpact/e">极简 fork：subimpact/e</a></li>
+<li><a href="https://blog.cloudflare.com/code-mode/">Cloudflare：Code Mode</a></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/pi/">
+                    #Pi</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai%E5%B7%A5%E5%85%B7/">
+                    #AI工具</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/vibe-coding/">
+                    #vibe coding</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/agent/">
+                    #Agent</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mcp/">
+                    #MCP</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/" class="prev" rel="prev" title="1.68 万亿放量下跌：日度数据怎么测出市场真实流动性"><i class="iconfont icon-left"></i>&nbsp;1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
