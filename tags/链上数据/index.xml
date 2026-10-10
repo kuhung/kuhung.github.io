@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>流动性 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/</link>
-    <description>Recent content in 流动性 on 谷粒 kuhung</description>
+    <title>链上数据 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</link>
+    <description>Recent content in 链上数据 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 17:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Oct 2026 17:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>做链上宏观数据，我为什么劝你别看 TVL 和发币量</title>
       <link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link>
@@ -24,31 +24,6 @@ TVL：循环嵌套与代币单价被动膨胀 很多人拿 TVL 当作公链资�
 DEX 成交量：低成本对倒 中心化交易所刷量需要向平台交手续费，但在低 Gas 费公链或零费率池子里，量化脚本可以在两个流动性池之间循环对买对卖。单日名义交易额能刷出几亿美元，顺着交易拓扑图看进去，活跃的只有少数几个关联钱包。
 发射台日发币量：脚本自动化生成 联合曲线（Bonding Curve）模式普及后，单次发币成本降到了 2 美元以下。日发币 30,000 个，体现的是批量发币脚本的运行频次，跟实际买盘承接力毫无关联。
 我们在 Dune 调取了数百万个代币的完整生命周期样本，主流发射台代币的毕业率中位数只有 1.41%。即便成功打满曲线毕业到 DEX，上线 30 天后池内流动性仍有 5 万美元且具备基础换手率的代币，不足千分之五（0.</description>
-    </item>
-    
-    <item>
-      <title>1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</title>
-      <link>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</link>
-      <pubDate>Fri, 09 Oct 2026 08:50:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</guid>
-      <description>2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。
-盘中科技股一度领涨，但收盘上证指数跌 0.79%，创业板指跌 3.15%，恒生科技指数跌 2.89%。
-收盘后的多数讨论把这天归结为「放量，流动性充裕」。但实盘交易的体感往往相反：买盘承接很薄，稍微有些规模的卖单打出去，价格就直接滑下一大截。
-把成交额直接等同于流动性，是日常复盘里最容易踩的坑。
-借着这次节后行情的复盘，把我最近在 QuantFull 上整理的日度流动性度量方法、计算过程和实际结果梳理一遍。
-流动性的三维结构 在微观结构里，流动性不是一个单一指标，而是三个互相独立的维度：
-广度。市场上有多少交易主体、发生了多少成交额。常用代理指标是成交额和换手率。
-深度。订单簿在不发生剧烈价格偏离的前提下，能吸收多大的订单规模。衡量的是价格冲击（price impact）。
-紧度。完成一笔交易需要承担的摩擦成本，对应买卖有效价差（effective spread）。
-10 月 8 日的盘面是典型的「广度放大、深度塌陷」。成交额虽然升至 1.68 万亿，但单位抛压撬动的价格下跌幅度极大。市场有换手，没有深度。
-多数人手里只有日度 OHLCV，没有 Level-2 逐笔委托簿数据。但只用日度公开数据，同样能高精度逼近深度和价差。
-指标一：Amihud 非流动性比率算深度 度量市场深度最经典的低频工具是 Amihud（2002）提出的非流动性比率（ILLIQ）。
-算法与直觉 计算只需要日收益率绝对值与日成交额：
-$$ \text{ILLIQ}{i,t} = \frac{|r{i,t}|}{\text{Volume}_{i,t}} $$
-分子是价格变动幅度，分母是用多少资金撬动了这个幅度。比值越大，意味着每单位成交金额对价格造成的冲击越大，市场深度越薄，流动性越差。
-学术界（Goyenko et al. 2009 与 Fong et al. 2017）在全球 43 国市场做过赛马检验：在所有低频度量中，日度 Amihud ILLIQ 对微观高频价格冲击（Kyle&amp;rsquo;s $\lambda$）的刻画能力排名第一。不需要高频逐笔数据清洗，日度成交额与涨跌幅已经保留了绝大部分价格冲击信号。
-实测过程与数值 拿 10 月 8 日对比节前 9 月 30 日：</description>
     </item>
     
   </channel>

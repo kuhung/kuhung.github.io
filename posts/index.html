@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 175 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 176 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 175 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 176 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -280,6 +280,22 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="链上数据||量化交易||流动性||数据分析||投资复盘"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/what-onchain-macro-metrics-actually-matter/">做链上宏观数据，我为什么劝你别看 TVL 和发币量</a></h2>
+    <p class="posts-list-summary">最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
+重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。
+链上账本公开透 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-10">October 10, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="Pi||AI工具||vibe coding||Agent||MCP"
@@ -413,21 +429,6 @@ Pi 的 changelog 很长，但真正改变这个工具性格的只有一件事，
 三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-09-23">September 23, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="LLM||架构设计||性能优化||模型选型"
-         data-categories="技术研究">
-    <h2 class="posts-list-title"><a href="/posts/inside-jev-millisecond-decisions-and-production-boundaries/">深入解读 Jev 模型：是什么以及怎么用</a></h2>
-    <p class="posts-list-summary">理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
-很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-09-18">September 18, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
         
@@ -635,12 +636,28 @@ Pi 的 changelog 很长，但真正改变这个工具性格的只有一件事，
     
 </ul>
 
-        <span class="posts-total">共 175 篇</span>
+        <span class="posts-total">共 176 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
     
     <template id="all-posts-template">
+        
+        <article class="posts-list-item"
+         data-tags="链上数据||量化交易||流动性||数据分析||投资复盘"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/what-onchain-macro-metrics-actually-matter/">做链上宏观数据，我为什么劝你别看 TVL 和发币量</a></h2>
+    <p class="posts-list-summary">最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
+重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。
+链上账本公开透 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-10">October 10, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="Pi||AI工具||vibe coding||Agent||MCP"

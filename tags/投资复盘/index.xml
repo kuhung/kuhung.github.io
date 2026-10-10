@@ -6,7 +6,26 @@
     <description>Recent content in 投资复盘 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 09 Oct 2026 08:50:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84%E5%A4%8D%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Oct 2026 17:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84%E5%A4%8D%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>做链上宏观数据，我为什么劝你别看 TVL 和发币量</title>
+      <link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link>
+      <pubDate>Sat, 10 Oct 2026 17:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</guid>
+      <description>最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
+重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。
+链上账本公开透明，造假成本同样极低。TVL 充满再质押嵌套的双重记账，DEX 成交量能靠零手续费对倒低成本刷取，发币平台日发几万个代币则多半是自动化脚本在跑。如果一个看板只是把这些未经清洗的数字堆在一起，根本分不清链上到底是真金白银在沉淀，还是少数团队在设局。
+我们在这次重构中剔除了缺乏沉没成本和资金归属意义的虚高指标，保留了 4 个团队实际盯盘和做宏观过滤会看的数据维度。这里把这套指标的计算口径、背后的数据陷阱以及我们自己的使用方式记录下来。
+为什么 TVL 和发币量容易把人带偏 公开数据平台里最容易被拿来背书的指标，通常水分最重。
+TVL：循环嵌套与代币单价被动膨胀 很多人拿 TVL 当作公链资金沉淀的指标。实际上 TVL 存在两个统计偏差：
+第一是循环再质押与杠杆嵌套。在以太坊生态里，用户将 10,000 美元的 ETH 存进流动性质押换取 stETH，把 stETH 当作抵押品存入借贷协议借出稳定币，再把稳定币扔进收益池。原本 10,000 美元的初始资金，在统计看板里被重复记录了 3 到 4 次，名义 TVL 直接堆到 30,000 至 40,000 美元。
+第二是计价代币单价被动膨胀。TVL 采用美元标价。即使没有一美元外部增量资金进场，只要原生代币单价上涨，TVL 就会自动抬升。这反映的是现货单价变化，无法说明增量资金的流入。行情一旦逆转并触发抵押品清算，名义 TVL 会在几天内腰斩。
+DEX 成交量：低成本对倒 中心化交易所刷量需要向平台交手续费，但在低 Gas 费公链或零费率池子里，量化脚本可以在两个流动性池之间循环对买对卖。单日名义交易额能刷出几亿美元，顺着交易拓扑图看进去，活跃的只有少数几个关联钱包。
+发射台日发币量：脚本自动化生成 联合曲线（Bonding Curve）模式普及后，单次发币成本降到了 2 美元以下。日发币 30,000 个，体现的是批量发币脚本的运行频次，跟实际买盘承接力毫无关联。
+我们在 Dune 调取了数百万个代币的完整生命周期样本，主流发射台代币的毕业率中位数只有 1.41%。即便成功打满曲线毕业到 DEX，上线 30 天后池内流动性仍有 5 万美元且具备基础换手率的代币，不足千分之五（0.</description>
+    </item>
+    
     <item>
       <title>1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</title>
       <link>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</link>
