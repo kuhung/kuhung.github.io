@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           做链上宏观数据，我为什么劝你别看 TVL 和发币量 | 谷粒 kuhung
+           链上宏观数据，要看哪些指标，不该看哪些指标 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="做链上宏观数据，我为什么劝你别看 TVL 和发币量 | 谷粒 kuhung">
+  <meta name="title" content="链上宏观数据，要看哪些指标，不该看哪些指标 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-10T17:45:00+08:00","datePublished":"2026-10-10T17:45:00+08:00","description":"最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。 重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。 链上账本公开透 …","headline":"做链上宏观数据，我为什么劝你别看 TVL 和发币量","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, 流动性, 数据分析, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/","@type":"WebPage"},"name":"做链上宏观数据，我为什么劝你别看 TVL 和发币量","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/","wordCount":351}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-10T17:45:00+08:00","datePublished":"2026-10-10T17:45:00+08:00","description":"最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。 重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。 链上账本公开透 …","headline":"链上宏观数据，要看哪些指标，不该看哪些指标","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, 流动性, 数据分析, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/","@type":"WebPage"},"name":"链上宏观数据，要看哪些指标，不该看哪些指标","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/","wordCount":351}</script>
 </head>
 
   
@@ -147,7 +147,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">做链上宏观数据，我为什么劝你别看 TVL 和发币量</h1>
+        <h1 class="post-title" itemprop="name headline">链上宏观数据，要看哪些指标，不该看哪些指标</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -443,7 +443,7 @@ if (!doNotTrack) {
         <a href="https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/" class="prev" rel="prev" title="Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了"><i class="iconfont icon-left"></i>&nbsp;Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了</a>
         
         
-        <a href="https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/" class="next" rel="next" title="Muse 留存数据：次日 73% 与两周 22% 背后的口径与思考">Muse 留存数据：次日 73% 与两周 22% 背后的口径与思考&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/" class="next" rel="next" title="Muse 留存数据：次留 73% 与双周 22% 背后的口径与思考">Muse 留存数据：次留 73% 与双周 22% 背后的口径与思考&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
