@@ -52,40 +52,7 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        document.querySelectorAll('p, li, div').forEach(el => {
-            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
-                let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                el.innerHTML = html;
-            }
-        });
-
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '\\[', right: '\\]', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false}
-            ],
-            throwOnError : false
-        });
-    });
-</script>
-
+  
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -239,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 319 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -278,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 319 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -313,6 +280,53 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="机器学习||系统设计||网站||问答||app"
+         data-categories="Side Project||个人进步">
+    <h2 class="posts-list-title"><a href="/posts/machine_learning_system_design/">机器学习系统设计 Machine learning system design</a></h2>
+    <p class="posts-list-summary">导读 Web app：https://kuhung.me/machine-learning-systems-design/
+机器学习系统设计 系统设计题，顾名思义，就是考察一个人设计系统的能力。它是一种国外很喜欢的题型，特别是中高级职位，在算法手撕结束后，一般就是系统设计题。
+国外的算法工程师，被称之为 Machine Learning Engineer。国内的名头比较多，算法工程师、数据挖掘工程 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2019-12-01">December 1, 2019</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/what_is_a_good_title/">文案的三个步骤——如何写好文案</a></h2>
+    <p class="posts-list-summary">参考：《文案写作圣经》
+关于作者</p>
+    <div class="posts-list-meta">
+        <time datetime="2019-11-10">November 10, 2019</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="译文||数据科学"
+         data-categories="行业趋势">
+    <h2 class="posts-list-title"><a href="/posts/dataops/">Dataops 数据化运维实践</a></h2>
+    <p class="posts-list-summary">翻译自：《What is DataOps? Everything You Need to Know》 From Oracle Data Science Blog
+图片自：《DataOps is Not Just DevOps for Data》By DataKitchen in Medium
+DataOps, 看到它的第一眼，大多数人会觉得陌生。但是提到另一个词——DevOps，做开发的同学可能会 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2019-10-19">October 19, 2019</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="mindmap||思维导图"
@@ -409,53 +423,6 @@ if (!doNotTrack) {
         <time datetime="2019-08-10">August 10, 2019</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="目标检测||机器学习入门"
-         data-categories="计算机视觉">
-    <h2 class="posts-list-title"><a href="/posts/data-science-portfolio/">Data Science Portfolio</a></h2>
-    <p class="posts-list-summary">数据科学家的求职简历作品集
-你一般如何获得一份数据科学的工作？精通统计，机器学习，编程在当下是很难获得一份工作的。后来我意识到，少部分人可能有获得工作的技能，但机会没人有作品集。就简历而言，拥有一份作品集证明工作能力，将会是很大的优势。即使你有参考别人的项目，展现你的能力也比告诉别人你能做什么重要。这篇文章讲讲述如何准备数据科学，机器学习，数据分析的简历，什么该放在简历里，什么不应该。以及一些别的 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2019-07-19">July 19, 2019</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="管理者||系统思考"
-         data-categories="个人进步">
-    <h2 class="posts-list-title"><a href="/posts/manadement/">系统思考与卓有成效的管理者</a></h2>
-    <p class="posts-list-summary">在老一辈的眼中，学而优则仕。学习好了就去当官从政，去服务别人。而在父母这一辈人的眼中，不论你干啥，当“老实人”被人管是不行的，他们的观点有一定的时代背景，但仍然在潜移默化影响着每个人。
-而对于初入职场的新人来说，虽然暂时当不上管理者，但被管理时却也会思考：“如果是自己，将会怎样去做管理？” 对于这一批新的90后甚至00后来说，管理并不再是一场服从性测试，权威性的组织管理方法或不再有效。
-什么是这些 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2019-07-17">July 17, 2019</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="数据科学||AB测试"
-         data-categories="商业分析">
-    <h2 class="posts-list-title"><a href="/posts/abtest-2/">A/B test 评价指标的选择</a></h2>
-    <p class="posts-list-summary">如何定义一个评价指标 这是上一篇文章什么是 A/B test的续集，上一篇主要讲述 A/B 测试的历史，这里接着讲如何选择指标。
-从本人的经验来看，一个指标怎么选择确实重要，但更重要的是需要自上而下理解且落实科学实验。而不是拍脑袋想指标，中途随意更换指标，汇报时仅罗列有利的指标。
-如果要用一句话解释，如何定义一个评价指标，那一定是“以始为终”。在定义一个指标的时候，要想一想为什么要定义这个指标，这 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2019-06-22">June 22, 2019</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a>
         
     </div>
 </article>
@@ -802,7 +769,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 316 篇</span>
+        <span class="posts-total">共 319 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

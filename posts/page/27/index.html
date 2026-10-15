@@ -52,40 +52,7 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        document.querySelectorAll('p, li, div').forEach(el => {
-            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
-                let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                el.innerHTML = html;
-            }
-        });
-
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '\\[', right: '\\]', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false}
-            ],
-            throwOnError : false
-        });
-    });
-</script>
-
+  
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -239,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 319 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -278,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 319 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -313,6 +280,61 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/web-scraper/">Web Scraper</a></h2>
+    <p class="posts-list-summary">详情展开
+思维导图获取 .xmind .pdf .png 关于作者
+网页数据抓取工具，webscraper https://edit.newrank.cn/?module=article</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-08-21">August 21, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/video_20200819/">Video_20200819</a></h2>
+    <p class="posts-list-summary">职场面面观/手绘智慧
+孙子兵法有曰：举军而争利则不及，委军而争利则辎重捐。
+说的就是，如果全部人都上，则会来不及到达战场；带部分军队先行，则会损失物资。
+客观评估自身条件，不可强求。不要执着于优势的占据，过于勉强，反而会落于不利地位。
+工作上也是这样，为了早日完成工作，天天熬夜加班，只会使工作效率和质量下降。得不到好的结果。
+不必过度勉强自己，保存实力，也是一种“迂回战术”。</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-08-19">August 19, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/model-explain-by-shap/">Model Explain by Shap</a></h2>
+    <p class="posts-list-summary">TODO: 神经网络归一化遗漏 https://github.com/slundberg/shap
+http://sofasofa.io/tutorials/shap_xgboost/
+Shap 基本原理
+博弈论与shap值，用shap解决博弈问题
+lime 分类器结果解释
+机器学习的可解释性，特征重要性方法与shap方法
+shap …</p>
+    <div class="posts-list-meta">
+        <time datetime="2020-08-04">August 4, 2020</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="python||高频问题"
@@ -419,55 +441,6 @@ if (!doNotTrack) {
         <time datetime="2020-05-06">May 6, 2020</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/data_analytics_from_0_to_1/">Data_analytics_from_0_to_1</a></h2>
-    <p class="posts-list-summary">常自嘲，我这个数据挖掘工程师，实际上就是一个写 SQL 的劳工。咱们又 TF bot，那我就是 sql boy。数据挖掘这个工作，在很多公司里都很微妙。模型也做、分析也做。当然，和其它岗位一样，做得最多、最要紧的其实是 PPT。抛开 PPT不说，对数据的敏感度，也是这个职业很重要的要求。
-刚开始接触数据分析的时候，常常感觉抠脑壳。究其原因，其实是不理解这套东西的运行逻辑。当你了解了之后，这简直就和 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2020-05-02">May 2, 2020</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏||个人进步">
-    <h2 class="posts-list-title"><a href="/posts/mindmap_2020/">思维导图｜15份结构化知识整理</a></h2>
-    <p class="posts-list-summary">思维导图，是结构化思维的具体表现形式。最鲜明的例子，就是当你和一个人聊天时，可以很明确的感觉到，拥有结构化思维的人，他的语言组织能力很强，且很有层次感。简单来说，就是和他沟通，简单高效、有收获，有层次感。
-在过去几年里，也整理了一些场景的思维导图。大约是从15年，上大学的第二年，第一次接触到这个东西。不过略微遗憾的是，早期是一些手绘的内容，没能保存在身边。以下是电子化的内容，分享给到大家。
-这里， …</p>
-    <div class="posts-list-meta">
-        <time datetime="2020-04-25">April 25, 2020</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="app||计算机视觉||CV"
-         data-categories="Side Project">
-    <h2 class="posts-list-title"><a href="/posts/simple-image-search/">自制以图搜图引擎，居家学习必备</a></h2>
-    <p class="posts-list-summary">最近宅在家，消遣时间之际，总会遇到一个让我困扰的事情。比如随手刷到的一个GIF，总想找到它的原片。
-各位绅士可别想歪，我说的是动漫。
-这个问题本质是一个相似度的检索问题。
-说到视频找视频，其实可以分解为以图搜图。以图搜图这项技术，已经十分成熟，且已产品化。尤其在主流搜索引擎，很难找到一个不能搜图的引擎。连淘宝都有自己的时尚搜图功能。
-但是当你满怀期待上传一张图时，你会发现，他返回的结果要么是同风格 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2020-04-13">April 13, 2020</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
         
     </div>
 </article>
@@ -816,7 +789,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 316 篇</span>
+        <span class="posts-total">共 319 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

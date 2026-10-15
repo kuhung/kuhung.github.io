@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI产品 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/ai%E4%BA%A7%E5%93%81/</link>
+    <description>Recent content in AI产品 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 15 Oct 2026 15:38:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai%E4%BA%A7%E5%93%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Muse 留存数据：次日 73% 与两周 22% 背后的口径与思考</title>
+      <link>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</link>
+      <pubDate>Thu, 15 Oct 2026 15:38:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+最近 X 上在讨论 Meta 的 Personal Agent 产品 Muse 的留存数据。投资人和科技媒体多有转发，核心论调基本一致：Muse 次日留存高达 73.3%，接近 ChatGPT 的两倍，不过 14 日留存降到 22.5% 被反超。
+在 X 上，小扎和小王的 PR 稿早已铺天盖地。或多或少都在暗示 Muse 已经赢了。算是给这一年多 AI 团队调整，交出的作业。
+我之前做过用户增长方面的算法，有使用 Muse 并且体感良好。看到这种数据曲线，习惯性刨一刨根底，再结合产品设计方面，看看有哪些可取之处。
+公开的数据与源头 这轮讨论的数据源头是 Sensor Tower 的移动应用面板，覆盖 2026 年 9 月、81 个国家、iOS 与 Android 统一口径的新增安装用户。Menlo Ventures 合伙人 Deedy Das 于 10 月 12 日在 X 和 LinkedIn 发布了这张 D1 至 D14 的留存曲线图。
+先看公开流传的这张核心留存走势图：
+从图中的完整曲线，能清楚看到各款应用新用户的回访流转过程：
+次日冲高（D1）：Muse 达到 73.3%，几乎是 ChatGPT（41.3%）的两倍。 中途反超（Day ~8.</description>
+    </item>
+    
+  </channel>
+</rss>

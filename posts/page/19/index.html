@@ -52,40 +52,7 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        document.querySelectorAll('p, li, div').forEach(el => {
-            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
-                let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                el.innerHTML = html;
-            }
-        });
-
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '\\[', right: '\\]', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false}
-            ],
-            throwOnError : false
-        });
-    });
-</script>
-
+  
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -239,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 319 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -278,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 319 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -313,6 +280,51 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/geek-and-team-02/">Geek and Team 02</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 S6E2 文化是极客团队的根基 团队文化这个词，之前我是不太理解的，这么虚的一个东西，能起到什么作用。直到某一天，我的一个朋友在经历一个很出名的团队下PUA离职后，我才发现，文化还真挺重要的。
+文化这个东西，更像是神经网络训练出的权重文件，它无色无味无形，却确定了我们输入一件事后，我们将反馈怎样一个判断。如果把组织比作一个人，那么组织的文化就是其潜 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-08-23">August 23, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/geek-and-team-01/">Geek and Team 01</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 S6E1《极客与团队》：工程师的团队思考 工程师的疑惑 最近在豆瓣关注了一个网友，发了很多关于工作的片段化判断。例如关于站队抱团问题、关于新旧技术的迭代、关于怎么包装结果去获得晋升。看到他的帖子，就像看到我的一个朋友，他在工作的早期也遇到了这些问题。不过他后面通过换公司，一定程度上少了很多类似的困扰。
+这位网友，看起来像是在字节工作。我很好奇，宣扬 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-08-22">August 22, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/true-05/">True 05</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 追寻事实，而非情绪 有一种真相，是我们未曾得知的，它可能存在于未来，也可能存在于过去，更有可能存在于想象。对于未知的未来，人类倾向于去做预测，来进行一个清晰可见的描述。不过这种预测，却仍然具有不可控性，存在多个竞争性真相。
+以下内容，主要核心观点来自于《后真相时代》。这个系列将针对它展开，详细讲讲不同的竞争性真相是什么样子的。我们如何辨别他们，如何 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-08-19">August 19, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="mindmap||思维导图"
@@ -409,51 +421,6 @@ if (!doNotTrack) {
 在第一篇文章里，我们总体陈述了 …</p>
     <div class="posts-list-meta">
         <time datetime="2021-08-12">August 12, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/the-effective-engineer-02/">The Effective Engineer 02</a></h2>
-    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 #高效工程师所需的成长环境
-在互联网行业中，工程师是利用程序代码解决业务问题的角色。在这个过程中，我们会遇到很多需求。有的需求可能只是要你改个字段，有的需求可能要你出份数据报告，也有的需求可能要你花上好几个月的时间，将算法模型落地到业务场景。更多时候，我们需要对需求进行甄别和排序，特别是从初级到资深这一过程，我们不再是单一的接收需求，而是需要辨识需 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-08-09">August 9, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="阅读笔记||日常思考"
-         data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/the-effective-engineer-01/">软件开发的高杠杆活动</a></h2>
-    <p class="posts-list-summary">软件开发的正确思维，聚焦高杠杆活动 作为技术序列的工程师，我时常在想，什么样的角色将会是我五年、十年后所扮演的。目前来说，工作三年有余，在某些公司内，已经可以算是高级甚至是资深工程师。不过，对于我来说，赋予title起的作用，并没有做成一件事兴奋。我时常在好奇，别的工程师的工作方法和我一样吗？我目前的工作方法是最优的了吗？
-带着这样的疑问，也关注了硅谷大厂程序员的一些博客，同时也阅读了一些软件开发 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-08-09">August 9, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/strategy-06/">Strategy 06</a></h2>
-    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 文化与政治在战略形成过程的作用 权力结构，一直存在于组织中。只要有人的地方，就有江湖，就有权力。在战略中，同样有这样一个学派，从权力角度出发，进行战略的设计。权力将组织根据职能或权力结构，划分为不同部门。而其镜像，则是文化学派，文化将不同的人结合起来，成为一个整体组织。这两者是我们今天要讨论的对象。
-今天我们就通过《战略历程》这本书，拆解战略的本 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-08-08">August 8, 2021</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
         
@@ -804,7 +771,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 316 篇</span>
+        <span class="posts-total">共 319 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 

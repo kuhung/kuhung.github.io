@@ -6,7 +6,23 @@
     <description>Recent content in Posts on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 17:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Oct 2026 15:38:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Muse 留存数据：次日 73% 与两周 22% 背后的口径与思考</title>
+      <link>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</link>
+      <pubDate>Thu, 15 Oct 2026 15:38:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+最近 X 上在讨论 Meta 的 Personal Agent 产品 Muse 的留存数据。投资人和科技媒体多有转发，核心论调基本一致：Muse 次日留存高达 73.3%，接近 ChatGPT 的两倍，不过 14 日留存降到 22.5% 被反超。
+在 X 上，小扎和小王的 PR 稿早已铺天盖地。或多或少都在暗示 Muse 已经赢了。算是给这一年多 AI 团队调整，交出的作业。
+我之前做过用户增长方面的算法，有使用 Muse 并且体感良好。看到这种数据曲线，习惯性刨一刨根底，再结合产品设计方面，看看有哪些可取之处。
+公开的数据与源头 这轮讨论的数据源头是 Sensor Tower 的移动应用面板，覆盖 2026 年 9 月、81 个国家、iOS 与 Android 统一口径的新增安装用户。Menlo Ventures 合伙人 Deedy Das 于 10 月 12 日在 X 和 LinkedIn 发布了这张 D1 至 D14 的留存曲线图。
+先看公开流传的这张核心留存走势图：
+从图中的完整曲线，能清楚看到各款应用新用户的回访流转过程：
+次日冲高（D1）：Muse 达到 73.3%，几乎是 ChatGPT（41.3%）的两倍。 中途反超（Day ~8.</description>
+    </item>
+    
     <item>
       <title>做链上宏观数据，我为什么劝你别看 TVL 和发币量</title>
       <link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link>
@@ -33,11 +49,12 @@ DEX 成交量：低成本对倒 中心化交易所刷量需要向平台交手续
       
       <guid>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</guid>
       <description>声明：本文由 AI 辅助创作，经作者核实与修订。
-如果只想记一句话，那就是：0.99 用 Codemode 把 MCP 接了回来，1.0 把这套东西定成稳定版，1.1 只是让日常用起来更顺手。
-Pi 的 changelog 很长，但真正改变这个工具性格的只有一件事，就是对 MCP 的态度。其余的更新要么是在为这件事铺路，要么是在给它擦屁股。社区这两周吵得热闹，吵的也不是功能多少，而是 Pi 还算不算那个极简的 Pi。
-上个月写 Pi 入门笔记 的时候，它还是一个连 Plan 模式都不给你的终端工具。短短三周，变化不小。
-先把时间线理清 日期 版本 一句话 09-29 0.99.0 真正的大版本：Codemode、内置 MCP、延迟加载、虚拟模型、分类器 10-01 1.0.0 定版加固：默认全屏、Codemode 提示成本再降约四成；同日发布实验包 Pi Durable 10-03 至 10-05 1.0.1 至 1.0.4 补丁周，唯一的破坏性变更是 1.0.3 里 Azure provider 改名 10-07 1.1.0 没有破坏性变更：状态上报、工具增减写法、Haiku 5.5、看图分类、llama.cpp 原生接入 有个细节容易被忽略：最激进的改动其实发生在 0.99，而不是 1.0。1.0 的意义更像是一份承诺，告诉大家这套接口以后不会乱动了，可以放心在上面写扩展。
-最大的变化：MCP 回来了，但换了个接法 当初为什么拒绝 Pi 过去一年多旗帜鲜明地不支持 MCP，官网上就这么写着。理由不是意识形态，而是一笔账：传统的 MCP 接法会把所有工具的 Schema 一次性塞进上下文。社区里被反复引用的例子是，接三个 MCP 服务器，光工具定义就吃掉约 143k 的上下文（总共 200k），活还没开始干，七成窗口已经没了。</description>
+如果谈及coding Agent，一定绕不开Pi这个工具。国庆假期以来，该产品经过密集的变更，版本号从0.99到了1.10。这其中到底变了什么，影响如何，是本文试图回答的。
+如果需要一句话总结，那就是：0.99 用 Codemode 把 MCP 接了回来，1.0 把这套东西定成稳定版，1.1 只是让日常用起来更顺手。
+Pi 的 changelog 很长，但争议大的，就是对 MCP 的态度。其余的更新要么是在为这件事铺路，要么是在给它擦屁股。社区这两周吵得热闹，主要关注点是： Pi 还算不算那个极简的 Pi。
+上个月写 Pi 入门笔记 的时候，我们就有入门介绍。本期不再重复。
+时间线顺序 日期 版本 总结 09-29 0.99.0 真正的大版本：Codemode、内置 MCP、延迟加载、虚拟模型、分类器 10-01 1.0.0 定版加固：默认全屏、Codemode 提示成本再降约四成；同日发布实验包 Pi Durable 10-03 至 10-05 1.0.1 至 1.0.4 补丁周，唯一的破坏性变更是 1.0.3 里 Azure provider 改名 10-07 1.1.0 没有破坏性变更：状态上报、工具增减写法、Haiku 5.5、看图分类、llama.cpp 原生接入 最激进的改动其实发生在 0.99。1.0 更像是一份承诺，告诉大家这套接口以后不会乱动了，可以放心在上面写扩展。
+最大的变化：MCP ，但换了个接法 当初为什么拒绝 Pi 过去一年多旗帜鲜明地不支持 MCP，官网上就这么写着。理由是：传统的 MCP 接法会把所有工具的 Schema 一次性塞进上下文。社区里被反复引用的例子是，接三个 MCP 服务器，光工具定义就吃掉约 143k 的上下文（总共 200k），活还没开始干，七成窗口已经没了。我后面查了下，是个谬传，是旧版本的特定情况下才会这样。后面各家基本很少这样了。</description>
     </item>
     
     <item>

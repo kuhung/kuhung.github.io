@@ -52,40 +52,7 @@ if (!doNotTrack) {
   <link rel="stylesheet" href="/css/main.min.css">
 
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        
-        document.querySelectorAll('p, li, div').forEach(el => {
-            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
-                let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
-                });
-                el.innerHTML = html;
-            }
-        });
-
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '\\[', right: '\\]', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false}
-            ],
-            throwOnError : false
-        });
-    });
-</script>
-
+  
   
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
@@ -239,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 316 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 319 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -278,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 316 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 319 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -313,6 +280,55 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="mindmap||思维导图"
+         data-categories="图表专栏">
+    <h2 class="posts-list-title"><a href="/posts/culture-of-freedom-and-responsibility/">通过企业文化选择公司</a></h2>
+    <p class="posts-list-summary">概述 预计耗时 预计发布 实际发布 最后一次修改 小力之前在广州某头部游戏公司工作，工作一年半载，身心疲惫，跑之。
+临走之时，team leader 问曰：何故？
+答曰：不配。周报月报季度报，报报上头。取数提数临时数，数数无用。横批：在下不配。
+这并不是个例，越来越多的同学，从该公司跑路。曾经学历要求极高，逼格满满的offer，成为一段过往。
+当然，今天的主题并不是对其进行批斗。作为小力出身社会的 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-06-12">June 12, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="程序员||营销"
+         data-categories="个人进步||商业分析||技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/selling-the-wheel/">工程师如何卖轮子</a></h2>
+    <p class="posts-list-summary">在互联网行业，常常听见人说：我有个点子，只是缺少一个程序员，就能颠覆世界。不过遗憾的是，很多组织即使有很多程序员，也未能颠覆世界。无数的点子被证明是无效的，无人买单。用户不关心、客户不掏钱。
+上面是普通人的技术产品主张。作为程序员自己，是不是就没有这样的困扰了呢？我们可以做前端、可以做web端、可以开发自己的小程序，是不是就可以吸引无数忠实用户、卖个好价钱、躺平后半生了呢？如果真是这样子，那大 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-05-25">May 25, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">商业分析</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="翻译作品||管理||The Manager&#39;s Path"
+         data-categories="个人进步">
+    <h2 class="posts-list-title"><a href="/posts/mentoring-vol-2/">技术领导｜02 Mentoring 如何指导新人</a></h2>
+    <p class="posts-list-summary">🌟 合集地址：《The Manager’s Path》中文翻译 指导新员工 个人经历 糟糕体验 我（原文作者）大学毕业后的第一份工作，是在太阳微系统公司（Sun Microsystems），开发一个已经开发数年的项目。
+经理带我到办公室，让我自己弄清楚需要做什么。我不知道该如何寻求帮助，而且我担心：自己这样做会被视为傻瓜。
+所以不出意外的，我感到灰心丧气。而在灰心之余，最好的办法就是去读研究生。所 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2021-05-23">May 23, 2021</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="mindmap||思维导图"
@@ -426,62 +442,6 @@ https://github.com/OpenGenus/vidsum 感受：连贯性一般，需要英语 原�
         <time datetime="2021-02-23">February 23, 2021</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="app||总结"
-         data-categories="个人进步||Side Project">
-    <h2 class="posts-list-title"><a href="/posts/what-i-learned-from-little-game-xiao/">从一款小游戏收获的三点思考</a></h2>
-    <p class="posts-list-summary">2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
-这一过程，收到了很多反馈。
-同时，也有如下三点思考：
-善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
-前景提要 品牌与商业化观察 很久以前，小力就有一个想法：将自己的技术能力变现，至少是能变成流量。
-在这个过程中，交付客户喜欢的东西，形成自己的名片📇。
-这样做的目的：一方面是督促自己不断学习；另一 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-02-13">February 13, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E4%B8%AA%E4%BA%BA%E8%BF%9B%E6%AD%A5/">个人进步</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/side-project/">Side Project</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="mindmap||思维导图"
-         data-categories="图表专栏">
-    <h2 class="posts-list-title"><a href="/posts/counterfactual-explanations-of-model/">Counterfactual Explanations of Model</a></h2>
-    <p class="posts-list-summary">简单描述 预计耗时 预计发布 实际发布 最后一次修改 树脂消耗这类惯性活动，影响后续登录天数
-活动存在共线情况
-活动对树脂消耗造成的影响，是否存在因肝活动而停止肝树脂的人群，他们的后续表现如何
-活动绑定树脂的留存情况分析，以大陨石活动为例
-“如果xx，就yy”的模型解释方法，更贴近业务需求，更具指导性。 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-01-23">January 23, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E5%9B%BE%E8%A1%A8%E4%B8%93%E6%A0%8F/">图表专栏</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="总结"
-         data-categories="行业趋势||数据挖掘/机器学习">
-    <h2 class="posts-list-title"><a href="/posts/interpretable-machine-learning/">算法模型的可解释性</a></h2>
-    <p class="posts-list-summary">背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
-QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
-某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
-数据越多越好 作为调参从业人员，从算法和模型角度来说，数据确实是越多越好。
-数据越多，模型能捕获到的有用特征则更多。从特征状态空间，映射到实际标签的 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2021-01-22">January 22, 2021</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a><span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">数据挖掘/机器学习</a>
         
     </div>
 </article>
@@ -830,7 +790,7 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
     
 </ul>
 
-        <span class="posts-total">共 316 篇</span>
+        <span class="posts-total">共 319 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
