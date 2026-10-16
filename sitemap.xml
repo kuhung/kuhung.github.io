@@ -2,15 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
       <loc>https://kuhung.me/categories/</loc>
-      <lastmod>2026-10-16T17:30:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/mvp/</loc>
-      <lastmod>2026-10-16T17:30:00+08:00</lastmod>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/</loc>
-      <lastmod>2026-10-16T17:30:00+08:00</lastmod>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/side-project/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/side-project/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/webgis/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%87%BA%E8%A1%8C%E5%8F%AF%E8%BE%BE%E5%9C%B0%E5%9B%BE/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/isochrone-travel-map/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E7%AD%89%E6%97%B6%E5%9C%88/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</loc>
+      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/mvp/</loc>
       <lastmod>2026-10-16T17:30:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/vibe-coding/</loc>
@@ -26,9 +50,6 @@
       <lastmod>2026-10-16T17:30:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/pretotype-before-mvp/</loc>
-      <lastmod>2026-10-16T17:30:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/</loc>
       <lastmod>2026-10-16T17:30:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E9%A2%84%E5%9E%8B/</loc>
@@ -185,9 +206,6 @@
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/pagegrok/</loc>
-      <lastmod>2026-09-16T23:47:12+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/side-project/</loc>
       <lastmod>2026-09-16T23:47:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B/</loc>
