@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           出行可达地图：用真实路网计算生活圈，即将支持自定义地点 | 谷粒 kuhung
+           出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="出行可达地图：用真实路网计算生活圈，即将支持自定义地点 | 谷粒 kuhung">
+  <meta name="title" content="出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/isochrone-travel-map/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-16T20:35:00+08:00","datePublished":"2026-10-16T20:35:00+08:00","description":"在城市生活中，评估居住、工作与出行往往依赖距离。租房信息常标注“距离地铁站 1 公里”或“距离商圈 3 公里”，但直线距离往往忽略了城市路网的真实形态。一条河流、一条全封闭高架路或一段铁路线，都会让实际通勤耗时成倍增加。 以往要在地图上确认通勤范围，往往需要手动逐个搜索不同目的地的导航时间。如今路网等时圈计算使得多方向的可达性能够在数秒内直接生成多边形轮廓。出行可达地图（Isochrone …","headline":"出行可达地图：用真实路网计算生活圈，即将支持自定义地点","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"出行可达地图, 等时圈, 高德地图, WebGIS, Side Project","mainEntityOfPage":{"@id":"https://kuhung.me/posts/isochrone-travel-map/","@type":"WebPage"},"name":"出行可达地图：用真实路网计算生活圈，即将支持自定义地点","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/isochrone-travel-map/","wordCount":74}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/isochrone-travel-map/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-16T20:35:00+08:00","datePublished":"2026-10-16T20:35:00+08:00","description":"在城市生活中，评估居住、工作与出行往往依赖距离。租房信息常标注“距离地铁站 1 公里”或“距离商圈 3 公里”，但直线距离往往忽略了城市路网的真实形态。一条河流、一条全封闭高架路或一段铁路线，都会让实际通勤耗时成倍增加。 以往要在地图上确认通勤范围，往往需要手动逐个搜索不同目的地的导航时间。如今路网等时圈计算使得多方向的可达性能够在数秒内直接生成多边形轮廓。出行可达地图（Isochrone …","headline":"出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"出行可达地图, 等时圈, 生活圈, Side Project","mainEntityOfPage":{"@id":"https://kuhung.me/posts/isochrone-travel-map/","@type":"WebPage"},"name":"出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/isochrone-travel-map/","wordCount":62}</script>
 </head>
 
   
@@ -112,7 +112,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">出行可达地图：用真实路网计算生活圈，即将支持自定义地点</h1>
+        <h1 class="post-title" itemprop="name headline">出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -136,7 +136,6 @@ if (!doNotTrack) {
     <nav id="TableOfContents">
   <ul>
     <li><a href="#目前支持的功能与计算模型">目前支持的功能与计算模型</a></li>
-    <li><a href="#主流地图工具的现状调研">主流地图工具的现状调研</a></li>
     <li><a href="#即将推出用户自定义添加地点custom-poi">即将推出：用户自定义添加地点（Custom POI）</a></li>
     <li><a href="#空间数据与设计规范">空间数据与设计规范</a></li>
     <li><a href="#在线体验与项目地址">在线体验与项目地址</a></li>
@@ -202,15 +201,8 @@ if (!doNotTrack) {
 <li><strong>空间地点筛选与圈层归属</strong>：针对落在计算范围内的地点，系统通过空间几何算法进行圈层归属计算，准确判断地点落入的最小时间圈层。地点支持多边形孔洞排除与 MultiPolygon 分块检测，确保湖泊或不可通行区域不会造成误判。</li>
 <li><strong>外部导航与无损分享</strong>：地图点选支持直接跳转高德地图发起实际导航。探索结果支持生成带有二维码的高清等时圈卡片，起点坐标、出行模式、选中的地点均完整序列化到 URL 中，接收方打开即可无损恢复探索场景。</li>
 </ol>
-<h2 id="主流地图工具的现状调研">主流地图工具的现状调研</h2>
-<p>在日常使用的地图工具中，这类功能往往没有现成的开箱即用形态。以高德地图为例，我们在 C 端 App 和开放平台接口层面做了对比调研：</p>
-<ul>
-<li><strong>高德地图 App 端</strong>：现有“附近”搜索基于纯直线欧氏几何距离，呈现的是规则同心圆，无法反映路网曲折和河流阻隔；现有的路线规划只支持单点到单点的正向查询，无法反向推演给定时间内能覆盖的地理边界。</li>
-<li><strong>高德开放平台 API</strong>：接口主要提供公交到达圈插件，没有原生提供驾车和纯步行的开箱即用等时圈。开发者若要用高德路网实现驾车等时圈，通常需要以中心点发射数十条射线循环请求路径规划再进行插值，响应耗时较长且需要自建前后端空间拓扑解析。</li>
-</ul>
-<p>这也是出行可达地图专注于解决的问题：通过路网计算引擎，将原本繁复的多方向通勤推演整合为即开即用的交互地图。</p>
 <h2 id="即将推出用户自定义添加地点custom-poi">即将推出：用户自定义添加地点（Custom POI）</h2>
-<p>目前系统内置收录了上海文旅热门地标以及珠海市 15 处出入境智能服务厅的专题数据。在日常实际决策中，每个人的常去节点和关注重点各不相同。出行可达地图即将在接下来的版本中推出“自定义地点（Custom POI）”功能。</p>
+<p>目前系统收录了上海热门文旅地标以及珠海市 15 处出入境智能服务厅的专题数据。在日常实际决策中，每个人的常去节点和关注重点各不相同。出行可达地图即将在接下来的版本中推出“自定义地点（Custom POI）”功能。</p>
 <p>这项功能允许用户在地图上直接标点添加，或者输入地点名称与经纬度导入关注目标。添加的地点将实时参与等时圈几何计算，自动判断落在 15 分钟、30 分钟或 60 分钟生活圈内的具体位置。自定义地点同样支持随分享链接一同导出和还原，方便在不同设备之间查看。</p>
 <p>新功能主要支持四类典型场景：</p>
 <ul>
@@ -219,11 +211,11 @@ if (!doNotTrack) {
 <li><strong>城市漫步与周末出游</strong>：用户可以提前收藏想去的小众展览、公园和特色街区，出发时根据当天可用的时间档位，筛选出步行或骑行 30 分钟内能到达的地点。</li>
 <li><strong>业务网点与服务规划</strong>：在商务外勤或门店选址等业务场景中，用户可以标注意向客户或合作网点，结合驾车圈层评估日常拜访的可达性与时间成本。</li>
 </ul>
-<p>所有由用户添加的自定义地点，将与内置数据采用相同的几何计算机制。当等时圈重新生成时，系统会实时重新计算各自定义点位所处的圈层层级，并在侧边清单与地图视图中同步标记。</p>
+<p>所有由用户添加的自定义地点，将与内置数据保持一致的几何计算机制。当等时圈重新生成时，系统会实时重新计算各自定义点位所处的圈层层级，并在侧边清单与地图视图中同步标记。</p>
 <h2 id="空间数据与设计规范">空间数据与设计规范</h2>
 <p>在底层实现上，出行可达地图遵循严格的空间数据计算规范：</p>
 <ul>
-<li><strong>原生坐标系隔离</strong>：后台等时圈计算与点在多边形空间几何判定统一在原生 WGS-84 坐标系下运行，避免坐标偏移导致的圈层归属错误。向前端地图瓦片渲染和外部导航出口跳转时，在边界单次转换为 GCJ-02 坐标。</li>
+<li><strong>原生坐标系隔离</strong>：后台等时圈计算与点在多边形空间几何判定统一在原生 WGS-84 坐标系下运行，避免坐标偏差导致的圈层归属错误。向前端地图瓦片渲染和外部导航出口跳转时，在边界单次转换为 GCJ-02 坐标。</li>
 <li><strong>稳健多边形拓扑</strong>：等时圈算法完整支持内环孔洞（如湖泊、封闭园区或不可通行水域）和多陆块离散多边形，避免将不可达空间误判为可达。</li>
 <li><strong>免注册与隐私合规</strong>：所有计算均直接在浏览器与无状态计算服务中完成，无需注册账号，不留存个人行为轨迹。</li>
 </ul>
@@ -276,11 +268,8 @@ if (!doNotTrack) {
             <span class="tag"><a href="https://kuhung.me/tags/%E7%AD%89%E6%97%B6%E5%9C%88/">
                     #等时圈</a></span>
             
-            <span class="tag"><a href="https://kuhung.me/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/">
-                    #高德地图</a></span>
-            
-            <span class="tag"><a href="https://kuhung.me/tags/webgis/">
-                    #WebGIS</a></span>
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%94%9F%E6%B4%BB%E5%9C%88/">
+                    #生活圈</a></span>
             
             <span class="tag"><a href="https://kuhung.me/tags/side-project/">
                     #Side Project</a></span>
