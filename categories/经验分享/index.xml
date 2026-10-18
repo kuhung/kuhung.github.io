@@ -6,7 +6,26 @@
     <description>Recent content in 经验分享 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 16:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Oct 2026 21:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排</title>
+      <link>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</link>
+      <pubDate>Sun, 18 Oct 2026 21:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</guid>
+      <description>在上一篇《用 AI 优化我的投资组合：从宏观配置到美股持仓复盘》中，我们梳理了大类资产配置与资金分层：宏观上确定了资金在美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的配比，并在股票内部切分了核心宽基底仓（Core）与卫星轮动个股（Satellite）。
+这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第二篇。大方向定好之后，我们面对的是一个更具体的工程问题：各个市场用于轮动的卫星个股，到底应该从哪些标的里面挑选？
+这属于整个选股体系的第二层：候选池召回与双轨粗排。
+在展开具体的数据分析之前，我们先把从全市场到最终买入的三层处理链条放出来：
+整个流水线由浅入深分为三层：
+阶段 核心任务与输入输出规模 采用的规则与计算指标 承担的工程定位 第一层：资产分层与配比（上一篇） 全局资产宏观配置与仓位切分 美股 47.5%、日股 14.5%、中国资产 9.5% 等；核心底仓与卫星个股分工 决定宏观资金走向与各市场持仓数量上限 第二层：召回与粗排（本篇） 从全市场（5,000+）初筛并压缩至 单市场 100 只物理观察池 召回：日均成交额 ≥ 5,000 万元流动性底线，剔除 ST、B 股、OTC 与仙股粗排：47 只全景行业 ETF 顺风雷达定位领涨大类，动态选拔领头羊；结合个股成交活跃度扫描 攻克物理接口配额约束，消除哑铃型两极扭曲，输出高信息密度的日常监控名单 第三层：指标精排与监控（下一篇） 从 100 只观察池筛选出 最终买入持仓（各市场 3~4 只） 250 天历史日 K 线拉取、MA200 趋势硬门槛、距年线 ≤ +30% 防追高、12-1 相对动量排序、双线缓冲区控制换手 高精度指标计算与风控执行，决定具体实盘资金构建 平时看盘，大家习惯直接拿看盘软件里的自选股作为量化输入。但自选池通常只有几十只，范围过早被主观框死，系统很难在全市场范围内捕捉结构性机会。
+我们要先解决怎么从全市场把候选标的召回出来，再通过粗排压缩到可日常监控的观察池中。
+为什么不能全市场通抓 有人会问，既然自选池太窄，把全市场的几千只股票全部抓进来行不行？
+在实际执行时，这会遇到两个现实阻碍。
+一个是工程与接口开销。A 股有 5,300 多只股票，港股有 2,600 多只，美股超过 12,000 只。每天抓取全市场的完整日 K、计算复权和指标，个人设备的存储计算压力大，券商行情接口（如富途 OpenD）也会直接触发每日订阅配额上限。
+另一个更根本的制约，是股票市场本身的极度非均匀分布。</description>
+    </item>
+    
     <item>
       <title>Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了</title>
       <link>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</link>
