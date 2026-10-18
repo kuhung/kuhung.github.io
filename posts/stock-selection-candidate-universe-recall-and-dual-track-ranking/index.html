@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-18T21:00:00+08:00","datePublished":"2026-10-18T21:00:00+08:00","description":"在上一篇《用 AI 优化我的投资组合：从宏观配置到美股持仓复盘》中，我们梳理了大类资产配置与资金分层：宏观上确定了资金在美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的配比，并在股票内部切分了核心宽基底仓（Core）与卫星轮动个股（Satellite）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第二篇。大方向定好之后，我们面对的是一个更具体的 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":858}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-18T21:00:00+08:00","datePublished":"2026-10-18T21:00:00+08:00","description":"在上一篇《用 AI 优化我的投资组合：从宏观配置到美股持仓复盘》中，我们梳理了大类资产配置与资金分层：宏观上确定了资金在美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的配比，并在股票内部切分了核心宽基底仓（Core）与卫星轮动个股（Satellite）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第二篇。大方向定好之后，我们面对的是一个更具体的 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":857}</script>
 </head>
 
   
@@ -191,7 +191,7 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#进入下一层指标精排与实盘执行">进入下一层：指标精排与实盘执行</a></li>
-    <li><a href="#选股体系与量化工具引流与资源">选股体系与量化工具（引流与资源）</a></li>
+    <li><a href="#选股体系与延伸阅读">选股体系与延伸阅读</a></li>
   </ul>
 </nav>
   </div>
@@ -610,8 +610,8 @@ if (!doNotTrack) {
 </ul>
 <p>在下一篇中，我们将深入第三层：探讨进入这 100 只观察池的标的，如何通过 MA200 趋势硬门槛一票否决、距年线超过 30% 坚决防追高拒买、12-1 相对动量排序以及双线缓冲区，最终筛选出各市场 3 至 4 只实际买入的最终持仓。</p>
 <hr>
-<h2 id="选股体系与量化工具引流与资源">选股体系与量化工具（引流与资源）</h2>
-<p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull 官网</a>：</p>
+<h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
+<p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
 <ul>
 <li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
 <li><a href="/posts/Measuring-Market-Liquidity-from-Daily-Data-and-Post-Holiday-Review/">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
