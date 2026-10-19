@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           agy-menubar：Antigravity 的上下文设计取舍与管理方法 | 谷粒 kuhung
+           为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="agy-menubar：Antigravity 的上下文设计取舍与管理方法 | 谷粒 kuhung">
+  <meta name="title" content="为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/agy-menubar-context-management/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-19T22:45:00+08:00","datePublished":"2026-10-19T22:45:00+08:00","description":"往会话里塞东西的真实日常 平时用 Google Antigravity 写代码，编码的最佳实践通常是一个会话只做一件事。 但在日常写代码时，这件事很难把握。很多任务我们很难度量它到底会消耗多少 Token，也没办法准确评估手头的任务粒度拆得是不是够细。 实际写起来的状态往往是：感觉一直在往同一个会话里面塞东西。刚开始聊着改着，好像一切都很顺畅。但塞着塞着，模型开始逐渐偏离原本的目标。前面定好的逻辑 …","headline":"agy-menubar：Antigravity 的上下文设计取舍与管理方法","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Antigravity, AI, macOS, 开源","mainEntityOfPage":{"@id":"https://kuhung.me/posts/agy-menubar-context-management/","@type":"WebPage"},"name":"agy-menubar：Antigravity 的上下文设计取舍与管理方法","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/agy-menubar-context-management/","wordCount":289}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/agy-menubar-context-management/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-19T22:45:00+08:00","datePublished":"2026-10-19T22:45:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 一次典型的 session 会话 平时用 Google Antigravity 写代码，编码的最佳实践通常是一个会话只做一件事。 但在日常写代码时，这件事很难把握。很多任务我们很难度量它到底会消耗多少 Token，也没办法准确评估手头的任务粒度拆得是不是够细。 实际写起来的状态往往是：感觉一直在往同一个会话里面塞东西。刚开始聊着改着，好像一切都很顺 …","headline":"为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Antigravity, AI, macOS, 开源","mainEntityOfPage":{"@id":"https://kuhung.me/posts/agy-menubar-context-management/","@type":"WebPage"},"name":"为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/agy-menubar-context-management/","wordCount":295}</script>
 </head>
 
   
@@ -112,7 +112,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">agy-menubar：Antigravity 的上下文设计取舍与管理方法</h1>
+        <h1 class="post-title" itemprop="name headline">为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -135,10 +135,10 @@ if (!doNotTrack) {
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#往会话里塞东西的真实日常">往会话里塞东西的真实日常</a></li>
+    <li><a href="#一次典型的-session-会话">一次典型的 session 会话</a></li>
     <li><a href="#为什么现在的-coding-agent-都倾向于把上下文藏起来">为什么现在的 Coding Agent 都倾向于把上下文藏起来</a></li>
-    <li><a href="#自动压缩真的是坏事吗">自动压缩真的是坏事吗？</a></li>
-    <li><a href="#菜单栏红了然后呢">菜单栏红了，然后呢？</a></li>
+    <li><a href="#自动压缩好事坏事">自动压缩，好事坏事？</a></li>
+    <li><a href="#会话-token-监控与处理实践">会话 Token 监控与处理实践</a></li>
     <li><a href="#上下文管理的几条实际方法">上下文管理的几条实际方法</a></li>
     <li><a href="#开源与安装">开源与安装</a></li>
   </ul>
@@ -195,7 +195,10 @@ if (!doNotTrack) {
           
           
 
-          <h2 id="往会话里塞东西的真实日常">往会话里塞东西的真实日常</h2>
+          <blockquote>
+<p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
+</blockquote>
+<h2 id="一次典型的-session-会话">一次典型的 session 会话</h2>
 <p>平时用 Google Antigravity 写代码，编码的最佳实践通常是一个会话只做一件事。</p>
 <p>但在日常写代码时，这件事很难把握。很多任务我们很难度量它到底会消耗多少 Token，也没办法准确评估手头的任务粒度拆得是不是够细。</p>
 <p>实际写起来的状态往往是：感觉一直在往同一个会话里面塞东西。刚开始聊着改着，好像一切都很顺畅。但塞着塞着，模型开始逐渐偏离原本的目标。前面定好的逻辑约束失效了，给出的代码变迟钝了，甚至开始改动一些明令禁止触碰的模块。</p>
@@ -204,22 +207,22 @@ if (!doNotTrack) {
 <h2 id="为什么现在的-coding-agent-都倾向于把上下文藏起来">为什么现在的 Coding Agent 都倾向于把上下文藏起来</h2>
 <p>去看看其他几个主流工具的现状，会发现隐藏底层指标已经成了整个行业的普遍做法。</p>
 <p>早期无论是 OpenAI Codex 还是各类模型接口，Token 一直是摆在台面上的计量单位。每次请求花了多少、窗口还剩多少，大家心里都有数。</p>
-<p>但现在的 Codex 环境（包括桌面端和 Composer 交互），默认也倾向于把 Token 计数器隐藏起来。用户如果想看，往往需要专门跑到设置里翻找开启选项，或者在终端敲 <code>/status</code>、<code>/statusline</code> 这类命令手动调出。</p>
+<p>但现在的 Codex 环境（包括桌面端和 CLI），默认也倾向于把 Token 计数器隐藏起来。用户如果想看，往往需要专门跑到设置里翻找开启选项，或者在终端敲 <code>/status</code>、<code>/statusline</code> 这类命令手动调出。</p>
 <p>Claude 也是同样的思路。普通对话界面完全隐藏底层细节，只有在开发者针对性排查时，才提供 <code>/context</code> 命令去查看分布条，或者在达到一定阈值时在后台触发自动压缩。</p>
 <p>Cursor 在对话和 Composer 里虽然会对 <code>@</code> 引入的文件大小有一定感知，但在长对话里，大家同样容易不知不觉把几十个文件的历史塞进同一个上下文。</p>
 <p>为什么这些 Agent 工具都不约而同把监控藏起来了？</p>
 <p>从产品设计上看，它们都在追求一种无感知的自主代理体验。各个平台希望开发者只管提业务需求，模型在后台调工具、改文件、跑测试，底层的 Token 消耗被视为应该屏蔽掉的底层细节。</p>
 <p>再加上现在的底座模型标称容量越来越大（比如 Gemini 标称支持 100 万 Token），更给了产品团队隐藏计数器的理由，让大家觉得这个空间怎么塞都塞不满。</p>
-<p>底层确实做了一道兜底：当会话累积到约 220k Tokens 附近时，系统会自动执行 Checkpoint 压缩，折叠历史轮次。</p>
+<p>底层确实做了一道兜底：按我的实测，当会话累积到约 220k Tokens 附近时，系统会自动执行 Checkpoint 压缩，折叠历史轮次。</p>
 <p>但在实际编码中，这种完全隐藏的设计让开发者失去了尺度感。任务粒度拆得合不合适、会话是不是过载了，完全没有参考依据。</p>
-<h2 id="自动压缩真的是坏事吗">自动压缩真的是坏事吗？</h2>
+<h2 id="自动压缩好事坏事">自动压缩，好事坏事？</h2>
 <p>最近在评论区看到有人聊到这个机制，不少人觉得自动压缩纯粹是坏事，甚至抱怨凭什么擅自压缩，导致自己没法随时往上翻聊天记录。</p>
 <p>这件事需要区分具体的场景。自动压缩确实会丢失细节，但在很多时候它是有益的，甚至是必要的保护机制。</p>
 <p>最典型的有益场景是服务端 KV Cache 的缓存时效与保活。</p>
 <p>大模型服务端的 Prompt Cache 通常有生存时间（TTL）。如果你写到一半离开工位去开会或吃饭，长时间没有新的动作，服务端的缓存就会逐渐失效。</p>
-<p>如果系统不在你离开时做一次压缩并固化状态，等你几个小时后回来敲下一句话时，服务端就必须把你此前长达二十多万 Token 的整个庞大历史做一次全局重新导入（冷启动 Re-prefill）。这会导致下一轮响应极其缓慢，还会消耗大量的算力额度。在空闲时把会话折叠起来保活，对整体系统的响应和资源开销是有帮助的。</p>
-<p>至于想在会话里留着所有历史记录随时翻看，这是把会话当成了聊天记录查看器。从物理规律来说，超长上下文天然存在注意力稀疏（Lost in the middle）。真正的聊天记录在本地的 SQLite 数据库与 <code>transcript.jsonl</code> 日志里都有完整留存，不需要让模型的会话内存去硬扛。正确的做法是把重要的上下文结构化沉淀下来，而不是依赖单个会话做记录管理。</p>
-<h2 id="菜单栏红了然后呢">菜单栏红了，然后呢？</h2>
+<p>缓存一旦失效，等你几个小时后回来敲下一句话时，服务端就必须把此前长达二十多万 Token 的整个历史重新预填充一遍（冷启动 Re-prefill）。这会导致下一轮响应极其缓慢，还会消耗大量的算力额度。如果会话已经被压缩成一份摘要，需要重新预填充的就只剩摘要的长度，冷启动的代价会小得多。更何况压缩这次操作，会让缓存时间重新刷新顺延。</p>
+<p>至于想在会话里留着所有历史记录随时翻看，这是把会话当成了聊天记录查看器。超长上下文天然存在中段信息被忽略的问题（Lost in the middle）。真正的聊天记录在本地的 SQLite 数据库与 <code>transcript.jsonl</code> 日志里都有完整留存，不需要让模型的会话内存去硬扛。正确的做法是把重要的上下文结构化沉淀下来，而不是依赖单个会话做记录管理。</p>
+<h2 id="会话-token-监控与处理实践">会话 Token 监控与处理实践</h2>
 <p>既然需要知道会话到底吃了多少东西，我就做了一个常驻在 Mac 菜单栏的小工具 <code>agy-menubar</code>。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="/images/agy-menubar/demo.gif" alt="agy-menubar 菜单栏效果预览" class="lazyload"><figcaption class="image-caption">agy-menubar 菜单栏效果预览</figcaption></figure></p>
 <p>交互参考了 macOS 的系统指示器（比如电池电量百分比、CPU 指示器）：用 CoreGraphics 绘制一个 18×18 矢量圆环，把容量分母直接对齐到 220k 实际压缩线。</p>
@@ -230,16 +233,16 @@ if (!doNotTrack) {
 </ul>
 <p>点开菜单可以看到详细指标：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Mac 顶部状态栏:
-</span></span><span style="display:flex;"><span>[◎ 104.2k]  Tue Oct 19 14:50
+</span></span><span style="display:flex;"><span>[◎ 104.2k]  Mon Oct 19 14:50
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>点击下拉菜单:
 </span></span><span style="display:flex;"><span>┌──────────────────────────────────────────────┐
 </span></span><span style="display:flex;"><span>│ AI Model Quota Limits                        │
-</span></span><span style="display:flex;"><span>│ [■□□□□□□□□□□□]  10.4% (104,242 / 1M)        │
+</span></span><span style="display:flex;"><span>│ [■■■■■□□□□□□□]  47.4% (104,242 / 220k)      │
 </span></span><span style="display:flex;"><span>│ ──────────────────────────────────────────── │
 </span></span><span style="display:flex;"><span>│ 提示词缓存      102,005  (97.8%)             │
 </span></span><span style="display:flex;"><span>│ 本轮输入        2,237                        │
-</span></span><span style="display:flex;"><span>│ 剩余空间        895,758  (89.6%)             │
+</span></span><span style="display:flex;"><span>│ 剩余空间        115,758  (52.6%)             │
 </span></span><span style="display:flex;"><span>│ 当前模型        Gemini Flash                 │
 </span></span><span style="display:flex;"><span>│ ──────────────────────────────────────────── │
 </span></span><span style="display:flex;"><span>│ 切换跟踪会话                          ▶      │
@@ -250,18 +253,18 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>│ 立即刷新                                   ⌘R │
 </span></span><span style="display:flex;"><span>│ 退出                                       ⌘Q │
 </span></span><span style="display:flex;"><span>└──────────────────────────────────────────────┘
-</span></span></code></pre></div><p>但是在真实实践里，当菜单栏亮起红色的时候，普通人的第一反应绝对不是输入 <code>/compact</code>。</p>
+</span></span></code></pre></div><p>但是在真实实践里，当菜单栏亮起红色的时候，普通人的第一反应往往不是输入 <code>/compact</code>。</p>
 <p>没有人愿意主动去压缩自己的上下文。真实的情况往往是不知道该怎么办，或者只能干瞪眼。因为心里清楚一旦压缩，刚才聊过的某些代码细节、临时约定的变量和局部约束可能就找不回来了。</p>
 <p>这种时候其实有两个解法，但使用时机必须分清楚：</p>
 <p>系统原生提供的 <code>/compact</code>，适合的是当前这个任务中的<strong>某一个具体步骤彻底做完了</strong>。比如当前计划里的第一步方案设计做完了，或者核心函数改完并通过了编译测试，代码处于一个明确的稳态，这时可以敲一次 <code>/compact</code> 把刚才做完的步骤固化成摘要，再进下一步。</p>
-<p>绝对不能在任务进行到半途时做 <code>/compact</code>。如果你正改到一半、几个文件处于半生不熟的中间状态，一旦敲了压缩，模型的工作记忆立刻被破坏，直接丢失当前的思路和上下文断点。</p>
+<p>不建议在任务进行到半途时做 <code>/compact</code>。如果你正改到一半、几个文件处于半生不熟的中间状态，一旦敲了压缩，模型的工作记忆立刻被破坏，直接丢失当前的思路和上下文断点。</p>
 <p>另一个解法是 <code>/handoff</code>。如果你排查一个 Bug 试了四五种方案，终端刷了大量的报错日志，上下文已经被这些噪音填满了，这时候敲 <code>/compact</code>，压缩算法会把这些失败的弯路也当作上下文总结进去。更有效的做法是用 <code>/handoff</code> 把当前做好的成果、已经证伪的结论和下一步目标写成一份结构化文档，直接结束当前会话，开一个全新的会话接棒。新会话没有历史噪音，注意力是满格的。</p>
 <h2 id="上下文管理的几条实际方法">上下文管理的几条实际方法</h2>
 <p>结合这个监控小工具和实际写代码的体会，在 Antigravity 里做好上下文管理，有几条比较管用的习惯：</p>
 <ol>
 <li>
 <p><strong>别被 100 万大窗口麻痹</strong><br>
-把上下文维持在 50k 到 150k 之间，模型的响应速度和对指令的依从度最好。超过 150k 后，推理延迟和注意力衰减都会逐渐显现。</p>
+按我的使用经验，把上下文维持在 50k 到 150k 之间，模型的响应速度和对指令的依从度最好。超过 150k 后，推理延迟和注意力衰减都会逐渐显现。</p>
 </li>
 <li>
 <p><strong>步骤做完再压缩，半途绝不压缩</strong><br>
@@ -290,7 +293,7 @@ if (!doNotTrack) {
 </span></span></code></pre></div><p>卸载同样只需一行命令：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/kuhung/agy-menubar/main/uninstall.sh | bash
 </span></span></code></pre></div><p>代码放在 GitHub 开源，协议是 MIT：<br>
-<a href="https://github.com/kuhung/agy-menubar">https://github.com/kuhung/agy-menubar</a></p>
+<a href="https://github.com/kuhung/agy-menubar">kuhung/agy-menubar</a></p>
 <p>如果你也是每天在 Mac 上用 Antigravity 写代码，经常写着写着不知道会话塞了多少东西，跑一下安装脚本就能常驻在菜单栏。遇到问题或者有需要改进的地方，可以直接在仓库提 Issue。</p>
 
     </div>
