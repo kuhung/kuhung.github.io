@@ -538,10 +538,24 @@ document.addEventListener('click', function(e) {
             
             <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
                 <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/">个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排</a></h2>
-                <p class="post-summary">在上一篇《用 AI 优化我的投资组合：从宏观配置到美股持仓复盘》中，我们梳理了大类资产配置与资金分层：宏观上确定了资金在美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的配比，并在股票内部切分了核心宽基底仓（Core）与卫星轮动个股（Satellite）。
-这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第二篇。大方向定好之后，我们面对的是一个更具体的 …</p>
+                <p class="post-summary">在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。
+这也是我最近 …</p>
                 <div class="home-post-meta">
                     <time datetime="2026-10-18" itemprop="datePublished">October 18, 2026</time>
+                    
+                    
+                    <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+                    
+                </div>
+            </article>
+            
+            <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
+                <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/">个人量化选股（一）：大类资产配置与量化选股分层</a></h2>
+                <p class="post-summary">讨论量化交易时，人们往往容易直接聚焦在微观的选股指标上：均线组合、动量斜率、波动率通道、突破信号。
+在实际构建量化交易体系时，单独一个选股引擎无法独立运转。选股系统处于整个交易框架的执行层。在决定买入哪些个股之前，系统必须先知道前置的宏观输入：总资金在哪些市场之间分布、哪些资金负责承担长期的 Beta 收益、哪些资金才划拨给量化引擎做战术选股。
+全球不同股票市场有各自独立的运行周期。美股经历过长时 …</p>
+                <div class="home-post-meta">
+                    <time datetime="2026-10-17" itemprop="datePublished">October 17, 2026</time>
                     
                     
                     <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
@@ -591,23 +605,9 @@ document.addEventListener('click', function(e) {
                 </div>
             </article>
             
-            <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
-                <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/">链上宏观数据，要看哪些指标，不该看哪些指标</a></h2>
-                <p class="post-summary">最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
-重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。
-链上账本公开透 …</p>
-                <div class="home-post-meta">
-                    <time datetime="2026-10-10" itemprop="datePublished">October 10, 2026</time>
-                    
-                    
-                    <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-                    
-                </div>
-            </article>
-            
         </div>
         <p class="home-posts-more">
-            <a class="lk" href="/posts/" style="font-size: 14px; color: #2d96bd;">查看全部 180 篇文章 &rarr;</a>
+            <a class="lk" href="/posts/" style="font-size: 14px; color: #2d96bd;">查看全部 181 篇文章 &rarr;</a>
         </p>
     </div>
 </div>

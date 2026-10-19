@@ -30,7 +30,7 @@ if (!doNotTrack) {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yelaywwb9r");
   </script>
-  <link rel="prev" href="https://kuhung.me/posts/isochrone-travel-map/" />
+  <link rel="prev" href="https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/" />
   
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-18T21:00:00+08:00","datePublished":"2026-10-18T21:00:00+08:00","description":"在上一篇《用 AI 优化我的投资组合：从宏观配置到美股持仓复盘》中，我们梳理了大类资产配置与资金分层：宏观上确定了资金在美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的配比，并在股票内部切分了核心宽基底仓（Core）与卫星轮动个股（Satellite）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第二篇。大方向定好之后，我们面对的是一个更具体的 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":857}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-18T21:00:00+08:00","datePublished":"2026-10-18T21:00:00+08:00","description":"在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。 这也是我最近 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":861}</script>
 </head>
 
   
@@ -246,7 +246,7 @@ if (!doNotTrack) {
           
           
 
-          <p>在上一篇<a href="/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/">《用 AI 优化我的投资组合：从宏观配置到美股持仓复盘》</a>中，我们梳理了大类资产配置与资金分层：宏观上确定了资金在美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的配比，并在股票内部切分了核心宽基底仓（Core）与卫星轮动个股（Satellite）。</p>
+          <p>在上一篇<a href="/posts/stock-selection-macro-asset-allocation-and-framework/">《个人量化选股（一）：大类资产配置与量化选股分层》</a>中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考<a href="/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/">《用 AI 优化我的投资组合》</a>）。</p>
 <p>这也是我最近在 <a href="https://www.quantfull.com">QuantFull</a> 整理的「个人量化选股实战体系」的第二篇。大方向定好之后，我们面对的是一个更具体的工程问题：各个市场用于轮动的卫星个股，到底应该从哪些标的里面挑选？</p>
 <p>这属于整个选股体系的第二层：候选池召回与双轨粗排。</p>
 <p>在展开具体的数据分析之前，我们先把从全市场到最终买入的三层处理链条放出来：</p>
@@ -613,6 +613,7 @@ if (!doNotTrack) {
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
 <ul>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
 <li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
 <li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
 <li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
@@ -686,7 +687,7 @@ if (!doNotTrack) {
 
     <div class="post-nav">
         
-        <a href="https://kuhung.me/posts/isochrone-travel-map/" class="prev" rel="prev" title="出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点"><i class="iconfont icon-left"></i>&nbsp;出行可达地图：用路网等时圈计算真实生活圈，即将支持自定义地点</a>
+        <a href="https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/" class="prev" rel="prev" title="个人量化选股（一）：大类资产配置与量化选股分层"><i class="iconfont icon-left"></i>&nbsp;个人量化选股（一）：大类资产配置与量化选股分层</a>
         
         
     </div>
