@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-17T20:00:00+08:00","datePublished":"2026-10-17T20:00:00+08:00","description":"讨论量化交易时，人们往往容易直接聚焦在微观的选股指标上：均线组合、动量斜率、波动率通道、突破信号。 在实际构建量化交易体系时，单独一个选股引擎无法独立运转。选股系统处于整个交易框架的执行层。在决定买入哪些个股之前，系统必须先知道前置的宏观输入：总资金在哪些市场之间分布、哪些资金负责承担长期的 Beta 收益、哪些资金才划拨给量化引擎做战术选股。 全球不同股票市场有各自独立的运行周期。美股经历过长时 …","headline":"个人量化选股（一）：大类资产配置与量化选股分层","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"WebPage"},"name":"个人量化选股（一）：大类资产配置与量化选股分层","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","wordCount":248}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-17T20:00:00+08:00","datePublished":"2026-10-17T20:00:00+08:00","description":"讨论量化交易时，人们往往容易直接聚焦在微观的选股指标上：均线组合、动量斜率、波动率通道、突破信号。 在实际构建量化交易体系时，单独一个选股引擎无法独立运转。选股系统处于整个交易框架的执行层。在决定买入哪些个股之前，系统必须先知道前置的宏观输入：总资金在哪些市场之间分布、哪些资金负责承担长期的 Beta 收益、哪些资金才划拨给量化引擎做战术选股。 全球不同股票市场有各自独立的运行周期。美股经历过长时 …","headline":"个人量化选股（一）：大类资产配置与量化选股分层","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"WebPage"},"name":"个人量化选股（一）：大类资产配置与量化选股分层","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","wordCount":331}</script>
 </head>
 
   
@@ -176,7 +176,7 @@ if (!doNotTrack) {
         <li><a href="#第一步资产穿透">第一步：资产穿透</a></li>
         <li><a href="#第二步代理映射与协方差矩阵">第二步：代理映射与协方差矩阵</a></li>
         <li><a href="#第三步参数求解">第三步：参数求解</a></li>
-        <li><a href="#第四步回测检验">第四步：回测检验</a></li>
+        <li><a href="#第四步回测与回撤检验">第四步：回测与回撤检验</a></li>
         <li><a href="#第五步结合风险承受能力与偏好得出最终持仓配比">第五步：结合风险承受能力与偏好，得出最终持仓配比</a></li>
       </ul>
     </li>
@@ -278,21 +278,46 @@ if (!doNotTrack) {
 <p>为了避免特定年份单一起终点带来的端点偏差，预期收益率采用 5 年滚动窗口的中位数年化收益：</p>
 <p>$$\mu_i = \text{median}{R_{i,t,5y}}$$</p>
 <p>样本周期跨越 2012 年至 2026 年，包含 3,777 个有效对齐交易日。各市场休市日按前收盘价前向填充（ffill），休市日计零收益。日收益率协方差矩阵按实际交易日密度年化为 $\Sigma$。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/5987e816db7bffc9.webp" alt="代理标的收益估计对比与大类资产日频收益率相关性矩阵" class="lazyload"><figcaption class="image-caption">代理标的收益估计对比与大类资产日频收益率相关性矩阵</figcaption></figure></p>
+<p>从实测数据可以看到两个重要特征：</p>
+<ul>
+<li><strong>滚动中位数有效过滤了起终点扭曲（左图）</strong>：以中国资产为例，全期单一起终点 CAGR 为 3.6%，但 5 年滚动窗口中位数仅为 2.0%，更客观地反映了常态化持有的回报分布；美股的 5 年滚动中位数达到 15.8%，黄金达到 7.5%，在同等约 16%—18% 的年化波动率下展现出显著更高的长期收益补偿。</li>
+<li><strong>跨资产低相关性提供天然的方差损耗缓冲（右图）</strong>：美股与欧股（0.76）、日股（0.70）同属发达市场，联动较强；但中国资产与美股的相关系数仅为 0.18，黄金、债券与各大股票市场的相关系数普遍在 0.07 至 0.18 之间（中国资产与美元债甚至呈 -0.02 负相关）。这种低相关性进入协方差矩阵 $\Sigma$ 后，能够显著压低组合整体的波动损耗 $\frac{1}{2} w^T \Sigma w$。</li>
+</ul>
 <h3 id="第三步参数求解">第三步：参数求解</h3>
 <p>在第二步确立的预期收益与协方差基础上，设定合理的组合边界：股票总仓位限制在 75% 到 85% 之间；美股上限 50%；中国资产下限 10%、上限 30%；日股 5% 到 20%；欧洲 5% 到 25%；黄金上限 10%；债券 5% 到 15%；现金 3% 到 10%；不做空。</p>
-<p>使用优化算法对二次规划问题求解，计算出使几何增长率最大化的参数权重（全样本点估计）：美股 50.0%、日本股市 17.0%、中国资产 10.0%、黄金 10.0%、欧洲股市 5.0%、债券 5.0%、现金 3.0%。</p>
-<h3 id="第四步回测检验">第四步：回测检验</h3>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/57a0e3e31be321a6.webp" alt="参数求解边界约束与三大历史子周期分段回测平滑收敛" class="lazyload"><figcaption class="image-caption">参数求解边界约束与三大历史子周期分段回测平滑收敛</figcaption></figure></p>
+<p>使用 SLSQP 算法对二次规划问题求解，得到的全样本最优解（上图左侧）呈现出清晰的结构分化：</p>
+<ul>
+<li><strong>触及上限的主力引擎</strong>：美股（50.0%）与黄金（10.0%）直接顶满预设上限，分别承担组合的核心增长与异质性风险对冲。</li>
+<li><strong>唯一的内点平衡解</strong>：日本股市（17.0%）落在 <code>[5%, 20%]</code> 的区间内部，作为发达市场中的独立区域因子发挥分散作用。</li>
+<li><strong>触及下限的底座与缓冲</strong>：中国资产（10.0%）、欧洲股市（5.0%）、债券（5.0%）与现金（3.0%）停留在各自的下限边界，保留基础敞口与再平衡流动性。</li>
+</ul>
+<h3 id="第四步回测与回撤检验">第四步：回测与回撤检验</h3>
 <p>全样本求解的参数容易受到单一历史区间的支配。2012 年到 2026 年美股科技处于长期大牛市，而黄金在 2012 到 2016 年处于大幅下行期。</p>
-<p>为了检验参数在不同宏观环境下的稳健性，把历史数据切分为三个宏观子周期分别回测：</p>
+<p>为了检验参数在不同宏观环境下的稳健性，把历史数据切分为三个宏观子周期分别回测（见上图右侧）：</p>
 <ol>
 <li>2012 年至 2016 年：大宗商品熊市、美股初登牛途。</li>
 <li>2017 年至 2021 年：全球科技繁荣与低利率环境。</li>
 <li>2022 年至 2026 年：全球通胀与激进加息周期。</li>
 </ol>
-<p>分段回测显示：美股在三个子区间全部触及 50% 上限；中国资产与债券稳定在下限；日本股市在各分段均高于欧洲股市。波动较大的是黄金（早期权重为 0%，近期回升至 10%）以及日欧权重的相对差额。为了防止过拟合，对全样本与三个子区间的参数进行等权平均与平滑处理。</p>
+<p>分段回测显示：美股在三个子区间全部触及 50% 上限；中国资产与债券稳定在下限；日本股市在各分段均高于欧洲股市。波动较大的是黄金（早期权重为 0%，近期回升至 10%）以及日欧权重的相对差额。为了防止过拟合，对全样本与三个子区间的参数进行等权平均，得到跨周期平滑核心权重（美股 50.0%、日股 15.0%、黄金 7.5%、中国资产 10.0%、欧洲股市 7.5%、债券 5.0%、现金 5.0%）。</p>
+<p>将平滑后的核心组合放回 2012 年至 2026 年的完整历史行情中，进行累计净值与水下回撤（Underwater Drawdown）压力检验：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/3382548fe663d66d.webp" alt="2012-2026历史回测累计净值与极端行情水下回撤检验" class="lazyload"><figcaption class="image-caption">2012-2026历史回测累计净值与极端行情水下回撤检验</figcaption></figure></p>
+<p>15 年的实证检验验证了两个核心结论：</p>
+<ul>
+<li><strong>长期复利显著跑赢单一市场与等权基准（上图）</strong>：几何复利目标核心组合在 2012—2026 年间实现了 <strong>11.69%</strong> 的历史年化收益与 <strong>0.78</strong> 的夏普比率，累计净值增长至 <strong>4.98 倍</strong>；同期七大资产等权基准年化为 6.80%（累计 2.60 倍），单一中国宽基指数代理年化仅为 3.60%（累计 1.67 倍）。</li>
+<li><strong>极端行情下的最大回撤严格受控于风险红线（下图）</strong>：
+<ul>
+<li>在 <strong>2015 年 A 股异常波动</strong>期间，单一中国宽基回撤超过 -40%，而全球多资产核心组合回撤仅 <strong>-13.8%</strong>；</li>
+<li>在 <strong>2020 年 3 月全球疫情熔断</strong>期间，组合回撤 <strong>-22.1%</strong>，随后迅速修复并创出新高；</li>
+<li>在 <strong>2022 年美联储激进加息引发的股债双杀</strong>期间，组合录得 15 年最大历史回撤 <strong>-24.34%</strong>，依然严格控制在预设的 <strong>-25.0% 个人风险承受红线</strong>以内。</li>
+</ul>
+</li>
+</ul>
 <h3 id="第五步结合风险承受能力与偏好得出最终持仓配比">第五步：结合风险承受能力与偏好，得出最终持仓配比</h3>
 <p>纯数学优化器在处理高弹性资产时会给出极端的配置建议。例如在测试加密资产时，未经限制的几何增长模型会直接推高到 15% 的上限。</p>
-<p>现实投资需要结合自身的风险边界施加纪律约束：出于对代理数据代表性、集中度风险以及监管环境的考虑，人为给加密资产设定 5.0% 的风险上限；同时限制单一国家股票敞口不超过 50%。</p>
+<p>现实投资需要结合自身的风险边界施加纪律约束：出于对代理数据代表性、集中度风险以及监管环境的考虑，人为给加密资产设定 5.0% 的风险上限；同时将核心组合按 95% 等比例缩放，限制单一国家股票敞口不超过 50%。</p>
 <p>平滑并叠加约束后，最终收敛出指导实际操作的八大持仓比例与战略定位：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/681a06355b2410de.webp" alt="八大资产目标权重分布与战略角色" class="lazyload"><figcaption class="image-caption">八大资产目标权重分布与战略角色</figcaption></figure></p>
 <p>大类资产比例确定之后，选股系统的边界就清晰了：在分配给各个市场的预算范围内挑选标的，不需要在不同市场间盲目切换。</p>
