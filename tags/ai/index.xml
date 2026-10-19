@@ -6,7 +6,34 @@
     <description>Recent content in AI on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Oct 2026 16:44:17 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Oct 2026 22:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>agy-menubar：Antigravity 的上下文设计取舍与管理方法</title>
+      <link>https://kuhung.me/posts/agy-menubar-context-management/</link>
+      <pubDate>Mon, 19 Oct 2026 22:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/agy-menubar-context-management/</guid>
+      <description>往会话里塞东西的真实日常 平时用 Google Antigravity 写代码，编码的最佳实践通常是一个会话只做一件事。
+但在日常写代码时，这件事很难把握。很多任务我们很难度量它到底会消耗多少 Token，也没办法准确评估手头的任务粒度拆得是不是够细。
+实际写起来的状态往往是：感觉一直在往同一个会话里面塞东西。刚开始聊着改着，好像一切都很顺畅。但塞着塞着，模型开始逐渐偏离原本的目标。前面定好的逻辑约束失效了，给出的代码变迟钝了，甚至开始改动一些明令禁止触碰的模块。
+这时候很难准确判断：究竟是任务本身的粒度拆得太粗，还是因为在同一个会话里堆了过多的内容，导致模型的能力出现劣化。
+偏偏 Antigravity 把整个上下文监控完全藏起来了。
+为什么现在的 Coding Agent 都倾向于把上下文藏起来 去看看其他几个主流工具的现状，会发现隐藏底层指标已经成了整个行业的普遍做法。
+早期无论是 OpenAI Codex 还是各类模型接口，Token 一直是摆在台面上的计量单位。每次请求花了多少、窗口还剩多少，大家心里都有数。
+但现在的 Codex 环境（包括桌面端和 Composer 交互），默认也倾向于把 Token 计数器隐藏起来。用户如果想看，往往需要专门跑到设置里翻找开启选项，或者在终端敲 /status、/statusline 这类命令手动调出。
+Claude 也是同样的思路。普通对话界面完全隐藏底层细节，只有在开发者针对性排查时，才提供 /context 命令去查看分布条，或者在达到一定阈值时在后台触发自动压缩。
+Cursor 在对话和 Composer 里虽然会对 @ 引入的文件大小有一定感知，但在长对话里，大家同样容易不知不觉把几十个文件的历史塞进同一个上下文。
+为什么这些 Agent 工具都不约而同把监控藏起来了？
+从产品设计上看，它们都在追求一种无感知的自主代理体验。各个平台希望开发者只管提业务需求，模型在后台调工具、改文件、跑测试，底层的 Token 消耗被视为应该屏蔽掉的底层细节。
+再加上现在的底座模型标称容量越来越大（比如 Gemini 标称支持 100 万 Token），更给了产品团队隐藏计数器的理由，让大家觉得这个空间怎么塞都塞不满。
+底层确实做了一道兜底：当会话累积到约 220k Tokens 附近时，系统会自动执行 Checkpoint 压缩，折叠历史轮次。
+但在实际编码中，这种完全隐藏的设计让开发者失去了尺度感。任务粒度拆得合不合适、会话是不是过载了，完全没有参考依据。
+自动压缩真的是坏事吗？ 最近在评论区看到有人聊到这个机制，不少人觉得自动压缩纯粹是坏事，甚至抱怨凭什么擅自压缩，导致自己没法随时往上翻聊天记录。
+这件事需要区分具体的场景。自动压缩确实会丢失细节，但在很多时候它是有益的，甚至是必要的保护机制。
+最典型的有益场景是服务端 KV Cache 的缓存时效与保活。
+大模型服务端的 Prompt Cache 通常有生存时间（TTL）。如果你写到一半离开工位去开会或吃饭，长时间没有新的动作，服务端的缓存就会逐渐失效。</description>
+    </item>
+    
     <item>
       <title>Muse，国外火热的 Personal Agent，有哪些用法和我的个人感受</title>
       <link>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</link>

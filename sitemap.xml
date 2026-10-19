@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
-      <loc>https://kuhung.me/tags/a%E8%82%A1/</loc>
-      <lastmod>2026-10-18T21:00:00+08:00</lastmod>
+      <loc>https://kuhung.me/posts/agy-menubar-context-management/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/ai/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/antigravity/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/categories/</loc>
-      <lastmod>2026-10-18T21:00:00+08:00</lastmod>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/macos/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/</loc>
-      <lastmod>2026-10-18T21:00:00+08:00</lastmod>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%BC%80%E6%BA%90/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/</loc>
+      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/a%E8%82%A1/</loc>
       <lastmod>2026-10-18T21:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</loc>
@@ -22,13 +43,7 @@
       <loc>https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/</loc>
       <lastmod>2026-10-18T21:00:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
-      <lastmod>2026-10-18T21:00:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E7%BE%8E%E8%82%A1/</loc>
-      <lastmod>2026-10-18T21:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/</loc>
       <lastmod>2026-10-18T21:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE/</loc>
@@ -177,9 +192,6 @@
     </url><url>
       <loc>https://kuhung.me/tags/%E7%AB%AF%E4%BE%A7%E6%A8%A1%E5%9E%8B/</loc>
       <lastmod>2026-10-07T11:47:22+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/ai/</loc>
-      <lastmod>2026-10-03T16:44:17+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</loc>
       <lastmod>2026-10-03T16:44:17+08:00</lastmod>
