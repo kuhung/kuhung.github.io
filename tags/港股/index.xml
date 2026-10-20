@@ -6,11 +6,26 @@
     <description>Recent content in 港股 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Oct 2026 21:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2026 16:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（三）：趋势硬门槛与防追高</title>
+      <link>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</link>
+      <pubDate>Tue, 20 Oct 2026 16:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</guid>
+      <description>在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。
+这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。
+很多人拿到观察池，习惯直接把动量指标套进去，从高到低排个序，挑前几名买入。
+在实际交易中，纯动量排序很容易踩进两个极端坑里：一个是买到了大跌破位后的超跌反弹，上方全是一整年套牢盘的解套抛压；另一个是买到了短期暴拉后的加速赶顶，直接接在情绪最高点，随后遭遇均值回归的大幅回撤。
+动量指标只衡量过去一段时间上涨的速度，它不负责判断标的当前所处的趋势位置和风险收益比。
+为了防止系统在这些极端位置发出买入信号，我们在进入截面打分排序之前，设置了三道准入硬门槛（Buy Gates）：
+flowchart TD Start([&amp;#34;最新中外 200 只观察池&amp;#34;]) --&amp;gt; G1{&amp;#34;门槛① 周期生命线&amp;lt;br/&amp;gt;最新收盘价 ≥ MA200？&amp;#34;} G1 -- 否 (年线下方) --&amp;gt; Reject1[&amp;#34;【一票否决】剔除 111 只&amp;lt;br/&amp;gt;(避免熊市接飞刀与死猫反弹)&amp;#34;] G1 -- 是 (剩余 89 只) --&amp;gt; G2{&amp;#34;门槛② 动量转正过滤&amp;lt;br/&amp;gt;12-1 相对动量 &amp;gt; 0？&amp;#34;} G2 -- 否 (动量未转正) --&amp;gt; Reject2[&amp;#34;【剔除】13 只&amp;lt;br/&amp;gt;(高位滞涨或中期阴跌)&amp;#34;] G2 -- 是 (剩余 76 只) --&amp;gt; G3{&amp;#34;门槛③ 防追高警戒&amp;lt;br/&amp;gt;距年线 Bias ≤ +30%？&amp;#34;} G3 -- 否 (超温过热) --&amp;gt; Reject3[&amp;#34;【防追高跳过】13 只&amp;lt;br/&amp;gt;(顺延下一名，规避均值回归)&amp;#34;] G3 -- 是 (剩余 63 只) --&amp;gt; Pass([&amp;#34;准许进入截面打分精排&amp;lt;br/&amp;gt;(美日卡玛比率 / 港A相对动量)&amp;#34;]) 四态相空间与三道准入硬滤网架构 在设计过滤规则时，我们把价格与 200 日均线的关系，以及 12-1 动量的正负，交叉构建成一个四态决策矩阵（Regime Four States）：</description>
+    </item>
+    
     <item>
       <title>个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排</title>
       <link>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</link>
-      <pubDate>Sun, 18 Oct 2026 21:00:00 +0800</pubDate>
+      <pubDate>Mon, 19 Oct 2026 21:00:00 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</guid>
       <description>在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。

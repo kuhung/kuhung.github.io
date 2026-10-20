@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-18T21:00:00+08:00","datePublished":"2026-10-18T21:00:00+08:00","description":"在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。 这也是我最近 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":861}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-19T21:00:00+08:00","datePublished":"2026-10-19T21:00:00+08:00","description":"在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。 这也是我最近 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":955}</script>
 </head>
 
   
@@ -151,7 +151,7 @@ if (!doNotTrack) {
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
-                on <time datetime=2026-10-18 itemprop="datePublished">October 18, 2026</time>
+                on <time datetime=2026-10-19 itemprop="datePublished">October 19, 2026</time>
                 </span>
                 in
                 <i class="iconfont icon-folder"></i>
@@ -175,6 +175,7 @@ if (!doNotTrack) {
       <ul>
         <li><a href="#1-资金规模与真实冲击成本">1. 资金规模与真实冲击成本</a></li>
         <li><a href="#2-数学拐点与中盘动量弹性">2. 数学拐点与中盘动量弹性</a></li>
+        <li><a href="#3-单日脉冲放量与中小盘流动性虚火诊断">3. 单日脉冲放量与中小盘流动性虚火诊断</a></li>
       </ul>
     </li>
     <li><a href="#物理约束与哑铃型两极扭曲">物理约束与“哑铃型两极扭曲”</a>
@@ -289,7 +290,8 @@ if (!doNotTrack) {
 <p>在实际执行时，这会遇到两个现实阻碍。</p>
 <p>一个是工程与接口开销。A 股有 5,300 多只股票，港股有 2,600 多只，美股超过 12,000 只。每天抓取全市场的完整日 K、计算复权和指标，个人设备的存储计算压力大，券商行情接口（如富途 OpenD）也会直接触发每日订阅配额上限。</p>
 <p>另一个更根本的制约，是股票市场本身的极度非均匀分布。</p>
-<p>我们编写了探索性数据分析脚本 <code>scripts/analytics/universe_eda.py</code>，拉取各市场的全量快照，日成交额直接通过各标的当日成交量乘以收盘价计算得出。清洗剔除 B 股、ST 股、场外粉单和现价低于 1 美元的标的后，三地市场的真实截面如下：</p>
+<p>我们编写了探索性数据分析脚本 <code>scripts/analytics/universe_eda.py</code>，拉取各市场的 2026-10-18 全量快照。特别需要指出的是：我们在流动性指标上必须使用<strong>真实平滑的日均成交额（Average Daily Turnover, ADV = volume_avg × price）</strong>，而不能采用单一交易日的成交额（volume_day × price）。A 股与港股采用 TradingView 官方的多日平滑均量（volume_avg），美股采用 30 日均量基准（adv_30d）。</p>
+<p>清洗剔除 B 股、ST 股、场外粉单和现价低于 1 美元的标的后，三地市场的真实截面如下：</p>
 <table>
 <thead>
 <tr>
@@ -297,38 +299,38 @@ if (!doNotTrack) {
 <th>原始标的总量</th>
 <th>清洗后有效标的</th>
 <th>市值中位数</th>
-<th>日成交额 P50</th>
+<th>稳态 ADV 成交额 P50</th>
 <th>极端标的分布情况</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>A 股</td>
-<td>5,309 只</td>
-<td>5,036 只</td>
-<td>64.6 亿元</td>
-<td>1.12 亿元</td>
-<td>剔除 ST 与 <code>\*ST</code> 195 只，剔除 B 股 76 只</td>
+<td>5,311 只</td>
+<td>5,034 只</td>
+<td>60.6 亿元</td>
+<td>1.16 亿元</td>
+<td>剔除 ST 与 <code>*ST</code> 195 只，剔除 B 股 76 只</td>
 </tr>
 <tr>
 <td>港股</td>
+<td>2,671 只</td>
 <td>2,666 只</td>
-<td>2,666 只</td>
-<td>8.4 亿港元</td>
-<td>18.5 万港元</td>
-<td>市值 P25 仅 2.1 亿港元，尾部存在大量仙股</td>
+<td>8.1 亿港元</td>
+<td>24.6 万港元</td>
+<td>市值 P25 仅 2.0 亿港元，尾部存在大量仙股</td>
 </tr>
 <tr>
 <td>美股</td>
-<td>12,011 只</td>
-<td>5,218 只</td>
-<td>10.3 亿美元</td>
-<td>569 万美元</td>
-<td>剔除全部 OTC 粉单 6,297 只，剔除低于 1 美元标的 389 只</td>
+<td>11,950 只</td>
+<td>5,117 只</td>
+<td>10.7 亿美元</td>
+<td>745.4 万美元</td>
+<td>剔除全部 OTC 粉单 6,232 只，剔除低于 1 美元标的 4,294 只，同发行人 GOOG 去重</td>
 </tr>
 </tbody>
 </table>
-<p>数据呈现极度右偏。港股的成交额中位数只有 18.5 万港元，美股有一半以上是场外粉单和空壳公司。全市场通抓，抓进来的大部分都是缺乏流动性的僵尸股。这些标的偶尔有一两笔小额成交拉动价格，在动量系统里会被误判成放量突破，给后续选股制造大量噪音。</p>
+<p>数据呈现极度右偏。港股的成交额中位数只有 24.6 万港元，美股有一半以上是场外粉单和空壳公司。全市场通抓，抓进来的大部分都是缺乏流动性的僵尸股。这些标的偶尔有一两笔小额成交拉动价格，在动量系统里会被误判成放量突破，给后续选股制造大量噪音。</p>
 <h2 id="从数据分析推导客观筛选门槛">从数据分析推导客观筛选门槛</h2>
 <p>为了让不同市场的股票能在合理的池子里竞争，我们需要设定流动性与市值的准入门槛。</p>
 <p>如果凭直觉给门槛拍一个规整的整数，比如随手定个 200 亿市值、1 亿日成交额，往往会带有明显的凑整偏好和盲区。在量化系统中，门槛需要从实际数据分布和交易成本中推导出来。</p>
@@ -344,9 +346,9 @@ if (!doNotTrack) {
 </ul>
 <p>个人资金在数千万元日成交的标的上几乎零滑点，不会对盘口带来冲击。照搬机构的 1 亿元日成交门槛，属于过度设防。把流动性底线设在 5,000 万元，对个人交易完全够用。关于资金规模与微观冲击成本的量化测算，也可以参考我们在 <a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 策略容量估算指南</a> 中的推导。</p>
 <h3 id="2-数学拐点与中盘动量弹性">2. 数学拐点与中盘动量弹性</h3>
-<p>通过曲率分析（Maximum Distance to Diagonal），A 股累计市值曲线的数学内生极大曲率拐点（Elbow Point）出现在 232.9 亿元（对应市场前 15.8% 标的，贡献 74.4% 市值），这印证了 200 亿元左右确实是市场市值的集中度拐点。</p>
+<p>通过曲率分析（Maximum Distance to Diagonal），A 股累计市值曲线的数学内生极大曲率拐点（Elbow Point）出现在 223.4 亿元（对应市场前 15.6% 标的，贡献 74.6% 市值），这印证了 200 亿元左右确实是市场市值的集中度拐点。</p>
 <p>但如果机械地把大盘门槛卡死在 200 亿元，会产生一个动量盲区：千亿以上的超大盘权重往往以低贝塔或均值回归为主，而真正容易走出顺势动量主线的，往往是 100 亿至 200 亿元之间的细分中大盘龙头。</p>
-<p>在清洗后的 5,036 只 A 股有效标的中，按市值分档的真实分布如下：</p>
+<p>在清洗后的 5,034 只 A 股有效标的中，按市值分档与真实 ADV 均量的分布如下：</p>
 <table>
 <thead>
 <tr>
@@ -354,88 +356,98 @@ if (!doNotTrack) {
 <th>标的数量</th>
 <th>数量占比</th>
 <th>市值累计占比</th>
-<th>成交额累计占比</th>
-<th>日成交额中位数</th>
-<th>日成交额 ≥ 5,000 万元比例</th>
-<th>日成交额 ≥ 1 亿元比例</th>
+<th>ADV 成交额累计占比</th>
+<th>ADV 成交额中位数</th>
+<th>ADV ≥ 5,000 万元比例</th>
+<th>ADV ≥ 1 亿元比例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>&lt; 20 亿元</td>
-<td>169 只</td>
-<td>3.4%</td>
-<td>0.2%</td>
-<td>0.7%</td>
-<td>3,200 万元</td>
-<td>25.4%</td>
-<td>2.4%</td>
+<td>209 只</td>
+<td>4.2%</td>
+<td>0.3%</td>
+<td>0.8%</td>
+<td>3,700 万元</td>
+<td>27.3%</td>
+<td>12.4%</td>
 </tr>
 <tr>
 <td>20 至 50 亿元</td>
-<td>1,785 只</td>
-<td>35.4%</td>
-<td>5.5%</td>
-<td>11.7%</td>
-<td>5,400 万元</td>
-<td>54.1%</td>
-<td>26.6%</td>
+<td>1,870 只</td>
+<td>37.1%</td>
+<td>5.7%</td>
+<td>12.1%</td>
+<td>6,200 万元</td>
+<td>61.2%</td>
+<td>28.3%</td>
 </tr>
 <tr>
 <td>50 至 100 亿元</td>
-<td>1,337 只</td>
-<td>26.5%</td>
-<td>13.5%</td>
-<td>28.2%</td>
-<td>1.08 亿元</td>
-<td>81.6%</td>
-<td>53.7%</td>
+<td>1,296 只</td>
+<td>25.7%</td>
+<td>8.1%</td>
+<td>16.5%</td>
+<td>1.18 亿元</td>
+<td>86.3%</td>
+<td>56.9%</td>
 </tr>
 <tr>
 <td>100 至 200 亿元</td>
-<td>809 只</td>
-<td>16.1%</td>
-<td>23.1%</td>
-<td>44.1%</td>
-<td>1.87 亿元</td>
-<td>94.4%</td>
-<td>76.5%</td>
+<td>774 只</td>
+<td>15.4%</td>
+<td>9.5%</td>
+<td>15.5%</td>
+<td>2.03 亿元</td>
+<td>95.9%</td>
+<td>80.9%</td>
 </tr>
 <tr>
 <td>200 至 500 亿元</td>
-<td>572 只</td>
-<td>11.4%</td>
-<td>38.0%</td>
-<td>64.1%</td>
-<td>3.35 亿元</td>
-<td>98.6%</td>
-<td>94.2%</td>
+<td>544 只</td>
+<td>10.8%</td>
+<td>14.7%</td>
+<td>20.8%</td>
+<td>3.48 亿元</td>
+<td>99.8%</td>
+<td>96.3%</td>
 </tr>
 <tr>
 <td>500 至 1000 亿元</td>
-<td>197 只</td>
-<td>3.9%</td>
-<td>49.9%</td>
-<td>77.5%</td>
-<td>6.48 亿元</td>
-<td>99.5%</td>
-<td>98.5%</td>
+<td>180 只</td>
+<td>3.6%</td>
+<td>11.2%</td>
+<td>11.5%</td>
+<td>6.78 亿元</td>
+<td>98.9%</td>
+<td>97.2%</td>
 </tr>
 <tr>
 <td>&gt; 1000 亿元</td>
-<td>167 只</td>
-<td>3.3%</td>
+<td>161 只</td>
+<td>3.2%</td>
+<td>50.5%</td>
+<td>22.7%</td>
+<td>12.26 亿元</td>
 <td>100.0%</td>
 <td>100.0%</td>
-<td>12.42 亿元</td>
-<td>98.8%</td>
-<td>97.6%</td>
 </tr>
 </tbody>
 </table>
 <p>为了更直观地展示各区间的标的规模与流动性厚度，我们绘制了对应的柱状分布与流动性特征图：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/651bcf1c11255d4d.webp" alt="A 股各市值分档标的数量与流动性特征分布" class="lazyload"><figcaption class="image-caption">A 股各市值分档标的数量与流动性特征分布</figcaption></figure></p>
-<p>数据显示，100 亿至 200 亿元区间内有 809 只股票，贡献了市场 15.9% 的成交额，其中 94.4% 的标的日成交额都在 5,000 万元以上。将门槛由 200 亿适度放宽至 100 亿元，日成交额设为 5,000 万元，可以把 782 只兼具充沛流动性与弹性的中大盘龙头纳入召回视野。</p>
+<p>数据显示，100 亿至 200 亿元区间内有 774 只股票，贡献了市场 15.5% 的稳态成交额，其中 95.9% 的标的 ADV 都在 5,000 万元以上。将门槛由 200 亿适度放宽至 100 亿元，日均成交额设为 5,000 万元，可以把 742 只兼具充沛流动性与弹性的中大盘龙头纳入召回视野。</p>
+<h3 id="3-单日脉冲放量与中小盘流动性虚火诊断">3. 单日脉冲放量与中小盘流动性虚火诊断</h3>
+<p>为什么必须严格采用多日 ADV 均量，而坚决不能图省事采用单日成交量？
+在中小盘股票（尤其是市值 20~100 亿元区间）中，由于总股本小、筹码轻，极易受到游资游资突袭炒作、突发题材刺激或单笔大宗交易影响，在单一交易日呈现剧烈的“脉冲式放量（Volume Spike）”。单日成交额看似瞬间突破 5,000 万元甚至过亿元，但在平时的绝大多数交易日里，日均成交额往往仅有数百万元。</p>
+<p>如果按单日成交额粗筛，这些平时流动性枯竭的“伪活跃标的”会被大量误召回进宽池，甚至在“自下而上活跃轨”中排在前列。我们在实测数据中建立了脉冲因子（$\text{Spike Ratio} = \text{volume_day} / \text{volume_avg}$）进行对比诊断：</p>
+<ul>
+<li><strong>A 股中小盘（20~100 亿元）</strong>：全市场 3,166 只标的中，有整整 <strong>107 只标的</strong> 呈现“单日成交额 ≥ 5,000 万元、但稳态 ADV 日均成交额 &lt; 5,000 万元”的虚火现象，最大单日放量达到正常均量的 <strong>3.55 倍</strong>。引入 ADV 均量指标后，这 107 只一日游脉冲标的被彻底清洗出候选视野；</li>
+<li><strong>港股中小盘（&lt; 100 亿港元）</strong>：成功过滤掉 <strong>21 只</strong> 单日伪达标标的；</li>
+<li><strong>美股中小盘（&lt; 100 亿美元）</strong>：成功过滤掉 <strong>52 只</strong> 单日突发脉冲异动的妖股。</li>
+</ul>
+<p>用稳态 ADV 替代单日脉冲，在源头直接锁死了游资一日游标的对量化监控池的污染。</p>
 <p>基于实测数据，各市场的初筛门槛确定如下：</p>
 <table>
 <thead>
@@ -449,33 +461,33 @@ if (!doNotTrack) {
 <tbody>
 <tr>
 <td>A 股（CNY）</td>
-<td>剔除 ST、<code>\*ST</code> 与 B 股</td>
-<td><strong>市值 ≥ 100 亿元<br/>日成交额 ≥ 5,000 万元</strong></td>
-<td>覆盖 100~200 亿弹性中盘股；5,000 万元日成交对个人数万元订单冲击仅万分之几；有效纳入 782 只成长龙头</td>
+<td>剔除 ST、<code>*ST</code> 与 B 股</td>
+<td><strong>市值 ≥ 100 亿元<br/>ADV 日均成交额 ≥ 5,000 万元</strong></td>
+<td>覆盖 100~200 亿弹性中盘股；5,000 万元稳态日均成交对个人数万元订单冲击仅万分之几；有效纳入 742 只成长龙头</td>
 </tr>
 <tr>
 <td>港股（HKD）</td>
 <td>主板与创业板挂牌股票</td>
-<td><strong>市值 ≥ 100 亿港元<br/>日成交额 ≥ 3,000 万港元</strong></td>
-<td>港股 ≥100 亿港元标的占全市场 22.2%（593 只），贡献 97.1% 市值与 95.4% 成交额；3,000 万成交额门槛让达标率升至 60%，兼顾流动性与行业覆盖</td>
+<td><strong>市值 ≥ 100 亿港元<br/>ADV 日均成交额 ≥ 3,000 万港元</strong></td>
+<td>港股 ≥100 亿港元标的占全市场 22.2%（593 只），贡献 97.1% 市值与 95.4% 成交额；3,000 万均量成交额门槛兼顾流动性与行业覆盖</td>
 </tr>
 <tr>
 <td>美股（USD）</td>
 <td>剔除 OTC 场外粉单<br/>剔除现价低于 1 美元标的</td>
-<td><strong>市值 ≥ 100 亿美元<br/>日成交额 ≥ 2,000 万美元</strong></td>
-<td>≥100 亿美元标的占上市板块 19.2%（1,002 只），贡献 94.6% 市值与 85.8% 成交额，日成交额中位数达 1.68 亿美元，流动性充裕</td>
+<td><strong>市值 ≥ 100 亿美元<br/>ADV 30D 日均成交额 ≥ 2,000 万美元</strong></td>
+<td>≥100 亿美元标的占上市普通股 15.7%（801 只），贡献 94.6% 市值与 85.8% 成交额，日均成交额中位数达 1.72 亿美元，流动性充裕</td>
 </tr>
 </tbody>
 </table>
-<p>数据在进入多路召回前，还要完成基础清洗：A 股按前缀剔除 195 只 ST 与 76 只 B 股；美股剔除 6,297 只 OTC 粉单和 389 只 1 美元以下标的，并对同一发行人的多种股份类别（如 GOOGL 与 GOOG）去重，每组只保留流动性最好的一只。</p>
+<p>数据在进入多路召回前，还要完成基础清洗：A 股按前缀剔除 195 只 ST 与 76 只 B 股；美股剔除 6,232 只 OTC 粉单和 4,294 只 1 美元以下标的，并对同一发行人的多种股份类别（如 GOOGL 与 GOOG）去重，每组只保留流动性最好的一只。</p>
 <h2 id="物理约束与哑铃型两极扭曲">物理约束与“哑铃型两极扭曲”</h2>
 <p>通过上面的门槛初筛，我们对全市场数据进行了严密核验：</p>
 <ul>
-<li><strong>A 股</strong>：在清洗后的 5,036 只标的中，符合新门槛（市值 ≥ 100 亿元且日成交额 ≥ 5,000 万元）的有效标的精确为 <strong>1,714 只</strong>（贡献 100.7 万亿元市值与 1.08 万亿元日成交额）；</li>
-<li><strong>港股</strong>：符合新门槛（市值 ≥ 100 亿港元且日成交额 ≥ 3,000 万港元）的标的为 <strong>327 只</strong>；</li>
-<li><strong>美股</strong>：符合新门槛（市值 ≥ 100 亿美元且日成交额 ≥ 2,000 万美元）的上市普通股为 <strong>814 只</strong>。</li>
+<li><strong>A 股</strong>：在清洗后的 5,034 只标的中，符合新门槛（市值 ≥ 100 亿元且 ADV 日均成交额 ≥ 5,000 万元）的有效标的精确为 <strong>1,624 只</strong>（贡献 83.2 万亿元市值与 9,551 亿元稳态日均成交额）；</li>
+<li><strong>港股</strong>：符合新门槛（市值 ≥ 100 亿港元且 ADV 日均成交额 ≥ 3,000 万港元）的标的为 <strong>343 只</strong>；</li>
+<li><strong>美股</strong>：符合新门槛（市值 ≥ 100 亿美元且 ADV 30D 日均成交额 ≥ 2,000 万美元）的上市普通股为 <strong>801 只</strong>。</li>
 </ul>
-<p>三地市场合计初筛合格的宽池标的达到 <strong>2,855 只</strong>。这依然远超我们日常监控所能承载的规模。我们在券商接口和监控系统上，存在明确的物理配额约束：</p>
+<p>三地市场合计初筛合格的宽池标的达到 <strong>2,768 只</strong>。这依然远超我们日常监控所能承载的规模。我们在券商接口和监控系统上，存在明确的物理配额约束：</p>
 <p>富途 OpenD 标准权限单账户的行情订阅上限为 <strong>300 只总探测窗口</strong>。这 300 只总预算在全局多市场之间进行协同分配：</p>
 <ul>
 <li><strong>中国市场（A 股 + 港股）</strong>：切分约 <strong>100 只</strong> 深度观察名单（62 只 A 股与 38 只港股）；</li>
@@ -570,10 +582,10 @@ if (!doNotTrack) {
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/2a2ed341f2dbca57.webp" alt="全景行业 ETF 矩阵结构与宽池覆盖度实测" class="lazyload"><figcaption class="image-caption">全景行业 ETF 矩阵结构与宽池覆盖度实测</figcaption></figure></p>
 <p>实测数据表明：</p>
 <ol>
-<li><strong>美股市场（814 只合格标的）</strong>：11 个 SPDR 一级行业在 GICS 分类学上对美股上市股票实现了 <strong>100.0% 的穷尽覆盖</strong>。没有任何一只合规上市股票会脱离这 11 个板块的监控视野。</li>
-<li><strong>A 股市场（1,714 只合格标的）</strong>：在彻底剔除沪深 300、科创 50 等宽基后，仅凭 20 只纯行业 ETF，直接穿透覆盖了 1,714 只合格标的中的 <strong>1,328 只纯行业个股（数量覆盖率 77.5%）</strong>，对应的市值覆盖率达到 <strong>84.1%</strong>，日成交额覆盖率达到 <strong>86.3%</strong>。
-未设立行业 ETF 的标的主要分布在轻工制造、纺织服饰、农林牧渔、商贸零售等低弹性或长周期阴跌行业（合计占市场 3.2% 市值）。这些行业在自上而下的行业轮动中本身不具备动量爆发力，不会产生系统性错失。</li>
-<li><strong>港股市场（327 只合格标的）</strong>：恒生科技与核心指数覆盖了市场 <strong>94.2% 的总市值</strong>，大型科技网络股与国企高股息标的均在监控之内。</li>
+<li><strong>美股市场（801 只合格标的）</strong>：11 个 SPDR 一级行业在 GICS 分类学上对美股上市股票实现了 <strong>100.0% 的穷尽覆盖</strong>。没有任何一只合规上市股票会脱离这 11 个板块的监控视野。</li>
+<li><strong>A 股市场（1,624 只合格标的）</strong>：在彻底剔除沪深 300、科创 50 等宽基后，仅凭 20 只纯行业 ETF，直接穿透覆盖了 1,624 只合格标的中的 <strong>1,258 只纯行业个股（数量覆盖率 77.5%）</strong>，对应的市值覆盖率达到 <strong>84.3%</strong>，日均成交额覆盖率达到 <strong>86.1%</strong>。
+未设立行业 ETF 的标的主要分布在轻工制造、纺织服饰、农林牧渔、商贸零售等低弹性或长周期阴跌行业。这些行业在自上而下的行业轮动中本身不具备动量爆发力，不会产生系统性错失。</li>
+<li><strong>港股市场（343 只合格标的）</strong>：恒生科技与核心指数覆盖了市场 <strong>94.5% 的总市值</strong>，大型科技网络股与国企高股息标的均在监控之内。</li>
 </ol>
 <h3 id="3-顺风雷达与动态龙头选拔逻辑">3. 顺风雷达与动态龙头选拔逻辑</h3>
 <p>明确了 ETF 矩阵的完备性之后，粗排在工程上通过两层机制完成：</p>
@@ -590,15 +602,15 @@ if (!doNotTrack) {
 <p>为了防止纯行业 ETF 出现分类盲区，粗排采用自上而下与自下而上结合的双轨制：</p>
 <ul>
 <li><strong>自上而下顺风轨（主干配额约 50%~75%）</strong>：由全景 ETF 顺风雷达定位领涨大类，动态选拔顺风板块的支柱龙头。中国资产中包含 76 只 A 股与港股行业龙头，美股包含 48 只标普一级与高贝塔赛道龙头；</li>
-<li><strong>自下而上活跃轨（补充配额约 25%~50%）</strong>：脱离行业框架，直接在通过初筛的宽池中按日成交额与流动性独立扫描，专门捕捉脱离行业贝塔的跨赛道独立大牛股（中国资产 24 只，美股 52 只）；</li>
+<li><strong>自下而上活跃轨（补充配额约 25%~50%）</strong>：脱离行业框架，直接在通过初筛的宽池中按<strong>稳态 ADV 日均成交额</strong>独立降序扫描，专门捕捉脱离行业贝塔的跨赛道独立大牛股（中国资产 24 只，美股 52 只）。以 ADV 代替单日成交额，确保入选的标的均有持续稳定的机构流动性，彻底排除了游资突发爆炒的脉冲妖股；</li>
 <li><strong>研报金股辅助校验</strong>：在特定市场（如 A 股），将券商月度金股与深度覆盖标的作为定性对照，补充纯量化指标容易忽略的信息。</li>
 </ul>
-<p>两轨选拔汇聚去重后，初筛合格的 2,855 只宽池标的被精准收敛为单市场 <strong>100 只物理观察名单</strong>：</p>
+<p>两轨选拔汇聚去重后，初筛合格的 2,768 只宽池标的被精准收敛为单市场 <strong>100 只物理观察名单</strong>：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/d8593cb4d9644df4.webp" alt="双轨粗排落地成果：中国资产与美股资产 100 只观察池结构分布" class="lazyload"><figcaption class="image-caption">双轨粗排落地成果：中国资产与美股资产 100 只观察池结构分布</figcaption></figure></p>
 <p>从最终落盘的名单结构来看：</p>
 <ol>
-<li><strong>中国资产观察池（62 只 A 股 + 38 只港股）</strong>：以 76% 的纯行业顺风龙头为底座，覆盖硬科技与智能制造（20%）、大金融与高息红利（16%）、新能源与周期资源（16%）、港股互联生态（14%）及消费医药（10%），辅以 24% 的高流动性活跃黑马。市值中位数达到 2,907 亿元，日成交额中位数达 14.5 亿元。</li>
-<li><strong>美股资产观察池（100 只上市普通股）</strong>：48% 的标普与主题龙头实现了对 11 个一级行业的完备锚定，52% 的自下而上活跃标的则将高流动性的科技巨头与跨赛道龙头一网打尽。市值中位数达到 1,874 亿美元，日成交额中位数达 15.2 亿美元。</li>
+<li><strong>中国资产观察池（62 只 A 股 + 38 只港股）</strong>：以 76% 的纯行业顺风龙头为底座，覆盖硬科技与智能制造（20%）、大金融与高息红利（16%）、新能源与周期资源（16%）、港股互联生态（14%）及消费医药（10%），辅以 24% 的高流动性活跃黑马。市值中位数达到 2,773 亿元，ADV 日均成交额中位数达 15.4 亿元。</li>
+<li><strong>美股资产观察池（100 只上市普通股）</strong>：48% 的标普与主题龙头实现了对 11 个一级行业的完备锚定，52% 的自下而上活跃标的则将高流动性的科技巨头与跨赛道龙头一网打尽。市值中位数达到 2,172 亿美元，ADV 30D 日均成交额中位数达 17.3 亿美元。</li>
 </ol>
 <p>这彻底消除了此前“极端微盘扎堆”与“超大盘权重割裂”的两极扭曲，将监控精力 100% 聚焦在 100 亿至 5,000 亿元（美股 100 亿至 1 万亿美元）这一动量弹性充沛、承载能力强的黄金区间。</p>
 <h2 id="进入下一层指标精排与实盘执行">进入下一层：指标精排与实盘执行</h2>
@@ -608,13 +620,14 @@ if (!doNotTrack) {
 <li><strong>第二层（本篇）</strong>：产出的是月度或季度低频更新的“战略监控底表”，解决的是物理接口配额、覆盖面与两极扭曲问题；</li>
 <li><strong>第三层（下一篇）</strong>：则是每天在收盘后运行的“战术指标计算”，直接依托本地数据库中的多周期日 K 时序数据，执行高精度的趋势研判与仓位决策。</li>
 </ul>
-<p>在下一篇中，我们将深入第三层：探讨进入这 100 只观察池的标的，如何通过 MA200 趋势硬门槛一票否决、距年线超过 30% 坚决防追高拒买、12-1 相对动量排序以及双线缓冲区，最终筛选出各市场 3 至 4 只实际买入的最终持仓。</p>
+<p>在下一篇<a href="/posts/stock-selection-hard-trend-filters-and-chasing-prevention/">《个人量化选股（三）：趋势硬门槛与防追高》</a>中，我们将深入第三层：探讨进入这 100 只观察池的标的，如何通过 MA200 趋势硬门槛一票否决、距年线超过 30% 坚决防追高拒买、12-1 相对动量排序以及数据时效守卫，过滤出真正具备右侧持续动量的健康标的。</p>
 <hr>
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
 <ul>
 <li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
 <li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：趋势硬门槛与防追高（三道准入门槛与四态相空间）</a></li>
 <li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
 <li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
 <li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">QuantFull 专栏：12-1 动量策略全周期回测复盘</a></li>

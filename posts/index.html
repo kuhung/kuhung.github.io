@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 182 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 183 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 182 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 183 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -282,6 +282,22 @@ if (!doNotTrack) {
     <div class="posts-list" id="posts-list">
         
         <article class="posts-list-item"
+         data-tags="量化交易||选股||趋势跟踪||动量策略||A股||港股||美股||投资复盘"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/stock-selection-hard-trend-filters-and-chasing-prevention/">个人量化选股（三）：趋势硬门槛与防追高</a></h2>
+    <p class="posts-list-summary">在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。
+这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。
+很多人拿到观察 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-20">October 20, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
          data-tags="Antigravity||AI||macOS||开源"
          data-categories="经验分享">
     <h2 class="posts-list-title"><a href="/posts/agy-menubar-context-management/">为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了</a></h2>
@@ -305,7 +321,7 @@ if (!doNotTrack) {
     <p class="posts-list-summary">在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。
 这也是我最近 …</p>
     <div class="posts-list-meta">
-        <time datetime="2026-10-18">October 18, 2026</time>
+        <time datetime="2026-10-19">October 19, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
         
@@ -422,21 +438,6 @@ Pi 的 changelog  …</p>
         <time datetime="2026-10-09">October 9, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="LLM||模型选型"
-         data-categories="技术研究">
-    <h2 class="posts-list-title"><a href="/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/">Claude Haiku 5.5，当前性价比首选？</a></h2>
-    <p class="posts-list-summary">北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族的最后一款模型。名义标价对齐 OpenAI GPT-6 Luna（输入 $0.10、输出 $0.50 每百万 token），上下文窗口扩展到 1M。大家关心的通常是两件事：到底强在哪，手头的小模型要不要换。
-笔者维护的浏览器插件 PageGrok， …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-08">October 8, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
         
     </div>
 </article>
@@ -651,12 +652,28 @@ Pi 的 changelog  …</p>
     
 </ul>
 
-        <span class="posts-total">共 182 篇</span>
+        <span class="posts-total">共 183 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
     
     <template id="all-posts-template">
+        
+        <article class="posts-list-item"
+         data-tags="量化交易||选股||趋势跟踪||动量策略||A股||港股||美股||投资复盘"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/stock-selection-hard-trend-filters-and-chasing-prevention/">个人量化选股（三）：趋势硬门槛与防追高</a></h2>
+    <p class="posts-list-summary">在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。
+这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。
+很多人拿到观察 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-20">October 20, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="Antigravity||AI||macOS||开源"
@@ -682,7 +699,7 @@ Pi 的 changelog  …</p>
     <p class="posts-list-summary">在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。
 这也是我最近 …</p>
     <div class="posts-list-meta">
-        <time datetime="2026-10-18">October 18, 2026</time>
+        <time datetime="2026-10-19">October 19, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
         

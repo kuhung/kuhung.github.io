@@ -6,11 +6,11 @@
     <description>Recent content in 资产配置 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Oct 2026 21:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Oct 2026 21:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排</title>
       <link>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</link>
-      <pubDate>Sun, 18 Oct 2026 21:00:00 +0800</pubDate>
+      <pubDate>Mon, 19 Oct 2026 21:00:00 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</guid>
       <description>在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。

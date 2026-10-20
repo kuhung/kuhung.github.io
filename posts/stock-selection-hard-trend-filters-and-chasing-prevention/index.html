@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/agy-menubar-context-management/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           个人量化选股（三）：趋势硬门槛与防追高 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="个人量化选股（三）：趋势硬门槛与防追高 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-20T16:00:00+08:00","datePublished":"2026-10-20T16:00:00+08:00","description":"在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。 很多人拿到观察 …","headline":"个人量化选股（三）：趋势硬门槛与防追高","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 趋势跟踪, 动量策略, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"WebPage"},"name":"个人量化选股（三）：趋势硬门槛与防追高","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","wordCount":762}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">个人量化选股（三）：趋势硬门槛与防追高</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-20 itemprop="datePublished">October 20, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#四态相空间与三道准入硬滤网架构">四态相空间与三道准入硬滤网架构</a></li>
+    <li><a href="#门槛一为什么动量股必须在-ma200-年线上方">门槛一：为什么动量股必须在 MA200 年线上方</a></li>
+    <li><a href="#门槛二为什么偏离-200-日线超-30-坚决不追">门槛二：为什么偏离 200 日线超 30% 坚决不追</a></li>
+    <li><a href="#案例实证超威半导体与中际旭创走势复盘">案例实证：超威半导体与中际旭创走势复盘</a></li>
+    <li><a href="#门槛三为什么-12-1-动量要剔除最近-1-个月">门槛三：为什么 12-1 动量要剔除最近 1 个月</a></li>
+    <li><a href="#核心实现代码">核心实现代码</a></li>
+    <li><a href="#阶段小结">阶段小结</a></li>
+    <li><a href="#选股体系与延伸阅读">选股体系与延伸阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>在上一篇<a href="/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/">《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》</a>中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。</p>
+<p>这也是我最近在 <a href="https://www.quantfull.com">QuantFull</a> 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。</p>
+<p>很多人拿到观察池，习惯直接把动量指标套进去，从高到低排个序，挑前几名买入。</p>
+<p>在实际交易中，纯动量排序很容易踩进两个极端坑里：一个是买到了大跌破位后的超跌反弹，上方全是一整年套牢盘的解套抛压；另一个是买到了短期暴拉后的加速赶顶，直接接在情绪最高点，随后遭遇均值回归的大幅回撤。</p>
+<p>动量指标只衡量过去一段时间上涨的速度，它不负责判断标的当前所处的趋势位置和风险收益比。</p>
+<p>为了防止系统在这些极端位置发出买入信号，我们在进入截面打分排序之前，设置了三道准入硬门槛（Buy Gates）：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TD
+    Start([&#34;最新中外 200 只观察池&#34;]) --&gt; G1{&#34;门槛① 周期生命线&lt;br/&gt;最新收盘价 ≥ MA200？&#34;}
+    G1 -- 否 (年线下方) --&gt; Reject1[&#34;【一票否决】剔除 111 只&lt;br/&gt;(避免熊市接飞刀与死猫反弹)&#34;]
+    G1 -- 是 (剩余 89 只) --&gt; G2{&#34;门槛② 动量转正过滤&lt;br/&gt;12-1 相对动量 &gt; 0？&#34;}
+    G2 -- 否 (动量未转正) --&gt; Reject2[&#34;【剔除】13 只&lt;br/&gt;(高位滞涨或中期阴跌)&#34;]
+    G2 -- 是 (剩余 76 只) --&gt; G3{&#34;门槛③ 防追高警戒&lt;br/&gt;距年线 Bias ≤ +30%？&#34;}
+    G3 -- 否 (超温过热) --&gt; Reject3[&#34;【防追高跳过】13 只&lt;br/&gt;(顺延下一名，规避均值回归)&#34;]
+    G3 -- 是 (剩余 63 只) --&gt; Pass([&#34;准许进入截面打分精排&lt;br/&gt;(美日卡玛比率 / 港A相对动量)&#34;])
+</code></pre><h2 id="四态相空间与三道准入硬滤网架构">四态相空间与三道准入硬滤网架构</h2>
+<p>在设计过滤规则时，我们把价格与 200 日均线的关系，以及 12-1 动量的正负，交叉构建成一个四态决策矩阵（Regime Four States）：</p>
+<table>
+<thead>
+<tr>
+<th>状态评级</th>
+<th>价格与均线关系</th>
+<th>12-1 动量状态</th>
+<th>市场微观特征</th>
+<th>系统的准入处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>状态①：顺势领涨 (Advancing)</strong></td>
+<td>$P &gt; \text{MA200}$</td>
+<td>$\text{Mom}_{12-1} &gt; 0$</td>
+<td>站稳年线中长期成本线上方，中期动能充沛</td>
+<td><strong>唯一准许买入与顺势持有的健康区间</strong>（需再过防追高检查）</td>
+</tr>
+<tr>
+<td><strong>状态②：高位滞涨 (Distribution)</strong></td>
+<td>$P &gt; \text{MA200}$</td>
+<td>$\text{Mom}_{12-1} \le 0$</td>
+<td>价格虽在年线上，但中期动量已经转负，震荡磨损</td>
+<td><strong>不予买入</strong>，已持仓者列入动量衰竭观察</td>
+</tr>
+<tr>
+<td><strong>状态③：超跌反弹 (Dead Cat Bounce)</strong></td>
+<td>$P \le \text{MA200}$</td>
+<td>$\text{Mom}_{12-1} &gt; 0$</td>
+<td>处于长期下行通道，短期反弹看似凶猛，上方压制沉重</td>
+<td><strong>一票否决</strong>，涨得再猛也归类为反弹观察，严禁接飞刀</td>
+</tr>
+<tr>
+<td><strong>状态④：持续阴跌 (Downtrend)</strong></td>
+<td>$P \le \text{MA200}$</td>
+<td>$\text{Mom}_{12-1} \le 0$</td>
+<td>均线与动量双重压制，空头主跌通道</td>
+<td><strong>坚决回避</strong>，不参与任何左侧抄底</td>
+</tr>
+</tbody>
+</table>
+<p>为了看清真实市场中这四类标的的分布情况，我们将上一篇双轨粗排产生的最新 200 只中外观察池（<code>ah_batch_100</code> 与 <code>us_batch_100</code>）全部拉取完整日 K 矩阵，计算每只标的的年线乖离率（Bias）与 12-1 相对动量。</p>
+<p>左图展示连续相空间分布，右图展示三道硬门槛逐级淘汰的漏斗数据：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/b7e5c7531e6a3398.webp" alt="四态相空间决策分布与三道准入硬滤网漏斗淘汰图" class="lazyload"><figcaption class="image-caption">四态相空间决策分布与三道准入硬滤网漏斗淘汰图</figcaption></figure></p>
+<p>在最新 200 只中外全景观察池中：</p>
+<ul>
+<li><strong>门槛① 周期生命线</strong>：淘汰 111 只处于年线压制通道的标的（剔除率 55.5%），其中包含了 48 只看似反弹凶猛但上方全是套牢盘的超跌死猫标的（如中际旭创、新易盛、泛林半导体等），剩余 89 只；</li>
+<li><strong>门槛② 动量转正过滤</strong>：淘汰 13 只高位滞涨标的（剔除率 14.6%），包括短期突破年线但中期动量依然为负的比特币现货 ETF 等，剩余 76 只；</li>
+<li><strong>门槛③ 防追高警戒</strong>：拦截 13 只偏离年线超过 +30% 的过热标的（超威半导体 AMD、戴尔、联想、CrowdStrike、MRNA 等，拦截率 17.1%），过热跳过，名额顺延；</li>
+<li><strong>最终准入合格池</strong>：从 200 只中筛选出 <strong>63 只合格标的（整体通过率 31.5%）</strong>，进入下一阶段的市场内截面精排。</li>
+</ul>
+<h2 id="门槛一为什么动量股必须在-ma200-年线上方">门槛一：为什么动量股必须在 MA200 年线上方</h2>
+<p>动量指标衡量的是股票在过去一段时间里涨得有多快。它是一个关于速度的指标，但它不负责判断股票当前所处的位置。</p>
+<p>这里最常见的陷阱，就是大跌之后的死猫反弹。</p>
+<p>假设一只股票在过去一年从 100 块跌到了 20 块，然后在最近两个月从 20 块快速反弹到了 35 块。短期涨幅高达 75%，如果纯看相对速度，它会直接冲进全市场动量榜单的前三名。但从长期走势看，它依然被压制在 200 日线下方，上方堆积了过去一整年被套牢的巨量筹码。</p>
+<p>买入这种股票，本质上是在长线下跌通道里接飞刀。每次反弹到阻力位，就会遇到解套盘涌出砸盘。</p>
+<p>200 日均线反映的是场内过去大约 10 个月到 1 年交易者的加权平均持仓成本线。收盘价站上 200 日线，说明中长期持有者的平均筹码开始进入浮盈状态，抛压减弱，支撑有效。</p>
+<p>我们在 200 只观察池的日 K 矩阵上提取了历史滑动窗口样本，对比了买入时处于状态①（站上年线）与状态③（年线下方反弹）在不同持有周期的真实表现：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/bce2a363712c0ddb.webp" alt="周期生命线实证：顺势领涨与超跌反弹持有期收益与胜率对比" class="lazyload"><figcaption class="image-caption">周期生命线实证：顺势领涨与超跌反弹持有期收益与胜率对比</figcaption></figure></p>
+<p>实测数据呈现出清晰的持有期演变：</p>
+<table>
+<thead>
+<tr>
+<th>持有周期</th>
+<th>状态①：顺势领涨 ($P &gt; \text{MA200}$) 平均收益</th>
+<th>状态① 胜率</th>
+<th>状态③：超跌反弹 ($P \le \text{MA200}$) 平均收益</th>
+<th>状态③ 胜率</th>
+<th>表现差距</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>20 个交易日 (约 1 个月)</strong></td>
+<td>+2.79%</td>
+<td>56.9%</td>
+<td>+2.86%</td>
+<td>56.7%</td>
+<td>短线收益几乎持平，反弹极具诱惑力</td>
+</tr>
+<tr>
+<td><strong>40 个交易日 (约 2 个月)</strong></td>
+<td>+5.47%</td>
+<td>58.3%</td>
+<td>+5.00%</td>
+<td>58.3%</td>
+<td>顺势组开始反超，死猫反弹动能趋缓</td>
+</tr>
+<tr>
+<td><strong>60 个交易日 (约 1 个季度)</strong></td>
+<td><strong>+8.62%</strong></td>
+<td><strong>62.3%</strong></td>
+<td><strong>+5.20%</strong></td>
+<td><strong>57.1%</strong></td>
+<td><strong>顺势收益高出 65.8%，胜率拉开 5.2 个百分点</strong></td>
+</tr>
+</tbody>
+</table>
+<p>在 20 个交易日的短期窗口里，死猫反弹的平均收益（+2.86%）甚至微幅超过了顺势领涨（+2.79%）。这种短线脉冲非常容易给交易者造成底部反转的错觉。</p>
+<p>但拉长到 60 个交易日（一个季度），差距彻底显现：站稳年线的顺势标的平均收益拉升到 +8.62%，胜率达到 62.3%，中位数收益为 +4.53%；而在年线下方买入反弹股票，平均收益停滞在 +5.20%，胜率掉到 57.1%，中位数收益只有 +2.61%。上方沉重的解套抛压会把绝大多数反弹死死压制。</p>
+<p>在最新 200 只观察池截面上，有几只非常典型的股票：</p>
+<ul>
+<li><strong>中际旭创 (SZ.300308)</strong>：12-1 动量高达 +124.3%，在动量榜单上位居前列。但最新收盘价距 MA200 年线偏离 -21.2%，深陷破位调整通道。如果纯看动量，系统会直接将其买入；但由于 MA200 硬门槛，系统一票否决。</li>
+<li><strong>新易盛 (SZ.300394)</strong>：12-1 动量达 +112.3%，但价格距年线偏离 -13.3%，同样被 MA200 拦截。</li>
+<li><strong>泛林半导体 (US.LRCX)</strong>：12-1 动量达 +103.1%，价格距年线偏离 -6.2%，一票否决。</li>
+<li><strong>科创50 ETF (SH.588000)</strong>：12-1 动量转正为 +22.0%，但收盘在年线下方 -3.4%，属于左侧反弹，系统维持空仓观望，拒绝建仓。</li>
+</ul>
+<h2 id="门槛二为什么偏离-200-日线超-30-坚决不追">门槛二：为什么偏离 200 日线超 30% 坚决不追</h2>
+<p>确认了股票在 200 日线上方之后，并不是说偏离均线越远越好。</p>
+<p>当一只股票的价格距离它的 200 日线超过 +30%、甚至 +50% 时，说明短期内价格脱离了基本面的平稳积累，进入加速赶顶或过度炒作阶段。</p>
+<p>价格偏离长期成本线过远时，均值回归的压力会非线性增大。在偏离 40% 的位置发出买入指令，极容易买在短期波段的最高点，随后遭遇大幅均值回归回踩。</p>
+<p>为了量化这种风险，我们统计了观察池历史滑动窗口样本，按照买入时距 MA200 的乖离率（$\text{Bias} = P / \text{MA200} - 1$）划分为五个区间，测算其在未来 60 个交易日内的最大回撤分布：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/3a3174ccf870ba37.webp" alt="年线乖离率（Bias）与未来 60 天最大回撤压力分布" class="lazyload"><figcaption class="image-caption">年线乖离率（Bias）与未来 60 天最大回撤压力分布</figcaption></figure></p>
+<p>实测数据呈现出清晰的风险阶梯：</p>
+<table>
+<thead>
+<tr>
+<th>年线乖离率区间</th>
+<th>样本数量</th>
+<th>未来 60 天平均最大回撤</th>
+<th>未来 60 天 P90 极端回撤（最差 10%）</th>
+<th>风险特征评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>偏离年线 ≤0%</strong> (空头/反弹)</td>
+<td>2,671 个</td>
+<td>-10.2%</td>
+<td>-24.1%</td>
+<td>下行通道破位，缺乏支撑</td>
+</tr>
+<tr>
+<td><strong>偏离 0%~+15%</strong> (稳健起步)</td>
+<td>2,878 个</td>
+<td><strong>-7.8%</strong></td>
+<td><strong>-19.5%</strong></td>
+<td><strong>风险收益比最优的黄金建仓区间</strong></td>
+</tr>
+<tr>
+<td><strong>偏离 +15%~+30%</strong> (温和主升)</td>
+<td>1,272 个</td>
+<td>-9.6%</td>
+<td>-21.9%</td>
+<td>主升走势健康，回撤可控</td>
+</tr>
+<tr>
+<td><strong>偏离 +30%~+50%</strong> (过热加速)</td>
+<td>633 个</td>
+<td><strong>-12.6%</strong></td>
+<td><strong>-26.2%</strong></td>
+<td>均值回归压力陡增，尾部风险激增</td>
+</tr>
+<tr>
+<td><strong>偏离 &gt;+50%</strong> (极端亢奋)</td>
+<td>560 个</td>
+<td><strong>-17.7%</strong></td>
+<td><strong>-38.7%</strong></td>
+<td>严重泡沫化，极易遭遇腰斩式暴跌</td>
+</tr>
+</tbody>
+</table>
+<p>数据表明：当偏离度处于 0%~+15% 时，未来 60 天平均回撤仅 -7.8%，P90 极端回撤仅 -19.5%。</p>
+<p>一旦偏离度跨过 +30%，平均最大回撤扩大到 -12.6%，P90 极端回撤直接跳跃到 -26.2%；若偏离超过 +50%，极端回撤深达 -38.7%。</p>
+<p>基于这个客观分布，系统设定了一条防追高硬规则：</p>
+<p>$$\text{Bias} = \frac{\text{最新收盘价}}{\text{MA200}} - 1 \le +30%$$</p>
+<p>只要正向偏离度超过 30%，哪怕其他所有指标排第一，系统也会标明「超温过热，暂不追高」，强制跳过该标的，名额按顺序顺延给下一名（Graceful Skip）。</p>
+<p>在最新 200 只池的实盘数据中：</p>
+<ul>
+<li><strong>超威半导体 (US.AMD)</strong>：在美股候选池中位列前列，1 年卡玛比率达 4.52，12-1 动量达 +138.7%。但现价距 MA200 年线偏离达 <strong>+34.1%</strong>，超过 +30% 警戒线。系统判定「不买：距 200 日线 +34.1%，超过 +30%，不追高」，名额顺延给下一顺位优质标的。</li>
+<li><strong>联想集团 (HK.00992)</strong>：在港股龙头中 12-1 动量高达 +182.7%，但距年线偏离高达 <strong>+49.5%</strong>，触发防追高拦截；</li>
+<li><strong>戴尔科技 (US.DELL)</strong>：动量高达 +289.5%，距年线偏离 <strong>+44.5%</strong>，同样触发拦截。</li>
+</ul>
+<p>这条规则放弃了一小段非理性的末端赶顶利润，换取了整个组合免于承受接近 30% 到 40% 的极端回撤。</p>
+<h2 id="案例实证超威半导体与中际旭创走势复盘">案例实证：超威半导体与中际旭创走势复盘</h2>
+<p>为了把 MA200 一票否决与 +30% 防追高拦截的过程展示得更具体，我们把超威半导体与中际旭创的走势和指标提取出来：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/74c054ad369d7e2e.webp" alt="个股穿越年线与防追高实战推演：AMD 与中际旭创" class="lazyload"><figcaption class="image-caption">个股穿越年线与防追高实战推演：AMD 与中际旭创</figcaption></figure></p>
+<p>在超威半导体（上图）的走势中，当股价在历史波段向上拉升、偏离 200 日线达到极值时，动量指标持续刷新高点。如果采用单纯的动量追踪，系统会在偏离最大的位置发出加仓买入指令。随后股价出现均值回归，回踩 200 日线，单波回撤达到 -35.4%。+30% 乖离率拦截机制在情绪亢奋点强制跳过，避免了在高位挂单接盘。在最新截面上，AMD 偏离年线依然达到 +34.1%，系统继续保持跳过状态，名额顺延。</p>
+<p>在中际旭创（下图）的走势中，股价见顶跌破 200 日线后，12-1 动量指标依然保留着过去大半年累积的涨幅（+124.3%）。如果只看动量榜单，它依然排在市场前列。由于收盘价始终受制于 200 日线下方（偏离 -21.2%），系统识别其为状态③死猫反弹，全程保持一票否决，规避了随后深幅阴跌到 650 元的过程。</p>
+<h2 id="门槛三为什么-12-1-动量要剔除最近-1-个月">门槛三：为什么 12-1 动量要剔除最近 1 个月</h2>
+<p>在计算动量时，我们采用的不是过去一整年的总涨幅（12-0 动量），而是 12-1 动量：</p>
+<p>$$\text{Mom}<em>{12-1} = \frac{P</em>{t-21}}{P_{t-252}} - 1$$</p>
+<p>也就是用 21 个交易日（约 1 个月）前的收盘价，除以 252 个交易日（约 1 年）前的收盘价，把最近 21 天的数据剔除。</p>
+<p>这样做背后的计量金融学依据，来自经典金融实证研究（Jegadeesh &amp; Titman, 1993）：</p>
+<ul>
+<li>在 3 到 12 个月的时间跨度上，股票截面收益表现出显著的<strong>动量效应（Momentum Effect）</strong>，即过去表现好的股票在未来一段时间继续跑赢；</li>
+<li>在 1 个月以内的短期跨度上，股票截面收益表现出显著的<strong>短期反转效应（Short-Term Reversal）</strong>，即短期暴涨的股票在未来 1 到 4 周往往伴随获利回吐与买卖价差回弹。</li>
+</ul>
+<p>我们在 200 只观察池的历史月度截面上做了检验：近 1 个月收益率对未来 1 个月收益率的 Rank IC 为 <strong>-0.0757</strong>，表现出明确的负相关反转特征。</p>
+<p>如果不剔除最近 21 天，直接算过去一整年的涨幅，最近一个月暴涨的标的会被赋予最高权重。在实际交易中，短线脉冲往往伴随着微观结构上的流动性耗竭和回调洗盘。</p>
+<p>把最近 21 天剔除之后，指标衡量的是剥离了短线噪音之后的中期趋势强度。</p>
+<p>在最新 200 只池的实盘数据中：</p>
+<ul>
+<li><strong>比特币现货 ETF (US.IBIT)</strong> 与 <strong>以太坊现货 ETF (US.ETHA)</strong>：短期在场内情绪带动下快速反弹，价格站上了 200 日线上方（分别偏离 +10.4% 与 +8.0%）。如果只看短期突破，容易误判为主升浪启动。计算 12-1 动量时，扣除近 1 个月后，IBIT 的 12-1 动量为 <strong>-25.1%</strong>，ETHA 为 <strong>-31.9%</strong>，说明其中期依然处于下行修复阶段。系统准确判定为状态②高位滞涨，发出「12-1 动量为负，还在下跌」的拦截提示，避免了过早建仓。</li>
+</ul>
+<h2 id="核心实现代码">核心实现代码</h2>
+<p>以下是生产环境中负责准入门槛检验的向量化 Python 实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Dict, Optional, List
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc_momentum_12_1</span>(closes: List[float]) <span style="color:#f92672">-&gt;</span> Optional[float]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;计算 12-1 相对动量: P(t-21) / P(t-252) - 1。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    若历史不足 252 根日 K 但满 126 根（6个月），回退到近 6 个月收益率兜底。
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(closes) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">252</span>:
+</span></span><span style="display:flex;"><span>        base <span style="color:#f92672">=</span> closes[<span style="color:#f92672">-</span><span style="color:#ae81ff">252</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> base <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> float((closes[<span style="color:#f92672">-</span><span style="color:#ae81ff">21</span>] <span style="color:#f92672">/</span> base <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> len(closes) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">126</span>:
+</span></span><span style="display:flex;"><span>        base <span style="color:#f92672">=</span> closes[<span style="color:#f92672">-</span><span style="color:#ae81ff">126</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> base <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> float((closes[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> base <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100.0</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">buy_gate_reason</span>(
+</span></span><span style="display:flex;"><span>    p_last: float,
+</span></span><span style="display:flex;"><span>    ma200: Optional[float],
+</span></span><span style="display:flex;"><span>    mom_12_1: Optional[float],
+</span></span><span style="display:flex;"><span>    max_gap_pct: float <span style="color:#f92672">=</span> <span style="color:#ae81ff">30.0</span>
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;三道买入硬门槛过滤。满足条件返回空字符串，否则返回具体拦截原因。&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ma200 <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">or</span> mom_12_1 <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;数据样本不足，不满足计算条件&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    bias_pct <span style="color:#f92672">=</span> (p_last <span style="color:#f92672">/</span> ma200 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100.0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 门槛①：周期生命线</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> bias_pct <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;收盘在 200 日线下方（</span><span style="color:#e6db74">{</span>bias_pct<span style="color:#e6db74">:</span><span style="color:#e6db74">+.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%），一票否决&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 门槛②：动量转正</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> mom_12_1 <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;12-1 动量为负（</span><span style="color:#e6db74">{</span>mom_12_1<span style="color:#e6db74">:</span><span style="color:#e6db74">+.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%），还在下跌&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 门槛③：防追高警戒</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> bias_pct <span style="color:#f92672">&gt;</span> max_gap_pct:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;距 200 日线 </span><span style="color:#e6db74">{</span>bias_pct<span style="color:#e6db74">:</span><span style="color:#e6db74">+.1f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%，超过 +</span><span style="color:#e6db74">{</span>max_gap_pct<span style="color:#e6db74">:</span><span style="color:#e6db74">.0f</span><span style="color:#e6db74">}</span><span style="color:#e6db74">%，不追高&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>
+</span></span></code></pre></div><h2 id="阶段小结">阶段小结</h2>
+<p>这三道准入硬门槛解决的是买入端的基本安全问题：</p>
+<ul>
+<li>不在下行通道里接飞刀（MA200 过滤，在 200 只全景池中拦截了 111 只破位/反弹标的）；</li>
+<li>不被 1 个月的短线波动误导（12-1 动量剔除短期反转噪声，拦截了 13 只高位滞涨标的）；</li>
+<li>不在情绪过热的顶部接盘（+30% 乖离率拦截，在 200 只全景池中拦截了 13 只过热加速标的）；</li>
+<li>从全量 200 只观察池中最终筛选出 <strong>63 只合格标的（通过率 31.5%）</strong>。</li>
+</ul>
+<p>下一篇我们要讨论的是：在通过了这三道硬门槛的 63 只合格标的里，各市场内部到底用什么指标进行截面精排（美日市场的卡玛比率 vs 港 A 市场的相对动量）、同一家公司在 A/H 两地上市时如何用溢价中位数仲裁择优，以及为什么在历史回测中取消了行业硬上限。</p>
+<hr>
+<h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
+<p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：趋势硬门槛与防追高（三道准入门槛与四态相空间）</a></li>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
+<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">QuantFull 专栏：12-1 动量策略全周期回测复盘</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">QuantFull 资源：量化交易思维导图与资料合集</a></li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%80%89%E8%82%A1/">
+                    #选股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%B6%8B%E5%8A%BF%E8%B7%9F%E8%B8%AA/">
+                    #趋势跟踪</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/">
+                    #动量策略</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/a%E8%82%A1/">
+                    #A股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/">
+                    #港股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BE%8E%E8%82%A1/">
+                    #美股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%95%E8%B5%84%E5%A4%8D%E7%9B%98/">
+                    #投资复盘</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/agy-menubar-context-management/" class="prev" rel="prev" title="为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了"><i class="iconfont icon-left"></i>&nbsp;为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
