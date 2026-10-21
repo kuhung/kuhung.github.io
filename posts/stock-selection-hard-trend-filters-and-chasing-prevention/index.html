@@ -31,7 +31,7 @@ if (!doNotTrack) {
     })(window, document, "clarity", "script", "yelaywwb9r");
   </script>
   <link rel="prev" href="https://kuhung.me/posts/agy-menubar-context-management/" />
-  
+  <link rel="next" href="https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/" />
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           个人量化选股（三）：趋势硬门槛与防追高 | 谷粒 kuhung
+           个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="个人量化选股（三）：趋势硬门槛与防追高 | 谷粒 kuhung">
+  <meta name="title" content="个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-20T16:00:00+08:00","datePublished":"2026-10-20T16:00:00+08:00","description":"在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。 很多人拿到观察 …","headline":"个人量化选股（三）：趋势硬门槛与防追高","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 趋势跟踪, 动量策略, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"WebPage"},"name":"个人量化选股（三）：趋势硬门槛与防追高","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","wordCount":696}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-20T16:00:00+08:00","datePublished":"2026-10-20T16:00:00+08:00","description":"在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，我们面对的是一个更根本的选拔逻辑：面对这 100 …","headline":"个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 趋势跟踪, 动量策略, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"WebPage"},"name":"个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","wordCount":717}</script>
 </head>
 
   
@@ -147,7 +147,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">个人量化选股（三）：趋势硬门槛与防追高</h1>
+        <h1 class="post-title" itemprop="name headline">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -233,12 +233,19 @@ if (!doNotTrack) {
           
 
           <p>在上一篇<a href="/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/">《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》</a>中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。</p>
-<p>这也是我最近在 <a href="https://www.quantfull.com">QuantFull</a> 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，接下来的步骤不是直接去算排名。</p>
-<p>很多人拿到观察池，习惯直接把动量指标套进去，从高到低排个序，挑前几名买入。</p>
-<p>在实际交易中，纯动量排序很容易踩进两个极端坑里：一个是买到了大跌破位后的超跌反弹，上方全是一整年套牢盘的解套抛压；另一个是买到了短期暴拉后的加速赶顶，直接接在情绪最高点，随后遭遇均值回归的大幅回撤。</p>
+<p>这也是我最近在 <a href="https://www.quantfull.com">QuantFull</a> 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，我们面对的是一个更根本的选拔逻辑：面对这 100 只标的，我们究竟该用什么规则决定买入？</p>
+<p>很多个人投资者习惯停留在「凭感觉买」的感性模式：看分时拉升跟风追入、看跌多了凭直觉抄底。这种凭感觉交易的决策链条没有一致的规则，极易受到处置效应支配（赚蝇头小利就跑、深度套牢死扛），长期处于负期望博弈。</p>
+<p>要走出凭感觉买的随机性，我们需要一套具有统计正期望的客观规则。我们先通过全景图谱，把选股流派抉择、动量运行机理与顺逆风环境做一次全局透视：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/e33a6f2c14c83e63.webp" alt="选股流派横向抉择与趋势动量决策树全景" class="lazyload"><figcaption class="image-caption">选股流派横向抉择与趋势动量决策树全景</figcaption></figure></p>
+<p>从图中的全局对照中，可以提炼出三个底层事实：</p>
+<ol>
+<li><strong>为什么选趋势动量</strong>：基本面价值流存在财报滞后与阴跌陷阱，多因子量化对冲要求分散持有数百只标的、个人有限资金的佣金滑点会吃光超额。趋势动量（Jegadeesh &amp; Titman 1993, Asness 2013）顺应大资金分批建仓带来的持续价格漂移，且强趋势标的上方没有套牢盘抛压阻力。个人资金在中大盘标的（日均成交额 &gt; 5,000 万元）中几乎零冲击成本，能充分发挥小资金进出果断的机动性优势，靠非对称的高盈亏比让利润奔跑。</li>
+<li><strong>何时顺风，何时逆风</strong>：趋势动量极佳的适用期是<strong>产业大主线明朗的结构性牛市</strong>（如 2020-2021 新能源、2023-2024 美股 AI 硬件）；它的典型逆风期是<strong>存量博弈下的高频均值回归震荡市</strong>（频繁突破容易遭受锯齿损耗 Whipsaw Loss）以及<strong>极端超跌脉冲诱发的动量崩溃（Momentum Crash）</strong>。</li>
+<li><strong>动量绝不能盲目套用</strong>：很多人转向动量后，习惯直接把观察池按涨幅从高到低排序挑前几名买入。这会直接撞上动量策略的两大经典失效陷阱：<strong>弱势超跌反抽</strong>（大跌破位后的非平稳反弹，上方堆积密集的被动解套抛售压力）与<strong>情绪加速赶顶</strong>（短期严重脱离中长期持仓成本线，极易买在均值回归前夕的波段高点）。</li>
+</ol>
 <p>动量指标只衡量过去一段时间上涨的速度，它不负责判断标的当前所处的趋势位置和风险收益比。</p>
-<p>为了防止系统在这些极端位置发出买入信号，我们在进入截面打分排序之前，设置了三道准入硬门槛（Buy Gates）：</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/cac165ee8ba908bf.webp" alt="三道准入硬门槛与过滤架构流程图" class="lazyload"><figcaption class="image-caption">三道准入硬门槛与过滤架构流程图</figcaption></figure></p>
+<p>为了防止系统在这些极端位置发出错误信号，我们在进入截面打分排序之前，设置了三道准入硬门槛（Buy Gates）：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/522df4f7c35818bd.webp" alt="三道准入硬门槛标准流程图" class="lazyload"><figcaption class="image-caption">三道准入硬门槛标准流程图</figcaption></figure></p>
 <h2 id="四态相空间与三道准入硬滤网架构">四态相空间与三道准入硬滤网架构</h2>
 <p>在设计过滤规则时，我们把价格与 200 日均线的关系，以及 12-1 动量的正负，交叉构建成一个四态决策矩阵（Regime Four States）：</p>
 <table>
@@ -267,11 +274,11 @@ if (!doNotTrack) {
 <td><strong>不予买入</strong>，已持仓者列入动量衰竭观察</td>
 </tr>
 <tr>
-<td><strong>状态③：超跌反弹 (Dead Cat Bounce)</strong></td>
+<td><strong>状态③：弱势超跌反抽 (Oversold Bounce)</strong></td>
 <td>$P \le \text{MA200}$</td>
 <td>$\text{Mom}_{12-1} &gt; 0$</td>
 <td>处于长期下行通道，短期反弹看似凶猛，上方压制沉重</td>
-<td><strong>一票否决</strong>，涨得再猛也归类为反弹观察，严禁接飞刀</td>
+<td><strong>一票否决</strong>，涨得再猛也归类为反弹观察，严禁左侧逆势接盘</td>
 </tr>
 <tr>
 <td><strong>状态④：持续阴跌 (Downtrend)</strong></td>
@@ -296,7 +303,7 @@ if (!doNotTrack) {
 <p>动量指标衡量的是股票在过去一段时间里涨得有多快。它是一个关于速度的指标，但它不负责判断股票当前所处的位置。</p>
 <p>这里最常见的陷阱，就是大跌之后的死猫反弹。</p>
 <p>假设一只股票在过去一年从 100 块跌到了 20 块，然后在最近两个月从 20 块快速反弹到了 35 块。短期涨幅高达 75%，如果纯看相对速度，它会直接冲进全市场动量榜单的前三名。但从长期走势看，它依然被压制在 200 日线下方，上方堆积了过去一整年被套牢的巨量筹码。</p>
-<p>买入这种股票，本质上是在长线下跌通道里接飞刀。每次反弹到阻力位，就会遇到解套盘涌出砸盘。</p>
+<p>买入这种股票，本质上是在长线下跌通道里左侧逆势承接抛压。每次反弹到阻力位，就会遭遇持有者的密集解套抛售。</p>
 <p>200 日均线反映的是场内过去大约 10 个月到 1 年交易者的加权平均持仓成本线。收盘价站上 200 日线，说明中长期持有者的平均筹码开始进入浮盈状态，抛压减弱，支撑有效。</p>
 <p>我们在 200 只观察池的日 K 矩阵上提取了历史滑动窗口样本，对比了买入时处于状态①（站上年线）与状态③（年线下方反弹）在不同持有周期的真实表现：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/bce2a363712c0ddb.webp" alt="周期生命线实证：顺势领涨与超跌反弹持有期收益与胜率对比" class="lazyload"><figcaption class="image-caption">周期生命线实证：顺势领涨与超跌反弹持有期收益与胜率对比</figcaption></figure></p>
@@ -399,7 +406,7 @@ if (!doNotTrack) {
 <td>560 个</td>
 <td><strong>-17.7%</strong></td>
 <td><strong>-38.7%</strong></td>
-<td>严重泡沫化，极易遭遇腰斩式暴跌</td>
+<td>严重脱离长期成本线，极易遭遇均值回归引发的深度回撤</td>
 </tr>
 </tbody>
 </table>
@@ -419,7 +426,7 @@ if (!doNotTrack) {
 <p>为了把 MA200 一票否决与 +30% 防追高拦截的过程展示得更具体，我们把超威半导体与中际旭创的走势和指标提取出来：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/74c054ad369d7e2e.webp" alt="个股穿越年线与防追高实战推演：AMD 与中际旭创" class="lazyload"><figcaption class="image-caption">个股穿越年线与防追高实战推演：AMD 与中际旭创</figcaption></figure></p>
 <p>在超威半导体（上图）的走势中，当股价在历史波段向上拉升、偏离 200 日线达到极值时，动量指标持续刷新高点。如果采用单纯的动量追踪，系统会在偏离最大的位置发出加仓买入指令。随后股价出现均值回归，回踩 200 日线，单波回撤达到 -35.4%。+30% 乖离率拦截机制在情绪亢奋点强制跳过，避免了在高位挂单接盘。在最新截面上，AMD 偏离年线依然达到 +34.1%，系统继续保持跳过状态，名额顺延。</p>
-<p>在中际旭创（下图）的走势中，股价见顶跌破 200 日线后，12-1 动量指标依然保留着过去大半年累积的涨幅（+124.3%）。如果只看动量榜单，它依然排在市场前列。由于收盘价始终受制于 200 日线下方（偏离 -21.2%），系统识别其为状态③死猫反弹，全程保持一票否决，规避了随后深幅阴跌到 650 元的过程。</p>
+<p>在中际旭创（下图）的走势中，股价见顶跌破 200 日线后，12-1 动量指标依然保留着过去大半年累积的涨幅（+124.3%）。如果只看动量榜单，它依然排在市场前列。由于收盘价始终受制于 200 日线下方（偏离 -21.2%），系统识别其为状态③弱势超跌反抽，全程保持一票否决，规避了随后深幅阴跌到 650 元的过程。</p>
 <h2 id="门槛三为什么-12-1-动量要剔除最近-1-个月">门槛三：为什么 12-1 动量要剔除最近 1 个月</h2>
 <p>在计算动量时，我们采用的不是过去一整年的总涨幅（12-0 动量），而是 12-1 动量：</p>
 <p>$$\text{Mom}<em>{12-1} = \frac{P</em>{t-21}}{P_{t-252}} - 1$$</p>
@@ -430,7 +437,7 @@ if (!doNotTrack) {
 <li>在 1 个月以内的短期跨度上，股票截面收益表现出显著的<strong>短期反转效应（Short-Term Reversal）</strong>，即短期暴涨的股票在未来 1 到 4 周往往伴随获利回吐与买卖价差回弹。</li>
 </ul>
 <p>我们在 200 只观察池的历史月度截面上做了检验：近 1 个月收益率对未来 1 个月收益率的 Rank IC 为 <strong>-0.0757</strong>，表现出明确的负相关反转特征。</p>
-<p>如果不剔除最近 21 天，直接算过去一整年的涨幅，最近一个月暴涨的标的会被赋予最高权重。在实际交易中，短线脉冲往往伴随着微观结构上的流动性耗竭和回调洗盘。</p>
+<p>如果不剔除最近 21 天，直接算过去一整年的涨幅，最近一个月暴涨的标的会被赋予最高权重。在实际交易中，短线脉冲往往伴随着微观结构上的流动性耗竭与短期均值回归回踩。</p>
 <p>把最近 21 天剔除之后，指标衡量的是剥离了短线噪音之后的中期趋势强度。</p>
 <p>在最新 200 只池的实盘数据中：</p>
 <ul>
@@ -484,7 +491,7 @@ if (!doNotTrack) {
 </span></span></code></pre></div><h2 id="阶段小结">阶段小结</h2>
 <p>这三道准入硬门槛解决的是买入端的基本安全问题：</p>
 <ul>
-<li>不在下行通道里接飞刀（MA200 过滤，在 200 只全景池中拦截了 111 只破位/反弹标的）；</li>
+<li>不在下行通道里左侧逆势接盘（MA200 过滤，在 200 只全景池中拦截了 111 只破位/反弹标的）；</li>
 <li>不被 1 个月的短线波动误导（12-1 动量剔除短期反转噪声，拦截了 13 只高位滞涨标的）；</li>
 <li>不在情绪过热的顶部接盘（+30% 乖离率拦截，在 200 只全景池中拦截了 13 只过热加速标的）；</li>
 <li>从全量 200 只观察池中最终筛选出 <strong>63 只合格标的（通过率 31.5%）</strong>。</li>
@@ -496,7 +503,7 @@ if (!doNotTrack) {
 <ul>
 <li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
 <li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
-<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：趋势硬门槛与防追高（三道准入门槛与四态相空间）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
 <li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
 <li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
 <li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">QuantFull 专栏：12-1 动量策略全周期回测复盘</a></li>
@@ -574,6 +581,8 @@ if (!doNotTrack) {
         
         <a href="https://kuhung.me/posts/agy-menubar-context-management/" class="prev" rel="prev" title="为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了"><i class="iconfont icon-left"></i>&nbsp;为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了</a>
         
+        
+        <a href="https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/" class="next" rel="next" title="cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践">cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
