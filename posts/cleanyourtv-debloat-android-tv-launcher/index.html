@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践 | 谷粒 kuhung
+           cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践 | 谷粒 kuhung">
+  <meta name="title" content="cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T15:45:00+08:00","datePublished":"2026-10-21T15:45:00+08:00","description":"最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。 这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的后台应用，并且顺手写了一个极简的新启动器换上。 改 …","headline":"cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Android, 智能电视, 开源, AI, 电视盒子","mainEntityOfPage":{"@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"WebPage"},"name":"cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","wordCount":128}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T15:45:00+08:00","datePublished":"2026-10-21T15:45:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。 这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的 …","headline":"cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"智能电视去广告, 系统瘦身, Android TV, cleanyourtv, 开源, 电视启动器","mainEntityOfPage":{"@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"WebPage"},"name":"cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","wordCount":131}</script>
 </head>
 
   
@@ -112,7 +112,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践</h1>
+        <h1 class="post-title" itemprop="name headline">cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -194,7 +194,10 @@ if (!doNotTrack) {
           
           
 
-          <p>最近在开源社区里，有一个叫 <a href="https://github.com/Gathin23/cleanyourtv">cleanyourtv</a> 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。</p>
+          <blockquote>
+<p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
+</blockquote>
+<p>最近在开源社区里，有一个叫 <a href="https://github.com/Gathin23/cleanyourtv">cleanyourtv</a> 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。</p>
 <p>这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的后台应用，并且顺手写了一个极简的新启动器换上。</p>
 <p>改完之后，电视首页的质感有了很大改变。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/e019f9d041bc5f0d.webp" alt="客厅电视实拍对比，上方是清理前带赞助广告的原厂首页，下方是清理后的极简新首页" class="lazyload"><figcaption class="image-caption">客厅电视实拍对比，上方是清理前带赞助广告的原厂首页，下方是清理后的极简新首页</figcaption></figure></p>
@@ -313,20 +316,23 @@ if (!doNotTrack) {
             <section>
             <i class="iconfont icon-tag"></i>Tag(s):
             
-            <span class="tag"><a href="https://kuhung.me/tags/android/">
-                    #Android</a></span>
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E7%94%B5%E8%A7%86%E5%8E%BB%E5%B9%BF%E5%91%8A/">
+                    #智能电视去广告</a></span>
             
-            <span class="tag"><a href="https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E7%94%B5%E8%A7%86/">
-                    #智能电视</a></span>
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%B3%BB%E7%BB%9F%E7%98%A6%E8%BA%AB/">
+                    #系统瘦身</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/android-tv/">
+                    #Android TV</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/cleanyourtv/">
+                    #cleanyourtv</a></span>
             
             <span class="tag"><a href="https://kuhung.me/tags/%E5%BC%80%E6%BA%90/">
                     #开源</a></span>
             
-            <span class="tag"><a href="https://kuhung.me/tags/ai/">
-                    #AI</a></span>
-            
-            <span class="tag"><a href="https://kuhung.me/tags/%E7%94%B5%E8%A7%86%E7%9B%92%E5%AD%90/">
-                    #电视盒子</a></span>
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%94%B5%E8%A7%86%E5%90%AF%E5%8A%A8%E5%99%A8/">
+                    #电视启动器</a></span>
             
             </section>
         

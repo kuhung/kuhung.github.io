@@ -8,12 +8,13 @@
     <language>zh-CN</language>
     <lastBuildDate>Wed, 21 Oct 2026 15:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>cleanyourtv：通过局域网给 Android 电视去广告与极简启动器实践</title>
+      <title>cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面</title>
       <link>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</link>
       <pubDate>Wed, 21 Oct 2026 15:45:00 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</guid>
-      <description>最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。
 这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的后台应用，并且顺手写了一个极简的新启动器换上。
 改完之后，电视首页的质感有了很大改变。
 上面是修改前的原厂首页，顶部挂着大块赞助商海报；下面是清理后的效果，整个界面只剩下纯黑背景和底部四个最常用的应用。
@@ -30,8 +31,7 @@ Android 电视和 Android 手机底层一致，都带有 ADB（Android 调试桥
 配套的屏保只显示时间和日期，数字会定时轻微漂移，避免 OLED 屏幕长时间静态显示产生烧屏。
 国内机型与社区实测 随着社区提交的配置增加，国内常见的小米、TCL 等品牌也有了实测结果。
 这是芬兰用户在一台 TCL 75 英寸电视上的运行效果，底部换成了他常用的流媒体与投屏工具。
-在小米电视上，系统语言切为中文后，界面文字与按钮自动适配成了“晚上好”以及“输入源 / 无线网络 / 设置”，Dock 栏放了云视听小电视等日常视频应用。
-支持的设备范围 不同品牌电视使用的底层系统并不相同，可以参照下表了解适配情况：</description>
+在小米电视上，系统语言切为中文后，界面文字与按钮自动适配成了“晚上好”以及“输入源 / 无线网络 / 设置”，Dock 栏放了云视听小电视等日常视频应用。</description>
     </item>
     
     <item>

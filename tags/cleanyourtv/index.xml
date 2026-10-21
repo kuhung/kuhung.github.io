@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cleanyourtv on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/cleanyourtv/</link>
+    <description>Recent content in cleanyourtv on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 21 Oct 2026 15:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/cleanyourtv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cleanyourtv：智能电视免 Root 去广告、系统瘦身与替换极简桌面</title>
+      <link>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</link>
+      <pubDate>Wed, 21 Oct 2026 15:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。
+这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的后台应用，并且顺手写了一个极简的新启动器换上。
+改完之后，电视首页的质感有了很大改变。
+上面是修改前的原厂首页，顶部挂着大块赞助商海报；下面是清理后的效果，整个界面只剩下纯黑背景和底部四个最常用的应用。
+随后几天，许多用户拿自己的电视做尝试。项目很快收录了 49 个品牌、147 款机型的配置文件。
+客厅电视的使用困扰 现在大多数智能电视买回家后，体验并不轻松。即便花了几千元买下硬件，开机后迎面而来的依然是各类影视推荐、开屏轮播和赞助广告。
+这类原厂首页占用的资源通常很大，加上厂商为了推荐内容植入的后台服务，电视在用过几年后容易出现明显的迟滞。有外媒报道提到，部分电视内置的自动内容识别（ACR）服务，会在后台高频截取屏幕画面或抓取音频指纹，用来识别正在播放的内容，再把数据回传给广告商。电视本身的芯片性能和运行内存有限，后台服务堆积后，连遥控器按键响应都会变慢。
+这也是清理后大家觉得畅快的原因。
+把那些推荐流和后台采集关掉后，界面恢复到了只有几个常用图标的状态。
+怎么做到的 整套方案的实现路径比较克制，不需要对电视进行 Root 提权，也没有拆机连线。
+Android 电视和 Android 手机底层一致，都带有 ADB（Android 调试桥）功能。用户在电视的系统设置中连续点击版本号激活“开发者选项”，开启网络调试后，在同一局域网下的电脑就能向电视发送控制指令。
+处理过程分为三步：
+备份状态：在动任何配置前，记录当前电视上所有已安装应用的启用状态，生成一份还原清单。 停用服务：通过系统自带的 pm disable-user 命令，把厂商的遥测服务、广告推荐行、不用的预装软件停用。这项操作只是把应用在当前用户层设置为停用状态，并没有在底层物理删除文件，保证了后续可以逆向恢复。 更换启动器：原厂启动器自身通常有上百兆大小，换上的新启动器体积只有 405 KB。 这个 405 KB 的启动器用纯 Java 编写，去掉了复杂的后台驻留逻辑。主界面只展示四个常用应用，选中图标时会在顶部显示应用名称与取色光效；按遥控器向下键可以拉出完整的应用抽屉。
+信号源切换做成了半透明浮层，直接识别电视上各个 HDMI 接口的名称，不需要退回原厂系统繁琐的设置菜单。
+配套的屏保只显示时间和日期，数字会定时轻微漂移，避免 OLED 屏幕长时间静态显示产生烧屏。
+国内机型与社区实测 随着社区提交的配置增加，国内常见的小米、TCL 等品牌也有了实测结果。
+这是芬兰用户在一台 TCL 75 英寸电视上的运行效果，底部换成了他常用的流媒体与投屏工具。
+在小米电视上，系统语言切为中文后，界面文字与按钮自动适配成了“晚上好”以及“输入源 / 无线网络 / 设置”，Dock 栏放了云视听小电视等日常视频应用。</description>
+    </item>
+    
+  </channel>
+</rss>
