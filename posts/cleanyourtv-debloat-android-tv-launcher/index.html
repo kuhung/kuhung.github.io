@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T15:45:00+08:00","datePublished":"2026-10-21T15:45:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。 这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的 …","headline":"cleanyourtv：用 AI 给智能电视免 Root 去广告、系统瘦身与替换极简桌面","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 智能电视去广告, 系统瘦身, Android TV, cleanyourtv, 开源, 电视启动器","mainEntityOfPage":{"@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"WebPage"},"name":"cleanyourtv：用 AI 给智能电视免 Root 去广告、系统瘦身与替换极简桌面","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","wordCount":131}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T15:45:00+08:00","datePublished":"2026-10-21T15:45:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 最近在开源社区里，有一个叫 cleanyourtv 的项目引起了很大的反响，几天时间在 GitHub 上积累了超过 1.3 万颗星。 这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次打开电视想看个视频，屏幕最上方总会先蹦出一整条赞助广告，系统也越来越慢。他把电视型号发给编程助手，让 AI 通过局域网连上电视，停用了 25 个预装的 …","headline":"cleanyourtv：用 AI 给智能电视免 Root 去广告、系统瘦身与替换极简桌面","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 智能电视去广告, 系统瘦身, Android TV, cleanyourtv, 开源, 电视启动器","mainEntityOfPage":{"@id":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","@type":"WebPage"},"name":"cleanyourtv：用 AI 给智能电视免 Root 去广告、系统瘦身与替换极简桌面","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/","wordCount":151}</script>
 </head>
 
   
@@ -137,6 +137,7 @@ if (!doNotTrack) {
   <ul>
     <li><a href="#客厅电视的使用困扰">客厅电视的使用困扰</a></li>
     <li><a href="#怎么做到的">怎么做到的</a></li>
+    <li><a href="#把电视交给-ai折腾硬件的可玩性">把电视交给 AI：折腾硬件的可玩性</a></li>
     <li><a href="#国内机型与社区实测">国内机型与社区实测</a></li>
     <li><a href="#支持的设备范围">支持的设备范围</a></li>
     <li><a href="#动手前的风险与局限">动手前的风险与局限</a></li>
@@ -220,6 +221,12 @@ if (!doNotTrack) {
 <li><strong>停用服务</strong>：通过系统自带的 <code>pm disable-user</code> 命令，把厂商的遥测服务、广告推荐行、不用的预装软件停用。这项操作只是把应用在当前用户层设置为停用状态，并没有在底层物理删除文件，保证了后续可以逆向恢复。</li>
 <li><strong>更换启动器</strong>：原厂启动器自身通常有上百兆大小，换上的新启动器体积只有 405 KB。</li>
 </ol>
+<h2 id="把电视交给-ai折腾硬件的可玩性">把电视交给 AI：折腾硬件的可玩性</h2>
+<p>以前清理电视后台或替换桌面，过程并不轻松。面对电视里上百个莫名其妙的系统包名，普通人很难分清哪个是广告推送、哪个是遥控器配对组件、哪个关掉会导致开机死循环。稍有不慎，电视就可能卡在启动界面，排查起来非常繁琐。</p>
+<p>这次项目的原始名称叫 <code>tv-vibehack</code>。它把这套原本门槛很高的系统清理，变成了由编程助手接管的交互过程。</p>
+<p>用户把电视型号或者电商链接发给编程助手，问一句能不能处理。具备 shell 执行权限的 AI 顺着局域网连上去，自行用命令探测系统环境、拉取已安装的软件包列表，再对照已有的机型经验逐项比对。遇到不确定的日常应用，它会停下来问用户平时是否还在使用；处理前先自动写一份状态还原脚本，然后分小批次执行停用，每一步通过后台截图确认系统界面是否正常。</p>
+<p>当繁杂的命令行和包名排查被 AI 接过去之后，折腾硬件本身的可玩性被明显放大了。</p>
+<p>很多用户顺着这个思路做了延伸：有人让 AI 写了一个时钟屏保，上面实时同步自己的日历与 Stripe 账户收款通知；有人把电视应用做成了 3D 胡桃木书架，按遥控器确认键会像抽出书本一样打开应用；还有人给电视接入了实时比赛赔率图表。原本封闭、沉闷的智能电视，变成了一个可以随时按自己想法改造的硬件玩具。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/848cd54a2774c6e7.webp" alt="新启动器聚焦应用时的视觉效果，大字体与取色氛围光" class="lazyload"><figcaption class="image-caption">新启动器聚焦应用时的视觉效果，大字体与取色氛围光</figcaption></figure></p>
 <p>这个 405 KB 的启动器用纯 Java 编写，去掉了复杂的后台驻留逻辑。主界面只展示四个常用应用，选中图标时会在顶部显示应用名称与取色光效；按遥控器向下键可以拉出完整的应用抽屉。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/0b8302a620f1ca82.webp" alt="轻量级输入源切换弹窗，直接显示 HDMI 端口与网络状态" class="lazyload"><figcaption class="image-caption">轻量级输入源切换弹窗，直接显示 HDMI 端口与网络状态</figcaption></figure></p>
