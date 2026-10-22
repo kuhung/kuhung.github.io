@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-20T16:00:00+08:00","datePublished":"2026-10-20T16:00:00+08:00","description":"在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，我们面对的是一个更根本的选拔逻辑：面对这 100 …","headline":"个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 趋势跟踪, 动量策略, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"WebPage"},"name":"个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","wordCount":719}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-20T16:00:00+08:00","datePublished":"2026-10-20T16:00:00+08:00","description":"在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，我们面对的是一个更根本的选拔逻辑：面对这 100 …","headline":"个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 趋势跟踪, 动量策略, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","@type":"WebPage"},"name":"个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/","wordCount":721}</script>
 </head>
 
   
@@ -500,15 +500,24 @@ if (!doNotTrack) {
 <hr>
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
+<p><strong>个人量化选股实战系列</strong>：</p>
 <ul>
-<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
-<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
-<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
-<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">QuantFull 专栏：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
-<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
-<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
-<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">QuantFull 专栏：12-1 动量策略全周期回测复盘</a></li>
-<li><a href="https://www.quantfull.com/products/quant-mindmap">QuantFull 资源：量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">个人量化选股（一）：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">个人量化选股（二）：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
+<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
+</ul>
+<p><strong>流动性与交易实务专题</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">策略容量与冲击成本估算实务</a></li>
+<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">12-1 动量策略全周期回测复盘</a></li>
+</ul>
+<p><strong>策略库与投研知识资产</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/products/151-strategies-stock">151 交易策略 - 股票篇</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/products/quant-bundle">仓满量化 151 交易策略全集</a></li>
 </ul>
 <hr>
 <p><a href="/about/">关于作者</a></p>

@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-09T08:50:00+08:00","datePublished":"2026-10-09T08:50:00+08:00","description":"2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。 盘中科技股一度领涨，但收盘上证指数跌 0.79%，创业板指跌 3.15%，恒生科技指数跌 2.89%。 收盘后的多数讨论把这天归结为「放量，流动性充裕」。但实盘交易的体感往往相反：买盘承接很薄，稍微有些规模的卖单打出去，价格就直接滑下一大截。 把成交额直接等同 …","headline":"1.68 万亿放量下跌：日度数据怎么测出市场真实流动性","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 流动性, A股, 港股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","@type":"WebPage"},"name":"1.68 万亿放量下跌：日度数据怎么测出市场真实流动性","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","wordCount":214}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-09T08:50:00+08:00","datePublished":"2026-10-09T08:50:00+08:00","description":"2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。 盘中科技股一度领涨，但收盘上证指数跌 0.79%，创业板指跌 3.15%，恒生科技指数跌 2.89%。 收盘后的多数讨论把这天归结为「放量，流动性充裕」。但实盘交易的体感往往相反：买盘承接很薄，稍微有些规模的卖单打出去，价格就直接滑下一大截。 把成交额直接等同 …","headline":"1.68 万亿放量下跌：日度数据怎么测出市场真实流动性","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 流动性, A股, 港股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","@type":"WebPage"},"name":"1.68 万亿放量下跌：日度数据怎么测出市场真实流动性","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/","wordCount":230}</script>
 </head>
 
   
@@ -298,11 +298,25 @@ $$</p>
 <li>用 Amihud ILLIQ 区分放量的性质。放量下跌伴随 ILLIQ 走高，代表价格冲击失控、承接枯竭。</li>
 <li>紧盯融资流动性指标。两融余额在 2.6 万亿下方尚未企稳前，做市深度依然脆弱，大资金调仓滑点会是常态交易日的数倍。</li>
 </ul>
-<p>更多详细的微观结构模型推导和 A 股实战案例，我也整理在 QuantFull 网站上：</p>
+<p>更多详细的微观结构模型推导和 A 股实战案例，我也整理在 <a href="https://www.quantfull.com">QuantFull</a> 网站上：</p>
+<p><strong>微观流动性与交易成本专题</strong>：</p>
 <ul>
-<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull：流动性是怎么测出来的（长文解析）</a></li>
-<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull：策略容量与冲击成本估算</a></li>
-<li><a href="https://www.quantfull.com/products/quant-mindmap">QuantFull：量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">流动性是怎么测出来的（长文解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">策略容量与冲击成本估算实务</a></li>
+<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">12-1 动量策略全周期回测复盘</a></li>
+</ul>
+<p><strong>个人量化选股实战系列</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">个人量化选股（一）：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">个人量化选股（二）：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
+<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
+</ul>
+<p><strong>策略库与投研知识资产</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/products/151-strategies-stock">151 交易策略 - 股票篇</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/products/quant-bundle">仓满量化 151 交易策略全集</a></li>
 </ul>
 
     </div>

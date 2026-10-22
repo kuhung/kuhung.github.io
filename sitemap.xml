@@ -2,30 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
       <loc>https://kuhung.me/tags/antigravity/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/applescript/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/categories/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/claude-code/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/codex/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/coding-agent/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/cursor/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/hang2la/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%BC%80%E6%BA%90/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/</loc>
+      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/applescript/</loc>
       <lastmod>2026-10-21T23:15:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/chrome/</loc>
       <lastmod>2026-10-21T23:15:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/tags/codex/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/coding-agent/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/macos/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/</loc>
       <lastmod>2026-10-21T23:15:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E5%86%99%E4%BD%9C%E5%B7%A5%E4%BD%9C%E6%B5%81/</loc>
@@ -34,13 +58,7 @@
       <loc>https://kuhung.me/posts/applescript-browser-control-for-coding-agents/</loc>
       <lastmod>2026-10-21T23:15:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/</loc>
       <lastmod>2026-10-21T23:15:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/ah%E6%BA%A2%E4%BB%B7%E4%BB%B2%E8%A3%81/</loc>
@@ -86,9 +104,6 @@
       <lastmod>2026-10-21T15:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</loc>
-      <lastmod>2026-10-21T15:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E5%BC%80%E6%BA%90/</loc>
       <lastmod>2026-10-21T15:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
@@ -365,9 +380,6 @@
       <lastmod>2026-08-21T10:30:14+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/ai%E7%BC%96%E7%A8%8B/</loc>
-      <lastmod>2026-08-15T21:17:08+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/claude-code/</loc>
       <lastmod>2026-08-15T21:17:08+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/token%E4%BC%98%E5%8C%96/</loc>

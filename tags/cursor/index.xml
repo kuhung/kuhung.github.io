@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cursor on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/cursor/</link>
+    <description>Recent content in Cursor on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 23 Oct 2026 00:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/cursor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序</title>
+      <link>https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/</link>
+      <pubDate>Fri, 23 Oct 2026 00:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+日常用 Claude Code、Codex、Antigravity 或者 Cursor 辅助写代码时，最耗精力的环节往往是给它定方向。
+让它做一次架构梳理、排查历史代码或者拆解新功能，屏幕上会立刻多出十几个甚至二十个待办事项。在黑底白字的终端里眯着眼睛逐行扫视这些平铺的文字，大脑很容易疲劳，看到第十二条的时候往往已经忘了第三条写的是什么。
+更费劲的是调整优先级。模型给出的默认顺序很少能完全契合当前的业务重心。如果想让它按你的想法排期，传统做法是在对话框里手打一段话：“把第 3 项和第 7 项提前，第 2 项取消别做了，第 9 项延后处理，第 5 项排在第 7 项后面”。
+敲这段话费时费力，稍微走神就会漏掉几项。更常见的情况是，模型读完这一长串绕口令式的自然语言批示，在后续执行时依然把轻重缓急搞混。原本用来写代码的时间，大量耗费在了终端里反复确认和修整任务列表上。
+如果嫌打字麻烦、干脆不做干预，任由 Agent 自行决定执行顺序，它又很容易把宝贵的算力和时间消耗在无关紧要的边缘需求上，真正急需交付的主干功能反而迟迟不动。
+为了解决人和 Agent 对齐优先级的摩擦，我在自己的开源小工具 hang2la（h2l.kuhung.me）里加了一套零存储的视觉化任务对齐机制。
+为什么现有的任务对齐方式在日常开发里不够顺手 面对多任务排期，市面上有几种常见的处理方式，但在高频的个人编码场景下各有短板：
+对齐方式 准备成本 全局视野与调整速度 数据驻留与隐私 对 Agent 上下文的负担 主要短板 终端手打自然语言批示 零成本 一维文本列表，扫视慢，手打修改耗时 留在当前会话 低，仅增加几轮对话 超过 5 项后极易说漏，模型容易理解偏差 IDE 内置 Plan / Todo 列表 零成本 纵向列表，支持简单勾选，难以做多档位分级 留在本地 IDE 低 缺乏清晰的主次档位，调整先后顺序仍然靠打字或改文本 本地 Markdown 文件 (TODO.md) 低，建个文件即可 纯文本跨行剪切粘贴，行数多时依然眼花 留在本地代码库 每次读写文件需消耗一定 Token 容易在仓库里留下临时脏文件，缺乏直观的图形分层 外部项目管理工具 + MCP (如 Linear / Jira) 高，需注册账号、配 API 密钥、装 MCP 服务 看板视图清晰，支持拖拽 上传至第三方云端服务器 高，几十个 MCP 工具定义常驻占用上万 Token 配置太重；内部接口名和业务表结构上传外部平台有隐私顾虑 hang2la 零存储浏览器看板 零安装，发一句提示词即用 二维五档看板，十秒内拖拽定生死 仅在浏览器本地内存，关闭即销毁 极低，仅一进一出两段简短文本 单次对齐工具，不做跨月的多人长周期追踪 很多开发者不愿意为了排个期去接 Linear 或 Jira 的 MCP，主要有三个现实原因：</description>
+    </item>
+    
+  </channel>
+</rss>

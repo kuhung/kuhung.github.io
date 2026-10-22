@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-19T21:00:00+08:00","datePublished":"2026-10-19T21:00:00+08:00","description":"在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。 这也是我最近 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":955}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-19T21:00:00+08:00","datePublished":"2026-10-19T21:00:00+08:00","description":"在上一篇《个人量化选股（一）：大类资产配置与量化选股分层》中，我们对比了夏普率优先与几何复利优先两种目标函数，通过资产穿透、代理映射、参数求解与跨周期回测检验，推导出了美股（47.5%）、日股（14.5%）、中国资产（9.5%）等各大市场之间的目标配比，并在股票预算内部切分了核心宽基底仓（约 70%）与卫星轮动个股（约 30%）（早期组合诊断也可参考《用 AI 优化我的投资组合》）。 这也是我最近 …","headline":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","@type":"WebPage"},"name":"个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/","wordCount":959}</script>
 </head>
 
   
@@ -624,14 +624,24 @@ if (!doNotTrack) {
 <hr>
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
+<p><strong>个人量化选股实战系列</strong>：</p>
 <ul>
-<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
-<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
-<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
-<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
-<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
-<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">QuantFull 专栏：12-1 动量策略全周期回测复盘</a></li>
-<li><a href="https://www.quantfull.com/products/quant-mindmap">QuantFull 资源：量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">个人量化选股（一）：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">个人量化选股（二）：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
+<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
+</ul>
+<p><strong>流动性与交易实务专题</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">策略容量与冲击成本估算实务</a></li>
+<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">12-1 动量策略全周期回测复盘</a></li>
+</ul>
+<p><strong>策略库与投研知识资产</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/products/151-strategies-stock">151 交易策略 - 股票篇</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/products/quant-bundle">仓满量化 151 交易策略全集</a></li>
 </ul>
 <hr>
 <p><a href="/about/">关于作者</a></p>
