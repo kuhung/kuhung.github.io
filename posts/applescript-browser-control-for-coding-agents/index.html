@@ -211,7 +211,7 @@ if (!doNotTrack) {
 </blockquote>
 <p>这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，不用起 Playwright，也不走浏览器扩展，直接在终端里调 macOS 自带的 <code>osascript</code>（AppleScript）。</p>
 <p>这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器扩展报 <code>Browser is not available</code>，得手动去重连；要么是另起了一个干净的浏览器实例，里面什么登录态都没有，面对登录框干瞪眼。后来我让 Codex 也改用这套方式，直接通过 AppleScript 配合系统剪贴板去操作我已经打开的 Chrome，流程顺畅了不少。</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/93805397d23b9e3f.webp" alt="macOS 终端与 Chrome 浏览器之间的 AppleScript 自动化桥梁插画" class="lazyload"><figcaption class="image-caption">macOS 终端与 Chrome 浏览器之间的 AppleScript 自动化桥梁插画</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/87fae8be6ae49ef7.webp" alt="macOS 原生指令在 Agent 浏览器操作里的隐藏优势头图" class="lazyload"><figcaption class="image-caption">macOS 原生指令在 Agent 浏览器操作里的隐藏优势头图</figcaption></figure></p>
 <p>为什么这套上世纪九十年代的技术在 2026 年反而比新的专用方案好用？既然好用，为什么平时很少听人提起？怎么引导 Agent 把它用好？结合日常用来辅助发文的经验，聊聊背后的逻辑和选型思路。</p>
 <h2 id="为什么日常任务里它比新方案更顺手">为什么日常任务里它比新方案更顺手</h2>
 <p>市面上给 Coding Agent 配浏览器的方案很多，体验差距很大，原因在于它们操作的对象不同。</p>
@@ -264,6 +264,7 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/cf38bc397083dea9.webp" alt="主流 Coding Agent 浏览器控制技术路线对比与选型" class="lazyload"><figcaption class="image-caption">主流 Coding Agent 浏览器控制技术路线对比与选型</figcaption></figure></p>
 <p>日常写代码或发文章时，AppleScript 让人觉得顺手主要有三个原因：</p>
 <p><strong>第一，省去登录步骤。</strong><br>
 很多网页后台有短信验证、扫码或二次验证。用 Playwright 或独立 CDP，Agent 面对的是一个全新的浏览器窗口，进不了后台。AppleScript 直接操作你正在用的浏览器进程。网页里的请求带着你原有的登录凭据，站点把它当成正常的人类访问，省去了反复处理登录态的麻烦。</p>
@@ -291,7 +292,8 @@ if (!doNotTrack) {
     B --&gt; C[&#34;步骤 2：数据就绪&lt;br/&gt;文章富文本写入系统剪贴板&#34;]
     C --&gt; D[&#34;步骤 3：前台粘贴&lt;br/&gt;激活窗口，触发原生 Cmd+V&#34;]
     D --&gt; E[&#34;步骤 4：回读确认&lt;br/&gt;校验段落与表格，保存草稿&#34;]
-</code></pre><ol>
+</code></pre><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/c3e92bcff39e3f72.webp" alt="Agent 辅助发文自动化流水线架构" class="lazyload"><figcaption class="image-caption">Agent 辅助发文自动化流水线架构</figcaption></figure></p>
+<ol>
 <li><strong>按具体网址找标签页</strong>：Agent 先在后台扫描所有打开的窗口，找到具体匹配那篇草稿网址的标签页，绝不乱动用户正在浏览的其他网页。</li>
 <li><strong>把排版好的内容塞进剪贴板</strong>：复杂的网页富文本编辑器往往有内部状态，直接修改网页文字容易引起排版错乱。更稳妥的做法是脚本把 Markdown 转换好的富文本或图片，先放进 Mac 系统的剪贴板。</li>
 <li><strong>定位光标，敲一下粘贴</strong>：脚本通过后台代码把网页光标定位到正文位置，随后把浏览器窗口短暂切到前台零点几秒，模拟敲一下键盘上的 <code>Cmd+V</code>。在编辑器看来，这就是人类从剪贴板粘贴进来的内容，图片和排版会自动触发平台的正常上传流程。</li>
