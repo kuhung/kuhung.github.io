@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/" />
+  <link rel="next" href="https://kuhung.me/posts/applescript-browser-control-for-coding-agents/" />
+  <link rel="canonical" href="https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T21:30:00+08:00","datePublished":"2026-10-21T21:30:00+08:00","description":"在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几 …","headline":"个人量化选股（四）：截面打分与去重排他","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 卡玛比率, 相对动量, AH溢价仲裁, 行业中性化, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"WebPage"},"name":"个人量化选股（四）：截面打分与去重排他","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","wordCount":768}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">个人量化选股（四）：截面打分与去重排他</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-21 itemprop="datePublished">October 21, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#截面打分双轨制美日市场卡玛比率-vs-港-a-市场-12-1-动量">截面打分双轨制：美日市场卡玛比率 vs 港 A 市场 12-1 动量</a></li>
+    <li><a href="#同门去重ah-两地上市溢价中位数仲裁">同门去重：A/H 两地上市溢价中位数仲裁</a></li>
+    <li><a href="#行业分散神话的破灭为什么在历史回测中取消行业硬上限">行业分散神话的破灭：为什么在历史回测中取消行业硬上限</a></li>
+    <li><a href="#现实物理约束整手资金摩擦与顺延选拔机制">现实物理约束：整手资金摩擦与顺延选拔机制</a></li>
+    <li><a href="#阶段小结">阶段小结</a></li>
+    <li><a href="#选股体系与延伸阅读">选股体系与延伸阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>在上一篇<a href="/posts/stock-selection-hard-trend-filters-and-chasing-prevention/">《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》</a>中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。</p>
+<p>这也是我最近在 <a href="https://www.quantfull.com">QuantFull</a> 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几十万元人民币之间。我们不可能把这 63 只股票全买下来。如果每只股票买一点，持仓就会退化成一个自制指数基金，小额资金频繁交易还会被券商最低佣金侵蚀净值。</p>
+<p>在真实交易中，个人股票组合通常只容纳 3 到 6 只核心标的。</p>
+<p>从 63 只准入合格标的收敛到最终的 3 到 6 只实盘持仓，需要经过截面打分、同门去重、行业集中度检验与整手物理资金过滤五个步骤：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    A[&#34;① 准入合格池&lt;br&gt;(63 只标的)&#34;] --&gt; B[&#34;② 截面打分双轨制&lt;br&gt;(美日卡玛 vs 港A动量)&#34;]
+    B --&gt; C[&#34;③ AH 同门去重&lt;br&gt;(1 年溢价中位数仲裁)&#34;]
+    C --&gt; D[&#34;④ 破除行业限制&lt;br&gt;(允许主线动量集中)&#34;]
+    D --&gt; E[&#34;⑤ 整手资金约束&lt;br&gt;(买不起顺延机制)&#34;]
+    E --&gt; F[&#34;实盘持仓落地&lt;br&gt;(美股 6 只 / 日股 4 只 / 中国 6 只)&#34;]
+</code></pre><h2 id="截面打分双轨制美日市场卡玛比率-vs-港-a-市场-12-1-动量">截面打分双轨制：美日市场卡玛比率 vs 港 A 市场 12-1 动量</h2>
+<p>用同一套指标打全天下的市场，在实盘中会遇到水土不服。</p>
+<p>我们在监控系统与实盘回测中，对不同市场的打分指标进行了明确区分：</p>
+<ul>
+<li><strong>美股与日股</strong>：实盘监控采用 <strong>1 年卡玛比率（Calmar Ratio）</strong> 排序；</li>
+<li><strong>港股与 A 股</strong>：确立采用 <strong>12-1 相对动量</strong> 排序。</li>
+</ul>
+<p>为什么不同市场要用不同的打分方式？两者的计算口径如下：</p>
+<p>$$\text{Calmar Ratio} = \frac{\text{Return}<em>{1\text{y}}}{|\text{MaxDrawdown}</em>{1\text{y}}|}$$</p>
+<p>$$\text{Mom}<em>{12-1} = \frac{P</em>{t-21}}{P_{t-252}} - 1$$</p>
+<p>卡玛比率把过去 1 年的收益率除以过去 1 年的最大绝对回撤。美股与日股属于成熟机构市场，中长期单边趋势具备自增强特征。但在单边上行中，成长科技股容易因阶段性流动性收紧而剧烈回调。在美股 48 只池的换股研究中，12-1 动量的年化换手率高达 160%~275%，而 1 年卡玛比率的年换手率只有 130%。美股日股选择卡玛比率的出发点是降低无效交易摩擦，选出回撤浅、走势平稳的复利标的。</p>
+<p>但在港股和 A 股市场，如果硬套卡玛比率，排序会发生什么变化？</p>
+<p>为了回答这个问题，我们用最新日 K 数据对 A 股 21 只和港股 23 只核心候选标的，分别按 12-1 相对动量与 1 年卡玛比率进行了全量重排：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/f5f7fdd08f7c2c2d.webp" alt="港股与A股相对动量vs卡玛比率排名位移对比" class="lazyload"><figcaption class="image-caption">港股与A股相对动量vs卡玛比率排名位移对比</figcaption></figure></p>
+<p>图中的排名位移呈现出两个市场的关键分化：</p>
+<p>在 A 股市场，12-1 相对动量与 1 年卡玛比率的 Spearman 秩相关系数仅为 0.645，排序发生了剧烈洗牌。算力与半导体等高弹性标的（如中际旭创、天孚通信、新易盛），虽然过去 1 年涨幅可观，但因为最大回撤全部超过了 -50%，在卡玛比率下遭受严重扣分，名次普遍下滑 4 到 11 名；相反，长江电力、中国核电、美的集团等公用事业与红利标的，由于最大回撤只有 10% 到 13%，卡玛排名大幅前移（长江电力直接从第 14 窜升至第 6）。A 股市场牛短熊长、轮动剧烈，如果为了追求曲线平滑而硬套卡玛比率，系统就会把宝贵的仓位塞给年化仅 10% 出头的低波动防御股，彻底失去动量组合的超额弹性。因此 A 股必须维持 12-1 相对动量。</p>
+<p>在港股市场，两者的秩相关达到 0.931，但在前几名的分配上产生了致命的行业单一化。内资四大行（中国银行、工商银行、建设银行）在过去 1 年的最大回撤仅 -10.8% 到 -11.4%，卡玛比率高达 3.7 到 5.1。如果按卡玛比率选股，港股前三名将被这三家银行直接垄断；而 12-1 动量最强（+75.7%）的航运龙头太平洋航运（回撤 -23.9%），直接被挤到了第 6 名。采用 12-1 相对动量，能够打破银行板块的单一垄断，让太平洋航运（第 1）、汇丰控股（第 2）、中国银行（第 3）与中远海控（第 4）形成覆盖航运、煤炭与综合金融的多元主线。</p>
+<p>美日市场的稳态精排与港 A 市场的相对动量分布对照如下：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/c56cef437f50f22a.webp" alt="截面打分双轨制：美日卡玛比率与港A相对动量" class="lazyload"><figcaption class="image-caption">截面打分双轨制：美日卡玛比率与港A相对动量</figcaption></figure></p>
+<p>在美日市场中，默沙东（MRK）卡玛比率 7.97、可口可乐（KO）卡玛比率 4.52、日立（6501）卡玛比率 3.32，用卡玛能有效筛选出回撤浅的稳态龙头；而港 A 市场采用 12-1 动量，能够直接抓住主线领头羊。</p>
+<p>计算两类指标的 Python 向量化代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_calmar_and_momentum</span>(prices: pd<span style="color:#f92672">.</span>Series) <span style="color:#f92672">-&gt;</span> tuple[float, float]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;输入日度收盘价序列（后复权），返回 1 年卡玛比率与 12-1 相对动量。&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(prices) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">252</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 计算 12-1 相对动量（剔除最近 21 日反转噪声）</span>
+</span></span><span style="display:flex;"><span>    p_last_lag21 <span style="color:#f92672">=</span> prices<span style="color:#f92672">.</span>iloc[<span style="color:#f92672">-</span><span style="color:#ae81ff">21</span>]
+</span></span><span style="display:flex;"><span>    p_base_lag252 <span style="color:#f92672">=</span> prices<span style="color:#f92672">.</span>iloc[<span style="color:#f92672">-</span><span style="color:#ae81ff">252</span>]
+</span></span><span style="display:flex;"><span>    mom_12_1 <span style="color:#f92672">=</span> float((p_last_lag21 <span style="color:#f92672">/</span> p_base_lag252 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100.0</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 计算过去 1 年（252 天）最大绝对回撤与年化收益</span>
+</span></span><span style="display:flex;"><span>    px_1y <span style="color:#f92672">=</span> prices<span style="color:#f92672">.</span>iloc[<span style="color:#f92672">-</span><span style="color:#ae81ff">252</span>:]
+</span></span><span style="display:flex;"><span>    cummax_1y <span style="color:#f92672">=</span> px_1y<span style="color:#f92672">.</span>cummax()
+</span></span><span style="display:flex;"><span>    drawdown_1y <span style="color:#f92672">=</span> (px_1y <span style="color:#f92672">-</span> cummax_1y) <span style="color:#f92672">/</span> cummax_1y
+</span></span><span style="display:flex;"><span>    max_dd <span style="color:#f92672">=</span> float(abs(drawdown_1y<span style="color:#f92672">.</span>min()))
+</span></span><span style="display:flex;"><span>    ret_1y <span style="color:#f92672">=</span> float(px_1y<span style="color:#f92672">.</span>iloc[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> px_1y<span style="color:#f92672">.</span>iloc[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    calmar <span style="color:#f92672">=</span> float(ret_1y <span style="color:#f92672">/</span> max_dd) <span style="color:#66d9ef">if</span> max_dd <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.001</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> calmar, mom_12_1
+</span></span></code></pre></div><h2 id="同门去重ah-两地上市溢价中位数仲裁">同门去重：A/H 两地上市溢价中位数仲裁</h2>
+<p>选出高分标的之后，我们面对一个中国市场特有的问题：很多大型蓝筹企业在 A 股和港股两地同时上市。</p>
+<p>中国神华（601088 / 01088）、中远海控（601919 / 01919）、中国石油（601857 / 00857）、建设银行（601939 / 00939）和紫金矿业（601899 / 02899）等标的，业务相同，基本面一致。</p>
+<p>如果把同一家公司的 A 股和 H 股同时买进组合，等于在单一标的上押了双倍仓位，违背了资金分散原则。</p>
+<p>同门标的只能二选一。面对两边的股票，到底选哪一边？</p>
+<p>常见的三种直觉选法：</p>
+<ol>
+<li>总是选 A 股（图交易习惯和流动性）；</li>
+<li>总是选 H 股（图名义折价和高股息）；</li>
+<li>选动量更高的一边（谁涨得猛买谁）。</li>
+</ol>
+<p>我们提取了 15 组典型的 A/H 对标股票，用 2021 年末至 2026 年中连续 143 个季度样本进行了回测对比。数据已换算为人民币同口径计价，并扣除股息红利税（港股通个人按 20% 扣税，A 股按持有 1 个月至 1 年的 10% 扣税）：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/ea54d7bc873401c9.webp" alt="AH同门去重与溢价中位数仲裁回测实证" class="lazyload"><figcaption class="image-caption">AH同门去重与溢价中位数仲裁回测实证</figcaption></figure></p>
+<p>实测数据对比（<code>ah_listing_rules.csv</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>选拔法则</th>
+<th>样本季度数</th>
+<th>下季平均实际收益</th>
+<th>选中表现更优一侧的胜率</th>
+<th>策略实测表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>总是选 A 股</strong></td>
+<td>143</td>
+<td>+3.81%</td>
+<td>46.85%</td>
+<td>略跑输 H 股，无超额能力</td>
+</tr>
+<tr>
+<td><strong>总是选 H 股</strong></td>
+<td>143</td>
+<td>+3.83%</td>
+<td>53.15%</td>
+<td>长期折价和分红带来微弱优势</td>
+</tr>
+<tr>
+<td><strong>选动量高的一边</strong></td>
+<td>143</td>
+<td>+3.27%</td>
+<td>45.45%</td>
+<td><strong>收益落后，产生负向损耗</strong></td>
+</tr>
+<tr>
+<td><strong>1 年溢价中位数仲裁</strong></td>
+<td>143</td>
+<td><strong>+4.39%</strong></td>
+<td><strong>56.64%</strong></td>
+<td><strong>收益提升，选边胜率过半</strong></td>
+</tr>
+</tbody>
+</table>
+<p>数据反映出两个事实：</p>
+<ol>
+<li><strong>追动量选边会挨打</strong>：在两地上市的标的中选择动量更高的一侧，下季平均收益只有 +3.27%，胜率降到了 45.45%，比总是选 A 股或总是选 H 股都要差。因为 A 股与 H 股的价差往往呈现均值回归特性，追逐短期相对强势的一边，极易买在溢价扩张的波段顶部。当两地估值差收敛时，换边操作两头受损。</li>
+<li><strong>溢价中位数仲裁有效</strong>：当某只股票的 A 股溢价率高于它自己过去一年的中位数时，选 H 股；低于中位数时，选 A 股。下季度平均收益提升到 +4.39%，选对边的概率提高到 56.64%。</li>
+</ol>
+<p>以中国神华（601088 / 01088）为例，面板 B 展示了其历史溢价率与 1 年滚动中位数通道。溢价率并不是固定不变的，它围绕自身中枢上下摆动。当 A 股溢价过高时买入 H 股，能享受到更深的折价保护与分红；当溢价回落至中位数下方时持有 A 股，则能分享 A 股端的估值溢价。</p>
+<p>执行 AH 溢价中位数仲裁的逻辑代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">arbitrate_ah_pair</span>(
+</span></span><span style="display:flex;"><span>    a_raw_close: float,
+</span></span><span style="display:flex;"><span>    h_raw_close: float,
+</span></span><span style="display:flex;"><span>    hkd_cny_rate: float,
+</span></span><span style="display:flex;"><span>    history_prem: pd<span style="color:#f92672">.</span>Series
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;输入两地不复权收盘价、实时汇率与过去一年历史溢价序列，返回选 A 还是选 H。&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 计算当前 A 股相对 H 股的溢价率</span>
+</span></span><span style="display:flex;"><span>    h_price_cny <span style="color:#f92672">=</span> h_raw_close <span style="color:#f92672">*</span> hkd_cny_rate
+</span></span><span style="display:flex;"><span>    current_premium <span style="color:#f92672">=</span> (a_raw_close <span style="color:#f92672">/</span> h_price_cny <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100.0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 计算过去 252 个交易日的滚动溢价中位数</span>
+</span></span><span style="display:flex;"><span>    median_premium <span style="color:#f92672">=</span> float(history_prem<span style="color:#f92672">.</span>iloc[<span style="color:#f92672">-</span><span style="color:#ae81ff">252</span>:]<span style="color:#f92672">.</span>median())
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 溢价高于中位数选 H，否则选 A</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> current_premium <span style="color:#f92672">&gt;</span> median_premium:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PICK_H&#34;</span>  <span style="color:#75715e"># A 溢价过高，选 H 股享折价与高分红</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PICK_A&#34;</span>      <span style="color:#75715e"># A 溢价偏低，选 A 股博估值修复</span>
+</span></span></code></pre></div><h2 id="行业分散神话的破灭为什么在历史回测中取消行业硬上限">行业分散神话的破灭：为什么在历史回测中取消行业硬上限</h2>
+<p>在传统投资组合管理中，一个常见的原则是限制行业集中度，比如「同一个行业最多只能持有一只」。出发点是为了分散风险，防止单一行业暴跌拖垮整个账户。</p>
+<p>在策略设计阶段，我们对这条规则进行了压力测试。为了防止主观过拟合，我们在测试前定下了一条硬性标准：</p>
+<blockquote>
+<p><strong>事前冻结规则</strong>：和不限行业相比，加入行业限制（每行业最多 1 只）后，组合的最大回撤在「破位后空仓」与「破位后换下一只」两种处理下，都必须至少降低 3.0 个百分点，才保留该限制；否则坚决取消。</p>
+</blockquote>
+<p>我们对港股、A 股、美股、日股四个市场，分别运行了不限行业、合并后大行业限 1 只、细标签限 1 只三种配置的全周期回测：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/a2aa96c18f6942da.webp" alt="四大市场行业硬上限回测检验" class="lazyload"><figcaption class="image-caption">四大市场行业硬上限回测检验</figcaption></figure></p>
+<p>四个市场实测数据汇总（<code>industry_cap_drawdown_test.csv</code>，换股处理口径）：</p>
+<table>
+<thead>
+<tr>
+<th>市场</th>
+<th>标的数 $k$</th>
+<th>不限行业 CAGR</th>
+<th>大行业限 1 只 CAGR</th>
+<th>收益损耗</th>
+<th>不限行业最大回撤</th>
+<th>大行业限 1 只最大回撤</th>
+<th>回撤改善幅度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>港股</strong></td>
+<td>3</td>
+<td>+16.37%</td>
+<td>+12.35%</td>
+<td>-4.02 pp</td>
+<td>-25.08%</td>
+<td>-22.72%</td>
+<td>+2.36 pp (未达 3pp 门槛)</td>
+</tr>
+<tr>
+<td><strong>A 股</strong></td>
+<td>3</td>
+<td>+14.50%</td>
+<td>+8.65%</td>
+<td>-5.85 pp</td>
+<td>-35.99%</td>
+<td>-30.03%</td>
+<td>+5.96 pp (空仓下恶化 2.4pp，不达标)</td>
+</tr>
+<tr>
+<td><strong>美股</strong></td>
+<td>5</td>
+<td>+17.50%</td>
+<td>+18.81%</td>
+<td>+1.31 pp</td>
+<td>-17.01%</td>
+<td>-17.45%</td>
+<td>-0.44 pp (回撤反而加深)</td>
+</tr>
+<tr>
+<td><strong>日股</strong></td>
+<td>4</td>
+<td>+31.08%</td>
+<td>+21.65%</td>
+<td><strong>-9.43 pp</strong></td>
+<td>-26.38%</td>
+<td>-25.94%</td>
+<td>+0.44 pp (几乎无改善)</td>
+</tr>
+</tbody>
+</table>
+<p>测试结果表明：<strong>没有一个市场能稳定达到 3 个百分点的回撤改善门槛。</strong></p>
+<p>在日股市场，取消行业限制后，年化收益率从 21.65% 跃升至 31.08%（夏普比率从 0.97 升至 1.23），而最大回撤仅从 -25.94% 微幅增加到 -26.38%（差距不足 0.5 个百分点）。如果机械限制每行业 1 只，组合就必须在三大银行（三菱日联、三井住友、瑞穗）表现优异的年份里强行剔除后两家，换入弱势的其他行业股票。</p>
+<p>在 A 股市场，加入大行业限制后，年化收益从 14.50% 跌落到 8.65%。在空仓处理下，收益更是从 10.79% 暴跌至 1.24%，回撤不仅没有收窄，反而加深了 2.4 个百分点。</p>
+<p>行业限制在动量策略中失效的原因：</p>
+<ol>
+<li><strong>个人持仓数量有限</strong>：个人组合一共只持有 3 到 5 只标的。动量策略的本质是在赢家聚集的产业主线上进行暴露。强行限制每行业 1 只，等于主动踢掉主线行业里的第二名领跑者（如航运周期的中远海控与太平洋航运、煤炭周期的神华与陕煤）。</li>
+<li><strong>买入弱势标的</strong>：踢掉主线第二名之后，空出来的仓位必须填满，系统被迫买入非主线行业里相对较弱的平庸标的。这些股票在市场下行时抗跌能力弱，并没有起到保护组合的作用。</li>
+<li><strong>风控职责错配</strong>：控制组合系统性风险依靠的是 MA200 年线的绝对止损，而不是靠拉平行业暴露。当整个市场或主线行业破位时，趋势硬门槛会自动触发止损。</li>
+</ol>
+<p>回测检验完成后，我们在所有四个市场的实盘配置中，<strong>取消了同一行业最多一只的硬性限制</strong>。</p>
+<h2 id="现实物理约束整手资金摩擦与顺延选拔机制">现实物理约束：整手资金摩擦与顺延选拔机制</h2>
+<p>做回测时，软件通常假设股票可以任意买入 0.001 股。但在实盘交易中，个人投资者面对着真实的交易制度约束：<strong>整手交易限制</strong>。</p>
+<ul>
+<li>A 股市场买入至少为 100 股整倍数；</li>
+<li>港股市场各股票一手股数由上市公司自行决定，一手可能是 500 股、1,000 股、2,000 股甚至 5,000 股；</li>
+<li>日股市场统一下单门槛为 100 股。</li>
+</ul>
+<p>对于资金量在 5 万至 10 万元的个人账户，这个物理限制会带来明显的资产分配问题。</p>
+<p>假设 A 股目标持仓为 3 只股票，每只股票的目标仓位是总资金的三分之一（约 3.2 万元）。如果排名前列的股票单价较高，买入一手就需要 5 万元（超过目标仓位的 1.5 倍），这笔交易就会打乱整个组合的仓位平衡。</p>
+<p>我们引入了<strong>买不起顺延机制</strong>：</p>
+<ol>
+<li>按照截面得分从高到低依次选拔候选股票；</li>
+<li>计算买入一手该标的所需的最低本金；</li>
+<li>如果买入一手所需资金超过了该仓位目标资金的 1.5 倍，系统判定为买不起，自动跳过该标的，顺延至下一名候选股票；</li>
+<li>顺延下来的标的继续进行整手检查，直到填满目标持仓名额。</li>
+</ol>
+<p>以下是处理整手预算限制与向后顺延的核心算法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Dict, List, Optional
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">select_with_lot_size_budget</span>(
+</span></span><span style="display:flex;"><span>    ranked_candidates: pd<span style="color:#f92672">.</span>DataFrame,
+</span></span><span style="display:flex;"><span>    total_capital: float,
+</span></span><span style="display:flex;"><span>    target_k: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
+</span></span><span style="display:flex;"><span>    max_capital_drag_ratio: float <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>DataFrame:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;输入排好序的候选池、总资金量与目标只数，执行整手预算检查与顺延选拔。&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    target_slot_capital <span style="color:#f92672">=</span> total_capital <span style="color:#f92672">/</span> target_k
+</span></span><span style="display:flex;"><span>    selected_stocks <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _, stock <span style="color:#f92672">in</span> ranked_candidates<span style="color:#f92672">.</span>iterrows():
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 计算买入一手所需名义资金（人民币）</span>
+</span></span><span style="display:flex;"><span>        one_lot_cost <span style="color:#f92672">=</span> stock[<span style="color:#e6db74">&#39;price_cny&#39;</span>] <span style="color:#f92672">*</span> stock[<span style="color:#e6db74">&#39;lot_size&#39;</span>]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 如果一手资金超过单只目标资金的 1.5 倍，跳过顺延</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> one_lot_cost <span style="color:#f92672">&gt;</span> target_slot_capital <span style="color:#f92672">*</span> max_capital_drag_ratio:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        selected_stocks<span style="color:#f92672">.</span>append(stock)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(selected_stocks) <span style="color:#f92672">&gt;=</span> target_k:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>DataFrame(selected_stocks)
+</span></span></code></pre></div><p>在 2026 年 10 月的实际持仓中，这套选拔规则最终确定的持仓分布如下：</p>
+<ul>
+<li><strong>雪盈美股账户</strong>（6 只个股）：可口可乐（KO）、默沙东（MRK）、Visa（V）、苹果（AAPL）、埃克森美孚（XOM）、英伟达（NVDA）。利用 Calmar 比率兼顾了动量与低回撤；</li>
+<li><strong>雪盈日股账户</strong>（4 只个股）：日本邮船（9101）、日立（6501）、三菱日联（8306）、伊藤忠商事（8001）。取消行业限制后，保留了工业与金融主线；</li>
+<li><strong>中国股票组合</strong>（6 只个股，约 9.58 万元）：中信 A 股持有陕西煤业（601225）、中国神华（601088）；中信港股通持有建设银行（00939）、太平洋航运（02343）、中远海控（01919）；富途持有中国石油（00857）。单只标的资金占比在 15.3% 至 17.5% 之间，分散均匀。</li>
+</ul>
+<h2 id="阶段小结">阶段小结</h2>
+<p>截面打分与去重排他完成了买入端的标的选择：</p>
+<ul>
+<li>美日市场采用 Calmar 比率，压制单边暴涨后的大幅回撤，选出稳态复利标的；</li>
+<li>港 A 市场采用 12-1 相对动量，剔除短期反转噪声，灵敏捕捉产业主线领头羊；</li>
+<li>A/H 两地上市标的采用 1 年溢价中位数仲裁，下季平均收益达 +4.39%，胜率达 56.64%，避免了追逐相对动量带来的损耗；</li>
+<li>历史回测证明行业硬上限无法降低系统性回撤，反而侵蚀超额收益，因此取消同一行业最多一只的限制；</li>
+<li>通过买不起顺延机制，让小体量资金能够处理整手交易门槛。</li>
+</ul>
+<p>选出标的之后，下一个问题是调仓节奏。如果每天根据最新排名换股，微小的排名波动就会引发频繁的卖出与买入，产生交易摩擦。</p>
+<p>下一篇我们要讨论的是：如何通过设置上轨买入与下轨卖出的双线缓冲区，结合固定的调仓窗口，在实盘中过滤排名抖动带来的无效换手。</p>
+<hr>
+<h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
+<p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">QuantFull 专栏：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">QuantFull 专栏：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">QuantFull 专栏：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
+<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">QuantFull 专栏：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">QuantFull 专栏：1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">QuantFull 专栏：策略容量与冲击成本估算实务</a></li>
+<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">QuantFull 专栏：12-1 动量策略全周期回测复盘</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">QuantFull 资源：量化交易思维导图与资料合集</a></li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%80%89%E8%82%A1/">
+                    #选股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%8D%A1%E7%8E%9B%E6%AF%94%E7%8E%87/">
+                    #卡玛比率</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%9B%B8%E5%AF%B9%E5%8A%A8%E9%87%8F/">
+                    #相对动量</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ah%E6%BA%A2%E4%BB%B7%E4%BB%B2%E8%A3%81/">
+                    #AH溢价仲裁</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%A1%8C%E4%B8%9A%E4%B8%AD%E6%80%A7%E5%8C%96/">
+                    #行业中性化</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/a%E8%82%A1/">
+                    #A股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/">
+                    #港股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BE%8E%E8%82%A1/">
+                    #美股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%97%A5%E8%82%A1/">
+                    #日股</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/" class="prev" rel="prev" title="cleanyourtv：用 AI 给家用电视去广告、换桌面"><i class="iconfont icon-left"></i>&nbsp;cleanyourtv：用 AI 给家用电视去广告、换桌面</a>
+        
+        
+        <a href="https://kuhung.me/posts/applescript-browser-control-for-coding-agents/" class="next" rel="next" title="AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手">AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

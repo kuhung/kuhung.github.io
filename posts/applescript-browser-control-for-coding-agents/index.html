@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/applescript-browser-control-for-coding-agents/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T23:15:00+08:00","datePublished":"2026-10-21T23:15:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，既没有起 Playwright，也没有走浏览器扩展，而是在终端里调 macOS 自带的 osascript（AppleScript）。 这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器 …","headline":"AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AppleScript, Chrome, Coding Agent, macOS, 自动化, Antigravity, Codex, 写作工作流","mainEntityOfPage":{"@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"WebPage"},"name":"AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","wordCount":419}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-21 itemprop="datePublished">October 21, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么日常任务里它比新方案更顺手">为什么日常任务里它比新方案更顺手</a></li>
+    <li><a href="#它是怎么跑通的三步通信与两道门禁">它是怎么跑通的：三步通信与两道门禁</a></li>
+    <li><a href="#ai-技能是怎么把它整合进工作流的">AI 技能是怎么把它整合进工作流的</a></li>
+    <li><a href="#配合写作风格库的使用体会让-ai-发文体验最好的几个细节">配合写作风格库的使用体会：让 AI 发文体验最好的几个细节</a>
+      <ul>
+        <li><a href="#1-一图胜千言图表与配图的自动化闭环">1. 一图胜千言：图表与配图的自动化闭环</a></li>
+        <li><a href="#2-人定事实与基调agent-管结构与转写">2. 人定事实与基调，Agent 管结构与转写</a></li>
+        <li><a href="#3-排版与富文本的免侵入原则">3. 排版与富文本的「免侵入」原则</a></li>
+      </ul>
+    </li>
+    <li><a href="#这么好用为什么平时很少听说">这么好用，为什么平时很少听说？</a></li>
+    <li><a href="#人类该怎么引导-agent-使用如何选型">人类该怎么引导 Agent 使用，如何选型</a>
+      <ul>
+        <li><a href="#如何引导-agent-使用这套能力">如何引导 Agent 使用这套能力</a></li>
+        <li><a href="#什么时候该用它什么时候换别的">什么时候该用它，什么时候换别的</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
+</blockquote>
+<p>这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，既没有起 Playwright，也没有走浏览器扩展，而是在终端里调 macOS 自带的 <code>osascript</code>（AppleScript）。</p>
+<p>这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器扩展报 <code>Browser is not available</code>，得手动去重连；要么是另起了一个干净的浏览器实例，里面什么登录态都没有，面对登录框干瞪眼。后来我让 Codex 也改用这套方式，直接通过 AppleScript 配合系统剪贴板去操作我已经打开的 Chrome，流程顺畅了不少。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/93805397d23b9e3f.webp" alt="macOS 终端与 Chrome 浏览器之间的 AppleScript 自动化桥梁插画" class="lazyload"><figcaption class="image-caption">macOS 终端与 Chrome 浏览器之间的 AppleScript 自动化桥梁插画</figcaption></figure></p>
+<p>为什么这套上世纪九十年代的技术在 2026 年反而比新的专用方案好用？既然好用，为什么平时很少听人提起？怎么引导 Agent 把它用好？结合我们日常用来辅助写作与发文的经验，我把背后的逻辑和选型思路记录下来。</p>
+<h2 id="为什么日常任务里它比新方案更顺手">为什么日常任务里它比新方案更顺手</h2>
+<p>市面上给 Coding Agent 配浏览器的方案很多，体验差距很大，原因在于它们操作的对象不同。</p>
+<p>主流的几类方式放在一起看：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>操作的对象</th>
+<th>登录态</th>
+<th>Agent 拿到的数据</th>
+<th>主要短板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Playwright</td>
+<td>新开的独立浏览器</td>
+<td>默认没有，需单独登录或导 Cookie</td>
+<td>页面无障碍文本快照，按编号点元素</td>
+<td>工具说明和页面快照占大量上下文；处理不了 Canvas</td>
+</tr>
+<tr>
+<td>Chrome 调试协议 (CDP)</td>
+<td>新开 Chrome 或接调试端口</td>
+<td>日常配置受安全限制，多为干净环境</td>
+<td>DOM、控制台报错、网络请求</td>
+<td>调试能力强但配置麻烦；受 Chrome 136 安全策略限制</td>
+</tr>
+<tr>
+<td>视觉看图点击 (Computer Use)</td>
+<td>屏幕上的任意软件</td>
+<td>操作自己桌面时有</td>
+<td>屏幕截图，按坐标点按</td>
+<td>每步都要传图片，慢且贵；窗口移动或缩放容易点偏</td>
+</tr>
+<tr>
+<td>浏览器扩展 (如 Claude 扩展)</td>
+<td>日常使用的 Chrome</td>
+<td>有，共享日常登录态</td>
+<td>DOM、控制台、网络请求、截图</td>
+<td>需要安装扩展并保持连接，偶尔断连，各家不通用</td>
+</tr>
+<tr>
+<td><strong>AppleScript</strong></td>
+<td><strong>已经开着的 Chrome / Safari</strong></td>
+<td><strong>有，进程本身就是日常登录状态</strong></td>
+<td>脚本里指定要什么就回什么文本</td>
+<td>拿不到网络瀑布流；只能在 Mac 上跑</td>
+</tr>
+</tbody>
+</table>
+<p>日常写代码或发文章时，AppleScript 让人觉得顺手主要有三个原因：</p>
+<p><strong>第一，省掉了最麻烦的登录。</strong><br>
+很多网页后台有短信验证、扫码或二次验证。用 Playwright 或独立 CDP，Agent 面对的是一个全新的浏览器窗口，进不了后台。AppleScript 直接操作你正在用的浏览器进程。网页里的请求带着你原有的登录凭据，站点把它当成正常的人类访问，省去了反复处理登录态的麻烦。</p>
+<p><strong>第二，避开了近年浏览器的安全收紧。</strong><br>
+你可能会想，为什么不直接让调试工具连我们日常的 Chrome？因为官方把这条路收窄了。从 2025 年 3 月的 Chrome 136 开始，出于防范恶意软件窃取凭据的考虑，调试端口对默认的用户数据目录不再生效，必须指向独立的测试目录。Safari 那边更严格，底层调试通道需要苹果私有签名，第三方程序进不去；哪怕是苹果官方在 Safari 27 里内置的调试工具，也明确运行在隔离会话里，拿不到日常数据。想操作已经登录的日常浏览器，剩下的途径不多。</p>
+<p><strong>第三，对 Agent 几乎没有上下文负担。</strong><br>
+给 Agent 加一套 Playwright 工具，几十个工具定义先吃掉上万 Token，每操作一步还要传一整屏页面结构。而 AppleScript 是 Mac 系统自带的能力，Agent 本来就有执行命令的权限，不需要提前塞入复杂的工具清单。想查个标题、开个网页，一行命令发出去，终端直接拿回结果。</p>
+<h2 id="它是怎么跑通的三步通信与两道门禁">它是怎么跑通的：三步通信与两道门禁</h2>
+<p>抛开那些晦涩的系统名词，这套机制在底层跑通的方式可以用传话来理解。</p>
+<p>macOS 系统内部自带一个通信员（命令行里的 <code>osascript</code>）。整个控制过程分为三步：</p>
+<ol>
+<li><strong>Agent 写好指令交差</strong>：Agent 在终端里写好一段话，让通信员送去给 Chrome 或者 Safari。</li>
+<li><strong>浏览器照单执行</strong>：浏览器收到消息后按要求干活，比如看看第几个标签页是什么网址，或者把一段 JavaScript 脚本丢进当前网页里跑一下。</li>
+<li><strong>把结果带回终端</strong>：网页执行完的文字结果由通信员带回终端，Agent 拿到文字再决定下一步。</li>
+</ol>
+<p>在安静模式下，通信员是直接从后台跟浏览器通信的。查网址、读页面文字、甚至用脚本点击按钮，都在后台完成，你的鼠标和键盘不需要动，不会打扰你手头的工作。</p>
+<p>整个流程里有两道门禁需要用户手动放行一次：</p>
+<ul>
+<li><strong>第一道是系统权限</strong>：Mac 系统的隐私设置（自动化权限）。第一次运行时，系统会弹窗询问是否允许终端控制 Chrome，点允许后系统就记住了。</li>
+<li><strong>第二道是浏览器权限</strong>：浏览器菜单里的开发者开关。如果只是读网址不需要这道门，但只要需要往网页里注入代码，就得去浏览器菜单里勾选「允许通过 Apple 事件运行 JavaScript」。Chrome 和 Safari 都有这个开关，勾上一次即可。</li>
+</ul>
+<h2 id="ai-技能是怎么把它整合进工作流的">AI 技能是怎么把它整合进工作流的</h2>
+<p>在实际使用中，我们不会让 Agent 每次抓瞎现写系统脚本。以我平时把 Markdown 文章自动化同步到各大内容平台草稿箱的技能（<code>article-publisher</code>）为例，它被整合成了一条四步流水线：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
+    A[&#34;用户发出任务&lt;br/&gt;把文章存为草稿&#34;] --&gt; B[&#34;步骤 1：后台寻址&lt;br/&gt;按目标 URL 锁定标签页&#34;]
+    B --&gt; C[&#34;步骤 2：数据就绪&lt;br/&gt;文章富文本写入系统剪贴板&#34;]
+    C --&gt; D[&#34;步骤 3：前台粘贴&lt;br/&gt;激活窗口，触发原生 Cmd+V&#34;]
+    D --&gt; E[&#34;步骤 4：回读确认&lt;br/&gt;校验段落与表格，保存草稿&#34;]
+</code></pre><ol>
+<li><strong>按具体网址找标签页</strong>：Agent 先让通信员在后台扫描所有打开的窗口，找到具体匹配那篇草稿网址的标签页，绝不乱动用户正在浏览的其他网页。</li>
+<li><strong>把排版好的内容塞进剪贴板</strong>：复杂的网页富文本编辑器往往有内部状态，直接修改网页文字容易引起排版错乱。更稳妥的做法是脚本把 Markdown 转换好的富文本或图片，先放进 Mac 系统的剪贴板。</li>
+<li><strong>定位光标，敲一下粘贴</strong>：脚本通过后台代码把网页光标定位到正文位置，随后把浏览器窗口短暂切到前台零点几秒，模拟敲一下键盘上的 <code>Cmd+V</code>。在编辑器看来，这就是人类从剪贴板粘贴进来的内容，图片和排版会自动触发平台的正常上传流程。</li>
+<li><strong>重新核对并点保存</strong>：粘贴完成后，脚本立刻回到后台重新读取页面，确认表格行列没有丢失、图片已经加载完成，最后调用页面上的保存草稿按钮。</li>
+</ol>
+<p>整个流程里，用户只需要对 Agent 说一句话，剩下的定位、排版、粘贴和校验都由后台脚本打配合搞定。</p>
+<h2 id="配合写作风格库的使用体会让-ai-发文体验最好的几个细节">配合写作风格库的使用体会：让 AI 发文体验最好的几个细节</h2>
+<p>在长期的使用中，这套浏览器控制方式之所以让人觉得顺畅，离不开我们在写作规则（<code>writing-style</code>）和自动化流程里沉淀下的几条原则。这些经验对提升 AI 辅助发文的体验帮助很大：</p>
+<h3 id="1-一图胜千言图表与配图的自动化闭环">1. 一图胜千言：图表与配图的自动化闭环</h3>
+<p>无论是技术架构、流程拆解还是概念封面，配上一张风格统一的优质插画，文章的质感都会有明显的提升。</p>
+<p>我们在日常写作时形成了一个固定的习惯：<strong>让 AI 配合生图工具（比如调用图像生成能力）产出概念配图或封面，生成后直接联动本机的 PicList 脚本，把图片上传到公有云（R2 图床），再把公开的 Markdown 外链回填进正文。</strong></p>
+<p>这样做的好处很实在：</p>
+<ul>
+<li><strong>多端分发排版不崩塌</strong>：整张图片在微信公众号、小红书、X 长文里都能保持高清，避免各平台编辑器对本地绝对路径或外链域名的识别错误。</li>
+<li><strong>全链路自动闭环</strong>：作者不需要去经历「生成图片 → 本地另存为 → 手工切到图床网页上传 → 复制外链 → 粘贴回编辑器」的繁琐流程，Agent 在后台直接完成了绘图与上云。</li>
+</ul>
+<h3 id="2-人定事实与基调agent-管结构与转写">2. 人定事实与基调，Agent 管结构与转写</h3>
+<p>让 AI 帮写文章，最容易出现的问题是通篇充满 AI 味：满嘴「至关重要」「深入探讨」「不可磨灭」，或者自作聪明地加上一堆夸张的戏剧化铺垫和人生哲理。</p>
+<p>我们在 <code>writing-style</code> 里立下的核心规矩就是：<strong>像一个用过这些工具的同行在跟你聊天，讲自己遇到了什么、怎么处理的、怎么看。</strong></p>
+<ul>
+<li><strong>事实与痛点由人提供</strong>：比如本文是因为我们在 Codex 上操作浏览器屡次断连、才去调查背后的 AppleScript 机制。真实的事实哪怕只有几句，文章立论就有根基。</li>
+<li><strong>让 Agent 承担结构整理与客观对照</strong>：Agent 擅长把混乱的想法整理成三步逻辑，或者把多个技术方案拉通成清晰的表格。</li>
+<li><strong>把好最后的文风关</strong>：不让 Agent 堆砌空泛的形容词，不用「不是X而是Y」制造虚假的洞察感，结尾平实收住，不强行升华。</li>
+</ul>
+<h3 id="3-排版与富文本的免侵入原则">3. 排版与富文本的「免侵入」原则</h3>
+<p>以前让 AI 辅助发文，很多方案尝试直接用爬虫接口往平台发包，或者用脚本暴力改动网页 DOM。结果往往是格式掉乱、账号被风控，甚至编辑器的撤销栈被破坏。</p>
+<p>把这套方式用好，最核心的体会是<strong>顺应人类原有的使用界面</strong>：</p>
+<ul>
+<li>平台编辑器支持富文本粘贴，我们就通过脚本准备好标准的富文本放入系统剪贴板；</li>
+<li>平台需要单张上传配图，我们就模拟真实的粘贴按键，让编辑器自带的上传通道去接收图片；</li>
+<li>无论脚本跑得多顺，<strong>自动化永远停留在「保存草稿」这一步</strong>，绝不允许 Agent 替人按下最终的「正式发布」。</li>
+</ul>
+<p>这种保持边界感的设计，既让 Agent 承担了最枯燥的搬运排版工作，又把最终的把关权牢牢留在人类手里。</p>
+<h2 id="这么好用为什么平时很少听说">这么好用，为什么平时很少听说？</h2>
+<p>很多人会疑惑：既然它省事又好用，为什么整个 AI 行业在宣传浏览器自动化时，都在提 Playwright、Puppeteer 或者各类云浏览器，很少大面积推它？</p>
+<p>这里有几个现实的原因：</p>
+<p><strong>1. 它是 macOS 独占技术，无法做成通用商业标准。</strong><br>
+大部分商业 AI Agent 运行在云端服务器、Linux 容器或者 Windows 环境下。云端根本没有 Mac 系统，自然无法依赖 AppleScript。商业软件追求的是跨平台和容器化部署，这让行业的主流投资全部倒向了以 Chromium 为基础的跨平台自动化框架。</p>
+<p><strong>2. 缺乏网络层面的可观测性。</strong><br>
+它是用来做桌面控制的，不是为了专业的前端开发调试设计的。在 AppleScript 里，你看不到接口请求的具体返回、抓不到报错堆栈，也无法精确判断静态资源是否下载完毕。对于要写自动化测试、抓包分析的工程师来说，它的能力是不够用的。</p>
+<p><strong>3. 语法小众，且异步处理反直觉。</strong><br>
+AppleScript 本身的语法风格特殊，年轻一代开发者很少接触。更关键的是它属于同步机制，遇到现代网页里常见的异步操作（比如网络请求），如果不加处理，它拿到的结果通常是一行没有实际意义的提示文本，并且不会报错。没踩过坑的人很容易卡在这里，误以为这套机制无法胜任复杂操作。</p>
+<p><strong>4. 哪些工具其实在悄悄封装它？</strong><br>
+虽然在云端不常见，但在 Mac 系统的本地效率工具圈子里，它几乎是底层事实上的通用基石。比如：</p>
+<ul>
+<li><strong>Raycast 和 Alfred 的浏览器插件</strong>：用来列出标签页、一键搜索当前网页、收集书签的扩展，底层基本都是通过它来读取浏览器的。</li>
+<li><strong>本地宏工具</strong>：Keyboard Maestro、BetterTouchTool 操作日常网页和管理标签页的动作，用的也是这套接口。</li>
+<li><strong>面向本地的 AI 插件</strong>：比如开源的 <code>safari-mcp</code>、<code>claude-for-safari</code>，以及各类控制日常 Chrome 的本地 Skill，核心走的都是相同的通信路径。</li>
+</ul>
+<h2 id="人类该怎么引导-agent-使用如何选型">人类该怎么引导 Agent 使用，如何选型</h2>
+<p>作为使用者，不需要去记具体的脚本语法，重点在于清楚什么场景下该选什么方案，以及如何给 Agent 下达边界清晰的指令。</p>
+<h3 id="如何引导-agent-使用这套能力">如何引导 Agent 使用这套能力</h3>
+<p>如果你希望你的 Agent（无论是 Codex、Claude Code 还是 Antigravity）在本地操作浏览器时更顺手，可以在提示词或项目的规范文件里给它明确这几条指引：</p>
+<ol>
+<li><strong>限定操作对象</strong>：明确告诉它优先控制本地已经打开的日常浏览器，不用去启动无头浏览器或连外部扩展。</li>
+<li><strong>锁定目标网址</strong>：要求它在操作前必须通过完整的 URL 匹配标签页，禁止用“第一个标签页”这种模糊定位，防止误伤正在看的其他网页。</li>
+<li><strong>遇富文本用系统剪贴板</strong>：面对公众号、语雀、知乎等富文本编辑器，提醒它优先将排版内容送入系统剪贴板再触发粘贴，避免直接篡改页面结构导致状态混乱。</li>
+<li><strong>安全底线停在草稿</strong>：明确要求所有自动化操作到保存草稿为止，最后的公开发布由人工点击确认。</li>
+</ol>
+<h3 id="什么时候该用它什么时候换别的">什么时候该用它，什么时候换别的</h3>
+<p>没有万能的方案，选择取决于任务所处的环境：</p>
+<ul>
+<li><strong>选 AppleScript + 日常浏览器</strong>：<br>
+适合个人在 Mac 电脑前完成日常高频操作。比如把写好的稿子发到几个平台的草稿箱、抓取自己已经登录的系统后台数据、对多个标签页做整理。几步内就要出结果，不想花时间去登录验证，也不想让浏览器扩展频繁报错。</li>
+<li><strong>选 Chrome 开发者工具协议 (CDP / DevTools)</strong>：<br>
+适合做网页开发和排查 Bug。需要盯着控制台有没有红字报错、查看接口返回慢不慢、排查样式错位，这时候需要专业调试协议提供的数据。</li>
+<li><strong>选 Playwright / 自动化测试框架</strong>：<br>
+适合正式的工程化验证。需要跨 Windows、Linux 多个平台运行，或者要把测试流程放进代码仓库的自动化流水线里每天夜间回归测试。</li>
+<li><strong>选视觉看图点击 (Computer Use)</strong>：<br>
+适合作为最后的兜底手段。比如网页是一个整块由 Canvas 渲染的游戏或设计图表，DOM 里面没有文字节点可抓，或者需要操作非网页的独立桌面软件时，才值得用成本更高的截图识图方案。</li>
+</ul>
+<p>分清楚这些工具的边界，在合适的环节用对应的手段，本地编写和自动化的体验就会顺畅得多。</p>
+<hr>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://developer.chrome.com/blog/remote-debugging-port">Chrome for Developers: Changes to remote debugging switches</a> - 官方关于 Chrome 136 调整调试端口的说明</li>
+<li><a href="https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptX/Concepts/scriptable_apps.html">AppleScript Overview: Scriptable Applications</a> - Apple 官方关于应用脚本接口的文档</li>
+<li><a href="https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/">WebKit Blog: Introducing the Safari MCP server for web developers</a> - Safari 官方调试工具说明</li>
+<li><a href="https://dev.to/haoyang_pang_a9f08cdb0b6c/the-browser-automation-cheat-code-nobody-talks-about-applescript-chrome-52ha">The Browser Automation Cheat Code Nobody Talks About</a> - 社区关于 Chrome + AppleScript 实践经验的总结</li>
+<li><a href="https://github.com/achiya-automation/safari-mcp">achiya-automation/safari-mcp</a> / <a href="https://github.com/SDLLL/claude-for-safari">SDLLL/claude-for-safari</a> - 社区相关开源实现</li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/applescript-browser-control-for-coding-agents/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/applescript/">
+                    #AppleScript</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/chrome/">
+                    #Chrome</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/coding-agent/">
+                    #Coding Agent</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/macos/">
+                    #macOS</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">
+                    #自动化</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/antigravity/">
+                    #Antigravity</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/codex/">
+                    #Codex</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%86%99%E4%BD%9C%E5%B7%A5%E4%BD%9C%E6%B5%81/">
+                    #写作工作流</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/" class="prev" rel="prev" title="个人量化选股（四）：截面打分与去重排他"><i class="iconfont icon-left"></i>&nbsp;个人量化选股（四）：截面打分与去重排他</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

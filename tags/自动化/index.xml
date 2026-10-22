@@ -6,7 +6,22 @@
     <description>Recent content in 自动化 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 12 May 2026 14:44:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Oct 2026 23:15:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手</title>
+      <link>https://kuhung.me/posts/applescript-browser-control-for-coding-agents/</link>
+      <pubDate>Wed, 21 Oct 2026 23:15:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/applescript-browser-control-for-coding-agents/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，既没有起 Playwright，也没有走浏览器扩展，而是在终端里调 macOS 自带的 osascript（AppleScript）。
+这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器扩展报 Browser is not available，得手动去重连；要么是另起了一个干净的浏览器实例，里面什么登录态都没有，面对登录框干瞪眼。后来我让 Codex 也改用这套方式，直接通过 AppleScript 配合系统剪贴板去操作我已经打开的 Chrome，流程顺畅了不少。
+为什么这套上世纪九十年代的技术在 2026 年反而比新的专用方案好用？既然好用，为什么平时很少听人提起？怎么引导 Agent 把它用好？结合我们日常用来辅助写作与发文的经验，我把背后的逻辑和选型思路记录下来。
+为什么日常任务里它比新方案更顺手 市面上给 Coding Agent 配浏览器的方案很多，体验差距很大，原因在于它们操作的对象不同。
+主流的几类方式放在一起看：
+方式 操作的对象 登录态 Agent 拿到的数据 主要短板 Playwright 新开的独立浏览器 默认没有，需单独登录或导 Cookie 页面无障碍文本快照，按编号点元素 工具说明和页面快照占大量上下文；处理不了 Canvas Chrome 调试协议 (CDP) 新开 Chrome 或接调试端口 日常配置受安全限制，多为干净环境 DOM、控制台报错、网络请求 调试能力强但配置麻烦；受 Chrome 136 安全策略限制 视觉看图点击 (Computer Use) 屏幕上的任意软件 操作自己桌面时有 屏幕截图，按坐标点按 每步都要传图片，慢且贵；窗口移动或缩放容易点偏 浏览器扩展 (如 Claude 扩展) 日常使用的 Chrome 有，共享日常登录态 DOM、控制台、网络请求、截图 需要安装扩展并保持连接，偶尔断连，各家不通用 AppleScript 已经开着的 Chrome / Safari 有，进程本身就是日常登录状态 脚本里指定要什么就回什么文本 拿不到网络瀑布流；只能在 Mac 上跑 日常写代码或发文章时，AppleScript 让人觉得顺手主要有三个原因：</description>
+    </item>
+    
     <item>
       <title>成本三分钱，整合Notion、GitHub的AI周报工作流</title>
       <link>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</link>

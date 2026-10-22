@@ -6,7 +6,20 @@
     <description>Recent content in 港股 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Oct 2026 21:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（四）：截面打分与去重排他</title>
+      <link>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</link>
+      <pubDate>Wed, 21 Oct 2026 21:30:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</guid>
+      <description>在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。
+这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几十万元人民币之间。我们不可能把这 63 只股票全买下来。如果每只股票买一点，持仓就会退化成一个自制指数基金，小额资金频繁交易还会被券商最低佣金侵蚀净值。
+在真实交易中，个人股票组合通常只容纳 3 到 6 只核心标的。
+从 63 只准入合格标的收敛到最终的 3 到 6 只实盘持仓，需要经过截面打分、同门去重、行业集中度检验与整手物理资金过滤五个步骤：
+flowchart LR A[&amp;#34;① 准入合格池&amp;lt;br&amp;gt;(63 只标的)&amp;#34;] --&amp;gt; B[&amp;#34;② 截面打分双轨制&amp;lt;br&amp;gt;(美日卡玛 vs 港A动量)&amp;#34;] B --&amp;gt; C[&amp;#34;③ AH 同门去重&amp;lt;br&amp;gt;(1 年溢价中位数仲裁)&amp;#34;] C --&amp;gt; D[&amp;#34;④ 破除行业限制&amp;lt;br&amp;gt;(允许主线动量集中)&amp;#34;] D --&amp;gt; E[&amp;#34;⑤ 整手资金约束&amp;lt;br&amp;gt;(买不起顺延机制)&amp;#34;] E --&amp;gt; F[&amp;#34;实盘持仓落地&amp;lt;br&amp;gt;(美股 6 只 / 日股 4 只 / 中国 6 只)&amp;#34;] 截面打分双轨制：美日市场卡玛比率 vs 港 A 市场 12-1 动量 用同一套指标打全天下的市场，在实盘中会遇到水土不服。</description>
+    </item>
+    
     <item>
       <title>个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</title>
       <link>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</link>
