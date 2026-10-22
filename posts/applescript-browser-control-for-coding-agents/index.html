@@ -8,7 +8,7 @@
   <meta name="author" content="谷粒">
   
   
-  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="description" content="分析 Playwright、CDP 与 AppleScript 在操作日常浏览器时的差异，解释为什么通过 macOS 自带的 osascript 操控已登录 Chrome 更轻量顺手，以及自动化工作流中的避坑要点。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手 | 谷粒 kuhung
+           用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手 | 谷粒 kuhung">
+  <meta name="title" content="用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T23:15:00+08:00","datePublished":"2026-10-21T23:15:00+08:00","description":"声明：本文由 AI 辅助创作，经作者核实与修订。 这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，既没有起 Playwright，也没有走浏览器扩展，而是在终端里调 macOS 自带的 osascript（AppleScript）。 这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器 …","headline":"AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AppleScript, Chrome, Coding Agent, macOS, 自动化, Antigravity, Codex, 写作工作流","mainEntityOfPage":{"@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"WebPage"},"name":"AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","wordCount":419}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T23:15:00+08:00","datePublished":"2026-10-21T23:15:00+08:00","description":"分析 Playwright、CDP 与 AppleScript 在操作日常浏览器时的差异，解释为什么通过 macOS 自带的 osascript 操控已登录 Chrome 更轻量顺手，以及自动化工作流中的避坑要点。","headline":"用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AppleScript, Chrome, Coding Agent, macOS, 自动化, Antigravity, Codex, 写作工作流","mainEntityOfPage":{"@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"WebPage"},"name":"用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","wordCount":372}</script>
 </head>
 
   
@@ -112,7 +112,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">AppleScript 控制 Chrome：为什么这套老机制比 Coding Agent 自带的浏览器工具更顺手</h1>
+        <h1 class="post-title" itemprop="name headline">用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -138,11 +138,10 @@ if (!doNotTrack) {
     <li><a href="#为什么日常任务里它比新方案更顺手">为什么日常任务里它比新方案更顺手</a></li>
     <li><a href="#它是怎么跑通的三步通信与两道门禁">它是怎么跑通的：三步通信与两道门禁</a></li>
     <li><a href="#ai-技能是怎么把它整合进工作流的">AI 技能是怎么把它整合进工作流的</a></li>
-    <li><a href="#配合写作风格库的使用体会让-ai-发文体验最好的几个细节">配合写作风格库的使用体会：让 AI 发文体验最好的几个细节</a>
+    <li><a href="#自动化接入时的避坑细节">自动化接入时的避坑细节</a>
       <ul>
-        <li><a href="#1-一图胜千言图表与配图的自动化闭环">1. 一图胜千言：图表与配图的自动化闭环</a></li>
-        <li><a href="#2-人定事实与基调agent-管结构与转写">2. 人定事实与基调，Agent 管结构与转写</a></li>
-        <li><a href="#3-排版与富文本的免侵入原则">3. 排版与富文本的「免侵入」原则</a></li>
+        <li><a href="#1-富文本走系统剪贴板避免直接篡改-dom">1. 富文本走系统剪贴板，避免直接篡改 DOM</a></li>
+        <li><a href="#2-自动化止步于保存草稿">2. 自动化止步于「保存草稿」</a></li>
       </ul>
     </li>
     <li><a href="#这么好用为什么平时很少听说">这么好用，为什么平时很少听说？</a></li>
@@ -210,10 +209,10 @@ if (!doNotTrack) {
           <blockquote>
 <p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
 </blockquote>
-<p>这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，既没有起 Playwright，也没有走浏览器扩展，而是在终端里调 macOS 自带的 <code>osascript</code>（AppleScript）。</p>
+<p>这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，不用起 Playwright，也不走浏览器扩展，直接在终端里调 macOS 自带的 <code>osascript</code>（AppleScript）。</p>
 <p>这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器扩展报 <code>Browser is not available</code>，得手动去重连；要么是另起了一个干净的浏览器实例，里面什么登录态都没有，面对登录框干瞪眼。后来我让 Codex 也改用这套方式，直接通过 AppleScript 配合系统剪贴板去操作我已经打开的 Chrome，流程顺畅了不少。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/93805397d23b9e3f.webp" alt="macOS 终端与 Chrome 浏览器之间的 AppleScript 自动化桥梁插画" class="lazyload"><figcaption class="image-caption">macOS 终端与 Chrome 浏览器之间的 AppleScript 自动化桥梁插画</figcaption></figure></p>
-<p>为什么这套上世纪九十年代的技术在 2026 年反而比新的专用方案好用？既然好用，为什么平时很少听人提起？怎么引导 Agent 把它用好？结合我们日常用来辅助写作与发文的经验，我把背后的逻辑和选型思路记录下来。</p>
+<p>为什么这套上世纪九十年代的技术在 2026 年反而比新的专用方案好用？既然好用，为什么平时很少听人提起？怎么引导 Agent 把它用好？结合日常用来辅助发文的经验，聊聊背后的逻辑和选型思路。</p>
 <h2 id="为什么日常任务里它比新方案更顺手">为什么日常任务里它比新方案更顺手</h2>
 <p>市面上给 Coding Agent 配浏览器的方案很多，体验差距很大，原因在于它们操作的对象不同。</p>
 <p>主流的几类方式放在一起看：</p>
@@ -266,76 +265,61 @@ if (!doNotTrack) {
 </tbody>
 </table>
 <p>日常写代码或发文章时，AppleScript 让人觉得顺手主要有三个原因：</p>
-<p><strong>第一，省掉了最麻烦的登录。</strong><br>
+<p><strong>第一，省去登录步骤。</strong><br>
 很多网页后台有短信验证、扫码或二次验证。用 Playwright 或独立 CDP，Agent 面对的是一个全新的浏览器窗口，进不了后台。AppleScript 直接操作你正在用的浏览器进程。网页里的请求带着你原有的登录凭据，站点把它当成正常的人类访问，省去了反复处理登录态的麻烦。</p>
 <p><strong>第二，避开了近年浏览器的安全收紧。</strong><br>
 你可能会想，为什么不直接让调试工具连我们日常的 Chrome？因为官方把这条路收窄了。从 2025 年 3 月的 Chrome 136 开始，出于防范恶意软件窃取凭据的考虑，调试端口对默认的用户数据目录不再生效，必须指向独立的测试目录。Safari 那边更严格，底层调试通道需要苹果私有签名，第三方程序进不去；哪怕是苹果官方在 Safari 27 里内置的调试工具，也明确运行在隔离会话里，拿不到日常数据。想操作已经登录的日常浏览器，剩下的途径不多。</p>
 <p><strong>第三，对 Agent 几乎没有上下文负担。</strong><br>
 给 Agent 加一套 Playwright 工具，几十个工具定义先吃掉上万 Token，每操作一步还要传一整屏页面结构。而 AppleScript 是 Mac 系统自带的能力，Agent 本来就有执行命令的权限，不需要提前塞入复杂的工具清单。想查个标题、开个网页，一行命令发出去，终端直接拿回结果。</p>
 <h2 id="它是怎么跑通的三步通信与两道门禁">它是怎么跑通的：三步通信与两道门禁</h2>
-<p>抛开那些晦涩的系统名词，这套机制在底层跑通的方式可以用传话来理解。</p>
-<p>macOS 系统内部自带一个通信员（命令行里的 <code>osascript</code>）。整个控制过程分为三步：</p>
+<p>抛开晦涩的系统名词，这套机制在底层跑通的方式分为三步：</p>
 <ol>
-<li><strong>Agent 写好指令交差</strong>：Agent 在终端里写好一段话，让通信员送去给 Chrome 或者 Safari。</li>
-<li><strong>浏览器照单执行</strong>：浏览器收到消息后按要求干活，比如看看第几个标签页是什么网址，或者把一段 JavaScript 脚本丢进当前网页里跑一下。</li>
-<li><strong>把结果带回终端</strong>：网页执行完的文字结果由通信员带回终端，Agent 拿到文字再决定下一步。</li>
+<li><strong>终端派发指令</strong>：Agent 在命令行调用 <code>osascript</code>，向 Chrome 或 Safari 发送控制语句。</li>
+<li><strong>浏览器执行操作</strong>：浏览器收到 Apple 事件后按指令执行，比如匹配标签页网址、读取页面属性，或者在当前上下文运行一段 JavaScript。</li>
+<li><strong>结果回传终端</strong>：页面执行后的纯文本结果直接经由标准输出返回，Agent 拿到文本再决定下一步操作。</li>
 </ol>
-<p>在安静模式下，通信员是直接从后台跟浏览器通信的。查网址、读页面文字、甚至用脚本点击按钮，都在后台完成，你的鼠标和键盘不需要动，不会打扰你手头的工作。</p>
+<p>绝大多数查询、文本提取和脚本点击可以在后台静默执行，不需要抢占光标，也不会打扰前台的日常工作。</p>
 <p>整个流程里有两道门禁需要用户手动放行一次：</p>
 <ul>
 <li><strong>第一道是系统权限</strong>：Mac 系统的隐私设置（自动化权限）。第一次运行时，系统会弹窗询问是否允许终端控制 Chrome，点允许后系统就记住了。</li>
 <li><strong>第二道是浏览器权限</strong>：浏览器菜单里的开发者开关。如果只是读网址不需要这道门，但只要需要往网页里注入代码，就得去浏览器菜单里勾选「允许通过 Apple 事件运行 JavaScript」。Chrome 和 Safari 都有这个开关，勾上一次即可。</li>
 </ul>
 <h2 id="ai-技能是怎么把它整合进工作流的">AI 技能是怎么把它整合进工作流的</h2>
-<p>在实际使用中，我们不会让 Agent 每次抓瞎现写系统脚本。以我平时把 Markdown 文章自动化同步到各大内容平台草稿箱的技能（<code>article-publisher</code>）为例，它被整合成了一条四步流水线：</p>
+<p>在实际使用中，我们不会让 Agent 每次抓瞎现写系统脚本。以日常把 Markdown 文章自动化同步到各大内容平台草稿箱的流程为例，它被整合成了一条四步流水线：</p>
 <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
     A[&#34;用户发出任务&lt;br/&gt;把文章存为草稿&#34;] --&gt; B[&#34;步骤 1：后台寻址&lt;br/&gt;按目标 URL 锁定标签页&#34;]
     B --&gt; C[&#34;步骤 2：数据就绪&lt;br/&gt;文章富文本写入系统剪贴板&#34;]
     C --&gt; D[&#34;步骤 3：前台粘贴&lt;br/&gt;激活窗口，触发原生 Cmd+V&#34;]
     D --&gt; E[&#34;步骤 4：回读确认&lt;br/&gt;校验段落与表格，保存草稿&#34;]
 </code></pre><ol>
-<li><strong>按具体网址找标签页</strong>：Agent 先让通信员在后台扫描所有打开的窗口，找到具体匹配那篇草稿网址的标签页，绝不乱动用户正在浏览的其他网页。</li>
+<li><strong>按具体网址找标签页</strong>：Agent 先在后台扫描所有打开的窗口，找到具体匹配那篇草稿网址的标签页，绝不乱动用户正在浏览的其他网页。</li>
 <li><strong>把排版好的内容塞进剪贴板</strong>：复杂的网页富文本编辑器往往有内部状态，直接修改网页文字容易引起排版错乱。更稳妥的做法是脚本把 Markdown 转换好的富文本或图片，先放进 Mac 系统的剪贴板。</li>
 <li><strong>定位光标，敲一下粘贴</strong>：脚本通过后台代码把网页光标定位到正文位置，随后把浏览器窗口短暂切到前台零点几秒，模拟敲一下键盘上的 <code>Cmd+V</code>。在编辑器看来，这就是人类从剪贴板粘贴进来的内容，图片和排版会自动触发平台的正常上传流程。</li>
 <li><strong>重新核对并点保存</strong>：粘贴完成后，脚本立刻回到后台重新读取页面，确认表格行列没有丢失、图片已经加载完成，最后调用页面上的保存草稿按钮。</li>
 </ol>
 <p>整个流程里，用户只需要对 Agent 说一句话，剩下的定位、排版、粘贴和校验都由后台脚本打配合搞定。</p>
-<h2 id="配合写作风格库的使用体会让-ai-发文体验最好的几个细节">配合写作风格库的使用体会：让 AI 发文体验最好的几个细节</h2>
-<p>在长期的使用中，这套浏览器控制方式之所以让人觉得顺畅，离不开我们在写作规则（<code>writing-style</code>）和自动化流程里沉淀下的几条原则。这些经验对提升 AI 辅助发文的体验帮助很大：</p>
-<h3 id="1-一图胜千言图表与配图的自动化闭环">1. 一图胜千言：图表与配图的自动化闭环</h3>
-<p>无论是技术架构、流程拆解还是概念封面，配上一张风格统一的优质插画，文章的质感都会有明显的提升。</p>
-<p>我们在日常写作时形成了一个固定的习惯：<strong>让 AI 配合生图工具（比如调用图像生成能力）产出概念配图或封面，生成后直接联动本机的 PicList 脚本，把图片上传到公有云（R2 图床），再把公开的 Markdown 外链回填进正文。</strong></p>
-<p>这样做的好处很实在：</p>
+<h2 id="自动化接入时的避坑细节">自动化接入时的避坑细节</h2>
+<p>在长期的使用中，这套浏览器控制方式之所以让人觉得顺畅，离不开几个实际踩坑后沉淀下的原则：</p>
+<h3 id="1-富文本走系统剪贴板避免直接篡改-dom">1. 富文本走系统剪贴板，避免直接篡改 DOM</h3>
+<p>以前尝试直接用爬虫接口往平台发包，或者用 JavaScript 脚本暴力改动网页 DOM，结果往往是格式错乱、账号被风控，甚至破坏了网页编辑器的撤销栈。</p>
+<p>实践里更稳妥的做法，是顺应人类原有的使用界面：</p>
 <ul>
-<li><strong>多端分发排版不崩塌</strong>：整张图片在微信公众号、小红书、X 长文里都能保持高清，避免各平台编辑器对本地绝对路径或外链域名的识别错误。</li>
-<li><strong>全链路自动闭环</strong>：作者不需要去经历「生成图片 → 本地另存为 → 手工切到图床网页上传 → 复制外链 → 粘贴回编辑器」的繁琐流程，Agent 在后台直接完成了绘图与上云。</li>
+<li>平台编辑器支持富文本粘贴，就通过脚本准备好标准的富文本放入系统剪贴板；</li>
+<li>平台需要单张上传配图，就模拟真实的粘贴按键，让编辑器自带的上传通道去接收图片；</li>
+<li>页面有内部状态校验时，直接修改输入框节点往往无法触发前端框架的数据绑定，模拟原生按键反而最不容易出 Bug。</li>
 </ul>
-<h3 id="2-人定事实与基调agent-管结构与转写">2. 人定事实与基调，Agent 管结构与转写</h3>
-<p>让 AI 帮写文章，最容易出现的问题是通篇充满 AI 味：满嘴「至关重要」「深入探讨」「不可磨灭」，或者自作聪明地加上一堆夸张的戏剧化铺垫和人生哲理。</p>
-<p>我们在 <code>writing-style</code> 里立下的核心规矩就是：<strong>像一个用过这些工具的同行在跟你聊天，讲自己遇到了什么、怎么处理的、怎么看。</strong></p>
-<ul>
-<li><strong>事实与痛点由人提供</strong>：比如本文是因为我们在 Codex 上操作浏览器屡次断连、才去调查背后的 AppleScript 机制。真实的事实哪怕只有几句，文章立论就有根基。</li>
-<li><strong>让 Agent 承担结构整理与客观对照</strong>：Agent 擅长把混乱的想法整理成三步逻辑，或者把多个技术方案拉通成清晰的表格。</li>
-<li><strong>把好最后的文风关</strong>：不让 Agent 堆砌空泛的形容词，不用「不是X而是Y」制造虚假的洞察感，结尾平实收住，不强行升华。</li>
-</ul>
-<h3 id="3-排版与富文本的免侵入原则">3. 排版与富文本的「免侵入」原则</h3>
-<p>以前让 AI 辅助发文，很多方案尝试直接用爬虫接口往平台发包，或者用脚本暴力改动网页 DOM。结果往往是格式掉乱、账号被风控，甚至编辑器的撤销栈被破坏。</p>
-<p>把这套方式用好，最核心的体会是<strong>顺应人类原有的使用界面</strong>：</p>
-<ul>
-<li>平台编辑器支持富文本粘贴，我们就通过脚本准备好标准的富文本放入系统剪贴板；</li>
-<li>平台需要单张上传配图，我们就模拟真实的粘贴按键，让编辑器自带的上传通道去接收图片；</li>
-<li>无论脚本跑得多顺，<strong>自动化永远停留在「保存草稿」这一步</strong>，绝不允许 Agent 替人按下最终的「正式发布」。</li>
-</ul>
-<p>这种保持边界感的设计，既让 Agent 承担了最枯燥的搬运排版工作，又把最终的把关权牢牢留在人类手里。</p>
+<h3 id="2-自动化止步于保存草稿">2. 自动化止步于「保存草稿」</h3>
+<p>无论脚本跑得多顺，自动化的边界应当固定在「保存草稿」这一步，绝不允许 Agent 替人按下最终的「正式发布」。</p>
+<p>这种保持边界感的设计，既让 Agent 承担了最枯燥的搬运和排版校验工作，又把最终的把关权牢牢留在人类手里。</p>
 <h2 id="这么好用为什么平时很少听说">这么好用，为什么平时很少听说？</h2>
 <p>很多人会疑惑：既然它省事又好用，为什么整个 AI 行业在宣传浏览器自动化时，都在提 Playwright、Puppeteer 或者各类云浏览器，很少大面积推它？</p>
 <p>这里有几个现实的原因：</p>
 <p><strong>1. 它是 macOS 独占技术，无法做成通用商业标准。</strong><br>
 大部分商业 AI Agent 运行在云端服务器、Linux 容器或者 Windows 环境下。云端根本没有 Mac 系统，自然无法依赖 AppleScript。商业软件追求的是跨平台和容器化部署，这让行业的主流投资全部倒向了以 Chromium 为基础的跨平台自动化框架。</p>
 <p><strong>2. 缺乏网络层面的可观测性。</strong><br>
-它是用来做桌面控制的，不是为了专业的前端开发调试设计的。在 AppleScript 里，你看不到接口请求的具体返回、抓不到报错堆栈，也无法精确判断静态资源是否下载完毕。对于要写自动化测试、抓包分析的工程师来说，它的能力是不够用的。</p>
+它面向桌面级协同控制，没有针对专业的前端开发调试场景做设计。在 AppleScript 里，你看不到接口请求的具体返回、抓不到报错堆栈，也无法精确判断静态资源是否下载完毕。对于要写自动化测试、抓包分析的工程师来说，它的能力是不够用的。</p>
 <p><strong>3. 语法小众，且异步处理反直觉。</strong><br>
-AppleScript 本身的语法风格特殊，年轻一代开发者很少接触。更关键的是它属于同步机制，遇到现代网页里常见的异步操作（比如网络请求），如果不加处理，它拿到的结果通常是一行没有实际意义的提示文本，并且不会报错。没踩过坑的人很容易卡在这里，误以为这套机制无法胜任复杂操作。</p>
+AppleScript 本身的语法风格特殊，年轻一代开发者很少接触。加上它属于同步机制，遇到现代网页里常见的异步操作（比如网络请求），如果不加处理，它拿到的结果通常是一行没有实际意义的提示文本，并且不会报错。没踩过坑的人很容易卡在这里，误以为这套机制无法胜任复杂操作。</p>
 <p><strong>4. 哪些工具其实在悄悄封装它？</strong><br>
 虽然在云端不常见，但在 Mac 系统的本地效率工具圈子里，它几乎是底层事实上的通用基石。比如：</p>
 <ul>
@@ -344,7 +328,7 @@ AppleScript 本身的语法风格特殊，年轻一代开发者很少接触。�
 <li><strong>面向本地的 AI 插件</strong>：比如开源的 <code>safari-mcp</code>、<code>claude-for-safari</code>，以及各类控制日常 Chrome 的本地 Skill，核心走的都是相同的通信路径。</li>
 </ul>
 <h2 id="人类该怎么引导-agent-使用如何选型">人类该怎么引导 Agent 使用，如何选型</h2>
-<p>作为使用者，不需要去记具体的脚本语法，重点在于清楚什么场景下该选什么方案，以及如何给 Agent 下达边界清晰的指令。</p>
+<p>作为使用者，不用去记具体的脚本语法，清楚什么场景选什么方案、给 Agent 明确边界即可。</p>
 <h3 id="如何引导-agent-使用这套能力">如何引导 Agent 使用这套能力</h3>
 <p>如果你希望你的 Agent（无论是 Codex、Claude Code 还是 Antigravity）在本地操作浏览器时更顺手，可以在提示词或项目的规范文件里给它明确这几条指引：</p>
 <ol>
