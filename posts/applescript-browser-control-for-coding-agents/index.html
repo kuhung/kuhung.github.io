@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T23:15:00+08:00","datePublished":"2026-10-21T23:15:00+08:00","description":"分析 Playwright、CDP 与 AppleScript 在操作日常浏览器时的差异，解释为什么通过 macOS 自带的 osascript 操控已登录 Chrome 更轻量顺手，以及自动化工作流中的避坑要点。","headline":"用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AppleScript, Chrome, Coding Agent, macOS, 自动化, Antigravity, Codex, 写作工作流","mainEntityOfPage":{"@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"WebPage"},"name":"用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","wordCount":372}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T23:15:00+08:00","datePublished":"2026-10-21T23:15:00+08:00","description":"分析 Playwright、CDP 与 AppleScript 在操作日常浏览器时的差异，解释为什么通过 macOS 自带的 osascript 操控已登录 Chrome 更轻量顺手，以及自动化工作流中的避坑要点。","headline":"用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AppleScript, Chrome, Coding Agent, macOS, 自动化, Antigravity, Codex, 写作工作流","mainEntityOfPage":{"@id":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","@type":"WebPage"},"name":"用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/applescript-browser-control-for-coding-agents/","wordCount":351}</script>
 </head>
 
   
@@ -264,7 +264,7 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/cf38bc397083dea9.webp" alt="主流 Coding Agent 浏览器控制技术路线对比与选型" class="lazyload"><figcaption class="image-caption">主流 Coding Agent 浏览器控制技术路线对比与选型</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/338efa3a50a5a117.webp" alt="主流 Coding Agent 浏览器控制路线对比与选型" class="lazyload"><figcaption class="image-caption">主流 Coding Agent 浏览器控制路线对比与选型</figcaption></figure></p>
 <p>日常写代码或发文章时，AppleScript 让人觉得顺手主要有三个原因：</p>
 <p><strong>第一，省去登录步骤。</strong><br>
 很多网页后台有短信验证、扫码或二次验证。用 Playwright 或独立 CDP，Agent 面对的是一个全新的浏览器窗口，进不了后台。AppleScript 直接操作你正在用的浏览器进程。网页里的请求带着你原有的登录凭据，站点把它当成正常的人类访问，省去了反复处理登录态的麻烦。</p>
@@ -287,12 +287,7 @@ if (!doNotTrack) {
 </ul>
 <h2 id="ai-技能是怎么把它整合进工作流的">AI 技能是怎么把它整合进工作流的</h2>
 <p>在实际使用中，我们不会让 Agent 每次抓瞎现写系统脚本。以日常把 Markdown 文章自动化同步到各大内容平台草稿箱的流程为例，它被整合成了一条四步流水线：</p>
-<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart LR
-    A[&#34;用户发出任务&lt;br/&gt;把文章存为草稿&#34;] --&gt; B[&#34;步骤 1：后台寻址&lt;br/&gt;按目标 URL 锁定标签页&#34;]
-    B --&gt; C[&#34;步骤 2：数据就绪&lt;br/&gt;文章富文本写入系统剪贴板&#34;]
-    C --&gt; D[&#34;步骤 3：前台粘贴&lt;br/&gt;激活窗口，触发原生 Cmd+V&#34;]
-    D --&gt; E[&#34;步骤 4：回读确认&lt;br/&gt;校验段落与表格，保存草稿&#34;]
-</code></pre><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/c3e92bcff39e3f72.webp" alt="Agent 辅助发文自动化流水线架构" class="lazyload"><figcaption class="image-caption">Agent 辅助发文自动化流水线架构</figcaption></figure></p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/9c6a89d5cd56e736.webp" alt="Agent 辅助发文自动化流水线架构图" class="lazyload"><figcaption class="image-caption">Agent 辅助发文自动化流水线架构图</figcaption></figure></p>
 <ol>
 <li><strong>按具体网址找标签页</strong>：Agent 先在后台扫描所有打开的窗口，找到具体匹配那篇草稿网址的标签页，绝不乱动用户正在浏览的其他网页。</li>
 <li><strong>把排版好的内容塞进剪贴板</strong>：复杂的网页富文本编辑器往往有内部状态，直接修改网页文字容易引起排版错乱。更稳妥的做法是脚本把 Markdown 转换好的富文本或图片，先放进 Mac 系统的剪贴板。</li>
