@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T21:30:00+08:00","datePublished":"2026-10-21T21:30:00+08:00","description":"在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几 …","headline":"个人量化选股（四）：截面打分与去重排他","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 卡玛比率, 相对动量, AH溢价仲裁, 行业中性化, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"WebPage"},"name":"个人量化选股（四）：截面打分与去重排他","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","wordCount":733}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T21:30:00+08:00","datePublished":"2026-10-21T21:30:00+08:00","description":"在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几 …","headline":"个人量化选股（四）：截面打分与去重排他","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 卡玛比率, 相对动量, AH溢价仲裁, 行业中性化, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"WebPage"},"name":"个人量化选股（四）：截面打分与去重排他","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","wordCount":734}</script>
 </head>
 
   
@@ -494,7 +494,7 @@ if (!doNotTrack) {
 <li>通过买不起顺延机制，让小体量资金能够处理整手交易门槛。</li>
 </ul>
 <p>选出标的之后，下一个问题是调仓节奏。如果每天根据最新排名换股，微小的排名波动就会引发频繁的卖出与买入，产生交易摩擦。</p>
-<p>下一篇我们要讨论的是：如何通过设置上轨买入与下轨卖出的双线缓冲区，结合固定的调仓窗口，在实盘中过滤排名抖动带来的无效换手。</p>
+<p>下一篇：<a href="/posts/stock-selection-dual-line-buffer-and-rebalance-window/">《个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手》</a></p>
 <hr>
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
@@ -504,6 +504,7 @@ if (!doNotTrack) {
 <li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">个人量化选股（二）：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
 <li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
 <li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
+<li><a href="https://www.quantfull.com/blog/dual-line-buffer-and-rebalance-window">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</a></li>
 </ul>
 <p><strong>流动性与交易实务专题</strong>：</p>
 <ul>

@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":1068}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-23 itemprop="datePublished">October 23, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#排名随机游走与换手率陷阱">排名随机游走与换手率陷阱</a>
+      <ul>
+        <li><a href="#1-缓冲区能降低一半换手率但并不创造理论超额收益">1. 缓冲区能降低一半换手率，但并不创造理论超额收益</a></li>
+        <li><a href="#2-买入线定得过窄会产生严重的现金拖累cash-drag">2. 买入线定得过窄会产生严重的现金拖累（Cash Drag）</a></li>
+        <li><a href="#3-置换交易事件的胜率缺乏大数统计优势">3. 置换交易事件的胜率缺乏大数统计优势</a></li>
+      </ul>
+    </li>
+    <li><a href="#双线缓冲区有限状态机fsm">双线缓冲区有限状态机（FSM）</a>
+      <ul>
+        <li><a href="#1-buffer_hold正常持有">1. <code>BUFFER_HOLD</code>（正常持有）</a></li>
+        <li><a href="#2-buffer_decay动量衰竭">2. <code>BUFFER_DECAY</code>（动量衰竭）</a></li>
+        <li><a href="#3-p0_breakdown生命线绝对防守破位">3. <code>P0_BREAKDOWN</code>（生命线绝对防守破位）</a></li>
+        <li><a href="#4-not_ranked--alternates观察候补">4. <code>NOT_RANKED</code> / <code>ALTERNATES</code>（观察候补）</a></li>
+      </ul>
+    </li>
+    <li><a href="#调仓时间窗口用日常静默过滤杂音">调仓时间窗口：用日常静默过滤杂音</a></li>
+    <li><a href="#2026年10月最新截面案例推演如果是这样的数据系统怎么看">2026年10月最新截面案例推演：如果是这样的数据，系统怎么看？</a>
+      <ul>
+        <li><a href="#1-样本持仓标的截面诊断推演2026-10-实测数据">1. 样本持仓标的截面诊断推演（2026-10 实测数据）</a></li>
+        <li><a href="#2-观察池候选标的选拔推演2026-10-实测数据">2. 观察池候选标的选拔推演（2026-10 实测数据）</a></li>
+      </ul>
+    </li>
+    <li><a href="#阶段小结">阶段小结</a></li>
+    <li><a href="#选股体系与延伸阅读">选股体系与延伸阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>在上一篇<a href="/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/">《个人量化选股（四）：截面打分与去重排他》</a>中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。</p>
+<p>然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题：</p>
+<blockquote>
+<p><strong>手里的股票并没有跌破趋势均线，但市场上出现了排名更靠前的新股票，到底要不要换？如果排名稍微掉了一两名，是不是必须立刻卖出？</strong></p>
+</blockquote>
+<p>动量策略在学术论文与理想化回测中，往往能跑出极具吸引力的年化收益率。然而，绝大多数纸面优秀的动量系统，一旦在个人真实账户上运行，往往在几个月内就会因为频繁调仓、高昂的摩擦成本和巨大的执行阻力而难以维系。</p>
+<p>如果按照教科书式的机械规则——“持有排名前 4 的股票，只要掉出前 4 就立刻换出”——整个组合很快就会陷入无休止的高频频繁换手。</p>
+<p>本文是个人量化选股体系的第五篇。我们将围绕**“调仓太频繁怎么降换手”**这一核心工程痛点，通过 4,320 组多维度历史参数扫描，量化拆解换手率陷阱背后的摩擦损耗；深入剖析双线缓冲区有限状态机（FSM）与调仓时间窗口的设计原理；并以 2026 年 10 月下旬最新的市场真实截面数据为例，演示系统在面对不同运行形态时的客观判断与操作推演。</p>
+<hr>
+<h2 id="排名随机游走与换手率陷阱">排名随机游走与换手率陷阱</h2>
+<p>频繁换股的根本原因，在于忽视了截面排名的微观分布特征：<strong>截面相邻标的的打分分差极小，短期排名具有显著的随机游走（Random Walk）噪声。</strong></p>
+<p>在 40 到 100 只候选观察池中，排在第 3 名、第 4 名、第 5 名与第 6 名的股票，它们的 12-1 动量或 1 年卡玛比率得分往往仅相差千分之几。个股盘中 0.5% 的偶发价格扰动，就能引发截面排名的剧烈洗牌。</p>
+<p>今天某只股票涨了 1%，名次从第 4 冲到了第 3；下周它稍微回调 0.5%，截面得分就被第 4 名、第 5 名的股票反超，名次滑落到了第 5 名。</p>
+<p>如果交易系统采用“无缓冲区”的对称买卖规则（例如：前 $K$ 名买入、跌出前 $K$ 名即卖出），在实盘中会带来两大致命代价：</p>
+<ol>
+<li><strong>确定性的摩擦成本损耗（Friction Drag）</strong>：<br>
+个人投资者在券商处面对着固定的交易佣金、交易所经手费、印花税以及买卖盘口滑点（哪怕大盘股单边也存在 5~10 bps 摩擦）。全仓频繁换手，在年换手率达到 250%~300% 时，摩擦成本每年可直接吞噬组合 2.5%~5.0% 的复合净值。</li>
+<li><strong>时序滞后造成的往复损耗（Whipsaw）</strong>：<br>
+真正处于主升浪趋势中的优质龙头，在上涨进程中普遍伴随 2 到 4 周的平台休整与波动率收缩。在平台整理期间，其相对强弱指标暂态走平，截面名次短暂跌出前 3 或前 4 名属于正常现象。如果一跌出就机械换出，往往刚在横盘休整区间离场，换入当时正处于加速冲顶阶段的高位标的，导致组合承担双向滑点损耗与趋势阶段错配。</li>
+</ol>
+<p>为了用客观数据验证这一现象，我们在美股 48 只候选池上运行了全量参数扫描引擎，对涵盖 4 种打分因子、3 种调仓周期、16 种缓冲区组合与 2 种加权算法的 <strong>4,320 组实证参数组合</strong> 进行了系统扫描（单边 10 bps 摩擦成本假设）。</p>
+<p>美股池（12-1 动量，隔月调仓，20 日波动率倒数配仓）在不同缓冲区设置下的实测数据如下：</p>
+<table>
+<thead>
+<tr>
+<th>缓冲区架构</th>
+<th>参数设置 $(b_{in}, b_{out})$</th>
+<th style="text-align:right">年化复合收益 (CAGR)</th>
+<th style="text-align:right">夏普比率 (Sharpe)</th>
+<th style="text-align:right">卡玛比率 (Calmar)</th>
+<th style="text-align:right">年换手率 (Turnover)</th>
+<th style="text-align:right">实测置换次数 (4.7年)</th>
+<th style="text-align:right">年化摩擦损耗 (10bps)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>无缓冲区</strong></td>
+<td>前 6 买 / 前 6 卖</td>
+<td style="text-align:right"><strong>+32.4%</strong></td>
+<td style="text-align:right"><strong>1.29</strong></td>
+<td style="text-align:right"><strong>1.59</strong></td>
+<td style="text-align:right"><strong>275.4%</strong></td>
+<td style="text-align:right">63 次</td>
+<td style="text-align:right">2.60%</td>
+</tr>
+<tr>
+<td><strong>适度缓冲区</strong></td>
+<td>前 4 买 / 前 8 卖</td>
+<td style="text-align:right"><strong>+24.8%</strong></td>
+<td style="text-align:right"><strong>1.04</strong></td>
+<td style="text-align:right"><strong>1.23</strong></td>
+<td style="text-align:right"><strong>159.9%</strong></td>
+<td style="text-align:right">24 次</td>
+<td style="text-align:right">1.51%</td>
+</tr>
+<tr>
+<td><strong>宽幅缓冲区</strong></td>
+<td>前 3 买 / 前 10 卖</td>
+<td style="text-align:right"><strong>+23.0%</strong></td>
+<td style="text-align:right"><strong>1.03</strong></td>
+<td style="text-align:right"><strong>1.22</strong></td>
+<td style="text-align:right"><strong>126.2%</strong></td>
+<td style="text-align:right">17 次</td>
+<td style="text-align:right">1.19%</td>
+</tr>
+<tr>
+<td><strong>严选缓冲区</strong></td>
+<td>前 2 买 / 前 8 卖</td>
+<td style="text-align:right"><strong>+12.0%</strong></td>
+<td style="text-align:right"><strong>0.55</strong></td>
+<td style="text-align:right"><strong>0.83</strong></td>
+<td style="text-align:right"><strong>75.7%</strong></td>
+<td style="text-align:right">8 次</td>
+<td style="text-align:right">0.71%</td>
+</tr>
+</tbody>
+</table>
+<p>扫描结果提炼为以下三维全景实证图表：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/852eb19ea8fe1953.webp" alt="4320组实证参数扫描：缓冲区宽度与调仓窗口对换手率与夏普比率的影响" class="lazyload"><figcaption class="image-caption">4320组实证参数扫描：缓冲区宽度与调仓窗口对换手率与夏普比率的影响</figcaption></figure></p>
+<p>从实测数据中可以得出三个关键的客观事实：</p>
+<h3 id="1-缓冲区能降低一半换手率但并不创造理论超额收益">1. 缓冲区能降低一半换手率，但并不创造理论超额收益</h3>
+<p>在无缓冲区（前 6 买 / 前 6 卖）下，年换手率高达 275.4%，4.7 年内换股达 63 次，整个组合平均每 4 个月就被全部洗牌一次。</p>
+<p>引入 <code>(4, 8)</code> 适度缓冲区后，年换手率直接骤降至 159.9%（<strong>换手率直降 41.9%</strong>），总置换次数从 63 次锐减至 24 次；若进一步放宽至 <code>(3, 10)</code> 宽幅缓冲区，年换手率压缩至 126.2%（<strong>换手率降幅达 54.2%</strong>）。</p>
+<p>然而，数据也诚实地证明了一个客观事实：<strong>缓冲区并不是提高组合纸面收益的工具。</strong><br>
+在 10 bps 单边成本的低滑点模型下，极高频换手带来的持仓敏锐度（及时换入当时动量最强标的），其超额回报在理论上超越了摩擦成本。无缓冲区的纸面年化达 +32.4%，而适度缓冲区回落至 +24.8%。</p>
+<p>因此，采用缓冲区的底层逻辑非常清晰：<strong>它是一种以适度让渡理论纸面收益为代价，换取换手率大幅下降、防范假突破扰动与保障实盘可执行性的工程折中。</strong></p>
+<h3 id="2-买入线定得过窄会产生严重的现金拖累cash-drag">2. 买入线定得过窄会产生严重的现金拖累（Cash Drag）</h3>
+<p>图表中的 <code>(2, 8)</code> 严选设置表明：年换手率虽然降到了 75.7%，但年化收益率发生断崖式下跌，仅剩 +12.0%，夏普比率只有 0.55。</p>
+<p>原因在于：当新股票必须排进全市场前 2 名才被允许买入时，准入门槛过高。在多头震荡市中，前 2 名标的往往存在年线破位或超买乖离，导致组合长时间无法选满目标配额（6 只），大量资金滞留在 10% 基础现金垫之外闲置，造成了严重的现金拖累。</p>
+<h3 id="3-置换交易事件的胜率缺乏大数统计优势">3. 置换交易事件的胜率缺乏大数统计优势</h3>
+<p>在逐笔换股事件明细库中，美股池在 4.7 年内仅发生了 12 至 65 次换股。实测置换胜率（即买入新标的在后续持有期的收益超过被卖出老标的同期收益的概率）在 46.0% 至 50.0% 之间随机游走，超额收益均值仅在 +0.38% 左右。这在计量统计上说明：频繁换到更强标的，短期内并不具备稳定的统计显著性。</p>
+<hr>
+<h2 id="双线缓冲区有限状态机fsm">双线缓冲区有限状态机（FSM）</h2>
+<p>为了在工程上规范管理标的的生命周期，系统将空间维度的排名拉开，构建了<strong>进取买入线</strong>与<strong>容忍持有线</strong>两条隔离防线，并将其形式化为一个清晰的<strong>四态有限状态机（Finite State Machine）</strong>。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/67327ac89ce238f6.webp" alt="个人量化选股体系（五）：双线缓冲区与有限状态机架构" class="lazyload"><figcaption class="image-caption">个人量化选股体系（五）：双线缓冲区与有限状态机架构</figcaption></figure></p>
+<p>在空间维度上，我们将全市场通过硬门槛的多头合格标的划分为三个明确区域（以美股和日股为例，基准容量 4~6 只）：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/0dd8be8e2518bd36.webp" alt="双线排名缓冲区空间区间划分（以美股/日股为例）" class="lazyload"><figcaption class="image-caption">双线排名缓冲区空间区间划分（以美股/日股为例）</figcaption></figure></p>
+<p>与空间划分相对应，持仓标的在系统的状态机中处于以下四种确定性状态之一：</p>
+<h3 id="1-buffer_hold正常持有">1. <code>BUFFER_HOLD</code>（正常持有）</h3>
+<ul>
+<li><strong>触发条件</strong>：当前持仓标的在所属市场的截面打分排名维持在 $\le \text{Top } M$（美股与日股为前 8 名，港股与 A 股为前 3 名）。</li>
+<li><strong>执行动作</strong>：维持现有仓位，不产生任何买卖委托。</li>
+<li><strong>系统含义</strong>：容忍个股在中期上涨中的合理技术休整，让利润顺势奔跑，避免在暂态回撤中过早离场。</li>
+</ul>
+<h3 id="2-buffer_decay动量衰竭">2. <code>BUFFER_DECAY</code>（动量衰竭）</h3>
+<ul>
+<li><strong>触发条件</strong>：当前持仓标的排名滑落至 $&gt; \text{Top } M$（美日跌出前 8，港 A 跌出前 3），或者不再满足基础多头选股门槛（如 12-1 动量转负）。</li>
+<li><strong>执行动作</strong>：状态机标记为“动量衰竭”，并加入待卖出队列。</li>
+<li><strong>关键约束</strong>：<strong>该状态不触发盘中即时抛售</strong>。系统严格等待调仓时间窗口开启后，方可在调仓日执行有序置换。</li>
+</ul>
+<h3 id="3-p0_breakdown生命线绝对防守破位">3. <code>P0_BREAKDOWN</code>（生命线绝对防守破位）</h3>
+<ul>
+<li><strong>触发条件</strong>：标的收盘价跌破 MA200 周期生命线幅度超过 1.5%（$\text{Close} &lt; \text{MA200} \times 0.985$）。</li>
+<li><strong>执行动作</strong>：<strong>无条件最高优先级紧急清仓</strong>。不等调仓日，不看截面排名，下一个交易日开盘立刻市价清仓，回收资金以降低组合风险敞口。</li>
+<li><strong>系统含义</strong>：动量策略最大的系统性风险是深度熊市。MA200 是牛熊分界生死线，一旦破位，左尾风险极大，必须依靠硬止损斩断尾部风险。</li>
+</ul>
+<h3 id="4-not_ranked--alternates观察候补">4. <code>NOT_RANKED</code> / <code>ALTERNATES</code>（观察候补）</h3>
+<ul>
+<li><strong>触发条件</strong>：标的虽在观察池中，但未排进进取买入线（Rank $&gt; N$）。</li>
+<li><strong>执行动作</strong>：按截面得分由高到低降序排列，列为买入候补名单。当前排标的因防追高拦截、同门去重或整手买不起时，按顺序向后递补晋升。</li>
+</ul>
+<p>核心 Python 向量化状态转移判定函数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> enum <span style="color:#f92672">import</span> Enum
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Dict, List, Optional
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PositionBufferState</span>(str, Enum):
+</span></span><span style="display:flex;"><span>    P0_BREAKDOWN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;🔴 P0_BREAKDOWN (破位清仓)&#34;</span>
+</span></span><span style="display:flex;"><span>    BUFFER_HOLD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;🟢 BUFFER_HOLD (正常持有)&#34;</span>
+</span></span><span style="display:flex;"><span>    BUFFER_DECAY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;🟡 BUFFER_DECAY (动量衰竭)&#34;</span>
+</span></span><span style="display:flex;"><span>    NOT_RANKED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;⚪ NOT_RANKED (观察候补)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">evaluate_position_buffer_state</span>(
+</span></span><span style="display:flex;"><span>    symbol: str,
+</span></span><span style="display:flex;"><span>    last_price: float,
+</span></span><span style="display:flex;"><span>    ma200: Optional[float],
+</span></span><span style="display:flex;"><span>    current_rank: int,
+</span></span><span style="display:flex;"><span>    sell_rank_line: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>    price_buffer_pct: float <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.5</span>,
+</span></span><span style="display:flex;"><span>    stop_enabled: bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> tuple[PositionBufferState, str]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;输入持仓标的最新行情与截面排名，返回其在有限状态机中的状态与诊断原因。&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    price_buf <span style="color:#f92672">=</span> price_buffer_pct <span style="color:#f92672">/</span> <span style="color:#ae81ff">100.0</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 周期生命线检验：收盘跌破 MA200 超过 1.5%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> ma200 <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">and</span> last_price <span style="color:#f92672">&lt;</span> ma200 <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> price_buf):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> stop_enabled:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>                PositionBufferState<span style="color:#f92672">.</span>P0_BREAKDOWN,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;收盘跌破 MA200 年线生命线 1.5%，触发最高级 P0 强制止损清仓&#34;</span>
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 港 A 股调仓期内不止损模式</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>                PositionBufferState<span style="color:#f92672">.</span>BUFFER_DECAY,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;低于年线生命线，调仓期内不止损，调仓窗口期统一淘汰&#34;</span>
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 空间缓冲区检验：排名在 Top M 容忍线以内</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> current_rank <span style="color:#f92672">&lt;=</span> sell_rank_line:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>            PositionBufferState<span style="color:#f92672">.</span>BUFFER_HOLD,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;位居市场第 </span><span style="color:#e6db74">{</span>current_rank<span style="color:#e6db74">}</span><span style="color:#e6db74"> 名（在 Top </span><span style="color:#e6db74">{</span>sell_rank_line<span style="color:#e6db74">}</span><span style="color:#e6db74"> 缓冲区内），趋势健康，继续持有&#34;</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 动量衰竭：排名滑落跌出 Top M</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>        PositionBufferState<span style="color:#f92672">.</span>BUFFER_DECAY,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;滑落至市场第 </span><span style="color:#e6db74">{</span>current_rank<span style="color:#e6db74">}</span><span style="color:#e6db74"> 名（跌出 Top </span><span style="color:#e6db74">{</span>sell_rank_line<span style="color:#e6db74">}</span><span style="color:#e6db74"> 容忍线），动量衰竭，待调仓日置换&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><hr>
+<h2 id="调仓时间窗口用日常静默过滤杂音">调仓时间窗口：用日常静默过滤杂音</h2>
+<p>有了空间上的双线缓冲区，交易系统依然面临时间维度的挑战：<strong>如果每天收盘都运行一次调仓算法，稍微有股票跌出前 8 名就立即换股，交易频率依然会失控。</strong></p>
+<p>因此，系统在时间维度引入了**调仓时间窗口（Rebalance Window）**的硬性日历约束：</p>
+<ul>
+<li><strong>美股与日股（US &amp; JP）</strong>：采用 <strong>隔月调仓（Bimonthly）</strong> 机制。仅在双数月末（2、4、6、8、10、12 月的最后一个交易周）开启调仓窗口。</li>
+<li><strong>港股与 A 股（HK &amp; CN_A）</strong>：采用 <strong>季度末调仓（Quarterly）</strong> 机制。仅在季度末（3、6、9、12 月的最后一个交易周）开启调仓窗口。</li>
+</ul>
+<p>在日历未进入调仓窗口的全部日常交易日，系统自动锁死在 <strong>【静默观察期】（Silent Observation Mode）</strong>。</p>
+<p>在静默观察期内，系统遵循铁的纪律：</p>
+<ol>
+<li><strong>常规调仓全面锁定</strong>：即便手里的股票从第 6 名滑落到第 15 名，被标记为 <code>BUFFER_DECAY</code>，系统也严禁盘中手动买卖，严禁执行常规换股；</li>
+<li><strong>唯一打破静默的例外：P0 紧急破位清仓</strong>：当且仅当持仓标的收盘跌破 MA200 达到 1.5% 时，才触发 P0 紧急通道，次日开盘无条件止损。</li>
+</ol>
+<p>时间窗口判断函数的实现逻辑如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> date, timedelta
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> Tuple
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_is_rebalance_window</span>(as_of: date, freq: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bimonthly&#34;</span>) <span style="color:#f92672">-&gt;</span> Tuple[bool, str]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;判断当前日期是否处于法定的调仓执行窗口。&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> as_of<span style="color:#f92672">.</span>month <span style="color:#f92672">==</span> <span style="color:#ae81ff">12</span>:
+</span></span><span style="display:flex;"><span>        next_month <span style="color:#f92672">=</span> date(as_of<span style="color:#f92672">.</span>year <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        next_month <span style="color:#f92672">=</span> date(as_of<span style="color:#f92672">.</span>year, as_of<span style="color:#f92672">.</span>month <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    last_day_of_month <span style="color:#f92672">=</span> next_month <span style="color:#f92672">-</span> timedelta(days<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    days_to_month_end <span style="color:#f92672">=</span> (last_day_of_month <span style="color:#f92672">-</span> as_of)<span style="color:#f92672">.</span>days
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> freq <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;bimonthly&#34;</span>:
+</span></span><span style="display:flex;"><span>        is_even_month <span style="color:#f92672">=</span> (as_of<span style="color:#f92672">.</span>month <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 双数月末倒数 7 天内为法定调仓窗口期</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_even_month <span style="color:#f92672">and</span> days_to_month_end <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">7</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;双数月末调仓窗口期（</span><span style="color:#e6db74">{</span>as_of<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y年%m月&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">末）&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> is_even_month:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;双数月中静默期（距月末调仓日尚余 </span><span style="color:#e6db74">{</span>days_to_month_end<span style="color:#e6db74">}</span><span style="color:#e6db74"> 天，维持静默）&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;单数月静默期（下一次调仓将在下个月末）&#34;</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> freq <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;quarterly&#34;</span>:
+</span></span><span style="display:flex;"><span>        is_quarter_end <span style="color:#f92672">=</span> (as_of<span style="color:#f92672">.</span>month <span style="color:#f92672">in</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">12</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> is_quarter_end <span style="color:#f92672">and</span> days_to_month_end <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">7</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;季末调仓窗口期（</span><span style="color:#e6db74">{</span>as_of<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#39;%Y年%m月&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">末）&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">&#34;季度中静默期（下一次调仓在季末，维持静默观察）&#34;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">&#34;日常静默观察期&#34;</span>
+</span></span></code></pre></div><p>为什么美股日股选择“隔月调仓”而不是“月度”或“季度”？</p>
+<p>前文图表中的第三子图横向对比了美股 48 只池在四大打分因子下的调仓频率实测：</p>
+<ul>
+<li><strong>月度调仓（Monthly）</strong>：频繁调仓导致大量置换交易发生在短期波动高点，年换手率普遍超过 280%~360%，夏普比率受制于频繁摩擦；</li>
+<li><strong>季度调仓（Quarterly）</strong>：表现几乎全面垫底。在 12-1 动量下，季度调仓的夏普比率直接从隔月的 1.04 暴跌至 0.59（腰斩）。这是因为 3 个月的时间跨度太长，动量效应在中期发生衰退或趋势反转时，季度系统无法及时剔除掉队标的，导致净值遭遇深幅回撤拖累；</li>
+<li><strong>隔月调仓（Bimonthly）</strong>：在过滤月度噪声的同时，兼顾了中期的趋势敏锐度，在换手率与夏普比率之间找到了最佳平衡点。</li>
+</ul>
+<hr>
+<h2 id="2026年10月最新截面案例推演如果是这样的数据系统怎么看">2026年10月最新截面案例推演：如果是这样的数据，系统怎么看？</h2>
+<p>为了具体说明双线缓冲区与调仓窗口在现实市场中是如何判断的，我们以 <strong>2026 年 10 月下旬市场最新的客观截面数据</strong> 为例进行推演。</p>
+<p>此时正值 2026 年 10 月 22 日收盘后，距离 10 月 31 日月末双数月调仓窗口尚余 9 个日历日（处于静默期尾声）。</p>
+<p>我们假定一个投资组合当前持有覆盖不同形态特征的样本标的（顺势运行、临界缓冲、动量衰竭、破位下行等），结合全景观察池的前列候选标的，将其在截面排名（X 轴）与距 MA200 年线乖离率（Y 轴）上的投影绘制如下：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/60e592766b08edad.webp" alt="2026年10月市场最新截面案例推演：双线缓冲区、防追高滤网与日常静默期诊断逻辑" class="lazyload"><figcaption class="image-caption">2026年10月市场最新截面案例推演：双线缓冲区、防追高滤网与日常静默期诊断逻辑</figcaption></figure></p>
+<p>面对这一组真实的截面数据，量化状态机是如何进行逐项研判的？</p>
+<h3 id="1-样本持仓标的截面诊断推演2026-10-实测数据">1. 样本持仓标的截面诊断推演（2026-10 实测数据）</h3>
+<table>
+<thead>
+<tr>
+<th>样本标的代码</th>
+<th>标的名称</th>
+<th style="text-align:center">所属市场</th>
+<th style="text-align:right">现价</th>
+<th style="text-align:right">距MA200乖离</th>
+<th style="text-align:right">1Y卡玛比率</th>
+<th style="text-align:center">市场截面排名</th>
+<th style="text-align:center">状态机评级</th>
+<th style="text-align:left">诊断判断与操作推演</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JP.8729</strong></td>
+<td>Sony Financial</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">143.40</td>
+<td style="text-align:right"><strong>-2.7%</strong></td>
+<td style="text-align:right">-0.10</td>
+<td style="text-align:center">破位 (&gt;999)</td>
+<td style="text-align:center"><strong>🔴 P0 破位清仓</strong></td>
+<td style="text-align:left"><strong>【P0 强制清仓】</strong>：跌破 MA200 年线生命线 1.5%（现价低于年线 -2.7%），触发绝对防守，<strong>不等月末调仓窗口</strong>，次日开盘坚决市价清仓，回收资金。</td>
+</tr>
+<tr>
+<td><strong>JP.8306</strong></td>
+<td>三菱日联金融</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">3,373.00</td>
+<td style="text-align:right">+9.0%</td>
+<td style="text-align:right">2.87</td>
+<td style="text-align:center">日股第 3 名</td>
+<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
+<td style="text-align:left"><strong>【正常持有】</strong>：位于进取线与缓冲区内，趋势强劲，坚定持有。</td>
+</tr>
+<tr>
+<td><strong>JP.9101</strong></td>
+<td>日本邮船</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">7,267.00</td>
+<td style="text-align:right">+25.6%</td>
+<td style="text-align:right">2.42</td>
+<td style="text-align:center">日股第 5 名</td>
+<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
+<td style="text-align:left"><strong>【正常持有】</strong>：位于 Top 8 缓冲区内，虽年线偏离较大但未超标，继续持有。</td>
+</tr>
+<tr>
+<td><strong>JP.8001</strong></td>
+<td>伊藤忠商事</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">2,327.00</td>
+<td style="text-align:right">+15.3%</td>
+<td style="text-align:right">2.03</td>
+<td style="text-align:center">日股第 6 名</td>
+<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
+<td style="text-align:left"><strong>【正常持有】</strong>：位于 Top 8 缓冲区内，动量健康，继续持有。</td>
+</tr>
+<tr>
+<td><strong>JP.6501</strong></td>
+<td>日立</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">5,816.00</td>
+<td style="text-align:right">+14.7%</td>
+<td style="text-align:right">1.37</td>
+<td style="text-align:center">日股第 8 名</td>
+<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
+<td style="text-align:left"><strong>【正常持有】</strong>：位居日股第 8 名临界缓冲线，未跌出容忍线，继续持有。</td>
+</tr>
+<tr>
+<td><strong>US.MRK</strong></td>
+<td>默沙东</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">149.88</td>
+<td style="text-align:right">+20.7%</td>
+<td style="text-align:right">6.69</td>
+<td style="text-align:center">美股第 8 名</td>
+<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
+<td style="text-align:left"><strong>【正常持有】</strong>：卡玛比率 6.69 极其扎实，位居美股第 8 名，在 Top 8 缓冲区内，免于换手，继续持有。</td>
+</tr>
+<tr>
+<td><strong>US.KO</strong></td>
+<td>可口可乐</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">92.68</td>
+<td style="text-align:right">+15.1%</td>
+<td style="text-align:right">4.27</td>
+<td style="text-align:center">美股第 12 名</td>
+<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
+<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 12 名（跌出 Top 8），标记衰竭；因距调仓日尚余 9 天，坚决锁定不调仓，待 10 月末窗口开启再行置换。</td>
+</tr>
+<tr>
+<td><strong>US.XOM</strong></td>
+<td>埃克森美孚</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">178.09</td>
+<td style="text-align:right">+17.7%</td>
+<td style="text-align:right">3.11</td>
+<td style="text-align:center">美股第 18 名</td>
+<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
+<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 18 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
+</tr>
+<tr>
+<td><strong>US.AAPL</strong></td>
+<td>苹果</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">343.99</td>
+<td style="text-align:right">+17.3%</td>
+<td style="text-align:right">2.28</td>
+<td style="text-align:center">美股第 28 名</td>
+<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
+<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 28 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
+</tr>
+<tr>
+<td><strong>US.NVDA</strong></td>
+<td>英伟达</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">221.97</td>
+<td style="text-align:right">+9.3%</td>
+<td style="text-align:right">1.13</td>
+<td style="text-align:center">美股第 36 名</td>
+<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
+<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 36 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
+</tr>
+<tr>
+<td><strong>US.V</strong></td>
+<td>Visa</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">407.85</td>
+<td style="text-align:right">+20.2%</td>
+<td style="text-align:right">1.07</td>
+<td style="text-align:center">美股第 37 名</td>
+<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
+<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 37 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-观察池候选标的选拔推演2026-10-实测数据">2. 观察池候选标的选拔推演（2026-10 实测数据）</h3>
+<table>
+<thead>
+<tr>
+<th>候选标的代码</th>
+<th>标的名称</th>
+<th style="text-align:center">所属市场</th>
+<th style="text-align:right">现价</th>
+<th style="text-align:right">距MA200乖离</th>
+<th style="text-align:right">1Y卡玛比率</th>
+<th style="text-align:center">市场截面排名</th>
+<th style="text-align:center">选拔状态</th>
+<th style="text-align:left">详细判定机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US.MRNA</strong></td>
+<td>莫德纳</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">245.81</td>
+<td style="text-align:right"><strong>+205.3%</strong></td>
+<td style="text-align:right">23.25</td>
+<td style="text-align:center">美股第 1 名</td>
+<td style="text-align:center"><strong>❌ 拦截不买</strong></td>
+<td style="text-align:left"><strong>【防追高硬门槛拦截】</strong>：虽位列全美股打分第 1 名，但距年线乖离高达 +205.3%（远超 +30% 上限），属于极端脉冲超买，坚决不追高，直接跳过。</td>
+</tr>
+<tr>
+<td><strong>US.VLO</strong></td>
+<td>瓦莱罗能源</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">436.75</td>
+<td style="text-align:right"><strong>+57.8%</strong></td>
+<td style="text-align:right">15.09</td>
+<td style="text-align:center">美股第 2 名</td>
+<td style="text-align:center"><strong>❌ 拦截不买</strong></td>
+<td style="text-align:left"><strong>【防追高硬门槛拦截】</strong>：美股第 2 名，但距年线 +57.8% &gt; +30%，防追高拦截不买。</td>
+</tr>
+<tr>
+<td><strong>US.SNDK</strong></td>
+<td>闪迪</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">1,378.22</td>
+<td style="text-align:right"><strong>+12.3%</strong></td>
+<td style="text-align:right">14.57</td>
+<td style="text-align:center">美股第 3 名</td>
+<td style="text-align:center"><strong>✅ 晋升买入候选</strong></td>
+<td style="text-align:left"><strong>【晋升买入线】</strong>：美股第 3 名（满足 Top 4），年线上方健康运行 (+12.3% ≤ 30%)，动量极强，晋升为 10 月末首选买入标的。</td>
+</tr>
+<tr>
+<td><strong>US.LITE</strong></td>
+<td>Lumentum</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">850.70</td>
+<td style="text-align:right"><strong>+8.4%</strong></td>
+<td style="text-align:right">9.86</td>
+<td style="text-align:center">美股第 4 名</td>
+<td style="text-align:center"><strong>✅ 晋升买入候选</strong></td>
+<td style="text-align:left"><strong>【晋升买入线】</strong>：美股第 4 名（满足 Top 4），距年线 +8.4% 稳健温和，晋升为 10 月末第二买入标的。</td>
+</tr>
+<tr>
+<td><strong>US.MU</strong></td>
+<td>美光科技</td>
+<td style="text-align:center">美股</td>
+<td style="text-align:right">913.67</td>
+<td style="text-align:right"><strong>+25.7%</strong></td>
+<td style="text-align:right">9.01</td>
+<td style="text-align:center">美股第 5 名</td>
+<td style="text-align:center"><strong>⚪ 候补第 1 位</strong></td>
+<td style="text-align:left"><strong>【候补递补】</strong>：美股第 5 名，在前 4 名存在超买或资金不足时，作为第一顺位候补。</td>
+</tr>
+<tr>
+<td><strong>JP.8766</strong></td>
+<td>东京海上控股</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">571.10</td>
+<td style="text-align:right"><strong>+52.0%</strong></td>
+<td style="text-align:right">4.65</td>
+<td style="text-align:center">日股第 1 名</td>
+<td style="text-align:center"><strong>❌ 拦截不买</strong></td>
+<td style="text-align:left"><strong>【防追高硬门槛拦截】</strong>：日股第 1 名，但距年线偏离高达 +52.0%，拦截不买。</td>
+</tr>
+<tr>
+<td><strong>JP.8316</strong></td>
+<td>三井住友金融</td>
+<td style="text-align:center">日股</td>
+<td style="text-align:right">3,171.00</td>
+<td style="text-align:right"><strong>+6.9%</strong></td>
+<td style="text-align:right">3.13</td>
+<td style="text-align:center">日股第 2 名</td>
+<td style="text-align:center"><strong>✅ 晋升买入候选</strong></td>
+<td style="text-align:left"><strong>【晋升买入线】</strong>：顺延为日股第 1 买入候选，距年线仅 +6.9%，走势极其扎实。</td>
+</tr>
+</tbody>
+</table>
+<p>通过这组真实截面数据的推演，系统展示了以下四项确定性的运作原则：</p>
+<ol>
+<li><strong>生命线防御的确定性执行</strong>：<br>
+<code>JP.8729</code>（Sony Financial Group）收盘跌破年线生命线达 -2.7%，触发最高优先级 <code>P0_BREAKDOWN</code>。系统<strong>立刻发出清仓指令</strong>，坚决不等到月末，次日开盘市价止损回收流动性。这是控制系统左尾风险的第一准则。</li>
+<li><strong>容忍缓冲区的平滑过滤</strong>：<br>
+<code>US.MRK</code>（默沙东）在美股截面中位列第 8 名。如果采用无缓冲的机械规则，第 8 名早已被动换出。但在 <code>(4, 8)</code> 规则下，默沙东稳稳停留在绿色容忍缓冲区内，继续持有，省去了一大笔调仓摩擦损耗。</li>
+<li><strong>日常静默期消除过度交易偏差</strong>：<br>
+样本中的可口可乐（第 12 名）、苹果（第 28 名）、英伟达（第 36 名）等，虽然排名已滑落至 Top 8 之外，状态机被标记为 <code>BUFFER_DECAY</code>。但在 10 月 22 日这个静默期节点，<strong>常规调仓全部锁定</strong>。系统拒绝盘中频繁调整，严格等待 10 月末窗口开启再做统一置换。</li>
+<li><strong>防追高门槛排除极端脉冲</strong>：<br>
+莫德纳（MRNA）与瓦莱罗能源（VLO）虽然分别高居美股第 1 名与第 2 名，但由于乖离率分别高达 +205% 与 +58%，被防追高天花板（+30%）直接拦截。系统从容晋升了第 3 名的闪迪（SNDK）与第 4 名的 Lumentum（LITE）。</li>
+</ol>
+<hr>
+<h2 id="阶段小结">阶段小结</h2>
+<p>双线缓冲区与调仓时间窗口，解决的是动量策略如何落地实盘的工程问题：</p>
+<ul>
+<li><strong>空间双线分离</strong>：用进取买入线（Top 4）保证买入质量，用容忍持有线（Top 8）容忍持仓波动。4,320 组扫描实测证明，它成功降低了 42%~54% 的无效换手率与交易摩擦；</li>
+<li><strong>时间窗口锁定</strong>：美日隔月、港 A 季末，日常全面静默，避免陷入高频过度交易；</li>
+<li><strong>状态机协同</strong>：<code>BUFFER_HOLD</code>、<code>BUFFER_DECAY</code> 与 <code>P0_BREAKDOWN</code> 各司其职，在保护长期趋势奔跑的同时，锁死了极端行情的下行风险。</li>
+</ul>
+<p>标的有了缓冲区与调仓窗口的护航，那么在面临极端行情破位时，具体应该如何执行止损？为什么美日市场跌破年线必须坚决立刻清仓，而港股 A 股在季度内却取消了机械止损？</p>
+<p>下一篇我们将深入讨论差异化风控与退出机制：为什么不同的市场微观结构，必须匹配完全不同的防守哲学。</p>
+<hr>
+<h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
+<p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
+<p><strong>个人量化选股实战系列</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">个人量化选股（一）：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">个人量化选股（二）：标的池怎么选（多路召回与双轨粗排完整解析）</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
+<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
+<li><a href="https://www.quantfull.com/blog/dual-line-buffer-and-rebalance-window">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</a></li>
+</ul>
+<p><strong>流动性与交易实务专题</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/blog/daily-liquidity-measurement">1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</a></li>
+<li><a href="https://www.quantfull.com/blog/strategy-capacity-estimation">策略容量与冲击成本估算实务</a></li>
+<li><a href="https://www.quantfull.com/blog/momentum-strategy-backtest-review">12-1 动量策略全周期回测复盘</a></li>
+</ul>
+<p><strong>策略库与投研知识资产</strong>：</p>
+<ul>
+<li><a href="https://www.quantfull.com/products/151-strategies-stock">151 交易策略 - 股票篇</a></li>
+<li><a href="https://www.quantfull.com/products/quant-mindmap">量化交易思维导图与资料合集</a></li>
+<li><a href="https://www.quantfull.com/products/quant-bundle">仓满量化 151 交易策略全集</a></li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%80%89%E8%82%A1/">
+                    #选股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%8F%8C%E7%BA%BF%E7%BC%93%E5%86%B2%E5%8C%BA/">
+                    #双线缓冲区</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%B0%83%E4%BB%93%E7%AA%97%E5%8F%A3/">
+                    #调仓窗口</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8D%A2%E6%89%8B%E7%8E%87%E6%8E%A7%E5%88%B6/">
+                    #换手率控制</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%8A%B6%E6%80%81%E6%9C%BA/">
+                    #状态机</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%BA%A4%E6%98%93%E6%88%90%E6%9C%AC/">
+                    #交易成本</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/a%E8%82%A1/">
+                    #A股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/">
+                    #港股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BE%8E%E8%82%A1/">
+                    #美股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%97%A5%E8%82%A1/">
+                    #日股</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/" class="prev" rel="prev" title="别再对着一长串任务打字了：用拖拽看板接管 Coding Agent 的执行顺序"><i class="iconfont icon-left"></i>&nbsp;别再对着一长串任务打字了：用拖拽看板接管 Coding Agent 的执行顺序</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>
