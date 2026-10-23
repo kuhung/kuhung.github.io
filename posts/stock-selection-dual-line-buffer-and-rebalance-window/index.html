@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":1068}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":728}</script>
 </head>
 
   
@@ -186,12 +186,7 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#调仓时间窗口用日常静默过滤杂音">调仓时间窗口：用日常静默过滤杂音</a></li>
-    <li><a href="#2026年10月最新截面案例推演如果是这样的数据系统怎么看">2026年10月最新截面案例推演：如果是这样的数据，系统怎么看？</a>
-      <ul>
-        <li><a href="#1-样本持仓标的截面诊断推演2026-10-实测数据">1. 样本持仓标的截面诊断推演（2026-10 实测数据）</a></li>
-        <li><a href="#2-观察池候选标的选拔推演2026-10-实测数据">2. 观察池候选标的选拔推演（2026-10 实测数据）</a></li>
-      </ul>
-    </li>
+    <li><a href="#2026年10月最新截面案例推演如果是这样的数据系统怎么看">2026年10月最新截面案例推演：如果是这样的数据，系统怎么看？</a></li>
     <li><a href="#阶段小结">阶段小结</a></li>
     <li><a href="#选股体系与延伸阅读">选股体系与延伸阅读</a></li>
   </ul>
@@ -275,54 +270,34 @@ if (!doNotTrack) {
 <tr>
 <th>缓冲区架构</th>
 <th>参数设置 $(b_{in}, b_{out})$</th>
-<th style="text-align:right">年化复合收益 (CAGR)</th>
-<th style="text-align:right">夏普比率 (Sharpe)</th>
-<th style="text-align:right">卡玛比率 (Calmar)</th>
-<th style="text-align:right">年换手率 (Turnover)</th>
-<th style="text-align:right">实测置换次数 (4.7年)</th>
-<th style="text-align:right">年化摩擦损耗 (10bps)</th>
+<th style="text-align:right">年化复合收益</th>
+<th style="text-align:right">年换手率</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>无缓冲区</strong></td>
 <td>前 6 买 / 前 6 卖</td>
-<td style="text-align:right"><strong>+32.4%</strong></td>
-<td style="text-align:right"><strong>1.29</strong></td>
-<td style="text-align:right"><strong>1.59</strong></td>
-<td style="text-align:right"><strong>275.4%</strong></td>
-<td style="text-align:right">63 次</td>
-<td style="text-align:right">2.60%</td>
+<td style="text-align:right">+32.4%</td>
+<td style="text-align:right">275.4%</td>
 </tr>
 <tr>
 <td><strong>适度缓冲区</strong></td>
 <td>前 4 买 / 前 8 卖</td>
-<td style="text-align:right"><strong>+24.8%</strong></td>
-<td style="text-align:right"><strong>1.04</strong></td>
-<td style="text-align:right"><strong>1.23</strong></td>
-<td style="text-align:right"><strong>159.9%</strong></td>
-<td style="text-align:right">24 次</td>
-<td style="text-align:right">1.51%</td>
+<td style="text-align:right">+24.8%</td>
+<td style="text-align:right"><strong>159.9%</strong>（换手率直降 41.9%）</td>
 </tr>
 <tr>
 <td><strong>宽幅缓冲区</strong></td>
 <td>前 3 买 / 前 10 卖</td>
-<td style="text-align:right"><strong>+23.0%</strong></td>
-<td style="text-align:right"><strong>1.03</strong></td>
-<td style="text-align:right"><strong>1.22</strong></td>
-<td style="text-align:right"><strong>126.2%</strong></td>
-<td style="text-align:right">17 次</td>
-<td style="text-align:right">1.19%</td>
+<td style="text-align:right">+23.0%</td>
+<td style="text-align:right"><strong>126.2%</strong>（换手率直降 54.2%）</td>
 </tr>
 <tr>
 <td><strong>严选缓冲区</strong></td>
 <td>前 2 买 / 前 8 卖</td>
-<td style="text-align:right"><strong>+12.0%</strong></td>
-<td style="text-align:right"><strong>0.55</strong></td>
-<td style="text-align:right"><strong>0.83</strong></td>
-<td style="text-align:right"><strong>75.7%</strong></td>
-<td style="text-align:right">8 次</td>
-<td style="text-align:right">0.71%</td>
+<td style="text-align:right">+12.0%</td>
+<td style="text-align:right">75.7%（严重现金拖累）</td>
 </tr>
 </tbody>
 </table>
@@ -476,251 +451,24 @@ if (!doNotTrack) {
 <p>此时正值 2026 年 10 月 22 日收盘后，距离 10 月 31 日月末双数月调仓窗口尚余 9 个日历日（处于静默期尾声）。</p>
 <p>我们假定一个投资组合当前持有覆盖不同形态特征的样本标的（顺势运行、临界缓冲、动量衰竭、破位下行等），结合全景观察池的前列候选标的，将其在截面排名（X 轴）与距 MA200 年线乖离率（Y 轴）上的投影绘制如下：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/60e592766b08edad.webp" alt="2026年10月市场最新截面案例推演：双线缓冲区、防追高滤网与日常静默期诊断逻辑" class="lazyload"><figcaption class="image-caption">2026年10月市场最新截面案例推演：双线缓冲区、防追高滤网与日常静默期诊断逻辑</figcaption></figure></p>
-<p>面对这一组真实的截面数据，量化状态机是如何进行逐项研判的？</p>
-<h3 id="1-样本持仓标的截面诊断推演2026-10-实测数据">1. 样本持仓标的截面诊断推演（2026-10 实测数据）</h3>
-<table>
-<thead>
-<tr>
-<th>样本标的代码</th>
-<th>标的名称</th>
-<th style="text-align:center">所属市场</th>
-<th style="text-align:right">现价</th>
-<th style="text-align:right">距MA200乖离</th>
-<th style="text-align:right">1Y卡玛比率</th>
-<th style="text-align:center">市场截面排名</th>
-<th style="text-align:center">状态机评级</th>
-<th style="text-align:left">诊断判断与操作推演</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>JP.8729</strong></td>
-<td>Sony Financial</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">143.40</td>
-<td style="text-align:right"><strong>-2.7%</strong></td>
-<td style="text-align:right">-0.10</td>
-<td style="text-align:center">破位 (&gt;999)</td>
-<td style="text-align:center"><strong>🔴 P0 破位清仓</strong></td>
-<td style="text-align:left"><strong>【P0 强制清仓】</strong>：跌破 MA200 年线生命线 1.5%（现价低于年线 -2.7%），触发绝对防守，<strong>不等月末调仓窗口</strong>，次日开盘坚决市价清仓，回收资金。</td>
-</tr>
-<tr>
-<td><strong>JP.8306</strong></td>
-<td>三菱日联金融</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">3,373.00</td>
-<td style="text-align:right">+9.0%</td>
-<td style="text-align:right">2.87</td>
-<td style="text-align:center">日股第 3 名</td>
-<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
-<td style="text-align:left"><strong>【正常持有】</strong>：位于进取线与缓冲区内，趋势强劲，坚定持有。</td>
-</tr>
-<tr>
-<td><strong>JP.9101</strong></td>
-<td>日本邮船</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">7,267.00</td>
-<td style="text-align:right">+25.6%</td>
-<td style="text-align:right">2.42</td>
-<td style="text-align:center">日股第 5 名</td>
-<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
-<td style="text-align:left"><strong>【正常持有】</strong>：位于 Top 8 缓冲区内，虽年线偏离较大但未超标，继续持有。</td>
-</tr>
-<tr>
-<td><strong>JP.8001</strong></td>
-<td>伊藤忠商事</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">2,327.00</td>
-<td style="text-align:right">+15.3%</td>
-<td style="text-align:right">2.03</td>
-<td style="text-align:center">日股第 6 名</td>
-<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
-<td style="text-align:left"><strong>【正常持有】</strong>：位于 Top 8 缓冲区内，动量健康，继续持有。</td>
-</tr>
-<tr>
-<td><strong>JP.6501</strong></td>
-<td>日立</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">5,816.00</td>
-<td style="text-align:right">+14.7%</td>
-<td style="text-align:right">1.37</td>
-<td style="text-align:center">日股第 8 名</td>
-<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
-<td style="text-align:left"><strong>【正常持有】</strong>：位居日股第 8 名临界缓冲线，未跌出容忍线，继续持有。</td>
-</tr>
-<tr>
-<td><strong>US.MRK</strong></td>
-<td>默沙东</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">149.88</td>
-<td style="text-align:right">+20.7%</td>
-<td style="text-align:right">6.69</td>
-<td style="text-align:center">美股第 8 名</td>
-<td style="text-align:center"><strong>🟢 BUFFER_HOLD</strong></td>
-<td style="text-align:left"><strong>【正常持有】</strong>：卡玛比率 6.69 极其扎实，位居美股第 8 名，在 Top 8 缓冲区内，免于换手，继续持有。</td>
-</tr>
-<tr>
-<td><strong>US.KO</strong></td>
-<td>可口可乐</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">92.68</td>
-<td style="text-align:right">+15.1%</td>
-<td style="text-align:right">4.27</td>
-<td style="text-align:center">美股第 12 名</td>
-<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
-<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 12 名（跌出 Top 8），标记衰竭；因距调仓日尚余 9 天，坚决锁定不调仓，待 10 月末窗口开启再行置换。</td>
-</tr>
-<tr>
-<td><strong>US.XOM</strong></td>
-<td>埃克森美孚</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">178.09</td>
-<td style="text-align:right">+17.7%</td>
-<td style="text-align:right">3.11</td>
-<td style="text-align:center">美股第 18 名</td>
-<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
-<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 18 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
-</tr>
-<tr>
-<td><strong>US.AAPL</strong></td>
-<td>苹果</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">343.99</td>
-<td style="text-align:right">+17.3%</td>
-<td style="text-align:right">2.28</td>
-<td style="text-align:center">美股第 28 名</td>
-<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
-<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 28 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
-</tr>
-<tr>
-<td><strong>US.NVDA</strong></td>
-<td>英伟达</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">221.97</td>
-<td style="text-align:right">+9.3%</td>
-<td style="text-align:right">1.13</td>
-<td style="text-align:center">美股第 36 名</td>
-<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
-<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 36 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
-</tr>
-<tr>
-<td><strong>US.V</strong></td>
-<td>Visa</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">407.85</td>
-<td style="text-align:right">+20.2%</td>
-<td style="text-align:right">1.07</td>
-<td style="text-align:center">美股第 37 名</td>
-<td style="text-align:center"><strong>🟡 BUFFER_DECAY</strong></td>
-<td style="text-align:left"><strong>【动量衰竭·锁定静默】</strong>：滑落至第 37 名，当前静默期保持不动，待 10 月末执行调仓置换。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-观察池候选标的选拔推演2026-10-实测数据">2. 观察池候选标的选拔推演（2026-10 实测数据）</h3>
-<table>
-<thead>
-<tr>
-<th>候选标的代码</th>
-<th>标的名称</th>
-<th style="text-align:center">所属市场</th>
-<th style="text-align:right">现价</th>
-<th style="text-align:right">距MA200乖离</th>
-<th style="text-align:right">1Y卡玛比率</th>
-<th style="text-align:center">市场截面排名</th>
-<th style="text-align:center">选拔状态</th>
-<th style="text-align:left">详细判定机制</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>US.MRNA</strong></td>
-<td>莫德纳</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">245.81</td>
-<td style="text-align:right"><strong>+205.3%</strong></td>
-<td style="text-align:right">23.25</td>
-<td style="text-align:center">美股第 1 名</td>
-<td style="text-align:center"><strong>❌ 拦截不买</strong></td>
-<td style="text-align:left"><strong>【防追高硬门槛拦截】</strong>：虽位列全美股打分第 1 名，但距年线乖离高达 +205.3%（远超 +30% 上限），属于极端脉冲超买，坚决不追高，直接跳过。</td>
-</tr>
-<tr>
-<td><strong>US.VLO</strong></td>
-<td>瓦莱罗能源</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">436.75</td>
-<td style="text-align:right"><strong>+57.8%</strong></td>
-<td style="text-align:right">15.09</td>
-<td style="text-align:center">美股第 2 名</td>
-<td style="text-align:center"><strong>❌ 拦截不买</strong></td>
-<td style="text-align:left"><strong>【防追高硬门槛拦截】</strong>：美股第 2 名，但距年线 +57.8% &gt; +30%，防追高拦截不买。</td>
-</tr>
-<tr>
-<td><strong>US.SNDK</strong></td>
-<td>闪迪</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">1,378.22</td>
-<td style="text-align:right"><strong>+12.3%</strong></td>
-<td style="text-align:right">14.57</td>
-<td style="text-align:center">美股第 3 名</td>
-<td style="text-align:center"><strong>✅ 晋升买入候选</strong></td>
-<td style="text-align:left"><strong>【晋升买入线】</strong>：美股第 3 名（满足 Top 4），年线上方健康运行 (+12.3% ≤ 30%)，动量极强，晋升为 10 月末首选买入标的。</td>
-</tr>
-<tr>
-<td><strong>US.LITE</strong></td>
-<td>Lumentum</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">850.70</td>
-<td style="text-align:right"><strong>+8.4%</strong></td>
-<td style="text-align:right">9.86</td>
-<td style="text-align:center">美股第 4 名</td>
-<td style="text-align:center"><strong>✅ 晋升买入候选</strong></td>
-<td style="text-align:left"><strong>【晋升买入线】</strong>：美股第 4 名（满足 Top 4），距年线 +8.4% 稳健温和，晋升为 10 月末第二买入标的。</td>
-</tr>
-<tr>
-<td><strong>US.MU</strong></td>
-<td>美光科技</td>
-<td style="text-align:center">美股</td>
-<td style="text-align:right">913.67</td>
-<td style="text-align:right"><strong>+25.7%</strong></td>
-<td style="text-align:right">9.01</td>
-<td style="text-align:center">美股第 5 名</td>
-<td style="text-align:center"><strong>⚪ 候补第 1 位</strong></td>
-<td style="text-align:left"><strong>【候补递补】</strong>：美股第 5 名，在前 4 名存在超买或资金不足时，作为第一顺位候补。</td>
-</tr>
-<tr>
-<td><strong>JP.8766</strong></td>
-<td>东京海上控股</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">571.10</td>
-<td style="text-align:right"><strong>+52.0%</strong></td>
-<td style="text-align:right">4.65</td>
-<td style="text-align:center">日股第 1 名</td>
-<td style="text-align:center"><strong>❌ 拦截不买</strong></td>
-<td style="text-align:left"><strong>【防追高硬门槛拦截】</strong>：日股第 1 名，但距年线偏离高达 +52.0%，拦截不买。</td>
-</tr>
-<tr>
-<td><strong>JP.8316</strong></td>
-<td>三井住友金融</td>
-<td style="text-align:center">日股</td>
-<td style="text-align:right">3,171.00</td>
-<td style="text-align:right"><strong>+6.9%</strong></td>
-<td style="text-align:right">3.13</td>
-<td style="text-align:center">日股第 2 名</td>
-<td style="text-align:center"><strong>✅ 晋升买入候选</strong></td>
-<td style="text-align:left"><strong>【晋升买入线】</strong>：顺延为日股第 1 买入候选，距年线仅 +6.9%，走势极其扎实。</td>
-</tr>
-</tbody>
-</table>
-<p>通过这组真实截面数据的推演，系统展示了以下四项确定性的运作原则：</p>
+<p>图中将持仓样本标的与观察池前列标的投影在「市场截面排名（X 轴）」与「距 MA200 年线乖离率（Y 轴）」二维空间中，清晰展示了量化状态机的四项核心运作原则：</p>
 <ol>
-<li><strong>生命线防御的确定性执行</strong>：<br>
-<code>JP.8729</code>（Sony Financial Group）收盘跌破年线生命线达 -2.7%，触发最高优先级 <code>P0_BREAKDOWN</code>。系统<strong>立刻发出清仓指令</strong>，坚决不等到月末，次日开盘市价止损回收流动性。这是控制系统左尾风险的第一准则。</li>
-<li><strong>容忍缓冲区的平滑过滤</strong>：<br>
-<code>US.MRK</code>（默沙东）在美股截面中位列第 8 名。如果采用无缓冲的机械规则，第 8 名早已被动换出。但在 <code>(4, 8)</code> 规则下，默沙东稳稳停留在绿色容忍缓冲区内，继续持有，省去了一大笔调仓摩擦损耗。</li>
-<li><strong>日常静默期消除过度交易偏差</strong>：<br>
-样本中的可口可乐（第 12 名）、苹果（第 28 名）、英伟达（第 36 名）等，虽然排名已滑落至 Top 8 之外，状态机被标记为 <code>BUFFER_DECAY</code>。但在 10 月 22 日这个静默期节点，<strong>常规调仓全部锁定</strong>。系统拒绝盘中频繁调整，严格等待 10 月末窗口开启再做统一置换。</li>
-<li><strong>防追高门槛排除极端脉冲</strong>：<br>
-莫德纳（MRNA）与瓦莱罗能源（VLO）虽然分别高居美股第 1 名与第 2 名，但由于乖离率分别高达 +205% 与 +58%，被防追高天花板（+30%）直接拦截。系统从容晋升了第 3 名的闪迪（SNDK）与第 4 名的 Lumentum（LITE）。</li>
+<li>
+<p>🔴 <strong>生命线防御（强制清仓）</strong>：<br>
+<code>JP.8729</code>（Sony Financial）收盘价跌破 MA200 年线生命线达 -2.7%（低于年线下方 1.5% 容忍度），触发最高优先级 <code>P0_BREAKDOWN</code>。系统<strong>不等月末调仓窗口</strong>，下一个交易日开盘坚决市价清仓回收流动性，切断左尾深度下跌风险。</p>
+</li>
+<li>
+<p>🟢 <strong>容忍缓冲区（平滑过滤）</strong>：<br>
+<code>US.MRK</code>（默沙东，美股第 8 名）、<code>JP.9101</code>（日本邮船，日股第 5 名）等标的，虽未排在进取买入线（前 4 名），但稳稳处于 Top 8 容忍缓冲区内，维持 <code>BUFFER_HOLD</code> 状态正常持有，免于被盘中轻微波动频繁换出。</p>
+</li>
+<li>
+<p>🟡 <strong>日常静默期（过滤杂音）</strong>：<br>
+<code>US.KO</code>（可口可乐，第 12 名）、<code>US.AAPL</code>（苹果，第 28 名）、<code>US.NVDA</code>（英伟达，第 36 名）等，虽滑落至 Top 8 容忍线之外，被标记为 <code>BUFFER_DECAY</code>（动量衰竭）。但在当前非调仓窗口的日常静默期，<strong>常规调仓全部锁定</strong>，系统严禁盘中频繁换股，严格等待月末调仓窗口开启再统一置换。</p>
+</li>
+<li>
+<p>❌ <strong>防追高拦截与顺延晋升</strong>：<br>
+<code>US.MRNA</code>（莫德纳）与 <code>US.VLO</code>（瓦莱罗能源）虽分别位居美股打分第 1、2 名，但因距年线乖离高达 +205% 与 +58%（远超 +30% 警戒线），触发防追高硬门槛被系统一票否决；系统顺延晋升第 3 名 <code>US.SNDK</code>（闪迪，乖离 +12.3%）与第 4 名 <code>US.LITE</code>（Lumentum，乖离 +8.4%）为首选买入标的。</p>
+</li>
 </ol>
 <hr>
 <h2 id="阶段小结">阶段小结</h2>
