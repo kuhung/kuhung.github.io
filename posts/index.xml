@@ -6,7 +6,19 @@
     <description>Recent content in Posts on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 11:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Oct 2026 22:20:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>a16z Top 100 消费级 AI 报告（第 7 期全文翻译与产品拆解预告）</title>
+      <link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link>
+      <pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid>
+      <description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
+在阅读全文前，有几个重点数据需要先关注：
+付费用户比例较低：全美近半数人使用过 AI，但每天使用的仅有 25%，真正为 ChatGPT、Gemini 或 Claude 个人订阅付费的消费者只有 4.5%。 支出高度集中于重度用户：前 1% 的重度付费用户月均支出达 903 美元（18 个月内增长 80%），贡献了近两成的总支出；而中位数付费者每月仅 25 美元，且只有 13% 的人会购买第二款 AI 工具。 流量与实际收入显著脱节：消费支出前 50 强中，有 29 家完全没有进入网页流量或移动端月活榜单。高客单价产品主要集中在桌面客户端、开发工具和直接嵌入即时通讯工具的智能体（Agent）。 头部效应加剧：本期仅 11 款新产品首次入榜，为历期最少。Canva、Notion、Figma 等成熟软件凭借已有工作流占据前列，同时进入网页、移动与支出三榜前列的产品全球仅 7 家。 这份榜单涵盖的 100 多个消费级 AI 产品，后续我们会逐个进行分析拆解。
+报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description>
+    </item>
+    
     <item>
       <title>个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</title>
       <link>https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/</link>
