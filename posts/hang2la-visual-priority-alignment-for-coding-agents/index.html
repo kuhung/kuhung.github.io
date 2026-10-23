@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T00:05:00+08:00","datePublished":"2026-10-23T00:05:00+08:00","description":"分析在终端与 Coding Agent 对齐多任务优先级时的沟通损耗，对比主流排期方式的优劣，介绍如何通过零存储的浏览器拖拽看板 hang2la（h2l.kuhung.me）在十秒内排定执行顺序并提升编码交付效率。","headline":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Coding Agent, Claude Code, Codex, Antigravity, Cursor, 工作流, 开源, hang2la","mainEntityOfPage":{"@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"WebPage"},"name":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","wordCount":387}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T00:05:00+08:00","datePublished":"2026-10-23T00:05:00+08:00","description":"分析在终端与 Coding Agent 对齐多任务优先级时的沟通损耗，对比主流排期方式的优劣，介绍如何通过零存储的浏览器拖拽看板 hang2la（h2l.kuhung.me）在十秒内排定执行顺序并提升编码交付效率。","headline":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Coding Agent, Claude Code, Codex, Antigravity, Cursor, 工作流, 开源, hang2la","mainEntityOfPage":{"@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"WebPage"},"name":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","wordCount":390}</script>
 </head>
 
   
@@ -141,7 +141,7 @@ if (!doNotTrack) {
       <ul>
         <li><a href="#1-让-agent-生成排期链接">1. 让 Agent 生成排期链接</a></li>
         <li><a href="#2-在浏览器里拖拽理牌">2. 在浏览器里拖拽理牌</a></li>
-        <li><a href="#3-一键复制回传终端">3. 一键复制回传终端</a></li>
+        <li><a href="#3-一键复制回传-agent">3. 一键复制回传 Agent</a></li>
         <li><a href="#进阶用法写进全局规则省去每次手敲提示词">进阶用法：写进全局规则，省去每次手敲提示词</a></li>
       </ul>
     </li>
@@ -205,11 +205,11 @@ if (!doNotTrack) {
           <blockquote>
 <p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
 </blockquote>
-<p>日常用 Claude Code、Codex、Antigravity 或者 Cursor 辅助写代码时，最耗精力的环节往往是给它定方向。</p>
-<p>让它做一次架构梳理、排查历史代码或者拆解新功能，屏幕上会立刻多出十几个甚至二十个待办事项。在黑底白字的终端里眯着眼睛逐行扫视这些平铺的文字，大脑很容易疲劳，看到第十二条的时候往往已经忘了第三条写的是什么。</p>
+<p>日常用 Claude Code、Codex、Antigravity 或者 Cursor 辅助写代码时，沟通往复最多的环节往往是给它定方向。</p>
+<p>让它做一次架构梳理、排查历史代码或者拆解新功能，屏幕上会立刻多出十几个甚至二十个待办事项。现在的工具无论是走命令行终端，还是用各自的 Web 版、图形客户端（GUI），界面体验其实都不差。但不管放在哪个窗口里，吐出来的始终是一大串纵向平铺的文字列表，始终不是直观可归纳的分类框框。看到第十二条的时候，往往已经忘了第三条写的是什么。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/4ae47a945d231efa.webp" alt="别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序" class="lazyload"><figcaption class="image-caption">别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序</figcaption></figure></p>
 <p>更费劲的是调整优先级。模型给出的默认顺序很少能完全契合当前的业务重心。如果想让它按你的想法排期，传统做法是在对话框里手打一段话：“把第 3 项和第 7 项提前，第 2 项取消别做了，第 9 项延后处理，第 5 项排在第 7 项后面”。</p>
-<p>敲这段话费时费力，稍微走神就会漏掉几项。更常见的情况是，模型读完这一长串绕口令式的自然语言批示，在后续执行时依然把轻重缓急搞混。原本用来写代码的时间，大量耗费在了终端里反复确认和修整任务列表上。</p>
+<p>敲这段话费时费力，稍微走神就会漏掉几项。更常见的情况是，模型读完这一长串绕口令式的自然语言批示，在后续执行时依然把轻重缓急搞混。原本用来写代码的时间，大量耗费在了对话框里反复确认和修整任务列表上。</p>
 <p>如果嫌打字麻烦、干脆不做干预，任由 Agent 自行决定执行顺序，它又很容易把宝贵的算力和时间消耗在无关紧要的边缘需求上，真正急需交付的主干功能反而迟迟不动。</p>
 <p>为了解决人和 Agent 对齐优先级的摩擦，我在自己的开源小工具 <code>hang2la</code>（<a href="https://h2l.kuhung.me/">h2l.kuhung.me</a>）里加了一套零存储的视觉化任务对齐机制。</p>
 <h2 id="为什么现有的任务对齐方式在日常开发里不够顺手">为什么现有的任务对齐方式在日常开发里不够顺手</h2>
@@ -227,7 +227,7 @@ if (!doNotTrack) {
 </thead>
 <tbody>
 <tr>
-<td>终端手打自然语言批示</td>
+<td>对话框手打自然语言批示</td>
 <td>零成本</td>
 <td>一维文本列表，扫视慢，手打修改耗时</td>
 <td>留在当前会话</td>
@@ -334,7 +334,7 @@ Agent 拆出来的任务名称里，通常直接带着内部接口路径、核�
 <h3 id="2-在浏览器里拖拽理牌">2. 在浏览器里拖拽理牌</h3>
 <p>点击链接，页面会自动进入专注的任务分诊模式。</p>
 <p>你可以直接拖动卡片调整档位和左右顺序。如果你把某张卡片从 Agent 原本建议的档位挪到了新档位，鼠标悬停在卡片上时，右上角会轻量提示原来的档位（比如 <code>原: B</code>），平时则保持画面干净，不干扰视线。</p>
-<h3 id="3-一键复制回传终端">3. 一键复制回传终端</h3>
+<h3 id="3-一键复制回传-agent">3. 一键复制回传 Agent</h3>
 <p>排好顺序后，点击页面右上角的 <strong>「完成排序并复制」</strong> 按钮。</p>
 <p>系统会自动把你调整后的最终结果和档位变更，整理成一段干净的人类批示写入剪贴板：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>我已排定优先级，请按以下顺序执行：
@@ -350,7 +350,7 @@ Agent 拆出来的任务名称里，通常直接带着内部接口路径、核�
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> 旧版 V1 接口兼容层
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>（请优先交付 S 级项，D 级已明确砍掉/跳过）
-</span></span></code></pre></div><p>切回终端或编辑器，按 <code>Cmd+V</code> 粘贴回车。Agent 收到这段明确的指令后，会自动跳过 D 档里的废弃项，严格顺着 S、A、B、C 的顺序开始写代码。</p>
+</span></span></code></pre></div><p>切回终端、客户端或网页对话框，按 <code>Cmd+V</code> 粘贴回车。Agent 收到这段明确的指令后，会自动跳过 D 档里的废弃项，严格顺着 S、A、B、C 的顺序开始写代码。</p>
 <h3 id="进阶用法写进全局规则省去每次手敲提示词">进阶用法：写进全局规则，省去每次手敲提示词</h3>
 <p>如果你经常需要做任务排期，可以把下面这段约定直接加进你的全局或项目规则文件里（比如 Claude Code 的 <code>CLAUDE.md</code>、Antigravity 的 <code>GEMINI.md</code> 或 Codex 的 <code>AGENTS.md</code>）：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## 任务优先级对齐规范
@@ -361,7 +361,7 @@ Agent 拆出来的任务名称里，通常直接带着内部接口路径、核�
 <h2 id="它是怎样实实在在提高编码生产力的">它是怎样实实在在提高编码生产力的</h2>
 <p>把长文本沟通换成看板拖拽，在实际写代码时能省下四块隐性成本：</p>
 <p><strong>第一，用二维空间直觉替代一维文本阅读。</strong><br>
-人眼对颜色分层和空间位置的敏感度，远高于黑底白字的平铺段落。十几条任务摆在五个颜色分明的档位行里，哪个档位塞满了、哪个核心任务掉在了后面，一眼就能看穿，省去了在终端里反复上下滚屏比对的脑力消耗。</p>
+人眼对颜色分层和空间位置的敏感度，远高于单调平铺的长文本段落。十几条任务摆在五个颜色分明的档位行里，哪个档位塞满了、哪个核心任务掉在了后面，一眼就能看穿，省去了在长列表里反复上下滚屏比对的脑力消耗。</p>
 <p><strong>第二，用「D 拉了」档位果断砍掉过度设计。</strong><br>
 现在的 Coding Agent 非常喜欢自作聪明，顺手给你加一堆“向后兼容包装层”“未来扩展接口”或者“兜底轮询脚本”。以前在文字列表里很容易忽略这些夹带私货的任务，等它写出几百行冗余代码再去回滚，既浪费 Token 又污染上下文。现在看到这类伪需求，顺手拖进 D 档，回传指令里会明确标出“砍掉不做”，直接把过度设计掐死在动工之前。</p>
 <p><strong>第三，自动标注档位变更，帮模型校准业务重心。</strong><br>
@@ -395,7 +395,7 @@ Agent 拆出来的任务名称里，通常直接带着内部接口路径、核�
 <li><strong>Agent Skill 协议规范</strong>：<a href="https://h2l.kuhung.me/skill.md">https://h2l.kuhung.me/skill.md</a></li>
 <li><strong>GitHub 开源仓库</strong>：<a href="https://github.com/kuhung/hang2la">kuhung/hang2la</a></li>
 </ul>
-<p>如果你平时也在终端里高频使用 Claude Code、Codex、Antigravity 或 Cursor，厌倦了对着长串文字列表手打排期，下次列完计划不妨把 <code>https://h2l.kuhung.me/skill.md</code> 丢给它试试。</p>
+<p>如果你平时也高频使用 Claude Code、Codex、Antigravity 或 Cursor，厌倦了对着长串文字列表反复确认排期，下次列完计划不妨把 <code>https://h2l.kuhung.me/skill.md</code> 丢给它试试。</p>
 <hr>
 <p><a href="/about/">关于作者</a></p>
 
