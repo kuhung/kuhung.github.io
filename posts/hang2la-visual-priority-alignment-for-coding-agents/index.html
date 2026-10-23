@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T00:05:00+08:00","datePublished":"2026-10-23T00:05:00+08:00","description":"分析在终端与 Coding Agent 对齐多任务优先级时的沟通损耗，对比主流排期方式的优劣，介绍如何通过零存储的浏览器拖拽看板 hang2la（h2l.kuhung.me）在十秒内排定执行顺序并提升编码交付效率。","headline":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Coding Agent, Claude Code, Codex, Antigravity, Cursor, 工作流, 开源, hang2la","mainEntityOfPage":{"@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"WebPage"},"name":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","wordCount":390}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T00:05:00+08:00","datePublished":"2026-10-23T00:05:00+08:00","description":"分析在终端与 Coding Agent 对齐多任务优先级时的沟通损耗，对比主流排期方式的优劣，介绍如何通过零存储的浏览器拖拽看板 hang2la（h2l.kuhung.me）在十秒内排定执行顺序并提升编码交付效率。","headline":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Coding Agent, Claude Code, Codex, Antigravity, Cursor, 工作流, 开源, hang2la","mainEntityOfPage":{"@id":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","@type":"WebPage"},"name":"别再对着终端手打排期了：用拖拽看板接管 Coding Agent 的执行顺序","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/","wordCount":381}</script>
 </head>
 
   
@@ -146,8 +146,7 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#它是怎样实实在在提高编码生产力的">它是怎样实实在在提高编码生产力的</a></li>
-    <li><a href="#什么时候适合用它什么时候不用">什么时候适合用它，什么时候不用</a></li>
-    <li><a href="#在线体验与开源地址">在线体验与开源地址</a></li>
+    <li><a href="#别让-agent-在错误的分支上跑得太快">别让 Agent 在错误的分支上跑得太快</a></li>
   </ul>
 </nav>
   </div>
@@ -368,34 +367,18 @@ Agent 拆出来的任务名称里，通常直接带着内部接口路径、核�
 当你把某项任务从 B 档提到 S 档时，复制出来的文本会自动带上 <code>（从 B 档调整至 S）</code> 的标记。这个标记等于在明确告诉模型：你刚才对这件事的重要程度判断错了。模型收到这种强反馈后，在后续写代码和分配注意力时，会明显向你提拔上来的模块倾斜。</p>
 <p><strong>第四，100% 内存运行，零隐私外泄与零上下文污染。</strong><br>
 任务数据完全编码在 URL 的 <code>#</code> 号（Hash 片段）后面。按照浏览器标准，URL Hash 永远不会发送到服务端，解析和渲染全部在你的浏览器本地内存里完成。既保护了业务代码的隐私，又不像重型 MCP 那样常驻吞噬宝贵的会话 Token。</p>
-<h2 id="什么时候适合用它什么时候不用">什么时候适合用它，什么时候不用</h2>
-<p>任何工具都有适用的边界，建议根据手头任务的规模来决定：</p>
-<ul>
-<li>
-<p><strong>适合用的场景</strong>：</p>
-<ul>
-<li>新功能开发前，Agent 拆解出了 5 到 20 个子任务，需要快速定出先后迭代顺序；</li>
-<li>让 Agent 做全仓代码审查（Code Review）或技术债盘点，扫出了十几个待修复问题，需要挑出哪些立即修、哪些直接忽略；</li>
-<li>面临多个候选技术方案或依赖库选型，需要直观排出主次偏好；</li>
-<li>盘点自己手头的十几个历史项目或脚本，决定哪些继续维护（夯）、哪些彻底归档放弃（拉）。</li>
-</ul>
-</li>
-<li>
-<p><strong>可以跳过的场景</strong>：</p>
-<ul>
-<li>手头只有一两个非常明确的 Bug 要修，直接在终端里一句话交代清楚即可，没必要打开浏览器；</li>
-<li>跨部门、多人协同、周期长达几个月的大型研发工程，这类场景需要持久化的权限管理、工时统计和状态流转，建议直接使用 Linear 或 GitHub Projects。</li>
-</ul>
-</li>
-</ul>
-<h2 id="在线体验与开源地址">在线体验与开源地址</h2>
-<p>这个功能目前已经部署上线，代码完全开源：</p>
-<ul>
+<h2 id="别让-agent-在错误的分支上跑得太快">别让 Agent 在错误的分支上跑得太快</h2>
+<p>现在的 Coding Agent 执行速度越来越快，几分钟就能刷出成百上千行代码。</p>
+<p>如果在最开始的几分钟里，人类只能眯着眼睛在几十条长文本里看个大概，或者花五分钟在对话框里敲一段绕口令式的批示，Agent 就会以极高的效率在错误的方向上狂奔：写出一堆过度设计的兼容层、修几个无关紧要的边缘 Bug，直到你不得不停下来帮它回滚代码、重整上下文。</p>
+<p>面对几十项待办，花十秒钟把主次关系拖拽清楚，把伪需求甩进 D 档，是目前把控 Agent 执行方向成本最低的办法。</p>
+<p>它不需要注册，不需要安装，关掉页面数据就从内存释放。</p>
+<p>下次当你让 Claude Code、Codex、Cursor 或 Antigravity 梳理出计划时，直接把这行指令复制给它：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>阅读 https://h2l.kuhung.me/skill.md。把我当前项目里的待办任务排个期，按规范生成一个夯拉榜链接给我。
+</span></span></code></pre></div><ul>
 <li><strong>在线看板</strong>：<a href="https://h2l.kuhung.me/">https://h2l.kuhung.me/</a></li>
 <li><strong>Agent Skill 协议规范</strong>：<a href="https://h2l.kuhung.me/skill.md">https://h2l.kuhung.me/skill.md</a></li>
 <li><strong>GitHub 开源仓库</strong>：<a href="https://github.com/kuhung/hang2la">kuhung/hang2la</a></li>
 </ul>
-<p>如果你平时也高频使用 Claude Code、Codex、Antigravity 或 Cursor，厌倦了对着长串文字列表反复确认排期，下次列完计划不妨把 <code>https://h2l.kuhung.me/skill.md</code> 丢给它试试。</p>
 <hr>
 <p><a href="/about/">关于作者</a></p>
 
