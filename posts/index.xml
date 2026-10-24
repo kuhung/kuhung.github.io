@@ -6,7 +6,28 @@
     <description>Recent content in Posts on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束</title>
+      <link>https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/</link>
+      <pubDate>Sat, 24 Oct 2026 23:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/</guid>
+      <description>上一篇《个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈》分析了杠杆账户的 P0 强制止损、港 A 现货过滤短期微观噪声的季度内持有纪律，以及高波动标的的动态跟踪止盈规则。
+当候选标的通过趋势门槛、截面精排与双线缓冲区的筛选，并完成退出规则设定后，量化选股流水线进入了关键的最终环节：
+入选标的的资产配置权重与资金规模如何科学求解？
+许多量化研究者在因子挖掘与信号排序上投入大量资源，但在资金配置环节往往采用简化的等金额加权（$1/N$ 等权重），例如入选 4 只标的即机械分配各 25% 的资金份额。这种看似均衡的名义等权配置，在多资产组合的微观方差结构中会导致风险暴露的严重失衡。
+一、等金额不等于等风险：边际风险贡献度的方差失衡 在真实的股票截面中，不同标的的微观波动特征存在天然的巨大差距。
+假设系统在美股市场选出了 4 只合格股票：
+2 只处于右侧爆发期的高弹性科技股（如年化波动率 55.3% 的标的 A 与年化波动率 48.9% 的标的 B）； 2 只走势平稳的大盘稳健股（如年化波动率 18.5% 的可口可乐与年化波动率 17.2% 的苹果）。 如果每只股票各分配 25% 的资金，我们根据欧拉风险分解定理（Euler&amp;rsquo;s Risk Budgeting）计算组合整体的边际风险贡献（Marginal Contribution to Risk, MCTR）：
+投资组合的年化总方差为 $\sigma_p^2 = \mathbf{w}^T \mathbf{\Sigma} \mathbf{w}$，资产 $i$ 对组合总方差的绝对风险贡献（Variance Contribution）为：
+$$\text{TRC}_i = w_i \frac{(\mathbf{\Sigma} \mathbf{w})_i}{\sigma_p}$$
+各资产的风险方差贡献比例（Percentage Risk Contribution）为：
+$$%RC_i = \frac{w_i (\mathbf{\Sigma} \mathbf{w})_i}{\sigma_p^2}$$
+在资产间相关性较弱的常规截面中，该比例近似正比于 $w_i^2 \sigma_i^2$。在等金额配置下（$w_i = 1/N$），风险方差贡献度正比于波动率的平方（$\sigma_i^2$）。
+以这 4 只标的的真实协方差矩阵测算，结果如下：</description>
+    </item>
+    
     <item>
       <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
       <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>

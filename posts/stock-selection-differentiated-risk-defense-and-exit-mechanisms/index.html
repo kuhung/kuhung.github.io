@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T21:00:00+08:00","datePublished":"2026-10-23T21:00:00+08:00","description":"在上一篇《个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手》中，通过双线缓冲区降低了频繁换手。但进入日常运行后，另一个问题是跌破均线时如何退出。 很多交易者倾向于把止损当成无条件执行的通用规则，比如收盘价跌破 200 日线 1.5% 满 3 天就清仓，并直接套用到所有市场。 这种一刀切的规则在不同市场中表现分化明显。不同市场的微观盘性、假突破频率以及账户是否有杠杆负债并不相 …","headline":"个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 风控, 止损, 移动止盈, 杠杆, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/","@type":"WebPage"},"name":"个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/","wordCount":581}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T21:00:00+08:00","datePublished":"2026-10-23T21:00:00+08:00","description":"在上一篇《个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手》中，通过双线缓冲区降低了频繁换手。但进入日常运行后，另一个问题是跌破均线时如何退出。 很多交易者倾向于把止损当成无条件执行的通用规则，比如收盘价跌破 200 日线 1.5% 满 3 天就清仓，并直接套用到所有市场。 这种一刀切的规则在不同市场中表现分化明显。不同市场的微观盘性、假突破频率以及账户是否有杠杆负债并不相 …","headline":"个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 风控, 止损, 移动止盈, 杠杆, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/","@type":"WebPage"},"name":"个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/","wordCount":582}</script>
 </head>
 
   
@@ -402,7 +402,7 @@ if (!doNotTrack) {
 <li>高波动标的：年化波动率超过 35% 的标的以 MA50 作为移动止盈线，减少浮盈回吐。</li>
 <li>底仓 ETF：纳指 100 与欧洲宽基执行 3 天年线进出规则，过滤极端熊市风险。</li>
 </ul>
-<p>门槛准入、双线缓冲与退出规则就位后，下一步是解决仓位分配问题：选出的标的如何分配资金，以及为什么等权重会放大组合波动。下一篇记录第七层：波动率倒数配仓与资金构建。</p>
+<p>门槛准入、双线缓冲与退出规则就位后，下一步是解决仓位分配问题：选出的标的如何分配资金，以及为什么等权重会放大组合波动。下一篇记录第七层：<a href="/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/">《个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束》</a>。</p>
 <hr>
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
@@ -414,6 +414,7 @@ if (!doNotTrack) {
 <li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
 <li><a href="https://www.quantfull.com/blog/dual-line-buffer-and-rebalance-window">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</a></li>
 <li><a href="https://www.quantfull.com/blog/differentiated-risk-defense-and-exit-mechanisms">个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈</a></li>
+<li><a href="https://www.quantfull.com/blog/inverse-volatility-weighting-and-capital-allocation">个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束</a></li>
 </ul>
 <p><strong>流动性与交易实务专题</strong>：</p>
 <ul>
