@@ -31,7 +31,7 @@ if (!doNotTrack) {
     })(window, document, "clarity", "script", "yelaywwb9r");
   </script>
   <link rel="prev" href="https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/" />
-  <link rel="next" href="https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/" />
+  <link rel="next" href="https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/" />
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":728}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":729}</script>
 </head>
 
   
@@ -479,7 +479,7 @@ if (!doNotTrack) {
 <li><strong>状态机协同</strong>：<code>BUFFER_HOLD</code>、<code>BUFFER_DECAY</code> 与 <code>P0_BREAKDOWN</code> 各司其职，在保护长期趋势奔跑的同时，锁死了极端行情的下行风险。</li>
 </ul>
 <p>标的有了缓冲区与调仓窗口的护航，那么在面临极端行情破位时，具体应该如何执行止损？为什么美日市场跌破年线必须坚决立刻清仓，而港股 A 股在季度内却取消了机械止损？</p>
-<p>下一篇我们将深入讨论差异化风控与退出机制：为什么不同的市场微观结构，必须匹配完全不同的防守哲学。</p>
+<p>下一篇我们将探讨：<a href="/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/">《个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈》</a>，拆解杠杆账户防守、反弹陷阱与多市场差异化退出规则。</p>
 <hr>
 <h2 id="选股体系与延伸阅读">选股体系与延伸阅读</h2>
 <p>本文所属的完整量化选股架构、全景行业雷达与配套策略代码，均整理在 <a href="https://www.quantfull.com">QuantFull</a>：</p>
@@ -490,6 +490,7 @@ if (!doNotTrack) {
 <li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
 <li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重排他（美日卡玛比率、AH溢价仲裁与行业上限检验）</a></li>
 <li><a href="https://www.quantfull.com/blog/dual-line-buffer-and-rebalance-window">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</a></li>
+<li><a href="https://www.quantfull.com/blog/differentiated-risk-defense-and-exit-mechanisms">个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈</a></li>
 </ul>
 <p><strong>流动性与交易实务专题</strong>：</p>
 <ul>
@@ -585,7 +586,7 @@ if (!doNotTrack) {
         <a href="https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/" class="prev" rel="prev" title="别再对着一长串任务打字了：用拖拽看板接管 Coding Agent 的执行顺序"><i class="iconfont icon-left"></i>&nbsp;别再对着一长串任务打字了：用拖拽看板接管 Coding Agent 的执行顺序</a>
         
         
-        <a href="https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/" class="next" rel="next" title="拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化">拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/" class="next" rel="next" title="个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈">个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>

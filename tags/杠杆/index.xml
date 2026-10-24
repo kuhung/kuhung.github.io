@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>杠杆 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%9D%A0%E6%9D%86/</link>
+    <description>Recent content in 杠杆 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 23 Oct 2026 21:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%9D%A0%E6%9D%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈</title>
+      <link>https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/</link>
+      <pubDate>Fri, 23 Oct 2026 21:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/</guid>
+      <description>在上一篇《个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手》中，通过双线缓冲区降低了频繁换手。但进入日常运行后，另一个问题是跌破均线时如何退出。
+很多交易者倾向于把止损当成无条件执行的通用规则，比如收盘价跌破 200 日线 1.5% 满 3 天就清仓，并直接套用到所有市场。
+这种一刀切的规则在不同市场中表现分化明显。不同市场的微观盘性、假突破频率以及账户是否有杠杆负债并不相同。2021 年至 2026 年中港美日全市场 789 笔真实破位样本与全周期回测显示，机械止损在某些市场不仅没能控制回撤，反而切断了均值回归带来的反弹。
+一、成熟市场：带借款杠杆账户的 P0 绝对止损底线 风控规则的第一道分水岭在于账户是否有负债。
+在成熟市场（美股与日股）配置中引入外币融资借款时（账户整体维持在 1.2x 到 1.35x 杠杆区间），资金的底层物理约束与普通现货不同。
+普通现货账户遇到标的下跌，可以承受时间拉长等待均值回归；但带有融资负债的账户，防守必须前置。股票持仓市值会随价格下跌缩水，但借款本金和利息不会减少。个股破位下杀会加速侵蚀净资产，贷款资产比被迫上升，保证金缓冲迅速收窄。遇到类似 2022 年加息周期的单边下行，极易触发追加保证金甚至强平。
+因此，在带有借款杠杆的成熟市场中，系统执行最高优先级的 P0 绝对止损规则：
+触发条件：收盘价低于 200 日均线 1.5%（收盘价 $\le$ MA200 $\times$ 0.985），且连续 3 个交易日确认，或者周五收盘确认跌破。 执行动作：次日开盘市价清仓，不等待双月末调仓窗口。 资金去向：所得现金优先偿还外币借款负债，收缩杠杆敞口。 如上图左侧所示，在系统日常监控中：
+当日股金融标的索尼金融收盘跌破止损阈值 145.12； 随后连续 3 个交易日收盘价未能收复失地； 系统在第 3 个交易日确认触发 P0 告警，并于次日开盘输出强制清仓指令，执行市价卖出还款。 在带有借款杠杆的成熟市场，个股跌破 200 日线并连续 3 天无法收复，通常意味着中长期趋势走弱。系统不等月末调仓，次日市价离场，通过收缩敞口防范杠杆风险。
+二、中国市场：为什么季度内取消机械止损 把连续 3 天跌破 1.5% 止损的规则套用到中国资产（港股通与 A 股）账户时，回测数据给出了完全相反的反馈。
+在 A 股整手实测中（每边预算 4.5 万元，单边摩擦成本 15 bps，涵盖 2022 年 3 月至 2026 年 9 月完整周期），7 种不同退出方案的表现如下：</description>
+    </item>
+    
+  </channel>
+</rss>
