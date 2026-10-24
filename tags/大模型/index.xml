@@ -8,20 +8,18 @@
     <language>zh-CN</language>
     <lastBuildDate>Sat, 24 Oct 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>消费级 AI 商业大盘拆解（一）：流量与真实账单的剪刀差</title>
-      <link>https://kuhung.me/posts/consumer-ai-market-structure-part-1/</link>
+      <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
+      <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>
       <pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate>
       
-      <guid>https://kuhung.me/posts/consumer-ai-market-structure-part-1/</guid>
+      <guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid>
       <description>看 AI 行业榜单，容易被网页访问量和 App 下载量带偏。
 Similarweb 统计的网页独立访客，或者应用商店的下载榜，反映的是大众好奇心。但在推理算力成本居高不下的今天，访问量大往往只意味着算力账单更贵，不代表有人愿意持续掏钱。
-a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的美国消费者信用卡真实扣款样本。当把“真实花钱的账单”和“网页访问量”、“移动端月活”放在一起对照时，很多事情才对得上号：
-全美用过 AI 的人接近一半，真正按月掏钱订阅个人版工具的消费者只有 4.5%。中位数付费者每月花 25 美元，八成以上的人只给一款工具付费。前 1% 的重度用户，月均支出高达 903 美元，贡献了全盘近两成的开销。
-支出排名前 50 的厂商里，有整整 29 家在网页流量榜和移动端月活榜上查无此人。
+a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的美国消费者信用卡真实扣款样本。当把“真实花钱的账单”和“网页访问量”、“移动端月活”放在一起对照时，整个市场的底牌才显现出来。
+在看具体榜单前，有两组量化基准可以作为全局参考线：
+流量端的天花板与门槛：ChatGPT 全球月访问量约 37 亿次（是 Gemini 的 2 倍，Claude 的 14 倍）；而进入网页 Top 50 的门槛线大约在 500 万至 800 万次/月；移动端 Top 50 的月活（MAU）门槛在 300 万至 500 万之间。 支出端的极度集中：全美用过 AI 的人接近一半，真正按月掏钱订阅个人版工具的消费者只有 4.5%。中位数付费者每月花 25 美元，87% 的人只给一款工具付费。前 1% 的重度用户，月均支出高达 903 美元，贡献了全盘近两成的开销。 支出排名前 50 的厂商里，有整整 29 家在网页流量榜和移动端月活榜上查无此人。
 把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。
-一、名次倒挂：谁在靠热闹，谁在闷声收钱 三张榜单合计 150 个席位，去重后共 110 款产品。把它们在不同维度的上榜情况做一次交叉比对，名次落差很大。
-变化最明显的是同时进入 Web 流量榜与支出榜的 13 款产品：
-产品 Web 流量排名 真实支出排名 名次剪刀差（支出 vs 流量） 主要场景 Replit #48 #6 +42 网页端全栈代码开发与部署（Vibe Coding） Higgsfield #28 #5 +23 专业级视频运镜与特效生成 Superhuman (原 Grammarly) #23 #4 +19 办公写作润色与纠错 OpenRouter #40 #13 +27 多模型 API 路由聚合 Manus #38 #19 +19 全自动执行任务的通用 Agent Kling AI (快手可灵) #49 #26 +23 视频生成大模型 Lovable #14 #8 +6 全自动前端与应用生成 Figma #15 #15 0 存量专业设计与协同平台 Notion #7 #17 -10 个人与团队知识库，AI 属于附加模块 QuillBot #27 #32 -5 学生与轻度用户的论文改写工具 Hugging Face #29 #39 -10 开源模型社区与轻度云托管 Replit 在网页访问量上排在第 48 位，几乎处于流量榜边缘，但在真实银行卡支出榜上一举冲到了第 6 位；面向开发者的 OpenRouter 流量排第 40，支出排第 13。</description>
+一、名次倒挂：谁在靠热闹，谁在闷声收钱 三张榜单合计 150 个席位，去重后共 110 款产品。把它们在不同维度的上榜情况做一次交叉比对，名次落差很大。</description>
     </item>
     
     <item>
