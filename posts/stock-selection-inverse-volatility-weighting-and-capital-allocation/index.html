@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-24T23:00:00+08:00","datePublished":"2026-10-24T23:00:00+08:00","description":"上一篇《个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈》分析了杠杆账户的 P0 强制止损、港 A 现货过滤短期微观噪声的季度内持有纪律，以及高波动标的的动态跟踪止盈规则。 当候选标的通过趋势门槛、截面精排与双线缓冲区的筛选，并完成退出规则设定后，量化选股流水线进入了关键的最终环节： 入选标的的资产配置权重与资金规模如何科学求解？ 许多量化研究者在因子挖掘与信号排序上投入 …","headline":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资金管理, 风险平价, 波动率倒数, 现金管理, 整手约束, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"WebPage"},"name":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","wordCount":884}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-24T23:00:00+08:00","datePublished":"2026-10-24T23:00:00+08:00","description":"上一篇《个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈》分析了杠杆账户的 P0 强制止损、港 A 现货过滤短期微观噪声的季度内持有纪律，以及高波动标的的动态跟踪止盈规则。 当候选标的通过趋势门槛、截面精排与双线缓冲区的筛选，并完成退出规则设定后，量化选股流水线进入了关键的最终环节： 入选标的的资产配置权重与资金规模如何科学求解？ 许多量化研究者在因子挖掘与信号排序上投入 …","headline":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资金管理, 风险平价, 波动率倒数, 现金管理, 整手约束, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"WebPage"},"name":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","wordCount":827}</script>
 </head>
 
   
@@ -179,9 +179,9 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#三全周期回测实证等权重-vs-纯倒数-vs-35上限10现金垫">三、全周期回测实证：等权重 vs 纯倒数 vs 35%上限+10%现金垫</a></li>
-    <li><a href="#四2026-年-10-月最新实盘截面配仓推演与整手物理约束检测">四、2026 年 10 月最新实盘截面配仓推演与整手物理约束检测</a>
+    <li><a href="#四多市场基准组合案例推演与整手物理约束检测">四、多市场基准组合案例推演与整手物理约束检测</a>
       <ul>
-        <li><a href="#1-存量持仓标的的目标权重诊断">1. 存量持仓标的的目标权重诊断</a></li>
+        <li><a href="#1-模拟组合标的的目标权重诊断">1. 模拟组合标的的目标权重诊断</a></li>
         <li><a href="#2-候选标的的一手金额与整手超额拦截">2. 候选标的的一手金额与整手超额拦截</a></li>
       </ul>
     </li>
@@ -437,18 +437,18 @@ if (!doNotTrack) {
 </ul>
 <p>投资组合有效抑制了极端回撤风险，避免了深度净值回撤所需的长期修复周期，显著改善了长期的几何复合增长率。</p>
 <hr>
-<h2 id="四2026-年-10-月最新实盘截面配仓推演与整手物理约束检测">四、2026 年 10 月最新实盘截面配仓推演与整手物理约束检测</h2>
-<p>结合 2026 年 10 月 23 日的最新实盘收盘快照（总净资产 429,353.22 CNY，其中雪球 373,636.23 CNY，富途 55,716.99 CNY），系统对现有持仓与新晋候选标的执行了客观运算推演。</p>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/5095a7c195d74aac.webp" alt="2026年10月最新实盘截面配仓推演与整手物理约束检测 (Lot Size Audit)" class="lazyload"><figcaption class="image-caption">2026年10月最新实盘截面配仓推演与整手物理约束检测 (Lot Size Audit)</figcaption></figure></p>
-<h3 id="1-存量持仓标的的目标权重诊断">1. 存量持仓标的的目标权重诊断</h3>
-<p>如上图左侧所示，系统监控输出了各持仓标的的最新 20 日年化波动率与权重偏离情况：</p>
+<h2 id="四多市场基准组合案例推演与整手物理约束检测">四、多市场基准组合案例推演与整手物理约束检测</h2>
+<p>为验证波动率倒数配仓模型在多市场环境下的工程适应性，我们构建一个涵盖美股、日股等多市场样本标的的基准模拟组合，结合最新截面波动率与行情数据进行客观运算推演。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/33ef3411531cf0f6.webp" alt="多市场基准投资组合配仓推演与整手物理约束检测" class="lazyload"><figcaption class="image-caption">多市场基准投资组合配仓推演与整手物理约束检测</figcaption></figure></p>
+<h3 id="1-模拟组合标的的目标权重诊断">1. 模拟组合标的的目标权重诊断</h3>
+<p>如上图左侧所示，系统输出各样本标的的最新 20 日年化波动率与权重偏离情况：</p>
 <table>
 <thead>
 <tr>
-<th>标的代号</th>
-<th>中文名称</th>
+<th>标的分类</th>
+<th>样本标的</th>
 <th style="text-align:center">20日年化波幅</th>
-<th style="text-align:center">当前实际权重</th>
+<th style="text-align:center">当前模拟权重</th>
 <th style="text-align:center">波动率倒数目标权重</th>
 <th style="text-align:center">调仓差额</th>
 <th>状态机研判指引</th>
@@ -456,123 +456,87 @@ if (!doNotTrack) {
 </thead>
 <tbody>
 <tr>
-<td><strong>US.KO</strong></td>
-<td>可口可乐</td>
-<td style="text-align:center">18.5%</td>
-<td style="text-align:center">20.3%</td>
-<td style="text-align:center">11.4%</td>
-<td style="text-align:center">-8.9%</td>
-<td>实际权重偏重，等待月末窗口按目标权重调低</td>
-</tr>
-<tr>
-<td><strong>US.V</strong></td>
-<td>Visa</td>
-<td style="text-align:center">18.1%</td>
-<td style="text-align:center">14.4%</td>
-<td style="text-align:center">11.6%</td>
+<td><strong>标的 1</strong></td>
+<td>美股大盘消费</td>
+<td style="text-align:center">18.2%</td>
+<td style="text-align:center">18.0%</td>
+<td style="text-align:center">15.2%</td>
 <td style="text-align:center">-2.8%</td>
-<td>适度超配，调仓日小幅再平衡</td>
+<td>低波稳健资产，定期调仓窗口小幅微调</td>
 </tr>
 <tr>
-<td><strong>US.MRK</strong></td>
-<td>默沙东</td>
-<td style="text-align:center">30.0%</td>
-<td style="text-align:center">13.7%</td>
-<td style="text-align:center">7.0%</td>
-<td style="text-align:center">-6.7%</td>
-<td>波动率由 16% 扩大至 30.0%，目标配额下调至 7.0%</td>
-</tr>
-<tr>
-<td><strong>US.XOM</strong></td>
-<td>埃克森美孚</td>
-<td style="text-align:center">17.3%</td>
-<td style="text-align:center">11.5%</td>
-<td style="text-align:center">12.2%</td>
-<td style="text-align:center">+0.7%</td>
+<td><strong>标的 2</strong></td>
+<td>美股金融服务</td>
+<td style="text-align:center">19.5%</td>
+<td style="text-align:center">15.0%</td>
+<td style="text-align:center">14.0%</td>
+<td style="text-align:center">-1.0%</td>
 <td>权重匹配良好，顺势持有</td>
 </tr>
 <tr>
-<td><strong>US.AAPL</strong></td>
-<td>苹果</td>
-<td style="text-align:center">17.2%</td>
-<td style="text-align:center">11.1%</td>
-<td style="text-align:center">12.2%</td>
-<td style="text-align:center">+1.1%</td>
-<td>权重匹配良好，顺势持有</td>
+<td><strong>标的 3</strong></td>
+<td>美股能源周期</td>
+<td style="text-align:center">17.5%</td>
+<td style="text-align:center">10.0%</td>
+<td style="text-align:center">15.6%</td>
+<td style="text-align:center">+5.6%</td>
+<td>低波顺风标的，调仓窗口补充配额</td>
 </tr>
 <tr>
-<td><strong>JP.9101</strong></td>
-<td>日本邮船</td>
-<td style="text-align:center">25.1%</td>
-<td style="text-align:center">6.4%</td>
-<td style="text-align:center">8.4%</td>
-<td style="text-align:center">+2.0%</td>
+<td><strong>标的 4</strong></td>
+<td>日股商社综合</td>
+<td style="text-align:center">22.0%</td>
+<td style="text-align:center">6.0%</td>
+<td style="text-align:center">12.4%</td>
+<td style="text-align:center">+6.4%</td>
+<td>欠配明显，调仓日增加配仓权重</td>
+</tr>
+<tr>
+<td><strong>标的 5</strong></td>
+<td>日股工业制造</td>
+<td style="text-align:center">25.0%</td>
+<td style="text-align:center">8.0%</td>
+<td style="text-align:center">10.2%</td>
+<td style="text-align:center">+2.2%</td>
 <td>处于 Top 8 缓冲区内，调仓日补充配额</td>
 </tr>
 <tr>
-<td><strong>JP.6501</strong></td>
-<td>日立</td>
-<td style="text-align:center">27.3%</td>
-<td style="text-align:center">4.9%</td>
-<td style="text-align:center">7.7%</td>
-<td style="text-align:center">+2.8%</td>
-<td>处于 Top 8 缓冲区内，调仓日补充配额</td>
+<td><strong>标的 6</strong></td>
+<td>高波科技标的</td>
+<td style="text-align:center">32.0%</td>
+<td style="text-align:center">16.0%</td>
+<td style="text-align:center">8.6%</td>
+<td style="text-align:center">-7.4%</td>
+<td>高波标的约束配比，防范潜在下行波动</td>
 </tr>
 <tr>
-<td><strong>JP.8001</strong></td>
-<td>伊藤忠商事</td>
-<td style="text-align:center">22.3%</td>
-<td style="text-align:center">2.0%</td>
-<td style="text-align:center">9.4%</td>
-<td style="text-align:center">+7.4%</td>
-<td>欠配明显，调仓日增加配仓</td>
+<td><strong>标的 7</strong></td>
+<td>高波金融标的</td>
+<td style="text-align:center">38.0%</td>
+<td style="text-align:center">12.0%</td>
+<td style="text-align:center">7.2%</td>
+<td style="text-align:center">-4.8%</td>
+<td>年化波幅 &gt;35% 且跌破 MA50，触发移动止盈并下调配额</td>
 </tr>
 <tr>
-<td><strong>JP.8306</strong></td>
-<td>三菱日联金融</td>
-<td style="text-align:center">37.0%</td>
-<td style="text-align:center">2.9%</td>
-<td style="text-align:center">5.7%</td>
-<td style="text-align:center">+2.8%</td>
-<td>高波 37.0% 跌破 MA50，触发移动止盈锁定浮盈</td>
-</tr>
-<tr>
-<td><strong>US.NVDA</strong></td>
-<td>英伟达</td>
-<td style="text-align:center">29.6%</td>
-<td style="text-align:center">5.1%</td>
-<td style="text-align:center">7.1%</td>
-<td style="text-align:center">+2.0%</td>
-<td>跌破 50 日线警戒，不加仓</td>
-</tr>
-<tr>
-<td><strong>HK.00857</strong></td>
-<td>中国石油股份</td>
-<td style="text-align:center">28.3%</td>
-<td style="text-align:center">3.4%</td>
-<td style="text-align:center">7.4%</td>
-<td style="text-align:center">+4.0%</td>
-<td>跌破 50 日线警戒，港股季度内不加仓</td>
-</tr>
-<tr>
-<td><strong>JP.8729</strong></td>
-<td>Sony Financial</td>
-<td style="text-align:center">22.9%</td>
-<td style="text-align:center">0.3%</td>
+<td><strong>标的 8</strong></td>
+<td>触发离场标的</td>
+<td style="text-align:center">24.0%</td>
+<td style="text-align:center">5.0%</td>
 <td style="text-align:center"><strong>0.0%</strong></td>
-<td style="text-align:center">-0.3%</td>
-<td><strong>P0 强制止损</strong>：跌破年线 1.5% 满 3 天，市价清仓还债</td>
+<td style="text-align:center">-5.0%</td>
+<td><strong>P0 强制止损</strong>：跌破年线 1.5% 满 3 天，市价清仓离场</td>
 </tr>
 </tbody>
 </table>
 <p>系统输出的调仓指令具备明确的量化执行规则：</p>
 <ul>
-<li>长期持仓因资本利得产生的权重偏离（例如可口可乐权重上升至 20.3%），在定期调仓窗口执行再平衡；</li>
-<li>触发 P0 破位离场条件的 Sony 金融（JP.8729），目标权重即刻置为 0.0%，次日开盘执行平仓；</li>
-<li>20 日年化波动率由 16% 上升至 30.0% 的默沙东，系统自动下调目标权重，动态约束微观波动暴露。</li>
+<li>长期持仓因资本利得产生的权重偏离，在定期调仓窗口执行再平衡；</li>
+<li>触发 P0 破位离场条件的标的，目标权重即刻置为 0.0%，次日开盘执行平仓；</li>
+<li>波动率扩大的高波标的，系统自动下调目标权重，动态约束微观风险暴露。</li>
 </ul>
 <h3 id="2-候选标的的一手金额与整手超额拦截">2. 候选标的的一手金额与整手超额拦截</h3>
-<p>在调仓日买入新标的时，港股与 A 股卫星仓位各自对应约 4.5 万元人民币预算，每个市场选 3 只股票，平均每只股票的目标预算为 1.50 万元。</p>
+<p>在调仓日买入新标的时，假设单市场卫星仓位分配 4.5 万元基准预算，计划配置 3 只股票，平均每只股票的目标预算基线为 1.50 万元。</p>
 <p>如上图右侧所示，系统对港 A 股候选池进行了整手资金压力排查：</p>
 <ol>
 <li>
