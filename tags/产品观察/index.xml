@@ -6,7 +6,21 @@
     <description>Recent content in 产品观察 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%BA%A7%E5%93%81%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Oct 2026 12:20:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%BA%A7%E5%93%81%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</title>
+      <link>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</link>
+      <pubDate>Mon, 26 Oct 2026 12:20:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+在《解读 100 个 AI 商业产品》的前两篇里，我们先盘了 a16z 第 7 期消费级 AI 百强榜 和 110 款产品的真实消费账单。看消费级榜单时会发现一个现象：能在网页访问量、App 下载榜或者个人信用卡扣款里排上号的，大多是通用对话助手、写代码工具或者音视频生成软件，比如排在消费支出榜第 10 名的语音合成平台 ElevenLabs。一旦进入纯 B2B 企业对公结算的领域，很多已经有相当收入规模的公司，在大众流量统计里完全看不到。
+这篇要聊的 Retell AI 就是其中一家。这家 2023 年底注册、2024 年从 YC W24 出来的硅谷团队，公开披露的种子轮融资只有约 510 万美元（Sacra，2026-10-24）。它在消费级榜单上没有名字，但在 a16z 与企业银行 Mercury 联合发布的 B2B 创业公司支出榜里排到了第 16 名（a16z AI Application Spending Report，2025-10-02）；到 2026 年 10 月，公司在招聘页披露的年化经常性收入（ARR）达到 8,000 万美元，团队约 50 人，每月处理企业通话超过 5,000 万通（YC Jobs，2026-10-24）。
+我最初留意到这家公司，是因为翻看他们在 YC 挂出的 28 个在招岗位时，看到了一长串 FDE（Forward Deployed Engineer，前置部署工程师），还按语言和地区细分到了西班牙语、普通话、香港和新加坡。
+我以前做过客服相关的工作。看到一家做电话语音 Agent（接听与外呼）的公司招这么多驻场工程师，脑子里自然冒出几个疑问：
+业务价值到底在哪？ 就我自己的客服经验来看，电话语音 Agent 并没有带来新的需求增量，它依然是在重塑过去呼叫中心的存量生产流程，特别是外呼通知、账单催收和预约核实。既然是改造存量旧流程，它在技术链路上是怎么替换原有人工和按键菜单的？产品边界又划在哪？ 海外的电话环境是什么情况？ 在国内做过呼叫业务的人都很清楚，因为早年骚扰电话太多，很多用户已经开了防骚扰拦截和陌生号码免打扰，电话呼出在国内能展开的空间很小。那海外市场是什么状况？海外的电话监管与合规要求是怎么运作的？ 为什么要招这么多 FDE？ 一家按分钟计费（$0.</description>
+    </item>
+    
     <item>
       <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
       <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>
