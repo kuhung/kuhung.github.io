@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>比特币 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%AF%94%E7%89%B9%E5%B8%81/</link>
+    <description>Recent content in 比特币 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 26 Oct 2026 10:50:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%AF%94%E7%89%B9%E5%B8%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标</title>
+      <link>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</link>
+      <pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</guid>
+      <description>风险提示：本文涉及的链上数据、统计指标与估算模型仅供研究参考，不构成任何投资建议或交易推荐。历史数据与链上统计表现不代表未来结果。
+很多交易者在看链上数据时，容易把长周期的宏观指标和公链的日常活跃数据混在一起。有人每天刷新 MVRV 或者 SOPR，发现几天甚至几周数值几乎不变化，对短线交易没有直接指导作用；也有人每天紧盯公链的 DEX 成交量和交易笔数，直接把 Solana 的高频小额交易和以太坊的大额结算拿来横向对比，把公链本身的基础属性当成了生态爆发的动态增量。
+看懂链上数据需要把长周期估值、资金面衍生指标、公链静态特征以及日常动态指标拆开来看。宏观指标管周期位置，公链动态指标管局部资金流动。
+一、三大经典链上周期指标与资金面数据 在链上宏观分析中，MVRV、SOPR 和 CDD 是衡量比特币等主流资产周期估值、持仓成本和筹码沉睡状态的基础指标。配合现货 ETF 净流入与衍生品清算地图，可以观察全网资本的宏观流动。
+1. MVRV 与 MVRV Z-Score MVRV（Market Value to Realized Value）是流通市值与已实现市值的比值。
+流通市值（Market Cap）：当前全网流通代币总量乘以当前二级市场价格。 已实现市值（Realized Cap）：将链上每一个 UTXO（或未移动代币存量），按其最后一次在区块链上发生转移时的市场价格计算市值并加总。Realized Cap 反映了全网持币者的平均加权持仓成本。 $$MVRV = \frac{Market\ Cap}{Realized\ Cap}$$
+当 MVRV 大于 1.0 时，全网总体处于未实现浮盈状态；当 MVRV 小于 1.0 时，全网总市值跌破全市场平均成本，处于集体浮亏状态。
+为了消除牛熊周期中流通市值波动规模的非平稳影响，分析中常使用 MVRV Z-Score。其计算方式为流通市值与已实现市值的差值，除以历史流通市值的标准差 $\sigma_{Market\ Cap}$：
+$$Z\text{-}Score = \frac{Market\ Cap - Realized\ Cap}{\sigma_{Market\ Cap}}$$
+Z-Score &amp;gt; 5 到 7：流通市值大幅偏离已实现市值，全网未实现浮盈处于历史极值区间，历史上多次对应狂热周期的顶部。 Z-Score &amp;lt; 0：流通市值低于全网平均建仓成本，全网处于整体浮亏状态，通常对应大周期的深熊筑底区间。 MVRV 属于宏观左侧指标，变化周期通常以季度或年份计算。由于加密货币交易所内部记账的换手不会实时体现为链上转账，该指标无法用于指导日内或数周内的短线买卖。</description>
+    </item>
+    
+  </channel>
+</rss>
