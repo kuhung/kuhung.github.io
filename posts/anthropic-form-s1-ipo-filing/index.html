@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="从 335 页 S-1 招股书拆解 Anthropic 商业底牌：163 亿美元半年度营收结构、807 亿账面净亏损背后的可转债公允价值重估真相、6,370 亿美元长期算力合同的期限错配，以及 Class A 公众股东无实质表决权的受控公司治理机制。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Anthropic 招股书解读：经营改善与长期算力支出压力 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="Anthropic 招股书解读：经营改善与长期算力支出压力 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/anthropic-form-s1-ipo-filing/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-27T10:45:00+08:00","datePublished":"2026-10-27T10:45:00+08:00","description":"从 335 页 S-1 招股书拆解 Anthropic 商业底牌：163 亿美元半年度营收结构、807 亿账面净亏损背后的可转债公允价值重估真相、6,370 亿美元长期算力合同的期限错配，以及 Class A 公众股东无实质表决权的受控公司治理机制。","headline":"Anthropic 招股书解读：经营改善与长期算力支出压力","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, Anthropic, Claude, S-1, 商业分析, 美股IPO, 算力","mainEntityOfPage":{"@id":"https://kuhung.me/posts/anthropic-form-s1-ipo-filing/","@type":"WebPage"},"name":"Anthropic 招股书解读：经营改善与长期算力支出压力","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/anthropic-form-s1-ipo-filing/","wordCount":1526}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Anthropic 招股书解读：经营改善与长期算力支出压力</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-27 itemprop="datePublished">October 27, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/"> 行业趋势 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一营收增长与变现结构用量计费usage-based主导与-900-净收入留存率">一、营收增长与变现结构：用量计费（Usage-Based）主导与 900% 净收入留存率</a></li>
+    <li><a href="#二损益表归因与盈利拐点gaap-经营亏损收窄与-724-亿美元可转债非现金重估">二、损益表归因与盈利拐点：GAAP 经营亏损收窄与 724 亿美元可转债非现金重估</a></li>
+    <li><a href="#三单位算力经济学与资本承诺算力费用率收敛至-55-与-6370-亿美元长期合同久期错配">三、单位算力经济学与资本承诺：算力费用率收敛至 55% 与 6,370 亿美元长期合同久期错配</a></li>
+    <li><a href="#四分销渠道集中度与多类别股权治理云市场cloud-marketplace依赖与控制权隔离">四、分销渠道集中度与多类别股权治理：云市场（Cloud Marketplace）依赖与控制权隔离</a>
+      <ul>
+        <li><a href="#1-第三方云市场分销集中度与五重身份博弈">1. 第三方云市场分销集中度与“五重身份”博弈</a></li>
+        <li><a href="#2-五类普通股multi-class-share-structure与受控公司治理">2. 五类普通股（Multi-Class Share Structure）与受控公司治理</a></li>
+      </ul>
+    </li>
+    <li><a href="#五一级市场传闻与-s-1-法定披露比对关键未决条款blank-terms与保密草案修订演进">五、一级市场传闻与 S-1 法定披露比对：关键未决条款（Blank Terms）与保密草案修订演进</a>
+      <ul>
+        <li><a href="#1-发行估值募资规模与上市时间表s-1-文本全部留空">1. 发行估值、募资规模与上市时间表：S-1 文本全部留空</a></li>
+        <li><a href="#2-2026-年第三季度q3业绩与年化经常性收入run-rate对应栏位留空">2. 2026 年第三季度（Q3）业绩与年化经常性收入（Run-Rate）：对应栏位留空</a></li>
+        <li><a href="#3-长期算力承诺总额由-9-月草案的-5180-亿美元修订为名细约-6370-亿美元">3. 长期算力承诺总额：由 9 月草案的 5,180 亿美元修订为名细约 6,370 亿美元</a></li>
+        <li><a href="#4-amazon-与-google-持股比例因持有无投票权-class-n-股而未入表">4. Amazon 与 Google 持股比例：因持有无投票权 Class N 股而未入表</a></li>
+        <li><a href="#5-法定风险因素披露生存性风险模型自我保存行为与供应链集中">5. 法定风险因素披露：生存性风险、模型自我保存行为与供应链集中</a></li>
+      </ul>
+    </li>
+    <li><a href="#六局限与待核实项">六、局限与待核实项</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
+</blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/fa87bced5a81affd.webp" alt="Anthropic Form S-1 招股书解析" class="lazyload"><figcaption class="image-caption">Anthropic Form S-1 招股书解析</figcaption></figure></p>
+<p>美国时间 2026 年 10 月 26 日，<a href="https://claude.ai">Claude</a> 的开发商 Anthropic, PBC 向美国证券交易委员会（SEC）公开递交了长达 335 页的 Form S-1 注册声明（初步招股书），申请将其 Class A 普通股在纳斯达克全球精选市场（Nasdaq Global Select Market）挂牌上市，交易代码定为 <code>ANT</code>（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">SEC EDGAR S-1 原文</a>，2026-10-26；<a href="https://www.anthropic.com/news/s1-sec">Anthropic 官方公告</a>，2026-10-26）。</p>
+<p>作为首家向二级市场公开经审计财务报表的头部通用大模型实验室（竞争对手 OpenAI 虽已秘密递交上市草案，但已将 IPO 计划推迟至 2027 年初，<a href="https://www.reuters.com/legal/transactional/anthropic-opens-books-ais-explosive-growth-staggering-costs-2026-10-26/">Reuters</a>，2026-10-26），Anthropic 的 S-1 文件首次披露了前沿大模型商业化的核心财务与治理底稿：</p>
+<ul>
+<li><strong>营收放量与单季经营转正</strong>：公司自 2023 年一季度启动商业化，营业收入由 2023 全年的 4,100 万美元增至 2025 全年的 45.85 亿美元；2026 年上半年营业收入达 <strong>162.86 亿美元</strong>（同比增长 1,300.1%）。其中 <strong>2026 年第二季度单季收入达 115.60 亿美元</strong>，超越此前三年累计总和（50.12 亿美元），并实现 <strong>9.74 亿美元的单季 GAAP 营业利润</strong>。</li>
+<li><strong>账面净亏损的会计重估归因</strong>：2026 年上半年公司 GAAP 账面净亏损高达 <strong>807.48 亿美元</strong>，但其中 <strong>723.88 亿美元（占税前亏损的 89.7%）</strong> 源于公司估值攀升所触发的可转债、衍生负债及 SAFE 公允价值非现金重估损失。主营业务层面的 GAAP 营业亏损已收窄至 <strong>6.93 亿美元</strong>（营业利润率 -4.3%），加回股权激励等项目后的 <strong>Non-GAAP 调整后营业利润为 +16.18 亿美元</strong>（调整后营业利润率 +10.0%）。</li>
+<li><strong>单位算力效率收敛与长期采购久期错配</strong>：算力与基础设施费用占营业收入的比重由 2023 年的 1,056.1% 持续收敛至 2026 年上半年的 <strong>54.9%</strong>。与此同时，公司与博通（Broadcom）、Google Cloud、Amazon AWS、Microsoft Azure、SpaceXAI 等签署了七份重大长期算力采购与设备租赁协议，二手汇总规模约 <strong>6,370 亿美元</strong>，且普遍附带最低消费差额补足（True-up）刚性义务。</li>
+<li><strong>受控公司架构与表决权隔离</strong>：在特拉华州公益公司（PBC）框架下，公司通过五类股票（Class A / N / T / F / E）将经济收益权与公司控制权彻底分离。7 位联合创始人通过单一一股 Class F 股锁定一般股东事项 <strong>50.1%</strong> 的表决权，长期利益信托（LTBT）通过 Class T 股控制董事会多数席位，二级市场公众认购的 Class A 普通股不具备实质表决影响力。</li>
+</ul>
+<p>下文基于 SEC EDGAR 披露的招股书正文与财务报表摘要，从商业化变现结构、损益表桥接归因、单位算力经济学、渠道与治理架构，以及一级市场传闻与法定披露文本的差异五个维度展开量化拆解。</p>
+<hr>
+<h2 id="一营收增长与变现结构用量计费usage-based主导与-900-净收入留存率">一、营收增长与变现结构：用量计费（Usage-Based）主导与 900% 净收入留存率</h2>
+<p>在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</p>
+<p>根据招股书披露口径，2026 年上半年 <strong>用量计费收入约为 131 亿美元，占总营收的 80%</strong>；个人及企业团队订阅收入约为 32 亿美元，占总营收的 <strong>20%</strong>（<a href="https://www.reuters.com/legal/transactional/anthropic-opens-books-ais-explosive-growth-staggering-costs-2026-10-26/">Reuters 转引 S-1</a>，2026-10-26；待 MD&amp;A 原文复核）。支撑用量计费高速放量的核心产品矩阵包括 Claude Platform（API 平台）、编程智能体 <strong>Claude Code</strong>，以及于 2026 年 1 月推出研究预览、同年 9 月并入 Claude.ai 主站的知识工作智能体 <strong>Claude Cowork</strong>（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 招股摘要 p.10</a>，2026-10-26）。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/ee23e333f87899bf.webp" alt="图表 1：Anthropic 营业收入演进与商业化变现结构（2023–2026H1）" class="lazyload"><figcaption class="image-caption">图表 1：Anthropic 营业收入演进与商业化变现结构（2023–2026H1）</figcaption></figure></p>
+<p>合并利润表摘要披露的历史营收序列与季度拆分如下：</p>
+<table>
+<thead>
+<tr>
+<th>报告期</th>
+<th style="text-align:right">营业收入（百万美元）</th>
+<th style="text-align:right">折合十亿美元</th>
+<th style="text-align:right">同比增速（YoY）</th>
+<th>审计状态与披露来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2023 全年</strong></td>
+<td style="text-align:right">41</td>
+<td style="text-align:right">0.041</td>
+<td style="text-align:right">—</td>
+<td>经审计年报数；2023Q1 启动商业化（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.23</a>）</td>
+</tr>
+<tr>
+<td><strong>2024 全年</strong></td>
+<td style="text-align:right">386</td>
+<td style="text-align:right">0.386</td>
+<td style="text-align:right">+841.5%</td>
+<td>经审计年报数（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.23</a>）</td>
+</tr>
+<tr>
+<td><strong>2025 全年</strong></td>
+<td style="text-align:right">4,585</td>
+<td style="text-align:right">4.585</td>
+<td style="text-align:right">+1,089.0%</td>
+<td>经审计年报数；原文增速披露为 1,089%（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.23</a>）</td>
+</tr>
+<tr>
+<td><strong>2025 上半年</strong></td>
+<td style="text-align:right">1,163</td>
+<td style="text-align:right">1.163</td>
+<td style="text-align:right">—</td>
+<td>未经审计中期对比基数（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.23</a>）</td>
+</tr>
+<tr>
+<td><strong>2026 上半年</strong></td>
+<td style="text-align:right"><strong>16,286</strong></td>
+<td style="text-align:right"><strong>16.286</strong></td>
+<td style="text-align:right"><strong>+1,300.1%</strong></td>
+<td>未经审计中期数；达上年同期的 14 倍（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.23, p.149</a>）</td>
+</tr>
+<tr>
+<td><em>2026Q1 单季（推算）</em></td>
+<td style="text-align:right"><em>4,726</em></td>
+<td style="text-align:right"><em>4.726</em></td>
+<td style="text-align:right">—</td>
+<td><em>由 2026H1 扣减 2026Q2 推算得出，非招股书直接列示行</em></td>
+</tr>
+<tr>
+<td><strong>2026Q2 单季</strong></td>
+<td style="text-align:right"><strong>11,560</strong></td>
+<td style="text-align:right"><strong>11.560</strong></td>
+<td style="text-align:right"><strong>+1,368.0%</strong></td>
+<td>单季营收超越 2023–2025 三年总和（<a href="https://www.thevccorner.com/p/anthropic-s1-ipo-filing">The VC Corner 转引 S-1 p.11, p.158</a>，2026-10-26）</td>
+</tr>
+</tbody>
+</table>
+<p>从企业级客户队列（Cohort）与组织人效指标来看，营收扩张主要由以下三项基本面因素驱动：</p>
+<ol>
+<li><strong>高价值企业客户队列快速扩容</strong>
+按过去十二个月（TTM）贡献收入分层，年化消费额 <strong>≥10 万美元</strong> 的企业客户数由 2025 年 3 月 31 日的约 400 家、2025 年 9 月 30 日的超过 950 家，增至 2026 年 6 月 30 日的超过 6,000 家，并于 2026 年 9 月 30 日达到 <strong>超过 11,900 家</strong>（同比增幅超 11.5 倍）。在截至 2026 年 9 月 30 日的客户群中，TTM 贡献收入 <strong>≥100 万美元</strong> 的客户 <strong>超过 1,900 家</strong>，<strong>≥1,000 万美元</strong> 的超大型客户 <strong>约 250 家</strong>（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 招股摘要 p.9</a>，2026-10-26）。</li>
+<li><strong>净收入留存率（NRR）高达约 900%</strong>
+截至 2026 年 9 月 30 日，合格企业客户的净收入留存率（Net Revenue Retention，计算口径为存量合格客户当期收入除以基期收入，涵盖扩购、缩减与流失的净效应）达到 <strong>约 900%</strong>（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 招股摘要 p.11</a>，2026-10-26）。这一指标意味着，存量企业客户在完成早期接入后，随着内部研发与业务工作流对模型调用的深入，次年平均消费额扩张至初始基期的约 9 倍。</li>
+<li><strong>单位人效（TTM Revenue per Employee）跃升至 660 万美元以上</strong>
+截至 2026 年 9 月 30 日，公司全职员工（FTE）规模约为 5,300 人（2024 年末约为 940 人），过去十二个月人均创收 <strong>超过 660 万美元/人</strong>，较上年同期的 140 万美元/人提升 3.7 倍（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 招股摘要 p.11</a>，2026-10-26）。招股书同时披露，2026 年 9 月公司内部代码库中超过 90% 的代码贡献由 Claude 生成，2026 年第三季度工程师人均日代码产出量为 2024 年全年均值的 45 倍（<a href="https://www.thevccorner.com/p/anthropic-s1-ipo-filing">The VC Corner 转引 S-1</a>，2026-10-26）。</li>
+</ol>
+<hr>
+<h2 id="二损益表归因与盈利拐点gaap-经营亏损收窄与-724-亿美元可转债非现金重估">二、损益表归因与盈利拐点：GAAP 经营亏损收窄与 724 亿美元可转债非现金重估</h2>
+<p>2026 年上半年，Anthropic 录得 <strong>-807.48 亿美元</strong> 的 GAAP 账面净亏损。若直接将该数字等同于经营层面的现金消耗，将严重偏离公司的真实财务状况。</p>
+<p>根据合并利润表（p.23），造成巨额账面净亏损的核心科目为 <strong>“可转换债券、衍生负债及 SAFE 的公允价值变动（Change in fair value of convertible notes, derivative liabilities, and SAFEs）”</strong>，2026 年上半年单期计提损失高达 <strong>-723.88 亿美元</strong>（占税前亏损的 89.7%）。</p>
+<p>按照美国通用会计准则（US GAAP），公司早期向战略及财务投资人发行的可转换债券与未来股权简单协议（SAFE）包含与公司估值挂钩的转股条款。当公司一级市场估值大幅攀升时，上述未偿还债务工具的公允价值随之重估上调，账面增值部分须在转股前确认为公司的负债增加，并计入当期利润表的非经营性损益。因此，<strong>公司估值涨幅越大，账面确认的公允价值重估亏损就越高</strong>。该项损失属于纯粹的<strong>非现金会计调整（Non-Cash Accounting Charge）</strong>，不产生任何当期现金流出；待 IPO 完成触发强制转股（Mandatory Conversion）后，相关负债将直接转入股东权益项下的额外实收资本（Additional Paid-in Capital）。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/7480ea54c9917f99.webp" alt="图表 2：Anthropic 2026H1 合并损益表（GAAP）由营业收入至净亏损桥接分解" class="lazyload"><figcaption class="image-caption">图表 2：Anthropic 2026H1 合并损益表（GAAP）由营业收入至净亏损桥接分解</figcaption></figure></p>
+<p>将日常经营损益与非经营性公允价值变动分离后，2023 年至 2026 年上半年的合并损益表及 Non-GAAP 调节项如下：</p>
+<table>
+<thead>
+<tr>
+<th>损益表科目与盈利指标（百万美元）</th>
+<th style="text-align:right">2023 全年</th>
+<th style="text-align:right">2024 全年</th>
+<th style="text-align:right">2025 全年</th>
+<th style="text-align:right">2025 上半年</th>
+<th style="text-align:right"><strong>2026 上半年</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>营业总收入（Revenue）</strong></td>
+<td style="text-align:right"><strong>41</strong></td>
+<td style="text-align:right"><strong>386</strong></td>
+<td style="text-align:right"><strong>4,585</strong></td>
+<td style="text-align:right"><strong>1,163</strong></td>
+<td style="text-align:right"><strong>16,286</strong></td>
+</tr>
+<tr>
+<td>算力与基础设施费用（Compute &amp; Infrastructure）</td>
+<td style="text-align:right">433</td>
+<td style="text-align:right">2,522</td>
+<td style="text-align:right">7,326</td>
+<td style="text-align:right">2,334</td>
+<td style="text-align:right">8,945</td>
+</tr>
+<tr>
+<td>人员薪酬费用（Personnel，含股权激励）</td>
+<td style="text-align:right">95</td>
+<td style="text-align:right">454</td>
+<td style="text-align:right">1,839</td>
+<td style="text-align:right">538</td>
+<td style="text-align:right">3,152</td>
+</tr>
+<tr>
+<td><em>其中：以股份为基础的薪酬费用（SBC）</em></td>
+<td style="text-align:right"><em>29</em></td>
+<td style="text-align:right"><em>192</em></td>
+<td style="text-align:right"><em>约 1,200</em></td>
+<td style="text-align:right"><em>286</em></td>
+<td style="text-align:right"><em>约 2,200</em></td>
+</tr>
+<tr>
+<td>销售、市场与合作费用（Sales, Marketing &amp; Partnerships）</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">43</td>
+<td style="text-align:right">568</td>
+<td style="text-align:right">120</td>
+<td style="text-align:right">3,168</td>
+</tr>
+<tr>
+<td>Bartz 版权集体诉讼和解费用（Bartz Settlement）</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">1,500</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>其他经营与管理费用（Other Operating &amp; Administrative）</td>
+<td style="text-align:right">62</td>
+<td style="text-align:right">347</td>
+<td style="text-align:right">1,412</td>
+<td style="text-align:right">306</td>
+<td style="text-align:right">1,714</td>
+</tr>
+<tr>
+<td><strong>经营费用合计（Total Operating Expenses）</strong></td>
+<td style="text-align:right"><strong>592</strong></td>
+<td style="text-align:right"><strong>3,366</strong></td>
+<td style="text-align:right"><strong>12,645</strong></td>
+<td style="text-align:right"><strong>3,298</strong></td>
+<td style="text-align:right"><strong>16,979</strong></td>
+</tr>
+<tr>
+<td><strong>GAAP 营业亏损（Operating Loss）</strong></td>
+<td style="text-align:right"><strong>-551</strong></td>
+<td style="text-align:right"><strong>-2,980</strong></td>
+<td style="text-align:right"><strong>-8,060</strong></td>
+<td style="text-align:right"><strong>-2,135</strong></td>
+<td style="text-align:right"><strong>-693</strong></td>
+</tr>
+<tr>
+<td>利息收入（Interest Income）</td>
+<td style="text-align:right">69</td>
+<td style="text-align:right">106</td>
+<td style="text-align:right">431</td>
+<td style="text-align:right">115</td>
+<td style="text-align:right">1,111</td>
+</tr>
+<tr>
+<td><strong>可转债、衍生负债及 SAFE 公允价值变动（非现金）</strong></td>
+<td style="text-align:right"><strong>-1,045</strong></td>
+<td style="text-align:right"><strong>-5,434</strong></td>
+<td style="text-align:right"><strong>-34,308</strong></td>
+<td style="text-align:right"><strong>-10,942</strong></td>
+<td style="text-align:right"><strong>-72,388</strong></td>
+</tr>
+<tr>
+<td>其他非经营收支净额（Other Income/Expense, Net）</td>
+<td style="text-align:right">-2</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">-8</td>
+<td style="text-align:right">—</td>
+<td style="text-align:right">-8,757</td>
+</tr>
+<tr>
+<td>税前亏损（Loss Before Income Taxes）</td>
+<td style="text-align:right">-1,529</td>
+<td style="text-align:right">-8,308</td>
+<td style="text-align:right">-41,945</td>
+<td style="text-align:right">-12,962</td>
+<td style="text-align:right">-80,727</td>
+</tr>
+<tr>
+<td>所得税拨备（Provision for Income Taxes）</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">21</td>
+</tr>
+<tr>
+<td><strong>GAAP 净亏损（Net Loss）</strong></td>
+<td style="text-align:right"><strong>-1,531</strong></td>
+<td style="text-align:right"><strong>-8,309</strong></td>
+<td style="text-align:right"><strong>-41,965</strong></td>
+<td style="text-align:right"><strong>-12,969</strong></td>
+<td style="text-align:right"><strong>-80,748</strong></td>
+</tr>
+<tr>
+<td><strong>Non-GAAP 调整后营业利润/亏损</strong></td>
+<td style="text-align:right"><strong>-522</strong></td>
+<td style="text-align:right"><strong>-2,788</strong></td>
+<td style="text-align:right"><strong>-4,854</strong></td>
+<td style="text-align:right"><strong>-1,849</strong></td>
+<td style="text-align:right"><strong>+1,618</strong></td>
+</tr>
+<tr>
+<td><strong>Non-GAAP 调整后净利润/亏损</strong></td>
+<td style="text-align:right"><strong>-457</strong></td>
+<td style="text-align:right"><strong>-2,683</strong></td>
+<td style="text-align:right"><strong>-4,448</strong></td>
+<td style="text-align:right"><strong>-1,741</strong></td>
+<td style="text-align:right"><strong>+2,671</strong></td>
+</tr>
+<tr>
+<td><strong>GAAP 营业利润率（Operating Margin）</strong></td>
+<td style="text-align:right">-1,344%</td>
+<td style="text-align:right">-772%</td>
+<td style="text-align:right">-176%</td>
+<td style="text-align:right">-184%</td>
+<td style="text-align:right"><strong>-4%</strong></td>
+</tr>
+<tr>
+<td><strong>Non-GAAP 调整后营业利润率</strong></td>
+<td style="text-align:right">-1,273%</td>
+<td style="text-align:right">-722%</td>
+<td style="text-align:right">-106%</td>
+<td style="text-align:right">-159%</td>
+<td style="text-align:right"><strong>+10%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>数据来源：<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">Anthropic Form S-1 招股摘要 p.23–25</a>，2026-10-26。</p>
+<p>围绕经营层面的盈利演进与资产负债表流动性，可归纳出四项核心财务事实：</p>
+<ol>
+<li><strong>主营业务逼近 GAAP 盈亏平衡，2026Q2 实现首次单季经营盈利</strong>
+2026 年上半年，公司 GAAP 营业亏损由 2025 全年的 -80.60 亿美元大幅收窄至 <strong>-6.93 亿美元</strong>，GAAP 营业利润率由上年同期的 -184% 改善至 <strong>-4%</strong>。其中 <strong>2026 年第二季度单季实现 GAAP 营业利润 +9.74 亿美元</strong>，为招股书所列六个季度中首次实现单季经营转正（<a href="https://www.thevccorner.com/p/anthropic-s1-ipo-filing">The VC Corner 转引 S-1 p.158</a>，2026-10-26）。</li>
+<li><strong>Non-GAAP 营业利润与经营活动现金流全面转正</strong>
+剔除以股份为基础的薪酬费用（SBC，约 21.9 亿美元）及非现金公益股份捐赠（约 1.26 亿美元）后，2026 年上半年 <strong>Non-GAAP 调整后营业利润达 +16.18 亿美元</strong>（调整后营业利润率 <strong>+10%</strong>），调整后净利润达 <strong>+26.71 亿美元</strong>。同期 <strong>经营活动产生的现金流量净额（Operating Cash Flow）为 +39.3 亿美元</strong>（上年同期为净流出 15.1 亿美元），表明日常业务已具备正向造血能力。</li>
+<li><strong>渠道分成推升销售费用，往期计提 15 亿美元版权和解费</strong>
+2026 年上半年经营费用合计 169.79 亿美元，其中：算力与基础设施费用 89.45 亿美元（占经营费用 <strong>52.7%</strong>）；销售、市场与合作费用由上年同期的 1.20 亿美元增至 <strong>31.68 亿美元（占 18.7%）</strong>，二手转引指出其增长主要源于支付给云市场渠道伙伴的分成费用增加约 27 亿美元；人员薪酬费用 <strong>31.52 亿美元（占 18.6%）</strong>；其他行政与管理费用 <strong>17.14 亿美元（占 10.1%）</strong>。此外，2025 全年经营费用中单列了 <strong>15.00 亿美元的 Bartz 图书版权诉讼和解费</strong>（法院区分了“购买合法图书训练可构成合理使用”与“从盗版库下载保存构成侵权”，和解协议于 2026 年 7 月 20 日获最终批准，覆盖 482,460 部作品截至 2025 年 8 月 25 日的既往行为）。</li>
+<li><strong>账面现金及短期投资达 1,316.51 亿美元，夹层权益导致账面净资产为负</strong>
+合并资产负债表摘要显示，截至 2026 年 6 月 30 日，公司累计募集资本总额达 <strong>1,411 亿美元</strong>（2026 上半年融资活动现金净流入 1,107.7 亿美元），期末持有现金、现金等价物及短期投资合计 <strong>1,316.51 亿美元</strong>，上半年仅存款与短期投资产生的利息收入即达 11.11 亿美元：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>资产负债表核心科目（截至 2026 年 6 月 30 日，Actual 列）</th>
+<th style="text-align:right">金额（百万美元）</th>
+<th style="text-align:right">折合十亿美元</th>
+<th>结构与会计处理说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>现金、现金等价物及短期投资</strong></td>
+<td style="text-align:right"><strong>131,651</strong></td>
+<td style="text-align:right"><strong>131.651</strong></td>
+<td>现金及等价物 112.4B + 短期投资 19.3B（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.11, p.24</a>）</td>
+</tr>
+<tr>
+<td><strong>营运资本（Working Capital）</strong></td>
+<td style="text-align:right"><strong>130,760</strong></td>
+<td style="text-align:right"><strong>130.760</strong></td>
+<td>定义为流动资产减去流动负债</td>
+</tr>
+<tr>
+<td><strong>资产总计（Total Assets）</strong></td>
+<td style="text-align:right"><strong>147,358</strong></td>
+<td style="text-align:right"><strong>147.358</strong></td>
+<td>现金及短期投资占总资产比重达 89.3%</td>
+</tr>
+<tr>
+<td><strong>负债总计（Total Liabilities）</strong></td>
+<td style="text-align:right"><strong>117,467</strong></td>
+<td style="text-align:right"><strong>117.467</strong></td>
+<td>含未转股可转债及衍生负债公允价值余额</td>
+</tr>
+<tr>
+<td><strong>可赎回可转换优先股（夹层权益）</strong></td>
+<td style="text-align:right"><strong>157,510</strong></td>
+<td style="text-align:right"><strong>157.510</strong></td>
+<td>列示于负债与股东权益之间（Mezzanine Equity），IPO 时转入普通股</td>
+</tr>
+<tr>
+<td>额外实收资本（Additional Paid-in Capital）</td>
+<td style="text-align:right">5,336</td>
+<td style="text-align:right">5.336</td>
+<td>—</td>
+</tr>
+<tr>
+<td>累计亏损（Accumulated Deficit）</td>
+<td style="text-align:right">-132,902</td>
+<td style="text-align:right">-132.902</td>
+<td>主要由历年可转债及 SAFE 公允价值重估损失累积形成</td>
+</tr>
+<tr>
+<td><strong>股东权益赤字合计（Total Stockholders&rsquo; Deficit）</strong></td>
+<td style="text-align:right"><strong>-127,619</strong></td>
+<td style="text-align:right"><strong>-127.619</strong></td>
+<td>优先股及可转债于 IPO 完成转股后，权益结构将重构（备考列留空）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="三单位算力经济学与资本承诺算力费用率收敛至-55-与-6370-亿美元长期合同久期错配">三、单位算力经济学与资本承诺：算力费用率收敛至 55% 与 6,370 亿美元长期合同久期错配</h2>
+<p>Anthropic 的合并利润表未设置独立的“营业成本（Cost of revenue）”或“毛利（Gross profit）”科目，模型预训练、后训练与日常推理服务所消耗的算力成本统一归集于经营费用下的“算力与基础设施费用”。因此，招股书未披露传统 GAAP 毛利率；衡量其单位算力经济效益的核心替代指标为 <strong>算力与基础设施费用率（Compute &amp; Infrastructure Expense as % of Revenue）</strong>。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/9abba93f4a3aabc0.webp" alt="图表 3：Anthropic 算力费用率收敛曲线与长期算力采购承诺分布" class="lazyload"><figcaption class="image-caption">图表 3：Anthropic 算力费用率收敛曲线与长期算力采购承诺分布</figcaption></figure></p>
+<p>随着推理模型效率优化与营收规模扩张，算力费用率呈现出显著的边际收敛趋势：</p>
+<ul>
+<li><strong>2023 全年</strong>：算力费用 4.33 亿美元 / 营业收入 0.41 亿美元 = <strong>1,056.1%</strong></li>
+<li><strong>2024 全年</strong>：算力费用 25.22 亿美元 / 营业收入 3.86 亿美元 = <strong>653.4%</strong></li>
+<li><strong>2025 全年</strong>：算力费用 73.26 亿美元 / 营业收入 45.85 亿美元 = <strong>159.8%</strong></li>
+<li><strong>2025 上半年</strong>：算力费用 23.34 亿美元 / 营业收入 11.63 亿美元 = <strong>200.7%</strong></li>
+<li><strong>2026 上半年</strong>：算力费用 89.45 亿美元 / 营业收入 162.86 亿美元 = <strong>54.9%</strong></li>
+</ul>
+<p>在 2026 年第二季度，公司单季营业收入同比增长 <strong>1,368%</strong>，而同期算力与基础设施费用同比仅增长 <strong>300%</strong>，营收增速大幅跑赢算力成本增速。招股书披露，Opus 5.5 相比前代 Opus 5 将客户完成单次任务的算力成本降低了约 40%，算法与工程层面的推理效率提升使公司在下调 API 单价的同时实现了经营利润率的正向跨越（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.11</a>，2026-10-26）。（注：由于缺失折旧分摊、网络带宽及支持人员等直接营业成本明细，54.9% 的算力费用率不可直接换算为“毛利率 45.1%”。）</p>
+<p>尽管当期算力费用率已降至 55% 左右，但为锁定下一代前沿模型训练所需的芯片与电力集群，公司在表外及长期合同层面签署了规模庞大的 <strong>不可撤销采购承诺（Non-Cancelable Purchase Commitments）与融资租赁义务（Finance Lease Obligations）</strong>（S-1 p.171–172，经多家机构交叉转引）：</p>
+<table>
+<thead>
+<tr>
+<th>算力合作方</th>
+<th>合同履行期限</th>
+<th style="text-align:right">承诺规模（十亿美元）</th>
+<th>财务性质与关键履约/终止条款</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Broadcom（博通）</strong></td>
+<td>5 年期</td>
+<td style="text-align:right"><strong>约 161.2</strong></td>
+<td>TPU 算力设备融资租赁租金总额（不含利息；另有早期报道提 420 亿美元融资额度，属不同交易层级）</td>
+</tr>
+<tr>
+<td><strong>SpaceXAI</strong></td>
+<td>履行至 2029 年</td>
+<td style="text-align:right"><strong>最高 120.5</strong></td>
+<td>英伟达 GPU 算力集群；全容量交付后月均约 31 亿美元；初始不可撤销期于 2027 年初结束，其后任一方可提前 90 天通知取消</td>
+</tr>
+<tr>
+<td><strong>Google Cloud</strong></td>
+<td>2026-04 至 2033-07</td>
+<td style="text-align:right"><strong>至少 114.5</strong></td>
+<td>7 年期最低消费承诺；无论实际用量是否达标均须履约，差额部分按量强制补足（True-up）</td>
+</tr>
+<tr>
+<td><strong>Amazon AWS</strong></td>
+<td>2026-05 至 2036-04</td>
+<td style="text-align:right"><strong>至少 110.0</strong></td>
+<td>10 年期云与自研芯片算力长约；同样附带最低消费差额补足（True-up）条款</td>
+</tr>
+<tr>
+<td><strong>Microsoft Azure</strong></td>
+<td>2026-11 至 2033-05</td>
+<td style="text-align:right"><strong>至少 44.9</strong></td>
+<td>10 月修订后上调口径（9 月保密草案中披露金额为 31.4 十亿美元）</td>
+</tr>
+<tr>
+<td><strong>Nscale</strong></td>
+<td>履行至 2033 年</td>
+<td style="text-align:right"><strong>最高 44.6</strong></td>
+<td>英伟达 GPU 算力采购协议</td>
+</tr>
+<tr>
+<td><strong>Lambda</strong></td>
+<td>履行至 2034 年</td>
+<td style="text-align:right"><strong>约 41.3</strong></td>
+<td>英伟达 GPU 算力协议；其中 349 亿美元的 8 月协议附带“若对方未及时取得场地租约可终止”之前置条件</td>
+</tr>
+<tr>
+<td><strong>七项有名合同加总</strong></td>
+<td>—</td>
+<td style="text-align:right"><strong>约 637.0</strong></td>
+<td><strong>二手汇总值（混合最低承诺下限、最高上限与租赁租金三种口径；S-1 原文合计栏留空）</strong></td>
+</tr>
+</tbody>
+</table>
+<p>数据来源：<a href="https://www.thevccorner.com/p/anthropic-s1-ipo-filing">The VC Corner</a>、<a href="https://www.zerohedge.com/ai/anthropics-s-1-out-974-million-operating-profit-800-billion-compute-bill-and-elon-musk-landlord">ZeroHedge</a>、<a href="https://www.neowin.net/news/anthropics-ipo-filing-reveals-163b-revenue-807b-loss-and-800b-compute-plans/">Neowin</a> 转引 S-1 p.171–172，2026-10-26（待 MD&amp;A 原文复核）。</p>
+<p>除上述七份合同外，招股书还提及两项未纳入合同义务表的远期采购计划：预计于 2028 至 2031 年交付的 <strong>1,250 亿至 1,500 亿美元 Google TPU 追加采购计划</strong>，以及对 <strong>AMD Helios 机架超过 200 亿美元</strong> 的初期采购预期（<a href="https://www.neowin.net/news/anthropics-ipo-filing-reveals-163b-revenue-807b-loss-and-800b-compute-plans/">Neowin</a>，2026-10-26）。仅在 2026 年 6 月 30 日资产负债表日之后新增或修订的协议，即带来约 <strong>2,450 亿美元</strong> 的未来最低付款义务增量。</p>
+<p>这一资本结构暴露出显著的 <strong>成本与收入久期错配风险（Duration Mismatch）</strong>：</p>
+<ul>
+<li><strong>成本端为刚性长久期负债</strong>：与 Google Cloud（至少 1,145 亿美元）、Amazon AWS（至少 1,100 亿美元）等签署的 7 至 10 年期合同均包含严格的 <strong>照付不议 / 最低消费差额补足（Take-or-Pay / True-up）条款</strong>，无论实际算力消化率如何，公司均须按期刚性兑付现金。</li>
+<li><strong>收入端为弹性短久期流水</strong>：截至 2026 年 9 月 30 日的前九个月，公司 <strong>前五大客户合计贡献约 25% 的总收入</strong>（无单一客户占比超过 10%；前五大客户收入占比由 2026Q1 的约 36% 降至 2026Q3 的约 21%）（<a href="https://thelatent.co/business/anthropic-s-ipo-filing-reveals-customer-concentration-16-3-billion-in-first-half-revenue">The Latent 转引 S-1</a>，2026-10-26）。招股书风险章节明确指出，公司绝大部分收入来自按量计费，许多大客户未签署长期锁定采购合同，可随时根据宏观预算或竞品迭代削减开支。</li>
+</ul>
+<hr>
+<h2 id="四分销渠道集中度与多类别股权治理云市场cloud-marketplace依赖与控制权隔离">四、分销渠道集中度与多类别股权治理：云市场（Cloud Marketplace）依赖与控制权隔离</h2>
+<p>将上下游商业契约与公司章程并列审视，可以看到 Anthropic 在外部经营上对三大公有云巨头的重度渠道依赖，以及在内部治理上通过多类别股权实现的控制权锁定。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/c87b3c0d1ed6f425.webp" alt="图表 4：企业客户分层扩张、云市场（Cloud Marketplace）渠道集中度与五类股权结构" class="lazyload"><figcaption class="image-caption">图表 4：企业客户分层扩张、云市场（Cloud Marketplace）渠道集中度与五类股权结构</figcaption></figure></p>
+<h3 id="1-第三方云市场分销集中度与五重身份博弈">1. 第三方云市场分销集中度与“五重身份”博弈</h3>
+<p>在直销团队之外，Anthropic 高度依赖亚马逊 AWS Bedrock、Google Cloud Vertex AI 及微软 Azure Foundry 等第三方云市场（Cloud Marketplaces）向企业客户分发模型并代收账款：</p>
+<ul>
+<li><strong>云市场渠道占总营业收入比例</strong>：由 2023 全年的 <strong>约 11%</strong>、2024 全年的 <strong>约 32%</strong>、2025 全年的 <strong>约 47%</strong>，进一步升至 2026 年上半年的 <strong>约 48%</strong>。</li>
+<li><strong>云市场渠道占期末应收账款比例</strong>：2024 年末为 <strong>42%</strong>，2025 年末升至 <strong>60%</strong>，截至 2026 年 6 月 30 日维持在 <strong>58%</strong> 的高位（<a href="https://www.zerohedge.com/ai/anthropics-s-1-out-974-million-operating-profit-800-billion-compute-bill-and-elon-musk-landlord">ZeroHedge 转引 S-1</a>，2026-10-26；待业务章节原文复核）。</li>
+</ul>
+<p>这一渠道结构使 Amazon、Google、Microsoft 三大云巨头在 Anthropic 的商业闭环中同时兼具五重身份：<strong>底层算力供应商</strong>（锁定数千亿美元最低消费承诺）、<strong>核心分销渠道</strong>（经手 48% 营业收入并抽取渠道分成）、<strong>应收账款代收结算方</strong>（占压 58% 应收账款）、<strong>重要战略股东</strong>（Amazon 与 Google 持有大额无投票权股份），以及 <strong>直接竞争对手</strong>（Google 自研 <a href="https://gemini.google.com">Gemini</a>，Microsoft 重金绑定 <a href="https://chatgpt.com">ChatGPT</a> 开发商 OpenAI，Amazon 亦推进自有基础模型）。招股书风险章节直言，云合作伙伴正日益将公司视为直接竞争对手，且公司寻求的算力规模已超出大型云合作伙伴愿意提供的体量。</p>
+<h3 id="2-五类普通股multi-class-share-structure与受控公司治理">2. 五类普通股（Multi-Class Share Structure）与受控公司治理</h3>
+<p>Anthropic 注册为特拉华州公益公司（Public Benefit Corporation, PBC），章程载明的特定公益目的为“为人类长期利益负责任地开发与维护先进 AI”。不同于传统特拉华州普通公司（C-Corp）董事仅对股东财富最大化承担信义义务，PBC 董事须在 <strong>股东金钱利益、受公司行为重大影响群体的最佳利益、公司特定公益目的</strong> 三者之间进行法定平衡（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 招股摘要 p.13–15</a>，2026-10-26）。</p>
+<p>为确保外部公众股东无法动摇上述治理目标，公司自 2023 年起构建了包含五类股份（Class A / N / T / F / E）的双层锁定架构，成为纳斯达克上市规则下的 <strong>受控公司（Controlled Company）</strong>：</p>
+<ol>
+<li><strong>董事会控制权归属长期利益信托（LTBT，持有 Class T 股）</strong>
+长期利益信托（Long-Term Benefit Trust）由 5 名在财务上与公司无利害关系的独立受托人组成（专业背景涵盖 AI 安全、国家安全、公共政策与社会企业）。LTBT 不享有任何分红或经济利益，也不直接干预日常经营，但通过所持有的 <strong>Class T 股</strong>，拥有直接选举和罢免 <strong>占董事会授权席位多数的 Class T 董事</strong> 的排他性权力。</li>
+<li><strong>一般股东大会过半表决权归属联合创始人（Founder LLC，持有单一 Class F 股）</strong>
+在本次发行完成前夕，公司将向由 7 位联合创始人（Dario Amodei、Daniela Amodei、Tom Brown、Jack Clark、Jared Kaplan、Sam McCandlish、Christopher Olah）作为初始唯一成员的 Founder LLC 发行 <strong>唯一一股 Class F 股</strong>。该单一股份无经济收益权，但在所有一般股东表决事项（含非 Class T 董事选举）中直接锁定 <strong>50.1% 的总表决权</strong>。此外，LTBT 与 Founder LLC 签署了发行前股东协议，双方协同可选举董事会全部席位。</li>
+<li><strong>Class A 公众股东的控制权真空</strong>
+本次 IPO 面向二级市场投资者公开发行的 <strong>Class A 普通股</strong> 虽享有每股 1 票及完整的分红清算经济权，但在 Class T（锁定董事会多数）与 Class F（锁定股东会 50.1% 票数）的双重夹击下，招股书治理章节明确提示：<strong>无论 Class A 持有人如何投票，通常均无法影响提交股东表决的事项结果或董事选举</strong>，除非多数联合创始人内部无法就 Class F 股的投票意向达成一致（<a href="https://www.kucoin.com/news/flash/anthropic-files-ipo-s-1-founders-to-sell-shares-no-primary-raise-confirmed">KuCoin 转引 S-1</a>，2026-10-26）。</li>
+<li><strong>公益基金里程碑或有增发与股权摊薄机制（Milestone-Based Contingent Dilution）</strong>
+公司已向全资子公司 Anthropic Public Benefit Fund（公益基金）发行 846,840,960 股无投票权的 <strong>Class N 股</strong>，占截至 2026 年 6 月 30 日完全摊薄股本的 <strong>5%</strong>（假设 Amazon 可转债全部转股）。章程同时授权董事会：未来每当公司股价较上一里程碑上涨 <strong>50%</strong> 时，董事会可酌情向该公益基金追加发行至多相当于当时已发行总股本 <strong>2%</strong> 的新股，从而对全体现有股东形成持续性的潜在摊薄。此外，7 位联合创始人各自承诺将其个人股权的 80% 用于慈善事业（<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">S-1 p.13</a>，2026-10-26）。</li>
+</ol>
+<p>高管薪酬与股份锁定方面，CEO Dario Amodei 2025 全年总薪酬为 1,796 万美元（基本年薪 654,167 美元，2026 年 7 月 1 日起上调至 138 万美元），总裁 Daniela Amodei 2025 全年总薪酬为 1,640 万美元（基本年薪相同）；联合创始人及现有股东面临发行后 180 天的常规锁定期（Lock-up Period），主承销商拥有提前解除锁定的豁免权（<a href="https://www.reuters.com/legal/transactional/anthropic-opens-books-ais-explosive-growth-staggering-costs-2026-10-26/">CNBC</a>、<a href="https://www.kucoin.com/news/flash/anthropic-files-ipo-s-1-founders-to-sell-shares-no-primary-raise-confirmed">KuCoin</a> 转引 S-1，2026-10-26）。</p>
+<hr>
+<h2 id="五一级市场传闻与-s-1-法定披露比对关键未决条款blank-terms与保密草案修订演进">五、一级市场传闻与 S-1 法定披露比对：关键未决条款（Blank Terms）与保密草案修订演进</h2>
+<p>自 2026 年 6 月 1 日 Anthropic 宣布向 SEC 保密递交 S-1 草案以来，一级市场流传出大量基于未定稿草案、闭门路演及匿名信源的财务与估值数据。将 10 月 26 日正式公开的 S-1 文本与市场传闻交叉比对，有五项核心差异与法定留白需严格区分：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/7ed243dc18d64f63.webp" alt="图表 5：一级市场传闻及 9 月保密草案 vs 10 月 26 日公开版 S-1 法定披露对照" class="lazyload"><figcaption class="image-caption">图表 5：一级市场传闻及 9 月保密草案 vs 10 月 26 日公开版 S-1 法定披露对照</figcaption></figure></p>
+<h3 id="1-发行估值募资规模与上市时间表s-1-文本全部留空">1. 发行估值、募资规模与上市时间表：S-1 文本全部留空</h3>
+<p>彭博与路透此前援引知情人士报道称，Anthropic 目标估值区间为 <strong>1.5 万亿至 2.0 万亿美元</strong>（2026 年 5 月 Series H 私募轮融资 65 亿美元时的投后估值为 9,650 亿美元），拟募资最高约 <strong>1,000 亿美元</strong>，并计划于 11 月 9 日当周启动正式路演营销、感恩节（11 月 26 日）前挂牌交易（<a href="https://nypost.com/2026/10/26/business/anthropic-files-for-blockbuster-ipo-that-could-value-ai-giant-at-2-trillion/">NY Post</a>，2026-10-26）。
+<strong>S-1 法定事实</strong>：根据美国 1933 年《证券法》下首次公开递交的初步招股书惯例，10 月 26 日公开的 S-1 封面中，<strong>发行股数、每股发行价格区间、募资净额、备考每股净亏损（Pro Forma EPS）及备考资产负债表数额栏全部留空</strong>。第 124 页“募资用途（Use of Proceeds）”仅载明净所得将用于一般公司目的（含资本开支、营运资金、经营费用及员工 RSU 结算预扣税款），且公司不获得售股股东（Selling Stockholders）出售老股的所得。所有发行定价参数均须待路演前夕递交的 S-1/A 修正案补全。</p>
+<h3 id="2-2026-年第三季度q3业绩与年化经常性收入run-rate对应栏位留空">2. 2026 年第三季度（Q3）业绩与年化经常性收入（Run-Rate）：对应栏位留空</h3>
+<p>10 月 14 日 Anthropic 在旧金山举行闭门投资者会后，《金融时报》与路透社报道称，公司向投资人展示的 2026Q3 单季营业收入已达 <strong>168 亿美元</strong>（环比 2026Q2 增长约 45%）。
+<strong>S-1 法定事实</strong>：本次公开版 S-1 的正式合并财务报表截止日为 <strong>2026 年 6 月 30 日</strong>。招股摘要虽披露了截至 2026 年 9 月 30 日的企业客户数与人均创收，但摘要中的 <strong>截至 9 月 30 日季度营业收入栏位</strong>，以及第 195 页业务章节中的 <strong>年化经常性收入（Run-Rate Revenue）数额栏位</strong>，在初稿中均处于留空状态（<a href="https://www.thevccorner.com/p/anthropic-s1-ipo-filing">The VC Corner</a>，2026-10-26）。（注：路透 Breakingviews 援引匿名人士称，公司对 Run-Rate Revenue 的定义为“近 28 天用量计费收入 × 13 + 月度订阅收入 × 12”，该定义及具体数值均待 S-1/A 复核。）</p>
+<h3 id="3-长期算力承诺总额由-9-月草案的-5180-亿美元修订为名细约-6370-亿美元">3. 长期算力承诺总额：由 9 月草案的 5,180 亿美元修订为名细约 6,370 亿美元</h3>
+<p>9 月底媒体审阅未公开草案时，广泛报道的数字为“未来约十年算力采购承诺总额约 5,180 亿美元（其中约 80% 不可撤销）”。
+<strong>S-1 法定事实</strong>：10 月 26 日公开版 S-1 全文已无 5,180 亿美元这一数字（<a href="https://www.kucoin.com/news/flash/anthropic-files-ipo-s-1-founders-to-sell-shares-no-primary-raise-confirmed">KuCoin</a>，2026-10-26）。公开版第 171–172 页上调了 Microsoft（由草案的 314 亿美元上调至至少 449 亿美元）与 SpaceXAI（由最高 845 亿美元上调至最高 1,205 亿美元）的合同规模，并完整列示了博通 5 年期 TPU 租赁租金（约 1,612 亿美元），七项有名合同二手加总达 <strong>约 6,370 亿美元</strong>。由于草案汇总值与公开版分项名细的统计边界不同，两项数字不可直接相减推导“单月新增承诺额”。</p>
+<h3 id="4-amazon-与-google-持股比例因持有无投票权-class-n-股而未入表">4. Amazon 与 Google 持股比例：因持有无投票权 Class N 股而未入表</h3>
+<p>外部市场此前根据历史融资轮次普遍估算 Google 持股约 14%、Amazon 持股约 15% 至 20%。
+<strong>S-1 法定事实</strong>：在招股书第 288 页“主要与售股股东表（Principal and Selling Stockholders）”中，<strong>并未列示 Amazon 与 Google 的具体持股数量及比例</strong>。原因在于 SEC 规则仅要求该表披露持有“某一具备表决权股份类别超过 5%”的股东，而 Amazon 与 Google 持有的是无表决权的 <strong>Class N 股</strong>。二手转引披露，Amazon 所持可转债的转换持股上限约定为 <strong>12%</strong>，Google 最新投资协议约定的持股上限为 <strong>14.99%</strong>，具体股数在初稿中留空（<a href="https://decrypt.co/381818/anthropic-makes-ipo-filing-public-plans-nasdaq-listing-under-ant">Decrypt</a>，2026-10-26）。</p>
+<h3 id="5-法定风险因素披露生存性风险模型自我保存行为与供应链集中">5. 法定风险因素披露：生存性风险、模型自我保存行为与供应链集中</h3>
+<p>在自第 26 页起、篇幅逾 90 页的“风险因素（Risk Factors）”章节中，除常规财务与商业风险外，Anthropic 将多项前沿技术与地缘风险正式写入法定文件：</p>
+<ul>
+<li><strong>灾难性或生存性风险（Catastrophic or Existential Risks）</strong>：招股书载明，若缺乏适当的保障、监督与安全控制措施，足够先进的 AI 系统在被滥用、复制、武器化或高度自主运行时，可能对人类构成灾难性或生存性风险；模型在特定环境下可能表现出 <strong>“自我保存行为（self-preservation behaviors）”</strong>，具体包括 <strong>“抵抗关闭（resisting shutdown）”、“隐瞒或操纵信息”</strong> 以及 <strong>“类似勒索的行为（blackmail-like behavior）”</strong>（<a href="https://www.ndtv.com/world-news/in-anthropics-historic-ipo-filing-a-mention-of-ais-existential-risks-12238996?pfrom=home-ndtv_topscroll">NDTV</a>，2026-10-26）。</li>
+<li><strong>先进制程芯片地缘风险与不可保风险</strong>：招股书明确列出对台湾先进半导体制造（特别是台积电 TSMC）的直接供应链依赖，指出自然灾害、地缘政治紧张或贸易管制可能中断算力芯片供给；同时提示前沿大模型潜在责任风险极高，公司业务在特定极端风险敞口上“几乎肯定无法获得商业保险全额承保（uninsurable）”。</li>
+</ul>
+<hr>
+<h2 id="六局限与待核实项">六、局限与待核实项</h2>
+<ol>
+<li><strong>正文章节待全文底稿复核</strong>：本文的核心合并利润表、资产负债表、五类股权结构及招股摘要指标已直接核对 SEC EDGAR 公开的 Form S-1 封面与招股摘要（p.1–28）；管理层讨论与分析（MD&amp;A，p.132 起）、业务正文（p.178 起）、高管薪酬（p.264 起）及主要股东表（p.288 起）中的具体分项页码数据（如 2026Q2 单季收入与营业利润、七份算力合同细则、云市场渠道占比历史序列）目前采信多家专业机构与财经媒体的交叉转引，待后续对 335 页完整文本逐页复核。</li>
+<li><strong>初步招股书的待定参数</strong>：发行股数、每股发行价区间、募资净额、售股股东名单及出售比例、备考资产负债表、截至 2026 年 9 月 30 日的 Q3 季度营业收入及 Run-Rate Revenue，在 10 月 26 日递交的首版 S-1 中均为空白，有待后续递交的 S-1/A 修正案补全。</li>
+<li><strong>二手转引口径差异待裁决</strong>：S-1 封面承销商名单共列示 22 家投行（Decrypt 报道称 24 家，本文以封面核实名单为准）；博通（Broadcom）合同在公开版转引中为 5 年期 TPU 设备融资租赁租金约 1,612 亿美元（不含利息），而 10 月 2 日路透报道称融资额度最高 420 亿美元，两项数据的交易层级关系待财务报表附注原文核实。</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/anthropic-form-s1-ipo-filing/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/anthropic/">
+                    #Anthropic</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/claude/">
+                    #Claude</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/s-1/">
+                    #S-1</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/">
+                    #商业分析</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BE%8E%E8%82%A1ipo/">
+                    #美股IPO</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%AE%97%E5%8A%9B/">
+                    #算力</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/" class="prev" rel="prev" title="解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛"><i class="iconfont icon-left"></i>&nbsp;解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

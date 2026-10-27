@@ -6,7 +6,19 @@
     <description>Recent content in AI on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Oct 2026 12:20:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Oct 2026 10:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anthropic 招股书解读：经营改善与长期算力支出压力</title>
+      <link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link>
+      <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic, PBC 向美国证券交易委员会（SEC）公开递交了长达 335 页的 Form S-1 注册声明（初步招股书），申请将其 Class A 普通股在纳斯达克全球精选市场（Nasdaq Global Select Market）挂牌上市，交易代码定为 ANT（SEC EDGAR S-1 原文，2026-10-26；Anthropic 官方公告，2026-10-26）。
+作为首家向二级市场公开经审计财务报表的头部通用大模型实验室（竞争对手 OpenAI 虽已秘密递交上市草案，但已将 IPO 计划推迟至 2027 年初，Reuters，2026-10-26），Anthropic 的 S-1 文件首次披露了前沿大模型商业化的核心财务与治理底稿：
+营收放量与单季经营转正：公司自 2023 年一季度启动商业化，营业收入由 2023 全年的 4,100 万美元增至 2025 全年的 45.85 亿美元；2026 年上半年营业收入达 162.86 亿美元（同比增长 1,300.1%）。其中 2026 年第二季度单季收入达 115.60 亿美元，超越此前三年累计总和（50.12 亿美元），并实现 9.74 亿美元的单季 GAAP 营业利润。 账面净亏损的会计重估归因：2026 年上半年公司 GAAP 账面净亏损高达 807.48 亿美元，但其中 723.</description>
+    </item>
+    
     <item>
       <title>解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</title>
       <link>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</link>
