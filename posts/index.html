@@ -8,7 +8,7 @@
   <meta name="author" content="谷粒">
   
   
-  <meta name="description" content="AI 博主 · 前算法专家">
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 195 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 197 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 195 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 197 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -282,15 +282,50 @@ if (!doNotTrack) {
     <div class="posts-list" id="posts-list">
         
         <article class="posts-list-item"
+         data-tags="AI||前端开发||UI设计||Hallmark||代码助手||Claude||Cursor"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/frontend-anti-ai-slop-hallmark-guide/">前端去 AI 味实操：约束规则、实测评价与 Hallmark</a></h2>
+    <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
+让 AI 写前端或者落地页的时候，经常会遇到一种情况：代码跑得通，布局也齐整，但一眼望过去就是浓重的模型味。紫蓝渐变、大写小眉标、三列等宽特性卡片与假数据，全是网络训练集里的最大公约数。
+这种塑料感主要源于模型缺乏具体的设计意图与约束规则。
+下面这张图通过本地 Codex 生成，直观比对了两侧的形态差异，并梳理了推荐的去味流程：
+本地 Codex  …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-28">October 28, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
          data-tags="AI||Anthropic||Claude||S-1||商业分析||美股IPO||算力"
          data-categories="行业趋势">
     <h2 class="posts-list-title"><a href="/posts/anthropic-form-s1-ipo-filing/">Anthropic 招股书解读：经营改善与长期算力支出压力</a></h2>
     <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
-美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic, PBC 向美国证券交易委员会（SEC）公开递交了长达 335 页的 Form S-1 注册声明（初步招股书），申请将其 Class A 普通股在纳斯达克全球精选市场（Nasdaq Global Select Market）挂牌上市，交易代码定为 ANT（SEC …</p>
+美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic 向美国证券交易委员会（SEC）递交了 335 页的招股书（代码 ANT）（SEC 原文，2026-10-26；官方公告，2026-10-26）。
+这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO …</p>
     <div class="posts-list-meta">
         <time datetime="2026-10-27">October 27, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="链上数据||量化交易||GMGN||Bubblemaps||Arkham||DeBank||MEV||聪明钱"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/how-to-track-onchain-transactions/">链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</a></h2>
+    <p class="posts-list-summary">风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
+在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。
+面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-26">October 26, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>
@@ -401,38 +436,6 @@ a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的
 手里 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-10-23">October 23, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="Coding Agent||Claude Code||Codex||Antigravity||Cursor||工作流||开源||hang2la"
-         data-categories="经验分享">
-    <h2 class="posts-list-title"><a href="/posts/hang2la-visual-priority-alignment-for-coding-agents/">别再对着一长串任务打字了：用拖拽看板接管 Coding Agent 的执行顺序</a></h2>
-    <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
-日常用 Claude Code、Codex、Antigravity 或者 Cursor 辅助写代码时，沟通往复最多的环节往往是给它定方向。
-让它做一次架构梳理、排查历史代码或者拆解新功能，屏幕上会立刻多出十几个甚至二十个待办事项。现在的工具无论是走命令行终端，还是用各自的 Web 版、图形客户端（GUI），界面体验其实都不差。但不管放在哪个窗口里， …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-23">October 23, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="AppleScript||Chrome||Coding Agent||macOS||自动化||Antigravity||Codex||写作工作流"
-         data-categories="经验分享">
-    <h2 class="posts-list-title"><a href="/posts/applescript-browser-control-for-coding-agents/">用过才知道：macOS 原生指令在 Agent 浏览器操作里的隐藏优势</a></h2>
-    <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
-这两天用 Google Antigravity 整理和分发博客文章的时候，我留意到一个细节：它操作我电脑上 Chrome 浏览器的方式，不用起 Playwright，也不走浏览器扩展，直接在终端里调 macOS 自带的 osascript（AppleScript）。
-这引起了我的好奇。在此之前，我让 Codex 操作浏览器经常卡壳。要么是浏览器扩展 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-21">October 21, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
         
@@ -658,7 +661,7 @@ a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的
     
 </ul>
 
-        <span class="posts-total">共 195 篇</span>
+        <span class="posts-total">共 197 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
@@ -666,15 +669,50 @@ a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的
     <template id="all-posts-template">
         
         <article class="posts-list-item"
+         data-tags="AI||前端开发||UI设计||Hallmark||代码助手||Claude||Cursor"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/frontend-anti-ai-slop-hallmark-guide/">前端去 AI 味实操：约束规则、实测评价与 Hallmark</a></h2>
+    <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
+让 AI 写前端或者落地页的时候，经常会遇到一种情况：代码跑得通，布局也齐整，但一眼望过去就是浓重的模型味。紫蓝渐变、大写小眉标、三列等宽特性卡片与假数据，全是网络训练集里的最大公约数。
+这种塑料感主要源于模型缺乏具体的设计意图与约束规则。
+下面这张图通过本地 Codex 生成，直观比对了两侧的形态差异，并梳理了推荐的去味流程：
+本地 Codex  …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-28">October 28, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
          data-tags="AI||Anthropic||Claude||S-1||商业分析||美股IPO||算力"
          data-categories="行业趋势">
     <h2 class="posts-list-title"><a href="/posts/anthropic-form-s1-ipo-filing/">Anthropic 招股书解读：经营改善与长期算力支出压力</a></h2>
     <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
-美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic, PBC 向美国证券交易委员会（SEC）公开递交了长达 335 页的 Form S-1 注册声明（初步招股书），申请将其 Class A 普通股在纳斯达克全球精选市场（Nasdaq Global Select Market）挂牌上市，交易代码定为 ANT（SEC …</p>
+美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic 向美国证券交易委员会（SEC）递交了 335 页的招股书（代码 ANT）（SEC 原文，2026-10-26；官方公告，2026-10-26）。
+这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO …</p>
     <div class="posts-list-meta">
         <time datetime="2026-10-27">October 27, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="链上数据||量化交易||GMGN||Bubblemaps||Arkham||DeBank||MEV||聪明钱"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/how-to-track-onchain-transactions/">链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</a></h2>
+    <p class="posts-list-summary">风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
+在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。
+面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-26">October 26, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
     </div>
 </article>

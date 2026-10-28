@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/" />
+  <link rel="next" href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" />
+  <link rel="canonical" href="https://kuhung.me/posts/how-to-track-onchain-transactions/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/how-to-track-onchain-transactions/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-26T18:00:00+08:00","datePublished":"2026-10-26T18:00:00+08:00","description":"风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。 在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。 面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团 …","headline":"链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, GMGN, Bubblemaps, Arkham, DeBank, MEV, 聪明钱","mainEntityOfPage":{"@id":"https://kuhung.me/posts/how-to-track-onchain-transactions/","@type":"WebPage"},"name":"链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/how-to-track-onchain-transactions/","wordCount":889}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-26 itemprop="datePublished">October 26, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一为什么静态聪明钱榜单容易失效">一、为什么静态“聪明钱”榜单容易失效？</a>
+      <ul>
+        <li><a href="#1-胜率指标钝化与均值回归">1. 胜率指标钝化与均值回归</a></li>
+        <li><a href="#2-虚假利润与期初库存未对齐">2. 虚假利润与期初库存未对齐</a></li>
+        <li><a href="#3-工具定位与日常排查脱节">3. 工具定位与日常排查脱节</a></li>
+      </ul>
+    </li>
+    <li><a href="#二实操工作流四步走查一笔链上异动">二、实操工作流：四步走查一笔链上异动</a>
+      <ul>
+        <li><a href="#step-1信号发现与即时动态初筛gmgn">Step 1：信号发现与即时动态初筛（GMGN）</a></li>
+        <li><a href="#step-2筹码分布与关联簇排查bubblemaps">Step 2：筹码分布与关联簇排查（Bubblemaps）</a></li>
+        <li><a href="#step-3资金来源与幕后实体穿透arkham">Step 3：资金来源与幕后实体穿透（Arkham）</a></li>
+        <li><a href="#step-4自动化过滤脚本与双轨沉淀">Step 4：自动化过滤脚本与双轨沉淀</a></li>
+      </ul>
+    </li>
+    <li><a href="#三真实走查案例拆解">三、真实走查案例拆解</a>
+      <ul>
+        <li><a href="#案例-a排雷识破伪装成100-胜率低频波段的-mev-撮合机器人与-eip-7702-托管账户">案例 A（排雷）：识破伪装成“100% 胜率低频波段”的 MEV 撮合机器人与 EIP-7702 托管账户</a></li>
+        <li><a href="#案例-b排雷识破高额利润榜单背后的窗口前库存出货与刷量对倒">案例 B（排雷）：识破“高额利润榜单”背后的窗口前库存出货与刷量对倒</a></li>
+        <li><a href="#案例-c正面留存真正通过四步核验的独立-trader-样本">案例 C（正面留存）：真正通过四步核验的独立 Trader 样本</a></li>
+      </ul>
+    </li>
+    <li><a href="#四跟单执行的物理现实与摩擦损耗">四、跟单执行的物理现实与摩擦损耗</a>
+      <ul>
+        <li><a href="#1-单笔交易体量与流动性池深度约束">1. 单笔交易体量与流动性池深度约束</a></li>
+        <li><a href="#2-trader-轨道与-capital-轨道的分离">2. Trader 轨道与 Capital 轨道的分离</a></li>
+      </ul>
+    </li>
+    <li><a href="#五主流工具矩阵与能力边界对照">五、主流工具矩阵与能力边界对照</a></li>
+    <li><a href="#六数据来源参考与免责声明">六、数据来源参考与免责声明</a>
+      <ul>
+        <li><a href="#数据来源参考">数据来源参考</a></li>
+        <li><a href="#免责声明">免责声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。</p>
+</blockquote>
+<p>在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。</p>
+<p>面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团队内部的代币分仓；要么考虑购买商业机构级分析工具，但面对每月 <code>49 美元</code> 到 <code>69 美元</code> 的订阅费用，普通个人交易者难以长期承担，且这类工具更侧重宏观研报与全景大盘，对数分钟内的短线排查并不顺手。</p>
+<p>我们在清洗本地链上画像库时发现，单纯依靠静态胜率榜单根本排不出交易能力的优劣。排查一笔链上异动也不需要昂贵的商业订阅，把 GMGN、Bubblemaps、Arkham、DeBank 与区块链浏览器拼接起来，配合一段几十行的 RPC 校验脚本，就能在 10 分钟内完成一笔交易的尽调闭环，降低盲目跟单风险并过滤无效噪音。</p>
+<hr>
+<h2 id="一为什么静态聪明钱榜单容易失效">一、为什么静态“聪明钱”榜单容易失效？</h2>
+<p>跟踪链上地址的初衷是寻找具备持续信息优势或更强交易能力的钱包。在实际观察中，直接根据公开排行榜跟单往往会出现大幅亏损。主要原因来自三个现实约束：</p>
+<h3 id="1-胜率指标钝化与均值回归">1. 胜率指标钝化与均值回归</h3>
+<p>在 <code>data/analysis_empirical_summary.json</code> 覆盖的 1,345 个候选钱包样本中，按常见榜单算法测算胜率，<strong>中位数高达 100%</strong>。只要统计窗口内钱包只卖出盈利代币、未将浮亏代币清仓，或者历史仅成交寥寥两三笔，就会被算法标记为“全胜战绩”。单靠静态胜率指标，无法区分真实交易能力与单币运气成分。</p>
+<p>Nansen 等专业平台在标签系统中专门设立了 <code>Former Smart Trader</code>（前聪明钱）分类。在特定行情阶段（如早期特定代币轮动）录得数倍收益的高盈利地址，在市场风格切换后，其交易策略往往迅速失效，胜率和盈亏比均会大幅回落。</p>
+<p>GitHub 开源回测项目 <code>orvynel/crucible</code> 对聪明钱跟单策略的实测数据表明：无脑跟随公开榜单上的聪明钱买入，30 天胜率仅为 54%，整体表现跑输同期持币基准。</p>
+<h3 id="2-虚假利润与期初库存未对齐">2. 虚假利润与期初库存未对齐</h3>
+<p>在全库 1,912 行聪明钱画像中，有 <strong>1,004 行（占比 52.5%）</strong> 带有 <code>opening_inventory_partial_match</code> 质量标签；而在 <code>wallet_token_performance</code> 的 16,770 条单币战绩记录中，仅有 <strong>4,313 条（占比 25.7%）</strong> 具备完整的窗口内买卖闭环，其余 <strong>74.3%</strong> 属于单边无闭环（10,437 条）或期初库存不完整（2,020 条）。各批次画像中有 45%–70% 的高盈利钱包存在成本计算不完整的问题。</p>
+<p>很多地址在监控窗口前就已经低成本持有代币，或者通过外部地址批量转入现货，随后在监控窗口内直接在 DEX 上抛售变现。常见榜单的平均成本算法将窗口前的建仓成本默认为零或按当日均价折算，把大额卖出营业额直接高估为“净利润”。跟单者看到几万美元的虚假战绩跟进，实际上只是迎上了对方的现货清仓。</p>
+<h3 id="3-工具定位与日常排查脱节">3. 工具定位与日常排查脱节</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具类型</th>
+<th style="text-align:left">代表产品</th>
+<th style="text-align:left">核心优势</th>
+<th style="text-align:left">个人短线排查的局限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>机构投研型</strong></td>
+<td style="text-align:left">Nansen</td>
+<td style="text-align:left">宏观资金流、历史胜率回测、标签丰富</td>
+<td style="text-align:left">个人版 <code>49 美元</code>~<code>69 美元</code>/月，成本较高；新代币与极端短线排查颗粒度较粗</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>即时盘口型</strong></td>
+<td style="text-align:left">GMGN</td>
+<td style="text-align:left">实时盘口动态、买卖流速监控、中文支持完善</td>
+<td style="text-align:left">平台自带标签偏短期投机客；内置交易具有滑点与手续费损耗</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>筹码拓扑型</strong></td>
+<td style="text-align:left">Bubblemaps</td>
+<td style="text-align:left">气泡拓扑可视化、资金关联簇（Cluster）排查</td>
+<td style="text-align:left">侧重代币筹码分布，不提供单个地址的历史持仓收益明细</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>实体穿透型</strong></td>
+<td style="text-align:left">Arkham</td>
+<td style="text-align:left">标签库庞大、对手盘网络图谱、母子钱包关联</td>
+<td style="text-align:left">英文界面为主；新链长尾代币覆盖有限</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>资产看板型</strong></td>
+<td style="text-align:left">DeBank</td>
+<td style="text-align:left">多链资产聚合清晰、代币持仓变动直观</td>
+<td style="text-align:left">缺乏量化交易胜率画像，无法自动识别分仓抢购</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="二实操工作流四步走查一笔链上异动">二、实操工作流：四步走查一笔链上异动</h2>
+<p>为了在短时间内识别虚假异动并过滤掉做市商对倒或分仓，我们采用自外向内的四步走查工作流：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/92cbc38d90b93e4e.webp" alt="聪明钱画像库真实质量分布与 20 个地址逐笔核验结论" class="lazyload"><figcaption class="image-caption">聪明钱画像库真实质量分布与 20 个地址逐笔核验结论</figcaption></figure></p>
+<p>上图反映了链上数据清洗的真实过滤比例：在 1,912 个候选画像中，超过一半存在期初库存缺陷；而在 <code>research/sample_check.md</code> 对 20 个分层抽样候选地址的链上逐笔核验中，真正合格的独立交易员仅占 <strong>10.0%</strong>（2 个 PASS，11 个因历史库存或高频微点差刷单被降级，7 个因 MEV 撮合、EIP-7702 合约委托或高频做市被直接剔除）。</p>
+<h3 id="step-1信号发现与即时动态初筛gmgn">Step 1：信号发现与即时动态初筛（GMGN）</h3>
+<p>收到异动提醒或拿到一个代币合约地址（CA）后，第一步是在即时行情看板中确认该代币的基础物理属性与当前盘口状态。</p>
+<p>把目标代币的合约地址粘进 GMGN 搜索栏后，我通常会先扫一眼右侧的合约安全与池子参数：</p>
+<ul>
+<li><strong>Mint 权限与冻结权限（Freeze Authority）</strong>：确认合约所有者是否已丢弃 Mint 权限。若存在增发或冻结权限，属于高危合约。</li>
+<li><strong>买卖税率（Tax）</strong>：确认买入税和卖出税是否均为 0%。若卖出税高于 5% 甚至接近 100%，属于无法卖出的恶意合约。</li>
+<li><strong>流动性池规模与锁定状态</strong>：查看 LP 池资金规模。若流动性池仅有几千美元，而市值显示为数百万美元，极小的交易就会产生剧烈价格冲击。同时需确认 LP 代币是否已打入黑洞地址销毁或通过合约长期锁定。</li>
+</ul>
+<p>确认合约本身没有硬伤后，再看最近 5 分钟的逐笔成交记录。如果买单金额高度整齐一致（如全部为 <code>0.1 SOL</code> 或固定金额），且交易间隔均匀分布在每秒数笔，多为自动化脚本刷量制造活跃度，并非真实市场买盘。过滤掉低于 <code>100 美元</code> 的微额交易，重点观察单笔成交金额在 <code>1,000 美元</code> 以上的真实订单占比。</p>
+<h3 id="step-2筹码分布与关联簇排查bubblemaps">Step 2：筹码分布与关联簇排查（Bubblemaps）</h3>
+<p>通过第一步基础安全检查后，第二步是核验代币的前序筹码分配。这一步主要防范内部团队通过分仓伪装成去中心化持仓。</p>
+<p>打开 Bubblemaps 网页端，选择对应公链并输入代币合约地址，重点观察前 20 大持仓地址的气泡分布图（Bubbles）：</p>
+<ul>
+<li><strong>独立气泡分布（健康状态）</strong>：各个持仓气泡彼此分离，气泡大小均匀，气泡之间没有虚线或实线连接。除 DEX 流动性池或官方公示的锁仓合约外，前 10 大持仓地址的合计占比通常低于 20%，单地址持仓比例低于 2%~3%。</li>
+<li><strong>关联资金簇（Cluster，高危状态）</strong>：若多个持仓气泡之间出现大量连线，表明这些地址在链上存在直接的转账往来。点击该资金簇，Bubblemaps 会计算出该簇的合计持仓比例。</li>
+</ul>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/46af8514b597389d.webp" alt="链上异常集中度与同区块 Bundle 分仓拓扑机制" class="lazyload"><figcaption class="image-caption">链上异常集中度与同区块 Bundle 分仓拓扑机制</figcaption></figure></p>
+<p>如上图左侧真实数据所示，在 2026 年 9 月 23 日采集的 BNB Chain 异常池 <code>pPOLY</code>（合约 <code>0x9e0494c6b45955c6f97f485184206772a2f57777</code>）中，单周合格交易对成交额虽高达 <code>4.89 亿美元</code>，但前 10 个交易地址的成交额占比高达 <strong>81.92%</strong>，其余所有交易地址仅占 18.08%，呈现出极度集中的少数账户对倒特征。</p>
+<p>如上图右侧拓扑所示，许多新代币在上线时，开发团队会利用私有打包交易服务（如 Solana 上的 Jito Bundle 或以太坊上的 Flashbots），将“向 DEX 添加初始流动性”与“数十个子钱包买入代币”打包在同一个区块（Block 0）内按预定顺序依次执行。这些子钱包在代币公开广播前，以极低成本获取了大部分代币供应量，随后分散到不同账户伪装成独立早期买家。一旦外部交易者看到上涨趋势跟单买入，这些关联地址就会逐步抛售兑现流动性。如果发现代币前 10 大持仓中关联资金簇的合并持仓比例超过 30%，应当直接放弃跟踪。</p>
+<h3 id="step-3资金来源与幕后实体穿透arkham">Step 3：资金来源与幕后实体穿透（Arkham）</h3>
+<p>如果代币筹码结构较为分散，下一步需要对具体触发报警的异动钱包进行身份穿透，区分独立个人交易员与机构做市商。</p>
+<p>将目标钱包地址粘贴至 Arkham 搜索框后，按三个维度穿透背景：</p>
+<ol>
+<li><strong>检查钱包的标签与关联实体（Entity Tag）</strong>：观察 Arkham 的自动聚合标签。若该地址被直接标记为做市商（如 Wintermute、Jump Trading、Amber Group）或中心化交易所热钱包，需明确其交易属于中性对冲或库存调拨。</li>
+<li><strong>检查资金历史溯源与 Gas 费赞助方</strong>：查看该地址收到的第一笔原生代币（ETH、BNB 或 SOL）转账。如果来自 Binance、OKX、Coinbase 等合规交易所的提币热钱包，属于典型的个人或独立机构出资；如果来自某个未经标记的个人钱包，且该钱包在同一时段内向数十个全新钱包分发了等额小额原生代币，该钱包属于批量分仓矩阵中的受控节点。</li>
+<li><strong>查看对手方网络（Counterparty Network）</strong>：在 Visualizer 视图中展开该地址的资金流转拓扑，确认其主要交互对象是 DEX 合约还是借贷、跨链桥合约。</li>
+</ol>
+<h3 id="step-4自动化过滤脚本与双轨沉淀">Step 4：自动化过滤脚本与双轨沉淀</h3>
+<p>依靠纯人工在网页端逐个点击效率偏低。对于日常高频排查链上地址的场景，我们在 <code>scripts/verify_samples.js</code> 中直接调用基础 RPC 接口（<code>eth_getCode</code>）与 Etherscan V2 API，用轻量脚本实现自动化初筛。</p>
+<p>以下为实际用于 20 个样本审计的 Node.js 核心排查代码片段，可自动过滤智能合约、EIP-7702 委托账户、MEV 撮合脚本以及期初库存缺失地址：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// 自动化初筛脚本核心逻辑：过滤合约、EIP-7702 委托与期初库存瑕疵
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">execSync</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;child_process&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">rpcCall</span>(<span style="color:#a6e22e">rpcUrl</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">params</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({ <span style="color:#a6e22e">jsonrpc</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;2.0&#39;</span>, <span style="color:#a6e22e">method</span>, <span style="color:#a6e22e">params</span>, <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">raw</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">execSync</span>(<span style="color:#e6db74">`curl -s -m 10 -X POST &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">rpcUrl</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; -H &#34;Content-Type: application/json&#34; -d &#39;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">payload</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;`</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">raw</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">verifyWalletAccount</span>(<span style="color:#a6e22e">address</span>, <span style="color:#a6e22e">rpcUrl</span>, <span style="color:#a6e22e">etherscanKey</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 1. 检查账户字节码：排除普通智能合约与 EIP-7702 委托账户
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">codeRes</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">rpcCall</span>(<span style="color:#a6e22e">rpcUrl</span>, <span style="color:#e6db74">&#39;eth_getCode&#39;</span>, [<span style="color:#a6e22e">address</span>, <span style="color:#e6db74">&#39;latest&#39;</span>]);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">codeRes</span>.<span style="color:#a6e22e">result</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;0x&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">code</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;0x&#39;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">code</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#39;0xef0100&#39;</span>)) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">reason</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;EIP-7702 智能合约委托账户&#39;</span> };
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">reason</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;智能合约地址（非独立 EOA）&#39;</span> };
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 2. 检查普通交易历史：排查 MEV / 私有撮合方法签名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">txListUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`https://api.etherscan.io/v2/api?chainid=1&amp;apikey=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">etherscanKey</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;module=account&amp;action=txlist&amp;address=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">address</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;sort=desc&amp;page=1&amp;offset=25`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">txData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">execSync</span>(<span style="color:#e6db74">`curl -s -m 10 &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">txListUrl</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;`</span>).<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hasMevMethod</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">txData</span>.<span style="color:#a6e22e">result</span> <span style="color:#f92672">||</span> []).<span style="color:#a6e22e">some</span>(<span style="color:#a6e22e">tx</span> =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">tx</span>.<span style="color:#a6e22e">functionName</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">toLowerCase</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;fillorder&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;nothingtoseehere&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">fn</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#39;sandwich&#39;</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hasMevMethod</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">reason</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;MEV 套利 / 订单撮合机器人&#39;</span> };
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 3. 检查代币流水闭环：核对卖出代币是否在监控窗口内通过 DEX 买入
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tokenTxUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`https://api.etherscan.io/v2/api?chainid=1&amp;apikey=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">etherscanKey</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;module=account&amp;action=tokentx&amp;address=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">address</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;sort=desc&amp;page=1&amp;offset=100`</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tokenData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">execSync</span>(<span style="color:#e6db74">`curl -s -m 10 &#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">tokenTxUrl</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;`</span>).<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tokenTxs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tokenData</span>.<span style="color:#a6e22e">result</span> <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// 若近期有大额代币转出，但窗口内买入记录为零，判定为期初库存未对齐
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">incomingBuys</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tokenTxs</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">tx</span> =&gt; <span style="color:#a6e22e">tx</span>.<span style="color:#a6e22e">to</span>.<span style="color:#a6e22e">toLowerCase</span>() <span style="color:#f92672">===</span> <span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">toLowerCase</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">outgoingSells</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">tokenTxs</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">tx</span> =&gt; <span style="color:#a6e22e">tx</span>.<span style="color:#a6e22e">from</span>.<span style="color:#a6e22e">toLowerCase</span>() <span style="color:#f92672">===</span> <span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">toLowerCase</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">outgoingSells</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">incomingBuys</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">reason</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;期初库存出货（未在监控窗口内闭环建仓）&#39;</span> };
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">pass</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">reason</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;合格独立 EOA&#39;</span> };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>通过自动化脚本或前三步核验后，确认该钱包为一个有真实交易记录、非机器人对倒、非分仓节点的独立账户，再将其导入 DeBank 或自建监控池，按两条轨道分流跟踪：</p>
+<ul>
+<li><strong>Trader 轨道（高敏捷独立交易员）</strong>：单笔规模在 <code>1,000 美元</code> 至 <code>20,000 美元</code> 之间、在 DEX 上进行现货交易、有主动止盈止损记录的钱包。这类钱包的建仓动向具备战术参考价值。</li>
+<li><strong>Capital 轨道（大额沉淀资本 / 机构托管）</strong>：资金规模在 <code>100 万美元</code> 以上，以大额质押、借贷抵押或跨链调拨为主。这类钱包通常不适合短线跟单，但其大额资产向中心化交易所转入时，可作为宏观卖压的警示信号。</li>
+</ul>
+<hr>
+<h2 id="三真实走查案例拆解">三、真实走查案例拆解</h2>
+<p>以下结合仓库内真实核验过的链上样本（详见 <code>research/sample_check.md</code>），还原具体走查过程。</p>
+<h3 id="案例-a排雷识破伪装成100-胜率低频波段的-mev-撮合机器人与-eip-7702-托管账户">案例 A（排雷）：识破伪装成“100% 胜率低频波段”的 MEV 撮合机器人与 EIP-7702 托管账户</h3>
+<h4 id="真实样本-10xaaaaa34e4bb04f1c5f5a56d3be9e7637d309bc05">真实样本 1：<code>0xaaaaa34e4bb04f1c5f5a56d3be9e7637d309bc05</code></h4>
+<p>在 Dune 的宽口径统计中，该地址仅有 13 笔交易，胜率显示为 100%，累计预估盈利达到 <code>15,839.13 美元</code>，主营代币为 PEPE 与 SHIB，表面特征符合“低频波段交易高手”。</p>
+<p><strong>走查过程</strong>：</p>
+<ol>
+<li>观察地址外观，发现具有明显的 <code>0xaaaa...</code> 靓号特征（Vanity Address），这类地址通常由算力脚本批量生成。</li>
+<li>在区块浏览器与 Arkham 中调取其关键成交交易 <code>0xeb10f65edb0564cd1167f1f37fdff76b472096f5abf076f1f2f22c56032161c5</code>。</li>
+<li>查看交易明细，该交易并非通过常规 Uniswap 前端发起的兑换，而是直接调用了合约 <code>0x00000000008d5f1200332af8a6813cb8377b5bfd</code> 的 <code>nothingToSeeHere_04ikDO9()</code> 和 <code>fillOrderArgs</code> 方法。</li>
+<li>该地址实际属于私有订单撮合与链上套利机器人（MEV Searcher），其所谓的 PEPE 盈利来自撮合过程中的原子套利结余，并非主观波段持仓。个人交易者跟单根本无法在同区块复制其私有流动性撮合。</li>
+</ol>
+<h4 id="真实样本-20x630ece5a8c9da9dfa272cf10c54fecd2c8cd5101">真实样本 2：<code>0x630ece5a8c9da9dfa272cf10c54fecd2c8cd5101</code></h4>
+<p>该地址在榜单上仅有 2 笔交易，胜率 100%，预估盈利 <code>2,620.91 美元</code>。</p>
+<p><strong>走查过程</strong>：</p>
+<ol>
+<li>调用 RPC 的 <code>eth_getCode</code> 接口查询该地址的字节码，返回结果为 <code>0xef01007702cb554e6bfb442cb743a7df23154544a7176c</code>。</li>
+<li>该前缀是以太坊 Pectra 升级后的 EIP-7702 智能合约委托字节码，说明该账户已被委托给特定脚本合约进行自动化托管操作。</li>
+<li>调取其关键卖出交易 <code>0xc4a77343e1be816425d2f6183c9a7f2eb49d7168096fb171e4261b131ef405ee</code>，该交易通过 LiFi Diamond 聚合器将 PEPE 抛售换为 <code>9,826.45 美元</code> USDC，但其 PEPE 原币系 2024 年底从外部转入，存在期初库存缺失问题。因此将其判定为非主观交易钱包并予以剔除。</li>
+</ol>
+<h3 id="案例-b排雷识破高额利润榜单背后的窗口前库存出货与刷量对倒">案例 B（排雷）：识破“高额利润榜单”背后的窗口前库存出货与刷量对倒</h3>
+<h4 id="真实样本0xd9d8f818a7a71ed0e1fe936b991508b0e88b1609">真实样本：<code>0xd9d8f818a7a71ed0e1fe936b991508b0e88b1609</code></h4>
+<p>该地址在 Dune 候选池中预估利润高达 <code>23,409.84 美元</code>，在全部 20 个抽样样本中位居利润榜首，累计交易 269 笔。</p>
+<p><strong>走查过程</strong>：</p>
+<ol>
+<li>调取其关键交易 <code>0x60801029c213ee33133a893151e60131ecc39024e7675f62bdf48856bf032ca9</code> 及全部历史代币转账流水（<code>tokentx</code>）。</li>
+<li>核对其代币流入与流出明细发现：该地址在监控窗口内卖出的大额 PEPE，全部来自于监控窗口开始前的早期持仓转移。窗口内买单极少，其卖单产生的数万美元营业额被常见榜单的平均成本法直接换算成了“净利润”。</li>
+<li>该地址命中画像库中的 <code>opening_inventory_partial_match</code> 标签，属于典型的账面虚假大额 PnL，必须从信号池中剔除。</li>
+</ol>
+<p>在代币交易池与机构地址维度，类似的结构性噪音同样普遍。前述 BNB Chain 上的 <code>pPOLY</code>（合约 <code>0x9e0494c6b45955c6f97f485184206772a2f57777</code>），单周刷出 <code>4.89 亿美元</code> 成交额，但通过地址交叉排查发现全池 81.92% 的交易额集中在 10 个地址中对倒。类似地，在 <code>entity_labels</code> 排除库中（如 Wintermute 做市商地址 <code>0x0000006daea1723962647b7e189d311d757fb793</code>），大额转账本质上是做市商的库存再平衡与跨协议平仓，若按多头跟单信号处理，极易买在流动性调拨的短期高点。</p>
+<h3 id="案例-c正面留存真正通过四步核验的独立-trader-样本">案例 C（正面留存）：真正通过四步核验的独立 Trader 样本</h3>
+<h4 id="真实样本-10x8d0982da5396cd420cd73f496d0d53577dbfb997">真实样本 1：<code>0x8d0982da5396cd420cd73f496d0d53577dbfb997</code></h4>
+<ul>
+<li><strong>链上核验</strong>：通过 <code>eth_getCode</code> 确认返回 <code>0x</code>（纯净 EOA 散户钱包），无任何 MEV 撮合或合约委托特征。</li>
+<li><strong>交易闭环</strong>：关键交易 <code>0xfa0593a89d16952d1cc53afaacc8233487e8ce300df75111157e6538b05d2d93</code>，在 Uniswap 上完成了标准的 PEPE 买入，并在数周后全部清仓获利，实际实现利润约 <code>2,100 美元</code>，与数据估算吻合，属于典型的中低频波段交易员。</li>
+</ul>
+<h4 id="真实样本-20x3004892cf2946356e8e4570a94748afdff86681c">真实样本 2：<code>0x3004892cf2946356e8e4570a94748afdff86681c</code></h4>
+<ul>
+<li><strong>链上核验</strong>：纯净 EOA 活跃 Meme 交易者。</li>
+<li><strong>交易闭环</strong>：关键交易 <code>0x3338e62f96f57df71debcc4e9104c26e3f4cf447de1431186d7c707860083654</code>。历史交易聚焦于链上中小市值代币（FLORK、GIGA、basedAI、APU、PEPE 等），具有明确的 DEX 自主建仓买入与高位分批出脱行为，资金链完整闭环，入选合格观察池。</li>
+</ul>
+<hr>
+<h2 id="四跟单执行的物理现实与摩擦损耗">四、跟单执行的物理现实与摩擦损耗</h2>
+<p>即使筛选出了具备真实交易能力的独立 Trader 钱包，将链上发现转化为实际收益，仍然受制于交易执行环境的物理约束。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/b245414ba22b9a6b.webp" alt="Trader 与 Capital 双轨特征对比及单笔成交金额分布" class="lazyload"><figcaption class="image-caption">Trader 与 Capital 双轨特征对比及单笔成交金额分布</figcaption></figure></p>
+<h3 id="1-单笔交易体量与流动性池深度约束">1. 单笔交易体量与流动性池深度约束</h3>
+<p>在 <code>data/whale.db</code> 的 <code>smart_money_actions</code> 表中，记录了 7,680 笔真实的聪明钱交易流水。如上图右侧的分位数统计所示：</p>
+<ul>
+<li><strong>P10 分位数</strong>：仅 <code>209 美元</code></li>
+<li><strong>P25 分位数</strong>：仅 <code>354 美元</code></li>
+<li><strong>P50 中位数</strong>：仅 <code>1,079 美元</code></li>
+<li><strong>P75 分位数</strong>：<code>2,591 美元</code></li>
+<li><strong>均值</strong>：<code>2,617 美元</code></li>
+<li><strong>P90 分位数</strong>：<code>6,569 美元</code></li>
+<li><strong>P99 分位数</strong>：<code>23,751 美元</code></li>
+<li><strong>最大单笔</strong>：<code>113,931 美元</code></li>
+</ul>
+<p>这一分布揭示了一个常被忽视的事实：超过 50% 的聪明钱单笔交易金额低于 <code>1,079 美元</code>，75% 的交易金额低于 <code>2,591 美元</code>。链上独立交易员非常清楚低市值代币的流动性池深度有限，因此普遍采取小额分批建仓策略。</p>
+<p>如果跟单者误以为对方是大资金机构，直接投入数万美元市价跟单，自身的大额买单会在薄弱的流动性池中造成剧烈的价格冲击；若为了保证成交而调高滑点容忍度，还会直接暴露在公共内存池（Mempool）的 MEV 夹子攻击（Sandwich Attack）之下。</p>
+<p>TradingView 交易员 SkepticLab 曾公开复盘其跟单经历：在跟踪低市值代币时，账面一度盈利 60%，但由于池子流动性过薄，在几个小时内又亏掉 60% 本金。原因就在于原钱包的小额卖出动作迅速抽干了买盘深度，原钱包的卖出点直接变成了跟单者的买入点与止损点。</p>
+<p>ainvest 针对 <strong>6,645 笔巨鲸转账</strong>后散户反应的研究同样印证了这一现象：当普通散户在社群或告警频道看到“巨鲸大额买入”提醒并跟单进场时，巨鲸的订单早已在链上撮合成交完毕，滞后数秒至数分钟进场的散户买盘，反而成为了早期建仓者兑现利润的对手盘。</p>
+<h3 id="2-trader-轨道与-capital-轨道的分离">2. Trader 轨道与 Capital 轨道的分离</h3>
+<p>在搭建跟踪列表时，必须对地址进行类型分轨。在 <code>data/analysis_empirical_summary.json</code> 的 1,345 个钱包样本中，两类轨道的统计特征存在显著差异：</p>
+<ul>
+<li><strong>Trader 轨道（593 个样本）</strong>：中位持仓时间为 <strong>868.2 小时</strong>（约 36 天），平均交易笔数 <strong>38.7 笔</strong>，平均 PnL 为 <code>23,773 美元</code>，中位数 PnL 为 <code>2,653 美元</code>。平均值远高于中位数，说明收益高度依赖少数几次高倍盈利。这类钱包的操作具有战术参考价值。</li>
+<li><strong>Capital 轨道（752 个样本）</strong>：中位持仓时间长达 <strong>1,350.2 小时</strong>（约 56 天），平均交易笔数 <strong>72.5 笔</strong>，平均 PnL 为 <code>17,915 美元</code>，中位数 PnL 为 <code>3,843 美元</code>。持仓周期更长，交易以资产沉淀、借贷抵押和流动性注入为主。</li>
+</ul>
+<p>两类轨道的信号使用规则完全不同：</p>
+<ol>
+<li><strong>Capital 钱包的买入通常不可盲目跟随</strong>：大资金往往能够承受 30% 甚至 50% 以上的浮亏并分批拉长建仓周期，普通交易者若短线跟入极易在漫长的盘整中被磨损出局。</li>
+<li><strong>Capital 钱包的大额充币具有卖压警示价值，但需二次核验</strong>：大额资金从去中心化协议转入中心化交易所时，常被解读为砸盘信号。但在社区对 <strong>14 次大额充入交易所</strong>案例的追踪中，<strong>有 12 次在 12–48 小时内又等额转出</strong>至衍生品合约或质押池，并未发生实际现货抛售。看到大额充值时，需结合后续是否有分拆充入现货撮合热钱包的动作做二次确认。</li>
+</ol>
+<hr>
+<h2 id="五主流工具矩阵与能力边界对照">五、主流工具矩阵与能力边界对照</h2>
+<p>在日常链上分析中，不同工具具有明确的能力边界。合理的方案是用免费工具的优势模块相互拼接，形成完整的排查链路。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">评估维度</th>
+<th style="text-align:left">Nansen</th>
+<th style="text-align:left">GMGN</th>
+<th style="text-align:left">Bubblemaps</th>
+<th style="text-align:left">Arkham</th>
+<th style="text-align:left">DeBank</th>
+<th style="text-align:left">区块浏览器 / RPC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>主打核心功能</strong></td>
+<td style="text-align:left">宏观资金流、机构研报、胜率榜</td>
+<td style="text-align:left">实时盘口流速、买卖深度、合约初筛</td>
+<td style="text-align:left">筹码拓扑气泡图、关联资金簇排查</td>
+<td style="text-align:left">实体归因标签、对手方网络穿透</td>
+<td style="text-align:left">多链资产整合看板、持仓变动跟踪</td>
+<td style="text-align:left">字节码检验（EIP-7702）、历史流水闭环</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>主要公链覆盖</strong></td>
+<td style="text-align:left">20+ EVM 链、Solana</td>
+<td style="text-align:left">Solana、Base、ETH 等热门链</td>
+<td style="text-align:left">EVM、Solana、Tron 等主流公链</td>
+<td style="text-align:left">15+ 链，含比特币等 UTXO 链</td>
+<td style="text-align:left">30+ EVM 链、Solana 等</td>
+<td style="text-align:left">全公链通用（节点 RPC 与浏览器 API）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>排查优势</strong></td>
+<td style="text-align:left">历史算法结合人工复核，标签库丰富</td>
+<td style="text-align:left">界面直观，快速确认税率与池子锁定</td>
+<td style="text-align:left">快速发现同区块 Bundle 抢购与分仓</td>
+<td style="text-align:left">快速识别 Wintermute 等做市商与 CEX</td>
+<td style="text-align:left">准确记录各协议真实资产锁仓状态</td>
+<td style="text-align:left">从底层字节码与方法签名彻底证伪机器人</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>使用成本</strong></td>
+<td style="text-align:left">Pro 版 <code>49 美元</code>~<code>69 美元</code>/月</td>
+<td style="text-align:left">基础看盘免费；内置交易收 0.5%~1% 手续费</td>
+<td style="text-align:left">基础气泡拓扑免费</td>
+<td style="text-align:left">个人端查询与图谱完全免费</td>
+<td style="text-align:left">核心资产看板完全免费</td>
+<td style="text-align:left">公共 RPC 免费，Etherscan 基础 API 免费</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>排查分工</strong></td>
+<td style="text-align:left">机构宏观研判与基准对照</td>
+<td style="text-align:left"><strong>Step 1：盘口初筛与买卖流速</strong></td>
+<td style="text-align:left"><strong>Step 2：前十持仓与分仓聚类排雷</strong></td>
+<td style="text-align:left"><strong>Step 3：资金溯源与做市商穿透</strong></td>
+<td style="text-align:left"><strong>Step 4：分轨观察池日常盯盘</strong></td>
+<td style="text-align:left"><strong>Step 4：自动化代码核验与闭环审计</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="六数据来源参考与免责声明">六、数据来源参考与免责声明</h2>
+<h3 id="数据来源参考">数据来源参考</h3>
+<ol>
+<li><strong>链上真实画像与流水库</strong>：数据来源于本地 SQLite 数据库 <code>data/whale.db</code> 与统计汇总 <code>data/analysis_empirical_summary.json</code>，包含 1,912 行聪明钱画像记录（<code>smart_money_profiles</code>）、16,770 条单币战绩记录（<code>wallet_token_performance</code>）、7,680 笔交易行为流水（<code>smart_money_actions</code>）及 16,433 条做市商与交易所实体标签（<code>entity_labels</code>）。</li>
+<li><strong>样本分层逐笔核验记录</strong>：参考 <code>research/sample_check.md</code> 与核验脚本 <code>scripts/verify_samples.js</code>，于 2026-09-21 对 20 个分层抽样地址调用以太坊 PublicNode RPC（<code>eth_getCode</code>）及 Etherscan V2 API（<code>tokentx</code>、<code>txlist</code>）进行的逐笔交易穿透。</li>
+<li><strong>公链与 DEX 真实热度数据</strong>：参考 <code>docs/research/DEX_HEAT_SNAPSHOT_20260923.md</code>，采集自 2026-09-23 Dune 对去中心化交易所交易数据的链上提取（含 BNB Chain <code>pPOLY</code> 合约 <code>0x9e0494c6b45955c6f97f485184206772a2f57777</code> 周度成交集中度数据）。</li>
+<li><strong>外部公开实证参考</strong>（详见 <code>docs/research/smart-money-series/SEARCH_LANDSCAPE_20261002.md</code>）：
+<ul>
+<li>GitHub 开源回测项目 <code>orvynel/crucible</code> 对聪明钱跟单 30 天胜率 54% 的实测记录。</li>
+<li>ainvest 对 6,645 笔巨鲸转账后散户反应的研究报告。</li>
+<li>社区对 14 次大额充入交易所后 12–48 小时资金流向的追踪统计。</li>
+<li>TradingView 交易员 SkepticLab 关于低市值代币跟单流动性枯竭的公开复盘。</li>
+</ul>
+</li>
+</ol>
+<h3 id="免责声明">免责声明</h3>
+<p>本文所列出的链上工具、分析方法及排查流程仅作为区块链数据技术研究与风险识别的知识分享，不构成对任何特定代币、协议或交易策略的投资建议。文中涉及的钱包盈亏与胜率均为特定统计窗口内的链上估算值，不含链下交易与跨期成本。链上代币交易受代码漏洞、恶意撤池、极端流动性枯竭与网络滑点等多重风险影响，历史表现优异的地址不代表未来具有持续盈利能力。读者应当独立评估风险并对自身的交易决策承担全部责任。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/how-to-track-onchain-transactions/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/">
+                    #链上数据</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/gmgn/">
+                    #GMGN</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/bubblemaps/">
+                    #Bubblemaps</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/arkham/">
+                    #Arkham</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/debank/">
+                    #DeBank</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mev/">
+                    #MEV</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/">
+                    #聪明钱</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/" class="prev" rel="prev" title="解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛"><i class="iconfont icon-left"></i>&nbsp;解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</a>
+        
+        
+        <a href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" class="next" rel="next" title="Anthropic 招股书解读：经营改善与长期算力支出压力">Anthropic 招股书解读：经营改善与长期算力支出压力&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

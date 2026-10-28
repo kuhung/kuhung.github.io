@@ -31,7 +31,7 @@ if (!doNotTrack) {
     })(window, document, "clarity", "script", "yelaywwb9r");
   </script>
   <link rel="prev" href="https://kuhung.me/posts/how-to-read-onchain-macro-metrics/" />
-  <link rel="next" href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" />
+  <link rel="next" href="https://kuhung.me/posts/how-to-track-onchain-transactions/" />
   <link rel="canonical" href="https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-26T12:20:00+08:00","datePublished":"2026-10-26T12:20:00+08:00","description":"从 Retell AI 在 YC 挂出的 28 个在招岗位与驻场工程师（FDE）需求切入，拆解海外 B2B 电话语音 Agent 的 600 毫秒通话编排机制、国内外外呼生态差异与 TCPA、STIR/SHAKEN、HIPAA 四道合规门槛。","headline":"解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, Retell AI, Voice Agent, 企业服务, 商业分析, 产品观察, a16z","mainEntityOfPage":{"@id":"https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/","@type":"WebPage"},"name":"解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/","wordCount":571}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-26T12:20:00+08:00","datePublished":"2026-10-26T12:20:00+08:00","description":"从 Retell AI 在 YC 挂出的 28 个在招岗位与驻场工程师（FDE）需求切入，拆解海外 B2B 电话语音 Agent 的 600 毫秒通话编排机制、国内外外呼生态差异与 TCPA、STIR/SHAKEN、HIPAA 四道合规门槛。","headline":"解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, Retell AI, Voice Agent, 企业服务, 商业分析, 产品观察, a16z","mainEntityOfPage":{"@id":"https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/","@type":"WebPage"},"name":"解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/","wordCount":565}</script>
 </head>
 
   
@@ -219,34 +219,34 @@ if (!doNotTrack) {
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/2619cac0bf2b040e.webp" alt="从 28 个招聘岗位拆解 Retell AI" class="lazyload"><figcaption class="image-caption">从 28 个招聘岗位拆解 Retell AI</figcaption></figure></p>
 <p>在《解读 100 个 AI 商业产品》的前两篇里，我们先盘了 <a href="/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/">a16z 第 7 期消费级 AI 百强榜</a> 和 <a href="/posts/consumer-ai-market-structure/">110 款产品的真实消费账单</a>。看消费级榜单时会发现一个现象：能在网页访问量、App 下载榜或者个人信用卡扣款里排上号的，大多是通用对话助手、写代码工具或者音视频生成软件，比如排在消费支出榜第 10 名的语音合成平台 ElevenLabs。一旦进入纯 B2B 企业对公结算的领域，很多已经有相当收入规模的公司，在大众流量统计里完全看不到。</p>
 <p>这篇要聊的 <a href="https://www.retellai.com/">Retell AI</a> 就是其中一家。这家 2023 年底注册、2024 年从 YC W24 出来的硅谷团队，公开披露的种子轮融资只有约 510 万美元（<a href="https://sacra.com/c/retell-ai/">Sacra</a>，2026-10-24）。它在消费级榜单上没有名字，但在 a16z 与企业银行 Mercury 联合发布的 B2B 创业公司支出榜里排到了第 16 名（<a href="https://a16z.com/ai-application-spending-report/">a16z AI Application Spending Report</a>，2025-10-02）；到 2026 年 10 月，公司在招聘页披露的年化经常性收入（ARR）达到 8,000 万美元，团队约 50 人，每月处理企业通话超过 5,000 万通（<a href="https://www.ycombinator.com/companies/retell-ai/jobs">YC Jobs</a>，2026-10-24）。</p>
-<p>我最初留意到这家公司，是因为翻看他们在 YC 挂出的 28 个在招岗位时，看到了一长串 <strong>FDE（Forward Deployed Engineer，前置部署工程师）</strong>，还按语言和地区细分到了西班牙语、普通话、香港和新加坡。</p>
-<p>我以前做过客服相关的工作。看到一家做电话语音 Agent（接听与外呼）的公司招这么多驻场工程师，脑子里自然冒出几个疑问：</p>
+<p>我最初留意到这家公司，是因为翻看他们在招聘网站挂出的 28 个在招岗位时，看到了一长串 <strong>FDE（Forward Deployed Engineer，前置部署工程师）</strong>，还按语言和地区细分到了西班牙语、普通话、香港和新加坡。</p>
+<p>我刚毕业时所待的团队，做过客服相关的算法工作。看到一家做电话语音 Agent（接听与外呼）的公司招这么多驻场工程师，脑子里自然冒出几个疑问：</p>
 <ol>
 <li><strong>业务价值到底在哪？</strong> 就我自己的客服经验来看，电话语音 Agent 并没有带来新的需求增量，它依然是在重塑过去呼叫中心的存量生产流程，特别是外呼通知、账单催收和预约核实。既然是改造存量旧流程，它在技术链路上是怎么替换原有人工和按键菜单的？产品边界又划在哪？</li>
 <li><strong>海外的电话环境是什么情况？</strong> 在国内做过呼叫业务的人都很清楚，因为早年骚扰电话太多，很多用户已经开了防骚扰拦截和陌生号码免打扰，电话呼出在国内能展开的空间很小。那海外市场是什么状况？海外的电话监管与合规要求是怎么运作的？</li>
 <li><strong>为什么要招这么多 FDE？</strong> 一家按分钟计费（$0.07–$0.31/分钟）的软件平台，把超过五分之一的招聘名额给到驻场交付工程师，他们到底在找什么样的人才画像？想用人力补齐什么产品短板？接下来的业务重心又往哪走？</li>
 </ol>
-<p>顺着这几个问题，我把 Retell 的技术文档、定价明细、合规条款以及那 28 个在招岗位的要求完整翻了一遍。</p>
+<p>顺着这几个问题，把 Retell 的技术文档、定价明细、合规条款以及那 28 个在招岗位的要求完整翻了一遍。</p>
 <hr>
 <h2 id="一存量流程改造600-毫秒通话编排与产品边界">一、存量流程改造：600 毫秒通话编排与产品边界</h2>
-<p>翻看 Retell 官方披露的几个客户案例，能清楚看到它切入的具体场景：</p>
+<p>翻看 Retell 官方披露的几个客户案例，能看到它的一些切入的具体场景：</p>
 <ul>
 <li><strong>老年居家医疗（Pine Park Health）</strong>：上线了两个语音 Agent，“Ava”负责给患者打电话做就诊提醒、核对身份和预约改期，“Jay”负责提前两周主动外呼排期。上线后排期净推荐值（NPS）提升 38%，省下了 2 名全职排期员的工时（<a href="https://www.healthcareitnews.com/news/pine-park-health-taps-retell-ai-automate-patient-scheduling-voice-agents">Healthcare IT News</a>，2026-07-10）。</li>
 <li><strong>电动汽车充电网络（SWTCH）</strong>：语音 Agent“Lucas”在 5 秒内接听车主在充电桩旁打来的报修电话，解答操作疑问并记录故障代码，每月处理 5,000 到 8,000 通进线，客服成本降了 50% 以上（<a href="https://www.retellai.com/blog">Retell 客户案例</a>，2026-10-24）。</li>
 <li><strong>医疗账务催收（Medical Data Systems）</strong>：由 AI 承接 100% 的首轮患者账单问询与还款引导，30% 涉及复杂医疗争议或情绪激动的电话转交人工坐席，每月通过自动化电话收回约 28 万美元账款（<a href="https://www.retellai.com/blog">Retell 客户案例</a>，2026-10-24）。</li>
 </ul>
-<p>这些场景都不是新冒出来的需求。过去几十年，企业处理这些重复通话只有两条路：要么花每小时 25 到 40 美元雇欧美人工坐席，要么用按键式 IVR 语音菜单（“查账单请按 1，改期请按 2”）。按键菜单体验生硬、挂断率高，人工坐席又面临排班成本高和招人难的问题。</p>
+<p>这些场景不是新需求。过去几十年，企业处理这些重复通话只有两条路：要么花每小时 25 到 40 美元雇欧美人工坐席，要么用按键式 IVR 语音菜单（“查账单请按 1，改期请按 2”）。按键菜单体验生硬、挂断率高，人工坐席又面临排班成本高和招人难的问题。</p>
 <p>Retell 做的事情，是把这段存量流程里的“按键菜单 + 初级人工核对”换成自然语音对话。它自己不训练底层的语音或文本大模型，也不生产呼叫中心硬件，专门卡在电信线路、大模型和企业旧系统之间，做一层实时编排引擎：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/a9726ad6c442b6c3.webp" alt="电话 Agent 毫秒级编排机制与存量系统集成边界" class="lazyload"><figcaption class="image-caption">电话 Agent 毫秒级编排机制与存量系统集成边界</figcaption></figure></p>
 <p>对照上面这张图，要在真实电话线上把原有生产流程跑通，靠的是四个工程环节：</p>
 <h3 id="1-模型解耦与约-600-毫秒的打断控制">1. 模型解耦与约 600 毫秒的打断控制</h3>
 <p>在网页端用 ChatGPT，用户等两秒钟出字完全能接受；但在电话里，如果对方沉默超过 1.5 秒，用户就会以为信号断了。Retell 把底层模型拆成可插拔的三部分：实时语音识别（ASR）把电话音频转成文字，大模型（支持 OpenAI GPT 系列、Anthropic Claude、Google Gemini 或客户自带模型 BYOM）按预设状态机生成回复，流式语音合成（TTS，支持 ElevenLabs v4、Cartesia、OpenAI 等）再把文字转回声音，端到端响应延迟压在 600 毫秒左右（<a href="https://www.retellai.com/">Retell 官网文档</a>，2026-10-24）。</p>
-<p>比延迟更难处理的是电话里的抢话与停顿。系统内置了语音活动检测（VAD）和轮次预测：一旦检测到用户在开口插话（Barge-in），要在几百毫秒内截断正在播放的语音流并清空缓冲区；而当用户只是在报卡号或思考中途短暂喘气时，系统不抢话，只发出“uh-huh”“got it”之类的轻声附和（Backchanneling），保持正常的通话节奏。</p>
+<p>比延迟更难处理的是电话里的抢话与停顿。系统内置语音活动检测（VAD）和轮次预测：一旦检测到用户在开口插话（Barge-in），要在几百毫秒内截断正在播放的语音流并清空缓冲区；而当用户只是在报卡号或思考中途短暂喘气时，系统不抢话，只发出“uh-huh”“got it”之类的轻声附和（Backchanneling），保持正常的通话节奏。</p>
 <h3 id="2-通话中直接读写业务系统">2. 通话中直接读写业务系统</h3>
 <p>传统外呼机器人大多只能按剧本念稿，收集完信息还得靠人工事后录入系统。Retell 的做法是在通话不断线的状态下，通过 Webhook 触发实时工具调用（Function Calling）：患者在电话里说“周三下午没空，改到周五”，Agent 当场调用 Cal.com 或诊所电子病历系统（EHR）接口查询空档、修改预约，或者调起 Salesforce、HubSpot、Zendesk 和支付接口完成扣款，挂断电话时后台工单已经处理完毕。</p>
 <h3 id="3-带上下文转接人工与全量质检">3. 带上下文转接人工与全量质检</h3>
 <p>语音 Agent 不可能解决所有问题。遇到账单纠纷或复杂投诉，系统通过 SIP 线路发起温转接（Warm Transfer），在把电话切给人工坐席的同时，将前序通话摘要、已核实的身份字段和客户情绪标签推送到人工坐席屏幕上，免得客户对着人工客服再把事情重复讲一遍。</p>
-<p>另外，传统呼叫中心的主管每天只能人工抽听 1% 到 2% 的通话录音。Retell 在 2025 年底至 2026 年年中上线了 <strong>Retell Assure</strong>（100% 通话自动质检与告警）和 <strong>Conductor</strong>（可视化工作流诊断工具，直接把线上失败通话转成回归测试用例，工作流修改需人工审批并继承企业 RBAC 权限）（<a href="https://www.businesswire.com/news/home/20251217492694/en/">BusinessWire</a>，2025-12-17；<a href="https://www.prnewswire.com/news-releases/retell-ai-launches-conductor-302810000.html">PR Newswire</a>，2026-06-29）。</p>
+<p>另外，Retell 在 2025 年底至 2026 年年中上线了 <strong>Retell Assure</strong>（100% 通话自动质检与告警）和 <strong>Conductor</strong>（可视化工作流诊断工具，直接把线上失败通话转成回归测试用例，工作流修改需人工审批并继承企业 RBAC 权限）（<a href="https://www.businesswire.com/news/home/20251217492694/en/">BusinessWire</a>，2025-12-17；<a href="https://www.prnewswire.com/news-releases/retell-ai-launches-conductor-302810000.html">PR Newswire</a>，2026-06-29）。</p>
 <h3 id="4-按分钟拆解的账单与产品边界">4. 按分钟拆解的账单与产品边界</h3>
 <p>在计费上，Retell 采用按实际通话分钟数累加计费的方式，不按坐席人头（Per-seat）收费（综合单价约 <strong>$0.07–$0.31/分钟</strong>，<a href="https://www.retellai.com/pricing">Retell 定价页</a>，2026-10-24）：</p>
 <table>
@@ -289,7 +289,7 @@ if (!doNotTrack) {
 <hr>
 <h2 id="二国内外外呼环境差异与海外四道合规门槛">二、国内外外呼环境差异与海外四道合规门槛</h2>
 <p>看完生产流程的改造方式，再来看第二个问题：为什么这套以电话呼入呼出为主的业务，在国内几乎看不到同体量的创业公司，而在海外市场是怎么运转的？</p>
-<p>在国内做过客服或运营的人都有体会：电话外呼在国内能展开的空间越来越小。一方面，早年电销、贷款与房产骚扰电话太多，国内运营商和手机厂商普及了高频呼叫封停、云端防骚扰黑名单与陌生号码免打扰服务，未知固话或虚拟号段打过去，接通率很低；另一方面，国内企业的客户通知与售后服务早已迁移到微信服务号、企业微信和小程序，发一条微信通知的成本和打开率都比打电话划算。再加上国内二三线城市人工客服的薪资基数相对较低，企业专门花钱改造电话语音流的动力有限。</p>
+<p>在国内做过客服或运营的人都有体会：电话外呼在国内能展开的空间越来越小。一方面，早年电销、贷款与房产骚扰电话太多，国内运营商和手机厂商普及了高频呼叫封停、云端防骚扰黑名单与陌生号码免打扰服务，未知固话或虚拟号段打过去，用户的接通率很低；另一方面，国内企业的客户通知与售后服务早已迁移到微信服务号、企业微信和小程序，发一条微信通知的成本和打开率都比打电话划算。再加上国内二三线城市人工客服的薪资基数相对较低，企业专门花钱改造电话语音流的动力有限。</p>
 <p>海外市场的情况不太一样。在北美、拉美和欧洲，没有一个像微信那样覆盖全社会商业通知的私域软件。诊所确认手术时间、车险公司核实理赔、水电燃气故障报修以及信用卡账单催收，传统电话网（PSTN）依然是主要工作通道。</p>
 <p>不过海外对自动外呼电话（Robocalls）的监管同样很严，运营商层面的拦截也不少。从收集到的材料看，Retell 能签下医疗、金融和航空（如 American Airlines、CVS/Aetna）等行业的客户，很大一部分工程做在四道合规与反拦截流程上：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/fd6f08d195759e61.webp" alt="国内外电话外呼生态反差与海外四道合规准入关卡" class="lazyload"><figcaption class="image-caption">国内外电话外呼生态反差与海外四道合规准入关卡</figcaption></figure></p>
@@ -305,7 +305,7 @@ if (!doNotTrack) {
 <p>海外市场能跑出高客单价的语音 Agent，根源在于当地把防骚扰和隐私保护写成了一套高门槛的法律与技术准入规则。把这套合规接口封装好，企业才敢把电话业务放上来跑。</p>
 <hr>
 <h2 id="三28-个在招岗位人才画像产品短板与业务方向">三、28 个在招岗位：人才画像、产品短板与业务方向</h2>
-<p>搞清楚了业务链路和合规要求，再回来看最初引起我注意的那份招聘列表，很多事情就能对上了。</p>
+<p>搞清楚了业务链路和合规要求，再回来看最初引起我注意的那份招聘列表。</p>
 <p>截至 2026 年 10 月 24 日，约 50 人规模的 Retell AI 在 YC 招聘页上挂出了 <strong>28 个在招岗位</strong>（<a href="https://www.ycombinator.com/companies/retell-ai/jobs">YC Jobs</a>，2026-10-24）。我把这 28 个岗位的职能分布、薪资区间与任职要求整理成了下面这张图：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/5bdba8869410eefc.webp" alt="Retell AI 28 个在招岗位拆解：人才画像、补短板与扩张路径" class="lazyload"><figcaption class="image-caption">Retell AI 28 个在招岗位拆解：人才画像、补短板与扩张路径</figcaption></figure></p>
 <p>从这 28 个岗位的要求里，能看出他们目前的几件事：</p>
@@ -340,7 +340,7 @@ if (!doNotTrack) {
 </ul>
 <hr>
 <h2 id="四几点判断">四、几点判断</h2>
-<p>看完 Retell AI 的材料和岗位列表，我对这类电话语音 Agent 产品有三个判断：</p>
+<p>看完 Retell AI 的材料和岗位列表，可以对这类电话语音 Agent 产品有三个判断：</p>
 <p><strong>第一，它做的是呼叫中心存量流程的替换，赚的是海外人工坐席的工时差价。</strong><br>
 电话语音 Agent 没有创造新的沟通需求。欧美市场人工坐席时薪在 25 到 40 美元，而这套系统的通话成本在 0.07 到 0.31 美元/分钟（折合每小时 4.2 到 18.6 美元，只按实际通话时长计费，不用为闲置排班付钱），中间有明确的成本差。这也决定了它的主要市场在电话仍是刚性渠道、且人力成本高的北美、拉美与亚太跨国企业；而在电话外呼被防骚扰机制大量拦截、微信私域更普及的国内市场，这套商业账很难算过来。</p>
 <p><strong>第二，中间编排层面临上游端到端模型和下游老牌呼叫中心厂商的双向挤压。</strong><br>
@@ -415,7 +415,7 @@ if (!doNotTrack) {
         <a href="https://kuhung.me/posts/how-to-read-onchain-macro-metrics/" class="prev" rel="prev" title="链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标"><i class="iconfont icon-left"></i>&nbsp;链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标</a>
         
         
-        <a href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" class="next" rel="next" title="Anthropic 招股书解读：经营改善与长期算力支出压力">Anthropic 招股书解读：经营改善与长期算力支出压力&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhung.me/posts/how-to-track-onchain-transactions/" class="next" rel="next" title="链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易">链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>

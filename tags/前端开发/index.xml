@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端开发 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 前端开发 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 28 Oct 2026 00:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>前端去 AI 味实操：约束规则、实测评价与 Hallmark</title>
+      <link>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+让 AI 写前端或者落地页的时候，经常会遇到一种情况：代码跑得通，布局也齐整，但一眼望过去就是浓重的模型味。紫蓝渐变、大写小眉标、三列等宽特性卡片与假数据，全是网络训练集里的最大公约数。
+这种塑料感主要源于模型缺乏具体的设计意图与约束规则。
+下面这张图通过本地 Codex 生成，直观比对了两侧的形态差异，并梳理了推荐的去味流程：
+本地 Codex 当前运行环境为默认的 gpt-6.1-sol 模型。图表左侧列出了机器高频生成的视觉套路，右侧给出了经过硬约束后收敛的状态，底部则是推荐的最短去味路径。
+一、一眼看穿的 AI 破绽清单 模型在没有得到明确品味指引时，会交出一套在全网训练数据里最常见、最稳妥的组合。开源项目 Hallmark 把这套套路拆解成了具体的规则条款（gates.md），主要分布在四个维度：
+配色与光效：暗底搭配紫蓝或紫粉渐变，标题文字套用渐变剪切（background-clip: text），背景散落弥散光斑和发光圆球，或者直接拿框架默认的 indigo/violet 当主品牌色。 排版杂音：主标题上方顶一行字号极小的大写英文标签（eyebrow）；标题里非要给单个词加斜体或变色；选用 Inter 或 Poppins 当大标题；用中圆点和箭头装点无意义的链接。 模板化骨架：顶部首屏，紧接着三列等宽特性卡片（图标加标题加两句话），卡片外层再套边框（卡套卡），底部放通用的邮件订阅框。 虚假内容与交互：自动编造“提升 99.9% 效率”的假指标、假用户引言；表单点击后只弹出一个文本提示，背后没有任何数据请求。 破绽类别 常见机器习惯 约束规则的改法 视觉背景 紫蓝渐变底、浮动光球、文字渐变 纯白或冷灰底，选用单一主色，禁止环境光晕 排版细节 大写小眉标、标题染单个词、等宽小标签 删掉眉标，标题文字保持纯色和常规字重 骨架布局 三列等宽卡片、卡套卡、首屏过长 按照实际功能定制非对称版式，移除多余卡片框 交互与内容 编造虚假数据、假评价、假表单响应 缺少真实素材直接删减区块，表单必须对接真实接口 二、Hallmark 是怎么管模型的 Hallmark（GitHub: Nutlope/hallmark）是以 MIT 协议开源的 Agent Skill（技能插件），装在 Cursor、Claude Code、Codex 等辅助编程工具里使用。
+在这些工具里，Skill 相当于一套写死的工作规程。它通过四项机制来限制模型的默认发挥：
+约束分层（Constraint Tiers）： Floor（底线）：十六条不可违背的红线，涵盖键盘焦点环、对比度要求、禁止编造虚假数据，以及禁止大写眉标和卡套卡等家规。底线未过，直接禁止交付。 Reflex（习惯）：针对三列卡片这类模型常犯项。如果业务确实需要，必须在 CSS 头部备注写明条款编号与豁免理由，否则视为违规。 Finish（修饰）：处理引号格式、按钮复用度等细节，只做提示，不阻碍代码合并。 先定方向再写代码：先读取项目根目录的 DESIGN.</description>
+    </item>
+    
+  </channel>
+</rss>

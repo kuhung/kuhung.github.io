@@ -6,13 +6,67 @@
     <description>Recent content in Tags on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Oct 2026 10:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2026 00:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://kuhung.me/tags/ai/</link>
-      <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Claude</title>
+      <link>https://kuhung.me/tags/claude/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/claude/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cursor</title>
+      <link>https://kuhung.me/tags/cursor/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/cursor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hallmark</title>
+      <link>https://kuhung.me/tags/hallmark/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/hallmark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UI设计</title>
+      <link>https://kuhung.me/tags/ui%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/ui%E8%AE%BE%E8%AE%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>代码助手</title>
+      <link>https://kuhung.me/tags/%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>前端开发</title>
+      <link>https://kuhung.me/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     
@@ -22,15 +76,6 @@
       <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/anthropic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Claude</title>
-      <link>https://kuhung.me/tags/claude/</link>
-      <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/claude/</guid>
       <description></description>
     </item>
     
@@ -67,6 +112,78 @@
       <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/%E7%BE%8E%E8%82%A1ipo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arkham</title>
+      <link>https://kuhung.me/tags/arkham/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/arkham/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bubblemaps</title>
+      <link>https://kuhung.me/tags/bubblemaps/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/bubblemaps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DeBank</title>
+      <link>https://kuhung.me/tags/debank/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/debank/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GMGN</title>
+      <link>https://kuhung.me/tags/gmgn/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/gmgn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MEV</title>
+      <link>https://kuhung.me/tags/mev/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/mev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>聪明钱</title>
+      <link>https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>量化交易</title>
+      <link>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>链上数据</title>
+      <link>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</guid>
       <description></description>
     </item>
     
@@ -166,24 +283,6 @@
       <pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>量化交易</title>
-      <link>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</link>
-      <pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>链上数据</title>
-      <link>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</link>
-      <pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</guid>
       <description></description>
     </item>
     
@@ -418,15 +517,6 @@
       <pubDate>Fri, 23 Oct 2026 00:05:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/coding-agent/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cursor</title>
-      <link>https://kuhung.me/tags/cursor/</link>
-      <pubDate>Fri, 23 Oct 2026 00:05:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/cursor/</guid>
       <description></description>
     </item>
     
