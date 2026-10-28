@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-28T11:45:00+08:00","datePublished":"2026-10-28T11:45:00+08:00","description":"直击市面聪明钱榜单中位数胜率 100% 的四大微观结构偏差，拆解 DEX 路由折叠、VWAP 配对与双轨状态机清洗模型，呈现跨链 1,912 行画像与 16,770 条代币战绩的质量分布与执行物理约束。","headline":"百分百胜率的聪明钱背后的假象，模型与真实分布","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, 聪明钱, DEX, 做市商, MEV, 数据清洗, 微观结构","mainEntityOfPage":{"@id":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","@type":"WebPage"},"name":"百分百胜率的聪明钱背后的假象，模型与真实分布","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","wordCount":367}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-28T11:45:00+08:00","datePublished":"2026-10-28T11:45:00+08:00","description":"直击市面聪明钱榜单中位数胜率 100% 的四大微观结构偏差，拆解 DEX 路由折叠、VWAP 配对与双轨状态机清洗模型，呈现跨链 1,912 行画像与 16,770 条代币战绩的质量分布与执行物理约束。","headline":"百分百胜率的聪明钱背后的假象，模型与真实分布","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, 聪明钱, DEX, 做市商, MEV, 数据清洗, 微观结构","mainEntityOfPage":{"@id":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","@type":"WebPage"},"name":"百分百胜率的聪明钱背后的假象，模型与真实分布","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","wordCount":461}</script>
 </head>
 
   
@@ -189,7 +189,7 @@ if (!doNotTrack) {
     <li><a href="#三跨链-1912-行画像的质量缺陷与极值分布">三、跨链 1,912 行画像的质量缺陷与极值分布</a>
       <ul>
         <li><a href="#1-743-的单币战绩缺乏确定性建仓成本">1. 74.3% 的单币战绩缺乏确定性建仓成本</a></li>
-        <li><a href="#2-真实-trader-收益分布呈极端右偏">2. 真实 Trader 收益分布呈极端右偏</a></li>
+        <li><a href="#2-清洗后的胜率分化与极端右偏收益">2. 清洗后的胜率分化与极端右偏收益</a></li>
       </ul>
     </li>
     <li><a href="#四跟单执行的物理约束微观体量分布与滑点摩擦">四、跟单执行的物理约束：微观体量分布与滑点摩擦</a>
@@ -353,14 +353,60 @@ $$PnL_{realized} = Q_{matched} \times (\bar{P}<em>{sell} - \bar{P}</em>{buy}) = 
 <li><strong>买卖闭环可核验（<code>ok</code>）</strong>：共 4,313 条（仅占 <strong>25.7%</strong>）。</li>
 </ul>
 <p><strong>74.3% 的代币战绩因无法建立双向闭环而无法核实真实收益</strong>。在全库 1,912 行画像中，<strong>52.5%</strong> 的画像带有期初库存缺陷。这印证了未经清洗的排行榜中大部分账面利润并非来自链上闭环交易。</p>
-<h3 id="2-真实-trader-收益分布呈极端右偏">2. 真实 Trader 收益分布呈极端右偏</h3>
-<p>对 1,345 个候选钱包的实证统计表明：</p>
+<h3 id="2-清洗后的胜率分化与极端右偏收益">2. 清洗后的胜率分化与极端右偏收益</h3>
+<p>经过上述模型严格清洗后，筛选出的交易员真实胜率到底是怎样的？</p>
+<p>首先必须明确胜率的底层计量口径：
+$$\text{Win Rate} = \frac{\text{已平仓且已实现盈亏大于 0 的代币数}}{\text{全部已平仓（有已实现盈亏）的代币数}} = \frac{\text{count}(PnL_{realized} &gt; 0)}{\text{count}(PnL_{realized} \text{ is not null})}$$</p>
+<p><strong>分母只统计窗口内发生双向闭环卖出的代币</strong>。买入后浮亏但尚未卖出的代币属于 <code>unmatched</code>（持仓中），不会计入分母。在此定义下，全库合格画像（<code>ok</code>，共 908 个钱包）的微观分化如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">画像分群</th>
+<th style="text-align:center">合格钱包数</th>
+<th style="text-align:left">核心准入约束</th>
+<th style="text-align:center"><strong>胜率中位数</strong></th>
+<th style="text-align:center"><strong>平均估算胜率</strong></th>
+<th style="text-align:center">胜率分布区间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>B 类：稳健交易员</strong></td>
+<td style="text-align:center"><strong>78 个</strong></td>
+<td style="text-align:left"><strong>强制多币闭环（$\ge 3$ 个代币完整平仓）</strong>，单笔 $\ge $10,000$</td>
+<td style="text-align:center"><strong>75.00%</strong></td>
+<td style="text-align:center"><strong>75.99%</strong></td>
+<td style="text-align:center">33.3% ~ 100.0%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>A 类：厚尾猎手</strong></td>
+<td style="text-align:center"><strong>830 个</strong></td>
+<td style="text-align:left">重单币高赔率（$ROI_{max} \ge 5\times$），仅需 $\ge 1$ 个代币平仓</td>
+<td style="text-align:center"><strong>100.00%</strong></td>
+<td style="text-align:center"><strong>93.28%</strong></td>
+<td style="text-align:center">25.0% ~ 100.0%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>全量 Trader 轨道</strong></td>
+<td style="text-align:center"><strong>908 个</strong></td>
+<td style="text-align:left">A 类与 B 类合并轨道</td>
+<td style="text-align:center"><strong>100.00%</strong></td>
+<td style="text-align:center"><strong>91.79%</strong></td>
+<td style="text-align:center">25.0% ~ 100.0%</td>
+</tr>
+</tbody>
+</table>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/4ec71033f956e3af.webp" alt="Trader 轨道与 Capital 轨道实证统计对比及极端右偏分布" class="lazyload"><figcaption class="image-caption">Trader 轨道与 Capital 轨道实证统计对比及极端右偏分布</figcaption></figure></p>
-<ul>
-<li><strong>名义胜率指标钝化</strong>：两轨道的胜率中位数均维持在 100%。只要浮亏未平仓，胜率指标就无法反映真实的风险控制水平。</li>
-<li><strong>收益高度右偏</strong>：Trader 轨道的已实现盈亏均值为 <strong>$23,773</strong>，而中位数仅为 <strong>$2,653</strong>（均值是中位数的 <strong>8.96 倍</strong>）。</li>
-<li>绝大部分代币交易处于保本或小额盈亏区间，组合净收益主要由少数 5 倍以上的大赔率波段支撑。</li>
-</ul>
+<p>数据揭示了两个核心特征：</p>
+<ol>
+<li><strong>B 类成功挤干胜率水分（中位数降至 75%）</strong>：
+当强制要求至少 3 个代币具备买卖闭环时，浮亏死扛带来的幸存者偏差被打破，真实的胜率分布显现。B 类的胜率中位数为 75.00%，最低甚至只有 33.3%，彻底打破了 100% 胜率的统计假象。</li>
+<li><strong>A 类为何依然保持 100% 胜率中位数？</strong>
+链上以小博大的波段交易者普遍表现出显著的**“死扛浮亏币、仅止盈翻倍币”**行为。在指定监控窗口内，他们可能买入数十个土狗资产，绝大部分处于亏损的代币并未发起链上平仓（不平仓则不进入分母），而仅平仓了那 1~2 只获利 5 倍以上的核心标的。分子为 1，分母亦为 1，胜率依然呈现 100%。</li>
+<li><strong>结构分布与极端右偏</strong>：
+在全网合格交易员中，A 类占比高达 <strong>91.4%</strong>（830 / 908），导致合并后的 Trader 轨道整体胜率中位数依然被拉在 100%。同时，Trader 轨道的已实现盈亏均值为 <strong>$23,773</strong>，但中位数仅为 <strong>$2,653</strong>（均值是中位数的 <strong>8.96 倍</strong>）。</li>
+</ol>
+<p>这证实了链上量化最核心的规律：<strong>单点胜率不可作为评估依据，真实链上超额收益主要由少数 5 倍以上的大赔率波段支撑</strong>。</p>
 <hr>
 <h2 id="四跟单执行的物理约束微观体量分布与滑点摩擦">四、跟单执行的物理约束：微观体量分布与滑点摩擦</h2>
 <p>将链上发现转化为实际跟单时，需要面对链上流动性环境的客观物理约束。</p>
