@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="公开聪明钱底层计算模型（DEX 路由折叠、加权平仓均价与期初库存拦截），详解 A（厚尾）、B（稳健）、C（做市对照）三类状态机与 Trader / Capital 双轨研判机制，并呈现跨链 1,912 个画像与 16,770 条代币战绩的真实质量分布。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-28T11:45:00+08:00","datePublished":"2026-10-28T11:45:00+08:00","description":"公开聪明钱底层计算模型（DEX 路由折叠、加权平仓均价与期初库存拦截），详解 A（厚尾）、B（稳健）、C（做市对照）三类状态机与 Trader / Capital 双轨研判机制，并呈现跨链 1,912 个画像与 16,770 条代币战绩的真实质量分布。","headline":"聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, 聪明钱, DEX, 做市商, MEV, 数据清洗, 微观结构","mainEntityOfPage":{"@id":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","@type":"WebPage"},"name":"聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/","wordCount":899}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-28 itemprop="datePublished">October 28, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一dex-逐笔流水清洗与加权平仓计算模型">一、DEX 逐笔流水清洗与加权平仓计算模型</a>
+      <ul>
+        <li><a href="#1-为什么必须折叠-dex-路由片段">1. 为什么必须折叠 DEX 路由片段？</a></li>
+        <li><a href="#2-加权平仓均价vwap与盈亏计算数学模型">2. 加权平仓均价（VWAP）与盈亏计算数学模型</a></li>
+        <li><a href="#3-数据质量缺陷与木桶拦截机制">3. 数据质量缺陷与木桶拦截机制</a></li>
+      </ul>
+    </li>
+    <li><a href="#二abc-三类画像参数空间与互斥判定状态机">二、A、B、C 三类画像参数空间与互斥判定状态机</a>
+      <ul>
+        <li><a href="#1-step-1优先判定-c-类高频做市对照组坚决排除">1. Step 1：优先判定 C 类（高频做市对照组），坚决排除</a></li>
+        <li><a href="#2-step-2判定-a-类厚尾猎手不设胜率门槛">2. Step 2：判定 A 类（厚尾猎手），不设胜率门槛</a></li>
+        <li><a href="#3-step-3判定-b-类稳健交易者验证多币种稳健度">3. Step 3：判定 B 类（稳健交易者），验证多币种稳健度</a></li>
+      </ul>
+    </li>
+    <li><a href="#三全库-1912-行画像跨链分布与真实质量结构">三、全库 1,912 行画像跨链分布与真实质量结构</a>
+      <ul>
+        <li><a href="#1-跨公链画像分布截面">1. 跨公链画像分布截面</a></li>
+        <li><a href="#2-真实数据缺陷揭秘743-的单币战绩无法核验成本">2. 真实数据缺陷揭秘：74.3% 的单币战绩无法核验成本</a></li>
+      </ul>
+    </li>
+    <li><a href="#四trader-轨道-vs-capital-轨道应用分工与实证统计对比">四、Trader 轨道 vs Capital 轨道：应用分工与实证统计对比</a>
+      <ul>
+        <li><a href="#1-双轨信号的物理含义与研判映射">1. 双轨信号的物理含义与研判映射</a></li>
+        <li><a href="#2-实证统计对比右偏分布与胜率失真">2. 实证统计对比：右偏分布与胜率失真</a></li>
+      </ul>
+    </li>
+    <li><a href="#五链上信号的实操研判与物理现实约束">五、链上信号的实操研判与物理现实约束</a>
+      <ul>
+        <li><a href="#1-异动信号的分轨研判原则">1. 异动信号的分轨研判原则</a></li>
+        <li><a href="#2-跟单执行的流动性深度与摩擦损耗">2. 跟单执行的流动性深度与摩擦损耗</a></li>
+        <li><a href="#3-观察池的生命周期与认知边界">3. 观察池的生命周期与认知边界</a></li>
+      </ul>
+    </li>
+    <li><a href="#六数据来源参考与免责声明">六、数据来源参考与免责声明</a>
+      <ul>
+        <li><a href="#数据来源参考">数据来源参考</a></li>
+        <li><a href="#免责声明">免责声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>风险提示：本文涉及的链上画像、量化算法与盈亏统计仅供技术研究参考，不构成任何投资建议或代币推荐。历史估算表现不代表未来收益，链上跟单面临滑点损耗与流动性风险。</p>
+</blockquote>
+<p>在很多链上数据看板或分析平台里，查看所谓“聪明钱”通常只需要点开胜率或盈利排行榜。</p>
+<p>但当我们把 4 条主流 EVM 公链上的 1,345 个候选钱包按常见算法拉出来测算时，胜率的中位数是 <strong>100%</strong>。只要一个钱包在统计窗口内只卖出盈利代币、未将浮亏代币平仓，或者历史仅成交寥寥一两笔恰好押中小市值代币，就会被算法标记为“全胜战绩”。更严重的是，全网有 45% 到 70% 的高盈利钱包在监控窗口前就已经低成本持有筹码，或者直接从中心化交易所提币过来抛售。常见榜单直接把外部转入并卖出的“营业额”全算作“净利润”，跟单者顺着榜单看过去，实际上只是迎上了早期持有者的现货变现。</p>
+<p>单纯按胜率和账面利润排不出交易水平的高低。要让聪明钱信号具备战术参考价值，必须深入底层：从去中心化交易所（DEX）的逐笔成交记录里折叠路由片段、用加权平均成本核算真实平仓盈亏，并把“具备自主交易能力的独立交易员（Trader）”与“仅持有存量筹码的早期持有者（Capital）”彻底分轨。</p>
+<p>本文正面公开我们的底层计算公式、A/B/C 三类候选分类状态机，并基于跨链 1,912 行全景画像与 16,770 条代币表现数据，展示真实的链上质量分布与实证特征。</p>
+<hr>
+<h2 id="一dex-逐笔流水清洗与加权平仓计算模型">一、DEX 逐笔流水清洗与加权平仓计算模型</h2>
+<p>在链上计算交易员收益，远比中心化交易所复杂。中心化交易所的每一笔成交都有明确的账单流水和时间戳，而链上去中心化交易所（DEX）充斥着自动化路由、中间池分单以及跨期持仓。</p>
+<p>如果直接对链上原始数据求和，得出的战绩必然严重失真。</p>
+<h3 id="1-为什么必须折叠-dex-路由片段">1. 为什么必须折叠 DEX 路由片段？</h3>
+<p>在 Uniswap V3、1inch 或 0x 等现代 DEX 协议中，用户发起一笔交易通常会经过复杂的智能合约路由（如 Universal Router）。系统为了降低滑点，往往会将一笔代币兑换拆分成多个中间子池（例如先将代币 A 兑换为 WETH，再通过另一个池子将 WETH 兑换为代币 B）。</p>
+<p>如果直接扫描底层数据表（如 Dune 的 <code>dex.trades</code>），同一笔链上交易可能会产生 2 到 4 条子交易记录。若未经清洗直接累加：</p>
+<ul>
+<li><strong>交易笔数虚高</strong>：单笔主观意图的交易会被拆碎统计为多次交易，交易频次被人为放大 2 到 3 倍以上；</li>
+<li><strong>成交金额重复计入</strong>：中间跳板代币的法币价值会被多次累加，导致统计出的交易规模失真。</li>
+</ul>
+<p>为了还原交易员的真实主观动作，我们的数据流水线在第一步引入了 <strong>DEX 路由片段折叠（Route Segment Collapsing）</strong>：</p>
+<p>按 <code>(blockchain, wallet_address, tx_hash, token_address, side)</code> 进行严格的分组聚合，将单笔交易哈希内、针对同一目标代币的多次中间流动性池交互，折叠为单一的<strong>原子单腿（Atomic Leg）</strong>：</p>
+<p>$$\text{Token Amount} = \sum_{\text{legs}} token_amount$$</p>
+<p>$$\text{USD Amount} = \sum_{\text{legs}} amount_usd$$</p>
+<p>所有交易频次与活跃度指标（如 <code>trade_count</code>、<code>tx_frequency_30d</code>），一律基于去重后的链上交易哈希（<code>tx_hash</code>）统计，彻底消除中继交易对交易员活跃度画像的放大效应。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/d11ec11e9a462a4f.webp" alt="DEX多跳路由折叠机制与加权平仓均价VWAP计算模型" class="lazyload"><figcaption class="image-caption">DEX多跳路由折叠机制与加权平仓均价VWAP计算模型</figcaption></figure></p>
+<h3 id="2-加权平仓均价vwap与盈亏计算数学模型">2. 加权平仓均价（VWAP）与盈亏计算数学模型</h3>
+<p>在完成路由折叠后，系统针对每个钱包地址在指定时间窗口内交易的每一个代币，分别统计其买入与卖出序列：</p>
+<ul>
+<li><strong>买入总量与总成本</strong>：
+$$Q_{buy} = \sum_{side=&lsquo;buy&rsquo;} token_amount, \quad V_{buy} = \sum_{side=&lsquo;buy&rsquo;} amount_usd$$</li>
+<li><strong>卖出总量与总回款</strong>：
+$$Q_{sell} = \sum_{side=&lsquo;sell&rsquo;} token_amount, \quad V_{sell} = \sum_{side=&lsquo;sell&rsquo;} amount_usd$$</li>
+<li><strong>成交量加权买入均价与卖出均价</strong>：
+$$\bar{P}<em>{buy} = \frac{V</em>{buy}}{Q_{buy}}, \quad \bar{P}<em>{sell} = \frac{V</em>{sell}}{Q_{sell}}$$</li>
+<li><strong>已平仓匹配数量（Matched Amount）</strong>：
+$$Q_{matched} = \min(Q_{buy}, Q_{sell})$$</li>
+</ul>
+<p>基于成交量加权均价，代币在时间窗口内的<strong>已实现盈亏（Realized PnL）</strong> 定义为已平仓部分的价差收益：</p>
+<p>$$PnL_{realized} = Q_{matched} \times (\bar{P}<em>{sell} - \bar{P}</em>{buy}) = V_{sell} \times \min\left(1, \frac{Q_{buy}}{Q_{sell}}\right) - V_{buy} \times \min\left(1, \frac{Q_{sell}}{Q_{buy}}\right)$$</p>
+<p><strong>单币收益倍数（Return Multiple）</strong> 定义为加权卖出均价相对加权买入均价的比值：</p>
+<p>$$ROI_{multiple} = \frac{\bar{P}<em>{sell}}{\bar{P}</em>{buy}} = \frac{V_{sell} / Q_{sell}}{V_{buy} / Q_{buy}}$$</p>
+<p><strong>持仓跨度（Holding Span）</strong> 则衡量首次建仓到最后一次清仓的时间间隔：</p>
+<p>$$\Delta t_{holding} = \frac{t_{last_sell} - t_{first_buy}}{60 \text{ min}} \quad (\text{小时})$$</p>
+<h3 id="3-数据质量缺陷与木桶拦截机制">3. 数据质量缺陷与木桶拦截机制</h3>
+<p>在真实的链上交易中，买卖两端往往并不平衡。为了防止数据噪声污染画像库，计算层为每一个代币的表现标记数据质量状态：</p>
+<ul>
+<li><code>unmatched</code>（未平仓单边）：在时间窗口内只有买入无卖出（持有中浮动仓位），或者只有卖出无买入（纯现货抛售）。由于缺乏双向成交，无法计算收益倍数与平仓盈亏。</li>
+<li><code>opening_inventory_partial_match</code>（期初库存未对齐）：<strong>卖出数量大于买入数量（$Q_{sell} &gt; Q_{buy}$）</strong>。这表明代币在监控窗口开始前就已经存在历史底仓，或者通过外部私有转账、中心化交易所提币直接转入。若不作区分，传统算法会将窗口前的成本默认为零或按均价折算，把大额外部转入出货虚增为账面净利润。</li>
+<li><code>extreme_roi_excluded</code>（极端异常收益）：收益倍数小于等于零，或超过有效上限（如 $ROI_{multiple} &gt; 1000\times$）。这类情况通常出现在流动性极薄的微型流动性池、合约归零或空头坏账清算中，属于非平稳的数值噪点，予以直接剔除。</li>
+</ul>
+<p>在将代币表现聚合至钱包画像级时，我们执行<strong>严格的木桶拦截原则</strong>：一个钱包哪怕交易了十个代币、其中九个完美闭环，只要有任一代币命中 <code>opening_inventory_partial_match</code>，该钱包的整行画像就会被打上期初库存缺陷标记。</p>
+<p>因为在链上世界里，只要一个地址的建仓成本存在模糊地带，其所谓的“胜率”和“历史战绩”就不具备可核验的数学确定性。</p>
+<hr>
+<h2 id="二abc-三类画像参数空间与互斥判定状态机">二、A、B、C 三类画像参数空间与互斥判定状态机</h2>
+<p>为了从海量 DEX 交易地址中筛选出真正具备超额收益能力的交易者，我们基于微观结构行为将候选地址划分为三类：<strong>A 类（厚尾猎手）</strong>、<strong>B 类（稳健交易者）</strong> 与 <strong>C 类（高频做市对照组）</strong>。</p>
+<p>在规则判定上，三类画像并非松散并列，而是严格遵循 <strong>C $\to$ A $\to$ B</strong> 的互斥优先级状态机：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/5100f4fc97083f18.webp" alt="ABC候选画像参数空间与互斥判定决策机制" class="lazyload"><figcaption class="image-caption">ABC候选画像参数空间与互斥判定决策机制</figcaption></figure></p>
+<h3 id="1-step-1优先判定-c-类高频做市对照组坚决排除">1. Step 1：优先判定 C 类（高频做市对照组），坚决排除</h3>
+<p>许多公开链上榜单经常将高频套利者或做市商误认为“顶尖聪明钱”，因为它们账面累积盈利巨大且几乎每天都在赚钱。然而，这类地址依靠的是自动化微秒级撮合、跨池点差套利或做市双向吃单，普通交易者根本无法跟单，一旦跟随反而会沦为套利者的燃料。</p>
+<p>因此，判定状态机的第一步是<strong>前置识别并排除 C 类行为</strong>：</p>
+<ul>
+<li><strong>交易体量大</strong>：时间窗口内交易笔数 $\ge 100$ 笔；</li>
+<li><strong>高频活跃</strong>：近 30 天日均交易频次 $\ge 3$ 笔/天；</li>
+<li><strong>标的与协议分散</strong>：涉及目标代币 $\ge 5$ 个，跨越 DEX 协议 $\ge 2$ 个；</li>
+<li><strong>买卖金额高度平衡</strong>：买卖双向金额平衡比 $FlowBalance = \frac{\min(V_{buy}, V_{sell})}{\max(V_{buy}, V_{sell})} \ge 0.8$。</li>
+</ul>
+<p>只要命中上述条件，地址直接标记为 C 类。在构建独立交易员观察池时，<strong>C 类地址一律作为控制组剔除，绝不作为主观交易员跟踪</strong>。</p>
+<h3 id="2-step-2判定-a-类厚尾猎手不设胜率门槛">2. Step 2：判定 A 类（厚尾猎手），不设胜率门槛</h3>
+<p>在排除了 C 类干扰后，系统优先寻找具备非对称高盈亏比的波段交易者。</p>
+<p>加密市场的底层收益分布呈现极度明显的“右偏肥尾（Fat-tail）”特征：多数交易员并不靠高胜率赚钱，而是靠十次交易中抓住一两次爆发性倍数机会覆盖试错成本。</p>
+<ul>
+<li><strong>估算盈利门槛</strong>：窗口期已实现总盈亏 $\ge 10,000 \text{ USD}$；</li>
+<li><strong>极端收益倍数证据</strong>：最佳单币收益倍数 $ROI_{max} \ge 5\times$（至少在一个代币上捕获 5 倍以上的非对称波段）；</li>
+<li><strong>买卖闭环基础</strong>：至少有 1 个代币具备完整的买入与卖出闭环；</li>
+<li><strong>交易频次约束</strong>：历史交易笔数在 2 到 200 笔之间，近 30 天日均频次 $\le 3$ 笔/天（排查自动化脚本，确保为主观交易波段）。</li>
+</ul>
+<p>A 类画像的核心设计在于<strong>彻底取消胜率门槛</strong>。只要交易员能在严格的真实闭环中展现出捕获 5 倍以上大周期的能力，即便胜率只有 30%，也是极具跟踪价值的厚尾猎手。</p>
+<h3 id="3-step-3判定-b-类稳健交易者验证多币种稳健度">3. Step 3：判定 B 类（稳健交易者），验证多币种稳健度</h3>
+<p>若地址未展现出 5 倍以上的极端单币倍数，但通过多币种轮动展现出稳定的盈亏管理能力，则进入 B 类判定：</p>
+<ul>
+<li><strong>估算盈利门槛</strong>：窗口期已实现总盈亏 $\ge 10,000 \text{ USD}$；</li>
+<li><strong>胜率过半</strong>：盈利代币占全部已平仓代币比例 $\ge 55%$；</li>
+<li><strong>多币种闭环验证</strong>：至少有 3 个代币具备完整的买卖闭环；</li>
+<li><strong>交易频次约束</strong>：历史交易笔数在 5 到 500 笔之间，近 30 天日均频次 $\le 3$ 笔/天；</li>
+<li><strong>单笔资金门槛</strong>：单笔平均交易金额 $\ge 10,000 \text{ USD}$。</li>
+</ul>
+<p>B 类画像针对的是中大体量、通过多标的分散投资实现稳定增值的专业交易者。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">评估维度</th>
+<th style="text-align:left">A 类：厚尾猎手 (Thick-tail Hunters)</th>
+<th style="text-align:left">B 类：稳健交易者 (Steady Accumulators)</th>
+<th style="text-align:left">C 类：高频做市对照组 (Control Group)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>判定优先级</strong></td>
+<td style="text-align:left">第 2 步（未命中 C 后判定）</td>
+<td style="text-align:left">第 3 步（未命中 C 和 A 后判定）</td>
+<td style="text-align:left"><strong>第 1 步（优先前置判定）</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>核心战术目标</strong></td>
+<td style="text-align:left">捕捉单币 5 倍以上非对称右偏波段</td>
+<td style="text-align:left">捕捉多代币分散轮动的稳健收益</td>
+<td style="text-align:left">识别做市、跨池套利与高频对倒</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>已实现 PnL 门槛</strong></td>
+<td style="text-align:left">$\ge 10,000 \text{ USD}$</td>
+<td style="text-align:left">$\ge 10,000 \text{ USD}$</td>
+<td style="text-align:left">不设下限</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>收益倍数约束</strong></td>
+<td style="text-align:left"><strong>最大倍数 $\ge 5\times$</strong></td>
+<td style="text-align:left">不做极端倍数强制要求</td>
+<td style="text-align:left">通常处于微利窄幅区间（$1.0\times \sim 1.2\times$）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>胜率门槛要求</strong></td>
+<td style="text-align:left"><strong>不设胜率门槛</strong></td>
+<td style="text-align:left">胜率 $\ge 55%$</td>
+<td style="text-align:left">通常胜率极高（微点差高胜率）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>完整买卖闭环币种</strong></td>
+<td style="text-align:left">$\ge 1$ 个代币</td>
+<td style="text-align:left">$\ge 3$ 个代币</td>
+<td style="text-align:left">涉及代币 $\ge 5$ 个</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>交易频次与活跃度</strong></td>
+<td style="text-align:left">2~200 笔，近 30 天 $\le 3$ 笔/天</td>
+<td style="text-align:left">5~500 笔，近 30 天 $\le 3$ 笔/天</td>
+<td style="text-align:left">$\ge 100$ 笔，近 30 天 $\ge 3$ 笔/天</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>单笔平均金额</strong></td>
+<td style="text-align:left">无硬性下限</td>
+<td style="text-align:left">平均每笔 $\ge 10,000 \text{ USD}$</td>
+<td style="text-align:left">无硬性下限</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>买卖平衡比约束</strong></td>
+<td style="text-align:left">无要求（单向波段为主）</td>
+<td style="text-align:left">无要求</td>
+<td style="text-align:left">买卖双向平衡比 $\ge 0.8$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>观察池处理</strong></td>
+<td style="text-align:left">纳入核心观察池</td>
+<td style="text-align:left">纳入核心观察池</td>
+<td style="text-align:left"><strong>彻底排除，不纳入跟踪</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="三全库-1912-行画像跨链分布与真实质量结构">三、全库 1,912 行画像跨链分布与真实质量结构</h2>
+<p>上述计算与分类规则在真实链上运行后的结果如何？我们对覆盖的 6 条公链全量数据进行了穿透审计。</p>
+<p>整个画像库共沉淀了 <strong>1,912 行画像记录</strong>（对应 1,894 个去重独立钱包地址，其中 18 个钱包在不同批次中分别命中过 A 与 B 的边缘条件）。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/2dd0bd8afa2a1e8b.webp" alt="聪明钱画像库跨链分布与单币战绩真实质量缺陷结构" class="lazyload"><figcaption class="image-caption">聪明钱画像库跨链分布与单币战绩真实质量缺陷结构</figcaption></figure></p>
+<h3 id="1-跨公链画像分布截面">1. 跨公链画像分布截面</h3>
+<p>在 1,912 行全景画像中，不同公链的生态活跃度与交易特征呈现出显著的分层：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">公链名称 (Chain)</th>
+<th style="text-align:center">A 类：厚尾猎手</th>
+<th style="text-align:center">B 类：稳健交易者</th>
+<th style="text-align:center">C 类对照</th>
+<th style="text-align:center">合计画像行数</th>
+<th style="text-align:center">质量合格 (ok)</th>
+<th style="text-align:center">期初库存缺陷 (partial)</th>
+<th style="text-align:center">缺陷比例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>BNB Chain</strong></td>
+<td style="text-align:center">418</td>
+<td style="text-align:center">60</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>478</strong></td>
+<td style="text-align:center">232 (48.5%)</td>
+<td style="text-align:center">246 (51.5%)</td>
+<td style="text-align:center">51.5%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Robinhood Chain</strong></td>
+<td style="text-align:center">382</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>405</strong></td>
+<td style="text-align:center">209 (51.6%)</td>
+<td style="text-align:center">196 (48.4%)</td>
+<td style="text-align:center">48.4%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Arbitrum</strong></td>
+<td style="text-align:center">353</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>354</strong></td>
+<td style="text-align:center">152 (42.9%)</td>
+<td style="text-align:center">202 (57.1%)</td>
+<td style="text-align:center">57.1%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Base</strong></td>
+<td style="text-align:center">230</td>
+<td style="text-align:center">67</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>297</strong></td>
+<td style="text-align:center">122 (41.1%)</td>
+<td style="text-align:center">175 (58.9%)</td>
+<td style="text-align:center">58.9%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Ethereum</strong></td>
+<td style="text-align:center">122</td>
+<td style="text-align:center">102</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center"><strong>225</strong></td>
+<td style="text-align:center">91 (40.4%)</td>
+<td style="text-align:center">134 (59.6%)</td>
+<td style="text-align:center">59.6%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Solana</strong></td>
+<td style="text-align:center">144</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>153</strong></td>
+<td style="text-align:center">102 (66.7%)</td>
+<td style="text-align:center">51 (33.3%)</td>
+<td style="text-align:center">33.3%</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>全网全量汇总</strong></td>
+<td style="text-align:center"><strong>1,649 (86.2%)</strong></td>
+<td style="text-align:center"><strong>262 (13.7%)</strong></td>
+<td style="text-align:center"><strong>1 (0.1%)</strong></td>
+<td style="text-align:center"><strong>1,912</strong></td>
+<td style="text-align:center"><strong>908 (47.5%)</strong></td>
+<td style="text-align:center"><strong>1,004 (52.5%)</strong></td>
+<td style="text-align:center"><strong>52.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>从类型结构来看，A 类厚尾猎手占据了绝对主导地位（<strong>86.2%</strong>，共 1,649 行），而符合多币种稳健交易、单笔在 1 万美元以上的 B 类交易者仅占 <strong>13.7%</strong>（共 262 行）。这客观反映了链上交易的真实生态：依靠少数 Meme 或高弹性代币博取超额波段的个人地址数量，远多于遵循多标的分散纪律的稳健型大资金。</p>
+<p>从公链特征来看，以太坊主网（Ethereum）上的 B 类交易者占比高达 <strong>45.3%</strong>（102 / 225），平均单笔金额与多币种持仓闭环表现最为扎实；而在 Arbitrum、Base 与 Solana 等低 Gas 链上，超过 80%~95% 的画像均为单币冲高型的 A 类地址。</p>
+<h3 id="2-真实数据缺陷揭秘743-的单币战绩无法核验成本">2. 真实数据缺陷揭秘：74.3% 的单币战绩无法核验成本</h3>
+<p>数据中最触目惊心的事实在于质量缺陷的普遍性。</p>
+<p>在全库 1,912 行画像中，<strong>超过一半（1,004 行，占比 52.5%）</strong> 带有 <code>opening_inventory_partial_match</code> 缺陷标记。</p>
+<p>当我们进一步下钻至代币级表现表（全量共 <strong>16,770 条</strong> 单币战绩记录）时，数据分布暴露得更为彻底：</p>
+<ul>
+<li><strong>单边未平仓（<code>unmatched</code>）</strong>：共 <strong>10,437 条，占比高达 62.2%</strong>。大部分链上地址买入后从未卖出，或者仅卖出此前转入的现货，根本无法测算盈亏；</li>
+<li><strong>期初库存不完整（<code>opening_inventory_partial_match</code>）</strong>：共 <strong>2,020 条，占比 12.0%</strong>。窗口内卖出量明显大于买入量，成本无法核实；</li>
+<li><strong>买卖闭环可核验（<code>ok</code>）</strong>：<strong>仅有 4,313 条，占比仅为 25.7%</strong>。</li>
+</ul>
+<p>这意味着，全网所有的链上代币交易流水中，<strong>接近四分之三（74.3%）在数学上根本无法给出确定性的收益率与平仓盈亏</strong>！</p>
+<p>如果一个分析平台跳过这一层清洗，直接把所有卖出流水按市价折算为盈利，并把未平仓的代币排除在分母之外，必然会批量制造出成千上万个“胜率 100%、盈利数万美元”的虚假神话。</p>
+<hr>
+<h2 id="四trader-轨道-vs-capital-轨道应用分工与实证统计对比">四、Trader 轨道 vs Capital 轨道：应用分工与实证统计对比</h2>
+<p>面对全网超过 50% 的画像存在期初库存缺陷的客观物理现实，分析上不能简单地将这些地址全部丢弃，更不能直接展示失真的胜率。合理的做法是将<strong>交易特征分类（A/B/C）</strong> 与 <strong>行为信号分轨（Trader / Capital）</strong> 彻底解耦：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/4ec71033f956e3af.webp" alt="Trader轨道与Capital轨道实证统计对比及极端右偏分布" class="lazyload"><figcaption class="image-caption">Trader轨道与Capital轨道实证统计对比及极端右偏分布</figcaption></figure></p>
+<h3 id="1-双轨信号的物理含义与研判映射">1. 双轨信号的物理含义与研判映射</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">信号分轨</th>
+<th style="text-align:left">准入判定条件</th>
+<th style="text-align:left">战绩参考价值与呈现原则</th>
+<th style="text-align:left">典型交易动作</th>
+<th style="text-align:left">核心研判价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Trader 轨道</strong><br>(交易员轨道)</td>
+<td style="text-align:left">属于 A 类或 B 类候选；<br>数据质量标记必须为 <strong><code>ok</code></strong>；<br>买卖闭环清晰可核验</td>
+<td style="text-align:left"><strong>高参考价值</strong>：<br>可参考窗口估算胜率、盈亏比与代表代币，反映二级市场真实交易水平</td>
+<td style="text-align:left">在 DEX 上发生自主买入或卖出</td>
+<td style="text-align:left"><strong>进攻型信号</strong>：<br>捕捉具备真实交易能力的独立交易员主动选币与建仓波段</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Capital 轨道</strong><br>(存量筹码轨道)</td>
+<td style="text-align:left">属于 A 类或 B 类候选；<br>数据质量标记命中 <strong><code>opening_inventory</code></strong></td>
+<td style="text-align:left"><strong>不可参考其胜率</strong>：<br>因建仓成本不完整，不参考其胜率与盈亏，只观察其筹码规模</td>
+<td style="text-align:left">大额代币沉淀，或向交易市场/资金池转移</td>
+<td style="text-align:left"><strong>防御型信号</strong>：<br>定位于存量现货筹码，仅在筹码大额异动时作为潜在卖压风控警示</td>
+</tr>
+</tbody>
+</table>
+<p>通过双轨隔离，分析者既能保护真实交易员信号的纯净度（进入 Trader 轨道的钱包每一笔战绩都成本清晰），又能有效追踪早期筹码的链上流动（将无法核验成本的巨鲸定义为 Capital 卖压监控）。</p>
+<h3 id="2-实证统计对比右偏分布与胜率失真">2. 实证统计对比：右偏分布与胜率失真</h3>
+<p>在针对 1,345 个候选钱包的实证统计中，两类轨道的底层行为特征展现出截然不同的金融画像：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">统计指标</th>
+<th style="text-align:center">Trader 轨道 (N=593 个钱包)</th>
+<th style="text-align:center">Capital 轨道 (N=752 个钱包)</th>
+<th style="text-align:left">统计差异与金融微观机理解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>平均持仓周期</strong></td>
+<td style="text-align:center"><strong>1,061.2 小时</strong>（约 44.2 天）</td>
+<td style="text-align:center"><strong>1,384.5 小时</strong>（约 57.7 天）</td>
+<td style="text-align:left">Capital 持仓周期比 Trader 长 30.5%，体现出更强的筹码沉淀属性</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中位持仓周期</strong></td>
+<td style="text-align:center"><strong>868.2 小时</strong>（约 36.2 天）</td>
+<td style="text-align:center"><strong>1,350.2 小时</strong>（约 56.3 天）</td>
+<td style="text-align:left">中位数相差近 20 天，Trader 波段节奏明显更快</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>平均交易笔数</strong></td>
+<td style="text-align:center"><strong>38.7 笔</strong></td>
+<td style="text-align:center"><strong>72.5 笔</strong></td>
+<td style="text-align:left">Capital 交易频次接近 Trader 的 2 倍，包含大量零散出脱与分批变现</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>平均已实现 PnL</strong></td>
+<td style="text-align:center"><strong>23,773 USD</strong></td>
+<td style="text-align:center"><strong>17,915 USD</strong></td>
+<td style="text-align:left">均值均显著高于中位数，收益高度右偏</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中位数已实现 PnL</strong></td>
+<td style="text-align:center"><strong>2,653 USD</strong></td>
+<td style="text-align:center"><strong>3,843 USD</strong></td>
+<td style="text-align:left"><strong>Trader 均值是中位数的近 9 倍！</strong> 典型依靠少数大赢家拉动整体收益</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>平均估算胜率</strong></td>
+<td style="text-align:center"><strong>92.9%</strong></td>
+<td style="text-align:center"><strong>84.6%</strong></td>
+<td style="text-align:left">均处于 80% 以上高位水平</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>中位数估算胜率</strong></td>
+<td style="text-align:center"><strong>100.0%</strong></td>
+<td style="text-align:center"><strong>100.0%</strong></td>
+<td style="text-align:left"><strong>两轨中位数均为 100%！</strong> 再次证实胜率指标在链上的完全钝化</td>
+</tr>
+</tbody>
+</table>
+<p>这一组实证数据揭示了两个关键事实：</p>
+<ol>
+<li><strong>胜率完全无法区分交易能力</strong>：在两类轨道中，胜率中位数全部都是 100%。只要未平仓的浮亏代币没有发生链上转账，胜率公式的分母就永远只计算已获利的代币。因此，在链上分析中，看胜率不如看收益倍数与持仓周期的匹配度。</li>
+<li><strong>Trader 的收益具备极强的厚尾特征</strong>：Trader 轨道的已实现盈亏均值为 23,773 美元，而中位数仅为 2,653 美元，均值是中位数的 <strong>8.96 倍</strong>。这说明真正的独立聪明钱，大部分交易也只是微利甚至打平，整体利润几乎完全由前 10% 的高倍大波段（如捕获 5 倍至 20 倍代币）所贡献。</li>
+</ol>
+<hr>
+<h2 id="五链上信号的实操研判与物理现实约束">五、链上信号的实操研判与物理现实约束</h2>
+<p>理解了数学公式、质量缺陷与双轨分类后，交易者在日常链上跟踪中该如何利用这套框架指导决策，同时规避跟单陷阱？</p>
+<h3 id="1-异动信号的分轨研判原则">1. 异动信号的分轨研判原则</h3>
+<p>当在链上监控中捕捉到一个钱包地址的买卖异动时，建议按照分轨逻辑进行三步走查：</p>
+<ul>
+<li><strong>第一步：看轨道属性，区分进攻与防御</strong>
+<ul>
+<li><strong>若是 Trader 钱包买入</strong>：属于战术参考信号。首先检查其历史代表币种与本次买入标的是否同属一类风格（是 A 类厚尾猎手冲低市值 Meme，还是 B 类稳健交易员做 DeFi 资产轮动）；其次核对持仓周期，Trader 轨道的中位持仓周期为 868 小时（约 36 天），其买入通常是数周级别的波段建仓，切忌按秒级超短线思维对待。</li>
+<li><strong>若是 Capital 钱包异动</strong>：切忌盲目当作“大资金买入”跟单。存量筹码钱包资金体量大，往往能承受 30% 甚至更大幅度的浮亏并拉长数月建仓，普通交易者跟随极易被盘整磨损出局；当 Capital 钱包向 DEX 流动性池或中心化交易所转入大额现货时，应主要将其视为短期潜在抛压警示。</li>
+</ul>
+</li>
+<li><strong>第二步：核实资金去向，防范假动作</strong>
+<ul>
+<li>在大资金充入交易所的链上异动中，需结合后续是否有分拆充入现货撮合热钱包的动作做二次核对。历史数据显示，许多大额转账仅属于机构质押赎回、托管账户整理或衍生品合约保证金补充，在 12–48 小时内常有等额转出，未发生实际二级市场抛售。</li>
+</ul>
+</li>
+<li><strong>第三步：核查统计窗口与成本对齐状态</strong>
+<ul>
+<li>审视任何所谓的高胜率战绩时，先看其买入成本是否具备链上闭环。没有买入记录的单边大额卖出，本质上只是历史存量筹码变现，不代表任何二级市场波段选币能力。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-跟单执行的流动性深度与摩擦损耗">2. 跟单执行的流动性深度与摩擦损耗</h3>
+<p>即使筛选出了具备真实交易能力的独立 Trader 钱包，将链上发现转化为实际收益，仍然受制于交易执行环境的物理约束。</p>
+<p>在记录的 7,680 笔聪明钱交易流水中：</p>
+<ul>
+<li>单笔成交金额中位数仅为 <strong>1,079 美元</strong>；</li>
+<li>75% 的交易金额低于 <strong>2,591 美元</strong>；</li>
+<li>90% 的交易金额低于 <strong>6,569 美元</strong>。</li>
+</ul>
+<p>超过一半的聪明钱单笔交易金额低于 1,079 美元，75% 的交易低于 2,591 美元。链上独立交易员非常清楚中小市值代币的流动性池深度极其脆弱，因此普遍采取小额试探与分批建仓的策略。</p>
+<p>如果外部跟单者误判资金体量，直接投入数万美元市价跟单：</p>
+<ol>
+<li><strong>流动性滑点冲击</strong>：自身的大额买单会瞬间拉高池子价格，导致实际成交均价大幅偏离；</li>
+<li><strong>MEV 夹子攻击</strong>：大额市价单直接暴露在公共内存池（Mempool）中，极易招致套利机器人的抢先交易（Sandwich Attack）；</li>
+<li><strong>对手盘陷阱</strong>：ainvest 针对 6,645 笔大额转账后散户反应的研究显示，普通散户在看到异动提醒并跟单进场时，原钱包的建仓早已在链上撮合成交完毕。滞后进场的跟单买盘，往往直接沦为原钱包高位套现的对手盘流动性。</li>
+</ol>
+<h3 id="3-观察池的生命周期与认知边界">3. 观察池的生命周期与认知边界</h3>
+<p>在建立个人链上监控列表时，还需要守住两条客观认知边界：</p>
+<ul>
+<li><strong>业绩的时效性与均值回归</strong>：如同 Nansen 在标签体系中设立 <code>Former Smart Trader</code>（前聪明钱）分类，链上交易员的战绩并不恒定。在单币高赔率红利过去后，交易策略往往面临周期性失效或胜率衰减，必须定期滚动复核交易表现，动态淘汰失效地址。</li>
+<li><strong>事实与推论分开，不脑补身份</strong>：链上地址本质上是一串确定性的十六进制代码。在没有确定性证明之前，未知地址保持未知，拒绝主观臆断“主力洗盘”、“庄家吸筹”等心理战术语，让数据分析回归统计概率与微观结构本质。</li>
+</ul>
+<p>链上画像的核心价值，在于帮交易者在每天全网海量的大额转账中，过滤掉做市商对倒与早期抛售噪声，筛出真正值得放进观察列表的自主交易者。它适合作为案头研究的线索起点，绝不适合未经流动性核验的盲目跟单。</p>
+<hr>
+<h2 id="六数据来源参考与免责声明">六、数据来源参考与免责声明</h2>
+<h3 id="数据来源参考">数据来源参考</h3>
+<ol>
+<li><strong>聪明钱全景画像库</strong>：数据来源于本地 SQLite 数据库中的 <code>smart_money_profiles</code> 表，包含截至 2026 年 9 月 23 日覆盖 Ethereum、BNB Chain、Arbitrum、Base、Solana 与 Robinhood Chain 的 1,912 行画像快照记录。</li>
+<li><strong>代币级闭环战绩流水</strong>：来源于代币表现表（共 16,770 条代币表现数据）与交易流水表（共 7,680 笔行为流水）。</li>
+<li><strong>分轨经验分布统计</strong>：来源于经验分布汇总，基于 2026-09-21 批次对 Ethereum、BNB Chain、Base、Arbitrum 4 条公链共 1,345 个去重候选钱包（Trader 593 个、Capital 752 个）的全量统计。</li>
+<li><strong>抽样逐笔核验记录</strong>：参考链上抽样审计记录，于 2026-09-21 对 20 个分层抽样地址调用以太坊 PublicNode RPC（<code>eth_getCode</code>）及 Etherscan V2 API 进行的逐笔链上穿透。</li>
+<li><strong>DEX 底层聚合算法与微观结构数据</strong>：基于 Dune Analytics 针对主流 EVM DEX（Uniswap、PancakeSwap、Aerodrome 等）链上事件的路由折叠与加权平仓计算模型。</li>
+</ol>
+<h3 id="免责声明">免责声明</h3>
+<p>本文所介绍的聪明钱识别算法、数据清洗模型、分类框架及链上实测统计仅作为区块链量化数据挖掘与微观结构研究的技术分享，不构成对任何特定个人、代币、协议或投资策略的推荐或交易建议。文中披露的已实现盈亏、收益倍数及胜率均为指定历史时间窗口内的加权估算值，未计入跨期链下持仓成本、网络 Gas 损耗与滑点冲击。链上资产具有高波动性与流动性风险，历史数据表现优异不代表未来具有确定性收益。读者应当独立评估链上风险，审慎做出交易决策。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/">
+                    #链上数据</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/">
+                    #聪明钱</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/dex/">
+                    #DEX</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%81%9A%E5%B8%82%E5%95%86/">
+                    #做市商</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mev/">
+                    #MEV</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">
+                    #数据清洗</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%BE%AE%E8%A7%82%E7%BB%93%E6%9E%84/">
+                    #微观结构</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/" class="prev" rel="prev" title="前端去 AI 味实操：约束规则、实测评价与 Hallmark"><i class="iconfont icon-left"></i>&nbsp;前端去 AI 味实操：约束规则、实测评价与 Hallmark</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

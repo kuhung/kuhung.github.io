@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 197 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 198 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 197 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 198 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -280,6 +280,22 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="链上数据||量化交易||聪明钱||DEX||做市商||MEV||数据清洗||微观结构"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/how-smart-money-is-calculated-and-distributed/">聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布</a></h2>
+    <p class="posts-list-summary">风险提示：本文涉及的链上画像、量化算法与盈亏统计仅供技术研究参考，不构成任何投资建议或代币推荐。历史估算表现不代表未来收益，链上跟单面临滑点损耗与流动性风险。
+在很多链上数据看板或分析平台里，查看所谓“聪明钱”通常只需要点开胜率或盈利排行榜。
+但当我们把 4 条主流 EVM 公链上的 1,345 个候选钱包按常见算法拉出来测算时，胜率的中位数是 100%。只要一个钱包在统计窗口内只卖出盈利代币、未 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-28">October 28, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="AI||前端开发||UI设计||Hallmark||代码助手||Claude||Cursor"
@@ -418,22 +434,6 @@ a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的
     <p class="posts-list-summary">在上一篇《个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手》中，通过双线缓冲区降低了频繁换手。但进入日常运行后，另一个问题是跌破均线时如何退出。
 很多交易者倾向于把止损当成无条件执行的通用规则，比如收盘价跌破 200 日线 1.5% 满 3 天就清仓，并直接套用到所有市场。
 这种一刀切的规则在不同市场中表现分化明显。不同市场的微观盘性、假突破频率以及账户是否有杠杆负债并不相 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-23">October 23, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="量化交易||选股||双线缓冲区||调仓窗口||换手率控制||状态机||交易成本||A股||港股||美股||日股"
-         data-categories="经验分享">
-    <h2 class="posts-list-title"><a href="/posts/stock-selection-dual-line-buffer-and-rebalance-window/">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</a></h2>
-    <p class="posts-list-summary">在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。
-然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题：
-手里 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-10-23">October 23, 2026</time>
         
@@ -661,12 +661,28 @@ a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的
     
 </ul>
 
-        <span class="posts-total">共 197 篇</span>
+        <span class="posts-total">共 198 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
     
     <template id="all-posts-template">
+        
+        <article class="posts-list-item"
+         data-tags="链上数据||量化交易||聪明钱||DEX||做市商||MEV||数据清洗||微观结构"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/how-smart-money-is-calculated-and-distributed/">聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布</a></h2>
+    <p class="posts-list-summary">风险提示：本文涉及的链上画像、量化算法与盈亏统计仅供技术研究参考，不构成任何投资建议或代币推荐。历史估算表现不代表未来收益，链上跟单面临滑点损耗与流动性风险。
+在很多链上数据看板或分析平台里，查看所谓“聪明钱”通常只需要点开胜率或盈利排行榜。
+但当我们把 4 条主流 EVM 公链上的 1,345 个候选钱包按常见算法拉出来测算时，胜率的中位数是 100%。只要一个钱包在统计窗口内只卖出盈利代币、未 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-10-28">October 28, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="AI||前端开发||UI设计||Hallmark||代码助手||Claude||Cursor"

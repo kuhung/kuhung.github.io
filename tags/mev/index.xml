@@ -6,7 +6,26 @@
     <description>Recent content in MEV on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Oct 2026 18:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2026 11:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>聪明钱到底怎么算：一套可核验的钱包分类框架与跨链真实分布</title>
+      <link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link>
+      <pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid>
+      <description>风险提示：本文涉及的链上画像、量化算法与盈亏统计仅供技术研究参考，不构成任何投资建议或代币推荐。历史估算表现不代表未来收益，链上跟单面临滑点损耗与流动性风险。
+在很多链上数据看板或分析平台里，查看所谓“聪明钱”通常只需要点开胜率或盈利排行榜。
+但当我们把 4 条主流 EVM 公链上的 1,345 个候选钱包按常见算法拉出来测算时，胜率的中位数是 100%。只要一个钱包在统计窗口内只卖出盈利代币、未将浮亏代币平仓，或者历史仅成交寥寥一两笔恰好押中小市值代币，就会被算法标记为“全胜战绩”。更严重的是，全网有 45% 到 70% 的高盈利钱包在监控窗口前就已经低成本持有筹码，或者直接从中心化交易所提币过来抛售。常见榜单直接把外部转入并卖出的“营业额”全算作“净利润”，跟单者顺着榜单看过去，实际上只是迎上了早期持有者的现货变现。
+单纯按胜率和账面利润排不出交易水平的高低。要让聪明钱信号具备战术参考价值，必须深入底层：从去中心化交易所（DEX）的逐笔成交记录里折叠路由片段、用加权平均成本核算真实平仓盈亏，并把“具备自主交易能力的独立交易员（Trader）”与“仅持有存量筹码的早期持有者（Capital）”彻底分轨。
+本文正面公开我们的底层计算公式、A/B/C 三类候选分类状态机，并基于跨链 1,912 行全景画像与 16,770 条代币表现数据，展示真实的链上质量分布与实证特征。
+一、DEX 逐笔流水清洗与加权平仓计算模型 在链上计算交易员收益，远比中心化交易所复杂。中心化交易所的每一笔成交都有明确的账单流水和时间戳，而链上去中心化交易所（DEX）充斥着自动化路由、中间池分单以及跨期持仓。
+如果直接对链上原始数据求和，得出的战绩必然严重失真。
+1. 为什么必须折叠 DEX 路由片段？ 在 Uniswap V3、1inch 或 0x 等现代 DEX 协议中，用户发起一笔交易通常会经过复杂的智能合约路由（如 Universal Router）。系统为了降低滑点，往往会将一笔代币兑换拆分成多个中间子池（例如先将代币 A 兑换为 WETH，再通过另一个池子将 WETH 兑换为代币 B）。
+如果直接扫描底层数据表（如 Dune 的 dex.trades），同一笔链上交易可能会产生 2 到 4 条子交易记录。若未经清洗直接累加：
+交易笔数虚高：单笔主观意图的交易会被拆碎统计为多次交易，交易频次被人为放大 2 到 3 倍以上； 成交金额重复计入：中间跳板代币的法币价值会被多次累加，导致统计出的交易规模失真。 为了还原交易员的真实主观动作，我们的数据流水线在第一步引入了 DEX 路由片段折叠（Route Segment Collapsing）：
+按 (blockchain, wallet_address, tx_hash, token_address, side) 进行严格的分组聚合，将单笔交易哈希内、针对同一目标代币的多次中间流动性池交互，折叠为单一的原子单腿（Atomic Leg）：</description>
+    </item>
+    
     <item>
       <title>链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</title>
       <link>https://kuhung.me/posts/how-to-track-onchain-transactions/</link>
