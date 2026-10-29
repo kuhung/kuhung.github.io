@@ -2,15 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
       <loc>https://kuhung.me/categories/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/cex/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%85%B1%E8%AF%86%E6%8C%87%E6%A0%87/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%BE%AE%E8%A7%82%E7%BB%93%E6%9E%84/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E6%9C%80%E5%A4%A7%E5%9B%9E%E6%92%A4/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E6%BB%91%E7%82%B9/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E7%AD%96%E7%95%A5%E5%9B%9E%E6%B5%8B/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</loc>
+      <lastmod>2026-10-29T14:30:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/cex/</loc>
       <lastmod>2026-10-29T11:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E4%BF%A1%E5%99%AA%E6%AF%94/</loc>
@@ -22,25 +55,10 @@
       <loc>https://kuhung.me/tags/%E5%B7%A8%E9%B2%B8%E8%BF%BD%E8%B8%AA/</loc>
       <lastmod>2026-10-29T11:45:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/tags/%E5%BE%AE%E8%A7%82%E7%BB%93%E6%9E%84/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E6%8F%90%E5%B8%81%E5%BB%BA%E4%BB%93/</loc>
       <lastmod>2026-10-29T11:45:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</loc>
-      <lastmod>2026-10-29T11:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</loc>
       <lastmod>2026-10-29T11:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/dex/</loc>
@@ -53,9 +71,6 @@
       <lastmod>2026-10-28T11:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</loc>
-      <lastmod>2026-10-28T11:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/</loc>
       <lastmod>2026-10-28T11:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/ai/</loc>
@@ -644,9 +659,6 @@
       <lastmod>2026-08-01T22:32:01+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/pair-zhipu-minimax/</loc>
-      <lastmod>2026-07-30T18:14:26+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E7%AD%96%E7%95%A5%E5%9B%9E%E6%B5%8B/</loc>
       <lastmod>2026-07-30T18:14:26+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E9%85%8D%E5%AF%B9%E4%BA%A4%E6%98%93/</loc>

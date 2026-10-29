@@ -6,7 +6,23 @@
     <description>Recent content in 链上数据 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 11:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Oct 2026 14:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</title>
+      <link>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</link>
+      <pubDate>Thu, 29 Oct 2026 14:30:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</guid>
+      <description>公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
+把跟单流水与后续实际成交行情逐笔对齐，跟随买入的结果往往是买在局部冲高的高点，并在后续阴跌中承受深度亏损。
+这种偏差源于对时序因果的混淆。把非平稳时序中的同步甚至滞后资金流误判为单边预测指标，是跟单策略失效的常见原因。
+我们在本系列前序研究中，先后建立了宏观公链指标的识别基准、常用排查工具的实操闭环、剔除 100% 胜率假象的 Trader 轨道画像清洗模型，以及过滤 76% 运营归集与做市噪音的大额转账分层标准。
+本文作为本系列的收官篇，承接经过清洗的 908 个独立 DEX Trader 画像样本，调取覆盖 2026 年 3 月 25 日至 2026 年 9 月 22 日跨越 180 天的 PEPE、FLOKI 与 SHIB 链上日级微观对齐流水，对聪明钱共识指标运行系统性的互相关滞后检验与定量策略回测，并测算链上滑点与 Gas 等物理摩擦对纸面超额收益的实际侵蚀。
+一、聪明钱共识模型的构建与防伪机制 单个链上地址极易受到虚假代币空投、自我对倒或项目方内部关联钱包的伪装干扰。评估聪明钱资金流向时，不能依赖单一钱包的买卖动作，需要建立跨地址的群体共识模型。
+共识模型的基础是地址库的质量分流。我们在前序画像审计中明确界定了两类资金的统计差异：
+Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中（平均 33.0 笔），持仓周期相对克制（平均 943.0 小时，中位数 759.0 小时），交易具备清晰的二次平仓因果闭环，胜率均值为 91.8%，平均已实现收益为 41,737 美元； Early Holder / Capital Whale（早期低成本大户，共 1,004 个钱包）：交易笔数偏高（平均 62.4 笔），持仓时间偏长（平均 1,209.8 小时，中位数 1,030.3 小时），其名义盈利主要来自低价筹码的单向抛售，并不具备二级市场的买盘敏锐度。 共识指标仅将通过质量审计的 908 个 Trader 纳入样本池，剔除早期大户与关联做市商。针对单一日历日 $t$，系统在标的代币的 DEX 流动性池中提取合格钱包的微观交易，计算两项核心变量：</description>
+    </item>
+    
     <item>
       <title>链上大额数据的分层结构：每天几万笔转账里，哪些值得交易员关注？</title>
       <link>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</link>
