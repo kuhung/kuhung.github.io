@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-01T19:00:00+08:00","datePublished":"2026-11-01T19:00:00+08:00","description":"平时看红利资产或大盘估值，静态股息率高低到底反映了什么？基于 Campbell \u0026 Shiller 现值线性化方程与 VAR 状态空间解耦，实测标普 500 指数 152 年长周期与中证红利资产 16 年全量分红时序，量化揭示宏观利率对估值解释力不足 17%、过剩波动与避险贴现率挤压机制，并诊断当下红利资产的弹性衰减与配置切换。","headline":"红利资产的定价本质：股息价格比与现值解耦","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 现值分解, Campbell-Shiller, 资产配置, 中证红利","mainEntityOfPage":{"@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"WebPage"},"name":"红利资产的定价本质：股息价格比与现值解耦","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","wordCount":395}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-01T19:00:00+08:00","datePublished":"2026-11-01T19:00:00+08:00","description":"平时看红利资产或大盘估值，静态股息率高低到底反映了什么？基于 Campbell \u0026 Shiller 现值线性化方程与 VAR 状态空间解耦，实测标普 500 指数 152 年长周期与中证红利资产 16 年全量分红时序，量化揭示宏观利率对估值解释力不足 17%、过剩波动与避险贴现率挤压机制，并诊断当下红利资产的弹性衰减与配置切换。","headline":"红利资产的定价本质：股息价格比与现值解耦","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 现值分解, Campbell-Shiller, 资产配置, 中证红利","mainEntityOfPage":{"@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"WebPage"},"name":"红利资产的定价本质：股息价格比与现值解耦","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","wordCount":605}</script>
 </head>
 
   
@@ -179,7 +179,14 @@ if (!doNotTrack) {
         <li><a href="#2-历次市场转折点中的情绪贴现率与预期演变">2. 历次市场转折点中的情绪（贴现率）与预期演变</a></li>
       </ul>
     </li>
-    <li><a href="#五原理论的不足与下一篇的递进">五、原理论的不足与下一篇的递进</a></li>
+    <li><a href="#五横向视野不同市场红利资产的参数与驱动贡献拆解">五、横向视野：不同市场红利资产的参数与驱动贡献拆解</a>
+      <ul>
+        <li><a href="#1-宏观水平与系统参数对比">1. 宏观水平与系统参数对比</a></li>
+        <li><a href="#2-方差分解各驱动组件的贡献占比">2. 方差分解：各驱动组件的贡献占比</a></li>
+        <li><a href="#3-定量参数背后的实盘配置分化">3. 定量参数背后的实盘配置分化</a></li>
+      </ul>
+    </li>
+    <li><a href="#六原理论的不足与下一篇的递进">六、原理论的不足与下一篇的递进</a></li>
     <li><a href="#附录数据源与复现说明">附录：数据源与复现说明</a></li>
   </ul>
 </nav>
@@ -410,7 +417,128 @@ if (!doNotTrack) {
 <p><strong>现值分解对当前配置的直接启发是</strong>：
 红利资产在上一个热点周期中享受的“避险贴现率极限挤压红利”已经结束。当前估值处于中低位走平状态，红利资产从过去“赚估值扩张暴利”的阶段，进入了“主要获取稳态分红现金流”的防御配置阶段。在策略上应当防范高位均值回归，不再适宜作为高弹性进攻品种去盲目追高。</p>
 <hr>
-<h2 id="五原理论的不足与下一篇的递进">五、原理论的不足与下一篇的递进</h2>
+<h2 id="五横向视野不同市场红利资产的参数与驱动贡献拆解">五、横向视野：不同市场红利资产的参数与驱动贡献拆解</h2>
+<p>当我们掌握了现值解耦这把尺子，便可以跳出单一市场，横向对比 A 股、港股、美股以及全球成熟市场红利资产的底层异同。很多人容易把红利资产简单等同于“类固收”，但把真实数据带入参数估计后会发现，不同市场红利资产的定价机制存在根本性分化。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/ef7686994bb00616.webp" alt="全球核心市场红利资产定价解耦与驱动力分化" class="lazyload"><figcaption class="image-caption">全球核心市场红利资产定价解耦与驱动力分化</figcaption></figure></p>
+<p>结合图 A 的驱动力方差拆解与图 B 的宏观四象限映射，各市场红利资产的运行机制呈现出三组清晰的量化事实：</p>
+<h3 id="1-宏观水平与系统参数对比">1. 宏观水平与系统参数对比</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">市场与代表标的</th>
+<th style="text-align:center">股息率 ($D/P$)</th>
+<th style="text-align:center">股债利差 ($D/P - r_f$)</th>
+<th style="text-align:center">衰减因子 $\rho$</th>
+<th style="text-align:center">估值持续性 $\lambda_1$</th>
+<th style="text-align:center">分红增长波动率 $\sigma(\Delta d)$</th>
+<th style="text-align:left">现金流久期属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A 股红利</strong> (中证红利 510880)</td>
+<td style="text-align:center">4.13% – 4.50%</td>
+<td style="text-align:center">+203 bps – +240 bps</td>
+<td style="text-align:center">0.950</td>
+<td style="text-align:center">0.731</td>
+<td style="text-align:center">23.1%</td>
+<td style="text-align:left">短久期，盈利强周期性</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>港股红利</strong> (恒生高股息 03110)</td>
+<td style="text-align:center">6.75% – 7.50%</td>
+<td style="text-align:center">+265 bps – +340 bps</td>
+<td style="text-align:center">0.928</td>
+<td style="text-align:center">0.680</td>
+<td style="text-align:center">18.5%</td>
+<td style="text-align:left">极短久期，高折现衰减</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>美股红利</strong> (Schwab SCHD)</td>
+<td style="text-align:center">2.95% – 3.20%</td>
+<td style="text-align:center">-130 bps (倒挂)</td>
+<td style="text-align:center">0.970</td>
+<td style="text-align:center">0.885</td>
+<td style="text-align:center">4.8%</td>
+<td style="text-align:left">中久期，分红高度平滑</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>美股大盘</strong> (标普 500 基准)</td>
+<td style="text-align:center">1.25% – 1.40%</td>
+<td style="text-align:center">-300 bps (深度倒挂)</td>
+<td style="text-align:center">0.986</td>
+<td style="text-align:center">0.932</td>
+<td style="text-align:center">5.2%</td>
+<td style="text-align:left">长久期，远端预期敏感</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>衰减因子 $\rho$ 与现金流久期</strong>：
+港股红利资产平均股息率高达 7% 以上，对应 $\rho = 0.928$，折现衰减极快，5 年以后的远端现金流折现权重迅速衰减，定价完全由近端确定性派息锚定，属于典型的超短久期资产；美股宽基股息率仅约 1.3%，$\rho = 0.986$，远期现金流折现权重极大，对长端贴现率变动极其敏感。</li>
+<li><strong>系统记忆与持续性 $\lambda_1$</strong>：
+美股估值主特征值高达 0.86 到 0.93，展现出极强的长周期记忆性，一轮牛熊出清往往历经 7 到 10 年；A 股红利资产主特征值为 0.731，均值回归周期大约为 2.5 到 3.5 年，与国内库存与信用周期保持同频。</li>
+</ul>
+<h3 id="2-方差分解各驱动组件的贡献占比">2. 方差分解：各驱动组件的贡献占比</h3>
+<p>将 Campbell &amp; Shiller (1988) 与 Cochrane (2011) 的方差分解等式 $\text{Var}(\delta_t) \approx \text{Cov}(\delta_t, \delta_{rt}&rsquo;) + \text{Cov}(\delta_t, -\delta_{dt}&rsquo;) + \text{残差项}$ 带入各市场：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">市场与标的</th>
+<th style="text-align:center">理论模型总解释比 $\frac{\sigma(\delta&rsquo;)}{\sigma(\delta)}$</th>
+<th style="text-align:center">现金流预期贡献 $\frac{\sigma(\delta_{dt}&rsquo;)}{\sigma(\delta)}$</th>
+<th style="text-align:center">贴现率预期贡献 $\frac{\sigma(\delta_{rt}&rsquo;)}{\sigma(\delta)}$</th>
+<th style="text-align:center">情绪与过剩波动占比</th>
+<th style="text-align:left">核心定价机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>A 股红利</strong> (510880)</td>
+<td style="text-align:center"><strong>64.7%</strong></td>
+<td style="text-align:center"><strong>62.7%</strong></td>
+<td style="text-align:center"><strong>2.6%</strong></td>
+<td style="text-align:center"><strong>35.3%</strong></td>
+<td style="text-align:left"><strong>强现金流周期驱动</strong> (受企业分红起伏主导，无风险利率解释力极弱)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>美股大盘</strong> (Shiller 基准)</td>
+<td style="text-align:center"><strong>39.3%</strong></td>
+<td style="text-align:center"><strong>28.9%</strong></td>
+<td style="text-align:center"><strong>11.7%</strong></td>
+<td style="text-align:center"><strong>60.7%</strong></td>
+<td style="text-align:left"><strong>情绪过剩波动主导</strong> (若引入时变股权溢价，贴现率解释比升至近 100%)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>美股红利</strong> (SCHD)</td>
+<td style="text-align:center"><strong>~85.0%</strong></td>
+<td style="text-align:center"><strong>&lt; 8.0%</strong></td>
+<td style="text-align:center"><strong>~80.0%</strong></td>
+<td style="text-align:center"><strong>~15.0%</strong></td>
+<td style="text-align:left"><strong>纯贴现率与利差驱动</strong> (分红平滑可测，股价完全跟随市场折现率起伏)</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>港股红利</strong> (03110)</td>
+<td style="text-align:center"><strong>~75.0%</strong></td>
+<td style="text-align:center"><strong>~35.0%</strong></td>
+<td style="text-align:center"><strong>~55.0%</strong></td>
+<td style="text-align:center"><strong>~25.0%</strong></td>
+<td style="text-align:left"><strong>双重贴现率主导</strong> (承受美元利率周期与离岸资产风险溢价双重压制)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-定量参数背后的实盘配置分化">3. 定量参数背后的实盘配置分化</h3>
+<p>这组参数与占比的差异，打破了许多直觉层面的误区：</p>
+<ol>
+<li><strong>A 股红利不能套用美股的“类固收”逻辑</strong>：
+美股红利资产的分红增长贡献不足 8%，企业通过平滑储备让派息极度可测，买美股红利本质上是在交易全市场的贴现率与固定收益利差；A 股红利的分红增长贡献高达 62.7%，底层以煤炭、钢铁、金融等顺周期资产为主，其分红波动率 $\sigma(\Delta d)$ 高达 23.1%。买 A 股红利必须看清大宗商品与宏观盈利周期，承担的是底层现金流再投资风险。</li>
+<li><strong>港股红利的弹性来自贴现率修复</strong>：
+港股高股息 55% 的波动由贴现率（离岸风险溢价与美元利率）解释。当美联储开启降息周期、叠加两地互联互通红利税制优化预期时，离岸贴现率的下移将带来可观的重估弹性，其估值安全垫比 A 股更加深厚。</li>
+<li><strong>当前 A 股红利的收益锚定转换</strong>：
+上一轮周期中 A 股红利享受的“贴现率下行估值扩张”已经完结（$\delta_{rt}&rsquo;$ 走平）。当前估值下，未来的持仓回报将完全依赖企业每年真实的派息现金流（$\Delta d$），投资重心应转向精选现金流充沛、资本开支收缩、具备分红防御韧性的细分品种。</li>
+</ol>
+<hr>
+<h2 id="六原理论的不足与下一篇的递进">六、原理论的不足与下一篇的递进</h2>
 <p>作为 1988 年的经典开山之作，Campbell-Shiller 现值分解为我们提供了穿透估值的尺子，但在指导个股投资时存在一个明显局限：</p>
 <p><strong>它是一个全市场单一指数的时间序列模型，缺乏对不同股票截面“久期（Duration）”的刻画。</strong></p>
 <p>它告诉我们估值波动主要来自贴现率和情绪过度反应，但没有回答：当宏观贴现率发生剧烈变动时，为什么高股息股票能展现出极强的抗跌防御性，而科技成长股往往惨遭腰斩？</p>
@@ -429,6 +557,8 @@ if (!doNotTrack) {
 <li><strong>中证红利现值分解脚本</strong>：<code>docs/dividend-macro-series/revised/scripts/02_china_dividend_etf_var.py</code>。</li>
 <li><strong>中证红利资产年度数据</strong>：<code>docs/dividend-macro-series/revised/data/china_dividend_annual.csv</code>。</li>
 <li><strong>中证红利现值分解图</strong>：<code>https://r2-img.kuhung.me/2026/11/c24e119a54aba22c.webp</code>。</li>
+<li><strong>跨市场红利解耦对比脚本</strong>：<code>docs/dividend-macro-series/revised/scripts/03_cross_market_decomposition_chart.py</code>。</li>
+<li><strong>跨市场红利解耦对比图</strong>：<code>https://r2-img.kuhung.me/2026/11/ef7686994bb00616.webp</code>。</li>
 </ul>
 
     </div>
