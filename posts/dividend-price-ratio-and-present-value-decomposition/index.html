@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-01T19:00:00+08:00","datePublished":"2026-11-01T19:00:00+08:00","description":"平时看红利资产或大盘估值，静态股息率高低到底反映了什么？基于 Campbell \u0026 Shiller 现值线性化方程与 VAR 状态空间解耦，实测标普 500 指数 152 年长周期与中证红利资产 16 年全量分红时序，量化揭示宏观利率对估值解释力不足 17%、过剩波动与避险贴现率挤压机制，并诊断当下红利资产的弹性衰减与配置切换。","headline":"红利资产的定价本质：股息价格比与现值解耦","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 现值分解, Campbell-Shiller, 资产配置, 中证红利","mainEntityOfPage":{"@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"WebPage"},"name":"红利资产的定价本质：股息价格比与现值解耦","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","wordCount":605}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-01T19:00:00+08:00","datePublished":"2026-11-01T19:00:00+08:00","description":"平时看红利资产或大盘估值，静态股息率高低到底反映了什么？基于 Campbell \u0026 Shiller 现值线性化方程与 VAR 状态空间解耦，实测标普 500 指数 152 年长周期与中证红利资产 16 年全量分红时序，量化揭示宏观利率对估值解释力不足 17%、过剩波动与避险贴现率挤压机制，并诊断当下红利资产的弹性衰减与配置切换。","headline":"红利资产的定价本质：股息价格比与现值解耦","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 现值分解, Campbell-Shiller, 资产配置, 中证红利","mainEntityOfPage":{"@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"WebPage"},"name":"红利资产的定价本质：股息价格比与现值解耦","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","wordCount":662}</script>
 </head>
 
   
@@ -187,7 +187,7 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#六原理论的不足与下一篇的递进">六、原理论的不足与下一篇的递进</a></li>
-    <li><a href="#附录数据源与复现说明">附录：数据源与复现说明</a></li>
+    <li><a href="#参考文献与公开数据源">参考文献与公开数据源</a></li>
   </ul>
 </nav>
   </div>
@@ -549,16 +549,13 @@ if (!doNotTrack) {
 </ul>
 <p>短久期与长久期资产在经济周期的繁荣与萧条期，预期收益率会发生怎样相差整整 9 个百分点的期限溢价反转？这是我们在下一篇《02_红利的宏观期限结构》中要用 Gormsen (2021) 股权期限结构理论拆解的核心。</p>
 <hr>
-<h2 id="附录数据源与复现说明">附录：数据源与复现说明</h2>
+<h2 id="参考文献与公开数据源">参考文献与公开数据源</h2>
 <ul>
-<li><strong>美股长周期实证脚本</strong>：<code>docs/dividend-macro-series/revised/scripts/01_campbell_shiller_var.py</code>（完整实现 VAR(2) 伴随矩阵推导、去均值与贴现求和）。</li>
-<li><strong>美股 152 年长周期数据</strong>：<code>docs/dividend-macro-series/revised/data/shiller_annual.csv</code>。</li>
-<li><strong>美股现值分解验证图</strong>：<code>https://r2-img.kuhung.me/2026/11/89befcfbd66d2014.webp</code>。</li>
-<li><strong>中证红利现值分解脚本</strong>：<code>docs/dividend-macro-series/revised/scripts/02_china_dividend_etf_var.py</code>。</li>
-<li><strong>中证红利资产年度数据</strong>：<code>docs/dividend-macro-series/revised/data/china_dividend_annual.csv</code>。</li>
-<li><strong>中证红利现值分解图</strong>：<code>https://r2-img.kuhung.me/2026/11/c24e119a54aba22c.webp</code>。</li>
-<li><strong>跨市场红利解耦对比脚本</strong>：<code>docs/dividend-macro-series/revised/scripts/03_cross_market_decomposition_chart.py</code>。</li>
-<li><strong>跨市场红利解耦对比图</strong>：<code>https://r2-img.kuhung.me/2026/11/ef7686994bb00616.webp</code>。</li>
+<li>Campbell, J. Y., &amp; Shiller, R. J. (1988). <em>The Dividend-Price Ratio and Expectations of Future Dividends and Discount Factors</em>. The Review of Financial Studies, 1(3), 195–228.</li>
+<li>Cochrane, J. H. (2011). <em>Presidential Address: Discount Rates</em>. The Journal of Finance, 66(4), 1047–1108.</li>
+<li>Gormsen, N. J. (2021). <em>Time Variation of the Equity Term Structure</em>. The Journal of Finance, 76(4), 1959–1999.</li>
+<li>Robert Shiller Online Data: <em>U.S. Stock Markets 1871–Present and CAPE Ratio</em>.</li>
+<li>中证指数有限公司与上海证券交易所：中证红利资产（510880）公开历史分红派息与日行情数据。</li>
 </ul>
 
     </div>
