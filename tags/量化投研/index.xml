@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>量化投研 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/</link>
+    <description>Recent content in 量化投研 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 01 Nov 2026 19:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红利资产的定价本质：股息价格比与现值解耦</title>
+      <link>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</link>
+      <pubDate>Sun, 01 Nov 2026 19:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</guid>
+      <description>平时看红利资产或大盘估值，大家最常看的指标就是股息率（D/P，分红除以股价）。但在实际看盘时，几乎所有人都会遇到两个困惑：
+第一个困惑发生在暴跌之后。当指数大跌、某只股票股息率飙升到 6% 甚至 8% 时，这到底是跌出来的黄金安全垫，还是市场在提前预警这家公司未来分红要大跳水？
+第二个困惑发生在大牛市。比如美股标普 500 股息率压低到 1.2% 附近时，这到底是因为企业未来盈利和分红增长太猛、合理推高了股价，还是基本面没变，纯粹是市场情绪过热把估值吹成了泡沫？
+只看一个静态的股息率数字，永远分不清背后属于哪种情况。
+约翰·坎贝尔（John Y. Campbell）与罗伯特·席勒（Robert J. Shiller）在 1988 年提出的现值解耦模型，作用就是造一把尺子，把混在一起的股息率拆开，看清当前到底是未来的分红预期在起作用，还是折现率（利率与情绪）在主导。
+一、股息率里面到底装了什么？ 把股息率拆开的逻辑很直观。今天你愿意花多少钱买股票（股价 $P$），取决于两件事：未来你能拿到多少分红（分子：现金流），以及你用多高的要求回报率去给未来的钱打折（分母：贴现率）。
+Campbell 和 Shiller 将这种动态贴现关系做了一阶对数线性化展开，把乘除法转化成可以加减拆解的现值方程：
+$$\delta_t \approx \mathbb{E}t \sum{j=0}^{\infty} \rho^j r_{t+j} - \mathbb{E}t \sum{j=0}^{\infty} \rho^j \Delta d_{t+j} + h$$
+这个公式里的每一项，对应的都是看盘时的直观感受：
+$\delta_t = d_{t-1} - p_t$（对数股息率）：这里用上期分红 $d_{t-1}$ 而不用当期 $d_t$，是因为每年 1 月看盘时，当年的分红还没发，手里只有上一年已经到账的真实分红 $D_{t-1}$，这样计算才不会包含未来信息。 为什么分红预期前面是减号（$-\Delta d$）？：如果大家预期未来分红会大涨，现在就会抢着买股票，把股价 $p_t$ 买上去，当前的股息率 $\delta_t$ 自然变低。 为什么贴现率预期前面是加号（$+r$）？：如果利率上升，或者市场避险情绪升温、要求更高的风险补偿（打折更狠），当前股价 $p_t$ 就会被打压下来，当前的股息率 $\delta_t$ 自然升高。 $\rho \in (0, 1)$：折现衰减参数，由历史平均股息率决定，美股长周期通常在 $0.94$ 左右。$h$ 为线性化产生的常数项，在后续去均值后消除。 公式表达得很清楚：股息率的每一次起伏，在数学上必然归因于未来分红预期或未来贴现率预期的变动。</description>
+    </item>
+    
+  </channel>
+</rss>
