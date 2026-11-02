@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>现金流久期 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/</link>
+    <description>Recent content in 现金流久期 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红利的宏观期限结构：股息剥离与反周期配置</title>
+      <link>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</link>
+      <pubDate>Mon, 02 Nov 2026 12:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</guid>
+      <description>平时跟踪红利资产或成长风格，常能观察到一种风格分化：
+在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险； 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。
+上一篇通过 Campbell-Shiller 现值解耦揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截面资产的配置疑问：为什么不同股票在繁荣期与衰退期的收益差异会发生方向性逆转？
+把整只股票视为单一现金流整体，容易忽略现金流到达时间的差异。正如国债市场拥有 1 年期、5 年期和 10 年期的收益率曲线，股票未来派发的股息同样可以通过股息期货（Dividend Futures）或期权隐含股息切片为不同期限的索取权。
+持有 1 到 2 年就能到手的短期股息，与 5 到 10 年后才能到手的长期股息，哪一个要求的期望收益率更高？这个期限溢价在经济周期的两极如何变动？
+一、股票期限切片与期限结构谜题 股票现价 $P_t$ 等于未来各期股息索取权（Dividend Strips）现值的总和：
+$$P_t = \sum_{n=1}^{\infty} P_t^n$$
+公式中各项的经济含义：
+$P_t^n$：在 $t$ 时刻对第 $t+n$ 期派发股息 $D_{t+n}$ 的索取权现价。 股息期货（Dividend Futures）：在期货交易所公开挂牌交易的标准化合约，直接锚定特定年份指数成分股派发的现金分红总额。 股权期限结构（Equity Term Structure）：不同到期期限 $n$ 的股息索取权，其期望收益率随期限变动的曲线关系。 在学术界深入实证检验股息期货之前，主要存在两大互相矛盾的理论模型：
+传统宏观消费模型（如 Campbell-Cochrane 习惯模型、Bansal-Yaron 长期风险模型）： 这类模型假设远期现金流暴露了更持久的消费冲击与宏观风险，因此预测无条件股权期限结构应当向上倾斜（期限越长，要求的风险补偿越高）。 现代下行风险模型（如 Lettau-Wachter 2007 模型）： 这类模型引入远期股息对即期冲击的均值回归对冲效应，预测股权期限结构应当向下倾斜（短期股息面临即期流动性与基本面冲击，要求更高的收益率）。 实证数据显示标普 500 股息期货的全样本均值确实呈现微弱向下倾斜。但单一风险因子模型面临理论困境：如果仅依靠单一风险因子解释均值向下倾斜，在衰退期市场风险价格升高时，模型会预测期限结构变得更加陡峭向下，这与真实市场的反周期走势产生偏差。
+二、Gormsen (2021) 实证发现：反周期期限溢价 尼尔斯·戈姆森（Niels Joachim Gormsen, 2021）在《金融学期刊》（The Journal of Finance）发表的研究中，调取了标普 500 指数 1996 至 2019 年的股息期货与期权隐含股息时序，并横向检验了日经 225、欧洲斯托克 50 与富时 100 指数，证实股权期限结构具备显著的反周期特性（Countercyclicality）：</description>
+    </item>
+    
+  </channel>
+</rss>
