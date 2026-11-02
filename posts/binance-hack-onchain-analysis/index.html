@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/binance-hack-onchain-analysis/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"Lee"},"dateModified":"2026-11-01T23:00:00+08:00","datePublished":"2026-11-01T23:00:00+08:00","description":"基于链上 128 笔扫仓交易与 3,955 个图谱节点的微观穿透，全量还原 61.98 亿美元被盗资产流向，拆解 21.72 亿冻结死钱与 9.54 亿自由 ETH 金库的账面背离，并验证提前 204 秒阻断攻击的算法预警模型。","headline":"用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"区块链安全, 链上数据, 以太坊, EIP-7702, 冻结赛跑, 图算法, PageRank, 风险控制, 洗钱追踪","mainEntityOfPage":{"@id":"https://kuhung.me/posts/binance-hack-onchain-analysis/","@type":"WebPage"},"name":"用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/binance-hack-onchain-analysis/","wordCount":1565}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/binance-hack-onchain-analysis/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"Lee"},"dateModified":"2026-11-01T23:00:00+08:00","datePublished":"2026-11-01T23:00:00+08:00","description":"基于链上 128 笔扫仓交易与 3,955 个图谱节点的微观穿透，全量还原 61.98 亿美元被盗资产流向，拆解 21.72 亿冻结死钱与 9.54 亿自由 ETH 金库的账面背离，并验证提前 204 秒阻断攻击的算法预警模型。","headline":"用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"区块链安全, 链上数据, 以太坊, EIP-7702, 冻结赛跑, 图算法, PageRank, 风险控制, 洗钱追踪","mainEntityOfPage":{"@id":"https://kuhung.me/posts/binance-hack-onchain-analysis/","@type":"WebPage"},"name":"用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/binance-hack-onchain-analysis/","wordCount":1562}</script>
 </head>
 
   
@@ -435,7 +435,10 @@ if (!doNotTrack) {
 <p>被盗的 61.98 亿美元在经历多级分流后，在链上形成了四种终极归宿。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/95ed923642749239.webp" alt="图 3：被盗资产全景流向与四条终极命运桑基图" class="lazyload"><figcaption class="image-caption">图 3：被盗资产全景流向与四条终极命运桑基图</figcaption></figure></p>
 <p>根据三链全口径资产对账核算，各分流路径资金严格守恒：</p>
-<p>$$\text{初始扫仓 ($6,198.35M)} = \text{冻结资金 ($2,171.81M)} + \text{原生沉淀 ($1,695.77M)} + \text{DEX变现 ($948.64M)} + \text{在途/未展开 ($1,382.14M)}$$</p>
+<blockquote>
+<p><strong>资产分流守恒等式</strong>：<br>
+<strong>初始扫仓（$6,198.35M）</strong> = <strong>冻结资金（$2,171.81M）</strong> + <strong>原生沉淀（$1,695.77M）</strong> + <strong>DEX 变现（$948.64M）</strong> + <strong>在途/未展开（$1,382.14M）</strong></p>
+</blockquote>
 <table>
 <thead>
 <tr>
