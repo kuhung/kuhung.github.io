@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>权重空间编程 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A8%8B/</link>
+    <description>Recent content in 权重空间编程 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相</title>
+      <link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid>
+      <description>在上篇中，我们梳理了过去业内对模型权重进行直接干预的四条技术路线。不管是 ROME 的因果追踪，还是 Abliteration 的差异均值消融，都需要人类工程师在外部搭建严密的探测流程。
+MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）最近公开的研究，把这套流程交给通用大模型自己来跑。他们使用 GPT-6 Astra，在没有反向传播、不计算梯度、也不启动微调循环的情况下，直接读取、从零编写以及修改其他神经网络的权重文件。
+其中最受关注的一组数据，是 Astra 把 Qwen3.5-0.8B 在 MATH-500 上的测试准确率从 7.9% 提升到了 48.1%。社交媒体上的讨论很多都在传“大模型能凭空给小模型灌入高级逻辑”，但翻看实验日志和测试边界，实际机制和工程约束与直觉有很大出入。
+Astra 读、写、改权重的基础实验 这项被称为“权重空间编程”（Weight-Space Programming, WSP）的研究，在微型网络上验证了三项基础操作。
+1. 读权重 研究人员给 Astra 输入了 4 个多层感知机（MLP）策略网络的纯文本权重，每个网络包含 17,253 个参数，分别在 4 款不同的 MinAtar 像素游戏（Breakout、Pong、Pac-Man、Freeway）中用 PPO 强化学习训练而成。在不告知候选游戏名字的前提下，Astra 依靠阅读第一层权重在输入通道上的空间分布，还原了游戏场景布局，准确推断出 4 款游戏各自对应的网络。
+但在后续的深层模型测试中，纯静态阅读遇到了物理上限。研究人员让 Astra 阅读微调后的 Gemma 3 270M 静态权重，分辨哪个模型被训练成了谄媚模式，Astra 连续 4 次推断全部失败。只有给它配备注意力探测工具，发现目标模型在特定注意力头对用户给出的选项有 85.7% 的极端注意力倾向时，才完成鉴别。这说明单纯看静态矩阵数值，只适用于通道特征鲜明的小网络；深层语言模型必须结合运行时的动态激活分析。
+2. 写权重 在编写实验中，Astra 需要为一个输入维度为 10x10x4、包含 17,253 个参数的网络从零填入权重，让它去玩 MinAtar 游戏。Astra 单次对话直接输出了权重矩阵文本，在没有环境交互、没有奖励反馈的情况下完成输出。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/" />
+  <link rel="next" href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" />
+  <link rel="canonical" href="https://kuhung.me/posts/weight-space-intervention-history/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           在神经网络权重里动刀，前人走过哪些路 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="在神经网络权重里动刀，前人走过哪些路 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:00:00+08:00","datePublished":"2026-11-03T13:00:00+08:00","description":"训练和优化神经网络，大家最熟悉的路径始终是反向传播。不管是经典的 Adam 还是近期讨论较多的 Muon，本质上都是把成亿上百亿个参数当作连续的高维黑盒，靠海量数据计算梯度，一步步迭代更新。 但在反向传播之外，学术界一直有人在尝试把手直接伸进权重空间里，去做测量、修改甚至直接生成。在聊 MIT CSAIL 最近那项大模型直接读写权重的实验之前，可以先梳理清楚在这之前业内摸索出来的四条主要技术路径， …","headline":"在神经网络权重里动刀，前人走过哪些路","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, 权重空间, 模型微调, 深度学习, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"WebPage"},"name":"在神经网络权重里动刀，前人走过哪些路","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-intervention-history/","wordCount":208}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">在神经网络权重里动刀，前人走过哪些路</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-03 itemprop="datePublished">November 3, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#超网络用小模型预测大模型参数">超网络：用小模型预测大模型参数</a></li>
+    <li><a href="#模型编辑定位并修改单一事实">模型编辑：定位并修改单一事实</a></li>
+    <li><a href="#模型汤同一基座下的权重平均">模型汤：同一基座下的权重平均</a></li>
+    <li><a href="#机械可解释性残差流消融与权重吸收">机械可解释性：残差流消融与权重吸收</a></li>
+    <li><a href="#四种路线的技术特征对比">四种路线的技术特征对比</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>训练和优化神经网络，大家最熟悉的路径始终是反向传播。不管是经典的 Adam 还是近期讨论较多的 Muon，本质上都是把成亿上百亿个参数当作连续的高维黑盒，靠海量数据计算梯度，一步步迭代更新。</p>
+<p>但在反向传播之外，学术界一直有人在尝试把手直接伸进权重空间里，去做测量、修改甚至直接生成。在聊 MIT CSAIL 最近那项大模型直接读写权重的实验之前，可以先梳理清楚在这之前业内摸索出来的四条主要技术路径，看看它们分别做成了什么、在哪些真实模型上做过验证，又受制于哪些物理约束。</p>
+<h2 id="超网络用小模型预测大模型参数">超网络：用小模型预测大模型参数</h2>
+<p>超网络（Hypernetworks）早在 2017 年由 David Ha 等人提出。基础思路是用一个体量较小的辅助神经网络，直接生成另一个目标网络的权重参数。</p>
+<p>在早期的验证中，研究团队先在 MNIST 和 SVHN 图像分类任务上做了测试，随后在 WMT14 德英和英法机器翻译任务中引入了 HyperLSTM。实测表明，辅助网络生成的动态权重不仅大幅缩减了主干网络的独立参数量，在机器翻译的 BLEU 得分上也打平甚至微幅超过了标准 LSTM 基线。</p>
+<p>后来这条路线逐步拓展为权重空间学习（Weight Space Learning）。研究者发现神经网络的权重空间并不是毫无规律的随机数堆叠，它本身具备明确的几何对称性，包括排列不变性（Permutation Invariance）和缩放等变性（Scaling Equivariance）。针对这些特性，业内设计了深度权重空间网络（DWSNets）以及神经泛函 Transformer（NFTs）。在近期的实验中，研究者用它们处理隐式神经表示（INRs）并完成了 ARC-1D 任务的 PoC 验证。在这类微型网络权重分类与检索任务中，辅助网络能直接把目标模型的泛化误差预测准确率拉升十多个百分点。</p>
+<p>但超网络的瓶颈在于学习范式。它仍然属于监督学习，输入一组条件，输出一组张量数值。要让辅助网络学会生成有效的权重，必须先准备海量的模型样本来做元学习（Meta-learning）。这种方式停留在数值拟合层面，并没有建立对参数内部计算逻辑的显式理解。</p>
+<h2 id="模型编辑定位并修改单一事实">模型编辑：定位并修改单一事实</h2>
+<p>第二条路线是模型编辑（Model Editing），目标是在不重新训练整个网络的前提下，局部修正模型记错的事实。比如把“埃菲尔铁塔在巴黎”这条关联，直接在参数里重定向到“罗马”。</p>
+<p>代表性方法是 ROME（Rank-One Model Editing）。Kevin Meng 等人在 2022 年把因果追踪（Causal Tracing）引入到了自回归语言模型中。他们在包含 21,911 条事实的 CounterFact 数据集上，针对 GPT-2 XL（1.5B）和开源的 GPT-J（6B）进行了实测。实验定位出 Transformer 中间层（如 GPT-J 的第 6 层）的多层感知机（MLP）是存储具体事实的主力。通过求解一个最小二乘闭式解，计算出一个秩为 1 的矩阵更新叠加进原始权重，单点事实的修改成功率达到了 99% 以上，同时保证了特异性（Specificity），周边关联的事实不会被带偏。</p>
+<p>随后这一路线演进出了 MEMIT。MEMIT 把单点修改扩充到了批量编辑，在 GPT-J 和 LLaMA-1（7B 与 13B）上实测时，能够连续批量写入数千条新事实，模型在其他常识基准上的性能保持稳定。另外像 T-Patcher，则选择在 BERT、BART 和 LLaMA 的前向层动态追加少量外挂神经元（Patch），专门捕获错误样本并重定向输出，避开了直接重写静态权重可能引发的遗忘问题。</p>
+<p>模型编辑在事实纠偏上表现稳定，但适用范围非常窄。这套方法依赖人类研究员手工推导因果干预算法，干预对象也局限于主谓宾三元组形式的静态陈述。一旦面对推理死循环、多步代数运算这类系统性的执行逻辑故障，闭式矩阵求解就无从下手了。</p>
+<h2 id="模型汤同一基座下的权重平均">模型汤：同一基座下的权重平均</h2>
+<p>在提升模型稳定性和泛化表现上，业内用得较多的是模型汤（Model Soups）。</p>
+<p>模型汤的操作简单直接：针对同一个预训练基座模型，使用不同的学习率、数据增强或正则化超参数，分别微调出若干个独立的模型检查点。随后不走任何集成推理流程，直接对这些检查点的权重张量逐元素取算术平均（Uniform Soup），或者按验证集表现贪婪筛选子集求平均（Greedy Soup）。</p>
+<p>Wortsman 等人在 ICML 2022 上的实测数据给出了明确的性能边界。他们在包含 18 亿参数的 ViT-G 和 CLIP 模型上测试了 ImageNet 图像分类任务。对 72 个微调模型执行 Greedy Soup 之后，Top-1 准确率从单个微调表现最好的 90.15% 提升到了 90.94%，打破了当时公开模型的记录。在面对 ImageNet-A 和 ImageNet-R 等分布偏移测试集时，模型汤的平均准确率比单个微调模型高出 2 到 4 个百分点。整个过程完全不需要多份模型同时运行，推理时延与计算开销没有任何增加。</p>
+<p>但它的成立条件极其苛刻：所有参与平均的模型必须同源，必须共享完全一致的初始化权重和网络架构。一旦两个模型的参数排列顺序在微调过程中发生漂移，直接求平均只会让输出彻底变成随机噪声。它依靠的是统计学上的参数对齐，无法做到有针对性的局部切除。</p>
+<h2 id="机械可解释性残差流消融与权重吸收">机械可解释性：残差流消融与权重吸收</h2>
+<p>第四条路线来自机械可解释性研究，关注的是模型运行时的激活状态。</p>
+<p>研究者通常使用稀疏自编码器（SAE）把密集混合的隐藏层激活向量，解构为成千上万个具备独立语义的稀疏特征。在此基础上，Arditi 等人在 2024 年提出了消融术（Abliteration）。他们让模型分别处理有害提示词和无害提示词，计算两组隐藏状态激活向量的均值差异，以此提取出一个控制“拒绝回答”的线性方向。</p>
+<p>拿到这个方向之后，不需要重新微调，而是利用权重吸收（Weight Absorption）的数学性质，把消除该方向的正交投影矩阵，反向折叠进下游线性层（如 MLP 的 down_proj 或注意力输出层）的静态权重中。研究团队在 LLaMA-3-8B-Instruct、Qwen-7B 和 Mistral 等主流开源模型上做了实测。结果显示，模型针对越狱提示词的过度拒答行为被压低到接近于零，而在 MMLU、GSM8K 等核心通用能力基准上的得分保持完好，性能波动通常在 0.5% 以内。</p>
+<p>消融术已经非常接近静态代码层面的外科手术，但过去这套流程完全依赖人类研究员编写脚本、挂载钩子、分析统计量并手工折叠矩阵。</p>
+<h2 id="四种路线的技术特征对比">四种路线的技术特征对比</h2>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/cd5669075f2921eb.webp" alt="神经网络权重干预的四条技术路线对比与边界" class="lazyload"><figcaption class="image-caption">神经网络权重干预的四条技术路线对比与边界</figcaption></figure></p>
+<p>梳理前人的尝试，可以看出不同方案在操作粒度与依赖条件上的差异：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">技术路线</th>
+<th style="text-align:left">代表工作与实测模型</th>
+<th style="text-align:left">核心机制</th>
+<th style="text-align:left">干预目标</th>
+<th style="text-align:left">主要依赖</th>
+<th style="text-align:left">局限瓶颈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>超网络 (Hypernetworks)</strong></td>
+<td style="text-align:left">Ha 2017 (HyperLSTM), DWSNets, NFTs (ARC-1D / INRs)</td>
+<td style="text-align:left">辅助网络参数流形映射</td>
+<td style="text-align:left">从零生成或预测目标网络参数</td>
+<td style="text-align:left">大规模元学习样本集</td>
+<td style="text-align:left">纯数值拟合，缺乏显式逻辑推理</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>模型编辑 (Model Editing)</strong></td>
+<td style="text-align:left">ROME (GPT-2, GPT-J), MEMIT (LLaMA-1 13B), T-Patcher</td>
+<td style="text-align:left">因果追踪 + 闭式单秩矩阵更新</td>
+<td style="text-align:left">局部修正离散事实关联</td>
+<td style="text-align:left">人工推导的因果干预与解析解</td>
+<td style="text-align:left">仅适用于单一事实，改不了复杂执行逻辑</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>模型汤 (Model Soups)</strong></td>
+<td style="text-align:left">Wortsman 2022 (ViT-G 1.8B, CLIP, ImageNet 90.94%)</td>
+<td style="text-align:left">多组微调权重的逐元素贪婪平均</td>
+<td style="text-align:left">寻找平坦损失盆地以提升泛化</td>
+<td style="text-align:left">严格同源的基座与同构网络</td>
+<td style="text-align:left">依赖排列对齐，无法做定向功能重构</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>消融术 (Abliteration)</strong></td>
+<td style="text-align:left">Arditi 2024 (LLaMA-3-8B, Qwen-7B, Mistral)</td>
+<td style="text-align:left">残差流差异均值提取 + 权重吸收</td>
+<td style="text-align:left">消除特定高阶行为（如安全拒答）</td>
+<td style="text-align:left">人工特征分析管线与激活投影折叠</td>
+<td style="text-align:left">高度依赖人工标定，自动化程度低</td>
+</tr>
+</tbody>
+</table>
+<p>前人的工作表明，神经网络的高维参数具备清晰的几何结构，运行时的特定行为也可以被投影回静态矩阵中。过去横亘在面前的难点，在于缺乏一套能够自主推测病灶、编写验证工具并执行矩阵变换的通用机制。这也是为什么当 GPT-6 Astra 这类前沿大模型开始介入权重诊断时，大家会重点关注它的实际表现。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/weight-space-intervention-history/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                    #大模型</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4/">
+                    #权重空间</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/">
+                    #模型微调</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                    #深度学习</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/">
+                    #技术解析</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/" class="prev" rel="prev" title="红利的宏观期限结构：股息剥离与反周期配置"><i class="iconfont icon-left"></i>&nbsp;红利的宏观期限结构：股息剥离与反周期配置</a>
+        
+        
+        <a href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" class="next" rel="next" title="大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相">大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

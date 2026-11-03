@@ -6,7 +6,24 @@
     <description>Recent content in 深度学习 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 02 May 2019 11:59:48 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Nov 2026 13:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在神经网络权重里动刀，前人走过哪些路</title>
+      <link>https://kuhung.me/posts/weight-space-intervention-history/</link>
+      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weight-space-intervention-history/</guid>
+      <description>训练和优化神经网络，大家最熟悉的路径始终是反向传播。不管是经典的 Adam 还是近期讨论较多的 Muon，本质上都是把成亿上百亿个参数当作连续的高维黑盒，靠海量数据计算梯度，一步步迭代更新。
+但在反向传播之外，学术界一直有人在尝试把手直接伸进权重空间里，去做测量、修改甚至直接生成。在聊 MIT CSAIL 最近那项大模型直接读写权重的实验之前，可以先梳理清楚在这之前业内摸索出来的四条主要技术路径，看看它们分别做成了什么、在哪些真实模型上做过验证，又受制于哪些物理约束。
+超网络：用小模型预测大模型参数 超网络（Hypernetworks）早在 2017 年由 David Ha 等人提出。基础思路是用一个体量较小的辅助神经网络，直接生成另一个目标网络的权重参数。
+在早期的验证中，研究团队先在 MNIST 和 SVHN 图像分类任务上做了测试，随后在 WMT14 德英和英法机器翻译任务中引入了 HyperLSTM。实测表明，辅助网络生成的动态权重不仅大幅缩减了主干网络的独立参数量，在机器翻译的 BLEU 得分上也打平甚至微幅超过了标准 LSTM 基线。
+后来这条路线逐步拓展为权重空间学习（Weight Space Learning）。研究者发现神经网络的权重空间并不是毫无规律的随机数堆叠，它本身具备明确的几何对称性，包括排列不变性（Permutation Invariance）和缩放等变性（Scaling Equivariance）。针对这些特性，业内设计了深度权重空间网络（DWSNets）以及神经泛函 Transformer（NFTs）。在近期的实验中，研究者用它们处理隐式神经表示（INRs）并完成了 ARC-1D 任务的 PoC 验证。在这类微型网络权重分类与检索任务中，辅助网络能直接把目标模型的泛化误差预测准确率拉升十多个百分点。
+但超网络的瓶颈在于学习范式。它仍然属于监督学习，输入一组条件，输出一组张量数值。要让辅助网络学会生成有效的权重，必须先准备海量的模型样本来做元学习（Meta-learning）。这种方式停留在数值拟合层面，并没有建立对参数内部计算逻辑的显式理解。
+模型编辑：定位并修改单一事实 第二条路线是模型编辑（Model Editing），目标是在不重新训练整个网络的前提下，局部修正模型记错的事实。比如把“埃菲尔铁塔在巴黎”这条关联，直接在参数里重定向到“罗马”。
+代表性方法是 ROME（Rank-One Model Editing）。Kevin Meng 等人在 2022 年把因果追踪（Causal Tracing）引入到了自回归语言模型中。他们在包含 21,911 条事实的 CounterFact 数据集上，针对 GPT-2 XL（1.5B）和开源的 GPT-J（6B）进行了实测。实验定位出 Transformer 中间层（如 GPT-J 的第 6 层）的多层感知机（MLP）是存储具体事实的主力。通过求解一个最小二乘闭式解，计算出一个秩为 1 的矩阵更新叠加进原始权重，单点事实的修改成功率达到了 99% 以上，同时保证了特异性（Specificity），周边关联的事实不会被带偏。
+随后这一路线演进出了 MEMIT。MEMIT 把单点修改扩充到了批量编辑，在 GPT-J 和 LLaMA-1（7B 与 13B）上实测时，能够连续批量写入数千条新事实，模型在其他常识基准上的性能保持稳定。另外像 T-Patcher，则选择在 BERT、BART 和 LLaMA 的前向层动态追加少量外挂神经元（Patch），专门捕获错误样本并重定向输出，避开了直接重写静态权重可能引发的遗忘问题。</description>
+    </item>
+    
     <item>
       <title>深度强化学习技巧 hacks for training deep RL</title>
       <link>https://kuhung.me/posts/training_rl_systems_hacks/</link>

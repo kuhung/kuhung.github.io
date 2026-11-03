@@ -6,7 +6,79 @@
     <description>Recent content in Tags on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 02 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MIT</title>
+      <link>https://kuhung.me/tags/mit/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/mit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Qwen</title>
+      <link>https://kuhung.me/tags/qwen/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/qwen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大模型</title>
+      <link>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技术解析</title>
+      <link>https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>权重空间编程</title>
+      <link>https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>权重空间</title>
+      <link>https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4/</link>
+      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>模型微调</title>
+      <link>https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/</link>
+      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>深度学习</title>
+      <link>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>现金流久期</title>
       <link>https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/</link>
@@ -625,15 +697,6 @@
       <pubDate>Sat, 24 Oct 2026 23:00:00 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/%E9%A3%8E%E9%99%A9%E5%B9%B3%E4%BB%B7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>大模型</title>
-      <link>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
       <description></description>
     </item>
     
@@ -2560,15 +2623,6 @@
       <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
       
       <guid>https://kuhung.me/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>深度学习</title>
-      <link>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     

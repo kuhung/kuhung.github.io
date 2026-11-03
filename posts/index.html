@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 203 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 205 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 203 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 205 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -280,6 +280,36 @@ if (!doNotTrack) {
     <p class="posts-filter-status" role="status" aria-live="polite" hidden></p>
 
     <div class="posts-list" id="posts-list">
+        
+        <article class="posts-list-item"
+         data-tags="大模型||Qwen||MIT||权重空间编程||技术解析"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/weight-space-programming-qwen-truth/">大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相</a></h2>
+    <p class="posts-list-summary">在上篇中，我们梳理了过去业内对模型权重进行直接干预的四条技术路线。不管是 ROME 的因果追踪，还是 Abliteration 的差异均值消融，都需要人类工程师在外部搭建严密的探测流程。
+MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）最近公开的研究，把这套流程交给通用大模型自己来跑。他们使用 GPT-6 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-03">November 3, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="大模型||权重空间||模型微调||深度学习||技术解析"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/weight-space-intervention-history/">在神经网络权重里动刀，前人走过哪些路</a></h2>
+    <p class="posts-list-summary">训练和优化神经网络，大家最熟悉的路径始终是反向传播。不管是经典的 Adam 还是近期讨论较多的 Muon，本质上都是把成亿上百亿个参数当作连续的高维黑盒，靠海量数据计算梯度，一步步迭代更新。
+但在反向传播之外，学术界一直有人在尝试把手直接伸进权重空间里，去做测量、修改甚至直接生成。在聊 MIT CSAIL 最近那项大模型直接读写权重的实验之前，可以先梳理清楚在这之前业内摸索出来的四条主要技术路径， …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-03">November 3, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="量化投研||红利资产||股权期限结构||股息期货||资产配置||现金流久期"
@@ -403,37 +433,6 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
 这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO …</p>
     <div class="posts-list-meta">
         <time datetime="2026-10-27">October 27, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="链上数据||量化交易||GMGN||Bubblemaps||Arkham||DeBank||MEV||聪明钱"
-         data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/how-to-track-onchain-transactions/">链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</a></h2>
-    <p class="posts-list-summary">风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
-在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。
-面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-26">October 26, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="AI||Retell AI||Voice Agent||企业服务||商业分析||产品观察||a16z"
-         data-categories="行业趋势">
-    <h2 class="posts-list-title"><a href="/posts/retell-ai-voice-agent-deep-dive/">解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</a></h2>
-    <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
-在《解读 100 个 AI 商业产品》的前两篇里，我们先盘了 a16z 第 7 期消费级 AI 百强榜 和 110 款产品的真实消费账单。看消费级榜单时会发现一个现象：能在网页访问量、App 下载榜或者个人信用卡扣款里排上号的，大多是通用对话助手、写代码工具或者音视频生成软件，比如排在消费支出榜第 10 名的语音合成平台 ElevenLabs。一旦 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-26">October 26, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
         
@@ -668,12 +667,42 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
     
 </ul>
 
-        <span class="posts-total">共 203 篇</span>
+        <span class="posts-total">共 205 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
     
     <template id="all-posts-template">
+        
+        <article class="posts-list-item"
+         data-tags="大模型||Qwen||MIT||权重空间编程||技术解析"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/weight-space-programming-qwen-truth/">大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相</a></h2>
+    <p class="posts-list-summary">在上篇中，我们梳理了过去业内对模型权重进行直接干预的四条技术路线。不管是 ROME 的因果追踪，还是 Abliteration 的差异均值消融，都需要人类工程师在外部搭建严密的探测流程。
+MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）最近公开的研究，把这套流程交给通用大模型自己来跑。他们使用 GPT-6 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-03">November 3, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="大模型||权重空间||模型微调||深度学习||技术解析"
+         data-categories="技术研究">
+    <h2 class="posts-list-title"><a href="/posts/weight-space-intervention-history/">在神经网络权重里动刀，前人走过哪些路</a></h2>
+    <p class="posts-list-summary">训练和优化神经网络，大家最熟悉的路径始终是反向传播。不管是经典的 Adam 还是近期讨论较多的 Muon，本质上都是把成亿上百亿个参数当作连续的高维黑盒，靠海量数据计算梯度，一步步迭代更新。
+但在反向传播之外，学术界一直有人在尝试把手直接伸进权重空间里，去做测量、修改甚至直接生成。在聊 MIT CSAIL 最近那项大模型直接读写权重的实验之前，可以先梳理清楚在这之前业内摸索出来的四条主要技术路径， …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-03">November 3, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="量化投研||红利资产||股权期限结构||股息期货||资产配置||现金流久期"

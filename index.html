@@ -537,6 +537,32 @@ document.addEventListener('click', function(e) {
             
             
             <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
+                <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/weight-space-programming-qwen-truth/">大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相</a></h2>
+                <p class="post-summary">在上篇中，我们梳理了过去业内对模型权重进行直接干预的四条技术路线。不管是 ROME 的因果追踪，还是 Abliteration 的差异均值消融，都需要人类工程师在外部搭建严密的探测流程。
+MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）最近公开的研究，把这套流程交给通用大模型自己来跑。他们使用 GPT-6 …</p>
+                <div class="home-post-meta">
+                    <time datetime="2026-11-03" itemprop="datePublished">November 3, 2026</time>
+                    
+                    
+                    <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+                    
+                </div>
+            </article>
+            
+            <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
+                <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/weight-space-intervention-history/">在神经网络权重里动刀，前人走过哪些路</a></h2>
+                <p class="post-summary">训练和优化神经网络，大家最熟悉的路径始终是反向传播。不管是经典的 Adam 还是近期讨论较多的 Muon，本质上都是把成亿上百亿个参数当作连续的高维黑盒，靠海量数据计算梯度，一步步迭代更新。
+但在反向传播之外，学术界一直有人在尝试把手直接伸进权重空间里，去做测量、修改甚至直接生成。在聊 MIT CSAIL 最近那项大模型直接读写权重的实验之前，可以先梳理清楚在这之前业内摸索出来的四条主要技术路径， …</p>
+                <div class="home-post-meta">
+                    <time datetime="2026-11-03" itemprop="datePublished">November 3, 2026</time>
+                    
+                    
+                    <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/">技术研究</a>
+                    
+                </div>
+            </article>
+            
+            <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
                 <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/">红利的宏观期限结构：股息剥离与反周期配置</a></h2>
                 <p class="post-summary">平时跟踪红利资产或成长风格，常能观察到一种风格分化：
 在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险； 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。
@@ -578,38 +604,9 @@ document.addEventListener('click', function(e) {
                 </div>
             </article>
             
-            <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
-                <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/">聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</a></h2>
-                <p class="post-summary">公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
-把跟单流水与后续实际成交行情逐笔对齐，跟随买入的结果往往是买在局部冲高的高点，并在后续阴跌中承受深度亏损。
-这种偏差源于对时序因果的混淆。把非平稳时序中的同步甚至滞后资金流误判为单边预测指标，是跟单策略失效的常见原因。
-我们在本系列前序研究中，先后建立了宏 …</p>
-                <div class="home-post-meta">
-                    <time datetime="2026-10-29" itemprop="datePublished">October 29, 2026</time>
-                    
-                    
-                    <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-                    
-                </div>
-            </article>
-            
-            <article class="home-post-item" itemscope itemtype="http://schema.org/Article">
-                <h2 class="home-post-title" itemprop="name headline"><a href="https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/">链上大额数据的分层结构：每天几万笔转账里，哪些值得交易员关注？</a></h2>
-                <p class="post-summary">很多交易员习惯在社交平台或即时通讯工具中订阅大额链上异动提醒。每当看到单笔上千万美元的代币转入交易所或链上巨鲸转账，容易直接将其视作二级市场的买卖信号。
-将此类公开报警与后续行情逐笔对齐，跟单结果往往与预期相背。
-Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系统统计。数据显示，散户收到推送并完成交易时，原巨鲸的委托撮合早已结束数分钟。散户买入时承接的是做市商的卖 …</p>
-                <div class="home-post-meta">
-                    <time datetime="2026-10-29" itemprop="datePublished">October 29, 2026</time>
-                    
-                    
-                    <span style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-                    
-                </div>
-            </article>
-            
         </div>
         <p class="home-posts-more">
-            <a class="lk" href="/posts/" style="font-size: 14px; color: #2d96bd;">查看全部 203 篇文章 &rarr;</a>
+            <a class="lk" href="/posts/" style="font-size: 14px; color: #2d96bd;">查看全部 205 篇文章 &rarr;</a>
         </p>
     </div>
 </div>
