@@ -198,7 +198,8 @@ if (!doNotTrack) {
           
           
 
-          <p>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。</p>
+          <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/30c05f0a39921f15.webp" alt="权重空间编程：生成、编辑、平均与投影四大权重干预路线" class="lazyload"><figcaption class="image-caption">权重空间编程：生成、编辑、平均与投影四大权重干预路线</figcaption></figure></p>
+<p>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。</p>
 <p>然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编程”（Weight-Space Programming, WSP）之前，有必要系统梳理此前在该领域形成的四条主流技术脉络，明确其在具体模型上的实测数据、所针对的具体问题以及各自面对的物理约束边界。</p>
 <h2 id="一超网络与权重空间学习参数流形的黑盒映射">一、超网络与权重空间学习：参数流形的黑盒映射</h2>
 <p>超网络（Hypernetworks）技术早在 2017 年由 David Ha 等人提出，基本思路是通过构建辅助神经网络来直接预测或生成目标主干网络的参数矩阵。</p>
