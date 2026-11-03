@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相 | 谷粒 kuhung
+           大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相 | 谷粒 kuhung">
+  <meta name="title" content="大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:05:00+08:00","datePublished":"2026-11-03T13:05:00+08:00","description":"在上篇中，我们梳理了过去业内对模型权重进行直接干预的四条技术路线。不管是 ROME 的因果追踪，还是 Abliteration 的差异均值消融，都需要人类工程师在外部搭建严密的探测流程。 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）最近公开的研究，把这套流程交给通用大模型自己来跑。他们使用 GPT-6 …","headline":"大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, Qwen, MIT, 权重空间编程, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"WebPage"},"name":"大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","wordCount":488}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:05:00+08:00","datePublished":"2026-11-03T13:05:00+08:00","description":"在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang …","headline":"大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, Qwen, MIT, 权重空间编程, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"WebPage"},"name":"大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","wordCount":492}</script>
 </head>
 
   
@@ -112,7 +112,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">大模型直接改权重？拆解 0.8B 数学暴涨背后的实现与真相</h1>
+        <h1 class="post-title" itemprop="name headline">大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -135,30 +135,30 @@ if (!doNotTrack) {
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#astra-读写改权重的基础实验">Astra 读、写、改权重的基础实验</a>
+    <li><a href="#一权重空间的读写改三维基础验证">一、权重空间的读、写、改三维基础验证</a>
       <ul>
-        <li><a href="#1-读权重">1. 读权重</a></li>
-        <li><a href="#2-写权重">2. 写权重</a></li>
-        <li><a href="#3-改权重">3. 改权重</a></li>
+        <li><a href="#1-权重读取read">1. 权重读取（Read）</a></li>
+        <li><a href="#2-从零编译权重write">2. 从零编译权重（Write）</a></li>
+        <li><a href="#3-权重局部手术edit">3. 权重局部手术（Edit）</a></li>
       </ul>
     </li>
-    <li><a href="#08b-模型数学能力提升的真实过程">0.8B 模型数学能力提升的真实过程</a>
+    <li><a href="#二qwen35-08b-真实病灶排查与定向消融流程">二、Qwen3.5-0.8B 真实病灶排查与定向消融流程</a>
       <ul>
-        <li><a href="#架构背景">架构背景</a></li>
-        <li><a href="#异常排查93-的死循环">异常排查：93% 的死循环</a></li>
-        <li><a href="#定向消融与权重吸收">定向消融与权重吸收</a></li>
+        <li><a href="#1-架构基底参数">1. 架构基底参数</a></li>
+        <li><a href="#2-异常监控93-的思维死循环">2. 异常监控：93% 的思维死循环</a></li>
+        <li><a href="#3-定向消融与权重吸收weight-absorption">3. 定向消融与权重吸收（Weight Absorption）</a></li>
       </ul>
     </li>
-    <li><a href="#数据效度与阴性对照">数据效度与阴性对照</a>
+    <li><a href="#三阴性对照实验与探测预算的阈值效应">三、阴性对照实验与探测预算的阈值效应</a>
       <ul>
-        <li><a href="#1-拆除路障与能力注入的差异">1. 拆除路障与能力注入的差异</a></li>
-        <li><a href="#2-探索预算的阶跃效应">2. 探索预算的阶跃效应</a></li>
-        <li><a href="#3-当前行业的基准参照系">3. 当前行业的基准参照系</a></li>
+        <li><a href="#1-gemma-3-270m-阴性对照">1. Gemma 3 270M 阴性对照</a></li>
+        <li><a href="#2-探测预算的非线性阈值">2. 探测预算的非线性阈值</a></li>
       </ul>
     </li>
-    <li><a href="#理性看待营销破圈与背后的真相">理性看待营销破圈与背后的真相</a>
+    <li><a href="#四math-500-评测基准全行业模型梯队分布">四、MATH-500 评测基准全行业模型梯队分布</a></li>
+    <li><a href="#五理性审视营销破圈与背后的工程本质">五、理性审视：营销破圈与背后的工程本质</a>
       <ul>
-        <li><a href="#参考资料">参考资料</a></li>
+        <li><a href="#参考文献与公开成果源">参考文献与公开成果源</a></li>
       </ul>
     </li>
   </ul>
@@ -215,195 +215,156 @@ if (!doNotTrack) {
           
           
 
-          <p>在上篇中，我们梳理了过去业内对模型权重进行直接干预的四条技术路线。不管是 ROME 的因果追踪，还是 Abliteration 的差异均值消融，都需要人类工程师在外部搭建严密的探测流程。</p>
-<p>MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）最近公开的研究，把这套流程交给通用大模型自己来跑。他们使用 GPT-6 Astra，在没有反向传播、不计算梯度、也不启动微调循环的情况下，直接读取、从零编写以及修改其他神经网络的权重文件。</p>
-<p>其中最受关注的一组数据，是 Astra 把 Qwen3.5-0.8B 在 MATH-500 上的测试准确率从 7.9% 提升到了 48.1%。社交媒体上的讨论很多都在传“大模型能凭空给小模型灌入高级逻辑”，但翻看实验日志和测试边界，实际机制和工程约束与直觉有很大出入。</p>
-<h2 id="astra-读写改权重的基础实验">Astra 读、写、改权重的基础实验</h2>
-<p>这项被称为“权重空间编程”（Weight-Space Programming, WSP）的研究，在微型网络上验证了三项基础操作。</p>
-<h3 id="1-读权重">1. 读权重</h3>
-<p>研究人员给 Astra 输入了 4 个多层感知机（MLP）策略网络的纯文本权重，每个网络包含 17,253 个参数，分别在 4 款不同的 MinAtar 像素游戏（Breakout、Pong、Pac-Man、Freeway）中用 PPO 强化学习训练而成。在不告知候选游戏名字的前提下，Astra 依靠阅读第一层权重在输入通道上的空间分布，还原了游戏场景布局，准确推断出 4 款游戏各自对应的网络。</p>
-<p>但在后续的深层模型测试中，纯静态阅读遇到了物理上限。研究人员让 Astra 阅读微调后的 Gemma 3 270M 静态权重，分辨哪个模型被训练成了谄媚模式，Astra 连续 4 次推断全部失败。只有给它配备注意力探测工具，发现目标模型在特定注意力头对用户给出的选项有 85.7% 的极端注意力倾向时，才完成鉴别。这说明单纯看静态矩阵数值，只适用于通道特征鲜明的小网络；深层语言模型必须结合运行时的动态激活分析。</p>
-<h3 id="2-写权重">2. 写权重</h3>
-<p>在编写实验中，Astra 需要为一个输入维度为 10x10x4、包含 17,253 个参数的网络从零填入权重，让它去玩 MinAtar 游戏。Astra 单次对话直接输出了权重矩阵文本，在没有环境交互、没有奖励反馈的情况下完成输出。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">MinAtar 游戏任务</th>
-<th style="text-align:left">PPO 训练 1 亿步得分</th>
-<th style="text-align:left">PPO 训练 5 亿步得分</th>
-<th style="text-align:left">Astra 一次性输出得分</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Breakout (打砖块)</strong></td>
-<td style="text-align:left">15.8</td>
-<td style="text-align:left">25.3</td>
-<td style="text-align:left"><strong>517.4</strong></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Asterix</strong></td>
-<td style="text-align:left">25.8</td>
-<td style="text-align:left"><strong>55.2</strong></td>
-<td style="text-align:left">53.2</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Seaquest</strong></td>
-<td style="text-align:left">5.6</td>
-<td style="text-align:left"><strong>88.9</strong></td>
-<td style="text-align:left">53.1</td>
-</tr>
-</tbody>
-</table>
-<p>在 Breakout 上，Astra 写出的网络得分达到 5 亿步 PPO 强化学习模型的 20 倍。需要说明的是，这项实验中存在完整的先验信息输入：研究人员在 Prompt 中直接提供了游戏的底层代码、通道含义、球与球拍的位置坐标逻辑以及得分规则。Astra 并不是在黑盒中探索最优策略，它更像是一个代码编译器，把人类用自然语言描述的条件判断，翻译成了矩阵连接。</p>
-<h3 id="3-改权重">3. 改权重</h3>
-<p>针对一个在 Kinetix 物理小车过坡任务中卡死在半坡的强化学习网络（171,664 个参数），Astra 修改了其中 3.5% 的参数。修改方式是在前几层搭建了一条旁路逻辑，提取位置与速度特征，强制触发倒车助跑，把通关率从 0 提升至 100%。这种通过外挂或微调旁路改变模型状态流转的做法，随后被用到了参数量更大的语言模型上。</p>
-<h2 id="08b-模型数学能力提升的真实过程">0.8B 模型数学能力提升的真实过程</h2>
-<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/e8c45e1632ea5a71.webp" alt="Qwen3.5-0.8B 权重手术与死循环切除全链路" class="lazyload"><figcaption class="image-caption">Qwen3.5-0.8B 权重手术与死循环切除全链路</figcaption></figure></p>
-<p>Astra 处理 Qwen3.5-0.8B 的过程，并不是直接阅读 8 亿个浮点数，而是借助 Python 隔离沙箱（基于 bubblewrap 容器）运行模型并挂载钩子探针。</p>
-<h3 id="架构背景">架构背景</h3>
-<p>Qwen3.5-0.8B 是一款针对低延迟场景设计的微型语言模型，采用混合 Gated DeltaNet 架构：</p>
+          <p>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。</p>
+<p>2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）提出的“权重空间编程”（Weight-Space Programming, WSP）展示了一种新的范式转换：前沿通用大模型（GPT-6 Astra）能够在自然语言指令驱动下，在受限代码沙箱中自主挂载探针、推断内部病灶，并直接修改其他神经网络的权重文件，全程无需反向传播或微调循环。</p>
+<p>其中引发行业广泛讨论的案例，是 Astra 将 Qwen3.5-0.8B 在高难度数学推理基准 MATH-500 上的准确率从 7.9% 提升至 48.1%。面对这一实验表现，有必要穿透数据表象，系统解码大模型推断小模型参数的底层物理机理，厘清其真实起效的区间与严格的边界约束。</p>
+<h2 id="一权重空间的读写改三维基础验证">一、权重空间的读、写、改三维基础验证</h2>
+<p>WSP 框架在进入复杂深层语言模型之前，首先在微型策略网络与扩散模型上验证了模型对参数空间的直接操作能力。</p>
+<h3 id="1-权重读取read">1. 权重读取（Read）</h3>
+<p>研究团队向 Astra 输入了 4 个具有完全相同多层感知机（MLP）架构（17,253 个参数）的策略网络。这些网络分别在使用 PPO 强化学习算法训练于 MinAtar 像素游戏环境（Breakout、Pong、Pac-Man、Freeway）。在完全未提供候选游戏名称的盲测条件下，Astra 仅通过解析第一层权重矩阵在输入通道上的空间分布特征（如 Breakout 底层挡板权重的行状聚集与顶部奖励带），准确推断出全部 4 款游戏各自对应的模型。</p>
+<p>然而，静态权重阅读存在严格的尺度边界。在后续对微调后的 Gemma 3 270M 进行的测试中，Astra 试图通过纯静态数值分辨哪个模型被训练成了“谄媚”（Sycophancy）模式，连续 4 次推断均告失败。这一阴性结果表明：单纯的静态权重文本阅读仅适用于输入特征高度结构化的小型网络；针对深层自回归模型，必须依赖运行时的动态激活分析。</p>
+<h3 id="2-从零编译权重write">2. 从零编译权重（Write）</h3>
+<p>在无训练数据、无梯度信息且不使用外部环境反馈的零样本设置下，研究人员要求 Astra 直接输出一个输入维度为 10x10x4 的 MLP 策略网络参数，用于控制 MinAtar 游戏。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/4a956e82f8937e72.webp" alt="GPT-6 Astra 零样本策略编写 vs PPO 强化学习性能对比" class="lazyload"><figcaption class="image-caption">GPT-6 Astra 零样本策略编写 vs PPO 强化学习性能对比</figcaption></figure></p>
+<p>在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.4 的平均测试得分，不仅大幅超越 1 亿步 PPO 训练基线（15.8 分），更是达到了 5 亿步 PPO 强化学习模型（25.3 分）的 20 倍。需要指出的是，该实验之所以能够成立，是因为研究团队在提示词中完整注入了游戏的底层规则代码、输入通道坐标定义与得分机制。Astra 实际扮演了“深度学习神经编译器”的角色，将明确的高阶控制逻辑直接翻译为了对应的突触连接矩阵。</p>
+<h3 id="3-权重局部手术edit">3. 权重局部手术（Edit）</h3>
+<p>针对在 Kinetix 物理仿真环境中陷入局部极值（直接前冲并卡死在半坡）的 PPO 小车网络（171,664 个参数），Astra 通过单次交互修改了其中 3.5% 的参数。修改逻辑是在网络浅层构建一条特征旁路，提取小车的位置与速度信号，强制执行倒车助跑逻辑后将控制权交回原网络，将通关成功率由 0 提升至 100%。</p>
+<h2 id="二qwen35-08b-真实病灶排查与定向消融流程">二、Qwen3.5-0.8B 真实病灶排查与定向消融流程</h2>
+<p>针对参数规模达 8 亿的语言模型，Astra 无法将海量浮点数直接载入上下文，系统为其提供了基于 bubblewrap 容器的 Python 隔离沙箱环境。</p>
+<h3 id="1-架构基底参数">1. 架构基底参数</h3>
+<p>Qwen3.5-0.8B 是针对端侧与低延迟场景优化的微型模型，采用混合 Gated DeltaNet 架构：</p>
 <ul>
-<li>全网共 24 层，由 18 层线性注意力与 6 层全注意力交叉构成；</li>
-<li>隐藏层维度为 1024；</li>
-<li>前馈网络（FFN）采用 SwiGLU 机制，中间层维度为 2816，包含负责降维回残差流的 down_proj 矩阵（尺寸为 2816x1024）。</li>
+<li>全网共 24 层，由 18 层线性注意力与 6 层全注意力交替构成；</li>
+<li>隐藏层特征维度为 1024；</li>
+<li>前馈网络（FFN）采用 SwiGLU 算子，中间层维度为 2816，包含负责将非线性特征映射回残差流的 <code>down_proj</code> 投影矩阵（尺寸为 2816x1024）。</li>
 </ul>
-<h3 id="异常排查93-的死循环">异常排查：93% 的死循环</h3>
-<p>在 GSM8K 和 MATH 题目测试中，Qwen3.5-0.8B 初始表现极差，MATH-500 准确率仅为 7.9%。</p>
-<p>Astra 通过沙箱记录前向传播数据后发现，模型解不出题目的主因不是基础计算规则缺失，而是推理过程进入了反复输出相同 token 的死循环。在 96 道抽样练习题中，模型有 85 次一路重复生成直到撞上 32,768 个 token 的硬性上下文上限，触顶崩溃率高达 93.0%。</p>
-<h3 id="定向消融与权重吸收">定向消融与权重吸收</h3>
-<p>Astra 提取了残差流在死循环状态下的激活张量，通过协方差矩阵和特征值分解，分离出了一个特定的高方差方向向量，即导致重复生成的“循环方向”。</p>
-<p>顺着残差流往上回溯，Astra 发现第 15 层和第 19 层的 MLP 模块对这个循环方向有持续的放大效应。具体执行步骤如下：</p>
+<h3 id="2-异常监控93-的思维死循环">2. 异常监控：93% 的思维死循环</h3>
+<p>在初始测试中，Qwen3.5-0.8B 在高难度数学基准 MATH-500 上的准确率仅为 7.9%。</p>
+<p>Astra 在沙箱中调度该模型运行 GSM8K 与 MATH 训练样本，并利用 PyTorch 钩子记录前向传播过程中的激活张量。踪迹分析揭示了一个严重的系统性故障：模型在解题过程中频繁陷入“思维死循环”（Thinking Loops），不断重复输出相同的推理标记，直至撞到 32,768 个 token 的硬性上下文截断上限。在 96 道抽样测试题中，该异常触顶率高达 93.0%。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/7ef2e0f834d906e2.webp" alt="Qwen3.5-0.8B 权重微创手术核心指标提升与死循环切断" class="lazyload"><figcaption class="image-caption">Qwen3.5-0.8B 权重微创手术核心指标提升与死循环切断</figcaption></figure></p>
+<h3 id="3-定向消融与权重吸收weight-absorption">3. 定向消融与权重吸收（Weight Absorption）</h3>
+<p>Astra 提取了死循环发生时残差流的激活协方差矩阵，通过特征值分解隔离出一个高方差的线性方向向量，即驱动重复生成的“循环方向”。通过逐层分析该方向的放大倍率，Astra 将故障根源精确定位在第 15 层和第 19 层的 MLP 模块。</p>
+<p>随后，Astra 在沙箱中执行自动化参数切除：</p>
 <ol>
-<li>Astra 编写脚本，分别定位第 15 层和第 19 层的 down_proj 矩阵；</li>
-<li>从每个矩阵的 2816 列中，各自挑出对该循环方向贡献最大的 64 个关键列；</li>
-<li>对这 64 个列向量做正交投影分解，直接减去其在循环方向上的投影分量；</li>
-<li>每层修改的参数量为 64 列乘以 1024 行，即 65,536 个权重；两层合计修改 131,072 个参数。</li>
+<li>分析第 15 层与第 19 层的 <code>down_proj</code> 矩阵（2816 列 x 1024 行）；</li>
+<li>分别筛选出对该循环方向贡献最大的 64 个关键列向量；</li>
+<li>对这 64 个列向量执行正交投影分解，直接减去其在循环方向上的投影分量；</li>
+<li>每层修改 64 列（65,536 个参数），两层总计修改 131,072 个权重参数，占该模型 8 亿总参数量的 <strong>0.016%</strong>。</li>
 </ol>
-<p>这 13.1 万个参数只占 Qwen3.5-0.8B 整体参数量的 0.016%。这一操作在数学上属于 WAQS（权重吸收）机制，把原本需要运行时动态拦截的向量干预，直接烧录进了模型现存的线性投影权重中。</p>
-<h2 id="数据效度与阴性对照">数据效度与阴性对照</h2>
-<p>经过这次微量修改，Qwen3.5-0.8B 的 MATH-500 得分从 7.9% 变为了 48.1%，GSM8K 从 13.8% 提升到 67.1%，甚至不涉及复杂数理的 IFEval 指令遵循得分也从 21.0% 升到了 62.3%。</p>
-<p>面对这项结果，需要看清数据背后的三个事实约束。</p>
-<h3 id="1-拆除路障与能力注入的差异">1. 拆除路障与能力注入的差异</h3>
-<p>分数的跳变来源于死循环触顶率从 93.0% 骤降至 33.1%。一个无法正常终止思考流的模型在任何格式化基准测试中都只能得零分；当死循环被切断后，模型原本具备的基本语法和代数推导逻辑得以正常输出。</p>
-<p>为了验证这项技术能否凭空赋予模型能力，MIT 研究团队设置了一组阴性对照：让 Astra 尝试优化 Gemma 3 270M 的数学表现。Gemma 270M 的初始触顶死循环率只有 8.5%，它算不对纯粹是因为参数量太小、预训练阶段没有建立起数学逻辑。结果显示，即便给足 50 次前向探索预算，Gemma 3 270M 的 MATH-500 准确率也只从 6.8% 微升至 7.0%，几乎没有变化。</p>
-<p>这组阴性对照说明：权重空间编程无法为模型生成它本身不具备的底层知识。它能够起效的前提，是模型内部已经包含相关能力模式，只是在执行流转中被特定的死循环阻断。</p>
-<h3 id="2-探索预算的阶跃效应">2. 探索预算的阶跃效应</h3>
-<p>寻找这 64 列参数并不是一次命中的过程，Astra 的修复效果高度依赖沙箱探索预算：</p>
+<p>在数学机理上，该操作遵循 WAQS（Weight Absorption for Quadratic Probing and Affine Steering）理论，将运行时状态引导的仿射变换反向折叠至前置静态矩阵中，消除了动态钩子带来的额外推理计算开销。</p>
+<h2 id="三阴性对照实验与探测预算的阈值效应">三、阴性对照实验与探测预算的阈值效应</h2>
+<p>在修改万分之 1.6 的参数后，Qwen3.5-0.8B 在 MATH-500 上的准确率由 7.9% 跃升至 48.1%，GSM8K 由 13.8% 升至 67.1%，IFEval 指令遵循得分也由 21.0% 同步提升至 62.3%。</p>
+<p>为评估该数据是否存在过度拟合或能力伪造，MIT 研究团队设置了严谨的阴性对照（Negative Control）与剂量反应分析。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/41f977a3ad7c0b4a.webp" alt="沙箱探测预算剂量反应曲线与 Gemma 3 阴性对照" class="lazyload"><figcaption class="image-caption">沙箱探测预算剂量反应曲线与 Gemma 3 阴性对照</figcaption></figure></p>
+<h3 id="1-gemma-3-270m-阴性对照">1. Gemma 3 270M 阴性对照</h3>
+<p>研究团队引入了微型模型 Gemma 3 270M 作为对照组。与 Qwen 不同，Gemma 3 270M 本身极少陷入思维死循环（32k 上限触顶率仅为 8.5%），其数学测试得分低完全是由于参数量过小、代数计算规则与先验知识缺失所致。</p>
+<p>实验表明，即便为 Astra 提供最高等级的探测预算（50 次前向传递代码执行），Gemma 3 270M 的 MATH-500 准确率也仅仅由 6.8% 微幅波动至 7.0%，几乎无任何性能改善。这一阴性结果确立了明确的技术边界：<strong>权重空间编程无法凭空为模型注入未曾学习过的先验知识。它起作用的物理前提，是模型在预训练阶段已内嵌了相应能力，只是该能力的释放被特定的死循环结构严重阻断。</strong></p>
+<h3 id="2-探测预算的非线性阈值">2. 探测预算的非线性阈值</h3>
+<p>Astra 定位关键矩阵列的过程高度依赖试错预算，呈现出显著的非线性跳变：</p>
+<ul>
+<li>基础模型状态（0 预算）：MATH-500 得分 7.9%，死循环率 93.0%；</li>
+<li>给予 10 次前向探测：MATH-500 得分 12.3%，死循环率 87.2%；</li>
+<li>给予 25 次前向探测：MATH-500 得分 14.1%，死循环率 86.4%；</li>
+<li>给予 50 次前向探测：MATH-500 <strong>跳变至 48.1%</strong>，死循环率<strong>降至 33.1%</strong>。</li>
+</ul>
+<p>数据表明，在前 25 次尝试中，Astra 未能准确收敛出核心故障列，模型性能改善微弱；只有当探索预算跨过临界阈值后，病灶才被彻底切除。</p>
+<h2 id="四math-500-评测基准全行业模型梯队分布">四、MATH-500 评测基准全行业模型梯队分布</h2>
+<p>为了客观评估 48.1% 这一数值在行业技术坐标系中的实际定位，下表汇总了截至 2026 年底主流模型在 MATH-500 上的权威评测表现：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/70a59f6a6f580b41.webp" alt="MATH-500 评测基准全行业模型梯队分布" class="lazyload"><figcaption class="image-caption">MATH-500 评测基准全行业模型梯队分布</figcaption></figure></p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">执行预算分配</th>
-<th style="text-align:left">MATH-500 准确率</th>
-<th style="text-align:left">触碰 32k 上限比例</th>
+<th style="text-align:left">模型分级与名称</th>
+<th style="text-align:left">模型属性与参数规模</th>
+<th style="text-align:left">MATH-500 测试准确率</th>
+<th style="text-align:left">架构与技术背景</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>原始基础模型</strong></td>
-<td style="text-align:left">7.9%</td>
-<td style="text-align:left">93.0%</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>修改后：10 次前向传递</strong></td>
-<td style="text-align:left">12.3%</td>
-<td style="text-align:left">87.2%</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>修改后：25 次前向传递</strong></td>
-<td style="text-align:left">14.1%</td>
-<td style="text-align:left">86.4%</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>修改后：50 次前向传递</strong></td>
-<td style="text-align:left"><strong>48.1%</strong></td>
-<td style="text-align:left"><strong>33.1%</strong></td>
-</tr>
-</tbody>
-</table>
-<p>在 10 次和 25 次探测时，死循环率依然停留在 86% 以上，测试准确率没有明显起色。直到探索次数累积到 50 次，Astra 才收敛出准确的投影切除方案。</p>
-<h3 id="3-当前行业的基准参照系">3. 当前行业的基准参照系</h3>
-<p>为了看清 48.1% 这个成绩的实际位置，可以参考目前主流模型在 MATH-500 上的表现分布：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模型梯队与名称</th>
-<th style="text-align:left">模型属性与规模</th>
-<th style="text-align:left">MATH-500 准确率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>第一梯队 (前沿推理区)</strong></td>
+<td style="text-align:left"><strong>第一梯队 (前沿推理区 / 榜单饱和)</strong></td>
+<td style="text-align:left"></td>
 <td style="text-align:left"></td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">OpenAI GPT-5 (High)</td>
 <td style="text-align:left">闭源前沿巨型模型</td>
-<td style="text-align:left">99.4%</td>
+<td style="text-align:left"><strong>99.4%</strong></td>
+<td style="text-align:left">大规模强化学习与测试期计算扩展</td>
 </tr>
 <tr>
 <td style="text-align:left">OpenAI o3 / o3-mini</td>
-<td style="text-align:left">闭源推理模型 (强化学习)</td>
-<td style="text-align:left">99.2%</td>
+<td style="text-align:left">闭源推理模型</td>
+<td style="text-align:left"><strong>99.2%</strong></td>
+<td style="text-align:left">原生强化学习推理链模型</td>
 </tr>
 <tr>
 <td style="text-align:left">Ternary Bonsai 2 27B</td>
 <td style="text-align:left">开源权重模型</td>
 <td style="text-align:left">98.8%</td>
+<td style="text-align:left">三值化权重推理网络</td>
 </tr>
 <tr>
 <td style="text-align:left">DeepSeek R1</td>
 <td style="text-align:left">开源推理模型 (MoE)</td>
-<td style="text-align:left">97.3% - 98.2%</td>
+<td style="text-align:left">97.8%</td>
+<td style="text-align:left">大规模大规模强化学习推理模型</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>第二梯队 (主力推理区)</strong></td>
 <td style="text-align:left"></td>
 <td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">Claude 3.7 Sonnet (Thinking)</td>
-<td style="text-align:left">闭源顶尖推理模型</td>
-<td style="text-align:left">96.2%</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">Gemini 3 Pro</td>
 <td style="text-align:left">闭源前沿模型</td>
 <td style="text-align:left">96.4%</td>
+<td style="text-align:left">多模态长上下文推理模型</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>实验对比区</strong></td>
+<td style="text-align:left">Claude 3.7 Sonnet (Thinking)</td>
+<td style="text-align:left">闭源顶尖推理模型</td>
+<td style="text-align:left">96.2%</td>
+<td style="text-align:left">混合思维链推理模型</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>微型模型实验对比区</strong></td>
+<td style="text-align:left"></td>
 <td style="text-align:left"></td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Qwen3.5-0.8B (编辑后)</strong></td>
+<td style="text-align:left"><strong>Qwen3.5-0.8B (WSP 编辑后)</strong></td>
 <td style="text-align:left">开源极小参数模型 (0.8B)</td>
 <td style="text-align:left"><strong>48.1%</strong></td>
+<td style="text-align:left">仅修改 0.016% 权重，疏通思维死循环</td>
 </tr>
 <tr>
-<td style="text-align:left">Qwen3.5-0.8B (编辑前)</td>
+<td style="text-align:left">Qwen3.5-0.8B (编辑前基线)</td>
 <td style="text-align:left">开源极小参数模型 (0.8B)</td>
 <td style="text-align:left">7.9%</td>
+<td style="text-align:left">受制于 93% 的 32k 思维死循环</td>
 </tr>
 <tr>
-<td style="text-align:left">Gemma 3 270M (编辑后)</td>
+<td style="text-align:left">Gemma 3 270M (最优编辑后)</td>
 <td style="text-align:left">开源微型参数模型 (0.27B)</td>
 <td style="text-align:left">7.0%</td>
+<td style="text-align:left">阴性对照：无死循环，编辑无法注入知识</td>
 </tr>
 </tbody>
 </table>
-<p>在主流前沿模型普遍借助推理期强化学习把 MATH-500 刷到 96% 以上、榜单顶部严重饱和的背景下，48.1% 并不意味着 0.8B 小模型达到了可用作严谨数学推导的水平。它的实际价值在于：在完全不消耗重训算力的情况下，通过修改万分之 1.6 的参数，把一个原本处于崩溃状态的小模型拉回到了正常的基准可用线。</p>
-<h2 id="理性看待营销破圈与背后的真相">理性看待营销破圈与背后的真相</h2>
-<p>整篇论文看下来，这更像是一次带有营销性质的破圈操作。从传播结果来看，效果确实很不错：7.9% 到 48.1% 的 6 倍跨越，加上“大模型原生修改 AI 大脑”的叙事，很容易在社交媒体上引发轰动。</p>
-<p>但我们要理性看待它到底是在哪部分起作用的，以及那些夸张的、带有传播目的的数字背后到底站着什么。</p>
-<p>第一，它解决的是工程阻断，不是认知缺失。Astra 做的事情本质上是自动化版本的机械可解释性探针加特征消融。模型原本能得分，只是每次答到一半就卡在死循环里交不了卷。拔掉这根刺，分数自然回弹。</p>
-<p>第二，遇到真正底子薄弱的模型，这套方法无法无中生有。Gemma 270M 的测试已经把底牌亮得很清楚：只要模型内部没有预存相关的知识结构，给再多次探测预算也无济于事。</p>
-<p>看清楚这两点，我们既能认可通用大模型在自动化代码沙箱里排查神经网络故障的工程潜力，也不至于被营销包装出来的“模型自进化神话”带偏了节奏。</p>
+<p>在主流前沿大模型普遍利用强化学习（RL）将 MATH-500 测试集打穿（普遍堆聚在 96%~99.4%）的行业背景下，48.1% 距离实用化的严谨数学推理仍有显著差距。该成果的核心工程价值，在于以极低的算力成本，将一个原本因软件死循环处于崩溃不可用状态的微型端侧模型，拉回到了基础可用线。</p>
+<h2 id="五理性审视营销破圈与背后的工程本质">五、理性审视：营销破圈与背后的工程本质</h2>
+<p>综合审视这篇研究与测试数据，其对外传播表现出鲜明的营销破圈特征。“7.9% 到 48.1% 的 6 倍暴涨”、“大模型原生直接重写神经网络大脑”这类叙事，精准击中了技术圈对“AI 自我进化”的想象，在社交媒体上取得了极佳的破圈效果。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/d40a3c368bef8a62.webp" alt="权重空间编程（WSP）真实作用机理与工程边界判定" class="lazyload"><figcaption class="image-caption">权重空间编程（WSP）真实作用机理与工程边界判定</figcaption></figure></p>
+<p>但从严肃工程与科学角度审视，必须保持理性，看清其起作用的具体区间与边界：</p>
+<p>第一，<strong>它解决的是工程故障排除，而非认知能力生成</strong>。Astra 在沙箱中所完成的工作，本质上是“自动化版本的因果探测 + 特征消融”。Qwen3.5-0.8B 基础模型在预训练阶段已经掌握了一定的代数解题链路，只是在输出端被放大为死循环的恶性特征所阻断。Astra 拔除了导致死循环的 64 列投影，模型原有的推理能力得以正常释放。</p>
+<p>第二，<strong>对于真不会算的模型，这套方法完全失效</strong>。Gemma 3 270M 的阴性对照是一块关键的试金石：只要模型底层并未建立相关数理模式，即便给予最充足的沙箱探测算力，分数依然纹丝不动。WSP 无法替代数据驱动的大规模预训练。</p>
+<p>看清楚这两点，我们既能客观评估通用大模型作为自主代理在代码沙箱中调试神经网络参数的工程潜力，也能穿透夸张的传播数字，看清其底层真实的物理边界。</p>
 <hr>
-<h3 id="参考资料">参考资料</h3>
+<h3 id="参考文献与公开成果源">参考文献与公开成果源</h3>
 <ul>
 <li>Takehi, R., Teoh, J., Zhang, A., &amp; Khattab, O. (2026). LLMs can natively read &amp; write neural network weights. MIT CSAIL.</li>
 <li>Arditi, A., et al. (2024). Refusal in Language Models Is Mediated by a Single Direction. arXiv:2406.11717.</li>
@@ -470,7 +431,7 @@ if (!doNotTrack) {
 
     <div class="post-nav">
         
-        <a href="https://kuhung.me/posts/weight-space-intervention-history/" class="prev" rel="prev" title="在神经网络权重里动刀，前人走过哪些路"><i class="iconfont icon-left"></i>&nbsp;在神经网络权重里动刀，前人走过哪些路</a>
+        <a href="https://kuhung.me/posts/weight-space-intervention-history/" class="prev" rel="prev" title="在神经网络权重空间动刀：前沿探索之前的四条历史技术路线"><i class="iconfont icon-left"></i>&nbsp;在神经网络权重空间动刀：前沿探索之前的四条历史技术路线</a>
         
         
     </div>
