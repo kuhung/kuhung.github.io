@@ -42,10 +42,10 @@ if (!doNotTrack) {
   <title>
        
        
-           在神经网络权重空间动刀：前沿探索之前的四条历史技术路线 | 谷粒 kuhung
+           权重空间编程（上）：大模型权重干预的四大技术路线对比 | 谷粒 kuhung
        
   </title>
-  <meta name="title" content="在神经网络权重空间动刀：前沿探索之前的四条历史技术路线 | 谷粒 kuhung">
+  <meta name="title" content="权重空间编程（上）：大模型权重干预的四大技术路线对比 | 谷粒 kuhung">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:00:00+08:00","datePublished":"2026-11-03T13:00:00+08:00","description":"在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为一个连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编 …","headline":"在神经网络权重空间动刀：前沿探索之前的四条历史技术路线","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, 权重空间, 模型微调, 深度学习, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"WebPage"},"name":"在神经网络权重空间动刀：前沿探索之前的四条历史技术路线","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-intervention-history/","wordCount":342}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:00:00+08:00","datePublished":"2026-11-03T13:00:00+08:00","description":"在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为一个连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编 …","headline":"权重空间编程（上）：大模型权重干预的四大技术路线对比","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, 权重空间, 模型微调, 深度学习, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"WebPage"},"name":"权重空间编程（上）：大模型权重干预的四大技术路线对比","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-intervention-history/","wordCount":342}</script>
 </head>
 
   
@@ -112,7 +112,7 @@ if (!doNotTrack) {
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">在神经网络权重空间动刀：前沿探索之前的四条历史技术路线</h1>
+        <h1 class="post-title" itemprop="name headline">权重空间编程（上）：大模型权重干预的四大技术路线对比</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
                 <span class="post-time">
@@ -348,7 +348,7 @@ if (!doNotTrack) {
         <a href="https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/" class="prev" rel="prev" title="红利的宏观期限结构：股息剥离与反周期配置"><i class="iconfont icon-left"></i>&nbsp;红利的宏观期限结构：股息剥离与反周期配置</a>
         
         
-        <a href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" class="next" rel="next" title="大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界">大语言模型原生权重推理与修改：Qwen3.5-0.8B 实验剖析与能力边界&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" class="next" rel="next" title="权重空间编程（下）：Astro 编辑 Qwen3.5-0.8B 的真实效果提升来源">权重空间编程（下）：Astro 编辑 Qwen3.5-0.8B 的真实效果提升来源&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 </article>
