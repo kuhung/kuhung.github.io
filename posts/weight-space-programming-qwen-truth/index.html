@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:05:00+08:00","datePublished":"2026-11-03T13:05:00+08:00","description":"在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang …","headline":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, Qwen, MIT, 权重空间编程, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"WebPage"},"name":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","wordCount":490}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:05:00+08:00","datePublished":"2026-11-03T13:05:00+08:00","description":"在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang …","headline":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, Qwen, MIT, 权重空间编程, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"WebPage"},"name":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","wordCount":412}</script>
 </head>
 
   
@@ -270,92 +270,8 @@ if (!doNotTrack) {
 </ul>
 <p>数据表明，在前 25 次尝试中，Astra 未能准确收敛出主要故障列，模型性能改善微弱；只有当探索预算跨过临界阈值后，病灶才被彻底切除。</p>
 <h2 id="四math-500-评测基准全行业模型梯队分布">四、MATH-500 评测基准全行业模型梯队分布</h2>
-<p>为了客观评估 48.1% 这一数值在行业技术坐标系中的实际定位，下表汇总了截至 2026 年底主流模型在 MATH-500 上的权威评测表现：</p>
+<p>为了客观评估 48.1% 这一数值在行业技术坐标系中的实际定位，下图汇总了截至 2026 年底主流模型在 MATH-500 上的权威评测表现：</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/ed3d8e6600704e7b.webp" alt="MATH-500 评测基准全行业模型梯队分布" class="lazyload"><figcaption class="image-caption">MATH-500 评测基准全行业模型梯队分布</figcaption></figure></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模型分级与名称</th>
-<th style="text-align:left">模型属性与参数规模</th>
-<th style="text-align:left">MATH-500 测试准确率</th>
-<th style="text-align:left">架构与技术背景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>第一梯队 (前沿推理区 / 榜单饱和)</strong></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">OpenAI GPT-5 (High)</td>
-<td style="text-align:left">闭源前沿巨型模型</td>
-<td style="text-align:left"><strong>99.4%</strong></td>
-<td style="text-align:left">大规模强化学习与测试期计算扩展</td>
-</tr>
-<tr>
-<td style="text-align:left">OpenAI o3 / o3-mini</td>
-<td style="text-align:left">闭源推理模型</td>
-<td style="text-align:left"><strong>99.2%</strong></td>
-<td style="text-align:left">原生强化学习推理链模型</td>
-</tr>
-<tr>
-<td style="text-align:left">Ternary Bonsai 2 27B</td>
-<td style="text-align:left">开源权重模型</td>
-<td style="text-align:left">98.8%</td>
-<td style="text-align:left">三值化权重推理网络</td>
-</tr>
-<tr>
-<td style="text-align:left">DeepSeek R1</td>
-<td style="text-align:left">开源推理模型 (MoE)</td>
-<td style="text-align:left">97.8%</td>
-<td style="text-align:left">大规模强化学习推理模型</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>第二梯队 (主力推理区)</strong></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">Gemini 3 Pro</td>
-<td style="text-align:left">闭源前沿模型</td>
-<td style="text-align:left">96.4%</td>
-<td style="text-align:left">多模态长上下文推理模型</td>
-</tr>
-<tr>
-<td style="text-align:left">Claude 3.7 Sonnet (Thinking)</td>
-<td style="text-align:left">闭源顶尖推理模型</td>
-<td style="text-align:left">96.2%</td>
-<td style="text-align:left">混合思维链推理模型</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>微型模型实验对比区</strong></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Qwen3.5-0.8B (WSP 编辑后)</strong></td>
-<td style="text-align:left">开源极小参数模型 (0.8B)</td>
-<td style="text-align:left"><strong>48.1%</strong></td>
-<td style="text-align:left">仅修改 0.016% 权重，疏通思维死循环</td>
-</tr>
-<tr>
-<td style="text-align:left">Qwen3.5-0.8B (编辑前基线)</td>
-<td style="text-align:left">开源极小参数模型 (0.8B)</td>
-<td style="text-align:left">7.9%</td>
-<td style="text-align:left">受制于 93% 的 32k 思维死循环</td>
-</tr>
-<tr>
-<td style="text-align:left">Gemma 3 270M (最优编辑后)</td>
-<td style="text-align:left">开源微型参数模型 (0.27B)</td>
-<td style="text-align:left">7.0%</td>
-<td style="text-align:left">阴性对照：无死循环，编辑无法注入知识</td>
-</tr>
-</tbody>
-</table>
 <p>在主流前沿大模型普遍利用强化学习（RL）将 MATH-500 测试集打穿（普遍堆聚在 96%~99.4%）的行业背景下，48.1% 距离实用化的严谨数学推理仍有显著差距。该成果的工程价值，在于以极低的算力成本，将一个原本因软件死循环处于崩溃不可用状态的微型端侧模型，拉回到了基础可用线。</p>
 <h2 id="五理性审视营销破圈与背后的工程本质">五、理性审视：营销破圈与背后的工程本质</h2>
 <p>综合审视这篇研究与测试数据，其对外传播表现出鲜明的营销破圈特征。“7.9% 到 48.1% 的 6 倍暴涨”、“大模型原生直接重写神经网络大脑”这类叙事，精准击中了技术圈对“AI 自我进化”的想象，在社交媒体上取得了极佳的破圈效果。</p>
