@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-02T12:00:00+08:00","datePublished":"2026-11-02T12:00:00+08:00","description":"为什么熊市抢高息、牛市追成长？基于 Gormsen (2021) 股息期货与现金流久期解耦，量化揭示繁荣期向下倾斜 vs. 衰退期向上倾斜的 9% 跨周期期限溢价反转，解析双因子机制并指导跨周期资产配置。","headline":"红利与宏观择时（二）：股权期限结构与反周期配置","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 股权期限结构, 股息期货, 资产配置, 现金流久期","mainEntityOfPage":{"@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"WebPage"},"name":"红利与宏观择时（二）：股权期限结构与反周期配置","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","wordCount":609}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-02T12:00:00+08:00","datePublished":"2026-11-02T12:00:00+08:00","description":"为什么熊市抢高息、牛市追成长？基于 Gormsen (2021) 股息期货与现金流久期解耦，量化揭示繁荣期向下倾斜 vs. 衰退期向上倾斜的 9% 跨周期期限溢价反转，解析双因子机制并指导跨周期资产配置。","headline":"红利与宏观择时（二）：股权期限结构与反周期配置","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 股权期限结构, 股息期货, 资产配置, 现金流久期","mainEntityOfPage":{"@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"WebPage"},"name":"红利与宏观择时（二）：股权期限结构与反周期配置","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","wordCount":636}</script>
 </head>
 
   
@@ -307,6 +307,17 @@ if (!doNotTrack) {
 <li><strong>状态变量 $x_t$（贴现率风险的市场定价）</strong>：
 $x_t$ 反映全市场的风险厌恶与贴现率溢价水平。在繁荣期，市场风险偏好旺盛，$x_t$ 处于低位，现金流风险 $\lambda_d(n)$ 主导定价，期限结构向下倾斜；在衰退期，市场避险情绪升温，$x_t$ 脉冲式暴涨，贴现率风险溢价 $\lambda_{x,t}(n)$ 快速膨胀并主导市场，驱动期限结构向上倾斜。</li>
 </ul>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/0aa26c76a029e5b3.webp" alt="Gormsen (2021) 股权期限结构与双因子反周期配置动态演示" class="lazyload"><figcaption class="image-caption">Gormsen (2021) 股权期限结构与双因子反周期配置动态演示</figcaption></figure></p>
+<blockquote>
+<p>[!NOTE]
+<strong>股权期限结构双因子机制与周期反转（Equity Term Structure Dynamics）</strong>：</p>
+<ul>
+<li><strong>繁荣期（低 D/P）</strong>：市场风险偏好旺盛，现金流风险 $\lambda_d(n)$ 主导定价，期限结构显著向下倾斜（短端 10.2% vs 长端 6.1%），持有短久期红利获取更高确定性票息。</li>
+<li><strong>衰退期（高 D/P）</strong>：市场避险情绪升温导致贴现率溢价 $x_t$ 脉冲暴涨，长久期资产对贴现率敏感度极高，贴现率风险 $\lambda_{x,t}(n)$ 主导定价，曲线平滑反转为陡峭向上倾斜（短端 5.8% vs 长端 10.9%）。</li>
+<li><strong>跨周期利差摆动</strong>：从繁荣走向衰退，长期资产相对于短期资产的超额利差摆动整整 <strong>9.2 个百分点</strong>。</li>
+<li><strong>资产配置指导</strong>：经济过热阶段重仓短久期红利资产（P1），危机深谷绝望期则应逆势切换配置长久期科技成长资产（P5）以获取远期估值修复的超级弹性。</li>
+</ul>
+</blockquote>
 <hr>
 <h2 id="四股票截面的现金流久期分层实证">四、股票截面的现金流久期分层实证</h2>
 <p>股息期货合约主要挂钩指数标的。在股票截面选股中，可以将该框架映射到股票的<strong>现金流久期（Cash Flow Duration）</strong>：</p>

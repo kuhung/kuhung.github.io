@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-01T19:00:00+08:00","datePublished":"2026-11-01T19:00:00+08:00","description":"平时看红利资产或大盘估值，静态股息率高低到底反映了什么？基于 Campbell \u0026 Shiller 现值线性化方程与 VAR 状态空间解耦，实测标普 500 指数 152 年长周期与中证红利资产 16 年全量分红时序，量化揭示宏观利率对估值解释力不足 17%、过剩波动与避险贴现率挤压机制，并诊断当下红利资产的弹性衰减与配置切换。","headline":"红利与宏观择时（一）：红利资产的定价本质与现值解耦","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 现值分解, Campbell-Shiller, 资产配置, 中证红利","mainEntityOfPage":{"@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"WebPage"},"name":"红利与宏观择时（一）：红利资产的定价本质与现值解耦","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","wordCount":637}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-01T19:00:00+08:00","datePublished":"2026-11-01T19:00:00+08:00","description":"平时看红利资产或大盘估值，静态股息率高低到底反映了什么？基于 Campbell \u0026 Shiller 现值线性化方程与 VAR 状态空间解耦，实测标普 500 指数 152 年长周期与中证红利资产 16 年全量分红时序，量化揭示宏观利率对估值解释力不足 17%、过剩波动与避险贴现率挤压机制，并诊断当下红利资产的弹性衰减与配置切换。","headline":"红利与宏观择时（一）：红利资产的定价本质与现值解耦","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 现值分解, Campbell-Shiller, 资产配置, 中证红利","mainEntityOfPage":{"@id":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","@type":"WebPage"},"name":"红利与宏观择时（一）：红利资产的定价本质与现值解耦","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/","wordCount":649}</script>
 </head>
 
   
@@ -267,6 +267,17 @@ if (!doNotTrack) {
 <li><strong>$\rho \in (0, 1)$</strong>：折现衰减参数，由历史平均股息率决定，美股长周期通常在 $0.94$ 左右。$h$ 为线性化常数项，中心化后消除。</li>
 </ul>
 <p>股息率的变动在数学上必然归因于未来分红增长预期或未来贴现率预期的调整。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/385fc252c93f3936.webp" alt="Campbell-Shiller 现值解耦动态天平机制演示" class="lazyload"><figcaption class="image-caption">Campbell-Shiller 现值解耦动态天平机制演示</figcaption></figure></p>
+<blockquote>
+<p>[!NOTE]
+<strong>现值解耦与动态天平机制（Campbell-Shiller Balance）</strong>：</p>
+<ul>
+<li><strong>基准平衡态</strong>：在历史中枢稳态（如 3.8%），贴现率要求与分红增长预期相互对冲平衡。</li>
+<li><strong>估值透支期（泡沫顶峰）</strong>：贴现率被情绪过度压缩，天平剧烈失衡，驱动对数股息率跌至 1.2% 历史低位，产生显著的估值过剩波动。</li>
+<li><strong>深度回调期（避险高息）</strong>：贴现率要求攀升推升左侧砝码，股息率被动冲高至 6.5%，蕴含分红下调预期与估值安全垫。</li>
+<li><strong>VAR 解耦启示</strong>：企业基本面理性分红预期仅能解释约四成的估值波动，其余六成均由贴现率预期与情绪过度反应主导。</li>
+</ul>
+</blockquote>
 <hr>
 <h2 id="二用-var-状态空间提取未来预期">二、用 VAR 状态空间提取未来预期</h2>
 <p>未来分红与贴现率不可直接观测，学术界常用向量自回归（VAR）模型进行预测。将对数股息率、分红增长率与实际利率构成状态向量，估计转移矩阵 $A$，推算无穷期期望值：</p>
