@@ -8,13 +8,13 @@
     <language>zh-CN</language>
     <lastBuildDate>Sun, 01 Nov 2026 19:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/campbell-shiller/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>红利资产的定价本质：股息价格比与现值解耦</title>
+      <title>红利与宏观择时（一）：红利资产的定价本质与现值解耦</title>
       <link>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</link>
       <pubDate>Sun, 01 Nov 2026 19:00:00 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</guid>
       <description>这是「红利与宏观择时」深度研报系列的第一篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
-篇章一：现值解耦（本篇） ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 平时看红利资产或大盘估值，最常用的指标是股息率（D/P，分红除以股价）。但在实际跟踪时，常遇到两类情况：
+篇章一：现值解耦（本篇） ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的极端风险：熊市反弹的期权化逼空与自适应控仓 平时看红利资产或大盘估值，最常用的指标是股息率（D/P，分红除以股价）。但在实际跟踪时，常遇到两类情况：
 第一种情况在市场大跌之后。股息率被动推升到 6% 甚至 8%，这属于估值跌出的安全垫，还是市场提前预警分红下调？
 第二种情况在行情高位。比如标普 500 股息率被压低到 1.2% 附近，是因为企业未来分红增长预期上修推高了股价，还是折现率被情绪过度压缩？
 静态股息率无法区分这两种驱动。Campbell 和 Shiller 在 1988 年提出的现值解耦模型，将股息率分解为分红预期与贴现率预期两个独立分量。

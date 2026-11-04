@@ -8,13 +8,13 @@
     <language>zh-CN</language>
     <lastBuildDate>Mon, 02 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%82%A1%E6%9D%83%E6%9C%9F%E9%99%90%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>红利的宏观期限结构：股息剥离与反周期配置</title>
+      <title>红利与宏观择时（二）：股权期限结构与反周期配置</title>
       <link>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</link>
       <pubDate>Mon, 02 Nov 2026 12:00:00 +0800</pubDate>
       
       <guid>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</guid>
       <description>这是「红利与宏观择时」深度研报系列的第二篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
-篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构（本篇） ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 平时跟踪红利资产或成长风格，常能观察到一种风格分化：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构（本篇） ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的极端风险：熊市反弹的期权化逼空与自适应控仓 平时跟踪红利资产或成长风格，常能观察到一种风格分化：
 在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险； 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。
 上一篇通过 Campbell-Shiller 现值解耦揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截面资产的配置疑问：为什么不同股票在繁荣期与衰退期的收益差异会发生方向性逆转？
 把整只股票视为单一现金流整体，容易忽略现金流到达时间的差异。正如国债市场拥有 1 年期、5 年期和 10 年期的收益率曲线，股票未来派发的股息同样可以通过股息期货（Dividend Futures）或期权隐含股息切片为不同期限的索取权。
