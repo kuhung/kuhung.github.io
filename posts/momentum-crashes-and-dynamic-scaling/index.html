@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="kuhung">
+  
+  
+  <meta name="description" content="为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel &amp; Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
+                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":866}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">kuhung</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-04 itemprop="datePublished">November 4, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一动量崩溃的微观根源输家公司的期权化暴击">一、动量崩溃的微观根源：输家公司的期权化暴击</a>
+      <ul>
+        <li><a href="#1-困境公司的期权化与资产负债表机制">1. 困境公司的期权化与资产负债表机制</a></li>
+        <li><a href="#2-卖空机制的数学非对称性与向上崩盘crash-up">2. 卖空机制的数学非对称性与向上崩盘（Crash Up）</a></li>
+      </ul>
+    </li>
+    <li><a href="#二daniel--moskowitz-自适应动态缩放模型">二、Daniel &amp; Moskowitz 自适应动态缩放模型</a>
+      <ul>
+        <li><a href="#1-条件均值预测mu_t-1">1. 条件均值预测（$\mu_{t-1}$）</a></li>
+        <li><a href="#2-条件方差预测sigma2_t-1">2. 条件方差预测（$\sigma^2_{t-1}$）</a></li>
+        <li><a href="#3-理论公式与实盘约束的对齐">3. 理论公式与实盘约束的对齐</a></li>
+      </ul>
+    </li>
+    <li><a href="#三百年全样本与纯样本外实证检验">三、百年全样本与纯样本外实证检验</a>
+      <ul>
+        <li><a href="#1-panel-a历史极端崩盘事件解剖">1. Panel A：历史极端崩盘事件解剖</a></li>
+        <li><a href="#2-panel-b92-年纯样本外扩展窗口回测19342026">2. Panel B：92 年纯样本外扩展窗口回测（1934–2026）</a></li>
+      </ul>
+    </li>
+    <li><a href="#四手握红利底仓如何落地应对">四、手握红利底仓，如何落地应对？</a>
+      <ul>
+        <li><a href="#1-牛市与常态期放心用动量捕捉进攻超额">1. 牛市与常态期：放心用动量捕捉进攻超额</a></li>
+        <li><a href="#2-危机高波期建立状态机过滤器动量进攻端清零">2. 危机高波期：建立状态机过滤器，动量进攻端清零</a></li>
+        <li><a href="#3-底部大反弹看清逼空本质避免踏空焦虑与调仓挨打">3. 底部大反弹：看清逼空本质，避免踏空焦虑与调仓挨打</a></li>
+        <li><a href="#4-2026-最新切片实证美股科技动量回撤与红利防守映射">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
+      </ul>
+    </li>
+    <li><a href="#附录自适应动态动量缩放算法实现">附录：自适应动态动量缩放算法实现</a></li>
+    <li><a href="#参考文献与公开数据源">参考文献与公开数据源</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>这是「红利与宏观择时」深度研报系列的第三篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：</p>
+<ul>
+<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：现值解耦</a> ｜ 拆解股息率：分红预期 vs. 贴现率预期</li>
+<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：期限结构</a> ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长</li>
+<li><strong>篇章三：动量攻防（本篇）</strong> ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓</li>
+</ul>
+</blockquote>
+<p>在实际构建量化投资组合时，单纯持有高股息红利资产往往被视为纯防守配置。为了在行情上涨时获取进攻弹性，多资产量化投资者最常用的搭配是“红利（价值防守）+ 动量（趋势进攻）”的杠铃组合：用短久期高股息资产赚取确定性的股息现金流，用动量策略捕捉大盘上行趋势；或者在红利资产池内部运用动量指标做强弱轮动。</p>
+<p>在学术界经典文献（从 Jegadeesh &amp; Titman 到 Daniel &amp; Moskowitz）与海外主流对冲基金里，<strong>动量策略的标准原型是多空对冲组合（Long-Short Portfolio，简称 WML，即 Winner Minus Loser）</strong>：同时做多过去 12 个月涨幅最好的“赢家”，并做空过去 12 个月表现最差的“输家”。通过多空对冲剥离大盘贝塔（Beta），提取纯粹的动量超额收益。</p>
+<p>在绝大多数平稳行情、顺周期牛市、甚至大盘温和阴跌期，这套组合都表现出色。然而，经历过完整多空周期的投资者，都会在特定的市场拐点遭遇过一次净值暴击：</p>
+<p>当市场经历了一轮持续一两年的深度下跌，全市场估值跌入冰点、悲观情绪达到极点之后，大盘突然迎来一波暴力大反弹。</p>
+<p>很多投资者的直觉是：反弹来了，进攻端终于可以放手赚钱。但真实账户发生的却是截然相反的结果：动量策略端突然遭遇断崖式的净值崩溃，单月亏损可达 30%、40% 甚至更高。红利端涨幅温和，而动量进攻端却直接把整个组合的年化超额击穿。</p>
+<p>为什么大盘强劲上涨，动量策略反而会发生惨烈亏损？很多人直觉上以为“动量崩溃”是指买入的强势股不涨了或者暴跌了。在专业量化语境中，这种理解并不准确。买入标的正常回调 10% 到 20% 只属于常规的策略回撤。真正的动量崩溃，本质上是多空对冲结构在极端转折点遭遇的毁灭性向上挤压。</p>
+<hr>
+<h2 id="一动量崩溃的微观根源输家公司的期权化暴击">一、动量崩溃的微观根源：输家公司的期权化暴击</h2>
+<p>要理解动量崩溃，首先要厘清一个反直觉的事实：<strong>在牛市转熊市、大盘单边暴跌的初期，动量策略其实没有崩溃，甚至往往还在赚钱。</strong></p>
+<p>比如 2008 年次贷危机前 10 个月，标普 500 指数大跌 -40%，但动量策略累计收益却接近 +15%。原因在于牛转熊时，动量做多的赢家虽然下跌了 15%，但做空的输家跌得更凶（大跌 35%），多空对冲之后策略依然录得正收益。</p>
+<p>真正的动量崩溃，集中爆发于另一个完全相反的特定温床。肯特·丹尼尔与托比亚斯·莫斯科维茨（Kent Daniel &amp; Tobias Moskowitz, 2016）在《金融经济学期刊》（JFE）发表的研究指出，动量崩溃的爆发必须同时满足三个宏观条件：</p>
+<ol>
+<li><strong>熊市土壤（Bear Market State）</strong>：市场在过去 24 个月累计收益为负，处于深度下跌或漫长熊市的阴影中。</li>
+<li><strong>高波动环境（High Volatility State）</strong>：市场前瞻已实现波动率处于历史高位，避险情绪紧绷。</li>
+<li><strong>触发机制（Market Rebound）</strong>：在极度恐慌底部，大盘发生快速、剧烈的向上脉冲反弹。</li>
+</ol>
+<p>为什么大盘强劲反弹会触发动量策略的巨额亏损？答案出在动量策略的做空端：<strong>在熊市底部做空输家组合（Past Losers），在数学和物理性质上转化为了做空市场的深度虚值看涨期权（Written Call Options）</strong>。</p>
+<h3 id="1-困境公司的期权化与资产负债表机制">1. 困境公司的期权化与资产负债表机制</h3>
+<p>根据莫顿（Merton, 1974）经典结构化信用模型，公司股权本质上是一份以公司全部资产为标的、以债务面值为行权价的看涨期权。当公司资产价值超出负债时，剩余净资产归股东所有：</p>
+<p>假设一家公司总资产原本值 100 亿，欠了 80 亿债务。在经历了两年的漫长熊市后，行业萧条导致总资产缩水到了 70 亿，但债务依然是 80 亿。</p>
+<p>按照账面价值，这家公司资不抵债，随时面临破产清算。但现代证券制度赋予了股东<strong>有限责任制（Limited Liability）</strong>：无论公司亏损多严重，股东最多把股价跌归零，不需要拿个人财产去还债。因此，其股价虽然跌掉了 90%、跌成了几毛钱的仙股（市值只剩 1 亿），但只要公司还没正式退市清算，这份股权就拥有极高的期权价值：</p>
+<ul>
+<li><strong>如果大盘继续下跌</strong>：公司总资产进一步恶化到 50 亿，股价跌无可跌，最多跌到 0 块，跌幅上限被锁定。</li>
+<li><strong>如果大盘突然反弹</strong>：只要宏观政策或行业出现一丝生机，公司总资产恢复到 90 亿，还掉 80 亿负债后，属于股东的净资产立刻从 0 飙升到 10 亿。股价瞬间从 1 亿暴涨至 10 亿，涨幅可达 <strong>+900%</strong>。</li>
+</ul>
+<p>在经历了漫长熊市后，动量策略的“输家组”里充斥着这类财务杠杆极高、负债压顶但跌无可跌的困境公司。它们在平时对大盘的弹性（Beta）只有 1.0 左右；但一旦进入熊市高波动状态，虚值期权的高杠杆弹性全面激活，它们对大盘上行的敏感度（Up-market Beta）会飙升到 3 到 5。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/65124c91e7be7e89.webp" alt="Merton困境公司期权化与动量向上崩盘动态演示" class="lazyload"><figcaption class="image-caption">Merton困境公司期权化与动量向上崩盘动态演示</figcaption></figure></p>
+<h3 id="2-卖空机制的数学非对称性与向上崩盘crash-up">2. 卖空机制的数学非对称性与向上崩盘（Crash Up）</h3>
+<p>动量策略的规则是机械的：只要过去 12 个月跌幅最大，就把它们借出来做空。</p>
+<p>这就带来了严重的数学劣势：</p>
+<ul>
+<li><strong>做多的风险天然有底</strong>：买入一只 100 元的股票，最差跌到 0 元，最大亏损被严格限制在 -100%。</li>
+<li><strong>做空的风险理论无顶</strong>：做空一只 10 元的股票，如果它跌到 0 元，最多赚 +100%；但如果它因为困境反转涨到 30 元，做空亏损是 -200%；涨到 50 元，做空亏损是 -400%。</li>
+</ul>
+<p>动量策略将这种“亏损无上限”的做空机制，机械施加在了一群“跌无可跌、随时可能报复性暴涨数倍的期权化困境股”身上。</p>
+<p>当大盘在极度恐慌中突然暴力反弹时：</p>
+<ul>
+<li>动量多头（前期抗跌的优质蓝筹或高股息资产）估值没有过度折价，缺乏期权弹性，反弹涨幅温和（例如 2009 年 3 月反弹大盘涨 26%，赢家组仅涨 8%）；</li>
+<li>动量空头（输家组）却在逼空回补与投机资金涌入下爆发式暴涨 160% 甚至 230%。</li>
+</ul>
+<p>空头端的巨额爆仓亏损，瞬间吞噬了多头收益并击穿整个组合，造成了动量策略单月暴跌 40% 到 70% 的**“向上崩盘（Crash Up）”**。动量崩溃防范的，正是这种做空端被期权化反噬的致命风险。</p>
+<hr>
+<h2 id="二daniel--moskowitz-自适应动态缩放模型">二、Daniel &amp; Moskowitz 自适应动态缩放模型</h2>
+<p>既然动量崩溃集中爆发在“长周期熊市 + 市场高波动 + 大盘强弹”这一特定温床，那么动量崩溃在事前就具备可预测性。</p>
+<p>丹尼尔与莫斯科维茨基于马科维茨（Markowitz, 1952）跨期组合优化框架，推导出了最大化无条件夏普比率的最优动态权重方程：</p>
+<p>$$w^*_{t-1} = \left(\frac{1}{2\lambda}\right) \frac{\mu_{t-1}}{\sigma^2_{t-1}}$$</p>
+<p>公式中各项的投资含义：</p>
+<ul>
+<li><strong>$w^*_{t-1}$</strong>：在 $t-1$ 月末决定、用于 $t$ 月份动量策略的组合敞口权重。</li>
+<li><strong>$\lambda$</strong>：投资者的固定风险厌恶参数，用于控制组合的无条件目标波动率。</li>
+<li><strong>$\mu_{t-1} \equiv \mathbb{E}_{t-1}[R_{WML, t}]$</strong>：动量策略在下一期的<strong>条件预期收益率</strong>。</li>
+<li><strong>$\sigma^2_{t-1} \equiv \mathbb{E}_{t-1}[\sigma^2_{WML, t}]$</strong>：动量策略在下一期的<strong>条件预测方差</strong>。</li>
+</ul>
+<p>为了在事前信息集内获得无未来函数的条件预期值，模型分为两个预测模块：</p>
+<h3 id="1-条件均值预测mu_t-1">1. 条件均值预测（$\mu_{t-1}$）</h3>
+<p>论文构造了两个宏观状态指标：</p>
+<ul>
+<li><strong>熊市指示变量 $I_{B, t-1}$</strong>：若过去 24 个月市场累计收益为负，取值为 1，否则为 0。</li>
+<li><strong>市场波动率 $\hat{\sigma}^2_{m, t-1}$</strong>：截至 $t-1$ 月末，过去 126 个交易日（约半年）的市场日度已实现方差年化值。</li>
+</ul>
+<p>以动量多空收益对交互项 $I_{B, t-1} \cdot \hat{\sigma}^2_{m, t-1}$ 进行预测回归：</p>
+<p>$$\tilde{R}_{WML, t} = \gamma_0 + \gamma_{int} \cdot (I_{B, t-1} \cdot \hat{\sigma}^2_{m, t-1}) + \tilde{\epsilon}_t$$</p>
+<p>在全样本实证中，交互项系数 $\hat{\gamma}_{int}$ 显著为负（$t = -5.64$）。这意味着只要市场处于熊市且波动率放大，动量策略的预期超额收益就会急剧下滑。当市场波动率超过临界阈值时，条件均值 $\mu_{t-1}$ 会直接转为负值。</p>
+<h3 id="2-条件方差预测sigma2_t-1">2. 条件方差预测（$\sigma^2_{t-1}$）</h3>
+<p>动量策略自身的波动率具有强自相关性与波动聚集特征。通过过去 126 个交易日已实现方差与非对称 GARCH（GJR-GARCH）模型进行线性组合，可精确前瞻动量策略近期的波动状态。</p>
+<h3 id="3-理论公式与实盘约束的对齐">3. 理论公式与实盘约束的对齐</h3>
+<p>在纯数学推导下，当 $\mu_{t-1} &lt; 0$ 时，公式给出的最优权重 $w^*_{t-1}$ 会变成负数，代表反向做多输家、做空赢家。但在公募基金、ETF 轮动或纯多头资产配置中，做空动量并不具备操作条件。</p>
+<p>在实盘工程中，通常引入<strong>零下限截断约束</strong>：</p>
+<p>$$w^*_{t-1, \text{floor}} = \max\left(0, \left(\frac{1}{2\lambda}\right) \frac{\mu_{t-1}}{\sigma^2_{t-1}}\right)$$</p>
+<p>当模型识别到条件均值转负时，自动将动量策略权重降至零。实证检验显示，无论是否允许负权重，只要在危险窗口提前把多头动量敞口清零，就能规避绝大部分极端下行冲击。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/7761fa6ced5b813d.webp" alt="自适应动量权重动态缩放与风控滑块演示" class="lazyload"><figcaption class="image-caption">自适应动量权重动态缩放与风控滑块演示</figcaption></figure></p>
+<hr>
+<h2 id="三百年全样本与纯样本外实证检验">三、百年全样本与纯样本外实证检验</h2>
+<p>调取 Kenneth French 官方数据中心 1927 至 2026 年的日度与月度因子序列，我们对动量崩溃与动态缩放模型进行了全周期复现。</p>
+<p>为了确保回测严格反映实际投资体验，我们采用**逐期扩展窗口（Expanding Window）**进行纯样本外测试：在每一个月末决策点，仅使用截至当期历史可得的全部数据拟合预测模型，计算下一期权重，绝不包含任何未来信息。全部策略均平准化至 19% 的年化目标波动率（与标普 500 长期波动对齐）。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/a2fe59c0a89f67e3.webp" alt="动量崩溃机制与自适应动态缩放实证对比" class="lazyload"><figcaption class="image-caption">动量崩溃机制与自适应动态缩放实证对比</figcaption></figure></p>
+<p>上图呈现了动量崩溃的微观数据印记与 92 年跨周期的真实实证结果：</p>
+<h3 id="1-panel-a历史极端崩盘事件解剖">1. Panel A：历史极端崩盘事件解剖</h3>
+<p>左图展示了历史上几次典型的动量崩溃窗口：</p>
+<ul>
+<li><strong>1932 年 7 月至 8 月（大萧条见底）</strong>：大盘在连续大跌后报复性暴涨 82.2%，赢家组合仅上涨 32.1%，而前期跌幅最惨烈的输家组合暴涨 232.0%，导致静态动量策略连续两月累计重挫 <strong>-74.4%</strong>。</li>
+<li><strong>1938 年 6 月（经济衰退后反弹）</strong>：大盘单月上涨 23.9%，输家组合暴涨 78.5%，静态动量单月亏损 <strong>-24.9%</strong>。</li>
+<li><strong>2009 年 3 月至 5 月（次贷危机见底反弹）</strong>：美联储开启量化宽松，标普 500 指数自底部反弹 26.1%，前期抗跌的赢家蓝筹仅涨 8.3%，而垃圾困境股组成的输家组合暴涨 163.0%，静态动量策略在 3 月与 4 月分别暴跌 -11.8% 与 -34.4%，三个月累计亏损 <strong>-45.5%</strong>。</li>
+<li><strong>2023 年 1 月（通胀放缓与加息缓和）</strong>：大盘单月反弹 7.0%，前期跌幅巨大的成长及困境股票反弹 31.8%，静态动量单月下跌 <strong>-16.2%</strong>。</li>
+<li><strong>2026 年 10 月至 11 月（科技动量高位回撤与红利逆势走强）</strong>：美股半导体与科技动量板块在 10 月初见顶后单月回撤 13% 到 19%，年化波动率升至 30% 到 43%；同期以 SCHD、VYM 为代表的短久期高股息资产逆势上涨 5% 到 9%，最大回撤控制在 1.5% 以内。多头动量回撤与红利防守呈现出鲜明的分化。</li>
+</ul>
+<p>数据证实：每一次动量策略的严重崩盘，无一例外都发生在市场深度下跌之后的大盘反弹初期，且均伴随着做空输家端数倍于大盘的期权化报复暴涨。</p>
+<h3 id="2-panel-b92-年纯样本外扩展窗口回测19342026">2. Panel B：92 年纯样本外扩展窗口回测（1934–2026）</h3>
+<p>右图对比了三套策略在平准化 19% 目标波动率下的长期表现：</p>
+<table>
+<thead>
+<tr>
+<th>策略版本</th>
+<th>年化收益率</th>
+<th>年化波动率</th>
+<th>夏普比率（Sharpe）</th>
+<th>历史最大回撤</th>
+<th>收益分布偏度（Skewness）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基准静态动量（Static WML）</strong></td>
+<td>9.75%</td>
+<td>19.00%</td>
+<td>0.34</td>
+<td>-70.74%</td>
+<td>-1.58（显著负偏态）</td>
+</tr>
+<tr>
+<td><strong>恒定波动率缩放（CVOL）</strong></td>
+<td>16.67%</td>
+<td>19.00%</td>
+<td>0.70</td>
+<td>-42.71%</td>
+<td>-0.26（负偏态明显收窄）</td>
+</tr>
+<tr>
+<td><strong>自适应动态缩放（Dynamic）</strong></td>
+<td>18.55%</td>
+<td>19.00%</td>
+<td><strong>0.80</strong></td>
+<td><strong>-31.31%</strong></td>
+<td><strong>+0.83（转为正偏态）</strong></td>
+</tr>
+</tbody>
+</table>
+<p>从实证数据可以得出三项明确事实：</p>
+<p>第一，<strong>夏普比率翻倍提升</strong>。静态动量长期看似能赚钱，但由于负偏态严重，收益率不断被突发的大崩盘吞噬，全样本夏普比率仅有 0.34。单纯依靠波动率倒数调整的恒定波动率策略（CVOL）将夏普提升至 0.70，而加入条件均值预测的自适应动态策略进一步将夏普推升至 0.80。</p>
+<p>第二，<strong>最大回撤显著收窄</strong>。静态动量在 1938 年回撤达 -58%、2009 年次贷危机期间回撤达 -46.3%，全周期最大回撤深达 -70.74%。自适应动态缩放策略在 1938 年与 2009 年前夕，由于检测到熊市高波动信号，预测均值 $\mu_{t-1}$ 提前转为负值，算法自动将动量仓位压缩至接近零，完美规避了两次大崩盘，将组合全周期最大回撤压缩到了 -31.31%。</p>
+<p>第三，<strong>收益分布性质逆转</strong>。自适应动态缩放将原本 -1.58 的极端负偏态，彻底逆转为了 +0.83 的正偏态。这表明该策略从根本上消除了“平时赚小钱、关键时刻被极端黑天鹅吞噬”的脆弱性。</p>
+<hr>
+<h2 id="四手握红利底仓如何落地应对">四、手握红利底仓，如何落地应对？</h2>
+<p>很多做 A 股、公募基金或 ETF 配置的投资者可能会问：我不开融券、不做空头端，动量崩溃是不是就和我没关系了？</p>
+<p>答案是关系非常大。在纯多头体系中，动量崩溃虽然不会直接造成穿仓，但会转化为**“相对收益的断崖式跑输”<strong>以及</strong>“倒在黎明前的调仓挨打陷阱”**。</p>
+<p>结合上一篇股权期限结构与本篇动量崩溃规律，对手握红利资产、期望兼顾进攻与防守的投资者，量化落地可遵循四条规则：</p>
+<h3 id="1-牛市与常态期放心用动量捕捉进攻超额">1. 牛市与常态期：放心用动量捕捉进攻超额</h3>
+<p>在过去 24 个月市场累计收益为正的健康牛市或震荡市中，动量策略完全不会发生动量崩溃。</p>
+<p>原因在于牛市里的“输家”只是涨得慢、业绩平庸的成熟企业（例如大盘涨 40%，银行或公路只涨 5%），它们资产负债表健康、负债率可控，没有濒临破产的超高杠杆，不具备期权化爆发暴涨的能力。同时，赢家资产在牛市中享有增量资金持续抱团的趋势惯性。</p>
+<p>因此，在平稳期可以放心用动量做进攻轮动，用动量因子在红利品种内部挑选领涨龙头。</p>
+<h3 id="2-危机高波期建立状态机过滤器动量进攻端清零">2. 危机高波期：建立状态机过滤器，动量进攻端清零</h3>
+<p>当市场跌入“熊市长周期（24 个月累计收益翻负）+ 市场波动率飙升”的恐慌泥潭时，系统必须触发最高级别警报：</p>
+<ul>
+<li><strong>严禁盲目追涨抗跌股</strong>：在市场底部，很多投资者因为恐惧，会把所有资金都换成前期最抗跌的“抱团强势股”。但正如前文实证所示，此时做多抗跌赢家的前瞻收益非常微弱。</li>
+<li><strong>动量进攻敞口归零</strong>：将多资产配置中的动量卫星仓位、或行业动量轮动权重压缩至零。</li>
+<li><strong>以短久期确定性分红为盾</strong>：将组合主力资金紧缩在低估值、短久期、具备可持续分红能力的成熟红利资产中，赚取稳健的股息现金流，安度市场流动性出清的最差阶段。</li>
+</ul>
+<h3 id="3-底部大反弹看清逼空本质避免踏空焦虑与调仓挨打">3. 底部大反弹：看清逼空本质，避免踏空焦虑与调仓挨打</h3>
+<p>大盘一旦在极度悲观中迎来第一波暴力反弹，纯多头投资者往往会面临巨大的心理考验：</p>
+<ul>
+<li><strong>警惕结构性跑输焦虑</strong>：反弹前两周，前期抗跌的优质红利资产往往涨幅温和（如仅上涨 5%），而全市场前期跌得最惨的超跌垃圾股、小微盘股却连续大面积涨停（单月反弹 50% 到 100%）。这正是空头期权化逼空脉冲的物理释放，绝非垃圾股基本面发生了质变。</li>
+<li><strong>戒除追涨杀跌冲动</strong>：很多投资者在长达两年的漫长熊市中守住了红利底仓，却在反弹中途受不了红利的滞涨，割肉卖掉低估值红利，追进已经翻倍的超跌困境股。结果期权逼空脉冲一结束，困境股重归基本面阴跌，投资者刚好接盘在山顶，把熊市辛苦积累的防守成果全额吐回。</li>
+</ul>
+<p>正如第二篇所指出的，在极端衰退深谷，股权期限溢价会发生反周期反转，长端资产的弹性会跑赢短久期资产。持有红利资产的投资者既无需在反弹初期恐慌性卖出红利去追垃圾股，也绝对不可在熊市底部逆向做空超跌品种。</p>
+<h3 id="4-2026-最新切片实证美股科技动量回撤与红利防守映射">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</h3>
+<p>在经历以半导体和大型科技股驱动的上涨行情后，2026 年 10 月美股盘面呈现出明显的风格切换。前期领涨全市场的高动量科技股在 10 月上旬见顶后快速回撤，年化波动率大幅抬升；以高股息、低估值为代表的短久期资产保持平稳，逆势走高。国内市场在 10 月初节后脉冲过后，前期强势的算力成长股与高股息红利之间也呈现了类似的风格分化。</p>
+<p>调取交易所公开前复权日度行情与富途 OpenAPI，2026 年 9 月 30 日至 2026 年 11 月 4 日期间美股主要资产的真实走势映射如下：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/8d27f516ec48182c.webp" alt="2026美股科技动量回撤与短久期红利防守映射研报图" class="lazyload"><figcaption class="image-caption">2026美股科技动量回撤与短久期红利防守映射研报图</figcaption></figure></p>
+<p>图表展示了两类资产在 10 月份截然不同的收益与风险特征：</p>
+<p>左侧 Panel A 对比了各标的自 9 月末以来的累计收益率与自 10 月高点的最大回撤幅度。半导体（SMH）、动量基准（MTUM）与科技行业（XLK）高位回撤达到 13% 到 19%，区间年化波动率暴冲至 30% 到 43%；以美股红利（SCHD）、公用事业（XLU）和大盘高股息（VYM）为代表的短久期资产逆势录得 5% 到 10% 的正收益，最大回撤控制在 1.5% 以内。</p>
+<p>右侧 Panel B 呈现了日度财富净值的发散轨迹。10 月 6 日科技股冲顶后，高动量资产出现单边回落，避险资金明显回流短久期红利品种，两类资产在短短一个月内形成了 15% 到 24% 的相对收益剪刀差。</p>
+<p>从图表映射可以推导出三项关键的定价与配置逻辑：</p>
+<p>第一，<strong>两类资产存在天然的现金流久期错配</strong>。
+美股科技成长股的大部分企业价值依赖 10 到 20 年后的远期现金流预期，久期普遍在 20 年以上。在估值处于历史中高位时，长端贴现率一旦出现轻微上修，科技股承担的估值折损会被杠杆式放大。高股息红利标的（如 SCHD 持仓中成熟的工业、金融与必需消费龙头，或 XLU 挂钩的公用事业）大部分价值来自近端派现，当前股息率在 3.5% 到 4.0% 之间，属于典型的短久期资产。当市场对远端科技成长产生分歧时，资金往往回流确定性分红资产，促成两类资产 15% 到 24% 的收益分化。</p>
+<p>第二，<strong>套用篇章三公式诊断当前市场环境</strong>。
+根据 Daniel &amp; Moskowitz 模型，当前宏观与微观指标的读数如下：</p>
+<ul>
+<li><strong>大盘宏观状态</strong>：标普 500 过去 24 个月累计收益依然在 +40% 左右，熊市指示变量 $I_{B, t-1} = 0$。大盘没有经历漫长深度的熊市周期，当前环境不属于 1932 年或 2009 年空头期权化暴击的动量崩溃土壤，不需要机械做空动量。</li>
+<li><strong>波动率微观状态</strong>：科技动量标的自身已实现年化波动率 $\hat{\sigma}$ 攀升至 30% 到 43%，远超投资组合常规的 16% 到 19% 目标波动率。</li>
+</ul>
+<p>第三，<strong>根据公式给出的具体配置建议</strong>。
+套用自适应波动率缩放公式：
+$$w_{t-1} = \min\left(w_{\max}, \frac{\sigma_{\text{target}}}{\hat{\sigma}_{\text{mom}, t-1}}\right)$$
+设无条件目标年化波动率为 16%：</p>
+<ul>
+<li>面对年化波动率达 42.7% 的半导体科技动量（SMH），模型计算出的仓位权重为：
+$$w_t = \frac{0.16}{0.427} \approx 0.37$$</li>
+<li>面对年化波动率 29.3% 的全市场动量（MTUM），仓位权重为：
+$$w_t = \frac{0.16}{0.293} \approx 0.55$$</li>
+</ul>
+<p>公式给出的实战应对逻辑非常明确：
+当前处于大盘平稳但科技动量高波动的震荡期。模型建议将科技动量端的持仓权重主动压缩到 0.4 到 0.6 之间，削减约四成到六成的科技动量敞口；多余资金留在年化波动仅 8% 到 12% 的高股息红利底仓（SCHD、VYM 等）中。通过波动率倒数的主动降仓，投资组合能够避开高 Beta 科技股一到两成的单边回落，同时承接高股息资产 5% 到 10% 的防守收益。</p>
+<p>那么，这些在漫长熊市中被打到残值、期权特性爆发的困境股票，在危机初期究竟经历了怎样的微观流动性踩踏？公募基金与对冲基金是如何在赎回潮中被迫折价贱卖核心资产的？</p>
+<p>下一篇，我们将从宏观资产定价深入到微观资金流，解剖<strong>机构赎回踩踏与资产贱卖冲击</strong>。</p>
+<hr>
+<h2 id="附录自适应动态动量缩放算法实现">附录：自适应动态动量缩放算法实现</h2>
+<p>核心动态缩放权重计算逻辑如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> statsmodels.api <span style="color:#66d9ef">as</span> sm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_dynamic_momentum_weights</span>(df, eval_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1934-01-01&#39;</span>, target_vol<span style="color:#f92672">=</span><span style="color:#ae81ff">0.19</span>, allow_short<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    自适应动态动量缩放算法 (Daniel &amp; Moskowitz, 2016)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    参数:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    df: 包含 [&#39;Mom&#39;, &#39;Mkt&#39;, &#39;I_B&#39;, &#39;mkt_var_126&#39;, &#39;mom_var_126&#39;] 的月度 DataFrame
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    eval_start: 纯样本外评估起始日期
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    target_vol: 目标年化波动率 (默认 19%)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allow_short: 是否允许负权重 (实盘多头建议设为 False, 即 zero-floor)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;interaction&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;I_B&#39;</span>] <span style="color:#f92672">*</span> df[<span style="color:#e6db74">&#39;mkt_var_126&#39;</span>]
+</span></span><span style="display:flex;"><span>    records <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> t_idx <span style="color:#f92672">in</span> range(len(df)):
+</span></span><span style="display:flex;"><span>        curr_dt <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>index[t_idx]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> curr_dt <span style="color:#f92672">&lt;</span> pd<span style="color:#f92672">.</span>to_datetime(eval_start):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 1. 严格使用截至 t-1 的历史信息拟合 OLS 模型 (无未来函数)</span>
+</span></span><span style="display:flex;"><span>        hist <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>iloc[:t_idx]
+</span></span><span style="display:flex;"><span>        X_hist <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(hist[<span style="color:#e6db74">&#39;interaction&#39;</span>])
+</span></span><span style="display:flex;"><span>        y_hist <span style="color:#f92672">=</span> hist[<span style="color:#e6db74">&#39;Mom&#39;</span>]
+</span></span><span style="display:flex;"><span>        model <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y_hist, X_hist)<span style="color:#f92672">.</span>fit()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 2. 预测 t 期的条件均值 mu_hat</span>
+</span></span><span style="display:flex;"><span>        x_curr <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.0</span>, df<span style="color:#f92672">.</span>iloc[t_idx][<span style="color:#e6db74">&#39;interaction&#39;</span>]])
+</span></span><span style="display:flex;"><span>        mu_hat <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(x_curr)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 3. 计算波动率倒数权重与动态权重</span>
+</span></span><span style="display:flex;"><span>        mom_var <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>iloc[t_idx][<span style="color:#e6db74">&#39;mom_var_126&#39;</span>]
+</span></span><span style="display:flex;"><span>        mom_vol <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(mom_var)
+</span></span><span style="display:flex;"><span>        w_cvol <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> mom_vol
+</span></span><span style="display:flex;"><span>        w_dyn <span style="color:#f92672">=</span> mu_hat <span style="color:#f92672">/</span> mom_var
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> allow_short:
+</span></span><span style="display:flex;"><span>            w_dyn <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.0</span>, w_dyn)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        records<span style="color:#f92672">.</span>append((curr_dt, mu_hat, w_cvol, w_dyn))
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    res_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(records, columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;date&#39;</span>, <span style="color:#e6db74">&#39;mu_hat&#39;</span>, <span style="color:#e6db74">&#39;w_cvol_raw&#39;</span>, <span style="color:#e6db74">&#39;w_dyn_raw&#39;</span>])<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;date&#39;</span>)
+</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[res_df<span style="color:#f92672">.</span>index]<span style="color:#f92672">.</span>join(res_df)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 4. 全局缩放至目标年化波动率</span>
+</span></span><span style="display:flex;"><span>    scale_static <span style="color:#f92672">=</span> target_vol <span style="color:#f92672">/</span> (out[<span style="color:#e6db74">&#39;Mom&#39;</span>]<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">12</span>))
+</span></span><span style="display:flex;"><span>    scale_cvol <span style="color:#f92672">=</span> target_vol <span style="color:#f92672">/</span> ((out[<span style="color:#e6db74">&#39;w_cvol_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>])<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">12</span>))
+</span></span><span style="display:flex;"><span>    scale_dyn <span style="color:#f92672">=</span> target_vol <span style="color:#f92672">/</span> ((out[<span style="color:#e6db74">&#39;w_dyn_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>])<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">12</span>))
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    out[<span style="color:#e6db74">&#39;Ret_Static&#39;</span>] <span style="color:#f92672">=</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>] <span style="color:#f92672">*</span> scale_static
+</span></span><span style="display:flex;"><span>    out[<span style="color:#e6db74">&#39;Ret_CVOL&#39;</span>] <span style="color:#f92672">=</span> out[<span style="color:#e6db74">&#39;w_cvol_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>] <span style="color:#f92672">*</span> scale_cvol
+</span></span><span style="display:flex;"><span>    out[<span style="color:#e6db74">&#39;Ret_Dyn&#39;</span>] <span style="color:#f92672">=</span> out[<span style="color:#e6db74">&#39;w_dyn_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>] <span style="color:#f92672">*</span> scale_dyn
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> out
+</span></span></code></pre></div><hr>
+<h2 id="参考文献与公开数据源">参考文献与公开数据源</h2>
+<ul>
+<li>Barroso, P., &amp; Santa-Clara, P. (2015). <em>Momentum has its moments</em>. Journal of Financial Economics, 116(1), 111–120.</li>
+<li>Daniel, K., &amp; Moskowitz, T. J. (2016). <em>Momentum crashes</em>. Journal of Financial Economics, 122(2), 221–247.</li>
+<li>Markowitz, H. (1952). <em>Portfolio selection</em>. The Journal of Finance, 7(1), 77–91.</li>
+<li>Merton, R. C. (1974). <em>On the pricing of corporate debt: The risk structure of interest rates</em>. The Journal of Finance, 29(2), 449–470.</li>
+<li>Kenneth R. French Data Library: <em>U.S. Research Returns Data (Momentum Factor &amp; Daily Benchmarks 1927–2026)</em>.</li>
+<li>标普道琼斯指数与纳斯达克交易所：公开日度前复权历史行情数据。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>kuhung </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/">
+                    #量化投研</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/">
+                    #动量策略</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E5%B4%A9%E6%BA%83/">
+                    #动量崩溃</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%87%AA%E9%80%82%E5%BA%94%E7%BC%A9%E6%94%BE/">
+                    #自适应缩放</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE/">
+                    #资产配置</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BA%A2%E5%88%A9%E8%B5%84%E4%BA%A7/">
+                    #红利资产</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" class="prev" rel="prev" title="权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源"><i class="iconfont icon-left"></i>&nbsp;权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

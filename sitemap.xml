@@ -2,18 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
       <loc>https://kuhung.me/categories/</loc>
-      <lastmod>2026-11-03T13:05:00+08:00</lastmod>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E5%B4%A9%E6%BA%83/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E7%BA%A2%E5%88%A9%E8%B5%84%E4%BA%A7/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E8%87%AA%E9%80%82%E5%BA%94%E7%BC%A9%E6%94%BE/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
+    </url><url>
+      <loc>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/</loc>
+      <lastmod>2026-11-04T12:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/mit/</loc>
       <lastmod>2026-11-03T13:05:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/</loc>
-      <lastmod>2026-11-03T13:05:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/qwen/</loc>
-      <lastmod>2026-11-03T13:05:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/</loc>
       <lastmod>2026-11-03T13:05:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
@@ -31,9 +58,6 @@
       <loc>https://kuhung.me/posts/weight-space-programming-qwen-truth/</loc>
       <lastmod>2026-11-03T13:05:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/</loc>
-      <lastmod>2026-11-03T13:05:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4/</loc>
       <lastmod>2026-11-03T13:00:00+08:00</lastmod>
     </url><url>
@@ -46,28 +70,16 @@
       <loc>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
       <lastmod>2026-11-03T13:00:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/</loc>
-      <lastmod>2026-11-02T12:00:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/</loc>
       <lastmod>2026-11-02T12:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</loc>
       <lastmod>2026-11-02T12:00:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/tags/%E7%BA%A2%E5%88%A9%E8%B5%84%E4%BA%A7/</loc>
-      <lastmod>2026-11-02T12:00:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/tags/%E8%82%A1%E6%81%AF%E6%9C%9F%E8%B4%A7/</loc>
       <lastmod>2026-11-02T12:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E8%82%A1%E6%9D%83%E6%9C%9F%E9%99%90%E7%BB%93%E6%9E%84/</loc>
-      <lastmod>2026-11-02T12:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE/</loc>
-      <lastmod>2026-11-02T12:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/</loc>
       <lastmod>2026-11-02T12:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/eip-7702/</loc>
@@ -419,9 +431,6 @@
       <lastmod>2026-10-21T15:45:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</loc>
-      <lastmod>2026-10-20T16:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/</loc>
       <lastmod>2026-10-20T16:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/tags/%E6%8A%95%E8%B5%84%E5%A4%8D%E7%9B%98/</loc>

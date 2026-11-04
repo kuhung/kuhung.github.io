@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 205 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 206 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 205 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 206 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -282,6 +282,21 @@ if (!doNotTrack) {
     <div class="posts-list" id="posts-list">
         
         <article class="posts-list-item"
+         data-tags="量化投研||动量策略||动量崩溃||自适应缩放||资产配置||红利资产"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/momentum-crashes-and-dynamic-scaling/">动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放</a></h2>
+    <p class="posts-list-summary">这是「红利与宏观择时」深度研报系列的第三篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防（本篇） ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 在实际构建量化投资组合时，单纯持有高股 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-04">November 4, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
          data-tags="大模型||Qwen||MIT||权重空间编程||技术解析"
          data-categories="技术研究">
     <h2 class="posts-list-title"><a href="/posts/weight-space-programming-qwen-truth/">权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</a></h2>
@@ -315,9 +330,8 @@ if (!doNotTrack) {
          data-tags="量化投研||红利资产||股权期限结构||股息期货||资产配置||现金流久期"
          data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/equity-term-structure-and-countercyclical-allocation/">红利的宏观期限结构：股息剥离与反周期配置</a></h2>
-    <p class="posts-list-summary">平时跟踪红利资产或成长风格，常能观察到一种风格分化：
-在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险； 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。
-上一篇通过 Campbell-Shiller 现值解耦揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截 …</p>
+    <p class="posts-list-summary">这是「红利与宏观择时」深度研报系列的第二篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构（本篇） ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 平时跟踪红利资产或成长风格，常能观察到 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-02">November 2, 2026</time>
         
@@ -346,10 +360,8 @@ if (!doNotTrack) {
          data-tags="量化投研||红利资产||现值分解||Campbell-Shiller||资产配置||中证红利"
          data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">红利资产的定价本质：股息价格比与现值解耦</a></h2>
-    <p class="posts-list-summary">平时看红利资产或大盘估值，最常用的指标是股息率（D/P，分红除以股价）。但在实际跟踪时，常遇到两类情况：
-第一种情况在市场大跌之后。股息率被动推升到 6% 甚至 8%，这属于估值跌出的安全垫，还是市场提前预警分红下调？
-第二种情况在行情高位。比如标普 500 股息率被压低到 1.2% 附近，是因为企业未来分红增长预期上修推高了股价，还是折现率被情绪过度压缩？
-静态股息率无法区分这两种驱 …</p>
+    <p class="posts-list-summary">这是「红利与宏观择时」深度研报系列的第一篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
+篇章一：现值解耦（本篇） ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 平时看红利资产或大盘估值，最常用的指标 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-01">November 1, 2026</time>
         
@@ -419,22 +431,6 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
         <time datetime="2026-10-28">October 28, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="AI||Anthropic||Claude||S-1||商业分析||美股IPO||算力"
-         data-categories="行业趋势">
-    <h2 class="posts-list-title"><a href="/posts/anthropic-form-s1-ipo-filing/">Anthropic 招股书解读：经营改善与长期算力支出压力</a></h2>
-    <p class="posts-list-summary">声明：本文由 AI 辅助创作，经作者核实与修订。
-美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic 向美国证券交易委员会（SEC）递交了 335 页的招股书（代码 ANT）（SEC 原文，2026-10-26；官方公告，2026-10-26）。
-这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-27">October 27, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E8%A1%8C%E4%B8%9A%E8%B6%8B%E5%8A%BF/">行业趋势</a>
         
     </div>
 </article>
@@ -667,12 +663,27 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
     
 </ul>
 
-        <span class="posts-total">共 205 篇</span>
+        <span class="posts-total">共 206 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
     
     <template id="all-posts-template">
+        
+        <article class="posts-list-item"
+         data-tags="量化投研||动量策略||动量崩溃||自适应缩放||资产配置||红利资产"
+         data-categories="技术技巧">
+    <h2 class="posts-list-title"><a href="/posts/momentum-crashes-and-dynamic-scaling/">动量策略的阿喀琉斯之踵：动量崩溃与自适应缩放</a></h2>
+    <p class="posts-list-summary">这是「红利与宏观择时」深度研报系列的第三篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防（本篇） ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 在实际构建量化投资组合时，单纯持有高股 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-04">November 4, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
+        
+    </div>
+</article>
+
         
         <article class="posts-list-item"
          data-tags="大模型||Qwen||MIT||权重空间编程||技术解析"
@@ -708,9 +719,8 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
          data-tags="量化投研||红利资产||股权期限结构||股息期货||资产配置||现金流久期"
          data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/equity-term-structure-and-countercyclical-allocation/">红利的宏观期限结构：股息剥离与反周期配置</a></h2>
-    <p class="posts-list-summary">平时跟踪红利资产或成长风格，常能观察到一种风格分化：
-在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险； 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。
-上一篇通过 Campbell-Shiller 现值解耦揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截 …</p>
+    <p class="posts-list-summary">这是「红利与宏观择时」深度研报系列的第二篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构（本篇） ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 平时跟踪红利资产或成长风格，常能观察到 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-02">November 2, 2026</time>
         
@@ -739,10 +749,8 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
          data-tags="量化投研||红利资产||现值分解||Campbell-Shiller||资产配置||中证红利"
          data-categories="技术技巧">
     <h2 class="posts-list-title"><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">红利资产的定价本质：股息价格比与现值解耦</a></h2>
-    <p class="posts-list-summary">平时看红利资产或大盘估值，最常用的指标是股息率（D/P，分红除以股价）。但在实际跟踪时，常遇到两类情况：
-第一种情况在市场大跌之后。股息率被动推升到 6% 甚至 8%，这属于估值跌出的安全垫，还是市场提前预警分红下调？
-第二种情况在行情高位。比如标普 500 股息率被压低到 1.2% 附近，是因为企业未来分红增长预期上修推高了股价，还是折现率被情绪过度压缩？
-静态股息率无法区分这两种驱 …</p>
+    <p class="posts-list-summary">这是「红利与宏观择时」深度研报系列的第一篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：
+篇章一：现值解耦（本篇） ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的致命盲区：熊市反弹的期权化暴击与自适应控仓 平时看红利资产或大盘估值，最常用的指标 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-01">November 1, 2026</time>
         
