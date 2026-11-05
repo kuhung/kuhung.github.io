@@ -1,42 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pi on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/pi/</link>
-    <description>Recent content in Pi on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 16:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/pi/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了</title>
-      <link>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</link>
-      <pubDate>Sat, 10 Oct 2026 16:25:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pi on 谷粒 kuhung</title><link>https://kuhung.me/tags/pi/</link><description>Recent content in Pi on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 10 Oct 2026 16:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/pi/index.xml" rel="self" type="application/rss+xml"/><item><title>Pi 1.0 与 1.1：一个靠说「不」出名的工具，开始说「是」了</title><link>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</link><pubDate>Sat, 10 Oct 2026 16:25:00 +0800</pubDate><guid>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 如果谈及coding Agent，一定绕不开Pi这个工具。国庆假期以来，该产品经过密集的变更，版本号从0.99到了1.10。这其中到底变了什么，影响如何，是本文试图回答的。
 如果需要一句话总结，那就是：0.99 用 Codemode 把 MCP 接了回来，1.0 把这套东西定成稳定版，1.1 只是让日常用起来更顺手。
 Pi 的 changelog 很长，但争议大的，就是对 MCP 的态度。其余的更新要么是在为这件事铺路，要么是在给它擦屁股。社区这两周吵得热闹，主要关注点是： Pi 还算不算那个极简的 Pi。
 上个月写 Pi 入门笔记 的时候，我们就有入门介绍。本期不再重复。
 时间线顺序 日期 版本 总结 09-29 0.99.0 真正的大版本：Codemode、内置 MCP、延迟加载、虚拟模型、分类器 10-01 1.0.0 定版加固：默认全屏、Codemode 提示成本再降约四成；同日发布实验包 Pi Durable 10-03 至 10-05 1.0.1 至 1.0.4 补丁周，唯一的破坏性变更是 1.0.3 里 Azure provider 改名 10-07 1.1.0 没有破坏性变更：状态上报、工具增减写法、Haiku 5.5、看图分类、llama.cpp 原生接入 最激进的改动其实发生在 0.99。1.0 更像是一份承诺，告诉大家这套接口以后不会乱动了，可以放心在上面写扩展。
-最大的变化：MCP ，但换了个接法 当初为什么拒绝 Pi 过去一年多旗帜鲜明地不支持 MCP，官网上就这么写着。理由是：传统的 MCP 接法会把所有工具的 Schema 一次性塞进上下文。社区里被反复引用的例子是，接三个 MCP 服务器，光工具定义就吃掉约 143k 的上下文（总共 200k），活还没开始干，七成窗口已经没了。我后面查了下，是个谬传，是旧版本的特定情况下才会这样。后面各家基本很少这样了。</description>
-    </item>
-    
-    <item>
-      <title>Pi 入门笔记：比 Codex 更自由，但也更折腾</title>
-      <link>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</link>
-      <pubDate>Tue, 15 Sep 2026 16:54:54 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</guid>
-      <description>前段时间 Claude 把我封禁了，没办法，不得不找别的路子。光凭 Codex 也满足不了每天的编码需求，需要一些不一样视角的模型来互补。Cursor 又由于莫名其妙的操作，把我这张号的 500 次变成了按消耗计费。Antigravity 之前没怎么用过，虽然把代理问题解决了，总感觉不太聪明。底子比 Codex 和 Claude 的客户端要慢好多个版本。
+最大的变化：MCP ，但换了个接法 当初为什么拒绝 Pi 过去一年多旗帜鲜明地不支持 MCP，官网上就这么写着。理由是：传统的 MCP 接法会把所有工具的 Schema 一次性塞进上下文。社区里被反复引用的例子是，接三个 MCP 服务器，光工具定义就吃掉约 143k 的上下文（总共 200k），活还没开始干，七成窗口已经没了。我后面查了下，是个谬传，是旧版本的特定情况下才会这样。后面各家基本很少这样了。</description></item><item><title>Pi 入门笔记：比 Codex 更自由，但也更折腾</title><link>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</link><pubDate>Tue, 15 Sep 2026 16:54:54 +0800</pubDate><guid>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</guid><description>前段时间 Claude 把我封禁了，没办法，不得不找别的路子。光凭 Codex 也满足不了每天的编码需求，需要一些不一样视角的模型来互补。Cursor 又由于莫名其妙的操作，把我这张号的 500 次变成了按消耗计费。Antigravity 之前没怎么用过，虽然把代理问题解决了，总感觉不太聪明。底子比 Codex 和 Claude 的客户端要慢好多个版本。
 社交媒体上关于 Pi 的讨论非常多。大半年前就听说前司内部开发还会用 Pi。我就想自己来琢磨一下，从装上到能干活，先把卡住我的问题记下来。
 命令行 Pi 是一个命令行工具，简单得不能再简单。装上之后，从 Codex、Claude 的 GUI 过来的人，第一个疑惑往往是：文件怎么看？我也搜过有没有第三方客户端，结论是不用。有人推荐 oh-my-pi，我的想法是从零开始，做一个更高度自定义的，所以没用它。后面都从最基础的 Pi 开始。
 安装、卸载不做重复介绍，直接去 pi.dev 下载就行。装完第一件事是登录。一种是走第三方客户端，推个网页认证。我把 Codex、Antigravity 和 Cursor 三个都登上去了。后面两个没有默认预装插件，网上找其他人开发的就行。Cursor 要注意，要装非 backend 的那款，backend 那款鉴权方式不一样。
 另一种是直接用 API token，比如 OpenRouter。我想用的是套餐额度，所以第三方 provider 没关注。它原生支持 Llama，条件允许可以用本地部署。这些都不是重点。
 常用指令 斜杠指令看起来蛮多，好像有 80 多个，至少我这边是。
 日常反复用到的，大致就是下面这些。
-/model 换模型 /thinking 调推理级别 /tree 从跑偏点分支 /compact 压缩长上下文 /resume 找旧会话 /name 给会话命名 /session 看状态/成本 /reload 重载配置 @file 附文件 !cmd / !</description>
-    </item>
-    
-  </channel>
-</rss>
+/model 换模型 /thinking 调推理级别 /tree 从跑偏点分支 /compact 压缩长上下文 /resume 找旧会话 /name 给会话命名 /session 看状态/成本 /reload 重载配置 @file 附文件 !cmd / !</description></item></channel></rss>

@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>搜索可见性 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E5%8F%AF%E8%A7%81%E6%80%A7/</link>
-    <description>Recent content in 搜索可见性 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E5%8F%AF%E8%A7%81%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>个人主页 SEO 优化与结构改版实践</title>
-      <link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link>
-      <pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid>
-      <description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>搜索可见性 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E5%8F%AF%E8%A7%81%E6%80%A7/</link><description>Recent content in 搜索可见性 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Sep 2026 14:38:21 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%90%9C%E7%B4%A2%E5%8F%AF%E8%A7%81%E6%80%A7/index.xml" rel="self" type="application/rss+xml"/><item><title>个人主页 SEO 优化与结构改版实践</title><link>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</link><pubDate>Wed, 09 Sep 2026 14:38:21 +0800</pubDate><guid>https://kuhung.me/posts/personal-website-seo-and-redesign-practice/</guid><description>最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。
 改版动机 最直接的起因来自 Google Search Console（GSC）的数据排查。我翻看后台流量来源时发现，主站沉淀的大量文章曝光寥寥，反倒是几个挂在子域名上的独立应用带来了不少流量。
 这与预期有明显出入。之前主站更换过域名，按历史访问数据来看，最早的核心读者大多是机器学习领域的同行；后来随着我写技术管理与职业思考，又吸引了一批大厂中从执行转向管理的朋友。最近一年，我的精力主要投入在 AI 落地与 MVP 产品实践上，但这部分新内容在搜索引擎中几乎没有拿到自然流量。主站不仅没能承担起新内容的承载与分发任务，现有的技术流量也被分散了。
 架构老化 收录受阻的原因很直观。
@@ -28,16 +13,7 @@
 权重整合 排查下来，首要问题出在主站与子域名的权重割裂上。
 长期以来，子域名分散了主站的权重。合理的架构应当是主站作为信任背书和流量枢纽，向子域名分发流量；同时子域名也要将搜索权重回传给主域名。但在实际运营中，出现了两处断层：
 其一是 GA4 数据追踪脱节。早先为了图省事，只有主力项目配置了埋点，很多低流量子项目处于裸奔状态。这次统一将所有子域名纳入同一套数据资产管理，规范了全站的追踪代码。
-其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description>
-    </item>
-    
-    <item>
-      <title>从 SEO 角度做增长，以产品 TrakToken 为例</title>
-      <link>https://kuhung.me/posts/seo-in-practice-sop/</link>
-      <pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/seo-in-practice-sop/</guid>
-      <description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
+其二是部署配置导致的权重泄露。我有一些轻量工具部署在 Vercel 平台上。早期使用 AI 编程时，Agent 并没有主动处理 Canonical 标签和出站链接。结果子域名的页面权重不仅没有沉淀到主站，反而流向了托管平台的默认域名或第三方参考页面。例如最近开发的 vibe coding 课程，底部的外链配置不当，直接把抓取权重导给了外部站点，成了替他人做嫁衣。</description></item><item><title>从 SEO 角度做增长，以产品 TrakToken 为例</title><link>https://kuhung.me/posts/seo-in-practice-sop/</link><pubDate>Sun, 23 Aug 2026 12:24:30 +0800</pubDate><guid>https://kuhung.me/posts/seo-in-practice-sop/</guid><description>在做 TrakToken 的过程中，搜索流量来得很快。这得归功于V站、知乎等地的高质量软文。想要有早期用户，你就必须得厚着脸皮介绍你的产品。有了用户之后，下一步怎么做？我的答案是，从凭借感觉做设计到系统化调整。
 从结果来看，TrakToken 自然搜索已经成为主力获客渠道，但增长高度集中在首页和 Bing，查询层、归因和参数 URL 治理没有跟上流量增长。
 本文试图介绍，从 SEO 相关角度，如何正确指导我们后续的产品迭代，如何持续构建数据驱动的产品迭代模式。并结合实际线上产品数据，给到说明。
 TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的定价数据，每日自动同步，提供价格对比、成本计算器、支出指数等功能。
@@ -47,8 +23,4 @@ TrakToken 是一个 LLM API 比价工具站，覆盖 60 家厂商 600+ 模型的
 Vercel Analytics 负责页面和事件。零配置、自定义事件方便。问题是它和 GA4 的用户身份打不通。Vercel 里看到 509 个 calculator_result_viewed 事件访客，但没法知道这 509 人里有多少是从搜索来的。
 PostHog 笔者还在尝试中。不过有些问题：一是服务器在海外，国内采集有延迟和丢失；二是功能和 GA4 + Vercel 高度重叠，基础分析和事件采集两边都能做；三是实际只覆盖了 8.25 天，数据量不够支撑任何结论。还有就是他们家的UI太反人性了，我曾经以为GA4的交互很垃圾，但没想到他们家更是。
 不过 PostHog 代表的需求是真实的。需要一个单一平台串起落地页、行为动作以及站外动作的工具。
-Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description>
-    </item>
-    
-  </channel>
-</rss>
+Bing Webmaster 是国内搜索的实际主力渠道。信息比 GSC 丰富，关键词报告直接能导出，排名、CTR、页面级数据一目了然。如果你的用户主要在国内，Bing 可能比 Google 更值得先看。</description></item></channel></rss>

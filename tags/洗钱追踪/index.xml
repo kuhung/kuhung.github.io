@@ -1,24 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>洗钱追踪 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%B4%97%E9%92%B1%E8%BF%BD%E8%B8%AA/</link>
-    <description>Recent content in 洗钱追踪 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Nov 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B4%97%E9%92%B1%E8%BF%BD%E8%B8%AA/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库</title>
-      <link>https://kuhung.me/posts/binance-hack-onchain-analysis/</link>
-      <pubDate>Sun, 01 Nov 2026 23:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/binance-hack-onchain-analysis/</guid>
-      <description>四点核心判断 2026 年 10 月 29 日，币安热钱包遭遇多链并发攻击。调查表明，事件起因于运维工程师终端被渗透后入侵提现服务容器，攻击者借此利用合法签名机发起了多链未授权转账。币安联合创始人何一与 Richard Teng 随后确认用户资金不受影响，动用 SAFU 应急基金（划转 5.8 亿美元 BTC）与公司自有资金完成 90%~95% 储备资产的补足。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>洗钱追踪 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%B4%97%E9%92%B1%E8%BF%BD%E8%B8%AA/</link><description>Recent content in 洗钱追踪 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Nov 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B4%97%E9%92%B1%E8%BF%BD%E8%B8%AA/index.xml" rel="self" type="application/rss+xml"/><item><title>用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库</title><link>https://kuhung.me/posts/binance-hack-onchain-analysis/</link><pubDate>Sun, 01 Nov 2026 23:00:00 +0800</pubDate><guid>https://kuhung.me/posts/binance-hack-onchain-analysis/</guid><description>四点核心判断 2026 年 10 月 29 日，币安热钱包遭遇多链并发攻击。调查表明，事件起因于运维工程师终端被渗透后入侵提现服务容器，攻击者借此利用合法签名机发起了多链未授权转账。币安联合创始人何一与 Richard Teng 随后确认用户资金不受影响，动用 SAFU 应急基金（划转 5.8 亿美元 BTC）与公司自有资金完成 90%~95% 储备资产的补足。
 通过对链上全部 128 笔初始扫仓交易（ETH 117 笔、TRON 10 笔、BTC 1 笔）与 3,955 个扩散节点的逐笔穿透，还原出被盗资产在以太坊、波场和比特币三条链上的全口径初始总额为 6,198,350,745.29 美元（约 62.0 亿美元），覆盖币安官方披露 63 亿美元损失的 98.39%。
 被盗资产在以太坊、波场和比特币三链上的初始扫仓总额中，主流资产（ETH、BTC、USDT、USDC）为 52.33 亿美元，62 种长尾代币为 9.65 亿美元。剩余约 1.02 亿美元差额分布在 Arbitrum（安全委员会紧急暂停并冻结 3,050 万美元）、Solana、XRP、Base、Optimism、Avalanche 和 Polygon 等外部公链热钱包中。
 顺着链上资金流动与黑名单状态，可以得出四个判断：
-黑名单生效前 48 秒完成资产转移。Tether 处置耗时 37 分钟，在以太坊与波场共冻结 21.72 亿美元稳定币。在地址 0x8d5390... 被列入黑名单前 48 秒，黑客向未标记的过渡中转地址 0x77edef... 转出 1.3 亿 USDT 与 2.33 万枚 ETH，并在 5 分钟内通过去中心化交易所（DEX）兑换为原生 ETH 并转出，未被黑名单拦截。 资产属性决定处置策略。受中心化机构控制的稳定币（USDT、USDC）被黑客列为优先清算标的，在数十分钟内密集分流并注入去中心化流动性池。不可冻结的原生资产（BTC、ETH）则采取大额整包归集策略，BTC 在生成区块内完成切分存储，ETH 汇入大额冷钱包保持静态沉淀。 DEX 兑换产出存在 4.</description>
-    </item>
-    
-  </channel>
-</rss>
+黑名单生效前 48 秒完成资产转移。Tether 处置耗时 37 分钟，在以太坊与波场共冻结 21.72 亿美元稳定币。在地址 0x8d5390... 被列入黑名单前 48 秒，黑客向未标记的过渡中转地址 0x77edef... 转出 1.3 亿 USDT 与 2.33 万枚 ETH，并在 5 分钟内通过去中心化交易所（DEX）兑换为原生 ETH 并转出，未被黑名单拦截。 资产属性决定处置策略。受中心化机构控制的稳定币（USDT、USDC）被黑客列为优先清算标的，在数十分钟内密集分流并注入去中心化流动性池。不可冻结的原生资产（BTC、ETH）则采取大额整包归集策略，BTC 在生成区块内完成切分存储，ETH 汇入大额冷钱包保持静态沉淀。 DEX 兑换产出存在 4.</description></item></channel></rss>

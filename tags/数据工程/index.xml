@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>数据工程 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/</link>
-    <description>Recent content in 数据工程 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Thu, 17 Sep 2020 21:51:46 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>数据开发在2020年应当是什么样子的</title>
-      <link>https://kuhung.me/posts/data-engineering-in-2020/</link>
-      <pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/data-engineering-in-2020/</guid>
-      <description>我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样搞，浪费时间、浪费算力。 目前这家，则大不相同。技术债不多，数据治理做得还不错。没有大谈特谈数据中台，数据开发的每一行代码，都是为下游，而不是晋升服务。数据挖掘也很少碰原始 log，这节约了大量时间，让下游有更多时间集中在业务上。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据工程 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/</link><description>Recent content in 数据工程 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 17 Sep 2020 21:51:46 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>数据开发在2020年应当是什么样子的</title><link>https://kuhung.me/posts/data-engineering-in-2020/</link><pubDate>Thu, 17 Sep 2020 21:51:46 +0800</pubDate><guid>https://kuhung.me/posts/data-engineering-in-2020/</guid><description>我的工作是数据挖掘，很大程度依仗数据开发。如果说数据挖掘是在烹饪美食，数据开发就是选食材、清洗食材的过程。没有好的数据开发，就没有好的数据洞察。 恰好，我自身也经历了两家不同规模的公司。由于起点的先后，前者的历史包袱严重。基于惯性，数据挖掘的任何数据，都得从原始log中提取。没有数据治理、数据分层的概念。这不仅增多了重复性的劳动，也增加了服务器集群的压力。数十款 top 游戏，每一款、每个人都这样搞，浪费时间、浪费算力。 目前这家，则大不相同。技术债不多，数据治理做得还不错。没有大谈特谈数据中台，数据开发的每一行代码，都是为下游，而不是晋升服务。数据挖掘也很少碰原始 log，这节约了大量时间，让下游有更多时间集中在业务上。
 同样是数据开发，却产生不一样的结果。这让我对该工作的定位，产生了兴趣。也这篇文章的由来。
 言归正传。本文翻译自：https://towardsdatascience.com/data-engineering-in-2020-e46910786eda 结合实际工作，有较大幅度删改。
 随着数据体量的进一步增大，数据处理工具和技术的发展也日新月异。数据开发的工作性质也发生了巨大变化。如今所使用的工具，同十年前已大不相同。
@@ -30,8 +15,4 @@
 尽管如此，Snowflake 和 Google BigQuery 等云数据工具的使用率很高，因为他们简化了数据提取的过程。
 而Spark，则需要一定门槛的专业化的技能。
 目前来看，国内的类似产品 MaxCompute，市场接受度似乎还不高？snowflake 前两天上市了，投资人挺喜欢它的故事，巴菲特也跟投了。
-数据开发技能清单（补充） 除开基本的数据开发技能，如 Hadoop 那套生态外，还建议掌握如下技能：</description>
-    </item>
-    
-  </channel>
-</rss>
+数据开发技能清单（补充） 除开基本的数据开发技能，如 Hadoop 那套生态外，还建议掌握如下技能：</description></item></channel></rss>

@@ -1,23 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>S-1 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/s-1/</link>
-    <description>Recent content in S-1 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Oct 2026 10:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/s-1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Anthropic 招股书解读：经营改善与长期算力支出压力</title>
-      <link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link>
-      <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>S-1 on 谷粒 kuhung</title><link>https://kuhung.me/tags/s-1/</link><description>Recent content in S-1 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 27 Oct 2026 10:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/s-1/index.xml" rel="self" type="application/rss+xml"/><item><title>Anthropic 招股书解读：经营改善与长期算力支出压力</title><link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link><pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate><guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic 向美国证券交易委员会（SEC）递交了 335 页的招股书（代码 ANT）（SEC 原文，2026-10-26；官方公告，2026-10-26）。
 这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO 计划推迟至 2027 年，Reuters，2026-10-26）。这份招股书给出了四项打破市场常识的核心事实：
-订阅只占两成营收：外界最熟悉的 Claude Pro/Team 订阅仅占 20% 营收，其余 80% 均来自企业与开发者的 API 用量计费。2026 年第二季度单季创收 115.6 亿美元，超过此前三年总和。 800 亿账面亏损是会计记账：上半年高达 807 亿美元的 GAAP 账面亏损中，近九成（724 亿美元）是因为公司估值暴涨引发的可转债非现金公允价值重估。主营业务在 2026 年第二季度已经实现 9.7 亿美元的单季经营盈利。 算力成本占比降至 55%，但签了 6,370 亿采购承诺：算力费用占营收比从 2023 年的 1,000% 以上收窄到 54.9%，但与云厂商签署的采购协议附带刚性差额补足（True-up）条款，算力需求一旦放缓就必须补齐现金。 公众股东拿不到实质表决权：通过五类股票架构，7 位创始人用 1 股 Class F 锁定了 50.1% 的表决权，长期利益信托（LTBT）控制董事会多数席位，公开认购的普通股没有实质话语权。 一、营收结构：订阅仅占 20% 营收 在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</description>
-    </item>
-    
-  </channel>
-</rss>
+订阅只占两成营收：外界最熟悉的 Claude Pro/Team 订阅仅占 20% 营收，其余 80% 均来自企业与开发者的 API 用量计费。2026 年第二季度单季创收 115.6 亿美元，超过此前三年总和。 800 亿账面亏损是会计记账：上半年高达 807 亿美元的 GAAP 账面亏损中，近九成（724 亿美元）是因为公司估值暴涨引发的可转债非现金公允价值重估。主营业务在 2026 年第二季度已经实现 9.7 亿美元的单季经营盈利。 算力成本占比降至 55%，但签了 6,370 亿采购承诺：算力费用占营收比从 2023 年的 1,000% 以上收窄到 54.9%，但与云厂商签署的采购协议附带刚性差额补足（True-up）条款，算力需求一旦放缓就必须补齐现金。 公众股东拿不到实质表决权：通过五类股票架构，7 位创始人用 1 股 Class F 锁定了 50.1% 的表决权，长期利益信托（LTBT）控制董事会多数席位，公开认购的普通股没有实质话语权。 一、营收结构：订阅仅占 20% 营收 在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</description></item></channel></rss>

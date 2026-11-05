@@ -1,35 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI on 谷粒 kuhung</title>
-    <link>https://kuhung.me/categories/ai/</link>
-    <description>Recent content in AI on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 07 Oct 2026 11:47:22 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析</title>
-      <link>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</link>
-      <pubDate>Wed, 07 Oct 2026 11:47:22 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</guid>
-      <description>刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了 1GB 内存。从我去年一直关注小模型以来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on 谷粒 kuhung</title><link>https://kuhung.me/categories/ai/</link><description>Recent content in AI on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 07 Oct 2026 11:47:22 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>手机淘宝偷偷下小模型？RecGPT-Mobile 端侧 SLMs 应用解析与效果分析</title><link>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</link><pubDate>Wed, 07 Oct 2026 11:47:22 +0800</pubDate><guid>https://kuhung.me/posts/recgpt-mobile-application-analysis-and-performance-insights-of-on-device-slms-in-taobao/</guid><description>刷帖子的时候，有用户爆出手机淘宝在他的设备上下了一个小模型。虽然是小模型，但还是差不多占了 1GB 内存。从我去年一直关注小模型以来，我的观点是其实这样做效率不高。特别是小模型智力低，运行久了还发热。越大的模型这个现象越明显。这也是端侧模型没大规模应用的原因。端侧推理，实在是太吃资源了。
 而评论区的部分网友不这么认为。他们认为比起效率，用户手机上的算力显然是大公司窥视的。我是觉得为了不同设备的算力榨取，做这件事不合理和不体面。我认为出发点更多是实验性质，探索端侧小模型能不能带来业务提升。
 有分歧咋办，去找原始资料呗。我顺着评论区，把 RecGPT-Mobile 和 V2 两篇论文翻完。发现其实有不少问题，不去做端侧部署是会不知道的。端侧的算力不是你想要，想要就能要。端侧部署先不说效果，工程方面就要做很多的阉割。至于效果，论文中给出的业务指标是相对提升，目前线上流量占比例仍然不高，可以推测还有较多 tradeoff 需要考虑。
 RecGPT-Mobile 系列论文整理 整理说明 本文档完整保留了多轮探讨的全部论点与深度追问细节，按八大主题与精选 Q&amp;amp;A 进行系统性结构化编排。 本文档采用原始文件上传 Gemini notebook，互动得出见解的方式。可能存在幻觉、理解不一的脑补情况。 论文基本信息 《RecGPT-Mobile: On-Device Large Language Models for User Intent Understanding in Taobao Feed Recommendation》：SIGIR &amp;lsquo;26（第 49 届 ACM SIGIR，墨尔本），arXiv:2605.04726（2026-05-06）。淘天集团 12 人团队，Bin Zhang、Weipeng Huang 为共同一作。5 页短文，CC-BY 协议。 《RecGPT-Mobile-V2 Technical Report》：arXiv:2608.24295（2026-08）。长篇技术报告，由同一团队撰写，补充机制层面的完整实验：行为压缩、推荐域初始化、CoT 信息价值、自适应推理控制、评测治理、质量–成本证据。 两篇的关系： 短文是“做了什么+线上效果”的简单发表；V2 报告是“为什么这样设计+每个机制的效果证据”。 为什么把 LLM 搬到端侧 核心任务：从用户近期的交互行为，预测“下一个搜索 query”，在用户意图快速演化的场景下尤为关键。团队抓住三个矛盾：
 云端推荐的延迟与成本瓶颈： 传统集中式云端架构存在不可避免的端云通信延迟，难以实时感知移动端用户瞬间变化的兴趣；若在云端用 LLM 做实时推理，面对淘宝亿级用户，服务器 GPU 成本是天价。
 我的评论：但其实端侧推理的延迟也不低，后文有提到；而且云端是不是一定要用LLM，一定要全部用户都用LLM，显然这种推极端的估算方式是不成立的；端侧部署模型，对于用户设备的要求会变高，影响用户体验的部分，该如何估量呢？
 隐式行为到显式意图的映射难题： 点击、加购、收藏、购买、售后探索都是隐式信号，不等于搜索词。尤其是复购、互补品购买、跨类目探索等售后场景，意图推导最为复杂。“买了手机，下一步想搜什么”没有标准答案。
-端侧部署的机遇与资源限制： 把 LLM 作为意图 Agent 直接部署在手机端，能利用本地数据毫秒级捕获实时兴趣（且行为日志不出端）；但手机在内存、算力、功耗上受严苛限制，未经优化的重型模型根本跑不起来。</description>
-    </item>
-    
-    <item>
-      <title>利用微信读书skill，将读过的知识整合进AI实践</title>
-      <link>https://kuhung.me/posts/weread-skills-in-practice/</link>
-      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weread-skills-in-practice/</guid>
-      <description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
+端侧部署的机遇与资源限制： 把 LLM 作为意图 Agent 直接部署在手机端，能利用本地数据毫秒级捕获实时兴趣（且行为日志不出端）；但手机在内存、算力、功耗上受严苛限制，未经优化的重型模型根本跑不起来。</description></item><item><title>利用微信读书skill，将读过的知识整合进AI实践</title><link>https://kuhung.me/posts/weread-skills-in-practice/</link><pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate><guid>https://kuhung.me/posts/weread-skills-in-practice/</guid><description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
 是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：&amp;ldquo;SLMs是什么&amp;quot;&amp;ldquo;端侧模型有哪些技术要点&amp;quot;这类。它还有个很强的特性，迎合说话人。这点即使通过提示词纠正，也难以跳出提问人的思维边界。碰到框架性的问题，它给不出系统的、有真人感的建议。
 从底层原理来说，大模型给出的是概率性文字，它也没法给切身经验和系统方法。这就像公司新人，能力不差，但缺少开展工作的上下文。高质量书籍填补的就是这块空白。
 以前看书，做做笔记、画个思维导图，遇到有意思的会写份读书笔记。今天讲的是更进一步的做法：把书里的方法，编译成 AI Agent 可以直接调用的技能。
@@ -42,30 +18,12 @@ Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷�
 今年早些时候，顺着 skills 这波风，微信读书团队开放了官方 Skills 接口。走完固定流程，就能在 Agent 里通过对话拿到你的数据：书架、阅读进度、划线信息，全部可以外挂给大模型。
 网上对这个接口的二次加工，多集中在聊天、可视化、书籍推荐的程度。我想做的事更进一步：数据源有了，直接加工成可调用的 skills。把微信读书里的划线与想法，编译成 SKILL.md 技能指令，挂载到 Agent 上，在对话匹配到触发条件时自动加载。
 五步流水线：划线变技能 整个流程分五步，从原始划线到全局可用：
-步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description>
-    </item>
-    
-    <item>
-      <title>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</title>
-      <link>https://kuhung.me/posts/image2-for-makeover/</link>
-      <pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/image2-for-makeover/</guid>
-      <description>Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少朋友其实缺少审美锻炼，无法区分什么是好的。本着想试试新模型的威力，再加上不少网友也无法正常访问Image2，笔者便顺势构建了这样一个应用《海蓝颜究社》。希望让更多的朋友能够用上，提升自己的外在形象。 这类应用，是不少人面对AI创业命题的首选作品。我们这里主要介绍文生图上的经验教训，暂不包括网页应用。两者的时间开销约为1:1，感兴趣的朋友可以另外留言。产品地址beauty.kuhung.me或点击链接。
+步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description></item><item><title>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</title><link>https://kuhung.me/posts/image2-for-makeover/</link><pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate><guid>https://kuhung.me/posts/image2-for-makeover/</guid><description>Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少朋友其实缺少审美锻炼，无法区分什么是好的。本着想试试新模型的威力，再加上不少网友也无法正常访问Image2，笔者便顺势构建了这样一个应用《海蓝颜究社》。希望让更多的朋友能够用上，提升自己的外在形象。 这类应用，是不少人面对AI创业命题的首选作品。我们这里主要介绍文生图上的经验教训，暂不包括网页应用。两者的时间开销约为1:1，感兴趣的朋友可以另外留言。产品地址beauty.kuhung.me或点击链接。
 在开始之前，先说结论，再说遇到的坑。首先它的效果确实不错，人物一致性和文字已经非常好了，确实是第一梯队的文生图、图生图模型。给出建议也比较中肯。而这细活豆包、Gemini做不了，他们的一致性差、文本效果一般。 接下来我们进入正题，遇到了哪些问题，如何解决和最后效果展示。
 首先第一个：提示词不准。虽然网上有给出简洁版的提示词，并且告诉你他是这样生成的。但当你实际操作的时候，会发现稳定性非常差。具体表现在两个方面：第一个是做出的效果和他的图不一致，会简化很多。其次是，当你用相同的指令，反复提交时，生成的结果也会不一样。 这一度让人困惑。即使是ChatGPT自己有提示，用它的提示词也生成不了预期的效果。 原因我猜测如下，概率模型本质上就具有随机性。你想要更准确的效果控制，要么在图的基础上再修改；要么就是在提示词上做约束。最直接的方法，就是你把图片和当前版本提示词、以及预期效果丢给ChatGPT，让它补完提示词。
 这样试过又会发现：GPT画蛇添足、过度设计。它将原本40个词的提示词，扩充到了1500字。扩充的后果是效果像了，但是细节不一样了。 GPT扩写这提示词，像没经过内部矫正一样。即使把ChatGPT里面的风格，设置成控制输出，也难以形成优雅统一的提示词。在浏览网页的时候，发现官网有专门的提示词教程。它其中写得明白：从少到多；结构化表达；明确修改范围和不变范围。通过这种方式，除开我们要做的这类图像编辑和转换，还可以实现信息图、UI等功能。 人写肯定不现实，还是让文笔更好的Opus来。丢给它要的目标图的形式，再给出提示词和提示词之后的结果图，让它一步步靠近。最终，实现近似可控的图片编辑效果。 这里面，最难的其实是一致性和排版；最需要权衡的是信息密度和样式。目前从结果来说，当约束人物一致性不变时，已经不会存在人物差距过大的问题，基本能保持一致；而排版通过提示词约束，也能一定程度上保持。不过稍微麻烦的是，不同目标（例如发型与墨镜）出来的效果还是会略微不同。 另外一个情况是，当约束中文排版时，由于有约束简洁，导致最后的信息密度一般。当然，也许是看惯了常用语言，有语言羞耻症。
 最后，有条件的读者朋友可以试试原始提示词；不方便的读者朋友，笔者在早鸟5折的基础上，额外提供一张专属可叠加的8折折扣码「BEAUTY2026」，结算时输入或点击链接，免输入即刻体验。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI构建全景图：六阶段及其方案选型</title>
-      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
-      <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
-      <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
+关于作者</description></item><item><title>AI构建全景图：六阶段及其方案选型</title><link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link><pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate><guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid><description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
 注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。
@@ -76,16 +34,7 @@ Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷�
 工具 定位 适用场景 v0 AI 驱动的 UI 原型设计 从文本/视觉输入快速生成 UI Figma Make AI 辅助设计工具 产品经理直接生成交互原型 AI Design Reviewer Figma 设计审计插件 UX/UI 批评、可访问性检测 除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 Prompt-ready 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。
 规范驱动开发 在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。
 AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。
-注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（三）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-3/</link>
-      <pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-3/</guid>
-      <description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
+注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description></item><item><title>AI相亲小镇开发纪要（三）</title><link>https://kuhung.me/posts/love-in-ai-town-3/</link><pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-3/</guid><description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
 接着，内测群也发起了测试。累计招募了3位真人朋友。从测试的结果来看，也是合乎预期。最直接的证明就是，这三位即使身份背景不同，都对UP主的Agent表达出兴趣。这和他们选择参加游戏的现实结果一致。
 不过，更多的用户停在了门外。根据用户访谈，有朋友认为该项目的定位和商业BP不够清晰。所以，第三次迭代纪要，主体便是回应这个问题。
 这个项目的发起动机，是UP主本身有交友的需求。但在测试过程中，发现很多社交应用，都缺乏促成成交的机制。就像网友所说，社交APP的核心指标在于消费。没错，是用户在平台上各类消费活动。包括但不限于：知道谁喜欢了我、让对方直接看到我等更多特权。
@@ -105,16 +54,7 @@ A：目前从身边感受来说，普遍存在需求。这部分数据后续陆�
 此外，我们再过一遍技术细节。本地迭代，实现两个核心功能。
 一个是将LLM模型从本地机器，迁移到UP主更适合做模型服务的Linux服务器。另一个是增加了摄像头，使得我们能够在屏幕上跟踪对应agent，能够掌握它的第一手行为动作。另外一些小的改进，是数据采集增加了问卷，不用通过对话收集信息了。
 最后，有这部分需求的小伙伴可以持续关注本项目，更大规模测试计划中。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（二）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-2/</link>
-      <pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-2/</guid>
-      <description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（二）</title><link>https://kuhung.me/posts/love-in-ai-town-2/</link><pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-2/</guid><description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
 工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。
 AI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。
 首先要做的是保证启动，实现原代码的功能。过程略微枯燥，总之就是发现问题，理解问题，寻找解决方案，尝试解决方案，最后修复。
@@ -134,16 +74,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 项目依赖本地的大模型，但并未对token的消耗进行统计、未对服务的负载情况进行监控。若服务不可用或性能下降，实际会影响对话部分的质量。
 目前，项目的演示视频已发布到多个平台，获得的曝光仍较为局限。获客是最大的挑战、缺少话题性，难以获得垂直流量。
 看到这里的朋友，动动手指，填写一分钟问卷，圆你的交友梦。限时免费匹配，定期直播结果。https://wj.qq.com/s2/24050706/c5d5/
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（一）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-1/</link>
-      <pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-1/</guid>
-      <description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（一）</title><link>https://kuhung.me/posts/love-in-ai-town-1/</link><pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-1/</guid><description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
 优质的用户是平台资产，当他们匹配成功时，意味着平台的资产流失。
 除开目的的背离，还有客服感。不少网友反馈，在社交软件上聊天像是客服，对不同的人要重复相同的话术，聊着聊着对方还会断线。这种感受在消磨人的耐心，消磨对美好爱情的憧憬。
 用户需要填写标签。例如学历、资产情况等。这些标签化的筛选方式，早已植入到了人的内心。品格无法量化，便先通过标签筛选。而一个人的偏好，基本是固定的。
@@ -163,17 +94,4 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 本产品的主要营收方式为数字化服务费，主要成本为算力和人力支出。
 本产品无法完全杜绝资料作假、美化，无法帮助提升外在美商，无法帮助用户实现特定功利想法。
 本产品的主要风险来自于市场宣发，双边市场缺乏足够多的参与者。无人感兴趣，冷启动失败。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>41个 LangChain / LangGraph / LangSmith 案例研究</title>
-      <link>https://kuhung.me/posts/agent-case-studies/</link>
-      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/agent-case-studies/</guid>
-      <description>关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+关于作者</description></item><item><title>41个 LangChain / LangGraph / LangSmith 案例研究</title><link>https://kuhung.me/posts/agent-case-studies/</link><pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate><guid>https://kuhung.me/posts/agent-case-studies/</guid><description>关于作者</description></item></channel></rss>

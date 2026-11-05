@@ -1,27 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>MIT on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/mit/</link>
-    <description>Recent content in MIT on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mit/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</title>
-      <link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link>
-      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid>
-      <description>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MIT on 谷粒 kuhung</title><link>https://kuhung.me/tags/mit/</link><description>Recent content in MIT on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/mit/index.xml" rel="self" type="application/rss+xml"/><item><title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</title><link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link><pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate><guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid><description>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。
 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）提出的“权重空间编程”（Weight-Space Programming, WSP）提出了一种新的思路：前沿通用大模型（GPT-6 Astra）能够在自然语言指令驱动下，在受限代码沙箱中自主运行分析程序、定位模型内部故障，并直接修改其他神经网络的权重文件，全程无需反向传播或微调循环。
 其中引发行业广泛讨论的案例，是 Astra 将 Qwen3.5-0.8B 在高难度数学推理基准 MATH-500 上的准确率从 7.9% 提升至 48.1%。面对这一实验表现，有必要穿透数据表象，系统解码大模型推断小模型参数的底层物理机理，厘清其真实起效的区间与严格的边界约束。
 一、权重空间的读、写、改三维基础验证 WSP 框架在进入深层多参数语言模型之前，首先在微型策略网络与扩散模型上验证了模型对参数空间的直接操作能力。
 1. 权重读取（Read） 研究团队向 Astra 输入了 4 个具有完全相同多层感知机（MLP）架构（17,253 个参数）的策略网络。这些网络分别在使用 PPO 强化学习算法训练于 MinAtar 像素游戏环境（Breakout、Pong、Pac-Man、Freeway）。在完全未提供候选游戏名称的盲测条件下，Astra 仅通过解析第一层权重矩阵在输入通道上的空间分布特征（如 Breakout 底层挡板权重的行状聚集与顶部奖励带），准确推断出全部 4 款游戏各自对应的模型。
 然而，静态权重阅读存在严格的尺度边界。在后续对微调后的 Gemma 3 270M 进行的测试中，Astra 试图通过纯静态数值分辨哪个模型被训练成了“谄媚”（Sycophancy）模式，连续 4 次推断均告失败。这一未能识别模型差异的结果表明：单纯的静态权重文本阅读仅适用于输入特征高度结构化的小型网络；针对深层自回归模型，必须依赖运行时的动态激活分析。
 2. 从零编译权重（Write） 在无训练数据、无梯度信息且不使用外部环境反馈的零样本设置下，研究人员要求 Astra 直接输出一个输入维度为 10x10x4 的 MLP 策略网络参数，用于控制 MinAtar 游戏。
-在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.</description>
-    </item>
-    
-  </channel>
-</rss>
+在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.</description></item></channel></rss>

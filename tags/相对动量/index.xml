@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>相对动量 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E7%9B%B8%E5%AF%B9%E5%8A%A8%E9%87%8F/</link>
-    <description>Recent content in 相对动量 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 21 Oct 2026 21:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%9B%B8%E5%AF%B9%E5%8A%A8%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>个人量化选股（四）：截面打分与去重排他</title>
-      <link>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</link>
-      <pubDate>Wed, 21 Oct 2026 21:30:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</guid>
-      <description>在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>相对动量 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%9B%B8%E5%AF%B9%E5%8A%A8%E9%87%8F/</link><description>Recent content in 相对动量 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 21 Oct 2026 21:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%9B%B8%E5%AF%B9%E5%8A%A8%E9%87%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>个人量化选股（四）：截面打分与去重排他</title><link>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</link><pubDate>Wed, 21 Oct 2026 21:30:00 +0800</pubDate><guid>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</guid><description>在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。
 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几十万元人民币之间。我们不可能把这 63 只股票全买下来。如果每只股票买一点，持仓就会退化成一个自制指数基金，小额资金频繁交易还会被券商最低佣金侵蚀净值。
 在真实交易中，个人股票组合通常只容纳 3 到 6 只核心标的。
 从 63 只准入合格标的收敛到最终的 3 到 6 只实盘持仓，需要经过截面打分、同门去重、行业集中度检验与整手物理资金过滤五个步骤：
@@ -22,8 +7,4 @@
 美股与日股：实盘监控采用 1 年卡玛比率（Calmar Ratio） 排序； 港股与 A 股：确立采用 12-1 相对动量 排序。 为什么不同市场要用不同的打分方式？两者的计算口径如下：
 $$\text{Calmar Ratio} = \frac{\text{Return}{1\text{y}}}{|\text{MaxDrawdown}{1\text{y}}|}$$
 $$\text{Mom}{12-1} = \frac{P{t-21}}{P_{t-252}} - 1$$
-卡玛比率把过去 1 年的收益率除以过去 1 年的最大绝对回撤。美股与日股属于成熟机构市场，中长期单边趋势具备自增强特征。但在单边上行中，成长科技股容易因阶段性流动性收紧而剧烈回调。在美股 48 只池的换股研究中，12-1 动量的年化换手率高达 160%~275%，而 1 年卡玛比率的年换手率只有 130%。美股日股选择卡玛比率的出发点是降低无效交易摩擦，选出回撤浅、走势平稳的复利标的。</description>
-    </item>
-    
-  </channel>
-</rss>
+卡玛比率把过去 1 年的收益率除以过去 1 年的最大绝对回撤。美股与日股属于成熟机构市场，中长期单边趋势具备自增强特征。但在单边上行中，成长科技股容易因阶段性流动性收紧而剧烈回调。在美股 48 只池的换股研究中，12-1 动量的年化换手率高达 160%~275%，而 1 年卡玛比率的年换手率只有 130%。美股日股选择卡玛比率的出发点是降低无效交易摩擦，选出回撤浅、走势平稳的复利标的。</description></item></channel></rss>

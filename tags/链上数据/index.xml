@@ -1,48 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>链上数据 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</link>
-    <description>Recent content in 链上数据 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Nov 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库</title>
-      <link>https://kuhung.me/posts/binance-hack-onchain-analysis/</link>
-      <pubDate>Sun, 01 Nov 2026 23:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/binance-hack-onchain-analysis/</guid>
-      <description>四点核心判断 2026 年 10 月 29 日，币安热钱包遭遇多链并发攻击。调查表明，事件起因于运维工程师终端被渗透后入侵提现服务容器，攻击者借此利用合法签名机发起了多链未授权转账。币安联合创始人何一与 Richard Teng 随后确认用户资金不受影响，动用 SAFU 应急基金（划转 5.8 亿美元 BTC）与公司自有资金完成 90%~95% 储备资产的补足。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>链上数据 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/</link><description>Recent content in 链上数据 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Nov 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%93%BE%E4%B8%8A%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml"/><item><title>用 AI 复盘币安 62 亿被盗案：204 秒阻断机会以及角落的 1.8 亿金库</title><link>https://kuhung.me/posts/binance-hack-onchain-analysis/</link><pubDate>Sun, 01 Nov 2026 23:00:00 +0800</pubDate><guid>https://kuhung.me/posts/binance-hack-onchain-analysis/</guid><description>四点核心判断 2026 年 10 月 29 日，币安热钱包遭遇多链并发攻击。调查表明，事件起因于运维工程师终端被渗透后入侵提现服务容器，攻击者借此利用合法签名机发起了多链未授权转账。币安联合创始人何一与 Richard Teng 随后确认用户资金不受影响，动用 SAFU 应急基金（划转 5.8 亿美元 BTC）与公司自有资金完成 90%~95% 储备资产的补足。
 通过对链上全部 128 笔初始扫仓交易（ETH 117 笔、TRON 10 笔、BTC 1 笔）与 3,955 个扩散节点的逐笔穿透，还原出被盗资产在以太坊、波场和比特币三条链上的全口径初始总额为 6,198,350,745.29 美元（约 62.0 亿美元），覆盖币安官方披露 63 亿美元损失的 98.39%。
 被盗资产在以太坊、波场和比特币三链上的初始扫仓总额中，主流资产（ETH、BTC、USDT、USDC）为 52.33 亿美元，62 种长尾代币为 9.65 亿美元。剩余约 1.02 亿美元差额分布在 Arbitrum（安全委员会紧急暂停并冻结 3,050 万美元）、Solana、XRP、Base、Optimism、Avalanche 和 Polygon 等外部公链热钱包中。
 顺着链上资金流动与黑名单状态，可以得出四个判断：
-黑名单生效前 48 秒完成资产转移。Tether 处置耗时 37 分钟，在以太坊与波场共冻结 21.72 亿美元稳定币。在地址 0x8d5390... 被列入黑名单前 48 秒，黑客向未标记的过渡中转地址 0x77edef... 转出 1.3 亿 USDT 与 2.33 万枚 ETH，并在 5 分钟内通过去中心化交易所（DEX）兑换为原生 ETH 并转出，未被黑名单拦截。 资产属性决定处置策略。受中心化机构控制的稳定币（USDT、USDC）被黑客列为优先清算标的，在数十分钟内密集分流并注入去中心化流动性池。不可冻结的原生资产（BTC、ETH）则采取大额整包归集策略，BTC 在生成区块内完成切分存储，ETH 汇入大额冷钱包保持静态沉淀。 DEX 兑换产出存在 4.</description>
-    </item>
-    
-    <item>
-      <title>聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</title>
-      <link>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</link>
-      <pubDate>Thu, 29 Oct 2026 14:30:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</guid>
-      <description>公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
+黑名单生效前 48 秒完成资产转移。Tether 处置耗时 37 分钟，在以太坊与波场共冻结 21.72 亿美元稳定币。在地址 0x8d5390... 被列入黑名单前 48 秒，黑客向未标记的过渡中转地址 0x77edef... 转出 1.3 亿 USDT 与 2.33 万枚 ETH，并在 5 分钟内通过去中心化交易所（DEX）兑换为原生 ETH 并转出，未被黑名单拦截。 资产属性决定处置策略。受中心化机构控制的稳定币（USDT、USDC）被黑客列为优先清算标的，在数十分钟内密集分流并注入去中心化流动性池。不可冻结的原生资产（BTC、ETH）则采取大额整包归集策略，BTC 在生成区块内完成切分存储，ETH 汇入大额冷钱包保持静态沉淀。 DEX 兑换产出存在 4.</description></item><item><title>聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</title><link>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</link><pubDate>Thu, 29 Oct 2026 14:30:00 +0800</pubDate><guid>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</guid><description>公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
 把跟单流水与后续实际成交行情逐笔对齐，跟随买入的结果往往是买在局部冲高的高点，并在后续阴跌中承受深度亏损。
 这种偏差源于对时序因果的混淆。把非平稳时序中的同步甚至滞后资金流误判为单边预测指标，是跟单策略失效的常见原因。
 我们在本系列前序研究中，先后建立了宏观公链指标的识别基准、常用排查工具的实操闭环、剔除 100% 胜率假象的 Trader 轨道画像清洗模型，以及过滤 76% 运营归集与做市噪音的大额转账分层标准。
 本文作为本系列的收官篇，承接经过清洗的 908 个独立 DEX Trader 画像样本，调取覆盖 2026 年 3 月 25 日至 2026 年 9 月 22 日跨越 180 天的 PEPE、FLOKI 与 SHIB 链上日级微观对齐流水，对聪明钱共识指标运行系统性的互相关滞后检验与定量策略回测，并测算链上滑点与 Gas 等物理摩擦对纸面超额收益的实际侵蚀。
 一、聪明钱共识模型的构建与防伪机制 单个链上地址极易受到虚假代币空投、自我对倒或项目方内部关联钱包的伪装干扰。评估聪明钱资金流向时，不能依赖单一钱包的买卖动作，需要建立跨地址的群体共识模型。
 共识模型的基础是地址库的质量分流。我们在前序画像审计中明确界定了两类资金的统计差异：
-Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中（平均 33.0 笔），持仓周期相对克制（平均 943.0 小时，中位数 759.0 小时），交易具备清晰的二次平仓因果闭环，胜率均值为 91.8%，平均已实现收益为 41,737 美元； Early Holder / Capital Whale（早期低成本大户，共 1,004 个钱包）：交易笔数偏高（平均 62.4 笔），持仓时间偏长（平均 1,209.8 小时，中位数 1,030.3 小时），其名义盈利主要来自低价筹码的单向抛售，并不具备二级市场的买盘敏锐度。 共识指标仅将通过质量审计的 908 个 Trader 纳入样本池，剔除早期大户与关联做市商。针对单一日历日 $t$，系统在标的代币的 DEX 流动性池中提取合格钱包的微观交易，计算两项核心变量：</description>
-    </item>
-    
-    <item>
-      <title>链上大额数据的分层结构：每天几万笔转账里，哪些值得交易员关注？</title>
-      <link>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</link>
-      <pubDate>Thu, 29 Oct 2026 11:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</guid>
-      <description>很多交易员习惯在社交平台或即时通讯工具中订阅大额链上异动提醒。每当看到单笔上千万美元的代币转入交易所或链上巨鲸转账，容易直接将其视作二级市场的买卖信号。
+Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中（平均 33.0 笔），持仓周期相对克制（平均 943.0 小时，中位数 759.0 小时），交易具备清晰的二次平仓因果闭环，胜率均值为 91.8%，平均已实现收益为 41,737 美元； Early Holder / Capital Whale（早期低成本大户，共 1,004 个钱包）：交易笔数偏高（平均 62.4 笔），持仓时间偏长（平均 1,209.8 小时，中位数 1,030.3 小时），其名义盈利主要来自低价筹码的单向抛售，并不具备二级市场的买盘敏锐度。 共识指标仅将通过质量审计的 908 个 Trader 纳入样本池，剔除早期大户与关联做市商。针对单一日历日 $t$，系统在标的代币的 DEX 流动性池中提取合格钱包的微观交易，计算两项核心变量：</description></item><item><title>链上大额数据的分层结构：每天几万笔转账里，哪些值得交易员关注？</title><link>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</link><pubDate>Thu, 29 Oct 2026 11:45:00 +0800</pubDate><guid>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</guid><description>很多交易员习惯在社交平台或即时通讯工具中订阅大额链上异动提醒。每当看到单笔上千万美元的代币转入交易所或链上巨鲸转账，容易直接将其视作二级市场的买卖信号。
 将此类公开报警与后续行情逐笔对齐，跟单结果往往与预期相背。
 Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系统统计。数据显示，散户收到推送并完成交易时，原巨鲸的委托撮合早已结束数分钟。散户买入时承接的是做市商的卖单（Ask），卖出时撞上买单（Bid），实际充当了先手资金撤出的对手方。
 全网链上转账记录的是资产所有权的物理流转，而非二级市场的撮合订单。未经实体标签过滤与时窗因果核对的广播式警报，信噪比不足 24%。
@@ -55,16 +22,7 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
 1. 中心化交易所内部归集与冷热互转（占比 47.2%） 用户向 CEX 充值时代币会先到达临时的独立充值地址。交易所按固定时钟周期或资金阈值，触发批处理脚本将代币归集到热钱包（Hot Wallet），再根据储备池安全水位调配至离线冷钱包（Cold Storage）。此类流水占到全网大额异动的近一半，其资金发送方与接收方均受交易所同一风控系统控制，不存在外部对手盘交换。
 2. 做市商跨所调拨与库存再平衡（占比 29.4%） Wintermute、Jump Trading 等专业做市商为了维持各大 CEX 与 DEX 的盘口流动性深度，需要根据各交易场所的消耗速度动态调拨资产。当 Binance 某代币买盘过热、Uniswap 卖盘较多时，做市商会在几分钟内从链上提取资产充入中心化平台完成双向点差对冲。这类转账的特点是买卖双向金额高度对等，反映的是中性库存管理行为，并非单边看多或看空。
 3. 大额充币假动作与期现套利抵押 在对 14 次典型大额充入 CEX 的案例跟踪中，相关地址在充币后 12 至 48 小时内，又将对等金额的代币转回链上并投入去中心化借贷协议或质押合约。部分大户将现货转入交易所，真实用途是作为合约杠杆的保证金，或赚取期货与现货之间的基差资金费率，并非直接在现货市场按市价倾销。若单纯看到大额充币就判定砸盘，极易出现方向误判。
-4. 跨链桥与协议金库管理资金 Layer 1 与 Layer 2 之间的官方跨链桥和第三方中继池，在每日特定时间段需要重平衡资产储备。多签金库在执行分红、生态基金拨付或合约升级时也会产生数百万美元的账本变动。这类变动属于协议治理与技术运维，脱离交易员的短线决策范畴。</description>
-    </item>
-    
-    <item>
-      <title>百分百胜率的聪明钱背后的假象，模型与真实分布</title>
-      <link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link>
-      <pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid>
-      <description>在多数链上数据看板或分析平台中，“寻找聪明钱”通常被简化为直接查看胜率或盈利排行榜。
+4. 跨链桥与协议金库管理资金 Layer 1 与 Layer 2 之间的官方跨链桥和第三方中继池，在每日特定时间段需要重平衡资产储备。多签金库在执行分红、生态基金拨付或合约升级时也会产生数百万美元的账本变动。这类变动属于协议治理与技术运维，脱离交易员的短线决策范畴。</description></item><item><title>百分百胜率的聪明钱背后的假象，模型与真实分布</title><link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link><pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate><guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid><description>在多数链上数据看板或分析平台中，“寻找聪明钱”通常被简化为直接查看胜率或盈利排行榜。
 但把这些公开榜单的钱包拉出来做微观流水核验，结果存在显著偏差。
 我们从 Dune Analytics 上的公开经典聪明钱/大额活跃钱包看板（结合 Nansen 与 Arkham 公开标记地址） 中，抽取了覆盖 4 条主流 EVM 公链的 1,345 个候选钱包样本。按常规榜单算法测算，这批钱包的胜率中位数达到 100%。
 在真实二级市场中，全市场胜率中位数不可能维持在 100%。对逐笔成交流水的微观结构审计显示，市面上通用的统计口径存在明显的选择性偏差与数据未对齐问题。
@@ -72,16 +30,7 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
 1. 未平仓浮亏截断偏差（浮亏死扛不计入胜率） 常规看板计算胜率时仅统计“已平仓卖出”的代币。当一个地址买入 10 个代币，其中 9 个处于大额浮亏状态但未发起链上卖出，仅有 1 个获利代币卖出平仓时，分母仅统计该笔盈利交易，名义胜率直接被计算为 100%。
 2. 期初库存未对齐偏差（外部转入现货被计为净利润） 样本中 45% 到 70% 的高盈利代币在监控窗口内不存在链上买入记录。这类代币多属于监控期前已持有的早期现货，或由中心化交易所（CEX）提币转入 DEX 卖出变现。常规算法直接将外部转入卖出的全额金额记为净利润，使早期筹码的存量变现被误判为二级市场的选币超额收益。
 3. 多跳路由导致的频次与成交量重复计算 Uniswap V3、1inch 等现代 DEX 协议普遍采用智能路由（Universal Router）执行多池拆单（如 Token A $\to$ WETH $\to$ Token B）。直接读取底层交易表（如 Dune dex.trades）时，单次交易意图会产生 2 到 4 条子流水。直接累加会导致交易频次虚高 2 到 3 倍，跳板资产的折算金额亦被多次重复计入。
-4. 高频做市与跨池套利地址混杂 做市商与套利脚本依靠自动化微利对倒，买卖双向金额高度平衡。这类地址的名义胜率与流水体量极大，但收益来自于点差撮合。普通交易者跟单无法达到微秒级响应，容易在浅池中承担不利的滑点摩擦。</description>
-    </item>
-    
-    <item>
-      <title>链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</title>
-      <link>https://kuhung.me/posts/how-to-track-onchain-transactions/</link>
-      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-track-onchain-transactions/</guid>
-      <description>风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
+4. 高频做市与跨池套利地址混杂 做市商与套利脚本依靠自动化微利对倒，买卖双向金额高度平衡。这类地址的名义胜率与流水体量极大，但收益来自于点差撮合。普通交易者跟单无法达到微秒级响应，容易在浅池中承担不利的滑点摩擦。</description></item><item><title>链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</title><link>https://kuhung.me/posts/how-to-track-onchain-transactions/</link><pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate><guid>https://kuhung.me/posts/how-to-track-onchain-transactions/</guid><description>风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
 在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。
 面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团队内部的代币分仓；要么考虑购买商业机构级分析工具，但面对每月 49 美元 到 69 美元 的订阅费用，普通个人交易者难以长期承担，且这类工具更侧重宏观研报与全景大盘，对数分钟内的短线排查并不顺手。
 我们在清洗本地链上画像库时发现，单纯依靠静态胜率榜单根本排不出交易能力的优劣。排查一笔链上异动也不需要昂贵的商业订阅，把 GMGN、Bubblemaps、Arkham、DeBank 与区块链浏览器拼接起来，配合一段几十行的 RPC 校验脚本，就能在 10 分钟内完成一笔交易的尽调闭环，降低盲目跟单风险并过滤无效噪音。
@@ -90,16 +39,7 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
 Nansen 等专业平台在标签系统中专门设立了 Former Smart Trader（前聪明钱）分类。在特定行情阶段（如早期特定代币轮动）录得数倍收益的高盈利地址，在市场风格切换后，其交易策略往往迅速失效，胜率和盈亏比均会大幅回落。
 GitHub 开源回测项目 orvynel/crucible 对聪明钱跟单策略的实测数据表明：无脑跟随公开榜单上的聪明钱买入，30 天胜率仅为 54%，整体表现跑输同期持币基准。
 2. 虚假利润与期初库存未对齐 在全库 1,912 行聪明钱画像中，有 1,004 行（占比 52.5%） 带有 opening_inventory_partial_match 质量标签；而在 wallet_token_performance 的 16,770 条单币战绩记录中，仅有 4,313 条（占比 25.7%） 具备完整的窗口内买卖闭环，其余 74.3% 属于单边无闭环（10,437 条）或期初库存不完整（2,020 条）。各批次画像中有 45%–70% 的高盈利钱包存在成本计算不完整的问题。
-很多地址在监控窗口前就已经低成本持有代币，或者通过外部地址批量转入现货，随后在监控窗口内直接在 DEX 上抛售变现。常见榜单的平均成本算法将窗口前的建仓成本默认为零或按当日均价折算，把大额卖出营业额直接高估为“净利润”。跟单者看到几万美元的虚假战绩跟进，实际上只是迎上了对方的现货清仓。</description>
-    </item>
-    
-    <item>
-      <title>链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标</title>
-      <link>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</link>
-      <pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</guid>
-      <description>风险提示：本文涉及的链上数据、统计指标与估算模型仅供研究参考，不构成任何投资建议或交易推荐。历史数据与链上统计表现不代表未来结果。
+很多地址在监控窗口前就已经低成本持有代币，或者通过外部地址批量转入现货，随后在监控窗口内直接在 DEX 上抛售变现。常见榜单的平均成本算法将窗口前的建仓成本默认为零或按当日均价折算，把大额卖出营业额直接高估为“净利润”。跟单者看到几万美元的虚假战绩跟进，实际上只是迎上了对方的现货清仓。</description></item><item><title>链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标</title><link>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</link><pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate><guid>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</guid><description>风险提示：本文涉及的链上数据、统计指标与估算模型仅供研究参考，不构成任何投资建议或交易推荐。历史数据与链上统计表现不代表未来结果。
 很多交易者在看链上数据时，容易把长周期的宏观指标和公链的日常活跃数据混在一起。有人每天刷新 MVRV 或者 SOPR，发现几天甚至几周数值几乎不变化，对短线交易没有直接指导作用；也有人每天紧盯公链的 DEX 成交量和交易笔数，直接把 Solana 的高频小额交易和以太坊的大额结算拿来横向对比，把公链本身的基础属性当成了生态爆发的动态增量。
 看懂链上数据需要把长周期估值、资金面衍生指标、公链静态特征以及日常动态指标拆开来看。宏观指标管周期位置，公链动态指标管局部资金流动。
 一、三大经典链上周期指标与资金面数据 在链上宏观分析中，MVRV、SOPR 和 CDD 是衡量比特币等主流资产周期估值、持仓成本和筹码沉睡状态的基础指标。配合现货 ETF 净流入与衍生品清算地图，可以观察全网资本的宏观流动。
@@ -108,16 +48,7 @@ GitHub 开源回测项目 orvynel/crucible 对聪明钱跟单策略的实测数�
 当 MVRV 大于 1.0 时，全网总体处于未实现浮盈状态；当 MVRV 小于 1.0 时，全网总市值跌破全市场平均成本，处于集体浮亏状态。
 为了消除牛熊周期中流通市值波动规模的非平稳影响，分析中常使用 MVRV Z-Score。其计算方式为流通市值与已实现市值的差值，除以历史流通市值的标准差 $\sigma_{Market\ Cap}$：
 $$Z\text{-}Score = \frac{Market\ Cap - Realized\ Cap}{\sigma_{Market\ Cap}}$$
-Z-Score &amp;gt; 5 到 7：流通市值大幅偏离已实现市值，全网未实现浮盈处于历史极值区间，历史上多次对应狂热周期的顶部。 Z-Score &amp;lt; 0：流通市值低于全网平均建仓成本，全网处于整体浮亏状态，通常对应大周期的深熊筑底区间。 MVRV 属于宏观左侧指标，变化周期通常以季度或年份计算。由于加密货币交易所内部记账的换手不会实时体现为链上转账，该指标无法用于指导日内或数周内的短线买卖。</description>
-    </item>
-    
-    <item>
-      <title>链上宏观数据，要看哪些指标，不该看哪些指标</title>
-      <link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link>
-      <pubDate>Sat, 10 Oct 2026 17:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</guid>
-      <description>最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
+Z-Score &amp;gt; 5 到 7：流通市值大幅偏离已实现市值，全网未实现浮盈处于历史极值区间，历史上多次对应狂热周期的顶部。 Z-Score &amp;lt; 0：流通市值低于全网平均建仓成本，全网处于整体浮亏状态，通常对应大周期的深熊筑底区间。 MVRV 属于宏观左侧指标，变化周期通常以季度或年份计算。由于加密货币交易所内部记账的换手不会实时体现为链上转账，该指标无法用于指导日内或数周内的短线买卖。</description></item><item><title>链上宏观数据，要看哪些指标，不该看哪些指标</title><link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link><pubDate>Sat, 10 Oct 2026 17:45:00 +0800</pubDate><guid>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</guid><description>最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
 重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。
 链上账本公开透明，造假成本同样极低。TVL 充满再质押嵌套的双重记账，DEX 成交量能靠零手续费对倒低成本刷取，发币平台日发几万个代币则多半是自动化脚本在跑。如果一个看板只是把这些未经清洗的数字堆在一起，根本分不清链上到底是真金白银在沉淀，还是少数团队在设局。
 我们在这次重构中剔除了缺乏沉没成本和资金归属意义的虚高指标，保留了 4 个团队实际盯盘和做宏观过滤会看的数据维度。这里把这套指标的计算口径、背后的数据陷阱以及我们自己的使用方式记录下来。
@@ -127,8 +58,4 @@ TVL：循环嵌套与代币单价被动膨胀 很多人拿 TVL 当作公链资�
 第二是计价代币单价被动膨胀。TVL 采用美元标价。即使没有一美元外部增量资金进场，只要原生代币单价上涨，TVL 就会自动抬升。这反映的是现货单价变化，无法说明增量资金的流入。行情一旦逆转并触发抵押品清算，名义 TVL 会在几天内腰斩。
 DEX 成交量：低成本对倒 中心化交易所刷量需要向平台交手续费，但在低 Gas 费公链或零费率池子里，量化脚本可以在两个流动性池之间循环对买对卖。单日名义交易额能刷出几亿美元，顺着交易拓扑图看进去，活跃的只有少数几个关联钱包。
 发射台日发币量：脚本自动化生成 联合曲线（Bonding Curve）模式普及后，单次发币成本降到了 2 美元以下。日发币 30,000 个，体现的是批量发币脚本的运行频次，跟实际买盘承接力毫无关联。
-我们在 Dune 调取了数百万个代币的完整生命周期样本，主流发射台代币的毕业率中位数只有 1.41%。即便成功打满曲线毕业到 DEX，上线 30 天后池内流动性仍有 5 万美元且具备基础换手率的代币，不足千分之五（0.</description>
-    </item>
-    
-  </channel>
-</rss>
+我们在 Dune 调取了数百万个代币的完整生命周期样本，主流发射台代币的毕业率中位数只有 1.41%。即便成功打满曲线毕业到 DEX，上线 30 天后池内流动性仍有 5 万美元且具备基础换手率的代币，不足千分之五（0.</description></item></channel></rss>

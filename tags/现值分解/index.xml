@@ -1,27 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>现值分解 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E7%8E%B0%E5%80%BC%E5%88%86%E8%A7%A3/</link>
-    <description>Recent content in 现值分解 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Nov 2026 19:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8E%B0%E5%80%BC%E5%88%86%E8%A7%A3/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>红利与宏观择时（一）：红利资产的定价本质与现值解耦</title>
-      <link>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</link>
-      <pubDate>Sun, 01 Nov 2026 19:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</guid>
-      <description>买高股息股票，到底是在赚企业的分红，还是在赚市场情绪波动的钱？数据表明，红利资产的大部分收益往往来自市场极度悲观时的估值修复，而不是分红本身的增长。在股息率被恐慌推到高位时布局，既有分红安全垫，又能吃到估值修复的超额收益。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>现值分解 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%8E%B0%E5%80%BC%E5%88%86%E8%A7%A3/</link><description>Recent content in 现值分解 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Nov 2026 19:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8E%B0%E5%80%BC%E5%88%86%E8%A7%A3/index.xml" rel="self" type="application/rss+xml"/><item><title>红利与宏观择时（一）：红利资产的定价本质与现值解耦</title><link>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</link><pubDate>Sun, 01 Nov 2026 19:00:00 +0800</pubDate><guid>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</guid><description>买高股息股票，到底是在赚企业的分红，还是在赚市场情绪波动的钱？数据表明，红利资产的大部分收益往往来自市场极度悲观时的估值修复，而不是分红本身的增长。在股息率被恐慌推到高位时布局，既有分红安全垫，又能吃到估值修复的超额收益。
 本文是「红利与宏观择时」系列的第一篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防与宏观流动性周期：
-篇章一：现值解耦（本篇） ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的极端风险：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋（筹备中） ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚（筹备中） ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、股息率的现值方程拆解 二、用 VAR 状态空间提取未来预期 三、美股 152 年长周期的实证检验 四、中证红利资产（2011–2026）的现值解耦 1. 模型核心统计读数与市场验证 2. 历次市场转折点中的贴现率与预期演变 五、横向视野：不同市场红利资产的参数与驱动贡献拆解 1. 宏观水平与系统参数对比 2. 方差分解：各驱动组件的贡献占比 3. 各市场配置特征分析 六、理论局限与现金流久期 附录：实证脚本与公开数据源 参考文献 平时看红利资产或大盘估值，最常用的指标是股息率（D/P，分红除以股价）。但在实际跟踪时，常遇到两类情况：
+篇章一：现值解耦（本篇） ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 极端市场环境下的动量崩溃：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋（筹备中） ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚（筹备中） ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、股息率的现值方程拆解 二、用 VAR 状态空间提取未来预期 三、美股 152 年长周期的实证检验 四、中证红利资产（2011–2026）的现值解耦 1. 模型核心统计读数与市场验证 2. 历次市场转折点中的贴现率与预期演变 五、横向视野：不同市场红利资产的参数与驱动贡献拆解 1. 宏观水平与系统参数对比 2. 方差分解：各驱动组件的贡献占比 3. 各市场配置特征分析 六、理论局限与现金流久期 参考文献 平时看红利资产或大盘估值，最常用的指标是股息率（D/P，分红除以股价）。但在实际跟踪时，常遇到两类情况：
 第一种情况在市场大跌之后。股息率被动推升到 6% 甚至 8%，这属于估值跌出的安全垫，还是市场提前预警分红下调？
 第二种情况在行情高位。比如标普 500 股息率被压低到 1.2% 附近，是因为企业未来分红增长预期上修推高了股价，还是折现率被情绪过度压缩？
 静态股息率无法区分这两种驱动。Campbell 和 Shiller 在 1988 年提出的现值解耦模型，将股息率分解为分红预期与贴现率预期两个独立分量。
 一、股息率的现值方程拆解 股票现价 $P$ 对应未来现金流（分子：分红）与要求回报率（分母：贴现率）的折现。Campbell 和 Shiller 将动态贴现关系做了一阶对数线性化展开，得到可加减拆解的现值方程：
-$$\delta_t \approx \mathbb{E}t \sum{j=0}^{\infty} \rho^j r_{t+j} - \mathbb{E}t \sum{j=0}^{\infty} \rho^j \Delta d_{t+j} + h$$</description>
-    </item>
-    
-  </channel>
-</rss>
+$$\delta_t \approx \mathbb{E}t \sum{j=0}^{\infty} \rho^j r_{t+j} - \mathbb{E}t \sum{j=0}^{\infty} \rho^j \Delta d_{t+j} + h$$</description></item></channel></rss>

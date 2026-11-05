@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>流动性 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/</link>
-    <description>Recent content in 流动性 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Oct 2026 10:50:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标</title>
-      <link>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</link>
-      <pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</guid>
-      <description>风险提示：本文涉及的链上数据、统计指标与估算模型仅供研究参考，不构成任何投资建议或交易推荐。历史数据与链上统计表现不代表未来结果。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>流动性 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/</link><description>Recent content in 流动性 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 26 Oct 2026 10:50:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7/index.xml" rel="self" type="application/rss+xml"/><item><title>链上宏观指标怎么看：从 MVRV、SOPR 到公链日常监测指标</title><link>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</link><pubDate>Mon, 26 Oct 2026 10:50:00 +0800</pubDate><guid>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</guid><description>风险提示：本文涉及的链上数据、统计指标与估算模型仅供研究参考，不构成任何投资建议或交易推荐。历史数据与链上统计表现不代表未来结果。
 很多交易者在看链上数据时，容易把长周期的宏观指标和公链的日常活跃数据混在一起。有人每天刷新 MVRV 或者 SOPR，发现几天甚至几周数值几乎不变化，对短线交易没有直接指导作用；也有人每天紧盯公链的 DEX 成交量和交易笔数，直接把 Solana 的高频小额交易和以太坊的大额结算拿来横向对比，把公链本身的基础属性当成了生态爆发的动态增量。
 看懂链上数据需要把长周期估值、资金面衍生指标、公链静态特征以及日常动态指标拆开来看。宏观指标管周期位置，公链动态指标管局部资金流动。
 一、三大经典链上周期指标与资金面数据 在链上宏观分析中，MVRV、SOPR 和 CDD 是衡量比特币等主流资产周期估值、持仓成本和筹码沉睡状态的基础指标。配合现货 ETF 净流入与衍生品清算地图，可以观察全网资本的宏观流动。
@@ -22,16 +7,7 @@
 当 MVRV 大于 1.0 时，全网总体处于未实现浮盈状态；当 MVRV 小于 1.0 时，全网总市值跌破全市场平均成本，处于集体浮亏状态。
 为了消除牛熊周期中流通市值波动规模的非平稳影响，分析中常使用 MVRV Z-Score。其计算方式为流通市值与已实现市值的差值，除以历史流通市值的标准差 $\sigma_{Market\ Cap}$：
 $$Z\text{-}Score = \frac{Market\ Cap - Realized\ Cap}{\sigma_{Market\ Cap}}$$
-Z-Score &amp;gt; 5 到 7：流通市值大幅偏离已实现市值，全网未实现浮盈处于历史极值区间，历史上多次对应狂热周期的顶部。 Z-Score &amp;lt; 0：流通市值低于全网平均建仓成本，全网处于整体浮亏状态，通常对应大周期的深熊筑底区间。 MVRV 属于宏观左侧指标，变化周期通常以季度或年份计算。由于加密货币交易所内部记账的换手不会实时体现为链上转账，该指标无法用于指导日内或数周内的短线买卖。</description>
-    </item>
-    
-    <item>
-      <title>链上宏观数据，要看哪些指标，不该看哪些指标</title>
-      <link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link>
-      <pubDate>Sat, 10 Oct 2026 17:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</guid>
-      <description>最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
+Z-Score &amp;gt; 5 到 7：流通市值大幅偏离已实现市值，全网未实现浮盈处于历史极值区间，历史上多次对应狂热周期的顶部。 Z-Score &amp;lt; 0：流通市值低于全网平均建仓成本，全网处于整体浮亏状态，通常对应大周期的深熊筑底区间。 MVRV 属于宏观左侧指标，变化周期通常以季度或年份计算。由于加密货币交易所内部记账的换手不会实时体现为链上转账，该指标无法用于指导日内或数周内的短线买卖。</description></item><item><title>链上宏观数据，要看哪些指标，不该看哪些指标</title><link>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</link><pubDate>Sat, 10 Oct 2026 17:45:00 +0800</pubDate><guid>https://kuhung.me/posts/what-onchain-macro-metrics-actually-matter/</guid><description>最近把 LeeOnChain 的链上宏观看板（/macro）从底层数据源到指标定义彻底理了一遍。
 重构之前的版本暴露出一个尴尬的现实：页面上放着的指标（全链 TVL、DEX 7 天交易额、单链手续费、稳定币总量、Top Meme 成交量）本质上只是 DefiLlama 和 CoinGecko 面板的子集。在各大公开看板上天天能看到这些大盘数字，但这些常规数字往往具有极强的误导性。
 链上账本公开透明，造假成本同样极低。TVL 充满再质押嵌套的双重记账，DEX 成交量能靠零手续费对倒低成本刷取，发币平台日发几万个代币则多半是自动化脚本在跑。如果一个看板只是把这些未经清洗的数字堆在一起，根本分不清链上到底是真金白银在沉淀，还是少数团队在设局。
 我们在这次重构中剔除了缺乏沉没成本和资金归属意义的虚高指标，保留了 4 个团队实际盯盘和做宏观过滤会看的数据维度。这里把这套指标的计算口径、背后的数据陷阱以及我们自己的使用方式记录下来。
@@ -41,16 +17,7 @@ TVL：循环嵌套与代币单价被动膨胀 很多人拿 TVL 当作公链资�
 第二是计价代币单价被动膨胀。TVL 采用美元标价。即使没有一美元外部增量资金进场，只要原生代币单价上涨，TVL 就会自动抬升。这反映的是现货单价变化，无法说明增量资金的流入。行情一旦逆转并触发抵押品清算，名义 TVL 会在几天内腰斩。
 DEX 成交量：低成本对倒 中心化交易所刷量需要向平台交手续费，但在低 Gas 费公链或零费率池子里，量化脚本可以在两个流动性池之间循环对买对卖。单日名义交易额能刷出几亿美元，顺着交易拓扑图看进去，活跃的只有少数几个关联钱包。
 发射台日发币量：脚本自动化生成 联合曲线（Bonding Curve）模式普及后，单次发币成本降到了 2 美元以下。日发币 30,000 个，体现的是批量发币脚本的运行频次，跟实际买盘承接力毫无关联。
-我们在 Dune 调取了数百万个代币的完整生命周期样本，主流发射台代币的毕业率中位数只有 1.41%。即便成功打满曲线毕业到 DEX，上线 30 天后池内流动性仍有 5 万美元且具备基础换手率的代币，不足千分之五（0.</description>
-    </item>
-    
-    <item>
-      <title>1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</title>
-      <link>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</link>
-      <pubDate>Fri, 09 Oct 2026 08:50:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</guid>
-      <description>2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。
+我们在 Dune 调取了数百万个代币的完整生命周期样本，主流发射台代币的毕业率中位数只有 1.41%。即便成功打满曲线毕业到 DEX，上线 30 天后池内流动性仍有 5 万美元且具备基础换手率的代币，不足千分之五（0.</description></item><item><title>1.68 万亿放量下跌：日度数据怎么测出市场真实流动性</title><link>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</link><pubDate>Fri, 09 Oct 2026 08:50:00 +0800</pubDate><guid>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</guid><description>2026 年 10 月 8 日节后开盘，沪深两市全天成交 1.68 万亿元，比节前最后一个交易日放量约 2300 亿元，环比增幅 16%。
 盘中科技股一度领涨，但收盘上证指数跌 0.79%，创业板指跌 3.15%，恒生科技指数跌 2.89%。
 收盘后的多数讨论把这天归结为「放量，流动性充裕」。但实盘交易的体感往往相反：买盘承接很薄，稍微有些规模的卖单打出去，价格就直接滑下一大截。
 把成交额直接等同于流动性，是日常复盘里最容易踩的坑。
@@ -66,8 +33,4 @@ DEX 成交量：低成本对倒 中心化交易所刷量需要向平台交手续
 $$ \text{ILLIQ}{i,t} = \frac{|r{i,t}|}{\text{Volume}_{i,t}} $$
 分子是价格变动幅度，分母是用多少资金撬动了这个幅度。比值越大，意味着每单位成交金额对价格造成的冲击越大，市场深度越薄，流动性越差。
 学术界（Goyenko et al. 2009 与 Fong et al. 2017）在全球 43 国市场做过赛马检验：在所有低频度量中，日度 Amihud ILLIQ 对微观高频价格冲击（Kyle&amp;rsquo;s $\lambda$）的刻画能力排名第一。不需要高频逐笔数据清洗，日度成交额与涨跌幅已经保留了绝大部分价格冲击信号。
-实测过程与数值 拿 10 月 8 日对比节前 9 月 30 日：</description>
-    </item>
-    
-  </channel>
-</rss>
+实测过程与数值 拿 10 月 8 日对比节前 9 月 30 日：</description></item></channel></rss>

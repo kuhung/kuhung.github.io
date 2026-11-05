@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>社会观察 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/</link>
-    <description>Recent content in 社会观察 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 May 2023 21:38:16 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>全面了解 PrivateGPT：中文技巧和功能实测</title>
-      <link>https://kuhung.me/posts/privategpt/</link>
-      <pubDate>Wed, 17 May 2023 21:38:16 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/privategpt/</guid>
-      <description>近日，GitHub上开源了privateGPT，声称能够断网的情况下，借助GPT和文档进行交互。这一场景对于大语言模型来说，意义重大。因为很多公司或者个人的资料，无论是出于数据安全还是隐私的考量，是不方便联网的。为此，我也进行了些许体验，跑完了整个流程，希望给读者朋友一些有用信息。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>社会观察 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/</link><description>Recent content in 社会观察 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 17 May 2023 21:38:16 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%A4%BE%E4%BC%9A%E8%A7%82%E5%AF%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>全面了解 PrivateGPT：中文技巧和功能实测</title><link>https://kuhung.me/posts/privategpt/</link><pubDate>Wed, 17 May 2023 21:38:16 +0800</pubDate><guid>https://kuhung.me/posts/privategpt/</guid><description>近日，GitHub上开源了privateGPT，声称能够断网的情况下，借助GPT和文档进行交互。这一场景对于大语言模型来说，意义重大。因为很多公司或者个人的资料，无论是出于数据安全还是隐私的考量，是不方便联网的。为此，我也进行了些许体验，跑完了整个流程，希望给读者朋友一些有用信息。
 原作仓库地址：https://github.com/imartinez/privateGPT
 先说结论：可用，但还有进步空间。特别是对于简单询问语句，该模型不像ChatGPT回答有来有回，而是提供若干可能性进行回答。而数据预处理环节的容错性、embedding向量的生成方法以及大语言模型的基底模型，每一个环节的质量都会影响最终的使用体验。可期待的是，每一个环节都有可能逐步改善，并最终带来质的飞跃。
 原理解析 这套方法使用了 LangChain, GPT4All, LlamaCpp, Chroma and SentenceTransformers.
@@ -24,16 +9,7 @@ cp example.env .env vi .env 具体配置如下
 PERSIST_DIRECTORY=db MODEL_TYPE=GPT4All MODEL_PATH=models/ggml-gpt4all-j-v1.3-groovy.bin EMBEDDINGS_MODEL_NAME=all-MiniLM-L6-v2 MODEL_N_CTX=1000 下载资料与模型权重
 我们以《Generative Agents: Interactive Simulacra of Human Behavior》AI小镇这篇论文为例：
 cd source_documents curl -o x.pdf https://arxiv.org/pdf/2304.03442.pdf cd .. mkdir models cd models curl -o ggml-gpt4all-j-v1.3-groovy.bin https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin 向量化数据
-python ingest.py 如果502失败，可以尝试shell中直接调起python，输入下面的代码。下载完成后退出。</description>
-    </item>
-    
-    <item>
-      <title>ChatGPT 现状回顾与机会分析</title>
-      <link>https://kuhung.me/posts/chatgpt/</link>
-      <pubDate>Tue, 14 Mar 2023 00:41:03 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/chatgpt/</guid>
-      <description>前言 最近中文互联网上最火热的莫过于ChatGPT。人们都在谈论这个东西是多么“划时代”的产物。过去对AI不成气候的论调也看不见了，主流媒体似乎都在说：牛。不少大厂说自己也要“下海”参与布局与竞争，即使他们才不久刚ALL in 元宇宙。AIGC似乎是PGC、UGC的下一个大蛋糕。
+python ingest.py 如果502失败，可以尝试shell中直接调起python，输入下面的代码。下载完成后退出。</description></item><item><title>ChatGPT 现状回顾与机会分析</title><link>https://kuhung.me/posts/chatgpt/</link><pubDate>Tue, 14 Mar 2023 00:41:03 +0800</pubDate><guid>https://kuhung.me/posts/chatgpt/</guid><description>前言 最近中文互联网上最火热的莫过于ChatGPT。人们都在谈论这个东西是多么“划时代”的产物。过去对AI不成气候的论调也看不见了，主流媒体似乎都在说：牛。不少大厂说自己也要“下海”参与布局与竞争，即使他们才不久刚ALL in 元宇宙。AIGC似乎是PGC、UGC的下一个大蛋糕。
 该技术在22年11月底就推出了，但并未在当时引起太多关注（当然也和大家都急着囤药有关）。去年十二月份左右，即有技术论坛谈论到此事。不过大家讨论的并非它有多牛，而是关注的它带来了多少“垃圾内容”。新的“内容农场”的论调随处可见：假话空话以及语义不明的文本内容占据高的SEO，污染各种可见的搜索结果。Stack Overflow发表声明称：将会拒绝这类生成的答案在论坛中出现。随后，更多论坛也发表了类似的声明。
 谁可想，三个月不到，该产品便火爆中文互联网出圈。
 回顾 就像是各类引爆点事件一样，你永远无法准确预测哪些事情会被广泛传播，只能事后诸葛亮分析一波。从最快达到1亿用户数的产品；到谷歌下场表演失利，市值蒸发。这类资讯，前者挑动大众市场，后者让各类科技公司如坐针毡。在“营销”传播方面，赚足了眼球。
@@ -51,8 +27,4 @@ GPT 全称 Generative Pre-Training，生成式预训练模型。生成式通过�
 提示词的本质，和搜索词类似，即“提问的艺术“。不同的是搜索引擎用更长的框暗示你填更多的词，以此来获得更多的信息。提示词却更为复杂，一长串的指令只为对方扮演正确的角色或者绕过特定的限制。为此，我也写了一个网页版的提示词查找器，方便初次接触的朋友体验到进阶玩法。地址：https://kuhung.me/awesome-prompt-engineering/ 。其具备基本的提示功能，随机出现一组，复制方便。
 真人在你面前，你都可能不会如此耐心。面对一个机器人，人们却有充足的耐心和多样的方法去提示它。
 回到一开始人们的担心。在人工智能领域，人们常说的一句话是：garbage in, garbage out。用来形象说明数据质量的重要性。随着这个工具的普及，公开互联网上的数据分布，将不可避免受到影响，反过来又作用到模型本身。可以预见的是：能从繁杂的信息中获得关键信息，以批判视角看待问题，能更好组织和表达语言的人，将在未来越发稀少和可贵。
-关于作者</description>
-    </item>
-    
-  </channel>
-</rss>
+关于作者</description></item></channel></rss>

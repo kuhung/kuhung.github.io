@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>深度学习 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
-    <description>Recent content in 深度学习 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 03 Nov 2026 13:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>权重空间编程（上）：大模型权重干预的四大技术路线对比</title>
-      <link>https://kuhung.me/posts/weight-space-intervention-history/</link>
-      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weight-space-intervention-history/</guid>
-      <description>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>深度学习 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link><description>Recent content in 深度学习 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 03 Nov 2026 13:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>权重空间编程（上）：大模型权重干预的四大技术路线对比</title><link>https://kuhung.me/posts/weight-space-intervention-history/</link><pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate><guid>https://kuhung.me/posts/weight-space-intervention-history/</guid><description>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。
 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编程”（Weight-Space Programming, WSP）之前，有必要系统梳理此前在该领域形成的四条主流技术脉络，明确其在具体模型上的实测数据、所针对的具体问题以及各自面对的物理约束边界。
 一、超网络与权重空间学习：参数流形的黑盒映射 超网络（Hypernetworks）技术早在 2017 年由 David Ha 等人提出，基本思路是通过构建辅助神经网络来直接预测或生成目标主干网络的参数矩阵。
 在早期的基准测试中，研究人员验证了利用 HyperLSTM 动态生成循环单元权重的有效性。在 WMT14 德英与英法机器翻译任务中，HyperLSTM 将主干网络的独立参数量分别由 31.5M 和 61.2M 压缩至 14.8M 与 28.5M（压缩比例超过 50%），同时在测试集上的 BLEU 评分维持在 24.4 与 36.0，与未压缩的标准基线持平或略有提升。
@@ -21,20 +6,7 @@
 但超网络体系的根本局限在于学习范式：它本质上仍是监督学习架构下的高维回归映射，高度依赖海量已训练模型的参数集作为元学习（Meta-learning）训练样本，并未建立对网络参数内部算法逻辑的显式推理机制。
 二、模型编辑：因果追踪与单秩事实注入 模型编辑（Model Editing）旨在不重新训练整个模型的前提下，高保真度地修正模型参数中存储的特定事实陈述（如将“埃菲尔铁塔位于巴黎”更正为“位于罗马”）。
 代表性方法为 Kevin Meng 等人于 2022 年提出的 ROME（Rank-One Model Editing）。ROME 利用因果追踪（Causal Tracing）对输入 token 进行高斯噪声污染，并通过逐层激活阻断，定位出 Transformer 中间层前馈网络（MLP）是存储主谓宾关联记忆的主体。在定位到具体投影层（如 GPT-J 6B 的第 6 层 MLP）后，算法通过构造线性联想记忆方程并求解闭式最小二乘问题，计算出一个秩为 1（Rank-1）的外积矩阵直接叠加到权重张量中。
-在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.</description>
-    </item>
-    
-    <item>
-      <title>深度强化学习技巧 hacks for training deep RL</title>
-      <link>https://kuhung.me/posts/training_rl_systems_hacks/</link>
-      <pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/training_rl_systems_hacks/</guid>
-      <description>深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧 简化问题，使用低维变量。 使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。 当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。 构造一个 demo 来测试你的算法 比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。 这样能够轻易地发现那里出了问题。 注意：不要在这样的小问题上过分的尝试。 在熟悉的场景中测试 随着时间的推移，你将能预估训练所需的时间。 明白你的奖赏是如何变化的。 能够设定一个基线，以便让你知道相对过去改进了多少。 作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。 快速上手新任务的技巧 简化问题 从简单的开始，直到回到问题。 途径1： 简化特征空间 举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。 一旦起步，逐步还原问题直到解决问题。 途径2：简化奖赏函数 简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。 比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。 将一个问题转化为强化学习的技巧 可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。
+在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.</description></item><item><title>深度强化学习技巧 hacks for training deep RL</title><link>https://kuhung.me/posts/training_rl_systems_hacks/</link><pubDate>Thu, 02 May 2019 11:59:48 +0800</pubDate><guid>https://kuhung.me/posts/training_rl_systems_hacks/</guid><description>深度强化学习技巧 hacks for training deep RL 这是一篇旧文，John Schulman 《深度增强学习研究基础》演讲(Aug 2017)中记录的 tricks。近日重看，发现有些东西在工程中是通用的，值得一读。 测试新算法的技巧 简化问题，使用低维变量。 使用类似只有角度和速度两个变量的 Pendulum problem 问题。 这样做方便将目标函数、算法的最终状态以及算法的迭代情况可视化出来。 当出现问题时，更容易将出问题的点直观的表达（比如目标函数是否够平滑等问题）。 构造一个 demo 来测试你的算法 比如：对于一个分层强化学习算法，你应该构造一个算法可以直观学习到分层的问题。 这样能够轻易地发现那里出了问题。 注意：不要在这样的小问题上过分的尝试。 在熟悉的场景中测试 随着时间的推移，你将能预估训练所需的时间。 明白你的奖赏是如何变化的。 能够设定一个基线，以便让你知道相对过去改进了多少。 作者使用他的 hpper robot，因为他知道算法应该学多块，以及哪些行为是异常的。 快速上手新任务的技巧 简化问题 从简单的开始，直到回到问题。 途径1： 简化特征空间 举例来说，如果你是想从图片（高维空间）中学习，那么你可能先需要处理特征。举个例子：如果你的算法是想标定某个事物的位置，一开始，使用单一的x，y坐标可能会更好。 一旦起步，逐步还原问题直到解决问题。 途径2：简化奖赏函数 简化奖赏函数，这样可以有一个更快的反馈，帮助你知道是不是走偏了。 比如：击中时给 robot 记一分。这种情况很难学习，因为在开始于奖赏之前有太多的可能。将击中得分改为距离，这样将提升学习速率、更快迭代。 将一个问题转化为强化学习的技巧 可能现实是并不清楚特征是什么，也不清楚奖赏该是什么。或者，问题是什么都还不清楚。
 第一步：将这个问题使用随机策略可视化出来。 看看那些部分吸引了你。
 如果这个随机策略在某些情况下做了正确的事，那么很大概率，强化学习也可以做到。
-策略的更新将会发现这里面的行为，并促使稳定下来。 如果随机策略永远都做不到，那么强化学习也不可能。 确保可观测 确保你能够掌控系统，且给 agent 的也是同样的系统环境。 举个例子： 亲自查看处理过图片，以确保你没有移出掉关键信息或者是在某种程度上阻碍算法。 确保所有的事物都在合理的尺度 经验法则： 观测环境： 确保均值为0，方差为1。 奖赏： 如果你能控制它，就把他缩放到一个合理的维度。 在所有的数据上都做同样的处理。 检查所有的观测环境以及奖赏，以确保没有特别离奇的异常值。 建立一个好的基线 一开始并不清楚哪些算法会起作用，所以设定一系列的基线（从其他方法）。 交叉熵 策略更新 一些类型的 Q-learning 算法: OpenAI Baselines 或者 RLLab 复现论文 某些时候（经常的事），复现论文结果特别困难。有如下一些技巧：</description>
-    </item>
-    
-  </channel>
-</rss>
+策略的更新将会发现这里面的行为，并促使稳定下来。 如果随机策略永远都做不到，那么强化学习也不可能。 确保可观测 确保你能够掌控系统，且给 agent 的也是同样的系统环境。 举个例子： 亲自查看处理过图片，以确保你没有移出掉关键信息或者是在某种程度上阻碍算法。 确保所有的事物都在合理的尺度 经验法则： 观测环境： 确保均值为0，方差为1。 奖赏： 如果你能控制它，就把他缩放到一个合理的维度。 在所有的数据上都做同样的处理。 检查所有的观测环境以及奖赏，以确保没有特别离奇的异常值。 建立一个好的基线 一开始并不清楚哪些算法会起作用，所以设定一系列的基线（从其他方法）。 交叉熵 策略更新 一些类型的 Q-learning 算法: OpenAI Baselines 或者 RLLab 复现论文 某些时候（经常的事），复现论文结果特别困难。有如下一些技巧：</description></item></channel></rss>

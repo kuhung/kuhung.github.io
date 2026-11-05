@@ -1,38 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>生成式AI on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%BC%8Fai/</link>
-    <description>Recent content in 生成式AI on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%BC%8Fai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
-      <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>
-      <pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>生成式AI on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%BC%8Fai/</link><description>Recent content in 生成式AI on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 24 Oct 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%94%9F%E6%88%90%E5%BC%8Fai/index.xml" rel="self" type="application/rss+xml"/><item><title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title><link>https://kuhung.me/posts/consumer-ai-market-structure/</link><pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate><guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 看 AI 行业榜单，容易被网页访问量和 App 下载量带偏。
 Similarweb 统计的网页独立访客，或者应用商店的下载榜，反映的是大众好奇心。但在推理算力成本居高不下的今天，访问量大往往只意味着算力账单更贵，不代表有人愿意持续掏钱。
 a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的美国消费者信用卡真实扣款样本。当把“真实花钱的账单”和“网页访问量”、“移动端月活”放在一起对照时，整个市场的底牌才显现出来。
 在看具体榜单前，有两组量化基准可以作为全局参考线：
 流量端的天花板与门槛：ChatGPT 全球月访问量约 37 亿次（是 Gemini 的 2 倍，Claude 的 14 倍）；而进入网页 Top 50 的门槛线大约在 500 万至 800 万次/月；移动端 Top 50 的月活（MAU）门槛在 300 万至 500 万之间。 支出端的极度集中：全美用过 AI 的人接近一半，真正按月掏钱订阅个人版工具的消费者只有 4.5%。中位数付费者每月花 25 美元，87% 的人只给一款工具付费。前 1% 的重度用户，月均支出高达 903 美元，贡献了全盘近两成的开销。 支出排名前 50 的厂商里，有整整 29 家在网页流量榜和移动端月活榜上查无此人。
-把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description>
-    </item>
-    
-    <item>
-      <title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title>
-      <link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link>
-      <pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid>
-      <description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
+把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description></item><item><title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title><link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link><pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate><guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid><description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
 在阅读全文前，有几个重点数据需要先关注：
 付费用户比例较低：全美近半数人使用过 AI，但每天使用的仅有 25%，真正为 ChatGPT、Gemini 或 Claude 个人订阅付费的消费者只有 4.5%。 支出高度集中于重度用户：前 1% 的重度付费用户月均支出达 903 美元（18 个月内增长 80%），贡献了近两成的总支出；而中位数付费者每月仅 25 美元，且只有 13% 的人会购买第二款 AI 工具。 流量与实际收入显著脱节：消费支出前 50 强中，有 29 家完全没有进入网页流量或移动端月活榜单。高客单价产品主要集中在桌面客户端、开发工具和直接嵌入即时通讯工具的智能体（Agent）。 头部效应加剧：本期仅 11 款新产品首次入榜，为历期最少。Canva、Notion、Figma 等成熟软件凭借已有工作流占据前列，同时进入网页、移动与支出三榜前列的产品全球仅 7 家。 这份榜单涵盖的 100 多个消费级 AI 产品，后续我们会逐个进行分析拆解。
-报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description>
-    </item>
-    
-  </channel>
-</rss>
+报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description></item></channel></rss>

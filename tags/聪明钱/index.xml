@@ -1,35 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>聪明钱 on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/</link>
-    <description>Recent content in 聪明钱 on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 14:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</title>
-      <link>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</link>
-      <pubDate>Thu, 29 Oct 2026 14:30:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</guid>
-      <description>公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>聪明钱 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/</link><description>Recent content in 聪明钱 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 29 Oct 2026 14:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E8%81%AA%E6%98%8E%E9%92%B1/index.xml" rel="self" type="application/rss+xml"/><item><title>聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</title><link>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</link><pubDate>Thu, 29 Oct 2026 14:30:00 +0800</pubDate><guid>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</guid><description>公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
 把跟单流水与后续实际成交行情逐笔对齐，跟随买入的结果往往是买在局部冲高的高点，并在后续阴跌中承受深度亏损。
 这种偏差源于对时序因果的混淆。把非平稳时序中的同步甚至滞后资金流误判为单边预测指标，是跟单策略失效的常见原因。
 我们在本系列前序研究中，先后建立了宏观公链指标的识别基准、常用排查工具的实操闭环、剔除 100% 胜率假象的 Trader 轨道画像清洗模型，以及过滤 76% 运营归集与做市噪音的大额转账分层标准。
 本文作为本系列的收官篇，承接经过清洗的 908 个独立 DEX Trader 画像样本，调取覆盖 2026 年 3 月 25 日至 2026 年 9 月 22 日跨越 180 天的 PEPE、FLOKI 与 SHIB 链上日级微观对齐流水，对聪明钱共识指标运行系统性的互相关滞后检验与定量策略回测，并测算链上滑点与 Gas 等物理摩擦对纸面超额收益的实际侵蚀。
 一、聪明钱共识模型的构建与防伪机制 单个链上地址极易受到虚假代币空投、自我对倒或项目方内部关联钱包的伪装干扰。评估聪明钱资金流向时，不能依赖单一钱包的买卖动作，需要建立跨地址的群体共识模型。
 共识模型的基础是地址库的质量分流。我们在前序画像审计中明确界定了两类资金的统计差异：
-Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中（平均 33.0 笔），持仓周期相对克制（平均 943.0 小时，中位数 759.0 小时），交易具备清晰的二次平仓因果闭环，胜率均值为 91.8%，平均已实现收益为 41,737 美元； Early Holder / Capital Whale（早期低成本大户，共 1,004 个钱包）：交易笔数偏高（平均 62.4 笔），持仓时间偏长（平均 1,209.8 小时，中位数 1,030.3 小时），其名义盈利主要来自低价筹码的单向抛售，并不具备二级市场的买盘敏锐度。 共识指标仅将通过质量审计的 908 个 Trader 纳入样本池，剔除早期大户与关联做市商。针对单一日历日 $t$，系统在标的代币的 DEX 流动性池中提取合格钱包的微观交易，计算两项核心变量：</description>
-    </item>
-    
-    <item>
-      <title>百分百胜率的聪明钱背后的假象，模型与真实分布</title>
-      <link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link>
-      <pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid>
-      <description>在多数链上数据看板或分析平台中，“寻找聪明钱”通常被简化为直接查看胜率或盈利排行榜。
+Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中（平均 33.0 笔），持仓周期相对克制（平均 943.0 小时，中位数 759.0 小时），交易具备清晰的二次平仓因果闭环，胜率均值为 91.8%，平均已实现收益为 41,737 美元； Early Holder / Capital Whale（早期低成本大户，共 1,004 个钱包）：交易笔数偏高（平均 62.4 笔），持仓时间偏长（平均 1,209.8 小时，中位数 1,030.3 小时），其名义盈利主要来自低价筹码的单向抛售，并不具备二级市场的买盘敏锐度。 共识指标仅将通过质量审计的 908 个 Trader 纳入样本池，剔除早期大户与关联做市商。针对单一日历日 $t$，系统在标的代币的 DEX 流动性池中提取合格钱包的微观交易，计算两项核心变量：</description></item><item><title>百分百胜率的聪明钱背后的假象，模型与真实分布</title><link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link><pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate><guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid><description>在多数链上数据看板或分析平台中，“寻找聪明钱”通常被简化为直接查看胜率或盈利排行榜。
 但把这些公开榜单的钱包拉出来做微观流水核验，结果存在显著偏差。
 我们从 Dune Analytics 上的公开经典聪明钱/大额活跃钱包看板（结合 Nansen 与 Arkham 公开标记地址） 中，抽取了覆盖 4 条主流 EVM 公链的 1,345 个候选钱包样本。按常规榜单算法测算，这批钱包的胜率中位数达到 100%。
 在真实二级市场中，全市场胜率中位数不可能维持在 100%。对逐笔成交流水的微观结构审计显示，市面上通用的统计口径存在明显的选择性偏差与数据未对齐问题。
@@ -37,16 +13,7 @@ Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中�
 1. 未平仓浮亏截断偏差（浮亏死扛不计入胜率） 常规看板计算胜率时仅统计“已平仓卖出”的代币。当一个地址买入 10 个代币，其中 9 个处于大额浮亏状态但未发起链上卖出，仅有 1 个获利代币卖出平仓时，分母仅统计该笔盈利交易，名义胜率直接被计算为 100%。
 2. 期初库存未对齐偏差（外部转入现货被计为净利润） 样本中 45% 到 70% 的高盈利代币在监控窗口内不存在链上买入记录。这类代币多属于监控期前已持有的早期现货，或由中心化交易所（CEX）提币转入 DEX 卖出变现。常规算法直接将外部转入卖出的全额金额记为净利润，使早期筹码的存量变现被误判为二级市场的选币超额收益。
 3. 多跳路由导致的频次与成交量重复计算 Uniswap V3、1inch 等现代 DEX 协议普遍采用智能路由（Universal Router）执行多池拆单（如 Token A $\to$ WETH $\to$ Token B）。直接读取底层交易表（如 Dune dex.trades）时，单次交易意图会产生 2 到 4 条子流水。直接累加会导致交易频次虚高 2 到 3 倍，跳板资产的折算金额亦被多次重复计入。
-4. 高频做市与跨池套利地址混杂 做市商与套利脚本依靠自动化微利对倒，买卖双向金额高度平衡。这类地址的名义胜率与流水体量极大，但收益来自于点差撮合。普通交易者跟单无法达到微秒级响应，容易在浅池中承担不利的滑点摩擦。</description>
-    </item>
-    
-    <item>
-      <title>链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</title>
-      <link>https://kuhung.me/posts/how-to-track-onchain-transactions/</link>
-      <pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/how-to-track-onchain-transactions/</guid>
-      <description>风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
+4. 高频做市与跨池套利地址混杂 做市商与套利脚本依靠自动化微利对倒，买卖双向金额高度平衡。这类地址的名义胜率与流水体量极大，但收益来自于点差撮合。普通交易者跟单无法达到微秒级响应，容易在浅池中承担不利的滑点摩擦。</description></item><item><title>链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易</title><link>https://kuhung.me/posts/how-to-track-onchain-transactions/</link><pubDate>Mon, 26 Oct 2026 18:00:00 +0800</pubDate><guid>https://kuhung.me/posts/how-to-track-onchain-transactions/</guid><description>风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。
 在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。
 面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团队内部的代币分仓；要么考虑购买商业机构级分析工具，但面对每月 49 美元 到 69 美元 的订阅费用，普通个人交易者难以长期承担，且这类工具更侧重宏观研报与全景大盘，对数分钟内的短线排查并不顺手。
 我们在清洗本地链上画像库时发现，单纯依靠静态胜率榜单根本排不出交易能力的优劣。排查一笔链上异动也不需要昂贵的商业订阅，把 GMGN、Bubblemaps、Arkham、DeBank 与区块链浏览器拼接起来，配合一段几十行的 RPC 校验脚本，就能在 10 分钟内完成一笔交易的尽调闭环，降低盲目跟单风险并过滤无效噪音。
@@ -55,8 +22,4 @@ Smart DEX Trader（合格交易员，共 908 个钱包）：交易频次适中�
 Nansen 等专业平台在标签系统中专门设立了 Former Smart Trader（前聪明钱）分类。在特定行情阶段（如早期特定代币轮动）录得数倍收益的高盈利地址，在市场风格切换后，其交易策略往往迅速失效，胜率和盈亏比均会大幅回落。
 GitHub 开源回测项目 orvynel/crucible 对聪明钱跟单策略的实测数据表明：无脑跟随公开榜单上的聪明钱买入，30 天胜率仅为 54%，整体表现跑输同期持币基准。
 2. 虚假利润与期初库存未对齐 在全库 1,912 行聪明钱画像中，有 1,004 行（占比 52.5%） 带有 opening_inventory_partial_match 质量标签；而在 wallet_token_performance 的 16,770 条单币战绩记录中，仅有 4,313 条（占比 25.7%） 具备完整的窗口内买卖闭环，其余 74.3% 属于单边无闭环（10,437 条）或期初库存不完整（2,020 条）。各批次画像中有 45%–70% 的高盈利钱包存在成本计算不完整的问题。
-很多地址在监控窗口前就已经低成本持有代币，或者通过外部地址批量转入现货，随后在监控窗口内直接在 DEX 上抛售变现。常见榜单的平均成本算法将窗口前的建仓成本默认为零或按当日均价折算，把大额卖出营业额直接高估为“净利润”。跟单者看到几万美元的虚假战绩跟进，实际上只是迎上了对方的现货清仓。</description>
-    </item>
-    
-  </channel>
-</rss>
+很多地址在监控窗口前就已经低成本持有代币，或者通过外部地址批量转入现货，随后在监控窗口内直接在 DEX 上抛售变现。常见榜单的平均成本算法将窗口前的建仓成本默认为零或按当日均价折算，把大额卖出营业额直接高估为“净利润”。跟单者看到几万美元的虚假战绩跟进，实际上只是迎上了对方的现货清仓。</description></item></channel></rss>

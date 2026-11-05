@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AI on 谷粒 kuhung</title>
-    <link>https://kuhung.me/tags/ai/</link>
-    <description>Recent content in AI on 谷粒 kuhung</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Wed, 28 Oct 2026 00:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>又一个去 AI Slop 工具？Hallmark 原理解析与实测</title>
-      <link>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</link>
-      <pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on 谷粒 kuhung</title><link>https://kuhung.me/tags/ai/</link><description>Recent content in AI on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 28 Oct 2026 00:25:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>又一个去 AI Slop 工具？Hallmark 原理解析与实测</title><link>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</link><pubDate>Wed, 28 Oct 2026 00:25:00 +0800</pubDate><guid>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 平时写前端或者做产品落地页的时候，经常会遇到一种情况，就是页面有一股“AI 潲水味”（AI slop）。代码跑起来看起来没错，控制台也没有报错，但网页一打开，扑面而来就是一股廉价的塑料感：暗色底板、紫蓝渐变、悬浮发光球、大写英文小标签，外加三等分的卡片。
 这个问题不限于某一家模型。哪怕用现在能力很强的 Claude Opus 5.5 或者 Codex 里的模型，只要不加干预地让它写页面，照样会掉进这些固定套路。每次主流模型改版迭代，社区里都会冒出一批关于界面同质化的吐槽；大家被折腾久了，也就陆续做出了一些反制工具。
 体验设计里常提“峰终定律”（Peak-End Rule）：人对一段体验的整体评价，主要取决于过程中的峰值体验和收尾那一下的感受。做产品落地页也是这个理。访客点进来的第一眼，如果看到的是一张千篇一律的 AI 模板脸，对产品的信任感就很难建立起来。
@@ -21,69 +6,24 @@
 一、典型破绽与 70 余条拦截规则 模型在没有具体约束时，交出来的往往是训练语料里最四平八稳的平均样式。先看一张实测生成的反面样本，里面集中了四处高频破绽：
 对照图里的标注，能看到这四类典型毛病：
 大写英文眉标（Eyebrow）：中文大标题正上方，总要顶一行字号很小、字间距拉得很开的大写英文标签。这类小标签除了增加视觉杂音，没有提供新信息。 伪流程与深色色块：在页面中间铺一大块深暗色背景，上面排一行“步骤1 → 步骤2 → 步骤3”这样带箭头的词，用来凑版面。 卡片套卡片：首屏往下习惯性排三列等宽卡片，外层边框里再套内层边框，页面上全是框线。 按钮粘附箭头与假交互：主按钮文字后面随手加个 → 箭头；底部的输入框点完只弹一个静态成功提示，背后根本没有发网络请求。 而 Hallmark 整理的破绽远不止上面这四样。整个规则表一共列了 70 多条具体禁令（编号从 Gate 1 到 Gate 85），外加 26 项细节检查（F1 到 F26），按五个维度把大模型的常见AI味列了张清单：
-维度 拦截的典型破绽（Tell） 规则要求的处理方式 代表条款 颜色与表面 紫蓝/紫粉渐变、暗底青光、悬浮发光球、直接拿 Tailwind 默认色（如 indigo-500）当主色 用单一锚点色与带微弱色相的纸张底色；颜色和字体统一走 CSS 变量（Token） Gate 2a, 7a, 29, 48, 74 字体与排版 标题上方的大写眉标、拉宽字间距的小标签、标题里单独把一个词标斜体或染色、拿等宽字体装点标签 标签用正文字体缩小一号、正常大小写；整行标题保持同一字重和颜色 Gate 1, 38i, 38iii, 54, 64, 67 版式与骨架 三列等宽图标卡、卡套卡、永远是“Hero → 三特性 → CTA → 邮件订阅”的固定章节顺序、一屏塞满字 限制单屏约 80 词；1280×800 首屏不滚动要看全标题、说明与主按钮；按真实业务动作排章节 Gate 3, 4, 8, 44b, 58, 85 内容与交互 编造客户评价与数字指标、假 Logo 墙、点完只弹“Sent/Thanks”却没接接口的假表单、手绘假浏览器框 没给的数据直接留空或删区块；未接后端的表单诚实标注；有真实项目就跑起来截图 Gate 19, 46a, 47a, 70, 84 动效与无障碍 transition: all、用动画改宽高位置、砍掉键盘焦点环、对比度不足导致文字发虚 动效只改 transform 和 opacity；保留高对比度焦点环；支持系统的减少动态偏好 Gate 10a, 26a, 27, 40, 41 二、Hallmark 的运行逻辑与内置模版 如果只是给模型塞一张几十条的禁止清单，模型写着写着还是容易忘。Hallmark 管住模型靠的是三块设计：先抽签定方向、分层设卡，再加一道独立的审查工序。</description>
-    </item>
-    
-    <item>
-      <title>Anthropic 招股书解读：经营改善与长期算力支出压力</title>
-      <link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link>
-      <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+维度 拦截的典型破绽（Tell） 规则要求的处理方式 代表条款 颜色与表面 紫蓝/紫粉渐变、暗底青光、悬浮发光球、直接拿 Tailwind 默认色（如 indigo-500）当主色 用单一锚点色与带微弱色相的纸张底色；颜色和字体统一走 CSS 变量（Token） Gate 2a, 7a, 29, 48, 74 字体与排版 标题上方的大写眉标、拉宽字间距的小标签、标题里单独把一个词标斜体或染色、拿等宽字体装点标签 标签用正文字体缩小一号、正常大小写；整行标题保持同一字重和颜色 Gate 1, 38i, 38iii, 54, 64, 67 版式与骨架 三列等宽图标卡、卡套卡、永远是“Hero → 三特性 → CTA → 邮件订阅”的固定章节顺序、一屏塞满字 限制单屏约 80 词；1280×800 首屏不滚动要看全标题、说明与主按钮；按真实业务动作排章节 Gate 3, 4, 8, 44b, 58, 85 内容与交互 编造客户评价与数字指标、假 Logo 墙、点完只弹“Sent/Thanks”却没接接口的假表单、手绘假浏览器框 没给的数据直接留空或删区块；未接后端的表单诚实标注；有真实项目就跑起来截图 Gate 19, 46a, 47a, 70, 84 动效与无障碍 transition: all、用动画改宽高位置、砍掉键盘焦点环、对比度不足导致文字发虚 动效只改 transform 和 opacity；保留高对比度焦点环；支持系统的减少动态偏好 Gate 10a, 26a, 27, 40, 41 二、Hallmark 的运行逻辑与内置模版 如果只是给模型塞一张几十条的禁止清单，模型写着写着还是容易忘。Hallmark 管住模型靠的是三块设计：先抽签定方向、分层设卡，再加一道独立的审查工序。</description></item><item><title>Anthropic 招股书解读：经营改善与长期算力支出压力</title><link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link><pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate><guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic 向美国证券交易委员会（SEC）递交了 335 页的招股书（代码 ANT）（SEC 原文，2026-10-26；官方公告，2026-10-26）。
 这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO 计划推迟至 2027 年，Reuters，2026-10-26）。这份招股书给出了四项打破市场常识的核心事实：
-订阅只占两成营收：外界最熟悉的 Claude Pro/Team 订阅仅占 20% 营收，其余 80% 均来自企业与开发者的 API 用量计费。2026 年第二季度单季创收 115.6 亿美元，超过此前三年总和。 800 亿账面亏损是会计记账：上半年高达 807 亿美元的 GAAP 账面亏损中，近九成（724 亿美元）是因为公司估值暴涨引发的可转债非现金公允价值重估。主营业务在 2026 年第二季度已经实现 9.7 亿美元的单季经营盈利。 算力成本占比降至 55%，但签了 6,370 亿采购承诺：算力费用占营收比从 2023 年的 1,000% 以上收窄到 54.9%，但与云厂商签署的采购协议附带刚性差额补足（True-up）条款，算力需求一旦放缓就必须补齐现金。 公众股东拿不到实质表决权：通过五类股票架构，7 位创始人用 1 股 Class F 锁定了 50.1% 的表决权，长期利益信托（LTBT）控制董事会多数席位，公开认购的普通股没有实质话语权。 一、营收结构：订阅仅占 20% 营收 在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</description>
-    </item>
-    
-    <item>
-      <title>解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</title>
-      <link>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</link>
-      <pubDate>Mon, 26 Oct 2026 12:20:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+订阅只占两成营收：外界最熟悉的 Claude Pro/Team 订阅仅占 20% 营收，其余 80% 均来自企业与开发者的 API 用量计费。2026 年第二季度单季创收 115.6 亿美元，超过此前三年总和。 800 亿账面亏损是会计记账：上半年高达 807 亿美元的 GAAP 账面亏损中，近九成（724 亿美元）是因为公司估值暴涨引发的可转债非现金公允价值重估。主营业务在 2026 年第二季度已经实现 9.7 亿美元的单季经营盈利。 算力成本占比降至 55%，但签了 6,370 亿采购承诺：算力费用占营收比从 2023 年的 1,000% 以上收窄到 54.9%，但与云厂商签署的采购协议附带刚性差额补足（True-up）条款，算力需求一旦放缓就必须补齐现金。 公众股东拿不到实质表决权：通过五类股票架构，7 位创始人用 1 股 Class F 锁定了 50.1% 的表决权，长期利益信托（LTBT）控制董事会多数席位，公开认购的普通股没有实质话语权。 一、营收结构：订阅仅占 20% 营收 在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</description></item><item><title>解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</title><link>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</link><pubDate>Mon, 26 Oct 2026 12:20:00 +0800</pubDate><guid>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 在《解读 100 个 AI 商业产品》的前两篇里，我们先盘了 a16z 第 7 期消费级 AI 百强榜 和 110 款产品的真实消费账单。看消费级榜单时会发现一个现象：能在网页访问量、App 下载榜或者个人信用卡扣款里排上号的，大多是通用对话助手、写代码工具或者音视频生成软件，比如排在消费支出榜第 10 名的语音合成平台 ElevenLabs。一旦进入纯 B2B 企业对公结算的领域，很多已经有相当收入规模的公司，在大众流量统计里完全看不到。
 这篇要聊的 Retell AI 就是其中一家。这家 2023 年底注册、2024 年从 YC W24 出来的硅谷团队，公开披露的种子轮融资只有约 510 万美元（Sacra，2026-10-24）。它在消费级榜单上没有名字，但在 a16z 与企业银行 Mercury 联合发布的 B2B 创业公司支出榜里排到了第 16 名（a16z AI Application Spending Report，2025-10-02）；到 2026 年 10 月，公司在招聘页披露的年化经常性收入（ARR）达到 8,000 万美元，团队约 50 人，每月处理企业通话超过 5,000 万通（YC Jobs，2026-10-24）。
 我最初留意到这家公司，是因为翻看他们在招聘网站挂出的 28 个在招岗位时，看到了一长串 FDE（Forward Deployed Engineer，前置部署工程师），还按语言和地区细分到了西班牙语、普通话、香港和新加坡。
 我刚毕业时所待的团队，做过客服相关的算法工作。看到一家做电话语音 Agent（接听与外呼）的公司招这么多驻场工程师，脑子里自然冒出几个疑问：
-业务价值到底在哪？ 就我自己的客服经验来看，电话语音 Agent 并没有带来新的需求增量，它依然是在重塑过去呼叫中心的存量生产流程，特别是外呼通知、账单催收和预约核实。既然是改造存量旧流程，它在技术链路上是怎么替换原有人工和按键菜单的？产品边界又划在哪？ 海外的电话环境是什么情况？ 在国内做过呼叫业务的人都很清楚，因为早年骚扰电话太多，很多用户已经开了防骚扰拦截和陌生号码免打扰，电话呼出在国内能展开的空间很小。那海外市场是什么状况？海外的电话监管与合规要求是怎么运作的？ 为什么要招这么多 FDE？ 一家按分钟计费（$0.</description>
-    </item>
-    
-    <item>
-      <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
-      <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>
-      <pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+业务价值到底在哪？ 就我自己的客服经验来看，电话语音 Agent 并没有带来新的需求增量，它依然是在重塑过去呼叫中心的存量生产流程，特别是外呼通知、账单催收和预约核实。既然是改造存量旧流程，它在技术链路上是怎么替换原有人工和按键菜单的？产品边界又划在哪？ 海外的电话环境是什么情况？ 在国内做过呼叫业务的人都很清楚，因为早年骚扰电话太多，很多用户已经开了防骚扰拦截和陌生号码免打扰，电话呼出在国内能展开的空间很小。那海外市场是什么状况？海外的电话监管与合规要求是怎么运作的？ 为什么要招这么多 FDE？ 一家按分钟计费（$0.</description></item><item><title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title><link>https://kuhung.me/posts/consumer-ai-market-structure/</link><pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate><guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 看 AI 行业榜单，容易被网页访问量和 App 下载量带偏。
 Similarweb 统计的网页独立访客，或者应用商店的下载榜，反映的是大众好奇心。但在推理算力成本居高不下的今天，访问量大往往只意味着算力账单更贵，不代表有人愿意持续掏钱。
 a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的美国消费者信用卡真实扣款样本。当把“真实花钱的账单”和“网页访问量”、“移动端月活”放在一起对照时，整个市场的底牌才显现出来。
 在看具体榜单前，有两组量化基准可以作为全局参考线：
 流量端的天花板与门槛：ChatGPT 全球月访问量约 37 亿次（是 Gemini 的 2 倍，Claude 的 14 倍）；而进入网页 Top 50 的门槛线大约在 500 万至 800 万次/月；移动端 Top 50 的月活（MAU）门槛在 300 万至 500 万之间。 支出端的极度集中：全美用过 AI 的人接近一半，真正按月掏钱订阅个人版工具的消费者只有 4.5%。中位数付费者每月花 25 美元，87% 的人只给一款工具付费。前 1% 的重度用户，月均支出高达 903 美元，贡献了全盘近两成的开销。 支出排名前 50 的厂商里，有整整 29 家在网页流量榜和移动端月活榜上查无此人。
-把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description>
-    </item>
-    
-    <item>
-      <title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title>
-      <link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link>
-      <pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid>
-      <description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
+把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description></item><item><title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title><link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link><pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate><guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid><description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
 在阅读全文前，有几个重点数据需要先关注：
 付费用户比例较低：全美近半数人使用过 AI，但每天使用的仅有 25%，真正为 ChatGPT、Gemini 或 Claude 个人订阅付费的消费者只有 4.5%。 支出高度集中于重度用户：前 1% 的重度付费用户月均支出达 903 美元（18 个月内增长 80%），贡献了近两成的总支出；而中位数付费者每月仅 25 美元，且只有 13% 的人会购买第二款 AI 工具。 流量与实际收入显著脱节：消费支出前 50 强中，有 29 家完全没有进入网页流量或移动端月活榜单。高客单价产品主要集中在桌面客户端、开发工具和直接嵌入即时通讯工具的智能体（Agent）。 头部效应加剧：本期仅 11 款新产品首次入榜，为历期最少。Canva、Notion、Figma 等成熟软件凭借已有工作流占据前列，同时进入网页、移动与支出三榜前列的产品全球仅 7 家。 这份榜单涵盖的 100 多个消费级 AI 产品，后续我们会逐个进行分析拆解。
-报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description>
-    </item>
-    
-    <item>
-      <title>cleanyourtv：用 AI 给家用电视去广告、换桌面</title>
-      <link>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</link>
-      <pubDate>Wed, 21 Oct 2026 15:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description></item><item><title>cleanyourtv：用 AI 给家用电视去广告、换桌面</title><link>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</link><pubDate>Wed, 21 Oct 2026 15:45:00 +0800</pubDate><guid>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 最近 AI 编程正在从写业务代码和网页，延伸到折腾家里的实体硬件设备。很多人开始把编程助手连上家里的电视、投影仪和电视盒子，让 AI 去做系统逆向与定制。
 开源社区里引起很大反响的 cleanyourtv（最初命名为 tv-vibehack）就是这么来的，几天时间在 GitHub 上积累了超过 1.3 万颗星。
 这个项目的起因很日常。作者 Gathin 看到父母家里的电视，每次想看视频，屏幕上方总要先蹦出一整条赞助广告，系统也越来越卡。他把电视型号发给编程助手，让 AI 通过局域网连上电视，顺着 Wi-Fi 停用了 25 个预装应用，顺便手写了一个只有 405 KB 的极简新启动器换上。
@@ -100,16 +40,7 @@ a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的
 AI 会先拉取电视上所有已安装应用的清单，自动生成一份用于回滚的状态记录。接着对照已有的机型规则逐项比对，遇到不确定的日常应用停下来询问用户，再分批用 pm disable-user 命令停用无用包。这种操作没有 Root 提权，也没有在底层物理删除文件，每一步都处于可逆状态。
 清理掉后台之后，AI 再编译安装一个 405 KB 的轻量启动器设为默认桌面。
 这个启动器用纯 Java 编写，去掉了复杂的后台驻留逻辑。主界面只展示四个常用应用，选中图标时会在顶部显示应用名称与取色光效；按遥控器向下键可以拉出完整的应用抽屉。
-信号源切换做成了半透明浮层，直接识别电视上各个 HDMI 接口的名称，不需要退回原厂系统繁琐的设置菜单。</description>
-    </item>
-    
-    <item>
-      <title>为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了</title>
-      <link>https://kuhung.me/posts/agy-menubar-context-management/</link>
-      <pubDate>Mon, 19 Oct 2026 22:45:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/agy-menubar-context-management/</guid>
-      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
+信号源切换做成了半透明浮层，直接识别电视上各个 HDMI 接口的名称，不需要退回原厂系统繁琐的设置菜单。</description></item><item><title>为什么现在的 Coding Agent 都不约而同把 Token 监控藏起来了</title><link>https://kuhung.me/posts/agy-menubar-context-management/</link><pubDate>Mon, 19 Oct 2026 22:45:00 +0800</pubDate><guid>https://kuhung.me/posts/agy-menubar-context-management/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
 一次典型的 session 会话 平时用 Google Antigravity 写代码，编码的最佳实践通常是一个会话只做一件事。
 但在日常写代码时，这件事很难把握。很多任务我们很难度量它到底会消耗多少 Token，也没办法准确评估手头的任务粒度拆得是不是够细。
 实际写起来的状态往往是：感觉一直在往同一个会话里面塞东西。刚开始聊着改着，好像一切都很顺畅。但塞着塞着，模型开始逐渐偏离原本的目标。前面定好的逻辑约束失效了，给出的代码变迟钝了，甚至开始改动一些明令禁止触碰的模块。
@@ -127,16 +58,7 @@ Cursor 在对话和 Composer 里虽然会对 @ 引入的文件大小有一定感
 但在实际编码中，这种完全隐藏的设计让开发者失去了尺度感。任务粒度拆得合不合适、会话是不是过载了，完全没有参考依据。
 自动压缩，好事坏事？ 最近在评论区看到有人聊到这个机制，不少人觉得自动压缩纯粹是坏事，甚至抱怨凭什么擅自压缩，导致自己没法随时往上翻聊天记录。
 这件事需要区分具体的场景。自动压缩确实会丢失细节，但在很多时候它是有益的，甚至是必要的保护机制。
-最典型的有益场景是服务端 KV Cache 的缓存时效与保活。</description>
-    </item>
-    
-    <item>
-      <title>Muse，国外火热的 Personal Agent，有哪些用法和我的个人感受</title>
-      <link>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</link>
-      <pubDate>Sat, 03 Oct 2026 16:44:17 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</guid>
-      <description>当下的 AI 圈每天都在找寻和追逐新热点。这几天，X上讨论最多的是 Personal Agent ，特别是随着 Meta 的 Muse 爆火出圈，听闻国内字节和腾讯都有团队在抓紧研发对应版本。我试用了一段时间 Muse，对比之前用过的 Grok，谈谈它的常见用法和主观感受。
+最典型的有益场景是服务端 KV Cache 的缓存时效与保活。</description></item><item><title>Muse，国外火热的 Personal Agent，有哪些用法和我的个人感受</title><link>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</link><pubDate>Sat, 03 Oct 2026 16:44:17 +0800</pubDate><guid>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</guid><description>当下的 AI 圈每天都在找寻和追逐新热点。这几天，X上讨论最多的是 Personal Agent ，特别是随着 Meta 的 Muse 爆火出圈，听闻国内字节和腾讯都有团队在抓紧研发对应版本。我试用了一段时间 Muse，对比之前用过的 Grok，谈谈它的常见用法和主观感受。
 一开始我是排斥 Muse的。一方面觉得它和 Grok 是一类产品，我已经有一个了不需要了，而且meta的基础模型根本排不上号。另一方面是它的宣发太饱和，病毒营销很厉害。你能在各类介绍文章和视频下看到裂变邀请码，看着就烦。
 转过头来想，即使拉人裂变是一种经典病毒营销策略，但能把这个玩起来的产品不多。
 他们控制了早期发布范围，仅限北美地区，但可绕过方式的风控又做得很松。推特上刚好缺素材，博主们需要热点。搞定 Muse 的使用资格成了一种身份彰显和自我认同。在营销切入这一块，他们做得还不是错的（舍得花钱）。
@@ -152,16 +74,7 @@ Muse 的核心交互依然依赖对话。即使今天，大家仍然逃不开 Ch
 使用场景方面，网上有个案例网站，40%的例子集中在省钱。不得不说，这类内容很能吸流量。比如让 AI 推荐服务、谈判砍价。此外，购物和旅行是他们强推的，主要作用还是帮忙监控价格或代下单。整体而言，是在试图在生活化场景中找应用。
 受限于地区，和常用APP不同。我一般用它处理繁琐重复的事项，比如拉取网站数据，配置营销内容。这些事用写代码的codex这类工具来跑，略微过头，直接交给muse刚好。
 不过使用中，也有遇到障碍的地方。地图类操作非常麻烦，我让它计算多个坐标在地图上的位置，它搞不定。不适配国内环境。工作中涉及海外组件的部分，用起来还算自然。但牵扯到国内 App，权限是大问题。很多 App 根本不给 Agent 开放接口，能预感到国内产品会遇到同样问题。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>Vibe Coding 一年半：我为什么做，以及怎么做</title>
-      <link>https://kuhung.me/posts/why-vibe-coding/</link>
-      <pubDate>Thu, 01 Oct 2026 16:33:06 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/why-vibe-coding/</guid>
-      <description>为什么要 Vibe Coding 大概一年半前我离职的时候，Vibe Coding 刚有苗头。那会儿做应用主要用 Cursor，公司内部用的还是微软 Copilot 那一套。到了 2025 年 3 到 5 月，Manus 爆火，Claude 这些模型的能力又上了一个台阶，身边不少写代码的朋友开始担心，自己的职业是不是走到头了。
+关于作者</description></item><item><title>Vibe Coding 一年半：我为什么做，以及怎么做</title><link>https://kuhung.me/posts/why-vibe-coding/</link><pubDate>Thu, 01 Oct 2026 16:33:06 +0800</pubDate><guid>https://kuhung.me/posts/why-vibe-coding/</guid><description>为什么要 Vibe Coding 大概一年半前我离职的时候，Vibe Coding 刚有苗头。那会儿做应用主要用 Cursor，公司内部用的还是微软 Copilot 那一套。到了 2025 年 3 到 5 月，Manus 爆火，Claude 这些模型的能力又上了一个台阶，身边不少写代码的朋友开始担心，自己的职业是不是走到头了。
 我当时的判断是，程序员很可能会变成第二个土木，到今天我还是这么看。我给朋友们的建议是多做产品，多接触真实的商业世界，把出卖时间换成出卖可以复制的产品。Vibe Coding 正好让这件事变得可行：一个人就能把一个软件从想法做到上线。
 可以复制的产品是一种杠杆 《纳瓦尔宝典》讲过三种杠杆：别人的劳动、资本，还有复制成本几乎为零的产品，也就是代码和媒体。前两种要别人点头才能用，代码和媒体不用，做一次，边际成本为0。
 只是做出来之后，马上会碰到分发的问题。当下最紧缺的是注意力：平台卖注意力，创作者生产内容，内容可以是视频、文章，也可以是软件。很多从大公司出来的人就卡在这一步，有想法，但不擅长让人看见。
@@ -172,32 +85,14 @@ Muse 的核心交互依然依赖对话。即使今天，大家仍然逃不开 Ch
 我是怎么做的 下面是过去一年多，特别是最近半年高强度用 AI 写代码之后，我自己的做法。我把读者当成刚入职的新人来讲。
 工具 国内国外都有各自的第一梯队、第二梯队产品，挑一个顺手的就行。
 我自己目前主力用 Claude Code，其次是 Codex；写长文时用 Google 的 Antigravity；需要打开编辑器逐行细改时用 Cursor。四个 20 美元的套餐，AI 编程每个月花 80 美元左右。比不上在公司里敞开了用，但套餐确实好用，性价比很高。备用的是 API，通过 OpenRouter 调 DeepSeek 等模型。
-国内的朋友，现在比较主流的做法是买国内模型厂商的编程套餐，一般叫 Coding Plan，智谱、Kimi、MiniMax、字节火山方舟、阿里云百炼、百度千帆都有。买了之后，可以在 Claude Code 这类工具里接 DeepSeek、GLM、Kimi、Qwen 这些模型。写代码我推荐 DeepSeek，Kimi 做出来的前端也挺好看。</description>
-    </item>
-    
-    <item>
-      <title>我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验</title>
-      <link>https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/</link>
-      <pubDate>Sat, 26 Sep 2026 09:28:00 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/</guid>
-      <description>这周手上事情不少：链上数据、内容发布、持仓复盘，还有 Meta Muse 的初体验。按块记一下，分享我的 AI 用法。
+国内的朋友，现在比较主流的做法是买国内模型厂商的编程套餐，一般叫 Coding Plan，智谱、Kimi、MiniMax、字节火山方舟、阿里云百炼、百度千帆都有。买了之后，可以在 Claude Code 这类工具里接 DeepSeek、GLM、Kimi、Qwen 这些模型。写代码我推荐 DeepSeek，Kimi 做出来的前端也挺好看。</description></item><item><title>我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验</title><link>https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/</link><pubDate>Sat, 26 Sep 2026 09:28:00 +0800</pubDate><guid>https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/</guid><description>这周手上事情不少：链上数据、内容发布、持仓复盘，还有 Meta Muse 的初体验。按块记一下，分享我的 AI 用法。
 链上数据 Dune 大善人发了测试额度，不用白不用，我就拿它拉了一轮链上数据。比起自己手写查询逻辑，交给 AI 写 SQL，效率高了好几倍。用下来也有问题：Codex 有点过度设计，Google Antigravity 又设计能力不足。Cursor 出的 Grok 4.6、4.7，黑话多得一批。
 现在的分工是这样：智力更高的 Codex 做需求拆解和任务划分，Antigravity 里的 Gemini 3.8 Flash 负责具体执行，最后在 Cursor 里做多模型交替 review，看交付有没有漏项。
 Jev 与内容 上周发了 深入解读 Jev 模型：是什么以及怎么用，全网差不多上万浏览，算是我大半年来数据最好的一篇。回头看，一是踩中了热点，二是做了一轮 SEO：去 Google Search Console 和 Bing 后台看哪些关键词匹配上了文章，再针对性优化。新产品、新概念出来，用户搜得最多的就是「是什么」和「怎么用」。这对后面选题有参考价值。
 做 Jev 演示时，我发现体感延迟和官方宣称的不一样。这个问题我在做 PageGrok 时也遇到过。真实延迟分三四段：用户到我们的服务器，服务器到模型 API 供应商，供应商再到模型服务，然后原路返回。模型自己的计算只占一小部分。服务器和供应商不在一个地方，甚至跨洲，延迟就平白多出一截。服务端反复做判断，也会拖慢。
 PageGrok 一开始挺快，后来加了账号验证和频率限制，服务器和数据库之间来回好几趟，延迟一度到十几秒。优化之后压到两秒以内，不算极限，但比之前好很多。我还想过用 Cerebras 替换推理后端，它响应确实快，但 TTFT 还是取决于整体架构。最后还是沿用原来的 OpenRouter。
 另一个演示是 AskJev，用 Jev 做「中午吃什么」这类人生选择题。Jev 本身是判别模型，有点像以前用大转盘决定午饭，我把它改成了聊天框。上线第一天两千多访问，今天看后台六千来次调用，花了不到一块钱人民币。确实省，但智力也确实一般，毕竟模型容量摆在那里。
-博客发布 个人博客这边，我让 Codex 重新整理了标签分类，并把发布流程改成了一条指令。老流程是：改 draft: false，终端跑一遍 Hugo，再开 VS Code 提交，最后同步到 Git。窗口来回切，阻塞很严重。</description>
-    </item>
-    
-    <item>
-      <title>用 AI 优化我的投资组合：从宏观配置到美股持仓复盘</title>
-      <link>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</link>
-      <pubDate>Fri, 11 Sep 2026 00:11:23 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</guid>
-      <description>前几周我对名下的主要资产做了一次盘点，计算了各自的占比以及过去一年半的收益率。资产盘点清楚后，接下来自然是优化现有组合。这篇文章就和大家分享我利用 AI 优化投资组合的思路与具体过程。
+博客发布 个人博客这边，我让 Codex 重新整理了标签分类，并把发布流程改成了一条指令。老流程是：改 draft: false，终端跑一遍 Hugo，再开 VS Code 提交，最后同步到 Git。窗口来回切，阻塞很严重。</description></item><item><title>用 AI 优化我的投资组合：从宏观配置到美股持仓复盘</title><link>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</link><pubDate>Fri, 11 Sep 2026 00:11:23 +0800</pubDate><guid>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</guid><description>前几周我对名下的主要资产做了一次盘点，计算了各自的占比以及过去一年半的收益率。资产盘点清楚后，接下来自然是优化现有组合。这篇文章就和大家分享我利用 AI 优化投资组合的思路与具体过程。
 先说一下大体思路：组合优化。它既体现在宏观资产配比上，也体现在微观层面每只股票配多少。所以本文有两个层面的内容和大家分享。
 同样说明一下：投资有风险，本文仅为个人复盘记录，不构成任何投资建议。
 宏观配置：穿透与目标函数 宏观层面的资产配置，我最初参考了汇丰针对不同风险偏好投资者的资产配比模型。上一期盘点时的一个明确结论是：大类资产配置的逻辑本身没有问题，关键在于需要定期调仓与再平衡，比如每半年或一年执行一次。
@@ -215,16 +110,7 @@ AI 测算的结果是：如果要追求更高的夏普比率，每年大约需�
 但从实际走势来看，短期内这个判断失败了。过去这一年多，更多的资金还是流向了看得见摸得着的 AI 硬件，也就是算力芯片。应用端标的表现分化且疲软。
 之前我在梳理 Alpha 151 策略时，核心概念之一是趋势跟踪。目前趋势很明显是硬件。在 AI 应用均值回归尚未显现的前提下，做减法是更理性的做法。
 持仓优化的四轮迭代 明确了方向后，我利用 AI 对美股持仓进行了四轮方案迭代：
-第一轮是碎股合并。持有美股可以通过卖出 Call 期权（Covered Call）赚取权利金，但前提是必须持有 100 股整股。我持仓里有不少十几股、几十股的零散碎股。我让模型基于日收益相关性做了聚类，初衷是把同涨同跌的碎片股合并到核心标的上，凑成整手以便卖 Call 赚现金流，也减少注意力成本。</description>
-    </item>
-    
-    <item>
-      <title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title>
-      <link>https://kuhung.me/posts/cang-in-house-review/</link>
-      <pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/cang-in-house-review/</guid>
-      <description>一、来龙去脉 这是&amp;quot;五年十个财务瞬间&amp;quot;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看还蛮有意思的，所以有了今天的文章。
+第一轮是碎股合并。持有美股可以通过卖出 Call 期权（Covered Call）赚取权利金，但前提是必须持有 100 股整股。我持仓里有不少十几股、几十股的零散碎股。我让模型基于日收益相关性做了聚类，初衷是把同涨同跌的碎片股合并到核心标的上，凑成整手以便卖 Call 赚现金流，也减少注意力成本。</description></item><item><title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析</title><link>https://kuhung.me/posts/cang-in-house-review/</link><pubDate>Fri, 21 Aug 2026 10:30:14 +0800</pubDate><guid>https://kuhung.me/posts/cang-in-house-review/</guid><description>一、来龙去脉 这是&amp;quot;五年十个财务瞬间&amp;quot;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看还蛮有意思的，所以有了今天的文章。
 这一次不一样的地方在于，我们有了程序化的仓位管理工具。上个月写了接入富途券商 API，用 AI 接管投资仓位，把富途和雪盈两家券商的数据接入了本地系统。数据能被大模型读到之后，AI 就有机会做真正意义上的全面审视。不再是打开数个 App 来回切着算，也不再是 Notion 表格里改数字然后肉眼看趋势。
 这篇文章的定位是：有了工具之后的第一次全面数据审视。回答几个问题：现在持有什么、这一年多的钱从哪里赚/亏、按收益风险比衡量做得怎么样、哪些做得不错、哪些需要调整。
 二、为什么要做这件事 在投资这件事上，我的风格是做组合管理，不是 ALL IN 一个标的。这样的好处是风险分散，坏处是计算收益复杂。数个券商、数个银行账户、四种货币、几十只标的，每次想知道&amp;quot;到底哪部分赚了、哪部分需要优化&amp;quot;，都要花不少时间。
@@ -235,31 +121,13 @@ AI 测算的结果是：如果要追求更高的夏普比率，每年大约需�
 最后，给出下一步该做什么、不该做什么的判断依据。尽量形成数据驱动决策，而不是凭感觉行事。
 三、数据现状 数据窗口是 2025 年 4 月 7 日到 2026 年 8 月 17 日，共 16.3 个月。这个起点对应进入提取期之后的全程。分析用到的底表是 Notion 财务盘点的 14 期明细数据，加上券商实盘持仓。
 3.1 宏观环境 先看这 16 个月里市场发生了什么（2025-04-07 到 2026-08-17）。
-指数 区间涨跌 沪深300 +32.</description>
-    </item>
-    
-    <item>
-      <title>智谱 x MiniMax：配对交易的验证与心得</title>
-      <link>https://kuhung.me/posts/pair-zhipu-minimax/</link>
-      <pubDate>Thu, 30 Jul 2026 18:14:26 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/pair-zhipu-minimax/</guid>
-      <description>先说结论 多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。
+指数 区间涨跌 沪深300 +32.</description></item><item><title>智谱 x MiniMax：配对交易的验证与心得</title><link>https://kuhung.me/posts/pair-zhipu-minimax/</link><pubDate>Thu, 30 Jul 2026 18:14:26 +0800</pubDate><guid>https://kuhung.me/posts/pair-zhipu-minimax/</guid><description>先说结论 多智谱、空 MiniMax 能带来可观收益，但并非常态，难以复刻。最好施加波动率风控策略，降低回撤，增强体验。
 协整检验不通过，经典配对交易的前提不成立；顺分化做多空回测夏普 3.52，但样本外验证表明合理预期在 0.5~1；波动率降仓把最大回撤从 -27.9% 压到 -9.2%，比单日止损更有效。
 注意：本文仅分享个人思路和回测过程，不代表投资建议。投资有风险，需充分衡量个人风险承受能力，在持牌顾问指导下进行。
 为什么盯上这两家 智谱（HK.02513）和 MiniMax（HK.00100）是 2026 年 1 月先后在港股上市的两家大模型企业。
 我参与了打新，不过没中。即使中了，按照之前的习惯也会在暗盘给卖了。回头看很可惜：智谱从发行价到 6/22 最高收盘 2410，涨幅 +1974%（总价约 20.7 倍），到 2026-07-30 收盘 862.0 仍有 +642%。MiniMax 在 3/18 最高收盘 1238（较发行价 +650%），但到 2026-07-30 收盘 203.8，较发行价仅 +23.5%，较首日收盘已跌 40.9%。
 作为港股大模型双雄，很容易让人联想到配对交易：两只同板块高相关的票，价差拉开了押注回归。比如可口可乐和百事长期走势高度相关，价差偏离后做反向交易。我们在之前的文章有介绍过接入持仓数据到 AI，要验证想法很简单，让 AI 拉取数据并进行回测验证。
-智谱 HK.02513 MiniMax HK.00100 发行价 116.2 165.0 上市日 2026-01-08 2026-01-09 公开发售认购 1159 倍 1837 倍，一手中签率 2.81% 首日开盘 120.0（+3.27%） 235.4（+42.67%） 首日收盘 131.5（+13.17%） 345.0（+109.09%） 最高收盘 2410（6/22） 1238（3/18） 盘中最高 2980（6/22） 1330（3/18） 7/30 收盘 862.</description>
-    </item>
-    
-    <item>
-      <title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title>
-      <link>https://kuhung.me/posts/cang-in-house/</link>
-      <pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/cang-in-house/</guid>
-      <description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
+智谱 HK.02513 MiniMax HK.00100 发行价 116.2 165.0 上市日 2026-01-08 2026-01-09 公开发售认购 1159 倍 1837 倍，一手中签率 2.81% 首日开盘 120.0（+3.27%） 235.4（+42.67%） 首日收盘 131.5（+13.17%） 345.0（+109.09%） 最高收盘 2410（6/22） 1238（3/18） 盘中最高 2980（6/22） 1330（3/18） 7/30 收盘 862.</description></item><item><title>接入富途券商 API，用 AI 接管投资仓位（ in-house 仓位管理）</title><link>https://kuhung.me/posts/cang-in-house/</link><pubDate>Sun, 26 Jul 2026 12:44:44 +0800</pubDate><guid>https://kuhung.me/posts/cang-in-house/</guid><description>毕业以来，我的财务一直通过记账的方式进行归集。早期通过 GoodNotes 进行手动记账，好处是可以手动批注。后来迁移到了 Notion，原因是发现需要记录的东西很固定，每次复制旧的内容到新日期，接着修改数值即可。而且，使用 Notion 能够很方便地按类型进行归类和计算，较为方便看到每个月的动态状况。
 但是后来，随着投资标的的分散，每次在券商上算账都要耗费不少的心力。需要计算杠杆、货币转换。这让我逐渐厌倦。想知道&amp;quot;投资账户一共有多少资金&amp;quot;，需要打开富途和雪盈两个 App 分别计算再合并。随着最近大模型的进一步发展，是时候用 Claude 写个 in-house 的仓位管理工具了。不少人 vibe coding 的第一步，都是搞些什么记账、todo 和番茄闹钟，这回也落回这三大件上了。
 做 in-house 的仓位管理，目的是让 AI 能直接碰到持仓数据，进行交互分析和建议。包含四个方面的功能：分析持仓、计算收益、策略回测，以及最终的自动下单。手动记账时代，数据在 Notion 表格里，大模型要获取需要转个弯。现在，券商数据直接接入之后，它才有可能真正帮你干活。
 本次文章，就给大家介绍下我用 Codex + Claude 接入富途 API 和雪盈 API 的过程和最终效果。当然，如果你是长桥、老虎或者别的什么，也是类似的道理，只要券商开放了 API，都可以做到。
@@ -270,16 +138,7 @@ AI 测算的结果是：如果要追求更高的夏普比率，每年大约需�
 下单信号。 有了上述的策略，进一步的就是生成交易信号。当然自动下单两个平台也是支持的，但是由于我的持仓不多、交易频次不高，所以暂不考虑自动化交易。能有信号也不错了。
 券商特点 两家券商开放了什么能力，直接决定了系统怎么设计。富途的 API 近期一直有在迭代，还加入了 skills 功能，看起来有模有样。雪盈则比较保守，在几年前发布后，基本没见怎么迭代。
 富途是自营全链路券商，自持牌照、自建行情系统。API 能力很完整，行情、交易、推送都有，实时报价、历史 K 线、盘口深度全覆盖。接入门槛也更高，需要在本地跑一个网关程序。
-雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description>
-    </item>
-    
-    <item>
-      <title>利用微信读书skill，将读过的知识整合进AI实践</title>
-      <link>https://kuhung.me/posts/weread-skills-in-practice/</link>
-      <pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/weread-skills-in-practice/</guid>
-      <description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
+雪盈是轻资产互联网券商，底层执行和清算依托盈透（Interactive Brokers）。它开放的 API 非常精简，一共就 10 个接口，全部是交易和账户类的：查持仓、查资金、查成交、下单、撤单。没有实时报价，没有 K 线，没有任何行情数据。</description></item><item><title>利用微信读书skill，将读过的知识整合进AI实践</title><link>https://kuhung.me/posts/weread-skills-in-practice/</link><pubDate>Fri, 24 Jul 2026 18:29:48 +0800</pubDate><guid>https://kuhung.me/posts/weread-skills-in-practice/</guid><description>遇到难回答的问题，我不回答。但遇到难解的问题，我倾向于向书中寻求答案。过去几年，工具书我主要关注六类：横向与纵向领导力、组织与战略、销售与说服、产品与增长、个人成长、投资交易。微信读书每年差不多是 40 多本。大模型从 2023 年火了以后，很多内容能直接问出来，量大管饱看起来还蛮精炼。
 是不是阅读就没有意义了呢。我的答案是非也。大模型适合科普通识性问题：&amp;ldquo;SLMs是什么&amp;quot;&amp;ldquo;端侧模型有哪些技术要点&amp;quot;这类。它还有个很强的特性，迎合说话人。这点即使通过提示词纠正，也难以跳出提问人的思维边界。碰到框架性的问题，它给不出系统的、有真人感的建议。
 从底层原理来说，大模型给出的是概率性文字，它也没法给切身经验和系统方法。这就像公司新人，能力不差，但缺少开展工作的上下文。高质量书籍填补的就是这块空白。
 以前看书，做做笔记、画个思维导图，遇到有意思的会写份读书笔记。今天讲的是更进一步的做法：把书里的方法，编译成 AI Agent 可以直接调用的技能。
@@ -292,16 +151,7 @@ Skills 生态：得有自己的方法 最近半年，各种 skills 层出不穷�
 今年早些时候，顺着 skills 这波风，微信读书团队开放了官方 Skills 接口。走完固定流程，就能在 Agent 里通过对话拿到你的数据：书架、阅读进度、划线信息，全部可以外挂给大模型。
 网上对这个接口的二次加工，多集中在聊天、可视化、书籍推荐的程度。我想做的事更进一步：数据源有了，直接加工成可调用的 skills。把微信读书里的划线与想法，编译成 SKILL.md 技能指令，挂载到 Agent 上，在对话匹配到触发条件时自动加载。
 五步流水线：划线变技能 整个流程分五步，从原始划线到全局可用：
-步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description>
-    </item>
-    
-    <item>
-      <title>NoAINoG 月刊 | 整个4月，我们在聊什么？</title>
-      <link>https://kuhung.me/posts/noainog-202604/</link>
-      <pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/noainog-202604/</guid>
-      <description>过去一个月，NoAINoG 保持工作日日更节奏，从 EP01 到 EP18，累计输出了近 300 分钟的深度内容。在 AI 这个方向，追热点、拆技术、探讨人文与商业化，试图搞清楚：没有 AI 是会完蛋，还是啥事没有（NoAI NoG）。
+步骤 做什么 产出 Step 1 微信读书原始划线存档到 private/（gitignore 隔离） 不可篡改的原始备份 Step 2 个人划线 + 社区热门划线，按逻辑主题重组 notes/书名_笔记.</description></item><item><title>NoAINoG 月刊 | 整个4月，我们在聊什么？</title><link>https://kuhung.me/posts/noainog-202604/</link><pubDate>Wed, 06 May 2026 00:51:42 +0800</pubDate><guid>https://kuhung.me/posts/noainog-202604/</guid><description>过去一个月，NoAINoG 保持工作日日更节奏，从 EP01 到 EP18，累计输出了近 300 分钟的深度内容。在 AI 这个方向，追热点、拆技术、探讨人文与商业化，试图搞清楚：没有 AI 是会完蛋，还是啥事没有（NoAI NoG）。
 如果你还没听过，这篇文章帮你 4 分钟看完全貌。
 一、商业认知：利润才是唯一的护城河 EP01 从《Rework》出发，直指&amp;quot;融资上瘾&amp;quot;的病根——利润才是验证一个生意是否成立的唯一标准，不是 DAU，不是估值。
 EP04 接着拆&amp;quot;超级个体&amp;quot;的陷阱：薄利多销是大公司的游戏，个体创业者应该走高客单价路线，先卖再做，用&amp;quot;反向 MVP&amp;quot;验证需求。
@@ -310,30 +160,12 @@ EP13 引用 Steve Blank 的最新观点，宣告 MVP 时代正在终结——AI 
 EP17 则戳破了&amp;quot;被动收入&amp;quot;的迷梦：Dropshipping、AI 博客农场、SEO 评测站，本质上都是&amp;quot;教人赚钱&amp;quot;的二级市场，真正的护城河在物理世界的脏活累活里。
 二、技术：看懂底层，才能不被忽悠 EP05 用 TurboQuant 拆解说明：显存焦虑的本质是 KV Cache 问题，暴力堆卡不如算法巧劲。
 EP06 从 Claude Code 泄露源码切入，揭示 AI Memory 不是什么魔法 RAG，而是一棵 git-tree 式的持久化结构，理解这个才能真正用好 AI 编程工具。
-EP09 深度解读 Google Gemma 4 的 PLE 架构：26B MoE 如何在边缘设备上跑出大模型质感，以及 Thinking Mode 的连锁幻觉陷阱。</description>
-    </item>
-    
-    <item>
-      <title>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</title>
-      <link>https://kuhung.me/posts/image2-for-makeover/</link>
-      <pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/image2-for-makeover/</guid>
-      <description>Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少朋友其实缺少审美锻炼，无法区分什么是好的。本着想试试新模型的威力，再加上不少网友也无法正常访问Image2，笔者便顺势构建了这样一个应用《海蓝颜究社》。希望让更多的朋友能够用上，提升自己的外在形象。 这类应用，是不少人面对AI创业命题的首选作品。我们这里主要介绍文生图上的经验教训，暂不包括网页应用。两者的时间开销约为1:1，感兴趣的朋友可以另外留言。产品地址beauty.kuhung.me或点击链接。
+EP09 深度解读 Google Gemma 4 的 PLE 架构：26B MoE 如何在边缘设备上跑出大模型质感，以及 Thinking Mode 的连锁幻觉陷阱。</description></item><item><title>一直想要的发型、穿搭推荐，在ChatGPT Image2上实现了</title><link>https://kuhung.me/posts/image2-for-makeover/</link><pubDate>Sat, 02 May 2026 10:40:50 +0800</pubDate><guid>https://kuhung.me/posts/image2-for-makeover/</guid><description>Image2出来差不多一周多了，前期网上关于它能力的测试和讨论也够丰富了。大家的讨论大多集中在“有图有真相”的时代已经过去，或是说出图很好很自然上面。笔者前段时间刷到一个用Image2来做形象改造的帖子，获得不小反响。用户只需要简短的描述，即可实现发型定制、太阳镜定制的需求。出的图片一致性非常好，给的建议在评论区看来，也十分中肯。 形象改造提升带来的收益，不容小觑。自己舒心，做事情也更顺利。但不少朋友其实缺少审美锻炼，无法区分什么是好的。本着想试试新模型的威力，再加上不少网友也无法正常访问Image2，笔者便顺势构建了这样一个应用《海蓝颜究社》。希望让更多的朋友能够用上，提升自己的外在形象。 这类应用，是不少人面对AI创业命题的首选作品。我们这里主要介绍文生图上的经验教训，暂不包括网页应用。两者的时间开销约为1:1，感兴趣的朋友可以另外留言。产品地址beauty.kuhung.me或点击链接。
 在开始之前，先说结论，再说遇到的坑。首先它的效果确实不错，人物一致性和文字已经非常好了，确实是第一梯队的文生图、图生图模型。给出建议也比较中肯。而这细活豆包、Gemini做不了，他们的一致性差、文本效果一般。 接下来我们进入正题，遇到了哪些问题，如何解决和最后效果展示。
 首先第一个：提示词不准。虽然网上有给出简洁版的提示词，并且告诉你他是这样生成的。但当你实际操作的时候，会发现稳定性非常差。具体表现在两个方面：第一个是做出的效果和他的图不一致，会简化很多。其次是，当你用相同的指令，反复提交时，生成的结果也会不一样。 这一度让人困惑。即使是ChatGPT自己有提示，用它的提示词也生成不了预期的效果。 原因我猜测如下，概率模型本质上就具有随机性。你想要更准确的效果控制，要么在图的基础上再修改；要么就是在提示词上做约束。最直接的方法，就是你把图片和当前版本提示词、以及预期效果丢给ChatGPT，让它补完提示词。
 这样试过又会发现：GPT画蛇添足、过度设计。它将原本40个词的提示词，扩充到了1500字。扩充的后果是效果像了，但是细节不一样了。 GPT扩写这提示词，像没经过内部矫正一样。即使把ChatGPT里面的风格，设置成控制输出，也难以形成优雅统一的提示词。在浏览网页的时候，发现官网有专门的提示词教程。它其中写得明白：从少到多；结构化表达；明确修改范围和不变范围。通过这种方式，除开我们要做的这类图像编辑和转换，还可以实现信息图、UI等功能。 人写肯定不现实，还是让文笔更好的Opus来。丢给它要的目标图的形式，再给出提示词和提示词之后的结果图，让它一步步靠近。最终，实现近似可控的图片编辑效果。 这里面，最难的其实是一致性和排版；最需要权衡的是信息密度和样式。目前从结果来说，当约束人物一致性不变时，已经不会存在人物差距过大的问题，基本能保持一致；而排版通过提示词约束，也能一定程度上保持。不过稍微麻烦的是，不同目标（例如发型与墨镜）出来的效果还是会略微不同。 另外一个情况是，当约束中文排版时，由于有约束简洁，导致最后的信息密度一般。当然，也许是看惯了常用语言，有语言羞耻症。
 最后，有条件的读者朋友可以试试原始提示词；不方便的读者朋友，笔者在早鸟5折的基础上，额外提供一张专属可叠加的8折折扣码「BEAUTY2026」，结算时输入或点击链接，免输入即刻体验。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI构建全景图：六阶段及其方案选型</title>
-      <link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link>
-      <pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid>
-      <description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
+关于作者</description></item><item><title>AI构建全景图：六阶段及其方案选型</title><link>https://kuhung.me/posts/ai-trend-in-my-eyes/</link><pubDate>Wed, 26 Nov 2025 11:46:12 +0800</pubDate><guid>https://kuhung.me/posts/ai-trend-in-my-eyes/</guid><description>在人工智能领域，特别是以大语言模型（LLM）为代表的AI方面，大量人才和资金涌入。这个世界每天都不一样：新的概念、新的方法、新的工具，以及新的团队和产品。
 虽然现在处于技术曲线的过度乐观期，但在热门领域，保持关注和实践总是没错的。
 本期从算法创业者的视角，讲述技术原理与实现方法。从产品构建的不同阶段，力求带来系统性认知。
 注：本期的素材，来自 ThoughtWorks 技术雷达33期。笔者阅读并提取了其中 AI、算法、数据相关的板块，结合过往认知与实践，总结出下列内容。
@@ -344,16 +176,7 @@ EP09 深度解读 Google Gemma 4 的 PLE 架构：26B MoE 如何在边缘设备�
 工具 定位 适用场景 v0 AI 驱动的 UI 原型设计 从文本/视觉输入快速生成 UI Figma Make AI 辅助设计工具 产品经理直接生成交互原型 AI Design Reviewer Figma 设计审计插件 UX/UI 批评、可访问性检测 除此之外，结构化的 PRD，让 AI 能够更好理解，这也是一种范式建议。传统 PRD 需要向 Prompt-ready 的格式转变，PM 需要将业务逻辑转化为 AI 能理解的结构化描述。
 规范驱动开发 在编码阶段，设置全局的 Agents 规范，也是有意义的。无论你是团队开发、还是个人开发但是手下有多个项目，统一的目录结构和编码规范，能够带来极大的效率提升。这也能让 Agents 规范的迭代迅速同步到各个项目中去。
 AGENTS.md 是一种新兴的约定——为 Cursor 这类辅助编码工具准备的说明书。包含项目结构、代码规范、测试方法等自然语言描述。它需要辅以索引后的本地 Codebase。
-注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（三）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-3/</link>
-      <pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-3/</guid>
-      <description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
+注意事项 整个过程，仍然需要警惕技术债务、警惕过度依赖一次性的前期准备。这和传统开发无异。而无代码平台，原文专家认为会导致未治理的应用激增，需要小心布置于生产环境。</description></item><item><title>AI相亲小镇开发纪要（三）</title><link>https://kuhung.me/posts/love-in-ai-town-3/</link><pubDate>Tue, 07 Oct 2025 21:12:32 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-3/</guid><description>产品在发布后，受到了大家的广泛喜欢（不是）。为了增加真人感，主播增加了真人数据投放。第一个Agent 智能体是 UP主本身，ENFJ 投放到了小镇中，验证结果符合预期。Agent最后匹配的人选，也是主播在现实会有好感的人。
 接着，内测群也发起了测试。累计招募了3位真人朋友。从测试的结果来看，也是合乎预期。最直接的证明就是，这三位即使身份背景不同，都对UP主的Agent表达出兴趣。这和他们选择参加游戏的现实结果一致。
 不过，更多的用户停在了门外。根据用户访谈，有朋友认为该项目的定位和商业BP不够清晰。所以，第三次迭代纪要，主体便是回应这个问题。
 这个项目的发起动机，是UP主本身有交友的需求。但在测试过程中，发现很多社交应用，都缺乏促成成交的机制。就像网友所说，社交APP的核心指标在于消费。没错，是用户在平台上各类消费活动。包括但不限于：知道谁喜欢了我、让对方直接看到我等更多特权。
@@ -373,16 +196,7 @@ A：目前从身边感受来说，普遍存在需求。这部分数据后续陆�
 此外，我们再过一遍技术细节。本地迭代，实现两个核心功能。
 一个是将LLM模型从本地机器，迁移到UP主更适合做模型服务的Linux服务器。另一个是增加了摄像头，使得我们能够在屏幕上跟踪对应agent，能够掌握它的第一手行为动作。另外一些小的改进，是数据采集增加了问卷，不用通过对话收集信息了。
 最后，有这部分需求的小伙伴可以持续关注本项目，更大规模测试计划中。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（二）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-2/</link>
-      <pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-2/</guid>
-      <description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（二）</title><link>https://kuhung.me/posts/love-in-ai-town-2/</link><pubDate>Sat, 27 Sep 2025 15:55:13 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-2/</guid><description>进入开发 书接上回，我们根据现有的资源，结合自身的优势和兴趣点，决定在相亲这个双边市场，进行撮合服务。
 工具载体是我们的AI 小镇。基本思想是：数据化自身标签，设定目标，剩下的交给AI。减少相亲交友的重复和倦怠，提高匹配效率。
 AI小镇有自己的一套代码，需要做的事是在原来的基础上进行调整。其核心功能，配置标签、设定目标为现成功能。LLM驱动的逻辑也是现成的，整体一次性能投放8个角色。
 首先要做的是保证启动，实现原代码的功能。过程略微枯燥，总之就是发现问题，理解问题，寻找解决方案，尝试解决方案，最后修复。
@@ -402,16 +216,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 项目依赖本地的大模型，但并未对token的消耗进行统计、未对服务的负载情况进行监控。若服务不可用或性能下降，实际会影响对话部分的质量。
 目前，项目的演示视频已发布到多个平台，获得的曝光仍较为局限。获客是最大的挑战、缺少话题性，难以获得垂直流量。
 看到这里的朋友，动动手指，填写一分钟问卷，圆你的交友梦。限时免费匹配，定期直播结果。https://wj.qq.com/s2/24050706/c5d5/
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>AI相亲小镇开发纪要（一）</title>
-      <link>https://kuhung.me/posts/love-in-ai-town-1/</link>
-      <pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/love-in-ai-town-1/</guid>
-      <description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
+关于作者</description></item><item><title>AI相亲小镇开发纪要（一）</title><link>https://kuhung.me/posts/love-in-ai-town-1/</link><pubDate>Tue, 23 Sep 2025 08:30:15 +0800</pubDate><guid>https://kuhung.me/posts/love-in-ai-town-1/</guid><description>开发背景 玩过社交软件的朋友都知道，软件交友体验不佳。这其实来源于目的的背离。平台的目的是留存和付费，用户的目的是匹配离开。尽管不少平台在努力平衡，但仍会看见许多精心设计的付费点；许多暗示你下一个更好的引导。
 优质的用户是平台资产，当他们匹配成功时，意味着平台的资产流失。
 除开目的的背离，还有客服感。不少网友反馈，在社交软件上聊天像是客服，对不同的人要重复相同的话术，聊着聊着对方还会断线。这种感受在消磨人的耐心，消磨对美好爱情的憧憬。
 用户需要填写标签。例如学历、资产情况等。这些标签化的筛选方式，早已植入到了人的内心。品格无法量化，便先通过标签筛选。而一个人的偏好，基本是固定的。
@@ -431,16 +236,7 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 本产品的主要营收方式为数字化服务费，主要成本为算力和人力支出。
 本产品无法完全杜绝资料作假、美化，无法帮助提升外在美商，无法帮助用户实现特定功利想法。
 本产品的主要风险来自于市场宣发，双边市场缺乏足够多的参与者。无人感兴趣，冷启动失败。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>从2015到2025：技术创业的变与不变</title>
-      <link>https://kuhung.me/posts/build-in-2015/</link>
-      <pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/build-in-2015/</guid>
-      <description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
+关于作者</description></item><item><title>从2015到2025：技术创业的变与不变</title><link>https://kuhung.me/posts/build-in-2015/</link><pubDate>Mon, 25 Aug 2025 17:43:46 +0800</pubDate><guid>https://kuhung.me/posts/build-in-2015/</guid><description>在历史的长河中，我们总能发现那些令人艳羡的“先机”——无论是2008年购入比特币，2012年加入字节跳动，亦或是2015年买房置业，2018年重仓英伟达。然而，这些所谓的“机会”往往是幸存者偏差的产物。即便时光倒流，个体也未必能做出相同的决策，更遑论那些未能浮现的无数可能性。真正的洞察，需站在彼时彼刻，而非依赖于今日的“后视镜”视角。
 创业亦然。本篇文章将以《技术人创业攻略》为引，回顾并剖析2012至2015年大众创业浪潮中技术人的心路与实践。十年光阴流转，那些昔日的观点与抉择，如今已成为检验其真实价值的试金石。因为，评判一个人，不仅要听其言，更要观其行。
 那些要完蛋的公司 在《技术人创业攻略》中，不乏有创业者对当时的大公司（如微软、Adobe）提出尖锐批判，预言其将因臃肿而走向衰落，小公司则将迎来颠覆性时刻。然而，时至今日，我们回望十年，这些“即将完蛋”的巨头不仅未曾陨落，反而凭借其庞大的规模优势，更上层楼。
 这种创业公司打破大公司垄断，实现颠覆式创新的故事，总是很受欢迎。在故事里，大公司是邪恶的，忘记初心，垂垂朽木的。创业公司是锐意进取，机动灵活，能够快速吃下这个新的市场的，勇者斗恶龙。
@@ -463,33 +259,11 @@ AI小镇有自己的一套代码，需要做的事是在原来的基础上进行
 正像认知的那样，创业乃九死一生。书中现在还存在的公司，十不足一。即使这般，现在还是有不少人入场。一些人是天生的冒险家，敏锐察觉每一个风口，并一头扎入其中；也有些人是从长远出发，与其排队晋升，不如在外闯荡验证实力；还有一些人，是带着预算和DDL，验证想法不留遗憾。
 回望过去，不是为了捕捉下一个风口，而是为了理解商业和人性的不变规律，从而更好地应对未来的不确定性。真正的创业者，是在理解周期与人性之后，依然选择脚踏实地、验证自我的人。
 敬每位脚踏实地的创业者，这一路并不容易。
-关于作者</description>
-    </item>
-    
-    <item>
-      <title>41个 LangChain / LangGraph / LangSmith 案例研究</title>
-      <link>https://kuhung.me/posts/agent-case-studies/</link>
-      <pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/agent-case-studies/</guid>
-      <description>关于作者</description>
-    </item>
-    
-    <item>
-      <title>三大LLM厂商的提示词行动指南</title>
-      <link>https://kuhung.me/posts/prompt-guide/</link>
-      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
-      
-      <guid>https://kuhung.me/posts/prompt-guide/</guid>
-      <description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
+关于作者</description></item><item><title>41个 LangChain / LangGraph / LangSmith 案例研究</title><link>https://kuhung.me/posts/agent-case-studies/</link><pubDate>Mon, 21 Jul 2025 21:48:52 +0800</pubDate><guid>https://kuhung.me/posts/agent-case-studies/</guid><description>关于作者</description></item><item><title>三大LLM厂商的提示词行动指南</title><link>https://kuhung.me/posts/prompt-guide/</link><pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate><guid>https://kuhung.me/posts/prompt-guide/</guid><description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
 提示词技巧与人类沟通的共通性 产品设计本身也是人类社会规则设计的一个抽象。从宏观来说，提示词技巧和人类社会的一些常见共识重合度很高。例如：清晰阐明你的诉求、明确角色职责、分阶段分解任务、重复诉求以防止遗忘、约定清晰的输出结构、提供样例进行模仿、引导输出内容、要有事实数据支撑、设计指标反复迭代。这些技巧，在与人沟通、协作、领导、教练的时候，是非常重要的。靠意识同步的三体人，其 AI 的形态必与我们的不同。只要人类社会还是当前的结构形态，当下这些工作就还有意义。
 提示词的分类 提示词，我们从配置方来说，分为三类。分别是系统提示词，由 LLM 提供商预设在模型 API 接口下，定义模型的行为准则。例如：反黄暴之类的。这一般是第一条注入的提示词。角色提示词，这个提示词是开放给用户配置的，比如配置为“你是一个大模型专家”。最后就是常见的用户交互提示词，用户输入的内容也算提示词。在此基础上，又根据用户和场景，派生出例如：指令提示词，指定输出xx字这种；上下文提示词，交代上下文说过啥；样本提示词，按照给的样式来；CoT 提示词，好好想想，逐步思考，等若干提示词种类。
 主流大模型提供商的提示词建议 话归正题，笔者参考了 Anthropic、Google 以及 OpenAI 的提示词构建文档，力求从第一手信息源出来，结合自身的使用经验，给到当下最好的解决方案。这其中也离不开各类 LLM 支持构建的 deep reasearch 工具，这个过程才会变得更丝滑、效率更高。但由于人脑的带宽毕竟有限，错误和纰漏在所难免，读者朋友如有发现，欢迎指出。
 Antropic 的提示词建议 以 Anthropic 为例，他们在训练过程中使用了大量的 XML 的结构化语料，因此类似的结构化提示词在他家的模型上会表现得很好。另外也强调清晰和直接的重要性。即清晰表达你的需求，可量化的提出你的诉求。而不是丢一个模棱两可的问题，然后反复沟通。但其实这部份也是需要的，这里更多是指大规模应用的时候，系统预设提示词，减少用户和下文的困惑度，这在软件系统中很重要。而且模型本身就是概率模型，它的结果是不确定的，那么反复沟通其实就有必要。
 因为 LLM 的本质是预测下一个 token 是啥，所以可以通过预设这个开头来保证它会做出预期内的事情。比如想要输出 JSON，那么就以{开头。这一技术也被用在 deepseek 的 think 推理里面，通过预先提示来让模型进行 reason 推理。另一方面，由于模型的被奖励尽可能多的输出下一个 token，所以当遇到负面提示时：比如不要干啥，模型可能会产生意料之外的变化。因此，Anthropic 家的文档建议出更多的正面提示词：应该做什么，而不是不应该做什么，借此来减少不可控性。
 Google 的提示词建议 而 Google 来说，对于他们的 Gemini 模型，则建议提供一个清晰可供参考的样本。这点在笔者做仓满量化相关的产出时，深有体会。只需要在开始和模型磨合，得到想要的代码模版或者是 doc 模版，后续只需要提供这个模版，即使是 Gemini-flash 模型，也能高效完成代码的编写工作。除此之外，谷歌文档中也给出了更高级的方式。例如 Step back 思考。先抽象，再解决问题。CoT 思维链也是一种方式，通过提示词注入“一步步思考”的方式，让模型的输出更具可解释性。
-当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description>
-    </item>
-    
-  </channel>
-</rss>
+当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description></item></channel></rss>
