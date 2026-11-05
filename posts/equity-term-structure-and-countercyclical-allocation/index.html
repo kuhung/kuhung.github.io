@@ -95,7 +95,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-02T12:00:00+08:00","datePublished":"2026-11-02T12:00:00+08:00","description":"为什么熊市抢高息、牛市追成长？基于 Gormsen (2021) 股息期货与现金流久期解耦，量化揭示繁荣期向下倾斜 vs. 衰退期向上倾斜的 9% 跨周期期限溢价反转，解析双因子机制并指导跨周期资产配置。","headline":"红利与宏观择时（二）：股权期限结构与反周期配置","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 股权期限结构, 股息期货, 资产配置, 现金流久期","mainEntityOfPage":{"@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"WebPage"},"name":"红利与宏观择时（二）：股权期限结构与反周期配置","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","wordCount":636}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-02T12:00:00+08:00","datePublished":"2026-11-02T12:00:00+08:00","description":"为什么熊市抢高息、牛市追成长？基于 Gormsen (2021) 股息期货与现金流久期解耦，量化揭示繁荣期向下倾斜 vs. 衰退期向上倾斜的 9% 跨周期期限溢价反转，解析双因子机制并指导跨周期资产配置。","headline":"红利与宏观择时（二）：股权期限结构与反周期配置","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 红利资产, 股权期限结构, 股息期货, 资产配置, 现金流久期","mainEntityOfPage":{"@id":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","@type":"WebPage"},"name":"红利与宏观择时（二）：股权期限结构与反周期配置","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/","wordCount":647}</script>
 </head>
 
   
@@ -243,17 +243,22 @@ if (!doNotTrack) {
           
 
           <blockquote>
-<p>这是「红利与宏观择时」深度研报系列的第二篇。本系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑与宏观流动性周期：</p>
+<p>为什么牛市里高分红股票跑不过科技成长股，而熊市里红利股更抗跌？股票像债券一样有长短期限：红利股几年内就能拿回大量分红，属于短周期资产；科技成长股主要看未来的远期兑现，属于长周期资产。牛市中大家都去抢远期成长，短周期红利股往往无人问津，确定性的分红回报反而更高；而在熊市深跌后，成长股被过度抛售，此时逆势换入成长股，反弹时的上涨空间远大于红利股。</p>
+<p>本文是「红利与宏观择时」系列的第二篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防与宏观流动性周期：</p>
 <ul>
 <li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：现值解耦</a> ｜ 拆解股息率：分红预期 vs. 贴现率预期</li>
 <li><strong>篇章二：期限结构（本篇）</strong> ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长</li>
 <li><a href="/posts/momentum-crashes-and-dynamic-scaling/">篇章三：动量攻防</a> ｜ 攻防杠铃的极端风险：熊市反弹的期权化逼空与自适应控仓</li>
+<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：资金微观挤兑</a> ｜ 机构被迫抛压与流动性折价错杀</li>
+<li>篇章五：流动性双螺旋（筹备中） ｜ 融资流动性与市场流动性恶性共振预警</li>
+<li>篇章六：宏观贴现率之锚（筹备中） ｜ 美债供给、期限溢价与全球资产定价</li>
 </ul>
 </blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/bc0bb8497c0478ee.webp" alt="股权期限结构与反周期配置：繁荣期与衰退期的股息期限结构示意" class="lazyload"><figcaption class="image-caption">股权期限结构与反周期配置：繁荣期与衰退期的股息期限结构示意</figcaption></figure></p>
 <p>平时跟踪红利资产或成长风格，常能观察到一种风格分化：</p>
 <p>在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险；
 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。</p>
-<p>上一篇通过 Campbell-Shiller 现值解耦揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截面资产的配置疑问：为什么不同股票在繁荣期与衰退期的收益差异会发生方向性逆转？</p>
+<p>上一篇通过 <a href="/posts/dividend-price-ratio-and-present-value-decomposition/">Campbell-Shiller 现值解耦</a> 揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截面资产的配置疑问：为什么不同股票在繁荣期与衰退期的收益差异会发生方向性逆转？</p>
 <p>把整只股票视为单一现金流整体，容易忽略现金流到达时间的差异。正如国债市场拥有 1 年期、5 年期和 10 年期的收益率曲线，股票未来派发的股息同样可以通过股息期货（Dividend Futures）或期权隐含股息切片为不同期限的索取权。</p>
 <p>持有 1 到 2 年就能到手的短期股息，与 5 到 10 年后才能到手的长期股息，哪一个要求的期望收益率更高？这个期限溢价在经济周期的两极如何变动？</p>
 <hr>
