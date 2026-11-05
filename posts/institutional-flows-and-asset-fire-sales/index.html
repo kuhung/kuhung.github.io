@@ -58,18 +58,27 @@ if (!doNotTrack) {
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        function cleanMath(content) {
+            return content
+                .replace(/<em>(.*?)<\/em>/g, '_$1')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/(^|[^\\])%/g, '$1\\%');
+        }
+
         
         document.querySelectorAll('p, li, div').forEach(el => {
             if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
                 let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
+                    return '$$' + cleanMath(inner) + '$$';
                 });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
+                    return '\\[' + cleanMath(inner) + '\\]';
                 });
-                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
+                    return '$' + cleanMath(inner) + '$';
                 });
                 el.innerHTML = html;
             }
@@ -493,10 +502,10 @@ if (!doNotTrack) {
 <p><span id="section-3-2"></span></p>
 <h3 id="2-股票级受迫抛压公式pressure">2. 股票级受迫抛压公式（PRESSURE）</h3>
 <p>在获取单只基金资金流状态后，汇总在季度 $t$ 内受资金流驱动对股票 $i$ 发生交易的机构数量差，并以期初持有该股的机构总数标准化：</p>
-<p>$$PRESSURE_{i,t} = \frac{\sum_{j} \left(Buy_{j,i,t} \mid flow_{j,t} &gt; 5%\right) - \sum_{j} \left(Sell_{j,i,t} \mid flow_{j,t} &lt; -5%\right)}{\sum_{j} Own_{j,i,t-1}}$$</p>
+<p>$$PRESSURE_{i,t} = \frac{\sum_{j} \left(Buy_{j,i,t} \mid flow_{j,t} &gt; 5\%\right) - \sum_{j} \left(Sell_{j,i,t} \mid flow_{j,t} &lt; -5\%\right)}{\sum_{j} Own_{j,i,t-1}}$$</p>
 <p>符号微观定义：</p>
 <ul>
-<li><strong>$Own_{j,i,t-1} \in {0, 1}$</strong>：<strong>期初持仓指示变量</strong>。若基金 $j$ 在季度 $t$ 期初持有股票 $i$，记为 1，否则为 0。分母 $\sum_j Own_{j,i,t-1}$ 即期初持有该股的公募基金总数。</li>
+<li><strong>$Own_{j,i,t-1} \in \{0, 1\}$</strong>：<strong>期初持仓指示变量</strong>。若基金 $j$ 在季度 $t$ 期初持有股票 $i$，记为 1，否则为 0。分母 $\sum_j Own_{j,i,t-1}$ 即期初持有该股的公募基金总数。</li>
 <li><strong>$Sell_{j,i,t} \in {0, 1}$</strong>：<strong>减仓指示变量</strong>。若基金 $j$ 在季度 $t$ 减持或清仓了股票 $i$，记为 1，否则为 0。约束条件为该基金净流出 $flow_{j,t} &lt; -5%$。</li>
 <li><strong>$Buy_{j,i,t} \in {0, 1}$</strong>：<strong>加仓指示变量</strong>。若基金 $j$ 在季度 $t$ 增持或新建仓股票 $i$，记为 1，否则为 0。约束条件为该基金净流入 $flow_{j,t} &gt; 5%$。</li>
 <li><strong>门槛约束</strong>：分母 $\sum_j Own_{j,i,t-1} \ge 10$。仅当期初至少有 10 家公募基金持有时，指标才具备统计代表性，以剔除低持股标的的微观噪声。</li>

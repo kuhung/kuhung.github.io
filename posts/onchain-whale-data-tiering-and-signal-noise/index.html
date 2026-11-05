@@ -58,18 +58,27 @@ if (!doNotTrack) {
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        function cleanMath(content) {
+            return content
+                .replace(/<em>(.*?)<\/em>/g, '_$1')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/(^|[^\\])%/g, '$1\\%');
+        }
+
         
         document.querySelectorAll('p, li, div').forEach(el => {
             if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
                 let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
+                    return '$$' + cleanMath(inner) + '$$';
                 });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
+                    return '\\[' + cleanMath(inner) + '\\]';
                 });
-                html = html.replace(/\$([\s\S]*?)\$/g, function(match) {
-                    return match.replace(/<em>(.*?)<\/em>/g, '_$1');
+                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
+                    return '$' + cleanMath(inner) + '$';
                 });
                 el.innerHTML = html;
             }
