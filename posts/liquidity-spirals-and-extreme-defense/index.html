@@ -108,7 +108,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T10:00:00+08:00","datePublished":"2026-11-06T10:00:00+08:00","description":"为什么没有突发财务利空，市场买盘也会在一夜之间归零？基于 Brunnermeier \u0026 Pedersen (2009) RFS 奠基之作，系统解构市场流动性与融资流动性的双向内生反馈；推导亏损螺旋与保证金螺旋超加性放大形成的非线性相变悬崖；构建流动性双螺旋预警指数（LSWI）并复盘 2015、2020、2024 三大历史压力期，划定红利资产实盘极端防守准则。","headline":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 流动性螺旋, 融资流动性, 红利资产, 宏观择时","mainEntityOfPage":{"@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"WebPage"},"name":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","wordCount":1173}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T10:00:00+08:00","datePublished":"2026-11-06T10:00:00+08:00","description":"为什么没有突发财务利空，市场买盘也会在一夜之间归零？基于 Brunnermeier \u0026 Pedersen (2009) RFS 奠基之作，系统解构市场流动性与融资流动性的双向内生反馈；推导亏损螺旋与保证金螺旋超加性放大形成的非线性相变悬崖；构建流动性双螺旋预警指数（LSWI）并复盘 2015、2020、2024 三大历史压力期，划定红利资产实盘极端防守准则。","headline":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 流动性螺旋, 融资流动性, 红利资产, 宏观择时","mainEntityOfPage":{"@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"WebPage"},"name":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","wordCount":1029}</script>
 </head>
 
   
@@ -220,8 +220,8 @@ if (!doNotTrack) {
         <li><a href="#4-2026-当前全市场宏观流动性切片与配置建议">4. 2026 当前全市场宏观流动性切片与配置建议</a></li>
       </ul>
     </li>
+    <li><a href="#给你的-ai-的切入提示词">给你的 AI 的切入提示词</a></li>
     <li><a href="#红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</a></li>
-    <li><a href="#附录lswi-预警指数计算参考脚本">附录：LSWI 预警指数计算参考脚本</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
@@ -326,8 +326,8 @@ if (!doNotTrack) {
 <li><a href="#section-5-4">4. 2026 当前全市场宏观流动性切片与配置建议</a></li>
 </ul>
 </li>
+<li><a href="#section-ai-prompt">给你的 AI 的切入提示词</a></li>
 <li><a href="#section-series">「红利与宏观择时」全系列导航</a></li>
-<li><a href="#section-appendix">附录：LSWI 预警指数计算参考脚本</a></li>
 <li><a href="#section-ref">参考文献</a></li>
 </ul>
 <hr>
@@ -549,6 +549,26 @@ if (!doNotTrack) {
 </ul>
 <p>在当前环境下，投资者无需过度恐慌执行极端清仓，但应当牢记流动性非线性断崖的物理教训：<strong>把超低 Haircut、分红现金流扎实的优质红利资产作为不动摇的核心压舱底仓</strong>；当后续盘面出现突发宏观扰动导致 LSWI 快速穿透 75 时，必须果断遵从状态机指令启动防守降仓，在双螺旋吞噬流动性之前，稳稳守住资本的生存底线。</p>
 <hr>
+<p><span id="section-ai-prompt"></span></p>
+<h2 id="给你的-ai-的切入提示词">给你的 AI 的切入提示词</h2>
+<p>复制以下提示词发送给你的 AI 助手，让它基于 Brunnermeier &amp; Pedersen (2009) 流动性双螺旋机制，为你建立针对全市场系统性风险的 LSWI 监测与极端撤退决策流程：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>你是一名资深量化风险管理总监。请基于 Brunnermeier <span style="color:#960050;background-color:#1e0010">&amp;</span> Pedersen (2009, RFS) 市场流动性与融资流动性双螺旋理论（Liquidity Spirals），帮我搭建一套全市场流动性黑洞预警与极端防守决策流程。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>【当前市场概况或重点持仓】
+</span></span><span style="display:flex;"><span>（在此输入你所关注的市场板块、全市场近期成交额、全市场跌停家数、两融余额变动情况，以及你的持仓组合概况）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>【请为我输出以下分析】
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 流动性双螺旋指标（LSWI）健康度诊断：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 评估 Amihud 价格冲击指标是否出现跨截面急剧抬升（微观买盘深度丧失）；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 评估全市场股票的日收益相关性是否异常走高（跨截面共性流动性干涸）；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 评估资方杠杆与两融保证金水平是否面临强平阈值压力（融资流动性收缩）；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 评估指数收益率的负偏态（尾部悬崖跳跃风险）程度。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 市场相空间阶段判定与预警分级：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 判定当前处于：A) 稳态与轻度观察期（LSWI &lt; <span style="color:#f92672">60</span><span style="color:#960050;background-color:#1e0010">）；</span><span style="color:#a6e22e">B</span><span style="color:#960050;background-color:#1e0010">)</span> <span style="color:#a6e22e">一级防守预警期</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">75</span> <span style="color:#960050;background-color:#1e0010">&lt;=</span> <span style="color:#a6e22e">LSWI</span> <span style="color:#960050;background-color:#1e0010">&lt;</span> <span style="color:#a6e22e">85</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#a6e22e">杠杆机构资产负债表受损</span><span style="color:#960050;background-color:#1e0010">）；</span><span style="color:#a6e22e">C</span><span style="color:#960050;background-color:#1e0010">)</span> <span style="color:#a6e22e">双螺旋风暴期</span><span style="color:#960050;background-color:#1e0010">（</span><span style="color:#a6e22e">LSWI</span> &gt;= 85，市场流动性与融资流动性恶性恶化共振）。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 红利底仓与全组合极端撤退决策：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 在当前阶段，手头的低估值高股息资产是否存在被机构为满足保证金要求而「抽血补跌」的风险；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 给出严格的无主观情绪操作清单：在什么具体指标触发时坚守红利底仓，在什么临界点必须无条件启动现金/国债防守避险。
+</span></span></code></pre></div><hr>
 <p><span id="section-series"></span></p>
 <h2 id="红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</h2>
 <p>本文是「红利与宏观择时」系列的第五篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
@@ -561,66 +581,6 @@ if (!doNotTrack) {
 <li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观利率</a> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
 </ul>
 <hr>
-<p><span id="section-appendix"></span></p>
-<h2 id="附录lswi-预警指数计算参考脚本">附录：LSWI 预警指数计算参考脚本</h2>
-<p>以下 Python 函数展示了基于修正后口径的流动性双螺旋预警指数（LSWI）工程计算逻辑：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_liquidity_spiral_warning_index</span>(
-</span></span><span style="display:flex;"><span>    amount_df: pd<span style="color:#f92672">.</span>DataFrame,
-</span></span><span style="display:flex;"><span>    return_df: pd<span style="color:#f92672">.</span>DataFrame,
-</span></span><span style="display:flex;"><span>    margin_rate_series: pd<span style="color:#f92672">.</span>Series,
-</span></span><span style="display:flex;"><span>    benchmark_return_series: pd<span style="color:#f92672">.</span>Series,
-</span></span><span style="display:flex;"><span>    window: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>
-</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>DataFrame:
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    基于 Brunnermeier &amp; Pedersen (2009) 理论机制的流动性双螺旋预警指数 (LSWI)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    参数:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    amount_df: 各标的每日成交金额 (Amount, 单位元, 严禁使用成交股数)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    return_df: 各标的每日收益率序列
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    margin_rate_series: 全市场代表性保证金变动率或贴水综合指标
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    benchmark_return_series: 流通市值加权的基准指数收益率序列 (严禁用简单名义价平均)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    window: 基础计算窗口 (默认 60 交易日)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 计算个股与市场平均 Amihud 非流动性指标 (ILLIQ = |R| / Amount)</span>
-</span></span><span style="display:flex;"><span>    amihud_illiq <span style="color:#f92672">=</span> return_df<span style="color:#f92672">.</span>abs() <span style="color:#f92672">/</span> (amount_df <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-8</span>)
-</span></span><span style="display:flex;"><span>    market_illiq <span style="color:#f92672">=</span> amihud_illiq<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 计算跨截面流动性共性 (Commonality in Liquidity)</span>
-</span></span><span style="display:flex;"><span>    rolling_commonality <span style="color:#f92672">=</span> amihud_illiq<span style="color:#f92672">.</span>apply(
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">lambda</span> col: col<span style="color:#f92672">.</span>rolling(window)<span style="color:#f92672">.</span>corr(market_illiq)
-</span></span><span style="display:flex;"><span>    )<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 计算保证金与杠杆收缩变动率</span>
-</span></span><span style="display:flex;"><span>    margin_spike <span style="color:#f92672">=</span> margin_rate_series<span style="color:#f92672">.</span>pct_change(window)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 4. 计算基准指数收益率的滚动偏度 (Skewness)</span>
-</span></span><span style="display:flex;"><span>    rolling_skew <span style="color:#f92672">=</span> benchmark_return_series<span style="color:#f92672">.</span>rolling(window)<span style="color:#f92672">.</span>skew()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 5. 双倍窗口 (window * 2) 滚动标准化计算 Z-Score</span>
-</span></span><span style="display:flex;"><span>    norm_win <span style="color:#f92672">=</span> window <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>    z_illiq <span style="color:#f92672">=</span> (market_illiq <span style="color:#f92672">-</span> market_illiq<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> market_illiq<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
-</span></span><span style="display:flex;"><span>    z_common <span style="color:#f92672">=</span> (rolling_commonality <span style="color:#f92672">-</span> rolling_commonality<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> rolling_commonality<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
-</span></span><span style="display:flex;"><span>    z_margin <span style="color:#f92672">=</span> (margin_spike <span style="color:#f92672">-</span> margin_spike<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> margin_spike<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
-</span></span><span style="display:flex;"><span>    z_skew <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span> <span style="color:#f92672">*</span> (rolling_skew <span style="color:#f92672">-</span> rolling_skew<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> rolling_skew<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 6. 四项分量加权汇总 (理论与经验校准权重)</span>
-</span></span><span style="display:flex;"><span>    raw_lswi <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.35</span> <span style="color:#f92672">*</span> z_illiq <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.25</span> <span style="color:#f92672">*</span> z_common <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.25</span> <span style="color:#f92672">*</span> z_margin <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.15</span> <span style="color:#f92672">*</span> z_skew
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 7. Sigmoid 映射生成 0 到 100 的 LSWI 预警指数</span>
-</span></span><span style="display:flex;"><span>    lswi_series <span style="color:#f92672">=</span> <span style="color:#ae81ff">100.0</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>raw_lswi)))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    result_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;LSWI&#39;</span>: lswi_series,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_illiq&#39;</span>: z_illiq,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_common&#39;</span>: z_common,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_margin&#39;</span>: z_margin,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_skew&#39;</span>: z_skew
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result_df
-</span></span></code></pre></div><hr>
 <p><span id="section-ref"></span></p>
 <h2 id="参考文献">参考文献</h2>
 <ul>

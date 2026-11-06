@@ -108,7 +108,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":903}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":770}</script>
 </head>
 
   
@@ -211,8 +211,8 @@ if (!doNotTrack) {
         <li><a href="#4-2026-最新切片实证美股科技动量回撤与红利防守映射">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
       </ul>
     </li>
+    <li><a href="#给你的-ai-的切入提示词">给你的 AI 的切入提示词</a></li>
     <li><a href="#红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</a></li>
-    <li><a href="#附录核心算法复现脚本与说明">附录：核心算法复现脚本与说明</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
@@ -301,8 +301,8 @@ if (!doNotTrack) {
 <li><a href="#section-4-4">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
 </ul>
 </li>
+<li><a href="#section-ai-prompt">给你的 AI 的切入提示词</a></li>
 <li><a href="#section-series">「红利与宏观择时」全系列导航</a></li>
-<li><a href="#section-appendix">附录：核心算法复现脚本与说明</a></li>
 <li><a href="#section-ref">参考文献</a></li>
 </ul>
 <p>在实际构建量化投资组合时，单纯持有高股息红利资产往往被视为纯防守配置。为了在行情上涨时获取进攻弹性，多资产量化投资者常将低估值红利资产与趋势动量策略结合配置：用短久期高股息资产赚取确定性的股息现金流，用动量策略捕捉大盘上行趋势；或者在红利资产池内部运用动量指标做强弱轮动。</p>
@@ -505,6 +505,25 @@ $$w_t = \frac{16%}{29.3%} \approx 0.55$$</li>
 <p>那么，这些在漫长熊市中被打到残值、期权特性爆发的困境股票，在危机初期究竟经历了怎样的微观流动性踩踏？公募基金与对冲基金是如何在赎回潮中被迫折价贱卖核心资产的？</p>
 <p>下一篇，我们将从宏观资产定价深入到微观微观资金流，解析<strong>机构赎回踩踏与资产贱卖冲击</strong>。</p>
 <hr>
+<p><span id="section-ai-prompt"></span></p>
+<h2 id="给你的-ai-的切入提示词">给你的 AI 的切入提示词</h2>
+<p>复制以下提示词发送给你的 AI 助手（或 Cursor/代码环境），让它基于 Daniel &amp; Moskowitz (2016) 模型，为你的量化策略搭建一套防范动量崩溃的自适应风控代码或审查现有持仓：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>你是一名量化风控专家。请基于 Daniel <span style="color:#960050;background-color:#1e0010">&amp;</span> Moskowitz (2016, JFE) 经典论文《Momentum Crashes》，为我设计一套动量策略的自适应动态缩放与极端崩溃防守系统。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>【我的策略背景/持仓现状】
+</span></span><span style="display:flex;"><span>（在此简述你的策略逻辑，例如：在持有高股息底仓的同时，配置过去 12 个月涨幅前 20% 的动量股票做进攻增强；或者输入你关注的高弹性动量标的列表）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>【请为我输出以下内容】
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 动量崩溃风险诊断：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 结合大盘近期所处阶段，排查当前市场是否处于熊市深谷或危机初期的剧烈反弹阶段；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 重点排查多头端高位抱团股补跌风险，以及前期深度下跌的困境标的（低位垃圾股/破净股）是否存在股权期权化爆发的逼空向上反弹风险。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 自适应风控算法实现建议（给出 Python 核心逻辑片段）：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 构建熊市状态指示器（Bear Indicator，识别过去 24 个月累计收益与中长期均线）；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 实现基于近期已实现波动率的条件方差预测（GARCH 或滚动已实现波动率），计算自适应缩放敞口 w_t^* = min(w_max, sigma_target / sigma_hat_t)；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 设定零下限熔断（Zero Lower Bound）：当熊市暴跌反弹期触发高波预警时，强制将动量进攻端权重降至 0，全面退守红利底仓。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 实盘操作指南：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 列出 3 个当前最关键的盯盘指标，指导我在右侧反弹初期的调仓纪律，避免踏空焦虑导致的追高挨打。
+</span></span></code></pre></div><hr>
 <p><span id="section-series"></span></p>
 <h2 id="红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</h2>
 <p>本文是「红利与宏观择时」系列的第三篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
@@ -517,66 +536,6 @@ $$w_t = \frac{16%}{29.3%} \approx 0.55$$</li>
 <li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观利率</a> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
 </ul>
 <hr>
-<p><span id="section-appendix"></span></p>
-<h2 id="附录核心算法复现脚本与说明">附录：核心算法复现脚本与说明</h2>
-<p>基于 Kenneth French Data Library 公开因子数据（1927–2026 年长周期序列），核心动态缩放权重计算逻辑如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> statsmodels.api <span style="color:#66d9ef">as</span> sm
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">compute_dynamic_momentum_weights</span>(df, eval_start<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;1934-01-01&#39;</span>, target_vol<span style="color:#f92672">=</span><span style="color:#ae81ff">0.19</span>, allow_short<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    自适应动态动量缩放算法 (Daniel &amp; Moskowitz, 2016)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    参数:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    df: 包含 [&#39;Mom&#39;, &#39;Mkt&#39;, &#39;I_B&#39;, &#39;mkt_var_126&#39;, &#39;mom_var_126&#39;] 的月度 DataFrame
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    eval_start: 纯样本外评估起始日期
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    target_vol: 目标年化波动率 (默认 19%)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    allow_short: 是否允许负权重 (实盘多头建议设为 False, 即 zero-floor)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;interaction&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;I_B&#39;</span>] <span style="color:#f92672">*</span> df[<span style="color:#e6db74">&#39;mkt_var_126&#39;</span>]
-</span></span><span style="display:flex;"><span>    records <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> t_idx <span style="color:#f92672">in</span> range(len(df)):
-</span></span><span style="display:flex;"><span>        curr_dt <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>index[t_idx]
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> curr_dt <span style="color:#f92672">&lt;</span> pd<span style="color:#f92672">.</span>to_datetime(eval_start):
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 1. 严格使用截至 t-1 的历史信息拟合 OLS 模型 (无未来函数)</span>
-</span></span><span style="display:flex;"><span>        hist <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>iloc[:t_idx]
-</span></span><span style="display:flex;"><span>        X_hist <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(hist[<span style="color:#e6db74">&#39;interaction&#39;</span>])
-</span></span><span style="display:flex;"><span>        y_hist <span style="color:#f92672">=</span> hist[<span style="color:#e6db74">&#39;Mom&#39;</span>]
-</span></span><span style="display:flex;"><span>        model <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y_hist, X_hist)<span style="color:#f92672">.</span>fit()
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 2. 预测 t 期的条件均值 mu_hat</span>
-</span></span><span style="display:flex;"><span>        x_curr <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.0</span>, df<span style="color:#f92672">.</span>iloc[t_idx][<span style="color:#e6db74">&#39;interaction&#39;</span>]])
-</span></span><span style="display:flex;"><span>        mu_hat <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>predict(x_curr)[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 3. 计算波动率倒数权重与动态权重</span>
-</span></span><span style="display:flex;"><span>        mom_var <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>iloc[t_idx][<span style="color:#e6db74">&#39;mom_var_126&#39;</span>]
-</span></span><span style="display:flex;"><span>        mom_vol <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(mom_var)
-</span></span><span style="display:flex;"><span>        w_cvol <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> mom_vol
-</span></span><span style="display:flex;"><span>        w_dyn <span style="color:#f92672">=</span> mu_hat <span style="color:#f92672">/</span> mom_var
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> allow_short:
-</span></span><span style="display:flex;"><span>            w_dyn <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.0</span>, w_dyn)
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>        records<span style="color:#f92672">.</span>append((curr_dt, mu_hat, w_cvol, w_dyn))
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>    res_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(records, columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;date&#39;</span>, <span style="color:#e6db74">&#39;mu_hat&#39;</span>, <span style="color:#e6db74">&#39;w_cvol_raw&#39;</span>, <span style="color:#e6db74">&#39;w_dyn_raw&#39;</span>])<span style="color:#f92672">.</span>set_index(<span style="color:#e6db74">&#39;date&#39;</span>)
-</span></span><span style="display:flex;"><span>    out <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[res_df<span style="color:#f92672">.</span>index]<span style="color:#f92672">.</span>join(res_df)
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 4. 全局缩放至目标年化波动率</span>
-</span></span><span style="display:flex;"><span>    scale_static <span style="color:#f92672">=</span> target_vol <span style="color:#f92672">/</span> (out[<span style="color:#e6db74">&#39;Mom&#39;</span>]<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">12</span>))
-</span></span><span style="display:flex;"><span>    scale_cvol <span style="color:#f92672">=</span> target_vol <span style="color:#f92672">/</span> ((out[<span style="color:#e6db74">&#39;w_cvol_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>])<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">12</span>))
-</span></span><span style="display:flex;"><span>    scale_dyn <span style="color:#f92672">=</span> target_vol <span style="color:#f92672">/</span> ((out[<span style="color:#e6db74">&#39;w_dyn_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>])<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#ae81ff">12</span>))
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    out[<span style="color:#e6db74">&#39;Ret_Static&#39;</span>] <span style="color:#f92672">=</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>] <span style="color:#f92672">*</span> scale_static
-</span></span><span style="display:flex;"><span>    out[<span style="color:#e6db74">&#39;Ret_CVOL&#39;</span>] <span style="color:#f92672">=</span> out[<span style="color:#e6db74">&#39;w_cvol_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>] <span style="color:#f92672">*</span> scale_cvol
-</span></span><span style="display:flex;"><span>    out[<span style="color:#e6db74">&#39;Ret_Dyn&#39;</span>] <span style="color:#f92672">=</span> out[<span style="color:#e6db74">&#39;w_dyn_raw&#39;</span>] <span style="color:#f92672">*</span> out[<span style="color:#e6db74">&#39;Mom&#39;</span>] <span style="color:#f92672">*</span> scale_dyn
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> out
-</span></span></code></pre></div><hr>
 <p><span id="section-ref"></span></p>
 <h2 id="参考文献">参考文献</h2>
 <ol>

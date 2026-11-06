@@ -108,7 +108,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T15:00:00+08:00","datePublished":"2026-11-06T15:00:00+08:00","description":"为什么手握高股息依然逃不开美债风暴？基于 Greenwood \u0026 Vayanos (2014) RFS 研究，打破纯预期与李嘉图等价假定；解构偏好习惯投资者与套利者资产负债表久期承载，实证长债供给推升期限溢价与套利者亏损非线性放大机制；连接 Campbell-Shiller 现值解耦与股票现金流久期，复盘 2023 美债供给风暴与耶伦发债转向，建立三阶段宏观贴现率攻防状态机。","headline":"红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 美债供给, 期限溢价, 红利资产, 宏观贴现率","mainEntityOfPage":{"@id":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","@type":"WebPage"},"name":"红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","wordCount":1351}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T15:00:00+08:00","datePublished":"2026-11-06T15:00:00+08:00","description":"为什么手握高股息依然逃不开美债风暴？基于 Greenwood \u0026 Vayanos (2014) RFS 研究，打破纯预期与李嘉图等价假定；解构偏好习惯投资者与套利者资产负债表久期承载，实证长债供给推升期限溢价与套利者亏损非线性放大机制；连接 Campbell-Shiller 现值解耦与股票现金流久期，复盘 2023 美债供给风暴与耶伦发债转向，建立三阶段宏观贴现率攻防状态机。","headline":"红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 美债供给, 期限溢价, 红利资产, 宏观贴现率","mainEntityOfPage":{"@id":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","@type":"WebPage"},"name":"红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","wordCount":1208}</script>
 </head>
 
   
@@ -223,8 +223,8 @@ if (!doNotTrack) {
       </ul>
     </li>
     <li><a href="#六全系列六篇宏观与微观投研大闭环总结">六、全系列六篇宏观与微观投研大闭环总结</a></li>
+    <li><a href="#给你的-ai-的切入提示词">给你的 AI 的切入提示词</a></li>
     <li><a href="#红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</a></li>
-    <li><a href="#附录美债供给与期限溢价预测模型参考脚本">附录：美债供给与期限溢价预测模型参考脚本</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
 </nav>
@@ -325,8 +325,8 @@ if (!doNotTrack) {
 </ul>
 </li>
 <li><a href="#section-6">六、全系列六篇宏观与微观投研大闭环总结</a></li>
+<li><a href="#section-ai-prompt">给你的 AI 的切入提示词</a></li>
 <li><a href="#section-series">「红利与宏观择时」全系列导航</a></li>
-<li><a href="#section-appendix">附录：美债供给与期限溢价预测模型参考脚本</a></li>
 <li><a href="#section-ref">参考文献</a></li>
 </ul>
 <hr>
@@ -633,6 +633,25 @@ ACM 期限溢价处于负值或极低区间（$TP &lt; 0$），财政部发债�
 </ol>
 <p>规矩立好了，逻辑贯通了，投资才不烧心。</p>
 <hr>
+<p><span id="section-ai-prompt"></span></p>
+<h2 id="给你的-ai-的切入提示词">给你的 AI 的切入提示词</h2>
+<p>复制以下提示词发送给你的 AI 助手，让它基于 Greenwood &amp; Vayanos (2014) 经典理论，为你跟踪全球宏观贴现率之锚（美债供给与期限溢价），诊断高股息资产的宏观防御边界：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>你是一名全球宏观与大类资产配置研究员。请基于 Greenwood <span style="color:#960050;background-color:#1e0010">&amp;</span> Vayanos (2014, RFS) 债券供给与套利者资产负债表理论，帮我分析海外长端无风险利率变动对国内高股息与大类资产定价的传导冲击。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>【关注的宏观与持仓数据】
+</span></span><span style="display:flex;"><span>（在此输入你观察到的最新数据，例如：美国 10 年期国债收益率水平、美国财政部季度再融资计划发债期限结构、ACM 期限溢价估算值、美元指数，以及你持有的高股息组合代码）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>【请为我输出以下诊断】
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> 宏观贴现率之锚传导路径解析：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 评估近期美国财政部长端国债供给比例（D^(10+)/D）与一级交易商承载力，判断长端期限溢价（Term Premium）处于顺风收缩还是逆风扩张阶段；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 结合 Campbell-Shiller 现值三层贴现率解耦（r = y + TP + ERP），说明美债期限溢价波动如何穿透到全球风险资产的估值分母。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> 股票资产现金流久期（Duration）截面分化：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 测算我所持有的红利资产（短久期，分红集中在近端）与科技成长资产（长久期，现金流在远端）在面临长端贴现率上升时的理论抗跌防御边界；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 分析海外流动性抽水是否已经开始对离岸（如港股红利）或在岸红利资产形成实质性重定价压力。
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> 宏观三阶段攻防状态机应对策略：
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 判断当前处于：低溢价扩张期、供给冲击承接期、还是双杀重估风暴期；
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">-</span> 给出宏观利率逆风期下的红利仓位调配规则与利率拐点信号跟踪指南。
+</span></span></code></pre></div><hr>
 <p><span id="section-series"></span></p>
 <h2 id="红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</h2>
 <p>本文是「红利与宏观择时」系列的第六篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
@@ -645,73 +664,6 @@ ACM 期限溢价处于负值或极低区间（$TP &lt; 0$），财政部发债�
 <li><strong>篇章六：宏观利率（本篇）</strong> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
 </ul>
 <hr>
-<p><span id="section-appendix"></span></p>
-<h2 id="附录美债供给与期限溢价预测模型参考脚本">附录：美债供给与期限溢价预测模型参考脚本</h2>
-<p>以下 Python 函数展示了基于修正后累计持有期收益口径的美债供给与期限溢价预测计量模型实现逻辑：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> statsmodels.api <span style="color:#66d9ef">as</span> sm
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_treasury_supply_and_excess_returns</span>(
-</span></span><span style="display:flex;"><span>    monthly_bond_df: pd<span style="color:#f92672">.</span>DataFrame,
-</span></span><span style="display:flex;"><span>    holding_period_months: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
-</span></span><span style="display:flex;"><span>    hac_lags: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>
-</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> dict:
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    基于 Greenwood &amp; Vayanos (2014) 理论机制的美债供给与超额收益计量预测模型
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    参数:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    monthly_bond_df: 包含以下字段的月度债券时序 DataFrame:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - &#39;term_spread&#39;: 期限利差 (如 y_20y - y_1y, 单位 %)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - &#39;long_debt_share&#39;: 长端国债占比 D(10+)/D (单位 %)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - &#39;monthly_excess_return_20y&#39;: 20年期国债单月对数超额收益 (单位 %)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    holding_period_months: 持有期长度 (默认 12 个月)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    hac_lags: Newey-West HAC 稳健标准误截断阶数 (默认 18 阶)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> monthly_bond_df<span style="color:#f92672">.</span>copy()
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 严格构造未来 N 个月累计持有期超额收益 (修正单期 shift(-12) 错误)</span>
-</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;target_excess_ret_12m&#39;</span>] <span style="color:#f92672">=</span> (
-</span></span><span style="display:flex;"><span>        df[<span style="color:#e6db74">&#39;monthly_excess_return_20y&#39;</span>]
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>rolling(holding_period_months)
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>sum()
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>shift(<span style="color:#f92672">-</span>holding_period_months)
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 构造套利者财富损益代理变量 ΔW_arb = Spread_{t-12} * Excess_Return_{t-12 -&gt; t}</span>
-</span></span><span style="display:flex;"><span>    prior_spread <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;term_spread&#39;</span>]<span style="color:#f92672">.</span>shift(holding_period_months)
-</span></span><span style="display:flex;"><span>    realized_prior_excess_ret <span style="color:#f92672">=</span> (
-</span></span><span style="display:flex;"><span>        df[<span style="color:#e6db74">&#39;monthly_excess_return_20y&#39;</span>]
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>rolling(holding_period_months)
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>sum()
-</span></span><span style="display:flex;"><span>    )
-</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;delta_w_arb&#39;</span>] <span style="color:#f92672">=</span> prior_spread <span style="color:#f92672">*</span> realized_prior_excess_ret
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 构造长债供给与套利者财富的交互项</span>
-</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;supply_x_wealth&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;long_debt_share&#39;</span>] <span style="color:#f92672">*</span> df[<span style="color:#e6db74">&#39;delta_w_arb&#39;</span>]
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    clean_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>dropna()<span style="color:#f92672">.</span>copy()
-</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> clean_df[<span style="color:#e6db74">&#39;target_excess_ret_12m&#39;</span>]
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 模型 1: 单变量长端供给预测</span>
-</span></span><span style="display:flex;"><span>    X1 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(clean_df[[<span style="color:#e6db74">&#39;long_debt_share&#39;</span>]])
-</span></span><span style="display:flex;"><span>    model1 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y, X1)<span style="color:#f92672">.</span>fit(cov_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HAC&#39;</span>, cov_kwds<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;maxlags&#39;</span>: hac_lags})
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 模型 2: 供给 ＋ 期限利差控制</span>
-</span></span><span style="display:flex;"><span>    X2 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(clean_df[[<span style="color:#e6db74">&#39;term_spread&#39;</span>, <span style="color:#e6db74">&#39;long_debt_share&#39;</span>]])
-</span></span><span style="display:flex;"><span>    model2 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y, X2)<span style="color:#f92672">.</span>fit(cov_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HAC&#39;</span>, cov_kwds<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;maxlags&#39;</span>: hac_lags})
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 模型 3: 供给 ＋ 利差 ＋ 套利者财富 ＋ 交互项 (检验套利资本约束)</span>
-</span></span><span style="display:flex;"><span>    X3 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(clean_df[[<span style="color:#e6db74">&#39;term_spread&#39;</span>, <span style="color:#e6db74">&#39;long_debt_share&#39;</span>, <span style="color:#e6db74">&#39;delta_w_arb&#39;</span>, <span style="color:#e6db74">&#39;supply_x_wealth&#39;</span>]])
-</span></span><span style="display:flex;"><span>    model3 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y, X3)<span style="color:#f92672">.</span>fit(cov_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HAC&#39;</span>, cov_kwds<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;maxlags&#39;</span>: hac_lags})
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;model_supply_only&#39;</span>: model1,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;model_with_spread&#39;</span>: model2,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;model_full_interaction&#39;</span>: model3,
-</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;clean_data_sample_size&#39;</span>: len(clean_df)
-</span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><hr>
 <p><span id="section-ref"></span></p>
 <h2 id="参考文献">参考文献</h2>
 <ul>
