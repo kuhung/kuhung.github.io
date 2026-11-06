@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>做市商 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%81%9A%E5%B8%82%E5%95%86/</link><description>Recent content in 做市商 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 29 Oct 2026 11:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%81%9A%E5%B8%82%E5%95%86/index.xml" rel="self" type="application/rss+xml"/><item><title>链上大额数据的分层结构：每天几万笔转账里，哪些值得交易员关注？</title><link>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</link><pubDate>Thu, 29 Oct 2026 11:45:00 +0800</pubDate><guid>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</guid><description>很多交易员习惯在社交平台或即时通讯工具中订阅大额链上异动提醒。每当看到单笔上千万美元的代币转入交易所或链上巨鲸转账，容易直接将其视作二级市场的买卖信号。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>做市商 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%81%9A%E5%B8%82%E5%95%86/</link>
+    <description>Recent content in 做市商 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 29 Oct 2026 11:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%81%9A%E5%B8%82%E5%95%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>链上大额数据的分层结构：每天几万笔转账里，哪些值得交易员关注？</title>
+      <link>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</link>
+      <pubDate>Thu, 29 Oct 2026 11:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/onchain-whale-data-tiering-and-signal-noise/</guid>
+      <description>很多交易员习惯在社交平台或即时通讯工具中订阅大额链上异动提醒。每当看到单笔上千万美元的代币转入交易所或链上巨鲸转账，容易直接将其视作二级市场的买卖信号。
 将此类公开报警与后续行情逐笔对齐，跟单结果往往与预期相背。
 Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系统统计。数据显示，散户收到推送并完成交易时，原巨鲸的委托撮合早已结束数分钟。散户买入时承接的是做市商的卖单（Ask），卖出时撞上买单（Bid），实际充当了先手资金撤出的对手方。
 全网链上转账记录的是资产所有权的物理流转，而非二级市场的撮合订单。未经实体标签过滤与时窗因果核对的广播式警报，信噪比不足 24%。
@@ -11,7 +26,16 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
 1. 中心化交易所内部归集与冷热互转（占比 47.2%） 用户向 CEX 充值时代币会先到达临时的独立充值地址。交易所按固定时钟周期或资金阈值，触发批处理脚本将代币归集到热钱包（Hot Wallet），再根据储备池安全水位调配至离线冷钱包（Cold Storage）。此类流水占到全网大额异动的近一半，其资金发送方与接收方均受交易所同一风控系统控制，不存在外部对手盘交换。
 2. 做市商跨所调拨与库存再平衡（占比 29.4%） Wintermute、Jump Trading 等专业做市商为了维持各大 CEX 与 DEX 的盘口流动性深度，需要根据各交易场所的消耗速度动态调拨资产。当 Binance 某代币买盘过热、Uniswap 卖盘较多时，做市商会在几分钟内从链上提取资产充入中心化平台完成双向点差对冲。这类转账的特点是买卖双向金额高度对等，反映的是中性库存管理行为，并非单边看多或看空。
 3. 大额充币假动作与期现套利抵押 在对 14 次典型大额充入 CEX 的案例跟踪中，相关地址在充币后 12 至 48 小时内，又将对等金额的代币转回链上并投入去中心化借贷协议或质押合约。部分大户将现货转入交易所，真实用途是作为合约杠杆的保证金，或赚取期货与现货之间的基差资金费率，并非直接在现货市场按市价倾销。若单纯看到大额充币就判定砸盘，极易出现方向误判。
-4. 跨链桥与协议金库管理资金 Layer 1 与 Layer 2 之间的官方跨链桥和第三方中继池，在每日特定时间段需要重平衡资产储备。多签金库在执行分红、生态基金拨付或合约升级时也会产生数百万美元的账本变动。这类变动属于协议治理与技术运维，脱离交易员的短线决策范畴。</description></item><item><title>百分百胜率的聪明钱背后的假象，模型与真实分布</title><link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link><pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate><guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid><description>在多数链上数据看板或分析平台中，“寻找聪明钱”通常被简化为直接查看胜率或盈利排行榜。
+4. 跨链桥与协议金库管理资金 Layer 1 与 Layer 2 之间的官方跨链桥和第三方中继池，在每日特定时间段需要重平衡资产储备。多签金库在执行分红、生态基金拨付或合约升级时也会产生数百万美元的账本变动。这类变动属于协议治理与技术运维，脱离交易员的短线决策范畴。</description>
+    </item>
+    
+    <item>
+      <title>百分百胜率的聪明钱背后的假象，模型与真实分布</title>
+      <link>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</link>
+      <pubDate>Wed, 28 Oct 2026 11:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</guid>
+      <description>在多数链上数据看板或分析平台中，“寻找聪明钱”通常被简化为直接查看胜率或盈利排行榜。
 但把这些公开榜单的钱包拉出来做微观流水核验，结果存在显著偏差。
 我们从 Dune Analytics 上的公开经典聪明钱/大额活跃钱包看板（结合 Nansen 与 Arkham 公开标记地址） 中，抽取了覆盖 4 条主流 EVM 公链的 1,345 个候选钱包样本。按常规榜单算法测算，这批钱包的胜率中位数达到 100%。
 在真实二级市场中，全市场胜率中位数不可能维持在 100%。对逐笔成交流水的微观结构审计显示，市面上通用的统计口径存在明显的选择性偏差与数据未对齐问题。
@@ -19,4 +43,8 @@ Ainvest 对 6,645 笔公网巨鲸异动提醒及散户后续行为进行了系�
 1. 未平仓浮亏截断偏差（浮亏死扛不计入胜率） 常规看板计算胜率时仅统计“已平仓卖出”的代币。当一个地址买入 10 个代币，其中 9 个处于大额浮亏状态但未发起链上卖出，仅有 1 个获利代币卖出平仓时，分母仅统计该笔盈利交易，名义胜率直接被计算为 100%。
 2. 期初库存未对齐偏差（外部转入现货被计为净利润） 样本中 45% 到 70% 的高盈利代币在监控窗口内不存在链上买入记录。这类代币多属于监控期前已持有的早期现货，或由中心化交易所（CEX）提币转入 DEX 卖出变现。常规算法直接将外部转入卖出的全额金额记为净利润，使早期筹码的存量变现被误判为二级市场的选币超额收益。
 3. 多跳路由导致的频次与成交量重复计算 Uniswap V3、1inch 等现代 DEX 协议普遍采用智能路由（Universal Router）执行多池拆单（如 Token A $\to$ WETH $\to$ Token B）。直接读取底层交易表（如 Dune dex.trades）时，单次交易意图会产生 2 到 4 条子流水。直接累加会导致交易频次虚高 2 到 3 倍，跳板资产的折算金额亦被多次重复计入。
-4. 高频做市与跨池套利地址混杂 做市商与套利脚本依靠自动化微利对倒，买卖双向金额高度平衡。这类地址的名义胜率与流水体量极大，但收益来自于点差撮合。普通交易者跟单无法达到微秒级响应，容易在浅池中承担不利的滑点摩擦。</description></item></channel></rss>
+4. 高频做市与跨池套利地址混杂 做市商与套利脚本依靠自动化微利对倒，买卖双向金额高度平衡。这类地址的名义胜率与流水体量极大，但收益来自于点差撮合。普通交易者跟单无法达到微秒级响应，容易在浅池中承担不利的滑点摩擦。</description>
+    </item>
+    
+  </channel>
+</rss>

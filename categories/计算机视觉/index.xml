@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>计算机视觉 on 谷粒 kuhung</title><link>https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</link><description>Recent content in 计算机视觉 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/index.xml" rel="self" type="application/rss+xml"/><item><title>如何设计一套类似视觉中国“鹰眼”的技术</title><link>https://kuhung.me/posts/vgc-it/</link><pubDate>Sun, 14 Apr 2019 11:51:09 +0800</pubDate><guid>https://kuhung.me/posts/vgc-it/</guid><description>这两天除了马总的 996， 互联网上最火的莫属被黑洞绊倒的视觉中国了。视觉中国因黑洞图的版权争端，被卷入更大的争端。一时间舆论哗然，其股票连续跌停。他是如何一步步壮大，又是为何跌倒的呢？往前看几年，起底其历史：公开资料显示，“视觉中国凭借其‘鹰眼技术’，有力的打击了“盗版”并成功形成了自己的商业模式。”
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机视觉 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</link>
+    <description>Recent content in 计算机视觉 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 14 Apr 2019 11:51:09 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何设计一套类似视觉中国“鹰眼”的技术</title>
+      <link>https://kuhung.me/posts/vgc-it/</link>
+      <pubDate>Sun, 14 Apr 2019 11:51:09 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/vgc-it/</guid>
+      <description>这两天除了马总的 996， 互联网上最火的莫属被黑洞绊倒的视觉中国了。视觉中国因黑洞图的版权争端，被卷入更大的争端。一时间舆论哗然，其股票连续跌停。他是如何一步步壮大，又是为何跌倒的呢？往前看几年，起底其历史：公开资料显示，“视觉中国凭借其‘鹰眼技术’，有力的打击了“盗版”并成功形成了自己的商业模式。”
 2016年初公司开发图像追踪系统，通过人工智能、图像比对、爬虫技术，能够追踪公司拥有代理权的图片在网络上的使用情况，一方面大幅降低版权保护的成本，更为有价值的是，公司因此大大降低了客户获取成本以及通过大数据获取客户的内容需求数据。
 ![](/images/vgc/vgc 不敢配图.jpg)
 “鹰眼技术”对于公司商业模式中的维权部分，起到了极其重要的作用。说到这里，大家其实可能会很好奇，这个“鹰眼”到底是个啥技术。在一番搜寻后，找到了一些资料：“鹰眼技术”在其公司的年报里，正式名称是“互联网图片深度标引及侵权追踪技术”。在检索更多细节无果之后，数据挖掘、机器学习工程师尝试从以往经验出发，给大伙儿构建一套自己的“鹰眼系统”。
@@ -17,7 +32,16 @@
 2018年度市科委第四季度项目(课题)验收公开清单
 视觉（中国）文化发展股份有限公司 2016 年年度报告
 《数字信号与图像处理》 &amp;ndash; 郑方， 章毓晋
-《基于内容的图象和视频检索》</description></item><item><title>Single Shot MultiBox Detector Keras version</title><link>https://kuhung.me/posts/ssd/</link><pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate><guid>https://kuhung.me/posts/ssd/</guid><description>SSD目标检测Keras版 SSD是一种Object Detection方法。本文是基于论文SSD: Single Shot MultiBox Detector，实现的keras版本。
+《基于内容的图象和视频检索》</description>
+    </item>
+    
+    <item>
+      <title>Single Shot MultiBox Detector Keras version</title>
+      <link>https://kuhung.me/posts/ssd/</link>
+      <pubDate>Fri, 08 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhung.me/posts/ssd/</guid>
+      <description>SSD目标检测Keras版 SSD是一种Object Detection方法。本文是基于论文SSD: Single Shot MultiBox Detector，实现的keras版本。
 该文章在既保证速度，又要保证精度的情况下，提出了SSD物体检测模型，与现在流行的检测模型一样，将检测过程整个成一个single deep neural network。便于训练与优化，同时提高检测速度。 SSD将输出一系列离散化（discretization）的bounding boxes，这些bounding boxes是在不同层次（layers）上的feature maps上生成的，并且有着不同的aspect ratio。
 模型效果 模型对载具的检测 模型对动物的检测 模型的视频检测 如何使用 项目地址kuhung/SSD_keras
 所需依赖 cv2==3.3.0 keras==1.2.2 matplotlib==2.1.0 tensorflow==1.3.0 numpy==1.13.3 如果想跑通视频模块，则需额外pip install scikit-video
@@ -26,9 +50,27 @@
 检测视频 cd video_utils python videotest_example.py hy.mp4 参考资料
 SSD: Single Shot MultiBox Detector
 论文阅读：SSD: Single Shot MultiBox Detector
-rykov8/ssd_keras</description></item><item><title>yysGAN 生成对抗网络，在游戏角色生成中的尝试</title><link>https://kuhung.me/posts/yysgan/</link><pubDate>Tue, 21 Nov 2017 09:02:35 +0800</pubDate><guid>https://kuhung.me/posts/yysgan/</guid><description>使用GAN生成新的游戏角色 摘要 Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。 依赖 （pip install） cv2 tensorflow( &amp;gt;=1.0) scipy numpy 使用方法 cd yysGAN python yysGAN.py 5000次迭代训练结果 了解更多GAN的知识 Generative Adversarial Networks.ipynb
+rykov8/ssd_keras</description>
+    </item>
+    
+    <item>
+      <title>yysGAN 生成对抗网络，在游戏角色生成中的尝试</title>
+      <link>https://kuhung.me/posts/yysgan/</link>
+      <pubDate>Tue, 21 Nov 2017 09:02:35 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/yysgan/</guid>
+      <description>使用GAN生成新的游戏角色 摘要 Generative Adversarial Networks（简称GAN），中文名叫生成对抗网络。我们将使用它，来生成新的阴阳师角色。 依赖 （pip install） cv2 tensorflow( &amp;gt;=1.0) scipy numpy 使用方法 cd yysGAN python yysGAN.py 5000次迭代训练结果 了解更多GAN的知识 Generative Adversarial Networks.ipynb
 参考资料 Siraj Raval moxiegushi/pokeGAN 项目地址 https://github.com/kuhung/yysGAN
-定制你的GAN图片生成器 # 拆包即用，修改input下文件，改为对应的jpg素材即可。</description></item><item><title>Cats VS. Dogs 图像分类之猫狗大战</title><link>https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link><pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate><guid>https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</guid><description>我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）
+定制你的GAN图片生成器 # 拆包即用，修改input下文件，改为对应的jpg素材即可。 </description>
+    </item>
+    
+    <item>
+      <title>Cats VS. Dogs 图像分类之猫狗大战</title>
+      <link>https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</link>
+      <pubDate>Wed, 06 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://kuhung.me/posts/%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</guid>
+      <description>我是参加DataCastle猫狗大战的选手，kuhung。在测评中，我提交的数据集最后评分0.98639。以下是我的备战过程及心得体会。（最后有完整代码及较全面的注释）
 个人介绍 华中科技大学机械学院的大二（准大三）学生，接触数据挖掘快有一年了。早期在学生团队做过一些D3数据可视化方面的工作，今年上半年开始数据挖掘实践。想把这个爱好发展成事业。做过阿里的天池竞赛，也有在kaggle混迹。算个数据新手，但一直不承认：你是新人，所以成绩不好看没啥关系。
 初识比赛 第一次接触数据集，就感觉有些难度。因为以前没做过图片分类的比赛，更没想过要用深度学习的神经网络进行识别。思索一番，还是觉得特征提取后，使用决策树靠谱。自己也下去找过资料，发现并不容易实现。期间，还曾一度想过肉眼识别。但打开文件，看到那1400+图片，就觉得这时间花在肉眼识别上不值。中间一度消停。
 初见曙光——yinjh战队分享 后来上论坛逛过几次。一次偶然的机会，让我看到了yinjh团队分享的vgg16模型。乍一看，代码简单、效果不错。更为重要的是，这个模型自己以前从未见过。于是抱着验证学习的态度，我把代码扣了下来，打算自己照着做一遍。
@@ -49,4 +91,8 @@ OpenCV库
 conda isntall opnecv
 numpy
 Anaconda自带
-from keras.models import Sequential from keras.layers.core import Flatten, Dense, Dropout from keras.</description></item></channel></rss>
+from keras.models import Sequential from keras.layers.core import Flatten, Dense, Dropout from keras.</description>
+    </item>
+    
+  </channel>
+</rss>

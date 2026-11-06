@@ -1,26 +1,480 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="AI 博主 · 算法专家 · ENFJ"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=prev href=https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/><link rel=next href=https://kuhung.me/posts/weight-space-programming-qwen-truth/><link rel=canonical href=https://kuhung.me/posts/weight-space-intervention-history/><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=20261029-a"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=20261029-a"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=20261029-a"><link rel=icon type=image/x-icon href="/favicon.ico?v=20261029-a"><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>权重空间编程（上）：大模型权重干预的四大技术路线对比 | 谷粒 kuhung</title><meta name=title content="权重空间编程（上）：大模型权重干预的四大技术路线对比 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:00:00+08:00","datePublished":"2026-11-03T13:00:00+08:00","description":"在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编 …","headline":"权重空间编程（上）：大模型权重干预的四大技术路线对比","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, 权重空间, 模型微调, 深度学习, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"WebPage"},"name":"权重空间编程（上）：大模型权重干预的四大技术路线对比","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-intervention-history/","wordCount":342}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><article class=post-warp itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline">权重空间编程（上）：大模型权重干预的四大技术路线对比</h1><div class=post-meta>Written by <a itemprop=name href=https://kuhung.me/ rel=author>谷粒</a> with ♥
-<span class=post-time>on <time datetime=2026-11-03 itemprop=datePublished>November 3, 2026</time></span>
-in
-<i class="iconfont icon-folder"></i>
-<span class=post-category><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/>技术研究</a></span>
-|</div></header><div class=post-toc id=post-toc><h2 class=post-toc-title></h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#一超网络与权重空间学习参数流形的黑盒映射>一、超网络与权重空间学习：参数流形的黑盒映射</a></li><li><a href=#二模型编辑因果追踪与单秩事实注入>二、模型编辑：因果追踪与单秩事实注入</a></li><li><a href=#三模型汤参数空间的贪婪几何平均>三、模型汤：参数空间的贪婪几何平均</a></li><li><a href=#四机械可解释性残差流消融与权重吸收>四、机械可解释性：残差流消融与权重吸收</a></li><li><a href=#五四大技术路线的结构化对比与演进矩阵>五、四大技术路线的结构化对比与演进矩阵</a><ul><li><a href=#参考文献与公开成果源>参考文献与公开成果源</a></li></ul></li></ul></nav></div></div><script type=text/javascript>window.onload=function(){var n,o,e=$(".post-toc"),t=$(".post-comment"),i=e.offset().top,s=e.height(),a=e[0].offsetTop;$(window).scroll(function(){var r=Math.max(document.body.scrollTop,document.documentElement.scrollTop);t.length>0&&(n=t.offset().top,o=n-r-s),i<r?(e.css({position:"fixed"}),t.length>0&&n<r+s?e.css({top:o}):e.css({top:0})):(e.css({position:"absolute"}),e.css({top:a}))})}</script><div class=post-content><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/30c05f0a39921f15.webp alt=权重空间编程：生成、编辑、平均与投影四大权重干预路线 class=lazyload><figcaption class=image-caption>权重空间编程：生成、编辑、平均与投影四大权重干预路线</figcaption></figure></p><p>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。</p><p>然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编程”（Weight-Space Programming, WSP）之前，有必要系统梳理此前在该领域形成的四条主流技术脉络，明确其在具体模型上的实测数据、所针对的具体问题以及各自面对的物理约束边界。</p><h2 id=一超网络与权重空间学习参数流形的黑盒映射>一、超网络与权重空间学习：参数流形的黑盒映射</h2><p>超网络（Hypernetworks）技术早在 2017 年由 David Ha 等人提出，基本思路是通过构建辅助神经网络来直接预测或生成目标主干网络的参数矩阵。</p><p>在早期的基准测试中，研究人员验证了利用 HyperLSTM 动态生成循环单元权重的有效性。在 WMT14 德英与英法机器翻译任务中，HyperLSTM 将主干网络的独立参数量分别由 31.5M 和 61.2M 压缩至 14.8M 与 28.5M（压缩比例超过 50%），同时在测试集上的 BLEU 评分维持在 24.4 与 36.0，与未压缩的标准基线持平或略有提升。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/ddd76e40593a85de.webp alt=超网络（Hypernetworks）性能与参数压缩对比 class=lazyload><figcaption class=image-caption>超网络（Hypernetworks）性能与参数压缩对比</figcaption></figure></p><p>近年来，这一方向进一步拓展为“权重空间学习”（Weight Space Learning）。研究发现，多层感知机与卷积网络的参数空间并非各向同性的随机分布，而是具备严格的几何流形特征，包括神经元置换下的排列不变性（Permutation Invariance）和层间缩放等变性（Scaling Equivariance）。利用这些对称性约束，学术界相继提出了深度权重空间网络（DWSNets）与神经泛函 Transformer（NFTs）。在 ARC-1D 基准测试以及隐式神经表示（INRs）的分类与检索实验中，此类方法能够基于少量输入特征，零样本预测微型目标网络的泛化误差与收敛属性。</p><p>但超网络体系的根本局限在于学习范式：它本质上仍是监督学习架构下的高维回归映射，高度依赖海量已训练模型的参数集作为元学习（Meta-learning）训练样本，并未建立对网络参数内部算法逻辑的显式推理机制。</p><h2 id=二模型编辑因果追踪与单秩事实注入>二、模型编辑：因果追踪与单秩事实注入</h2><p>模型编辑（Model Editing）旨在不重新训练整个模型的前提下，高保真度地修正模型参数中存储的特定事实陈述（如将“埃菲尔铁塔位于巴黎”更正为“位于罗马”）。</p><p>代表性方法为 Kevin Meng 等人于 2022 年提出的 ROME（Rank-One Model Editing）。ROME 利用因果追踪（Causal Tracing）对输入 token 进行高斯噪声污染，并通过逐层激活阻断，定位出 Transformer 中间层前馈网络（MLP）是存储主谓宾关联记忆的主体。在定位到具体投影层（如 GPT-J 6B 的第 6 层 MLP）后，算法通过构造线性联想记忆方程并求解闭式最小二乘问题，计算出一个秩为 1（Rank-1）的外积矩阵直接叠加到权重张量中。</p><p>在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.5B）与开源 GPT-J（6B）上取得了 99.8% 的单点编辑有效性（Efficacy），同时保持了 85.4% 的事实特异性（Specificity），即未编辑的关联事实未出现语义漂移。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/c8197fc95fab1007.webp alt="模型编辑（Model Editing）在开源模型上的事实修正表现" class=lazyload><figcaption class=image-caption>模型编辑（Model Editing）在开源模型上的事实修正表现</figcaption></figure></p><p>此后演进出的 MEMIT（Mass-Editing Memory in a Transformer）进一步将闭式求解拓展至深层 MLP 的联合残差分配，在 LLaMA-1 7B/13B 模型上实现了数千条事实的单次批量注入。T-Patcher 与 SCEN 等方法则通过在全连接层动态引入外挂神经元或轻量级激活补丁，规避修改原始参数带来的灾难性遗忘。</p><p>尽管模型编辑在单一事实修正上收敛稳定，但其干预范围严格受制于主谓宾三元组的显式检索关系。面对推理死循环、多步代数运算等涉及网络动态状态流转的算法逻辑缺陷，外部闭式求解矩阵无法提供有效的干预解。</p><h2 id=三模型汤参数空间的贪婪几何平均>三、模型汤：参数空间的贪婪几何平均</h2><p>在提升模型分布外鲁棒性与泛化能力的路径上，模型汤（Model Soups）采用了一种不改变推理计算图的参数空间平均方法。</p><p>模型汤的具体做法是：基于同一个经过充分预训练的基础模型检查点，在相同的微调任务上采用不同的超参数（如学习率、权重衰减、数据增强策略或随机种子）独立训练出若干组微调权重。随后，不进行任何模型集成（Ensemble），而是对这些微调后的权重张量进行逐元素的加权算术平均。方法包括无差别的全量平均（Uniform Soup）以及在验证集上按贪婪算法逐步吸纳正向检查点的子集平均（Greedy Soup）。</p><p>Mitchell Wortsman 等人在 ICML 2022 上的实测数据确立了该技术的性能边界：在包含 18 亿参数的 ViT-G 与多模态 CLIP 模型上，面对 ImageNet 图像分类任务，对 72 个微调模型执行 Greedy Soup 之后，模型的 Top-1 准确率由单个微调最佳的 90.15% 进一步提升至 90.94%，打破了当时该评测集的公开记录。更为显著的优势体现在自然分布偏移测试中：在 ImageNet-A（对抗样本）、ImageNet-R（渲染艺术图）和 ImageNet-Sketch（草图）上，Greedy Soup 的准确率分别达到了 82.50%、91.20% 和 72.80%，较单体最优检查点提升 2 到 5 个百分点。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/07520170c563ee95.webp alt="模型汤（Model Soups）在 ViT-G 1.8B 及分布偏移集上的准确率阶梯" class=lazyload><figcaption class=image-caption>模型汤（Model Soups）在 ViT-G 1.8B 及分布偏移集上的准确率阶梯</figcaption></figure></p><p>模型汤在几何上的成立条件在于损失函数曲面的线性连通性（Mode Connectivity）。它要求所有参与平均的检查点必须处于同一个由预训练初始点所决定的损失盆地内部。一旦两个微调模型的初始化不同源，或者内部神经元的排列对称性发生发散，直接取权重平均会导致网络表征崩溃。因此，模型汤无法用于定向的功能缺陷修复或能力重构。</p><h2 id=四机械可解释性残差流消融与权重吸收>四、机械可解释性：残差流消融与权重吸收</h2><p>机械可解释性（Mechanistic Interpretability）研究旨在解构 Transformer 内部表征的高维激活空间。研究者普遍采用稀疏自编码器（Sparse Autoencoders, SAEs），在残差流中将高维连续激活分解为具备独立单一语义的方向向量。</p><p>Arditi 等人于 2024 年提出的消融术（Abliteration）展现了非梯度行为调控的机制。通过对比语言模型处理恶意/有害提示词与正常提示词时的残差流隐藏状态，计算两组激活均值的差向量（Difference-in-Means），可以从统计学上高信噪比地提取出控制模型“安全拒绝回答”的单一线性方向。</p><p>为了避免在推理阶段部署外部钩子进行动态干预，消融术引入了权重吸收（Weight Absorption）机制：基于正交投影原理，将消除该拒绝方向的仿射变换矩阵，直接反向折叠进下游线性层（如 MLP 模块的 down_proj 矩阵或多头注意力的输出投影层）的静态权重张量中。实测数据显示，在 LLaMA-3-8B-Instruct 与 Qwen-7B 上执行该操作后，模型对越狱攻击的拒答率由 95% 以上降至 1% 左右，而在 MMLU（知识问答）和 GSM8K（数学推理）基准上的能力保留率均在 99.5% 以上，未对通用性能造成负面扰动。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/80af77ef1ef69f6f.webp alt=消融术（Abliteration）权重吸收前后模型行为与基准保真度 class=lazyload><figcaption class=image-caption>消融术（Abliteration）权重吸收前后模型行为与基准保真度</figcaption></figure></p><p>消融术表明高阶行为控制向量可以直接编译为静态参数，但整个探测管线（构建对比数据集、采集激活样本、提取差向量、验证正交投影）完全依赖人类研究员手工编写脚本执行。</p><h2 id=五四大技术路线的结构化对比与演进矩阵>五、四大技术路线的结构化对比与演进矩阵</h2><p>将上述四条技术路线放置于统一的技术坐标系中进行横向审视，可以看出各自的机制差异与应用边界：</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/723ca9f9b88f53a9.webp alt=神经网络权重直接干预四大技术路线对比矩阵 class=lazyload><figcaption class=image-caption>神经网络权重直接干预四大技术路线对比矩阵</figcaption></figure></p><table><thead><tr><th style=text-align:left>技术路线</th><th style=text-align:left>核心机制</th><th style=text-align:left>干预粒度</th><th style=text-align:left>关键依赖</th><th style=text-align:left>典型实测基准</th><th style=text-align:left>物理约束边界</th></tr></thead><tbody><tr><td style=text-align:left><strong>超网络 (Hypernetworks)</strong></td><td style=text-align:left>参数空间流形映射</td><td style=text-align:left>全网参数动态生成</td><td style=text-align:left>大规模元学习模型样本集</td><td style=text-align:left>WMT14 (HyperLSTM) / ARC-1D</td><td style=text-align:left>纯统计学黑盒拟合，缺乏显式逻辑推理能力</td></tr><tr><td style=text-align:left><strong>模型编辑 (Model Editing)</strong></td><td style=text-align:left>因果追踪 + 闭式单秩矩阵更新</td><td style=text-align:left>中间层 MLP 单点/批量修改</td><td style=text-align:left>人工推导的因果干预与解析解</td><td style=text-align:left>CounterFact 2.1万条 (ROME, MEMIT)</td><td style=text-align:left>局限于主谓宾事实记忆，无法修改动态逻辑缺陷</td></tr><tr><td style=text-align:left><strong>模型汤 (Model Soups)</strong></td><td style=text-align:left>参数盆地逐元素贪婪平均</td><td style=text-align:left>全参数加权求和</td><td style=text-align:left>严格同源初始化的微调检查点</td><td style=text-align:left>ImageNet Top-1 90.94% (ViT-G 1.8B)</td><td style=text-align:left>依赖同源与对称性对齐，无法做针对性结构切除</td></tr><tr><td style=text-align:left><strong>消融术 (Abliteration)</strong></td><td style=text-align:left>均值差向量隔离 + 权重吸收</td><td style=text-align:left>线性投影矩阵降秩正交折叠</td><td style=text-align:left>人工搭建的残差流探测管线</td><td style=text-align:left>越狱拒答消除 / MMLU无损 (LLaMA-3-8B)</td><td style=text-align:left>自动化程度低，严重依赖人工实验经验</td></tr></tbody></table><p>回顾前沿探索之前的技术演进，业内对权重空间的理解正在由早期的“外部监督数值回归”逐步过渡到“内部机制可解释性投影”。然而，不管是闭式矩阵求解还是向量消融，此前始终缺乏一个具备自主代码编写、激活分析与假设检验能力的智能主体。</p><p>这也正是 2026 年底 MIT CSAIL 提出权重空间编程（WSP）时，引发行业高度关注的主要切入点。在下篇中，我们将深入剖析大语言模型如何在沙箱环境中自主调度前向探针，以及 Qwen3.5-0.8B 在修改万分之 1.6 的权重后实现数学测试跳变的真实底层物理机理。</p><hr><h3 id=参考文献与公开成果源>参考文献与公开成果源</h3><ul><li>Ha, D., Dai, A. M., & Le, Q. V. (2017). HyperNetworks. ICLR 2017.</li><li>Meng, K., Bau, D., Andonian, A., & Belinkov, Y. (2022). Locating and Editing Factual Associations in GPT. NeurIPS 2022.</li><li>Meng, K., Sharma, A. S., Andonian, A., Belinkov, Y., & Bau, D. (2023). Mass-Editing Memory in a Transformer. ICLR 2023.</li><li>Wortsman, M., et al. (2022). Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time. ICML 2022.</li><li>Arditi, A., et al. (2024). Refusal in Language Models Is Mediated by a Single Direction. arXiv:2406.11717.</li><li>Kofinas, M., et al. (2024). Graph Neural Functional Networks for Deep Weight Spaces. ICML 2024.</li></ul></div><div class=post-copyright><p class=copyright-item><span>Author:</span>
-<span>谷粒</span></p><p class=copyright-item><span>Link:</span>
-<a href=https://kuhung.me/posts/weight-space-intervention-history/><script>document.write(decodeURI(location.origin+location.pathname))</script></a></p><p class="copyright-item lincese">本文采用<a rel=license href=http://creativecommons.org/licenses/by-nc/4.0/ target=_blank>知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class=post-tags><section><i class="iconfont icon-tag"></i>Tag(s):
-<span class=tag><a href=https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/>#大模型</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4/>#权重空间</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/>#模型微调</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/>#深度学习</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/>#技术解析</a></span></section><section><a href=javascript:window.history.back();>back</a></span> ·
-<span><a href=https://kuhung.me/>home</a></span></section></div><div class=post-nav><a href=https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/ class=prev rel=prev title=红利与宏观择时（二）：股权期限结构与反周期配置><i class="iconfont icon-left"></i>&nbsp;红利与宏观择时（二）：股权期限结构与反周期配置</a>
-<a href=https://kuhung.me/posts/weight-space-programming-qwen-truth/ class=next rel=next title="权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源">权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源&nbsp;<i class="iconfont icon-right"></i></a></div></article><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>window.localStorage&&window.localStorage.removeItem("theme"),document.body.classList.remove("dark-theme"),document.documentElement.classList.remove("dark-theme")</script></footer><link href=//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css rel=stylesheet><script src=/js/vendor_gallery.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/" />
+  <link rel="next" href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" />
+  <link rel="canonical" href="https://kuhung.me/posts/weight-space-intervention-history/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           权重空间编程（上）：大模型权重干预的四大技术路线对比 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="权重空间编程（上）：大模型权重干预的四大技术路线对比 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:00:00+08:00","datePublished":"2026-11-03T13:00:00+08:00","description":"在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编 …","headline":"权重空间编程（上）：大模型权重干预的四大技术路线对比","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, 权重空间, 模型微调, 深度学习, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-intervention-history/","@type":"WebPage"},"name":"权重空间编程（上）：大模型权重干预的四大技术路线对比","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-intervention-history/","wordCount":342}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">权重空间编程（上）：大模型权重干预的四大技术路线对比</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-03 itemprop="datePublished">November 3, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一超网络与权重空间学习参数流形的黑盒映射">一、超网络与权重空间学习：参数流形的黑盒映射</a></li>
+    <li><a href="#二模型编辑因果追踪与单秩事实注入">二、模型编辑：因果追踪与单秩事实注入</a></li>
+    <li><a href="#三模型汤参数空间的贪婪几何平均">三、模型汤：参数空间的贪婪几何平均</a></li>
+    <li><a href="#四机械可解释性残差流消融与权重吸收">四、机械可解释性：残差流消融与权重吸收</a></li>
+    <li><a href="#五四大技术路线的结构化对比与演进矩阵">五、四大技术路线的结构化对比与演进矩阵</a>
+      <ul>
+        <li><a href="#参考文献与公开成果源">参考文献与公开成果源</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/30c05f0a39921f15.webp" alt="权重空间编程：生成、编辑、平均与投影四大权重干预路线" class="lazyload"><figcaption class="image-caption">权重空间编程：生成、编辑、平均与投影四大权重干预路线</figcaption></figure></p>
+<p>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。</p>
+<p>然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编程”（Weight-Space Programming, WSP）之前，有必要系统梳理此前在该领域形成的四条主流技术脉络，明确其在具体模型上的实测数据、所针对的具体问题以及各自面对的物理约束边界。</p>
+<h2 id="一超网络与权重空间学习参数流形的黑盒映射">一、超网络与权重空间学习：参数流形的黑盒映射</h2>
+<p>超网络（Hypernetworks）技术早在 2017 年由 David Ha 等人提出，基本思路是通过构建辅助神经网络来直接预测或生成目标主干网络的参数矩阵。</p>
+<p>在早期的基准测试中，研究人员验证了利用 HyperLSTM 动态生成循环单元权重的有效性。在 WMT14 德英与英法机器翻译任务中，HyperLSTM 将主干网络的独立参数量分别由 31.5M 和 61.2M 压缩至 14.8M 与 28.5M（压缩比例超过 50%），同时在测试集上的 BLEU 评分维持在 24.4 与 36.0，与未压缩的标准基线持平或略有提升。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/ddd76e40593a85de.webp" alt="超网络（Hypernetworks）性能与参数压缩对比" class="lazyload"><figcaption class="image-caption">超网络（Hypernetworks）性能与参数压缩对比</figcaption></figure></p>
+<p>近年来，这一方向进一步拓展为“权重空间学习”（Weight Space Learning）。研究发现，多层感知机与卷积网络的参数空间并非各向同性的随机分布，而是具备严格的几何流形特征，包括神经元置换下的排列不变性（Permutation Invariance）和层间缩放等变性（Scaling Equivariance）。利用这些对称性约束，学术界相继提出了深度权重空间网络（DWSNets）与神经泛函 Transformer（NFTs）。在 ARC-1D 基准测试以及隐式神经表示（INRs）的分类与检索实验中，此类方法能够基于少量输入特征，零样本预测微型目标网络的泛化误差与收敛属性。</p>
+<p>但超网络体系的根本局限在于学习范式：它本质上仍是监督学习架构下的高维回归映射，高度依赖海量已训练模型的参数集作为元学习（Meta-learning）训练样本，并未建立对网络参数内部算法逻辑的显式推理机制。</p>
+<h2 id="二模型编辑因果追踪与单秩事实注入">二、模型编辑：因果追踪与单秩事实注入</h2>
+<p>模型编辑（Model Editing）旨在不重新训练整个模型的前提下，高保真度地修正模型参数中存储的特定事实陈述（如将“埃菲尔铁塔位于巴黎”更正为“位于罗马”）。</p>
+<p>代表性方法为 Kevin Meng 等人于 2022 年提出的 ROME（Rank-One Model Editing）。ROME 利用因果追踪（Causal Tracing）对输入 token 进行高斯噪声污染，并通过逐层激活阻断，定位出 Transformer 中间层前馈网络（MLP）是存储主谓宾关联记忆的主体。在定位到具体投影层（如 GPT-J 6B 的第 6 层 MLP）后，算法通过构造线性联想记忆方程并求解闭式最小二乘问题，计算出一个秩为 1（Rank-1）的外积矩阵直接叠加到权重张量中。</p>
+<p>在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.5B）与开源 GPT-J（6B）上取得了 99.8% 的单点编辑有效性（Efficacy），同时保持了 85.4% 的事实特异性（Specificity），即未编辑的关联事实未出现语义漂移。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/c8197fc95fab1007.webp" alt="模型编辑（Model Editing）在开源模型上的事实修正表现" class="lazyload"><figcaption class="image-caption">模型编辑（Model Editing）在开源模型上的事实修正表现</figcaption></figure></p>
+<p>此后演进出的 MEMIT（Mass-Editing Memory in a Transformer）进一步将闭式求解拓展至深层 MLP 的联合残差分配，在 LLaMA-1 7B/13B 模型上实现了数千条事实的单次批量注入。T-Patcher 与 SCEN 等方法则通过在全连接层动态引入外挂神经元或轻量级激活补丁，规避修改原始参数带来的灾难性遗忘。</p>
+<p>尽管模型编辑在单一事实修正上收敛稳定，但其干预范围严格受制于主谓宾三元组的显式检索关系。面对推理死循环、多步代数运算等涉及网络动态状态流转的算法逻辑缺陷，外部闭式求解矩阵无法提供有效的干预解。</p>
+<h2 id="三模型汤参数空间的贪婪几何平均">三、模型汤：参数空间的贪婪几何平均</h2>
+<p>在提升模型分布外鲁棒性与泛化能力的路径上，模型汤（Model Soups）采用了一种不改变推理计算图的参数空间平均方法。</p>
+<p>模型汤的具体做法是：基于同一个经过充分预训练的基础模型检查点，在相同的微调任务上采用不同的超参数（如学习率、权重衰减、数据增强策略或随机种子）独立训练出若干组微调权重。随后，不进行任何模型集成（Ensemble），而是对这些微调后的权重张量进行逐元素的加权算术平均。方法包括无差别的全量平均（Uniform Soup）以及在验证集上按贪婪算法逐步吸纳正向检查点的子集平均（Greedy Soup）。</p>
+<p>Mitchell Wortsman 等人在 ICML 2022 上的实测数据确立了该技术的性能边界：在包含 18 亿参数的 ViT-G 与多模态 CLIP 模型上，面对 ImageNet 图像分类任务，对 72 个微调模型执行 Greedy Soup 之后，模型的 Top-1 准确率由单个微调最佳的 90.15% 进一步提升至 90.94%，打破了当时该评测集的公开记录。更为显著的优势体现在自然分布偏移测试中：在 ImageNet-A（对抗样本）、ImageNet-R（渲染艺术图）和 ImageNet-Sketch（草图）上，Greedy Soup 的准确率分别达到了 82.50%、91.20% 和 72.80%，较单体最优检查点提升 2 到 5 个百分点。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/07520170c563ee95.webp" alt="模型汤（Model Soups）在 ViT-G 1.8B 及分布偏移集上的准确率阶梯" class="lazyload"><figcaption class="image-caption">模型汤（Model Soups）在 ViT-G 1.8B 及分布偏移集上的准确率阶梯</figcaption></figure></p>
+<p>模型汤在几何上的成立条件在于损失函数曲面的线性连通性（Mode Connectivity）。它要求所有参与平均的检查点必须处于同一个由预训练初始点所决定的损失盆地内部。一旦两个微调模型的初始化不同源，或者内部神经元的排列对称性发生发散，直接取权重平均会导致网络表征崩溃。因此，模型汤无法用于定向的功能缺陷修复或能力重构。</p>
+<h2 id="四机械可解释性残差流消融与权重吸收">四、机械可解释性：残差流消融与权重吸收</h2>
+<p>机械可解释性（Mechanistic Interpretability）研究旨在解构 Transformer 内部表征的高维激活空间。研究者普遍采用稀疏自编码器（Sparse Autoencoders, SAEs），在残差流中将高维连续激活分解为具备独立单一语义的方向向量。</p>
+<p>Arditi 等人于 2024 年提出的消融术（Abliteration）展现了非梯度行为调控的机制。通过对比语言模型处理恶意/有害提示词与正常提示词时的残差流隐藏状态，计算两组激活均值的差向量（Difference-in-Means），可以从统计学上高信噪比地提取出控制模型“安全拒绝回答”的单一线性方向。</p>
+<p>为了避免在推理阶段部署外部钩子进行动态干预，消融术引入了权重吸收（Weight Absorption）机制：基于正交投影原理，将消除该拒绝方向的仿射变换矩阵，直接反向折叠进下游线性层（如 MLP 模块的 down_proj 矩阵或多头注意力的输出投影层）的静态权重张量中。实测数据显示，在 LLaMA-3-8B-Instruct 与 Qwen-7B 上执行该操作后，模型对越狱攻击的拒答率由 95% 以上降至 1% 左右，而在 MMLU（知识问答）和 GSM8K（数学推理）基准上的能力保留率均在 99.5% 以上，未对通用性能造成负面扰动。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/80af77ef1ef69f6f.webp" alt="消融术（Abliteration）权重吸收前后模型行为与基准保真度" class="lazyload"><figcaption class="image-caption">消融术（Abliteration）权重吸收前后模型行为与基准保真度</figcaption></figure></p>
+<p>消融术表明高阶行为控制向量可以直接编译为静态参数，但整个探测管线（构建对比数据集、采集激活样本、提取差向量、验证正交投影）完全依赖人类研究员手工编写脚本执行。</p>
+<h2 id="五四大技术路线的结构化对比与演进矩阵">五、四大技术路线的结构化对比与演进矩阵</h2>
+<p>将上述四条技术路线放置于统一的技术坐标系中进行横向审视，可以看出各自的机制差异与应用边界：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/723ca9f9b88f53a9.webp" alt="神经网络权重直接干预四大技术路线对比矩阵" class="lazyload"><figcaption class="image-caption">神经网络权重直接干预四大技术路线对比矩阵</figcaption></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">技术路线</th>
+<th style="text-align:left">核心机制</th>
+<th style="text-align:left">干预粒度</th>
+<th style="text-align:left">关键依赖</th>
+<th style="text-align:left">典型实测基准</th>
+<th style="text-align:left">物理约束边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>超网络 (Hypernetworks)</strong></td>
+<td style="text-align:left">参数空间流形映射</td>
+<td style="text-align:left">全网参数动态生成</td>
+<td style="text-align:left">大规模元学习模型样本集</td>
+<td style="text-align:left">WMT14 (HyperLSTM) / ARC-1D</td>
+<td style="text-align:left">纯统计学黑盒拟合，缺乏显式逻辑推理能力</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>模型编辑 (Model Editing)</strong></td>
+<td style="text-align:left">因果追踪 + 闭式单秩矩阵更新</td>
+<td style="text-align:left">中间层 MLP 单点/批量修改</td>
+<td style="text-align:left">人工推导的因果干预与解析解</td>
+<td style="text-align:left">CounterFact 2.1万条 (ROME, MEMIT)</td>
+<td style="text-align:left">局限于主谓宾事实记忆，无法修改动态逻辑缺陷</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>模型汤 (Model Soups)</strong></td>
+<td style="text-align:left">参数盆地逐元素贪婪平均</td>
+<td style="text-align:left">全参数加权求和</td>
+<td style="text-align:left">严格同源初始化的微调检查点</td>
+<td style="text-align:left">ImageNet Top-1 90.94% (ViT-G 1.8B)</td>
+<td style="text-align:left">依赖同源与对称性对齐，无法做针对性结构切除</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>消融术 (Abliteration)</strong></td>
+<td style="text-align:left">均值差向量隔离 + 权重吸收</td>
+<td style="text-align:left">线性投影矩阵降秩正交折叠</td>
+<td style="text-align:left">人工搭建的残差流探测管线</td>
+<td style="text-align:left">越狱拒答消除 / MMLU无损 (LLaMA-3-8B)</td>
+<td style="text-align:left">自动化程度低，严重依赖人工实验经验</td>
+</tr>
+</tbody>
+</table>
+<p>回顾前沿探索之前的技术演进，业内对权重空间的理解正在由早期的“外部监督数值回归”逐步过渡到“内部机制可解释性投影”。然而，不管是闭式矩阵求解还是向量消融，此前始终缺乏一个具备自主代码编写、激活分析与假设检验能力的智能主体。</p>
+<p>这也正是 2026 年底 MIT CSAIL 提出权重空间编程（WSP）时，引发行业高度关注的主要切入点。在下篇中，我们将深入剖析大语言模型如何在沙箱环境中自主调度前向探针，以及 Qwen3.5-0.8B 在修改万分之 1.6 的权重后实现数学测试跳变的真实底层物理机理。</p>
+<hr>
+<h3 id="参考文献与公开成果源">参考文献与公开成果源</h3>
+<ul>
+<li>Ha, D., Dai, A. M., &amp; Le, Q. V. (2017). HyperNetworks. ICLR 2017.</li>
+<li>Meng, K., Bau, D., Andonian, A., &amp; Belinkov, Y. (2022). Locating and Editing Factual Associations in GPT. NeurIPS 2022.</li>
+<li>Meng, K., Sharma, A. S., Andonian, A., Belinkov, Y., &amp; Bau, D. (2023). Mass-Editing Memory in a Transformer. ICLR 2023.</li>
+<li>Wortsman, M., et al. (2022). Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time. ICML 2022.</li>
+<li>Arditi, A., et al. (2024). Refusal in Language Models Is Mediated by a Single Direction. arXiv:2406.11717.</li>
+<li>Kofinas, M., et al. (2024). Graph Neural Functional Networks for Deep Weight Spaces. ICML 2024.</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/weight-space-intervention-history/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                    #大模型</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4/">
+                    #权重空间</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83/">
+                    #模型微调</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+                    #深度学习</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/">
+                    #技术解析</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/" class="prev" rel="prev" title="红利与宏观择时（二）：股权期限结构与反周期配置"><i class="iconfont icon-left"></i>&nbsp;红利与宏观择时（二）：股权期限结构与反周期配置</a>
+        
+        
+        <a href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" class="next" rel="next" title="权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源">权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

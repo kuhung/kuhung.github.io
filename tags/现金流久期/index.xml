@@ -1,7 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>现金流久期 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/</link><description>Recent content in 现金流久期 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 02 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>红利与宏观择时（二）：股权期限结构与反周期配置</title><link>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</link><pubDate>Mon, 02 Nov 2026 12:00:00 +0800</pubDate><guid>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</guid><description>为什么牛市里高分红股票跑不过科技成长股，而熊市里红利股更抗跌？股票像债券一样有长短期限：红利股几年内就能拿回大量分红，属于短周期资产；科技成长股主要看未来的远期兑现，属于长周期资产。牛市中大家都去抢远期成长，短周期红利股往往无人问津，确定性的分红回报反而更高；而在熊市深跌后，成长股被过度抛售，此时逆势换入成长股，反弹时的上涨空间远大于红利股。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>现金流久期 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/</link>
+    <description>Recent content in 现金流久期 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8E%B0%E9%87%91%E6%B5%81%E4%B9%85%E6%9C%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红利与宏观择时（二）：股权期限结构与反周期配置</title>
+      <link>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</link>
+      <pubDate>Mon, 02 Nov 2026 12:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</guid>
+      <description>为什么牛市里高分红股票跑不过科技成长股，而熊市里红利股更抗跌？股票像债券一样有长短期限：红利股几年内就能拿回大量分红，属于短周期资产；科技成长股主要看未来的远期兑现，属于长周期资产。牛市中大家都去抢远期成长，短周期红利股往往无人问津，确定性的分红回报反而更高；而在熊市深跌后，成长股被过度抛售，此时逆势换入成长股，反弹时的上涨空间远大于红利股。
 本文是「红利与宏观择时」系列的第二篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防与宏观流动性周期：
-篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构（本篇） ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的极端风险：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋（筹备中） ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚（筹备中） ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、股票期限切片与期限结构谜题 二、Gormsen (2021) 实证发现：反周期期限溢价 三、双因子理论解耦：统一均值与周期反转 四、股票截面的现金流久期分层实证 1. Panel A：股息期货期限结构的时变反转 2. Panel B：股票截面久期分层的超额回报验证 五、资产配置应用与当下盘面诊断 1. 宏观高估值 / 低 D/P 阶段 2. 宏观深度回调 / 高 D/P 阶段 3. 当前市场格局诊断（2026） 六、附录：期限溢价预测回归核心实现与脚本 参考文献 平时跟踪红利资产或成长风格，常能观察到一种风格分化：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构（本篇） ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防杠铃的极端风险：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋 ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚 ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、股票期限切片与期限结构谜题 二、Gormsen (2021) 实证发现：反周期期限溢价 三、双因子理论解耦：统一均值与周期反转 四、股票截面的现金流久期分层实证 1. Panel A：股息期货期限结构的时变反转 2. Panel B：股票截面久期分层的超额回报验证 五、资产配置应用与当下盘面诊断 1. 宏观高估值 / 低 D/P 阶段 2. 宏观深度回调 / 高 D/P 阶段 3. 当前市场格局诊断（2026） 六、附录：期限溢价预测回归核心实现与脚本 参考文献 平时跟踪红利资产或成长风格，常能观察到一种风格分化：
 在经济承压、市场陷入阴霾时，高分红、现金流充沛的红利板块往往表现出更强的抗跌属性，资金倾向于抱团避险； 而在经济复苏、市场迎来牛市或出现反弹行情时，高股息资产往往跑输大盘，资金迅速流向科技、成长等高弹性板块。
 上一篇通过 Campbell-Shiller 现值解耦 揭示了股息价格比由分红预期和贴现率预期共同驱动。但单一指数的时间序列模型无法回答截面资产的配置疑问：为什么不同股票在繁荣期与衰退期的收益差异会发生方向性逆转？
 把整只股票视为单一现金流整体，容易忽略现金流到达时间的差异。正如国债市场拥有 1 年期、5 年期和 10 年期的收益率曲线，股票未来派发的股息同样可以通过股息期货（Dividend Futures）或期权隐含股息切片为不同期限的索取权。
-持有 1 到 2 年就能到手的短期股息，与 5 到 10 年后才能到手的长期股息，哪一个要求的期望收益率更高？这个期限溢价在经济周期的两极如何变动？</description></item></channel></rss>
+持有 1 到 2 年就能到手的短期股息，与 5 到 10 年后才能到手的长期股息，哪一个要求的期望收益率更高？这个期限溢价在经济周期的两极如何变动？</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,23 +1,563 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="AI 博主 · 算法专家 · ENFJ"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=prev href=https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/><link rel=next href=https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/><link rel=canonical href=https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=20261029-a"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=20261029-a"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=20261029-a"><link rel=icon type=image/x-icon href="/favicon.ico?v=20261029-a"><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议 | 谷粒 kuhung</title><meta name=title content="GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-23T16:23:56+08:00","datePublished":"2026-09-23T16:23:56+08:00","description":"北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。 三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代 …","headline":"GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/","@type":"WebPage"},"name":"GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/","wordCount":462}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><article class=post-warp itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline">GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</h1><div class=post-meta>Written by <a itemprop=name href=https://kuhung.me/ rel=author>谷粒</a> with ♥
-<span class=post-time>on <time datetime=2026-09-23 itemprop=datePublished>September 23, 2026</time></span>
-in
-<i class="iconfont icon-folder"></i>
-<span class=post-category><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/>技术研究</a></span>
-|</div></header><div class=post-toc id=post-toc><h2 class=post-toc-title></h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#发布清单>发布清单</a></li><li><a href=#能力变化>能力变化</a></li><li><a href=#价格变化>价格变化</a></li><li><a href=#社区用户看法>社区用户看法</a></li><li><a href=#思考档位>思考档位</a></li><li><a href=#旧模型怎么换>旧模型怎么换</a></li><li><a href=#国产同价位>国产同价位</a></li><li><a href=#怎么选>怎么选</a></li><li><a href=#参考资料>参考资料</a></li></ul></nav></div></div><script type=text/javascript>window.onload=function(){var n,o,e=$(".post-toc"),t=$(".post-comment"),i=e.offset().top,s=e.height(),a=e[0].offsetTop;$(window).scroll(function(){var r=Math.max(document.body.scrollTop,document.documentElement.scrollTop);t.length>0&&(n=t.offset().top,o=n-r-s),i<r?(e.css({position:"fixed"}),t.length>0&&n<r+s?e.css({top:o}):e.css({top:0})):(e.css({position:"absolute"}),e.css({top:a}))})}</script><div class=post-content><p>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。</p><p>三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代码略有进步，写报告据网友称有退步。</p><p>如果你之前还在用 Opus 4.6 和 GPT 5.6 sol，那么建议升级，直接用最新，更强更便宜。不过思维强度不用保持high，从medium开始比较好。</p><p>下面逐一介绍。依次介绍能力和价格的变化，以及部分推特网友反馈。</p><h2 id=发布清单>发布清单</h2><table><thead><tr><th>模型</th><th>定位</th><th>上一代价格</th><th>新价格</th><th>变化</th></tr></thead><tbody><tr><td><strong>Claude Opus 5.5</strong></td><td>长任务、知识工作</td><td>$5 / $25（Opus 5）</td><td>$4 / $20</td><td>降 20%</td></tr><tr><td><strong>GPT-6 Sol</strong></td><td>复杂编码、Agent</td><td>$4 / $20（GPT-5.6 Sol）</td><td>$2 / $10</td><td>降 50%</td></tr><tr><td><strong>GPT-6 Luna</strong></td><td>高频、低成本任务</td><td>$0.20 / $1.20（GPT-5.6 Luna）</td><td>$0.10 / $0.50</td><td>输入降 50%，输出降 58%</td></tr></tbody></table><p>价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</p><p>Sol 和 Luna 有个小字：单次请求输入超过 272K token 后，整次请求按更高单价计费。Opus 5.5 没有这条阶梯价。</p><h2 id=能力变化>能力变化</h2><table><thead><tr><th>模型</th><th>对比上一代</th><th>强项</th><th>短板</th></tr></thead><tbody><tr><td>Opus 5.5</td><td>明显提升</td><td>编码 Agent、长任务、综合排名第一</td><td>max 档容易想太多，跑不出结果</td></tr><tr><td>GPT-6 Sol</td><td>综合持平，编码小幅提升</td><td>幻觉明显减少，同分数下更便宜</td><td>报告类交付变短，容易漏要求</td></tr><tr><td>GPT-6 Luna</td><td>综合持平，编码略退</td><td>幻觉减少，单任务成本极低</td><td>知识工作退步，改代码不如旧版</td></tr></tbody></table><p>Opus 5.5 这次是能力和价格一起动。Anthropic 那边的说法是，它有 Fable 5.1 的智力，价格比 Opus 5 还低。第三方测下来也确实如此，默认的 medium 档就已经超过 Sol 的最高档。</p><p>Sol 和 Luna 更像一轮价格升级。OpenAI 官方说幻觉更少、写作也更好。第三方测到的幻觉下降是真的，但 Sol 主要是靠更多地选择不回答。写作这边反而测到退步：人工检查了几百份输出，报告和文档类交付更短，更容易漏掉任务要求。</p><h2 id=价格变化>价格变化</h2><p>Sol 和 Luna 单价砍半，Opus 5.5 单价降 20%，缓存读取降 60%。按每项任务的实际花费算，Sol 和 Luna 比上一代省一半左右；Anthropic 称 Opus 5.5 因为更省 token，整项任务成本能低约 40%。</p><p>单价之外，还要看跑完一项任务花多少钱。Artificial Analysis 的综合测评里，Opus 5.5 max 平均每项任务约 $6，medium 约 $1.3；Sol max 约 $1；Luna max 只要 $0.07。Opus 5.5 medium 和 Sol max 花费差不多，但分数更高。</p><p>跑 Agent 的话，Opus 5.5 的缓存降价对账单影响更大。因为长期vibe coding的朋友都知道，长对话里九成九的输入都走缓存价。</p><h2 id=社区用户看法>社区用户看法</h2><p>Simon Willison 已经把 GPT-6 Sol 和 Opus 5.5 设成 Codex 和 Claude Code 的默认模型。在鹈鹕问题上，他发现 Opus 5.5 max 表现较差，过度思考，最后啥也没做出来。</p><p>The Decoder 对OpenAI 新模型的评价是「价格砍半，性能几乎没动」。他们还指出 OpenAI 这次挑了评测，常规会放的知识工作和终端编码评测都没放。</p><p>OpenAI 开发者社区有人拿三个编码小任务跑了一遍，Sol 和 Luna 全部通过，GPT-5.6 Luna 有一项重跑两次都失败。发帖人认为赢面主要还是来自降价。</p><p>推特上，Anthropic 的 Thariq Shihipar 说 Opus 5.5 是照着用户反馈改的，沟通更清楚，也更省 token。OpenAI 的 Thibault Sottiaux 则强调 Sol 和 Luna 在写作上也有提升，这一点和第三方的测评结论对不上，建议自己跑跑看。</p><h2 id=思考档位>思考档位</h2><p>Simon 用 Opus 5.5 max 画图失败，就是档位拉太高。档位越高，模型花越多 token 想，也越慢、越贵。这次 Opus 5.5 和 GPT-6 的默认都是 <code>medium</code>，不一定要往上加。</p><p>从 Opus 5 升上来，别把原来的 <code>high</code> 带过来。Anthropic 自己的测试里，5.5 的 <code>medium</code> 已经追平甚至超过 Opus 5 的 <code>high</code>，同一档位下 5.5 往往还想得更久。GPT-5.6 本来就是 <code>medium</code>，换 Sol 或 Luna 可以先保持，干得不好再往上调。</p><p><code>max</code> 建议在下位模型解决不了的问题时再开。</p><h2 id=旧模型怎么换>旧模型怎么换</h2><p><strong>Opus 4.6 到 Opus 5</strong>：换 Opus 5.5，更便宜也更强。走 API 的话 Thinking 关不掉。</p><p><strong>Fable 5.1</strong>：日常编码和知识工作可以换 Opus 5.5，价格不到一半，综合分还略高。</p><p><strong>GPT-5.6 Sol</strong>：直接换 GPT-6 Sol，价格减半，写代码更稳。要是主要用来写报告、做 PPT，需要留意输出质量。</p><p><strong>GPT-5.6 Terra</strong>：换 GPT-6 Sol，两者价格一样，Terra 没什么理由再留。</p><p><strong>GPT-5.6 Luna</strong>：分类、抽取、格式转换直接换。改代码的任务先抽几份看看，新版这块略弱。</p><h2 id=国产同价位>国产同价位</h2><p>Sol 这一档，国产对手是 GLM-5.3 和 Kimi K3，同价位的 Claude Sonnet 5 也放进来比一下。</p><table><thead><tr><th>模型</th><th>标价（输入 / 输出）</th><th>综合分</th><th>单任务成本</th></tr></thead><tbody><tr><td>GPT-6 Sol max</td><td>$2 / $10</td><td>48</td><td>$1.06</td></tr><tr><td>GLM-5.3 max</td><td>¥8 / ¥28</td><td>45</td><td>$2.01</td></tr><tr><td>Kimi K3 max</td><td>¥20 / ¥100</td><td>44</td><td>$2.00</td></tr><tr><td>Claude Sonnet 5 max</td><td>$2 / $10</td><td>38</td><td>$5.09</td></tr></tbody></table><p>只看分数和单任务成本，Sol 在这一档领先。国产模型的优势在别处：人民币结算、国内直连，GLM-5.3 和 Kimi K3 还开放权重，可以私有部署。</p><p>Luna 这一档，国产 Flash 模型分数反而更高，Luna 赢在便宜。这也是某种意义上的对标了。</p><table><thead><tr><th>模型</th><th>标价（输入 / 输出）</th><th>综合分</th><th>单任务成本</th></tr></thead><tbody><tr><td>GLM-5.3-Flash</td><td>约 ¥0.5 / ¥1.8</td><td>42</td><td>$0.25</td></tr><tr><td>DeepSeek V4.1 Flash</td><td>$0.15 / $0.60（闲时）</td><td>39</td><td>$0.27</td></tr><tr><td>GPT-6 Luna max</td><td>$0.10 / $0.50</td><td>37</td><td>$0.07</td></tr></tbody></table><h2 id=怎么选>怎么选</h2><p><strong>写报告、做 PPT、要覆盖很多细项的分析</strong>：Opus 5.5，先用 <code>medium</code>。Sol 和 Luna 这块退步了。</p><p><strong>日常写代码、跑 Coding Agent</strong>：GPT-6 Sol，从 <code>medium</code> 开始。</p><p><strong>批量分类、抽取、格式转换</strong>：GPT-6 Luna，用 <code>low</code> 起步。需要人民币结算或国内直连，换 DeepSeek V4.1 Flash 或 GLM-5.3-Flash。</p><p><strong>不想花钱</strong>：ChatGPT 桌面端的免费 Luna。</p><h2 id=参考资料>参考资料</h2><ul><li><a href=https://www.anthropic.com/claude-opus-5-5>Anthropic：Claude Opus 5.5 发布</a>、<a href=https://platform.claude.com/docs/en/models/opus-5-5/overview>模型文档</a>、<a href=https://platform.claude.com/docs/en/models/opus-5-5/migration-guide>迁移清单</a></li><li><a href=https://openai.com/index/introducing-gpt-6-sol-and-luna/>OpenAI：GPT-6 Sol 和 Luna 发布</a>、<a href=https://developers.openai.com/api/docs/models/gpt-6-sol>Sol 文档</a>、<a href=https://developers.openai.com/api/docs/models/gpt-6-luna>Luna 文档</a></li><li><a href=https://developers.openai.com/api/docs/guides/reasoning>OpenAI：推理强度说明</a>、<a href=https://developers.openai.com/api/docs/guides/model-selection>模型与强度选型</a>、<a href=https://developers.openai.com/api/docs/guides/latest-model>GPT-6 迁移指南</a></li><li><a href=https://platform.claude.com/docs/en/build-with-claude/effort>Anthropic：Effort 档位与建议</a>、<a href=https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5>Opus 5.5 提示词指南</a></li><li><a href=https://www.reddit.com/r/codex/comments/1wnlfbf/gpt6sol_high_vs_xhigh_where_is_the_sweet_spot/>社区讨论：Sol high 与 xhigh</a>、<a href=https://www.reddit.com/r/OpenAI/comments/1wnxg0n/luna_6_is_a_massive_downgrade_over_luna_56_misses/>Luna 6 与 5.6 high 的用户对比</a></li><li><a href=https://artificialanalysis.ai/articles/gpt-6-sol-and-luna-push-the-cost-efficiency-frontier>Artificial Analysis：Sol 和 Luna 独立评测</a>、<a href=https://artificialanalysis.ai/leaderboards/models>模型排行榜</a>、<a href=https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-gpt-6-sol>Opus 5.5 vs Sol</a></li><li><a href=https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/>Simon Willison：Opus 5.5、Sol、Luna 和新一轮价格战</a></li><li><a href=https://the-decoder.com/openais-gpt-6-sol-and-luna-cut-prices-in-half-but-barely-move-the-needle-on-performance/>The Decoder：GPT-6 Sol 和 Luna 价格砍半，性能几乎没动</a></li><li><a href=https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925/6>OpenAI 开发者社区发布帖</a></li><li><a href=https://api-docs.deepseek.com/quick_start/pricing/>DeepSeek API 价格</a></li><li><a href=https://www.cnblogs.com/vibecodinghuanzhe/p/22830118>国产编程模型价格汇总（博客园，9 月 3 日标价）</a></li></ul><hr><p><a href=/about/>关于作者</a></p></div><div class=post-copyright><p class=copyright-item><span>Author:</span>
-<span>谷粒</span></p><p class=copyright-item><span>Link:</span>
-<a href=https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/><script>document.write(decodeURI(location.origin+location.pathname))</script></a></p><p class="copyright-item lincese">本文采用<a rel=license href=http://creativecommons.org/licenses/by-nc/4.0/ target=_blank>知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class=post-tags><section><i class="iconfont icon-tag"></i>Tag(s):
-<span class=tag><a href=https://kuhung.me/tags/llm/>#LLM</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/>#模型选型</a></span></section><section><a href=javascript:window.history.back();>back</a></span> ·
-<span><a href=https://kuhung.me/>home</a></span></section></div><div class=post-nav><a href=https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/ class=prev rel=prev title="深入解读 Jev 模型：是什么以及怎么用"><i class="iconfont icon-left"></i>&nbsp;深入解读 Jev 模型：是什么以及怎么用</a>
-<a href=https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/ class=next rel=next title="我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验">我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验&nbsp;<i class="iconfont icon-right"></i></a></div></article><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>window.localStorage&&window.localStorage.removeItem("theme"),document.body.classList.remove("dark-theme"),document.documentElement.classList.remove("dark-theme")</script></footer><script src=/js/vendor_no_gallery.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/" />
+  <link rel="next" href="https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/" />
+  <link rel="canonical" href="https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-23T16:23:56+08:00","datePublished":"2026-09-23T16:23:56+08:00","description":"北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。 三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代 …","headline":"GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"LLM, 模型选型","mainEntityOfPage":{"@id":"https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/","@type":"WebPage"},"name":"GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/","wordCount":462}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-09-23 itemprop="datePublished">September 23, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#发布清单">发布清单</a></li>
+    <li><a href="#能力变化">能力变化</a></li>
+    <li><a href="#价格变化">价格变化</a></li>
+    <li><a href="#社区用户看法">社区用户看法</a></li>
+    <li><a href="#思考档位">思考档位</a></li>
+    <li><a href="#旧模型怎么换">旧模型怎么换</a></li>
+    <li><a href="#国产同价位">国产同价位</a></li>
+    <li><a href="#怎么选">怎么选</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。</p>
+<p>三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代码略有进步，写报告据网友称有退步。</p>
+<p>如果你之前还在用 Opus 4.6 和 GPT 5.6 sol，那么建议升级，直接用最新，更强更便宜。不过思维强度不用保持high，从medium开始比较好。</p>
+<p>下面逐一介绍。依次介绍能力和价格的变化，以及部分推特网友反馈。</p>
+<h2 id="发布清单">发布清单</h2>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>定位</th>
+<th>上一代价格</th>
+<th>新价格</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Opus 5.5</strong></td>
+<td>长任务、知识工作</td>
+<td>$5 / $25（Opus 5）</td>
+<td>$4 / $20</td>
+<td>降 20%</td>
+</tr>
+<tr>
+<td><strong>GPT-6 Sol</strong></td>
+<td>复杂编码、Agent</td>
+<td>$4 / $20（GPT-5.6 Sol）</td>
+<td>$2 / $10</td>
+<td>降 50%</td>
+</tr>
+<tr>
+<td><strong>GPT-6 Luna</strong></td>
+<td>高频、低成本任务</td>
+<td>$0.20 / $1.20（GPT-5.6 Luna）</td>
+<td>$0.10 / $0.50</td>
+<td>输入降 50%，输出降 58%</td>
+</tr>
+</tbody>
+</table>
+<p>价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</p>
+<p>Sol 和 Luna 有个小字：单次请求输入超过 272K token 后，整次请求按更高单价计费。Opus 5.5 没有这条阶梯价。</p>
+<h2 id="能力变化">能力变化</h2>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>对比上一代</th>
+<th>强项</th>
+<th>短板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opus 5.5</td>
+<td>明显提升</td>
+<td>编码 Agent、长任务、综合排名第一</td>
+<td>max 档容易想太多，跑不出结果</td>
+</tr>
+<tr>
+<td>GPT-6 Sol</td>
+<td>综合持平，编码小幅提升</td>
+<td>幻觉明显减少，同分数下更便宜</td>
+<td>报告类交付变短，容易漏要求</td>
+</tr>
+<tr>
+<td>GPT-6 Luna</td>
+<td>综合持平，编码略退</td>
+<td>幻觉减少，单任务成本极低</td>
+<td>知识工作退步，改代码不如旧版</td>
+</tr>
+</tbody>
+</table>
+<p>Opus 5.5 这次是能力和价格一起动。Anthropic 那边的说法是，它有 Fable 5.1 的智力，价格比 Opus 5 还低。第三方测下来也确实如此，默认的 medium 档就已经超过 Sol 的最高档。</p>
+<p>Sol 和 Luna 更像一轮价格升级。OpenAI 官方说幻觉更少、写作也更好。第三方测到的幻觉下降是真的，但 Sol 主要是靠更多地选择不回答。写作这边反而测到退步：人工检查了几百份输出，报告和文档类交付更短，更容易漏掉任务要求。</p>
+<h2 id="价格变化">价格变化</h2>
+<p>Sol 和 Luna 单价砍半，Opus 5.5 单价降 20%，缓存读取降 60%。按每项任务的实际花费算，Sol 和 Luna 比上一代省一半左右；Anthropic 称 Opus 5.5 因为更省 token，整项任务成本能低约 40%。</p>
+<p>单价之外，还要看跑完一项任务花多少钱。Artificial Analysis 的综合测评里，Opus 5.5 max 平均每项任务约 $6，medium 约 $1.3；Sol max 约 $1；Luna max 只要 $0.07。Opus 5.5 medium 和 Sol max 花费差不多，但分数更高。</p>
+<p>跑 Agent 的话，Opus 5.5 的缓存降价对账单影响更大。因为长期vibe coding的朋友都知道，长对话里九成九的输入都走缓存价。</p>
+<h2 id="社区用户看法">社区用户看法</h2>
+<p>Simon Willison 已经把 GPT-6 Sol 和 Opus 5.5 设成 Codex 和 Claude Code 的默认模型。在鹈鹕问题上，他发现 Opus 5.5 max 表现较差，过度思考，最后啥也没做出来。</p>
+<p>The Decoder 对OpenAI 新模型的评价是「价格砍半，性能几乎没动」。他们还指出 OpenAI 这次挑了评测，常规会放的知识工作和终端编码评测都没放。</p>
+<p>OpenAI 开发者社区有人拿三个编码小任务跑了一遍，Sol 和 Luna 全部通过，GPT-5.6 Luna 有一项重跑两次都失败。发帖人认为赢面主要还是来自降价。</p>
+<p>推特上，Anthropic 的 Thariq Shihipar 说 Opus 5.5 是照着用户反馈改的，沟通更清楚，也更省 token。OpenAI 的 Thibault Sottiaux 则强调 Sol 和 Luna 在写作上也有提升，这一点和第三方的测评结论对不上，建议自己跑跑看。</p>
+<h2 id="思考档位">思考档位</h2>
+<p>Simon 用 Opus 5.5 max 画图失败，就是档位拉太高。档位越高，模型花越多 token 想，也越慢、越贵。这次 Opus 5.5 和 GPT-6 的默认都是 <code>medium</code>，不一定要往上加。</p>
+<p>从 Opus 5 升上来，别把原来的 <code>high</code> 带过来。Anthropic 自己的测试里，5.5 的 <code>medium</code> 已经追平甚至超过 Opus 5 的 <code>high</code>，同一档位下 5.5 往往还想得更久。GPT-5.6 本来就是 <code>medium</code>，换 Sol 或 Luna 可以先保持，干得不好再往上调。</p>
+<p><code>max</code> 建议在下位模型解决不了的问题时再开。</p>
+<h2 id="旧模型怎么换">旧模型怎么换</h2>
+<p><strong>Opus 4.6 到 Opus 5</strong>：换 Opus 5.5，更便宜也更强。走 API 的话 Thinking 关不掉。</p>
+<p><strong>Fable 5.1</strong>：日常编码和知识工作可以换 Opus 5.5，价格不到一半，综合分还略高。</p>
+<p><strong>GPT-5.6 Sol</strong>：直接换 GPT-6 Sol，价格减半，写代码更稳。要是主要用来写报告、做 PPT，需要留意输出质量。</p>
+<p><strong>GPT-5.6 Terra</strong>：换 GPT-6 Sol，两者价格一样，Terra 没什么理由再留。</p>
+<p><strong>GPT-5.6 Luna</strong>：分类、抽取、格式转换直接换。改代码的任务先抽几份看看，新版这块略弱。</p>
+<h2 id="国产同价位">国产同价位</h2>
+<p>Sol 这一档，国产对手是 GLM-5.3 和 Kimi K3，同价位的 Claude Sonnet 5 也放进来比一下。</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>标价（输入 / 输出）</th>
+<th>综合分</th>
+<th>单任务成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-6 Sol max</td>
+<td>$2 / $10</td>
+<td>48</td>
+<td>$1.06</td>
+</tr>
+<tr>
+<td>GLM-5.3 max</td>
+<td>¥8 / ¥28</td>
+<td>45</td>
+<td>$2.01</td>
+</tr>
+<tr>
+<td>Kimi K3 max</td>
+<td>¥20 / ¥100</td>
+<td>44</td>
+<td>$2.00</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5 max</td>
+<td>$2 / $10</td>
+<td>38</td>
+<td>$5.09</td>
+</tr>
+</tbody>
+</table>
+<p>只看分数和单任务成本，Sol 在这一档领先。国产模型的优势在别处：人民币结算、国内直连，GLM-5.3 和 Kimi K3 还开放权重，可以私有部署。</p>
+<p>Luna 这一档，国产 Flash 模型分数反而更高，Luna 赢在便宜。这也是某种意义上的对标了。</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>标价（输入 / 输出）</th>
+<th>综合分</th>
+<th>单任务成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GLM-5.3-Flash</td>
+<td>约 ¥0.5 / ¥1.8</td>
+<td>42</td>
+<td>$0.25</td>
+</tr>
+<tr>
+<td>DeepSeek V4.1 Flash</td>
+<td>$0.15 / $0.60（闲时）</td>
+<td>39</td>
+<td>$0.27</td>
+</tr>
+<tr>
+<td>GPT-6 Luna max</td>
+<td>$0.10 / $0.50</td>
+<td>37</td>
+<td>$0.07</td>
+</tr>
+</tbody>
+</table>
+<h2 id="怎么选">怎么选</h2>
+<p><strong>写报告、做 PPT、要覆盖很多细项的分析</strong>：Opus 5.5，先用 <code>medium</code>。Sol 和 Luna 这块退步了。</p>
+<p><strong>日常写代码、跑 Coding Agent</strong>：GPT-6 Sol，从 <code>medium</code> 开始。</p>
+<p><strong>批量分类、抽取、格式转换</strong>：GPT-6 Luna，用 <code>low</code> 起步。需要人民币结算或国内直连，换 DeepSeek V4.1 Flash 或 GLM-5.3-Flash。</p>
+<p><strong>不想花钱</strong>：ChatGPT 桌面端的免费 Luna。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://www.anthropic.com/claude-opus-5-5">Anthropic：Claude Opus 5.5 发布</a>、<a href="https://platform.claude.com/docs/en/models/opus-5-5/overview">模型文档</a>、<a href="https://platform.claude.com/docs/en/models/opus-5-5/migration-guide">迁移清单</a></li>
+<li><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI：GPT-6 Sol 和 Luna 发布</a>、<a href="https://developers.openai.com/api/docs/models/gpt-6-sol">Sol 文档</a>、<a href="https://developers.openai.com/api/docs/models/gpt-6-luna">Luna 文档</a></li>
+<li><a href="https://developers.openai.com/api/docs/guides/reasoning">OpenAI：推理强度说明</a>、<a href="https://developers.openai.com/api/docs/guides/model-selection">模型与强度选型</a>、<a href="https://developers.openai.com/api/docs/guides/latest-model">GPT-6 迁移指南</a></li>
+<li><a href="https://platform.claude.com/docs/en/build-with-claude/effort">Anthropic：Effort 档位与建议</a>、<a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5">Opus 5.5 提示词指南</a></li>
+<li><a href="https://www.reddit.com/r/codex/comments/1wnlfbf/gpt6sol_high_vs_xhigh_where_is_the_sweet_spot/">社区讨论：Sol high 与 xhigh</a>、<a href="https://www.reddit.com/r/OpenAI/comments/1wnxg0n/luna_6_is_a_massive_downgrade_over_luna_56_misses/">Luna 6 与 5.6 high 的用户对比</a></li>
+<li><a href="https://artificialanalysis.ai/articles/gpt-6-sol-and-luna-push-the-cost-efficiency-frontier">Artificial Analysis：Sol 和 Luna 独立评测</a>、<a href="https://artificialanalysis.ai/leaderboards/models">模型排行榜</a>、<a href="https://artificialanalysis.ai/models/comparisons/claude-opus-5-5-vs-gpt-6-sol">Opus 5.5 vs Sol</a></li>
+<li><a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/">Simon Willison：Opus 5.5、Sol、Luna 和新一轮价格战</a></li>
+<li><a href="https://the-decoder.com/openais-gpt-6-sol-and-luna-cut-prices-in-half-but-barely-move-the-needle-on-performance/">The Decoder：GPT-6 Sol 和 Luna 价格砍半，性能几乎没动</a></li>
+<li><a href="https://community.openai.com/t/announcing-gpt-6-sol-and-gpt-6-luna-in-the-api-codex-and-chatgpt/1399925/6">OpenAI 开发者社区发布帖</a></li>
+<li><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek API 价格</a></li>
+<li><a href="https://www.cnblogs.com/vibecodinghuanzhe/p/22830118">国产编程模型价格汇总（博客园，9 月 3 日标价）</a></li>
+</ul>
+<hr>
+<p><a href="/about/">关于作者</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/llm/">
+                    #LLM</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/">
+                    #模型选型</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/" class="prev" rel="prev" title="深入解读 Jev 模型：是什么以及怎么用"><i class="iconfont icon-left"></i>&nbsp;深入解读 Jev 模型：是什么以及怎么用</a>
+        
+        
+        <a href="https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/" class="next" rel="next" title="我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验">我用AI干了啥 EP01｜做内容、拉链上、调持仓，还有 Jev 和 Muse 初体验&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

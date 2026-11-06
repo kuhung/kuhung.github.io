@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>token优化 on 谷粒 kuhung</title><link>https://kuhung.me/tags/token%E4%BC%98%E5%8C%96/</link><description>Recent content in token优化 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 15 Aug 2026 21:17:08 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/token%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>提效 20% 的 Claude Code Session 优化方法</title><link>https://kuhung.me/posts/maximization-your-claude-code-sessions/</link><pubDate>Sat, 15 Aug 2026 21:17:08 +0800</pubDate><guid>https://kuhung.me/posts/maximization-your-claude-code-sessions/</guid><description>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>token优化 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/token%E4%BC%98%E5%8C%96/</link>
+    <description>Recent content in token优化 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 15 Aug 2026 21:17:08 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/token%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>提效 20% 的 Claude Code Session 优化方法</title>
+      <link>https://kuhung.me/posts/maximization-your-claude-code-sessions/</link>
+      <pubDate>Sat, 15 Aug 2026 21:17:08 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/maximization-your-claude-code-sessions/</guid>
+      <description>这两天，看了不少知乎上关于用好 Codex 和 Claude Code 的回答，收获不少指令笔记，也产出几篇文章。紧赶慢赶，Anthropic 也在 8 月 14 日发了一篇官方最佳实践：《Maximizing the value of your Claude Code sessions》。
 我整理了下文章的思路，原文核心分为 3 个层次，分别是 token 的价格组成、session 内的 token 活动、和如何最大化单一 session 的价值。
 本文章不打算全篇复述，而是划一些我认为的重点：包括一些被忽视的细节以及客观规律。我自己拿到这篇文章，用这些重点去 review 了我近期的操作日志，也有一些发现和大家分享。
 一、成本模型变化 编辑器时代是固定费用，修 1 个测试和修 50 个测试，工具成本一样。到了 Agent 时代，同一个任务的价格随用法浮动。
@@ -6,4 +21,8 @@
 二、token 价格的决定方式 原文说，计费单位是 token，但实际买的是 GPU 跑模型的推理时间。三个因素决定单价：模型选型、输入输出的差异、以及缓存命中率。
 模型大小就不展开了：前沿模型给复杂任务，小模型给简单杂活。
 输入和输出的区别 原文用了 Prefill 和 Decode 这两个术语。为什么不叫 Encode？因为大语言模型推理是纯 Decoder 架构。输入阶段叫 Prefill，是因为它在一次性填充 KV Cache，而不是在做编码转换。（训练时会用到 Encoder）
-输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</description></item></channel></rss>
+输出价格约为输入的 5 倍。Decode 阶段每个 token 都要独立跑一次前向传播，200 token 的输出就是 200 次运算。但 Prefill 并非零成本，200 个输入 token 虽然一批并行处理，注意力计算量依然和 token 数成正比。5 倍的价格差来自 GPU 利用率的差异：Prefill 是计算密集型，GPU 并行度高，单位 token 成本低；Decode 是内存带宽受限，每步只产出一个 token，GPU 大部分时间在等数据搬运。</description>
+    </item>
+    
+  </channel>
+</rss>

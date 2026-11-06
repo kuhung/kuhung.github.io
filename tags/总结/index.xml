@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>总结 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%80%BB%E7%BB%93/</link><description>Recent content in 总结 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 01 Jan 2024 13:13:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml"/><item><title>2023年度总结</title><link>https://kuhung.me/posts/radar-in-2024/</link><pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate><guid>https://kuhung.me/posts/radar-in-2024/</guid><description>灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>总结 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%80%BB%E7%BB%93/</link>
+    <description>Recent content in 总结 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 01 Jan 2024 13:13:53 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023年度总结</title>
+      <link>https://kuhung.me/posts/radar-in-2024/</link>
+      <pubDate>Mon, 01 Jan 2024 13:13:53 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/radar-in-2024/</guid>
+      <description>灵感来源是 thoughtwork 总结的半年度雷达报告，展现不同语⾔、技术、⼯具等⽅⾯的进展。radar 本身反映了⼀种理念，那就是察觉。察觉当下的流行要素，预判未来的发展变化。这⾥进行借鉴，呈现我关于技术、阅读、理财的一些观察，同时也有一些根据个人经历的想法。这些用于交流，也用于记录。
 一、技术 采纳 机器学习开发流程
 构建并维护⼀套稳定、可复⽤的流程，⽤于快速构建机器学习模型。现在市⾯上也有很多稳定的服务，但是⼤多专攻某些特定⽅向。⽐如wandb实验记录或者dvc数据版本控制之类。就个人⽽⾔，更多是整合不同⼯具，形成⾃⼰的建模⻛格。
 雷达技术
@@ -42,7 +57,16 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
 暂缓 无
 三、理财 采纳 意外之财的态度
 对于奖金或者是意外之财，不少人会倾向于一次性消费、或者是等比例放大消费。这是常见的xx阶级陷阱，在如今的消费主义社会，更加难以坚守。从某种角度讲，我更信奉储蓄，不放大现有的消费节奏。或者可以偶尔消费，更多是投入到那些生产力工具上（自我麻痹）。
-复利优先</description></item><item><title>五年十个财务瞬间｜02 如何在2021年最短时间亏钱</title><link>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</link><pubDate>Wed, 07 Jul 2021 22:56:03 +0800</pubDate><guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</guid><description>概述 预计耗时 预计发布 实际发布 最后一次修改 财务总结第二篇 我这半年是怎么亏钱的 宏观与微观情况 距离上篇财务总结，已经过去了整整半年。这半年，可以说是在亏钱中度过的。股市春节后给了一个意外的套路，机构抱团结束，纷纷争相离场，带来股市、基金的大幅下挫。与此同时，房地产却不再横盘，上海的二手交易价格创出新高；重庆的土拍价格也新高。在临近写这篇文章的6-7月，多重利空加在中概股上，国内的A股，之前一直广受市场追捧的白马股，也一蹶不振。虽然前期持仓比例不高，但这半年也跌掉了过去好几年的收益；算上融资的成本或者是买房的机会成本，整体亏损20%。
+复利优先</description>
+    </item>
+    
+    <item>
+      <title>五年十个财务瞬间｜02 如何在2021年最短时间亏钱</title>
+      <link>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</link>
+      <pubDate>Wed, 07 Jul 2021 22:56:03 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-2/</guid>
+      <description>概述 预计耗时 预计发布 实际发布 最后一次修改 财务总结第二篇 我这半年是怎么亏钱的 宏观与微观情况 距离上篇财务总结，已经过去了整整半年。这半年，可以说是在亏钱中度过的。股市春节后给了一个意外的套路，机构抱团结束，纷纷争相离场，带来股市、基金的大幅下挫。与此同时，房地产却不再横盘，上海的二手交易价格创出新高；重庆的土拍价格也新高。在临近写这篇文章的6-7月，多重利空加在中概股上，国内的A股，之前一直广受市场追捧的白马股，也一蹶不振。虽然前期持仓比例不高，但这半年也跌掉了过去好几年的收益；算上融资的成本或者是买房的机会成本，整体亏损20%。
 资金分配方面，主要还是分为三大类。一类储蓄、一类投资，最后一类杠杆。当下时间切片，储蓄比例约占13%，基金比例约为33%，A股和数字货币比例为16%，港美股比例约为59%。总体杠杆率约为20%，杠杆融资成本约为5%。
 半年策略回顾 接着回顾一下这半年的策略。在第一次回顾报告中，我们设定的比例为储蓄+黄金+数字货币的比例约为20%，本期来看基本达到这个水平；基金比例为25%，目前来看略微超过这个比例8%。其中的原因大致有两个：一是基金那边不完全是买入的基金，还有部分每月自动划拨的现金。第二个则是，股票类资产亏得比例比基金多，因此整体拉高了基金的权重。港美股的杠杆率未到预期的30%，不过也快接近了。之前是因为在上杠杆方面比较保守，但后来对比了商业房贷的5+点位，评估下觉得其实也还好。
 四类策略回顾 策略方面，主要分为4类。
@@ -61,7 +85,16 @@ LLM已经够流⾏了，这⾥关注更多的是它的应⽤。通过⼤语⾔�
 补充财务知识 接着是还得补充一些财务的知识。在港股熊证交易时，能明显感觉自己就是在瞎搞。金融储备还是有提升空间。你要问我这半年干啥去了，这半年一直在探寻企业组织文化与管理的事情，这就涉及到最后一个计划了。
 提升工作素养 别看我上面扯了这么多，让大伙感觉我像是个专职的投机者，其实不是的。主业还是集中在工作上，工作技能的提升、综合能力的提升，以及给公司带来真实价值后公司的回馈，还是很值得花主要精力在上面的。
 总结 所以如果有朋友看到这篇文章，千万要理性看待，不要全盘照抄。将注意力集中在主业上去。投资自己、投资公司内自己的团队，带来的连续性的收益也是大大滴。在这个的同时，花些时间去实践并精进自己的财务知识，提升财商，将其作为一种组合策略，共同提升生活的品质。这将是我期望的，这篇内容的最大作用。
-关于作者</description></item><item><title>Xgboost 三种特征重要性计算方法对比与扩展</title><link>https://kuhung.me/posts/three-feature-importances-in-xgb/</link><pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate><guid>https://kuhung.me/posts/three-feature-importances-in-xgb/</guid><description>简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>Xgboost 三种特征重要性计算方法对比与扩展</title>
+      <link>https://kuhung.me/posts/three-feature-importances-in-xgb/</link>
+      <pubDate>Mon, 08 Mar 2021 21:09:31 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/three-feature-importances-in-xgb/</guid>
+      <description>简单描述 实际发布 最后一次修改 xgb 特征重要性计算方法及使用场景 2021-03-08 2021-03-09 特征重要性 作用与来源 特征重要性，我们一般用来观察不同特征的贡献度。排名靠前的，我们自然而然地认为，它是重要的。
 这一思路，通常被用来做特征筛选。剔除贡献度不高的尾部特征，增强模型的鲁棒性的同时，起到特征降维的作用。
 另一个方面，则是用来做模型的可解释性。我们期望的结果是：重要的特征是符合业务直觉的；符合业务直觉的特征排名靠前。
 在实际操作中，我们一般用树模型的分类节点做文章。常用的就是 XGB 和其他一般树模型。
@@ -74,7 +107,16 @@ XGB 中常用的三种特征重要性计算方法，以及它的使用场景。�
 XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。
 ‘weight’ - the number of times a feature is used to split the data across all trees. 简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**frequency**2。
 gain model.feature_importances_ 这是我们调用特征重要性数值时，用到的默认函数方法。其背后用到的贡献度计算方法为gain。
-‘gain’ - the average gain across all splits the feature is used in.</description></item><item><title>从一款小游戏收获的三点思考</title><link>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</link><pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate><guid>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</guid><description>2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
+‘gain’ - the average gain across all splits the feature is used in.</description>
+    </item>
+    
+    <item>
+      <title>从一款小游戏收获的三点思考</title>
+      <link>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</link>
+      <pubDate>Sat, 13 Feb 2021 17:13:44 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/what-i-learned-from-little-game-xiao/</guid>
+      <description>2月初，我上线了一款小游戏，整活小游戏——合成魈大人（移动端访问）。
 这一过程，收到了很多反馈。
 同时，也有如下三点思考：
 善用营销 早交付 学会写标题 至于为什么是这三点，下面将按时间顺序，一一阐述。
@@ -111,7 +153,16 @@ gain model.feature_importances_ 这是我们调用特征重要性数值时，用
 随后，小利在外网 Reddit 社区，也发出了帖子，进行游戏曝光，同样收到正面反馈。
 两天后，小力计划采用视频曝光方式。计划延期未交付。
 再两天，小力观察到米游社有一个首页推荐贴，合成史莱姆。获得了合成魈的十倍曝光。观察下来有如下特点：
-标题符合社区文化，吸引人去点击 素材更改并不多，甚至有些粗糙，交互逻辑沿用的第一版 但是，它获得了更好的流量。</description></item><item><title>算法模型的可解释性</title><link>https://kuhung.me/posts/interpretable-machine-learning/</link><pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate><guid>https://kuhung.me/posts/interpretable-machine-learning/</guid><description>背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
+标题符合社区文化，吸引人去点击 素材更改并不多，甚至有些粗糙，交互逻辑沿用的第一版 但是，它获得了更好的流量。</description>
+    </item>
+    
+    <item>
+      <title>算法模型的可解释性</title>
+      <link>https://kuhung.me/posts/interpretable-machine-learning/</link>
+      <pubDate>Fri, 22 Jan 2021 15:24:12 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/interpretable-machine-learning/</guid>
+      <description>背景 QQ 的“安全”策略 2021年1月18日，QQ 系被爆出扫描用户的浏览器历史记录，并对特定关键词进行了记录。
 QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里不做过分推演。
 某种意义上讲，目前各大互联网企业的竞争，实质上是数据的竞争。
 数据越多越好 作为调参从业人员，从算法和模型角度来说，数据确实是越多越好。
@@ -154,7 +205,16 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
 就像针对蚂蚁金服的调查：用户的多维度数据被企业用来谋求更大利益，滋生出巨大的金融系统性风险。
 对于业务，业务方需要知道每个模型背后的原理，以便更好的做出决策。
 一些并不面向前端用户的项目，业务方需要知道手底下发生的事情，以便做到能够响应变化。
-模型说：a 变大，则 b 会变小。那么，当 b 变大时，业务就可以通过调大 a，进而控制 b 变小。</description></item><item><title>五年十个财务瞬间｜01 2020年财务总结</title><link>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</link><pubDate>Thu, 31 Dec 2020 09:39:13 +0800</pubDate><guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</guid><description>描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
+模型说：a 变大，则 b 会变小。那么，当 b 变大时，业务就可以通过调大 a，进而控制 b 变小。</description>
+    </item>
+    
+    <item>
+      <title>五年十个财务瞬间｜01 2020年财务总结</title>
+      <link>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</link>
+      <pubDate>Thu, 31 Dec 2020 09:39:13 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ten-financial-moments-in-five-years-1/</guid>
+      <description>描述 目的 发布时间 最后一次修改 财务管理的第一次笔记 用于回顾财务情况，审视财务决策 2021.01.11 2021.01.12 结论先行 这是第一篇财务总结文章，写于2020年末。本系列计划共计10篇，跨度5年。
 为什么会有这篇文章 写这篇文章，是为了审视自己的财务情况，梳理财务观和财务现状，给自己一个交代。
 财富，不仅决定了一个人的生活水平，也是其未来的支撑。财富自由不是绝对概念——需要达到多少数额，而是相对的、比较性质的结果。
 如果不好好理财，放任钱从左边口袋进、右边口袋出，则永远不可能享受真正意义上的财富自由（包括富二代）。
@@ -197,4 +257,8 @@ QQ 的公关回应说，这是安全策略。但其实，懂的都懂，这里�
 这可是如日中天的新能源汽车领域，虽然2019年底，还有到过2块钱的地步，但是6块钱，其实也不值得做空。
 做空的钱，不如拿去买基金定投。
 过早卖出 38卖出顺丰科技，今日92；
-29卖出中国人寿，今日40；</description></item></channel></rss>
+29卖出中国人寿，今日40；</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,11 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>模型选型 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/</link><description>Recent content in 模型选型 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 08 Oct 2026 22:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude Haiku 5.5，当前性价比首选？</title><link>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</link><pubDate>Thu, 08 Oct 2026 22:00:00 +0800</pubDate><guid>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</guid><description>北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族的最后一款模型。名义标价对齐 OpenAI GPT-6 Luna（输入 $0.10、输出 $0.50 每百万 token），上下文窗口扩展到 1M。大家关心的通常是两件事：到底强在哪，手头的小模型要不要换。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>模型选型 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/</link>
+    <description>Recent content in 模型选型 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 08 Oct 2026 22:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%A8%A1%E5%9E%8B%E9%80%89%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude Haiku 5.5，当前性价比首选？</title>
+      <link>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</link>
+      <pubDate>Thu, 08 Oct 2026 22:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</guid>
+      <description>北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族的最后一款模型。名义标价对齐 OpenAI GPT-6 Luna（输入 $0.10、输出 $0.50 每百万 token），上下文窗口扩展到 1M。大家关心的通常是两件事：到底强在哪，手头的小模型要不要换。
 笔者维护的浏览器插件 PageGrok，轻量模型此前走 OpenRouter 挂在 Gemini 2.5 Flash-Lite。该模型标注在 2026 年 10 月 20 日退役，刚好需要在这两周内完成迁移选型。
 Haiku 5.5 标价降了九成，但实际账单有三处门槛：长上下文单价翻 5 倍、思考档位拉长延迟、新分词器带来的 token 膨胀。这里把价格算式、性能实测和替换细节梳理清楚。
-发布清单 模型 上下文 输入 / 输出单价（≤100K） 相对上一代变化 Claude Haiku 5.5 1M $0.10 / $0.50 标价降 90%，支持 effort 档位 GPT-6 Luna 1.05M $0.10 / $0.50 输入降 50%，输出降 58% Gemini 3.5 Flash-Lite 1M $0.</description></item><item><title>GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</title><link>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</link><pubDate>Wed, 23 Sep 2026 16:23:56 +0800</pubDate><guid>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</guid><description>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。
+发布清单 模型 上下文 输入 / 输出单价（≤100K） 相对上一代变化 Claude Haiku 5.5 1M $0.10 / $0.50 标价降 90%，支持 effort 档位 GPT-6 Luna 1.05M $0.10 / $0.50 输入降 50%，输出降 58% Gemini 3.5 Flash-Lite 1M $0.</description>
+    </item>
+    
+    <item>
+      <title>GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</title>
+      <link>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</link>
+      <pubDate>Wed, 23 Sep 2026 16:23:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</guid>
+      <description>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。
 三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代码略有进步，写报告据网友称有退步。
 如果你之前还在用 Opus 4.6 和 GPT 5.6 sol，那么建议升级，直接用最新，更强更便宜。不过思维强度不用保持high，从medium开始比较好。
 下面逐一介绍。依次介绍能力和价格的变化，以及部分推特网友反馈。
-发布清单 模型 定位 上一代价格 新价格 变化 Claude Opus 5.5 长任务、知识工作 $5 / $25（Opus 5） $4 / $20 降 20% GPT-6 Sol 复杂编码、Agent $4 / $20（GPT-5.6 Sol） $2 / $10 降 50% GPT-6 Luna 高频、低成本任务 $0.20 / $1.20（GPT-5.6 Luna） $0.10 / $0.50 输入降 50%，输出降 58% 价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</description></item><item><title>深入解读 Jev 模型：是什么以及怎么用</title><link>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</link><pubDate>Fri, 18 Sep 2026 20:57:35 +0800</pubDate><guid>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</guid><description>理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
+发布清单 模型 定位 上一代价格 新价格 变化 Claude Opus 5.5 长任务、知识工作 $5 / $25（Opus 5） $4 / $20 降 20% GPT-6 Sol 复杂编码、Agent $4 / $20（GPT-5.6 Sol） $2 / $10 降 50% GPT-6 Luna 高频、低成本任务 $0.20 / $1.20（GPT-5.6 Luna） $0.10 / $0.50 输入降 50%，输出降 58% 价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</description>
+    </item>
+    
+    <item>
+      <title>深入解读 Jev 模型：是什么以及怎么用</title>
+      <link>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</link>
+      <pubDate>Fri, 18 Sep 2026 20:57:35 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</guid>
+      <description>理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
 很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。这就是我想聊聊 Jev 的原因。
 为什么这个模型最近能掀起波澜？通用大模型的方向在业界已经基本固定，新进的产品团队必须寻找差异化的切入点。Jev 号称闭门研发了两年，主打的就是极速响应。它去掉了自回归生成循环，输入按 Token 计费，输出 Token 则是零元。这很合理，它本质上是一个判别器模型，就像没有人会为随机森林的输出结果按 Token 买单一样。
 Jev 是什么 Jev 本质上是一个面向状态评估的统计分类器。大模型擅长生成，Jev 专注于判别。它把传统分类任务用大模型处理时既慢又贵的痛点，做到了低成本和高速度。
@@ -15,4 +48,8 @@ Jev 的核心定位是机器对机器的状态评估。它不回答用户提问�
 官方公布的运行指标中，输入端每百万 Token 计费 0.042 美元，输出免费，端到端请求延迟在 70 到 500 毫秒区间。不管是底座更小，还是单步前向推导，服务成本都被压得很低。
 官方在宣传时借用了认知科学的“双系统”概念：让昂贵的前沿大模型负责慢速的深度推演（System 2），让 Jev 充当快速廉价的反射弧（System 1）。在需要做前置过滤或路由分流时，用小判别模型就能搞定，不需要让生成模型全程陪跑。
 为了追求速度，Jev 舍弃了文本生成，只保留三种输出原语：
-choice：在给定的枚举列表中完成多选一路由。 score：在有序离散区间内打分（如 0 到 10 的数值评分）。 noul：输出二分类概率（布尔判断，如 true / false 或 yes / no）。 它的输出附带了置信度概率。很多开发者吃过大模型生成 JSON 时幻觉的苦头，大模型即使输出错误结果，也常常给出虚高的概率。Jev 宣称对置信度进行了校准，下游系统可以依据置信度设置阈值，一旦置信度偏低就由硬规则或人工接管。关于这个置信度是如何校准的，后文会详细展开。</description></item></channel></rss>
+choice：在给定的枚举列表中完成多选一路由。 score：在有序离散区间内打分（如 0 到 10 的数值评分）。 noul：输出二分类概率（布尔判断，如 true / false 或 yes / no）。 它的输出附带了置信度概率。很多开发者吃过大模型生成 JSON 时幻觉的苦头，大模型即使输出错误结果，也常常给出虚高的概率。Jev 宣称对置信度进行了校准，下游系统可以依据置信度设置阈值，一旦置信度偏低就由硬规则或人工接管。关于这个置信度是如何校准的，后文会详细展开。</description>
+    </item>
+    
+  </channel>
+</rss>

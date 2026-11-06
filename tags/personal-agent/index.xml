@@ -1,11 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Personal Agent on 谷粒 kuhung</title><link>https://kuhung.me/tags/personal-agent/</link><description>Recent content in Personal Agent on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 15 Oct 2026 15:38:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/personal-agent/index.xml" rel="self" type="application/rss+xml"/><item><title>Muse 留存数据：次留 73% 与双周 22% 背后的口径与思考</title><link>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</link><pubDate>Thu, 15 Oct 2026 15:38:00 +0800</pubDate><guid>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal Agent on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/personal-agent/</link>
+    <description>Recent content in Personal Agent on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 15 Oct 2026 15:38:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/personal-agent/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Muse 留存数据：次留 73% 与双周 22% 背后的口径与思考</title>
+      <link>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</link>
+      <pubDate>Thu, 15 Oct 2026 15:38:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
 最近 X 上在讨论 Meta 的 Personal Agent 产品 Muse 的留存数据。投资人和科技媒体多有转发，核心论调基本一致：Muse 次日留存高达 73.3%，接近 ChatGPT 的两倍，不过 14 日留存降到 22.5% 被反超。
 在 X 上，小扎和小王的 PR 稿早已铺天盖地。或多或少都在暗示 Muse 已经赢了。算是给这一年多 AI 团队调整，交出的作业。
 我之前做过用户增长方面的算法，有使用 Muse 并且体感良好。看到这种数据曲线，习惯性刨一刨根底，再结合产品设计方面，看看有哪些可取之处。
 公开的数据与源头 这轮讨论的数据源头是 Sensor Tower 的移动应用面板，覆盖 2026 年 9 月、81 个国家、iOS 与 Android 统一口径的新增安装用户。Menlo Ventures 合伙人 Deedy Das 于 10 月 12 日在 X 和 LinkedIn 发布了这张 D1 至 D14 的留存曲线图。
 先看公开流传的这张核心留存走势图：
 从图中的完整曲线，能清楚看到各款应用新用户的回访流转过程：
-次日冲高（D1）：Muse 达到 73.3%，几乎是 ChatGPT（41.3%）的两倍。 中途反超（Day ~8.</description></item><item><title>Muse，国外火热的 Personal Agent，有哪些用法和我的个人感受</title><link>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</link><pubDate>Sat, 03 Oct 2026 16:44:17 +0800</pubDate><guid>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</guid><description>当下的 AI 圈每天都在找寻和追逐新热点。这几天，X上讨论最多的是 Personal Agent ，特别是随着 Meta 的 Muse 爆火出圈，听闻国内字节和腾讯都有团队在抓紧研发对应版本。我试用了一段时间 Muse，对比之前用过的 Grok，谈谈它的常见用法和主观感受。
+次日冲高（D1）：Muse 达到 73.3%，几乎是 ChatGPT（41.3%）的两倍。 中途反超（Day ~8.</description>
+    </item>
+    
+    <item>
+      <title>Muse，国外火热的 Personal Agent，有哪些用法和我的个人感受</title>
+      <link>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</link>
+      <pubDate>Sat, 03 Oct 2026 16:44:17 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/muse-personal-agent-getting-started-guide-and-subjective-impressions/</guid>
+      <description>当下的 AI 圈每天都在找寻和追逐新热点。这几天，X上讨论最多的是 Personal Agent ，特别是随着 Meta 的 Muse 爆火出圈，听闻国内字节和腾讯都有团队在抓紧研发对应版本。我试用了一段时间 Muse，对比之前用过的 Grok，谈谈它的常见用法和主观感受。
 一开始我是排斥 Muse的。一方面觉得它和 Grok 是一类产品，我已经有一个了不需要了，而且meta的基础模型根本排不上号。另一方面是它的宣发太饱和，病毒营销很厉害。你能在各类介绍文章和视频下看到裂变邀请码，看着就烦。
 转过头来想，即使拉人裂变是一种经典病毒营销策略，但能把这个玩起来的产品不多。
 他们控制了早期发布范围，仅限北美地区，但可绕过方式的风控又做得很松。推特上刚好缺素材，博主们需要热点。搞定 Muse 的使用资格成了一种身份彰显和自我认同。在营销切入这一块，他们做得还不是错的（舍得花钱）。
@@ -21,4 +45,8 @@ Muse 的核心交互依然依赖对话。即使今天，大家仍然逃不开 Ch
 使用场景方面，网上有个案例网站，40%的例子集中在省钱。不得不说，这类内容很能吸流量。比如让 AI 推荐服务、谈判砍价。此外，购物和旅行是他们强推的，主要作用还是帮忙监控价格或代下单。整体而言，是在试图在生活化场景中找应用。
 受限于地区，和常用APP不同。我一般用它处理繁琐重复的事项，比如拉取网站数据，配置营销内容。这些事用写代码的codex这类工具来跑，略微过头，直接交给muse刚好。
 不过使用中，也有遇到障碍的地方。地图类操作非常麻烦，我让它计算多个坐标在地图上的位置，它搞不定。不适配国内环境。工作中涉及海外组件的部分，用起来还算自然。但牵扯到国内 App，权限是大问题。很多 App 根本不给 Agent 开放接口，能预感到国内产品会遇到同样问题。
-关于作者</description></item></channel></rss>
+关于作者</description>
+    </item>
+    
+  </channel>
+</rss>

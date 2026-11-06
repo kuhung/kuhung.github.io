@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>状态机 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E7%8A%B6%E6%80%81%E6%9C%BA/</link><description>Recent content in 状态机 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Oct 2026 11:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8A%B6%E6%80%81%E6%9C%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</title><link>https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/</link><pubDate>Fri, 23 Oct 2026 11:00:00 +0800</pubDate><guid>https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/</guid><description>在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>状态机 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E7%8A%B6%E6%80%81%E6%9C%BA/</link>
+    <description>Recent content in 状态机 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 23 Oct 2026 11:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%8A%B6%E6%80%81%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</title>
+      <link>https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/</link>
+      <pubDate>Fri, 23 Oct 2026 11:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/</guid>
+      <description>在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。
 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题：
 手里的股票并没有跌破趋势均线，但市场上出现了排名更靠前的新股票，到底要不要换？如果排名稍微掉了一两名，是不是必须立刻卖出？
 动量策略在学术论文与理想化回测中，往往能跑出极具吸引力的年化收益率。然而，绝大多数纸面优秀的动量系统，一旦在个人真实账户上运行，往往在几个月内就会因为频繁调仓、高昂的摩擦成本和巨大的执行阻力而难以维系。
@@ -9,4 +24,8 @@
 今天某只股票涨了 1%，名次从第 4 冲到了第 3；下周它稍微回调 0.5%，截面得分就被第 4 名、第 5 名的股票反超，名次滑落到了第 5 名。
 如果交易系统采用“无缓冲区”的对称买卖规则（例如：前 $K$ 名买入、跌出前 $K$ 名即卖出），在实盘中会带来两大致命代价：
 确定性的摩擦成本损耗（Friction Drag）：
-个人投资者在券商处面对着固定的交易佣金、交易所经手费、印花税以及买卖盘口滑点（哪怕大盘股单边也存在 5~10 bps 摩擦）。全仓频繁换手，在年换手率达到 250%~300% 时，摩擦成本每年可直接吞噬组合 2.</description></item></channel></rss>
+个人投资者在券商处面对着固定的交易佣金、交易所经手费、印花税以及买卖盘口滑点（哪怕大盘股单边也存在 5~10 bps 摩擦）。全仓频繁换手，在年换手率达到 250%~300% 时，摩擦成本每年可直接吞噬组合 2.</description>
+    </item>
+    
+  </channel>
+</rss>

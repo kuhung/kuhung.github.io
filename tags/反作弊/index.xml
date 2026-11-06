@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>反作弊 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/</link><description>Recent content in 反作弊 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 17 Mar 2026 10:37:36 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/index.xml" rel="self" type="application/rss+xml"/><item><title>GEO的过去、未来与反作弊算法</title><link>https://kuhung.me/posts/geo-and-anticheat/</link><pubDate>Tue, 17 Mar 2026 10:37:36 +0800</pubDate><guid>https://kuhung.me/posts/geo-and-anticheat/</guid><description>回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>反作弊 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/</link>
+    <description>Recent content in 反作弊 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 17 Mar 2026 10:37:36 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%8F%8D%E4%BD%9C%E5%BC%8A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GEO的过去、未来与反作弊算法</title>
+      <link>https://kuhung.me/posts/geo-and-anticheat/</link>
+      <pubDate>Tue, 17 Mar 2026 10:37:36 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/geo-and-anticheat/</guid>
+      <description>回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
 关注一位博主，曾短暂投入过GEO方面的创业，到年初放弃。而我当时也让Gemini的DeepResearch做了一次调研。从目前我的状态来看，大家就知道并未深度投入。
 为什么不深入？我当时有三个判断。
 第一，GEO 本质上还是 SEO。国内搞这套，说到底还是内容农场的路子。门槛低，没护城河。 第二，小规模跑通容易，但想做成大生意，得铺大量销售去对接老板。这不符合我“轻步快跑”的现状。 第三，算不清账。业内叫零点击。你很难证明大模型里的某句推荐，到底带来了多少实在的收入。没法算账，客户就没法持续掏钱。
@@ -24,4 +39,8 @@ GEO 怎么做 回到 GEO。大模型现在抓取内容，用的还是老一套�
 所以 GEO 的实操没什么高深技术。无非是写内容、调内容、发内容，跟大模型的反作弊规则做持续测试。
 GEO 的未来 搞清楚了怎么做，最后面临的是怎么交差。
 和 SEO 相比，GEO 最大的硬伤是数据归因断层。过去你能清楚看到用户搜了什么词、在页面停留了多久。但在 GEO 里，这些全成了黑盒。
-但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。</description></item></channel></rss>
+但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>美债供给 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E7%BE%8E%E5%80%BA%E4%BE%9B%E7%BB%99/</link>
+    <description>Recent content in 美债供给 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Nov 2026 15:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E7%BE%8E%E5%80%BA%E4%BE%9B%E7%BB%99/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚</title>
+      <link>https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/</link>
+      <pubDate>Fri, 06 Nov 2026 15:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/</guid>
+      <description>许多投资者重仓红利资产，图的是企业盈利扎实、现金流充沛、股息率高达 5% 到 6%，心想只要按期收息，就能远离大盘波动的侵扰。然而在实际看盘中，每当海外 10 年期或 30 年期美债收益率快速拉升时，不仅成长股遭遇估值杀跌，国内高股息板块往往也会承受流动性抽离与估值受压。更反直觉的是，有时美联储已停止加息，长端美债收益率却依然向上跳涨。传统金融学教科书通常假设利率期限结构仅取决于对未来短期利率的预期，Robin Greenwood 与 Dimitri Vayanos (2014) 在《Review of Financial Studies》发表奠基研究《Bond Supply and Excess Bond Returns》，打破了这一理想假定。他们证实政府国债的发行期限结构与套利者的资本约束，直接决定了全市场的利率期限溢价（Term Premium）与超额收益。本文作为「红利与宏观择时」全系列的收官篇，将前五篇探讨的现值解耦、期限结构、动量防守、资金挤兑与双螺旋，统一溯源至全球无风险资产定价的终极物理基石，并为红利投资者建立应对宏观贴现率波动的实盘攻防体系。
+本文是「红利与宏观择时」系列的第六篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑、流动性螺旋与宏观利率周期：
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防 ｜ 攻防截面的尾部风险：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋 ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚（本篇） ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、看盘困惑：手握高股息，为什么依然逃不开美债风暴？ 1. 股息安全垫的认知盲区 2. 无风险贴现率之锚的全局穿透力 二、Greenwood–Vayanos 理论机制：偏好习惯与套利者资本约束 1. 李嘉图等价与纯预期假说的现实失灵 2. 偏好习惯投资者（Preferred-Habitat Clienteles）的期限刚性 3. 套利者资产负债表与久期风险补偿 4. 套利者财富受损（ΔW_arb &amp;lt; 0）的非线性放大效应 三、全样本实证检验与累计持有期收益口径对齐 1. 债务期限结构指标（D^(10+)/D 与 M_t）的工程定义 2. 收益率口径修正：单期收益错位 vs.</description>
+    </item>
+    
+  </channel>
+</rss>

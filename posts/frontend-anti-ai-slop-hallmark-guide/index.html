@@ -1,28 +1,555 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="拆解开源项目 Hallmark 的反模式拦截机制与内置设计模板，结合真实落地页改版案例与社区反馈，聊聊大模型写前端的常见破绽，以及为什么落在成熟模板里比让 AI 自由发挥更省事。"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=prev href=https://kuhung.me/posts/anthropic-form-s1-ipo-filing/><link rel=next href=https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/><link rel=canonical href=https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=20261029-a"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=20261029-a"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=20261029-a"><link rel=icon type=image/x-icon href="/favicon.ico?v=20261029-a"><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>又一个去 AI Slop 工具？Hallmark 原理解析与实测 | 谷粒 kuhung</title><meta name=title content="又一个去 AI Slop 工具？Hallmark 原理解析与实测 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-28T00:25:00+08:00","datePublished":"2026-10-28T00:25:00+08:00","description":"拆解开源项目 Hallmark 的反模式拦截机制与内置设计模板，结合真实落地页改版案例与社区反馈，聊聊大模型写前端的常见破绽，以及为什么落在成熟模板里比让 AI 自由发挥更省事。","headline":"又一个去 AI Slop 工具？Hallmark 原理解析与实测","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 前端开发, UI设计, Hallmark, 代码助手, Claude, Cursor","mainEntityOfPage":{"@id":"https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/","@type":"WebPage"},"name":"又一个去 AI Slop 工具？Hallmark 原理解析与实测","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/","wordCount":297}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><article class=post-warp itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline">又一个去 AI Slop 工具？Hallmark 原理解析与实测</h1><div class=post-meta>Written by <a itemprop=name href=https://kuhung.me/ rel=author>谷粒</a> with ♥
-<span class=post-time>on <time datetime=2026-10-28 itemprop=datePublished>October 28, 2026</time></span>
-in
-<i class="iconfont icon-folder"></i>
-<span class=post-category><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/>技术技巧</a></span>
-|</div></header><div class=post-toc id=post-toc><h2 class=post-toc-title></h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#一典型破绽与-70-余条拦截规则>一、典型破绽与 70 余条拦截规则</a></li><li><a href=#二hallmark-的运行逻辑与内置模版>二、Hallmark 的运行逻辑与内置模版</a><ul><li><a href=#1-先抽设计模板再动手写代码>1. 先抽设计模板，再动手写代码</a></li><li><a href=#2-三层分级floor--reflex--finish>2. 三层分级（Floor / Reflex / Finish）</a></li><li><a href=#3-本地渲染检查与独立子代理复审>3. 本地渲染检查与独立子代理复审</a></li></ul></li><li><a href=#三业务落地页的前后改版对比>三、业务落地页的前后改版对比</a></li><li><a href=#四社区负面反馈与实测中的不足>四、社区负面反馈与实测中的不足</a></li><li><a href=#五落地页去-ai-味的建议做法>五、落地页去 AI 味的建议做法</a></li><li><a href=#关注我的其他账号>关注我的其他账号</a></li></ul></nav></div></div><script type=text/javascript>window.onload=function(){var n,o,e=$(".post-toc"),t=$(".post-comment"),i=e.offset().top,s=e.height(),a=e[0].offsetTop;$(window).scroll(function(){var r=Math.max(document.body.scrollTop,document.documentElement.scrollTop);t.length>0&&(n=t.offset().top,o=n-r-s),i<r?(e.css({position:"fixed"}),t.length>0&&n<r+s?e.css({top:o}):e.css({top:0})):(e.css({position:"absolute"}),e.css({top:a}))})}</script><div class=post-content><blockquote><p>声明：本文由 AI 辅助创作，经作者核实与修订。</p></blockquote><p>平时写前端或者做产品落地页的时候，经常会遇到一种情况，就是页面有一股“AI 潲水味”（AI slop）。代码跑起来看起来没错，控制台也没有报错，但网页一打开，扑面而来就是一股廉价的塑料感：暗色底板、紫蓝渐变、悬浮发光球、大写英文小标签，外加三等分的卡片。</p><p>这个问题不限于某一家模型。哪怕用现在能力很强的 Claude Opus 5.5 或者 Codex 里的模型，只要不加干预地让它写页面，照样会掉进这些固定套路。每次主流模型改版迭代，社区里都会冒出一批关于界面同质化的吐槽；大家被折腾久了，也就陆续做出了一些反制工具。</p><p>体验设计里常提“峰终定律”（Peak-End Rule）：人对一段体验的整体评价，主要取决于过程中的峰值体验和收尾那一下的感受。做产品落地页也是这个理。访客点进来的第一眼，如果看到的是一张千篇一律的 AI 模板脸，对产品的信任感就很难建立起来。</p><p>开源项目 <a href=https://github.com/Nutlope/hallmark>Hallmark</a> 就是众多反制措施里的一个。它做成了一套挂载在编程助手里的技能插件（Skill），思路是：既然模型改不掉默认手癖，那就先立规矩、给模板；规矩立好了，才不烧心。</p><hr><h2 id=一典型破绽与-70-余条拦截规则>一、典型破绽与 70 余条拦截规则</h2><p>模型在没有具体约束时，交出来的往往是训练语料里最四平八稳的平均样式。先看一张实测生成的反面样本，里面集中了四处高频破绽：</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/10/1981724011b70abb.webp alt="大模型写前端的高频破绽（典型 AI 样式拆解）" class=lazyload><figcaption class=image-caption>大模型写前端的高频破绽（典型 AI 样式拆解）</figcaption></figure></p><p>对照图里的标注，能看到这四类典型毛病：</p><ol><li><strong>大写英文眉标（Eyebrow）</strong>：中文大标题正上方，总要顶一行字号很小、字间距拉得很开的大写英文标签。这类小标签除了增加视觉杂音，没有提供新信息。</li><li><strong>伪流程与深色色块</strong>：在页面中间铺一大块深暗色背景，上面排一行“步骤1 → 步骤2 → 步骤3”这样带箭头的词，用来凑版面。</li><li><strong>卡片套卡片</strong>：首屏往下习惯性排三列等宽卡片，外层边框里再套内层边框，页面上全是框线。</li><li><strong>按钮粘附箭头与假交互</strong>：主按钮文字后面随手加个 <code>→</code> 箭头；底部的输入框点完只弹一个静态成功提示，背后根本没有发网络请求。</li></ol><p>而 Hallmark 整理的破绽远不止上面这四样。整个规则表一共列了 <strong>70 多条具体禁令（编号从 Gate 1 到 Gate 85）</strong>，外加 <strong>26 项细节检查（F1 到 F26）</strong>，按五个维度把大模型的常见AI味列了张清单：</p><table><thead><tr><th>维度</th><th>拦截的典型破绽（Tell）</th><th>规则要求的处理方式</th><th>代表条款</th></tr></thead><tbody><tr><td><strong>颜色与表面</strong></td><td>紫蓝/紫粉渐变、暗底青光、悬浮发光球、直接拿 Tailwind 默认色（如 indigo-500）当主色</td><td>用单一锚点色与带微弱色相的纸张底色；颜色和字体统一走 CSS 变量（Token）</td><td>Gate 2a, 7a, 29, 48, 74</td></tr><tr><td><strong>字体与排版</strong></td><td>标题上方的大写眉标、拉宽字间距的小标签、标题里单独把一个词标斜体或染色、拿等宽字体装点标签</td><td>标签用正文字体缩小一号、正常大小写；整行标题保持同一字重和颜色</td><td>Gate 1, 38i, 38iii, 54, 64, 67</td></tr><tr><td><strong>版式与骨架</strong></td><td>三列等宽图标卡、卡套卡、永远是“Hero → 三特性 → CTA → 邮件订阅”的固定章节顺序、一屏塞满字</td><td>限制单屏约 80 词；1280×800 首屏不滚动要看全标题、说明与主按钮；按真实业务动作排章节</td><td>Gate 3, 4, 8, 44b, 58, 85</td></tr><tr><td><strong>内容与交互</strong></td><td>编造客户评价与数字指标、假 Logo 墙、点完只弹“Sent/Thanks”却没接接口的假表单、手绘假浏览器框</td><td>没给的数据直接留空或删区块；未接后端的表单诚实标注；有真实项目就跑起来截图</td><td>Gate 19, 46a, 47a, 70, 84</td></tr><tr><td><strong>动效与无障碍</strong></td><td><code>transition: all</code>、用动画改宽高位置、砍掉键盘焦点环、对比度不足导致文字发虚</td><td>动效只改 <code>transform</code> 和 <code>opacity</code>；保留高对比度焦点环；支持系统的减少动态偏好</td><td>Gate 10a, 26a, 27, 40, 41</td></tr></tbody></table><hr><h2 id=二hallmark-的运行逻辑与内置模版>二、Hallmark 的运行逻辑与内置模版</h2><p>如果只是给模型塞一张几十条的禁止清单，模型写着写着还是容易忘。Hallmark 管住模型靠的是三块设计：先抽签定方向、分层设卡，再加一道独立的审查工序。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/10/92069ac1076031e7.webp alt="Hallmark 约束分层与自动化去味机制" class=lazyload><figcaption class=image-caption>Hallmark 约束分层与自动化去味机制</figcaption></figure></p><h3 id=1-先抽设计模板再动手写代码>1. 先抽设计模板，再动手写代码</h3><p>大模型每次生成都长一样，很大一部分原因是没有具体的视觉参照。Hallmark 在技能包里直接塞了一套现成的设计底座，要求写代码前先走完准备流程：</p><ul><li><strong>起手检查与单次追问</strong>：先读项目根目录有没有 <code>DESIGN.md</code> 或已有样式变量；接着只发一条消息问清四件事：有什么真材料（截图、真实数据）、给谁看、页面要促成哪一个动作、选什么极端语气（明确规定“干净现代”不算语气，因为说了等于没说）。</li><li><strong>48 套主题材料（Theme Materials）</strong>：在 <code>references/themes/</code> 目录下内置了数十套主题定义。它们给定了纸张底色、字体搭配、表面层次和组件气质。每次生成时，脚本 <code>theme.mjs deal</code> 会从库里随机抽出 3 套候选，挑中后再生成对应的 <code>tokens.css</code> 和 <code>base.css</code>，防止模型每次都滑向那套已经被用烂的“奶油底色 + 衬线大字 + 陶土橙色”。</li><li><strong>21 种页面宏观结构（Macrostructures）</strong>：在 <code>references/macrostructures/</code> 里定义了工作台（Workbench）、长文档（Long Document）、画廊、信件等 21 种骨架，配合 <code>anatomy.md</code> 按访客的实际意图（订阅、购买、预约、试用）决定页面怎么排，避开千篇一律的三段式落地页。</li><li><strong>750 多张开放许可图库</strong>：用户没给配图时，通过脚本从内置的 Wikimedia 开放图库索引里调取真实摄影照片占位，并在页脚自动加上署名，不让模型用空相框或渐变色块敷衍。</li></ul><h3 id=2-三层分级floor--reflex--finish>2. 三层分级（Floor / Reflex / Finish）</h3><p>准备好模版后，70 多条规则按严厉程度分成三档执行：</p><table><thead><tr><th>层级</th><th>约束性质</th><th>触发后的处理规则</th></tr></thead><tbody><tr><td><strong>Floor（底线红线）</strong></td><td>不可豁免（共 16 条核心红线）</td><td>包含代码正确性、无障碍、不造假，以及 4 条 Hallmark 自定的硬规矩（禁眉标、禁拉宽大写小标签、单屏 80 词预算、禁粘附箭头等模板标点）。触发任何一条直接判 <code>FAIL</code>，不准交稿。</td></tr><tr><td><strong>Reflex（模型手癖）</strong></td><td>默认拦截，有条件豁免</td><td>针对三列等宽卡、渐变字等模型惯性。确因业务需要保留时，要在 CSS 文件开头的 Hallmark Stamp 注释里写明条款号、证据和理由；同一条连续豁免三次，就要写进项目的 <code>DESIGN.md</code>。</td></tr><tr><td><strong>Finish（收尾细节）</strong></td><td>26 项工艺检查，不挡发布</td><td>检查直引号改弯引号、省略号规范、大数字等宽对齐、标题断行平衡等细节，只出报告并要求回应，不阻塞交付。</td></tr></tbody></table><h3 id=3-本地渲染检查与独立子代理复审>3. 本地渲染检查与独立子代理复审</h3><p>自己写完的代码自己审，模型往往会放水。Hallmark 在收尾阶段加了两道外部检验：</p><ol><li><strong>脚本静态与渲染双查（<code>sloplint.mjs</code>）</strong>：Node 脚本先扫一遍 HTML 和 CSS 源码，接着调起无头浏览器（Puppeteer）在本地把页面按不同宽度渲染出来，检查有没有横向滚动条、文字重叠、对比度不够或者首屏高度超标。</li><li><strong>无历史记忆的独立审查（Fresh Context Reviewer）</strong>：首屏（Hero）写完和整页收尾时，流程要求单独拉起一个没有之前对话上下文的子代理（Subagent），只把渲染截图和规则表喂给它。新助手按 <code>recapture</code>、<code>rebuild</code>、<code>fix</code>、<code>ship</code> 四档给出判定，有问题就打回去重改。</li></ol><hr><h2 id=三业务落地页的前后改版对比>三、业务落地页的前后改版对比</h2><p>顺着这套工作流，我拿手头一个日语复习工具的落地页做了次对照实验。先让 Codex 在没有任何额外规则的情况下按需求自由发挥，再调用 Hallmark 走一遍重构。</p><p>左边是模型自由发挥生成的初稿，右边是套用规则收敛后的页面：</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/10/294a1fa94fdd4ccc.webp alt=实际业务落地页改版前后标注对比 class=lazyload><figcaption class=image-caption>实际业务落地页改版前后标注对比</figcaption></figure></p><p>对照左边红框标出的位置，能看到模型自由发挥时的几个老毛病：</p><ul><li><strong>大写英文眉标</strong>：中文标题上方硬塞了一行 <code>A LITTLE EVERY DAY</code>。</li><li><strong>伪流程与深色大块</strong>：中间铺了一大块深墨绿色背景，上面顶着 <code>RECALL → CHECK → REFLECT</code>，打断了页面的阅读节奏。</li><li><strong>按钮粘附箭头</strong>：主按钮文字后面习惯性缀了个箭头，写成 <code>开始复习 →</code>。</li><li><strong>卡片套卡片</strong>：下方练习区在浅色大框里又套了一层白底小框，框线叠框线。</li></ul><p>右边是按纸张主题收敛后的版本：删掉了英文眉标和按钮箭头；拆掉多余的外层嵌套，左侧留极简导航，右侧直接摆出“今日复习 5 个考点”的卡片；视觉重心回到了复习内容本身。虽然细看还是有规整的模板痕迹，但比起左边的初稿，顺眼和好用程度提升了不少。</p><hr><h2 id=四社区负面反馈与实测中的不足>四、社区负面反馈与实测中的不足</h2><p>不过实际用下来，结合社区里的讨论，也能看到这类规则插件管不到的地方。</p><p>在 Hacker News 的评论区里，有几条典型反馈：</p><blockquote><p>“试过好几个类似的品味约束插件，做出来的页面最后还是会收敛到同一张规矩但干瘪的脸。”<br>“哪怕 README 里放出来的那些示范截图，一眼看过去依然写满了 AI 生成的味道。”</p></blockquote><p>工具跑出 <code>0 FAIL</code>，说明页面避开了明文列出来的那几十种低级破绽，离好看、有辨识度还有一段距离。规则能把下限兜住，审美上限始终在人身上。</p><p>在我把 Hallmark 用到自己另一个数据研究站点的落地页时，就遇到了三处工具查不出来、得靠人眼审美去改的细节：</p><ol><li><strong>中英文混排的生硬断行</strong>：Hallmark 的工艺检查里鼓励给标题加自动平衡（<code>text-wrap: balance</code>）。但在中英文和连字符混排的标题里，这个属性经常把一个完整的英文专有名词从连字符处生生切成两行。最后还是得靠人看出来，手动把自动平衡关掉。</li><li><strong>左右对半切导致的首屏割裂</strong>：模型很喜欢把首屏做成左右对半平分的双栏网格，把封面和标题塞右边，文章摘要和主按钮甩到好几屏下面，中间还横着一张大图。这种结构并不违规，但读起来非常割裂。后来我按自己的阅读习惯，动手改成了单栏纵向排布，把封面、标题、摘要和入口收拢成一个整体。</li><li><strong>空壳化的交互状态</strong>：模型写的表单哪怕样式过关、也留了未连接提示，到了真实业务里怎么接状态、怎么给报错反馈，依然得人来一条条核对网络请求。</li></ol><hr><h2 id=五落地页去-ai-味的建议做法>五、落地页去 AI 味的建议做法</h2><p>回到开头说的峰终定律，访客对一个页面的印象，主要就看第一眼干不干净，以及最后点按钮、填表单顺不顺畅。</p><p>如果不擅长视觉设计，平时也没工夫在对话框里跟模型反复拉扯“再改得现代一点”，有三条省事的做法可以参考：</p><ol><li><strong>直接找一个 80 分的成熟模板当底子</strong>：在同类产品里挑一个公认排版干净的现成网页或开源模板，把截图和结构喂给 AI，让它照着现成骨架改，比让它自己抽签发挥稳得多。</li><li><strong>用一份短清单排除高频AI味</strong>：不用每次都跑一整套复杂的渲染流水线。把最明显的几条禁令（禁紫蓝渐变与发光球、禁大写英文眉标、禁三列卡套卡、禁假表单）直接写进项目的 <code>DESIGN.md</code> 里，让 AI 只在模板框架内替换品牌色和真实业务数据。</li><li><strong>守住首屏和收尾就停手</strong>：如果浓重的 AI 塑料感确实拉低了转化，花半小时用 <code>/hallmark audit</code> 扫一遍、清掉明显的破绽很划算。但如果产品本身的需求还没跑通，就没必要在界面修饰上花太多时间。</li></ol><p>改几行 CSS、删两个小标签，肉眼马上能看到变化，这种即时反馈很容易让人产生“项目在往前推进”的错觉。只要首屏看着干净克制，能真实跑通业务，及格线就到了，剩下的精力留给产品功能本身更重要。后者，我认为需要更多精力才对。</p><hr><h2 id=关注我的其他账号>关注我的其他账号</h2><p>如果这篇文章对你有用，欢迎分享给也关心前端开发与 AI 工具的朋友。后续的技术实践、Agent 工作流与产品分析，也会发在下面这些账号：</p><ul><li><strong>微信公众号：<a href=/images/post/wechat.JPG>谷粒粒</a></strong>，在微信搜索「谷粒粒」，或点击查看公众号二维码。</li><li><strong>小红书：<a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4>谷粒粒</a></strong>。</li><li><strong>知乎：<a href=https://www.zhihu.com/people/kuhungio>谷粒</a></strong>。</li><li><strong>Twitter / X：<a href=https://x.com/kuhungio>kuhung（@kuhungio）</a></strong>。</li></ul><p>谷粒 · KUHUNG</p></div><div class=post-copyright><p class=copyright-item><span>Author:</span>
-<span>谷粒</span></p><p class=copyright-item><span>Link:</span>
-<a href=https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/><script>document.write(decodeURI(location.origin+location.pathname))</script></a></p><p class="copyright-item lincese">本文采用<a rel=license href=http://creativecommons.org/licenses/by-nc/4.0/ target=_blank>知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class=post-tags><section><i class="iconfont icon-tag"></i>Tag(s):
-<span class=tag><a href=https://kuhung.me/tags/ai/>#AI</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/>#前端开发</a></span>
-<span class=tag><a href=https://kuhung.me/tags/ui%E8%AE%BE%E8%AE%A1/>#UI设计</a></span>
-<span class=tag><a href=https://kuhung.me/tags/hallmark/>#Hallmark</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/>#代码助手</a></span>
-<span class=tag><a href=https://kuhung.me/tags/claude/>#Claude</a></span>
-<span class=tag><a href=https://kuhung.me/tags/cursor/>#Cursor</a></span></section><section><a href=javascript:window.history.back();>back</a></span> ·
-<span><a href=https://kuhung.me/>home</a></span></section></div><div class=post-nav><a href=https://kuhung.me/posts/anthropic-form-s1-ipo-filing/ class=prev rel=prev title="Anthropic 招股书解读：经营改善与长期算力支出压力"><i class="iconfont icon-left"></i>&nbsp;Anthropic 招股书解读：经营改善与长期算力支出压力</a>
-<a href=https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/ class=next rel=next title=百分百胜率的聪明钱背后的假象，模型与真实分布>百分百胜率的聪明钱背后的假象，模型与真实分布&nbsp;<i class="iconfont icon-right"></i></a></div></article><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>window.localStorage&&window.localStorage.removeItem("theme"),document.body.classList.remove("dark-theme"),document.documentElement.classList.remove("dark-theme")</script></footer><link href=//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css rel=stylesheet><script src=/js/vendor_gallery.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="拆解开源项目 Hallmark 的反模式拦截机制与内置设计模板，结合真实落地页改版案例与社区反馈，聊聊大模型写前端的常见破绽，以及为什么落在成熟模板里比让 AI 自由发挥更省事。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" />
+  <link rel="next" href="https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/" />
+  <link rel="canonical" href="https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           又一个去 AI Slop 工具？Hallmark 原理解析与实测 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="又一个去 AI Slop 工具？Hallmark 原理解析与实测 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-28T00:25:00+08:00","datePublished":"2026-10-28T00:25:00+08:00","description":"拆解开源项目 Hallmark 的反模式拦截机制与内置设计模板，结合真实落地页改版案例与社区反馈，聊聊大模型写前端的常见破绽，以及为什么落在成熟模板里比让 AI 自由发挥更省事。","headline":"又一个去 AI Slop 工具？Hallmark 原理解析与实测","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 前端开发, UI设计, Hallmark, 代码助手, Claude, Cursor","mainEntityOfPage":{"@id":"https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/","@type":"WebPage"},"name":"又一个去 AI Slop 工具？Hallmark 原理解析与实测","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/","wordCount":297}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">又一个去 AI Slop 工具？Hallmark 原理解析与实测</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-10-28 itemprop="datePublished">October 28, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一典型破绽与-70-余条拦截规则">一、典型破绽与 70 余条拦截规则</a></li>
+    <li><a href="#二hallmark-的运行逻辑与内置模版">二、Hallmark 的运行逻辑与内置模版</a>
+      <ul>
+        <li><a href="#1-先抽设计模板再动手写代码">1. 先抽设计模板，再动手写代码</a></li>
+        <li><a href="#2-三层分级floor--reflex--finish">2. 三层分级（Floor / Reflex / Finish）</a></li>
+        <li><a href="#3-本地渲染检查与独立子代理复审">3. 本地渲染检查与独立子代理复审</a></li>
+      </ul>
+    </li>
+    <li><a href="#三业务落地页的前后改版对比">三、业务落地页的前后改版对比</a></li>
+    <li><a href="#四社区负面反馈与实测中的不足">四、社区负面反馈与实测中的不足</a></li>
+    <li><a href="#五落地页去-ai-味的建议做法">五、落地页去 AI 味的建议做法</a></li>
+    <li><a href="#关注我的其他账号">关注我的其他账号</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>声明：本文由 AI 辅助创作，经作者核实与修订。</p>
+</blockquote>
+<p>平时写前端或者做产品落地页的时候，经常会遇到一种情况，就是页面有一股“AI 潲水味”（AI slop）。代码跑起来看起来没错，控制台也没有报错，但网页一打开，扑面而来就是一股廉价的塑料感：暗色底板、紫蓝渐变、悬浮发光球、大写英文小标签，外加三等分的卡片。</p>
+<p>这个问题不限于某一家模型。哪怕用现在能力很强的 Claude Opus 5.5 或者 Codex 里的模型，只要不加干预地让它写页面，照样会掉进这些固定套路。每次主流模型改版迭代，社区里都会冒出一批关于界面同质化的吐槽；大家被折腾久了，也就陆续做出了一些反制工具。</p>
+<p>体验设计里常提“峰终定律”（Peak-End Rule）：人对一段体验的整体评价，主要取决于过程中的峰值体验和收尾那一下的感受。做产品落地页也是这个理。访客点进来的第一眼，如果看到的是一张千篇一律的 AI 模板脸，对产品的信任感就很难建立起来。</p>
+<p>开源项目 <a href="https://github.com/Nutlope/hallmark">Hallmark</a> 就是众多反制措施里的一个。它做成了一套挂载在编程助手里的技能插件（Skill），思路是：既然模型改不掉默认手癖，那就先立规矩、给模板；规矩立好了，才不烧心。</p>
+<hr>
+<h2 id="一典型破绽与-70-余条拦截规则">一、典型破绽与 70 余条拦截规则</h2>
+<p>模型在没有具体约束时，交出来的往往是训练语料里最四平八稳的平均样式。先看一张实测生成的反面样本，里面集中了四处高频破绽：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/1981724011b70abb.webp" alt="大模型写前端的高频破绽（典型 AI 样式拆解）" class="lazyload"><figcaption class="image-caption">大模型写前端的高频破绽（典型 AI 样式拆解）</figcaption></figure></p>
+<p>对照图里的标注，能看到这四类典型毛病：</p>
+<ol>
+<li><strong>大写英文眉标（Eyebrow）</strong>：中文大标题正上方，总要顶一行字号很小、字间距拉得很开的大写英文标签。这类小标签除了增加视觉杂音，没有提供新信息。</li>
+<li><strong>伪流程与深色色块</strong>：在页面中间铺一大块深暗色背景，上面排一行“步骤1 → 步骤2 → 步骤3”这样带箭头的词，用来凑版面。</li>
+<li><strong>卡片套卡片</strong>：首屏往下习惯性排三列等宽卡片，外层边框里再套内层边框，页面上全是框线。</li>
+<li><strong>按钮粘附箭头与假交互</strong>：主按钮文字后面随手加个 <code>→</code> 箭头；底部的输入框点完只弹一个静态成功提示，背后根本没有发网络请求。</li>
+</ol>
+<p>而 Hallmark 整理的破绽远不止上面这四样。整个规则表一共列了 <strong>70 多条具体禁令（编号从 Gate 1 到 Gate 85）</strong>，外加 <strong>26 项细节检查（F1 到 F26）</strong>，按五个维度把大模型的常见AI味列了张清单：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>拦截的典型破绽（Tell）</th>
+<th>规则要求的处理方式</th>
+<th>代表条款</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>颜色与表面</strong></td>
+<td>紫蓝/紫粉渐变、暗底青光、悬浮发光球、直接拿 Tailwind 默认色（如 indigo-500）当主色</td>
+<td>用单一锚点色与带微弱色相的纸张底色；颜色和字体统一走 CSS 变量（Token）</td>
+<td>Gate 2a, 7a, 29, 48, 74</td>
+</tr>
+<tr>
+<td><strong>字体与排版</strong></td>
+<td>标题上方的大写眉标、拉宽字间距的小标签、标题里单独把一个词标斜体或染色、拿等宽字体装点标签</td>
+<td>标签用正文字体缩小一号、正常大小写；整行标题保持同一字重和颜色</td>
+<td>Gate 1, 38i, 38iii, 54, 64, 67</td>
+</tr>
+<tr>
+<td><strong>版式与骨架</strong></td>
+<td>三列等宽图标卡、卡套卡、永远是“Hero → 三特性 → CTA → 邮件订阅”的固定章节顺序、一屏塞满字</td>
+<td>限制单屏约 80 词；1280×800 首屏不滚动要看全标题、说明与主按钮；按真实业务动作排章节</td>
+<td>Gate 3, 4, 8, 44b, 58, 85</td>
+</tr>
+<tr>
+<td><strong>内容与交互</strong></td>
+<td>编造客户评价与数字指标、假 Logo 墙、点完只弹“Sent/Thanks”却没接接口的假表单、手绘假浏览器框</td>
+<td>没给的数据直接留空或删区块；未接后端的表单诚实标注；有真实项目就跑起来截图</td>
+<td>Gate 19, 46a, 47a, 70, 84</td>
+</tr>
+<tr>
+<td><strong>动效与无障碍</strong></td>
+<td><code>transition: all</code>、用动画改宽高位置、砍掉键盘焦点环、对比度不足导致文字发虚</td>
+<td>动效只改 <code>transform</code> 和 <code>opacity</code>；保留高对比度焦点环；支持系统的减少动态偏好</td>
+<td>Gate 10a, 26a, 27, 40, 41</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="二hallmark-的运行逻辑与内置模版">二、Hallmark 的运行逻辑与内置模版</h2>
+<p>如果只是给模型塞一张几十条的禁止清单，模型写着写着还是容易忘。Hallmark 管住模型靠的是三块设计：先抽签定方向、分层设卡，再加一道独立的审查工序。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/92069ac1076031e7.webp" alt="Hallmark 约束分层与自动化去味机制" class="lazyload"><figcaption class="image-caption">Hallmark 约束分层与自动化去味机制</figcaption></figure></p>
+<h3 id="1-先抽设计模板再动手写代码">1. 先抽设计模板，再动手写代码</h3>
+<p>大模型每次生成都长一样，很大一部分原因是没有具体的视觉参照。Hallmark 在技能包里直接塞了一套现成的设计底座，要求写代码前先走完准备流程：</p>
+<ul>
+<li><strong>起手检查与单次追问</strong>：先读项目根目录有没有 <code>DESIGN.md</code> 或已有样式变量；接着只发一条消息问清四件事：有什么真材料（截图、真实数据）、给谁看、页面要促成哪一个动作、选什么极端语气（明确规定“干净现代”不算语气，因为说了等于没说）。</li>
+<li><strong>48 套主题材料（Theme Materials）</strong>：在 <code>references/themes/</code> 目录下内置了数十套主题定义。它们给定了纸张底色、字体搭配、表面层次和组件气质。每次生成时，脚本 <code>theme.mjs deal</code> 会从库里随机抽出 3 套候选，挑中后再生成对应的 <code>tokens.css</code> 和 <code>base.css</code>，防止模型每次都滑向那套已经被用烂的“奶油底色 + 衬线大字 + 陶土橙色”。</li>
+<li><strong>21 种页面宏观结构（Macrostructures）</strong>：在 <code>references/macrostructures/</code> 里定义了工作台（Workbench）、长文档（Long Document）、画廊、信件等 21 种骨架，配合 <code>anatomy.md</code> 按访客的实际意图（订阅、购买、预约、试用）决定页面怎么排，避开千篇一律的三段式落地页。</li>
+<li><strong>750 多张开放许可图库</strong>：用户没给配图时，通过脚本从内置的 Wikimedia 开放图库索引里调取真实摄影照片占位，并在页脚自动加上署名，不让模型用空相框或渐变色块敷衍。</li>
+</ul>
+<h3 id="2-三层分级floor--reflex--finish">2. 三层分级（Floor / Reflex / Finish）</h3>
+<p>准备好模版后，70 多条规则按严厉程度分成三档执行：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>约束性质</th>
+<th>触发后的处理规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Floor（底线红线）</strong></td>
+<td>不可豁免（共 16 条核心红线）</td>
+<td>包含代码正确性、无障碍、不造假，以及 4 条 Hallmark 自定的硬规矩（禁眉标、禁拉宽大写小标签、单屏 80 词预算、禁粘附箭头等模板标点）。触发任何一条直接判 <code>FAIL</code>，不准交稿。</td>
+</tr>
+<tr>
+<td><strong>Reflex（模型手癖）</strong></td>
+<td>默认拦截，有条件豁免</td>
+<td>针对三列等宽卡、渐变字等模型惯性。确因业务需要保留时，要在 CSS 文件开头的 Hallmark Stamp 注释里写明条款号、证据和理由；同一条连续豁免三次，就要写进项目的 <code>DESIGN.md</code>。</td>
+</tr>
+<tr>
+<td><strong>Finish（收尾细节）</strong></td>
+<td>26 项工艺检查，不挡发布</td>
+<td>检查直引号改弯引号、省略号规范、大数字等宽对齐、标题断行平衡等细节，只出报告并要求回应，不阻塞交付。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-本地渲染检查与独立子代理复审">3. 本地渲染检查与独立子代理复审</h3>
+<p>自己写完的代码自己审，模型往往会放水。Hallmark 在收尾阶段加了两道外部检验：</p>
+<ol>
+<li><strong>脚本静态与渲染双查（<code>sloplint.mjs</code>）</strong>：Node 脚本先扫一遍 HTML 和 CSS 源码，接着调起无头浏览器（Puppeteer）在本地把页面按不同宽度渲染出来，检查有没有横向滚动条、文字重叠、对比度不够或者首屏高度超标。</li>
+<li><strong>无历史记忆的独立审查（Fresh Context Reviewer）</strong>：首屏（Hero）写完和整页收尾时，流程要求单独拉起一个没有之前对话上下文的子代理（Subagent），只把渲染截图和规则表喂给它。新助手按 <code>recapture</code>、<code>rebuild</code>、<code>fix</code>、<code>ship</code> 四档给出判定，有问题就打回去重改。</li>
+</ol>
+<hr>
+<h2 id="三业务落地页的前后改版对比">三、业务落地页的前后改版对比</h2>
+<p>顺着这套工作流，我拿手头一个日语复习工具的落地页做了次对照实验。先让 Codex 在没有任何额外规则的情况下按需求自由发挥，再调用 Hallmark 走一遍重构。</p>
+<p>左边是模型自由发挥生成的初稿，右边是套用规则收敛后的页面：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/10/294a1fa94fdd4ccc.webp" alt="实际业务落地页改版前后标注对比" class="lazyload"><figcaption class="image-caption">实际业务落地页改版前后标注对比</figcaption></figure></p>
+<p>对照左边红框标出的位置，能看到模型自由发挥时的几个老毛病：</p>
+<ul>
+<li><strong>大写英文眉标</strong>：中文标题上方硬塞了一行 <code>A LITTLE EVERY DAY</code>。</li>
+<li><strong>伪流程与深色大块</strong>：中间铺了一大块深墨绿色背景，上面顶着 <code>RECALL → CHECK → REFLECT</code>，打断了页面的阅读节奏。</li>
+<li><strong>按钮粘附箭头</strong>：主按钮文字后面习惯性缀了个箭头，写成 <code>开始复习 →</code>。</li>
+<li><strong>卡片套卡片</strong>：下方练习区在浅色大框里又套了一层白底小框，框线叠框线。</li>
+</ul>
+<p>右边是按纸张主题收敛后的版本：删掉了英文眉标和按钮箭头；拆掉多余的外层嵌套，左侧留极简导航，右侧直接摆出“今日复习 5 个考点”的卡片；视觉重心回到了复习内容本身。虽然细看还是有规整的模板痕迹，但比起左边的初稿，顺眼和好用程度提升了不少。</p>
+<hr>
+<h2 id="四社区负面反馈与实测中的不足">四、社区负面反馈与实测中的不足</h2>
+<p>不过实际用下来，结合社区里的讨论，也能看到这类规则插件管不到的地方。</p>
+<p>在 Hacker News 的评论区里，有几条典型反馈：</p>
+<blockquote>
+<p>“试过好几个类似的品味约束插件，做出来的页面最后还是会收敛到同一张规矩但干瘪的脸。”<br>
+“哪怕 README 里放出来的那些示范截图，一眼看过去依然写满了 AI 生成的味道。”</p>
+</blockquote>
+<p>工具跑出 <code>0 FAIL</code>，说明页面避开了明文列出来的那几十种低级破绽，离好看、有辨识度还有一段距离。规则能把下限兜住，审美上限始终在人身上。</p>
+<p>在我把 Hallmark 用到自己另一个数据研究站点的落地页时，就遇到了三处工具查不出来、得靠人眼审美去改的细节：</p>
+<ol>
+<li><strong>中英文混排的生硬断行</strong>：Hallmark 的工艺检查里鼓励给标题加自动平衡（<code>text-wrap: balance</code>）。但在中英文和连字符混排的标题里，这个属性经常把一个完整的英文专有名词从连字符处生生切成两行。最后还是得靠人看出来，手动把自动平衡关掉。</li>
+<li><strong>左右对半切导致的首屏割裂</strong>：模型很喜欢把首屏做成左右对半平分的双栏网格，把封面和标题塞右边，文章摘要和主按钮甩到好几屏下面，中间还横着一张大图。这种结构并不违规，但读起来非常割裂。后来我按自己的阅读习惯，动手改成了单栏纵向排布，把封面、标题、摘要和入口收拢成一个整体。</li>
+<li><strong>空壳化的交互状态</strong>：模型写的表单哪怕样式过关、也留了未连接提示，到了真实业务里怎么接状态、怎么给报错反馈，依然得人来一条条核对网络请求。</li>
+</ol>
+<hr>
+<h2 id="五落地页去-ai-味的建议做法">五、落地页去 AI 味的建议做法</h2>
+<p>回到开头说的峰终定律，访客对一个页面的印象，主要就看第一眼干不干净，以及最后点按钮、填表单顺不顺畅。</p>
+<p>如果不擅长视觉设计，平时也没工夫在对话框里跟模型反复拉扯“再改得现代一点”，有三条省事的做法可以参考：</p>
+<ol>
+<li><strong>直接找一个 80 分的成熟模板当底子</strong>：在同类产品里挑一个公认排版干净的现成网页或开源模板，把截图和结构喂给 AI，让它照着现成骨架改，比让它自己抽签发挥稳得多。</li>
+<li><strong>用一份短清单排除高频AI味</strong>：不用每次都跑一整套复杂的渲染流水线。把最明显的几条禁令（禁紫蓝渐变与发光球、禁大写英文眉标、禁三列卡套卡、禁假表单）直接写进项目的 <code>DESIGN.md</code> 里，让 AI 只在模板框架内替换品牌色和真实业务数据。</li>
+<li><strong>守住首屏和收尾就停手</strong>：如果浓重的 AI 塑料感确实拉低了转化，花半小时用 <code>/hallmark audit</code> 扫一遍、清掉明显的破绽很划算。但如果产品本身的需求还没跑通，就没必要在界面修饰上花太多时间。</li>
+</ol>
+<p>改几行 CSS、删两个小标签，肉眼马上能看到变化，这种即时反馈很容易让人产生“项目在往前推进”的错觉。只要首屏看着干净克制，能真实跑通业务，及格线就到了，剩下的精力留给产品功能本身更重要。后者，我认为需要更多精力才对。</p>
+<hr>
+<h2 id="关注我的其他账号">关注我的其他账号</h2>
+<p>如果这篇文章对你有用，欢迎分享给也关心前端开发与 AI 工具的朋友。后续的技术实践、Agent 工作流与产品分析，也会发在下面这些账号：</p>
+<ul>
+<li><strong>微信公众号：<a href="/images/post/wechat.JPG">谷粒粒</a></strong>，在微信搜索「谷粒粒」，或点击查看公众号二维码。</li>
+<li><strong>小红书：<a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4">谷粒粒</a></strong>。</li>
+<li><strong>知乎：<a href="https://www.zhihu.com/people/kuhungio">谷粒</a></strong>。</li>
+<li><strong>Twitter / X：<a href="https://x.com/kuhungio">kuhung（@kuhungio）</a></strong>。</li>
+</ul>
+<p>谷粒 · KUHUNG</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
+                    #前端开发</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ui%E8%AE%BE%E8%AE%A1/">
+                    #UI设计</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/hallmark/">
+                    #Hallmark</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E4%BB%A3%E7%A0%81%E5%8A%A9%E6%89%8B/">
+                    #代码助手</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/claude/">
+                    #Claude</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/cursor/">
+                    #Cursor</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" class="prev" rel="prev" title="Anthropic 招股书解读：经营改善与长期算力支出压力"><i class="iconfont icon-left"></i>&nbsp;Anthropic 招股书解读：经营改善与长期算力支出压力</a>
+        
+        
+        <a href="https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/" class="next" rel="next" title="百分百胜率的聪明钱背后的假象，模型与真实分布">百分百胜率的聪明钱背后的假象，模型与真实分布&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

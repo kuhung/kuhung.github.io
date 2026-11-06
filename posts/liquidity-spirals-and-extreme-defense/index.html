@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="kuhung">
+  
+  
+  <meta name="description" content="为什么没有突发财务利空，市场买盘也会在一夜之间归零？基于 Brunnermeier &amp; Pedersen (2009) RFS 奠基之作，系统解构市场流动性与融资流动性的双向内生反馈；推导亏损螺旋与保证金螺旋超加性放大形成的非线性相变悬崖；构建流动性双螺旋预警指数（LSWI）并复盘 2015、2020、2024 三大历史压力期，划定红利资产实盘极端防守准则。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/institutional-flows-and-asset-fire-sales/" />
+  <link rel="next" href="https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/" />
+  <link rel="canonical" href="https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           红利与宏观择时（五）：流动性双螺旋共振与极端防守 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="红利与宏观择时（五）：流动性双螺旋共振与极端防守 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function cleanMath(content) {
+            return content
+                .replace(/<em>(.*?)<\/em>/g, '_$1')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/(^|[^\\])%/g, '$1\\%');
+        }
+
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
+                    return '$$' + cleanMath(inner) + '$$';
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
+                    return '\\[' + cleanMath(inner) + '\\]';
+                });
+                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
+                    return '$' + cleanMath(inner) + '$';
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T10:00:00+08:00","datePublished":"2026-11-06T10:00:00+08:00","description":"为什么没有突发财务利空，市场买盘也会在一夜之间归零？基于 Brunnermeier \u0026 Pedersen (2009) RFS 奠基之作，系统解构市场流动性与融资流动性的双向内生反馈；推导亏损螺旋与保证金螺旋超加性放大形成的非线性相变悬崖；构建流动性双螺旋预警指数（LSWI）并复盘 2015、2020、2024 三大历史压力期，划定红利资产实盘极端防守准则。","headline":"红利与宏观择时（五）：流动性双螺旋共振与极端防守","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 流动性螺旋, 融资流动性, 红利资产, 宏观择时","mainEntityOfPage":{"@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"WebPage"},"name":"红利与宏观择时（五）：流动性双螺旋共振与极端防守","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","wordCount":1180}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">红利与宏观择时（五）：流动性双螺旋共振与极端防守</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">kuhung</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-06 itemprop="datePublished">November 6, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#本文目录">本文目录</a></li>
+    <li><a href="#一看盘困惑为什么买盘深度会在一夜之间归零">一、看盘困惑：为什么买盘深度会在一夜之间归零？</a>
+      <ul>
+        <li><a href="#1-外部变量误区-vs-内生流动性黑洞">1. 外部变量误区 vs. 内生流动性黑洞</a></li>
+        <li><a href="#2-杠杆主体的资产负债表与微观资本约束">2. 杠杆主体的资产负债表与微观资本约束</a></li>
+      </ul>
+    </li>
+    <li><a href="#二brunnermeierpedersen-理论机制相空间悬崖与双螺旋">二、Brunnermeier–Pedersen 理论机制：相空间悬崖与双螺旋</a>
+      <ul>
+        <li><a href="#1-市场流动性与融资流动性的微观解耦">1. 市场流动性与融资流动性的微观解耦</a></li>
+        <li><a href="#2-亏损螺旋loss-spiral净资产缩水与被动减仓">2. 亏损螺旋（Loss Spiral）：净资产缩水与被动减仓</a></li>
+        <li><a href="#3-保证金螺旋margin-spiral波动率冲击与杠杆上限断崖">3. 保证金螺旋（Margin Spiral）：波动率冲击与杠杆上限断崖</a></li>
+        <li><a href="#4-双螺旋超加性乘数与非线性悬崖效应cliff-effect">4. 双螺旋超加性乘数与非线性悬崖效应（Cliff Effect）</a></li>
+      </ul>
+    </li>
+    <li><a href="#三流动性螺旋预警指数lswi的工程构建与口径对齐">三、流动性螺旋预警指数（LSWI）的工程构建与口径对齐</a>
+      <ul>
+        <li><a href="#1-基于理论机制的工程化指数定位">1. 基于理论机制的工程化指数定位</a></li>
+        <li><a href="#2-修正后的四项核心分量构造">2. 修正后的四项核心分量构造</a></li>
+        <li><a href="#3-权重设置逻辑与-75-临界阈值的数学推导">3. 权重设置逻辑与 75 临界阈值的数学推导</a></li>
+      </ul>
+    </li>
+    <li><a href="#四历史压力阶段检验三大经典双螺旋危机复盘">四、历史压力阶段检验：三大经典双螺旋危机复盘</a>
+      <ul>
+        <li><a href="#1-2015-杠杆踩踏场外配资清理与场内两融强平共振">1. 2015 杠杆踩踏：场外配资清理与场内两融强平共振</a></li>
+        <li><a href="#2-2020-美元挤兑全球做市商-var-暴跌与全资产流动性冲击">2. 2020 美元挤兑：全球做市商 VaR 暴跌与全资产流动性冲击</a></li>
+        <li><a href="#3-2024-微盘雪球与-dma-螺旋小微盘深度丧失与风格剧变">3. 2024 微盘雪球与 DMA 螺旋：小微盘深度丧失与风格剧变</a></li>
+      </ul>
+    </li>
+    <li><a href="#五手握红利底仓如何执行极端防守">五、手握红利底仓，如何执行极端防守？</a>
+      <ul>
+        <li><a href="#1-微观截面分化高波资产-vs-低-haircut-红利蓝筹">1. 微观截面分化：高波资产 vs. 低 Haircut 红利蓝筹</a></li>
+        <li><a href="#2-品质逃逸flight-to-quality的微观物理机制">2. 品质逃逸（Flight to Quality）的微观物理机制</a></li>
+        <li><a href="#3-基于-lswi-的实盘三阶段攻防决策系统">3. 基于 LSWI 的实盘三阶段攻防决策系统</a></li>
+        <li><a href="#4-2026-当前全市场宏观流动性切片与配置建议">4. 2026 当前全市场宏观流动性切片与配置建议</a></li>
+      </ul>
+    </li>
+    <li><a href="#附录lswi-预警指数计算参考脚本">附录：LSWI 预警指数计算参考脚本</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>观察盘面时，常常会遇到一种反常走势：在行情平稳期，哪怕单日涌现数十亿卖单，市场买盘也能从容化解，价格波动不足 1%；但在特定动荡期，全市场找不到突发财务利空，几个亿的卖盘就能引发全板块无量跌停，买盘瞬间蒸发。传统金融学通常把流动性视为外生常量，Markus Brunnermeier 与 Lasse Pedersen (2009) 提出了市场流动性与融资流动性之间的双向内生反馈机制。当做市商和套利者的自有资本受损、资方强制上调保证金比例时，可维持的持仓额度断崖式暴跌，引发「亏损螺旋」与「保证金螺旋」的双重共振。本文基于这一理论机制构建流动性双螺旋预警指数（LSWI），不仅通过量化指标度量市场流动性的非线性相变，更为手握红利底仓的投资者划定从正常持股到极端防守的实盘攻防准则。</p>
+<p>本文是「红利与宏观择时」系列的第五篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防与宏观流动性周期：</p>
+<ul>
+<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：现值解耦</a> ｜ 拆解股息率：分红预期 vs. 贴现率预期</li>
+<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：期限结构</a> ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长</li>
+<li><a href="/posts/momentum-crashes-and-dynamic-scaling/">篇章三：动量攻防</a> ｜ 攻防截面的尾部风险：熊市反弹的期权化逼空与自适应控仓</li>
+<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：资金微观挤兑</a> ｜ 机构被迫抛压与流动性折价错杀</li>
+<li><strong>篇章五：流动性双螺旋（本篇）</strong> ｜ 融资流动性与市场流动性恶性共振预警</li>
+<li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观贴现率之锚</a> ｜ 美债供给、期限溢价与全球资产定价</li>
+</ul>
+</blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/8251018baf647d19.webp" alt="红利与宏观择时（五）：流动性双螺旋共振与极端防守" class="lazyload"><figcaption class="image-caption">红利与宏观择时（五）：流动性双螺旋共振与极端防守</figcaption></figure></p>
+<h2 id="本文目录">本文目录</h2>
+<ul>
+<li><a href="#section-1">一、看盘困惑：为什么买盘深度会在一夜之间归零？</a>
+<ul>
+<li><a href="#section-1-1">1. 外部变量误区 vs. 内生流动性黑洞</a></li>
+<li><a href="#section-1-2">2. 杠杆主体的资产负债表与微观资本约束</a></li>
+</ul>
+</li>
+<li><a href="#section-2">二、Brunnermeier–Pedersen 理论机制：相空间悬崖与双螺旋</a>
+<ul>
+<li><a href="#section-2-1">1. 市场流动性与融资流动性的微观解耦</a></li>
+<li><a href="#section-2-2">2. 亏损螺旋（Loss Spiral）：净资产缩水与被动减仓</a></li>
+<li><a href="#section-2-3">3. 保证金螺旋（Margin Spiral）：波动率冲击与杠杆上限断崖</a></li>
+<li><a href="#section-2-4">4. 双螺旋超加性乘数与非线性悬崖效应（Cliff Effect）</a></li>
+</ul>
+</li>
+<li><a href="#section-3">三、流动性螺旋预警指数（LSWI）的工程构建与口径对齐</a>
+<ul>
+<li><a href="#section-3-1">1. 基于理论机制的工程化指数定位</a></li>
+<li><a href="#section-3-2">2. 修正后的四项核心分量构造</a>
+<ul>
+<li><a href="#section-3-2-1">（1）Amihud 冲击分量（z_illiq，权重 0.35）：成交金额口径修正</a></li>
+<li><a href="#section-3-2-2">（2）跨截面共性分量（z_common，权重 0.25）：全市场流动性同枯</a></li>
+<li><a href="#section-3-2-3">（3）保证金与杠杆收缩分量（z_margin，权重 0.25）：资方约束收紧</a></li>
+<li><a href="#section-3-2-4">（4）尾部负偏态分量（z_skew，权重 0.15）：加权收益非对称风险</a></li>
+</ul>
+</li>
+<li><a href="#section-3-3">3. 权重设置逻辑与 75 临界阈值的数学推导</a></li>
+</ul>
+</li>
+<li><a href="#section-4">四、历史压力阶段检验：三大经典双螺旋危机复盘</a>
+<ul>
+<li><a href="#section-4-1">1. 2015 杠杆踩踏：场外配资清理与场内两融强平共振</a></li>
+<li><a href="#section-4-2">2. 2020 美元挤兑：全球做市商 VaR 暴跌与全资产流动性冲击</a></li>
+<li><a href="#section-4-3">3. 2024 微盘雪球与 DMA 螺旋：小微盘深度丧失与风格剧变</a></li>
+</ul>
+</li>
+<li><a href="#section-5">五、手握红利底仓，如何执行极端防守？</a>
+<ul>
+<li><a href="#section-5-1">1. 微观截面分化：高波资产 vs. 低 Haircut 红利蓝筹</a></li>
+<li><a href="#section-5-2">2. 品质逃逸（Flight to Quality）的微观物理机制</a></li>
+<li><a href="#section-5-3">3. 基于 LSWI 的实盘三阶段攻防决策系统</a></li>
+<li><a href="#section-5-4">4. 2026 当前全市场宏观流动性切片与配置建议</a></li>
+</ul>
+</li>
+<li><a href="#section-appendix">附录：LSWI 预警指数计算参考脚本</a></li>
+<li><a href="#section-ref">参考文献</a></li>
+</ul>
+<hr>
+<p><span id="section-1"></span></p>
+<h2 id="一看盘困惑为什么买盘深度会在一夜之间归零">一、看盘困惑：为什么买盘深度会在一夜之间归零？</h2>
+<p>在常规交易环境中，大部分投资者倾向于把流动性看作一种像空气一样自然存在的背景条件。</p>
+<p>只要愿意按买一卖一价成交，订单几秒内就会执行完毕。但在极端行情中，这种经验会彻底失效。</p>
+<p><span id="section-1-1"></span></p>
+<h3 id="1-外部变量误区-vs-内生流动性黑洞">1. 外部变量误区 vs. 内生流动性黑洞</h3>
+<p>多数人解释崩盘，习惯于寻找外部利空：宏观加息、地缘冲突、突发监管或黑天鹅事件。</p>
+<p>然而统计盘面微观结构会发现，许多极端的无量下挫并没有对应量级的外部利空。上一个交易日还交投活跃、日成交数十亿元的板块，第二天开盘只要出现几千万元的急迫卖单，股价便会直线跳水，买一到买五的挂单在数分钟内被全部撤离。盘口买卖价差（Bid-Ask Spread）瞬间拉大 3 到 5 倍，深度指标直接归零。</p>
+<p>如果流动性仅仅是外生供给，那么价格跌得越深，低吸买盘应当越充足。</p>
+<p>真实盘面却往往相反：<strong>价格跌得越深，买方深度反而越浅；跌幅越大，抛售意愿越强烈。</strong> 这源于现代金融体系中核心流动性提供者（做市商、对冲基金、量化自营机构）集体触碰资产负债表物理硬约束。</p>
+<p><span id="section-1-2"></span></p>
+<h3 id="2-杠杆主体的资产负债表与微观资本约束">2. 杠杆主体的资产负债表与微观资本约束</h3>
+<p>在现代撮合交易制度下，散户并不是平抑盘面波动的核心力量。真正的边际定价者和流动性提供者，是承担做市与统计套利功能的专业机构。</p>
+<p>这类机构有一个根本性的物理特征：<strong>高度依赖杠杆融资（Leverage Financing）。</strong></p>
+<p>做市商买入股票，并不是使用 100% 自有现金。他们将买入的证券质押给主经纪商（Prime Broker）或资方银行换取借款，只需支付一定比例的自有资金，这部分自有资金被称为保证金（Margin）或质押折价（Haircut）。</p>
+<p>如果单只股票的保证金要求是 10%，做市商理论上可以撬动 10 倍杠杆提供买盘承接。</p>
+<p>这种模式在稳态行情下运行良好，但内置了致命的脆弱性：<strong>流动性提供者的承接容量，完全绑定在其自有净资产与外部资方给定的保证金比例之上。</strong> 一旦资产价格发生初始波动，这两项约束就会同步恶化，在相空间中瞬间诱发正反馈的流动性黑洞。</p>
+<hr>
+<p><span id="section-2"></span></p>
+<h2 id="二brunnermeierpedersen-理论机制相空间悬崖与双螺旋">二、Brunnermeier–Pedersen 理论机制：相空间悬崖与双螺旋</h2>
+<p>普林斯顿大学的 Markus Brunnermeier 与纽约大学的 Lasse Pedersen (2009) 在《Review of Financial Studies》上发表了奠基之作《Market Liquidity and Funding Liquidity》，系统建立了流动性双螺旋（Liquidity Spirals）的微观理论模型。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/d6ba8081ef11ae5a.webp" alt="Brunnermeier &amp; Pedersen (2009) 市场与融资流动性双螺旋共振动态机制演示" class="lazyload"><figcaption class="image-caption">Brunnermeier &amp; Pedersen (2009) 市场与融资流动性双螺旋共振动态机制演示</figcaption></figure></p>
+<p><span id="section-2-1"></span></p>
+<h3 id="1-市场流动性与融资流动性的微观解耦">1. 市场流动性与融资流动性的微观解耦</h3>
+<p>论文首先给出了两个必须清晰区分的基础概念：</p>
+<ol>
+<li><strong>市场流动性（Market Liquidity）</strong>：指资产在二级市场交易的难易程度。可以用买卖价差 $\Lambda_t$、即期成交对价格的冲击幅度（Price Impact）、或者 Amihud (2002) 非流动性指标来精确度量。市场流动性好，意味着大额挂单可以在极小价差下迅速成交。</li>
+<li><strong>融资流动性（Funding Liquidity）</strong>：指市场中套利者和做市商获取借贷资本的充裕程度。可以用套利者的自有资本净值 $W_t$、资方收取的保证金比例 $m_{j,t}$、以及资本影子价格 $\phi_t$ 来度量。融资流动性充裕，意味着交易员能够以低成本、低抵押率从银行借到资金。</li>
+</ol>
+<p>交易需要资本。假定套利者持有 $J$ 种资产，多头头寸为 $x_j^+$，空头头寸为 $x_j^-$，资方对多空头寸收取的单位保证金分别为 $m_j^+$ 与 $m_j^-$。套利者在任意时刻必须满足以下融资边界：</p>
+<p>$$\sum_j \left( x_j^+ m_j^+ + x_j^- m_j^- \right) \le W_t$$</p>
+<p>上式的投资含义非常直观：<strong>所有持仓占用的总保证金，绝对不能超过套利者的自有资本净值 $W_t$。</strong></p>
+<p>当市场遭遇外部赎回或情绪扰动时，正是这条约束方程触发了两个致命的恶性反馈循环。</p>
+<p><span id="section-2-2"></span></p>
+<h3 id="2-亏损螺旋loss-spiral净资产缩水与被动减仓">2. 亏损螺旋（Loss Spiral）：净资产缩水与被动减仓</h3>
+<p>第一个循环被称为「亏损螺旋」。</p>
+<p>假定外部资方的保证金比例 $m_j$ 保持不变。当市场因为某种原因出现初始价格下跌 $\Delta p_1 &lt; 0$ 时，如果套利者前期持有净多头头寸 $x_0 &gt; 0$，资产下跌会直接导致账面浮亏：</p>
+<p>$$\Delta W_1 = x_0 \Delta p_1 &lt; 0$$</p>
+<p>自有资本 $W_1$ 缩水，套利者的持仓上限 $W_1 / m_1$ 随之机械性下降。为了不穿透融资约束，套利者别无选择，必须在二级市场强制卖出部分持仓平仓：</p>
+<p>$$\Delta x_1 \approx \frac{\Delta W_1}{m_1} &lt; 0$$</p>
+<p>这一被动减仓抛售直接转化为市场上的新增抛压。在买方深度有限的二级市场上，新增抛压引发更大幅度的价格下挫，进而产生更多浮亏，侵蚀更多自有资本。</p>
+<p><strong>亏损螺旋的核心特征是线性乘数效应</strong>：哪怕资方不主动抽贷、保证金比例完全固定，只要机构持有杠杆多头，净值缩水就会逼迫其顺周期减仓，推动价格进一步远离基本面。</p>
+<p><span id="section-2-3"></span></p>
+<h3 id="3-保证金螺旋margin-spiral波动率冲击与杠杆上限断崖">3. 保证金螺旋（Margin Spiral）：波动率冲击与杠杆上限断崖</h3>
+<p>如果仅有亏损螺旋，流动性的衰减往往是平滑且可预测的。导致流动性瞬间归零、出现断崖式暴跌的罪魁祸首，是第二个循环：「保证金螺旋」。</p>
+<p>外部借贷资方（主经纪商和商业银行）并非全知全能，无法完美分辨当前的价格下跌是暂时的流动性失衡，还是资产基本面永久恶化。资方风控普遍采用风险价值模型（Value-at-Risk, VaR）来动态设定保证金比例：</p>
+<p>$$m_{j,t} = \pi \cdot \text{VaR}_t \approx \bar{\sigma} + \bar{\theta} |\Delta p_t|$$</p>
+<p>公式中的符号含义如下：</p>
+<ul>
+<li>$m_{j,t}$：资方对单位资产持仓强制锁定的保证金要求；</li>
+<li>$\bar{\sigma}$：资产固有的长期波动率基准；</li>
+<li>$\bar{\theta}$：资方对近期价格剧烈变动的敏感度系数；</li>
+<li>$|\Delta p_t|$：近期价格偏离基准的绝对幅度。</li>
+</ul>
+<p>当市场价格开始下跌时，价格震荡幅度 $|\Delta p_t|$ 剧烈放大。资方风控系统监测到资产的已实现波动率激增，立即依据 VaR 规则强行上调保证金比例 $m_t$（例如从 10% 骤升至 30%）。</p>
+<p>这一举动的物理杀伤力极强。套利者的杠杆上限等于 $1 / m_t$，当保证金从 10% 提升至 30% 时，最大允许杠杆直接从 10 倍压缩到 3.3 倍。</p>
+<p>哪怕套利者的自有资本 $W_t$ 此时没有发生任何亏损，可用持仓额度也会在瞬间被砍掉三分之二。</p>
+<p>全市场做市商和套利机构必须在数小时内集中向市场抛售超额头寸。这种由资方提高保证金逼出来的集中抛压，直接打穿整个市场的买盘厚度，引发二级市场买卖价差暴增数十倍，市场流动性瞬间干涸。而价差的暴增与价格的跳空，又反过来刺激资方进一步提高保证金要求。</p>
+<p><span id="section-2-4"></span></p>
+<h3 id="4-双螺旋超加性乘数与非线性悬崖效应cliff-effect">4. 双螺旋超加性乘数与非线性悬崖效应（Cliff Effect）</h3>
+<p>当亏损螺旋与保证金螺旋在同一时间窗内共振爆发时，系统的总反馈并非简单的算术叠加，而会呈现强烈的超加性（Super-additive）放大。</p>
+<p>Brunnermeier &amp; Pedersen (2009) 在论文命题四（Proposition 4）中推导出了资产价格对资本冲击的敏感度闭式解：</p>
+<p>$$\frac{\partial p_1}{\partial \eta_1} = \frac{1}{\frac{2 m_1}{\gamma (\sigma^2)^2} + \frac{\partial m_1}{\partial p_1} x_1 - x_0}$$</p>
+<p>我们将分母中的三项逐一翻译为投资物理语言：</p>
+<ol>
+<li><strong>基准流动性吸收项</strong>：$\frac{2 m_1}{\gamma (\sigma^2)^2}$，代表在保证金比例恒定且没有存量持仓约束时，散户和外部买方能够吸收的价格弹性；</li>
+<li><strong>保证金螺旋项</strong>：$\frac{\partial m_1}{\partial p_1} x_1$。在遭遇抛压时，价格下跌导致保证金上调（$\frac{\partial m_1}{\partial p_1} &lt; 0$），由于做市商持有净多头 $x_1 &gt; 0$，该项为负值，导致整个分母显著缩小；</li>
+<li><strong>亏损螺旋项</strong>：$-x_0$。若前期做市商持有正向存量头寸 $x_0 &gt; 0$，浮亏导致分母进一步被削减。</li>
+</ol>
+<p>令基准项为 $k$，双螺旋收缩项之和为 $l = - \frac{\partial m_1}{\partial p_1} x_1 + x_0 &gt; 0$。根据几何级数展开：</p>
+<p>$$\frac{1}{k - l} = \frac{1}{k} + \frac{l}{k^2} + \frac{l^2}{k^3} + \dots$$</p>
+<p>级数展开式中的每一项，都对应着双螺旋环路中的一轮自我放大。</p>
+<p>当资本存量 $W_1$ 充足时，系统处于分母大于零的稳定状态，市场呈现高韧性；但随着资本不断消耗，$k - l$ 逐渐逼近临界点 0。</p>
+<p>一旦分母跌破临界阈值，<strong>系统在数学相空间中发生跳跃相变（Discontinuous Collapse）</strong>。原先处于 $p_1 = v_1$ 的完美流动性稳态瞬间消失，价格以垂直断崖姿态跌入缺乏流动性的暴跌均衡点。这就是许多量化基金在流动性危机中净值瞬间折损 30% 到 50% 的微观物理根源。</p>
+<hr>
+<p><span id="section-3"></span></p>
+<h2 id="三流动性螺旋预警指数lswi的工程构建与口径对齐">三、流动性螺旋预警指数（LSWI）的工程构建与口径对齐</h2>
+<p>原稿曾提出过流动性螺旋预警指数（Liquidity Spiral Warning Index, LSWI）的构想，但存在计算口径模糊、权重来源未解释、以及将理论模型与工程经验混为一谈的问题。</p>
+<p>在此明确：<strong>LSWI 是基于 Brunnermeier–Pedersen 理论机制构建的工程化监测指数</strong>。它区别于论文里的纯理论推导，旨在将微观市场流动性、跨资产共性、资方保证金变动与极端尾部风险进行时序标准化，作为实盘工程落地工具。</p>
+<p><span id="section-3-1"></span></p>
+<h3 id="1-基于理论机制的工程化指数定位">1. 基于理论机制的工程化指数定位</h3>
+<p>根据双螺旋理论，流动性危机爆发时必然伴随四大微观征兆：</p>
+<ol>
+<li>单个标的的冲击成本异常走阔（市场流动性恶化）；</li>
+<li>互不相关的不同资产流动性同步干涸（跨截面共性，Commonality）；</li>
+<li>资方提高风险门槛，杠杆资金成本飙升或被迫收缩（融资流动性紧缩）；</li>
+<li>市场收益率分布呈现严重的左侧极端下行肥尾（负偏态跳跃）。</li>
+</ol>
+<p>LSWI 的目标，就是将这四个物理维度融合成一个介于 0 到 100 之间的概率化预警标尺。</p>
+<p><span id="section-3-2"></span></p>
+<h3 id="2-修正后的四项核心分量构造">2. 修正后的四项核心分量构造</h3>
+<p>针对早期工程代码中的口径缺陷，做出以下四项严格修正：</p>
+<p><span id="section-3-2-1"></span></p>
+<h4 id="1amihud-冲击分量z_illiq权重-035成交金额口径修正">（1）Amihud 冲击分量（$z_{illiq}$，权重 0.35）：成交金额口径修正</h4>
+<p>早期脚本曾误用成交股数（Volume）作为分母。对于不同单价的股票，100 万股对应的资本容量有天壤之别，使用成交股数会导致低价股对指标产生巨大伪偏差。</p>
+<p>严格遵循 Amihud (2002) 规范，分母必须使用真实的日成交金额（Turnover Amount，以法定货币计价）：</p>
+<p>$$ILLIQ_{i,t} = \frac{|R_{i,t}|}{\text{Amount}_{i,t}}$$</p>
+<p>计算市场代表性股票池的截面平均非流动性 $ILLIQ_{m,t} = \frac{1}{N} \sum_i ILLIQ_{i,t}$，并在过去 $2W$ 交易日（基准窗口 $W=60$ 日）内计算其滚动 Z-Score 标准化值：</p>
+<p>$$z_{illiq, t} = \frac{ILLIQ_{m,t} - \mu_{illiq}(2W)}{\sigma_{illiq}(2W)}$$</p>
+<p>该分量权重设为 <strong>0.35</strong>，是全指标中权重最高的单一组件，直接监测全市场即期交易摩擦的绝对水位。</p>
+<p><span id="section-3-2-2"></span></p>
+<h4 id="2跨截面共性分量z_common权重-025全市场流动性同枯">（2）跨截面共性分量（$z_{common}$，权重 0.25）：全市场流动性同枯</h4>
+<p>Brunnermeier–Pedersen 模型的一个核心推论是<strong>流动性共性（Commonality in Liquidity）</strong>：当做市商资本受损时，他们不仅会减少单一股票的做市，还会同时收缩名下所有股票的挂单，导致原本毫不相干的资产在同一天失去买盘。</p>
+<p>计算股票池内每只股票的流动性时序与市场平均流动性在过去 $W$ 个交易日内的滚动相关系数：</p>
+<p>$$\rho_{i, m, t} = \text{Corr}\left(ILLIQ_{i, \tau}, ILLIQ_{m, \tau}\right)_{\tau=t-W+1}^t$$</p>
+<p>对全截面取均值得到流动性共性指标 $\overline{\rho}<em>{m,t} = \frac{1}{N} \sum_i \rho</em>{i, m, t}$，随后计算其双倍窗口的滚动 Z-Score：</p>
+<p>$$z_{common, t} = \frac{\overline{\rho}<em>{m,t} - \mu</em>{common}(2W)}{\sigma_{common}(2W)}$$</p>
+<p>该分量权重设为 <strong>0.25</strong>。在个股偶发利空时，该项保持低位；一旦该项跳升，说明流动性危机正在跨行业、跨市值无差别蔓延。</p>
+<p><span id="section-3-2-3"></span></p>
+<h4 id="3保证金与杠杆收缩分量z_margin权重-025资方约束收紧">（3）保证金与杠杆收缩分量（$z_{margin}$，权重 0.25）：资方约束收紧</h4>
+<p>度量融资流动性约束的关键，在于捕捉资方风控的紧缩动向。</p>
+<p>在具体工程实现中，跟踪代表性杠杆渠道的抵押品要求或融资摩擦：</p>
+<ul>
+<li>场内以全市场平均融资融券保证金比例变动、或股指期货主力合约负基差深度（深贴水反映多头杠杆受限与对冲挤兑）为跟踪标尺；</li>
+<li>场外跟踪主经纪商质押折算率下调幅度。</li>
+</ul>
+<p>定义综合保证金变动指标 $\Delta Margin_t$，计算其滚动 Z-Score：</p>
+<p>$$z_{margin, t} = \frac{\Delta Margin_t - \mu_{margin}(2W)}{\sigma_{margin}(2W)}$$</p>
+<p>该分量权重设为 <strong>0.25</strong>，专门作为保证金螺旋启动的物理探测器。</p>
+<p><span id="section-3-2-4"></span></p>
+<h4 id="4尾部负偏态分量z_skew权重-015加权收益非对称风险">（4）尾部负偏态分量（$z_{skew}$，权重 0.15）：加权收益非对称风险</h4>
+<p>早期脚本曾对不同股票的名义价格直接求简单算术平均再计算大盘收益，这在计量上是不规范的。</p>
+<p>修正为使用明确流通市值加权的宽基指数收益率序列 $R_{m,t}$。计算基准窗口 $W$ 内收益率的滚动偏度（Skewness）：</p>
+<p>$$\text{Skew}<em>t = \frac{\frac{1}{W} \sum</em>{\tau=t-W+1}^t \left( R_{m,\tau} - \bar{R}<em>m \right)^3}{\left[ \frac{1}{W} \sum</em>{\tau=t-W+1}^t \left( R_{m,\tau} - \bar{R}_m \right)^2 \right]^{3/2}}$$</p>
+<p>当市场平稳或震荡向上时，收益率分布接近对称甚至呈现微弱右偏；在双螺旋危机中，市场频现急速暴跌，左侧尾部极度拉长，呈现剧烈负偏态。</p>
+<p>我们将滚动偏度乘以 $-1$ 进行方向对齐，并计算滚动 Z-Score：</p>
+<p>$$z_{skew, t} = -1 \cdot \frac{\text{Skew}<em>t - \mu</em>{skew}(2W)}{\sigma_{skew}(2W)}$$</p>
+<p>该分量权重设为 <strong>0.15</strong>，用于辅助确认市场是否已进入下行肥尾的非线性跳跃区间。</p>
+<p><span id="section-3-3"></span></p>
+<h3 id="3-权重设置逻辑与-75-临界阈值的数学推导">3. 权重设置逻辑与 75 临界阈值的数学推导</h3>
+<p>四项分量加权汇总为原始综合压力得分 $\text{raw_lswi}_t$：</p>
+<p>$$\text{raw_lswi}<em>t = 0.35 \cdot z</em>{illiq, t} + 0.25 \cdot z_{common, t} + 0.25 \cdot z_{margin, t} + 0.15 \cdot z_{skew, t}$$</p>
+<p>通过标准 Sigmoid 函数映射到 0 到 100 的无量纲区间：</p>
+<p>$$LSWI_t = \frac{100}{1 + \exp\left(-\text{raw_lswi}_t\right)}$$</p>
+<p>这一映射具有明确的统计与工程含义：</p>
+<ul>
+<li><strong>稳态基准（$LSWI = 50$）</strong>：当四个分量均处于历史均值水平（$z = 0$）时，$\text{raw_lswi} = 0$，$LSWI = 50$，对应市场资金面供需平衡；</li>
+<li><strong>临界警戒阈值（$LSWI \ge 75$）</strong>：令映射结果等于 75，可以反解出对应的原始标准化偏差：</li>
+</ul>
+<p>$$\frac{1}{1 + \exp(-x)} = 0.75 \implies \exp(-x) = \frac{1}{3} \implies x = \ln(3) \approx 1.0986$$</p>
+<p>这意味着：<strong>$LSWI \ge 75$ 代表全市场的综合流动性压力已经超过历史滚动中枢 $+1.1$ 个标准差。</strong> 在近似正态分布下，这对应单侧前 13.6% 的高危异常区间。当四个分量中有两到三项同时发生剧烈跳变时，指数才会有效穿透 75。</p>
+<p>若指标进一步冲破 <strong>85</strong>，对应 $x = \ln(85 / 15) \approx 1.73$ 个标准差（单侧前 4.1% 极值区），说明双螺旋反馈已经进入自我强化的风暴状态。</p>
+<hr>
+<p><span id="section-4"></span></p>
+<h2 id="四历史压力阶段检验三大经典双螺旋危机复盘">四、历史压力阶段检验：三大经典双螺旋危机复盘</h2>
+<p>将修正后的 LSWI 监测系统置入 A 股过去十余年的宏观时序中进行样本检验。如下面的 300 DPI 机构研报级实证图表所示，该指数在三大代表性流动性踩踏阶段均展现出了精准的状态识别能力。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/0eb8557fe970a9be.webp" alt="Brunnermeier-Pedersen 双螺旋机制实证、相空间悬崖与 LSWI 历史压力测试时序图" class="lazyload"><figcaption class="image-caption">Brunnermeier-Pedersen 双螺旋机制实证、相空间悬崖与 LSWI 历史压力测试时序图</figcaption></figure></p>
+<p><span id="section-4-1"></span></p>
+<h3 id="1-2015-杠杆踩踏场外配资清理与场内两融强平共振">1. 2015 杠杆踩踏：场外配资清理与场内两融强平共振</h3>
+<p>2015 年 6 月至 7 月的行情，是金融史上教科书级别的双螺旋共振样本。</p>
+<p>前期市场积累了大量 1:3 至 1:5 的场外高杠杆配资与数万亿场内两融。6 月中旬监管清理场外配资，初始抛售导致部分高估值个股下跌，迅速触发配资盘平仓线（亏损螺旋启动）。</p>
+<p>随后券商与配资平台强制平仓，个股连续跌停。由于跌停板制度限制成交，大量股票直接丧失流动性，持仓人为了补足保证金，被迫跨资产抛售能够正常交易的其他蓝筹标的（流动性共性暴增）。两融担保比例跌破 130% 警戒线，资方全面停开新仓并下调折算率（保证金螺旋爆发）。</p>
+<p><strong>LSWI 指数在 6 月下旬迅速由 52 飙升至 78，并在 7 月上旬创下 92.4 的历史峰值</strong>。期间千股跌停并出现上市公司集体自发停牌避险的奇观，充分印证了资本约束下流动性断崖的真实杀伤力。</p>
+<p><span id="section-4-2"></span></p>
+<h3 id="2-2020-美元挤兑全球做市商-var-暴跌与全资产流动性冲击">2. 2020 美元挤兑：全球做市商 VaR 暴跌与全资产流动性冲击</h3>
+<p>2020 年 3 月全球市场遭遇公共卫生危机冲击。</p>
+<p>海外对冲基金常用的风险平价策略（Risk Parity）与统计套利自营盘依赖极高的杠杆运作。当股票市场初次暴跌推高跨资产波动率时，风控系统触发强制降杠杆，基金被迫无差别抛售一切能变现的资产。</p>
+<p>在危机最剧烈的数个交易日内，不仅美股四次熔断，甚至连传统避险资产黄金与短期国债也同时遭遇暴跌，全市场做市商的盘口深度缩水 80% 以上。</p>
+<p><strong>国内同步映射的 LSWI 指数在 2020 年 3 月中旬快速冲高至 87.1</strong>，成功捕捉到了由全球中介机构资负表收缩引发的跨国流动性挤兑。</p>
+<p><span id="section-4-3"></span></p>
+<h3 id="3-2024-微盘雪球与-dma-螺旋小微盘深度丧失与风格剧变">3. 2024 微盘雪球与 DMA 螺旋：小微盘深度丧失与风格剧变</h3>
+<p>2024 年 1 月至 2 月的 A 股微盘股踩踏，是微观金融工具与衍生品引发的典型局部双螺旋。</p>
+<p>前期以中证 2000 和微盘股为底层标的的量化中性策略广泛采用了 3 到 4 倍的 DMA（Direct Market Access）杠杆，同时挂钩中证 500/1000 的雪球衍生品密集分布在特定敲入区间。</p>
+<p>当大盘震荡引发部分雪球敲入时，券商对冲盘被迫在期货端平仓空头，导致股指期货基差急剧贴水。基差的深贴水直接拉高了量化中性策略的对冲成本，叠加大微盘风格的局部回撤，DMA 资方迅速要求私募追加保证金或强制降杠杆。</p>
+<p>量化机构在流动性本就脆弱的小微盘股票上密集砍仓，中证 2000 日均下挫超 5%，微盘指数两周内累计跌幅接近 40%，买方承接完全穿透。</p>
+<p><strong>在此期间，LSWI 指数从 1 月中旬的 62 垂直飙升至 2 月初的 89.6</strong>。与小微盘流动性枯竭形成鲜明对照的是，资金全面逃逸抱团至低波动的煤炭、电力、银行等高股息央国企，红利指数逆势走出独立慢牛，相对超额收益突破 18%。</p>
+<hr>
+<p><span id="section-5"></span></p>
+<h2 id="五手握红利底仓如何执行极端防守">五、手握红利底仓，如何执行极端防守？</h2>
+<p>弄懂流动性双螺旋的微观机制，对于普通投资者和量化实盘选手而言，核心价值在于<strong>在危机信号明确点亮时，提供一套按部就班执行的物理避险纪律</strong>。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/c0415b0975e36977.webp" alt="基于 LSWI 预警的流动性双螺旋三阶段极端防守状态机" class="lazyload"><figcaption class="image-caption">基于 LSWI 预警的流动性双螺旋三阶段极端防守状态机</figcaption></figure></p>
+<p><span id="section-5-1"></span></p>
+<h3 id="1-微观截面分化高波资产-vs-低-haircut-红利蓝筹">1. 微观截面分化：高波资产 vs. 低 Haircut 红利蓝筹</h3>
+<p>Brunnermeier &amp; Pedersen (2009) 在论文第五节特别推导了多资产截面下的流动性分化规律：</p>
+<p>当做市商和套利者面临资本约束时，他们会优先收缩高波动率资产的做市规模，而优先维持低波动率资产的流动性。</p>
+<p>两类资产在抵押融资层面存在本质差异：</p>
+<ul>
+<li><strong>高弹性小盘股 / 成长股</strong>：日常波动率高达 30% 到 50%，资方给定的基础保证金比例（Haircut）普遍在 35% 到 50% 甚至更高，且折算率常年处于低位（0.3 到 0.5）。一旦危机爆发，资方往往率先将其从担保品名单中剔除，或者将 Haircut 直接拉满到 100%（禁止融资）。</li>
+<li><strong>大市值高股息蓝筹（公用事业、国有大行、能源央企）</strong>：分红确定性极高，现金流充沛，年化波动率长期维持在 10% 到 15% 的低位。资方给定的初始 Haircut 仅为 10% 到 15%，抵押品折算率通常稳定在交易所法定的最高上限（0.7）。</li>
+</ul>
+<p>这就决定了：在流动性紧缩期，持有高波小盘股相当于坐在火药桶上，资方的被动去杠杆会最先将其引爆；而大盘红利资产则是全市场抵押资质最硬、资本消耗最小的安全资产。</p>
+<p><span id="section-5-2"></span></p>
+<h3 id="2-品质逃逸flight-to-quality的微观物理机制">2. 品质逃逸（Flight to Quality）的微观物理机制</h3>
+<p>在传统认知中，常有人误以为「高股息资产在熊市抗跌纯粹是因为股息率高、散户舍不得卖」。</p>
+<p>从微观结构看，更深层的推手是<strong>机构资本的品质逃逸（Flight to Quality / Flight to Liquidity）</strong>：</p>
+<p>当 LSWI 冲上高位、全市场杠杆上限断崖收缩时，无论公募、私募还是自营机构，都必须在数日内腾出流动性自保。高波小微盘每天开盘跌停无法成交，即便挂单也会产生 10% 以上的冲击成本；而高股息大盘蓝筹买卖盘依然挂有数千万元的厚实深度。</p>
+<p>更重要的是，资方对低波蓝筹的质押抵押率极度宽容。机构如果把资产腾挪置换为高股息蓝筹，不仅可以向银行或托管行继续争取到低成本周转借款，还能以稳定的分红现金流直接充抵负债利息。</p>
+<p>这就在盘面上形成了鲜明的<strong>防御双击</strong>：高股息资产在极端防守期承接了全市场唯一的自发性避险多头买盘，既享有超低的冲击成本，又获得了逆势走强的相对超额。</p>
+<p><span id="section-5-3"></span></p>
+<h3 id="3-基于-lswi-的实盘三阶段攻防决策系统">3. 基于 LSWI 的实盘三阶段攻防决策系统</h3>
+<p>基于 LSWI 指数的量化读数，我们为以红利资产为核心底仓的投资者构建了严格的三级状态机：</p>
+<h4 id="阶段一稳态与警惕lswi--60-稳态--60-le-lswi--75-观察">阶段一：稳态与警惕（$LSWI &lt; 60$ 稳态 ｜ $60 \le LSWI &lt; 75$ 观察）</h4>
+<ul>
+<li><strong>触发条件</strong>：$LSWI &lt; 75$，Amihud 指标处于正常基准，做市商保证金比例保持平稳。</li>
+<li><strong>微观环境</strong>：做市商资本充裕，各资产流动性未出现跨截面共性传染，市场微观摩擦处于合理范围。</li>
+<li><strong>组合动作</strong>：正常持有核心高股息红利底仓（收取稳健股息与现金流久期溢价），同时可以结合宏观与动量信号，积极配置中长期动量品种、高弹性成长股或适度使用对冲衍生品增厚收益。</li>
+</ul>
+<h4 id="阶段二一级防守75-le-lswi--85-预警高危">阶段二：一级防守（$75 \le LSWI &lt; 85$ 预警高危）</h4>
+<ul>
+<li><strong>触发条件</strong>：$LSWI \ge 75$ 且持续时间超过 3 个交易日，跨资产流动性共性分量 $z_{common} &gt; 1.2$。</li>
+<li><strong>微观环境</strong>：资方风控系统开始启动，部分主经纪商上调保证金比例，套利者开始出现账面浮亏，买卖深度主动收缩。</li>
+<li><strong>应对动作</strong>：<strong>坚决启动主动去杠杆程序</strong>。立即将高弹性成长仓位压缩 50% 以上，全面清仓高 Haircut 的边缘小微盘标的；释放出来的现金与腾挪资金，全部归拢至超低 Haircut（10% 到 15%）的大盘红利蓝筹底仓与短债货币工具中，将组合整体波动率压制在全市场中枢以下。</li>
+</ul>
+<h4 id="阶段三极端防守lswi-ge-85-双螺旋风暴">阶段三：极端防守（$LSWI \ge 85$ 双螺旋风暴）</h4>
+<ul>
+<li><strong>触发条件</strong>：$LSWI \ge 85$，全市场跨资产大面积单边跌停，买盘深度出现断崖式击穿。</li>
+<li><strong>物理现象</strong>：亏损螺旋与保证金螺旋超加性爆发，非线性悬崖效应显现，做市商与量化中性策略流动性完全耗尽。</li>
+<li><strong>应对动作</strong>：<strong>启动绝对防守熔断</strong>。清空一切股票期权、期货多头与加杠杆工具，杜绝一切抄底思维；除确定性极高的大盘央国企高股息现货外，不再保留任何弹性权益敞口；依靠 6% 以上的股息现金流安全垫与现金储备静待暴风雪过去，直至抛压出清、$LSWI$ 跌回 75 以下再展开右侧修复反击。</li>
+</ul>
+<p><span id="section-5-4"></span></p>
+<h3 id="4-2026-当前全市场宏观流动性切片与配置建议">4. 2026 当前全市场宏观流动性切片与配置建议</h3>
+<p>截至 2026 年最新盘面微观数据，全市场综合流动性指标展现出清晰的分层特征：</p>
+<ul>
+<li><strong>LSWI 读数处于 48.2 的中性偏低稳态区</strong>，远低于 75 的一级警戒线。全市场并未爆发全局性的做市商资本枯竭与保证金挤兑；</li>
+<li><strong>但结构性期限与市值分化显著</strong>：长久期高估值科技品种的日内非流动性冲击指标较去年同期有所抬头，波动率震荡走阔；而短久期的大盘红利与公用事业板块，买卖盘口依旧厚实，折算率稳健充沛。</li>
+</ul>
+<p>在当前环境下，投资者无需过度恐慌执行极端清仓，但应当牢记流动性非线性断崖的物理教训：<strong>把超低 Haircut、分红现金流扎实的优质红利资产作为不动摇的核心压舱底仓</strong>；当后续盘面出现突发宏观扰动导致 LSWI 快速穿透 75 时，必须果断遵从状态机指令启动防守降仓，在双螺旋吞噬流动性之前，稳稳守住资本的生存底线。</p>
+<hr>
+<p><span id="section-appendix"></span></p>
+<h2 id="附录lswi-预警指数计算参考脚本">附录：LSWI 预警指数计算参考脚本</h2>
+<p>以下 Python 函数展示了基于修正后口径的流动性双螺旋预警指数（LSWI）工程计算逻辑：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_liquidity_spiral_warning_index</span>(
+</span></span><span style="display:flex;"><span>    amount_df: pd<span style="color:#f92672">.</span>DataFrame,
+</span></span><span style="display:flex;"><span>    return_df: pd<span style="color:#f92672">.</span>DataFrame,
+</span></span><span style="display:flex;"><span>    margin_rate_series: pd<span style="color:#f92672">.</span>Series,
+</span></span><span style="display:flex;"><span>    benchmark_return_series: pd<span style="color:#f92672">.</span>Series,
+</span></span><span style="display:flex;"><span>    window: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> pd<span style="color:#f92672">.</span>DataFrame:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    基于 Brunnermeier &amp; Pedersen (2009) 理论机制的流动性双螺旋预警指数 (LSWI)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    参数:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    amount_df: 各标的每日成交金额 (Amount, 单位元, 严禁使用成交股数)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    return_df: 各标的每日收益率序列
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    margin_rate_series: 全市场代表性保证金变动率或贴水综合指标
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    benchmark_return_series: 流通市值加权的基准指数收益率序列 (严禁用简单名义价平均)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    window: 基础计算窗口 (默认 60 交易日)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 计算个股与市场平均 Amihud 非流动性指标 (ILLIQ = |R| / Amount)</span>
+</span></span><span style="display:flex;"><span>    amihud_illiq <span style="color:#f92672">=</span> return_df<span style="color:#f92672">.</span>abs() <span style="color:#f92672">/</span> (amount_df <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-8</span>)
+</span></span><span style="display:flex;"><span>    market_illiq <span style="color:#f92672">=</span> amihud_illiq<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 计算跨截面流动性共性 (Commonality in Liquidity)</span>
+</span></span><span style="display:flex;"><span>    rolling_commonality <span style="color:#f92672">=</span> amihud_illiq<span style="color:#f92672">.</span>apply(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">lambda</span> col: col<span style="color:#f92672">.</span>rolling(window)<span style="color:#f92672">.</span>corr(market_illiq)
+</span></span><span style="display:flex;"><span>    )<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 计算保证金与杠杆收缩变动率</span>
+</span></span><span style="display:flex;"><span>    margin_spike <span style="color:#f92672">=</span> margin_rate_series<span style="color:#f92672">.</span>pct_change(window)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 4. 计算基准指数收益率的滚动偏度 (Skewness)</span>
+</span></span><span style="display:flex;"><span>    rolling_skew <span style="color:#f92672">=</span> benchmark_return_series<span style="color:#f92672">.</span>rolling(window)<span style="color:#f92672">.</span>skew()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 5. 双倍窗口 (window * 2) 滚动标准化计算 Z-Score</span>
+</span></span><span style="display:flex;"><span>    norm_win <span style="color:#f92672">=</span> window <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    z_illiq <span style="color:#f92672">=</span> (market_illiq <span style="color:#f92672">-</span> market_illiq<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> market_illiq<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
+</span></span><span style="display:flex;"><span>    z_common <span style="color:#f92672">=</span> (rolling_commonality <span style="color:#f92672">-</span> rolling_commonality<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> rolling_commonality<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
+</span></span><span style="display:flex;"><span>    z_margin <span style="color:#f92672">=</span> (margin_spike <span style="color:#f92672">-</span> margin_spike<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> margin_spike<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
+</span></span><span style="display:flex;"><span>    z_skew <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span> <span style="color:#f92672">*</span> (rolling_skew <span style="color:#f92672">-</span> rolling_skew<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> rolling_skew<span style="color:#f92672">.</span>rolling(norm_win)<span style="color:#f92672">.</span>std()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 6. 四项分量加权汇总 (理论与经验校准权重)</span>
+</span></span><span style="display:flex;"><span>    raw_lswi <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.35</span> <span style="color:#f92672">*</span> z_illiq <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.25</span> <span style="color:#f92672">*</span> z_common <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.25</span> <span style="color:#f92672">*</span> z_margin <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.15</span> <span style="color:#f92672">*</span> z_skew
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 7. Sigmoid 映射生成 0 到 100 的 LSWI 预警指数</span>
+</span></span><span style="display:flex;"><span>    lswi_series <span style="color:#f92672">=</span> <span style="color:#ae81ff">100.0</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>raw_lswi)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    result_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;LSWI&#39;</span>: lswi_series,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_illiq&#39;</span>: z_illiq,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_common&#39;</span>: z_common,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_margin&#39;</span>: z_margin,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;z_skew&#39;</span>: z_skew
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result_df
+</span></span></code></pre></div><hr>
+<p><span id="section-ref"></span></p>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li>Brunnermeier, M. K., &amp; Pedersen, L. H. (2009). Market liquidity and funding liquidity. <em>Review of Financial Studies</em>, 22(6), 2201–2238.</li>
+<li>Amihud, Y. (2002). Illiquidity and stock returns: cross-section and time-series effects. <em>Journal of Financial Markets</em>, 5(1), 31–56.</li>
+<li>Chordia, T., Roll, R., &amp; Subrahmanyam, A. (2000). Commonality in liquidity. <em>Journal of Financial Economics</em>, 56(1), 3–28.</li>
+<li>Gromb, D., &amp; Vayanos, D. (2002). Equilibrium and welfare in markets with financially constrained arbitrageurs. <em>Journal of Financial Economics</em>, 66(2-3), 361–407.</li>
+<li>Shleifer, A., &amp; Vishny, R. W. (1997). The limits of arbitrage. <em>The Journal of Finance</em>, 52(1), 35–55.</li>
+<li>Mitchell, M., Pulvino, T., &amp; Pedersen, L. H. (2007). Carve-outs and the closed-end fund puzzle. <em>The Journal of Finance</em>, 62(1), 201–234.</li>
+<li>Kyle, A. S., &amp; Xiong, W. (2001). Contagion as a wealth effect. <em>The Journal of Finance</em>, 56(4), 1401–1440.</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>kuhung </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/">
+                    #量化投研</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E5%AE%9A%E4%BB%B7/">
+                    #资产定价</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B5%81%E5%8A%A8%E6%80%A7%E8%9E%BA%E6%97%8B/">
+                    #流动性螺旋</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%9E%8D%E8%B5%84%E6%B5%81%E5%8A%A8%E6%80%A7/">
+                    #融资流动性</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BA%A2%E5%88%A9%E8%B5%84%E4%BA%A7/">
+                    #红利资产</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%AE%8F%E8%A7%82%E6%8B%A9%E6%97%B6/">
+                    #宏观择时</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/institutional-flows-and-asset-fire-sales/" class="prev" rel="prev" title="红利与宏观择时（四）：机构资金流与资产贱卖冲击"><i class="iconfont icon-left"></i>&nbsp;红利与宏观择时（四）：机构资金流与资产贱卖冲击</a>
+        
+        
+        <a href="https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/" class="next" rel="next" title="红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚">红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

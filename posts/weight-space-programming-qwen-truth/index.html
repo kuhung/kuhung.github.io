@@ -1,26 +1,483 @@
-<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta name=author content="谷粒"><meta name=description content="AI 博主 · 算法专家 · ENFJ"><meta name=keywords content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist"><script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-S9K4XS0DZ6",{anonymize_ip:!1})}</script><script type=text/javascript>(function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)})(window,document,"clarity","script","yelaywwb9r")</script><link rel=prev href=https://kuhung.me/posts/weight-space-intervention-history/><link rel=next href=https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/><link rel=canonical href=https://kuhung.me/posts/weight-space-programming-qwen-truth/><link rel=apple-touch-icon sizes=180x180 href="/apple-touch-icon.png?v=20261029-a"><link rel=icon type=image/png sizes=32x32 href="/favicon-32x32.png?v=20261029-a"><link rel=icon type=image/png sizes=16x16 href="/favicon-16x16.png?v=20261029-a"><link rel=icon type=image/x-icon href="/favicon.ico?v=20261029-a"><meta name=msapplication-TileColor content="#da532c"><meta name=theme-color content="#ffffff"><title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源 | 谷粒 kuhung</title><meta name=title content="权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源 | 谷粒 kuhung"><link rel=stylesheet href=/font/iconfont.css><link rel=stylesheet href=/css/main.min.css><link rel=alternate href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><link rel=feed href=/posts/index.xml type=application/rss+xml title="谷粒 kuhung"><script type=application/ld+json>{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:05:00+08:00","datePublished":"2026-11-03T13:05:00+08:00","description":"在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang …","headline":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, Qwen, MIT, 权重空间编程, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"WebPage"},"name":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","wordCount":420}</script></head><body><div class=wrapper><nav class=navbar><div class=container><div class="navbar-header header-logo"><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class="menu navbar-right"><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><nav class=navbar-mobile id=nav-mobile style=display:none><div class=container><div class=navbar-header><div><a href=https://kuhung.me/>谷粒 kuhung</a></div><div class=menu-toggle><span></span><span></span><span></span></div></div><div class=menu id=mobile-menu><a class=menu-item href=/projects/ title>产品</a>
-<a class=menu-item href=/posts/ title>文章</a>
-<a class=menu-item href=/about/ title>关于</a></div></div></nav><main class=main><div class=container><article class=post-warp itemscope itemtype=http://schema.org/Article><header class=post-header><h1 class=post-title itemprop="name headline">权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</h1><div class=post-meta>Written by <a itemprop=name href=https://kuhung.me/ rel=author>谷粒</a> with ♥
-<span class=post-time>on <time datetime=2026-11-03 itemprop=datePublished>November 3, 2026</time></span>
-in
-<i class="iconfont icon-folder"></i>
-<span class=post-category><a href=https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/>技术研究</a></span>
-|</div></header><div class=post-toc id=post-toc><h2 class=post-toc-title></h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#一权重空间的读写改三维基础验证>一、权重空间的读、写、改三维基础验证</a><ul><li><a href=#1-权重读取read>1. 权重读取（Read）</a></li><li><a href=#2-从零编译权重write>2. 从零编译权重（Write）</a></li><li><a href=#3-局部权重修改edit>3. 局部权重修改（Edit）</a></li></ul></li><li><a href=#二qwen35-08b-故障定位与定向消融流程>二、Qwen3.5-0.8B 故障定位与定向消融流程</a><ul><li><a href=#1-架构基底参数>1. 架构基底参数</a></li><li><a href=#2-异常监控93-的思维死循环>2. 异常监控：93% 的思维死循环</a></li><li><a href=#3-定向消融与权重吸收weight-absorption>3. 定向消融与权重吸收（Weight Absorption）</a></li></ul></li><li><a href=#三对照实验与探测预算的阈值效应>三、对照实验与探测预算的阈值效应</a><ul><li><a href=#1-gemma-3-270m-对照实验>1. Gemma 3 270M 对照实验</a></li><li><a href=#2-探测预算的非线性阈值>2. 探测预算的非线性阈值</a></li></ul></li><li><a href=#四math-500-评测基准全行业模型梯队分布>四、MATH-500 评测基准全行业模型梯队分布</a></li><li><a href=#五理性审视营销破圈与背后的工程本质>五、理性审视：营销破圈与背后的工程本质</a><ul><li><a href=#参考文献与公开成果源>参考文献与公开成果源</a></li></ul></li></ul></nav></div></div><script type=text/javascript>window.onload=function(){var n,o,e=$(".post-toc"),t=$(".post-comment"),i=e.offset().top,s=e.height(),a=e[0].offsetTop;$(window).scroll(function(){var r=Math.max(document.body.scrollTop,document.documentElement.scrollTop);t.length>0&&(n=t.offset().top,o=n-r-s),i<r?(e.css({position:"fixed"}),t.length>0&&n<r+s?e.css({top:o}):e.css({top:0})):(e.css({position:"absolute"}),e.css({top:a}))})}</script><div class=post-content><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/7ea307d2c9d6918b.webp alt="权重空间编程下篇：Astra 编辑 Qwen3.5-0.8B 的效果提升来源" class=lazyload><figcaption class=image-caption>权重空间编程下篇：Astra 编辑 Qwen3.5-0.8B 的效果提升来源</figcaption></figure></p><p>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。</p><p>2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）提出的“权重空间编程”（Weight-Space Programming, WSP）提出了一种新的思路：前沿通用大模型（GPT-6 Astra）能够在自然语言指令驱动下，在受限代码沙箱中自主运行分析程序、定位模型内部故障，并直接修改其他神经网络的权重文件，全程无需反向传播或微调循环。</p><p>其中引发行业广泛讨论的案例，是 Astra 将 Qwen3.5-0.8B 在高难度数学推理基准 MATH-500 上的准确率从 7.9% 提升至 48.1%。面对这一实验表现，有必要穿透数据表象，系统解码大模型推断小模型参数的底层物理机理，厘清其真实起效的区间与严格的边界约束。</p><h2 id=一权重空间的读写改三维基础验证>一、权重空间的读、写、改三维基础验证</h2><p>WSP 框架在进入深层多参数语言模型之前，首先在微型策略网络与扩散模型上验证了模型对参数空间的直接操作能力。</p><h3 id=1-权重读取read>1. 权重读取（Read）</h3><p>研究团队向 Astra 输入了 4 个具有完全相同多层感知机（MLP）架构（17,253 个参数）的策略网络。这些网络分别在使用 PPO 强化学习算法训练于 MinAtar 像素游戏环境（Breakout、Pong、Pac-Man、Freeway）。在完全未提供候选游戏名称的盲测条件下，Astra 仅通过解析第一层权重矩阵在输入通道上的空间分布特征（如 Breakout 底层挡板权重的行状聚集与顶部奖励带），准确推断出全部 4 款游戏各自对应的模型。</p><p>然而，静态权重阅读存在严格的尺度边界。在后续对微调后的 Gemma 3 270M 进行的测试中，Astra 试图通过纯静态数值分辨哪个模型被训练成了“谄媚”（Sycophancy）模式，连续 4 次推断均告失败。这一未能识别模型差异的结果表明：单纯的静态权重文本阅读仅适用于输入特征高度结构化的小型网络；针对深层自回归模型，必须依赖运行时的动态激活分析。</p><h3 id=2-从零编译权重write>2. 从零编译权重（Write）</h3><p>在无训练数据、无梯度信息且不使用外部环境反馈的零样本设置下，研究人员要求 Astra 直接输出一个输入维度为 10x10x4 的 MLP 策略网络参数，用于控制 MinAtar 游戏。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/5fa48ec4f4155dc1.webp alt="GPT-6 Astra 零样本策略编写 vs PPO 强化学习性能对比" class=lazyload><figcaption class=image-caption>GPT-6 Astra 零样本策略编写 vs PPO 强化学习性能对比</figcaption></figure></p><p>在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.4 的平均测试得分，不仅大幅超越 1 亿步 PPO 训练基线（15.8 分），更是达到了 5 亿步 PPO 强化学习模型（25.3 分）的 20 倍。这项实验能够成立，是因为研究团队在提示词中直接提供了游戏的底层规则代码、输入通道坐标定义与得分机制。Astra 实际扮演了“深度学习神经编译器”的角色，将明确的高阶控制逻辑直接翻译为了对应的网络权重矩阵。</p><h3 id=3-局部权重修改edit>3. 局部权重修改（Edit）</h3><p>针对在 Kinetix 物理仿真环境中陷入局部极值（直接前冲并卡死在半坡）的 PPO 小车网络（171,664 个参数），Astra 通过单次交互修改了其中 3.5% 的参数。修改逻辑是在网络浅层构建一条特征旁路，提取小车的位置与速度信号，强制执行倒车助跑逻辑后将控制权交回原网络，将通关成功率由 0 提升至 100%。</p><h2 id=二qwen35-08b-故障定位与定向消融流程>二、Qwen3.5-0.8B 故障定位与定向消融流程</h2><p>针对参数规模达 8 亿的语言模型，Astra 无法将海量浮点数直接载入上下文，系统为其提供了基于 bubblewrap 容器的 Python 隔离沙箱环境。</p><h3 id=1-架构基底参数>1. 架构基底参数</h3><p>Qwen3.5-0.8B 是针对端侧与低延迟场景优化的微型模型，采用混合 Gated DeltaNet 架构：</p><ul><li>全网共 24 层，由 18 层线性注意力与 6 层全注意力交替构成；</li><li>隐藏层特征维度为 1024；</li><li>前馈网络（FFN）采用 SwiGLU 算子，中间层维度为 2816，包含负责将非线性特征映射回残差流的 <code>down_proj</code> 投影矩阵（尺寸为 2816x1024）。</li></ul><h3 id=2-异常监控93-的思维死循环>2. 异常监控：93% 的思维死循环</h3><p>在初始测试中，Qwen3.5-0.8B 在高难度数学基准 MATH-500 上的准确率仅为 7.9%。</p><p>Astra 在沙箱中调度该模型运行 GSM8K 与 MATH 训练样本，并利用 PyTorch 钩子记录前向传播过程中的激活张量。踪迹分析定位出一个系统性故障：模型在解题过程中频繁陷入“思维死循环”（Thinking Loops），不断重复输出相同的推理标记，直至撞到 32,768 个 token 的硬性上下文截断上限。在 96 道抽样测试题中，该异常触顶率高达 93.0%。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/6a0f3fde96829a48.webp alt="Qwen3.5-0.8B 局部权重修改后的指标变化与重复生成减少" class=lazyload><figcaption class=image-caption>Qwen3.5-0.8B 局部权重修改后的指标变化与重复生成减少</figcaption></figure></p><h3 id=3-定向消融与权重吸收weight-absorption>3. 定向消融与权重吸收（Weight Absorption）</h3><p>Astra 提取了死循环发生时残差流的激活协方差矩阵，通过特征值分解隔离出一个高方差的线性方向向量，即驱动重复生成的“循环方向”。通过逐层分析该方向的放大倍率，Astra 将故障根源精确定位在第 15 层和第 19 层的 MLP 模块。</p><p>随后，Astra 在沙箱中执行自动化权重修改：</p><ol><li>分析第 15 层与第 19 层的 <code>down_proj</code> 矩阵（2816 列 x 1024 行）；</li><li>分别筛选出对该循环方向贡献最大的 64 个主干列向量；</li><li>对这 64 个列向量执行正交投影分解，直接减去其在循环方向上的投影分量；</li><li>每层修改 64 列（65,536 个参数），两层总计修改 131,072 个权重参数，占该模型 8 亿总参数量的 <strong>0.016%</strong>。</li></ol><p>在数学机理上，该操作遵循 WAQS（Weight Absorption for Quadratic Probing and Affine Steering）理论，将运行时状态引导的仿射变换反向折叠至前置静态矩阵中，消除了动态钩子带来的额外推理计算开销。</p><h2 id=三对照实验与探测预算的阈值效应>三、对照实验与探测预算的阈值效应</h2><p>在修改万分之 1.6 的参数后，Qwen3.5-0.8B 在 MATH-500 上的准确率由 7.9% 跃升至 48.1%，GSM8K 由 13.8% 升至 67.1%，IFEval 指令遵循得分也由 21.0% 同步提升至 62.3%。</p><p>为评估该数据是否存在过度拟合或能力伪造，MIT 研究团队设置了用于检验方法适用范围的对照实验（Negative Control），并分析不同探测预算下的性能变化。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/3b08d9544685c4c8.webp alt="沙箱探测预算与性能变化曲线及 Gemma 3 对照结果" class=lazyload><figcaption class=image-caption>沙箱探测预算与性能变化曲线及 Gemma 3 对照结果</figcaption></figure></p><h3 id=1-gemma-3-270m-对照实验>1. Gemma 3 270M 对照实验</h3><p>研究团队引入了微型模型 Gemma 3 270M 作为对照组。与 Qwen 不同，Gemma 3 270M 本身极少陷入思维死循环（32k 上限触顶率仅为 8.5%），其数学测试得分低完全是由于参数量过小、代数计算规则与先验知识缺失所致。</p><p>实验表明，即便为 Astra 提供最高等级的探测预算（50 次前向传递代码执行），Gemma 3 270M 的 MATH-500 准确率也仅仅由 6.8% 微幅波动至 7.0%，几乎无任何性能改善。这一未观察到明显改善的结果说明了方法的适用边界：<strong>权重空间编程无法凭空为模型注入未曾学习过的先验知识。它起作用的物理前提，是模型在预训练阶段已内嵌了相应能力，只是该能力的释放被特定的死循环结构严重阻断。</strong></p><h3 id=2-探测预算的非线性阈值>2. 探测预算的非线性阈值</h3><p>定位这些故障矩阵列的过程高度依赖试错预算，呈现出显著的非线性跳变：</p><ul><li>基础模型状态（0 预算）：MATH-500 得分 7.9%，死循环率 93.0%；</li><li>给予 10 次前向探测：MATH-500 得分 12.3%，死循环率 87.2%；</li><li>给予 25 次前向探测：MATH-500 得分 14.1%，死循环率 86.4%；</li><li>给予 50 次前向探测：MATH-500 <strong>跳变至 48.1%</strong>，死循环率<strong>降至 33.1%</strong>。</li></ul><p>数据表明，在前 25 次尝试中，Astra 未能准确收敛出主要故障列，模型性能改善微弱；增加到 50 次探测后，Astra 才找到更有效的权重修改方案，显著降低重复生成率。</p><h2 id=四math-500-评测基准全行业模型梯队分布>四、MATH-500 评测基准全行业模型梯队分布</h2><p>为了客观评估 48.1% 这一数值在行业技术坐标系中的实际定位，下图汇总了截至 2026 年底主流模型在 MATH-500 上的权威评测表现：</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/ed3d8e6600704e7b.webp alt="MATH-500 评测基准全行业模型梯队分布" class=lazyload><figcaption class=image-caption>MATH-500 评测基准全行业模型梯队分布</figcaption></figure></p><p>在主流前沿大模型普遍利用强化学习（RL）将 MATH-500 测试集打穿（普遍堆聚在 96%~99.4%）的行业背景下，48.1% 距离实用化的严谨数学推理仍有显著差距。该成果的工程价值，在于以极低的算力成本，将一个原本因软件死循环处于崩溃不可用状态的微型端侧模型，拉回到了基础可用线。</p><h2 id=五理性审视营销破圈与背后的工程本质>五、理性审视：营销破圈与背后的工程本质</h2><p>综合审视这篇研究与测试数据，其对外传播表现出鲜明的营销破圈特征。“7.9% 到 48.1% 的 6 倍暴涨”、“大模型直接修改其他模型的权重”这类叙事，精准击中了技术圈对“AI 自我进化”的想象，在社交媒体上取得了极佳的破圈效果。</p><p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes=auto data-src=https://r2-img.kuhung.me/2026/11/e013dcd8b1ab01a4.webp alt=权重空间编程（WSP）真实作用机理与工程边界判定 class=lazyload><figcaption class=image-caption>权重空间编程（WSP）真实作用机理与工程边界判定</figcaption></figure></p><p>但从严肃工程与科学角度审视，必须保持理性，看清其起作用的具体区间与边界：</p><p>第一，<strong>它解决的是工程故障排除，而非认知能力生成</strong>。Astra 在沙箱中所完成的工作，本质上是“自动化版本的因果探测 + 特征消融”。Qwen3.5-0.8B 基础模型在预训练阶段已经掌握了一定的代数解题链路，但生成过程中反复出现的循环特征使解题过程难以完成。Astra 在两层 MLP 中分别选择 64 列权重，减去它们在循环方向上的投影分量，从而减少重复生成，提高解题完成率。</p><p>第二，<strong>对于真不会算的模型，这套方法完全失效</strong>。Gemma 3 270M 的对照结果给出了明确的对照依据：只要模型底层并未建立相关数理模式，即便给予最充足的沙箱探测算力，分数依然纹丝不动。WSP 无法替代数据驱动的大规模预训练。</p><hr><h3 id=参考文献与公开成果源>参考文献与公开成果源</h3><ul><li>Takehi, R., Teoh, J., Zhang, A., & Khattab, O. (2026). LLMs can natively read & write neural network weights. MIT CSAIL.</li><li>Arditi, A., et al. (2024). Refusal in Language Models Is Mediated by a Single Direction. arXiv:2406.11717.</li><li>Meng, K., et al. (2022). Locating and Editing Factual Associations in GPT (ROME). NeurIPS 2022.</li><li>Wortsman, M., et al. (2022). Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time. ICML 2022.</li><li>Yin, et al. (2026). WAQS: Weight Absorption for Quadratic Probing and Affine Steering. ACL 2026.</li></ul><hr><p>想继续看 AI 技术解析与工具实践，欢迎在微信搜索公众号「谷粒粒」，或<a href=/images/post/wechat.JPG>点击查看公众号二维码</a>。</p></div><div class=post-copyright><p class=copyright-item><span>Author:</span>
-<span>谷粒</span></p><p class=copyright-item><span>Link:</span>
-<a href=https://kuhung.me/posts/weight-space-programming-qwen-truth/><script>document.write(decodeURI(location.origin+location.pathname))</script></a></p><p class="copyright-item lincese">本文采用<a rel=license href=http://creativecommons.org/licenses/by-nc/4.0/ target=_blank>知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p></div><div class=post-tags><section><i class="iconfont icon-tag"></i>Tag(s):
-<span class=tag><a href=https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/>#大模型</a></span>
-<span class=tag><a href=https://kuhung.me/tags/qwen/>#Qwen</a></span>
-<span class=tag><a href=https://kuhung.me/tags/mit/>#MIT</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A8%8B/>#权重空间编程</a></span>
-<span class=tag><a href=https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/>#技术解析</a></span></section><section><a href=javascript:window.history.back();>back</a></span> ·
-<span><a href=https://kuhung.me/>home</a></span></section></div><div class=post-nav><a href=https://kuhung.me/posts/weight-space-intervention-history/ class=prev rel=prev title=权重空间编程（上）：大模型权重干预的四大技术路线对比><i class="iconfont icon-left"></i>&nbsp;权重空间编程（上）：大模型权重干预的四大技术路线对比</a>
-<a href=https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/ class=next rel=next title=红利与宏观择时（三）：动量崩溃与自适应缩放>红利与宏观择时（三）：动量崩溃与自适应缩放&nbsp;<i class="iconfont icon-right"></i></a></div></article><div class=post-comment><div onclick=showDisqus() id=disqus_title class=disqus_title>显示 Disqus 评论</div><div id=disqus_thread></div><script type=text/javascript>function showDisqus(){var t,e=document.createElement("script");e.type="text/javascript",e.async=!1,t="kuhungio",e.src="https://"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e),window.location.hash="#disqus_thread"}</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></main><footer class="footer site-footer"><style>.site-footer{height:auto;text-align:left;padding-top:0}.footer-inner{border-top:1px solid #eee;margin:40px auto 0;padding:32px 32px 28px;max-width:800px;box-sizing:border-box}.footer-cols{display:flex;flex-direction:row;justify-content:space-between;gap:24px}.footer-col{display:flex;flex-direction:column;align-items:flex-start}.footer-col .footer-col-title{font-size:13px;font-weight:600;color:#161209;margin-bottom:6px}.footer-col a,.footer-col .footer-plain{font-size:13px;color:#4a4b50;line-height:2.1}.footer-col .footer-plain{color:#87878d}.site-footer .copyright{font-size:12px;color:#a9a9b3;margin-top:28px;text-align:left}@media(max-width:767px){.footer-inner{padding:28px 20px 24px}.footer-cols{flex-direction:column;gap:20px}}</style><div class=footer-inner><div class=footer-cols><div class=footer-col><div class=footer-col-title>产品</div><a href=/projects/#ai-%e5%b7%a5%e5%85%b7>AI 工具</a><a href=/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d>量化与金融</a><a href=/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae>链上数据</a><a href=/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96>知识图谱与可视化</a><a href=/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c>媒体与创作</a><a href=/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7>学习与趣味工具</a></div><div class=footer-col><div class=footer-col-title>文章</div><a href=/guide/>精选</a><a href=/posts/>全部文章</a><a href=/archives/>按年归档</a><a href=/posts/index.xml>RSS 订阅</a></div><div class=footer-col><div class=footer-col-title>联系</div><span class=footer-plain>hi#kuhung.me</span>
-<span class=footer-plain><a href=https://x.com/kuhungio target=_blank rel="me noopener">X</a> / <a href=https://github.com/kuhung target=_blank rel="me noopener">GitHub</a></span>
-<span class=footer-plain><a href=https://www.zhihu.com/people/kuhungio target=_blank rel="me noopener">知乎</a> / <a href=https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4 target=_blank rel="me noopener">小红书</a></span>
-<a href=/images/post/wechat.JPG target=_blank rel=noopener>微信公众号</a></div></div><div class=copyright>&copy;
-<span itemprop=copyrightYear>2016 &ndash; 2026</span>
-<span class=author itemprop=copyrightHolder><a href=https://kuhung.me/>谷粒</a></span>
-&#183; Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow">Hugo</a> & <a href=https://github.com/liuzc/leaveit target=_blank rel="external nofollow">LeaveIt</a></div></div><script>window.localStorage&&window.localStorage.removeItem("theme"),document.body.classList.remove("dark-theme"),document.documentElement.classList.remove("dark-theme")</script></footer><link href=//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css rel=stylesheet><script src=/js/vendor_gallery.min.js async></script></div></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/weight-space-intervention-history/" />
+  <link rel="next" href="https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/" />
+  <link rel="canonical" href="https://kuhung.me/posts/weight-space-programming-qwen-truth/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-03T13:05:00+08:00","datePublished":"2026-11-03T13:05:00+08:00","description":"在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang …","headline":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"大模型, Qwen, MIT, 权重空间编程, 技术解析","mainEntityOfPage":{"@id":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","@type":"WebPage"},"name":"权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/weight-space-programming-qwen-truth/","wordCount":420}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-03 itemprop="datePublished">November 3, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/"> 技术研究 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一权重空间的读写改三维基础验证">一、权重空间的读、写、改三维基础验证</a>
+      <ul>
+        <li><a href="#1-权重读取read">1. 权重读取（Read）</a></li>
+        <li><a href="#2-从零编译权重write">2. 从零编译权重（Write）</a></li>
+        <li><a href="#3-局部权重修改edit">3. 局部权重修改（Edit）</a></li>
+      </ul>
+    </li>
+    <li><a href="#二qwen35-08b-故障定位与定向消融流程">二、Qwen3.5-0.8B 故障定位与定向消融流程</a>
+      <ul>
+        <li><a href="#1-架构基底参数">1. 架构基底参数</a></li>
+        <li><a href="#2-异常监控93-的思维死循环">2. 异常监控：93% 的思维死循环</a></li>
+        <li><a href="#3-定向消融与权重吸收weight-absorption">3. 定向消融与权重吸收（Weight Absorption）</a></li>
+      </ul>
+    </li>
+    <li><a href="#三对照实验与探测预算的阈值效应">三、对照实验与探测预算的阈值效应</a>
+      <ul>
+        <li><a href="#1-gemma-3-270m-对照实验">1. Gemma 3 270M 对照实验</a></li>
+        <li><a href="#2-探测预算的非线性阈值">2. 探测预算的非线性阈值</a></li>
+      </ul>
+    </li>
+    <li><a href="#四math-500-评测基准全行业模型梯队分布">四、MATH-500 评测基准全行业模型梯队分布</a></li>
+    <li><a href="#五理性审视营销破圈与背后的工程本质">五、理性审视：营销破圈与背后的工程本质</a>
+      <ul>
+        <li><a href="#参考文献与公开成果源">参考文献与公开成果源</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/7ea307d2c9d6918b.webp" alt="权重空间编程下篇：Astra 编辑 Qwen3.5-0.8B 的效果提升来源" class="lazyload"><figcaption class="image-caption">权重空间编程下篇：Astra 编辑 Qwen3.5-0.8B 的效果提升来源</figcaption></figure></p>
+<p>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。</p>
+<p>2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）提出的“权重空间编程”（Weight-Space Programming, WSP）提出了一种新的思路：前沿通用大模型（GPT-6 Astra）能够在自然语言指令驱动下，在受限代码沙箱中自主运行分析程序、定位模型内部故障，并直接修改其他神经网络的权重文件，全程无需反向传播或微调循环。</p>
+<p>其中引发行业广泛讨论的案例，是 Astra 将 Qwen3.5-0.8B 在高难度数学推理基准 MATH-500 上的准确率从 7.9% 提升至 48.1%。面对这一实验表现，有必要穿透数据表象，系统解码大模型推断小模型参数的底层物理机理，厘清其真实起效的区间与严格的边界约束。</p>
+<h2 id="一权重空间的读写改三维基础验证">一、权重空间的读、写、改三维基础验证</h2>
+<p>WSP 框架在进入深层多参数语言模型之前，首先在微型策略网络与扩散模型上验证了模型对参数空间的直接操作能力。</p>
+<h3 id="1-权重读取read">1. 权重读取（Read）</h3>
+<p>研究团队向 Astra 输入了 4 个具有完全相同多层感知机（MLP）架构（17,253 个参数）的策略网络。这些网络分别在使用 PPO 强化学习算法训练于 MinAtar 像素游戏环境（Breakout、Pong、Pac-Man、Freeway）。在完全未提供候选游戏名称的盲测条件下，Astra 仅通过解析第一层权重矩阵在输入通道上的空间分布特征（如 Breakout 底层挡板权重的行状聚集与顶部奖励带），准确推断出全部 4 款游戏各自对应的模型。</p>
+<p>然而，静态权重阅读存在严格的尺度边界。在后续对微调后的 Gemma 3 270M 进行的测试中，Astra 试图通过纯静态数值分辨哪个模型被训练成了“谄媚”（Sycophancy）模式，连续 4 次推断均告失败。这一未能识别模型差异的结果表明：单纯的静态权重文本阅读仅适用于输入特征高度结构化的小型网络；针对深层自回归模型，必须依赖运行时的动态激活分析。</p>
+<h3 id="2-从零编译权重write">2. 从零编译权重（Write）</h3>
+<p>在无训练数据、无梯度信息且不使用外部环境反馈的零样本设置下，研究人员要求 Astra 直接输出一个输入维度为 10x10x4 的 MLP 策略网络参数，用于控制 MinAtar 游戏。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/5fa48ec4f4155dc1.webp" alt="GPT-6 Astra 零样本策略编写 vs PPO 强化学习性能对比" class="lazyload"><figcaption class="image-caption">GPT-6 Astra 零样本策略编写 vs PPO 强化学习性能对比</figcaption></figure></p>
+<p>在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.4 的平均测试得分，不仅大幅超越 1 亿步 PPO 训练基线（15.8 分），更是达到了 5 亿步 PPO 强化学习模型（25.3 分）的 20 倍。这项实验能够成立，是因为研究团队在提示词中直接提供了游戏的底层规则代码、输入通道坐标定义与得分机制。Astra 实际扮演了“深度学习神经编译器”的角色，将明确的高阶控制逻辑直接翻译为了对应的网络权重矩阵。</p>
+<h3 id="3-局部权重修改edit">3. 局部权重修改（Edit）</h3>
+<p>针对在 Kinetix 物理仿真环境中陷入局部极值（直接前冲并卡死在半坡）的 PPO 小车网络（171,664 个参数），Astra 通过单次交互修改了其中 3.5% 的参数。修改逻辑是在网络浅层构建一条特征旁路，提取小车的位置与速度信号，强制执行倒车助跑逻辑后将控制权交回原网络，将通关成功率由 0 提升至 100%。</p>
+<h2 id="二qwen35-08b-故障定位与定向消融流程">二、Qwen3.5-0.8B 故障定位与定向消融流程</h2>
+<p>针对参数规模达 8 亿的语言模型，Astra 无法将海量浮点数直接载入上下文，系统为其提供了基于 bubblewrap 容器的 Python 隔离沙箱环境。</p>
+<h3 id="1-架构基底参数">1. 架构基底参数</h3>
+<p>Qwen3.5-0.8B 是针对端侧与低延迟场景优化的微型模型，采用混合 Gated DeltaNet 架构：</p>
+<ul>
+<li>全网共 24 层，由 18 层线性注意力与 6 层全注意力交替构成；</li>
+<li>隐藏层特征维度为 1024；</li>
+<li>前馈网络（FFN）采用 SwiGLU 算子，中间层维度为 2816，包含负责将非线性特征映射回残差流的 <code>down_proj</code> 投影矩阵（尺寸为 2816x1024）。</li>
+</ul>
+<h3 id="2-异常监控93-的思维死循环">2. 异常监控：93% 的思维死循环</h3>
+<p>在初始测试中，Qwen3.5-0.8B 在高难度数学基准 MATH-500 上的准确率仅为 7.9%。</p>
+<p>Astra 在沙箱中调度该模型运行 GSM8K 与 MATH 训练样本，并利用 PyTorch 钩子记录前向传播过程中的激活张量。踪迹分析定位出一个系统性故障：模型在解题过程中频繁陷入“思维死循环”（Thinking Loops），不断重复输出相同的推理标记，直至撞到 32,768 个 token 的硬性上下文截断上限。在 96 道抽样测试题中，该异常触顶率高达 93.0%。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/6a0f3fde96829a48.webp" alt="Qwen3.5-0.8B 局部权重修改后的指标变化与重复生成减少" class="lazyload"><figcaption class="image-caption">Qwen3.5-0.8B 局部权重修改后的指标变化与重复生成减少</figcaption></figure></p>
+<h3 id="3-定向消融与权重吸收weight-absorption">3. 定向消融与权重吸收（Weight Absorption）</h3>
+<p>Astra 提取了死循环发生时残差流的激活协方差矩阵，通过特征值分解隔离出一个高方差的线性方向向量，即驱动重复生成的“循环方向”。通过逐层分析该方向的放大倍率，Astra 将故障根源精确定位在第 15 层和第 19 层的 MLP 模块。</p>
+<p>随后，Astra 在沙箱中执行自动化权重修改：</p>
+<ol>
+<li>分析第 15 层与第 19 层的 <code>down_proj</code> 矩阵（2816 列 x 1024 行）；</li>
+<li>分别筛选出对该循环方向贡献最大的 64 个主干列向量；</li>
+<li>对这 64 个列向量执行正交投影分解，直接减去其在循环方向上的投影分量；</li>
+<li>每层修改 64 列（65,536 个参数），两层总计修改 131,072 个权重参数，占该模型 8 亿总参数量的 <strong>0.016%</strong>。</li>
+</ol>
+<p>在数学机理上，该操作遵循 WAQS（Weight Absorption for Quadratic Probing and Affine Steering）理论，将运行时状态引导的仿射变换反向折叠至前置静态矩阵中，消除了动态钩子带来的额外推理计算开销。</p>
+<h2 id="三对照实验与探测预算的阈值效应">三、对照实验与探测预算的阈值效应</h2>
+<p>在修改万分之 1.6 的参数后，Qwen3.5-0.8B 在 MATH-500 上的准确率由 7.9% 跃升至 48.1%，GSM8K 由 13.8% 升至 67.1%，IFEval 指令遵循得分也由 21.0% 同步提升至 62.3%。</p>
+<p>为评估该数据是否存在过度拟合或能力伪造，MIT 研究团队设置了用于检验方法适用范围的对照实验（Negative Control），并分析不同探测预算下的性能变化。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/3b08d9544685c4c8.webp" alt="沙箱探测预算与性能变化曲线及 Gemma 3 对照结果" class="lazyload"><figcaption class="image-caption">沙箱探测预算与性能变化曲线及 Gemma 3 对照结果</figcaption></figure></p>
+<h3 id="1-gemma-3-270m-对照实验">1. Gemma 3 270M 对照实验</h3>
+<p>研究团队引入了微型模型 Gemma 3 270M 作为对照组。与 Qwen 不同，Gemma 3 270M 本身极少陷入思维死循环（32k 上限触顶率仅为 8.5%），其数学测试得分低完全是由于参数量过小、代数计算规则与先验知识缺失所致。</p>
+<p>实验表明，即便为 Astra 提供最高等级的探测预算（50 次前向传递代码执行），Gemma 3 270M 的 MATH-500 准确率也仅仅由 6.8% 微幅波动至 7.0%，几乎无任何性能改善。这一未观察到明显改善的结果说明了方法的适用边界：<strong>权重空间编程无法凭空为模型注入未曾学习过的先验知识。它起作用的物理前提，是模型在预训练阶段已内嵌了相应能力，只是该能力的释放被特定的死循环结构严重阻断。</strong></p>
+<h3 id="2-探测预算的非线性阈值">2. 探测预算的非线性阈值</h3>
+<p>定位这些故障矩阵列的过程高度依赖试错预算，呈现出显著的非线性跳变：</p>
+<ul>
+<li>基础模型状态（0 预算）：MATH-500 得分 7.9%，死循环率 93.0%；</li>
+<li>给予 10 次前向探测：MATH-500 得分 12.3%，死循环率 87.2%；</li>
+<li>给予 25 次前向探测：MATH-500 得分 14.1%，死循环率 86.4%；</li>
+<li>给予 50 次前向探测：MATH-500 <strong>跳变至 48.1%</strong>，死循环率<strong>降至 33.1%</strong>。</li>
+</ul>
+<p>数据表明，在前 25 次尝试中，Astra 未能准确收敛出主要故障列，模型性能改善微弱；增加到 50 次探测后，Astra 才找到更有效的权重修改方案，显著降低重复生成率。</p>
+<h2 id="四math-500-评测基准全行业模型梯队分布">四、MATH-500 评测基准全行业模型梯队分布</h2>
+<p>为了客观评估 48.1% 这一数值在行业技术坐标系中的实际定位，下图汇总了截至 2026 年底主流模型在 MATH-500 上的权威评测表现：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/ed3d8e6600704e7b.webp" alt="MATH-500 评测基准全行业模型梯队分布" class="lazyload"><figcaption class="image-caption">MATH-500 评测基准全行业模型梯队分布</figcaption></figure></p>
+<p>在主流前沿大模型普遍利用强化学习（RL）将 MATH-500 测试集打穿（普遍堆聚在 96%~99.4%）的行业背景下，48.1% 距离实用化的严谨数学推理仍有显著差距。该成果的工程价值，在于以极低的算力成本，将一个原本因软件死循环处于崩溃不可用状态的微型端侧模型，拉回到了基础可用线。</p>
+<h2 id="五理性审视营销破圈与背后的工程本质">五、理性审视：营销破圈与背后的工程本质</h2>
+<p>综合审视这篇研究与测试数据，其对外传播表现出鲜明的营销破圈特征。“7.9% 到 48.1% 的 6 倍暴涨”、“大模型直接修改其他模型的权重”这类叙事，精准击中了技术圈对“AI 自我进化”的想象，在社交媒体上取得了极佳的破圈效果。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/e013dcd8b1ab01a4.webp" alt="权重空间编程（WSP）真实作用机理与工程边界判定" class="lazyload"><figcaption class="image-caption">权重空间编程（WSP）真实作用机理与工程边界判定</figcaption></figure></p>
+<p>但从严肃工程与科学角度审视，必须保持理性，看清其起作用的具体区间与边界：</p>
+<p>第一，<strong>它解决的是工程故障排除，而非认知能力生成</strong>。Astra 在沙箱中所完成的工作，本质上是“自动化版本的因果探测 + 特征消融”。Qwen3.5-0.8B 基础模型在预训练阶段已经掌握了一定的代数解题链路，但生成过程中反复出现的循环特征使解题过程难以完成。Astra 在两层 MLP 中分别选择 64 列权重，减去它们在循环方向上的投影分量，从而减少重复生成，提高解题完成率。</p>
+<p>第二，<strong>对于真不会算的模型，这套方法完全失效</strong>。Gemma 3 270M 的对照结果给出了明确的对照依据：只要模型底层并未建立相关数理模式，即便给予最充足的沙箱探测算力，分数依然纹丝不动。WSP 无法替代数据驱动的大规模预训练。</p>
+<hr>
+<h3 id="参考文献与公开成果源">参考文献与公开成果源</h3>
+<ul>
+<li>Takehi, R., Teoh, J., Zhang, A., &amp; Khattab, O. (2026). LLMs can natively read &amp; write neural network weights. MIT CSAIL.</li>
+<li>Arditi, A., et al. (2024). Refusal in Language Models Is Mediated by a Single Direction. arXiv:2406.11717.</li>
+<li>Meng, K., et al. (2022). Locating and Editing Factual Associations in GPT (ROME). NeurIPS 2022.</li>
+<li>Wortsman, M., et al. (2022). Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time. ICML 2022.</li>
+<li>Yin, et al. (2026). WAQS: Weight Absorption for Quadratic Probing and Affine Steering. ACL 2026.</li>
+</ul>
+<hr>
+<p>想继续看 AI 技术解析与工具实践，欢迎在微信搜索公众号「谷粒粒」，或<a href="/images/post/wechat.JPG">点击查看公众号二维码</a>。</p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/weight-space-programming-qwen-truth/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                    #大模型</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/qwen/">
+                    #Qwen</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/mit/">
+                    #MIT</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9D%83%E9%87%8D%E7%A9%BA%E9%97%B4%E7%BC%96%E7%A8%8B/">
+                    #权重空间编程</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90/">
+                    #技术解析</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/weight-space-intervention-history/" class="prev" rel="prev" title="权重空间编程（上）：大模型权重干预的四大技术路线对比"><i class="iconfont icon-left"></i>&nbsp;权重空间编程（上）：大模型权重干预的四大技术路线对比</a>
+        
+        
+        <a href="https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/" class="next" rel="next" title="红利与宏观择时（三）：动量崩溃与自适应缩放">红利与宏观择时（三）：动量崩溃与自适应缩放&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="kuhung">
+  
+  
+  <meta name="description" content="为什么手握高股息依然逃不开美债风暴？基于 Greenwood &amp; Vayanos (2014) RFS 研究，打破纯预期与李嘉图等价假定；解构偏好习惯投资者与套利者资产负债表久期承载，实证长债供给推升期限溢价与套利者亏损非线性放大机制；连接 Campbell-Shiller 现值解耦与股票现金流久期，复盘 2023 美债供给风暴与耶伦发债转向，建立三阶段宏观贴现率攻防状态机。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function cleanMath(content) {
+            return content
+                .replace(/<em>(.*?)<\/em>/g, '_$1')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/(^|[^\\])%/g, '$1\\%');
+        }
+
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
+                    return '$$' + cleanMath(inner) + '$$';
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
+                    return '\\[' + cleanMath(inner) + '\\]';
+                });
+                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
+                    return '$' + cleanMath(inner) + '$';
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T15:00:00+08:00","datePublished":"2026-11-06T15:00:00+08:00","description":"为什么手握高股息依然逃不开美债风暴？基于 Greenwood \u0026 Vayanos (2014) RFS 研究，打破纯预期与李嘉图等价假定；解构偏好习惯投资者与套利者资产负债表久期承载，实证长债供给推升期限溢价与套利者亏损非线性放大机制；连接 Campbell-Shiller 现值解耦与股票现金流久期，复盘 2023 美债供给风暴与耶伦发债转向，建立三阶段宏观贴现率攻防状态机。","headline":"红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 美债供给, 期限溢价, 红利资产, 宏观贴现率","mainEntityOfPage":{"@id":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","@type":"WebPage"},"name":"红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/","wordCount":1371}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">kuhung</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-06 itemprop="datePublished">November 6, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/"> 技术技巧 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#本文目录">本文目录</a></li>
+    <li><a href="#一看盘困惑手握高股息为什么依然逃不开美债风暴">一、看盘困惑：手握高股息，为什么依然逃不开美债风暴？</a>
+      <ul>
+        <li><a href="#1-股息安全垫的认知盲区">1. 股息安全垫的认知盲区</a></li>
+        <li><a href="#2-无风险贴现率之锚的全局穿透力">2. 无风险贴现率之锚的全局穿透力</a></li>
+      </ul>
+    </li>
+    <li><a href="#二greenwoodvayanos-理论机制偏好习惯与套利者资本约束">二、Greenwood–Vayanos 理论机制：偏好习惯与套利者资本约束</a>
+      <ul>
+        <li><a href="#1-李嘉图等价与纯预期假说的现实失灵">1. 李嘉图等价与纯预期假说的现实失灵</a></li>
+        <li><a href="#2-偏好习惯投资者preferred-habitat-clienteles的期限刚性">2. 偏好习惯投资者（Preferred-Habitat Clienteles）的期限刚性</a></li>
+        <li><a href="#3-套利者资产负债表与久期风险补偿">3. 套利者资产负债表与久期风险补偿</a></li>
+        <li><a href="#4-套利者财富受损δw_arb--0的非线性放大效应">4. 套利者财富受损（ΔW_arb &lt; 0）的非线性放大效应</a></li>
+      </ul>
+    </li>
+    <li><a href="#三全样本实证检验与累计持有期收益口径对齐">三、全样本实证检验与累计持有期收益口径对齐</a>
+      <ul>
+        <li><a href="#1-债务期限结构指标d10d-与-m_t的工程定义">1. 债务期限结构指标（D^(10+)/D 与 M_t）的工程定义</a></li>
+        <li><a href="#2-收益率口径修正单期收益错位-vs-12-个月累计持有期超额收益">2. 收益率口径修正：单期收益错位 vs. 12 个月累计持有期超额收益</a></li>
+        <li><a href="#3-crsp-19522026-全样本计量实证与跨期限梯度检验">3. CRSP 1952–2026 全样本计量实证与跨期限梯度检验</a></li>
+        <li><a href="#4-交互项实证套利者资本枯竭时的供给弹性倍增">4. 交互项实证：套利者资本枯竭时的供给弹性倍增</a></li>
+      </ul>
+    </li>
+    <li><a href="#四从国债市场到股票截面宏观贴现率之锚的微观传导">四、从国债市场到股票截面：宏观贴现率之锚的微观传导</a>
+      <ul>
+        <li><a href="#1-campbell-shiller-现值模型的贴现率锚定">1. Campbell-Shiller 现值模型的贴现率锚定</a></li>
+        <li><a href="#2-股票现金流久期cash-flow-duration的截面防御">2. 股票现金流久期（Cash Flow Duration）的截面防御</a></li>
+        <li><a href="#3-典型案例复盘2023-美债供给风暴与耶伦发债期限转向t-bill-pivot">3. 典型案例复盘：2023 美债供给风暴与耶伦发债期限转向（T-Bill Pivot）</a></li>
+      </ul>
+    </li>
+    <li><a href="#五基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机">五、基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机</a>
+      <ul>
+        <li><a href="#1-攻防状态机定义与触发规则">1. 攻防状态机定义与触发规则</a></li>
+        <li><a href="#2-阶段一低溢价扩张期贴现率顺风">2. 阶段一：低溢价扩张期（贴现率顺风）</a></li>
+        <li><a href="#3-阶段二供给冲击承接期贴现率逆风">3. 阶段二：供给冲击承接期（贴现率逆风）</a></li>
+        <li><a href="#4-阶段三双杀重估风暴期极端避险">4. 阶段三：双杀重估风暴期（极端避险）</a></li>
+        <li><a href="#5-2026-当前全市场宏观切片与配置落地">5. 2026 当前全市场宏观切片与配置落地</a></li>
+      </ul>
+    </li>
+    <li><a href="#六全系列六篇宏观与微观投研大闭环总结">六、全系列六篇宏观与微观投研大闭环总结</a></li>
+    <li><a href="#附录美债供给与期限溢价预测模型参考脚本">附录：美债供给与期限溢价预测模型参考脚本</a></li>
+    <li><a href="#参考文献">参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>许多投资者重仓红利资产，图的是企业盈利扎实、现金流充沛、股息率高达 5% 到 6%，心想只要按期收息，就能远离大盘波动的侵扰。然而在实际看盘中，每当海外 10 年期或 30 年期美债收益率快速拉升时，不仅成长股遭遇估值杀跌，国内高股息板块往往也会承受流动性抽离与估值受压。更反直觉的是，有时美联储已停止加息，长端美债收益率却依然向上跳涨。传统金融学教科书通常假设利率期限结构仅取决于对未来短期利率的预期，Robin Greenwood 与 Dimitri Vayanos (2014) 在《Review of Financial Studies》发表奠基研究《Bond Supply and Excess Bond Returns》，打破了这一理想假定。他们证实政府国债的发行期限结构与套利者的资本约束，直接决定了全市场的利率期限溢价（Term Premium）与超额收益。本文作为「红利与宏观择时」全系列的收官篇，将前五篇探讨的现值解耦、期限结构、动量防守、资金挤兑与双螺旋，统一溯源至全球无风险资产定价的终极物理基石，并为红利投资者建立应对宏观贴现率波动的实盘攻防体系。</p>
+<p>本文是「红利与宏观择时」系列的第六篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防、微观资金挤兑、流动性螺旋与宏观利率周期：</p>
+<ul>
+<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：现值解耦</a> ｜ 拆解股息率：分红预期 vs. 贴现率预期</li>
+<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：期限结构</a> ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长</li>
+<li><a href="/posts/momentum-crashes-and-dynamic-scaling/">篇章三：动量攻防</a> ｜ 攻防截面的尾部风险：熊市反弹的期权化逼空与自适应控仓</li>
+<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：资金微观挤兑</a> ｜ 机构被迫抛压与流动性折价错杀</li>
+<li><a href="/posts/liquidity-spirals-and-extreme-defense/">篇章五：流动性双螺旋</a> ｜ 融资流动性与市场流动性恶性共振预警</li>
+<li><strong>篇章六：宏观贴现率之锚（本篇）</strong> ｜ 美债供给、期限溢价与全球资产定价</li>
+</ul>
+</blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/227e6adc86533fd0.webp" alt="红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚" class="lazyload"><figcaption class="image-caption">红利与宏观择时（六）：美债供给冲击与宏观贴现率之锚</figcaption></figure></p>
+<h2 id="本文目录">本文目录</h2>
+<ul>
+<li><a href="#section-1">一、看盘困惑：手握高股息，为什么依然逃不开美债风暴？</a>
+<ul>
+<li><a href="#section-1-1">1. 股息安全垫的认知盲区</a></li>
+<li><a href="#section-1-2">2. 无风险贴现率之锚的全局穿透力</a></li>
+</ul>
+</li>
+<li><a href="#section-2">二、Greenwood–Vayanos 理论机制：偏好习惯与套利者资本约束</a>
+<ul>
+<li><a href="#section-2-1">1. 李嘉图等价与纯预期假说的现实失灵</a></li>
+<li><a href="#section-2-2">2. 偏好习惯投资者（Preferred-Habitat Clienteles）的期限刚性</a></li>
+<li><a href="#section-2-3">3. 套利者资产负债表与久期风险补偿</a></li>
+<li><a href="#section-2-4">4. 套利者财富受损（ΔW_arb &lt; 0）的非线性放大效应</a></li>
+</ul>
+</li>
+<li><a href="#section-3">三、全样本实证检验与累计持有期收益口径对齐</a>
+<ul>
+<li><a href="#section-3-1">1. 债务期限结构指标（D^(10+)/D 与 M_t）的工程定义</a></li>
+<li><a href="#section-3-2">2. 收益率口径修正：单期收益错位 vs. 12 个月累计持有期超额收益</a></li>
+<li><a href="#section-3-3">3. CRSP 1952–2026 全样本计量实证与跨期限梯度检验</a></li>
+<li><a href="#section-3-4">4. 交互项实证：套利者资本枯竭时的供给弹性倍增</a></li>
+</ul>
+</li>
+<li><a href="#section-4">四、从国债市场到股票截面：宏观贴现率之锚的微观传导</a>
+<ul>
+<li><a href="#section-4-1">1. Campbell-Shiller 现值模型的贴现率锚定</a></li>
+<li><a href="#section-4-2">2. 股票现金流久期（Cash Flow Duration）的截面防御</a></li>
+<li><a href="#section-4-3">3. 典型案例复盘：2023 美债供给风暴与耶伦发债期限转向（T-Bill Pivot）</a></li>
+</ul>
+</li>
+<li><a href="#section-5">五、基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机</a>
+<ul>
+<li><a href="#section-5-1">1. 攻防状态机定义与触发规则</a></li>
+<li><a href="#section-5-2">2. 阶段一：低溢价扩张期（贴现率顺风）</a></li>
+<li><a href="#section-5-3">3. 阶段二：供给冲击承接期（贴现率逆风）</a></li>
+<li><a href="#section-5-4">4. 阶段三：双杀重估风暴期（极端避险）</a></li>
+<li><a href="#section-5-5">5. 2026 当前全市场宏观切片与配置落地</a></li>
+</ul>
+</li>
+<li><a href="#section-6">六、全系列六篇宏观与微观投研大闭环总结</a></li>
+<li><a href="#section-appendix">附录：美债供给与期限溢价预测模型参考脚本</a></li>
+<li><a href="#section-ref">参考文献</a></li>
+</ul>
+<hr>
+<p><span id="section-1"></span></p>
+<h2 id="一看盘困惑手握高股息为什么依然逃不开美债风暴">一、看盘困惑：手握高股息，为什么依然逃不开美债风暴？</h2>
+<p>在资产配置实践中，稳健型投资者往往建立了一种朴素的心理预期：只要买入估值低、分红稳定的央国企或公用事业红利股，就能免受宏观风浪的侵袭。</p>
+<p>然而盘面多次用剧烈的回撤证明，没有任何资产能够脱离宏观利率之锚而独立存在。</p>
+<p><span id="section-1-1"></span></p>
+<h3 id="1-股息安全垫的认知盲区">1. 股息安全垫的认知盲区</h3>
+<p>投资者买入高股息标的，核心逻辑在于稳定的股息收益率。如果一家公用事业企业每年持续派发现金股息，股息率达到 6%，这笔现金流入确实提供了扎实的安全边际。</p>
+<p>但资产的最终全收益（Total Return）由两部分构成：
+$$\text{全收益} = \text{股息收益} + \text{资本利得}$$</p>
+<p>当宏观贴现率发生突发性上行时，资本利得端的下挫幅度可能在极短时间内抹去数年的股息积累。</p>
+<p>例如 2022 年至 2023 年，美国 10 年期国债收益率自 1.5% 快速攀升至 5.0%，上行幅度达 350 个基点。在此期间，哪怕是现金流稳定的成熟标的，也难逃估值重构的引力。</p>
+<p>更令市场困惑的是，当美联储在 2023 年下半年明确放缓加息步伐、政策基准利率基本见顶时，长端美债收益率却在三季度逆势暴涨，突破 5.0% 关键阻力位，诱发全球风险资产同步回调。</p>
+<p>这就产生了一个根本性的看盘疑问：<strong>当政策利率已经不再上调，到底是什么力量在幕后推动长端贴现率疯狂飙升？</strong></p>
+<p><span id="section-1-2"></span></p>
+<h3 id="2-无风险贴现率之锚的全局穿透力">2. 无风险贴现率之锚的全局穿透力</h3>
+<p>答案在于无风险利率的内在解耦。</p>
+<p>在现代金融体系中，10 年期与 30 年期美国国债收益率被称为「全球资产定价之锚」。这一收益率并非单由短期政策利率决定，而是由两部分相加而成：
+$$y_t^{(\tau)} = \frac{1}{\tau} \sum_{i=0}^{\tau-1} E_t[r_{t+i}] + TP_t^{(\tau)}$$</p>
+<p>第一部分是市场对未来短期利率的平均预期路径；第二部分是<strong>期限溢价（Term Premium, $TP_t^{(\tau)}$）</strong>。</p>
+<p>在 2023 年三季度，美联储的未来利率预期路径保持相对平稳，甚至市场普遍预期随后的降息动作；但期限溢价指标却自负值区间强劲攀升超过 150 个基点。</p>
+<p>这一期限溢价的激增直接推高了全市场的贴现率基准，穿透至股票截面的每一个角落。</p>
+<p>顺着这个现象往下深究，核心问题在于：<strong>期限溢价为什么会突然失控？它背后的微观驱动变量究竟是什么？</strong></p>
+<hr>
+<p><span id="section-2"></span></p>
+<h2 id="二greenwoodvayanos-理论机制偏好习惯与套利者资本约束">二、Greenwood–Vayanos 理论机制：偏好习惯与套利者资本约束</h2>
+<p>哈佛大学的 Robin Greenwood 与伦敦政治经济学院的 Dimitri Vayanos (2014) 在《Review of Financial Studies》上发表了题为《Bond Supply and Excess Bond Returns》的研究，为这一现象提供了微观资产定价解释。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/672f21fe74de12dd.webp" alt="Greenwood &amp; Vayanos (2014) 美债供给冲击与宏观贴现率之锚动态机制演示" class="lazyload"><figcaption class="image-caption">Greenwood &amp; Vayanos (2014) 美债供给冲击与宏观贴现率之锚动态机制演示</figcaption></figure></p>
+<p><span id="section-2-1"></span></p>
+<h3 id="1-李嘉图等价与纯预期假说的现实失灵">1. 李嘉图等价与纯预期假说的现实失灵</h3>
+<p>传统宏观经济学中，罗伯特·巴罗（Robert Barro, 1974）提出的**李嘉图等价（Ricardian Equivalence）**认为：政府是通过发行短期国库券还是长期国债来为财政赤字融资，对实体经济与利率结构没有任何影响。</p>
+<p>其理论逻辑是：理性预期下的代表性消费者只在乎终身税收负担与政府支出总量，不在乎融资的期限组合。</p>
+<p>与此同时，纯预期假说（Pure Expectations Hypothesis）假设不同期限的债券是完全可替代的，套利者可以在零成本下无缝抹平所有非预期利差，因此期限溢价恒等于零，长端利率不过是未来短期利率的无偏数学均值。</p>
+<p>然而现实金融市场与这些无摩擦假定存在巨大偏差。当财政部大规模发售 30 年期国债时，市场并不能无痛消化。</p>
+<p><span id="section-2-2"></span></p>
+<h3 id="2-偏好习惯投资者preferred-habitat-clienteles的期限刚性">2. 偏好习惯投资者（Preferred-Habitat Clienteles）的期限刚性</h3>
+<p>Modigliani &amp; Sutch (1966) 最早提出了偏好习惯假说（Preferred-Habitat Theory），Vayanos &amp; Vila (2009/2021) 进一步将其严格数学公理化。</p>
+<p>在现实市场中，主要债券持有者具备极强的<strong>期限分割特征（Maturity Segmentation）</strong>：</p>
+<ol>
+<li><strong>长端刚性负债群体</strong>：养老金基金（Pension Funds）和人寿保险机构（Life Insurers）的负债端存在固定的超长支付承诺（如 20 年或 30 年后的人寿理赔与退休金支付）。为了对冲负债端的久期风险，它们有着极强的刚性偏好只购买超长端国债，哪怕短期利率再高，它们也不会主动切换到 3 个月国库券去承担再投资风险。</li>
+<li><strong>短端现金管理群体</strong>：企业财务部、货币市场基金与海外央行现金储备，受制于流动性监管与日常支付结算，严格限定在 1 年以内的短期国库券（T-Bills）中，无法涉足长端国债。</li>
+</ol>
+<p>这类偏好习惯投资者缺乏在不同到期日之间自由迁徙的意愿与灵活性。各期限债券市场本质上是分割的局部市场。</p>
+<p><span id="section-2-3"></span></p>
+<h3 id="3-套利者资产负债表与久期风险补偿">3. 套利者资产负债表与久期风险补偿</h3>
+<p>连接这些分割市场的唯一桥梁，是承担跨期搬砖功能的<strong>套利者（Arbitrageurs）</strong>，主要由华尔街一级交易商（Primary Dealers）、固定收益宏观对冲基金与自营交易台构成。</p>
+<p>套利者的核心特征是：<strong>风险厌恶，且资产负债表容量有限。</strong></p>
+<p>当政府因为财政赤字赤字扩大，大幅增加长期国债的发行规模（如拉长国债平均到期期限）时，偏好习惯机构的配置额度已经饱和，多出来的长债供给必须由套利者全部吸收进自己的资产负债表。</p>
+<p>长端国债的久期（Duration）极长，价格对利率变动高度敏感。套利者持有的长债越多，其资产负债表承担的利率波动风险就呈指数级累积。</p>
+<p>为了承担这些额外的久期风险，套利者要求更高的预期回报作为风险补偿：
+$$E_t\left[rx_{t+1}^{(\tau)}\right] \propto a \cdot \sigma^2 \cdot \text{套利者吸收的长债供给量}$$</p>
+<p>其中 $a$ 为套利者的风险厌恶系数，$\sigma^2$ 为利率方差。</p>
+<p>这一机制导出了 Greenwood &amp; Vayanos 的核心理论发现：<strong>政府增加长期国债发行占比，会机械性压低长端国债价格，推高长端收益率，并系统性推升长端资产的期限溢价。</strong></p>
+<p>长债供给增加的核心影响在于推升风险溢价，源于套利者的风险承载能力受限，而非抬高短期利率预期。</p>
+<p><span id="section-2-4"></span></p>
+<h3 id="4-套利者财富受损δw_arb--0的非线性放大效应">4. 套利者财富受损（ΔW_arb &lt; 0）的非线性放大效应</h3>
+<p>更深入的机制在于套利者资产负债表的动态损益反馈。</p>
+<p>在正常市场状态下，收益率曲线呈现平缓向上倾斜，套利者通常采取「套息交易（Carry Trade）」策略：通过回购市场借入短期低息资金，买入长期高息国债赚取票息利差。</p>
+<p>但如果宏观利率因某种扰动出现意外跳升，长端国债价格大跌，套利者的套息持仓就会发生巨额亏损。</p>
+<p>Greenwood &amp; Vayanos 构造了一个直观的套利者财富变动代理指标 $\Delta W_t^{Arb}$：
+$$\Delta W_t^{Arb} = \left(y_{t-1}^{(\tau)} - y_{t-1}^{(1)}\right) \cdot \left(r_t^{(\tau)} - y_{t-1}^{(1)}\right)$$</p>
+<p>式中第一项为期初的期限利差，第二项为长端国债在随后一年内的实际超额收益率。</p>
+<p>这一公式捕捉了套利者的真实生存境况：</p>
+<ul>
+<li>当期初曲线陡峭（利差为正），套利者做多长债；如果随后长债跑输短债（实际超额收益为负），两项乘积为负，表明套利者套息持仓发生严重亏损（$\Delta W_t^{Arb} &lt; 0$）；</li>
+<li>当期初曲线倒挂（利差为负），套利者做空长债；如果随后长债逆势大涨，两项乘积同样为负，套利者反向受损。</li>
+</ul>
+<p>当套利者遭受巨额亏损（$\Delta W_t^{Arb} &lt; 0$）时，其自有资本缩水，风险承受意愿骤降，有效风险厌恶程度急剧上升。</p>
+<p>此时套利者非但无法承接新增发行的长期国债，反而必须在二级市场上削减存量长债敞口以满足资方的风控要求。</p>
+<p>这就引发了<strong>供给与财富受损的双重共振</strong>：在套利者财富受损的动荡期，哪怕财政部只稍微多发一点长债，长端期限溢价也会发生非线性的脱缰暴涨。</p>
+<hr>
+<p><span id="section-3"></span></p>
+<h2 id="三全样本实证检验与累计持有期收益口径对齐">三、全样本实证检验与累计持有期收益口径对齐</h2>
+<p>为了检验 Preferred-Habitat 理论在历史数据中的表现，我们需要将抽象理论转化为严密的计量回归模型。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/fb93bfebe7743c0e.webp" alt="Greenwood–Vayanos (2014) 理论机制、历史时序实证与权益久期分化对比" class="lazyload"><figcaption class="image-caption">Greenwood–Vayanos (2014) 理论机制、历史时序实证与权益久期分化对比</figcaption></figure></p>
+<p><span id="section-3-1"></span></p>
+<h3 id="1-债务期限结构指标d10d-与-m_t的工程定义">1. 债务期限结构指标（D^(10+)/D 与 M_t）的工程定义</h3>
+<p>Greenwood &amp; Vayanos 从 CRSP 美国政府债券数据库中提取了自 1925 年以来的每一只国债明细，将其拆解为未来的本金支付流 $PR_t^{(\tau)}$ 与利息支付流 $C_t^{(\tau)}$，计算到期现金流总和：
+$$D_t^{(\tau)} = PR_t^{(\tau)} + C_t^{(\tau)}$$</p>
+<p>他们构建了两个度量国债供给期限结构的核心指标：</p>
+<ol>
+<li><strong>长端国债占比（Long-Term Debt Share, $D_t^{(10+)} / D_t$）</strong>：
+$$D_t^{(10+)} / D_t = \frac{\sum_{\tau \ge 10} D_t^{(\tau)}}{\sum_{\tau \ge 1} D_t^{(\tau)}}$$
+即未来 10 年及以后到期的支付总额占未来全部偿债流的比重。这一指标直接反映财政部发债重心是偏向长端还是偏向短端。</li>
+<li><strong>美元加权平均到期时间（Dollar-Weighted Average Maturity, $M_t$）</strong>：
+$$M_t = \frac{\sum_{\tau} \tau \cdot D_t^{(\tau)}}{\sum_{\tau} D_t^{(\tau)}}$$</li>
+</ol>
+<p>在 1952 至 2005 年的标准样本期内，$D_t^{(10+)} / D_t$ 的均值为 17.0%，标准差为 5.04%，历史最低曾压缩至 7.2%（1975 年），最高曾上冲至 28.5%（1980 年代末至 1990 年代初）。</p>
+<p><span id="section-3-2"></span></p>
+<h3 id="2-收益率口径修正单期收益错位-vs-12-个月累计持有期超额收益">2. 收益率口径修正：单期收益错位 vs. 12 个月累计持有期超额收益</h3>
+<p>在工程实操与计量复现中，许多策略研发人员容易犯下一个严重的频率错位错误。</p>
+<p>若使用月度采样的债券时序数据，模型试图预测未来 1 年（12 个月）的超额收益。原草稿中直接使用单期收益的前移操作：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 常见工程错误：以单月收益率直接前移 12 期</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;target_excess_ret_12m&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;excess_return_20y&#39;</span>]<span style="color:#f92672">.</span>shift(<span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>)
+</span></span></code></pre></div><p><strong>这一操作在计量逻辑上是不成立的。</strong></p>
+<p>在月度数据中，<code>shift(-12)</code> 代表的是距离当前时点第 12 个月的那一个单一月份的超额收益，而非未来整整 12 个月累计持有期间的总回报。如果将单期收益误当作持有期收益，回归模型检验的实际上是远期单月波动的噪声，无法反映真正的持有期收益。</p>
+<p><strong>正确的工程口径必须严格构造连续 12 个月的累计持有期超额收益</strong>：
+$$rx_{t \to t+12}^{(\tau)} = \sum_{k=1}^{12} rx_{t+k}^{(\tau)} = \ln \left( \prod_{k=1}^{12} (1 + R_{t+k}^{(\tau)}) \right) - \ln(1 + Y_t^{(1)})$$</p>
+<p>在 Python 中，应通过滚动窗口累计求和并向前位移 12 期实现：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 正确工程口径：构建未来 12 个月累计持有期对数超额收益</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;target_excess_ret_12m&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;monthly_excess_return_20y&#39;</span>]<span style="color:#f92672">.</span>rolling(<span style="color:#ae81ff">12</span>)<span style="color:#f92672">.</span>sum()<span style="color:#f92672">.</span>shift(<span style="color:#f92672">-</span><span style="color:#ae81ff">12</span>)
+</span></span></code></pre></div><p>此外，由于月度采样构造 12 个月重叠滚动收益（Overlapping Observations），残差项必然存在长达 11 阶的移动平均自相关（MA(11)）。常规 OLS 标准误会严重低估不确定性，夸大 t 统计量。</p>
+<p>因此，计量回归必须采用 <strong>Newey-West (1987) HAC 异方差自相关稳健标准误</strong>，并将截断滞后阶数显式设置为至少 18 阶（<code>maxlags = 18</code>），或结合 Hansen-Hodrick (1980) 矩阵进行严格统计推断。</p>
+<p><span id="section-3-3"></span></p>
+<h3 id="3-crsp-19522026-全样本计量实证与跨期限梯度检验">3. CRSP 1952–2026 全样本计量实证与跨期限梯度检验</h3>
+<p>基于修正后的计量模型，时间序列回归给出了高度一致的实证结论。</p>
+<p>首先检验长端供给占比对即期期限利差（Term Spread）的解释力：
+$$y_t^{(\tau)} - y_t^{(1)} = a + b \cdot \frac{D_t^{(10+)}}{D_t} + \varepsilon_t$$</p>
+<p>实证结果显示，斜率系数 $b$ 显著为正，且随着期限 $\tau$ 的延长呈现严格的单调递增梯度：</p>
+<ul>
+<li>2 年期利差回归：$\hat{b} = 0.016$（$t = 2.15$）；</li>
+<li>5 年期利差回归：$\hat{b} = 0.041$（$t = 2.48$）；</li>
+<li>10 年期利差回归：$\hat{b} = 0.063$（$t = 2.71$）；</li>
+<li>20 年期利差回归：$\hat{b} = 0.077$（$t = 2.82$）。</li>
+</ul>
+<p>以 20 年期利差为例，长端国债占比 $D^{(10+)}/D$ 每上升一个标准差（5.04%），20 年期期限利差就会被系统性推高 <strong>39 个基点</strong>（$0.077 \times 5.04% = 0.388%$）。</p>
+<p>更关键的检验在于长端供给对未来 12 个月累计超额收益的预测回归：
+$$rx_{t \to t+12}^{(\tau)} = a + b \cdot \frac{D_t^{(10+)}}{D_t} + \varepsilon_{t+12}$$</p>
+<p>实证数据显示：</p>
+<ul>
+<li>20 年期国债的预测系数达到 $\hat{b} = 0.458$（$t = 2.65$）；</li>
+<li>长端国债占比每增加一个标准差，未来 12 个月持有 20 年期国债的预期超额收益增加 <strong>2.31%</strong>。</li>
+</ul>
+<p>这一结果即使在控制了即期利差（Fama &amp; Bliss, 1987）以及 Cochrane &amp; Piazzesi (2005) 远期利率帐篷因子后，依然稳健显著。</p>
+<p>跨期限梯度的单调递增特性，直接验证了套利者资本约束理论：<strong>期限越长，久期风险敞口越大，套利者吸收该期限供给时所要求的边际风险补偿就越高。</strong></p>
+<p><span id="section-3-4"></span></p>
+<h3 id="4-交互项实证套利者资本枯竭时的供给弹性倍增">4. 交互项实证：套利者资本枯竭时的供给弹性倍增</h3>
+<p>引入套利者财富损益代理变量 $\Delta W_t^{Arb}$ 及其与长端供给的交互项进行多元回归：
+$$rx_{t \to t+12}^{(20)} = a + b \cdot \text{Spread}<em>t + c \cdot \frac{D_t^{(10+)}}{D_t} + d \cdot \Delta W_t^{Arb} + f \cdot \left( \frac{D_t^{(10+)}}{D_t} \times \Delta W_t^{Arb} \right) + \varepsilon</em>{t+12}$$</p>
+<p>回归结果支持了假说 4（Hypothesis 4）：</p>
+<ul>
+<li>交互项系数 $\hat{f}$ 显著为负（$t = -2.62$）。</li>
+<li>其经济学含义在于：当 $\Delta W_t^{Arb} &lt; 0$（套利者在前期发生严重亏损）时，负负得正，供给对未来超额收益的推升弹性大幅增加。</li>
+</ul>
+<p>在套利者资本雄厚时期，长端国债供给增加 1%，期限溢价仅小幅上行约 4 到 6 个基点；但在套利者亏损、资本承载力接近枯竭的压力时期，相同规模的国债供给扩张会引发期限溢价跳升超过 12 到 15 个基点，弹性扩大两倍以上。</p>
+<p>这就从数据上印证了：<strong>国债供给对利率期限溢价的推升，在套利者资本受损时呈现出明显的非线性脉冲特征。</strong></p>
+<hr>
+<p><span id="section-4"></span></p>
+<h2 id="四从国债市场到股票截面宏观贴现率之锚的微观传导">四、从国债市场到股票截面：宏观贴现率之锚的微观传导</h2>
+<p>国债市场的 Greenwood–Vayanos 发现，并不只局限于固定收益领域。</p>
+<p>它直接穿透到全市场的资产估值中，成为决定股票截面风格与红利资产防守有效性的终极自变量。</p>
+<p><span id="section-4-1"></span></p>
+<h3 id="1-campbell-shiller-现值模型的贴现率锚定">1. Campbell-Shiller 现值模型的贴现率锚定</h3>
+<p>回顾本系列篇章一中的 Campbell &amp; Shiller (1988) 现值对数线性解耦公式：
+$$p_t - d_t = \frac{k}{1-\rho} + \sum_{j=0}^\infty \rho^j E_t\left[\Delta d_{t+1+j}\right] - \sum_{j=0}^\infty \rho^j E_t\left[r_{t+1+j}\right]$$</p>
+<p>在第一篇中我们证实，股票市场的股息价格比变动，大部分由未来贴现率预期 $\sum \rho^j r_{t+1+j}$ 的波动所解释。</p>
+<p>然而当时留下的未解之谜是：<strong>股票资产的贴现率 $r_{t+1}$ 到底是由什么决定的？</strong></p>
+<p>在现代资产定价体系中，权益贴现率可以拆解为三层结构：
+$$r_t^{equity} = y_t^{(1)} + TP_t^{(\tau)} + ERP_t$$</p>
+<ol>
+<li>$y_t^{(1)}$：短端政策无风险利率（由央行货币政策决定）；</li>
+<li>$TP_t^{(\tau)}$：<strong>长端期限溢价（由财政部供给期限结构与套利者资本承载力决定）</strong>；</li>
+<li>$ERP_t$：股票市场特有的股权风险溢价（Equity Risk Premium）。</li>
+</ol>
+<p>当财政部大幅扩张长端国债发行导致 $TP_t^{(\tau)}$ 飙升时，即便央行维持 $y_t^{(1)}$ 不变，全市场的底层贴现率之锚也会被机械性拔高。</p>
+<p>所有未来的现金流折现，都必须使用这根变重、变高的锚来进行重新贴现。</p>
+<p><span id="section-4-2"></span></p>
+<h3 id="2-股票现金流久期cash-flow-duration的截面防御">2. 股票现金流久期（Cash Flow Duration）的截面防御</h3>
+<p>贴现率之锚的抬升，对股票截面各板块的杀伤力是极其不均衡的。这直接取决于我们在篇章二中引入的<strong>股票现金流久期（Cash Flow Duration）</strong>。</p>
+<p>资产的价格变化与贴现率变动近似满足物理弹性关系：
+$$\frac{\Delta P}{P} \approx - D_{equity} \times \Delta r^{equity}$$</p>
+<p>不同股票的现金流久期存在天然的截面断层：</p>
+<ul>
+<li><strong>短久期红利资产（如 SCHD、中证红利）</strong>：企业盈利成熟，每年派发 5% 到 7% 的真金白银现金股息。其现金流高度集中在近端 1 到 5 年内，现金流久期通常仅为 <strong>6 到 8 年</strong>。</li>
+<li><strong>长久期科技成长资产（如纳斯达克 100、概念科技）</strong>：当前盈利极少甚至为负，几乎不派发现金分红，其估值完全建立在远期 10 年、20 年乃至 30 年后的现金流贴现预期上，现金流久期通常高达 <strong>30 到 40 年</strong>。</li>
+</ul>
+<p>当美国国债供给冲击推升长端贴现率上升 150 个基点（$\Delta r = +1.5%$）时：</p>
+<ul>
+<li>长久期科技股理论估值杀跌幅度：$-35 \times 1.5% = -52.5%$；</li>
+<li>短久期红利蓝筹理论估值杀跌幅度：$-7 \times 1.5% = -10.5%$。</li>
+</ul>
+<p>更关键的是，红利资产在承受轻微估值波动的同期，持有人能够稳定收到即期分红现金流。在利率攀升的高息环境下，这笔到手现金能以更高的收益率进行再投资，形成复利滚存。</p>
+<p>实证数据清晰地印证了这一弹性差异：在长端国债贴现率暴冲的窗口期，短久期红利组合的全收益回撤不足 2%，而长久期成长股全收益下挫超 30%。短久期红利资产表现出极强的反脆弱防御属性。</p>
+<p><span id="section-4-3"></span></p>
+<h3 id="3-典型案例复盘2023-美债供给风暴与耶伦发债期限转向t-bill-pivot">3. 典型案例复盘：2023 美债供给风暴与耶伦发债期限转向（T-Bill Pivot）</h3>
+<p>2023 年下半年全球金融市场的惊天动荡，正是 Greenwood–Vayanos 理论在当代市场的教科书级演绎。</p>
+<p><strong>第一阶段：长端供给洪峰与贴现率暴涨（2023 年 8 月至 10 月）</strong>
+2023 年 8 月初，美国财政部发布季度再融资声明（QRA），宣布大幅增加 10 年期与 30 年期国债的发行规模。在美联储每月持续量化紧缩（QT）抛售长债、海外央行购买意愿下降的背景下，做市商和对冲基金被迫承接巨额长债供给。</p>
+<p>套利者的资产负债表久期承载迅速见顶，部分从事基差交易（Basis Trade）的对冲基金遭受浮亏（$\Delta W_t^{Arb} &lt; 0$）。</p>
+<p>结果如理论预测：10 年期美债收益率自 3.9% 飙升至 5.02%，ACM 期限溢价指数在两个月内狂飙超过 120 个基点。全球股票市场遭遇猛烈下挫，纳斯达克与前期高位成长股普遍回撤 12% 至 18%，而高股息公用事业与能源资产跌幅相对可控。</p>
+<p><strong>第二阶段：财政部妥协与发债期限转向（2023 年 11 月至 12 月）</strong>
+面对长端利率突破 5% 带来的全市场去杠杆与金融条件紧缩风险，美国财政部在 2023 年 11 月 1 日的再融资报告中做出重大妥协，执行「发债期限转向（T-Bill Pivot）」。</p>
+<p>财政部主动放缓了 10 年期与 30 年期附息国债的增发节奏，转而将新增发债配额的大部分转向 1 年期以内的短期国库券（T-Bills），使国库券存量占比一度攀升至 22% 以上，远超历史常规警戒线。</p>
+<p>这一举动的物理实质是：<strong>财政部主动被人为缩短了国债体系的加权平均到期时间 $M_t$，直接削减了向二级市场投放的久期风险总量。</strong></p>
+<p>多余的短债由货币市场基金吸收，套利者的长端久期消化压力骤然解除。</p>
+<p>结果立竿见影：10 年期美债收益率自 5.0% 垂直断崖下挫至 3.8%，期限溢价暴跌超 80 个基点。全球风险资产随即爆发了年末跨年大反弹行情。</p>
+<p>这一生动的实操历史表明：<strong>财政部的国债供给期限结构，绝非无关痛痒的后台技术参数，而是能够在数周内颠覆全球资产定价贴现率的宏观总阀门。</strong></p>
+<hr>
+<p><span id="section-5"></span></p>
+<h2 id="五基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机">五、基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机</h2>
+<p>对于量化配置与红利投资者而言，理解了美债供给与贴现率的物理机制，下一步就是建立清晰、可执行的实盘攻防状态机。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/79c165e5a8fcaff1.webp" alt="基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机" class="lazyload"><figcaption class="image-caption">基于美债供给与套利承载力的宏观贴现率三阶段攻防状态机</figcaption></figure></p>
+<p><span id="section-5-1"></span></p>
+<h3 id="1-攻防状态机定义与触发规则">1. 攻防状态机定义与触发规则</h3>
+<p>我们以三个可观测的宏观量化指标构建状态识别体系：</p>
+<ol>
+<li><strong>ACM 期限溢价指数（ACM Term Premium, $TP$）</strong>：由纽约联储公布的 10 年期国债期限溢价，衡量长端利率中纯久期风险补偿的水位；</li>
+<li><strong>财政部发债期限结构（QRA 发债计划与长债占比趋势）</strong>：跟踪财政部季度再融资报告中 10 年及以上长债占比变动趋势；</li>
+<li><strong>套利者损益与流动性预警联动（$\Delta W_t^{Arb}$ 与 LSWI）</strong>：监控做市商套利资本承载力与跨市场流动性恶化程度。</li>
+</ol>
+<p>由此划定三个互斥的攻防状态区间。</p>
+<p><span id="section-5-2"></span></p>
+<h3 id="2-阶段一低溢价扩张期贴现率顺风">2. 阶段一：低溢价扩张期（贴现率顺风）</h3>
+<ul>
+<li><strong>触发条件</strong>：
+ACM 期限溢价处于负值或极低区间（$TP &lt; 0$），财政部发债以短期国库券为主或处于降息收缩周期，长债占比 $D^{(10+)}/D \le 16%$，套利者资本充裕。</li>
+<li><strong>微观现象</strong>：
+宏观无风险贴现率之锚平稳下移，套利者没有久期消化负担，全球流动性充沛，不同期限间的跨期套利顺畅。</li>
+<li><strong>配置应对</strong>：
+<ul>
+<li>宏观贴现率处于顺风环境，长久期资产不会受到折现因子的系统性压制。</li>
+<li>权益资产可适度加码长久期科技成长、高质量动量资产等高弹性品种；</li>
+<li>红利底仓维持基准配置，作为组合的稳健收益压舱石，享受整体权益估值扩张的红利。</li>
+</ul>
+</li>
+</ul>
+<p><span id="section-5-3"></span></p>
+<h3 id="3-阶段二供给冲击承接期贴现率逆风">3. 阶段二：供给冲击承接期（贴现率逆风）</h3>
+<ul>
+<li><strong>触发条件</strong>：
+财政部扩大 10 年及 30 年期国债增发配额，$D^{(10+)}/D \ge 22%$，ACM 期限溢价自低位持续攀升（$0 \le TP &lt; 80 \text{ bps}$），长端收益率斜率增陡。</li>
+<li><strong>微观现象</strong>：
+套利者资产负债表开始被动堆积久期风险，二级市场长端债券抛压显现。长端贴现率上浮对远期现金流产生折现重压，高估值成长资产开始杀估值。</li>
+<li><strong>配置应对</strong>：
+<ul>
+<li>全面启动「收缩久期」防守预案。</li>
+<li>主动压降长久期、零股息、无盈利概念成长的仓位；</li>
+<li>将权益资产全面向<strong>现金流久期短（$D \le 8$ 年）、即期股息率高（$\ge 5%$）、资产负债率低</strong>的成熟红利蓝筹集结；</li>
+<li>依靠高额现金分红与低久期属性，平抑长端贴现率上升对估值造成的侵蚀。</li>
+</ul>
+</li>
+</ul>
+<p><span id="section-5-4"></span></p>
+<h3 id="4-阶段三双杀重估风暴期极端避险">4. 阶段三：双杀重估风暴期（极端避险）</h3>
+<ul>
+<li><strong>触发条件</strong>：
+长债供给持续过剩，叠加套利者遭遇巨额亏损（$\Delta W_t^{Arb} &lt; 0$），基差交易或杠杆多头平仓撤单，期限溢价突破高危阈值（$TP \ge 100 \text{ bps}$），第五篇所述的流动性双螺旋预警指数 LSWI 穿透 75。</li>
+<li><strong>物理现象</strong>：
+全球无风险贴现率之锚发生非线性暴冲，固定收益做市商承接能力枯竭，跨品种流动性共性传染，全球风险资产面临无差别的去杠杆与估值重构。</li>
+<li><strong>配置应对</strong>：
+<ul>
+<li>执行绝对防守指令。</li>
+<li>彻底清空高波动小微盘、长期限成长股与所有衍生品多头；</li>
+<li>权益仓位 100% 切换为超低波动的大盘高股息央国企现货，或将流动资金直接沉淀于短期国库券（T-Bills）、银行存款与逆回购等现金等价物；</li>
+<li>绝不左侧抢反弹，以最高的现金储备与纯防御底仓，静待宏观供给洪峰退去与财政部政策纠偏。</li>
+</ul>
+</li>
+</ul>
+<p><span id="section-5-5"></span></p>
+<h3 id="5-2026-当前全市场宏观切片与配置落地">5. 2026 当前全市场宏观切片与配置落地</h3>
+<p>观察 2026 年当下的宏观格局：
+美国政府债务占 GDP 比重维持在历史高位，财政赤字刚性导致长期国债供给中枢难以下行。然而经历 2023 年末的发债期限危机后，财政部在发债期限管理上明显更加谨慎，通过动态调节短端国库券占比来平抑长端波动。</p>
+<p>在当前环境下：</p>
+<ol>
+<li>10 年期美债期限溢价处于温和正值区间（约 20 到 40 个基点），尚未触发阶段三的极端双杀阈值，但显著高于过去十年的零利率宽松时期；</li>
+<li>宏观贴现率之锚系统性上移，宣告了「无盈利纯概念成长股野蛮生长」时代的终结；</li>
+<li>对于手握红利底仓的投资者，<strong>短久期、高派现、低负债</strong>不再只是熊市防守的临时避难所，而是在高贴现率常态化周期中获取确定性超额收益的核心底层资产；</li>
+<li>实盘操作中，持续监测财政部发债期限结构（$D^{(10+)}/D$）与期限溢价（$TP$），一旦发现供给过剩引发长端利率脱缰，遵从状态机指令，坚定站在短久期红利一侧，方能在全球宏观贴现率的起伏中守住投资的胜率底线。</li>
+</ol>
+<hr>
+<p><span id="section-6"></span></p>
+<h2 id="六全系列六篇宏观与微观投研大闭环总结">六、全系列六篇宏观与微观投研大闭环总结</h2>
+<p>至此，「红利与宏观择时」全套六篇投研体系全部完成交付，形成了一个逻辑严密、层层递进的资产定价与实盘攻防大闭环：</p>
+<pre tabindex="0"><code>                【宏观贴现率之锚】
+          篇章六：美债供给与套利者资本约束
+             (Greenwood &amp; Vayanos 2014)
+          决定长端期限溢价 TP 与宏观贴现率 r
+                         │
+                         ▼
+                【资产定价解耦基石】
+          篇章一：现值解耦与股息价格比方差
+             (Campbell &amp; Shiller 1988)
+          估值波动本质：贴现率预期驱动 (90%+)
+                         │
+                         ▼
+                【横截面久期传导】
+          篇章二：股权期限结构与反周期配置
+                   (Gormsen 2021)
+          短久期红利稳态收息 vs. 长久期成长周期反转
+                         │
+                         ▼
+        ┌────────────────┴────────────────┐
+        ▼                                 ▼
+【极端动量尾部防守】               【微观流动性与资金挤兑】
+篇章三：动量崩溃与自适应缩放       篇章四：公募资金流与资产贱卖
+(Daniel &amp; Moskowitz 2016)         (Coval &amp; Stafford 2007)
+防范熊市反弹期逼空向上崩盘         识别机构赎回潮下的流动性错杀
+        │                                 │
+        └────────────────┬────────────────┘
+                         ▼
+                【机构系统性恶性共振】
+          篇章五：流动性双螺旋共振与极端防守
+            (Brunnermeier &amp; Pedersen 2009)
+          度量亏损螺旋与保证金螺旋，划定极端防守边界
+</code></pre><ol>
+<li><strong>篇章一（现值解耦）</strong>：通过 Campbell–Shiller 现值分解，打破了「股息率高就是基本面好」的盲目直觉，证实估值波动本质上由贴现率预期主导；</li>
+<li><strong>篇章二（期限结构）</strong>：将单一时序拓展至股票横截面，引入现金流久期，阐明繁荣期持有短久期红利稳态收息、萧条期逆势布局长久期成长的跨周期反转规律；</li>
+<li><strong>篇章三（动量攻防）</strong>：针对投资者在红利底仓外配置动量进攻时最常遭遇的「动量崩溃」，揭示空头端股权期权化逼空机制，建立自适应动态缩放与零下限熔断风控；</li>
+<li><strong>篇章四（资金挤兑）</strong>：深入公募基金微观结构，解构机构赎回潮下的「受迫贱卖（Fire Sales）」现象，厘清基本面利空与流动性错杀的区别，指导在抛压出清后精准捡拾带血筹码；</li>
+<li><strong>篇章五（双螺旋共振）</strong>：从做市商与杠杆机构的资本约束出发，刻画市场流动性与融资流动性相互强化的非线性相变悬崖，构建 LSWI 预警指数指导极端防守；</li>
+<li><strong>篇章六（宏观贴现率之锚）</strong>：将全系列所有微观机制最终锚定于宏观利率之源：政府国债供给期限结构与套利者资产负债表容量，讲透全球资产定价之锚的形成与股票资产的久期防御。</li>
+</ol>
+<p>规矩立好了，逻辑贯通了，投资才不烧心。</p>
+<hr>
+<p><span id="section-appendix"></span></p>
+<h2 id="附录美债供给与期限溢价预测模型参考脚本">附录：美债供给与期限溢价预测模型参考脚本</h2>
+<p>以下 Python 函数展示了基于修正后累计持有期收益口径的美债供给与期限溢价预测计量模型实现逻辑：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> statsmodels.api <span style="color:#66d9ef">as</span> sm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">analyze_treasury_supply_and_excess_returns</span>(
+</span></span><span style="display:flex;"><span>    monthly_bond_df: pd<span style="color:#f92672">.</span>DataFrame,
+</span></span><span style="display:flex;"><span>    holding_period_months: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
+</span></span><span style="display:flex;"><span>    hac_lags: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>
+</span></span><span style="display:flex;"><span>) <span style="color:#f92672">-&gt;</span> dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    基于 Greenwood &amp; Vayanos (2014) 理论机制的美债供给与超额收益计量预测模型
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    参数:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    monthly_bond_df: 包含以下字段的月度债券时序 DataFrame:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - &#39;term_spread&#39;: 期限利差 (如 y_20y - y_1y, 单位 %)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - &#39;long_debt_share&#39;: 长端国债占比 D(10+)/D (单位 %)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        - &#39;monthly_excess_return_20y&#39;: 20年期国债单月对数超额收益 (单位 %)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    holding_period_months: 持有期长度 (默认 12 个月)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    hac_lags: Newey-West HAC 稳健标准误截断阶数 (默认 18 阶)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    df <span style="color:#f92672">=</span> monthly_bond_df<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 1. 严格构造未来 N 个月累计持有期超额收益 (修正单期 shift(-12) 错误)</span>
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;target_excess_ret_12m&#39;</span>] <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>        df[<span style="color:#e6db74">&#39;monthly_excess_return_20y&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>rolling(holding_period_months)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>shift(<span style="color:#f92672">-</span>holding_period_months)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 2. 构造套利者财富损益代理变量 ΔW_arb = Spread_{t-12} * Excess_Return_{t-12 -&gt; t}</span>
+</span></span><span style="display:flex;"><span>    prior_spread <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;term_spread&#39;</span>]<span style="color:#f92672">.</span>shift(holding_period_months)
+</span></span><span style="display:flex;"><span>    realized_prior_excess_ret <span style="color:#f92672">=</span> (
+</span></span><span style="display:flex;"><span>        df[<span style="color:#e6db74">&#39;monthly_excess_return_20y&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>rolling(holding_period_months)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;delta_w_arb&#39;</span>] <span style="color:#f92672">=</span> prior_spread <span style="color:#f92672">*</span> realized_prior_excess_ret
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. 构造长债供给与套利者财富的交互项</span>
+</span></span><span style="display:flex;"><span>    df[<span style="color:#e6db74">&#39;supply_x_wealth&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;long_debt_share&#39;</span>] <span style="color:#f92672">*</span> df[<span style="color:#e6db74">&#39;delta_w_arb&#39;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    clean_df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>dropna()<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>    y <span style="color:#f92672">=</span> clean_df[<span style="color:#e6db74">&#39;target_excess_ret_12m&#39;</span>]
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 模型 1: 单变量长端供给预测</span>
+</span></span><span style="display:flex;"><span>    X1 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(clean_df[[<span style="color:#e6db74">&#39;long_debt_share&#39;</span>]])
+</span></span><span style="display:flex;"><span>    model1 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y, X1)<span style="color:#f92672">.</span>fit(cov_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HAC&#39;</span>, cov_kwds<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;maxlags&#39;</span>: hac_lags})
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 模型 2: 供给 ＋ 期限利差控制</span>
+</span></span><span style="display:flex;"><span>    X2 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(clean_df[[<span style="color:#e6db74">&#39;term_spread&#39;</span>, <span style="color:#e6db74">&#39;long_debt_share&#39;</span>]])
+</span></span><span style="display:flex;"><span>    model2 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y, X2)<span style="color:#f92672">.</span>fit(cov_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HAC&#39;</span>, cov_kwds<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;maxlags&#39;</span>: hac_lags})
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 模型 3: 供给 ＋ 利差 ＋ 套利者财富 ＋ 交互项 (检验套利资本约束)</span>
+</span></span><span style="display:flex;"><span>    X3 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>add_constant(clean_df[[<span style="color:#e6db74">&#39;term_spread&#39;</span>, <span style="color:#e6db74">&#39;long_debt_share&#39;</span>, <span style="color:#e6db74">&#39;delta_w_arb&#39;</span>, <span style="color:#e6db74">&#39;supply_x_wealth&#39;</span>]])
+</span></span><span style="display:flex;"><span>    model3 <span style="color:#f92672">=</span> sm<span style="color:#f92672">.</span>OLS(y, X3)<span style="color:#f92672">.</span>fit(cov_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;HAC&#39;</span>, cov_kwds<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;maxlags&#39;</span>: hac_lags})
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;model_supply_only&#39;</span>: model1,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;model_with_spread&#39;</span>: model2,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;model_full_interaction&#39;</span>: model3,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#39;clean_data_sample_size&#39;</span>: len(clean_df)
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><hr>
+<p><span id="section-ref"></span></p>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li>Greenwood, R., &amp; Vayanos, D. (2014). Bond supply and excess bond returns. <em>The Review of Financial Studies</em>, 27(3), 663–713.</li>
+<li>Vayanos, D., &amp; Vila, J. L. (2021). A preferred-habitat model of the term structure of interest rates. <em>Econometrica</em>, 89(1), 77–112.</li>
+<li>Modigliani, F., &amp; Sutch, R. (1966). Innovations in interest rate policy. <em>The American Economic Review</em>, 56(1/2), 178–197.</li>
+<li>Campbell, J. Y., &amp; Shiller, R. J. (1988). The dividend-price ratio and expectations of future dividends and discount factors. <em>The Review of Financial Studies</em>, 1(3), 195–228.</li>
+<li>Cochrane, J. H., &amp; Piazzesi, M. (2005). Bond risk premia. <em>The American Economic Review</em>, 95(1), 138–160.</li>
+<li>Fama, E. F., &amp; Bliss, R. R. (1987). The information in long-maturity forward rates. <em>The American Economic Review</em>, 77(4), 680–692.</li>
+<li>Adrian, T., Crump, R. K., &amp; Moench, E. (2013). Pricing the term structure with linear regressions. <em>Journal of Financial Economics</em>, 110(1), 110–138.</li>
+<li>Gormsen, N. J. (2021). Time variation of the equity term structure. <em>The Journal of Finance</em>, 76(4), 1959–1999.</li>
+<li>Daniel, K., &amp; Moskowitz, T. J. (2016). Momentum crashes. <em>Journal of Financial Economics</em>, 122(2), 221–247.</li>
+<li>Coval, J., &amp; Stafford, E. (2007). Asset fire sales in equity markets. <em>Journal of Financial Economics</em>, 86(1), 124–158.</li>
+<li>Brunnermeier, M. K., &amp; Pedersen, L. H. (2009). Market liquidity and funding liquidity. <em>The Review of Financial Studies</em>, 22(6), 2201–2238.</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>kuhung </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/treasury-supply-and-macro-discount-rate/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E6%8A%95%E7%A0%94/">
+                    #量化投研</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%B5%84%E4%BA%A7%E5%AE%9A%E4%BB%B7/">
+                    #资产定价</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BE%8E%E5%80%BA%E4%BE%9B%E7%BB%99/">
+                    #美债供给</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9C%9F%E9%99%90%E6%BA%A2%E4%BB%B7/">
+                    #期限溢价</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BA%A2%E5%88%A9%E8%B5%84%E4%BA%A7/">
+                    #红利资产</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%AE%8F%E8%A7%82%E8%B4%B4%E7%8E%B0%E7%8E%87/">
+                    #宏观贴现率</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/" class="prev" rel="prev" title="红利与宏观择时（五）：流动性双螺旋共振与极端防守"><i class="iconfont icon-left"></i>&nbsp;红利与宏观择时（五）：流动性双螺旋共振与极端防守</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

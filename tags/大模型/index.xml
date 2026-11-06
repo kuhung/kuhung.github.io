@@ -1,11 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>大模型 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link><description>Recent content in 大模型 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</title><link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link><pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate><guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid><description>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>大模型 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+    <description>Recent content in 大模型 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</title>
+      <link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid>
+      <description>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。
 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）提出的“权重空间编程”（Weight-Space Programming, WSP）提出了一种新的思路：前沿通用大模型（GPT-6 Astra）能够在自然语言指令驱动下，在受限代码沙箱中自主运行分析程序、定位模型内部故障，并直接修改其他神经网络的权重文件，全程无需反向传播或微调循环。
 其中引发行业广泛讨论的案例，是 Astra 将 Qwen3.5-0.8B 在高难度数学推理基准 MATH-500 上的准确率从 7.9% 提升至 48.1%。面对这一实验表现，有必要穿透数据表象，系统解码大模型推断小模型参数的底层物理机理，厘清其真实起效的区间与严格的边界约束。
 一、权重空间的读、写、改三维基础验证 WSP 框架在进入深层多参数语言模型之前，首先在微型策略网络与扩散模型上验证了模型对参数空间的直接操作能力。
 1. 权重读取（Read） 研究团队向 Astra 输入了 4 个具有完全相同多层感知机（MLP）架构（17,253 个参数）的策略网络。这些网络分别在使用 PPO 强化学习算法训练于 MinAtar 像素游戏环境（Breakout、Pong、Pac-Man、Freeway）。在完全未提供候选游戏名称的盲测条件下，Astra 仅通过解析第一层权重矩阵在输入通道上的空间分布特征（如 Breakout 底层挡板权重的行状聚集与顶部奖励带），准确推断出全部 4 款游戏各自对应的模型。
 然而，静态权重阅读存在严格的尺度边界。在后续对微调后的 Gemma 3 270M 进行的测试中，Astra 试图通过纯静态数值分辨哪个模型被训练成了“谄媚”（Sycophancy）模式，连续 4 次推断均告失败。这一未能识别模型差异的结果表明：单纯的静态权重文本阅读仅适用于输入特征高度结构化的小型网络；针对深层自回归模型，必须依赖运行时的动态激活分析。
 2. 从零编译权重（Write） 在无训练数据、无梯度信息且不使用外部环境反馈的零样本设置下，研究人员要求 Astra 直接输出一个输入维度为 10x10x4 的 MLP 策略网络参数，用于控制 MinAtar 游戏。
-在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.</description></item><item><title>权重空间编程（上）：大模型权重干预的四大技术路线对比</title><link>https://kuhung.me/posts/weight-space-intervention-history/</link><pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate><guid>https://kuhung.me/posts/weight-space-intervention-history/</guid><description>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。
+在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.</description>
+    </item>
+    
+    <item>
+      <title>权重空间编程（上）：大模型权重干预的四大技术路线对比</title>
+      <link>https://kuhung.me/posts/weight-space-intervention-history/</link>
+      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weight-space-intervention-history/</guid>
+      <description>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。
 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编程”（Weight-Space Programming, WSP）之前，有必要系统梳理此前在该领域形成的四条主流技术脉络，明确其在具体模型上的实测数据、所针对的具体问题以及各自面对的物理约束边界。
 一、超网络与权重空间学习：参数流形的黑盒映射 超网络（Hypernetworks）技术早在 2017 年由 David Ha 等人提出，基本思路是通过构建辅助神经网络来直接预测或生成目标主干网络的参数矩阵。
 在早期的基准测试中，研究人员验证了利用 HyperLSTM 动态生成循环单元权重的有效性。在 WMT14 德英与英法机器翻译任务中，HyperLSTM 将主干网络的独立参数量分别由 31.5M 和 61.2M 压缩至 14.8M 与 28.5M（压缩比例超过 50%），同时在测试集上的 BLEU 评分维持在 24.4 与 36.0，与未压缩的标准基线持平或略有提升。
@@ -13,16 +37,43 @@
 但超网络体系的根本局限在于学习范式：它本质上仍是监督学习架构下的高维回归映射，高度依赖海量已训练模型的参数集作为元学习（Meta-learning）训练样本，并未建立对网络参数内部算法逻辑的显式推理机制。
 二、模型编辑：因果追踪与单秩事实注入 模型编辑（Model Editing）旨在不重新训练整个模型的前提下，高保真度地修正模型参数中存储的特定事实陈述（如将“埃菲尔铁塔位于巴黎”更正为“位于罗马”）。
 代表性方法为 Kevin Meng 等人于 2022 年提出的 ROME（Rank-One Model Editing）。ROME 利用因果追踪（Causal Tracing）对输入 token 进行高斯噪声污染，并通过逐层激活阻断，定位出 Transformer 中间层前馈网络（MLP）是存储主谓宾关联记忆的主体。在定位到具体投影层（如 GPT-J 6B 的第 6 层 MLP）后，算法通过构造线性联想记忆方程并求解闭式最小二乘问题，计算出一个秩为 1（Rank-1）的外积矩阵直接叠加到权重张量中。
-在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.</description></item><item><title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title><link>https://kuhung.me/posts/consumer-ai-market-structure/</link><pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate><guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
+在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.</description>
+    </item>
+    
+    <item>
+      <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
+      <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>
+      <pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
 看 AI 行业榜单，容易被网页访问量和 App 下载量带偏。
 Similarweb 统计的网页独立访客，或者应用商店的下载榜，反映的是大众好奇心。但在推理算力成本居高不下的今天，访问量大往往只意味着算力账单更贵，不代表有人愿意持续掏钱。
 a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的美国消费者信用卡真实扣款样本。当把“真实花钱的账单”和“网页访问量”、“移动端月活”放在一起对照时，整个市场的底牌才显现出来。
 在看具体榜单前，有两组量化基准可以作为全局参考线：
 流量端的天花板与门槛：ChatGPT 全球月访问量约 37 亿次（是 Gemini 的 2 倍，Claude 的 14 倍）；而进入网页 Top 50 的门槛线大约在 500 万至 800 万次/月；移动端 Top 50 的月活（MAU）门槛在 300 万至 500 万之间。 支出端的极度集中：全美用过 AI 的人接近一半，真正按月掏钱订阅个人版工具的消费者只有 4.5%。中位数付费者每月花 25 美元，87% 的人只给一款工具付费。前 1% 的重度用户，月均支出高达 903 美元，贡献了全盘近两成的开销。 支出排名前 50 的厂商里，有整整 29 家在网页流量榜和移动端月活榜上查无此人。
-把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description></item><item><title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title><link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link><pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate><guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid><description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
+把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description>
+    </item>
+    
+    <item>
+      <title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title>
+      <link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link>
+      <pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid>
+      <description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
 在阅读全文前，有几个重点数据需要先关注：
 付费用户比例较低：全美近半数人使用过 AI，但每天使用的仅有 25%，真正为 ChatGPT、Gemini 或 Claude 个人订阅付费的消费者只有 4.5%。 支出高度集中于重度用户：前 1% 的重度付费用户月均支出达 903 美元（18 个月内增长 80%），贡献了近两成的总支出；而中位数付费者每月仅 25 美元，且只有 13% 的人会购买第二款 AI 工具。 流量与实际收入显著脱节：消费支出前 50 强中，有 29 家完全没有进入网页流量或移动端月活榜单。高客单价产品主要集中在桌面客户端、开发工具和直接嵌入即时通讯工具的智能体（Agent）。 头部效应加剧：本期仅 11 款新产品首次入榜，为历期最少。Canva、Notion、Figma 等成熟软件凭借已有工作流占据前列，同时进入网页、移动与支出三榜前列的产品全球仅 7 家。 这份榜单涵盖的 100 多个消费级 AI 产品，后续我们会逐个进行分析拆解。
-报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description></item><item><title>GEO的过去、未来与反作弊算法</title><link>https://kuhung.me/posts/geo-and-anticheat/</link><pubDate>Tue, 17 Mar 2026 10:37:36 +0800</pubDate><guid>https://kuhung.me/posts/geo-and-anticheat/</guid><description>回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
+报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description>
+    </item>
+    
+    <item>
+      <title>GEO的过去、未来与反作弊算法</title>
+      <link>https://kuhung.me/posts/geo-and-anticheat/</link>
+      <pubDate>Tue, 17 Mar 2026 10:37:36 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/geo-and-anticheat/</guid>
+      <description>回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。
 关注一位博主，曾短暂投入过GEO方面的创业，到年初放弃。而我当时也让Gemini的DeepResearch做了一次调研。从目前我的状态来看，大家就知道并未深度投入。
 为什么不深入？我当时有三个判断。
 第一，GEO 本质上还是 SEO。国内搞这套，说到底还是内容农场的路子。门槛低，没护城河。 第二，小规模跑通容易，但想做成大生意，得铺大量销售去对接老板。这不符合我“轻步快跑”的现状。 第三，算不清账。业内叫零点击。你很难证明大模型里的某句推荐，到底带来了多少实在的收入。没法算账，客户就没法持续掏钱。
@@ -48,11 +99,24 @@ GEO 怎么做 回到 GEO。大模型现在抓取内容，用的还是老一套�
 所以 GEO 的实操没什么高深技术。无非是写内容、调内容、发内容，跟大模型的反作弊规则做持续测试。
 GEO 的未来 搞清楚了怎么做，最后面临的是怎么交差。
 和 SEO 相比，GEO 最大的硬伤是数据归因断层。过去你能清楚看到用户搜了什么词、在页面停留了多久。但在 GEO 里，这些全成了黑盒。
-但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。</description></item><item><title>三大LLM厂商的提示词行动指南</title><link>https://kuhung.me/posts/prompt-guide/</link><pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate><guid>https://kuhung.me/posts/prompt-guide/</guid><description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
+但非要在这个问题上较真，可能就走偏了。GEO 实质更像品牌广告。你很难精准算出地铁里的一块广告牌带来了多少转化。老板只要预算够，投 GEO 进行适当的营销配置就是必要的。</description>
+    </item>
+    
+    <item>
+      <title>三大LLM厂商的提示词行动指南</title>
+      <link>https://kuhung.me/posts/prompt-guide/</link>
+      <pubDate>Sun, 20 Jul 2025 10:20:04 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/prompt-guide/</guid>
+      <description>提示词工程的演变与重要性 自从22年以来，提示词已经经过多轮的迭代，发展出了更系统的方法论。在初期，各路网上的提示词，还更多是角色扮演，偏向C端用户。大家也相信，凭借 LLM 基座大模型的进步，提示词会逐渐退出舞台。然而一坤年（两年半）过去了，期待的基座模型大进步并未出现——提示词仍然决定了 LLM 应用的质量；也决定了用户交互时，能多大程度得到自己想要的答案。因此，再探提示词是有必要。无论是个人使用，还是构建 LLM 应用，都需要掌握其基本原理和目前的最佳实践。
 提示词技巧与人类沟通的共通性 产品设计本身也是人类社会规则设计的一个抽象。从宏观来说，提示词技巧和人类社会的一些常见共识重合度很高。例如：清晰阐明你的诉求、明确角色职责、分阶段分解任务、重复诉求以防止遗忘、约定清晰的输出结构、提供样例进行模仿、引导输出内容、要有事实数据支撑、设计指标反复迭代。这些技巧，在与人沟通、协作、领导、教练的时候，是非常重要的。靠意识同步的三体人，其 AI 的形态必与我们的不同。只要人类社会还是当前的结构形态，当下这些工作就还有意义。
 提示词的分类 提示词，我们从配置方来说，分为三类。分别是系统提示词，由 LLM 提供商预设在模型 API 接口下，定义模型的行为准则。例如：反黄暴之类的。这一般是第一条注入的提示词。角色提示词，这个提示词是开放给用户配置的，比如配置为“你是一个大模型专家”。最后就是常见的用户交互提示词，用户输入的内容也算提示词。在此基础上，又根据用户和场景，派生出例如：指令提示词，指定输出xx字这种；上下文提示词，交代上下文说过啥；样本提示词，按照给的样式来；CoT 提示词，好好想想，逐步思考，等若干提示词种类。
 主流大模型提供商的提示词建议 话归正题，笔者参考了 Anthropic、Google 以及 OpenAI 的提示词构建文档，力求从第一手信息源出来，结合自身的使用经验，给到当下最好的解决方案。这其中也离不开各类 LLM 支持构建的 deep reasearch 工具，这个过程才会变得更丝滑、效率更高。但由于人脑的带宽毕竟有限，错误和纰漏在所难免，读者朋友如有发现，欢迎指出。
 Antropic 的提示词建议 以 Anthropic 为例，他们在训练过程中使用了大量的 XML 的结构化语料，因此类似的结构化提示词在他家的模型上会表现得很好。另外也强调清晰和直接的重要性。即清晰表达你的需求，可量化的提出你的诉求。而不是丢一个模棱两可的问题，然后反复沟通。但其实这部份也是需要的，这里更多是指大规模应用的时候，系统预设提示词，减少用户和下文的困惑度，这在软件系统中很重要。而且模型本身就是概率模型，它的结果是不确定的，那么反复沟通其实就有必要。
 因为 LLM 的本质是预测下一个 token 是啥，所以可以通过预设这个开头来保证它会做出预期内的事情。比如想要输出 JSON，那么就以{开头。这一技术也被用在 deepseek 的 think 推理里面，通过预先提示来让模型进行 reason 推理。另一方面，由于模型的被奖励尽可能多的输出下一个 token，所以当遇到负面提示时：比如不要干啥，模型可能会产生意料之外的变化。因此，Anthropic 家的文档建议出更多的正面提示词：应该做什么，而不是不应该做什么，借此来减少不可控性。
 Google 的提示词建议 而 Google 来说，对于他们的 Gemini 模型，则建议提供一个清晰可供参考的样本。这点在笔者做仓满量化相关的产出时，深有体会。只需要在开始和模型磨合，得到想要的代码模版或者是 doc 模版，后续只需要提供这个模版，即使是 Gemini-flash 模型，也能高效完成代码的编写工作。除此之外，谷歌文档中也给出了更高级的方式。例如 Step back 思考。先抽象，再解决问题。CoT 思维链也是一种方式，通过提示词注入“一步步思考”的方式，让模型的输出更具可解释性。
-当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description></item></channel></rss>
+当然，还有像多次运行取平均值这种机器学习上的常用技巧（自洽性）。不过话说回来，这种方法对于成本控制和延迟响应要求蛮高。而在 agent 大行其道的当下，ReAct 也是一个重点。即推理和工具反馈相结合，用反馈来修正模型的表现。不过这些技术会显著增加 token 的消耗，需要在实践中取舍平衡。</description>
+    </item>
+    
+  </channel>
+</rss>

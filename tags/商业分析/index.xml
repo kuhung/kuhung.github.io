@@ -1,18 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>商业分析 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</link><description>Recent content in 商业分析 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 27 Oct 2026 10:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml"/><item><title>Anthropic 招股书解读：经营改善与长期算力支出压力</title><link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link><pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate><guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>商业分析 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/</link>
+    <description>Recent content in 商业分析 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 27 Oct 2026 10:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%95%86%E4%B8%9A%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anthropic 招股书解读：经营改善与长期算力支出压力</title>
+      <link>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</link>
+      <pubDate>Tue, 27 Oct 2026 10:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
 美国时间 2026 年 10 月 26 日，Claude 的开发商 Anthropic 向美国证券交易委员会（SEC）递交了 335 页的招股书（代码 ANT）（SEC 原文，2026-10-26；官方公告，2026-10-26）。
 这是头部通用大模型实验室第一次向二级市场公开经审计的财务报表（竞争对手 OpenAI 已将 IPO 计划推迟至 2027 年，Reuters，2026-10-26）。这份招股书给出了四项打破市场常识的核心事实：
-订阅只占两成营收：外界最熟悉的 Claude Pro/Team 订阅仅占 20% 营收，其余 80% 均来自企业与开发者的 API 用量计费。2026 年第二季度单季创收 115.6 亿美元，超过此前三年总和。 800 亿账面亏损是会计记账：上半年高达 807 亿美元的 GAAP 账面亏损中，近九成（724 亿美元）是因为公司估值暴涨引发的可转债非现金公允价值重估。主营业务在 2026 年第二季度已经实现 9.7 亿美元的单季经营盈利。 算力成本占比降至 55%，但签了 6,370 亿采购承诺：算力费用占营收比从 2023 年的 1,000% 以上收窄到 54.9%，但与云厂商签署的采购协议附带刚性差额补足（True-up）条款，算力需求一旦放缓就必须补齐现金。 公众股东拿不到实质表决权：通过五类股票架构，7 位创始人用 1 股 Class F 锁定了 50.1% 的表决权，长期利益信托（LTBT）控制董事会多数席位，公开认购的普通股没有实质话语权。 一、营收结构：订阅仅占 20% 营收 在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</description></item><item><title>解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</title><link>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</link><pubDate>Mon, 26 Oct 2026 12:20:00 +0800</pubDate><guid>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
+订阅只占两成营收：外界最熟悉的 Claude Pro/Team 订阅仅占 20% 营收，其余 80% 均来自企业与开发者的 API 用量计费。2026 年第二季度单季创收 115.6 亿美元，超过此前三年总和。 800 亿账面亏损是会计记账：上半年高达 807 亿美元的 GAAP 账面亏损中，近九成（724 亿美元）是因为公司估值暴涨引发的可转债非现金公允价值重估。主营业务在 2026 年第二季度已经实现 9.7 亿美元的单季经营盈利。 算力成本占比降至 55%，但签了 6,370 亿采购承诺：算力费用占营收比从 2023 年的 1,000% 以上收窄到 54.9%，但与云厂商签署的采购协议附带刚性差额补足（True-up）条款，算力需求一旦放缓就必须补齐现金。 公众股东拿不到实质表决权：通过五类股票架构，7 位创始人用 1 股 Class F 锁定了 50.1% 的表决权，长期利益信托（LTBT）控制董事会多数席位，公开认购的普通股没有实质话语权。 一、营收结构：订阅仅占 20% 营收 在收入构成上，Anthropic 采用“按智能消耗计费（Pay-for-intelligence，即基于 API Token 与任务调用量的 Usage-Based Pricing）”为主、“按月/按席位固定订阅（Subscription-Based Pricing）”为辅的混合变现模式。</description>
+    </item>
+    
+    <item>
+      <title>解读 100 个 AI 商业产品｜Retell AI：从 28 个招聘岗位看海外电话 Agent 的流程改造与合规门槛</title>
+      <link>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</link>
+      <pubDate>Mon, 26 Oct 2026 12:20:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
 在《解读 100 个 AI 商业产品》的前两篇里，我们先盘了 a16z 第 7 期消费级 AI 百强榜 和 110 款产品的真实消费账单。看消费级榜单时会发现一个现象：能在网页访问量、App 下载榜或者个人信用卡扣款里排上号的，大多是通用对话助手、写代码工具或者音视频生成软件，比如排在消费支出榜第 10 名的语音合成平台 ElevenLabs。一旦进入纯 B2B 企业对公结算的领域，很多已经有相当收入规模的公司，在大众流量统计里完全看不到。
 这篇要聊的 Retell AI 就是其中一家。这家 2023 年底注册、2024 年从 YC W24 出来的硅谷团队，公开披露的种子轮融资只有约 510 万美元（Sacra，2026-10-24）。它在消费级榜单上没有名字，但在 a16z 与企业银行 Mercury 联合发布的 B2B 创业公司支出榜里排到了第 16 名（a16z AI Application Spending Report，2025-10-02）；到 2026 年 10 月，公司在招聘页披露的年化经常性收入（ARR）达到 8,000 万美元，团队约 50 人，每月处理企业通话超过 5,000 万通（YC Jobs，2026-10-24）。
 我最初留意到这家公司，是因为翻看他们在招聘网站挂出的 28 个在招岗位时，看到了一长串 FDE（Forward Deployed Engineer，前置部署工程师），还按语言和地区细分到了西班牙语、普通话、香港和新加坡。
 我刚毕业时所待的团队，做过客服相关的算法工作。看到一家做电话语音 Agent（接听与外呼）的公司招这么多驻场工程师，脑子里自然冒出几个疑问：
-业务价值到底在哪？ 就我自己的客服经验来看，电话语音 Agent 并没有带来新的需求增量，它依然是在重塑过去呼叫中心的存量生产流程，特别是外呼通知、账单催收和预约核实。既然是改造存量旧流程，它在技术链路上是怎么替换原有人工和按键菜单的？产品边界又划在哪？ 海外的电话环境是什么情况？ 在国内做过呼叫业务的人都很清楚，因为早年骚扰电话太多，很多用户已经开了防骚扰拦截和陌生号码免打扰，电话呼出在国内能展开的空间很小。那海外市场是什么状况？海外的电话监管与合规要求是怎么运作的？ 为什么要招这么多 FDE？ 一家按分钟计费（$0.</description></item><item><title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title><link>https://kuhung.me/posts/consumer-ai-market-structure/</link><pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate><guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid><description>声明：本文由 AI 辅助创作，经作者核实与修订。
+业务价值到底在哪？ 就我自己的客服经验来看，电话语音 Agent 并没有带来新的需求增量，它依然是在重塑过去呼叫中心的存量生产流程，特别是外呼通知、账单催收和预约核实。既然是改造存量旧流程，它在技术链路上是怎么替换原有人工和按键菜单的？产品边界又划在哪？ 海外的电话环境是什么情况？ 在国内做过呼叫业务的人都很清楚，因为早年骚扰电话太多，很多用户已经开了防骚扰拦截和陌生号码免打扰，电话呼出在国内能展开的空间很小。那海外市场是什么状况？海外的电话监管与合规要求是怎么运作的？ 为什么要招这么多 FDE？ 一家按分钟计费（$0.</description>
+    </item>
+    
+    <item>
+      <title>消费级 AI 真实账单：流量与收入错位，谁在闷声赚钱</title>
+      <link>https://kuhung.me/posts/consumer-ai-market-structure/</link>
+      <pubDate>Sat, 24 Oct 2026 15:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/consumer-ai-market-structure/</guid>
+      <description>声明：本文由 AI 辅助创作，经作者核实与修订。
 看 AI 行业榜单，容易被网页访问量和 App 下载量带偏。
 Similarweb 统计的网页独立访客，或者应用商店的下载榜，反映的是大众好奇心。但在推理算力成本居高不下的今天，访问量大往往只意味着算力账单更贵，不代表有人愿意持续掏钱。
 a16z 在最新一期消费级 AI 报告里，首次拿出了 YipitData 监测的美国消费者信用卡真实扣款样本。当把“真实花钱的账单”和“网页访问量”、“移动端月活”放在一起对照时，整个市场的底牌才显现出来。
 在看具体榜单前，有两组量化基准可以作为全局参考线：
 流量端的天花板与门槛：ChatGPT 全球月访问量约 37 亿次（是 Gemini 的 2 倍，Claude 的 14 倍）；而进入网页 Top 50 的门槛线大约在 500 万至 800 万次/月；移动端 Top 50 的月活（MAU）门槛在 300 万至 500 万之间。 支出端的极度集中：全美用过 AI 的人接近一半，真正按月掏钱订阅个人版工具的消费者只有 4.5%。中位数付费者每月花 25 美元，87% 的人只给一款工具付费。前 1% 的重度用户，月均支出高达 903 美元，贡献了全盘近两成的开销。 支出排名前 50 的厂商里，有整整 29 家在网页流量榜和移动端月活榜上查无此人。
-把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description></item><item><title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title><link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link><pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate><guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid><description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
+把这份包含网页 50 强、移动 50 强与真实支出 50 强的底表拉平（去重后共 110 款产品），可以看清消费级 AI 市场的真实分化。</description>
+    </item>
+    
+    <item>
+      <title>拆解 100 个消费级 AI 产品：真实账单里的付费率、重度用户与商业分化</title>
+      <link>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</link>
+      <pubDate>Fri, 23 Oct 2026 22:20:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</guid>
+      <description>重点数据概览 a16z 发布的第 7 期消费级 AI 报告（The Top 100 Gen AI Consumer Apps — 7th Edition，2026-10-05），和前六期只统计网页访问量与 App 下载量不同，本期首次引入了 YipitData 监测的美国消费者银行卡真实支出数据。
 在阅读全文前，有几个重点数据需要先关注：
 付费用户比例较低：全美近半数人使用过 AI，但每天使用的仅有 25%，真正为 ChatGPT、Gemini 或 Claude 个人订阅付费的消费者只有 4.5%。 支出高度集中于重度用户：前 1% 的重度付费用户月均支出达 903 美元（18 个月内增长 80%），贡献了近两成的总支出；而中位数付费者每月仅 25 美元，且只有 13% 的人会购买第二款 AI 工具。 流量与实际收入显著脱节：消费支出前 50 强中，有 29 家完全没有进入网页流量或移动端月活榜单。高客单价产品主要集中在桌面客户端、开发工具和直接嵌入即时通讯工具的智能体（Agent）。 头部效应加剧：本期仅 11 款新产品首次入榜，为历期最少。Canva、Notion、Figma 等成熟软件凭借已有工作流占据前列，同时进入网页、移动与支出三榜前列的产品全球仅 7 家。 这份榜单涵盖的 100 多个消费级 AI 产品，后续我们会逐个进行分析拆解。
-报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description></item></channel></rss>
+报告全文翻译：The Top 100 Gen AI Consumer Apps (7th Edition) 作者：Olivia Moore（a16z 合伙人）</description>
+    </item>
+    
+  </channel>
+</rss>

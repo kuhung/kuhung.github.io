@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>阅读笔记 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link><description>Recent content in 阅读笔记 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 09 Aug 2021 09:12:06 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>软件开发的高杠杆活动</title><link>https://kuhung.me/posts/the-effective-engineer-01/</link><pubDate>Mon, 09 Aug 2021 09:12:06 +0800</pubDate><guid>https://kuhung.me/posts/the-effective-engineer-01/</guid><description>软件开发的正确思维，聚焦高杠杆活动 作为技术序列的工程师，我时常在想，什么样的角色将会是我五年、十年后所扮演的。目前来说，工作三年有余，在某些公司内，已经可以算是高级甚至是资深工程师。不过，对于我来说，赋予title起的作用，并没有做成一件事兴奋。我时常在好奇，别的工程师的工作方法和我一样吗？我目前的工作方法是最优的了吗？
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>阅读笔记 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 阅读笔记 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 09 Aug 2021 09:12:06 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>软件开发的高杠杆活动</title>
+      <link>https://kuhung.me/posts/the-effective-engineer-01/</link>
+      <pubDate>Mon, 09 Aug 2021 09:12:06 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/the-effective-engineer-01/</guid>
+      <description>软件开发的正确思维，聚焦高杠杆活动 作为技术序列的工程师，我时常在想，什么样的角色将会是我五年、十年后所扮演的。目前来说，工作三年有余，在某些公司内，已经可以算是高级甚至是资深工程师。不过，对于我来说，赋予title起的作用，并没有做成一件事兴奋。我时常在好奇，别的工程师的工作方法和我一样吗？我目前的工作方法是最优的了吗？
 带着这样的疑问，也关注了硅谷大厂程序员的一些博客，同时也阅读了一些软件开发的经典之作，例如《人月神话》、《大教堂与旧集市》、《程序员修炼之道》等。这些内容都是很好的基础，为我软件开发的职业道路，树立了基本的职业价值观。不过今天，要推荐另外一本书《The Effective Engineer》。本书目前还没有中文版本，作者经历过硅谷的大小厂，Google、Quip、Quora等，从他的角度，总结了一些很有道理的内容。
 该书的核心，聚焦在一个杠杆二字。所有活动的目的，都是最大化杠杆的效果。这点和的之前讲的财富38条法则不谋而合。在上次的法则中，同样强调了杠杆的效用。而软件开发领域，本身就是一个高杠杆活动。你开发的软件，可以只供团队内数十人使用，也可以供数以亿计的用户使用。
 该系列整体分为三条，咱们逐一拆解。
@@ -15,7 +30,16 @@
 构建长期价值 实用与质量的平衡 多快好省赶紧上，这种思想也会出现在软件开发领域。这本身与快速迭代并不矛盾，但要注意平衡好开发周期与质量的矛盾。CodeReview、自动化测试，能够一定程度减少出错概率。项目发展过程中的技术债，要得到有效管理。不可一味堆叠需求而忽视技术基建。
 减少维护成本 在项目上线的维护过程中，也需要留意维护的成本。开发代码过程中，将错误有效暴露。同时进行链路上的故障演习，合理安排兜底策略，将有效减少维护成本。
 投资团队成长 从长远来看，每个人都不可能单兵作战取得巨大的成功，我们需要团队。投资团队成长方面，首先是帮助其他人成功。这可以通过分享自己的经验，写下高质量的文档实现。也可通过CodeReview实现。另一方面，招聘是团队内每个人的责任。招聘高质量的同事，在入职培训和指导方面下功夫，也将获得极大的回报。
-关于作者</description></item><item><title>如何理解战略</title><link>https://kuhung.me/posts/strategy-01/</link><pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate><guid>https://kuhung.me/posts/strategy-01/</guid><description>“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
+关于作者</description>
+    </item>
+    
+    <item>
+      <title>如何理解战略</title>
+      <link>https://kuhung.me/posts/strategy-01/</link>
+      <pubDate>Sun, 01 Aug 2021 22:56:45 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/strategy-01/</guid>
+      <description>“战术勤奋战略懒惰”中的战略是什么 相信大家都听过：战略上的懒惰，不能通过战术的勤奋弥补。在学习中，我们将这句话理解为：学习需要方法，不能蛮干，需要理解基础知识，进行结构化的理解和吸收，这就是所谓的学习上的战略。在工作中，我们将这句话理解为：工作需要找准聚焦，不能用低效的加班内卷来堆砌苦劳，而是应该找到业务的需求点，从目标出发进行工作内容的拆解，这就是所谓的工作上的战略。
 可是，战略的本质又是什么呢？到底什么才是战略，什么是好的战略？大家都在说战略，战略就没有缺点了吗？
 今天我们就通过《战略历程》这本书，拆解战略的本质，通过这篇内容，帮助你理解战略。
 战略是大象 没有人能准确定义战略，因为战略的本身，就是一个抽象概念，是对生活的抽象总结。战略就像是盲人摸象中的大象，而我们则是那些盲人，通过不同的接触面，会得到不一样的战略描述。战略总结，是片面的。
@@ -31,4 +55,8 @@
 战略的利弊 凡事有利必有弊，战略也不例外。从四个角度，我们来看看战略的利弊。
 从设定方向角度，战略为组织设定了航线，大家能够齐心协力达到目标。但其缺点就是，会掩盖潜在的危险。从集合力量角度，战略让组织内的行动更协调。但过份一致的思维，很有可能会让组织丧失洞察。
 战略决定了组织风格，方便了人们理解并和其他组织区分。它的负面效果就是，过份清晰界定组织，组织的多样性将会丧失。从提供一致性角度来说，战略减少了组织的模糊和无序。其缺点则是，追求一致导致了狭隘，甚至扭曲了事实。
-小结 战略是一头大象，我们往往只能看到其局部。但只有当我们从整体来看时，才会发现整体大于部分之和。可能你的组织正表现出某一类战略，但了解更广的面貌，总是更有助于发挥战略的作用。也别忘了，凡事需要有个度，过份一致的战略，反而会带来多样性丧失、灵活性丧失的风险。为此，还是需要缓慢移动，小心评估。</description></item></channel></rss>
+小结 战略是一头大象，我们往往只能看到其局部。但只有当我们从整体来看时，才会发现整体大于部分之和。可能你的组织正表现出某一类战略，但了解更广的面貌，总是更有助于发挥战略的作用。也别忘了，凡事需要有个度，过份一致的战略，反而会带来多样性丧失、灵活性丧失的风险。为此，还是需要缓慢移动，小心评估。</description>
+    </item>
+    
+  </channel>
+</rss>

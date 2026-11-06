@@ -1,11 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术研究 on 谷粒 kuhung</title><link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link><description>Recent content in 技术研究 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml"/><item><title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</title><link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link><pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate><guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid><description>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术研究 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/</link>
+    <description>Recent content in 技术研究 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 03 Nov 2026 13:05:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>权重空间编程（下）：Astra 编辑 Qwen3.5-0.8B 的真实效果提升来源</title>
+      <link>https://kuhung.me/posts/weight-space-programming-qwen-truth/</link>
+      <pubDate>Tue, 03 Nov 2026 13:05:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weight-space-programming-qwen-truth/</guid>
+      <description>在上篇中，我们梳理了在权重空间编程提出之前，学术界对神经网络参数进行直接干预的四条历史技术路线。无论是 ROME 的闭式单秩求解，还是 Abliteration 的激活差向量消融，其共同特征在于：整个实验流程、因果探测算法与正交投影矩阵的计算，均由人类研究员在外部设计并执行。
 2026 年底，由 MIT CSAIL 团队（Rikiya Takehi、Jayden Teoh、Alex Zhang 与 Omar Khattab）提出的“权重空间编程”（Weight-Space Programming, WSP）提出了一种新的思路：前沿通用大模型（GPT-6 Astra）能够在自然语言指令驱动下，在受限代码沙箱中自主运行分析程序、定位模型内部故障，并直接修改其他神经网络的权重文件，全程无需反向传播或微调循环。
 其中引发行业广泛讨论的案例，是 Astra 将 Qwen3.5-0.8B 在高难度数学推理基准 MATH-500 上的准确率从 7.9% 提升至 48.1%。面对这一实验表现，有必要穿透数据表象，系统解码大模型推断小模型参数的底层物理机理，厘清其真实起效的区间与严格的边界约束。
 一、权重空间的读、写、改三维基础验证 WSP 框架在进入深层多参数语言模型之前，首先在微型策略网络与扩散模型上验证了模型对参数空间的直接操作能力。
 1. 权重读取（Read） 研究团队向 Astra 输入了 4 个具有完全相同多层感知机（MLP）架构（17,253 个参数）的策略网络。这些网络分别在使用 PPO 强化学习算法训练于 MinAtar 像素游戏环境（Breakout、Pong、Pac-Man、Freeway）。在完全未提供候选游戏名称的盲测条件下，Astra 仅通过解析第一层权重矩阵在输入通道上的空间分布特征（如 Breakout 底层挡板权重的行状聚集与顶部奖励带），准确推断出全部 4 款游戏各自对应的模型。
 然而，静态权重阅读存在严格的尺度边界。在后续对微调后的 Gemma 3 270M 进行的测试中，Astra 试图通过纯静态数值分辨哪个模型被训练成了“谄媚”（Sycophancy）模式，连续 4 次推断均告失败。这一未能识别模型差异的结果表明：单纯的静态权重文本阅读仅适用于输入特征高度结构化的小型网络；针对深层自回归模型，必须依赖运行时的动态激活分析。
 2. 从零编译权重（Write） 在无训练数据、无梯度信息且不使用外部环境反馈的零样本设置下，研究人员要求 Astra 直接输出一个输入维度为 10x10x4 的 MLP 策略网络参数，用于控制 MinAtar 游戏。
-在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.</description></item><item><title>权重空间编程（上）：大模型权重干预的四大技术路线对比</title><link>https://kuhung.me/posts/weight-space-intervention-history/</link><pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate><guid>https://kuhung.me/posts/weight-space-intervention-history/</guid><description>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。
+在 Breakout 任务中，Astra 一次性输出的权重矩阵取得了 517.</description>
+    </item>
+    
+    <item>
+      <title>权重空间编程（上）：大模型权重干预的四大技术路线对比</title>
+      <link>https://kuhung.me/posts/weight-space-intervention-history/</link>
+      <pubDate>Tue, 03 Nov 2026 13:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/weight-space-intervention-history/</guid>
+      <description>在深度学习的演进历程中，神经网络权重的生成与参数优化长期由基于梯度的反向传播算法（如 Adam、Muon）或强化学习（PPO、GRPO）主导。这种范式将包含数亿至数千亿参数的网络视为连续的高维黑盒，依赖海量标注数据或环境反馈进行非线性拟合。
 然而，在不依赖全量反向传播的前提下，学术界一直在探索对权重空间进行结构化表征、定向编辑与静态折叠的可行性。在分析 MIT CSAIL 提出的“权重空间编程”（Weight-Space Programming, WSP）之前，有必要系统梳理此前在该领域形成的四条主流技术脉络，明确其在具体模型上的实测数据、所针对的具体问题以及各自面对的物理约束边界。
 一、超网络与权重空间学习：参数流形的黑盒映射 超网络（Hypernetworks）技术早在 2017 年由 David Ha 等人提出，基本思路是通过构建辅助神经网络来直接预测或生成目标主干网络的参数矩阵。
 在早期的基准测试中，研究人员验证了利用 HyperLSTM 动态生成循环单元权重的有效性。在 WMT14 德英与英法机器翻译任务中，HyperLSTM 将主干网络的独立参数量分别由 31.5M 和 61.2M 压缩至 14.8M 与 28.5M（压缩比例超过 50%），同时在测试集上的 BLEU 评分维持在 24.4 与 36.0，与未压缩的标准基线持平或略有提升。
@@ -13,14 +37,41 @@
 但超网络体系的根本局限在于学习范式：它本质上仍是监督学习架构下的高维回归映射，高度依赖海量已训练模型的参数集作为元学习（Meta-learning）训练样本，并未建立对网络参数内部算法逻辑的显式推理机制。
 二、模型编辑：因果追踪与单秩事实注入 模型编辑（Model Editing）旨在不重新训练整个模型的前提下，高保真度地修正模型参数中存储的特定事实陈述（如将“埃菲尔铁塔位于巴黎”更正为“位于罗马”）。
 代表性方法为 Kevin Meng 等人于 2022 年提出的 ROME（Rank-One Model Editing）。ROME 利用因果追踪（Causal Tracing）对输入 token 进行高斯噪声污染，并通过逐层激活阻断，定位出 Transformer 中间层前馈网络（MLP）是存储主谓宾关联记忆的主体。在定位到具体投影层（如 GPT-J 6B 的第 6 层 MLP）后，算法通过构造线性联想记忆方程并求解闭式最小二乘问题，计算出一个秩为 1（Rank-1）的外积矩阵直接叠加到权重张量中。
-在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.</description></item><item><title>Claude Haiku 5.5，当前性价比首选？</title><link>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</link><pubDate>Thu, 08 Oct 2026 22:00:00 +0800</pubDate><guid>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</guid><description>北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族的最后一款模型。名义标价对齐 OpenAI GPT-6 Luna（输入 $0.10、输出 $0.50 每百万 token），上下文窗口扩展到 1M。大家关心的通常是两件事：到底强在哪，手头的小模型要不要换。
+在包含 21,911 条事实陈述的 CounterFact 评估基准上，ROME 在 GPT-2 XL（1.</description>
+    </item>
+    
+    <item>
+      <title>Claude Haiku 5.5，当前性价比首选？</title>
+      <link>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</link>
+      <pubDate>Thu, 08 Oct 2026 22:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</guid>
+      <description>北京时间 10 月 8 日凌晨，Anthropic 发布 Claude Haiku 5.5。这是 Claude 5.5 家族的最后一款模型。名义标价对齐 OpenAI GPT-6 Luna（输入 $0.10、输出 $0.50 每百万 token），上下文窗口扩展到 1M。大家关心的通常是两件事：到底强在哪，手头的小模型要不要换。
 笔者维护的浏览器插件 PageGrok，轻量模型此前走 OpenRouter 挂在 Gemini 2.5 Flash-Lite。该模型标注在 2026 年 10 月 20 日退役，刚好需要在这两周内完成迁移选型。
 Haiku 5.5 标价降了九成，但实际账单有三处门槛：长上下文单价翻 5 倍、思考档位拉长延迟、新分词器带来的 token 膨胀。这里把价格算式、性能实测和替换细节梳理清楚。
-发布清单 模型 上下文 输入 / 输出单价（≤100K） 相对上一代变化 Claude Haiku 5.5 1M $0.10 / $0.50 标价降 90%，支持 effort 档位 GPT-6 Luna 1.05M $0.10 / $0.50 输入降 50%，输出降 58% Gemini 3.5 Flash-Lite 1M $0.</description></item><item><title>GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</title><link>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</link><pubDate>Wed, 23 Sep 2026 16:23:56 +0800</pubDate><guid>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</guid><description>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。
+发布清单 模型 上下文 输入 / 输出单价（≤100K） 相对上一代变化 Claude Haiku 5.5 1M $0.10 / $0.50 标价降 90%，支持 effort 档位 GPT-6 Luna 1.05M $0.10 / $0.50 输入降 50%，输出降 58% Gemini 3.5 Flash-Lite 1M $0.</description>
+    </item>
+    
+    <item>
+      <title>GPT-6 Sol / Luna vs Claude Opus 5.5: 性能、价格与选型建议</title>
+      <link>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</link>
+      <pubDate>Wed, 23 Sep 2026 16:23:56 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</guid>
+      <description>北京时间 9 月 23 日，Anthropic 发布 Claude Opus 5.5，一个多小时后 OpenAI 发布 GPT-6 Sol 和 Luna。每次新模型出来，大家想知道的无非两件事：它强在哪，我手上的模型要不要换。
 三款均降价。Opus 5.5 据称能力强化的同时，属于Opus4.6风格的写作能力回归。意思就是说人话了。Sol 和 Luna 主要是便宜了一半，能力和上一代基本持平，写代码略有进步，写报告据网友称有退步。
 如果你之前还在用 Opus 4.6 和 GPT 5.6 sol，那么建议升级，直接用最新，更强更便宜。不过思维强度不用保持high，从medium开始比较好。
 下面逐一介绍。依次介绍能力和价格的变化，以及部分推特网友反馈。
-发布清单 模型 定位 上一代价格 新价格 变化 Claude Opus 5.5 长任务、知识工作 $5 / $25（Opus 5） $4 / $20 降 20% GPT-6 Sol 复杂编码、Agent $4 / $20（GPT-5.6 Sol） $2 / $10 降 50% GPT-6 Luna 高频、低成本任务 $0.20 / $1.20（GPT-5.6 Luna） $0.10 / $0.50 输入降 50%，输出降 58% 价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</description></item><item><title>深入解读 Jev 模型：是什么以及怎么用</title><link>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</link><pubDate>Fri, 18 Sep 2026 20:57:35 +0800</pubDate><guid>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</guid><description>理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
+发布清单 模型 定位 上一代价格 新价格 变化 Claude Opus 5.5 长任务、知识工作 $5 / $25（Opus 5） $4 / $20 降 20% GPT-6 Sol 复杂编码、Agent $4 / $20（GPT-5.6 Sol） $2 / $10 降 50% GPT-6 Luna 高频、低成本任务 $0.20 / $1.20（GPT-5.6 Luna） $0.10 / $0.50 输入降 50%，输出降 58% 价格为每百万 token 的输入 / 输出单价。三款都是百万级上下文，最大输出 128K。</description>
+    </item>
+    
+    <item>
+      <title>深入解读 Jev 模型：是什么以及怎么用</title>
+      <link>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</link>
+      <pubDate>Fri, 18 Sep 2026 20:57:35 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</guid>
+      <description>理解 Jev 在过去的项目里，我为了优化接口延迟花过不少功夫。用户对响应速度其实高度敏感。系统一旦超过一两秒没动静，看起来就像坏了一样。现实情况是，很多大模型为了做推理思考，响应动辄两三秒甚至更久。大家虽然尝试了各种工程手段去优化，但大模型逐字做自回归生成的本质摆在那里，延迟很难压缩到极致。
 很多时候，我们并不需要一个能写长篇大论的推理模型。在做状态判断或者枚举分类时，响应速度远比生成能力更重要。这就是我想聊聊 Jev 的原因。
 为什么这个模型最近能掀起波澜？通用大模型的方向在业界已经基本固定，新进的产品团队必须寻找差异化的切入点。Jev 号称闭门研发了两年，主打的就是极速响应。它去掉了自回归生成循环，输入按 Token 计费，输出 Token 则是零元。这很合理，它本质上是一个判别器模型，就像没有人会为随机森林的输出结果按 Token 买单一样。
 Jev 是什么 Jev 本质上是一个面向状态评估的统计分类器。大模型擅长生成，Jev 专注于判别。它把传统分类任务用大模型处理时既慢又贵的痛点，做到了低成本和高速度。
@@ -30,7 +81,16 @@ Jev 的核心定位是机器对机器的状态评估。它不回答用户提问�
 官方公布的运行指标中，输入端每百万 Token 计费 0.042 美元，输出免费，端到端请求延迟在 70 到 500 毫秒区间。不管是底座更小，还是单步前向推导，服务成本都被压得很低。
 官方在宣传时借用了认知科学的“双系统”概念：让昂贵的前沿大模型负责慢速的深度推演（System 2），让 Jev 充当快速廉价的反射弧（System 1）。在需要做前置过滤或路由分流时，用小判别模型就能搞定，不需要让生成模型全程陪跑。
 为了追求速度，Jev 舍弃了文本生成，只保留三种输出原语：
-choice：在给定的枚举列表中完成多选一路由。 score：在有序离散区间内打分（如 0 到 10 的数值评分）。 noul：输出二分类概率（布尔判断，如 true / false 或 yes / no）。 它的输出附带了置信度概率。很多开发者吃过大模型生成 JSON 时幻觉的苦头，大模型即使输出错误结果，也常常给出虚高的概率。Jev 宣称对置信度进行了校准，下游系统可以依据置信度设置阈值，一旦置信度偏低就由硬规则或人工接管。关于这个置信度是如何校准的，后文会详细展开。</description></item><item><title>Agent Skills 出来的第10个月，再聊评估几件事</title><link>https://kuhung.me/posts/skill-eval-review/</link><pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate><guid>https://kuhung.me/posts/skill-eval-review/</guid><description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
+choice：在给定的枚举列表中完成多选一路由。 score：在有序离散区间内打分（如 0 到 10 的数值评分）。 noul：输出二分类概率（布尔判断，如 true / false 或 yes / no）。 它的输出附带了置信度概率。很多开发者吃过大模型生成 JSON 时幻觉的苦头，大模型即使输出错误结果，也常常给出虚高的概率。Jev 宣称对置信度进行了校准，下游系统可以依据置信度设置阈值，一旦置信度偏低就由硬规则或人工接管。关于这个置信度是如何校准的，后文会详细展开。</description>
+    </item>
+    
+    <item>
+      <title>Agent Skills 出来的第10个月，再聊评估几件事</title>
+      <link>https://kuhung.me/posts/skill-eval-review/</link>
+      <pubDate>Wed, 26 Aug 2026 18:07:06 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/skill-eval-review/</guid>
+      <description>Agent 早期没有 skills 这个概念，只有 rules，一条全局性的系统提示词，出现在 Cursor 里。从单文件规则到多文件匹配，形态一直在变。到底什么叫好？这是一个很自然的疑问。
 笔者最近做产品 SEO 优化，涉及若干 SEO 相关 skills 的评估，遇到不少麻烦。description 重叠导致触发不稳定；模型把过程证据外推成最终结果；缺数据时猜测性补全；模型自评无法证明任务真的完成。大模型固有的幻觉问题推着你去想：怎么才算「评估到位了」。
 Agent eval 学术界做得够多了，测试、归因、基准集，不缺综述。本文不打算搞成学术文章，更多从个人用 skills 的经验出发，聊聊怎么看待评估这件事。
 Skills 为什么被造出来 回到原点：skills 为什么被造出来？从它要解决的问题出发，就能想清楚怎么评估它。
@@ -41,13 +101,35 @@ Cursor 做这件事最早。从单文件 .cursorrules 到多文件 .cursor/rules
 组织 vs 个体对于 Skills 的需求 对于大公司 大公司需要 skills，因为内部有大量隐性的语言和约束。版本号怎么写、数据源口径用什么。过去这些统一约束在人与人协作时，叫文档。
 对于个体 个体层面，skills 更像是重复工作的 SOP 包装。有些问题反复出现，就该做成流程。在 Agent 里，这就叫 skills。
 从组织到个体 大公司内有动力把员工经验沉淀为 skills。资深人员把经验总结下来，交给新手执行。过去组织规范化的动作是梳理 SOP 文档，现在变成总结 skills。
-对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description></item><item><title>富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</title><link>https://kuhung.me/posts/luts-for-iphone/</link><pubDate>Sun, 23 Nov 2025 11:11:54 +0800</pubDate><guid>https://kuhung.me/posts/luts-for-iphone/</guid><description>最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。
+对于资深人来说，过去写文档，文档上留我的名字，是增强影响力的方式。现在 skills 交出去，很少有人在意谁写的。工作交出去，HC 也就交出去了。其中的劳资关系很微妙。</description>
+    </item>
+    
+    <item>
+      <title>富士 LUTs 应用到 iPhone 前需要弄清楚的6个问题</title>
+      <link>https://kuhung.me/posts/luts-for-iphone/</link>
+      <pubDate>Sun, 23 Nov 2025 11:11:54 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/luts-for-iphone/</guid>
+      <description>最近富士公开了其经典的十数种 LUT 滤镜，包括著名的 CC 滤镜和 NC 滤镜，使得其他拍摄设备，也能最大限度还原得到富士相机的效果，而不需要购入对应的富士相机。但在将富士LUTs应用到iPhone前，不少人是第一次接触到这一概念，这需要我们花点儿时间，来理解背后的色彩科学。
 笔者通过编程方式，结合实际数据和图表，力图深入浅出解释LUT、Log模式以及为什么需要进行色彩空间转换。
 1. 什么是 LUT (Look-Up Table) LUT 本质上是一个映射表，就如其英文全称所言。对于 3D LUT，它是一个 RGB 立方体。输入一个 RGB 值 (R, G, B)，查找表，输出一个新的 RGB 值。
-LUT 的核心映射逻辑 输入 RGB: 假设视频里有一个像素，颜色是 R=0.5, G=0.5, B=0.5 (中性灰)。 查找 (Look Up): LUT 文件是一个三维数组 (例如 33x33x33)。 我们把 0.0~1.0 的范围划分成 33 个格子。 0.5 刚好对应第 17 个格子索引 (因为 16/32 = 0.5)。 定位: 找到坐标为 (17, 17, 17) 的那个小格子。 读取: 读取这个格子预先存储的 RGB 值。比如，胶片模拟可能会把这个灰变成略带冷调的 (0.48, 0.49, 0.52)。 插值 (Interpolation): 如果输入是 0.</description></item><item><title>FastVLM iPhone 安装与实机测评</title><link>https://kuhung.me/posts/fastvlm-iphone-install/</link><pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate><guid>https://kuhung.me/posts/fastvlm-iphone-install/</guid><description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
+LUT 的核心映射逻辑 输入 RGB: 假设视频里有一个像素，颜色是 R=0.5, G=0.5, B=0.5 (中性灰)。 查找 (Look Up): LUT 文件是一个三维数组 (例如 33x33x33)。 我们把 0.0~1.0 的范围划分成 33 个格子。 0.5 刚好对应第 17 个格子索引 (因为 16/32 = 0.5)。 定位: 找到坐标为 (17, 17, 17) 的那个小格子。 读取: 读取这个格子预先存储的 RGB 值。比如，胶片模拟可能会把这个灰变成略带冷调的 (0.48, 0.49, 0.52)。 插值 (Interpolation): 如果输入是 0.</description>
+    </item>
+    
+    <item>
+      <title>FastVLM iPhone 安装与实机测评</title>
+      <link>https://kuhung.me/posts/fastvlm-iphone-install/</link>
+      <pubDate>Sat, 24 May 2025 12:15:10 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/fastvlm-iphone-install/</guid>
+      <description>项目简介 FastVLM 是苹果发布的视觉语言模型，可以在iPhone和Mac上离线运行，能够理解图像内容并回答问题。所有预测都在设备本地处理，确保隐私和安全。项目地址：https://github.com/apple/ml-fastvlm
 接下来说说实测最关心的性能表现和大小情况：
 作者的测试设备为：
 MBP M1Pro 16G运行内存 iPhone16Pro A18Pro 8G运行内存 模型版本 下载大小 TTFT（MBP） 内存占用 FastVLM 0.5B (fp16) 1.15G 400ms 2G FastVLM 1.5B (int8) 1.91G 600ms 2.8G FastVLM 7B (int4) 3.85G 1800ms 5G 注意：以上大小均为适配转换后，适用于Apple Silicon的模型。原始模型大小会有出入，实际按指令下载的大小即为表格所述。
 作者测试下来，认为该技术是一个初步的技术原型。能够满足基本的视频理解，在终端跑起来仍然会有发热的问题。但瑕不掩瑜，未来在端侧，AI将会有更多的可能性。打包后，最小的安装包大小在2G左右。基本上每个模型都会把MBP的CPU温度干到85度以上，风扇直接到6000转以上。真没见过这么吵的MBP。iPhone16pro的情况也大差不多，能感受到明显的温度升高。不过手头没有测温装置，所以无法给到确切的数字。而在速度方面，基本如上图所示，能够在秒级别以内产出首个Token。iPhone再乘以2-3倍。当然，这个时间也取决于提示词、图片复杂度等其他因素。
 对于未来展望部分：调用逻辑和交互上，适当的优化能够降低发热，提升用户体验。无论如何，AI新技术都需要整合到需求中，才会有更大的价值。
-准备工作 系统要求 Mac电脑：macOS 15.2+ 并安装Xcode最新版本 iPhone设备：支持iOS 18.2+的设备（建议运行内存在3G以上，iPhone X 及以上） 开发者账号：普通Apple ID即可 项目特性 ✅ 支持iOS (18.2+) 和macOS (15.2+) ✅ 显示每次推理的首Token时间(TTFT) ✅ 完全离线运行，保护隐私安全 ✅ 灵活的提示系统，支持自定义prompt ✅ 三种不同规格的预训练模型 安装步骤 1. 下载源代码 git clone https://github.com/apple/ml-fastvlm.git cd ml-fastvlm 2.</description></item></channel></rss>
+准备工作 系统要求 Mac电脑：macOS 15.2+ 并安装Xcode最新版本 iPhone设备：支持iOS 18.2+的设备（建议运行内存在3G以上，iPhone X 及以上） 开发者账号：普通Apple ID即可 项目特性 ✅ 支持iOS (18.2+) 和macOS (15.2+) ✅ 显示每次推理的首Token时间(TTFT) ✅ 完全离线运行，保护隐私安全 ✅ 灵活的提示系统，支持自定义prompt ✅ 三种不同规格的预训练模型 安装步骤 1. 下载源代码 git clone https://github.com/apple/ml-fastvlm.git cd ml-fastvlm 2.</description>
+    </item>
+    
+  </channel>
+</rss>

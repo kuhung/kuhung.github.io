@@ -1,7 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>动量策略 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/</link><description>Recent content in 动量策略 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 04 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>红利与宏观择时（三）：动量崩溃与自适应缩放</title><link>https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/</link><pubDate>Wed, 04 Nov 2026 12:00:00 +0800</pubDate><guid>https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/</guid><description>一手拿红利股防守、一手追强势股进攻，为什么会在市场见底大反弹时突然遭遇巨亏？原因在于，熊市跌幅最大的超跌股在反弹初期往往爆发式逼空上涨，弹性远超大盘，导致做多强势股、做空或回避超跌股的策略瞬间受损。在市场深跌且波动剧烈时，必须主动收缩进攻端仓位，避免被超跌反弹打穿净值。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>动量策略 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/</link>
+    <description>Recent content in 动量策略 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 04 Nov 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E5%8A%A8%E9%87%8F%E7%AD%96%E7%95%A5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红利与宏观择时（三）：动量崩溃与自适应缩放</title>
+      <link>https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/</link>
+      <pubDate>Wed, 04 Nov 2026 12:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/</guid>
+      <description>一手拿红利股防守、一手追强势股进攻，为什么会在市场见底大反弹时突然遭遇巨亏？原因在于，熊市跌幅最大的超跌股在反弹初期往往爆发式逼空上涨，弹性远超大盘，导致做多强势股、做空或回避超跌股的策略瞬间受损。在市场深跌且波动剧烈时，必须主动收缩进攻端仓位，避免被超跌反弹打穿净值。
 本文是「红利与宏观择时」系列的第三篇。全系列从红利资产出发，系统解构资产定价、股权期限结构、动量攻防与宏观流动性周期：
-篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防（本篇） ｜ 极端市场环境下的动量崩溃：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋（筹备中） ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚（筹备中） ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、动量崩溃的微观根源：输家公司的期权化逼空 1. 困境公司的期权化与资产负债表机制 2. 卖空机制的数学非对称性与向上崩盘（Crash Up） 二、Daniel &amp;amp; Moskowitz 自适应动态缩放模型 1. 条件均值预测（$\mu_{t-1}$） 2. 条件方差预测（$\sigma^2_{t-1}$） 3. 理论公式与实盘约束的对齐 三、百年全样本与纯样本外实证检验 1. Panel A：历史极端崩盘事件解析 2. Panel B：92 年纯样本外扩展窗口回测（1934–2026） 四、手握红利底仓，如何落地应对？ 1. 牛市与常态期：放心用动量捕捉进攻超额 2. 危机高波期：建立状态机过滤器，动量进攻端清零 3. 底部大反弹：看清逼空机制，避免踏空焦虑与错误调仓 4. 2026 最新切片实证：美股科技动量回撤与红利防守映射 附录：核心算法复现脚本与说明 参考文献 在实际构建量化投资组合时，单纯持有高股息红利资产往往被视为纯防守配置。为了在行情上涨时获取进攻弹性，多资产量化投资者常将低估值红利资产与趋势动量策略结合配置：用短久期高股息资产赚取确定性的股息现金流，用动量策略捕捉大盘上行趋势；或者在红利资产池内部运用动量指标做强弱轮动。
-在学术界经典文献（从 Jegadeesh &amp;amp; Titman 到 Daniel &amp;amp; Moskowitz）与海外主流对冲基金里，动量策略的标准原型是多空对冲组合（Long-Short Portfolio，简称 WML，即 Winner Minus Loser）：同时做多过去 12 个月涨幅最好的“赢家”，并做空过去 12 个月表现最差的“输家”。通过多空对冲剥离大盘贝塔（Beta），提取纯粹的动量超额收益。</description></item><item><title>个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</title><link>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</link><pubDate>Tue, 20 Oct 2026 16:00:00 +0800</pubDate><guid>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</guid><description>在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。
+篇章一：现值解耦 ｜ 拆解股息率：分红预期 vs. 贴现率预期 篇章二：期限结构 ｜ 现金流久期：繁荣期配短久期红利，衰退期换长久期成长 篇章三：动量攻防（本篇） ｜ 极端市场环境下的动量崩溃：熊市反弹的期权化逼空与自适应控仓 篇章四：资金微观挤兑 ｜ 机构被迫抛压与流动性折价错杀 篇章五：流动性双螺旋 ｜ 融资流动性与市场流动性恶性共振预警 篇章六：宏观贴现率之锚 ｜ 美债供给、期限溢价与全球资产定价 本文目录 一、动量崩溃的微观根源：输家公司的期权化逼空 1. 困境公司的期权化与资产负债表机制 2. 卖空机制的数学非对称性与向上崩盘（Crash Up） 二、Daniel &amp;amp; Moskowitz 自适应动态缩放模型 1. 条件均值预测（$\mu_{t-1}$） 2. 条件方差预测（$\sigma^2_{t-1}$） 3. 理论公式与实盘约束的对齐 三、百年全样本与纯样本外实证检验 1. Panel A：历史极端崩盘事件解析 2. Panel B：92 年纯样本外扩展窗口回测（1934–2026） 四、手握红利底仓，如何落地应对？ 1. 牛市与常态期：放心用动量捕捉进攻超额 2. 危机高波期：建立状态机过滤器，动量进攻端清零 3. 底部大反弹：看清逼空机制，避免踏空焦虑与错误调仓 4. 2026 最新切片实证：美股科技动量回撤与红利防守映射 附录：核心算法复现脚本与说明 参考文献 在实际构建量化投资组合时，单纯持有高股息红利资产往往被视为纯防守配置。为了在行情上涨时获取进攻弹性，多资产量化投资者常将低估值红利资产与趋势动量策略结合配置：用短久期高股息资产赚取确定性的股息现金流，用动量策略捕捉大盘上行趋势；或者在红利资产池内部运用动量指标做强弱轮动。
+在学术界经典文献（从 Jegadeesh &amp;amp; Titman 到 Daniel &amp;amp; Moskowitz）与海外主流对冲基金里，动量策略的标准原型是多空对冲组合（Long-Short Portfolio，简称 WML，即 Winner Minus Loser）：同时做多过去 12 个月涨幅最好的“赢家”，并做空过去 12 个月表现最差的“输家”。通过多空对冲剥离大盘贝塔（Beta），提取纯粹的动量超额收益。</description>
+    </item>
+    
+    <item>
+      <title>个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</title>
+      <link>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</link>
+      <pubDate>Tue, 20 Oct 2026 16:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</guid>
+      <description>在上一篇《个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排》中，我们通过流动性客观门槛与全景行业 ETF 雷达，把全市场的数千只股票压缩到了单市场 100 只高信息密度的物理观察池（中国资产 100 只 + 美股 100 只，合计 200 只）。
 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第三篇。标的进入观察池之后，我们面对的是一个更根本的选拔逻辑：面对这 100 只标的，我们究竟该用什么规则决定买入？
 很多个人投资者习惯停留在「凭感觉买」的感性模式：看分时拉升跟风追入、看跌多了凭直觉抄底。这种凭感觉交易的决策链条没有一致的规则，极易受到处置效应支配（赚蝇头小利就跑、深度套牢死扛），长期处于负期望博弈。
 要走出凭感觉买的随机性，我们需要一套具有统计正期望的客观规则。我们先通过全景图谱，把选股流派抉择、动量运行机理与顺逆风环境做一次全局透视：
@@ -9,4 +33,8 @@
 为什么选趋势动量：基本面价值流存在财报滞后与阴跌陷阱，多因子量化对冲要求分散持有数百只标的、个人有限资金的佣金滑点会吃光超额。趋势动量（Jegadeesh &amp;amp; Titman 1993, Asness 2013）顺应大资金分批建仓带来的持续价格漂移，且强趋势标的上方没有套牢盘抛压阻力。个人资金在中大盘标的（日均成交额 &amp;gt; 5,000 万元）中几乎零冲击成本，能充分发挥小资金进出果断的机动性优势，靠非对称的高盈亏比让利润奔跑。 何时顺风，何时逆风：趋势动量极佳的适用期是产业大主线明朗的结构性牛市（如 2020-2021 新能源、2023-2024 美股 AI 硬件）；它的典型逆风期是存量博弈下的高频均值回归震荡市（频繁突破容易遭受锯齿损耗 Whipsaw Loss）以及极端超跌脉冲诱发的动量崩溃（Momentum Crash）。 动量绝不能盲目套用：很多人转向动量后，习惯直接把观察池按涨幅从高到低排序挑前几名买入。这会直接撞上动量策略的两大经典失效陷阱：弱势超跌反抽（大跌破位后的非平稳反弹，上方堆积密集的被动解套抛售压力）与情绪加速赶顶（短期严重脱离中长期持仓成本线，极易买在均值回归前夕的波段高点）。 动量指标只衡量过去一段时间上涨的速度，它不负责判断标的当前所处的趋势位置和风险收益比。
 为了防止系统在这些极端位置发出错误信号，我们在进入截面打分排序之前，设置了三道准入硬门槛（Buy Gates）：
 四态相空间与三道准入硬滤网架构 在设计过滤规则时，我们把价格与 200 日均线的关系，以及 12-1 动量的正负，交叉构建成一个四态决策矩阵（Regime Four States）：
-状态评级 价格与均线关系 12-1 动量状态 市场微观特征 系统的准入处理 状态①：顺势领涨 (Advancing) $P &amp;gt; \text{MA200}$ $\text{Mom}_{12-1} &amp;gt; 0$ 站稳年线中长期成本线上方，中期动能充沛 唯一准许买入与顺势持有的健康区间（需再过防追高检查） 状态②：高位滞涨 (Distribution) $P &amp;gt; \text{MA200}$ $\text{Mom}_{12-1} \le 0$ 价格虽在年线上，但中期动量已经转负，震荡磨损 不予买入，已持仓者列入动量衰竭观察 状态③：弱势超跌反抽 (Oversold Bounce) $P \le \text{MA200}$ $\text{Mom}_{12-1} &amp;gt; 0$ 处于长期下行通道，短期反弹看似凶猛，上方压制沉重 一票否决，涨得再猛也归类为反弹观察，严禁左侧逆势接盘 状态④：持续阴跌 (Downtrend) $P \le \text{MA200}$ $\text{Mom}_{12-1} \le 0$ 均线与动量双重压制，空头主跌通道 坚决回避，不参与任何左侧抄底 为了看清真实市场中这四类标的的分布情况，我们将上一篇双轨粗排产生的最新 200 只中外观察池（ah_batch_100 与 us_batch_100）全部拉取完整日 K 矩阵，计算每只标的的年线乖离率（Bias）与 12-1 相对动量。</description></item></channel></rss>
+状态评级 价格与均线关系 12-1 动量状态 市场微观特征 系统的准入处理 状态①：顺势领涨 (Advancing) $P &amp;gt; \text{MA200}$ $\text{Mom}_{12-1} &amp;gt; 0$ 站稳年线中长期成本线上方，中期动能充沛 唯一准许买入与顺势持有的健康区间（需再过防追高检查） 状态②：高位滞涨 (Distribution) $P &amp;gt; \text{MA200}$ $\text{Mom}_{12-1} \le 0$ 价格虽在年线上，但中期动量已经转负，震荡磨损 不予买入，已持仓者列入动量衰竭观察 状态③：弱势超跌反抽 (Oversold Bounce) $P \le \text{MA200}$ $\text{Mom}_{12-1} &amp;gt; 0$ 处于长期下行通道，短期反弹看似凶猛，上方压制沉重 一票否决，涨得再猛也归类为反弹观察，严禁左侧逆势接盘 状态④：持续阴跌 (Downtrend) $P \le \text{MA200}$ $\text{Mom}_{12-1} \le 0$ 均线与动量双重压制，空头主跌通道 坚决回避，不参与任何左侧抄底 为了看清真实市场中这四类标的的分布情况，我们将上一篇双轨粗排产生的最新 200 只中外观察池（ah_batch_100 与 us_batch_100）全部拉取完整日 K 矩阵，计算每只标的的年线乖离率（Bias）与 12-1 相对动量。</description>
+    </item>
+    
+  </channel>
+</rss>

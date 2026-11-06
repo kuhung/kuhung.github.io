@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>一人公司 on 谷粒 kuhung</title><link>https://kuhung.me/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/</link><description>Recent content in 一人公司 on 谷粒 kuhung</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 29 Apr 2026 11:49:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>AI时代，OPC（一人公司）的自动化与半自动化</title><link>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</link><pubDate>Wed, 29 Apr 2026 11:49:00 +0800</pubDate><guid>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</guid><description>如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>一人公司 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/</link>
+    <description>Recent content in 一人公司 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 29 Apr 2026 11:49:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E4%B8%80%E4%BA%BA%E5%85%AC%E5%8F%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI时代，OPC（一人公司）的自动化与半自动化</title>
+      <link>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</link>
+      <pubDate>Wed, 29 Apr 2026 11:49:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/automation-and-human-in-the-loop-in-the-age-of-ai/</guid>
+      <description>如果你感觉自己三分钟热度，并为此而焦虑，这里告诉你，大部分人都这样，包括笔者：人的注意力很难长期保持，且是类似MP的消耗品，需要刻意训练+扬长避短。
 成事，不仅需要财力、物力，更需要心力。为了控制心力消耗，除了常见的SMART法则拆解目标、番茄工作法保持专注外，笔者总结了一份指南：AI时代，OPC（一人公司）的自动化与半自动化。
 通过下述方法，让笔者把精力放在高价值活动上。
 自动化 这里的自动化，指的是自动实现某个效果，替代繁杂的人力。这个自动化本身，也是更大系统中的一部分。这里把它拆出来，是因为这些自动化环节，关乎效果和体验。
@@ -30,4 +45,8 @@ SEO优化。通过三方网站来实现，做到基准线水平，排除掉大�
 虽然现在AI自动研究的话题很火，但我认为它更像是一个范围命题。这场AI show，什么时候落幕不知道，但需要更多的关于边界的自我认知。追逐热点，奉为圭臬的人往往更FOMO，更容易被营销带偏。偶尔跟不上热点，并非坏事。AI这个行当，曾经的热点，过几个月，就不再是了。
 最好的方式，就是控制流入，高价值利用自己的核心工作时间。笔者这套体系一直在迭代，随着工具和需求变化，持续调整。
 保持敏锐，但拒绝焦虑。持续输出。
-关于作者</description></item></channel></rss>
+关于作者</description>
+    </item>
+    
+  </channel>
+</rss>
