@@ -104,7 +104,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":901}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":903}</script>
 </head>
 
   
@@ -207,6 +207,7 @@ if (!doNotTrack) {
         <li><a href="#4-2026-最新切片实证美股科技动量回撤与红利防守映射">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
       </ul>
     </li>
+    <li><a href="#红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</a></li>
     <li><a href="#附录核心算法复现脚本与说明">附录：核心算法复现脚本与说明</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
@@ -265,15 +266,6 @@ if (!doNotTrack) {
 
           <blockquote>
 <p>看着红利低波一路平稳上涨，很多人忍不住加仓追高，结果市场一转向，几天内就把几个月的收益全部吐光。防守型策略一旦涨出动量溢价，跌起来往往比成长股更剧烈。在熊市末期或超跌大反弹阶段，盲目死扛高位红利极易遭遇双重打击。这一篇聚焦动量策略在转折点的崩溃特征，给出用波动率动态调控仓位、守住已有利润的实盘解法。</p>
-<p>本文是「红利与宏观择时」系列的第三篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
-<ul>
-<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：定价本质</a> ｜ 股息率高就一定稳赚吗？买红利如何避免赚了股息赔了本金</li>
-<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：周期择时</a> ｜ 什么时候买红利股最划算？经济下行周期里的股息配置法则</li>
-<li><strong>篇章三：动量控仓（本篇）</strong> ｜ 红利低波追高被套怎么办？用波动率控制管住策略大回撤</li>
-<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：防范踩踏</a> ｜ 红利ETF太火还能买吗？怎么识别机构抱团见顶与踩踏信号</li>
-<li><a href="/posts/liquidity-spirals-and-extreme-defense/">篇章五：极端防守</a> ｜ 大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</li>
-<li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观利率</a> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
-</ul>
 </blockquote>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/9871c84e1d129272.webp" alt="红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤" class="lazyload"><figcaption class="image-caption">红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤</figcaption></figure></p>
 <h2 id="本文目录">本文目录</h2>
@@ -305,6 +297,7 @@ if (!doNotTrack) {
 <li><a href="#section-4-4">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
 </ul>
 </li>
+<li><a href="#section-series">「红利与宏观择时」全系列导航</a></li>
 <li><a href="#section-appendix">附录：核心算法复现脚本与说明</a></li>
 <li><a href="#section-ref">参考文献</a></li>
 </ul>
@@ -507,6 +500,18 @@ $$w_t = \frac{16%}{29.3%} \approx 0.55$$</li>
 当前处于大盘平稳但科技动量高波动的震荡期。模型建议将科技动量端的持仓权重主动压缩到 0.4 到 0.6 之间，削减约四成到六成的科技动量敞口；多余资金留在年化波动仅 8% 到 12% 的高股息红利底仓（SCHD、VYM 等）中。通过波动率倒数的主动降仓，投资组合能够避开高 Beta 科技股一到两成的单边回落，同时承接高股息资产 5% 到 10% 的防守收益。</p>
 <p>那么，这些在漫长熊市中被打到残值、期权特性爆发的困境股票，在危机初期究竟经历了怎样的微观流动性踩踏？公募基金与对冲基金是如何在赎回潮中被迫折价贱卖核心资产的？</p>
 <p>下一篇，我们将从宏观资产定价深入到微观微观资金流，解析<strong>机构赎回踩踏与资产贱卖冲击</strong>。</p>
+<hr>
+<p><span id="section-series"></span></p>
+<h2 id="红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</h2>
+<p>本文是「红利与宏观择时」系列的第三篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
+<ul>
+<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：定价本质</a> ｜ 股息率高就一定稳赚吗？买红利如何避免赚了股息赔了本金</li>
+<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：周期择时</a> ｜ 什么时候买红利股最划算？经济下行周期里的股息配置法则</li>
+<li><strong>篇章三：动量控仓（本篇）</strong> ｜ 红利低波追高被套怎么办？用波动率控制管住策略大回撤</li>
+<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：防范踩踏</a> ｜ 红利ETF太火还能买吗？怎么识别机构抱团见顶与踩踏信号</li>
+<li><a href="/posts/liquidity-spirals-and-extreme-defense/">篇章五：极端防守</a> ｜ 大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</li>
+<li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观利率</a> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
+</ul>
 <hr>
 <p><span id="section-appendix"></span></p>
 <h2 id="附录核心算法复现脚本与说明">附录：核心算法复现脚本与说明</h2>

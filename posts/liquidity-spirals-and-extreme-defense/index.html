@@ -104,7 +104,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T10:00:00+08:00","datePublished":"2026-11-06T10:00:00+08:00","description":"为什么没有突发财务利空，市场买盘也会在一夜之间归零？基于 Brunnermeier \u0026 Pedersen (2009) RFS 奠基之作，系统解构市场流动性与融资流动性的双向内生反馈；推导亏损螺旋与保证金螺旋超加性放大形成的非线性相变悬崖；构建流动性双螺旋预警指数（LSWI）并复盘 2015、2020、2024 三大历史压力期，划定红利资产实盘极端防守准则。","headline":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 流动性螺旋, 融资流动性, 红利资产, 宏观择时","mainEntityOfPage":{"@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"WebPage"},"name":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","wordCount":1171}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-06T10:00:00+08:00","datePublished":"2026-11-06T10:00:00+08:00","description":"为什么没有突发财务利空，市场买盘也会在一夜之间归零？基于 Brunnermeier \u0026 Pedersen (2009) RFS 奠基之作，系统解构市场流动性与融资流动性的双向内生反馈；推导亏损螺旋与保证金螺旋超加性放大形成的非线性相变悬崖；构建流动性双螺旋预警指数（LSWI）并复盘 2015、2020、2024 三大历史压力期，划定红利资产实盘极端防守准则。","headline":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 资产定价, 流动性螺旋, 融资流动性, 红利资产, 宏观择时","mainEntityOfPage":{"@id":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","@type":"WebPage"},"name":"红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/","wordCount":1173}</script>
 </head>
 
   
@@ -216,6 +216,7 @@ if (!doNotTrack) {
         <li><a href="#4-2026-当前全市场宏观流动性切片与配置建议">4. 2026 当前全市场宏观流动性切片与配置建议</a></li>
       </ul>
     </li>
+    <li><a href="#红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</a></li>
     <li><a href="#附录lswi-预警指数计算参考脚本">附录：LSWI 预警指数计算参考脚本</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
@@ -274,15 +275,6 @@ if (!doNotTrack) {
 
           <blockquote>
 <p>遇到全市场流动性挤兑、千股跌停时，本来指望拿来避险的红利资产，为什么不仅不抗跌，反而跟着断崖式跌停？当杠杆资金大面积爆仓、保证金比例强制拉升时，其他股票根本卖不出去，流动性最好的红利股只能被当成全场的流动性提款机。面对这种市场与融资螺旋下跌的极端抛售潮，光靠低估值和高股息挡不住风险。这一篇建立流动性预警指标，给出从正常持股到全线退守现金的实盘准则。</p>
-<p>本文是「红利与宏观择时」系列的第五篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
-<ul>
-<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：定价本质</a> ｜ 股息率高就一定稳赚吗？买红利如何避免赚了股息赔了本金</li>
-<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：周期择时</a> ｜ 什么时候买红利股最划算？经济下行周期里的股息配置法则</li>
-<li><a href="/posts/momentum-crashes-and-dynamic-scaling/">篇章三：动量控仓</a> ｜ 红利低波追高被套怎么办？用波动率控制管住策略大回撤</li>
-<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：防范踩踏</a> ｜ 红利ETF太火还能买吗？怎么识别机构抱团见顶与踩踏信号</li>
-<li><strong>篇章五：极端防守（本篇）</strong> ｜ 大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</li>
-<li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观利率</a> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
-</ul>
 </blockquote>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/10bdbc65b3d799cd.webp" alt="红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制" class="lazyload"><figcaption class="image-caption">红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</figcaption></figure></p>
 <h2 id="本文目录">本文目录</h2>
@@ -330,6 +322,7 @@ if (!doNotTrack) {
 <li><a href="#section-5-4">4. 2026 当前全市场宏观流动性切片与配置建议</a></li>
 </ul>
 </li>
+<li><a href="#section-series">「红利与宏观择时」全系列导航</a></li>
 <li><a href="#section-appendix">附录：LSWI 预警指数计算参考脚本</a></li>
 <li><a href="#section-ref">参考文献</a></li>
 </ul>
@@ -551,6 +544,18 @@ if (!doNotTrack) {
 <li><strong>但结构性期限与市值分化显著</strong>：长久期高估值科技品种的日内非流动性冲击指标较去年同期有所抬头，波动率震荡走阔；而短久期的大盘红利与公用事业板块，买卖盘口依旧厚实，折算率稳健充沛。</li>
 </ul>
 <p>在当前环境下，投资者无需过度恐慌执行极端清仓，但应当牢记流动性非线性断崖的物理教训：<strong>把超低 Haircut、分红现金流扎实的优质红利资产作为不动摇的核心压舱底仓</strong>；当后续盘面出现突发宏观扰动导致 LSWI 快速穿透 75 时，必须果断遵从状态机指令启动防守降仓，在双螺旋吞噬流动性之前，稳稳守住资本的生存底线。</p>
+<hr>
+<p><span id="section-series"></span></p>
+<h2 id="红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</h2>
+<p>本文是「红利与宏观择时」系列的第五篇。全系列从红利资产出发，系统拆解周期择时、回撤控制、机构踩踏与宏观流动性风险：</p>
+<ul>
+<li><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">篇章一：定价本质</a> ｜ 股息率高就一定稳赚吗？买红利如何避免赚了股息赔了本金</li>
+<li><a href="/posts/equity-term-structure-and-countercyclical-allocation/">篇章二：周期择时</a> ｜ 什么时候买红利股最划算？经济下行周期里的股息配置法则</li>
+<li><a href="/posts/momentum-crashes-and-dynamic-scaling/">篇章三：动量控仓</a> ｜ 红利低波追高被套怎么办？用波动率控制管住策略大回撤</li>
+<li><a href="/posts/institutional-flows-and-asset-fire-sales/">篇章四：防范踩踏</a> ｜ 红利ETF太火还能买吗？怎么识别机构抱团见顶与踩踏信号</li>
+<li><strong>篇章五：极端防守（本篇）</strong> ｜ 大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</li>
+<li><a href="/posts/treasury-supply-and-macro-discount-rate/">篇章六：宏观利率</a> ｜ 美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</li>
+</ul>
 <hr>
 <p><span id="section-appendix"></span></p>
 <h2 id="附录lswi-预警指数计算参考脚本">附录：LSWI 预警指数计算参考脚本</h2>
