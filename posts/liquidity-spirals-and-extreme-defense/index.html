@@ -60,11 +60,15 @@ if (!doNotTrack) {
     document.addEventListener("DOMContentLoaded", function() {
         function cleanMath(content) {
             return content
-                .replace(/<em>(.*?)<\/em>/g, '_$1')
+                .replace(/<em>(.*?)<\/em>/g, '_$1_')
+                .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
                 .replace(/&lt;/g, '<')
                 .replace(/&gt;/g, '>')
                 .replace(/&amp;/g, '&')
-                .replace(/(^|[^\\])%/g, '$1\\%');
+                .replace(/(^|[^\\])%/g, '$1\\%')
+                .replace(/\\text\{([^{}]*)\}/g, function(m, inner) {
+                    return '\\text{' + inner.replace(/\\?_/g, '\\_') + '}';
+                });
         }
 
         
@@ -457,13 +461,13 @@ if (!doNotTrack) {
 <p>该分量权重设为 <strong>0.15</strong>，用于辅助确认市场是否已进入下行肥尾的非线性跳跃区间。</p>
 <p><span id="section-3-3"></span></p>
 <h3 id="3-权重设置逻辑与-75-临界阈值的数学推导">3. 权重设置逻辑与 75 临界阈值的数学推导</h3>
-<p>四项分量加权汇总为原始综合压力得分 $\text{raw_lswi}_t$：</p>
-<p>$$\text{raw_lswi}<em>t = 0.35 \cdot z</em>{illiq, t} + 0.25 \cdot z_{common, t} + 0.25 \cdot z_{margin, t} + 0.15 \cdot z_{skew, t}$$</p>
+<p>四项分量加权汇总为原始综合压力得分 $\text{RawLSWI}_t$：</p>
+<p>$$\text{RawLSWI}<em>t = 0.35 \cdot z</em>{illiq, t} + 0.25 \cdot z_{common, t} + 0.25 \cdot z_{margin, t} + 0.15 \cdot z_{skew, t}$$</p>
 <p>通过标准 Sigmoid 函数映射到 0 到 100 的无量纲区间：</p>
-<p>$$LSWI_t = \frac{100}{1 + \exp\left(-\text{raw_lswi}_t\right)}$$</p>
+<p>$$LSWI_t = \frac{100}{1 + \exp\left(-\text{RawLSWI}_t\right)}$$</p>
 <p>这一映射具有明确的统计与工程含义：</p>
 <ul>
-<li><strong>稳态基准（$LSWI = 50$）</strong>：当四个分量均处于历史均值水平（$z = 0$）时，$\text{raw_lswi} = 0$，$LSWI = 50$，对应市场资金面供需平衡；</li>
+<li><strong>稳态基准（$LSWI = 50$）</strong>：当四个分量均处于历史均值水平（$z = 0$）时，$\text{RawLSWI} = 0$，$LSWI = 50$，对应市场资金面供需平衡；</li>
 <li><strong>临界警戒阈值（$LSWI \ge 75$）</strong>：令映射结果等于 75，可以反解出对应的原始标准化偏差：</li>
 </ul>
 <p>$$\frac{1}{1 + \exp(-x)} = 0.75 \implies \exp(-x) = \frac{1}{3} \implies x = \ln(3) \approx 1.0986$$</p>

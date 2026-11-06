@@ -60,11 +60,15 @@ if (!doNotTrack) {
     document.addEventListener("DOMContentLoaded", function() {
         function cleanMath(content) {
             return content
-                .replace(/<em>(.*?)<\/em>/g, '_$1')
+                .replace(/<em>(.*?)<\/em>/g, '_$1_')
+                .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
                 .replace(/&lt;/g, '<')
                 .replace(/&gt;/g, '>')
                 .replace(/&amp;/g, '&')
-                .replace(/(^|[^\\])%/g, '$1\\%');
+                .replace(/(^|[^\\])%/g, '$1\\%')
+                .replace(/\\text\{([^{}]*)\}/g, function(m, inner) {
+                    return '\\text{' + inner.replace(/\\?_/g, '\\_') + '}';
+                });
         }
 
         
