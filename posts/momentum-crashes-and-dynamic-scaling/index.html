@@ -108,7 +108,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":770}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":766}</script>
 </head>
 
   
@@ -211,7 +211,7 @@ if (!doNotTrack) {
         <li><a href="#4-2026-最新切片实证美股科技动量回撤与红利防守映射">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
       </ul>
     </li>
-    <li><a href="#给你的-ai-的切入提示词">给你的 AI 的切入提示词</a></li>
+    <li><a href="#用-ai-快速上手参考提示词">用 AI 快速上手参考提示词</a></li>
     <li><a href="#红利与宏观择时全系列导航">「红利与宏观择时」全系列导航</a></li>
     <li><a href="#参考文献">参考文献</a></li>
   </ul>
@@ -301,7 +301,7 @@ if (!doNotTrack) {
 <li><a href="#section-4-4">4. 2026 最新切片实证：美股科技动量回撤与红利防守映射</a></li>
 </ul>
 </li>
-<li><a href="#section-ai-prompt">给你的 AI 的切入提示词</a></li>
+<li><a href="#section-ai-prompt">用 AI 快速上手参考提示词</a></li>
 <li><a href="#section-series">「红利与宏观择时」全系列导航</a></li>
 <li><a href="#section-ref">参考文献</a></li>
 </ul>
@@ -506,9 +506,12 @@ $$w_t = \frac{16%}{29.3%} \approx 0.55$$</li>
 <p>下一篇，我们将从宏观资产定价深入到微观微观资金流，解析<strong>机构赎回踩踏与资产贱卖冲击</strong>。</p>
 <hr>
 <p><span id="section-ai-prompt"></span></p>
-<h2 id="给你的-ai-的切入提示词">给你的 AI 的切入提示词</h2>
-<p>复制以下提示词发送给你的 AI 助手（或 Cursor/代码环境），让它基于 Daniel &amp; Moskowitz (2016) 模型，为你的量化策略搭建一套防范动量崩溃的自适应风控代码或审查现有持仓：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>你是一名量化风控专家。请基于 Daniel <span style="color:#960050;background-color:#1e0010">&amp;</span> Moskowitz (2016, JFE) 经典论文《Momentum Crashes》，为我设计一套动量策略的自适应动态缩放与极端崩溃防守系统。
+<h2 id="用-ai-快速上手参考提示词">用 AI 快速上手参考提示词</h2>
+<p>复制以下提示词发送给你的 AI 助手（或 Cursor/代码环境），它将先阅读本文梳理的动量崩溃机制，再为你的量化策略搭建一套自适应风控代码或审查现有持仓：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>你是一名量化风控专家。请先阅读并参考这篇文章中关于动量崩溃微观机理与自适应动态缩放的核心概念：
+</span></span><span style="display:flex;"><span>参考网址：https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>读完后，请基于文中的 Daniel <span style="color:#960050;background-color:#1e0010">&amp;</span> Moskowitz (2016, JFE) 模型，为我设计一套动量策略的自适应动态缩放与极端崩溃防守系统。
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>【我的策略背景/持仓现状】
 </span></span><span style="display:flex;"><span>（在此简述你的策略逻辑，例如：在持有高股息底仓的同时，配置过去 12 个月涨幅前 20% 的动量股票做进攻增强；或者输入你关注的高弹性动量标的列表）
