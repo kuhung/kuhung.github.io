@@ -60,7 +60,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/ai-system-evals-complete-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-08T22:45:00+08:00","datePublished":"2026-11-08T22:45:00+08:00","description":"写给工程师、产品经理与技术决策者的全景长文：从直观体感走向严谨量化。本文系统拆解 AI 系统与智能体评测（Evals）的工程闭环，涵盖代码规则评分、模型判官（LLM-as-a-Judge）偏差纠正、置信区间、多阶段 RAG 与 Agent 轨迹评估、公开基准局限性及 CI/CD 落地实践。","headline":"大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 大模型, Evals, Agent, 智能体, LLM-as-a-Judge, 软件工程","mainEntityOfPage":{"@id":"https://kuhung.me/posts/ai-system-evals-complete-guide/","@type":"WebPage"},"name":"大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/ai-system-evals-complete-guide/","wordCount":1993}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/ai-system-evals-complete-guide/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-08T22:45:00+08:00","datePublished":"2026-11-08T22:45:00+08:00","description":"写给工程师、产品经理与技术决策者的全景长文：从直观体感走向严谨量化。本文系统拆解 AI 系统与智能体评测（Evals）的工程闭环，涵盖代码规则评分、模型判官（LLM-as-a-Judge）偏差纠正、置信区间、多阶段 RAG 与 Agent 轨迹评估、公开基准局限性及 CI/CD 落地实践。","headline":"大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, 大模型, Evals, Agent, 智能体, LLM-as-a-Judge, 软件工程","mainEntityOfPage":{"@id":"https://kuhung.me/posts/ai-system-evals-complete-guide/","@type":"WebPage"},"name":"大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/ai-system-evals-complete-guide/","wordCount":2091}</script>
 </head>
 
   
@@ -134,6 +134,7 @@ if (!doNotTrack) {
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#全景工程思维导图速读索引">全景工程思维导图（速读索引）</a></li>
     <li><a href="#快速通识如果你只读一节就读这节">快速通识（如果你只读一节，就读这节）</a>
       <ul>
         <li><a href="#为什么必须有-eval">为什么必须有 Eval？</a></li>
@@ -275,6 +276,59 @@ if (!doNotTrack) {
 原文链接：<a href="https://x.com/sermakarevich/status/2106453816757354947">Evals: how to know whether an AI system actually works</a><br>
 适用人群：所有参与研发、采购、评审或签署基于大语言模型（LLM）软件的人士——包括一线工程师、产品经理以及 CEO。本文用平实清晰的语言，从宏观全貌一路深入到底层工程细节。文中引用的所有实验数字，均来自作者团队可运行的真实客服小助手教程或权威学术论文。</p>
 </blockquote>
+<hr>
+<h2 id="全景工程思维导图速读索引">全景工程思维导图（速读索引）</h2>
+<blockquote>
+<p><strong>速读指引</strong>：全文长逾万字，涵盖评估闭环、评分器攻防、置信区间、多阶段 RAG 与智能体可靠性。下图为全文精粹逻辑导图（本地已同步生成原生源文件至 <code>Dropbox/xmind/大模型与智能体评估Evals全景指南.xmind</code>，可直接在 XMind 中打开编辑）：</p>
+</blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/8344aa1765ec4fbf.webp" alt="大模型与智能体评估全景工程思维导图" class="lazyload"><figcaption class="image-caption">大模型与智能体评估全景工程思维导图</figcaption></figure></p>
+<details>
+<summary><b>点击展开思维导图文字层级大纲</b></summary>
+<ul>
+<li><strong>一、核心通识与闭环 (The Loop)</strong>
+<ul>
+<li>为什么必须有 Eval：传统软件非成即崩；大模型流畅但可能自信撒谎。将「Demo看着挺好」升级为「70% ± 12% 通过率」。</li>
+<li>四步工程闭环：收集输入 + 标定金标答案 -&gt; 批量执行保留调用 Trace -&gt; 评分器打分 -&gt; 统计误差棒与基线对比。</li>
+<li>三个介入时机：上线发版前（能不能用）· 每次变更前（改没改崩）· 上线发布后（生产洪峰是否稳定）。</li>
+</ul>
+</li>
+<li><strong>二、测试集与归因分析 (Level 1-2)</strong>
+<ul>
+<li>测试集建设：覆盖真实痛点与边缘案例；开发集（调优）与测试集（汇报）物理绝对隔离。</li>
+<li>核心概念辨析：Eval（私有系统表现）vs Benchmark（底座通用跑分）；Metric（汇总函数）vs Trace（底层调用明细）。</li>
+<li>错误分析（Error Analysis）：动手写评分器前先肉眼精读 100-200 条原始输出，轴心聚类梳理高频错误清单。</li>
+</ul>
+</li>
+<li><strong>三、两类评分器攻防实战 (Level 3-4)</strong>
+<ul>
+<li>代码评分器：零成本确定性规则，穷尽于格式、事实词、违禁词；局限在于相似度只测变化不测质量，对语义幻觉盲目。</li>
+<li>模型判官原则：单一错误 Yes/No 二元化、强制出具引用证据、注入业务上下文。</li>
+<li>偏差消除与校准：Cohen&rsquo;s Kappa 校准（门禁 &gt; 0.6）；对冲位置/长度/同门偏好；3 人陪审团 + 几何中位数；优先用专用小模型（NLI/MiniCheck）与类型化判官（Jev）。</li>
+</ul>
+</li>
+<li><strong>四、统计严谨性与决策底线 (Level 5)</strong>
+<ul>
+<li>误差棒：Bootstrap 置信区间；跨越 0 的差异纯属统计噪声。</li>
+<li>配对比较（Paired Comparison）：同一批样本对冲题目难易度方差；McNemar 检验穿透总分假象，揪出隐性倒退。</li>
+<li>检出底线（Detection Floor）：小样本下无法看清微小回归，必须扩增用例而非换检验算法。</li>
+</ul>
+</li>
+<li><strong>五、复杂系统与智能体可靠性 (Level 6)</strong>
+<ul>
+<li>RAG 检索分拆评估：检索器评估 Hit@k、Recall@k；生成器评估 RAGAS 三元组（忠实度/相关度/上下文精度）。</li>
+<li>智能体评估：兼顾最终物理状态与执行轨迹；区分能力上限 <code>Pass@k</code> 与工业可靠性 <code>Pass^k</code>；度量单次成功 Token 财务账单。</li>
+<li>验证视界（Verification Horizon）：参与优化的评分器必被刷穿作弊（Reward Hacking）；保留隐藏考卷。</li>
+</ul>
+</li>
+<li><strong>六、基准陷阱与工程习惯 (Level 7-8)</strong>
+<ul>
+<li>公开基准局限：强依赖评测 Harness 且迅速饱和；选 5 个基准初筛模型，业务选型只信专属 Eval。</li>
+<li>三级工程节奏：每次 Commit 跑代码规则，每次变更跑测试集，上线发布做小流量采样监控。</li>
+<li>管理层看板四指标：通过率与置信区间、评分器一致性 Kappa、检出底线、上次变更劣化用例占比。</li>
+</ul>
+</li>
+</ul>
+</details>
 <hr>
 <h2 id="快速通识如果你只读一节就读这节">快速通识（如果你只读一节，就读这节）</h2>
 <p><strong>评估（Eval，即 Evaluation）</strong> 是一项可重复运行的测试。它用一个<strong>你能够信任的确定数值</strong>告诉你：一套 AI 系统是否真正达成了你的预期，以及某次代码或 Prompt 的变更究竟是让它变好了，还是变差了。</p>
