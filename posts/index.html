@@ -206,7 +206,7 @@ if (!doNotTrack) {
     
     <details class="posts-history">
         <summary>
-            <span>从 2016 年写到现在，已经 209 篇。写的东西跟着我当时在做的事一路变化。</span>
+            <span>从 2016 年写到现在，已经 211 篇。写的东西跟着我当时在做的事一路变化。</span>
         </summary>
         <div class="posts-timeline" aria-label="文章主题变化">
             
@@ -245,7 +245,7 @@ if (!doNotTrack) {
     </nav>
 
     <div class="posts-search-box" hidden>
-        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 209 篇文章标题、摘要或标签..." aria-label="搜索文章">
+        <input class="posts-search-input" id="posts-search-input" type="search" placeholder="搜索 211 篇文章标题、摘要或标签..." aria-label="搜索文章">
     </div>
 
     <fieldset class="topic-filters" aria-label="按主题筛选文章" hidden>
@@ -282,11 +282,43 @@ if (!doNotTrack) {
     <div class="posts-list" id="posts-list">
         
         <article class="posts-list-item"
-         data-tags="量化投研||资产定价||美债供给||期限溢价||红利资产||宏观贴现率"
+         data-tags="AI||大模型||Evals||Agent||智能体||LLM-as-a-Judge||软件工程"
+         data-categories="AI 探索">
+    <h2 class="posts-list-title"><a href="/posts/ai-system-evals-complete-guide/">大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？</a></h2>
+    <p class="posts-list-summary">导读与编译说明
+原文作者：Sergii Makarevych（@sermakarevich）
+原文链接：Evals: how to know whether an AI system actually works
+适用人群：所有参与研发、采购、评审或签署基于大语言模型（LLM）软件的人士——包括一线工程师、产品经理以及 CEO。本文用平实清晰的语言，从宏观全貌一路深入到底层工程细节。文中引用的所有 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-08">November 8, 2026</time>
+        
+        
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="量化交易||选股||模块协同||安全距离||风控||MA50趋势门||规则统一||美股||港股||A股||日股"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/stock-selection-execution-seams-and-volatility-cushion/">个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一</a></h2>
+    <p class="posts-list-summary">回测里的净值曲线看着很平滑，但一跑实盘，最容易磨损账户的往往是调仓太频繁、交易摩擦太大。
+触发机制定得太灵敏，系统就容易天天折腾：昨天刚买入，今天稍微回撤一下就触碰止损割肉；防追高规则原本想防泡沫，却在股票高位暴跌时误把它当“回调”买进去；调仓程序刚发出换股买入指令，监控程序隔天又报警要求清仓。
+这篇文章就解决这一件事：怎么把那些过于敏感、容易误触发的规则管住，大幅减少无谓的调仓，把摩擦成本真正省 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-06">November 6, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="量化投研||资产定价||流动性螺旋||融资流动性||红利资产||宏观择时"
          data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/treasury-supply-and-macro-discount-rate/">红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</a></h2>
-    <p class="posts-list-summary">手里拿着分红稳定、股息率 5% 以上的高股息资产，为什么海外美债收益率一跳涨，国内红利股也会大幅承压？当全球无风险收益率冲到高位，高股息的吸引力会被直接削弱；美国财政部大规模发行长债，更会在全球流动性池子里抽走资本。作为「红利与宏观择时」全系列的收官篇，这一篇跳出微观选股视角，拆解无风险贴现率之锚如何穿透宏观周期，重新厘清红利资产在宏观收缩下的防御边界。
-本文目录 一、看盘困惑：手握高股息，为什么 …</p>
+    <h2 class="posts-list-title"><a href="/posts/liquidity-spirals-and-extreme-defense/">红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</a></h2>
+    <p class="posts-list-summary">遇到全市场流动性挤兑、千股跌停时，平时拿来避险的高股息红利资产，为什么不仅不抗跌，反而也会跟着跌停？甚至在大盘稍微企稳时出现大幅补跌？当杠杆资金大面积爆仓、保证金比例强制拉升时，很多中小盘股票根本卖不出去，流动性最好的红利股往往会被当成全场的流动性提款机。面对这种全市场的抛售潮，光看股息率高不高根本挡不住回撤。这一篇是「红利与宏观择时」系列第五篇，通过真实暴跌案例讲清楚流动性踩踏的微观传导机制，并 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-06">November 6, 2026</time>
         
@@ -297,11 +329,11 @@ if (!doNotTrack) {
 
         
         <article class="posts-list-item"
-         data-tags="量化投研||资产定价||流动性螺旋||融资流动性||红利资产||宏观择时"
+         data-tags="量化投研||资产定价||美债供给||期限溢价||贴现率||红利资产||宏观择时"
          data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/liquidity-spirals-and-extreme-defense/">红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</a></h2>
-    <p class="posts-list-summary">遇到全市场流动性挤兑、千股跌停时，本来指望拿来避险的红利资产，为什么不仅不抗跌，反而跟着断崖式跌停？当杠杆资金大面积爆仓、保证金比例强制拉升时，其他股票根本卖不出去，流动性最好的红利股只能被当成全场的流动性提款机。面对这种市场与融资螺旋下跌的极端抛售潮，光靠低估值和高股息挡不住风险。这一篇建立流动性预警指标，给出从正常持股到全线退守现金的实盘准则。
-本文目录 一、看盘困惑：为什么买盘深度会在一夜之 …</p>
+    <h2 class="posts-list-title"><a href="/posts/treasury-supply-and-macro-discount-rate/">红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</a></h2>
+    <p class="posts-list-summary">手里拿着分红稳定、股息率 5% 以上的高股息资产，为什么海外美债收益率一跳涨，国内红利股也会大幅承压？当全球无风险收益率冲到高位，高股息的吸引力会被直接削弱；美国财政部大规模发行长债，更会在全球流动性池子里抽走资本。作为「红利与宏观择时」全系列的收官篇，这一篇跳出微观选股视角，拆解无风险贴现率之锚如何穿透宏观周期，重新厘清红利资产在宏观收缩下的防御边界。
+一、真实案例：美债风暴下，高股息资产到底跌 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-06">November 6, 2026</time>
         
@@ -394,38 +426,6 @@ if (!doNotTrack) {
 通过对链上全部 128 笔初始扫仓 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-01">November 1, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="量化投研||红利资产||现值分解||Campbell-Shiller||资产配置||中证红利"
-         data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/dividend-price-ratio-and-present-value-decomposition/">红利与宏观择时（一）：股息率高就一定稳赚吗？买红利如何避免赚了股息赔了本金</a></h2>
-    <p class="posts-list-summary">买高股息股票，最怕遇到「分红拿到了，本金却跌没了」。很多人以为买红利就是图个稳健分红，但拉长周期看，红利资产真正的大钱往往来自市场极度恐慌后的估值修复，单靠企业分红很难抵消买在高位的本金回撤。高股息到底是在吃利息还是在赚估值的钱？这一篇从现值公式入手，拆解股息率背后的真实定价逻辑。
-本文目录 一、股息率的现值方程拆解 二、用 VAR 状态空间提取未来预期 三、美股 152 年长周期的实证检验 四、 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-11-01">November 1, 2026</time>
-        
-        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
-        
-    </div>
-</article>
-
-        
-        <article class="posts-list-item"
-         data-tags="链上数据||量化交易||聪明钱||共识指标||策略回测||滑点||最大回撤||微观结构"
-         data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/smart-money-consensus-lead-lag-backtest/">聪明钱共识信号回测：基于统一画像口径的 180 天超额收益与回撤检验</a></h2>
-    <p class="posts-list-summary">公开链上数据看板常把“聪明钱集中买入”渲染为胜率极高的抄底信号。许多交易者看到多个被标记为高胜率的地址同时买入某一标的，容易直接跟随市价挂单。
-把跟单流水与后续实际成交行情逐笔对齐，跟随买入的结果往往是买在局部冲高的高点，并在后续阴跌中承受深度亏损。
-这种偏差源于对时序因果的混淆。把非平稳时序中的同步甚至滞后资金流误判为单边预测指标，是跟单策略失效的常见原因。
-我们在本系列前序研究中，先后建立了宏 …</p>
-    <div class="posts-list-meta">
-        <time datetime="2026-10-29">October 29, 2026</time>
         
         <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E6%8A%80%E6%9C%AF%E6%8A%80%E5%B7%A7/">技术技巧</a>
         
@@ -650,9 +650,18 @@ if (!doNotTrack) {
         
     
     
+    
+    
+    
+    
+    
+        
+        
+    
+    
     <li class="page-item ">
         <span class="page-link">
-            <a href="/posts/page/21/">21</a></li>
+            <a href="/posts/page/22/">22</a></li>
         </span>
     
     
@@ -660,7 +669,7 @@ if (!doNotTrack) {
     
 </ul>
 
-        <span class="posts-total">共 209 篇</span>
+        <span class="posts-total">共 211 篇</span>
     </div>
     <nav class="client-pagination" aria-label="筛选结果分页" hidden></nav>
 
@@ -668,11 +677,43 @@ if (!doNotTrack) {
     <template id="all-posts-template">
         
         <article class="posts-list-item"
-         data-tags="量化投研||资产定价||美债供给||期限溢价||红利资产||宏观贴现率"
+         data-tags="AI||大模型||Evals||Agent||智能体||LLM-as-a-Judge||软件工程"
+         data-categories="AI 探索">
+    <h2 class="posts-list-title"><a href="/posts/ai-system-evals-complete-guide/">大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？</a></h2>
+    <p class="posts-list-summary">导读与编译说明
+原文作者：Sergii Makarevych（@sermakarevich）
+原文链接：Evals: how to know whether an AI system actually works
+适用人群：所有参与研发、采购、评审或签署基于大语言模型（LLM）软件的人士——包括一线工程师、产品经理以及 CEO。本文用平实清晰的语言，从宏观全貌一路深入到底层工程细节。文中引用的所有 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-08">November 8, 2026</time>
+        
+        
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="量化交易||选股||模块协同||安全距离||风控||MA50趋势门||规则统一||美股||港股||A股||日股"
+         data-categories="经验分享">
+    <h2 class="posts-list-title"><a href="/posts/stock-selection-execution-seams-and-volatility-cushion/">个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一</a></h2>
+    <p class="posts-list-summary">回测里的净值曲线看着很平滑，但一跑实盘，最容易磨损账户的往往是调仓太频繁、交易摩擦太大。
+触发机制定得太灵敏，系统就容易天天折腾：昨天刚买入，今天稍微回撤一下就触碰止损割肉；防追高规则原本想防泡沫，却在股票高位暴跌时误把它当“回调”买进去；调仓程序刚发出换股买入指令，监控程序隔天又报警要求清仓。
+这篇文章就解决这一件事：怎么把那些过于敏感、容易误触发的规则管住，大幅减少无谓的调仓，把摩擦成本真正省 …</p>
+    <div class="posts-list-meta">
+        <time datetime="2026-11-06">November 6, 2026</time>
+        
+        <span aria-hidden="true" style="margin: 0 6px;">·</span><a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a>
+        
+    </div>
+</article>
+
+        
+        <article class="posts-list-item"
+         data-tags="量化投研||资产定价||流动性螺旋||融资流动性||红利资产||宏观择时"
          data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/treasury-supply-and-macro-discount-rate/">红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</a></h2>
-    <p class="posts-list-summary">手里拿着分红稳定、股息率 5% 以上的高股息资产，为什么海外美债收益率一跳涨，国内红利股也会大幅承压？当全球无风险收益率冲到高位，高股息的吸引力会被直接削弱；美国财政部大规模发行长债，更会在全球流动性池子里抽走资本。作为「红利与宏观择时」全系列的收官篇，这一篇跳出微观选股视角，拆解无风险贴现率之锚如何穿透宏观周期，重新厘清红利资产在宏观收缩下的防御边界。
-本文目录 一、看盘困惑：手握高股息，为什么 …</p>
+    <h2 class="posts-list-title"><a href="/posts/liquidity-spirals-and-extreme-defense/">红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</a></h2>
+    <p class="posts-list-summary">遇到全市场流动性挤兑、千股跌停时，平时拿来避险的高股息红利资产，为什么不仅不抗跌，反而也会跟着跌停？甚至在大盘稍微企稳时出现大幅补跌？当杠杆资金大面积爆仓、保证金比例强制拉升时，很多中小盘股票根本卖不出去，流动性最好的红利股往往会被当成全场的流动性提款机。面对这种全市场的抛售潮，光看股息率高不高根本挡不住回撤。这一篇是「红利与宏观择时」系列第五篇，通过真实暴跌案例讲清楚流动性踩踏的微观传导机制，并 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-06">November 6, 2026</time>
         
@@ -683,11 +724,11 @@ if (!doNotTrack) {
 
         
         <article class="posts-list-item"
-         data-tags="量化投研||资产定价||流动性螺旋||融资流动性||红利资产||宏观择时"
+         data-tags="量化投研||资产定价||美债供给||期限溢价||贴现率||红利资产||宏观择时"
          data-categories="技术技巧">
-    <h2 class="posts-list-title"><a href="/posts/liquidity-spirals-and-extreme-defense/">红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</a></h2>
-    <p class="posts-list-summary">遇到全市场流动性挤兑、千股跌停时，本来指望拿来避险的红利资产，为什么不仅不抗跌，反而跟着断崖式跌停？当杠杆资金大面积爆仓、保证金比例强制拉升时，其他股票根本卖不出去，流动性最好的红利股只能被当成全场的流动性提款机。面对这种市场与融资螺旋下跌的极端抛售潮，光靠低估值和高股息挡不住风险。这一篇建立流动性预警指标，给出从正常持股到全线退守现金的实盘准则。
-本文目录 一、看盘困惑：为什么买盘深度会在一夜之 …</p>
+    <h2 class="posts-list-title"><a href="/posts/treasury-supply-and-macro-discount-rate/">红利与宏观择时（六）：美债收益率飙升对红利股有什么影响？全球资金抽水与高股息重定价</a></h2>
+    <p class="posts-list-summary">手里拿着分红稳定、股息率 5% 以上的高股息资产，为什么海外美债收益率一跳涨，国内红利股也会大幅承压？当全球无风险收益率冲到高位，高股息的吸引力会被直接削弱；美国财政部大规模发行长债，更会在全球流动性池子里抽走资本。作为「红利与宏观择时」全系列的收官篇，这一篇跳出微观选股视角，拆解无风险贴现率之锚如何穿透宏观周期，重新厘清红利资产在宏观收缩下的防御边界。
+一、真实案例：美债风暴下，高股息资产到底跌 …</p>
     <div class="posts-list-meta">
         <time datetime="2026-11-06">November 6, 2026</time>
         

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI 探索 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/categories/ai-%E6%8E%A2%E7%B4%A2/</link>
+    <description>Recent content in AI 探索 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 08 Nov 2026 22:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai-%E6%8E%A2%E7%B4%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？</title>
+      <link>https://kuhung.me/posts/ai-system-evals-complete-guide/</link>
+      <pubDate>Sun, 08 Nov 2026 22:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/ai-system-evals-complete-guide/</guid>
+      <description>导读与编译说明
+原文作者：Sergii Makarevych（@sermakarevich）
+原文链接：Evals: how to know whether an AI system actually works
+适用人群：所有参与研发、采购、评审或签署基于大语言模型（LLM）软件的人士——包括一线工程师、产品经理以及 CEO。本文用平实清晰的语言，从宏观全貌一路深入到底层工程细节。文中引用的所有实验数字，均来自作者团队可运行的真实客服小助手教程或权威学术论文。
+快速通识（如果你只读一节，就读这节） 评估（Eval，即 Evaluation） 是一项可重复运行的测试。它用一个你能够信任的确定数值告诉你：一套 AI 系统是否真正达成了你的预期，以及某次代码或 Prompt 的变更究竟是让它变好了，还是变差了。
+为什么必须有 Eval？ 因为大语言模型的失败模式与传统软件截然不同。
+传统软件要么正常运行，要么抛错崩溃（Crash）。而大语言模型却会用极其流畅、笃定、格式精美的方式，给出一个完全错误的答案。单次人工阅读一个好答案，完全无法推导它接下来的 100 次表现。
+Eval 的核心价值，就是将团队口中的「在 Demo 演示里看着挺好」，彻底替换为工程化的严谨表达：
+「在业务关心的核心用例中，它的通过率是 70% ± 12%；而新版本并没有带来统计意义上的显著提升。」
+Eval 的四步工作闭环 收集关键测试输入（Inputs），并为每条数据写明「标准答案（Gold Answer）」。在本文贯穿始终的示例中，是一间自行车电商的 80 张真实客户支持工单，每张工单都标明了正确的意图分类，以及一份优质答复必须包含的事实清单。 在所有测试用例上运行系统，并完整记录输出结果。 使用评分器（Grader）对每一个输出打分。评分器可以是一段硬编码规则、另一个作为裁判的模型（LLM-as-a-Judge），或者人工评测员。 将所有样本的评分汇总为一个带有误差棒（Error Bar / 置信区间）的综合指标，并与上一版本进行严谨对比。 在什么时机使用它？ 上线发布前：这套系统到底能不能用？基线水平究竟是多少？ 每次变更前：改了 Prompt 或模型参数后，我们有没有在不经意间改崩了某些场景？ 上线发布后：在面对真实的线上洪峰流量时，它是否依然稳定可靠？ 重要警示：评分器本身也是系统的一部分，同样必须接受严苛检验。
+一个与人类专家判断一致率仅有 60% 的模型裁判，会在你的产品已经糟糕透顶时，依然告诉你「一切良好」。
+这意味着：在每次 Eval 报告中，团队必须同时查看两个核心数字——产品本身的通过率，以及评分器自身的可靠度。务必同时索取这两项数据。
+核心缘由：AI 团队最常见的自欺欺人方式，就是从一个未经校准的评分器那里，拿到一个虚高且自信的假数字。
+本文接下来的篇幅将逐级递进、层层拆解。每一层级都将解答其上一层所引申出的关键工程问题：
+Level 0 · 单次闭环：单张工单的完整执行与评估流程全览 Level 1 · 指标定义：我们究竟在衡量什么？（输入数据、黄金标准与指标设计） Level 2 · 归因分析：系统到底会出什么错？必须先肉眼查看原始数据 Level 3 · 代码评分器：规则评分的威力与边界（廉价、确定、但对语义盲目） Level 4 · 模型裁判（LLM-as-a-Judge）：灵活性、认知偏差与校准检验 Level 5 · 诚实的统计：误差棒、配对测试与检出底线（统计检验效力） Level 6 · 复杂系统：多阶段 RAG 检索链路与自主智能体（Agent）评估 Level 7 · 公开基准：排行榜到底告诉了你什么，又掩盖了什么？ Level 8 · 机制化沉淀：把评估固化为研发流水线（CI 门禁与生产监控） 总结与工具：工具横评、决策指南、15 条核心法则与参考文献 Level 0：单次闭环——以一张工单为例 视野聚焦：端到端全局。 核心问题：当一套 Eval 真正运转起来时，它究竟长什么样？ 我们以一家虚构的在线自行车与露营装备店的客服 AI 助手为例。该系统由三个模块组成，后续我们会用不同的方式对其进行分层评测：</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/" />
+  <link rel="next" href="https://kuhung.me/posts/ai-system-evals-complete-guide/" />
+  <link rel="canonical" href="https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.3d1203d794d803e6ea942db37a5bd792a3dfe3f594062234c5460c5e472575d5.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function cleanMath(content) {
+            return content
+                .replace(/<em>(.*?)<\/em>/g, '_$1_')
+                .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/(^|[^\\])%/g, '$1\\%')
+                .replace(/\\text\{([^{}]*)\}/g, function(m, inner) {
+                    return '\\text{' + inner.replace(/\\?_/g, '\\_') + '}';
+                });
+        }
+
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
+                    return '$$' + cleanMath(inner) + '$$';
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
+                    return '\\[' + cleanMath(inner) + '\\]';
+                });
+                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
+                    return '$' + cleanMath(inner) + '$';
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-06T21:00:00+08:00","datePublished":"2026-11-06T21:00:00+08:00","description":"回测里的净值曲线看着很平滑，但一跑实盘，最容易磨损账户的往往是调仓太频繁、交易摩擦太大。 触发机制定得太灵敏，系统就容易天天折腾：昨天刚买入，今天稍微回撤一下就触碰止损割肉；防追高规则原本想防泡沫，却在股票高位暴跌时误把它当“回调”买进去；调仓程序刚发出换股买入指令，监控程序隔天又报警要求清仓。 这篇文章就解决这一件事：怎么把那些过于敏感、容易误触发的规则管住，大幅减少无谓的调仓，把摩擦成本真正省 …","headline":"个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 模块协同, 安全距离, 风控, MA50趋势门, 规则统一, 美股, 港股, A股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","@type":"WebPage"},"name":"个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","wordCount":561}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-06 itemprop="datePublished">November 6, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://kuhung.me/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"> 经验分享 </a>
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一买入就止损为什么名次靠前还会被洗">一、买入就止损：为什么名次靠前还会被洗？</a>
+      <ul>
+        <li><a href="#1-闪迪的真实案例调仓次日就被砍仓">1. 闪迪的真实案例：调仓次日就被砍仓</a></li>
+        <li><a href="#2-名义百分比的盲区忽略了股票自身的波动率">2. 名义百分比的盲区：忽略了股票自身的波动率</a></li>
+        <li><a href="#3-应对办法衡量离止损线还有几个标准差cushion-to-stop">3. 应对办法：衡量离止损线还有几个标准差（Cushion-to-Stop）</a></li>
+        <li><a href="#4-门槛设定为什么是-40σ">4. 门槛设定：为什么是 4.0σ？</a></li>
+      </ul>
+    </li>
+    <li><a href="#二防追高变抄底别在急跌破位时接飞刀">二、防追高变抄底：别在急跌破位时接飞刀</a>
+      <ul>
+        <li><a href="#1-美光与戴尔的教训暴跌反而跌出了买入资格">1. 美光与戴尔的教训：暴跌反而跌出了买入资格</a></li>
+        <li><a href="#2-滞后与错配静态阈值看不出下坠走势">2. 滞后与错配：静态阈值看不出下坠走势</a></li>
+        <li><a href="#3-应对办法一加一道-50-日均线门槛close--ma50">3. 应对办法一：加一道 50 日均线门槛（Close ≥ MA50）</a></li>
+        <li><a href="#4-应对办法二有效排位保护别把好股票挤掉">4. 应对办法二：有效排位保护，别把好股票挤掉</a></li>
+      </ul>
+    </li>
+    <li><a href="#三调仓与监控的口径统一">三、调仓与监控的口径统一</a>
+      <ul>
+        <li><a href="#1-规则口径不一致带来的实盘冲突">1. 规则口径不一致带来的实盘冲突</a></li>
+        <li><a href="#2-统一底层状态机判定逻辑">2. 统一底层状态机判定逻辑</a></li>
+      </ul>
+    </li>
+    <li><a href="#四实盘工程细节与全周期回测验证">四、实盘工程细节与全周期回测验证</a>
+      <ul>
+        <li><a href="#1-实盘执行细节顺延重算与跳变拦截">1. 实盘执行细节：顺延重算与跳变拦截</a></li>
+        <li><a href="#2-全周期消融回测少折腾到底能改善多少">2. 全周期消融回测：少折腾到底能改善多少？</a></li>
+      </ul>
+    </li>
+    <li><a href="#结语管住系统不要瞎折腾">结语：管住系统不要瞎折腾</a></li>
+    <li><a href="#个人量化选股实战系列导航">个人量化选股实战系列导航</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>回测里的净值曲线看着很平滑，但一跑实盘，最容易磨损账户的往往是调仓太频繁、交易摩擦太大。</p>
+<p>触发机制定得太灵敏，系统就容易天天折腾：昨天刚买入，今天稍微回撤一下就触碰止损割肉；防追高规则原本想防泡沫，却在股票高位暴跌时误把它当“回调”买进去；调仓程序刚发出换股买入指令，监控程序隔天又报警要求清仓。</p>
+<p>这篇文章就解决这一件事：怎么把那些过于敏感、容易误触发的规则管住，大幅减少无谓的调仓，把摩擦成本真正省下来。</p>
+</blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/e7b123b21715b7bc.webp" alt="个人量化选股（八）：实盘执行与多模块协同全景架构" class="lazyload"><figcaption class="image-caption">个人量化选股（八）：实盘执行与多模块协同全景架构</figcaption></figure></p>
+<hr>
+<h2 id="一买入就止损为什么名次靠前还会被洗">一、买入就止损：为什么名次靠前还会被洗？</h2>
+<p>在量化交易里，最容易让人懊恼的操作就是刚买进就被止损扫地出门。选出来的股票看着哪都好，结果刚买进一天，遇到个正常波动就击穿止损线，不仅白交了双向手续费和滑点，还割肉割在最低点。</p>
+<h3 id="1-闪迪的真实案例调仓次日就被砍仓">1. 闪迪的真实案例：调仓次日就被砍仓</h3>
+<p>前几篇文章里我们定了选股规则：双月末按 1 年卡玛比率排队，挑市场前 4 名买入，年线下跌破 1.5% 止损。</p>
+<p>逻辑很直观：挑动量最强、回撤最小的标的。</p>
+<p>但在 2026 年 10 月底的美股实盘调仓中，真实截面数据就给出了警示。闪迪（<code>US.SNDK</code>）过去一年涨了近 8 倍，卡玛比率高达 9.75，稳居观察池前列，顺利触发了买入指令。</p>
+<p>拉出 10 月 29 日的数据看细节：</p>
+<ul>
+<li>闪迪收盘价 1330.05 美元，距 200 日年线（1255.35 美元）只高出 6.0%；</li>
+<li>过去 20 个交易日的年化波动率是 65.2%，换算成单日波动率达到 4.10%；</li>
+<li>系统的止损线设在年线下方 1.5%（1236.52 美元）；</li>
+<li>闪迪当时价格离止损触发价，只有 7.56% 的空间：</li>
+</ul>
+<p>$$\frac{1330.05}{1236.52} - 1 = +7.56%$$</p>
+<p>这 7.56% 的空间，以闪迪每天 4.10% 的波动率来看，只相当于 <strong>1.84 个日收益率标准差（1.84σ）</strong>。</p>
+<p>次日（10 月 30 日），半导体硬件板块正常回调，闪迪单日跌了 13.47%，收盘直接跌到年线下方 8.6%。前一天刚排名前列买进，第二天就跌破止损线被强制清仓。</p>
+<h3 id="2-名义百分比的盲区忽略了股票自身的波动率">2. 名义百分比的盲区：忽略了股票自身的波动率</h3>
+<p>在常规检查里，标的只要收盘价在年线上方、且没超过 30% 就算合格。闪迪在年线上方 6.0%，看似完全合规，为什么第二天立刻破位？</p>
+<p>根源在于：每只股票的波动幅度完全不同，光看百分比容易踩坑。</p>
+<p>看看 2026 年 11 月初两只标的的真实对比：</p>
+<table>
+<thead>
+<tr>
+<th>标的代码</th>
+<th>标的名称</th>
+<th style="text-align:right">收盘价 (USD)</th>
+<th style="text-align:right">200日均线</th>
+<th style="text-align:right">距年线偏离度%</th>
+<th style="text-align:right">20日年化波动率</th>
+<th style="text-align:right">日波动率标准差 $\sigma$</th>
+<th style="text-align:right">到止损价安全距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>US.JNJ</code></td>
+<td>强生公司</td>
+<td style="text-align:right">270.56</td>
+<td style="text-align:right">245.61</td>
+<td style="text-align:right"><strong>+10.2%</strong></td>
+<td style="text-align:right"><strong>30.9%</strong></td>
+<td style="text-align:right">1.95%</td>
+<td style="text-align:right"><strong>+6.08σ</strong></td>
+</tr>
+<tr>
+<td><code>US.MU</code></td>
+<td>美光科技</td>
+<td style="text-align:right">833.59</td>
+<td style="text-align:right">749.11</td>
+<td style="text-align:right"><strong>+11.3%</strong></td>
+<td style="text-align:right"><strong>62.4%</strong></td>
+<td style="text-align:right">3.93%</td>
+<td style="text-align:right"><strong>+3.30σ</strong></td>
+</tr>
+</tbody>
+</table>
+<p>只看距年线百分比，美光科技（+11.3%）比强生（+10.2%）还高出 1.1 个百分点。单看偏离度，容易误以为美光比强生更安全。</p>
+<p>但算上每天的波动幅度：</p>
+<ul>
+<li>强生是日用消费品，日波动率只有 1.95%，离止损线名义上隔了 11.85%，够它抗住 <strong>6.08 个日标准差</strong> 的单边下跌；</li>
+<li>美光是芯片周期股，日波动率高达 3.93%，离止损线名义上隔了 12.98%，但只能抗住 <strong>3.30 个日标准差</strong>。</li>
+</ul>
+<p>名义百分比看起来差不多，但换算到资产自身的波动率，强生的安全纵深是美光的近两倍。如果只按名义百分比筛选，就会买进贴在止损线上的高弹性股票，只要稍微遇到日常震荡，就会被迫触发止损。</p>
+<h3 id="3-应对办法衡量离止损线还有几个标准差cushion-to-stop">3. 应对办法：衡量离止损线还有几个标准差（Cushion-to-Stop）</h3>
+<p>为了避免这种贴线开仓导致的无谓换手，我们在准入检查里加了一道指标：到止损价的波动率安全距离：</p>
+<p>$$\text{Cushion}<em>t = \frac{P_t / P</em>{\text{stop}, t} - 1}{\sigma_{\text{daily}, 20d}}$$</p>
+<p>其中止损价设定在年线下方 1.5%：</p>
+<p>$$P_{\text{stop}, t} = \text{MA}_{200, t} \times (1 - 0.015)$$</p>
+<p>分母是过去 20 个交易日收益率的标准差（样本自由度取 $N-1 = 19$）。</p>
+<p>这个指标衡量的是当前价格距离止损线的安全纵深：价格需要下跌多少个日收益率标准差，才会触碰到止损线。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/f403e2ca8ab4d8f5.webp" alt="2026年10月下旬真实截面多标的轨迹图：名次、买入门槛与波动率缓冲演变" class="lazyload"><figcaption class="image-caption">2026年10月下旬真实截面多标的轨迹图：名次、买入门槛与波动率缓冲演变</figcaption></figure></p>
+<p>上图下半部分清晰反映了不同股票的安全纵深：</p>
+<ul>
+<li>闪迪在 10 月 29 日的缓冲倍数只有 +1.80σ，离止损线过近；</li>
+<li>美光科技在 11 月 2 日缓冲倍数从之前的 +9.67σ 迅速缩水到 +3.30σ；</li>
+<li>强生和可口可乐一直稳定在 +6σ 到 +12σ 以上的安全区。</li>
+</ul>
+<h3 id="4-门槛设定为什么是-40σ">4. 门槛设定：为什么是 4.0σ？</h3>
+<p>这个阈值来自实盘中对日常正常波动的防护要求：</p>
+<p>在股票日常交易中，单日回撤 2.0σ 是较为常见的常规震荡（在资产收益率的厚尾分布下，单日超过 2.0σ 跌幅的概率约为 3% 到 5%）。如果一只股票距离止损线只有 2σ 到 3σ，意味着只要遭遇连续两天正常回调，或者一次跳空低开，价格就会直接击穿年线止损。在这样的位置新开仓，等于把自己主动暴露在被常规噪音洗出局的风险之下。</p>
+<p>因此，我们将 <strong>4.0σ</strong> 设为新开仓的最低安全距离底线：</p>
+<ul>
+<li><strong>Cushion &lt; 4.0σ</strong>：禁止新开仓。即便卡玛比率排名再靠前，只要安全距离不足 4.0σ，说明离止损线太近，不进场建仓；</li>
+<li><strong>Cushion ≥ 4.0σ</strong>：具备抵御至少两次常规日频波动的安全纵深，允许正常买入。</li>
+</ul>
+<p>波动率安全距离解决的是日常噪音下的频繁磨损问题。如果上市公司突发重大事件导致连续暴跌，任何统计指标都会被击穿；它的价值在于开仓前排除那些在统计上防守纵深不足的脆弱标的，避免无谓的日频割肉。</p>
+<hr>
+<h2 id="二防追高变抄底别在急跌破位时接飞刀">二、防追高变抄底：别在急跌破位时接飞刀</h2>
+<p>第二类造成频繁调仓的问题，来自防追高规则的漏洞：本想防高位追涨，结果却把高位暴跌的股票当成“回调到位”买进来，刚买进去没几天就继续暴跌止损，白白增加一次调仓。</p>
+<h3 id="1-美光与戴尔的教训暴跌反而跌出了买入资格">1. 美光与戴尔的教训：暴跌反而跌出了买入资格</h3>
+<p>我们在第三篇设计了价格不能超过 200 日线 30%（$P \le \text{MA}_{200} \times 1.30$）的防追高门槛。</p>
+<p>看看美光（<code>US.MU</code>）和戴尔（<code>US.DELL</code>）在 2026 年 10 月底的真实指标演变：</p>
+<table>
+<thead>
+<tr>
+<th>交易日期</th>
+<th>标的代码</th>
+<th style="text-align:right">收盘价 (USD)</th>
+<th style="text-align:right">距MA200偏离%</th>
+<th style="text-align:right">距MA50偏离%</th>
+<th style="text-align:right">1年卡玛比率</th>
+<th>动量门状态</th>
+<th style="text-align:right">缓冲 Cushion</th>
+<th>判定结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2026-10-28</strong></td>
+<td><code>US.MU</code></td>
+<td style="text-align:right">983.23</td>
+<td style="text-align:right"><strong>+32.7%</strong></td>
+<td style="text-align:right">+0.3%</td>
+<td style="text-align:right">8.00 (第3名)</td>
+<td>超过+30%</td>
+<td style="text-align:right">+9.67σ</td>
+<td>超买，禁止买入</td>
+</tr>
+<tr>
+<td><strong>2026-10-29</strong></td>
+<td><code>US.MU</code></td>
+<td style="text-align:right">934.27</td>
+<td style="text-align:right"><strong>+25.6%</strong></td>
+<td style="text-align:right"><strong>-4.7%</strong></td>
+<td style="text-align:right">8.00 (第3名)</td>
+<td><strong>跌入+30%内</strong></td>
+<td style="text-align:right">+7.56σ</td>
+<td><strong>首次触发买入资格</strong></td>
+</tr>
+<tr>
+<td><strong>2026-10-30</strong></td>
+<td><code>US.MU</code></td>
+<td style="text-align:right">884.74</td>
+<td style="text-align:right">+18.5%</td>
+<td style="text-align:right"><strong>-9.6%</strong></td>
+<td style="text-align:right">7.56 (第3名)</td>
+<td>符合条件</td>
+<td style="text-align:right">+5.38σ</td>
+<td>调仓日：确认买入</td>
+</tr>
+<tr>
+<td><strong>2026-11-02</strong></td>
+<td><code>US.MU</code></td>
+<td style="text-align:right">833.59</td>
+<td style="text-align:right">+11.3%</td>
+<td style="text-align:right"><strong>-14.6%</strong></td>
+<td style="text-align:right">6.84 (第3名)</td>
+<td>符合条件</td>
+<td style="text-align:right"><strong>+3.30σ</strong></td>
+<td>缓冲不足 4σ，拦截</td>
+</tr>
+<tr>
+<td><strong>2026-11-05</strong></td>
+<td><code>US.MU</code></td>
+<td style="text-align:right">656.39</td>
+<td style="text-align:right"><strong>-13.1%</strong></td>
+<td style="text-align:right"><strong>-32.1%</strong></td>
+<td style="text-align:right">-</td>
+<td>跌穿年线</td>
+<td style="text-align:right"><strong>-2.19σ</strong></td>
+<td>大跌穿年线，强制清仓</td>
+</tr>
+<tr>
+<td><strong>2026-10-28</strong></td>
+<td><code>US.DELL</code></td>
+<td style="text-align:right">493.79</td>
+<td style="text-align:right"><strong>+50.9%</strong></td>
+<td style="text-align:right">-3.7%</td>
+<td style="text-align:right">6.09 (第8名)</td>
+<td>超过+30%</td>
+<td style="text-align:right">+11.98σ</td>
+<td>乖离过大，拦截</td>
+</tr>
+<tr>
+<td><strong>2026-10-30</strong></td>
+<td><code>US.DELL</code></td>
+<td style="text-align:right">424.30</td>
+<td style="text-align:right"><strong>+28.4%</strong></td>
+<td style="text-align:right"><strong>-17.3%</strong></td>
+<td style="text-align:right">5.34 (第7名)</td>
+<td><strong>跌入+30%内</strong></td>
+<td style="text-align:right">+6.17σ</td>
+<td><strong>大跌 -10.8%，首次获买入资格</strong></td>
+</tr>
+<tr>
+<td><strong>2026-11-05</strong></td>
+<td><code>US.DELL</code></td>
+<td style="text-align:right">316.91</td>
+<td style="text-align:right"><strong>-5.6%</strong></td>
+<td style="text-align:right"><strong>-37.5%</strong></td>
+<td style="text-align:right">-</td>
+<td>跌穿年线</td>
+<td style="text-align:right"><strong>-0.68σ</strong></td>
+<td>跌穿年线，强制清仓</td>
+</tr>
+</tbody>
+</table>
+<p>10 月 28 日美光还在强势上涨，因为离年线达到 +32.7%，被防追高规则挡在门外；
+10 月 29 日美光单日大跌近 5%，价格落回到年线 +25.6%，正好落入 +30% 以内，系统居然认为它“回调合规”，发出了买入信号；
+戴尔也是同样，10 月 30 日单日暴跌 10.8%，正好从 +44% 砸回 +28%，当天首次获得了买入资格。</p>
+<p>随后几天，两只标的继续破位大跌，击穿年线强制止损出局。这不仅没防住风险，反而成了高位接飞刀，来回多亏了一轮调仓手续费和本金。</p>
+<h3 id="2-滞后与错配静态阈值看不出下坠走势">2. 滞后与错配：静态阈值看不出下坠走势</h3>
+<p>产生这个漏洞的原因有两个：</p>
+<ol>
+<li><strong>卡玛比率看 252 天</strong>：过去一年涨幅大，即便短期从最高点跌了 20% 到 30%，卡玛排名依然很高；</li>
+<li><strong>+30% 是个静态死门槛</strong>：只量当前价格离 200 日线多远，根本不管当前股价是在往上走还是在急速下坠。</li>
+</ol>
+<p>涨的时候嫌高不让买，等到砸穿 50 日均线开始暴跌了，反而把它选进买入池。</p>
+<h3 id="3-应对办法一加一道-50-日均线门槛close--ma50">3. 应对办法一：加一道 50 日均线门槛（Close ≥ MA50）</h3>
+<p>在准入条件中增加中期趋势过滤：新买入的股票，收盘价必须在 50 日均线之上：</p>
+<p>$$P_t \ge \text{MA}_{50, t}$$</p>
+<p>这道门槛清晰地切开了两种走势：</p>
+<ul>
+<li><strong>良性回踩</strong>：股价高位强势整理，等年线上移，价格始终稳在 50 日线上方（像当时的德州仪器 <code>TXN</code>、亚德诺 <code>ADI</code> 都在 50 日线上方 2% 到 4%，正常买入）；</li>
+<li><strong>破位下跌</strong>：股价跌穿中期成本线（美光跌破 50 日线 9.6%，戴尔跌破 17.3%，直接拦截）。</li>
+</ul>
+<p>一道 50 日线，就把下坠中的破位股票挡在门外。</p>
+<h3 id="4-应对办法二有效排位保护别把好股票挤掉">4. 应对办法二：有效排位保护，别把好股票挤掉</h3>
+<p>如果排在前面的都是些超 30% 或者破了 50 日线、根本不能买的股票，还会引发另一个问题：把原本健康持有的好股票挤出持仓。</p>
+<p>10 月 30 日可口可乐（<code>US.KO</code>）卡玛比率 5.01，价格在 50 日线上方 5.4%、年线上方 15.6%，安全距离有 +12.8σ，走势很稳。</p>
+<p>但在原始名义排位里，排在可口可乐前面的 9 只票：</p>
+<ul>
+<li>5 只因为超过 +30% 不能买；</li>
+<li>2 只（美光、戴尔）因为跌破 50 日线不能买。</li>
+</ul>
+<p>前面占着一堆不能买的标的，可口可乐被机械推到了第 10 名，触发了“跌出前 8 名卖出”的换股条件。如果按指令操作，就会把走势健康的可口可乐卖掉，换成风险资产。</p>
+<p>解决办法：<strong>排位前先剔除无效标的（Effective Ranking）</strong>。在排名池里，把所有不合规的标的（超过 +30%、动量为负、跌破 50 日线、安全距离不足 4σ）先剔除。</p>
+<p>剔除后，可口可乐直接升到实打实的第 2 名，继续安稳持有，避免了一次毫无道理的卖出换手。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/7b0385d531a1db58.webp" alt="核心标的波动率与缓冲空间二维分布与 1/σ 风险平价决策映射" class="lazyload"><figcaption class="image-caption">核心标的波动率与缓冲空间二维分布与 1/σ 风险平价决策映射</figcaption></figure></p>
+<p>上图展示了不同股票的分布：</p>
+<ul>
+<li>绿色全额买入区是可口可乐、苹果、Visa、强生这些稳健标的；</li>
+<li>橙色破位区标出了跌穿 50 日线的美光和戴尔；</li>
+<li>红色缓冲区标出了离止损线太近的闪迪。</li>
+</ul>
+<hr>
+<h2 id="三调仓与监控的口径统一">三、调仓与监控的口径统一</h2>
+<p>实盘中导致多余换手的另一类原因，属于系统设计本身的工程问题：日常风控监控脚本和定期换股调仓脚本是在不同时间先后开发的，两套脚本各自独立演进，底层的判定规则口径存在不一致。</p>
+<h3 id="1-规则口径不一致带来的实盘冲突">1. 规则口径不一致带来的实盘冲突</h3>
+<p>在 2026 年 11 月 2 日的调仓监控截面中，日立（<code>JP.6501</code>）收盘跌到 4970 日元，跌破了 200 日线（5082 日元）下方 1.5% 的止损阈值。</p>
+<p>此时两套脚本输出了相互冲突的指令：</p>
+<ul>
+<li><strong>调仓脚本</strong>（针对双月截面单日快照）：看到单日价格跌破年线 -1.5%，直接在报告里输出清仓信号，目标权重降为 0%；</li>
+<li><strong>监控脚本</strong>（日常持续运行）：在设计时包含时序防假突破逻辑，要求跌破年线必须连续 3 天确认，或者周五收盘确认。周一只是跌破的第 1 天，判定为“破位待确认 (1/3)”，维持持仓观察。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>【内部判定冲突】
+</span></span><span style="display:flex;"><span>调仓脚本 (单日快照) ──&gt; 判定破位清仓，目标权重归零
+</span></span><span style="display:flex;"><span>                           ▲ 相互冲突：卖还是不卖？
+</span></span><span style="display:flex;"><span>监控脚本 (时序防假) ──&gt; 破位待确认 (1/3)，周一首日，维持观察
+</span></span></code></pre></div><p>如果按调仓脚本在周一执行卖出，而周二股价反弹重回年线，后续监控程序又会判定为正常持仓，这就造成了毫无意义的双向交易磨损。</p>
+<h3 id="2-统一底层状态机判定逻辑">2. 统一底层状态机判定逻辑</h3>
+<p>解决这一问题的办法是消除设计口径分歧，统一底层判定：</p>
+<ol>
+<li><strong>调仓脚本复用监控状态机</strong>：调仓脚本不再独立编写单日截面切片逻辑，而是直接调用监控脚本的时序判定函数。单日跌破年线但未满足连续 3 天确认的标的，调仓脚本不触发强制清仓，只按正常动量打分参与排位，避免因单日假摔引发误调仓；</li>
+<li><strong>宽基 ETF 取消周五单日确认条款</strong>：个股为防周末黑天鹅保留周五收盘确认，但核心宽基 ETF（如 QQQM、VGK）流动性充沛，周五尾盘往往受到期权交割或宏观数据影响出现脉冲波动。对宽基 ETF 统一执行“连续 3 个交易日确认”，避免在周五尾盘被杂波震荡洗出；</li>
+<li><strong>统一收益率方差计算口径</strong>：底层波动率计算一律采用简单日收益率，并显式指定自由度 <code>ddof=1</code> 的样本无偏标准差，消除此前由于 <code>ddof=0</code> 与 <code>ddof=1</code> 带来的 2.6% 统计漂移。</li>
+</ol>
+<hr>
+<h2 id="四实盘工程细节与全周期回测验证">四、实盘工程细节与全周期回测验证</h2>
+<h3 id="1-实盘执行细节顺延重算与跳变拦截">1. 实盘执行细节：顺延重算与跳变拦截</h3>
+<p>在实际交易执行中，还有两处工程细节需要固化：</p>
+<ul>
+<li><strong>顺延补单按最新价格重算</strong>：若调仓日因故未能即时下单，顺延期间必须取最新收盘价重新计算安全距离。若期间价格回落导致 Cushion 跌破 4.0σ，立即取消该笔开仓，避免贴线追单；存量已建仓标的则交由日常监控管理，盘中不反手反复折腾；</li>
+<li><strong>异常价格跳变拦截</strong>：行情源偶发可能出现缩水 100 倍等错误数据，导致计算出的历史波动率异常飙升。在数据接入层设置单日 $\pm 50%$ 异常跳变熔断，拦截异常错价进入均线与波动率计算。</li>
+</ul>
+<h3 id="2-全周期消融回测少折腾到底能改善多少">2. 全周期消融回测：少折腾到底能改善多少？</h3>
+<p>使用 2021 年 1 月至 2026 年 10 月的美股跨市场截面数据（共 1,438 个交易日），对上述降频与防守规则进行消融对比回测（Ablation Study）。</p>
+<p>所有方案采用双月调仓、持仓容量 6 只、单票上限 35%、保留 10% 现金底仓。为了客观衡量各规则的真实效果，测试保持纯策略对比，不叠加任何外部利息补贴假设：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/2a6c21eafcbd1884.webp" alt="四大准入方案全周期回测实证 (2021-2026)：净值曲线、回撤分布与同量纲消融对比" class="lazyload"><figcaption class="image-caption">四大准入方案全周期回测实证 (2021-2026)：净值曲线、回撤分布与同量纲消融对比</figcaption></figure></p>
+<p>上图左侧展示了累计净值与动态回撤演变，右侧将四个核心评价指标按独立量纲分组横向对比，实证数据反映出三点明确结论：</p>
+<ol>
+<li><strong>止损次数大幅减少</strong>：引入 4.0σ 波动率安全距离与 MA50 趋势门后，全周期止损触发次数从基准方案的 9 次下降到 6 次，大幅降低了无谓的来回割肉与调仓磨损；</li>
+<li><strong>极端回撤显著收窄</strong>：MA50 趋势门成功拦截了高位暴跌股票的“逆向买入”，将全周期最大回撤从基准方案的 -14.26% 压缩到 -12.7% 左右，有效抚平了组合的水下深度；</li>
+<li><strong>风险收益比实质提升</strong>：在年化收益维持在 +21% 稳健水平的同时，卡玛比率（年化/最大回撤）从基准方案的 1.50 稳步提升至 1.70 以上，实现了“少折腾、稳运行”的系统目标。</li>
+</ol>
+<hr>
+<h2 id="结语管住系统不要瞎折腾">结语：管住系统不要瞎折腾</h2>
+<p>实盘跑久了就会发现，最耗费心力和资金的，往往不是能不能挑出大牛股，而是怎么管住系统不要瞎折腾。</p>
+<p>算得出动量，还要看当前离止损线还有没有安全距离，不贴着线买；看见涨幅诱人，还要分得清是正常回踩还是破位下坠，不接急跌飞刀；调仓脚本和日常监控脚本的规则口径也要完全对齐，不自己跟自己打架。</p>
+<p>把这些细节在工程层面理顺，量化系统才能在实盘中稳定地跑下去。</p>
+<hr>
+<h2 id="个人量化选股实战系列导航">个人量化选股实战系列导航</h2>
+<ul>
+<li><a href="https://www.quantfull.com/blog/macro-asset-allocation-and-stock-selection-framework">个人量化选股（一）：大类资产配置与量化选股分层</a></li>
+<li><a href="https://www.quantfull.com/blog/candidate-universe-recall-and-dual-track-ranking">个人量化选股（二）：标的池怎么选，以及多路召回与双轨粗排</a></li>
+<li><a href="https://www.quantfull.com/blog/hard-trend-filters-and-chasing-prevention">个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高</a></li>
+<li><a href="https://www.quantfull.com/blog/cross-sectional-scoring-and-duplicate-arbitration">个人量化选股（四）：截面打分与去重仲裁：动量因子、卡玛比率与同族互斥</a></li>
+<li><a href="https://www.quantfull.com/blog/dual-line-buffer-and-rebalance-window">个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手</a></li>
+<li><a href="https://www.quantfull.com/blog/differentiated-risk-defense">个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈</a></li>
+<li><a href="https://www.quantfull.com/blog/inverse-volatility-sizing">个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束</a></li>
+<li><strong>个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一</strong>（当前篇）</li>
+</ul>
+<hr>
+<ul>
+<li>个人量化选股实战系列由 <a href="https://kuhung.me">kuhung</a> 整理与维护。</li>
+<li>策略源码、配置清单与量化回测框架同步开源于 <a href="https://github.com/kuhung/cang-in-house">cang-in-house</a>。</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">
+                    #量化交易</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%80%89%E8%82%A1/">
+                    #选股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%A8%A1%E5%9D%97%E5%8D%8F%E5%90%8C/">
+                    #模块协同</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%AE%89%E5%85%A8%E8%B7%9D%E7%A6%BB/">
+                    #安全距离</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E9%A3%8E%E6%8E%A7/">
+                    #风控</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ma50%E8%B6%8B%E5%8A%BF%E9%97%A8/">
+                    #MA50趋势门</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%A7%84%E5%88%99%E7%BB%9F%E4%B8%80/">
+                    #规则统一</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E7%BE%8E%E8%82%A1/">
+                    #美股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B8%AF%E8%82%A1/">
+                    #港股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/a%E8%82%A1/">
+                    #A股</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%97%A5%E8%82%A1/">
+                    #日股</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/" class="prev" rel="prev" title="红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制"><i class="iconfont icon-left"></i>&nbsp;红利与宏观择时（五）：大盘暴跌时红利真能避险吗？极端行情下的红利补跌与退守机制</a>
+        
+        
+        <a href="https://kuhung.me/posts/ai-system-evals-complete-guide/" class="next" rel="next" title="大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？">大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

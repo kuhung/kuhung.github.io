@@ -6,7 +6,27 @@
     <description>Recent content in A股 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 23:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/a%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Nov 2026 21:00:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/a%E8%82%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一</title>
+      <link>https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/</link>
+      <pubDate>Fri, 06 Nov 2026 21:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/</guid>
+      <description>回测里的净值曲线看着很平滑，但一跑实盘，最容易磨损账户的往往是调仓太频繁、交易摩擦太大。
+触发机制定得太灵敏，系统就容易天天折腾：昨天刚买入，今天稍微回撤一下就触碰止损割肉；防追高规则原本想防泡沫，却在股票高位暴跌时误把它当“回调”买进去；调仓程序刚发出换股买入指令，监控程序隔天又报警要求清仓。
+这篇文章就解决这一件事：怎么把那些过于敏感、容易误触发的规则管住，大幅减少无谓的调仓，把摩擦成本真正省下来。
+一、买入就止损：为什么名次靠前还会被洗？ 在量化交易里，最容易让人懊恼的操作就是刚买进就被止损扫地出门。选出来的股票看着哪都好，结果刚买进一天，遇到个正常波动就击穿止损线，不仅白交了双向手续费和滑点，还割肉割在最低点。
+1. 闪迪的真实案例：调仓次日就被砍仓 前几篇文章里我们定了选股规则：双月末按 1 年卡玛比率排队，挑市场前 4 名买入，年线下跌破 1.5% 止损。
+逻辑很直观：挑动量最强、回撤最小的标的。
+但在 2026 年 10 月底的美股实盘调仓中，真实截面数据就给出了警示。闪迪（US.SNDK）过去一年涨了近 8 倍，卡玛比率高达 9.75，稳居观察池前列，顺利触发了买入指令。
+拉出 10 月 29 日的数据看细节：
+闪迪收盘价 1330.05 美元，距 200 日年线（1255.35 美元）只高出 6.0%； 过去 20 个交易日的年化波动率是 65.2%，换算成单日波动率达到 4.10%； 系统的止损线设在年线下方 1.5%（1236.52 美元）； 闪迪当时价格离止损触发价，只有 7.56% 的空间： $$\frac{1330.05}{1236.52} - 1 = +7.56%$$
+这 7.56% 的空间，以闪迪每天 4.10% 的波动率来看，只相当于 1.84 个日收益率标准差（1.84σ）。
+次日（10 月 30 日），半导体硬件板块正常回调，闪迪单日跌了 13.47%，收盘直接跌到年线下方 8.6%。前一天刚排名前列买进，第二天就跌破止损线被强制清仓。
+2. 名义百分比的盲区：忽略了股票自身的波动率 在常规检查里，标的只要收盘价在年线上方、且没超过 30% 就算合格。闪迪在年线上方 6.</description>
+    </item>
+    
     <item>
       <title>个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束</title>
       <link>https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/</link>
