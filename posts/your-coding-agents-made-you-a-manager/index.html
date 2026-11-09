@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="管理 Agent 的核心能力，本质上就是管理技术团队的能力——而你甚至不需要真正的管理头衔就能掌握它们。Anthropic Claude Code 负责人 Addy Osmani 深度长文：从写代码到驱动交付，剖析 10 大高效杠杆法则与类比失效的现实边界。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/ai-system-evals-complete-guide/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/your-coding-agents-made-you-a-manager/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           你的编程 Agent，悄悄把你变成了一名管理者 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="你的编程 Agent，悄悄把你变成了一名管理者 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.3d1203d794d803e6ea942db37a5bd792a3dfe3f594062234c5460c5e472575d5.css">
+
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/your-coding-agents-made-you-a-manager/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-09T14:50:00+08:00","datePublished":"2026-11-09T14:50:00+08:00","description":"管理 Agent 的核心能力，本质上就是管理技术团队的能力——而你甚至不需要真正的管理头衔就能掌握它们。Anthropic Claude Code 负责人 Addy Osmani 深度长文：从写代码到驱动交付，剖析 10 大高效杠杆法则与类比失效的现实边界。","headline":"你的编程 Agent，悄悄把你变成了一名管理者","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"AI, Claude Code, Agent, 智能体, 软件工程, 技术管理, 架构设计","mainEntityOfPage":{"@id":"https://kuhung.me/posts/your-coding-agents-made-you-a-manager/","@type":"WebPage"},"name":"你的编程 Agent，悄悄把你变成了一名管理者","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/your-coding-agents-made-you-a-manager/","wordCount":620}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">你的编程 Agent，悄悄把你变成了一名管理者</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-09 itemprop="datePublished">November 9, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-给它一套自我检验机制give-it-a-way-to-check-its-work">1. 给它一套自我检验机制（Give it a way to check its work）</a></li>
+    <li><a href="#2-设定清晰的上下文set-clear-context">2. 设定清晰的上下文（Set clear context）</a></li>
+    <li><a href="#3-让每一次纠错都能复利沉淀make-every-correction-compound">3. 让每一次纠错都能复利沉淀（Make every correction compound）</a></li>
+    <li><a href="#4-充分授权决断仅对不可妥协的底线施加刚性约束let-it-decide-and-enforce-only-what-cant-bend">4. 充分授权决断，仅对不可妥协的底线施加刚性约束（Let it decide, and enforce only what can&rsquo;t bend）</a></li>
+    <li><a href="#5-编码前先对齐方案plan-before-it-builds">5. 编码前先对齐方案（Plan before it builds）</a></li>
+    <li><a href="#6-尽早把舵果断重启steer-early-reset-fast">6. 尽早把舵，果断重启（Steer early, reset fast）</a></li>
+    <li><a href="#7-委托执行任务绝不让渡专业判断力delegate-the-task-never-the-judgment">7. 委托执行任务，绝不让渡专业判断力（Delegate the task, never the judgment）</a></li>
+    <li><a href="#8-设计无需人工盯梢的无人值守运行design-the-run-that-doesnt-need-you">8. 设计无需人工盯梢的无人值守运行（Design the run that doesn&rsquo;t need you）</a></li>
+    <li><a href="#9-扩展检验能力而非消耗个人注意力scale-verification-not-attention">9. 扩展检验能力，而非消耗个人注意力（Scale verification, not attention）</a></li>
+    <li><a href="#10-决定不做什么decide-what-not-to-build">10. 决定不做什么（Decide what not to build）</a></li>
+    <li><a href="#11-现实边界人机类比在何处失效where-the-analogy-breaks">11. 现实边界：人机类比在何处失效？（Where the analogy breaks）</a></li>
+    <li><a href="#12-无需头衔你已身处其中you-dont-need-the-title">12. 无需头衔，你已身处其中（You don&rsquo;t need the title）</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/072b0c0e5ce5ff05.webp" alt="你的编程 Agent，悄悄把你变成了一名管理者" class="lazyload"><figcaption class="image-caption">你的编程 Agent，悄悄把你变成了一名管理者</figcaption></figure></p>
+<blockquote>
+<p><strong>导读与编译说明</strong><br>
+原文作者：Addy Osmani（Anthropic Claude Code 团队负责人 / 前 Google Chrome 工程总监，<a href="https://x.com/addyosmani">@addyosmani</a>）<br>
+原文发布：2026 年 11 月 8 日于 X Articles<br>
+原文链接：<a href="https://x.com/addyosmani/status/2119332146485891501">Your coding agents made you a manager</a><br>
+<strong>核心观点</strong>：管理 Agent 的技能，与管理研发团队高度重合，而且你不需要成为管理者就能学会它们。如果工程师整天与编程 Agent 打交道，实际上就已经在履行管理职责——挑选任务、撰写说明、委派工作、跟进进度、评估结果并决定是否发布。那些能将 Agent 效能发挥到极致的工程师，往往不仅懂提示词工程，更在潜移默化中掌握了管理的真谛。</p>
+</blockquote>
+<hr>
+<p><em>管理 Agent 所需的能力，本质上与管理团队的能力别无二致；而且你根本不需要一个管理者的头衔，就能在实践中习得它们。</em></p>
+<p>如果你现在每天大部分时间都在和编程 Agent 协作，那么你其实已经在做管理工作了。你在不断地挑选任务、撰写说明、委派工作、跟进进度、评估结果，并拍板决定哪些代码可以最终上线。那些真正能从 Agent 身上压榨出最大生产力的工程师，往往并不是提示词工程（Prompt Engineering）写得最花哨的人，而是无论有意还是无意、已经学会了如何做好<strong>管理</strong>的人。</p>
+<p>这个观点可能会让一些人感到抗拒。我所敬佩的许多优秀工程师，之所以坚定选择走独立贡献者（IC，Individual Contributor）的专业路线，正是因为他们热爱代码本身，希望永远留在技术一线。他们亲眼见过身边的朋友转做管理后，整天深陷在密密麻麻的会议日程表里无法自拔。</p>
+<p>但我这里谈的管理，并不是让你去成为那种陷入琐碎事务的管理者。我是从一个非常具体的维度来使用「管理」这个词：<strong>通过赋能他人的工作，来撬动卓越的技术产出</strong>。当然，我更不是在说 Agent 可以完全替代真实的管理者或研发同侪。</p>
+<p>你在过去工作中对「糟糕管理者」产生过的每一次吐槽，本质上都是与 Agent 交互时的一份绝佳「Bug 报告」。回想一下那些糟糕的工作交接（Handoff）：你接到的任务需求含糊其辞、缺乏必要背景，或者期望目标朝令夕改。对于一线 IC 来说，好消息是：正因为你多年来一直处于交接的接收端，饱受其苦，你往往比任何人都更清楚一次<strong>高质量的交接</strong>究竟应该是什么模样。</p>
+<p>我之前曾撰文指出，你的编程 Agent 急需一位合格的管理者；我也讨论过盲目委托所带来的隐性风险——认知退让（Cognitive Surrender）。本文结合了优秀工程管理者的实战习惯，以及我们在构建和高频使用 Claude Code 过程中的一线反思。文中的各个核心章节大致按照其杠杆效应（Impact）从大到小排序，最具影响力的习惯排在最前。</p>
+<hr>
+<h2 id="1-给它一套自我检验机制give-it-a-way-to-check-its-work">1. 给它一套自我检验机制（Give it a way to check its work）</h2>
+<ul>
+<li><strong>最佳实践</strong>：为 Agent 提供一套明确的验证机制（例如自动化测试套件、构建流程或页面截图），并要求它出示验证通过的客观结果作为交付证据。</li>
+<li><strong>反模式</strong>：把 Agent 口头说的「看起来做完了」当作验收确认。这会迫使你肉眼承担所有校验工作，让你自己沦为 Agent 的人肉测试套件。</li>
+</ul>
+<p>如果你去请教一位经验丰富的工程经理，问他们是如何在不用逐行查阅每位组员代码的前提下，依然对团队产出保持信心的？他们给出的答案一定会是：<strong>防护栏（Guardrails）</strong>。比如 CI/CD 持续集成、代码审查机制、监控仪表盘、On-Call 轮值等。</p>
+<p>相反，缺乏经验的新手管理者因为没有搭建好防护栏，最终只能亲自去校验下属做出的每项细节，不出一个季度，他们自己就会变成团队最严重的交付瓶颈。</p>
+<p>Agent 面临的处境完全相同。正如 Claude Code 最佳实践指南中所指出的：<strong>Agent 往往在事情「看起来完成了」的那一刻停下</strong>。如果上下文中没有任何自动化校验机制，「看起来做完了」就成了 Agent 唯一能够依赖的验收标准。</p>
+<p>为 Agent 提供一套自我验证机制，能让它在完成初步编码后，自主运行校验器、读取报错日志，并在上下文内自行闭环纠错。对于 UI 界面的改造，这甚至意味着它可以真正通过无头浏览器打开页面截取渲染图，反复微调，直到页面不仅功能正常而且视觉达标。</p>
+<p>这套验证机制的形式非常灵活，只要能输出确定的通过/失败（Pass/Fail）信号即可：单元测试、构建退出码（Build Exit Codes）、Linter 检查、Diff 对比脚本或截图对比。官方指南强调：<strong>运行这些验证的命令，是写在 <code>CLAUDE.md</code>（Agent 每次会话启动时必读的指令集）里最具杠杆效应的一行配置</strong>。</p>
+<p>一旦确立了检验机制，你可以通过以下几种方式将其无缝融入日常工作流：</p>
+<ol>
+<li><strong>直接要求（Ask）</strong>：「改完之后运行鉴权测试套件，直到全部通过为止。」</li>
+<li><strong>设定目标（Set a goal）</strong>：使用 <code>/goal</code> 指令，让一个独立的评估模型在每一次交互后自动运行条件检验，这在无人值守的后台长任务中极为有用。</li>
+<li><strong>刚性卡点（Enforce）</strong>：利用 <code>Stop</code> 钩子（Hook），在类型检查（Typecheck）或测试未通过前，强行阻止当前交互回合完成。</li>
+<li><strong>拉入审查（Have it reviewed）</strong>：使用 <code>/code-review</code>，将生成的代码 Diff 派发给一个全新启动的子 Agent（Subagent，它未曾看过你此前的提示词与对话噪音）进行独立审查，就像代码作者不能自行批准自己的 PR 一样。</li>
+</ol>
+<p>你甚至可以精准圈定审查的维度。如果你只是笼统地要求它「挑刺」，它总能找出些无关痛痒的毛病；但如果你明确要求它「只寻找正确性与逻辑缺陷，完全忽略代码风格」，它便能精准执行。优秀的管理者正是这样向下属或同侪索取高质量反馈的。</p>
+<p>Claude Code 工具链中的大部分进阶功能，本质上都是在帮开发者收紧这一闭环。Skills（技能扩展）、Hooks（生命周期钩子）、Subagents（子代理）以及 MCP（模型上下文协议），它们存在的唯一目的，就是在「执行工作」与「验证工作」之间架起桥梁，让你能从繁重的盯梢中抽离出来，<strong>把注意力聚焦在 Agent 自身无法独立验证的关键决策上</strong>。这正是成熟工程管理者每日的核心工作。</p>
+<hr>
+<h2 id="2-设定清晰的上下文set-clear-context">2. 设定清晰的上下文（Set clear context）</h2>
+<ul>
+<li><strong>最佳实践</strong>：简明扼要地向 Agent 交代它无法通过直接扫描代码库得知的隐性信息——包括任务核心目的、重要性、物理约束、明确排除的非目标（Out-of-scope）以及验收标准。</li>
+<li><strong>反模式</strong>：只丢下一句含糊的一句话任务，把真实的预期全部憋在自己的脑子里；或者在任务简报中通篇堆砌 Agent 自行翻阅代码就能一清二楚的琐碎细节。</li>
+</ul>
+<p>优秀的管理者善于清晰勾勒期望达成的结果、客观约束与战略目标。他们讲透这件事情要解决什么业务痛点，但会给予具体执行者充分的自由度去推导技术实现路径。在军队中，这被称为**「指挥官意图」（Commander&rsquo;s Intent）<strong>；在奈飞（Netflix），它被凝练为经典的</strong>「提供情境，而非控制（Context, not control）」**。</p>
+<p>与 Agent 协作的一大挑战在于：你很难直观判断 Agent 究竟缺少哪些上下文。</p>
+<p>编程 Agent 在接手每一项任务时，做的第一件事永远是扫描你的代码库。当前最顶尖的底层大模型，在理解目录结构、代码规范、技术栈和测试框架配置方面的敏锐度与速度，远远超出你敲字解释的能力。</p>
+<p>因此，在落笔撰写任务说明之前，先想一想哪些东西是 Agent 能够自己看懂的。<strong>只要 Agent 能在代码库里查到、并且实际执行时确实会去查阅的内容，你就完全不需要在 Prompt 里多说一句废话</strong>。把你的宝贵字数，倾注在那些<strong>不存在于代码库里的隐性信息</strong>上——比如某次架构评审会上的口头决议、某位资深工程师特有的部署习惯、这个改动为什么至关重要，以及在当下的特定业务节点上「做到什么程度才算合格」。</p>
+<p>我们不妨看一个典型反例。如果你给出一个极其抽象的需求——「让仪表盘跑得快一点」，我们应该如何把它重构为专业级指令？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>将成员规模 10,000+ 组织的 /team 看板 p95 加载耗时优化至 2 秒以内。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>为什么要做：企业管理员每天都要访问该页面，慢查询是当前客服工单中排名第一的客诉痛点。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>硬性约束：严禁改动数据库 Schema；严格保持现有 API 响应数据结构不变。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>明确排除（非目标）：本次不涉及 UI 样式改动；严禁对整个页面做全页粗暴缓存。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>验收方式：运行 scripts/perf/team.sh，在终端输出改动前后的真实对比数据。
+</span></span></code></pre></div><p>并不是每一个任务都需要写得这么正式。如果你正在做探索性研究（Spike），写一个泛化的提示词完全没问题，你可以在行进中边看边调。但如果你还没理清具体需求，不妨<strong>让 Agent 对你做一轮深度访谈</strong>，直到它能梳理出一份合格的规格说明书（Spec）并持久化到文件中；随后开启一个新的干净会话，让 Agent 依据这份 Spec 展开编码。稍后你在验收审查时，这份 Spec 就是最客观的依据。</p>
+<p>此外，你可能还需要赋予 Agent 访问辅助工具的权限，比如工单系统、Sentry 报错监控平台或团队聊天频道。像对待组里刚入职的新人工程师一样对待你的 Agent。如果是一个它本身就支持的成熟 CLI 工具（如 <code>gh</code>），你通常甚至连怎么使用都不用额外交代。</p>
+<hr>
+<h2 id="3-让每一次纠错都能复利沉淀make-every-correction-compound">3. 让每一次纠错都能复利沉淀（Make every correction compound）</h2>
+<ul>
+<li><strong>最佳实践</strong>：一旦你发现自己在同一个问题上纠正了 Agent 两次以上，立刻将该教训沉淀进团队的 <code>CLAUDE.md</code>，或者将其封装为一个可复用的共享 Skill。随着底座模型迭代，定期清理那些新模型已不再需要的老旧规则。</li>
+<li><strong>反模式</strong>：在每一次新会话中不知疲倦地手动纠正同样的老毛病，或者依赖仅存放在你个人本地电脑上的默会知识（Tacit Knowledge）。</li>
+</ul>
+<p>那些能够最大化榨取 <code>CLAUDE.md</code> 价值的团队，往往具备高频维护文档的习惯，他们会将所有值得防范的历史踩坑记录沉淀为固化规则。一些前沿团队甚至会在 GitHub Pull Request 的代码审查中直接 <code>@claude</code>，将人工 Review 的改进意见转化为长效生效的项目策略。</p>
+<p>切记保持 <code>CLAUDE.md</code> 精炼克制。通常只有以下四类核心信息值得写入其中：</p>
+<ol>
+<li><strong>特定的验证流程</strong>：精确到具体可执行的命令。</li>
+<li><strong>代码库中具有误导性的坑点</strong>：表面看理所当然、实则有隐蔽陷阱的逻辑。</li>
+<li><strong>代码库本身无法体现的架构决策与业务约定</strong>。</li>
+<li><strong>任何你曾经在两个不同会话中手动纠正过两次的问题</strong>。</li>
+</ol>
+<p>这些都是书面化工程资产实现「复利累积」的典型写照。即便项目成员换血、底层大模型更替演进，这些被固化下来的工程智慧依然能持续发挥防护价值。</p>
+<hr>
+<h2 id="4-充分授权决断仅对不可妥协的底线施加刚性约束let-it-decide-and-enforce-only-what-cant-bend">4. 充分授权决断，仅对不可妥协的底线施加刚性约束（Let it decide, and enforce only what can&rsquo;t bend）</h2>
+<ul>
+<li><strong>最佳实践</strong>：默认允许 Agent 自行根据上下文推导决策，仅针对极少数「必须发生」或「绝对不能发生」的底线事项使用刚性工程约束（如 Pre-tool Hooks 或拒绝规则 Deny Rules）。</li>
+<li><strong>反模式</strong>：在规则里通篇使用全大写字母咆哮；把细枝末节的个人编码偏好写成强制 Hook；底座模型能力早已飞跃，却依然抱着旧时代的防呆习惯不放。</li>
+</ul>
+<p>英特尔传奇 CEO 安迪·格鲁夫（Andy Grove）在《高产出管理》（High Output Management）中提出过一个经典概念：<strong>任务成熟度（Task-Relevant Maturity）</strong>。管理者的监控力度，应当取决于该成员在<strong>这项具体任务上的历史胜任力</strong>，而非其整体能力的光环。</p>
+<p>给初级管理者的老派忠告往往也是如此：<strong>给予团队成员比你心理舒适区稍多一点的自由裁量权，同时为他们提供兜底并要求对结果负责。</strong></p>
+<p>Claude Code 将这种思想做了极具工程美感的显式拆解：</p>
+<ul>
+<li><strong>软性指引（Requests）</strong>：提示词（Prompts）、<code>CLAUDE.md</code> 规则与 Skills 只是<strong>请求与建议</strong>，模型在结合当前代码语境分析后，有权自行权衡并决定如何采纳；</li>
+<li><strong>刚性约束（Requirements）</strong>：Hooks 钩子、Deny Rules 拒绝规则与受控系统配置（Managed Settings）则是<strong>不可逾越的底线</strong>，在任何情况下都会被系统级硬性拦截与强制执行。</li>
+</ul>
+<p>在绝大多数场景下，你应该把决断权交给 Agent。因为当 Agent 面对真实具体的代码实现时，它所处的微观语境往往比你提前写下的笼统规则更能准确判断某项规范是否适用。</p>
+<p>把刚性约束留给那些真正非黑即白的红线——例如「严禁擅自修改由工具生成的客户端代码（Generated Client）」，或是「执行构建前必须强制运行版权头脚本」。特别是在新的终端会话和 VS Code 插件环境中，安全分类器在 Auto Mode 下会自动拦截高危操作（如直接向生产环境部署或强推代码覆写他人分支）。</p>
+<p>官方指南提供了一套极佳的双向诊断标准：</p>
+<ul>
+<li>如果你发现自己在 <code>CLAUDE.md</code> 里不断加重语气强调某条规则，而 Agent 依然偶尔漏掉，那么<strong>它就不该是一条 Prompt，而必须升格为一个刚性 Hook</strong>；</li>
+<li>相反，如果一个 Hook 表达的仅仅是你个人的主观审美偏好而非系统硬约束，<strong>就应当果断删掉该 Hook</strong>，把裁量权交还给 Agent。</li>
+</ul>
+<p>这就好比技术团队主动废除那些早已沦为形式主义的繁琐审批流程。这也要求我们随着底层模型的升级及时调整习惯。请戒掉过去驯服弱智模型留下的不良嗜好：通篇大写的感叹句、要求它「想得更深一点」（现在的模型深度思考是一个独立参数调节项）、咆哮着勒令它「不要偷懒」。在面对最新一代模型时，这些老习惯往往只会诱发过度防卫与无效过度工程。</p>
+<p>在与 Agent 协作的时代，<strong>流程过度（Over-process）就是新型的微观管理（Micromanagement）</strong>。</p>
+<hr>
+<h2 id="5-编码前先对齐方案plan-before-it-builds">5. 编码前先对齐方案（Plan before it builds）</h2>
+<ul>
+<li><strong>最佳实践</strong>：在 Agent 动手编写第一行代码前，务必对齐一份经双方确认的技术方案；仔细审视方案背后的底层假设；将复杂工程拆解为互不重叠的并行切片。</li>
+<li><strong>反模式</strong>：放任多个 Agent 在没有全局规划的情况下同时修改相互交织的模块，导致你整个下午都在狼狈地解决 Git 合并冲突并清理重复决策。</li>
+</ul>
+<p>最顺畅的高效工作流是：<strong>先进入规划模式（Plan Mode），在方案层面上反复推演迭代，直到架构完全清晰可靠，然后再将具体的编码任务下发执行</strong>。有了一份周密的方案，模型往往能在单次执行中一气呵成搞定全部代码。</p>
+<p>对于体量较大的系统级改动，不妨开启第二个独立的会话，像一位资深主任工程师（Staff Engineer）那样带着挑剔的眼光去审阅该方案——这就是一次轻量级的技术设计评审（Design Review），也是揪出架构错误成本最低的黄金时机。在审阅方案时，重点揪出那些隐藏在字里行间的<strong>底层假设</strong>（这就像在 1:1 沟通中追问下属：「在这套方案里，你对哪些部分心里最没底？」）。</p>
+<p>任务拆解的工作如今也正加速交由 Agent 自身来完成。例如 Claude Code 中的 <code>/batch</code> 命令，可以将一项庞大的机械式重构任务自动分解为 5 到 30 个独立子任务，打印全局方案，随后在相互隔离的独立 Git 工作树（Git Worktrees）中并行推进，并为每一个切片单独提交 PR。</p>
+<p>你不再需要手动给每个切片分配具体工单，你唯一要做的核心管理职责是：<strong>核查各个任务切片之间是否存在文件与逻辑交集，确保共享的基础接口能够优先落地</strong>。</p>
+<p>缺乏这种顶层划分，你得到的只会是「虚假的并行度（False Parallelism）」：五个 Agent 同时冲进重叠的业务代码里，绝不会带来五倍的产出，只会制造出一份拥有五个不同作者的灾难级 Git 冲突。</p>
+<hr>
+<h2 id="6-尽早把舵果断重启steer-early-reset-fast">6. 尽早把舵，果断重启（Steer early, reset fast）</h2>
+<ul>
+<li><strong>最佳实践</strong>：在 Agent 开始执行的前一分钟保持密切注视并及时校正航向；一旦察觉它理解偏航，立即打断纠偏；如果连续两次纠偏都宣告失败，果断终结会话，带着沉淀的教训重写 Prompt 开启全新会话。</li>
+<li><strong>反模式</strong>：在会话泥潭中强行进行第三次、第四次挽救性纠偏，试图用更多口水去掩盖最初的指令缺陷。</li>
+</ul>
+<p>经验丰富的管理者都明白：如果一个本身具备胜任力的员工在同一件事上连续出现理解偏差，根源往往出在上游——不是背景没交待透，就是目标范围定义出现了歧义。</p>
+<p>映射到 Agent 交互上，这一准则体现得极其明确：<strong>一旦看到 Agent 开始在错误的方向上狂奔，立刻按下 <code>Esc</code> 键果断打断</strong>。</p>
+<p>如果你已经尝试了<strong>两次纠错</strong>，Agent 依然无法走上正轨，不要犹豫，<strong>立刻清空（Clear）会话</strong>！结合刚才暴露出的认知盲区，重新梳理上下文，写一份更周全的初始 Prompt。在同一个被污染的上下文窗口里追加第三次尝试，只会让模型在反复重读和重新处理历史错误轨迹的过程中背负更重的认知包袱。</p>
+<p><strong>廉价的时光倒流能力，彻底重塑了工程试错的博弈格局</strong>。<code>/rewind</code> 命令可以将代码和对话状态瞬间回退到之前的任意检查点。这使得我们在初期采取激进、高风险但上限极高的技术路径变得几乎零成本。</p>
+<p>聪明的管理者对待员工同样如此：只要犯错的撤销成本足够廉价，就应当鼓励他们大胆尝试激进方案；随后通过复盘会（Retro）总结经验，并将行之有效的修复规则泛化写入项目规程。</p>
+<hr>
+<h2 id="7-委托执行任务绝不让渡专业判断力delegate-the-task-never-the-judgment">7. 委托执行任务，绝不让渡专业判断力（Delegate the task, never the judgment）</h2>
+<ul>
+<li><strong>最佳实践</strong>：Agent 负责搬砖编码，你负责敲定命脉——产品取舍、安全边界、架构决断与上线批准。对待每一个合并请求（Diff），都要像自己今晚随时会被 PagerDuty 报警叫醒一样严谨。</li>
+<li><strong>反模式</strong>：仅仅因为单元测试全绿、变量命名看起来顺眼，就草率批准成百上千行的大体积 Diff。这不是代码审查（Code Review），这是<strong>代码批准狂热（Code Ratification）</strong>。</li>
+</ul>
+<p>在真实的工程世界里，没有任何管理者可以说出「那是我的下属上线的，出了线上事故别怪我」这种推卸之词。对你麾下跑着的每一个 Agent，这句话同样字字千钧。</p>
+<p>我自己就曾深陷过这种陷阱。我曾经让一个 Agent 去调研竞品的功能差距，并在本地提一组 PR 来抹平这些体验短板。在阅读完 Agent 整理的竞品报告、粗略扫了一眼代码后，我差点顺手将这组 PR 合入主干——然而细看之下，这些改动除了增加用户的认知负担外，几乎没有带来任何实际价值。我委托了调研与编码执行，却差点把最关键的产品决断权也一并交了出去。</p>
+<p>这是一个极易诱人沉沦的陷阱：整整 600 行的变更，函数命名工工整整，自动化测试全部亮绿，手指一滑，Approve。</p>
+<p>我们必须建立起清晰的人机分工边界：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">交付维度</th>
+<th style="text-align:left">交付执行者（委派给 Agent）</th>
+<th style="text-align:left">最终守门人（人类独占）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>日常工程</strong></td>
+<td style="text-align:left">代码风格对齐、Linter 格式化、Review 意见改写、常规逻辑 Bug 修复、单元测试用例扩充</td>
+<td style="text-align:left">核心业务模型设计、架构解耦、技术债权衡</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>安全与合规</strong></td>
+<td style="text-align:left">静态安全扫描、漏洞依赖库升版本</td>
+<td style="text-align:left">鉴权逻辑设计、敏感数据跨境与合规底线、网络隔离策略</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>业务交付</strong></td>
+<td style="text-align:left">按照已有模式快速实现 CRUD 与界面拼接</td>
+<td style="text-align:left">需求真伪辨析、产品核心价值主张、是否应该做这项改动的终极否决权</td>
+</tr>
+</tbody>
+</table>
+<p>跨部门协同也是同理。Agent 可以帮你精准梳理依赖关系与任务交接单，但在存在利益冲突的多个业务方之间做权衡取舍、说服跨团队利益相关方达成实质承诺，依然是人类无可替代的核心能力。</p>
+<p>你不需要卷进每一次改动的微观内部循环（Inner Loop），但你<strong>必须牢牢掌控外部循环（Outer Loop）</strong>：约束边界是什么、你抽查了多少真实代码、保留了哪些客观校验依据，以及哪些核心底线必须由人类亲笔签字才能放行。同时，务必将改动切碎为小体量提交，因为<strong>审查的粒度，就是你理解的粒度</strong>。</p>
+<hr>
+<h2 id="8-设计无需人工盯梢的无人值守运行design-the-run-that-doesnt-need-you">8. 设计无需人工盯梢的无人值守运行（Design the run that doesn&rsquo;t need you）</h2>
+<ul>
+<li><strong>最佳实践</strong>：在启动一个完全自动化的长程任务之前，预先明确定义什么是「完成（Done）」、自验机制、物理活动范围、消耗护栏，以及何处必须触发人工介入审批。</li>
+<li><strong>反模式</strong>：睡觉前随手扔给 Agent 一个超长任务，既没有规定完成判据，也没有设置终止条件，第二天早上醒来绝望地发现模型在一套完全荒谬的假定上通宵瞎忙了 8 个小时。</li>
+</ul>
+<p>优秀的隔级管理者（Skip-level Manager）从不会去事无巨细地插手一线工程师的每一天日程；他们依靠<strong>目标牵引、护栏兜底、阶段检查点（Checkpoints）与核心技术骨干</strong>来驾驭大局。</p>
+<p>AI Agent 也正在沿着同样的轨迹快速进化。它们如今已经能够在遇到复杂任务时自主派生子代理（Sub-agents），甚至能在定时触发器、CI 流程报错或新 PR 开启时完全自主唤醒执行。未来的技术前沿，必然属于那些<strong>能自主启动、自我检验、仅在面临关键战略抉择时才主动呼唤人类介入的自洽系统</strong>。</p>
+<p>开发者的角色，已经从「实时死盯交互会话」，升级为「设计自运转闭环系统」。在放手让一个 Agent 进行无人值守长程运行前，先拿以下五个经典问题拷问自己——这与一个优秀的研发主管在休假前把核心大项目托付给资深员工时的考量完全一致：</p>
+<ol>
+<li><strong>它确切知道怎样才算「完成」吗？</strong>（是否存在确定性的目标状态、完备的 Spec 文档，或是一组它必须跑红转绿的端到端测试？）</li>
+<li><strong>它是否具备闭环的自我验证机制？</strong>（是否配置了自动化测试套件、阻止违规退出的 Stop Hook，或是独立的审查步骤？）</li>
+<li><strong>它的物理活动边界在哪里？</strong>（是否做好了权限收敛、沙箱隔离、Git Worktree 隔离，还是限定了它唯一允许推送的 Feature 分支？）</li>
+<li><strong>它的资源消耗安全护栏是什么？</strong>（最大交互轮次（Turn Limit）是多少？API 调用预算上限是否锁死？）</li>
+<li><strong>它在何处交付产出？谁负责终审？</strong>（产出是以 PR 还是摘要报告呈现？任何涉及删除、对外发送或不可逆操作的动作，是否有强制的人工卡点？）</li>
+</ol>
+<p>官方指南还指出了两个管理者非常熟悉的进阶实操细节：</p>
+<ul>
+<li><strong>小步试点（Pilot Run）</strong>：在跑批处理作业时，先让它在 3 个样本文件上跑通，人肉验证并打磨好 Prompt 细节，然后再全量铺开；</li>
+<li><strong>观察考核期（Probation Period）</strong>：面对任何全新的工作流或自动化流程，在最初几次运行时全程旁观，直到它证明自己的可靠性后，再赋予其无人值守的信任。</li>
+</ul>
+<hr>
+<h2 id="9-扩展检验能力而非消耗个人注意力scale-verification-not-attention">9. 扩展检验能力，而非消耗个人注意力（Scale verification, not attention）</h2>
+<ul>
+<li><strong>最佳实践</strong>：只有当自动化校验、目标判定与独立审查能够承接起盯梢重担时，才去横向扩增并发 Agent 的数量；评估生产力时，必须将交付质量与吞吐量同步纳入考核。</li>
+<li><strong>反模式</strong>：同时开启超出自己消化审查极限的 Agent 会话数量，并盲目将「AI 编写了多少行代码」当作衡量团队效能的核心政绩。</li>
+</ul>
+<p>新晋管理者通常很快就会碰壁并领悟到**管理跨度（Span of Control）**的残酷现实：一旦直接下属的数量超过某个临界点，管理者对每个人的关注度就会被严重稀释，团队的产出质量必然出现断崖式下跌。</p>
+<p>在 Agent 的世界里，这一定律同样铁血无情。我将其称为**「编排税」（Orchestration Tax）**：</p>
+<blockquote>
+<p>在前几个 Agent 之后，你每多并行启动一个 Agent，所需要消耗的上下文切换心智和排障注意力，都呈指数级递增。</p>
+</blockquote>
+<p>大部分时间里，我同时在后台运行四到五个后台 Agent 并配合少量的本地会话，即便这样，有些日子我都觉得注意力快被抽空了。</p>
+<p>驾驭海量并发会话的秘诀，绝不是把自己逼成不知疲倦的超人，而是<strong>将绝大部分监控工作外包给机器自测、目标检验器以及跨会话的全新上下文审查器，把人类极其宝贵的心智带宽死死留给高阶决策</strong>。此外，依靠精准的完成通知而非人工反复轮询刷终端，配合统一集中的后台任务看板，也是必不可少的解法。</p>
+<p>你不可能靠「死盯」来横向扩展 Agent 的舰队规模，<strong>你只能通过「减少需要死盯的事项」来实现规模化</strong>。</p>
+<p>随后，去评估系统本身的工程健康度，而不是盲目统计表面忙碌度。真正有价值的高杠杆指标包括：</p>
+<ul>
+<li>PR 的端到端流转周期（Cycle Time）；</li>
+<li>新人入职上手项目并交付代码的坡化时间（Ramp-up Time）；</li>
+<li>线上代码回滚（Revert）与二次返工的发生频次。</li>
+</ul>
+<p>单纯统计「AI 编写的代码占比」是一项毫无意义的虚荣指标，因为软件工程的真正终局是<strong>质量与可靠性</strong>。安迪·格鲁夫在《高产出管理》中提出的配对测量法则在这里是最高准绳：<strong>如果你要考核 PR 的合并数量，就必须把回滚与返工率作为对冲指标同步纳入考量</strong>。</p>
+<hr>
+<h2 id="10-决定不做什么decide-what-not-to-build">10. 决定不做什么（Decide what not to build）</h2>
+<ul>
+<li><strong>最佳实践</strong>：时刻追问：这项功能谁真正需要？我们如何验证它确实有效？触发什么信号时我们应当果断止损终止？坚决控制进行中在制品（WIP，Work In Progress）的数量。</li>
+<li><strong>反模式</strong>：仅仅因为让 Agent 写代码极其廉价，就把脑海中冒出的每一个看似合理的点子都丢给 Agent 变成 PR。你最终只会得到一个堆满技术垃圾的代码杂货铺，把整支团队拖入安全审计、代码维护与客户答疑的泥潭。</li>
+</ul>
+<p>一个优秀管理者说得最频繁、往往也是最重要的一个词，就是**「不」（No）**。</p>
+<p>但在 Agent 时代，说「不」变得空前艰难。因为拉起一个新功能的试错门槛几乎降到了零，任何一个灵光乍现的想法，午饭前就能让 Agent 搞出一份像模像样的 PR。</p>
+<p>然而，这很快会导致仓库里堆积大量待审代码。代码的生成成本确实被彻底打穿了，但<strong>团队的代码审查带宽、系统安全攻击面、长效运维和测试成本依然极其昂贵</strong>。在代码泛滥的今天，代码审查与真实业务价值验证，才是全流程中最稀缺的战略资源。</p>
+<p>事实上，那些老派的管理拷问在今天比以往任何时候都更加关键：</p>
+<ul>
+<li>这个功能究竟是谁提出来的？</li>
+<li>我们如何定义它的成功？</li>
+<li>遇到什么阻力时我们应当果断收手？</li>
+</ul>
+<p>当编码变得轻而易举时，真正拉开工程师身位的硬核拷问不再是「我们能不能做出来？」，而是**「我们到底该不该做它？」**</p>
+<hr>
+<h2 id="11-现实边界人机类比在何处失效where-the-analogy-breaks">11. 现实边界：人机类比在何处失效？（Where the analogy breaks）</h2>
+<ul>
+<li><strong>最佳实践</strong>：遵循卓越管理的底层思维模型，但清醒洞察 Agent 与真实人类员工的物理差异——例如近乎零成本的推倒返工、毫无底线的讨好式顺从，以及底座模型每次升级带来的能力剧烈漂移。</li>
+<li><strong>反模式</strong>：天真地以为 Agent 和初级工程师完全是一回事，甚至妄想因为自己在本地能同时摆弄五个 Agent，就觉得自己已经具备了带领五人真实团队的管理能力。</li>
+</ul>
+<p>把 Agent 比作下属是一个绝佳的认知脚手架，但这个类比存在明确的破绽。在这场人机范式转移中走得最深的工程专家，往往也是对这种局限性认识最清醒的人：</p>
+<ol>
+<li><strong>管理真实的人要难得多，且这些技巧无法反向平移</strong>。能玩转五个 Agent，绝不代表你能管好五个有血有肉的人。对于真实团队中的情感动机激发、人际冲突化解、团队成员的职业晋升规划，或是长达数月乃至数年的信任建立，Agent 无法给你提供任何平替训练。</li>
+<li><strong>推倒返工的代价几乎为零</strong>。你可以向 Agent 提出在现实中对人类下属极其苛刻无理的诉求。比如在白板前针对两种架构方案争执不下时，你可以直接命令 Agent 把两种甚至三种技术方案全部完整实现出来，直接拉出客观的基准测试数据现场比对。</li>
+<li><strong>Agent 没有真正的沉淀经验，它只有一本冷冰冰的笔记本</strong>。Agent 的自动记忆（Auto Memory）仅仅是孤立记录在某一台物理机器上的文本片段，它无法自然沉淀到你同组研发伙伴的会话中。它们无法自动形成你在十几年技术生涯中肉身经历的体系化工程直觉与商业判断，你必须亲自把这些教训整理为全团队共享的文字规则。</li>
+<li><strong>Agent 具有天然的顺从与盲目自信</strong>。如果你让一位优秀的工程师去做一件明显不合理的愚蠢改动，他们会当场推推眼镜据理力争；而 Agent 则极大概率会顺从地按照你的荒谬指示照单全收，且言之凿凿。沃顿商学院在关于**「认知退让」（Cognitive Surrender）<strong>的研究中指出：实验参与者在面对 AI 给出的错误答案时，在绝大多数情况下都选择了接受，甚至反而对这些错误答案变得更加盲信。对冲这种虚妄自信的有效手段，就是</strong>强制命令 Agent 站在对立面，列出反驳它自己这套方案的最强论据**。</li>
+<li><strong>你的 Agent 舰队全员都是同一个模子刻出来的克隆体，而且每隔几个月就基因突变一次</strong>。人类团队拥有极其多元的背景、专长与思维盲区；而你麾下的所有 Agent 在同一时期内都共享着完全相同的优势与短板，并且这些特性每随着一次模型版本迭代就会整体漂移。</li>
+<li><strong>你依然必须亲自培养团队的初级工程师</strong>。当 Agent 全面接管了原本供初级工程师练手、打磨基本功的基础任务时，作为一名技术导师，你必须更有意识、更刻意地为年轻工程师创造核心实战的训练场（Reps）。</li>
+<li><strong>真实的人类团队凝聚力依然是技术组织的灵魂基石</strong>。有时候你沉迷于调度一整天 Agent，猛然抬头却发现，你已经很久没有留出时间去和身边的战友喝杯咖啡、构建一支真正有战斗力的凝聚型团队了。永远不要顾此失彼。</li>
+</ol>
+<hr>
+<h2 id="12-无需头衔你已身处其中you-dont-need-the-title">12. 无需头衔，你已身处其中（You don&rsquo;t need the title）</h2>
+<ul>
+<li><strong>最佳实践</strong>：将你的全部精力聚焦在「让优秀的软件自然发生」上——设定清晰的上下文、严密定义交付标准，并把控代码审查的质量。</li>
+<li><strong>反模式</strong>：一边驱使着缺乏指引、缺乏检验的 Agent 盲目狂奔，一边依然以自己手敲了多少行代码来衡量自身价值。</li>
+</ul>
+<p>业界最顶尖的主任工程师（Staff Engineers）历来都是这么工作的：他们撰写详实的技术设计文档，勾勒全局上下文，主持滴水不漏的技术审查，并默默赋能身边的每一个人，让他们变得更强。</p>
+<p>如今，编程 Agent 的爆发，让每一位初出茅庐的普通工程师在入行的第一天，就拥有了以这种高杠杆范式开展工作的可能性。</p>
+<p>它为你提供了一门高强度的管理加速微缩课程：在这里，你获得反馈的周期是以「分钟」计，而不是以传统的「季度」计；你可以随心所欲、零成本地修正自己的推演失误。工程师的职责重心，正在不可逆转地发生转移：<strong>它不再关乎你亲手逐行敲出了多少代码，而在于你能否成为高品质代码最终得以问世的那个核心理由</strong>。</p>
+<p>没有人天生就是卓越的管理者，正如没有人天生就是卓越的系统架构师。技能的打磨永远只有一条路：在一次次的实战中积累手感。而在 Agent 的陪伴下，这种手感的磨练成本前所未有地廉价。</p>
+<p>不妨从今天开始践行以下 6 个极简习惯：</p>
+<ol>
+<li><strong>为每一项任务都配备一条可运行的检验命令，向 Agent 索取通过证据</strong>；</li>
+<li><strong>告诉 Agent 它在仓库里查不到的隐性信息，不要把字数浪费在它自己能查到的代码上</strong>；</li>
+<li><strong>在动手写代码前，先推演并对齐方案</strong>；</li>
+<li><strong>同一个问题纠正了两次？立刻记入 <code>CLAUDE.md</code>；重复的工作流？提炼封装为 Skill</strong>；</li>
+<li><strong>两次纠偏均告失败？果断清空会话，重构 Prompt 重头再来</strong>；</li>
+<li><strong>像自己今晚随时会被线上报警叫醒一样，严谨审阅每一个合并请求（Diff）</strong>。</li>
+</ol>
+<p>你或许从来没有想过要去成为一名管理人员。但在这个智能化浪潮席卷而来的时代，那些真正能够与 Agent 共舞并脱颖而出的优秀工程师，早已在悄无声息中，掌握了关于卓越管理的全部真谛。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/0ea4aa17c95e9b57.webp" alt="Human-Written Pangram Analysis" class="lazyload"><figcaption class="image-caption">Human-Written Pangram Analysis</figcaption></figure></p>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/your-coding-agents-made-you-a-manager/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai/">
+                    #AI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/claude-code/">
+                    #Claude Code</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/agent/">
+                    #Agent</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%99%BA%E8%83%BD%E4%BD%93/">
+                    #智能体</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                    #软件工程</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/">
+                    #技术管理</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+                    #架构设计</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/ai-system-evals-complete-guide/" class="prev" rel="prev" title="大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？"><i class="iconfont icon-left"></i>&nbsp;大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

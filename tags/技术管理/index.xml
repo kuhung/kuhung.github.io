@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术管理 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 技术管理 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 09 Nov 2026 14:50:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你的编程 Agent，悄悄把你变成了一名管理者</title>
+      <link>https://kuhung.me/posts/your-coding-agents-made-you-a-manager/</link>
+      <pubDate>Mon, 09 Nov 2026 14:50:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/your-coding-agents-made-you-a-manager/</guid>
+      <description>导读与编译说明
+原文作者：Addy Osmani（Anthropic Claude Code 团队负责人 / 前 Google Chrome 工程总监，@addyosmani）
+原文发布：2026 年 11 月 8 日于 X Articles
+原文链接：Your coding agents made you a manager
+核心观点：管理 Agent 的技能，与管理研发团队高度重合，而且你不需要成为管理者就能学会它们。如果工程师整天与编程 Agent 打交道，实际上就已经在履行管理职责——挑选任务、撰写说明、委派工作、跟进进度、评估结果并决定是否发布。那些能将 Agent 效能发挥到极致的工程师，往往不仅懂提示词工程，更在潜移默化中掌握了管理的真谛。
+管理 Agent 所需的能力，本质上与管理团队的能力别无二致；而且你根本不需要一个管理者的头衔，就能在实践中习得它们。
+如果你现在每天大部分时间都在和编程 Agent 协作，那么你其实已经在做管理工作了。你在不断地挑选任务、撰写说明、委派工作、跟进进度、评估结果，并拍板决定哪些代码可以最终上线。那些真正能从 Agent 身上压榨出最大生产力的工程师，往往并不是提示词工程（Prompt Engineering）写得最花哨的人，而是无论有意还是无意、已经学会了如何做好管理的人。
+这个观点可能会让一些人感到抗拒。我所敬佩的许多优秀工程师，之所以坚定选择走独立贡献者（IC，Individual Contributor）的专业路线，正是因为他们热爱代码本身，希望永远留在技术一线。他们亲眼见过身边的朋友转做管理后，整天深陷在密密麻麻的会议日程表里无法自拔。
+但我这里谈的管理，并不是让你去成为那种陷入琐碎事务的管理者。我是从一个非常具体的维度来使用「管理」这个词：通过赋能他人的工作，来撬动卓越的技术产出。当然，我更不是在说 Agent 可以完全替代真实的管理者或研发同侪。
+你在过去工作中对「糟糕管理者」产生过的每一次吐槽，本质上都是与 Agent 交互时的一份绝佳「Bug 报告」。回想一下那些糟糕的工作交接（Handoff）：你接到的任务需求含糊其辞、缺乏必要背景，或者期望目标朝令夕改。对于一线 IC 来说，好消息是：正因为你多年来一直处于交接的接收端，饱受其苦，你往往比任何人都更清楚一次高质量的交接究竟应该是什么模样。
+我之前曾撰文指出，你的编程 Agent 急需一位合格的管理者；我也讨论过盲目委托所带来的隐性风险——认知退让（Cognitive Surrender）。本文结合了优秀工程管理者的实战习惯，以及我们在构建和高频使用 Claude Code 过程中的一线反思。文中的各个核心章节大致按照其杠杆效应（Impact）从大到小排序，最具影响力的习惯排在最前。
+1. 给它一套自我检验机制（Give it a way to check its work） 最佳实践：为 Agent 提供一套明确的验证机制（例如自动化测试套件、构建流程或页面截图），并要求它出示验证通过的客观结果作为交付证据。 反模式：把 Agent 口头说的「看起来做完了」当作验收确认。这会迫使你肉眼承担所有校验工作，让你自己沦为 Agent 的人肉测试套件。 如果你去请教一位经验丰富的工程经理，问他们是如何在不用逐行查阅每位组员代码的前提下，依然对团队产出保持信心的？他们给出的答案一定会是：防护栏（Guardrails）。比如 CI/CD 持续集成、代码审查机制、监控仪表盘、On-Call 轮值等。</description>
+    </item>
+    
+  </channel>
+</rss>
