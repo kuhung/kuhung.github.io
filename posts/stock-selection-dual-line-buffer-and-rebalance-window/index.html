@@ -108,7 +108,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":729}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-23T11:00:00+08:00","datePublished":"2026-10-23T11:00:00+08:00","description":"在上一篇《个人量化选股（四）：截面打分与去重排他》中，我们完成了买入端的标的精排：美日市场采用 1 年卡玛比率（Calmar Ratio）压制宽幅震荡，港 A 市场采用 12-1 相对动量灵敏捕捉产业主线，并通过 1 年溢价中位数解决了 A/H 同门重合仲裁，最终收敛出各个市场的前列买入名单。 然而，一旦进入日常跟踪与实盘交易，每个量化交易者都会面临一个搜索频率极高、实际困扰极深的核心问题： 手里 …","headline":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 双线缓冲区, 调仓窗口, 换手率控制, 状态机, 交易成本, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","@type":"WebPage"},"name":"个人量化选股（五）：调仓频繁利益侵蚀，用双线缓冲区和调仓窗口降换手","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/","wordCount":733}</script>
 </head>
 
   
@@ -263,7 +263,7 @@ if (!doNotTrack) {
 </blockquote>
 <p>动量策略在学术论文与理想化回测中，往往能跑出极具吸引力的年化收益率。然而，绝大多数纸面优秀的动量系统，一旦在个人真实账户上运行，往往在几个月内就会因为频繁调仓、高昂的摩擦成本和巨大的执行阻力而难以维系。</p>
 <p>如果按照教科书式的机械规则——“持有排名前 4 的股票，只要掉出前 4 就立刻换出”——整个组合很快就会陷入无休止的高频频繁换手。</p>
-<p>本文是个人量化选股体系的第五篇。我们将围绕**“调仓太频繁怎么降换手”**这一核心工程痛点，通过 4,320 组多维度历史参数扫描，量化拆解换手率陷阱背后的摩擦损耗；深入剖析双线缓冲区有限状态机（FSM）与调仓时间窗口的设计原理；并以 2026 年 10 月下旬最新的市场真实截面数据为例，演示系统在面对不同运行形态时的客观判断与操作推演。</p>
+<p>本文是个人量化选股体系的第五篇。我们将围绕 <strong>“调仓太频繁怎么降换手”</strong> 这一核心工程痛点，通过 4,320 组多维度历史参数扫描，量化拆解换手率陷阱背后的摩擦损耗；深入剖析双线缓冲区有限状态机（FSM）与调仓时间窗口的设计原理；并以 2026 年 10 月下旬最新的市场真实截面数据为例，演示系统在面对不同运行形态时的客观判断与操作推演。</p>
 <hr>
 <h2 id="排名随机游走与换手率陷阱">排名随机游走与换手率陷阱</h2>
 <p>频繁换股的根本原因，在于忽视了截面排名的微观分布特征：<strong>截面相邻标的的打分分差极小，短期排名具有显著的随机游走（Random Walk）噪声。</strong></p>
@@ -410,7 +410,7 @@ if (!doNotTrack) {
 </span></span></code></pre></div><hr>
 <h2 id="调仓时间窗口用日常静默过滤杂音">调仓时间窗口：用日常静默过滤杂音</h2>
 <p>有了空间上的双线缓冲区，交易系统依然面临时间维度的挑战：<strong>如果每天收盘都运行一次调仓算法，稍微有股票跌出前 8 名就立即换股，交易频率依然会失控。</strong></p>
-<p>因此，系统在时间维度引入了**调仓时间窗口（Rebalance Window）**的硬性日历约束：</p>
+<p>因此，系统在时间维度引入了 <strong>调仓时间窗口（Rebalance Window）</strong> 的硬性日历约束：</p>
 <ul>
 <li><strong>美股与日股（US &amp; JP）</strong>：采用 <strong>隔月调仓（Bimonthly）</strong> 机制。仅在双数月末（2、4、6、8、10、12 月的最后一个交易周）开启调仓窗口。</li>
 <li><strong>港股与 A 股（HK &amp; CN_A）</strong>：采用 <strong>季度末调仓（Quarterly）</strong> 机制。仅在季度末（3、6、9、12 月的最后一个交易周）开启调仓窗口。</li>

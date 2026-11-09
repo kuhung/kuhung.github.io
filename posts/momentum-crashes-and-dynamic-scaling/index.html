@@ -108,7 +108,7 @@ if (!doNotTrack) {
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":766}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"kuhung"},"dateModified":"2026-11-04T12:00:00+08:00","datePublished":"2026-11-04T12:00:00+08:00","description":"为什么熊市反弹动量策略会遭遇灾难性崩溃？基于 Daniel \u0026 Moskowitz (2016) JFE 经典模型，从困境公司股权期权化与逼空暴涨机制切入，复现 1927–2026 百年因子与 92 年逐期扩展窗口纯样本外实证；结合 2026 美股科技动量回撤与红利防守最新切片，量化推演当前市场环境与自适应控仓建议。","headline":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化投研, 动量策略, 动量崩溃, 自适应缩放, 资产配置, 红利资产","mainEntityOfPage":{"@id":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","@type":"WebPage"},"name":"红利与宏观择时（三）：红利低波追高被套怎么办？用波动率控制管住策略大回撤","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/momentum-crashes-and-dynamic-scaling/","wordCount":769}</script>
 </head>
 
   
@@ -348,7 +348,7 @@ if (!doNotTrack) {
 <li>动量多头（前期抗跌的优质蓝筹或高股息资产）估值没有过度折价，缺乏期权弹性，反弹涨幅温和（例如 2009 年 3 月反弹大盘涨 26%，赢家组仅涨 8%）；</li>
 <li>动量空头（输家组）却在逼空回补与投机资金涌入下爆发式暴涨 160% 甚至 230%。</li>
 </ul>
-<p>空头端的大幅亏损抵消了多头收益并拉低整个组合，造成动量策略单月大幅回撤 40% 到 70% 的**“向上崩盘（Crash Up）”**。自适应动态缩放模型防范的，正是这种做空端被期权化反噬的极端风险。</p>
+<p>空头端的大幅亏损抵消了多头收益并拉低整个组合，造成动量策略单月大幅回撤 40% 到 70% 的 <strong>“向上崩盘（Crash Up）”</strong>。自适应动态缩放模型防范的，正是这种做空端被期权化反噬的极端风险。</p>
 <hr>
 <p><span id="section-2"></span></p>
 <h2 id="二daniel--moskowitz-自适应动态缩放模型">二、Daniel &amp; Moskowitz 自适应动态缩放模型</h2>
@@ -387,7 +387,7 @@ if (!doNotTrack) {
 <p><span id="section-3"></span></p>
 <h2 id="三百年全样本与纯样本外实证检验">三、百年全样本与纯样本外实证检验</h2>
 <p>调取 Kenneth French 官方数据中心 1927 至 2026 年的日度与月度因子序列，我们对动量崩溃与动态缩放模型进行了全周期复现。</p>
-<p>为了确保回测严格反映实际投资体验，我们采用**逐期扩展窗口（Expanding Window）**进行纯样本外测试：在每一个月末决策点，仅使用截至当期历史可得的全部数据拟合预测模型，计算下一期权重，绝不包含任何未来信息。全部策略均平准化至 19% 的年化目标波动率（与标普 500 长期波动对齐）。</p>
+<p>为了确保回测严格反映实际投资体验，我们采用 <strong>逐期扩展窗口（Expanding Window）</strong> 进行纯样本外测试：在每一个月末决策点，仅使用截至当期历史可得的全部数据拟合预测模型，计算下一期权重，绝不包含任何未来信息。全部策略均平准化至 19% 的年化目标波动率（与标普 500 长期波动对齐）。</p>
 <p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/5f6e4ed525af47c4.webp" alt="动量崩溃机制与自适应动态缩放实证对比" class="lazyload"><figcaption class="image-caption">动量崩溃机制与自适应动态缩放实证对比</figcaption></figure></p>
 <p>上图呈现了动量崩溃的微观数据印记与 92 年跨周期的真实实证结果：</p>
 <p><span id="section-3-1"></span></p>

@@ -105,7 +105,7 @@ XGB 中常用的三种特征重要性计算方法，以及它的使用场景。�
 最后回到类似的树模型特征计算方法，进行特征重要性的一般方法总结。
 以下场景非特殊说明，均针对 python 包体下的 xgb 和sklearn。
 XGB 内置的三种特征重要性计算方法1 weight xgb.plot_importance 这是我们常用的绘制特征重要性的函数方法。其背后用到的贡献度计算方法为weight。
-‘weight’ - the number of times a feature is used to split the data across all trees. 简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为**frequency**2。
+‘weight’ - the number of times a feature is used to split the data across all trees. 简单来说，就是在子树模型分裂时，用到的特征次数。这里计算的是所有的树。这个指标在R包里也被称为 frequency2。
 gain model.feature_importances_ 这是我们调用特征重要性数值时，用到的默认函数方法。其背后用到的贡献度计算方法为gain。
 ‘gain’ - the average gain across all splits the feature is used in.</description>
     </item>
