@@ -6,9 +6,23 @@
     <description>Recent content in AI 探索 on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 09 Nov 2026 14:50:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai-%E6%8E%A2%E7%B4%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 12 Nov 2026 16:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/categories/ai-%E6%8E%A2%E7%B4%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【译】你的编程 Agent，悄悄把你变成了一名管理者</title>
+      <title>MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比</title>
+      <link>https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/</link>
+      <pubDate>Thu, 12 Nov 2026 16:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/</guid>
+      <description>MiniMax H3（海螺 3.0）开放 33B 单流 DiT 基础权重（约 768p）后，普通人落地关心两件事：多大的卡能跑，以及它与 Wan 3.0、Seedance 2.5、可灵 3.0 的能力差异。
+本文是「MiniMax H3（海螺 3.0）实战」系列的第一篇，基于 2026-11-12 调查数据与 Google Colab L4 实测基准，从五个维度分析 MiniMax H3 的实力水平。
+MiniMax H3（海螺 3.0）是 MiniMax 于 2026 年夏季发布的多模态音画生成模型。官方开放了 33B 参数的单流 Diffusion Transformer 主干权重 H3-Base（约 768p）1，支持最多 12 个多模态参考文件与原生 32kHz 双声道立体声同出；经 AdaLN 剪枝和 NVFP4/INT8 量化后，可在单张 24 GB 显存显卡（如 Google Colab L4）上离线推理。按其社区协议，适用地区内商业产品与服务年营收不超过 2000 万美元且在界面显著标注 MiniMax H3 即可免版税商用，超过该门槛或位于欧盟、英国、韩国、美国等排除区域需单独联系官方申请授权 2。
+视频生成的五个评判标准 在学术界与工业生产实践中，评估一个视频生成系统能否真正落地，主要参照 VBench 评测框架 3 与实际数字资产管线的工程要求，通常可提炼为以下五个维度：
+1. 时序与上下文一致性 镜头往前推进或旋转时，主角的五官不能每隔三帧就换张面孔，衣服上的褶皱和纹理不能在转弯时融化消失。
+以实际电商鞋靴 360 度环绕展示镜头为例：镜头从正面缓缓推向侧面，如果鞋舌上的品牌字样在旋转时形变成乱码，或者鞋底的气垫结构在第 60 帧突然解体，那是不行的。在模型参数上，这一项直接取决于单流 Diffusion Transformer（DiT）的时空自注意力机制与 3D 因果 VAE 的时间因果压缩比。</description>
+    </item>
+    
+    <item>
+      <title>【译】Coding Agent 正在让你成为一名管理者</title>
       <link>https://kuhung.me/posts/your-coding-agents-made-you-a-manager/</link>
       <pubDate>Mon, 09 Nov 2026 14:50:00 +0800</pubDate>
       
@@ -17,18 +31,18 @@
 原文作者：Addy Osmani（Anthropic Claude Code 团队成员，前 Google Chrome 工程总监，@addyosmani）
 原文发布：2026 年 11 月 8 日于 X Articles
 原文链接：Your coding agents made you a manager
-核心观点：管理 Agent 所需的技能，与管理研发团队高度重合，而且你不需要成为管理者就能在实践中习得。如果工程师每天大部分时间都在与编程 Agent 协作，实际上已经在履行管理职责：挑选任务、撰写说明、委派工作、跟进进度、评估结果并决定是否发布。那些能最大化发挥 Agent 效能的工程师，未必是提示词工程做得最花哨的人，而是无论有意还是无意，已经掌握了管理方法的人。
+核心观点：管理 Agent 所需的技能，与管理研发团队高度重合，而且你不需要成为管理者就能在实践中习得。如果工程师每天大部分时间都在与 Coding Agent 协作，实际上已经在履行管理职责：挑选任务、撰写说明、委派工作、跟进进度、评估结果并决定是否发布。那些能最大化发挥 Agent 效能的工程师，未必是提示词工程做得最花哨的人，而是无论有意还是无意，已经掌握了管理方法的人。
 管理 Agent 所需的能力，本质上与管理团队的能力别无二致，而且你根本不需要一个管理者的头衔，就能在实践中习得它们。
-如果你现在每天大部分时间都在和编程 Agent 协作，那么你其实已经在做管理工作了。你在不断地挑选任务、撰写说明、委派工作、跟进进度、评估结果，并拍板决定哪些代码可以最终上线。那些真正能从 Agent 身上获得最大价值的工程师，未必是提示词工程（Prompt Engineering）写得最花哨的人，而是无论有意还是无意，已经学会了如何做好管理的人。
+如果你现在每天大部分时间都在和 Coding Agent 协作，那么你其实已经在做管理工作了。你在不断地挑选任务、撰写说明、委派工作、跟进进度、评估结果，并拍板决定哪些代码可以最终上线。那些真正能从 Agent 身上获得最大价值的工程师，未必是提示词工程（Prompt Engineering）写得最花哨的人，而是无论有意还是无意，已经学会了如何做好管理的人。
 这个观点可能会让一些人感到抗拒。我所敬佩的许多优秀工程师，之所以坚定选择走独立贡献者（IC，Individual Contributor）的专业路线，正是因为他们热爱代码本身，希望永远留在技术一线。他们亲眼见过身边的朋友转做管理后，整天被密密麻麻的日程会议吞没。
 但我这里谈的管理，并不是让你去成为那种陷入琐碎事务的管理者。我是从一个非常具体的维度来使用「管理」这个词：通过赋能他人的工作，来撬动卓越的技术产出。当然，我更不是在说 Agent 可以完全替代真实的管理者或同事。
 你在过去工作中对糟糕管理者产生过的每一次抱怨，本质上都是与 Agent 交互时的一份绝佳「Bug 报告」。想一想那些糟糕的工作交接（Handoff）：如果你经历过一次糟糕的交接，你接到的需求往往含糊不清、缺少必要背景，或者期望目标频繁变动。对于一线工程师来说，好消息是：正因为你多年来一直处于交接的接收端，你往往比任何人都更清楚一次高质量的交接究竟应该是什么模样。
-我之前曾撰文指出，你的编程 Agent 急需一位合格的管理者；我也讨论过盲目委托所带来的隐性风险，即认知退让（Cognitive Surrender）。本文结合了优秀工程管理者的实战习惯，以及我们在构建和高频使用 Claude Code 过程中的一线反思。文中的各个核心章节大致按照其杠杆效应从大到小排序，最具影响力的习惯排在最前。
+我之前曾撰文指出，你的 Coding Agent 急需一位合格的管理者；我也讨论过盲目委托所带来的隐性风险，即认知退让（Cognitive Surrender）。本文结合了优秀工程管理者的实战习惯，以及我们在构建和高频使用 Claude Code 过程中的一线反思。文中的各个核心章节大致按照其杠杆效应从大到小排序，最具影响力的习惯排在最前。
 1. 给它一套自我检验机制（Give it a way to check its work） 最佳实践：为 Agent 提供一套明确的验证机制（例如自动化测试套件、构建流程或页面截图），并要求它出示验证通过的客观结果作为交付证据。 反模式：把 Agent 口头说的「看起来做完了」当作验收确认。这会迫使你承担所有验证工作，让你自己沦为 Agent 的测试套件。 如果你去请教一位经验丰富的工程经理，问他们是如何在不用逐行查阅每位组员代码的前提下，依然对团队产出保持信心的？他们给出的答案一定会是：防护栏（Guardrails）。比如 CI/CD 持续集成、代码审查机制、监控仪表盘、On-Call 轮值等。</description>
     </item>
     
     <item>
-      <title>【译】大模型与智能体评估（Evals）全景指南：如何确切知道 AI 系统是否真正有效？</title>
+      <title>【译】AI eval 指南：如何确保 AI system 真起作用</title>
       <link>https://kuhung.me/posts/ai-system-evals-complete-guide/</link>
       <pubDate>Sun, 08 Nov 2026 22:45:00 +0800</pubDate>
       

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="谷粒">
+  
+  
+  <meta name="description" content="面向创作者与小团队的 MiniMax H3（海螺 3.0）实测对比：基于 2026-11-12 公开数据与 Colab L4 基准，讲清 24 GB 单卡能不能跑、商用协议门槛在哪，以及和 Wan 3.0、Seedance 2.5、可灵 3.0 怎么选。">
+  <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9K4XS0DZ6"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-S9K4XS0DZ6', { 'anonymize_ip': false });
+}
+</script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yelaywwb9r");
+  </script>
+  <link rel="prev" href="https://kuhung.me/posts/your-coding-agents-made-you-a-manager/" />
+  
+  <link rel="canonical" href="https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比 | 谷粒 kuhung
+       
+  </title>
+  <meta name="title" content="MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比 | 谷粒 kuhung">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.3d1203d794d803e6ea942db37a5bd792a3dfe3f594062234c5460c5e472575d5.css">
+
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function cleanMath(content) {
+            return content
+                .replace(/<em>(.*?)<\/em>/g, '_$1_')
+                .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/(^|[^\\])%/g, '$1\\%')
+                .replace(/\\text\{([^{}]*)\}/g, function(m, inner) {
+                    return '\\text{' + inner.replace(/\\?_/g, '\\_') + '}';
+                });
+        }
+
+        
+        document.querySelectorAll('p, li, div').forEach(el => {
+            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
+                let html = el.innerHTML;
+                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
+                    return '$$' + cleanMath(inner) + '$$';
+                });
+                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
+                    return '\\[' + cleanMath(inner) + '\\]';
+                });
+                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
+                    return '$' + cleanMath(inner) + '$';
+                });
+                el.innerHTML = html;
+            }
+        });
+
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\[', right: '\\]', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+  
+  
+  
+  <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
+  
+  
+
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-12T16:45:00+08:00","datePublished":"2026-11-12T16:45:00+08:00","description":"面向创作者与小团队的 MiniMax H3（海螺 3.0）实测对比：基于 2026-11-12 公开数据与 Colab L4 基准，讲清 24 GB 单卡能不能跑、商用协议门槛在哪，以及和 Wan 3.0、Seedance 2.5、可灵 3.0 怎么选。","headline":"MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"MiniMax H3, 海螺 3.0, AI 视频生成, 开源模型, ComfyUI, Colab L4","mainEntityOfPage":{"@id":"https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/","@type":"WebPage"},"name":"MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/","wordCount":718}</script>
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="https://kuhung.me/">谷粒 kuhung</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div><a href="https://kuhung.me/">谷粒 kuhung</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/projects/" title="">产品</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/about/" title="">关于</a>
+                
+        </div>
+    </div>
+</nav>
+
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://kuhung.me/" rel="author">谷粒</a> with ♥
+                <span class="post-time">
+                on <time datetime=2026-11-12 itemprop="datePublished">November 12, 2026</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        
+                </span>
+
+                |
+        </div>
+    </header>
+
+        <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#视频生成的五个评判标准">视频生成的五个评判标准</a>
+      <ul>
+        <li><a href="#1-时序与上下文一致性">1. 时序与上下文一致性</a></li>
+        <li><a href="#2-多模态参考输入容量">2. 多模态参考输入容量</a></li>
+        <li><a href="#3-原生音画同频能力">3. 原生音画同频能力</a></li>
+        <li><a href="#4-复杂物理模拟与运动幅度">4. 复杂物理模拟与运动幅度</a></li>
+        <li><a href="#5-开源生态与推理成本">5. 开源生态与推理成本</a></li>
+      </ul>
+    </li>
+    <li><a href="#minimax-h3-架构与-24gb-剪枝">MiniMax H3 架构与 24GB 剪枝</a></li>
+    <li><a href="#对比-seedance-25-与可灵的边界">对比 Seedance 2.5 与可灵的边界</a></li>
+    <li><a href="#aa-盲测评分与-l4-推理成本对照">AA 盲测评分与 L4 推理成本对照</a>
+      <ul>
+        <li><a href="#单卡-colab-l4-自建算力基准">单卡 Colab L4 自建算力基准</a></li>
+      </ul>
+    </li>
+    <li><a href="#主流视频模型选型">主流视频模型选型</a></li>
+    <li><a href="#开源自建还是商业-api选型建议">开源自建还是商业 API：选型建议</a></li>
+    <li><a href="#minimax-h3-选型常见问题">MiniMax H3 选型常见问题</a>
+      <ul>
+        <li><a href="#minimax-h3海螺-30开源权重能在-24gb-显卡上跑吗">MiniMax H3（海螺 3.0）开源权重能在 24GB 显卡上跑吗？</a></li>
+        <li><a href="#开源版-h3-base-和官方云端完整版差在哪里">开源版 H3-Base 和官方云端完整版差在哪里？</a></li>
+        <li><a href="#minimax-h3-开源权重可以商用吗">MiniMax H3 开源权重可以商用吗？</a></li>
+      </ul>
+    </li>
+    <li><a href="#minimax-h3海螺-30实战全系列导航">「MiniMax H3（海螺 3.0）实战」全系列导航</a></li>
+    <li><a href="#原文对照与参考文献">原文对照与参考文献</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var fix = $('.post-toc');
+    var end = $('.post-comment');
+    var fixTop = fix.offset().top, fixHeight = fix.height();
+    var endTop, miss;
+    var offsetTop = fix[0].offsetTop;
+
+    $(window).scroll(function () {
+      var docTop = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+
+      if (end.length > 0) {
+        endTop = end.offset().top;
+        miss = endTop - docTop - fixHeight;
+      }
+
+      if (fixTop < docTop) {
+        fix.css({ 'position': 'fixed' });
+        if ((end.length > 0) && (endTop < (docTop + fixHeight))) {
+          fix.css({ top: miss });
+        } else {
+          fix.css({ top: 0 });
+        }
+      } else {
+        fix.css({ 'position': 'absolute' });
+        fix.css({ top: offsetTop });
+      }
+    })
+  }
+</script>
+
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+
+          
+          
+          
+
+          
+          
+          
+
+          <blockquote>
+<p>MiniMax H3（海螺 3.0）开放 33B 单流 DiT 基础权重（约 768p）后，普通人落地关心两件事：多大的卡能跑，以及它与 Wan 3.0、Seedance 2.5、可灵 3.0 的能力差异。</p>
+<p>本文是「MiniMax H3（海螺 3.0）实战」系列的第一篇，基于 2026-11-12 调查数据与 Google Colab L4 实测基准，从五个维度分析 MiniMax H3 的实力水平。</p>
+</blockquote>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/30b372691c15dbf6.webp" alt="MiniMax H3（海螺 3.0）开源视频生成模型定位与选型对比封面" class="lazyload"><figcaption class="image-caption">MiniMax H3（海螺 3.0）开源视频生成模型定位与选型对比封面</figcaption></figure></p>
+<p>MiniMax H3（海螺 3.0）是 MiniMax 于 2026 年夏季发布的多模态音画生成模型。官方开放了 33B 参数的单流 Diffusion Transformer 主干权重 <code>H3-Base</code>（约 768p）<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，支持最多 12 个多模态参考文件与原生 32kHz 双声道立体声同出；经 AdaLN 剪枝和 NVFP4/INT8 量化后，可在单张 24 GB 显存显卡（如 Google Colab L4）上离线推理。按其社区协议，适用地区内商业产品与服务年营收不超过 2000 万美元且在界面显著标注 <code>MiniMax H3</code> 即可免版税商用，超过该门槛或位于欧盟、英国、韩国、美国等排除区域需单独联系官方申请授权 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<h2 id="视频生成的五个评判标准">视频生成的五个评判标准</h2>
+<p>在学术界与工业生产实践中，评估一个视频生成系统能否真正落地，主要参照 VBench 评测框架 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> 与实际数字资产管线的工程要求，通常可提炼为以下五个维度：</p>
+<h3 id="1-时序与上下文一致性">1. 时序与上下文一致性</h3>
+<p>镜头往前推进或旋转时，主角的五官不能每隔三帧就换张面孔，衣服上的褶皱和纹理不能在转弯时融化消失。</p>
+<p>以实际电商鞋靴 360 度环绕展示镜头为例：镜头从正面缓缓推向侧面，如果鞋舌上的品牌字样在旋转时形变成乱码，或者鞋底的气垫结构在第 60 帧突然解体，那是不行的。在模型参数上，这一项直接取决于单流 Diffusion Transformer（DiT）的时空自注意力机制与 3D 因果 VAE 的时间因果压缩比。</p>
+<h3 id="2-多模态参考输入容量">2. 多模态参考输入容量</h3>
+<p>商业制作很少靠纯文字抽卡。大部分工业交付场景需要把特定商品资产、人物定妆照以及动作轨迹一起喂给模型。</p>
+<p>以智能手表商业广告为例：制作团队需要同时输入 6 张不同角度的手表实物白底图、1 张代言人手腕定妆图、1 段慢动作运镜参考视频以及 1 段品牌特制音频。单次推理能同时容纳多少多模态参考素材，直接决定了项目能否统一固定外观。在 MiniMax H3 架构中，这项能力由顶层的 <code>H3-Context-IR</code> 编码器承接，支持最高 12 个多模态参考文件。</p>
+<h3 id="3-原生音画同频能力">3. 原生音画同频能力</h3>
+<p>传统的影视制作流程是画面跑归画面，音频靠后期找调音师在剪辑软件里逐帧对位贴上去。</p>
+<p>以市井早市热油生煎包分镜为例：平底锅热油翻滚，伴随着蒸汽升腾。传统做法需要后期人工对位油煎滋滋声、锅盖刮擦声与环境杂音；原生音画生成则是在潜空间去噪的过程中，同步解算出视频画面与 32kHz 双声道立体声波形。</p>
+<h3 id="4-复杂物理模拟与运动幅度">4. 复杂物理模拟与运动幅度</h3>
+<p>镜头面对大范围肢体动作、重力加速、流体飞溅以及复杂碰撞时，画面能否遵循真实的物理动力学规律，还是只在表面做二维像素扭曲。</p>
+<p>以跑酷腾空翻转或武打肢体碰撞为例：模型需要真实还原重心位移、动量守恒与布料跟随惯性，保持四肢连续自然、防止空中粘连或拉丝。在工程参数上，这直接关联到采样算法的步数选择（例如 8 步 Turbo 采样相比 4 步可减少高频动作伪影）。</p>
+<h3 id="5-开源生态与推理成本">5. 开源生态与推理成本</h3>
+<p>方案有没有开放基础权重，能不能在常规消费级显卡上量化运行，单镜头的耗时与算力账单是多少，决定了团队能不能把它做成本地化、可批量运行的生产线。</p>
+<p>以日产 500 条素材的资产管线为例：若单条视频完全依赖高价商业 API，单日抽卡成本可能快速累积至万元级；若基于开源剪枝权重在单卡 24 GB 显存显卡上推理，按本仓库 Colab L4 历史面板基线（稳态约 <code>$0.10/min</code> 视频产出）算，比同规格官方 API（<code>$4.80/min</code>）低约 48 倍，比高价闭源 API（<code>$34.12/min</code>）低出上百倍。当然，降分辨率与量化后质量会有折损。</p>
+<h2 id="minimax-h3-架构与-24gb-剪枝">MiniMax H3 架构与 24GB 剪枝</h2>
+<p>MiniMax 于 2026 年夏季推出海螺 3.0，并开放了 33B 参数的单流 Transformer 基础模型 H3-Base 权重 <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。完整的 MiniMax H3 系统在架构上分为三层：</p>
+<p>顶部是云端托管的 H3-Context-IR，负责解析多模态输入并序列化为结构化上下文中间表示；中部是核心生成主干 H3-Base，负责生成 768p 分辨率的视频与音频潜变量；底部是闭源的 H3-Regenerate-2K，用于将 768p 结果超分重构为 2K 最终交付成片。</p>
+<p>开放权重的是中部的 H3-Base。</p>
+<p>在底层特征提取上，H3-Base 采用 Qwen3-VL-32B 提取隐藏状态，配合自定义 Token 捕捉时空关联。自编码器设计上，视觉端采用时间因果 VAE，配合 Patchify 实现等效 32 倍空间与 4 倍时间的压缩；音频端独立处理双声道，将 32kHz 音频压缩为潜 Token。</p>
+<p>工程部署上还有一个细节：权重剪枝。H3-Omni-Transformer 虽然标注为 33B 参数，其中约 13B 参数位于 AdaLN 分支。纯推理阶段这部分参数可以预先计算为查找表直接固化，不需要常驻显存。开源社区推出的剪枝版权重体积直接缩减了 40% <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>，使得原本全精度约 131 GB+ 的整套权重压缩到约 42.5 GB（主干约 19.5 GB），再配合量化在 24 GB 显存的卡上也能跑起来 <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。</p>
+<h2 id="对比-seedance-25-与可灵的边界">对比 Seedance 2.5 与可灵的边界</h2>
+<p>判断 MiniMax H3 处于什么位置，我们拿它和字节跳动即梦的 Seedance 2.5、快手可灵 3.0 对照。</p>
+<p>它的短板主要在两件事：</p>
+<p>第一是长镜头编排。Seedance 2.5 内置了叙事规划器（Narrative Planner）和双分支扩散结构 <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>，给一段剧本会自动拆出全景、中景、特写，还支持最多 3 人的音色克隆和 15 秒长片段。单卡跑的 H3-Base 没有这层自动编排，写多镜头故事得自己一镜一镜卡分镜和时间戳。</p>
+<p>第二是大动作物理模拟。遇到打斗、翻滚这类身体重心大范围移动的镜头，快手可灵 3.0 更稳 <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>；H3-Base 容易出现局部肢体粘连，它的长处还是平稳运镜和日常环境交互。</p>
+<p>它的长板则集中在三点：</p>
+<p>第一是最多 12 个多模态参考容量（Ref2VA）<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。MiniMax H3 允许单次混合输入最多 9 张参考图、3 段参考视频（总时长 15 秒以内）与 3 段参考音频（总时长 15 秒以内），并通过 <code>@媒体N</code> 语法绑定到具体角色、运镜轨迹或声音节奏。这个输入容量在开源模型里处于前列，固定商品外观和人物长相做起来很顺手。</p>
+<p>第二是原生 32kHz 立体声音画同出 <sup id="fnref3:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。扩散过程直接产出音频潜变量，经由 AudioVAE 解码后就是包含环境声、拟音与基础台词的独立双声道音频，不用再另外找音效库一轨一轨贴。</p>
+<p>第三是能装进单张 24 GB 显卡本地跑。配合 NVFP4 或 INT8 量化，个人和小工作室不用长期绑死商业 API，也能自己搭一套可控的本地工作流。</p>
+<h2 id="aa-盲测评分与-l4-推理成本对照">AA 盲测评分与 L4 推理成本对照</h2>
+<p>评估视频生成模型好不好用，常见有两类办法：</p>
+<p>一类是自动化算法指标，比如算特征分布距离的 FVD、算图文匹配度的 CLIP-Score，或者拆成 16 个客观维度的 VBench 测试套件 <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。这类方法靠公式跑分，速度快、好复现，适合盯清晰度、抖动和语义一致性；但镜头好不好看、表情自不自然、物理合不合理，公式算不出来，得靠人眼盲测。</p>
+<p>另一类就是大规模标准化样本的人类偏好盲测，代表平台是 Artificial Analysis（AA）<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>。</p>
+<p>AA 的视频竞技场主要靠三个机制运转：</p>
+<p>第一是标准化题目与分轨对决。AA 维护了一套覆盖人像特写、快速运镜、流体与街景光影的测试提示词，而且文生视频只和文生视频比，图生视频只和图生视频比，带原生声音的模型和静音模型严格分开，不跨赛道混评。</p>
+<p>第二是双盲二选一（Pairwise Blind Voting）。评审者并排看同一个提示词下两个匿名模型生成的视频，左右位置随机打乱，看完必须按提示词还原度、动作真实感和连贯性二选一。</p>
+<p>第三是背后的概率计分模型。AA 汇总大量盲测结果，用 Bradley-Terry 模型做全局最大似然估计（MLE）：</p>
+<p>$$P(A \succ B) = \frac{1}{1 + 10^{(R_B - R_A)/400}}$$</p>
+<p>其中 $R_A$ 和 $R_B$ 是两个模型的实力分（Elo 评分）。赢过强手加分多，赢过弱手加分少。平台还会用 Bootstrap 重采样算出 95% 置信区间，防止少数样本把分数拉偏。</p>
+<p>除了综合画质分（Overall Quality Elo），AA 榜单还会细分视频编辑分（Video Editing Elo）、带原生音频的文生视频分（T2V with Audio Elo）以及每分钟商业调用成本。</p>
+<p>结合 AA 视频竞技场官方实测数据 <sup id="fnref1:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>，几款代表模型的盲测分数与商业定价对照如下：</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/a7731d1e3c220c32.webp" alt="AA 视频竞技场：人类偏好 Elo 评分与商业推理定价对照" class="lazyload"><figcaption class="image-caption">AA 视频竞技场：人类偏好 Elo 评分与商业推理定价对照</figcaption></figure></p>
+<p>基于 Artificial Analysis <strong>AA-Video-T2V v2.1</strong> 榜单、公开 API 费率与本仓库 Colab L4 实测基准，主要对比结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>AA-Video-T2V v2.1 Elo (95% CI)</th>
+<th>商业 API 定价</th>
+<th>本地 / 自建算力参考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wan 3.0</strong></td>
+<td><code>1175 (±13)</code></td>
+<td><code>$12.00/min</code>（<code>$0.20/s</code>）</td>
+<td>闭源商业调用</td>
+</tr>
+<tr>
+<td><strong>MiniMax H3（海螺 3.0，768p 开放同源规格）</strong></td>
+<td><code>1161 (±13)</code></td>
+<td><code>$4.80/min</code>（<code>$0.08/s</code>）</td>
+<td>Colab L4 544p 稳态 <code>165.4s</code> / <code>~0.089 CU/镜</code>（约 <code>$0.0089/镜</code>，视频约 <code>$0.10/min</code>，不含冷启与返工）</td>
+</tr>
+<tr>
+<td><strong>Dreamina Seedance 2.5</strong></td>
+<td><code>1155 (±13)</code></td>
+<td><code>$34.12/min</code>（<code>$0.57/s</code>）</td>
+<td>闭源商业调用</td>
+</tr>
+<tr>
+<td><strong>MiniMax H3 Max</strong></td>
+<td><code>1149 (±15)</code></td>
+<td><code>$9.60/min</code>（<code>$0.16/s</code>）</td>
+<td>官方托管高规版</td>
+</tr>
+</tbody>
+</table>
+<p><em>(注：I2V 与历史快照榜单中各模型相对位次存在差异，例如 I2V 赛道 Seedance 2.5 约 1161、MiniMax H3 约 1115–1133，选型时建议按具体赛道看对应榜单。)</em></p>
+<h3 id="单卡-colab-l4-自建算力基准">单卡 Colab L4 自建算力基准</h3>
+<p>在 Google Colab 单卡 L4 上，本仓库历史资源面板记录费率为 <strong><code>1.94 CU/h</code></strong> <sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。跑 544p 量化工作流生成 124 帧（24fps，约 <code>5.17s</code>）有声视频时，稳态单镜耗时 <code>165.4 秒</code>，耗损约 <strong><code>0.089 CU</code></strong>（三镜批次含冷启动均摊约 <code>0.103 CU/镜</code>）。按 Colab Pay-As-You-Go 标价 <strong><code>$9.99 / 100 CU</code></strong>（约 <code>$0.10/CU</code>）折算，单镜稳态算力消耗约 <strong><code>$0.0089</code></strong>（视频产出折合约 <strong><code>$0.10/min</code></strong>，不含冷启动、下载、失败返工）。</p>
+<h2 id="主流视频模型选型">主流视频模型选型</h2>
+<p>结合公开文档与 AA 榜单快照，几家主流视频模型的定位和适用场景整理如下：</p>
+<table>
+<thead>
+<tr>
+<th>模型 / 套件</th>
+<th>架构定位与开放形态</th>
+<th>音频能力与 AA-Video-T2V v2.1 评分</th>
+<th>公开费率 / 本地门槛</th>
+<th>典型适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wan 3.0 (Alibaba)</strong> <sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></td>
+<td>商业旗舰 DiT 架构</td>
+<td>支持原生音频，AA T2V v2.1 <code>1175 (±13)</code></td>
+<td>公开 API <code>$12.00/min</code> (<code>$0.20/s</code>)</td>
+<td>复杂长镜头、商业主视觉；开源端另见 Wan 系列 FLF/VACE 工具</td>
+</tr>
+<tr>
+<td><strong>MiniMax H3（海螺 3.0，768p）</strong> <sup id="fnref4:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></td>
+<td>33B 单流 DiT，开放 ~768p 基础权重（社区协议有营收与地域门槛）</td>
+<td>原生 32kHz 双声道立体声，AA T2V v2.1 <code>1161 (±13)</code></td>
+<td>公开 API <code>$4.80/min</code> (<code>$0.08/s</code>)；Colab L4 稳态约 <code>0.089 CU/镜</code> (<code>~$0.10/min</code> 视频)</td>
+<td>商品外观锁定、市井环境声景、24 GB 单卡批量工作流</td>
+</tr>
+<tr>
+<td><strong>Dreamina Seedance 2.5</strong> <sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></td>
+<td>闭源双分支 DiT 架构</td>
+<td>音画同步与多角色音色克隆，AA T2V v2.1 <code>1155 (±13)</code></td>
+<td>公开 API <code>$34.12/min</code> (<code>$0.57/s</code>)</td>
+<td>多镜头叙事短片、需定制人声对白的角色剧集</td>
+</tr>
+<tr>
+<td><strong>MiniMax H3 Max</strong> <sup id="fnref5:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></td>
+<td>MiniMax 高规格托管版</td>
+<td>原生立体声景与高规画质，AA T2V v2.1 <code>1149 (±15)</code></td>
+<td>公开 API <code>$9.60/min</code> (<code>$0.16/s</code>)</td>
+<td>免本地运维的官方托管高规出片</td>
+</tr>
+<tr>
+<td><strong>Kling 3.0 Omni (可灵)</strong> <sup id="fnref1:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></td>
+<td>闭源自研 DiT 动力学架构</td>
+<td>拟真音色对口型</td>
+<td>按官网分层计费</td>
+<td>大幅度肢体运动、打斗跳跃等强动力学镜头</td>
+</tr>
+</tbody>
+</table>
+<h2 id="开源自建还是商业-api选型建议">开源自建还是商业 API：选型建议</h2>
+<p>走本地开源路线：</p>
+<ul>
+<li>如果主要做电商静物展示、工业品渲染，或者带现场环境音的街景空镜，MiniMax H3 是划算的底座。它的多图参考能锁住商品外观，32kHz 原生声景能直接出环境音和拟音，量化后在单张 24 GB 显卡上就能跑（商用时对照社区协议里的地区与 2000 万美元年营收上限）。</li>
+<li>如果要做两端画面平滑变形的转场，可以搭一套通义万相开源分支的 FLF2V / VACE 工作流。</li>
+</ul>
+<p>走商业 API 路线：</p>
+<ul>
+<li>遇到大幅度武打动作或翻滚镜头，交给可灵这类强动力学模型处理。</li>
+<li>要做多镜头剧本拆解和角色音色克隆的短片，可以上 Seedance 2.5，同时算好 <code>$34.12/min</code> 带来的抽卡预算。</li>
+<li>直接追求文生视频盲测上限且预算充裕，可以对标 Wan 3.0（<code>$12.00/min</code>）。</li>
+</ul>
+<p>搞清 MiniMax H3（海螺 3.0）的技术定位后，你可以直接看本项目的 <a href="https://github.com/kuhung/minimax-h3-colab-workflow">工程仓库总览</a>、<a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/notebooks/v2.0_minimax_h3_l4_production_mp4.ipynb">v2.0 Colab L4 生产笔记本模板</a> 与 <a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/minimax-h3-facts-2026-11-12.md">2026-11-12 核验事实台账</a>，或者继续看第二篇和第三篇仓库文章，拆解 24 GB 单卡工作流参数与图像修图流程。</p>
+<h2 id="minimax-h3-选型常见问题">MiniMax H3 选型常见问题</h2>
+<h3 id="minimax-h3海螺-30开源权重能在-24gb-显卡上跑吗">MiniMax H3（海螺 3.0）开源权重能在 24GB 显卡上跑吗？</h3>
+<p>可以，但需要剪枝与量化权重，并把分辨率和步数控制住。<code>H3-Base</code> 原版全套全精度权重约 131 GB+，经社区剪枝剥离约 13B AdaLN 分支并量化后，全套权重压到约 42.5 GB（主干约 19.5 GB），即可在 24 GB 单卡上加载；按本仓库 Colab L4（约 22 GB 可用显存）实测，以 <code>960×544</code>、124 帧、8 步 Turbo 与单路 <code>BasicGuider (CFG=1.0)</code> 运行，稳态单镜约 165.4 秒。</p>
+<h3 id="开源版-h3-base-和官方云端完整版差在哪里">开源版 H3-Base 和官方云端完整版差在哪里？</h3>
+<p>开源的是中间生成主干 <code>H3-Base</code>（约 768p 基础权重），云端托管的 <code>H3-Context-IR</code> 多模态自动编排与 <code>H3-Regenerate-2K</code> 超分重构模块并没有开源。本地跑离线可控、算力便宜，但长剧情分镜拆解和时间线提示词要自己或靠本地脚本提前写清楚。</p>
+<h3 id="minimax-h3-开源权重可以商用吗">MiniMax H3 开源权重可以商用吗？</h3>
+<p>在适用地区内，商业产品或服务年营收不超过 2000 万美元、并在界面显著标注 <code>MiniMax H3</code> 即可按社区协议免版税商用 <sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。如果年营收超过 2000 万美元，或者位于欧盟、英国、韩国、美国等排除区域，需要发邮件至 <code>api@minimax.io</code> 单独申请书面授权；协议同时禁止将权重直接转售、包装为 API 服务对外提供，或用于训练其他非 H3 衍生模型。</p>
+<h2 id="minimax-h3海螺-30实战全系列导航">「MiniMax H3（海螺 3.0）实战」全系列导航</h2>
+<ul>
+<li>第一篇：MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比（本文）</li>
+<li>第二篇：流程落地：我们跑通的基准工作流，与关键参数的决定性影响（博客版整理中，源码见 <a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/articles/02-timeline-prompting.md">GitHub 仓库</a>）</li>
+<li>第三篇：图像与指令编辑：<code>MiniMax-H3-Image</code> 纯开源架构拆解与 Colab <code>sd.cpp</code> 实战（博客版整理中，源码见 <a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/articles/03-minimax-h3-image-deepdive-and-colab.md">GitHub 仓库</a>）</li>
+</ul>
+<h2 id="原文对照与参考文献">原文对照与参考文献</h2>
+<p><em>(文中外部榜单分数、商业 API 定价与 Colab 资费均核对自 2026-11-12 公开信息，实际以各官网及实时计费面板为准。)</em></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://github.com/MiniMax-AI/MiniMax-H3/blob/main/README.zh-CN.md">MiniMax 官方 GitHub 技术文档：<code>MiniMax-AI/MiniMax-H3</code> 33B 单流 DiT 与 12 模态输入规范</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref5:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE">MiniMax H3 官方开源协议：<code>MiniMax H3 Community License Agreement</code></a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://vbench.github.io">上海人工智能实验室：VBench 视频生成全方位评测基准框架 (CVPR 2024)</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://huggingface.co/Comfy-Org/MiniMax-H3">Comfy-Org 官方技术模型卡：<code>Comfy-Org/MiniMax-H3</code> 剪枝模型与 13B 参数剥离机理</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/minimax-h3-facts-2026-11-12.md">本仓库事实台账与 L4 实测基准：<code>docs/minimax-h3-facts-2026-11-12.md</code> &amp; <code>docs/RESEARCH_SUMMARY.md</code></a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://jimeng.jianying.com">字节跳动即梦与 Seedance 官方技术文档：双分支 DiT 架构与叙事规划器规范</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://klingai.kuaishou.com">快手可灵 AI 开发者官方技术文档：DiT 运动动力学建模与视频延长规范</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://artificialanalysis.ai/video">Artificial Analysis 官方视频模型竞技场（AA-Video-T2V v2.1 核对日期：2026-11-12）</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://docs.comfy.org/zh/tutorials/video/wan/wan-flf">阿里巴巴通义实验室：Wan 视频生成模型架构与 ComfyUI FLF 首尾帧教程</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+            
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>谷粒 </span>
+                </p>
+            
+
+            
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/>
+                        <script>
+                            document.write(decodeURI(location.origin + location.pathname))
+                        </script>
+                    </a>
+            </p>
+            
+            
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s):
+            
+            <span class="tag"><a href="https://kuhung.me/tags/minimax-h3/">
+                    #MiniMax H3</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E6%B5%B7%E8%9E%BA-3.0/">
+                    #海螺 3.0</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/ai-%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/">
+                    #AI 视频生成</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B/">
+                    #开源模型</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/comfyui/">
+                    #ComfyUI</a></span>
+            
+            <span class="tag"><a href="https://kuhung.me/tags/colab-l4/">
+                    #Colab L4</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> ·
+                <span><a href="https://kuhung.me/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://kuhung.me/posts/your-coding-agents-made-you-a-manager/" class="prev" rel="prev" title="【译】Coding Agent 正在让你成为一名管理者"><i class="iconfont icon-left"></i>&nbsp;【译】Coding Agent 正在让你成为一名管理者</a>
+        
+        
+    </div>
+</article>
+          
+<div class="post-comment"><div onclick="showDisqus();" id="disqus_title" class="disqus_title">显示 Disqus 评论</div><div id="disqus_thread"></div>
+    <script type="text/javascript">
+    function showDisqus() {
+      
+
+      
+      
+      
+      
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = false;
+      var disqus_shortname = 'kuhungio';
+      dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      window.location.hash = "#disqus_thread";
+    }
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div>
+
+          </div>
+		   </main>
+      <footer class="footer site-footer">
+    <style>
+        .site-footer {
+            height: auto;
+            text-align: left;
+            padding-top: 0;
+        }
+        .footer-inner {
+            border-top: 1px solid #eee;
+            margin: 40px auto 0;
+            padding: 32px 32px 28px;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+        .footer-cols {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-col .footer-col-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #161209;
+            margin-bottom: 6px;
+        }
+        .footer-col a,
+        .footer-col .footer-plain { font-size: 13px; color: #4a4b50; line-height: 2.1; }
+        .footer-col .footer-plain { color: #87878d; }
+        .site-footer .copyright {
+            font-size: 12px;
+            color: #a9a9b3;
+            margin-top: 28px;
+            text-align: left;
+        }
+        @media (max-width: 767px) {
+            .footer-inner { padding: 28px 20px 24px; }
+            .footer-cols { flex-direction: column; gap: 20px; }
+        }
+    </style>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <div class="footer-col-title">产品</div>
+                <a href="/projects/#ai-%e5%b7%a5%e5%85%b7">AI 工具</a><a href="/projects/#%e9%87%8f%e5%8c%96%e4%b8%8e%e9%87%91%e8%9e%8d">量化与金融</a><a href="/projects/#%e9%93%be%e4%b8%8a%e6%95%b0%e6%8d%ae">链上数据</a><a href="/projects/#%e7%9f%a5%e8%af%86%e5%9b%be%e8%b0%b1%e4%b8%8e%e5%8f%af%e8%a7%86%e5%8c%96">知识图谱与可视化</a><a href="/projects/#%e5%aa%92%e4%bd%93%e4%b8%8e%e5%88%9b%e4%bd%9c">媒体与创作</a><a href="/projects/#%e5%ad%a6%e4%b9%a0%e4%b8%8e%e8%b6%a3%e5%91%b3%e5%b7%a5%e5%85%b7">学习与趣味工具</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">文章</div>
+                
+                <a href="/guide/">精选</a><a href="/posts/">全部文章</a><a href="/archives/">按年归档</a><a href="/posts/index.xml">RSS 订阅</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">联系</div>
+                <span class="footer-plain">hi#kuhung.me</span>
+                <span class="footer-plain"><a href="https://x.com/kuhungio" target="_blank" rel="me noopener">X</a> / <a href="https://github.com/kuhung" target="_blank" rel="me noopener">GitHub</a></span>
+                <span class="footer-plain"><a href="https://www.zhihu.com/people/kuhungio" target="_blank" rel="me noopener">知乎</a> / <a href="https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4" target="_blank" rel="me noopener">小红书</a></span>
+                <a href="/images/post/wechat.JPG" target="_blank" rel="noopener">微信公众号</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy;
+            <span itemprop="copyrightYear">2016 &ndash; 2026</span>
+            <span class="author" itemprop="copyrightHolder"><a href="https://kuhung.me/">谷粒</a></span>
+            
+            &middot; Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> &amp; <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a>
+        </div>
+    </div>
+    <script>
+      if (window.localStorage) {
+        window.localStorage.removeItem('theme');
+      }
+      document.body.classList.remove('dark-theme');
+      document.documentElement.classList.remove('dark-theme');
+    </script>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Colab L4 on 谷粒 kuhung</title>
+    <link>https://kuhung.me/tags/colab-l4/</link>
+    <description>Recent content in Colab L4 on 谷粒 kuhung</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 12 Nov 2026 16:45:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/colab-l4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MiniMax H3（海螺 3.0），开源视频生成模型，技术定位与选型对比</title>
+      <link>https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/</link>
+      <pubDate>Thu, 12 Nov 2026 16:45:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/minimax-h3-open-source-video-model-comparison/</guid>
+      <description>MiniMax H3（海螺 3.0）开放 33B 单流 DiT 基础权重（约 768p）后，普通人落地关心两件事：多大的卡能跑，以及它与 Wan 3.0、Seedance 2.5、可灵 3.0 的能力差异。
+本文是「MiniMax H3（海螺 3.0）实战」系列的第一篇，基于 2026-11-12 调查数据与 Google Colab L4 实测基准，从五个维度分析 MiniMax H3 的实力水平。
+MiniMax H3（海螺 3.0）是 MiniMax 于 2026 年夏季发布的多模态音画生成模型。官方开放了 33B 参数的单流 Diffusion Transformer 主干权重 H3-Base（约 768p）1，支持最多 12 个多模态参考文件与原生 32kHz 双声道立体声同出；经 AdaLN 剪枝和 NVFP4/INT8 量化后，可在单张 24 GB 显存显卡（如 Google Colab L4）上离线推理。按其社区协议，适用地区内商业产品与服务年营收不超过 2000 万美元且在界面显著标注 MiniMax H3 即可免版税商用，超过该门槛或位于欧盟、英国、韩国、美国等排除区域需单独联系官方申请授权 2。
+视频生成的五个评判标准 在学术界与工业生产实践中，评估一个视频生成系统能否真正落地，主要参照 VBench 评测框架 3 与实际数字资产管线的工程要求，通常可提炼为以下五个维度：
+1. 时序与上下文一致性 镜头往前推进或旋转时，主角的五官不能每隔三帧就换张面孔，衣服上的褶皱和纹理不能在转弯时融化消失。
+以实际电商鞋靴 360 度环绕展示镜头为例：镜头从正面缓缓推向侧面，如果鞋舌上的品牌字样在旋转时形变成乱码，或者鞋底的气垫结构在第 60 帧突然解体，那是不行的。在模型参数上，这一项直接取决于单流 Diffusion Transformer（DiT）的时空自注意力机制与 3D 因果 VAE 的时间因果压缩比。</description>
+    </item>
+    
+  </channel>
+</rss>
