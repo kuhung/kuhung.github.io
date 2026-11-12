@@ -417,7 +417,7 @@ if (!doNotTrack) {
 <li>要做多镜头剧本拆解和角色音色克隆的短片，可以上 Seedance 2.5，同时算好 <code>$34.12/min</code> 带来的抽卡预算。</li>
 <li>直接追求文生视频盲测上限且预算充裕，可以对标 Wan 3.0（<code>$12.00/min</code>）。</li>
 </ul>
-<p>搞清 MiniMax H3（海螺 3.0）的技术定位后，你可以直接看本项目的 <a href="https://github.com/kuhung/minimax-h3-colab-workflow">工程仓库总览</a>、<a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/notebooks/v2.0_minimax_h3_l4_production_mp4.ipynb">v2.0 Colab L4 生产笔记本模板</a> 与 <a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/minimax-h3-facts-2026-11-12.md">2026-11-12 核验事实台账</a>，或者继续看第二篇和第三篇仓库文章，拆解 24 GB 单卡工作流参数与图像修图流程。</p>
+<p>搞清 MiniMax H3（海螺 3.0）的技术定位后，你可以直接看本项目的 <a href="https://github.com/kuhung/minimax-h3-colab-workflow">工程仓库总览</a>、<a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/notebooks/v2.0_minimax_h3_l4_production_mp4.ipynb">v2.0 Colab L4 生产笔记本模板</a> 与 <a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/minimax-h3-facts-2026-11-12.md">2026-11-12 核验数据记录</a>，或者继续看第二篇和第三篇仓库文章，拆解 24 GB 单卡工作流参数与图像修图流程。</p>
 <h2 id="minimax-h3-选型常见问题">MiniMax H3 选型常见问题</h2>
 <h3 id="minimax-h3海螺-30开源权重能在-24gb-显卡上跑吗">MiniMax H3（海螺 3.0）开源权重能在 24GB 显卡上跑吗？</h3>
 <p>可以，但需要剪枝与量化权重，并把分辨率和步数控制住。<code>H3-Base</code> 原版全套全精度权重约 131 GB+，经社区剪枝剥离约 13B AdaLN 分支并量化后，全套权重压到约 42.5 GB（主干约 19.5 GB），即可在 24 GB 单卡上加载；按本仓库 Colab L4（约 22 GB 可用显存）实测，以 <code>960×544</code>、124 帧、8 步 Turbo 与单路 <code>BasicGuider (CFG=1.0)</code> 运行，稳态单镜约 165.4 秒。</p>
@@ -454,7 +454,7 @@ if (!doNotTrack) {
 <p><a href="https://huggingface.co/Comfy-Org/MiniMax-H3">Comfy-Org 官方技术模型卡：<code>Comfy-Org/MiniMax-H3</code> 剪枝模型与 13B 参数剥离机理</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
-<p><a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/minimax-h3-facts-2026-11-12.md">本仓库事实台账与 L4 实测基准：<code>docs/minimax-h3-facts-2026-11-12.md</code> &amp; <code>docs/RESEARCH_SUMMARY.md</code></a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://github.com/kuhung/minimax-h3-colab-workflow/blob/main/docs/minimax-h3-facts-2026-11-12.md">本仓库核验数据记录与 L4 实测基准：<code>docs/minimax-h3-facts-2026-11-12.md</code> &amp; <code>docs/RESEARCH_SUMMARY.md</code></a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6">
 <p><a href="https://jimeng.jianying.com">字节跳动即梦与 Seedance 官方技术文档：双分支 DiT 架构与叙事规划器规范</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
