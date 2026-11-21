@@ -9,6 +9,30 @@
     <atom:link href="https://kuhung.me/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Baku 静貘隐私政策与支持 / Privacy &amp; Support</title>
+      <link>https://kuhung.me/baku-privacy/</link>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/baku-privacy/</guid>
+      <description>&lt;p&gt;更新日期 / Last updated: 2026-11-20&lt;br&gt;
+开发者 / Developer: 谷粒（kuhung）&lt;br&gt;
+支持邮箱 / Support: &lt;a href=&#34;mailto:support@kuhung.me&#34;&gt;support@kuhung.me&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;简体中文&#34;&gt;简体中文&lt;/h2&gt;
+&lt;p&gt;Baku 静貘在 X（Twitter）网页端隐藏或遮罩低质量帖子和回复。扩展会读取页面上可见的帖子及相关引用和回复上下文，包括正文、作者用户名和显示名称、帖子编号、来源链接、发布时间和认证状态等可见信息，用于判断页面上哪些内容需要过滤。&lt;/p&gt;
+&lt;p&gt;扩展在当前浏览器的本地扩展存储中保存设置、黑白名单、近期拦截记录、统计和同步状态。你配置的服务令牌或模型 API 密钥也保存在本地，仅用于向相应服务发起请求。卸载扩展可以删除这些本地数据。你自己导出的文件由你管理。&lt;/p&gt;
+&lt;p&gt;共享过滤默认开启。需要远程判别时，扩展会将待判别帖子、相关上下文、扩展随机生成的安装标识和信任名单发送到由开发者运营的共享服务。你执行屏蔽、放行等操作时，扩展会发送对应的反馈和相关帖子或账号信息。服务使用 Cloudflare Workers 和 D1 处理请求与存储数据，并可将帖子及上下文交由 Google 模型服务分类。服务会使用请求 IP 的哈希值执行限流和防滥用，并保留分类结果、用于维护共享名单的反馈样本和运行日志。记录按类型和用途保留，部分记录按容量清理。&lt;/p&gt;
+&lt;p&gt;你可以在管理台关闭共享过滤，只使用本地名单。如果配置了自建服务，相关的同步、分类或反馈会发往你选择的服务。如果启用自有模型密钥，扩展会将需要分类的帖子及上下文和用于认证的密钥发送至你选定的模型接口。你可以分别关闭共享过滤和模型直连。关闭后续请求不会自动删除之前由远程服务接收的数据。&lt;/p&gt;
+&lt;p&gt;我们仅为过滤、同步、处理反馈和保护服务使用这些数据。我们不出售用户数据，不将其用于广告画像、信用评估或贷款。扩展不读取 X 的密码、登录令牌或私信。查阅或请求删除共享服务中与你有关的数据，或反馈误拦，可以联系 &lt;a href=&#34;mailto:support@kuhung.me&#34;&gt;support@kuhung.me&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;english&#34;&gt;English&lt;/h2&gt;
+&lt;p&gt;Baku hides or blurs low-quality posts and replies on X (Twitter). It reads visible posts and related quote or reply context, including text, author handles and display names, post identifiers, source links, timestamps, and verification indicators, to determine which content to filter.&lt;/p&gt;
+&lt;p&gt;The extension stores preferences, allow and block lists, recent filtering records, counts, and sync state in the current browser&amp;rsquo;s local extension storage. Service tokens or model API keys you configure are stored locally and used to authenticate requests to the corresponding service. Uninstalling the extension removes local extension data. You manage any files you export.&lt;/p&gt;
+&lt;p&gt;Shared filtering is enabled by default. When remote classification is needed, the extension sends candidate posts and their context, a randomly generated installation identifier, and the trusted account list to the shared service operated by the developer. Actions such as blocking or restoring a post can send feedback and associated post or account information. The service uses Cloudflare Workers and D1 to process requests and store data, and may send posts and context to a Google model service for classification. The service hashes request IP addresses to limit abuse and retains classification results, feedback samples used to maintain shared lists, and operational logs. Retention varies by record type and purpose, and some records are pruned by capacity.&lt;/p&gt;
+&lt;p&gt;You can turn off shared filtering in the dashboard and use local lists. If you configure a self-hosted service, applicable sync, classification, and feedback requests go to the service you choose. If you enable direct model access, the extension sends posts and context that need classification and your authentication key to the model endpoint you selected. You can turn off shared filtering and direct model access independently. Turning off future requests does not automatically remove data previously received by a remote service.&lt;/p&gt;
+&lt;p&gt;We use this data for filtering, syncing, handling feedback, and protecting the service. We do not sell user data or use it for advertising profiles, creditworthiness, or lending. The extension does not read X passwords, login tokens, or private messages. To ask about or request removal of data associated with you from the shared service, or to report a filtering error, contact &lt;a href=&#34;mailto:support@kuhung.me&#34;&gt;support@kuhung.me&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Posts</title>
       <link>https://kuhung.me/posts/</link>
       <pubDate>Thu, 12 Nov 2026 16:45:00 +0800</pubDate>
@@ -69,6 +93,10 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://visits.kuhung.me&#34;&gt;Visits：Vercel 流量监控 iOS App&lt;/a&gt;&lt;/strong&gt;
 在 iPhone 上随时随地查看所有 Vercel 项目的访问量走势。一眼锁定涨得最快的产品，支持深度下钻。&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://chromewebstore.google.com/detail/baku-%E9%9D%99%E8%B2%98-for-x/dkcjdiemeobepaahioaakahjijoigoad&#34;&gt;静貘 · Baku：X 评论区与时间线水帖过滤扩展&lt;/a&gt;&lt;/strong&gt;
+在 X（Twitter）网页端隐藏评论区与时间线里的 AI 模板回复和推广引流帖，支持单条放行、本机黑白名单与开源自建服务。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;量化与金融&#34;&gt;量化与金融&lt;/h2&gt;
 &lt;ul&gt;
@@ -92,7 +120,7 @@
 &lt;h2 id=&#34;链上数据&#34;&gt;链上数据&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://leeonchain.vercel.app&#34;&gt;LeeOnChain：链上异动与聪明钱监控&lt;/a&gt;&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://www.leeonchain.com/&#34;&gt;LeeOnChain：链上异动与聪明钱监控&lt;/a&gt;&lt;/strong&gt;
 一站式追踪聪明钱动向与大额异动，聚合风险地址识别与钱包监控，洞察链上真实资金流。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -149,6 +177,10 @@ iPhone 录音超过 300M 就传不进 NotebookLM，这个工具压完就能传�
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://podcast.kuhung.me&#34;&gt;Podcast RSS Feed：播客订阅源托管&lt;/a&gt;&lt;/strong&gt;
 自动发布和更新播客 RSS，省掉手写 XML 的麻烦。&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://xsnap.kuhung.me/&#34;&gt;XSnap：X（Twitter）推文与连载回复转分享图片&lt;/a&gt;&lt;/strong&gt;
+在推文操作栏旁一键打开浏览器本地编辑器，把单条推文或同作者连续回复排成分享卡片与长图，内置壁纸、渐变、毛玻璃与实色样式，支持 1× / 2× PNG 导出。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;学习与趣味工具&#34;&gt;学习与趣味工具&lt;/h2&gt;
 &lt;ul&gt;
@@ -187,6 +219,10 @@ iPhone 录音超过 300M 就传不进 NotebookLM，这个工具压完就能传�
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/kuhung/jlpt-push&#34;&gt;JLPT Push：日语语法每日推送&lt;/a&gt;&lt;/strong&gt;
 定时把 JLPT 语法知识点推到 iOS / macOS 设备上，不用主动去背。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://gta6.kuhung.me/&#34;&gt;GTA 6 交互大地图与攻略工作台&lt;/a&gt;&lt;/strong&gt;
+基于 Rockstar 官方 Leonida 高清底图的双语交互地图，集成赚钱销赃点位、第 1 章避坑核对单、100% 收集打卡与 61 个秘籍速查表。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
