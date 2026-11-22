@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="结合反作弊算法视角剖析 GEO（生成式引擎优化）的现状与走向：拆解内容农场套路、平台反制思路，以及小产品做 GEO 的务实做法。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/talks-with-vc/" />
   <link rel="next" href="https://kuhung.me/posts/vibe-coding-long-term-operation/" />
   <link rel="canonical" href="https://kuhung.me/posts/geo-and-anticheat/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GEO的过去、未来与反作弊算法 | 谷粒 kuhung">
+  <meta property="og:description" content="结合反作弊算法视角剖析 GEO（生成式引擎优化）的现状与走向：拆解内容农场套路、平台反制思路，以及小产品做 GEO 的务实做法。">
+  <meta property="og:url" content="https://kuhung.me/posts/geo-and-anticheat/">
+  <meta property="og:image" content="https://kuhung.me/images/me/avatar.jpg">
+  <meta property="article:published_time" content="2026-03-17T10:37:36&#43;08:00">
+  <meta property="article:modified_time" content="2026-03-17T10:37:36&#43;08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="GEO的过去、未来与反作弊算法 | 谷粒 kuhung">
+  <meta name="twitter:description" content="结合反作弊算法视角剖析 GEO（生成式引擎优化）的现状与走向：拆解内容农场套路、平台反制思路，以及小产品做 GEO 的务实做法。">
+  <meta name="twitter:image" content="https://kuhung.me/images/me/avatar.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           GEO的过去、未来与反作弊算法 | 谷粒 kuhung
-       
-  </title>
+  <title>GEO的过去、未来与反作弊算法 | 谷粒 kuhung</title>
   <meta name="title" content="GEO的过去、未来与反作弊算法 | 谷粒 kuhung">
     
   
@@ -54,13 +60,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/geo-and-anticheat/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-03-17T10:37:36+08:00","datePublished":"2026-03-17T10:37:36+08:00","description":"回顾 GEO过去一年火了三次。去年中的时候，随着AI抓取能力的加强和普遍应用，国内外社媒开始讨论GEO。GEO全称 Generative Engine Optimization，简单来说就如3.15所言，给大模型“投毒”。专业点儿来说，就是让品牌或者产品，能在AI搜索引擎内抓取、采纳并且呈现给用户。 关注一位博主，曾短暂投入过GEO方面的创业，到年初放弃。而我当时也让Gemini …","headline":"GEO的过去、未来与反作弊算法","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"SEO, GEO, 大模型, 反作弊","mainEntityOfPage":{"@id":"https://kuhung.me/posts/geo-and-anticheat/","@type":"WebPage"},"name":"GEO的过去、未来与反作弊算法","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/geo-and-anticheat/","wordCount":87}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/geo-and-anticheat/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-03-17T10:37:36+08:00","datePublished":"2026-03-17T10:37:36+08:00","description":"结合反作弊算法视角剖析 GEO（生成式引擎优化）的现状与走向：拆解内容农场套路、平台反制思路，以及小产品做 GEO 的务实做法。","headline":"GEO的过去、未来与反作弊算法","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"SEO, GEO, 大模型, 反作弊","mainEntityOfPage":{"@id":"https://kuhung.me/posts/geo-and-anticheat/","@type":"WebPage"},"name":"GEO的过去、未来与反作弊算法","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/geo-and-anticheat/","wordCount":87}</script>
 </head>
 
   

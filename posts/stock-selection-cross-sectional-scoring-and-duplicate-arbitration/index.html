@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="拆解量化选股截面精排规则：美日市场用 1 年卡玛比率、港 A 市场用 12-1 动量打分，并用 1 年溢价中位数处理 A/H 同门去重与整手顺延选拔。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/" />
   <link rel="next" href="https://kuhung.me/posts/applescript-browser-control-for-coding-agents/" />
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung">
+  <meta property="og:description" content="拆解量化选股截面精排规则：美日市场用 1 年卡玛比率、港 A 市场用 12-1 动量打分，并用 1 年溢价中位数处理 A/H 同门去重与整手顺延选拔。">
+  <meta property="og:url" content="https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/10/14d77fcf75b3dfae.webp">
+  <meta property="article:published_time" content="2026-10-21T21:30:00&#43;08:00">
+  <meta property="article:modified_time" content="2026-10-21T21:30:00&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung">
+  <meta name="twitter:description" content="拆解量化选股截面精排规则：美日市场用 1 年卡玛比率、港 A 市场用 12-1 动量打分，并用 1 年溢价中位数处理 A/H 同门去重与整手顺延选拔。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/10/14d77fcf75b3dfae.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung
-       
-  </title>
+  <title>个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung</title>
   <meta name="title" content="个人量化选股（四）：截面打分与去重排他 | 谷粒 kuhung">
     
   
@@ -102,13 +108,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T21:30:00+08:00","datePublished":"2026-10-21T21:30:00+08:00","description":"在上一篇《个人量化选股（三）：为什么是趋势动量，以及准入硬门槛与防追高》中，三道准入硬门槛（站上 MA200 年线、12-1 动量大于零、距年线乖离不超过 +30%）从 200 只中外观察池中过滤出了 63 只合格标的（中国资产 31 只，美股 32 只）。 这也是我最近在 QuantFull 整理的「个人量化选股实战体系」的第四篇。63 只股票通过了安全检查，但个人投资者的账户体量通常在几万到几 …","headline":"个人量化选股（四）：截面打分与去重排他","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 卡玛比率, 相对动量, AH溢价仲裁, 行业中性化, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"WebPage"},"name":"个人量化选股（四）：截面打分与去重排他","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","wordCount":734}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-21T21:30:00+08:00","datePublished":"2026-10-21T21:30:00+08:00","description":"拆解量化选股截面精排规则：美日市场用 1 年卡玛比率、港 A 市场用 12-1 动量打分，并用 1 年溢价中位数处理 A/H 同门去重与整手顺延选拔。","headline":"个人量化选股（四）：截面打分与去重排他","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 卡玛比率, 相对动量, AH溢价仲裁, 行业中性化, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","@type":"WebPage"},"name":"个人量化选股（四）：截面打分与去重排他","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/","wordCount":734}</script>
 </head>
 
   

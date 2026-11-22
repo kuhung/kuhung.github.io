@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="解决个人量化选股实盘中频繁止损、急跌误抄底以及调仓与监控口径冲突的问题，用波动率安全距离和破位过滤把无效换手和交易摩擦压下来。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/" />
   <link rel="next" href="https://kuhung.me/posts/ai-system-evals-complete-guide/" />
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung">
+  <meta property="og:description" content="解决个人量化选股实盘中频繁止损、急跌误抄底以及调仓与监控口径冲突的问题，用波动率安全距离和破位过滤把无效换手和交易摩擦压下来。">
+  <meta property="og:url" content="https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/11/e7b123b21715b7bc.webp">
+  <meta property="article:published_time" content="2026-11-06T21:00:00&#43;08:00">
+  <meta property="article:modified_time" content="2026-11-06T21:00:00&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung">
+  <meta name="twitter:description" content="解决个人量化选股实盘中频繁止损、急跌误抄底以及调仓与监控口径冲突的问题，用波动率安全距离和破位过滤把无效换手和交易摩擦压下来。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/11/e7b123b21715b7bc.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung
-       
-  </title>
+  <title>个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung</title>
   <meta name="title" content="个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一 | 谷粒 kuhung">
     
   
@@ -102,13 +108,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-06T21:00:00+08:00","datePublished":"2026-11-06T21:00:00+08:00","description":"回测里的净值曲线看着很平滑，但一跑实盘，最容易磨损账户的往往是调仓太频繁、交易摩擦太大。 触发机制定得太灵敏，系统就容易天天折腾：昨天刚买入，今天稍微回撤一下就触碰止损割肉；防追高规则原本想防泡沫，却在股票高位暴跌时误把它当“回调”买进去；调仓程序刚发出换股买入指令，监控程序隔天又报警要求清仓。 这篇文章就解决这一件事：怎么把那些过于敏感、容易误触发的规则管住，大幅减少无谓的调仓，把摩擦成本真正省 …","headline":"个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 模块协同, 安全距离, 风控, MA50趋势门, 规则统一, 美股, 港股, A股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","@type":"WebPage"},"name":"个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","wordCount":561}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-11-06T21:00:00+08:00","datePublished":"2026-11-06T21:00:00+08:00","description":"解决个人量化选股实盘中频繁止损、急跌误抄底以及调仓与监控口径冲突的问题，用波动率安全距离和破位过滤把无效换手和交易摩擦压下来。","headline":"个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 模块协同, 安全距离, 风控, MA50趋势门, 规则统一, 美股, 港股, A股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","@type":"WebPage"},"name":"个人量化选股（八）：实盘执行与多模块协同：止损安全距离、破位过滤与调仓监控统一","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/","wordCount":561}</script>
 </head>
 
   

@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="记录用 Codex /goal 指令通过六轮追问澄清需求、从一条社媒帖子出发完成产品验证与交付的实操过程，拆解 AI 编码里先对齐再动手的做法。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/how-i-use-codex/" />
   <link rel="next" href="https://kuhung.me/posts/how-to-manage-skills-for-agent/" />
   <link rel="canonical" href="https://kuhung.me/posts/use-codex-goal-build-products/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="用 Codex /goal 指令从 0 到 1 验证并构建产品 | 谷粒 kuhung">
+  <meta property="og:description" content="记录用 Codex /goal 指令通过六轮追问澄清需求、从一条社媒帖子出发完成产品验证与交付的实操过程，拆解 AI 编码里先对齐再动手的做法。">
+  <meta property="og:url" content="https://kuhung.me/posts/use-codex-goal-build-products/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/08/66ddb3fd6e1f07e6.webp">
+  <meta property="article:published_time" content="2026-08-04T17:58:11&#43;08:00">
+  <meta property="article:modified_time" content="2026-08-04T17:58:11&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="用 Codex /goal 指令从 0 到 1 验证并构建产品 | 谷粒 kuhung">
+  <meta name="twitter:description" content="记录用 Codex /goal 指令通过六轮追问澄清需求、从一条社媒帖子出发完成产品验证与交付的实操过程，拆解 AI 编码里先对齐再动手的做法。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/08/66ddb3fd6e1f07e6.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           用 Codex /goal 指令从 0 到 1 验证并构建产品 | 谷粒 kuhung
-       
-  </title>
+  <title>用 Codex /goal 指令从 0 到 1 验证并构建产品 | 谷粒 kuhung</title>
   <meta name="title" content="用 Codex /goal 指令从 0 到 1 验证并构建产品 | 谷粒 kuhung">
     
   
@@ -54,13 +60,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/use-codex-goal-build-products/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-04T17:58:11+08:00","datePublished":"2026-08-04T17:58:11+08:00","description":"随着 vibe coding 时间的增加，我越发觉得“细节不重要，重要的是如预期交付”。这和指导实习生、指导新人融入团队并无二致。好的团队领导者，一定是放权状态，不抠细节的同时给成员充足的上下文（context），最后只检查确认结果即可。 这点，反映到 AI coding 上面，也是如此。很多人以为 vibe coding 是某种许愿式编程，你只需要念出你的咒语，Agent 便为你办妥一切。其实非 …","headline":"用 Codex /goal 指令从 0 到 1 验证并构建产品","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Codex, AI工具, 独立开发, vibe coding","mainEntityOfPage":{"@id":"https://kuhung.me/posts/use-codex-goal-build-products/","@type":"WebPage"},"name":"用 Codex /goal 指令从 0 到 1 验证并构建产品","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/use-codex-goal-build-products/","wordCount":125}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/use-codex-goal-build-products/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-04T17:58:11+08:00","datePublished":"2026-08-04T17:58:11+08:00","description":"记录用 Codex /goal 指令通过六轮追问澄清需求、从一条社媒帖子出发完成产品验证与交付的实操过程，拆解 AI 编码里先对齐再动手的做法。","headline":"用 Codex /goal 指令从 0 到 1 验证并构建产品","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Codex, AI工具, 独立开发, Vibe Coding","mainEntityOfPage":{"@id":"https://kuhung.me/posts/use-codex-goal-build-products/","@type":"WebPage"},"name":"用 Codex /goal 指令从 0 到 1 验证并构建产品","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/use-codex-goal-build-products/","wordCount":125}</script>
 </head>
 
   
@@ -274,7 +279,7 @@ if (!doNotTrack) {
                     #独立开发</a></span>
             
             <span class="tag"><a href="https://kuhung.me/tags/vibe-coding/">
-                    #vibe coding</a></span>
+                    #Vibe Coding</a></span>
             
             </section>
         

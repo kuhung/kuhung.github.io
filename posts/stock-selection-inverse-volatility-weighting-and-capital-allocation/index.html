@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="对比等权重、纯波动率倒数与 35% 单票上限加 10% 现金垫的资金配置方案，结合整手硬约束完成个人量化选股七层流水线的配仓收口。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/consumer-ai-market-structure/" />
   <link rel="next" href="https://kuhung.me/posts/how-to-read-onchain-macro-metrics/" />
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束 | 谷粒 kuhung">
+  <meta property="og:description" content="对比等权重、纯波动率倒数与 35% 单票上限加 10% 现金垫的资金配置方案，结合整手硬约束完成个人量化选股七层流水线的配仓收口。">
+  <meta property="og:url" content="https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/10/5fa7f4b88217ec6e.webp">
+  <meta property="article:published_time" content="2026-10-24T23:00:00&#43;08:00">
+  <meta property="article:modified_time" content="2026-10-24T23:00:00&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束 | 谷粒 kuhung">
+  <meta name="twitter:description" content="对比等权重、纯波动率倒数与 35% 单票上限加 10% 现金垫的资金配置方案，结合整手硬约束完成个人量化选股七层流水线的配仓收口。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/10/5fa7f4b88217ec6e.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束 | 谷粒 kuhung
-       
-  </title>
+  <title>个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束 | 谷粒 kuhung</title>
   <meta name="title" content="个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束 | 谷粒 kuhung">
     
   
@@ -102,13 +108,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-24T23:00:00+08:00","datePublished":"2026-10-24T23:00:00+08:00","description":"上一篇《个人量化选股（六）：差异化风控与退出机制：杠杆防守、反弹陷阱与高波移动止盈》分析了杠杆账户的 P0 强制止损、港 A 现货过滤短期微观噪声的季度内持有纪律，以及高波动标的的动态跟踪止盈规则。 当候选标的通过趋势门槛、截面精排与双线缓冲区的筛选，并完成退出规则设定后，量化选股流水线进入了关键的最终环节： 入选标的的资产配置权重与资金规模如何科学求解？ 许多量化研究者在因子挖掘与信号排序上投入 …","headline":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资金管理, 风险平价, 波动率倒数, 现金管理, 整手约束, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"WebPage"},"name":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","wordCount":827}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-24T23:00:00+08:00","datePublished":"2026-10-24T23:00:00+08:00","description":"对比等权重、纯波动率倒数与 35% 单票上限加 10% 现金垫的资金配置方案，结合整手硬约束完成个人量化选股七层流水线的配仓收口。","headline":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资金管理, 风险平价, 波动率倒数, 现金管理, 整手约束, A股, 港股, 美股, 日股","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","@type":"WebPage"},"name":"个人量化选股（七）：波动率倒数配仓与资金构建：等权重陷阱、单票封顶与整手硬约束","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/","wordCount":827}</script>
 </head>
 
   

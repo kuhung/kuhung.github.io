@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="解决 GitHub Actions 内置 schedule 延迟和丢任务问题：改由外部定时任务主动触发 workflow，并用 Pi CLI 批量重构个人数据调度配置。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/" />
   <link rel="next" href="https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/" />
   <link rel="canonical" href="https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践 | 谷粒 kuhung">
+  <meta property="og:description" content="解决 GitHub Actions 内置 schedule 延迟和丢任务问题：改由外部定时任务主动触发 workflow，并用 Pi CLI 批量重构个人数据调度配置。">
+  <meta property="og:url" content="https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/">
+  <meta property="og:image" content="https://kuhung.me/images/me/avatar.jpg">
+  <meta property="article:published_time" content="2026-09-14T23:38:37&#43;08:00">
+  <meta property="article:modified_time" content="2026-09-14T23:38:37&#43;08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践 | 谷粒 kuhung">
+  <meta name="twitter:description" content="解决 GitHub Actions 内置 schedule 延迟和丢任务问题：改由外部定时任务主动触发 workflow，并用 Pi CLI 批量重构个人数据调度配置。">
+  <meta name="twitter:image" content="https://kuhung.me/images/me/avatar.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践 | 谷粒 kuhung
-       
-  </title>
+  <title>Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践 | 谷粒 kuhung</title>
   <meta name="title" content="Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践 | 谷粒 kuhung">
     
   
@@ -54,13 +60,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-14T23:38:37+08:00","datePublished":"2026-09-14T23:38:37+08:00","description":"最近对个人调度任务做了一次较大调整：核心从依赖 GitHub Actions 内置 schedule 的被动排队，改成由外部定时任务主动触发 workflow。要解决的主要是调度延迟。我有一批天级任务需要相对准时，例如拉取前一日数据、汇总昨天的工作；但 GitHub Actions 的 cron 并不可控，经常晚数小时，极端时当天该跑的 run 都没出现。GitHub 文档也写了， …","headline":"Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Vibe Coding, GitHub Actions, 定时任务","mainEntityOfPage":{"@id":"https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/","@type":"WebPage"},"name":"Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/","wordCount":132}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-14T23:38:37+08:00","datePublished":"2026-09-14T23:38:37+08:00","description":"解决 GitHub Actions 内置 schedule 延迟和丢任务问题：改由外部定时任务主动触发 workflow，并用 Pi CLI 批量重构个人数据调度配置。","headline":"Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"Vibe Coding, GitHub Actions, 定时任务","mainEntityOfPage":{"@id":"https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/","@type":"WebPage"},"name":"Vibe Coding × 定时任务：主动触发 GitHub Actions 的个人实践","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/","wordCount":132}</script>
 </head>
 
   

@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="Lee">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="不靠高价商业订阅，用 GMGN、Bubblemaps、Arkham、DeBank 配合轻量 RPC 校验脚本，四步完成链上异动交易排查并看清跟单滑点与执行摩擦。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/retell-ai-voice-agent-deep-dive/" />
   <link rel="next" href="https://kuhung.me/posts/anthropic-form-s1-ipo-filing/" />
   <link rel="canonical" href="https://kuhung.me/posts/how-to-track-onchain-transactions/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung">
+  <meta property="og:description" content="不靠高价商业订阅，用 GMGN、Bubblemaps、Arkham、DeBank 配合轻量 RPC 校验脚本，四步完成链上异动交易排查并看清跟单滑点与执行摩擦。">
+  <meta property="og:url" content="https://kuhung.me/posts/how-to-track-onchain-transactions/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/10/aa9cbcedf25835f5.webp">
+  <meta property="article:published_time" content="2026-10-26T18:00:00&#43;08:00">
+  <meta property="article:modified_time" content="2026-10-26T18:00:00&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung">
+  <meta name="twitter:description" content="不靠高价商业订阅，用 GMGN、Bubblemaps、Arkham、DeBank 配合轻量 RPC 校验脚本，四步完成链上异动交易排查并看清跟单滑点与执行摩擦。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/10/aa9cbcedf25835f5.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung
-       
-  </title>
+  <title>链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung</title>
   <meta name="title" content="链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易 | 谷粒 kuhung">
     
   
@@ -53,62 +59,13 @@ if (!doNotTrack) {
 
 
   
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        function cleanMath(content) {
-            return content
-                .replace(/<em>(.*?)<\/em>/g, '_$1_')
-                .replace(/<strong>(.*?)<\/strong>/g, '**$1**')
-                .replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>')
-                .replace(/&amp;/g, '&')
-                .replace(/(^|[^\\])%/g, '$1\\%')
-                .replace(/\\text\{([^{}]*)\}/g, function(m, inner) {
-                    return '\\text{' + inner.replace(/\\?_/g, '\\_') + '}';
-                });
-        }
-
-        
-        document.querySelectorAll('p, li, div').forEach(el => {
-            if (el.innerHTML.includes('$') || el.innerHTML.includes('\\[')) {
-                let html = el.innerHTML;
-                html = html.replace(/\$\$([\s\S]*?)\$\$/g, function(match, inner) {
-                    return '$$' + cleanMath(inner) + '$$';
-                });
-                html = html.replace(/\\\[([\s\S]*?)\\\]/g, function(match, inner) {
-                    return '\\[' + cleanMath(inner) + '\\]';
-                });
-                html = html.replace(/\$([^\$\n]+?)\$/g, function(match, inner) {
-                    return '$' + cleanMath(inner) + '$';
-                });
-                el.innerHTML = html;
-            }
-        });
-
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '\\[', right: '\\]', display: true},
-                {left: '$', right: '$', display: false},
-                {left: '\\(', right: '\\)', display: false}
-            ],
-            throwOnError : false
-        });
-    });
-</script>
-
-  
-  
   
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/how-to-track-onchain-transactions/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"Lee"},"dateModified":"2026-10-26T18:00:00+08:00","datePublished":"2026-10-26T18:00:00+08:00","description":"风险提示：本文涉及的链上工具、分析方法与排查案例仅供技术研究参考，不构成任何投资建议或代币推荐。链上数据与跟单执行受市场流动性、网络延迟与滑点影响，存在资金损失风险。 在社交媒体或即时通讯频道的链上异动提醒里，经常能看到类似的消息：“某胜率 100% 的聪明钱地址刚刚买入 5 万美元某代币”。 面对这类信号，很多交易者容易走向两个极端：要么直接点击跟单买入，结果买在流动性冲高的高点，甚至直接接盘团 …","headline":"链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, GMGN, Bubblemaps, Arkham, DeBank, MEV, 聪明钱","mainEntityOfPage":{"@id":"https://kuhung.me/posts/how-to-track-onchain-transactions/","@type":"WebPage"},"name":"链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/how-to-track-onchain-transactions/","wordCount":889}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/how-to-track-onchain-transactions/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"Lee"},"dateModified":"2026-10-26T18:00:00+08:00","datePublished":"2026-10-26T18:00:00+08:00","description":"不靠高价商业订阅，用 GMGN、Bubblemaps、Arkham、DeBank 配合轻量 RPC 校验脚本，四步完成链上异动交易排查并看清跟单滑点与执行摩擦。","headline":"链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"链上数据, 量化交易, GMGN, Bubblemaps, Arkham, DeBank, MEV, 聪明钱","mainEntityOfPage":{"@id":"https://kuhung.me/posts/how-to-track-onchain-transactions/","@type":"WebPage"},"name":"链上追踪工具实操指南（How-To）：用 Arkham、Bubblemaps 与 GMGN 排查一笔交易","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/how-to-track-onchain-transactions/","wordCount":889}</script>
 </head>
 
   

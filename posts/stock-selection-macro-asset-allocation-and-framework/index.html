@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="从夏普率与几何复利目标函数出发，推导美、日、中国市场大类资产配比，明确核心宽基底仓与卫星轮动个股的分工以及跨市场隔离打分原则。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/isochrone-travel-map/" />
   <link rel="next" href="https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/" />
   <link rel="canonical" href="https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="个人量化选股（一）：大类资产配置与量化选股分层 | 谷粒 kuhung">
+  <meta property="og:description" content="从夏普率与几何复利目标函数出发，推导美、日、中国市场大类资产配比，明确核心宽基底仓与卫星轮动个股的分工以及跨市场隔离打分原则。">
+  <meta property="og:url" content="https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/10/d9f1314a70e70c8b.webp">
+  <meta property="article:published_time" content="2026-10-17T20:00:00&#43;08:00">
+  <meta property="article:modified_time" content="2026-10-17T20:00:00&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="个人量化选股（一）：大类资产配置与量化选股分层 | 谷粒 kuhung">
+  <meta name="twitter:description" content="从夏普率与几何复利目标函数出发，推导美、日、中国市场大类资产配比，明确核心宽基底仓与卫星轮动个股的分工以及跨市场隔离打分原则。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/10/d9f1314a70e70c8b.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           个人量化选股（一）：大类资产配置与量化选股分层 | 谷粒 kuhung
-       
-  </title>
+  <title>个人量化选股（一）：大类资产配置与量化选股分层 | 谷粒 kuhung</title>
   <meta name="title" content="个人量化选股（一）：大类资产配置与量化选股分层 | 谷粒 kuhung">
     
   
@@ -102,13 +108,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-17T20:00:00+08:00","datePublished":"2026-10-17T20:00:00+08:00","description":"讨论量化交易时，人们往往容易直接聚焦在微观的选股指标上：均线组合、动量斜率、波动率通道、突破信号。 在实际构建量化交易体系时，单独一个选股引擎无法独立运转。选股系统处于整个交易框架的执行层。在决定买入哪些个股之前，系统必须先知道前置的宏观输入：总资金在哪些市场之间分布、哪些资金负责承担长期的 Beta 收益、哪些资金才划拨给量化引擎做战术选股。 全球不同股票市场有各自独立的运行周期。美股经历过长时 …","headline":"个人量化选股（一）：大类资产配置与量化选股分层","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"WebPage"},"name":"个人量化选股（一）：大类资产配置与量化选股分层","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","wordCount":337}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-10-17T20:00:00+08:00","datePublished":"2026-10-17T20:00:00+08:00","description":"从夏普率与几何复利目标函数出发，推导美、日、中国市场大类资产配比，明确核心宽基底仓与卫星轮动个股的分工以及跨市场隔离打分原则。","headline":"个人量化选股（一）：大类资产配置与量化选股分层","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"量化交易, 选股, 资产配置, A股, 港股, 美股, 投资复盘","mainEntityOfPage":{"@id":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","@type":"WebPage"},"name":"个人量化选股（一）：大类资产配置与量化选股分层","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/","wordCount":337}</script>
 </head>
 
   

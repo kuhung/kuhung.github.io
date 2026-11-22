@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="五年十个财务瞬间第四篇：借助自建程序化仓位工具，结合 AI 复盘近年资产配置、收益归因与信号噪音，记录几次关键持仓调整的推导过程。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/maximization-your-claude-code-sessions/" />
   <link rel="next" href="https://kuhung.me/posts/seo-in-practice-sop/" />
   <link rel="canonical" href="https://kuhung.me/posts/cang-in-house-review/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="五年十个财务瞬间 04｜结合AI进行仓位回顾与分析 | 谷粒 kuhung">
+  <meta property="og:description" content="五年十个财务瞬间第四篇：借助自建程序化仓位工具，结合 AI 复盘近年资产配置、收益归因与信号噪音，记录几次关键持仓调整的推导过程。">
+  <meta property="og:url" content="https://kuhung.me/posts/cang-in-house-review/">
+  <meta property="og:image" content="https://kuhung.me/images/me/avatar.jpg">
+  <meta property="article:published_time" content="2026-08-21T10:30:14&#43;08:00">
+  <meta property="article:modified_time" content="2026-08-21T10:30:14&#43;08:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="五年十个财务瞬间 04｜结合AI进行仓位回顾与分析 | 谷粒 kuhung">
+  <meta name="twitter:description" content="五年十个财务瞬间第四篇：借助自建程序化仓位工具，结合 AI 复盘近年资产配置、收益归因与信号噪音，记录几次关键持仓调整的推导过程。">
+  <meta name="twitter:image" content="https://kuhung.me/images/me/avatar.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           五年十个财务瞬间 04｜结合AI进行仓位回顾与分析 | 谷粒 kuhung
-       
-  </title>
+  <title>五年十个财务瞬间 04｜结合AI进行仓位回顾与分析 | 谷粒 kuhung</title>
   <meta name="title" content="五年十个财务瞬间 04｜结合AI进行仓位回顾与分析 | 谷粒 kuhung">
     
   
@@ -54,13 +60,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/cang-in-house-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-21T10:30:14+08:00","datePublished":"2026-08-21T10:30:14+08:00","description":"一、来龙去脉 这是\u0026#34;五年十个财务瞬间\u0026#34;系列的第四篇。前三篇分别写于 2020 年末、2021 年中和 2023 年初。第一篇是毕业两年半后第一次认真审视自己的仓位切片，当时的比例是股票 55、基金 25、现金 10、其他 10，杠杆 1.8 倍。第二篇是半年亏了 20% 之后的反思，轮动、定投、对冲、体验四个策略。第三篇卡在汇率破 7、存量利率历史低点的 2023 年，一直没写完。这些文章回过头看 …","headline":"五年十个财务瞬间 04｜结合AI进行仓位回顾与分析","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"投资, 仓位管理, 复盘, 数据分析, AI","mainEntityOfPage":{"@id":"https://kuhung.me/posts/cang-in-house-review/","@type":"WebPage"},"name":"五年十个财务瞬间 04｜结合AI进行仓位回顾与分析","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/cang-in-house-review/","wordCount":587}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/cang-in-house-review/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-08-21T10:30:14+08:00","datePublished":"2026-08-21T10:30:14+08:00","description":"五年十个财务瞬间第四篇：借助自建程序化仓位工具，结合 AI 复盘近年资产配置、收益归因与信号噪音，记录几次关键持仓调整的推导过程。","headline":"五年十个财务瞬间 04｜结合AI进行仓位回顾与分析","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"投资, 仓位管理, 复盘, 数据分析, AI","mainEntityOfPage":{"@id":"https://kuhung.me/posts/cang-in-house-review/","@type":"WebPage"},"name":"五年十个财务瞬间 04｜结合AI进行仓位回顾与分析","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/cang-in-house-review/","wordCount":587}</script>
 </head>
 
   

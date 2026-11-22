@@ -4,11 +4,9 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="author" content="谷粒">
-  
-  
-  <meta name="description" content="AI 博主 · 算法专家 · ENFJ">
+  <meta name="description" content="基于 Google Search Console 流量排查，复盘个人博客主站的架构重构实践：涵盖三层问题排查、子域名权重整合、前端重做与核心文案校准。">
   <meta name="keywords" content="LLM,大语言模型,agent,agent开发,hust,华中科技大学,kuhung,谷粒,硅基奇谈,谷粒粒,机器学习,社交网络,数据挖掘,网易游戏,米哈游,游戏设计,广告投放,用户分析,增长黑客,开发者,极客,代码,开源,Developer,Programmer,Coder,Geek,DataScientist">
   
   
@@ -33,18 +31,26 @@ if (!doNotTrack) {
   <link rel="prev" href="https://kuhung.me/posts/skill-eval-review/" />
   <link rel="next" href="https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/" />
   <link rel="canonical" href="https://kuhung.me/posts/personal-website-seo-and-redesign-practice/" />
+  <meta property="og:site_name" content="谷粒 kuhung">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="个人主页 SEO 优化与结构改版实践 | 谷粒 kuhung">
+  <meta property="og:description" content="基于 Google Search Console 流量排查，复盘个人博客主站的架构重构实践：涵盖三层问题排查、子域名权重整合、前端重做与核心文案校准。">
+  <meta property="og:url" content="https://kuhung.me/posts/personal-website-seo-and-redesign-practice/">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/09/54e8e7606c4903e0.webp">
+  <meta property="article:published_time" content="2026-09-09T14:38:21&#43;08:00">
+  <meta property="article:modified_time" content="2026-09-09T14:38:21&#43;08:00">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kuhungio">
+  <meta name="twitter:title" content="个人主页 SEO 优化与结构改版实践 | 谷粒 kuhung">
+  <meta name="twitter:description" content="基于 Google Search Console 流量排查，复盘个人博客主站的架构重构实践：涵盖三层问题排查、子域名权重整合、前端重做与核心文案校准。">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/09/54e8e7606c4903e0.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=20261029-a">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           个人主页 SEO 优化与结构改版实践 | 谷粒 kuhung
-       
-  </title>
+  <title>个人主页 SEO 优化与结构改版实践 | 谷粒 kuhung</title>
   <meta name="title" content="个人主页 SEO 优化与结构改版实践 | 谷粒 kuhung">
     
   
@@ -54,13 +60,12 @@ if (!doNotTrack) {
 
   
   
-  
   <link rel="alternate" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   <link rel="feed" href="/posts/index.xml" type="application/rss+xml" title="谷粒 kuhung">
   
   
 
-<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/personal-website-seo-and-redesign-practice/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-09T14:38:21+08:00","datePublished":"2026-09-09T14:38:21+08:00","description":"最近一周，我对个人主页做了一次系统性的改版与修复。以期提升搜索引擎可见性和用户交互，目前成果如下图。本文分享对应的实践心路与处理方式。 改版动机 最直接的起因来自 Google Search Console（GSC）的数据排查。我翻看后台流量来源时发现，主站沉淀的大量文章曝光寥寥，反倒是几个挂在子域名上的独立应用带来了不少流量。 这与预期有明显出入。之前主站更换过域名，按历史访问数据来看，最早的核 …","headline":"个人主页 SEO 优化与结构改版实践","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"SEO, 个人网站, Vibe Coding, 搜索可见性","mainEntityOfPage":{"@id":"https://kuhung.me/posts/personal-website-seo-and-redesign-practice/","@type":"WebPage"},"name":"个人主页 SEO 优化与结构改版实践","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/personal-website-seo-and-redesign-practice/","wordCount":133}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@id":"https://kuhung.me/posts/personal-website-seo-and-redesign-practice/","@type":"BlogPosting","articleSection":"posts","author":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"dateModified":"2026-09-09T14:38:21+08:00","datePublished":"2026-09-09T14:38:21+08:00","description":"基于 Google Search Console 流量排查，复盘个人博客主站的架构重构实践：涵盖三层问题排查、子域名权重整合、前端重做与核心文案校准。","headline":"个人主页 SEO 优化与结构改版实践","inLanguage":"zh-CN","isPartOf":{"@id":"https://kuhung.me/","@type":"WebSite","name":"谷粒 kuhung"},"keywords":"SEO, 个人网站, Vibe Coding, 搜索可见性","mainEntityOfPage":{"@id":"https://kuhung.me/posts/personal-website-seo-and-redesign-practice/","@type":"WebPage"},"name":"个人主页 SEO 优化与结构改版实践","publisher":{"@type":"Person","name":"谷粒","sameAs":["https://x.com/kuhungio","https://github.com/kuhung","https://www.zhihu.com/people/kuhungio","https://www.xiaohongshu.com/user/profile/5c963e85000000001000a0a4","https://space.bilibili.com/48471230"],"url":"https://kuhung.me/"},"url":"https://kuhung.me/posts/personal-website-seo-and-redesign-practice/","wordCount":133}</script>
 </head>
 
   
