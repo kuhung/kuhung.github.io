@@ -6,7 +6,21 @@
     <description>Recent content in vibe coding on 谷粒 kuhung</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 16 Oct 2026 17:30:00 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Nov 2026 16:01:52 +0800</lastBuildDate><atom:link href="https://kuhung.me/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>过去一周，我如何用谷歌 Gemini 4 写代码</title>
+      <link>https://kuhung.me/posts/how-i-code-with-gemini4/</link>
+      <pubDate>Sun, 22 Nov 2026 16:01:52 +0800</pubDate>
+      
+      <guid>https://kuhung.me/posts/how-i-code-with-gemini4/</guid>
+      <description>在过去一段时间里，我尝试走量的形式，交付不少比 AI slop 质量稍高，但长期来看并没有带来多少额外价值（例如曝光、转化）的东西。回顾下来，我认为创造本身已经不稀缺了，但更细节的感受和方法仍然稀缺。不过付费的话，还是要更多调动人的感性脑，而不是理性脑。
+这促使我做出一些改变，在和用户交流的部分，不要也不应该过度依赖 AI。这也包括文章写作。接下来，我将尝试 Brain Writing（又称心流写作），俗称想到啥写啥，用来对抗 AI 写作平均态和脑雾现状。因此，本文将是全手写，放心食用。偶有瑕疵，还请见谅。
+回顾过去这一周，在大模型基座方面，当属谷歌的 Gemini 4 家族独领风骚。打了一个漂亮的翻身仗。至于他们怎么在没蒸馏的前提下做到文笔和 coding 都不错，目前仍未可知。我在高强度使用下来后，觉得体验感非常棒。所以这篇文章算是半个推荐文，给大家讲讲我用 Gemini 4 做了什么，是怎么做的，有什么思考和经验。
+谷歌发布这四个模型，简单来说就是对标过去的 pro、flash 和基础款这种。个人用下来，质量最好的当然是 Carbon（同旗舰档还有 Argon），其次是很均衡的 Neon 模型，以及很便宜适合干简单活的 Hydrogen。在他们没发布这几款模型前，我一直有在用他们家的 Gemini 3.8 Flash 写文章，在 PageGrok 这个网页总结插件上用 Gemini 2.5 Flash。前者是有一定智商、说人话；后者是很便宜，TTFT 延迟在 2s 之内。
+在选型上面，按照高难度用 Carbon、均衡用 Neon、轻量用 Hydrogen，是个不错的方法。当然，我也推荐用他们的 Orchestrator 路由模型。即，用比如 Neon 来做总体的方案制定，然后执行细节被屏蔽，Hydrogen 或者别的 Flash 模型在干执行。具体参数情况，可以参见 TrakToken 做的每日收集。
+开支方面，差不多 20 刀的 Pro 套餐，够一般强度的 vibe coding；若是高强度，建议开 100 刀档的 Ultra 套餐。Antigravity 这个插件，在我看来，除了偶尔简陋外，其实没有那么不堪。不过我目前在用 T3 Code 这个集成工具。它可以把不同的 Coding Agent 整合在一起，而且能够实现手机控制电脑上的 Agent 编码。推荐给读者朋友。</description>
+    </item>
+    
     <item>
       <title>创业预型思维：如何在三天内知道想法能不能挣钱</title>
       <link>https://kuhung.me/posts/pretotype-before-mvp/</link>
