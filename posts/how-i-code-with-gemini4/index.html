@@ -36,14 +36,14 @@ if (!doNotTrack) {
   <meta property="og:title" content="过去一周，我如何用谷歌 Gemini 4 写代码 | 谷粒 kuhung">
   <meta property="og:description" content="过去一周高强度用 Google Gemini 4（Carbon / Neon / Hydrogen）和 Orchestrator 写代码的实操复盘：模型选型、订阅开销，以及做出雅思学习站和 X 水评过滤插件 Baku 的踩坑经验。">
   <meta property="og:url" content="https://kuhung.me/posts/how-i-code-with-gemini4/">
-  <meta property="og:image" content="https://kuhung.me/images/me/avatar.jpg">
+  <meta property="og:image" content="https://r2-img.kuhung.me/2026/11/e2c434960ef8e4fc.webp">
   <meta property="article:published_time" content="2026-11-22T16:01:52&#43;08:00">
   <meta property="article:modified_time" content="2026-11-22T16:01:52&#43;08:00">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@kuhungio">
   <meta name="twitter:title" content="过去一周，我如何用谷歌 Gemini 4 写代码 | 谷粒 kuhung">
   <meta name="twitter:description" content="过去一周高强度用 Google Gemini 4（Carbon / Neon / Hydrogen）和 Orchestrator 写代码的实操复盘：模型选型、订阅开销，以及做出雅思学习站和 X 水评过滤插件 Baku 的踩坑经验。">
-  <meta name="twitter:image" content="https://kuhung.me/images/me/avatar.jpg">
+  <meta name="twitter:image" content="https://r2-img.kuhung.me/2026/11/e2c434960ef8e4fc.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261029-a">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261029-a">
@@ -177,6 +177,8 @@ if (!doNotTrack) {
         
 
         
+            
+        
 
         
         
@@ -195,6 +197,7 @@ if (!doNotTrack) {
 <p>回顾过去这一周，在大模型基座方面，当属谷歌的 Gemini 4 家族独领风骚。打了一个漂亮的翻身仗。至于他们怎么在没蒸馏的前提下做到文笔和 coding 都不错，目前仍未可知。我在高强度使用下来后，觉得体验感非常棒。所以这篇文章算是半个推荐文，给大家讲讲我用 Gemini 4 做了什么，是怎么做的，有什么思考和经验。</p>
 <p>谷歌发布这四个模型，简单来说就是对标过去的 pro、flash 和基础款这种。个人用下来，质量最好的当然是 Carbon（同旗舰档还有 Argon），其次是很均衡的 Neon 模型，以及很便宜适合干简单活的 Hydrogen。在他们没发布这几款模型前，我一直有在用他们家的 Gemini 3.8 Flash 写文章，在 PageGrok 这个网页总结插件上用 Gemini 2.5 Flash。前者是有一定智商、说人话；后者是很便宜，TTFT 延迟在 2s 之内。</p>
 <p>在选型上面，按照高难度用 Carbon、均衡用 Neon、轻量用 Hydrogen，是个不错的方法。当然，我也推荐用他们的 Orchestrator 路由模型。即，用比如 Neon 来做总体的方案制定，然后执行细节被屏蔽，Hydrogen 或者别的 Flash 模型在干执行。具体参数情况，可以参见 <a href="https://www.traktoken.com/">TrakToken</a> 做的每日收集。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/e2c434960ef8e4fc.webp" alt="Gemini 4 分层选型、Orchestrator 路由调度与订阅档位对照" class="lazyload"><figcaption class="image-caption">Gemini 4 分层选型、Orchestrator 路由调度与订阅档位对照</figcaption></figure></p>
 <p>开支方面，差不多 20 刀的 Pro 套餐，够一般强度的 vibe coding；若是高强度，建议开 100 刀档的 Ultra 套餐。Antigravity 这个插件，在我看来，除了偶尔简陋外，其实没有那么不堪。不过我目前在用 T3 Code 这个集成工具。它可以把不同的 Coding Agent 整合在一起，而且能够实现手机控制电脑上的 Agent 编码。推荐给读者朋友。</p>
 <p>我建议，如果你是 builder，不要把精力全部放在构建上面。这是模型的舒适区，但不是创业者该重点关注的地方。我认为该重点关注的是，市场还有什么需求没有得到满足；你的现有产品还有哪些策略可以带来曝光、带来转化。去用模型收集资料、做数据分析，比用来写新产品的 ROI 更高。</p>
 <p>说到产品，接下来给大家介绍下 vibe coding 出来的两个产品。一个是很早之前就想做的 IELTS 雅思的地道表达工具；另一个是用来屏蔽 X 上 slop 内容的插件。我们分开来讲。</p>
@@ -202,6 +205,7 @@ if (!doNotTrack) {
 <p>首先第一个，它是一个面向个人的学习型工具。这类工具我在过去一段时间，构建了不少。比如在别人开源基础上搞的 <a href="https://tap.kuhung.me/">Tap</a>，一个打字学习多国语言的网页应用；比如还有一些乱七八糟的结构网图。构建这类工具，最容易陷入差生文具多的细节里面。比起构建，看完这些东西并且用脑子记住的价值更大。</p>
 <p>好了，扯远了。这个工具的数据提取我是用 Neon 做的，它设计方案用了我 Mac 上面的视觉扫描 OCR。这个方案我自己都没想到，原来电脑自带的模型也能用来批量处理 PDF。不过由于我们的语料，我推测本身就被大模型扫描并且参与训练过，所以最后出来的结果我让大模型再过了一遍，这样基本没有问题。如果是用来处理财报这一类新的、领域外的、数据和表格居多的，那就需要视觉模型复核以及更专业的 OCR 提取工具比如 MinerU 这些。</p>
 <p>然后就是构建网站。这次我分了两步走。第一步是少约束，让他直接给构建了一个。不出所料的，丑得批爆。根本没有任何审美和交互可言。但是别担心，大模型前端能力一坨，这已经是公认的事实。我让他走了 <a href="/posts/frontend-anti-ai-slop-hallmark-guide/">Hallmark</a> 这个 Skill，挑选一个认为合适的主题，这样下来的结果基本上就可以看了。很多 vibe coding 方面的 KOL 的目标是给出一个漂亮的网站。这种次抛可以，但生产上可不行。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/24e4ac8b9335e898.webp" alt="雅思地道表达学习站「章节精学」实拍界面（经 Hallmark 样式约束后）" class="lazyload"><figcaption class="image-caption">雅思地道表达学习站「章节精学」实拍界面（经 Hallmark 样式约束后）</figcaption></figure></p>
 <p>第二步在做的事情就是搞个登录系统。因为我不可能只在有电脑的时候，才上这个网。理想状态是多端同步。那么就需要一个账号体系，需要一个后台来记录用户的进度。账号方面，是复用我今年早些时候积累的能力。那就是用谷歌+苹果+邮箱的登录形式。这样多个平台都能用上。邮箱我早先用的 Supabase，但是我后面发现 Resend 就能做这个功能。Supabase 的后端对于这类产品属实太重没必要。数据同步，就直接用 Vercel 给的套餐内的 KV 存储搞定。</p>
 <p>这样，一个内容学习站，就差不多搞出来了。构建本身其实并不耗时，在前沿模型的帮助下，一个下午+一个晚上能出来。后续的登录、字体和 AI 特有的 slop 样式微调，又花了半天的时间。从这次构建来说，明显比半年前提效不少。产出成果上也更好看、衔接更自然。这其中既有模型能力的提升，也有前期积累的效果。</p>
 <p>话说回来，这个产品本身是非营利性质的小范围产品。它也就起个打样作用，我相信不少人有过类似的想法，但是卡住了。可以<a href="/about/">联系我</a>，辅助大家把心里的想法搞出来。大模型这个阶段，每个人都可以自己捣鼓自己领域内的工具，不同水平的放大器效果截然不同。</p>
@@ -214,7 +218,9 @@ if (!doNotTrack) {
 <p>前端和交互调个 7、8 分后，另一方面是业务逻辑。需求一般是从想法到清晰，从看起来OK到实际OK。我会让模型分析，然后噼里啪啦讲一堆，再要求他屏蔽细节。太多细节到我没法做决策。Gemini 4 还很喜欢像人一样，给老板做选择题。但实际上，如果细节在我的专业领域之外，我根本难以判断正误。这个时候需要的和公司一样，高人才密度（高模型密度）。让强力模型来做这个事。屏蔽细节，简化告诉我要做什么决策，我判断要不要、符不符合我的期望即可。</p>
 <p>这样下来，我调整了模型想拉黑账号的冲动，调整为优先处理单条帖子。否决了模型想专门给我开个密钥管理的方案。整体方案：判断这个回复，是不是在重复主帖内容；是不是蓝标。这个简单策略，就可以做出不错效果。这也是我过往风控经历告诉我的，从对方的经济利益出发，控制它的收益小于他的成本即可。如无必要，勿增实体。</p>
 <p>目前还是会有误处理的情况，逻辑上可以通过回退来实现。误屏蔽的负面是少看部分回复，整体风险也不大。目前仍然值得做的迭代，是迭代给 decision 模型的提示词。后台日志有记录用户点击屏蔽和撤回的日志，这些日志的特点，很适合定期丢给模型做动态的提示词更新。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/1322422b09003f3c.webp" alt="Baku 插件单条折叠、毛玻璃遮罩与撤销放行交互" class="lazyload"><figcaption class="image-caption">Baku 插件单条折叠、毛玻璃遮罩与撤销放行交互</figcaption></figure></p>
 <p>这里面再分享两个事情。一个是 Gemini 4 其实并不适合处理后端，或者说数据库上面，你不提他就当看不见。我的 Cloudflare D1 数据库每天有 500w 的读额度，在第一天将近消耗 80%。原因是它没给我做缓存和分表，每次请求都全量扫表。好在告警抛出来了，止血及时。另一个就是，近期备受争议的 GPT 模型不是没作用，我只用来干一件事：生图。目前 <a href="https://chromewebstore.google.com/detail/baku-%E9%9D%99%E8%B2%98-for-x/dkcjdiemeobepaahioaakahjijoigoad">Baku</a> 插件里，根据屏蔽帖子数成长的小东西的动效和图片，都是它做的。这点目前我还有路径依赖，GPT 的图片生成还不错。</p>
+<p><figure><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-sizes="auto" data-src="https://r2-img.kuhung.me/2026/11/aad68e24ae6f2615.webp" alt="Baku 插件真实弹窗与五阶段成长静貘（GPT 生图制作）" class="lazyload"><figcaption class="image-caption">Baku 插件真实弹窗与五阶段成长静貘（GPT 生图制作）</figcaption></figure></p>
 <hr>
 <p>最后，我们再回顾一下。过去这一年，vibe coding 的爆发；这两年来，AI 的热潮，似乎在近期随着各类大大小小政治事件，又开始均值回归。AI 人才热，也就持续了一年多一点；GPT 的领先地位，说没就没；我期待的用 AI 搞出大动静，新的跨时代的产品也没有出现。方向在哪里，我仍在试图回答。但我觉得，这波理性回归是值得的，虽然我的投资钱包扁了。AI 不应该用来写 slop，不应该替代人类的学习，更难以替代人的情感联结。</p>
 <p>最后的最后，谢谢阅读。本文通篇手写，感谢。</p>
@@ -394,8 +400,9 @@ if (!doNotTrack) {
 
 
     
-    
-    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+     <link href="//cdn.bootcdn.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
     
   
 

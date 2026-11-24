@@ -22,9 +22,6 @@
       <loc>https://kuhung.me/posts/ai-system-evals-complete-guide/</loc>
       <lastmod>2026-11-08T22:45:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-execution-seams-and-volatility-cushion/</loc>
-      <lastmod>2026-11-06T21:00:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/liquidity-spirals-and-extreme-defense/</loc>
       <lastmod>2026-11-06T10:00:00+08:00</lastmod>
     </url><url>
@@ -43,14 +40,8 @@
       <loc>https://kuhung.me/posts/weight-space-intervention-history/</loc>
       <lastmod>2026-11-03T13:00:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/equity-term-structure-and-countercyclical-allocation/</loc>
-      <lastmod>2026-11-02T12:00:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/binance-hack-onchain-analysis/</loc>
       <lastmod>2026-11-01T23:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/dividend-price-ratio-and-present-value-decomposition/</loc>
-      <lastmod>2026-11-01T19:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/smart-money-consensus-lead-lag-backtest/</loc>
       <lastmod>2026-10-29T14:30:00+08:00</lastmod>
@@ -60,9 +51,6 @@
     </url><url>
       <loc>https://kuhung.me/posts/how-smart-money-is-calculated-and-distributed/</loc>
       <lastmod>2026-10-28T11:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/frontend-anti-ai-slop-hallmark-guide/</loc>
-      <lastmod>2026-10-28T00:25:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/anthropic-form-s1-ipo-filing/</loc>
       <lastmod>2026-10-27T10:45:00+08:00</lastmod>
@@ -76,50 +64,14 @@
       <loc>https://kuhung.me/posts/how-to-read-onchain-macro-metrics/</loc>
       <lastmod>2026-10-26T10:50:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-inverse-volatility-weighting-and-capital-allocation/</loc>
-      <lastmod>2026-10-24T23:00:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/consumer-ai-market-structure/</loc>
       <lastmod>2026-10-24T15:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/a16z-top-100-gen-ai-consumer-apps-7th-edition/</loc>
       <lastmod>2026-10-23T22:20:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-differentiated-risk-defense-and-exit-mechanisms/</loc>
-      <lastmod>2026-10-23T21:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-dual-line-buffer-and-rebalance-window/</loc>
-      <lastmod>2026-10-23T11:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/hang2la-visual-priority-alignment-for-coding-agents/</loc>
-      <lastmod>2026-10-23T00:05:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/applescript-browser-control-for-coding-agents/</loc>
-      <lastmod>2026-10-21T23:15:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-cross-sectional-scoring-and-duplicate-arbitration/</loc>
-      <lastmod>2026-10-21T21:30:00+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/cleanyourtv-debloat-android-tv-launcher/</loc>
       <lastmod>2026-10-21T15:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-hard-trend-filters-and-chasing-prevention/</loc>
-      <lastmod>2026-10-20T16:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/agy-menubar-context-management/</loc>
-      <lastmod>2026-10-19T22:45:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-candidate-universe-recall-and-dual-track-ranking/</loc>
-      <lastmod>2026-10-19T21:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/stock-selection-macro-asset-allocation-and-framework/</loc>
-      <lastmod>2026-10-17T20:00:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/isochrone-travel-map/</loc>
-      <lastmod>2026-10-16T20:35:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/pretotype-before-mvp/</loc>
-      <lastmod>2026-10-16T17:30:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/muse-retention-data-cohort-analysis-and-product-thoughts/</loc>
       <lastmod>2026-10-15T15:38:00+08:00</lastmod>
@@ -129,12 +81,6 @@
     </url><url>
       <loc>https://kuhung.me/posts/pi-1-0-and-1-1-key-updates-notes/</loc>
       <lastmod>2026-10-10T16:25:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/measuring-market-liquidity-from-daily-data-and-post-holiday-review/</loc>
-      <lastmod>2026-10-09T08:50:00+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/claude-haiku-5-5-performance-pricing-and-upgrade-advice/</loc>
-      <lastmod>2026-10-08T22:00:00+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/hsbc-pulse-vs-red-credit-cards-comparison-and-application-guide/</loc>
       <lastmod>2026-10-08T19:45:00+08:00</lastmod>
@@ -151,20 +97,11 @@
       <loc>https://kuhung.me/posts/my-ai-week-ep01-content-on-chain-data-rebalancing-first-look-at-jev-muse/</loc>
       <lastmod>2026-09-26T09:28:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/gpt-6-sol-luna-vs-claude-opus-5-5-performance-pricing-and-upgrade-advice/</loc>
-      <lastmod>2026-09-23T16:23:56+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/inside-jev-millisecond-decisions-and-production-boundaries/</loc>
       <lastmod>2026-09-18T20:57:35+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/after-leaving-my-job-i-built-an-ai-that-reads-the-page-without-leaving-it-founder-notes-on-pagegrok/</loc>
-      <lastmod>2026-09-16T23:47:12+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/getting-started-with-pi-cli-practical-multi-model-coding-workflows/</loc>
       <lastmod>2026-09-15T16:54:54+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/vibe-coding-scheduled-tasks-actively-triggering-github-actions-for-my-personal-workflow/</loc>
-      <lastmod>2026-09-14T23:38:37+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/optimizing-my-portfolio-with-ai-from-macro-allocation-to-us-stock-holdings/</loc>
       <lastmod>2026-09-11T00:11:23+08:00</lastmod>
@@ -175,26 +112,17 @@
       <loc>https://kuhung.me/projects/</loc>
       <lastmod>2026-09-07T19:00:00+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/skill-eval-review/</loc>
-      <lastmod>2026-08-26T18:07:06+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/seo-in-practice-sop/</loc>
       <lastmod>2026-08-23T12:24:30+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/cang-in-house-review/</loc>
       <lastmod>2026-08-21T10:30:14+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/maximization-your-claude-code-sessions/</loc>
-      <lastmod>2026-08-15T21:17:08+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/seo-enhance/</loc>
       <lastmod>2026-08-12T11:25:12+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/ga4-in-practice/</loc>
       <lastmod>2026-08-11T14:38:58+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/harness-your-skills/</loc>
-      <lastmod>2026-08-08T23:16:24+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/does-the-llm-token-spend-index-predict-the-ai-trade/</loc>
       <lastmod>2026-08-07T22:53:52+08:00</lastmod>
@@ -204,12 +132,6 @@
     </url><url>
       <loc>https://kuhung.me/posts/how-to-manage-skills-for-agent/</loc>
       <lastmod>2026-08-05T11:41:14+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/use-codex-goal-build-products/</loc>
-      <lastmod>2026-08-04T17:58:11+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/how-i-use-codex/</loc>
-      <lastmod>2026-08-03T11:49:39+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/meet-with-hardware-ai/</loc>
       <lastmod>2026-08-01T22:32:01+08:00</lastmod>
@@ -226,26 +148,17 @@
       <loc>https://kuhung.me/posts/cang-in-house/</loc>
       <lastmod>2026-07-26T12:44:44+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/weread-skills-in-practice/</loc>
-      <lastmod>2026-07-24T18:29:48+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/posts/ttsi/</loc>
       <lastmod>2026-07-06T17:12:54+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/reflections-on-a-career-break-16-months-on/</loc>
       <lastmod>2026-06-21T06:51:09+08:00</lastmod>
     </url><url>
-      <loc>https://kuhung.me/posts/beyond-vibe-coding-the-new-founder-mindset/</loc>
-      <lastmod>2026-05-31T10:46:56+08:00</lastmod>
-    </url><url>
       <loc>https://kuhung.me/about/</loc>
       <lastmod>2026-05-27T00:14:04+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/benchmark-for-llm-inference/</loc>
       <lastmod>2026-05-17T12:49:56+08:00</lastmod>
-    </url><url>
-      <loc>https://kuhung.me/posts/weekly-report-by-notion-github-and-llm/</loc>
-      <lastmod>2026-05-12T14:44:53+08:00</lastmod>
     </url><url>
       <loc>https://kuhung.me/posts/noainog-202604/</loc>
       <lastmod>2026-05-06T00:51:42+08:00</lastmod>
