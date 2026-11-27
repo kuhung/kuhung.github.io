@@ -9,6 +9,30 @@
     <atom:link href="https://kuhung.me/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Kuhung 产品隐私政策与支持 / Privacy Policy &amp; Support</title>
+      <link>https://kuhung.me/privacy/</link>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0800</pubDate>
+      
+      <guid>https://kuhung.me/privacy/</guid>
+      <description>&lt;p&gt;更新日期 / Last updated: 2026-11-27&lt;br&gt;
+开发者 / Developer: 谷粒（kuhung）&lt;br&gt;
+支持邮箱 / Support: &lt;a href=&#34;mailto:support@kuhung.me&#34;&gt;support@kuhung.me&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;简体中文&#34;&gt;简体中文&lt;/h2&gt;
+&lt;p&gt;本政策适用于谷粒（kuhung）在 &lt;code&gt;*.kuhung.me&lt;/code&gt; 运营、使用 Kuhung 账号登录的网页应用，包括雅思短语语料库和墨记。&lt;/p&gt;
+&lt;p&gt;你使用 Google、Apple 或邮箱验证码登录时，我们仅收集识别和展示账号所需的信息。根据登录方式及其提供的信息，这些数据包括邮箱地址、显示名称、头像，以及第三方登录服务提供的唯一用户标识。&lt;/p&gt;
+&lt;p&gt;你主动保存的学习记录、画布笔记或配置数据用于跨设备同步。你主动使用 AI 功能时，我们才会将当次输入（例如手写画布内容或文本）发送至对应的模型接口处理。必要的请求日志与限流计数仅用于维持服务稳定和防止滥用。&lt;/p&gt;
+&lt;p&gt;我们仅将这些数据用于身份认证、功能交付、跨设备同步、额度管理与安全防护。我们不出售用户数据，也不将其用于广告画像、信用评估或第三方营销追踪。&lt;/p&gt;
+&lt;p&gt;你可以随时在 Google 或 Apple 账号设置中撤销登录授权。若要查阅、导出或删除与你的账号关联的数据，请联系 &lt;a href=&#34;mailto:support@kuhung.me&#34;&gt;support@kuhung.me&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;english&#34;&gt;English&lt;/h2&gt;
+&lt;p&gt;This policy applies to web applications operated by 谷粒 (kuhung) on &lt;code&gt;*.kuhung.me&lt;/code&gt; that use a Kuhung account for sign-in, including IELTS Phrases Corpus and 墨记.&lt;/p&gt;
+&lt;p&gt;When you sign in with Google, Apple, or an email verification code, we collect only the information needed to identify and display your account. Depending on the sign-in method and the information it provides, this may include your email address, display name, profile picture, and the unique user identifier supplied by the third-party sign-in provider.&lt;/p&gt;
+&lt;p&gt;We use the study records, canvas notes, and settings you choose to save to sync them across devices. When you choose to use an AI feature, we send the input for that request, such as handwriting on a canvas or text, to the corresponding model endpoint for processing. We use necessary request logs and rate-limit counters only to keep the service reliable and prevent abuse.&lt;/p&gt;
+&lt;p&gt;We use this data only to authenticate users, deliver features, sync data across devices, manage usage limits, and protect the service. We do not sell user data or use it for advertising profiles, credit assessments, or third-party marketing tracking.&lt;/p&gt;
+&lt;p&gt;You can revoke sign-in authorization at any time in your Google or Apple account settings. To access, export, or delete data associated with your account, contact &lt;a href=&#34;mailto:support@kuhung.me&#34;&gt;support@kuhung.me&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>内容精选</title>
       <link>https://kuhung.me/guide/</link>
       <pubDate>Sun, 22 Nov 2026 18:30:00 +0800</pubDate>
