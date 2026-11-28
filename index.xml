@@ -824,6 +824,10 @@
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://jev.kuhung.me/&#34;&gt;深入解读 Jev：单步决策模型架构与工程实测&lt;/a&gt;&lt;/strong&gt;
 拆解非自回归单步决策模型（TypeSafe Jev）的 RLCD 概率校准原理、Qwen 基座对照、20 行本地复现与万次压测边界。&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://askjev.kuhung.me/&#34;&gt;Ask Jev（问问 Jev）：专治纠结的复古微决策管家&lt;/a&gt;&lt;/strong&gt;
+基于单步决策模型打造的生活微决策工具，输入买不买、去不去或中午吃什么，直接给出干脆裁决。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;量化与金融&#34;&gt;量化与金融&lt;/h2&gt;
 &lt;ul&gt;
@@ -932,8 +936,8 @@ iPhone 录音超过 300M 就传不进 NotebookLM，这个工具压完就能传�
 输入待排行的内容，拖拽生成 Tier List，排完可以直接分享出去。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://wuzi.kuhung.me&#34;&gt;墨记：水墨低语日记&lt;/a&gt;&lt;/strong&gt;
-一张永远空白的宣纸，写下心中事，墨迹沉入纸中，回信自纸底洇出。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://wuzi.kuhung.me/&#34;&gt;墨记：AI 无限手写草稿纸&lt;/a&gt;&lt;/strong&gt;
+一张无限延伸的点阵手写草稿纸，支持 Apple Pencil 防手掌误触、停笔就地浮现手写体 AI 批注、高清笔记导出与跨设备云同步。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://mao.waitlistai.cc/&#34;&gt;每日猜猫病：兽医诊断小游戏&lt;/a&gt;&lt;/strong&gt;
